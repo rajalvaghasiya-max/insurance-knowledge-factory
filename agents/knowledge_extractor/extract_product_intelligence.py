@@ -922,6 +922,12 @@ def extract_discounts(pages: list[dict[str, Any]]) -> dict[str, Any]:
             if not page:
                 continue
 
+            page_text_lower = page["text"].lower()
+
+            # Do not classify Preferred Provider Network discount as generic discounts.
+            if "preferred provider network" in page_text_lower or "ppn discount" in page_text_lower:
+                continue
+
             score = len(pattern)
 
             if score > best_score:
