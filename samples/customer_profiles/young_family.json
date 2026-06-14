@@ -1,0 +1,26 @@
+{
+  "profile_id": "young_family",
+  "life_stage": "married_planning_family",
+  "age": 32,
+  "family_members": [
+    {
+      "relation": "self",
+      "age": 32
+    },
+    {
+      "relation": "spouse",
+      "age": 30
+    }
+  ],
+  "needs": {
+    "maternity_or_newborn": true,
+    "wellness": true,
+    "high_sum_insured": true,
+    "low_waiting_period": true,
+    "senior_citizen": false
+  },
+  "preferences": {
+    "avoid_copay": true,
+    "prefer_room_rent_no_limit": true
+  }
+}
