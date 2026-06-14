@@ -1,0 +1,82 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "validator_version": "0.1",
+  "intelligence_file": "knowledge/health/aditya_birla_health/activ_one/intelligence/policy_intelligence.json",
+  "expected_file": "knowledge/health/validations/aditya_birla_health_activ_one_expected.json",
+  "score": 100.0,
+  "passed": 10,
+  "total": 10,
+  "status": "PASS",
+  "results": [
+    {
+      "category": "metadata",
+      "field": "product_name",
+      "expected": "Activ One",
+      "actual": "Activ One",
+      "passed": true
+    },
+    {
+      "category": "metadata",
+      "field": "uin",
+      "expected": "ADIHLIP24097V012324",
+      "actual": "ADIHLIP24097V012324",
+      "passed": true
+    },
+    {
+      "category": "waiting_periods",
+      "field": "pre_existing_disease_waiting_period",
+      "expected": 36,
+      "actual": 36,
+      "passed": true
+    },
+    {
+      "category": "waiting_periods",
+      "field": "specified_disease_waiting_period",
+      "expected": 24,
+      "actual": 24,
+      "passed": true
+    },
+    {
+      "category": "waiting_periods",
+      "field": "initial_waiting_period",
+      "expected": 30,
+      "actual": 30,
+      "passed": true
+    },
+    {
+      "category": "waiting_periods",
+      "field": "critical_illness_initial_waiting_period",
+      "expected": 60,
+      "actual": 60,
+      "passed": true
+    },
+    {
+      "category": "product_facts",
+      "field": "restoration_benefit",
+      "expected": "Super Reload / Restoration available",
+      "actual": "Super Reload / Restoration available",
+      "passed": true
+    },
+    {
+      "category": "product_facts",
+      "field": "ayush_cover",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "category": "product_facts",
+      "field": "day_care_treatment",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "category": "product_facts",
+      "field": "domiciliary_treatment",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    }
+  ]
+}

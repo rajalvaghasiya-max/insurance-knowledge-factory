@@ -1,0 +1,644 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\d6c26c5fd8363c677301dd0f184c67293b9f54c323a91712d10dec11c7d9e041.json",
+  "insurer_id": "bajaj_allianz_general",
+  "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans.html",
+  "page_title": "Health Insurance: Buy Medical Insurance Plans @₹15/day*",
+  "content_hash": "d6c26c5fd8363c677301dd0f184c67293b9f54c323a91712d10dec11c7d9e041",
+  "page_intent": "article_or_product_related",
+  "extracted_at": "2026-06-07T11:46:07.348104+00:00",
+  "product_names": [
+    {
+      "name": "Health Insurance Plans",
+      "source": "url_slug",
+      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans.html"
+    }
+  ],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Comprehensive Health insurance",
+      "text": "Extensive coverage for a wide range of medical expenses including room rent, doctor’s fees, nursing charges, surgery costs, medical tests and other healthcare needs",
+      "evidence": "Comprehensive Health insurance\nExtensive coverage for a wide range of medical expenses including room rent, doctor’s fees, nursing charges, surgery costs, medical tests and other healthcare needs"
+    },
+    {
+      "heading": "Personal Accident Insurance",
+      "text": "Provides financial protection in case of Accidental Death, Disability, Hospitalisation, Adventure Sports benefit",
+      "evidence": "Personal Accident Insurance\nProvides financial protection in case of Accidental Death, Disability, Hospitalisation, Adventure Sports benefit"
+    },
+    {
+      "heading": "Preventive Check-Ups",
+      "text": "Avail preventive health check-ups every year with select plans from the first year of your policy to stay ahead of health issues\nNote",
+      "evidence": "Preventive Check-Ups\nAvail preventive health check-ups every year with select plans from the first year of your policy to stay ahead of health issues\nNote"
+    },
+    {
+      "heading": "Pre & Post-Hospitalisation Expenses",
+      "text": "Pre & post hospitalisation expenses with flexible customisation options to suit your needs are covered",
+      "evidence": "Pre & Post-Hospitalisation Expenses\nPre & post hospitalisation expenses with flexible customisation options to suit your needs are covered"
+    },
+    {
+      "heading": "Advanced Treatment Charges",
+      "text": "Any medical expenses incurred while undergoing advanced treatment methods and modern technological procedures are covered",
+      "evidence": "Advanced Treatment Charges\nAny medical expenses incurred while undergoing advanced treatment methods and modern technological procedures are covered"
+    },
+    {
+      "heading": "Organ Donor Expenses",
+      "text": "Medical expenses for an organ donor’s in-patient treatment during organ harvesting are covered, provided the insured is the recipient of the donated organ",
+      "evidence": "Organ Donor Expenses\nMedical expenses for an organ donor’s in-patient treatment during organ harvesting are covered, provided the insured is the recipient of the donated organ"
+    },
+    {
+      "heading": "Maternity & Newborn Care",
+      "text": "Coverage for expenses incurred during treatment for maternity, surrogacy, complications of assisted reproductive technologies (ART) and newborn",
+      "evidence": "Maternity & Newborn Care\nCoverage for expenses incurred during treatment for maternity, surrogacy, complications of assisted reproductive technologies (ART) and newborn"
+    },
+    {
+      "heading": "Deductibles & Co-pays",
+      "text": "Part of the claim will be covered by you (the policyholder) if you have opted for deductibles or co-pay\nNote",
+      "evidence": "Deductibles & Co-pays\nPart of the claim will be covered by you (the policyholder) if you have opted for deductibles or co-pay\nNote"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24/7 ambulance service with select plans",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24/7 ambulance service with select plans"
+    },
+    {
+      "heading": "Family Health Insurance",
+      "text": "Protect your loved ones from doctor bills, emergency hospitalisation, or unexpected medical expenses.",
+      "evidence": "Family Health Insurance\nProtect your loved ones from doctor bills, emergency hospitalisation, or unexpected medical expenses."
+    },
+    {
+      "heading": "Newborn Cover",
+      "text": "Not included\nIncluded in specific plans or as an add-on\nFlexibility\nNot flexible\nHighly flexible",
+      "evidence": "Newborn Cover\nNot included\nIncluded in specific plans or as an add-on\nFlexibility\nNot flexible\nHighly flexible"
+    },
+    {
+      "heading": "Worldwide coverage",
+      "text": "2 plan options available",
+      "evidence": "Worldwide coverage\n2 plan options available"
+    },
+    {
+      "heading": "Death & disability benefits, loss of income protection, education benefits for dependents",
+      "text": "Financial cushion for long-term treatment, can be used for any purpose",
+      "evidence": "Death & disability benefits, loss of income protection, education benefits for dependents\nFinancial cushion for long-term treatment, can be used for any purpose"
+    },
+    {
+      "heading": "Eligible for tax benefits under Section 80D",
+      "text": "Types of Health Insurance Policies for Individuals and Families by Bajaj General Insurance\nWe understand that everyone’s health needs are different, and so are the insurance options. The right plan depends on your age, family size, medical history, and budget. With Bajaj General Insurance Limited, you can choose from a variety of health insurance plans that make sense for you and your loved ones.\nLet’s look at the types of health insurance plans we offer, and which one best suits you:",
+      "evidence": "Eligible for tax benefits under Section 80D\nTypes of Health Insurance Policies for Individuals and Families by Bajaj General Insurance\nWe understand that everyone’s health needs are different, and so are the insurance options. The right plan depends on your age, family size, medical history, and budget. With Bajaj General Insurance Limited, you can choose from a variety of health insurance plans that make sense for you and your loved ones.\nLet’s look at the types of health insurance plans we offer, and which one best suits you:"
+    },
+    {
+      "heading": "regular health check-ups",
+      "text": "Since terms like room rent limits or co-pay clauses can apply, it’s important to review them carefully.",
+      "evidence": "regular health check-ups\nSince terms like room rent limits or co-pay clauses can apply, it’s important to review them carefully."
+    },
+    {
+      "heading": "Super Top-Up Health Insurance",
+      "text": "This plan adds an extra layer of protection on top of your base policy. It starts covering once your medical bills cross a fixed amount (deductible). For example, if your deductible is ₹5 lakh and your hospital bill is ₹8 lakh, the super top-up will pay the remaining ₹3 lakh.\nIt’s a smart way to get more extensive coverage, like ₹25 lakh or ₹50 lakh, without paying a very high premium.",
+      "evidence": "Super Top-Up Health Insurance\nThis plan adds an extra layer of protection on top of your base policy. It starts covering once your medical bills cross a fixed amount (deductible). For example, if your deductible is ₹5 lakh and your hospital bill is ₹8 lakh, the super top-up will pay the remaining ₹3 lakh.\nIt’s a smart way to get more extensive coverage, like ₹25 lakh or ₹50 lakh, without paying a very high premium."
+    },
+    {
+      "heading": "Maternity Cover Insurance",
+      "text": "Are you thinking of planning a family? Maternity insurance cushions you against soaring hospital bills, covering expenses for both normal and C-section deliveries. Crucially, many plans also extend coverage to your newborn from day one, including vaccinations.\nThe catch is the waiting period, which is often 2 to 4 years. Therefore, buy this before you plan to conceive.\nBuy the best health insurance plans in India from Bajaj General Insurance and get exciting discounts and benefits!",
+      "evidence": "Maternity Cover Insurance\nAre you thinking of planning a family? Maternity insurance cushions you against soaring hospital bills, covering expenses for both normal and C-section deliveries. Crucially, many plans also extend coverage to your newborn from day one, including vaccinations.\nThe catch is the waiting period, which is often 2 to 4 years. Therefore, buy this before you plan to conceive.\nBuy the best health insurance plans in India from Bajaj General Insurance and get exciting discounts and benefits!"
+    },
+    {
+      "heading": "Premium Personal Guard",
+      "text": "Up to 10% Cumulative Bonus",
+      "evidence": "Premium Personal Guard\nUp to 10% Cumulative Bonus"
+    },
+    {
+      "heading": "Max 50% Cumulative Bonus",
+      "text": "10% SI as Education Grant",
+      "evidence": "Max 50% Cumulative Bonus\n10% SI as Education Grant"
+    },
+    {
+      "heading": "No Claim Bonus",
+      "text": "Every member earns NCB separately\nThe whole family shares one NCB\nNow that we know the differences, the question remains: which one should you choose? The choice boils down to a balance between cost and security.\nIf you are under 40 with a young family, a family floater plan with a super top-up is typically the financially savvy choice.\nHowever, never include senior citizen parents in a floater plan; their higher age will spike your premium, and their frequent health needs will drain the family’s coverage. Always buy them a separate individual policy.",
+      "evidence": "No Claim Bonus\nEvery member earns NCB separately\nThe whole family shares one NCB\nNow that we know the differences, the question remains: which one should you choose? The choice boils down to a balance between cost and security.\nIf you are under 40 with a young family, a family floater plan with a super top-up is typically the financially savvy choice.\nHowever, never include senior citizen parents in a floater plan; their higher age will spike your premium, and their frequent health needs will drain the family’s coverage. Always buy them a separate individual policy."
+    },
+    {
+      "heading": "Lower Premiums",
+      "text": "Insurers calculate premiums based on risk, which is lowest when you are young. Because Arjun is 25, his premium is minimal. By purchasing now, he locks in a cost-effective rate. If he waits until he is older, the premium for the same coverage will be significantly higher.",
+      "evidence": "Lower Premiums\nInsurers calculate premiums based on risk, which is lowest when you are young. Because Arjun is 25, his premium is minimal. By purchasing now, he locks in a cost-effective rate. If he waits until he is older, the premium for the same coverage will be significantly higher."
+    },
+    {
+      "heading": "Comprehensive Coverage",
+      "text": "Since Arjun has no pre-existing conditions (like hypertension or diabetes), he doesn't have to worry about exclusions. He gets comprehensive coverage immediately. If he waits and develops a lifestyle condition later, the insurer might apply a long waiting period or permanently exclude that condition from the policy.",
+      "evidence": "Comprehensive Coverage\nSince Arjun has no pre-existing conditions (like hypertension or diabetes), he doesn't have to worry about exclusions. He gets comprehensive coverage immediately. If he waits and develops a lifestyle condition later, the insurer might apply a long waiting period or permanently exclude that condition from the policy."
+    },
+    {
+      "heading": "Cost and Benefit Related Factors",
+      "text": "One of the first things that comes to mind when thinking about health insurance is the premium cost and the benefits it will provide. Here are a few things you should consider:",
+      "evidence": "Cost and Benefit Related Factors\nOne of the first things that comes to mind when thinking about health insurance is the premium cost and the benefits it will provide. Here are a few things you should consider:"
+    },
+    {
+      "heading": "3. Sum Insured Amount",
+      "text": ": Always compare the premium and the sum insured amount before you commit to a policy. This will ensure that you get adequate coverage for you and your family.",
+      "evidence": "3. Sum Insured Amount\n: Always compare the premium and the sum insured amount before you commit to a policy. This will ensure that you get adequate coverage for you and your family."
+    },
+    {
+      "heading": "Use Online Premium Calculators",
+      "text": "Health insurance premium calculators help you estimate how much premium you have to pay for a plan. You can choose the coverage amount, insured members and any add-ons you want to include to see the price. Plus, you can use these tools to compare different plans and see which one would suit you.",
+      "evidence": "Use Online Premium Calculators\nHealth insurance premium calculators help you estimate how much premium you have to pay for a plan. You can choose the coverage amount, insured members and any add-ons you want to include to see the price. Plus, you can use these tools to compare different plans and see which one would suit you."
+    },
+    {
+      "heading": "Select Coverage Amount",
+      "text": "Choose the sum insured or coverage amount you desire. This is the maximum amount your insurer will pay for your medical expenses. Generally, higher coverage amounts lead to higher premiums.",
+      "evidence": "Select Coverage Amount\nChoose the sum insured or coverage amount you desire. This is the maximum amount your insurer will pay for your medical expenses. Generally, higher coverage amounts lead to higher premiums."
+    },
+    {
+      "heading": "Get a Quote",
+      "text": "After entering all the required information, the premium calculator will generate an estimate of your health insurance premium. Review the quote to ensure it fits your budget and meets your coverage needs.",
+      "evidence": "Get a Quote\nAfter entering all the required information, the premium calculator will generate an estimate of your health insurance premium. Review the quote to ensure it fits your budget and meets your coverage needs."
+    },
+    {
+      "heading": "Opt for a Higher Deductible",
+      "text": "One of the simplest ways to reduce your health insurance premium is by opting for a higher deductible. A deductible is the amount you pay out-of-pocket before your insurance coverage kicks in.\nBy choosing a higher deductible, you can significantly lower your premium because the insurer's risk is reduced. However, it’s important to ensure that the deductible amount is manageable for you in case of a medical emergency.\nThis approach is suitable for individuals who are generally healthy and do not anticipate incurring frequent medical expenses.",
+      "evidence": "Opt for a Higher Deductible\nOne of the simplest ways to reduce your health insurance premium is by opting for a higher deductible. A deductible is the amount you pay out-of-pocket before your insurance coverage kicks in.\nBy choosing a higher deductible, you can significantly lower your premium because the insurer's risk is reduced. However, it’s important to ensure that the deductible amount is manageable for you in case of a medical emergency.\nThis approach is suitable for individuals who are generally healthy and do not anticipate incurring frequent medical expenses."
+    },
+    {
+      "heading": ", you can provide comprehensive health coverage for the entire family at a minimum premium.",
+      "text": "The premium is based on the age of the eldest member, which helps keep premiums low for the family. Moreover, family floater plans are convenient, as you only need to manage a single policy instead of multiple ones.",
+      "evidence": ", you can provide comprehensive health coverage for the entire family at a minimum premium.\nThe premium is based on the age of the eldest member, which helps keep premiums low for the family. Moreover, family floater plans are convenient, as you only need to manage a single policy instead of multiple ones."
+    },
+    {
+      "heading": "Health Insurance Tax Benefits",
+      "text": "Health insurance not only helps you manage unexpected medical expenses but also offers significant tax benefits under the Income Tax Act, 1961. By paying premiums for your health insurance plan, you can reduce your taxable income and save money while ensuring your family is protected.",
+      "evidence": "Health Insurance Tax Benefits\nHealth insurance not only helps you manage unexpected medical expenses but also offers significant tax benefits under the Income Tax Act, 1961. By paying premiums for your health insurance plan, you can reduce your taxable income and save money while ensuring your family is protected."
+    },
+    {
+      "heading": "Key Benefits:",
+      "text": "1. Premium Deduction for Self, Spouse, and Children: You can claim a deduction of up to ₹25,000 for premiums paid for yourself, your spouse, and dependent children.\n2. Additional Deduction for Parents: If your parents are below 60 years, you can claim up to ₹25,000. For senior citizen parents (above 60 years), the deduction increases to ₹50,000.\n3. Maximum Deduction: You can claim up to ₹1,00,000 as a deduction under Section 80D, but this maximum applies only when both you (the taxpayer) and your parents are senior citizens, allowing ₹50,000 each. For most individuals below 60, the practical upper limit is ₹75,000 - ₹25,000 for self/family and ₹50,000 for senior-citizen parents.\n4. Preventive Health Check-Ups: Costs for preventive health check-ups are also included within the limits, up to ₹5,000 per year.\n5. Payment Mode: Premiums must be paid via non-cash methods like debit/credit cards, net banking, or UPI to be eligible for tax deduction.\nExample:\nSuppose you pay a premium of ₹20,000 for your own family (self, spouse, and children) and ₹30,000 for your senior citizen parents. Here’s how the deduction works:",
+      "evidence": "Key Benefits:\n1. Premium Deduction for Self, Spouse, and Children: You can claim a deduction of up to ₹25,000 for premiums paid for yourself, your spouse, and dependent children.\n2. Additional Deduction for Parents: If your parents are below 60 years, you can claim up to ₹25,000. For senior citizen parents (above 60 years), the deduction increases to ₹50,000.\n3. Maximum Deduction: You can claim up to ₹1,00,000 as a deduction under Section 80D, but this maximum applies only when both you (the taxpayer) and your parents are senior citizens, allowing ₹50,000 each. For most individuals below 60, the practical upper limit is ₹75,000 - ₹25,000 for self/family and ₹50,000 for senior-citizen parents.\n4. Preventive Health Check-Ups: Costs for preventive health check-ups are also included within the limits, up to ₹5,000 per year.\n5. Payment Mode: Premiums must be paid via non-cash methods like debit/credit cards, net banking, or UPI to be eligible for tax deduction.\nExample:\nSuppose you pay a pr"
+    },
+    {
+      "heading": "1. Keep your premium payment receipts from the insurer.",
+      "text": "2. Enter the details while filing your Income Tax Return (ITR) under Section 80D.\n3. The deduction is applied, lowering your taxable income and your overall tax liability.\nBy taking advantage of these tax benefits, you can make health insurance more affordable while securing financial protection for yourself and your loved ones.",
+      "evidence": "1. Keep your premium payment receipts from the insurer.\n2. Enter the details while filing your Income Tax Return (ITR) under Section 80D.\n3. The deduction is applied, lowering your taxable income and your overall tax liability.\nBy taking advantage of these tax benefits, you can make health insurance more affordable while securing financial protection for yourself and your loved ones."
+    },
+    {
+      "heading": "Sum Insured",
+      "text": "The sum insured is the maximum amount that the insurer will pay for your medical expenses during a policy year. It is the coverage limit of your health insurance policy.\nChoosing an adequate sum insured ensures that you have sufficient coverage to meet potential medical costs without significant out-of-pocket expenses.",
+      "evidence": "Sum Insured\nThe sum insured is the maximum amount that the insurer will pay for your medical expenses during a policy year. It is the coverage limit of your health insurance policy.\nChoosing an adequate sum insured ensures that you have sufficient coverage to meet potential medical costs without significant out-of-pocket expenses."
+    },
+    {
+      "heading": "Waiting Period",
+      "text": "The waiting period is the amount of time you must wait before certain recruitments kick in. The waiting period may be a few months to a few years, depending on the given policy and the condition.\nMost waiting periods relate to pre-existing conditions, maternity benefits, and some specific treatments. Knowing the",
+      "evidence": "Waiting Period\nThe waiting period is the amount of time you must wait before certain recruitments kick in. The waiting period may be a few months to a few years, depending on the given policy and the condition.\nMost waiting periods relate to pre-existing conditions, maternity benefits, and some specific treatments. Knowing the"
+    },
+    {
+      "heading": "Premium",
+      "text": "The premium is the amount you pay on a recurring basis (monthly, quarterly, half-yearly, or annually) to maintain your health insurance policy. It varies depending on age, health condition, how much coverage you want, and lifestyle choices.",
+      "evidence": "Premium\nThe premium is the amount you pay on a recurring basis (monthly, quarterly, half-yearly, or annually) to maintain your health insurance policy. It varies depending on age, health condition, how much coverage you want, and lifestyle choices."
+    },
+    {
+      "heading": "Select suitable coverage",
+      "text": "Check discounts & offers",
+      "evidence": "Select suitable coverage\nCheck discounts & offers"
+    },
+    {
+      "heading": "Buy comprehensive coverages",
+      "text": "Get secure\nHERizon",
+      "evidence": "Buy comprehensive coverages\nGet secure\nHERizon"
+    },
+    {
+      "heading": "Create a Profile With Us to Unlock New Benefits",
+      "text": "Customised plans that grow with you",
+      "evidence": "Create a Profile With Us to Unlock New Benefits\nCustomised plans that grow with you"
+    },
+    {
+      "heading": "Proactive coverage for future milestones",
+      "text": "Expert advice tailored to your profile",
+      "evidence": "Proactive coverage for future milestones\nExpert advice tailored to your profile"
+    },
+    {
+      "heading": "What is the ideal health insurance cover amount I should buy?",
+      "text": "Your ideal level of health insurance coverage amount is complete;y subjective! Your age, city, family size, and health requirements all play a role. Given the rising cost of healthcare, families and metro areas should budget at least ₹5–10 lakhs, if not more. You can select customised protection with Bajaj General for total peace of mind!\nCan I add my parents to my health insurance policy?\nCaring for your parents' health is paramount. With Bajaj General, you can easily add parents to health insurance policies. This ensures they get quality medical care without financial strain. Bajaj General has several add-ons that makes the policy unique to you. Check out our family or senior citizen plans. They offer strong coverage, giving you and your loved ones total peace of mind.",
+      "evidence": "What is the ideal health insurance cover amount I should buy?\nYour ideal level of health insurance coverage amount is complete;y subjective! Your age, city, family size, and health requirements all play a role. Given the rising cost of healthcare, families and metro areas should budget at least ₹5–10 lakhs, if not more. You can select customised protection with Bajaj General for total peace of mind!\nCan I add my parents to my health insurance policy?\nCaring for your parents' health is paramount. With Bajaj General, you can easily add parents to health insurance policies. This ensures they get quality medical care without financial strain. Bajaj General has several add-ons that makes the policy unique to you. Check out our family or senior citizen plans. They offer strong coverage, giving you and your loved ones total peace of mind."
+    },
+    {
+      "heading": "Which diseases are not covered in health insurance?",
+      "text": "Bajaj General Insurance offers tailored & well-designed policies. Generally,",
+      "evidence": "Which diseases are not covered in health insurance?\nBajaj General Insurance offers tailored & well-designed policies. Generally,"
+    },
+    {
+      "heading": "diseases not covered in health insurance",
+      "text": "often include pre-existing conditions during initial waiting periods, purely cosmetic treatments, and issues arising from substance abuse or self-inflicted harm. For exact details on diseases not covered in your health insurance policy, refer your specific Bajaj General policy wordings for an exclusion list.",
+      "evidence": "diseases not covered in health insurance\noften include pre-existing conditions during initial waiting periods, purely cosmetic treatments, and issues arising from substance abuse or self-inflicted harm. For exact details on diseases not covered in your health insurance policy, refer your specific Bajaj General policy wordings for an exclusion list."
+    },
+    {
+      "heading": "Do health insurance plans cover diagnostic charges like X-ray, ultrasound or MRI?",
+      "text": "Yes, Bajaj General Insurance plans generally cover diagnostic tests like X-rays, ultrasounds, and MRIs. These are typically included as part of pre-hospitalisation, in-patient, or post-hospitalisation expenses when linked to a covered treatment. Many policies also offer preventive health check-up benefits. For precise details on diagnostic tests covered in health insurance, please refer to your policy wordings for specific terms and conditions.",
+      "evidence": "Do health insurance plans cover diagnostic charges like X-ray, ultrasound or MRI?\nYes, Bajaj General Insurance plans generally cover diagnostic tests like X-rays, ultrasounds, and MRIs. These are typically included as part of pre-hospitalisation, in-patient, or post-hospitalisation expenses when linked to a covered treatment. Many policies also offer preventive health check-up benefits. For precise details on diagnostic tests covered in health insurance, please refer to your policy wordings for specific terms and conditions."
+    },
+    {
+      "heading": "Is OPD covered in health insurance?",
+      "text": "Yes,",
+      "evidence": "Is OPD covered in health insurance?\nYes,"
+    },
+    {
+      "heading": "OPD cover in health insurance",
+      "text": "is increasingly available in many plans with Bajaj General Insurance. While many traditional plans primarily focus on hospitalisation, we offer solutions, often as an add-on or in specialized policies, to help cover outpatient expenses like doctor consultations, diagnostics, and pharmacies.",
+      "evidence": "OPD cover in health insurance\nis increasingly available in many plans with Bajaj General Insurance. While many traditional plans primarily focus on hospitalisation, we offer solutions, often as an add-on or in specialized policies, to help cover outpatient expenses like doctor consultations, diagnostics, and pharmacies."
+    },
+    {
+      "heading": "What is a waiting period in health insurance and how long is it?",
+      "text": "A waiting period in health insurance is a specific duration after purchasing your policy during which certain benefits are not yet active. This is a standard practice to manage claims responsibly, particularly for pre-existing or recently diagnosed conditions. Bajaj General Insurance policies typically include various waiting periods, such as an initial period, specific ailment periods, etc. for pre-existing diseases. The actual duration varies by plan & the diesease.",
+      "evidence": "What is a waiting period in health insurance and how long is it?\nA waiting period in health insurance is a specific duration after purchasing your policy during which certain benefits are not yet active. This is a standard practice to manage claims responsibly, particularly for pre-existing or recently diagnosed conditions. Bajaj General Insurance policies typically include various waiting periods, such as an initial period, specific ailment periods, etc. for pre-existing diseases. The actual duration varies by plan & the diesease."
+    },
+    {
+      "heading": "Is AYUSH treatment (Ayurveda, Yoga, Unani, Siddha, Homeopathy) covered in health insurance?",
+      "text": "Yes, Bajaj General Insurance understands the growing preference for diverse healthcare approaches among Indians. Many of our health plans now cover AYUSH treatments (Ayurveda, Yoga, Unani, Siddha, Homeopathy) when availed as in-patient care at recognised facilities. Coverage details, including specific terms and limits, vary by policy. Please refer to your individual plan policy wordings for comprehensive information.",
+      "evidence": "Is AYUSH treatment (Ayurveda, Yoga, Unani, Siddha, Homeopathy) covered in health insurance?\nYes, Bajaj General Insurance understands the growing preference for diverse healthcare approaches among Indians. Many of our health plans now cover AYUSH treatments (Ayurveda, Yoga, Unani, Siddha, Homeopathy) when availed as in-patient care at recognised facilities. Coverage details, including specific terms and limits, vary by policy. Please refer to your individual plan policy wordings for comprehensive information."
+    },
+    {
+      "heading": "What is OPD cover in health insurance and do Bajaj General insurance include it?",
+      "text": "OPD cover in health insurance supports expenses like doctor consultations, diagnostic tests, and medicines without hospitalisation. Bajaj General Insurance understands your everyday health needs. Many of our health plans, including My Health Care Plan, offer comprehensive OPD coverage, sometimes even providing twice the OPD benefits of your premium. This helps you manage routine medical costs efficiently.",
+      "evidence": "What is OPD cover in health insurance and do Bajaj General insurance include it?\nOPD cover in health insurance supports expenses like doctor consultations, diagnostic tests, and medicines without hospitalisation. Bajaj General Insurance understands your everyday health needs. Many of our health plans, including My Health Care Plan, offer comprehensive OPD coverage, sometimes even providing twice the OPD benefits of your premium. This helps you manage routine medical costs efficiently."
+    },
+    {
+      "heading": "Can we claim 100% medical insurance?",
+      "text": "Even though Bajaj General Insurance aims to cover many treatments, getting 100 percent claim for health insurance in India for every medical cost depends on what your plan actually includes. Some policies have Deductibles and co-payments which change how much money you receive. Medical coverage helps lower sudden expenses. Always review your policy documents for knowing the benefits and to understand your complete coverage for out-of-pocket costs.",
+      "evidence": "Can we claim 100% medical insurance?\nEven though Bajaj General Insurance aims to cover many treatments, getting 100 percent claim for health insurance in India for every medical cost depends on what your plan actually includes. Some policies have Deductibles and co-payments which change how much money you receive. Medical coverage helps lower sudden expenses. Always review your policy documents for knowing the benefits and to understand your complete coverage for out-of-pocket costs."
+    },
+    {
+      "heading": "Can I claim health insurance without hospitalization?",
+      "text": "Medical care doesn’t always mean staying overnight in a hospital. Bajaj General Insurance steps in for health insurance without hospitalization claims for various services like OPD consultations, diagnostic tests, day care procedures, and even specified home healthcare. Every detail depends on what your specific plan includes. Check the policy wordings for full understanding of inclusions.",
+      "evidence": "Can I claim health insurance without hospitalization?\nMedical care doesn’t always mean staying overnight in a hospital. Bajaj General Insurance steps in for health insurance without hospitalization claims for various services like OPD consultations, diagnostic tests, day care procedures, and even specified home healthcare. Every detail depends on what your specific plan includes. Check the policy wordings for full understanding of inclusions."
+    },
+    {
+      "heading": "factors affecting health insurance premium",
+      "text": ". These generally include your age, medical history, and lifestyle choices. The chosen sum insured, type of policy, and any add-ons also play a significant role. At Bajaj General Insurance, we aim to provide clear pricing, helping you choose comprehensive coverage that fits your unique health needs and budget.",
+      "evidence": "factors affecting health insurance premium\n. These generally include your age, medical history, and lifestyle choices. The chosen sum insured, type of policy, and any add-ons also play a significant role. At Bajaj General Insurance, we aim to provide clear pricing, helping you choose comprehensive coverage that fits your unique health needs and budget."
+    },
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "Dietary Supplements & Substances",
+      "text": "Cost of supplements that are purchased without a prescription by a certified doctor as a part of treatment, including vitamins, minerals and organic substances",
+      "evidence": "Dietary Supplements & Substances\nCost of supplements that are purchased without a prescription by a certified doctor as a part of treatment, including vitamins, minerals and organic substances"
+    },
+    {
+      "heading": "Treatment for Self-Inflicted Acts",
+      "text": "Medical expenses incurred as a result of self-harm, as a result of intoxication, illegal actions, hazardous activities, etc.",
+      "evidence": "Treatment for Self-Inflicted Acts\nMedical expenses incurred as a result of self-harm, as a result of intoxication, illegal actions, hazardous activities, etc."
+    },
+    {
+      "heading": "Comprehensive Coverage",
+      "text": "Since Arjun has no pre-existing conditions (like hypertension or diabetes), he doesn't have to worry about exclusions. He gets comprehensive coverage immediately. If he waits and develops a lifestyle condition later, the insurer might apply a long waiting period or permanently exclude that condition from the policy.",
+      "evidence": "Comprehensive Coverage\nSince Arjun has no pre-existing conditions (like hypertension or diabetes), he doesn't have to worry about exclusions. He gets comprehensive coverage immediately. If he waits and develops a lifestyle condition later, the insurer might apply a long waiting period or permanently exclude that condition from the policy."
+    },
+    {
+      "heading": "1. Duly filled and signed claim form",
+      "text": "2. Original hospital bills and receipts\n3. Discharge summary issued by the hospital\n4. Doctor’s prescriptions and investigation reports\n5. Pharmacy bills with corresponding prescriptions\n6. Copy of the health insurance policy document",
+      "evidence": "1. Duly filled and signed claim form\n2. Original hospital bills and receipts\n3. Discharge summary issued by the hospital\n4. Doctor’s prescriptions and investigation reports\n5. Pharmacy bills with corresponding prescriptions\n6. Copy of the health insurance policy document"
+    },
+    {
+      "heading": "Which diseases are not covered in health insurance?",
+      "text": "Bajaj General Insurance offers tailored & well-designed policies. Generally,",
+      "evidence": "Which diseases are not covered in health insurance?\nBajaj General Insurance offers tailored & well-designed policies. Generally,"
+    },
+    {
+      "heading": "diseases not covered in health insurance",
+      "text": "often include pre-existing conditions during initial waiting periods, purely cosmetic treatments, and issues arising from substance abuse or self-inflicted harm. For exact details on diseases not covered in your health insurance policy, refer your specific Bajaj General policy wordings for an exclusion list.",
+      "evidence": "diseases not covered in health insurance\noften include pre-existing conditions during initial waiting periods, purely cosmetic treatments, and issues arising from substance abuse or self-inflicted harm. For exact details on diseases not covered in your health insurance policy, refer your specific Bajaj General policy wordings for an exclusion list."
+    },
+    {
+      "heading": "E-Insurance Account",
+      "text": "Product wise specific list of excluded items",
+      "evidence": "E-Insurance Account\nProduct wise specific list of excluded items"
+    }
+  ],
+  "waiting_periods": [
+    {
+      "heading": "Initial Waiting Period",
+      "text": "Treatment expenses during the first 30 days except for treatment of accidental injuries",
+      "evidence": "Initial Waiting Period\nTreatment expenses during the first 30 days except for treatment of accidental injuries"
+    },
+    {
+      "heading": "Pre-Existing Diseases",
+      "text": "Treatment expenses for pre-existing diseases, including diabetes, asthma, and thyroid, during the pre-defined, continuous waiting period of 12/ 24/ 36 months",
+      "evidence": "Pre-Existing Diseases\nTreatment expenses for pre-existing diseases, including diabetes, asthma, and thyroid, during the pre-defined, continuous waiting period of 12/ 24/ 36 months"
+    },
+    {
+      "heading": "Maternity Cover Insurance",
+      "text": "Are you thinking of planning a family? Maternity insurance cushions you against soaring hospital bills, covering expenses for both normal and C-section deliveries. Crucially, many plans also extend coverage to your newborn from day one, including vaccinations.\nThe catch is the waiting period, which is often 2 to 4 years. Therefore, buy this before you plan to conceive.\nBuy the best health insurance plans in India from Bajaj General Insurance and get exciting discounts and benefits!",
+      "evidence": "Maternity Cover Insurance\nAre you thinking of planning a family? Maternity insurance cushions you against soaring hospital bills, covering expenses for both normal and C-section deliveries. Crucially, many plans also extend coverage to your newborn from day one, including vaccinations.\nThe catch is the waiting period, which is often 2 to 4 years. Therefore, buy this before you plan to conceive.\nBuy the best health insurance plans in India from Bajaj General Insurance and get exciting discounts and benefits!"
+    },
+    {
+      "heading": "Comprehensive Coverage",
+      "text": "Since Arjun has no pre-existing conditions (like hypertension or diabetes), he doesn't have to worry about exclusions. He gets comprehensive coverage immediately. If he waits and develops a lifestyle condition later, the insurer might apply a long waiting period or permanently exclude that condition from the policy.",
+      "evidence": "Comprehensive Coverage\nSince Arjun has no pre-existing conditions (like hypertension or diabetes), he doesn't have to worry about exclusions. He gets comprehensive coverage immediately. If he waits and develops a lifestyle condition later, the insurer might apply a long waiting period or permanently exclude that condition from the policy."
+    },
+    {
+      "heading": "Waiting Period",
+      "text": "The waiting period is the amount of time you must wait before certain recruitments kick in. The waiting period may be a few months to a few years, depending on the given policy and the condition.\nMost waiting periods relate to pre-existing conditions, maternity benefits, and some specific treatments. Knowing the",
+      "evidence": "Waiting Period\nThe waiting period is the amount of time you must wait before certain recruitments kick in. The waiting period may be a few months to a few years, depending on the given policy and the condition.\nMost waiting periods relate to pre-existing conditions, maternity benefits, and some specific treatments. Knowing the"
+    },
+    {
+      "heading": "waiting period",
+      "text": "allows you to make decisions about any possible healthcare needs and not encounter surprises when it's time to file a claim.",
+      "evidence": "waiting period\nallows you to make decisions about any possible healthcare needs and not encounter surprises when it's time to file a claim."
+    },
+    {
+      "heading": "diseases not covered in health insurance",
+      "text": "often include pre-existing conditions during initial waiting periods, purely cosmetic treatments, and issues arising from substance abuse or self-inflicted harm. For exact details on diseases not covered in your health insurance policy, refer your specific Bajaj General policy wordings for an exclusion list.",
+      "evidence": "diseases not covered in health insurance\noften include pre-existing conditions during initial waiting periods, purely cosmetic treatments, and issues arising from substance abuse or self-inflicted harm. For exact details on diseases not covered in your health insurance policy, refer your specific Bajaj General policy wordings for an exclusion list."
+    },
+    {
+      "heading": "What is a waiting period in health insurance and how long is it?",
+      "text": "A waiting period in health insurance is a specific duration after purchasing your policy during which certain benefits are not yet active. This is a standard practice to manage claims responsibly, particularly for pre-existing or recently diagnosed conditions. Bajaj General Insurance policies typically include various waiting periods, such as an initial period, specific ailment periods, etc. for pre-existing diseases. The actual duration varies by plan & the diesease.",
+      "evidence": "What is a waiting period in health insurance and how long is it?\nA waiting period in health insurance is a specific duration after purchasing your policy during which certain benefits are not yet active. This is a standard practice to manage claims responsibly, particularly for pre-existing or recently diagnosed conditions. Bajaj General Insurance policies typically include various waiting periods, such as an initial period, specific ailment periods, etc. for pre-existing diseases. The actual duration varies by plan & the diesease."
+    },
+    {
+      "heading": "Can I cancel my health insurance? If yes, will I get my premium back?",
+      "text": "Yes, you can cancel your existing health insurance for a refund and consider switching to a reliable insurer like Bajaj General Insurance. During the free-look period, typically 15-30 days from issuing of policy, a near-full premium refund is common. A few deductions for medicals or stamp duty may be made. Post free-look, a pro-rata refund for the unexpired term might be available, as per your current insurer's specific terms.",
+      "evidence": "Can I cancel my health insurance? If yes, will I get my premium back?\nYes, you can cancel your existing health insurance for a refund and consider switching to a reliable insurer like Bajaj General Insurance. During the free-look period, typically 15-30 days from issuing of policy, a near-full premium refund is common. A few deductions for medicals or stamp duty may be made. Post free-look, a pro-rata refund for the unexpired term might be available, as per your current insurer's specific terms."
+    }
+  ],
+  "riders_or_addons": [
+    {
+      "heading": "Additional Covers",
+      "text": "What else can you get?",
+      "evidence": "Additional Covers\nWhat else can you get?"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24/7 ambulance service with select plans",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24/7 ambulance service with select plans"
+    },
+    {
+      "heading": "Non-Medical Expense Rider",
+      "text": "Covers cost of consumable items (e.g., gloves, syringes, bandages) used during treatment, up to specified limit",
+      "evidence": "Non-Medical Expense Rider\nCovers cost of consumable items (e.g., gloves, syringes, bandages) used during treatment, up to specified limit"
+    },
+    {
+      "heading": "Add-Ons",
+      "text": "Very limited availability\nAvailable and highly customisable",
+      "evidence": "Add-Ons\nVery limited availability\nAvailable and highly customisable"
+    },
+    {
+      "heading": "Newborn Cover",
+      "text": "Not included\nIncluded in specific plans or as an add-on\nFlexibility\nNot flexible\nHighly flexible",
+      "evidence": "Newborn Cover\nNot included\nIncluded in specific plans or as an add-on\nFlexibility\nNot flexible\nHighly flexible"
+    },
+    {
+      "heading": "Use Online Premium Calculators",
+      "text": "Health insurance premium calculators help you estimate how much premium you have to pay for a plan. You can choose the coverage amount, insured members and any add-ons you want to include to see the price. Plus, you can use these tools to compare different plans and see which one would suit you.",
+      "evidence": "Use Online Premium Calculators\nHealth insurance premium calculators help you estimate how much premium you have to pay for a plan. You can choose the coverage amount, insured members and any add-ons you want to include to see the price. Plus, you can use these tools to compare different plans and see which one would suit you."
+    },
+    {
+      "heading": "Add or remove riders",
+      "text": "Confirm details and proceed",
+      "evidence": "Add or remove riders\nConfirm details and proceed"
+    },
+    {
+      "heading": "What is the ideal health insurance cover amount I should buy?",
+      "text": "Your ideal level of health insurance coverage amount is complete;y subjective! Your age, city, family size, and health requirements all play a role. Given the rising cost of healthcare, families and metro areas should budget at least ₹5–10 lakhs, if not more. You can select customised protection with Bajaj General for total peace of mind!\nCan I add my parents to my health insurance policy?\nCaring for your parents' health is paramount. With Bajaj General, you can easily add parents to health insurance policies. This ensures they get quality medical care without financial strain. Bajaj General has several add-ons that makes the policy unique to you. Check out our family or senior citizen plans. They offer strong coverage, giving you and your loved ones total peace of mind.",
+      "evidence": "What is the ideal health insurance cover amount I should buy?\nYour ideal level of health insurance coverage amount is complete;y subjective! Your age, city, family size, and health requirements all play a role. Given the rising cost of healthcare, families and metro areas should budget at least ₹5–10 lakhs, if not more. You can select customised protection with Bajaj General for total peace of mind!\nCan I add my parents to my health insurance policy?\nCaring for your parents' health is paramount. With Bajaj General, you can easily add parents to health insurance policies. This ensures they get quality medical care without financial strain. Bajaj General has several add-ons that makes the policy unique to you. Check out our family or senior citizen plans. They offer strong coverage, giving you and your loved ones total peace of mind."
+    },
+    {
+      "heading": "OPD cover in health insurance",
+      "text": "is increasingly available in many plans with Bajaj General Insurance. While many traditional plans primarily focus on hospitalisation, we offer solutions, often as an add-on or in specialized policies, to help cover outpatient expenses like doctor consultations, diagnostics, and pharmacies.",
+      "evidence": "OPD cover in health insurance\nis increasingly available in many plans with Bajaj General Insurance. While many traditional plans primarily focus on hospitalisation, we offer solutions, often as an add-on or in specialized policies, to help cover outpatient expenses like doctor consultations, diagnostics, and pharmacies."
+    },
+    {
+      "heading": "factors affecting health insurance premium",
+      "text": ". These generally include your age, medical history, and lifestyle choices. The chosen sum insured, type of policy, and any add-ons also play a significant role. At Bajaj General Insurance, we aim to provide clear pricing, helping you choose comprehensive coverage that fits your unique health needs and budget.",
+      "evidence": "factors affecting health insurance premium\n. These generally include your age, medical history, and lifestyle choices. The chosen sum insured, type of policy, and any add-ons also play a significant role. At Bajaj General Insurance, we aim to provide clear pricing, helping you choose comprehensive coverage that fits your unique health needs and budget."
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ],
+  "sum_insured_values": [],
+  "premium_values": [],
+  "benefit_amount_values": [],
+  "tax_amount_values": [],
+  "discount_values": [],
+  "room_rent_limits": [
+    {
+      "heading": "Comprehensive Health insurance",
+      "text": "Extensive coverage for a wide range of medical expenses including room rent, doctor’s fees, nursing charges, surgery costs, medical tests and other healthcare needs",
+      "evidence": "Comprehensive Health insurance\nExtensive coverage for a wide range of medical expenses including room rent, doctor’s fees, nursing charges, surgery costs, medical tests and other healthcare needs"
+    },
+    {
+      "heading": "regular health check-ups",
+      "text": "Since terms like room rent limits or co-pay clauses can apply, it’s important to review them carefully.",
+      "evidence": "regular health check-ups\nSince terms like room rent limits or co-pay clauses can apply, it’s important to review them carefully."
+    },
+    {
+      "heading": "What is a waiting period in health insurance and how long is it?",
+      "text": "A waiting period in health insurance is a specific duration after purchasing your policy during which certain benefits are not yet active. This is a standard practice to manage claims responsibly, particularly for pre-existing or recently diagnosed conditions. Bajaj General Insurance policies typically include various waiting periods, such as an initial period, specific ailment periods, etc. for pre-existing diseases. The actual duration varies by plan & the diesease.",
+      "evidence": "What is a waiting period in health insurance and how long is it?\nA waiting period in health insurance is a specific duration after purchasing your policy during which certain benefits are not yet active. This is a standard practice to manage claims responsibly, particularly for pre-existing or recently diagnosed conditions. Bajaj General Insurance policies typically include various waiting periods, such as an initial period, specific ailment periods, etc. for pre-existing diseases. The actual duration varies by plan & the diesease."
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "Deductibles & Co-pays",
+      "text": "Part of the claim will be covered by you (the policyholder) if you have opted for deductibles or co-pay\nNote",
+      "evidence": "Deductibles & Co-pays\nPart of the claim will be covered by you (the policyholder) if you have opted for deductibles or co-pay\nNote"
+    },
+    {
+      "heading": "Difference Between Mediclaim and Health Insurance",
+      "text": "Many people use the terms mediclaim and health insurance interchangeably, but they are not the same. Understanding the difference helps you make a better choice for your healthcare needs.",
+      "evidence": "Difference Between Mediclaim and Health Insurance\nMany people use the terms mediclaim and health insurance interchangeably, but they are not the same. Understanding the difference helps you make a better choice for your healthcare needs."
+    },
+    {
+      "heading": "No Claim Bonus",
+      "text": "Every member earns NCB separately\nThe whole family shares one NCB\nNow that we know the differences, the question remains: which one should you choose? The choice boils down to a balance between cost and security.\nIf you are under 40 with a young family, a family floater plan with a super top-up is typically the financially savvy choice.\nHowever, never include senior citizen parents in a floater plan; their higher age will spike your premium, and their frequent health needs will drain the family’s coverage. Always buy them a separate individual policy.",
+      "evidence": "No Claim Bonus\nEvery member earns NCB separately\nThe whole family shares one NCB\nNow that we know the differences, the question remains: which one should you choose? The choice boils down to a balance between cost and security.\nIf you are under 40 with a young family, a family floater plan with a super top-up is typically the financially savvy choice.\nHowever, never include senior citizen parents in a floater plan; their higher age will spike your premium, and their frequent health needs will drain the family’s coverage. Always buy them a separate individual policy."
+    },
+    {
+      "heading": "Key Benefits:",
+      "text": "1. Premium Deduction for Self, Spouse, and Children: You can claim a deduction of up to ₹25,000 for premiums paid for yourself, your spouse, and dependent children.\n2. Additional Deduction for Parents: If your parents are below 60 years, you can claim up to ₹25,000. For senior citizen parents (above 60 years), the deduction increases to ₹50,000.\n3. Maximum Deduction: You can claim up to ₹1,00,000 as a deduction under Section 80D, but this maximum applies only when both you (the taxpayer) and your parents are senior citizens, allowing ₹50,000 each. For most individuals below 60, the practical upper limit is ₹75,000 - ₹25,000 for self/family and ₹50,000 for senior-citizen parents.\n4. Preventive Health Check-Ups: Costs for preventive health check-ups are also included within the limits, up to ₹5,000 per year.\n5. Payment Mode: Premiums must be paid via non-cash methods like debit/credit cards, net banking, or UPI to be eligible for tax deduction.\nExample:\nSuppose you pay a premium of ₹20,000 for your own family (self, spouse, and children) and ₹30,000 for your senior citizen parents. Here’s how the deduction works:",
+      "evidence": "Key Benefits:\n1. Premium Deduction for Self, Spouse, and Children: You can claim a deduction of up to ₹25,000 for premiums paid for yourself, your spouse, and dependent children.\n2. Additional Deduction for Parents: If your parents are below 60 years, you can claim up to ₹25,000. For senior citizen parents (above 60 years), the deduction increases to ₹50,000.\n3. Maximum Deduction: You can claim up to ₹1,00,000 as a deduction under Section 80D, but this maximum applies only when both you (the taxpayer) and your parents are senior citizens, allowing ₹50,000 each. For most individuals below 60, the practical upper limit is ₹75,000 - ₹25,000 for self/family and ₹50,000 for senior-citizen parents.\n4. Preventive Health Check-Ups: Costs for preventive health check-ups are also included within the limits, up to ₹5,000 per year.\n5. Payment Mode: Premiums must be paid via non-cash methods like debit/credit cards, net banking, or UPI to be eligible for tax deduction.\nExample:\nSuppose you pay a pr"
+    },
+    {
+      "heading": "2. Senior Citizen Parents: You can claim the full ₹30,000 (within the ₹50,000 limit).",
+      "text": "3. Total Deduction: ₹20,000 + ₹30,000 = ₹50,000 deducted from taxable income.",
+      "evidence": "2. Senior Citizen Parents: You can claim the full ₹30,000 (within the ₹50,000 limit).\n3. Total Deduction: ₹20,000 + ₹30,000 = ₹50,000 deducted from taxable income."
+    },
+    {
+      "heading": "waiting period",
+      "text": "allows you to make decisions about any possible healthcare needs and not encounter surprises when it's time to file a claim.",
+      "evidence": "waiting period\nallows you to make decisions about any possible healthcare needs and not encounter surprises when it's time to file a claim."
+    },
+    {
+      "heading": ": Any of the following documents can serve as proof of age:",
+      "text": "● Passport\n● Aadhaar card\n● Birth certificate\n● PAN card\n● 10th and 12th class marksheets\n● Ration card",
+      "evidence": ": Any of the following documents can serve as proof of age:\n● Passport\n● Aadhaar card\n● Birth certificate\n● PAN card\n● 10th and 12th class marksheets\n● Ration card"
+    },
+    {
+      "heading": ": The following documents are acceptable as proof of identity:",
+      "text": "● Aadhaar card\n● PAN card\n● Driving license",
+      "evidence": ": The following documents are acceptable as proof of identity:\n● Aadhaar card\n● PAN card\n● Driving license"
+    },
+    {
+      "heading": "1. Duly filled and signed claim form",
+      "text": "2. Original hospital bills and receipts\n3. Discharge summary issued by the hospital\n4. Doctor’s prescriptions and investigation reports\n5. Pharmacy bills with corresponding prescriptions\n6. Copy of the health insurance policy document",
+      "evidence": "1. Duly filled and signed claim form\n2. Original hospital bills and receipts\n3. Discharge summary issued by the hospital\n4. Doctor’s prescriptions and investigation reports\n5. Pharmacy bills with corresponding prescriptions\n6. Copy of the health insurance policy document"
+    },
+    {
+      "heading": "Reimbursement Health Insurance: What You Need To Know",
+      "text": "Reimbursement health insurance is a type of insurance policy where the policyholder pays for the medical expenses upfront",
+      "evidence": "Reimbursement Health Insurance: What You Need To Know\nReimbursement health insurance is a type of insurance policy where the policyholder pays for the medical expenses upfront"
+    },
+    {
+      "heading": "What is a waiting period in health insurance and how long is it?",
+      "text": "A waiting period in health insurance is a specific duration after purchasing your policy during which certain benefits are not yet active. This is a standard practice to manage claims responsibly, particularly for pre-existing or recently diagnosed conditions. Bajaj General Insurance policies typically include various waiting periods, such as an initial period, specific ailment periods, etc. for pre-existing diseases. The actual duration varies by plan & the diesease.",
+      "evidence": "What is a waiting period in health insurance and how long is it?\nA waiting period in health insurance is a specific duration after purchasing your policy during which certain benefits are not yet active. This is a standard practice to manage claims responsibly, particularly for pre-existing or recently diagnosed conditions. Bajaj General Insurance policies typically include various waiting periods, such as an initial period, specific ailment periods, etc. for pre-existing diseases. The actual duration varies by plan & the diesease."
+    },
+    {
+      "heading": "How to claim health insurance?",
+      "text": "Hassle-free experience is guaranteed with Bajaj General Insurance. Smooth claims begin with clear steps. So, understand the ways of how to",
+      "evidence": "How to claim health insurance?\nHassle-free experience is guaranteed with Bajaj General Insurance. Smooth claims begin with clear steps. So, understand the ways of how to"
+    },
+    {
+      "heading": "Can we claim 100% medical insurance?",
+      "text": "Even though Bajaj General Insurance aims to cover many treatments, getting 100 percent claim for health insurance in India for every medical cost depends on what your plan actually includes. Some policies have Deductibles and co-payments which change how much money you receive. Medical coverage helps lower sudden expenses. Always review your policy documents for knowing the benefits and to understand your complete coverage for out-of-pocket costs.",
+      "evidence": "Can we claim 100% medical insurance?\nEven though Bajaj General Insurance aims to cover many treatments, getting 100 percent claim for health insurance in India for every medical cost depends on what your plan actually includes. Some policies have Deductibles and co-payments which change how much money you receive. Medical coverage helps lower sudden expenses. Always review your policy documents for knowing the benefits and to understand your complete coverage for out-of-pocket costs."
+    },
+    {
+      "heading": "Can I claim health insurance without hospitalization?",
+      "text": "Medical care doesn’t always mean staying overnight in a hospital. Bajaj General Insurance steps in for health insurance without hospitalization claims for various services like OPD consultations, diagnostic tests, day care procedures, and even specified home healthcare. Every detail depends on what your specific plan includes. Check the policy wordings for full understanding of inclusions.",
+      "evidence": "Can I claim health insurance without hospitalization?\nMedical care doesn’t always mean staying overnight in a hospital. Bajaj General Insurance steps in for health insurance without hospitalization claims for various services like OPD consultations, diagnostic tests, day care procedures, and even specified home healthcare. Every detail depends on what your specific plan includes. Check the policy wordings for full understanding of inclusions."
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Eligible for tax benefits under Section 80D",
+      "text": "Types of Health Insurance Policies for Individuals and Families by Bajaj General Insurance\nWe understand that everyone’s health needs are different, and so are the insurance options. The right plan depends on your age, family size, medical history, and budget. With Bajaj General Insurance Limited, you can choose from a variety of health insurance plans that make sense for you and your loved ones.\nLet’s look at the types of health insurance plans we offer, and which one best suits you:",
+      "evidence": "Eligible for tax benefits under Section 80D\nTypes of Health Insurance Policies for Individuals and Families by Bajaj General Insurance\nWe understand that everyone’s health needs are different, and so are the insurance options. The right plan depends on your age, family size, medical history, and budget. With Bajaj General Insurance Limited, you can choose from a variety of health insurance plans that make sense for you and your loved ones.\nLet’s look at the types of health insurance plans we offer, and which one best suits you:"
+    },
+    {
+      "heading": "Real-Life Scenarios: How Health Insurance Actually Works?",
+      "text": "Okay, enough technical talk. We all know that health insurance plans help you financially during medical emergencies. But how does that translate into real life? Let’s understand below.\nMeet Rahul, a 28-year-old graphic designer in Pune. He always felt he was ‘\ntoo young\n’ for insurance but bought a basic plan just for tax savings. One Tuesday night, he woke up with severe abdominal pain, which the doctors diagnosed as acute appendicitis.",
+      "evidence": "Real-Life Scenarios: How Health Insurance Actually Works?\nOkay, enough technical talk. We all know that health insurance plans help you financially during medical emergencies. But how does that translate into real life? Let’s understand below.\nMeet Rahul, a 28-year-old graphic designer in Pune. He always felt he was ‘\ntoo young\n’ for insurance but bought a basic plan just for tax savings. One Tuesday night, he woke up with severe abdominal pain, which the doctors diagnosed as acute appendicitis."
+    },
+    {
+      "heading": "Health Insurance Tax Benefits",
+      "text": "Health insurance not only helps you manage unexpected medical expenses but also offers significant tax benefits under the Income Tax Act, 1961. By paying premiums for your health insurance plan, you can reduce your taxable income and save money while ensuring your family is protected.",
+      "evidence": "Health Insurance Tax Benefits\nHealth insurance not only helps you manage unexpected medical expenses but also offers significant tax benefits under the Income Tax Act, 1961. By paying premiums for your health insurance plan, you can reduce your taxable income and save money while ensuring your family is protected."
+    },
+    {
+      "heading": "Key Benefits:",
+      "text": "1. Premium Deduction for Self, Spouse, and Children: You can claim a deduction of up to ₹25,000 for premiums paid for yourself, your spouse, and dependent children.\n2. Additional Deduction for Parents: If your parents are below 60 years, you can claim up to ₹25,000. For senior citizen parents (above 60 years), the deduction increases to ₹50,000.\n3. Maximum Deduction: You can claim up to ₹1,00,000 as a deduction under Section 80D, but this maximum applies only when both you (the taxpayer) and your parents are senior citizens, allowing ₹50,000 each. For most individuals below 60, the practical upper limit is ₹75,000 - ₹25,000 for self/family and ₹50,000 for senior-citizen parents.\n4. Preventive Health Check-Ups: Costs for preventive health check-ups are also included within the limits, up to ₹5,000 per year.\n5. Payment Mode: Premiums must be paid via non-cash methods like debit/credit cards, net banking, or UPI to be eligible for tax deduction.\nExample:\nSuppose you pay a premium of ₹20,000 for your own family (self, spouse, and children) and ₹30,000 for your senior citizen parents. Here’s how the deduction works:",
+      "evidence": "Key Benefits:\n1. Premium Deduction for Self, Spouse, and Children: You can claim a deduction of up to ₹25,000 for premiums paid for yourself, your spouse, and dependent children.\n2. Additional Deduction for Parents: If your parents are below 60 years, you can claim up to ₹25,000. For senior citizen parents (above 60 years), the deduction increases to ₹50,000.\n3. Maximum Deduction: You can claim up to ₹1,00,000 as a deduction under Section 80D, but this maximum applies only when both you (the taxpayer) and your parents are senior citizens, allowing ₹50,000 each. For most individuals below 60, the practical upper limit is ₹75,000 - ₹25,000 for self/family and ₹50,000 for senior-citizen parents.\n4. Preventive Health Check-Ups: Costs for preventive health check-ups are also included within the limits, up to ₹5,000 per year.\n5. Payment Mode: Premiums must be paid via non-cash methods like debit/credit cards, net banking, or UPI to be eligible for tax deduction.\nExample:\nSuppose you pay a pr"
+    },
+    {
+      "heading": "2. Senior Citizen Parents: You can claim the full ₹30,000 (within the ₹50,000 limit).",
+      "text": "3. Total Deduction: ₹20,000 + ₹30,000 = ₹50,000 deducted from taxable income.",
+      "evidence": "2. Senior Citizen Parents: You can claim the full ₹30,000 (within the ₹50,000 limit).\n3. Total Deduction: ₹20,000 + ₹30,000 = ₹50,000 deducted from taxable income."
+    },
+    {
+      "heading": "1. Keep your premium payment receipts from the insurer.",
+      "text": "2. Enter the details while filing your Income Tax Return (ITR) under Section 80D.\n3. The deduction is applied, lowering your taxable income and your overall tax liability.\nBy taking advantage of these tax benefits, you can make health insurance more affordable while securing financial protection for yourself and your loved ones.",
+      "evidence": "1. Keep your premium payment receipts from the insurer.\n2. Enter the details while filing your Income Tax Return (ITR) under Section 80D.\n3. The deduction is applied, lowering your taxable income and your overall tax liability.\nBy taking advantage of these tax benefits, you can make health insurance more affordable while securing financial protection for yourself and your loved ones."
+    },
+    {
+      "heading": "GST Update:",
+      "text": "As of 22 September 2025, GST on individual and family health insurance premiums has effectively been made 0% (no 18% GST) under the latest GST reform, though this does not change the 80D deduction amounts; it simply reduces the out‑of‑pocket premium cost.",
+      "evidence": "GST Update:\nAs of 22 September 2025, GST on individual and family health insurance premiums has effectively been made 0% (no 18% GST) under the latest GST reform, though this does not change the 80D deduction amounts; it simply reduces the out‑of‑pocket premium cost."
+    },
+    {
+      "heading": "Can I cancel my health insurance? If yes, will I get my premium back?",
+      "text": "Yes, you can cancel your existing health insurance for a refund and consider switching to a reliable insurer like Bajaj General Insurance. During the free-look period, typically 15-30 days from issuing of policy, a near-full premium refund is common. A few deductions for medicals or stamp duty may be made. Post free-look, a pro-rata refund for the unexpired term might be available, as per your current insurer's specific terms.",
+      "evidence": "Can I cancel my health insurance? If yes, will I get my premium back?\nYes, you can cancel your existing health insurance for a refund and consider switching to a reliable insurer like Bajaj General Insurance. During the free-look period, typically 15-30 days from issuing of policy, a near-full premium refund is common. A few deductions for medicals or stamp duty may be made. Post free-look, a pro-rata refund for the unexpired term might be available, as per your current insurer's specific terms."
+    },
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24/7 ambulance service with select plans",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24/7 ambulance service with select plans"
+    },
+    {
+      "heading": "Family Floater Health Insurance",
+      "text": "Instead of buying separate policies, you can cover your whole family under one plan with a shared sum insured. It usually works out more cost-effectively, especially when family members are younger.\nThe premium is based on the eldest person in the family, so if you include parents, it’s a good idea to go for a higher sum insured.",
+      "evidence": "Family Floater Health Insurance\nInstead of buying separate policies, you can cover your whole family under one plan with a shared sum insured. It usually works out more cost-effectively, especially when family members are younger.\nThe premium is based on the eldest person in the family, so if you include parents, it’s a good idea to go for a higher sum insured."
+    },
+    {
+      "heading": "No Claim Bonus",
+      "text": "Every member earns NCB separately\nThe whole family shares one NCB\nNow that we know the differences, the question remains: which one should you choose? The choice boils down to a balance between cost and security.\nIf you are under 40 with a young family, a family floater plan with a super top-up is typically the financially savvy choice.\nHowever, never include senior citizen parents in a floater plan; their higher age will spike your premium, and their frequent health needs will drain the family’s coverage. Always buy them a separate individual policy.",
+      "evidence": "No Claim Bonus\nEvery member earns NCB separately\nThe whole family shares one NCB\nNow that we know the differences, the question remains: which one should you choose? The choice boils down to a balance between cost and security.\nIf you are under 40 with a young family, a family floater plan with a super top-up is typically the financially savvy choice.\nHowever, never include senior citizen parents in a floater plan; their higher age will spike your premium, and their frequent health needs will drain the family’s coverage. Always buy them a separate individual policy."
+    },
+    {
+      "heading": "Real-Life Scenarios: How Health Insurance Actually Works?",
+      "text": "Okay, enough technical talk. We all know that health insurance plans help you financially during medical emergencies. But how does that translate into real life? Let’s understand below.\nMeet Rahul, a 28-year-old graphic designer in Pune. He always felt he was ‘\ntoo young\n’ for insurance but bought a basic plan just for tax savings. One Tuesday night, he woke up with severe abdominal pain, which the doctors diagnosed as acute appendicitis.",
+      "evidence": "Real-Life Scenarios: How Health Insurance Actually Works?\nOkay, enough technical talk. We all know that health insurance plans help you financially during medical emergencies. But how does that translate into real life? Let’s understand below.\nMeet Rahul, a 28-year-old graphic designer in Pune. He always felt he was ‘\ntoo young\n’ for insurance but bought a basic plan just for tax savings. One Tuesday night, he woke up with severe abdominal pain, which the doctors diagnosed as acute appendicitis."
+    },
+    {
+      "heading": "Lower Premiums",
+      "text": "Insurers calculate premiums based on risk, which is lowest when you are young. Because Arjun is 25, his premium is minimal. By purchasing now, he locks in a cost-effective rate. If he waits until he is older, the premium for the same coverage will be significantly higher.",
+      "evidence": "Lower Premiums\nInsurers calculate premiums based on risk, which is lowest when you are young. Because Arjun is 25, his premium is minimal. By purchasing now, he locks in a cost-effective rate. If he waits until he is older, the premium for the same coverage will be significantly higher."
+    },
+    {
+      "heading": "1. Premium Amount",
+      "text": ": Your first step is to compare different premium amounts from different policies. It will help you choose the most suitable for your budget.",
+      "evidence": "1. Premium Amount\n: Your first step is to compare different premium amounts from different policies. It will help you choose the most suitable for your budget."
+    },
+    {
+      "heading": "Entry Age – Dependent Children",
+      "text": "Eligible from 3 months (90 days) up to 25 years",
+      "evidence": "Entry Age – Dependent Children\nEligible from 3 months (90 days) up to 25 years"
+    },
+    {
+      "heading": "Opt for a Higher Deductible",
+      "text": "One of the simplest ways to reduce your health insurance premium is by opting for a higher deductible. A deductible is the amount you pay out-of-pocket before your insurance coverage kicks in.\nBy choosing a higher deductible, you can significantly lower your premium because the insurer's risk is reduced. However, it’s important to ensure that the deductible amount is manageable for you in case of a medical emergency.\nThis approach is suitable for individuals who are generally healthy and do not anticipate incurring frequent medical expenses.",
+      "evidence": "Opt for a Higher Deductible\nOne of the simplest ways to reduce your health insurance premium is by opting for a higher deductible. A deductible is the amount you pay out-of-pocket before your insurance coverage kicks in.\nBy choosing a higher deductible, you can significantly lower your premium because the insurer's risk is reduced. However, it’s important to ensure that the deductible amount is manageable for you in case of a medical emergency.\nThis approach is suitable for individuals who are generally healthy and do not anticipate incurring frequent medical expenses."
+    },
+    {
+      "heading": "Choose Family Floater Plans",
+      "text": "If you need health insurance for your whole family, consider a family floater plan rather than individual plans for each member. Family floater plans cover each family member under one",
+      "evidence": "Choose Family Floater Plans\nIf you need health insurance for your whole family, consider a family floater plan rather than individual plans for each member. Family floater plans cover each family member under one"
+    },
+    {
+      "heading": "sum insured",
+      "text": "These plans generally have a lower premium compared to having an individual policy for every member. With a\nfamily floater plan",
+      "evidence": "sum insured\nThese plans generally have a lower premium compared to having an individual policy for every member. With a\nfamily floater plan"
+    },
+    {
+      "heading": ", you can provide comprehensive health coverage for the entire family at a minimum premium.",
+      "text": "The premium is based on the age of the eldest member, which helps keep premiums low for the family. Moreover, family floater plans are convenient, as you only need to manage a single policy instead of multiple ones.",
+      "evidence": ", you can provide comprehensive health coverage for the entire family at a minimum premium.\nThe premium is based on the age of the eldest member, which helps keep premiums low for the family. Moreover, family floater plans are convenient, as you only need to manage a single policy instead of multiple ones."
+    },
+    {
+      "heading": "Key Benefits:",
+      "text": "1. Premium Deduction for Self, Spouse, and Children: You can claim a deduction of up to ₹25,000 for premiums paid for yourself, your spouse, and dependent children.\n2. Additional Deduction for Parents: If your parents are below 60 years, you can claim up to ₹25,000. For senior citizen parents (above 60 years), the deduction increases to ₹50,000.\n3. Maximum Deduction: You can claim up to ₹1,00,000 as a deduction under Section 80D, but this maximum applies only when both you (the taxpayer) and your parents are senior citizens, allowing ₹50,000 each. For most individuals below 60, the practical upper limit is ₹75,000 - ₹25,000 for self/family and ₹50,000 for senior-citizen parents.\n4. Preventive Health Check-Ups: Costs for preventive health check-ups are also included within the limits, up to ₹5,000 per year.\n5. Payment Mode: Premiums must be paid via non-cash methods like debit/credit cards, net banking, or UPI to be eligible for tax deduction.\nExample:\nSuppose you pay a premium of ₹20,000 for your own family (self, spouse, and children) and ₹30,000 for your senior citizen parents. Here’s how the deduction works:",
+      "evidence": "Key Benefits:\n1. Premium Deduction for Self, Spouse, and Children: You can claim a deduction of up to ₹25,000 for premiums paid for yourself, your spouse, and dependent children.\n2. Additional Deduction for Parents: If your parents are below 60 years, you can claim up to ₹25,000. For senior citizen parents (above 60 years), the deduction increases to ₹50,000.\n3. Maximum Deduction: You can claim up to ₹1,00,000 as a deduction under Section 80D, but this maximum applies only when both you (the taxpayer) and your parents are senior citizens, allowing ₹50,000 each. For most individuals below 60, the practical upper limit is ₹75,000 - ₹25,000 for self/family and ₹50,000 for senior-citizen parents.\n4. Preventive Health Check-Ups: Costs for preventive health check-ups are also included within the limits, up to ₹5,000 per year.\n5. Payment Mode: Premiums must be paid via non-cash methods like debit/credit cards, net banking, or UPI to be eligible for tax deduction.\nExample:\nSuppose you pay a pr"
+    },
+    {
+      "heading": "2. Senior Citizen Parents: You can claim the full ₹30,000 (within the ₹50,000 limit).",
+      "text": "3. Total Deduction: ₹20,000 + ₹30,000 = ₹50,000 deducted from taxable income.",
+      "evidence": "2. Senior Citizen Parents: You can claim the full ₹30,000 (within the ₹50,000 limit).\n3. Total Deduction: ₹20,000 + ₹30,000 = ₹50,000 deducted from taxable income."
+    },
+    {
+      "heading": "Select suitable coverage",
+      "text": "Check discounts & offers",
+      "evidence": "Select suitable coverage\nCheck discounts & offers"
+    },
+    {
+      "heading": "What is the ideal health insurance cover amount I should buy?",
+      "text": "Your ideal level of health insurance coverage amount is complete;y subjective! Your age, city, family size, and health requirements all play a role. Given the rising cost of healthcare, families and metro areas should budget at least ₹5–10 lakhs, if not more. You can select customised protection with Bajaj General for total peace of mind!\nCan I add my parents to my health insurance policy?\nCaring for your parents' health is paramount. With Bajaj General, you can easily add parents to health insurance policies. This ensures they get quality medical care without financial strain. Bajaj General has several add-ons that makes the policy unique to you. Check out our family or senior citizen plans. They offer strong coverage, giving you and your loved ones total peace of mind.",
+      "evidence": "What is the ideal health insurance cover amount I should buy?\nYour ideal level of health insurance coverage amount is complete;y subjective! Your age, city, family size, and health requirements all play a role. Given the rising cost of healthcare, families and metro areas should budget at least ₹5–10 lakhs, if not more. You can select customised protection with Bajaj General for total peace of mind!\nCan I add my parents to my health insurance policy?\nCaring for your parents' health is paramount. With Bajaj General, you can easily add parents to health insurance policies. This ensures they get quality medical care without financial strain. Bajaj General has several add-ons that makes the policy unique to you. Check out our family or senior citizen plans. They offer strong coverage, giving you and your loved ones total peace of mind."
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ]
+}

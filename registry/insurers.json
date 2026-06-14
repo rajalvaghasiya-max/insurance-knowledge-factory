@@ -1,0 +1,65 @@
+[
+  {
+    "insurer_id": "star_health",
+    "name": "Star Health and Allied Insurance Co. Ltd.",
+    "category": "health",
+    "website": "https://www.starhealth.in/health-insurance/",
+    "aliases": [
+      "Star Health",
+      "Star Health Insurance",
+      "Star Health and Allied"
+    ],
+    "status": "active",
+    "crawl_priority": 1
+  },
+  {
+    "insurer_id": "aditya_birla_health",
+    "name": "Aditya Birla Health Insurance Co. Limited.",
+    "category": "health",
+    "website": "https://www.adityabirlacapital.com/healthinsurance/homepage",
+    "aliases": [
+      "ABHI",
+      "Aditya Birla Health",
+      "Birla Health"
+    ],
+    "status": "active",
+    "crawl_priority": 1
+  },
+  {
+    "insurer_id": "bajaj_allianz_general",
+    "name": "Bajaj Allianz General Insurance Company Limited",
+    "category": "motor_and_health",
+    "website": "https://www.bajajgeneralinsurance.com/",
+    "aliases": [
+      "Bajaj Health",
+      "Bajaj Insurance",
+      "Bajaj Allianz",
+      "BAGIC"
+    ],
+    "status": "active",
+    "crawl_priority": 1
+  },
+  {
+    "insurer_id": "lic_india",
+    "name": "Life Insurance Corporation of India",
+    "category": "life",
+    "website": "https://licindia.in/",
+    "aliases": [
+      "LIC",
+      "LIC of India"
+    ],
+    "status": "active",
+    "crawl_priority": 1
+  },
+  {
+    "insurer_id": "hdfc_life",
+    "name": "HDFC Life Insurance Company Limited",
+    "category": "life",
+    "website": "https://www.hdfclife.com/",
+    "aliases": [
+      "HDFC Life"
+    ],
+    "status": "active",
+    "crawl_priority": 1
+  }
+]

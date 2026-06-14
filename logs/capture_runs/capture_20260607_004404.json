@@ -1,0 +1,114 @@
+{
+  "run_id": "20260607_004404",
+  "started_at": "2026-06-06T19:14:04.698232+00:00",
+  "completed_at": "2026-06-06T19:14:35.592166+00:00",
+  "duration_seconds": 30.89,
+  "max_workers": 3,
+  "version": "0.1.0",
+  "total_urls": 5,
+  "successful": 4,
+  "failed": 1,
+  "capture_strategies": {
+    "static_http": 5
+  },
+  "screenshots_saved": 3,
+  "results": [
+    {
+      "insurer_id": "bajaj_allianz_general",
+      "url": "https://www.bajajgeneralinsurance.com/",
+      "source_type": "webpage",
+      "page_title": "Bajaj General Insurance (Formerly Bajaj Allianz)",
+      "content_hash": "faf6b81591ea5c206e9c3a96f5a1226c5d2da3fdac8b9b974424c801cc745e4a",
+      "captured_at": "2026-06-06T19:14:04.705041+00:00",
+      "html_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_.html",
+      "text_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\text\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_.txt",
+      "screenshot_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\screenshots\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_.png",
+      "capture_strategy": "static_http",
+      "status": "captured",
+      "text_character_count": 26596,
+      "html_character_count": 532892,
+      "has_screenshot": true,
+      "error": null,
+      "capture_duration_seconds": 15.06,
+      "capture_strategy_attempted": [
+        "static_http"
+      ]
+    },
+    {
+      "insurer_id": "aditya_birla_health",
+      "url": "https://www.adityabirlacapital.com/healthinsurance/homepage",
+      "source_type": "webpage",
+      "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+      "content_hash": "e8f8a592dc6b36a0c8daaf6b637e668ce147a654e2cbe416822e543110b3fa43",
+      "captured_at": "2026-06-06T19:14:04.704683+00:00",
+      "html_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_homepage.html",
+      "text_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\text\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_homepage.txt",
+      "screenshot_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\screenshots\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_homepage.png",
+      "capture_strategy": "static_http",
+      "status": "captured",
+      "text_character_count": 28907,
+      "html_character_count": 660317,
+      "has_screenshot": true,
+      "error": null,
+      "capture_duration_seconds": 21.24,
+      "capture_strategy_attempted": [
+        "static_http"
+      ]
+    },
+    {
+      "insurer_id": "hdfc_life",
+      "url": "https://www.hdfclife.com/",
+      "source_type": "webpage",
+      "page_title": "Life Insurance: Buy Best Life Insurance from HDFC Life Online in 2026",
+      "content_hash": "df9d0ba49c8856e9198e57959646932d7d78422e7b43e50bd005769bd2b3c1d7",
+      "captured_at": "2026-06-06T19:14:25.942817+00:00",
+      "html_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_.html",
+      "text_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\text\\hdfc_life\\www.hdfclife.com_.txt",
+      "screenshot_path": null,
+      "capture_strategy": "static_http",
+      "status": "captured",
+      "text_character_count": 86593,
+      "html_character_count": 1414915,
+      "has_screenshot": false,
+      "error": null,
+      "capture_duration_seconds": 1.19,
+      "capture_strategy_attempted": [
+        "static_http"
+      ]
+    },
+    {
+      "insurer_id": "lic_india",
+      "url": "https://licindia.in/",
+      "source_type": "webpage",
+      "page_title": "Home | Life Insurance Corporation of India | Official website of Life Insurance Corporation \r\n   of India.",
+      "content_hash": "5cbe1fd43ac9bb59c19072167b6389f975dbb405164522526a43544fb02d3602",
+      "captured_at": "2026-06-06T19:14:19.769257+00:00",
+      "html_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\lic_india\\licindia.in_.html",
+      "text_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\text\\lic_india\\licindia.in_.txt",
+      "screenshot_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\screenshots\\lic_india\\licindia.in_.png",
+      "capture_strategy": "static_http",
+      "status": "captured",
+      "text_character_count": 10069,
+      "html_character_count": 244750,
+      "has_screenshot": true,
+      "error": null,
+      "capture_duration_seconds": 9.07,
+      "capture_strategy_attempted": [
+        "static_http"
+      ]
+    },
+    {
+      "insurer_id": "star_health",
+      "url": "https://www.starhealth.in/health-insurance/",
+      "source_type": "webpage",
+      "captured_at": "2026-06-06T19:14:04.702593+00:00",
+      "capture_strategy": "static_http",
+      "status": "failed",
+      "error": "HTTPSConnectionPool(host='www.starhealth.in', port=443): Read timed out. (read timeout=30)",
+      "capture_duration_seconds": 30.89,
+      "capture_strategy_attempted": [
+        "static_http"
+      ]
+    }
+  ]
+}

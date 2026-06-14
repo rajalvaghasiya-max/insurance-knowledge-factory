@@ -1,0 +1,231 @@
+{
+  "schema_version": "0.1",
+  "registry_name": "insurance_semantic_registry",
+  "generated_at": "2026-06-09T15:54:41.766140+00:00",
+  "description": "Canonical meaning, behavior, customer impact, and advisor interpretation of insurance concepts.",
+  "principle": "This registry explains what an insurance term means and how it behaves. It is not a product fact store.",
+  "entries": [
+    {
+      "term_id": "co_pay",
+      "canonical_name": "Co-pay",
+      "insurance_line": "health",
+      "category": "claim_cost_sharing",
+      "aliases": [
+        "copay",
+        "co-payment",
+        "co payment",
+        "co-insurance",
+        "claim sharing"
+      ],
+      "definition": "A percentage or amount of the admissible claim that the policyholder must bear.",
+      "calculation_logic": "Usually applied on admissible claim amount, not necessarily on total hospital bill.",
+      "customer_confusion_level": "high",
+      "claim_impact": "high",
+      "advisor_priority": "must_explain",
+      "common_misunderstanding": "Customer may assume co-pay is applied on total hospital bill or may underestimate out-of-pocket expense.",
+      "customer_explanation": "Co-pay means you will pay a part of the approved claim amount from your pocket.",
+      "advisor_note": "Explain whether co-pay applies on admissible claim amount, specific treatments, age bands, room category, or all claims.",
+      "related_traps": [
+        "co_pay_surprise"
+      ],
+      "related_fields": [
+        "copay_percentage",
+        "copay_applicability",
+        "claim_admissible_amount"
+      ],
+      "regulatory_reference_required": false,
+      "status": "active"
+    },
+    {
+      "term_id": "room_rent_limit",
+      "canonical_name": "Room Rent Limit",
+      "insurance_line": "health",
+      "category": "hospital_room_restriction",
+      "aliases": [
+        "room rent",
+        "room rent cap",
+        "room rent capping",
+        "room category",
+        "eligible room",
+        "room eligibility"
+      ],
+      "definition": "A restriction on the hospital room category or daily room rent covered under the policy.",
+      "calculation_logic": "May be defined as a fixed amount, percentage of sum insured, or room category.",
+      "customer_confusion_level": "very_high",
+      "claim_impact": "very_high",
+      "advisor_priority": "must_explain",
+      "common_misunderstanding": "Customer may think only extra room rent is payable, but in some policies exceeding room eligibility may reduce other claim expenses.",
+      "customer_explanation": "Room rent limit decides what room category you can use without claim deductions.",
+      "advisor_note": "Always check whether exceeding room eligibility triggers proportionate deduction.",
+      "related_traps": [
+        "room_rent_proportionate_deduction"
+      ],
+      "related_fields": [
+        "room_rent_limit",
+        "room_category",
+        "sum_insured",
+        "proportionate_deduction_applicable"
+      ],
+      "regulatory_reference_required": true,
+      "status": "active"
+    },
+    {
+      "term_id": "proportionate_deduction",
+      "canonical_name": "Proportionate Deduction",
+      "insurance_line": "health",
+      "category": "claim_deduction_methodology",
+      "aliases": [
+        "proportionate deduction",
+        "proportionate clause",
+        "room rent proportionate deduction",
+        "associated medical expenses deduction"
+      ],
+      "definition": "A claim deduction method where expenses may be reduced in proportion to the eligible room rent or room category.",
+      "calculation_logic": "If actual room rent exceeds eligible room rent, related expenses may be paid in the same ratio, depending on policy wording.",
+      "customer_confusion_level": "very_high",
+      "claim_impact": "critical",
+      "advisor_priority": "must_explain",
+      "common_misunderstanding": "Customer may believe only the room rent difference is deducted.",
+      "customer_explanation": "Choosing a higher room than allowed can reduce multiple parts of your hospital claim, not just room rent.",
+      "advisor_note": "Flag this clearly for customers choosing lower sum insured plans or policies with room caps.",
+      "related_traps": [
+        "room_rent_proportionate_deduction"
+      ],
+      "related_fields": [
+        "eligible_room_rent",
+        "actual_room_rent",
+        "associated_medical_expenses",
+        "deduction_ratio"
+      ],
+      "regulatory_reference_required": true,
+      "status": "active"
+    },
+    {
+      "term_id": "ped_waiting_period",
+      "canonical_name": "Pre-existing Disease Waiting Period",
+      "insurance_line": "health",
+      "category": "waiting_period",
+      "aliases": [
+        "PED waiting period",
+        "pre existing disease waiting period",
+        "pre-existing disease waiting",
+        "pre existing illness",
+        "pre-existing condition"
+      ],
+      "definition": "Waiting period after which declared pre-existing diseases become eligible for coverage, subject to policy terms.",
+      "calculation_logic": "Usually measured from policy inception or continuous coverage start date.",
+      "customer_confusion_level": "high",
+      "claim_impact": "very_high",
+      "advisor_priority": "must_explain",
+      "common_misunderstanding": "Customer may assume all illnesses are covered immediately after buying the policy.",
+      "customer_explanation": "Diseases you already had before buying the policy may be covered only after a waiting period.",
+      "advisor_note": "Check customer's medical history and compare PED waiting period across products.",
+      "related_traps": [
+        "ped_waiting_period_trap"
+      ],
+      "related_fields": [
+        "ped_waiting_period_months",
+        "declared_pre_existing_conditions",
+        "continuous_coverage"
+      ],
+      "regulatory_reference_required": true,
+      "status": "active"
+    },
+    {
+      "term_id": "specific_disease_waiting_period",
+      "canonical_name": "Specific Disease Waiting Period",
+      "insurance_line": "health",
+      "category": "waiting_period",
+      "aliases": [
+        "specific disease waiting period",
+        "disease wise waiting period",
+        "named ailment waiting period",
+        "illness waiting period"
+      ],
+      "definition": "Waiting period applicable to specific listed diseases or treatments, even if they are not pre-existing.",
+      "calculation_logic": "Usually disease-wise and measured from policy start date.",
+      "customer_confusion_level": "high",
+      "claim_impact": "high",
+      "advisor_priority": "must_explain",
+      "common_misunderstanding": "Customer may think only PED has waiting period and all new diseases are covered immediately.",
+      "customer_explanation": "Some treatments like cataract, hernia, joint replacement, etc. may have separate waiting periods.",
+      "advisor_note": "Extract disease-wise table carefully and preserve table structure.",
+      "related_traps": [
+        "specific_disease_waiting_period_trap"
+      ],
+      "related_fields": [
+        "disease_name",
+        "waiting_period_months",
+        "treatment_name"
+      ],
+      "regulatory_reference_required": false,
+      "status": "active"
+    },
+    {
+      "term_id": "restoration_benefit",
+      "canonical_name": "Restoration Benefit",
+      "insurance_line": "health",
+      "category": "sum_insured_reinstatement",
+      "aliases": [
+        "restore benefit",
+        "restoration",
+        "reinstatement",
+        "automatic recharge",
+        "sum insured restore",
+        "reload benefit"
+      ],
+      "definition": "A benefit that restores or reinstates sum insured after it is exhausted, subject to policy conditions.",
+      "calculation_logic": "May apply once or multiple times, and may vary for same illness, different illness, same member, or different member.",
+      "customer_confusion_level": "high",
+      "claim_impact": "medium",
+      "advisor_priority": "explain_when_relevant",
+      "common_misunderstanding": "Customer may assume restored sum insured can always be used for the same illness or same claim.",
+      "customer_explanation": "Restoration refills your cover after use, but conditions decide when and how it can be used.",
+      "advisor_note": "Identify whether restoration applies to same illness, related illness, same insured person, and first claim.",
+      "related_traps": [
+        "restoration_condition_trap"
+      ],
+      "related_fields": [
+        "restoration_limit",
+        "same_illness_allowed",
+        "same_member_allowed",
+        "trigger_condition"
+      ],
+      "regulatory_reference_required": false,
+      "status": "active"
+    },
+    {
+      "term_id": "sub_limit",
+      "canonical_name": "Sub-limit",
+      "insurance_line": "health",
+      "category": "benefit_limit",
+      "aliases": [
+        "sublimit",
+        "sub limit",
+        "benefit limit",
+        "disease cap",
+        "treatment cap",
+        "procedure limit"
+      ],
+      "definition": "A specific cap on claim payment for a disease, treatment, procedure, room, or benefit within the overall sum insured.",
+      "calculation_logic": "May be fixed amount, percentage of sum insured, or plan-specific cap.",
+      "customer_confusion_level": "high",
+      "claim_impact": "high",
+      "advisor_priority": "must_explain_if_present",
+      "common_misunderstanding": "Customer may assume full sum insured is available for every treatment.",
+      "customer_explanation": "Even if your total cover is high, some treatments may have separate smaller limits.",
+      "advisor_note": "Highlight disease and procedure sub-limits during product comparison.",
+      "related_traps": [
+        "disease_sub_limit_trap"
+      ],
+      "related_fields": [
+        "sub_limit_type",
+        "sub_limit_amount",
+        "sub_limit_percentage",
+        "applicable_condition"
+      ],
+      "regulatory_reference_required": false,
+      "status": "active"
+    }
+  ]
+}

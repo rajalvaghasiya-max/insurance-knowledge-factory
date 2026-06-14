@@ -1,0 +1,406 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "extractor_version": "0.4",
+  "metadata": {
+    "product_name": "Activ One",
+    "uin": "ADIHLIP24097V012324"
+  },
+  "waiting_periods": [
+    {
+      "type": "pre_existing_disease_waiting_period",
+      "duration_months": 36,
+      "raw_text": "D.1.2 Waiting period • Time period during which specified disease / treatment is not covered • It is counted from the beginning of the policy coverage 07. 8. Geographical Exclusion Treatment taken outside India, unless specified to be covered in the Policy Schedule. 1. Pre-Existing Diseases (Code- Excl01) : Pre-existing Diseases shall be covered after a waiting period of 36 months as specified in Product Benefit Table / Policy Schedule 2. Specified disease / procedure waiting period (Code- Excl02): 24 months for specific illness/conditions and their complications in the first two years and is not applicable in subsequent renewals Illness Cataract Glaucoma Refractive Error Correction Sinusitis Rhinitis Tonsillitis & Adenitis Tympanitis & Non Traumatic Perforation Deviated Nasal Septum Otitis Media Adenoiditis Mastoiditis Cholesteatoma All Cysts, Mass, Swelling, Lump, Granulomas, Polyps, Fibroids & Benign Tumour of the female genito urinary system Polycystic Ovarian Disease Uterine Prolapse Fibroids (Fibromyoma) Breast lumps (excluding Malignant) Dysfunctional Uterine Bleeding (DUB) Endometriosis Menorrhagia Pelvic Inflammatory Disease Gout Rheumatism, Rheumatoid Arthritis Non infective arthritis Osteoarthritis Osteoporosis Prolapse of the intervertebral disc Spondilosis, Spondioarthritis, Spondylopathies Ankylosing Spondilitis / Spondylopathies Psoriatic Arthritis / Arthropathy ",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 7
+      },
+      "confidence": 0.97,
+      "validated": true
+    },
+    {
+      "type": "specified_disease_waiting_period",
+      "duration_months": 24,
+      "raw_text": "D.1.2 Waiting period • Time period during which specified disease / treatment is not covered • It is counted from the beginning of the policy coverage 07. 8. Geographical Exclusion Treatment taken outside India, unless specified to be covered in the Policy Schedule. 1. Pre-Existing Diseases (Code- Excl01) : Pre-existing Diseases shall be covered after a waiting period of 36 months as specified in Product Benefit Table / Policy Schedule 2. Specified disease / procedure waiting period (Code- Excl02): 24 months for specific illness/conditions and their complications in the first two years and is not applicable in subsequent renewals Illness Cataract Glaucoma Refractive Error Correction Sinusitis Rhinitis Tonsillitis & Adenitis Tympanitis & Non Traumatic Perforation Deviated Nasal Septum Otitis Media Adenoiditis Mastoiditis Cholesteatoma All Cysts, Mass, Swelling, Lump, Granulomas, Polyps, Fibroids & Benign Tumour of the female genito urinary system Polycystic Ovarian Disease Uterine Prolapse Fibroids (Fibromyoma) Breast lumps (excluding Malignant) Dysfunctional Uterine Bleeding (DUB) Endometriosis Menorrhagia Pelvic Inflammatory Disease Gout Rheumatism, Rheumatoid Arthritis Non infective arthritis Osteoarthritis Osteoporosis Prolapse of the intervertebral disc Spondilosis, Spondioarthritis, Spondylopathies Ankylosing Spondilitis / Spondylopathies Psoriatic Arthritis / Arthropathy ",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 7
+      },
+      "confidence": 0.97,
+      "validated": true
+    },
+    {
+      "type": "initial_waiting_period",
+      "duration_days": 30,
+      "applies_to": "illness",
+      "exception": "accident",
+      "raw_text": "rgement of Prostate (BHP / BEP) Hernia, Hydrocele Varicocoele / Spermatocoele Skin tumour (unless malignant) All skin diseases Any swelling, tumour, cyst, nodule, ulcer, polyp Mass , Swelling, Lump, Granulomas, Benign Tumour anywhere in the body (unless malignant) Varicose veins, Varicose ulcers 3. 30-day waiting period (Code- Excl03): 30 days for all illnesses (except accident) in the first year and is not applicable in subsequent renewals and policies accepted under Portability 4. Initial waiting period (Applicable for Critical Illness Cover) • For Personal Accident Cover (AD,PTD), no initial waiting period applicable. • For Critical Illness Cover, We shall not be liable to make any payment in respect of any Critical Illness whose signs or symptoms first occur within 60 days from the Inception Date of cover. Nil Nil Nil Nil Gastroenterology (Alimentary Canal and related Organs) Urogenital (Urinary and Reproductive System) Skin General Surgery Medical & Surgical treatment Surgical treatment Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical trea",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 8
+      },
+      "confidence": 0.98,
+      "validated": true
+    },
+    {
+      "type": "critical_illness_initial_waiting_period",
+      "duration_days": 60,
+      "raw_text": "ywhere in the body (unless malignant) Varicose veins, Varicose ulcers 3. 30-day waiting period (Code- Excl03): 30 days for all illnesses (except accident) in the first year and is not applicable in subsequent renewals and policies accepted under Portability 4. Initial waiting period (Applicable for Critical Illness Cover) • For Personal Accident Cover (AD,PTD), no initial waiting period applicable. • For Critical Illness Cover, We shall not be liable to make any payment in respect of any Critical Illness whose signs or symptoms first occur within 60 days from the Inception Date of cover. Nil Nil Nil Nil Gastroenterology (Alimentary Canal and related Organs) Urogenital (Urinary and Reproductive System) Skin General Surgery Medical & Surgical treatment Surgical treatment Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment (ii) Co-payment (It is a specified amount / percentage of the admissible claim amount to be paid by Insur",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 8
+      },
+      "confidence": 0.92,
+      "validated": true
+    }
+  ],
+  "exclusions": [
+    {
+      "code": "D.1.1",
+      "title": "Pre-Existing Diseases (Code-Excl01)",
+      "description": "D.1.1 Pre-Existing Diseases (Code- Excl01) a) Expenses related to the treatment of a pre-existing Disease (PED) and its direct complications shall be excluded until the expiry of years / months as specified in the Policy Schedule / Product Benefit Table of this Policy of continuous coverage after the date of inception of the first policy with Insurer. b) In case of enhancement of sum insured the exclusion shall apply afresh to the extent of sum insured increase. c) If the Insured Person is continuously covered without any break as defined under the applicable norms on portability stipulated by IRDAI, then Waiting Period for the same would be reduced to the extent of prior coverage. d) Coverage under the Policy after the expiry of months as specified in the Policy Schedule / Product Benefit Table of this Policy for any pre-existing disease is subject to the same being declared at the time of application and accepted by Insurer.",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 10
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.2",
+      "title": "Specified disease / procedure Waiting Period: (Code-Excl02)",
+      "description": "D.1.2 Specified disease / procedure Waiting Period: (Code- Excl02) a) Expenses related to the treatment of the listed Conditions, surgeries / treatments shall be excluded until the expiry of 24 months of continuous coverage after the date of inception of the first policy with us. This exclusion shall not be applicable for claims arising due to an accident. b) In case of enhancement of sum insured the exclusion shall apply afresh to the extent of sum insured increase. c) If any of the specified disease / procedure falls under the Waiting Period specified for pre-existing diseases, then the longer of the two Waiting Periods shall apply. d) The Waiting Period for listed conditions shall apply even if contracted after the Policy or declared and accepted without a specific exclusion. e) If the Insured Person is continuously covered without any break as defined under the applicable norms on portability stipulated by IRDAI, then Waiting Period for the same would be reduced to the extent of prior coverage. f) List of specific diseases / procedures: Word Explanations Pre Existing Disease: A medical condition that a person already have before getting insurance or a healthcare plan. Portabili",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 10
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.3",
+      "title": "30-day Waiting Period (Code-Excl03)",
+      "description": "D.1.3 30-day Waiting Period (Code-Excl03) a) Expenses related to the treatment of any illness within 30 days from the first policy commencement date shall be excluded except claims arising due to an accident, provided the same are covered. b) This exclusion shall not, however, apply if the Insured Person has Continuous Coverage for more than twelve months. c) The within referred Waiting Period is made applicable to the enhanced sum insured in the event of granting higher sum insured subsequently. Commencement date: Date when this Policy becomes active and provides coverage to the Insured Person.",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.4",
+      "title": "Investigation & Evaluation (Code-Excl04)",
+      "description": "D.1.4 Investigation & Evaluation (Code-Excl04) a) Expenses related to any admission primarily for diagnostics and evaluation purposes only are excluded. b) Any diagnostic expenses which are not related or not incidental to the current diagnosis and treatment are excluded. Diagnostic expenses: Costs associated with medical tests and procedures used to diagnose a health condition.",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.5",
+      "title": "Rest Cure, rehabilitation and respite care (Code-Excl05)",
+      "description": "D.1.5 Rest Cure, rehabilitation and respite care (Code- Excl05) a) Expenses related to any admission primarily for enforced bed rest and not for receiving treatment. This also includes: i. Custodial care either at home or in a nursing facility for personal care such as help with activities of daily living such as bathing, dressing, moving around either by skilled nurses or assistant or non-skilled persons. ii. Any services for people who are terminally ill to address physical, social, emotional and spiritual needs.",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.6",
+      "title": "Obesity / Weight Control (Code-Excl06)",
+      "description": "D.1.6 Obesity / Weight Control (Code- Excl06) Expenses related to the surgical treatment of obesity that does not fulfil all the below conditions: a) Surgery to be conducted is upon the advice of the Doctor. b) The surgery / Procedure conducted should be supported by clinical protocols. c) The member has to be 18 years of age or older and Custodial Care: Non-medical assistance with daily tasks for individuals who need help due to physical or mental limitations. BMI: Measurement that helps determine if a person has a healthy weight based on their height and weight. Co-Morbidities: Additional medical conditions or diseases that occur alongside a primary health condition or illness. If any of the Illness / conditions listed above are Pre-Existing Diseases, then they shall be covered only after the completion of the Pre-Existing Disease Waiting Period described in Section",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.7",
+      "title": "Change-of-Gender treatments: (Code-Excl07)",
+      "description": "D.1.7 Change-of-Gender treatments: (Code-Excl07) Expenses related to any treatment, including surgical management, to change characteristics of the body to those of the opposite sex. Change of Gender Treatments: Medical procedures and support services that help individuals transform from one gender to another",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.8",
+      "title": "Cosmetic or plastic Surgery: (Code-Excl08)",
+      "description": "D.1.8. Cosmetic or plastic Surgery: (Code-Excl08) Expenses for cosmetic or plastic surgery or any treatment to change appearance unless for reconstruction following an Accident, Burn(s) or Cancer or as part of medically necessary treatment to remove a direct and immediate health risk to the insured. For this to be considered a medical necessity, it must be certified by the attending Medical Practitioner. Reconstruction: Process of repairing or rebuilding damaged or lost body parts through surgical procedures to improve function and appearance.",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.9",
+      "title": "Hazardous or Adventure sports: (Code-Excl09)",
+      "description": "D.1.9. Hazardous or Adventure sports: (Code-Excl09) Expenses related to any treatment necessitated due to participation as a professional in hazardous or adventure sports, including but not limited to, para-jumping, rock climbing, mountaineering, rafting, motor racing, horse racing or scuba diving, hand gliding, sky diving, deep sea diving",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.10",
+      "title": "Breach of law: (Code-Excl10)",
+      "description": "D.1.10. Breach of law: (Code-Excl10) Expenses for treatment directly arising from or consequent upon any Insured Person committing or attempting to commit a breach of law with criminal intent.",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.11",
+      "title": "Excluded Providers: (Code-Excl11)",
+      "description": "D.1.11. Excluded Providers: (Code-Excl11) Expenses incurred towards treatment in any hospital or by any Medical Practitioner or any other provider specifically excluded by the Insurer as disclosed in website (www.adityabirlahealth.com/healthinsurance) / notified to the policyholders are not admissible. However, in case of life threatening situations or following an accident, expenses up to the stage of stabilization are payable but not the complete claim. Hazardous or Adventure Sports: Activities that are considered high-risk and may require specific coverage or have exclusions due to the potential for injuries or accidents. Breach of Law: When someone breaks a law or fails to meet legal requirements, which is considered a wrongdoing or illegal action. Excluded Providers: Healthcare professionals, hospitals, or medical facilities that are specifical- ly listed by the insurer as not covered under this Policy.",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.15",
+      "title": "Refractive Error:(Code-Excl15) -",
+      "description": "D.1.15. Refractive Error:(Code-Excl15) - Expenses related to the treatment for correction of eye sight due to refractive error less than 7.5 dioptres. Refractive Error: A vision problem that causes blurred vision due to the eye's inability to focus light properly at the back of the eye.",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.16",
+      "title": "Unproven",
+      "description": "D.1.16. Unproven Treatments:(Code-Excl16) Expenses related to any unproven treatment, services and supplies for or in connection with any treatment. Unproven treatments are treatments, procedures or supplies that lack significant medical documentation to support their effectiveness. Unproven Treatments: Medical approaches that have not been proven to work or shown to be safe.",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.17",
+      "title": "Sterility and Infertility: (Code-Excl17)",
+      "description": "D.1.17. Sterility and Infertility: (Code-Excl17) Expenses related to sterility and infertility. This includes: a) Any type of contraception, sterilization b) Assisted Reproduction services including artificial insemination and advanced reproductive technologies such as IVF, ZIFT, GIFT, ICSI c) Gestational Surrogacy d) Reversal of sterilization Sterility: Condition or state of being unable to conceive a child or reproduce. Infertility: Inability to get pregnant or conceive a child despite trying for a certain period of time. Assisted Reproduction Services: Medical procedures or techniques that assist individuals or couples in achieving pregnancy when they are facing difficulties conceiving naturally. IVF (In Vitro Fertilization): Process where doctors help couples have a baby by combining an egg and sperm in a lab and then placing the fertilized egg into the woman's womb to grow into a baby. Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.1.18",
+      "title": "Maternity",
+      "description": "D.1.18. Maternity Expenses (Code-Excl18): a) Medical treatment expenses traceable to childbirth (including complicated deliveries and caesarean sections incurred during hospitalization) except ectopic pregnancy; b) Expenses towards miscarriage (unless due to an accident) and lawful medical termination of pregnancy during the policy period",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 13
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.2.1",
+      "title": "Circumstantial Exclusion",
+      "description": "D.2.1 Circumstantial Exclusion a) Treatment resulting from war, invasion, civil war, revolt, or military involvement: Medical treatment that arises from or is related to acts of war, military operations, or involvement in armed forces activities b) Exclusion of certain acts and substances: Treatment or consequences related to unlawful acts, nuclear weapons / materials, chemical and biological weapons, radiation exposure, or contamination by radioactive materials or substances. c) The Insured Person’s direct participation in terrorist acts;",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 13
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.2.2",
+      "title": "Behavioural Exclusions",
+      "description": "D.2.2 Behavioural Exclusions a) Suicide or attempted suicide, intentionally hurting oneself on purpose; b) Illegal act of the Insured Persons c) Any treatment for Injury resulting from the consumption of alcohol or any intoxicating substance, its intake or abuse thereof d) the use of drugs (other than drugs taken under treatment prescribed and directed by a Medical Practitioner but not for the treatment of drug addiction); Behavioural Exclusions: Situations the Policy does not cover certain health conditions or treatments that are caused by a person's actions or behaviour, such as self-harm or drug abuse",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 13
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.2.3",
+      "title": "Medical Exclusions",
+      "description": "D.2.3 Medical Exclusions a) All routine examinations and Health Check-ups except as per terms and conditions mentioned under Annual Health Check-up in Appendix A b) Circumcisions (unless required for medical reasons or as part of a treatment plan for an illness or injury); c) Conditions for which treatment could have been done on an outpatient basis without any Hospitalization d) Preventive care, vaccinations and immunizations (except in case of post-bite treatment); any physical, psychiatric or psychological examinations or testing e) Admission for nutritional and electrolyte supplements unless certified by the attending medical practitioner that they are necessary as a direct result of a covered claim f) Any conditions or abnormalities that are present at birth and are visible on the outside of the body, as well as any related diseases or defects, g) Stem cell therapy except Hematopoietic stem cells for bone marrow transplant for haematological conditions) or Surgery, or growth hormone therapy or Hormone Replacement Therapy. h) Dental / Oral Treatment: Treatment, procedures and preventive, diagnostic, restor ative, cosmetic services related to disease, disorder and conditions rel",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 13
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.2.4",
+      "title": "Prosthesis and Devices",
+      "description": "D.2.4 Prosthesis and Devices a) Hearing aids, spectacles or contact lenses including optometric therapy, multifocal lens b) Wigs, or toupees, and related expenses. c) Expenses for prosthesis (artificial body parts), corrective devices, external durable medical equipment, wheelchairs, crutches, or instruments used in the diagnosis / treatment of sleep apnea syndrome and other sleep disorders or continuous ambulatory peritoneal dialysis (C.A.P.D.), Devices used for ambulatory monitoring of blood pressure, blood sugar, glucometers, nebulizers and oxygen concentrator for bronchial asthma / COPD conditions, cost of cochlear implant(s) unless necessitated by an Accident. Ectopic Pregnancy: When a fertilized egg grows outside the uterus, often in the fallopian tube .It is a dangerous condition that cannot develop into a healthy baby and requires medical attention Circumstantial Exclusion: Exclusion of coverage for certain situations or conditions based on specific circumstances specified in the Policy",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 13
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.2.5",
+      "title": "Non-Medical",
+      "description": "D.2.5 Non-Medical Expenses As mentioned under Annexure (I), items in List I, II, III & IV will be excluded unless forms a part of In-patient hospitalization. Non-Medical Expenses: Costs or expenditures that are not directly related to medical treatments or healthcare services,",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 14
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.2.6",
+      "title": "Specific treatment Exclusion",
+      "description": "D.2.6 Specific treatment Exclusion Treatment involving Rotational Field Quantum Magnetic Resonance (RFQMR), External Counter Pulsation (ECP), Enhanced External Counter Pulsation (EECP), Hyperbaric Oxygen Therapy, KTP Laser Surgeries, Cyber Knife Treatment, Femto Laser Surgeries, Bioabsorbable Stents, Bioabsorbable Valves, Bioabsorbable Implants. Use of Radio Frequency (RF) probe for ablation. RFQMR: New device developed for Tissue Regeneration, Degeneration and Repair for the purposes of treating several chronic or degenerative diseases such as Cancer & Arthritis. ECP: Non-Surgical Therapy that uses cuffs to apply rhythmic pressure to improve blood flow to the heart EECP: Non-Surgical Therapy that improves blood flow to the heart using cuffs placed on the legs, buttocks, and lower abdomen. Hyperbaric Oxygen Therapy: Treatment where a person breathes pure oxygen in a pressurized chamber to promote healing and improve certain medical conditions. KTP Laser Surgery: Medical procedure that uses a specialized laser to treat blood vessel abnormality, skin pigmentation, and certain tumors Femto Laser Surgeries: Advanced medical procedures that use a special laser to perform precise and gen",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 14
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.2.7",
+      "title": "Activities and Profession Exclusions",
+      "description": "D.2.7 Activities and Profession Exclusions a) Treatment received from a person who is not recognized as a registered Medical Practitioner by any state medical council or the medical council of India. b) Medical or treatment fees charged by unlicensed and unauthorized practitioners are not covered c) Treatments provided by a Medical Practitioner who is a family member of the Insured Person or resides in the same household, unless pre-approval is obtained from Us. Activities and Profession Exclusions: Specific occupations, hobbies, or activities that are not covered under the policy due to the increased risks associated with them.",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 14
+      },
+      "confidence": 0.9
+    },
+    {
+      "code": "D.2.8",
+      "title": "Geographical Exclusion",
+      "description": "D.2.8 Geographical Exclusion Treatment taken outside India, unless specified to be covered in the Policy Schedule. Geographical exclusion: Certain locations or regions are not covered by Policy, so any medical expenses incurred in those areas will not be payable. Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 14
+      },
+      "confidence": 0.9
+    }
+  ],
+  "summary": {
+    "waiting_periods_count": 4,
+    "exclusions_count": 23,
+    "product_facts_count": 7
+  },
+  "product_facts": {
+    "room_rent_limit": {
+      "field": "room_rent_limit",
+      "value": "Mentioned, review required",
+      "raw_text": "ation Expenses 3. Post-Hospitalization Expenses 4. Domiciliary Hospitalization 5. Home Health Care 6. AYUSH Treatment 7. Organ Donor Expenses 8. Super Reload 9. Health AssessmentTM 10. HealthReturnsTM 11.Reduction in Specific Disease Waiting Period 12. Claim Protect (Non-Medical Expense Waiver) 13. Room Rent Type Options 14. Per Claim Deductible 15. Preferred Provider Network (PPN) Discount 16. Super Credit 17. Chronic Care (Day 1 In-patient Hospitalization) 18. Chronic Management Program (OPD) 19. Cancer Booster 20. Durable Medical Equipment Cover 21. Compassionate Visit 22. Second Medical Opinion for listed Major Illness 23. Annual Screening Package for Cancer Diagnosed Patients 24. Annual Health Check-up Fixed Benefit basis for all claims under: 1. Critical Illness cover 2. Personal Accident Cover << Dynamic field to be derived from system>> <Individual Sum insured – Each member has separate sum Insured under the policy> <Floater Sum Insured – where all member under the policy have a single sum insured limit which may be utilized by any or all members>",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 1
+      },
+      "confidence": 0.65,
+      "validated": false
+    },
+    "restoration_benefit": {
+      "field": "restoration_benefit",
+      "value": "Super Reload / Restoration available",
+      "raw_text": "ed INR. XXXXXX 04. DESCRIPTION Activ One – NXT << Dynamic field to be derived from system>> Indemnity basis: 1. Hospitalization Treatment 2. Pre-Hospitalization Expenses 3. Post-Hospitalization Expenses 4. Domiciliary Hospitalization 5. Home Health Care 6. AYUSH Treatment 7. Organ Donor Expenses 8. Super Reload 9. Health AssessmentTM 10. HealthReturnsTM 11.Reduction in Specific Disease Waiting Period 12. Claim Protect (Non-Medical Expense Waiver) 13. Room Rent Type Options 14. Per Claim Deductible 15. Preferred Provider Network (PPN) Discount 16. Super Credit 17. Chronic Care (Day 1 In-patient Hospitalization) 18. Chronic Management Program (OPD) 19. Cancer Booster 20. Durable Medical Equipment Cover 21. Compassionate Visit 22. Second Medical Opinion for listed Major Illness 23. Annual Screening Package for Cancer Diagnosed Patients 24. Annual Health Check-up Fixed Benefit basis for all claims under: 1. Critical Illness cover 2. Personal Accident Cover << Dynamic field to be derived from system>> <Individual Sum insured – Each member has separate sum Insured under the policy> <Floater Sum Insured – where all member under the policy have a single sum insured limit which may be utilized by any or all members>",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 1
+      },
+      "confidence": 0.93,
+      "validated": true
+    },
+    "ayush_cover": {
+      "field": "ayush_cover",
+      "value": true,
+      "raw_text": "XXXXXX INR. XXXXXX Family Floater Sum Insured INR. XXXXXX 04. DESCRIPTION Activ One – NXT << Dynamic field to be derived from system>> Indemnity basis: 1. Hospitalization Treatment 2. Pre-Hospitalization Expenses 3. Post-Hospitalization Expenses 4. Domiciliary Hospitalization 5. Home Health Care 6. AYUSH Treatment 7. Organ Donor Expenses 8. Super Reload 9. Health AssessmentTM 10. HealthReturnsTM 11.Reduction in Specific Disease Waiting Period 12. Claim Protect (Non-Medical Expense Waiver) 13. Room Rent Type Options 14. Per Claim Deductible 15. Preferred Provider Network (PPN) Discount 16. Super Credit 17. Chronic Care (Day 1 In-patient Hospitalization) 18. Chronic Management Program (OPD) 19. Cancer Booster 20. Durable Medical Equipment Cover 21. Compassionate Visit 22. Second Medical Opinion for listed Major Illness 23. Annual Screening Package for Cancer Diagnosed Patients 24. Annual Health Check-up Fixed Benefit basis for all claims under: 1. Critical Illness cover 2. Personal Accident Cover << Dynamic field to be derived from system>> <Individual Sum insured – Each member has separate sum Insured under the policy> <Floater Sum Insured – where all member under the policy have a single sum insured limit which may be utilized by any or all members>",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 1
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "domiciliary_treatment": {
+      "field": "domiciliary_treatment",
+      "value": true,
+      "raw_text": "rson X Y Z Individual Sum Insured INR. XXXXXX INR. XXXXXX INR. XXXXXX Family Floater Sum Insured INR. XXXXXX 04. DESCRIPTION Activ One – NXT << Dynamic field to be derived from system>> Indemnity basis: 1. Hospitalization Treatment 2. Pre-Hospitalization Expenses 3. Post-Hospitalization Expenses 4. Domiciliary Hospitalization 5. Home Health Care 6. AYUSH Treatment 7. Organ Donor Expenses 8. Super Reload 9. Health AssessmentTM 10. HealthReturnsTM 11.Reduction in Specific Disease Waiting Period 12. Claim Protect (Non-Medical Expense Waiver) 13. Room Rent Type Options 14. Per Claim Deductible 15. Preferred Provider Network (PPN) Discount 16. Super Credit 17. Chronic Care (Day 1 In-patient Hospitalization) 18. Chronic Management Program (OPD) 19. Cancer Booster 20. Durable Medical Equipment Cover 21. Compassionate Visit 22. Second Medical Opinion for listed Major Illness 23. Annual Screening Package for Cancer Diagnosed Patients 24. Annual Health Check-up Fixed Benefit basis for all claims under: 1. Critical Illness cover 2. Personal Accident Cover << Dynamic field to be derived from system>> <Individual Sum insured – Each member has separate sum Insured under the policy> <Floater Sum Insured – where all member under the policy have a single sum insured limit which may be utilized by any or all members>",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 1
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "day_care_treatment": {
+      "field": "day_care_treatment",
+      "value": true,
+      "raw_text": "I. Basic covers 1. Hospitalization Treatment a. 1.a. In-Patient Treatment 1.b. Other expenses covered 1.b.1. Road Ambulance (domestic only) 1.b.2. Dental Treatment 1.b.3. Plastic Surgery 1.b.4. All Day Care Treatments 1.b.5. Modern Procedures/Treatments 1.b.6. HIV / AIDS and STD Cover 1.b.7. Mental Illness Hospitalization 1.b.8. Obesity Treatment 2. Pre-Hospitalization Expenses 3. Post-Hospitalization Expenses 4. Domiciliary Hospitalization 5. Home Health Care 6. AYUSH Treatment 7. Organ Donor Expenses 8. Super Reload 9. Health Management Program (In-built) 9.1. Health AssessmentTM 9.2. HealthReturnsTM II. Optional Covers: (Available if opted by paying additional premium) 10. Reduction in Specific Disease waiting period 11. Claims Protect (Non-Medical Expense Waiver) 12. Room Rent Type Options 13. Per Claim Deductible 14. Preferred Provider Network (PPN) Discount 15. Critical Illness cover 16. Personal Accident Cover(AD+ PTD+PPD) 17. Super Credit 18. Chronic Care (Day 1 In-patient Hospitalization) 19. Chronic Management Program (OPD) 20. Cancer Booster 21. Durable Medical Equipment Cover 22. Compassionate Visit 23. Second Medical Opinion for listed Major Illness 24. Annual Screening Package for Cancer Diagnosed Patients 25. Annual Health Check-up Standard Exclusion: 1. Investigation & Evaluation (Code- Excl04) a) Expenses related to any admission primarily for diagnostics",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 2
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "maternity_cover": {
+      "field": "maternity_cover",
+      "value": "Conditional / as per policy schedule",
+      "raw_text": "D.1.18 D.2.1 D.2.2 D.2.3 Product Name: Activ One, Product UIN: ADIHLIP24097V012324 15. Maternity Expenses (Code - Excl18) : i. Medical treatment expenses traceable to childbirth (including complicated deliveries and caesarean sections incurred during hospitalization) except ectopic pregnancy; ii. Expenses towards miscarriage (unless due to an accident) and lawful medical termination of pregnancy during the policy period. Specific Exclusions 1. Circumstantial Exclusion a) Treatment resulting from war, invasion, civil war, revolt, or military involvement: Medical treatment that arises from or is related to acts of war, military operations, or involvement in armed forces activities b) Exclusion of certain acts and substances: Treatment or consequences related to unlawful acts, nuclear weapons / materials, chemical and biological weapons, radiation exposure, or contamination by radioactive materials or substances. c) The Insured Person’s direct participation in terrorist acts; 2. Behavioural Exclusions a) Suicide or attempted suicide, intentionally hurting oneself on purpose; b) Illegal act of the Insured Persons c) Any treatment for Injury resulting from the consumption of alcohol or any intoxicating substance, its intake or abuse thereof d) The use of drugs (other than",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 5
+      },
+      "confidence": 0.8,
+      "validated": false
+    },
+    "copay": {
+      "field": "copay",
+      "value": "Mentioned, review required",
+      "raw_text": "ical treatment Medical & Surgical treatment Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment Medical & Surgical treatment (ii) Co-payment (It is a specified amount / percentage of the admissible claim amount to be paid by Insured) (iii) Deductible (iv) Any other limit 5. 6. 7. 8. Product Name: Activ One, Product UIN: ADIHLIP24097V012324 D.1.3 C.10.6",
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 8
+      },
+      "confidence": 0.65,
+      "validated": false
+    }
+  }
+}

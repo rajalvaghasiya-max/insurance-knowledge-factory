@@ -1,0 +1,165 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\eff586f0beb9457cc17aea13715b6ee8536e8186a707ef6f9b841b9a1a083575.json",
+  "insurer_id": "aditya_birla_health",
+  "url": "https://www.adityabirlacapital.com/abc-of-calculators",
+  "page_title": "Financial Calculators for All Your Financial Needs - ABC of Money",
+  "content_hash": "eff586f0beb9457cc17aea13715b6ee8536e8186a707ef6f9b841b9a1a083575",
+  "page_intent": "calculator",
+  "extracted_at": "2026-06-07T11:46:07.254809+00:00",
+  "product_names": [],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Plan your taxes to claim suitable tax benefits and enhance",
+      "text": "your savings",
+      "evidence": "Plan your taxes to claim suitable tax benefits and enhance\nyour savings"
+    },
+    {
+      "heading": "Get the benefits of insurance & wealth creation in one",
+      "text": "convenient plan",
+      "evidence": "Get the benefits of insurance & wealth creation in one\nconvenient plan"
+    },
+    {
+      "heading": "Maternity Insurance Plans – What it is All",
+      "text": "About",
+      "evidence": "Maternity Insurance Plans – What it is All\nAbout"
+    },
+    {
+      "heading": "Plan your taxes to claim suitable tax benefits and",
+      "text": "enhance your savings",
+      "evidence": "Plan your taxes to claim suitable tax benefits and\nenhance your savings"
+    },
+    {
+      "heading": "What is Motor Insurance? - Car Coverage, Claims",
+      "text": "& More\nDifferent Types of Car Insurance Policies and Their",
+      "evidence": "What is Motor Insurance? - Car Coverage, Claims\n& More\nDifferent Types of Car Insurance Policies and Their"
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "Health Track",
+      "text": "Healthy living made easy with ABCD’s Digital Health\nEvaluation",
+      "evidence": "Health Track\nHealthy living made easy with ABCD’s Digital Health\nEvaluation"
+    },
+    {
+      "heading": "Account Statement",
+      "text": "Healthy living made easy with ABCD’s Digital Health\nEvaluation",
+      "evidence": "Account Statement\nHealthy living made easy with ABCD’s Digital Health\nEvaluation"
+    }
+  ],
+  "waiting_periods": [],
+  "riders_or_addons": [],
+  "sum_insured_values": [],
+  "premium_values": [],
+  "benefit_amount_values": [],
+  "tax_amount_values": [],
+  "discount_values": [],
+  "room_rent_limits": [],
+  "claim_process_signals": [
+    {
+      "heading": "Plan your taxes to claim suitable tax benefits and enhance",
+      "text": "your savings",
+      "evidence": "Plan your taxes to claim suitable tax benefits and enhance\nyour savings"
+    },
+    {
+      "heading": "Plan your taxes to claim suitable tax benefits and",
+      "text": "enhance your savings",
+      "evidence": "Plan your taxes to claim suitable tax benefits and\nenhance your savings"
+    },
+    {
+      "heading": "What is Motor Insurance? - Car Coverage, Claims",
+      "text": "& More\nDifferent Types of Car Insurance Policies and Their",
+      "evidence": "What is Motor Insurance? - Car Coverage, Claims\n& More\nDifferent Types of Car Insurance Policies and Their"
+    },
+    {
+      "heading": "documents carefully before investing. Past performance of the schemes is neither an",
+      "text": "indicator nor a guarantee of future performance.",
+      "evidence": "documents carefully before investing. Past performance of the schemes is neither an\nindicator nor a guarantee of future performance."
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Related Reads",
+      "text": "Mutual Funds for NRIs: 4 Tax Rules You Should\nKnow",
+      "evidence": "Related Reads\nMutual Funds for NRIs: 4 Tax Rules You Should\nKnow"
+    },
+    {
+      "heading": "Related Reads",
+      "text": "What Is FD? - Complete Guide on Fixed Deposit\nTax Saving FD - 10 Interesting Facts about Tax",
+      "evidence": "Related Reads\nWhat Is FD? - Complete Guide on Fixed Deposit\nTax Saving FD - 10 Interesting Facts about Tax"
+    },
+    {
+      "heading": "Plan your taxes to claim suitable tax benefits and enhance",
+      "text": "your savings",
+      "evidence": "Plan your taxes to claim suitable tax benefits and enhance\nyour savings"
+    },
+    {
+      "heading": "Saving Fixed Deposits",
+      "text": "Income Tax on Interest on Fixed Deposit: What You",
+      "evidence": "Saving Fixed Deposits\nIncome Tax on Interest on Fixed Deposit: What You"
+    },
+    {
+      "heading": "Plan your taxes to claim suitable tax benefits and",
+      "text": "enhance your savings",
+      "evidence": "Plan your taxes to claim suitable tax benefits and\nenhance your savings"
+    },
+    {
+      "heading": "Read about Tax",
+      "text": "Understanding direct and indirect taxes",
+      "evidence": "Read about Tax\nUnderstanding direct and indirect taxes"
+    },
+    {
+      "heading": "Income Tax Calculator",
+      "text": "Calculate the tax payable by you based on your income",
+      "evidence": "Income Tax Calculator\nCalculate the tax payable by you based on your income"
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "Retirement Funds",
+      "text": "Goal-oriented fund with a lock-in period to create a corpus\nfor retirement",
+      "evidence": "Retirement Funds\nGoal-oriented fund with a lock-in period to create a corpus\nfor retirement"
+    },
+    {
+      "heading": "Children’s Funds",
+      "text": "Secure your child’s financial future with solutions-oriented\nchildren’s funds",
+      "evidence": "Children’s Funds\nSecure your child’s financial future with solutions-oriented\nchildren’s funds"
+    },
+    {
+      "heading": "Related Reads",
+      "text": "Mutual Funds for NRIs: 4 Tax Rules You Should\nKnow",
+      "evidence": "Related Reads\nMutual Funds for NRIs: 4 Tax Rules You Should\nKnow"
+    },
+    {
+      "heading": "Plan your taxes to claim suitable tax benefits and enhance",
+      "text": "your savings",
+      "evidence": "Plan your taxes to claim suitable tax benefits and enhance\nyour savings"
+    },
+    {
+      "heading": "Retirement Plans",
+      "text": "Get a guaranteed regular pension plus lump sum on plan\nmaturity",
+      "evidence": "Retirement Plans\nGet a guaranteed regular pension plus lump sum on plan\nmaturity"
+    },
+    {
+      "heading": "Insurance in India",
+      "text": "Insurance for Children: Does a Child Need Life\nInsurance?\nAll you need to know about Unit Linked Insurance\nPlans",
+      "evidence": "Insurance in India\nInsurance for Children: Does a Child Need Life\nInsurance?\nAll you need to know about Unit Linked Insurance\nPlans"
+    },
+    {
+      "heading": "Plan your taxes to claim suitable tax benefits and",
+      "text": "enhance your savings",
+      "evidence": "Plan your taxes to claim suitable tax benefits and\nenhance your savings"
+    },
+    {
+      "heading": "All You Need to Know About Mutual Fund Expense",
+      "text": "Ratio\nInsurance for Children: Does a Child Need Life\nInsurance?",
+      "evidence": "All You Need to Know About Mutual Fund Expense\nRatio\nInsurance for Children: Does a Child Need Life\nInsurance?"
+    },
+    {
+      "heading": "Read about Retirement Plan",
+      "text": "Know how to plan retirement well",
+      "evidence": "Read about Retirement Plan\nKnow how to plan retirement well"
+    }
+  ]
+}

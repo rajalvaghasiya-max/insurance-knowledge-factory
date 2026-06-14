@@ -1,0 +1,135 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\e8f8a592dc6b36a0c8daaf6b637e668ce147a654e2cbe416822e543110b3fa43.json",
+  "insurer_id": "aditya_birla_health",
+  "url": "https://www.adityabirlacapital.com/healthinsurance/homepage",
+  "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+  "content_hash": "e8f8a592dc6b36a0c8daaf6b637e668ce147a654e2cbe416822e543110b3fa43",
+  "page_intent": "homepage",
+  "extracted_at": "2026-06-07T11:46:07.229675+00:00",
+  "product_names": [],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "HealthReturns™ with EAT.MOVE.HEAL + Maternity Cover + OPD Cover",
+      "text": "5,218 **/annum",
+      "evidence": "HealthReturns™ with EAT.MOVE.HEAL + Maternity Cover + OPD Cover\n5,218 **/annum"
+    },
+    {
+      "heading": "Up to Rs. 95* lakh coverage with an affordable premium",
+      "text": "₹962*/annum",
+      "evidence": "Up to Rs. 95* lakh coverage with an affordable premium\n₹962*/annum"
+    },
+    {
+      "heading": "- OPD & Worldwide Maternity Cover",
+      "text": "- Pause your policy with Tavel On/Off",
+      "evidence": "- OPD & Worldwide Maternity Cover\n- Pause your policy with Tavel On/Off"
+    },
+    {
+      "heading": "of hospitalization and medical treatments",
+      "text": "Save taxes",
+      "evidence": "of hospitalization and medical treatments\nSave taxes"
+    },
+    {
+      "heading": "What Are the Benefits of Health Insurance?",
+      "text": "A health insurance policy provides a comprehensive scope of coverage that underlines the various benefits that you can avail of. Have a look at some Mediclaim Insurance benefits -",
+      "evidence": "What Are the Benefits of Health Insurance?\nA health insurance policy provides a comprehensive scope of coverage that underlines the various benefits that you can avail of. Have a look at some Mediclaim Insurance benefits -"
+    },
+    {
+      "heading": "Family Cover",
+      "text": "Choose family floater plans and get coverage for all your family members. One policy allows umbrella coverage to all your loved ones, so that if anyone falls ill, the policy covers the medical costs. This means that you can rest assured that your family will be taken care of, even in your absence. Some family cover plans also work out to be more affordable, rather than getting individual plans for each family member.",
+      "evidence": "Family Cover\nChoose family floater plans and get coverage for all your family members. One policy allows umbrella coverage to all your loved ones, so that if anyone falls ill, the policy covers the medical costs. This means that you can rest assured that your family will be taken care of, even in your absence. Some family cover plans also work out to be more affordable, rather than getting individual plans for each family member."
+    },
+    {
+      "heading": "Free health check-ups",
+      "text": "Health insurance plans motivate you to keep regular track of your health. They allow coverage for free health check-ups at regular intervals to keep a tab on your health and catch complications early on. Buying",
+      "evidence": "Free health check-ups\nHealth insurance plans motivate you to keep regular track of your health. They allow coverage for free health check-ups at regular intervals to keep a tab on your health and catch complications early on. Buying"
+    },
+    {
+      "heading": "The right coverage benefits",
+      "text": "Check the coverage benefits that the health insurance plans offer. Choose a plan which offers the most inclusive scope of coverage that also matches your needs. It's tempting to pick a policy with the least premium, but make sure you check the coverage benefits first.",
+      "evidence": "The right coverage benefits\nCheck the coverage benefits that the health insurance plans offer. Choose a plan which offers the most inclusive scope of coverage that also matches your needs. It's tempting to pick a policy with the least premium, but make sure you check the coverage benefits first."
+    },
+    {
+      "heading": "The right premium",
+      "text": "Nothing is more important than affordable premiums. So, check the coverage and ensure that the premium is commensurate with the coverage provided. Also, ensure that the premium is affordable for you. Since premiums will need to be paid every year or every few years (depending on the terms of the policy), make sure you keep funds aside so that you don't have to run around at the last minute.",
+      "evidence": "The right premium\nNothing is more important than affordable premiums. So, check the coverage and ensure that the premium is commensurate with the coverage provided. Also, ensure that the premium is affordable for you. Since premiums will need to be paid every year or every few years (depending on the terms of the policy), make sure you keep funds aside so that you don't have to run around at the last minute."
+    },
+    {
+      "heading": "Health insurance with OPD cover",
+      "text": "Ayush treatment\nCorona virus health insurance",
+      "evidence": "Health insurance with OPD cover\nAyush treatment\nCorona virus health insurance"
+    },
+    {
+      "heading": "Health insurance with OPD cover",
+      "text": "Ayush treatment\nCorona virus health insurance\nLarge payout plans",
+      "evidence": "Health insurance with OPD cover\nAyush treatment\nCorona virus health insurance\nLarge payout plans"
+    }
+  ],
+  "exclusions": [],
+  "waiting_periods": [],
+  "riders_or_addons": [],
+  "sum_insured_values": [],
+  "premium_values": [],
+  "benefit_amount_values": [],
+  "tax_amount_values": [],
+  "discount_values": [],
+  "room_rent_limits": [
+    {
+      "heading": "How To Choose The Right Health Insurance Plan?",
+      "text": "With so many Aditya Birla health insurance plans available, choosing the right plan can prove to be a difficult job. But, with the right checklist, you will be prepared to make the right selection.\nHere are some quick parameters to find the right\nhealth insurance plan in India",
+      "evidence": "How To Choose The Right Health Insurance Plan?\nWith so many Aditya Birla health insurance plans available, choosing the right plan can prove to be a difficult job. But, with the right checklist, you will be prepared to make the right selection.\nHere are some quick parameters to find the right\nhealth insurance plan in India"
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "What Are the Benefits of Health Insurance?",
+      "text": "A health insurance policy provides a comprehensive scope of coverage that underlines the various benefits that you can avail of. Have a look at some Mediclaim Insurance benefits -",
+      "evidence": "What Are the Benefits of Health Insurance?\nA health insurance policy provides a comprehensive scope of coverage that underlines the various benefits that you can avail of. Have a look at some Mediclaim Insurance benefits -"
+    },
+    {
+      "heading": "How To Claim Your Aditya Birla Health Insurance?",
+      "text": "With Aditya Birla's digitized services, making health insurance claims has been simplified. Download the Active Health App to register and track your health insurance claims or connect with the company online. You can also call the toll-free number\n1800 270 7000",
+      "evidence": "How To Claim Your Aditya Birla Health Insurance?\nWith Aditya Birla's digitized services, making health insurance claims has been simplified. Download the Active Health App to register and track your health insurance claims or connect with the company online. You can also call the toll-free number\n1800 270 7000"
+    },
+    {
+      "heading": "Health insurance claim",
+      "text": "Employer health insurance\nHealth care for young adults\nSuper topup health insurance",
+      "evidence": "Health insurance claim\nEmployer health insurance\nHealth care for young adults\nSuper topup health insurance"
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "of hospitalization and medical treatments",
+      "text": "Save taxes",
+      "evidence": "of hospitalization and medical treatments\nSave taxes"
+    },
+    {
+      "heading": "on the premiums paid up to Rs.75,000 under the provisions of Section 80D",
+      "text": "Get treated at the best hospitals on a",
+      "evidence": "on the premiums paid up to Rs.75,000 under the provisions of Section 80D\nGet treated at the best hospitals on a"
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "Cover all your family members under the",
+      "text": "family floater\nplan\nProtect your\nfinancial savings\nin a medical emergency\nAfford\nquality healthcare\ndespite medical inflation\nMeet the\nhigh costs",
+      "evidence": "Cover all your family members under the\nfamily floater\nplan\nProtect your\nfinancial savings\nin a medical emergency\nAfford\nquality healthcare\ndespite medical inflation\nMeet the\nhigh costs"
+    },
+    {
+      "heading": "Family Cover",
+      "text": "Choose family floater plans and get coverage for all your family members. One policy allows umbrella coverage to all your loved ones, so that if anyone falls ill, the policy covers the medical costs. This means that you can rest assured that your family will be taken care of, even in your absence. Some family cover plans also work out to be more affordable, rather than getting individual plans for each family member.",
+      "evidence": "Family Cover\nChoose family floater plans and get coverage for all your family members. One policy allows umbrella coverage to all your loved ones, so that if anyone falls ill, the policy covers the medical costs. This means that you can rest assured that your family will be taken care of, even in your absence. Some family cover plans also work out to be more affordable, rather than getting individual plans for each family member."
+    },
+    {
+      "heading": "Health insurance claim",
+      "text": "Employer health insurance\nHealth care for young adults\nSuper topup health insurance",
+      "evidence": "Health insurance claim\nEmployer health insurance\nHealth care for young adults\nSuper topup health insurance"
+    },
+    {
+      "heading": "Health Insurance For Family",
+      "text": "Hospital cash insurance",
+      "evidence": "Health Insurance For Family\nHospital cash insurance"
+    }
+  ]
+}

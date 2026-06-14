@@ -1,0 +1,474 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1253a13855c4f92a8cd3713576ffd5a956475ac56a0b2f56ee772f10073e1aa8.json",
+  "insurer_id": "bajaj_allianz_general",
+  "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/individual-health-insurance-plans.html",
+  "page_title": "Individual Health Insurance: Buy Personalised Medical Plan Online GST Free",
+  "content_hash": "1253a13855c4f92a8cd3713576ffd5a956475ac56a0b2f56ee772f10073e1aa8",
+  "page_intent": "individual_product",
+  "extracted_at": "2026-06-07T11:46:07.265381+00:00",
+  "product_names": [
+    {
+      "name": "Individual Health Insurance",
+      "source": "url_slug",
+      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans/individual-health-insurance-plans.html"
+    }
+  ],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Get comprehensive coverage for your health",
+      "text": "Choose from Best of Plans\nChoose from multiple plans to meet your requirements",
+      "evidence": "Get comprehensive coverage for your health\nChoose from Best of Plans\nChoose from multiple plans to meet your requirements"
+    },
+    {
+      "heading": "Maternity & Newborn Care",
+      "text": "Medical expenses related to delivery of baby and towards treatment of the new born baby are covered under select plans",
+      "evidence": "Maternity & Newborn Care\nMedical expenses related to delivery of baby and towards treatment of the new born baby are covered under select plans"
+    },
+    {
+      "heading": "Hospitalisation & Day Care Expenses",
+      "text": "Coverage for the cost of in-patient hospitalisation (including room rent type choices), all types of day care procedures, and surgeries",
+      "evidence": "Hospitalisation & Day Care Expenses\nCoverage for the cost of in-patient hospitalisation (including room rent type choices), all types of day care procedures, and surgeries"
+    },
+    {
+      "heading": "Pre & Post-Hospitalisation Expenses",
+      "text": "Pre-hospitalisation expenses (up to 60 days) and post-hospitalisation expenses (up to 90 days) are covered as per policy terms",
+      "evidence": "Pre & Post-Hospitalisation Expenses\nPre-hospitalisation expenses (up to 60 days) and post-hospitalisation expenses (up to 90 days) are covered as per policy terms"
+    },
+    {
+      "heading": "Organ Donor Expenses",
+      "text": "Medical expenses for an organ donor’s in-patient treatment during organ harvesting are covered, provided the insured is the recipient of the donated organ",
+      "evidence": "Organ Donor Expenses\nMedical expenses for an organ donor’s in-patient treatment during organ harvesting are covered, provided the insured is the recipient of the donated organ"
+    },
+    {
+      "heading": "Sum Insured Reinstatement",
+      "text": "Exhausted sum insured exhausted or SI will be reinstated so that you can avail full coverage for your next claim in a policy year (as per policy terms) if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available",
+      "evidence": "Sum Insured Reinstatement\nExhausted sum insured exhausted or SI will be reinstated so that you can avail full coverage for your next claim in a policy year (as per policy terms) if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available"
+    },
+    {
+      "heading": "Maternity Expenses",
+      "text": "Treatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Maternity Expenses\nTreatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment"
+    },
+    {
+      "heading": "Voluntary Aggregate Deductible",
+      "text": "Covers medical expenses for in-patient hospitalisation beyond the voluntary aggregate deductible limit (INR 50,000/ INR 1,00,000/ INR 2,00,000/ INR 3,00,000) as opted as per policy terms for in-patient hospitalisation treatment",
+      "evidence": "Voluntary Aggregate Deductible\nCovers medical expenses for in-patient hospitalisation beyond the voluntary aggregate deductible limit (INR 50,000/ INR 1,00,000/ INR 2,00,000/ INR 3,00,000) as opted as per policy terms for in-patient hospitalisation treatment"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service"
+    },
+    {
+      "heading": "Room Capping Waiver",
+      "text": "Removes the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit",
+      "evidence": "Room Capping Waiver\nRemoves the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit"
+    },
+    {
+      "heading": "Hospital & Day Care SI",
+      "text": "INR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr.",
+      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
+    },
+    {
+      "heading": "Pre- & Post-Hospitalisation",
+      "text": "Pre: 60 days & Post: 90 days\nPre: 60 days & Post: 90 days\nPre: 60 days & Post: 90 days",
+      "evidence": "Pre- & Post-Hospitalisation\nPre: 60 days & Post: 90 days\nPre: 60 days & Post: 90 days\nPre: 60 days & Post: 90 days"
+    },
+    {
+      "heading": "Road Ambulance",
+      "text": "INR 20,000/policy year\nINR 20,000/policy year\nINR 20,000/policy year",
+      "evidence": "Road Ambulance\nINR 20,000/policy year\nINR 20,000/policy year\nINR 20,000/policy year"
+    },
+    {
+      "heading": "Not covered",
+      "text": "As per limits specified\nAs per limits specified",
+      "evidence": "Not covered\nAs per limits specified\nAs per limits specified"
+    },
+    {
+      "heading": "Convalescence Benefit",
+      "text": "INR 5,000/policy year\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above",
+      "evidence": "Convalescence Benefit\nINR 5,000/policy year\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above"
+    },
+    {
+      "heading": "Convalescence Benefit",
+      "text": "You will be eligible for a benefit payout of up to Rs 7500 annually, in case of continuous hospitalisation for a period of 10 days or more and provided that your hospitalisation claim is admissible.",
+      "evidence": "Convalescence Benefit\nYou will be eligible for a benefit payout of up to Rs 7500 annually, in case of continuous hospitalisation for a period of 10 days or more and provided that your hospitalisation claim is admissible."
+    },
+    {
+      "heading": "Sum Insured Reinstatement",
+      "text": "If you completely exhaust your",
+      "evidence": "Sum Insured Reinstatement\nIf you completely exhaust your"
+    },
+    {
+      "heading": "sum insured",
+      "text": "along with the cumulative bonus (if any) during the policy year, we will reinstate the same.",
+      "evidence": "sum insured\nalong with the cumulative bonus (if any) during the policy year, we will reinstate the same."
+    },
+    {
+      "heading": "pre- and post-hospitalisation",
+      "text": "expenses up to 60 days and 90 days, respectively.",
+      "evidence": "pre- and post-hospitalisation\nexpenses up to 60 days and 90 days, respectively."
+    },
+    {
+      "heading": "Covers Organ Donor Expenses",
+      "text": "This policy covers expenses towards the organ donor's treatment for the harvesting of the donated organ.",
+      "evidence": "Covers Organ Donor Expenses\nThis policy covers expenses towards the organ donor's treatment for the harvesting of the donated organ."
+    },
+    {
+      "heading": "Daily Cash Benefit",
+      "text": "A daily cash benefit of Rs 500 per day, for up to 10 days, during each policy year, is provided as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy, for an admissible claim.",
+      "evidence": "Daily Cash Benefit\nA daily cash benefit of Rs 500 per day, for up to 10 days, during each policy year, is provided as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy, for an admissible claim."
+    },
+    {
+      "heading": "Pre and Post-Hospitalisation Coverage",
+      "text": "Medical expenses do not begin or end with hospitalisation. This personal health insurance covers diagnostic tests, consultations, and medicines incurred up to 60 days before admission and 90 days after discharge, ensuring complete financial support throughout the treatment cycle.",
+      "evidence": "Pre and Post-Hospitalisation Coverage\nMedical expenses do not begin or end with hospitalisation. This personal health insurance covers diagnostic tests, consultations, and medicines incurred up to 60 days before admission and 90 days after discharge, ensuring complete financial support throughout the treatment cycle."
+    },
+    {
+      "heading": "No-Claim Bonus for Claim-Free Years",
+      "text": "If you do not raise any claims during your policy tenure, you are rewarded with a no-claim bonus. This benefit helps reduce your future premium outgo or enhances coverage, encouraging long-term policy continuity while keeping costs under control.",
+      "evidence": "No-Claim Bonus for Claim-Free Years\nIf you do not raise any claims during your policy tenure, you are rewarded with a no-claim bonus. This benefit helps reduce your future premium outgo or enhances coverage, encouraging long-term policy continuity while keeping costs under control."
+    },
+    {
+      "heading": "Portability Without Losing Accrued Benefits",
+      "text": "If you are insured under another health insurance policy, you can switch to this plan while retaining accrued benefits such as waiting‑period credits (and other continuity benefits), subject to regulatory guidelines. This allows flexibility without compromising continuity.",
+      "evidence": "Portability Without Losing Accrued Benefits\nIf you are insured under another health insurance policy, you can switch to this plan while retaining accrued benefits such as waiting‑period credits (and other continuity benefits), subject to regulatory guidelines. This allows flexibility without compromising continuity."
+    },
+    {
+      "heading": "Discounts That Reduce Overall Premium Cost",
+      "text": "Opting for longer policy durations or family coverage helps you save through multiple discounts, including family and long‑term policy discounts, co‑payment discounts, and other applicable offers.",
+      "evidence": "Discounts That Reduce Overall Premium Cost\nOpting for longer policy durations or family coverage helps you save through multiple discounts, including family and long‑term policy discounts, co‑payment discounts, and other applicable offers."
+    },
+    {
+      "heading": "Instant Quotation and Issuance",
+      "text": "Online plan comparison and purchase come with an instant premium calculator. You can add or remove family members, customise plans, and check insurance coverage online in a few steps to buy the best individual health insurance policy.",
+      "evidence": "Instant Quotation and Issuance\nOnline plan comparison and purchase come with an instant premium calculator. You can add or remove family members, customise plans, and check insurance coverage online in a few steps to buy the best individual health insurance policy."
+    },
+    {
+      "heading": "2. Hospitalisation Costs:",
+      "text": "Research your area's average hospital room rates and surgical costs.\n3. Lifestyle:",
+      "evidence": "2. Hospitalisation Costs:\nResearch your area's average hospital room rates and surgical costs.\n3. Lifestyle:"
+    },
+    {
+      "heading": "Individual Health Insurance Premium Calculator",
+      "text": "Many insurers offer online premium calculators that help you estimate the cost of an Individual Health Insurance plan based on your age, location, desired coverage, and sum insured. This allows you to plan your budget and compare policies before purchasing a policy.",
+      "evidence": "Individual Health Insurance Premium Calculator\nMany insurers offer online premium calculators that help you estimate the cost of an Individual Health Insurance plan based on your age, location, desired coverage, and sum insured. This allows you to plan your budget and compare policies before purchasing a policy."
+    },
+    {
+      "heading": "Coverage",
+      "text": "Coverage can be modular from group to group based on plan selection; however, the choice of coverage at the insured level is restricted.",
+      "evidence": "Coverage\nCoverage can be modular from group to group based on plan selection; however, the choice of coverage at the insured level is restricted."
+    },
+    {
+      "heading": "Eligibility Criteria for Individual Medical Health Insurance",
+      "text": "Eligibility criteria for Personal Health Insurance coverage can vary by insurer, but generally include:\n1. Age:",
+      "evidence": "Eligibility Criteria for Individual Medical Health Insurance\nEligibility criteria for Personal Health Insurance coverage can vary by insurer, but generally include:\n1. Age:"
+    },
+    {
+      "heading": "1. Sum Insured:",
+      "text": "Sum insured is a crucial factor in selecting an individual health insurance plan. You can choose a minimum sum insured policy, but it may not cover your entire treatment with long-term medication or higher medical bills. Choose an affordable personal health insurance plan with wider coverage for better protection.",
+      "evidence": "1. Sum Insured:\nSum insured is a crucial factor in selecting an individual health insurance plan. You can choose a minimum sum insured policy, but it may not cover your entire treatment with long-term medication or higher medical bills. Choose an affordable personal health insurance plan with wider coverage for better protection."
+    },
+    {
+      "heading": "Select suitable coverage",
+      "text": "Check discounts & offers",
+      "evidence": "Select suitable coverage\nCheck discounts & offers"
+    },
+    {
+      "heading": "Items not typically covered in standard insurance plans",
+      "text": "Starting from",
+      "evidence": "Items not typically covered in standard insurance plans\nStarting from"
+    },
+    {
+      "heading": "Create a Profile With Us to Unlock New Benefits",
+      "text": "Customised plans that grow with you",
+      "evidence": "Create a Profile With Us to Unlock New Benefits\nCustomised plans that grow with you"
+    },
+    {
+      "heading": "Proactive coverage for future milestones",
+      "text": "Expert advice tailored to your profile",
+      "evidence": "Proactive coverage for future milestones\nExpert advice tailored to your profile"
+    },
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "Pre-Existing Diseases",
+      "text": "Treatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Health Guard Policy",
+      "evidence": "Pre-Existing Diseases\nTreatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Health Guard Policy"
+    },
+    {
+      "heading": "Maternity Expenses",
+      "text": "Treatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Maternity Expenses\nTreatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment"
+    },
+    {
+      "heading": "Dietary Supplements & Substances",
+      "text": "Cost of supplements that are purchased without a prescription by a certified doctor as a part of treatment, including vitamins, minerals and organic substances",
+      "evidence": "Dietary Supplements & Substances\nCost of supplements that are purchased without a prescription by a certified doctor as a part of treatment, including vitamins, minerals and organic substances"
+    },
+    {
+      "heading": "Treatment for Self-Inflicted Acts",
+      "text": "Medical expenses incurred as a result of self-harm, as a result of intoxication, illegal actions, hazardous activities, etc.",
+      "evidence": "Treatment for Self-Inflicted Acts\nMedical expenses incurred as a result of self-harm, as a result of intoxication, illegal actions, hazardous activities, etc."
+    },
+    {
+      "heading": "Not covered",
+      "text": "As per limits specified\nAs per limits specified",
+      "evidence": "Not covered\nAs per limits specified\nAs per limits specified"
+    },
+    {
+      "heading": "might require waiting periods or exclusions. Disclose all medical history accurately.",
+      "text": "4. Occupation:",
+      "evidence": "might require waiting periods or exclusions. Disclose all medical history accurately.\n4. Occupation:"
+    },
+    {
+      "heading": "Documents Required for Reimbursement Claim",
+      "text": "1. Original pre-numbered hospital payment receipt duly sealed and signed.\n2. Original prescriptions and pharmacy bills.\n3. Original consultation papers (if any).\n4. Original investigation and diagnostic reports, along with original bills and payment receipts for the investigation done within and outside the hospital.",
+      "evidence": "Documents Required for Reimbursement Claim\n1. Original pre-numbered hospital payment receipt duly sealed and signed.\n2. Original prescriptions and pharmacy bills.\n3. Original consultation papers (if any).\n4. Original investigation and diagnostic reports, along with original bills and payment receipts for the investigation done within and outside the hospital."
+    },
+    {
+      "heading": "E-Insurance Account",
+      "text": "Product wise specific list of excluded items",
+      "evidence": "E-Insurance Account\nProduct wise specific list of excluded items"
+    }
+  ],
+  "waiting_periods": [
+    {
+      "heading": "Initial Waiting Period",
+      "text": "Treatment expenses during the first 30 days except for treatment of accidental injuries",
+      "evidence": "Initial Waiting Period\nTreatment expenses during the first 30 days except for treatment of accidental injuries"
+    },
+    {
+      "heading": "Pre-Existing Diseases",
+      "text": "Treatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Health Guard Policy",
+      "evidence": "Pre-Existing Diseases\nTreatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Health Guard Policy"
+    },
+    {
+      "heading": "Maternity Expenses",
+      "text": "Treatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Maternity Expenses\nTreatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment"
+    },
+    {
+      "heading": "might require waiting periods or exclusions. Disclose all medical history accurately.",
+      "text": "4. Occupation:",
+      "evidence": "might require waiting periods or exclusions. Disclose all medical history accurately.\n4. Occupation:"
+    },
+    {
+      "heading": "What is a pre-existing disease clause in a individual Medical insurance policy?",
+      "text": "A pre-existing disease clause in your individual medical insurance plan refers to health conditions diagnosed before you bought the policy. These are important because there's a set waiting period before claims become active for these conditions. Stating them at the time of purchase works in your favour as transparency ensures quick claims.",
+      "evidence": "What is a pre-existing disease clause in a individual Medical insurance policy?\nA pre-existing disease clause in your individual medical insurance plan refers to health conditions diagnosed before you bought the policy. These are important because there's a set waiting period before claims become active for these conditions. Stating them at the time of purchase works in your favour as transparency ensures quick claims."
+    }
+  ],
+  "riders_or_addons": [
+    {
+      "heading": "Additional Covers",
+      "text": "What else can you get?",
+      "evidence": "Additional Covers\nWhat else can you get?"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service"
+    },
+    {
+      "heading": "Room Capping Waiver",
+      "text": "Removes the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit",
+      "evidence": "Room Capping Waiver\nRemoves the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit"
+    },
+    {
+      "heading": "Add or remove riders",
+      "text": "Confirm details and proceed",
+      "evidence": "Add or remove riders\nConfirm details and proceed"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST"
+    },
+    {
+      "heading": "Waiver of Room Capping",
+      "text": "Tooltip text\nRemoves single room type restriction*",
+      "evidence": "Waiver of Room Capping\nTooltip text\nRemoves single room type restriction*"
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ],
+  "sum_insured_values": [
+    {
+      "value": "INR 1 Cr",
+      "reason": "sum_insured_context",
+      "heading": "Hospital & Day Care SI",
+      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
+    },
+    {
+      "value": "INR 3 Lacs",
+      "reason": "sum_insured_context",
+      "heading": "Hospital & Day Care SI",
+      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
+    },
+    {
+      "value": "INR 5 Lacs",
+      "reason": "sum_insured_context",
+      "heading": "Hospital & Day Care SI",
+      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
+    },
+    {
+      "value": "INR 5 lacs",
+      "reason": "sum_insured_context",
+      "heading": "Convalescence Benefit",
+      "evidence": "Convalescence Benefit\nINR 5,000/policy year\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above"
+    },
+    {
+      "value": "INR 50 Lacs",
+      "reason": "sum_insured_context",
+      "heading": "Hospital & Day Care SI",
+      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
+    }
+  ],
+  "premium_values": [],
+  "benefit_amount_values": [
+    {
+      "value": "INR 20,000",
+      "reason": "benefit_amount_context",
+      "heading": "Road Ambulance",
+      "evidence": "Road Ambulance\nINR 20,000/policy year\nINR 20,000/policy year\nINR 20,000/policy year"
+    },
+    {
+      "value": "Rs 500",
+      "reason": "benefit_amount_context",
+      "heading": "Daily Cash Benefit",
+      "evidence": "Daily Cash Benefit\nA daily cash benefit of Rs 500 per day, for up to 10 days, during each policy year, is provided as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy, for an admissible claim."
+    },
+    {
+      "value": "Rs 7500",
+      "reason": "benefit_amount_context",
+      "heading": "Convalescence Benefit",
+      "evidence": "Convalescence Benefit\nYou will be eligible for a benefit payout of up to Rs 7500 annually, in case of continuous hospitalisation for a period of 10 days or more and provided that your hospitalisation claim is admissible."
+    }
+  ],
+  "tax_amount_values": [],
+  "discount_values": [],
+  "room_rent_limits": [
+    {
+      "heading": "Hospitalisation & Day Care Expenses",
+      "text": "Coverage for the cost of in-patient hospitalisation (including room rent type choices), all types of day care procedures, and surgeries",
+      "evidence": "Hospitalisation & Day Care Expenses\nCoverage for the cost of in-patient hospitalisation (including room rent type choices), all types of day care procedures, and surgeries"
+    },
+    {
+      "heading": "Room Capping Waiver",
+      "text": "Removes the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit",
+      "evidence": "Room Capping Waiver\nRemoves the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit"
+    },
+    {
+      "heading": "Room Limits",
+      "text": "Up to 1% of SI per day and ICU at actuals\nSingle private AC room for sum insured of SI 3 Lacs to 7.5 Lacs | Actuals for SI 10 Lacs & above | ICU at Actuals\nSingle private AC room for sum insured of SI 3 Lacs to 7.5 Lacs | Actuals for SI 10 Lacs & above | ICU at Actuals",
+      "evidence": "Room Limits\nUp to 1% of SI per day and ICU at actuals\nSingle private AC room for sum insured of SI 3 Lacs to 7.5 Lacs | Actuals for SI 10 Lacs & above | ICU at Actuals\nSingle private AC room for sum insured of SI 3 Lacs to 7.5 Lacs | Actuals for SI 10 Lacs & above | ICU at Actuals"
+    },
+    {
+      "heading": "Waiver of Room Capping",
+      "text": "Tooltip text\nRemoves single room type restriction*",
+      "evidence": "Waiver of Room Capping\nTooltip text\nRemoves single room type restriction*"
+    },
+    {
+      "heading": "Covers actual room rent expenses without a cap",
+      "text": "Starting from",
+      "evidence": "Covers actual room rent expenses without a cap\nStarting from"
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "Sum Insured Reinstatement",
+      "text": "Exhausted sum insured exhausted or SI will be reinstated so that you can avail full coverage for your next claim in a policy year (as per policy terms) if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available",
+      "evidence": "Sum Insured Reinstatement\nExhausted sum insured exhausted or SI will be reinstated so that you can avail full coverage for your next claim in a policy year (as per policy terms) if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available"
+    },
+    {
+      "heading": "Part of the claim will be borne by you if you have opted for deductibles or co-pay",
+      "text": "Note",
+      "evidence": "Part of the claim will be borne by you if you have opted for deductibles or co-pay\nNote"
+    },
+    {
+      "heading": "Convalescence Benefit",
+      "text": "You will be eligible for a benefit payout of up to Rs 7500 annually, in case of continuous hospitalisation for a period of 10 days or more and provided that your hospitalisation claim is admissible.",
+      "evidence": "Convalescence Benefit\nYou will be eligible for a benefit payout of up to Rs 7500 annually, in case of continuous hospitalisation for a period of 10 days or more and provided that your hospitalisation claim is admissible."
+    },
+    {
+      "heading": "Daily Cash Benefit",
+      "text": "A daily cash benefit of Rs 500 per day, for up to 10 days, during each policy year, is provided as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy, for an admissible claim.",
+      "evidence": "Daily Cash Benefit\nA daily cash benefit of Rs 500 per day, for up to 10 days, during each policy year, is provided as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy, for an admissible claim."
+    },
+    {
+      "heading": "No-Claim Bonus for Claim-Free Years",
+      "text": "If you do not raise any claims during your policy tenure, you are rewarded with a no-claim bonus. This benefit helps reduce your future premium outgo or enhances coverage, encouraging long-term policy continuity while keeping costs under control.",
+      "evidence": "No-Claim Bonus for Claim-Free Years\nIf you do not raise any claims during your policy tenure, you are rewarded with a no-claim bonus. This benefit helps reduce your future premium outgo or enhances coverage, encouraging long-term policy continuity while keeping costs under control."
+    },
+    {
+      "heading": "Quick Claim Settlement",
+      "text": "Sixty minutes is all it takes!",
+      "evidence": "Quick Claim Settlement\nSixty minutes is all it takes!"
+    },
+    {
+      "heading": "Documents Required for Reimbursement Claim",
+      "text": "1. Original pre-numbered hospital payment receipt duly sealed and signed.\n2. Original prescriptions and pharmacy bills.\n3. Original consultation papers (if any).\n4. Original investigation and diagnostic reports, along with original bills and payment receipts for the investigation done within and outside the hospital.",
+      "evidence": "Documents Required for Reimbursement Claim\n1. Original pre-numbered hospital payment receipt duly sealed and signed.\n2. Original prescriptions and pharmacy bills.\n3. Original consultation papers (if any).\n4. Original investigation and diagnostic reports, along with original bills and payment receipts for the investigation done within and outside the hospital."
+    },
+    {
+      "heading": "What is a pre-existing disease clause in a individual Medical insurance policy?",
+      "text": "A pre-existing disease clause in your individual medical insurance plan refers to health conditions diagnosed before you bought the policy. These are important because there's a set waiting period before claims become active for these conditions. Stating them at the time of purchase works in your favour as transparency ensures quick claims.",
+      "evidence": "What is a pre-existing disease clause in a individual Medical insurance policy?\nA pre-existing disease clause in your individual medical insurance plan refers to health conditions diagnosed before you bought the policy. These are important because there's a set waiting period before claims become active for these conditions. Stating them at the time of purchase works in your favour as transparency ensures quick claims."
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service"
+    },
+    {
+      "heading": "Covers Extended Family",
+      "text": "This policy covers extended family members, including parents, in-laws and siblings, on an individual basis.",
+      "evidence": "Covers Extended Family\nThis policy covers extended family members, including parents, in-laws and siblings, on an individual basis."
+    },
+    {
+      "heading": "Most plans cover individuals between 18 and 65 years old, with",
+      "text": "senior citizen plans\navailable for those above 65.\n2. Location:\nYou must reside within the geographical area serviced by the insurer.",
+      "evidence": "Most plans cover individuals between 18 and 65 years old, with\nsenior citizen plans\navailable for those above 65.\n2. Location:\nYou must reside within the geographical area serviced by the insurer."
+    },
+    {
+      "heading": "Select suitable coverage",
+      "text": "Check discounts & offers",
+      "evidence": "Select suitable coverage\nCheck discounts & offers"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST"
+    },
+    {
+      "heading": "Family Floater Health Insurance",
+      "text": "Why juggle policies when one app can do it all?",
+      "evidence": "Family Floater Health Insurance\nWhy juggle policies when one app can do it all?"
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ]
+}

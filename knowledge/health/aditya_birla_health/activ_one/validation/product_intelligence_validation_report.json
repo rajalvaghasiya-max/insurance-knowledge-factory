@@ -1,0 +1,30 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "validator_version": "0.4",
+  "input_file": "knowledge/health/aditya_birla_health/activ_one/intelligence/product_intelligence.json",
+  "score": 85,
+  "status": "REVIEW_REQUIRED",
+  "issue_count": 3,
+  "error_count": 0,
+  "warning_count": 3,
+  "issues": [
+    {
+      "severity": "WARN",
+      "field": "waiting_periods.pre_existing_disease_waiting_period",
+      "message": "Critical fact has no cross-document validation",
+      "value": null
+    },
+    {
+      "severity": "WARN",
+      "field": "product_facts.copay",
+      "message": "Critical fact has no cross-document validation",
+      "value": null
+    },
+    {
+      "severity": "WARN",
+      "field": "product_facts.room_rent_limit",
+      "message": "Critical fact has no cross-document validation",
+      "value": null
+    }
+  ]
+}

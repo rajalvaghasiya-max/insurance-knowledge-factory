@@ -1,0 +1,188 @@
+{
+  "schema_version": "0.1",
+  "registry_name": "insurance_trap_registry",
+  "generated_at": "2026-06-09T16:04:25.205197+00:00",
+  "description": "Registry of insurance traps, misunderstandings, claim risks, and advisor warnings.",
+  "principle": "This registry captures where customers may misunderstand coverage and where claim disputes commonly arise.",
+  "entries": [
+    {
+      "trap_id": "room_rent_proportionate_deduction",
+      "trap_name": "Room Rent Proportionate Deduction",
+      "insurance_line": "health",
+      "category": "claim_deduction",
+      "severity": "critical",
+      "related_terms": [
+        "room_rent_limit",
+        "proportionate_deduction"
+      ],
+      "trigger": "Actual room category or room rent exceeds policy eligibility.",
+      "customer_misconception": "Customer may think only extra room rent will be deducted.",
+      "actual_meaning": "Depending on policy wording, associated medical expenses may also be reduced proportionately.",
+      "claim_impact": "very_high",
+      "customer_risk": "high",
+      "advisor_priority": "must_explain_before_purchase",
+      "advisor_warning": "Explain room eligibility and proportionate deduction clearly, especially for low sum insured plans.",
+      "evidence_required_fields": [
+        "room_rent_limit",
+        "proportionate_deduction_applicable",
+        "policy_clause"
+      ],
+      "comparison_dimension": "room_rent_and_deduction_risk",
+      "regulatory_reference_required": true,
+      "status": "active"
+    },
+    {
+      "trap_id": "co_pay_surprise",
+      "trap_name": "Co-pay Surprise",
+      "insurance_line": "health",
+      "category": "claim_cost_sharing",
+      "severity": "high",
+      "related_terms": [
+        "co_pay"
+      ],
+      "trigger": "Policy has mandatory or conditional co-pay.",
+      "customer_misconception": "Customer may think co-pay applies to total bill or may not realize it applies on admissible claim amount.",
+      "actual_meaning": "Policyholder bears a percentage or amount of the admissible claim depending on policy terms.",
+      "claim_impact": "high",
+      "customer_risk": "medium_to_high",
+      "advisor_priority": "must_explain_if_present",
+      "advisor_warning": "Explain when co-pay applies: age-based, zone-based, treatment-based, hospital-based, or all claims.",
+      "evidence_required_fields": [
+        "copay_percentage",
+        "copay_applicability",
+        "copay_basis"
+      ],
+      "comparison_dimension": "out_of_pocket_cost_risk",
+      "regulatory_reference_required": false,
+      "status": "active"
+    },
+    {
+      "trap_id": "ped_waiting_period_trap",
+      "trap_name": "Pre-existing Disease Waiting Period Trap",
+      "insurance_line": "health",
+      "category": "waiting_period",
+      "severity": "critical",
+      "related_terms": [
+        "ped_waiting_period"
+      ],
+      "trigger": "Customer has declared or undeclared pre-existing disease.",
+      "customer_misconception": "Customer may think all diseases are covered immediately after policy purchase.",
+      "actual_meaning": "Pre-existing diseases are covered only after the specified waiting period, subject to disclosure and policy conditions.",
+      "claim_impact": "very_high",
+      "customer_risk": "high",
+      "advisor_priority": "must_explain_before_purchase",
+      "advisor_warning": "Ask medical history questions and compare PED waiting periods before recommendation.",
+      "evidence_required_fields": [
+        "ped_waiting_period_months",
+        "ped_definition",
+        "disclosure_clause"
+      ],
+      "comparison_dimension": "ped_coverage_timeline",
+      "regulatory_reference_required": true,
+      "status": "active"
+    },
+    {
+      "trap_id": "specific_disease_waiting_period_trap",
+      "trap_name": "Specific Disease Waiting Period Trap",
+      "insurance_line": "health",
+      "category": "waiting_period",
+      "severity": "high",
+      "related_terms": [
+        "specific_disease_waiting_period"
+      ],
+      "trigger": "Claim is for a listed disease or treatment within disease-specific waiting period.",
+      "customer_misconception": "Customer may think only pre-existing diseases have waiting periods.",
+      "actual_meaning": "Certain diseases or treatments can have separate waiting periods even if they were not pre-existing.",
+      "claim_impact": "high",
+      "customer_risk": "medium_to_high",
+      "advisor_priority": "must_explain_if_relevant",
+      "advisor_warning": "Review disease-specific waiting period tables for customers with planned or likely treatments.",
+      "evidence_required_fields": [
+        "disease_name",
+        "waiting_period_months",
+        "waiting_period_table"
+      ],
+      "comparison_dimension": "disease_specific_waiting_period",
+      "regulatory_reference_required": false,
+      "status": "active"
+    },
+    {
+      "trap_id": "disease_sub_limit_trap",
+      "trap_name": "Disease or Procedure Sub-limit Trap",
+      "insurance_line": "health",
+      "category": "benefit_limit",
+      "severity": "high",
+      "related_terms": [
+        "sub_limit"
+      ],
+      "trigger": "Claim is for disease/procedure with a specific sub-limit.",
+      "customer_misconception": "Customer may assume full sum insured is available for every treatment.",
+      "actual_meaning": "Some diseases, procedures, or benefits may have separate caps within the overall sum insured.",
+      "claim_impact": "high",
+      "customer_risk": "medium_to_high",
+      "advisor_priority": "must_explain_if_present",
+      "advisor_warning": "Highlight sub-limits for common high-cost procedures and compare against customer needs.",
+      "evidence_required_fields": [
+        "sub_limit_type",
+        "sub_limit_amount",
+        "applicable_condition"
+      ],
+      "comparison_dimension": "treatment_limit_risk",
+      "regulatory_reference_required": false,
+      "status": "active"
+    },
+    {
+      "trap_id": "consumables_exclusion_trap",
+      "trap_name": "Consumables and Non-medical Items Exclusion Trap",
+      "insurance_line": "health",
+      "category": "claim_deduction",
+      "severity": "medium",
+      "related_terms": [
+        "non_medical_expenses",
+        "consumables",
+        "exclusions"
+      ],
+      "trigger": "Hospital bill includes non-medical or consumable items not covered by policy.",
+      "customer_misconception": "Customer may assume the entire hospital bill is payable by insurer.",
+      "actual_meaning": "Consumables and non-medical expenses may be deducted unless covered by add-on or policy benefit.",
+      "claim_impact": "medium",
+      "customer_risk": "medium",
+      "advisor_priority": "explain_when_relevant",
+      "advisor_warning": "Check whether consumables cover or non-medical expenses cover is available.",
+      "evidence_required_fields": [
+        "non_medical_expenses_clause",
+        "consumables_cover_available",
+        "exclusion_annexure"
+      ],
+      "comparison_dimension": "non_medical_expense_risk",
+      "regulatory_reference_required": true,
+      "status": "active"
+    },
+    {
+      "trap_id": "restoration_condition_trap",
+      "trap_name": "Restoration Benefit Condition Trap",
+      "insurance_line": "health",
+      "category": "sum_insured_reinstatement",
+      "severity": "medium",
+      "related_terms": [
+        "restoration_benefit"
+      ],
+      "trigger": "Customer expects restored sum insured to be available for same illness/member/claim.",
+      "customer_misconception": "Customer may believe restoration always refills coverage for any future or ongoing claim.",
+      "actual_meaning": "Restoration may be restricted by same illness, related illness, same insured person, first claim, or exhaustion conditions.",
+      "claim_impact": "medium",
+      "customer_risk": "medium",
+      "advisor_priority": "explain_when_relevant",
+      "advisor_warning": "Identify restoration trigger and usage restrictions before highlighting as a selling point.",
+      "evidence_required_fields": [
+        "restoration_trigger",
+        "same_illness_allowed",
+        "same_member_allowed",
+        "restoration_limit"
+      ],
+      "comparison_dimension": "restoration_quality",
+      "regulatory_reference_required": false,
+      "status": "active"
+    }
+  ]
+}

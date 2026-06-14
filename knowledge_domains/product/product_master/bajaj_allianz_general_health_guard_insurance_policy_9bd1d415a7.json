@@ -1,0 +1,1061 @@
+{
+  "product_id": "bajaj_allianz_general_health_guard_insurance_policy_9bd1d415a7",
+  "insurer_id": "bajaj_allianz_general",
+  "product_name": "Health Guard Insurance Policy",
+  "product_key": "bajaj_allianz_general::health_guard_insurance_policy",
+  "status": "draft",
+  "created_at": "2026-06-07T13:07:41.755894+00:00",
+  "updated_at": "2026-06-07T13:07:41.755909+00:00",
+  "consolidated_by": "product_consolidation_agent",
+  "consolidator_version": "0.2",
+  "source_urls": [
+    "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html"
+  ],
+  "source_content_hashes": [
+    "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6"
+  ],
+  "source_signal_files": [
+    "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json"
+  ],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Get comprehensive coverage for your health",
+      "text": "Choose from Best of Plans\nChoose from multiple plans to meet your requirements",
+      "evidence": "Get comprehensive coverage for your health\nChoose from Best of Plans\nChoose from multiple plans to meet your requirements",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Maternity & Newborn Care",
+      "text": "Medical expenses related to delivery of baby and towards treatment of the new born baby are covered under select plans",
+      "evidence": "Maternity & Newborn Care\nMedical expenses related to delivery of baby and towards treatment of the new born baby are covered under select plans",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Hospitalisation & Day Care Expenses",
+      "text": "Coverage for the cost of in-patient hospitalisation (including room rent type choices), all types of day care procedures, and surgeries",
+      "evidence": "Hospitalisation & Day Care Expenses\nCoverage for the cost of in-patient hospitalisation (including room rent type choices), all types of day care procedures, and surgeries",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Pre & Post-Hospitalisation Expenses",
+      "text": "Pre-hospitalisation expenses (up to 60 days) and post-hospitalisation expenses (up to 90 days) are covered as per policy terms",
+      "evidence": "Pre & Post-Hospitalisation Expenses\nPre-hospitalisation expenses (up to 60 days) and post-hospitalisation expenses (up to 90 days) are covered as per policy terms",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Organ Donor Expenses",
+      "text": "Medical expenses for an organ donor’s in-patient treatment during organ harvesting are covered, provided the insured is the recipient of the donated organ",
+      "evidence": "Organ Donor Expenses\nMedical expenses for an organ donor’s in-patient treatment during organ harvesting are covered, provided the insured is the recipient of the donated organ",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Sum Insured Reinstatement",
+      "text": "Exhausted sum insured exhausted or SI will be reinstated so that you can avail full coverage for your next claim in a policy year (as per policy terms) if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available",
+      "evidence": "Sum Insured Reinstatement\nExhausted sum insured exhausted or SI will be reinstated so that you can avail full coverage for your next claim in a policy year (as per policy terms) if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Maternity Expenses",
+      "text": "Treatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Maternity Expenses\nTreatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Voluntary Aggregate Deductible",
+      "text": "Covers medical expenses for in-patient hospitalisation beyond the voluntary aggregate deductible limit (INR 50,000/ INR 1,00,000/ INR 2,00,000/ INR 3,00,000) as opted as per policy terms for in-patient hospitalisation treatment",
+      "evidence": "Voluntary Aggregate Deductible\nCovers medical expenses for in-patient hospitalisation beyond the voluntary aggregate deductible limit (INR 50,000/ INR 1,00,000/ INR 2,00,000/ INR 3,00,000) as opted as per policy terms for in-patient hospitalisation treatment",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Room Capping Waiver",
+      "text": "Removes the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit",
+      "evidence": "Room Capping Waiver\nRemoves the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Hospital & Day Care SI",
+      "text": "INR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr.",
+      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Pre- & Post-Hospitalisation",
+      "text": "Pre: 60 days & Post: 90 days\nPre: 60 days & Post: 90 days\nPre: 60 days & Post: 90 days",
+      "evidence": "Pre- & Post-Hospitalisation\nPre: 60 days & Post: 90 days\nPre: 60 days & Post: 90 days\nPre: 60 days & Post: 90 days",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Road Ambulance",
+      "text": "INR 20,000/policy year\nINR 20,000/policy year\nINR 20,000/policy year",
+      "evidence": "Road Ambulance\nINR 20,000/policy year\nINR 20,000/policy year\nINR 20,000/policy year",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Not covered",
+      "text": "As per limits specified\nAs per limits specified",
+      "evidence": "Not covered\nAs per limits specified\nAs per limits specified",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Convalescence Benefit",
+      "text": "INR 5,000/policy year\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above",
+      "evidence": "Convalescence Benefit\nINR 5,000/policy year\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Key Benefits of Health Guard",
+      "text": "Let’s take a closer look at the standout features that make Health Guard a top-tier option when evaluating different types of insurance policies.",
+      "evidence": "Key Benefits of Health Guard\nLet’s take a closer look at the standout features that make Health Guard a top-tier option when evaluating different types of insurance policies.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "1. In-Patient Hospitalisation",
+      "text": "Covers medical expenses when you are hospitalised for a minimum of 24 hours, including room rent, ICU, nursing, surgery, doctor’s fees, and diagnostic charges.",
+      "evidence": "1. In-Patient Hospitalisation\nCovers medical expenses when you are hospitalised for a minimum of 24 hours, including room rent, ICU, nursing, surgery, doctor’s fees, and diagnostic charges.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "2. Pre and Post-Hospitalisation",
+      "text": "You are covered for expenses incurred 60 days before hospitalisation and 90 days after discharge. This includes diagnostic tests, medicines, and consultations.",
+      "evidence": "2. Pre and Post-Hospitalisation\nYou are covered for expenses incurred 60 days before hospitalisation and 90 days after discharge. This includes diagnostic tests, medicines, and consultations.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "4. AYUSH Treatment",
+      "text": "Treatment expenses for Ayurveda, Yoga, Unani, Siddha, and Homoeopathy are covered when treatment is taken in a recognised AYUSH hospital.",
+      "evidence": "4. AYUSH Treatment\nTreatment expenses for Ayurveda, Yoga, Unani, Siddha, and Homoeopathy are covered when treatment is taken in a recognised AYUSH hospital.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "6. Preventive Health Check-Up",
+      "text": "At regular intervals, you get the benefit of a health check-up reimbursement, encouraging proactive healthcare.",
+      "evidence": "6. Preventive Health Check-Up\nAt regular intervals, you get the benefit of a health check-up reimbursement, encouraging proactive healthcare.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "7. Maternity & Newborn Cover",
+      "text": "Under Gold and Platinum Plans, maternity expenses and coverage for newborn babies (up to 90 days) are included, along with mandatory vaccinations.",
+      "evidence": "7. Maternity & Newborn Cover\nUnder Gold and Platinum Plans, maternity expenses and coverage for newborn babies (up to 90 days) are included, along with mandatory vaccinations.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "10. Sum Insured Reinstatement",
+      "text": "If your sum insured is exhausted in a policy year, Health Guard reinstates 100% of your base sum insured — a massive relief during multiple hospitalisations.",
+      "evidence": "10. Sum Insured Reinstatement\nIf your sum insured is exhausted in a policy year, Health Guard reinstates 100% of your base sum insured — a massive relief during multiple hospitalisations.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": ": Choose add-ons like air ambulance or room rent waiver as per your lifestyle and need",
+      "text": "With these options, you can tailor your Health Guard plan to suit your health profile and financial capabilities.",
+      "evidence": ": Choose add-ons like air ambulance or room rent waiver as per your lifestyle and need\nWith these options, you can tailor your Health Guard plan to suit your health profile and financial capabilities.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": ": Up to 8% if you opt for capped room rent",
+      "text": "These benefits make Health Guard a valuable and cost-effective solution among other types of insurance policies.",
+      "evidence": ": Up to 8% if you opt for capped room rent\nThese benefits make Health Guard a valuable and cost-effective solution among other types of insurance policies.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "3. A single hospitalisation can exhaust years of savings.",
+      "text": "4. Health insurance provides financial backing so that quality care is never compromised.\nAmong the many types of insurance policies available in the market,\nhealth insurance\nis one of the most vital, especially in today’s world, where lifestyle-related diseases are becoming more common.",
+      "evidence": "3. A single hospitalisation can exhaust years of savings.\n4. Health insurance provides financial backing so that quality care is never compromised.\nAmong the many types of insurance policies available in the market,\nhealth insurance\nis one of the most vital, especially in today’s world, where lifestyle-related diseases are becoming more common.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Types of Health Guard Plans",
+      "text": "Bajaj General Insurance Health Guard offers three comprehensive variants under this product, each designed to suit different budget levels and coverage needs:",
+      "evidence": "Types of Health Guard Plans\nBajaj General Insurance Health Guard offers three comprehensive variants under this product, each designed to suit different budget levels and coverage needs:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "2. Road ambulance cover",
+      "text": "3. Organ donor expenses\n4. AYUSH treatment\n5. Convalescence benefit",
+      "evidence": "2. Road ambulance cover\n3. Organ donor expenses\n4. AYUSH treatment\n5. Convalescence benefit",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "2. Health Guard Gold Plan",
+      "text": "A step above the Silver Plan, this variant includes all the benefits of Silver, along with additional perks like:",
+      "evidence": "2. Health Guard Gold Plan\nA step above the Silver Plan, this variant includes all the benefits of Silver, along with additional perks like:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Added Benefits:",
+      "text": "Maternity cover (₹15,000 for normal delivery and ₹25,000 for Caesarean delivery for Sum Insured ₹3–7.5 lakh; ₹25,000 for normal delivery and ₹35,000 for Caesarean delivery for Sum Insured ₹10 lakh & above)",
+      "evidence": "Added Benefits:\nMaternity cover (₹15,000 for normal delivery and ₹25,000 for Caesarean delivery for Sum Insured ₹3–7.5 lakh; ₹25,000 for normal delivery and ₹35,000 for Caesarean delivery for Sum Insured ₹10 lakh & above)",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "1. Recharge Benefit: Additional sum insured up to ₹5 lakh",
+      "text": "2. Super Cumulative Bonus up to 150%",
+      "evidence": "1. Recharge Benefit: Additional sum insured up to ₹5 lakh\n2. Super Cumulative Bonus up to 150%",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Items not typically covered in standard insurance plans",
+      "text": "Starting from",
+      "evidence": "Items not typically covered in standard insurance plans\nStarting from",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Create a Profile With Us to Unlock New Benefits",
+      "text": "Customised plans that grow with you",
+      "evidence": "Create a Profile With Us to Unlock New Benefits\nCustomised plans that grow with you",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Proactive coverage for future milestones",
+      "text": "Expert advice tailored to your profile",
+      "evidence": "Proactive coverage for future milestones\nExpert advice tailored to your profile",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "Pre-Existing Diseases",
+      "text": "Treatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Health Guard Policy",
+      "evidence": "Pre-Existing Diseases\nTreatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Health Guard Policy",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Maternity Expenses",
+      "text": "Treatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Maternity Expenses\nTreatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Dietary Supplements & Substances",
+      "text": "Cost of supplements that are purchased without a prescription by a certified doctor as a part of treatment, including vitamins, minerals and organic substances",
+      "evidence": "Dietary Supplements & Substances\nCost of supplements that are purchased without a prescription by a certified doctor as a part of treatment, including vitamins, minerals and organic substances",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Treatment for Self-Inflicted Acts",
+      "text": "Medical expenses incurred as a result of self-harm, as a result of intoxication, illegal actions, hazardous activities, etc.",
+      "evidence": "Treatment for Self-Inflicted Acts\nMedical expenses incurred as a result of self-harm, as a result of intoxication, illegal actions, hazardous activities, etc.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Not covered",
+      "text": "As per limits specified\nAs per limits specified",
+      "evidence": "Not covered\nAs per limits specified\nAs per limits specified",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "2. Certain specific diseases (24-month waiting period)",
+      "text": "3. Joint replacement or bariatric surgery (36-month waiting)\n4. Dental, cosmetic, and fertility treatments\n5. Self-harm, intoxication, or criminal acts\n6. Treatment outside India\nAlways read the policy wording carefully or consult an advisor for a detailed understanding.",
+      "evidence": "2. Certain specific diseases (24-month waiting period)\n3. Joint replacement or bariatric surgery (36-month waiting)\n4. Dental, cosmetic, and fertility treatments\n5. Self-harm, intoxication, or criminal acts\n6. Treatment outside India\nAlways read the policy wording carefully or consult an advisor for a detailed understanding.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "E-Insurance Account",
+      "text": "Product wise specific list of excluded items",
+      "evidence": "E-Insurance Account\nProduct wise specific list of excluded items",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "waiting_periods": [
+    {
+      "heading": "Initial Waiting Period",
+      "text": "Treatment expenses during the first 30 days except for treatment of accidental injuries",
+      "evidence": "Initial Waiting Period\nTreatment expenses during the first 30 days except for treatment of accidental injuries",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Pre-Existing Diseases",
+      "text": "Treatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Health Guard Policy",
+      "evidence": "Pre-Existing Diseases\nTreatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Health Guard Policy",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Maternity Expenses",
+      "text": "Treatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Maternity Expenses\nTreatment expenses related to maternity are excluded until 72 months from date of your first Health Guard Policy\nExpenses for Medical Investigation & Evaluation\nMedical expenses primarily for diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": ": Up to 8% if you opt for capped room rent",
+      "text": "These benefits make Health Guard a valuable and cost-effective solution among other types of insurance policies.",
+      "evidence": ": Up to 8% if you opt for capped room rent\nThese benefits make Health Guard a valuable and cost-effective solution among other types of insurance policies.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "2. Certain specific diseases (24-month waiting period)",
+      "text": "3. Joint replacement or bariatric surgery (36-month waiting)\n4. Dental, cosmetic, and fertility treatments\n5. Self-harm, intoxication, or criminal acts\n6. Treatment outside India\nAlways read the policy wording carefully or consult an advisor for a detailed understanding.",
+      "evidence": "2. Certain specific diseases (24-month waiting period)\n3. Joint replacement or bariatric surgery (36-month waiting)\n4. Dental, cosmetic, and fertility treatments\n5. Self-harm, intoxication, or criminal acts\n6. Treatment outside India\nAlways read the policy wording carefully or consult an advisor for a detailed understanding.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "riders_or_addons": [
+    {
+      "heading": "Additional Covers",
+      "text": "What else can you get?",
+      "evidence": "Additional Covers\nWhat else can you get?",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Room Capping Waiver",
+      "text": "Removes the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit",
+      "evidence": "Room Capping Waiver\nRemoves the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": ": Choose add-ons like air ambulance or room rent waiver as per your lifestyle and need",
+      "text": "With these options, you can tailor your Health Guard plan to suit your health profile and financial capabilities.",
+      "evidence": ": Choose add-ons like air ambulance or room rent waiver as per your lifestyle and need\nWith these options, you can tailor your Health Guard plan to suit your health profile and financial capabilities.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Waiver of Room Capping",
+      "text": "Tooltip text\nRemoves single room type restriction*",
+      "evidence": "Waiver of Room Capping\nTooltip text\nRemoves single room type restriction*",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Add or remove riders",
+      "text": "Confirm details and proceed",
+      "evidence": "Add or remove riders\nConfirm details and proceed",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "room_rent_limits": [
+    {
+      "heading": "Hospitalisation & Day Care Expenses",
+      "text": "Coverage for the cost of in-patient hospitalisation (including room rent type choices), all types of day care procedures, and surgeries",
+      "evidence": "Hospitalisation & Day Care Expenses\nCoverage for the cost of in-patient hospitalisation (including room rent type choices), all types of day care procedures, and surgeries",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Room Capping Waiver",
+      "text": "Removes the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit",
+      "evidence": "Room Capping Waiver\nRemoves the room type restriction of \"up to single private air-conditioned room\" for Health Guard Gold and Platinum plans and provides coverage for actual room rent expenses without a limit",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Room Limits",
+      "text": "Up to 1% of SI per day and ICU at actuals\nSingle private AC room for sum insured of SI 3 Lacs to 7.5 Lacs | Actuals for SI 10 Lacs & above | ICU at Actuals\nSingle private AC room for sum insured of SI 3 Lacs to 7.5 Lacs | Actuals for SI 10 Lacs & above | ICU at Actuals",
+      "evidence": "Room Limits\nUp to 1% of SI per day and ICU at actuals\nSingle private AC room for sum insured of SI 3 Lacs to 7.5 Lacs | Actuals for SI 10 Lacs & above | ICU at Actuals\nSingle private AC room for sum insured of SI 3 Lacs to 7.5 Lacs | Actuals for SI 10 Lacs & above | ICU at Actuals",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "1. In-Patient Hospitalisation",
+      "text": "Covers medical expenses when you are hospitalised for a minimum of 24 hours, including room rent, ICU, nursing, surgery, doctor’s fees, and diagnostic charges.",
+      "evidence": "1. In-Patient Hospitalisation\nCovers medical expenses when you are hospitalised for a minimum of 24 hours, including room rent, ICU, nursing, surgery, doctor’s fees, and diagnostic charges.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": ": Choose add-ons like air ambulance or room rent waiver as per your lifestyle and need",
+      "text": "With these options, you can tailor your Health Guard plan to suit your health profile and financial capabilities.",
+      "evidence": ": Choose add-ons like air ambulance or room rent waiver as per your lifestyle and need\nWith these options, you can tailor your Health Guard plan to suit your health profile and financial capabilities.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": ": Up to 8% if you opt for capped room rent",
+      "text": "These benefits make Health Guard a valuable and cost-effective solution among other types of insurance policies.",
+      "evidence": ": Up to 8% if you opt for capped room rent\nThese benefits make Health Guard a valuable and cost-effective solution among other types of insurance policies.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Waiver of Room Capping",
+      "text": "Tooltip text\nRemoves single room type restriction*",
+      "evidence": "Waiver of Room Capping\nTooltip text\nRemoves single room type restriction*",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Covers actual room rent expenses without a cap",
+      "text": "Starting from",
+      "evidence": "Covers actual room rent expenses without a cap\nStarting from",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "Sum Insured Reinstatement",
+      "text": "Exhausted sum insured exhausted or SI will be reinstated so that you can avail full coverage for your next claim in a policy year (as per policy terms) if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available",
+      "evidence": "Sum Insured Reinstatement\nExhausted sum insured exhausted or SI will be reinstated so that you can avail full coverage for your next claim in a policy year (as per policy terms) if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Part of the claim will be borne by you if you have opted for deductibles or co-pay",
+      "text": "Note",
+      "evidence": "Part of the claim will be borne by you if you have opted for deductibles or co-pay\nNote",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "6. Preventive Health Check-Up",
+      "text": "At regular intervals, you get the benefit of a health check-up reimbursement, encouraging proactive healthcare.",
+      "evidence": "6. Preventive Health Check-Up\nAt regular intervals, you get the benefit of a health check-up reimbursement, encouraging proactive healthcare.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "1. Visit a network hospital.",
+      "text": "2. Show your Health Card\n3. Get pre-authorization",
+      "evidence": "1. Visit a network hospital.\n2. Show your Health Card\n3. Get pre-authorization",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Quick Claim Settlement",
+      "text": "Sixty minutes is all it takes!",
+      "evidence": "Quick Claim Settlement\nSixty minutes is all it takes!",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": ": Get your policy documents in your inbox instantly.",
+      "text": "It’s quick, transparent, and hassle-free — just the way insurance should be.",
+      "evidence": ": Get your policy documents in your inbox instantly.\nIt’s quick, transparent, and hassle-free — just the way insurance should be.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "3. Individual or Floater Cover",
+      "text": ": Insure self, spouse, children, parents, siblings, in-laws, and even uncles and aunts",
+      "evidence": "3. Individual or Floater Cover\n: Insure self, spouse, children, parents, siblings, in-laws, and even uncles and aunts",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Who Should Buy Health Guard?",
+      "text": "Health Guard is suitable for:",
+      "evidence": "Who Should Buy Health Guard?\nHealth Guard is suitable for:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "1. Individuals looking for comprehensive, budget-friendly health cover",
+      "text": "2. Newly married couples or families planning children",
+      "evidence": "1. Individuals looking for comprehensive, budget-friendly health cover\n2. Newly married couples or families planning children",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+        "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+        "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "financial_signals": {
+    "sum_insured_values": [
+      {
+        "value": "INR 1 Cr",
+        "reason": "sum_insured_context",
+        "heading": "Hospital & Day Care SI",
+        "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+          "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+          "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 3 Lacs",
+        "reason": "sum_insured_context",
+        "heading": "Hospital & Day Care SI",
+        "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+          "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+          "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 5 Lacs",
+        "reason": "sum_insured_context",
+        "heading": "Hospital & Day Care SI",
+        "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+          "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+          "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 5 lacs",
+        "reason": "sum_insured_context",
+        "heading": "Convalescence Benefit",
+        "evidence": "Convalescence Benefit\nINR 5,000/policy year\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+          "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+          "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 50 Lacs",
+        "reason": "sum_insured_context",
+        "heading": "Hospital & Day Care SI",
+        "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+          "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+          "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹1 crore",
+        "reason": "sum_insured_context",
+        "heading": "Sum Insured Options: ₹5 lakh to ₹1 crore",
+        "evidence": "Sum Insured Options: ₹5 lakh to ₹1 crore\nIf you’re looking to go beyond basic protection and ensure holistic healthcare security, the Platinum plan is your go-to choice.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+          "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+          "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹10 lakh",
+        "reason": "sum_insured_context",
+        "heading": "Added Benefits:",
+        "evidence": "Added Benefits:\nMaternity cover (₹15,000 for normal delivery and ₹25,000 for Caesarean delivery for Sum Insured ₹3–7.5 lakh; ₹25,000 for normal delivery and ₹35,000 for Caesarean delivery for Sum Insured ₹10 lakh & above)",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+          "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+          "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹5 lakh",
+        "reason": "sum_insured_context",
+        "heading": "Sum Insured Options: ₹5 lakh to ₹1 crore",
+        "evidence": "Sum Insured Options: ₹5 lakh to ₹1 crore\nIf you’re looking to go beyond basic protection and ensure holistic healthcare security, the Platinum plan is your go-to choice.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+          "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+          "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+          "extractor_version": "0.7"
+        }
+      }
+    ],
+    "premium_values": [],
+    "benefit_amount_values": [
+      {
+        "value": "INR 20,000",
+        "reason": "benefit_amount_context",
+        "heading": "Road Ambulance",
+        "evidence": "Road Ambulance\nINR 20,000/policy year\nINR 20,000/policy year\nINR 20,000/policy year",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
+          "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
+          "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
+          "extractor_version": "0.7"
+        }
+      }
+    ],
+    "tax_amount_values": [],
+    "discount_values": []
+  },
+  "quality": {
+    "source_count": 1,
+    "has_uin": false,
+    "has_benefits": true,
+    "has_exclusions": true,
+    "has_waiting_periods": true,
+    "confidence": "medium",
+    "notes": [],
+    "removed_noise_items": 5
+  }
+}

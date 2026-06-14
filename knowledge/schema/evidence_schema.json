@@ -1,0 +1,291 @@
+{
+  "schema_version": "0.1",
+  "schema_name": "evidence_schema",
+  "generated_at": "2026-06-09T15:45:16.635345+00:00",
+  "description": "Standard evidence/provenance schema for every extracted insurance fact.",
+  "principle": "Every structured fact must trace back to legal/source truth.",
+  "required_fields": [
+    "fact_id",
+    "entity_id",
+    "entity_type",
+    "field",
+    "value",
+    "evidence",
+    "source",
+    "confidence",
+    "extraction"
+  ],
+  "fact_object": {
+    "fact_id": {
+      "type": "string",
+      "description": "Stable unique ID for this extracted fact."
+    },
+    "entity_id": {
+      "type": "string",
+      "description": "Product/source/regulation ID this fact belongs to. Prefer UIN for products when available."
+    },
+    "entity_type": {
+      "type": "string",
+      "allowed_values": [
+        "product",
+        "document",
+        "regulation",
+        "circular",
+        "source",
+        "insurer",
+        "council"
+      ]
+    },
+    "insurance_line": {
+      "type": "string",
+      "allowed_values": [
+        "health",
+        "life",
+        "motor",
+        "general",
+        "regulatory",
+        "market_intelligence",
+        "unknown"
+      ]
+    },
+    "field": {
+      "type": "string",
+      "description": "Canonical field name. Example: ped_waiting_period, room_rent_limit, copay."
+    },
+    "value": {
+      "type": "any",
+      "description": "Normalized extracted value."
+    },
+    "raw_value": {
+      "type": "any",
+      "description": "Original value before normalization."
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit where applicable. Example: months, percent, INR, days."
+    },
+    "evidence": {
+      "type": "object",
+      "required_fields": [
+        "text"
+      ],
+      "fields": {
+        "text": {
+          "type": "string",
+          "description": "Exact or near-exact source text supporting the fact."
+        },
+        "evidence_type": {
+          "type": "string",
+          "allowed_values": [
+            "clause",
+            "table",
+            "list",
+            "heading",
+            "paragraph",
+            "pdf_text",
+            "html_text",
+            "manual_review"
+          ]
+        },
+        "page": {
+          "type": "integer_or_null",
+          "description": "PDF page number if available."
+        },
+        "section": {
+          "type": "string_or_null",
+          "description": "Document section title if available."
+        },
+        "table_id": {
+          "type": "string_or_null",
+          "description": "Table ID if evidence came from structured table."
+        },
+        "row_id": {
+          "type": "string_or_null",
+          "description": "Row ID if evidence came from structured table row."
+        },
+        "chunk_id": {
+          "type": "string_or_null",
+          "description": "Parser chunk ID used by extractor."
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required_fields": [
+        "source_document",
+        "source_type"
+      ],
+      "fields": {
+        "source_document": {
+          "type": "string",
+          "description": "Local or logical document name. Example: policy_wording.pdf."
+        },
+        "source_type": {
+          "type": "string",
+          "allowed_values": [
+            "policy_wording",
+            "brochure",
+            "customer_information_sheet",
+            "prospectus",
+            "proposal_form",
+            "claim_form",
+            "webpage",
+            "irda_circular",
+            "irda_regulation",
+            "council_page",
+            "unknown"
+          ]
+        },
+        "source_url": {
+          "type": "string_or_null"
+        },
+        "source_file_path": {
+          "type": "string_or_null"
+        },
+        "source_hash": {
+          "type": "string_or_null",
+          "description": "SHA256 hash of source file/content if available."
+        },
+        "document_version": {
+          "type": "string_or_null"
+        },
+        "effective_date": {
+          "type": "date_or_null"
+        }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required_fields": [
+        "score",
+        "method"
+      ],
+      "fields": {
+        "score": {
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        "method": {
+          "type": "string",
+          "allowed_values": [
+            "rule_based",
+            "regex",
+            "table_parser",
+            "llm",
+            "hybrid",
+            "manual"
+          ]
+        },
+        "reason": {
+          "type": "string_or_null"
+        },
+        "requires_review": {
+          "type": "boolean",
+          "description": "True when confidence is below review threshold or evidence is weak."
+        }
+      }
+    },
+    "extraction": {
+      "type": "object",
+      "required_fields": [
+        "agent_name",
+        "agent_version",
+        "extracted_at"
+      ],
+      "fields": {
+        "agent_name": {
+          "type": "string"
+        },
+        "agent_version": {
+          "type": "string"
+        },
+        "extracted_at": {
+          "type": "datetime"
+        },
+        "parser_version": {
+          "type": "string_or_null"
+        },
+        "model_name": {
+          "type": "string_or_null",
+          "description": "Only if LLM was used."
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "fields": {
+        "status": {
+          "type": "string",
+          "allowed_values": [
+            "not_validated",
+            "valid",
+            "warning",
+            "invalid",
+            "needs_human_review"
+          ]
+        },
+        "validator_name": {
+          "type": "string_or_null"
+        },
+        "validator_version": {
+          "type": "string_or_null"
+        },
+        "validated_at": {
+          "type": "datetime_or_null"
+        },
+        "messages": {
+          "type": "array"
+        }
+      }
+    }
+  },
+  "example": {
+    "fact_id": "fact:health:star_health:star_comprehensive:ped_waiting_period",
+    "entity_id": "star_health:star_comprehensive",
+    "entity_type": "product",
+    "insurance_line": "health",
+    "field": "ped_waiting_period",
+    "value": 36,
+    "raw_value": "36 months",
+    "unit": "months",
+    "evidence": {
+      "text": "Pre-existing diseases will be covered after a waiting period of 36 months.",
+      "evidence_type": "clause",
+      "page": 17,
+      "section": "Waiting Periods",
+      "table_id": null,
+      "row_id": null,
+      "chunk_id": "policy_wording_chunk_017"
+    },
+    "source": {
+      "source_document": "policy_wording.pdf",
+      "source_type": "policy_wording",
+      "source_url": null,
+      "source_file_path": "knowledge/health/star_health/star_comprehensive/raw/policy_wording.pdf",
+      "source_hash": null,
+      "document_version": null,
+      "effective_date": null
+    },
+    "confidence": {
+      "score": 0.94,
+      "method": "hybrid",
+      "reason": "Direct clause match with waiting period phrase.",
+      "requires_review": false
+    },
+    "extraction": {
+      "agent_name": "waiting_period_extractor",
+      "agent_version": "0.1",
+      "extracted_at": "2026-06-09T15:45:16.635422+00:00",
+      "parser_version": "0.1",
+      "model_name": null
+    },
+    "validation": {
+      "status": "not_validated",
+      "validator_name": null,
+      "validator_version": null,
+      "validated_at": null,
+      "messages": []
+    }
+  }
+}

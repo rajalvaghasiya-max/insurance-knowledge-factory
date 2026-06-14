@@ -1,0 +1,300 @@
+{
+  "generated_at": "2026-06-07T13:31:57.024351+00:00",
+  "agent": "product_quality_report",
+  "agent_version": "0.1.1",
+  "source_dir": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge_domains\\product\\product_master",
+  "summary": {
+    "products": 10,
+    "high_confidence": 0,
+    "medium_confidence": 8,
+    "low_confidence": 2,
+    "missing_uin": 10,
+    "missing_exclusions": 0,
+    "missing_waiting_periods": 0,
+    "missing_financial_values": 2,
+    "needs_pdf_enrichment": 10,
+    "review_generic_page": 0
+  },
+  "products": [
+    {
+      "product_id": "aditya_birla_health_activ_one_max_a23421c440",
+      "product_key": "aditya_birla_health::activ_one_max",
+      "insurer_id": "aditya_birla_health",
+      "product_name": "Activ One Max",
+      "confidence_score": 75,
+      "grade": "medium",
+      "counts": {
+        "uins": 0,
+        "benefits": 22,
+        "exclusions": 3,
+        "waiting_periods": 6,
+        "financial_values": 1,
+        "sources": 1,
+        "removed_noise_items": 3
+      },
+      "checks": {
+        "missing_uin": true,
+        "few_benefits": false,
+        "too_many_benefits": false,
+        "missing_exclusions": false,
+        "missing_waiting_periods": false,
+        "missing_financial_values": false,
+        "single_source": true,
+        "no_noise_removed": false
+      },
+      "recommendation": "NEEDS_PDF_ENRICHMENT"
+    },
+    {
+      "product_id": "aditya_birla_health_activ_one_max_plus_a96c46b661",
+      "product_key": "aditya_birla_health::activ_one_max_plus",
+      "insurer_id": "aditya_birla_health",
+      "product_name": "Activ One Max Plus",
+      "confidence_score": 65,
+      "grade": "low",
+      "counts": {
+        "uins": 0,
+        "benefits": 20,
+        "exclusions": 3,
+        "waiting_periods": 4,
+        "financial_values": 0,
+        "sources": 1,
+        "removed_noise_items": 2
+      },
+      "checks": {
+        "missing_uin": true,
+        "few_benefits": false,
+        "too_many_benefits": false,
+        "missing_exclusions": false,
+        "missing_waiting_periods": false,
+        "missing_financial_values": true,
+        "single_source": true,
+        "no_noise_removed": false
+      },
+      "recommendation": "NEEDS_PDF_ENRICHMENT"
+    },
+    {
+      "product_id": "aditya_birla_health_activ_yuva_d7bc5d5119",
+      "product_key": "aditya_birla_health::activ_yuva",
+      "insurer_id": "aditya_birla_health",
+      "product_name": "Activ Yuva",
+      "confidence_score": 65,
+      "grade": "low",
+      "counts": {
+        "uins": 0,
+        "benefits": 10,
+        "exclusions": 2,
+        "waiting_periods": 5,
+        "financial_values": 0,
+        "sources": 1,
+        "removed_noise_items": 4
+      },
+      "checks": {
+        "missing_uin": true,
+        "few_benefits": false,
+        "too_many_benefits": false,
+        "missing_exclusions": false,
+        "missing_waiting_periods": false,
+        "missing_financial_values": true,
+        "single_source": true,
+        "no_noise_removed": false
+      },
+      "recommendation": "NEEDS_PDF_ENRICHMENT"
+    },
+    {
+      "product_id": "bajaj_allianz_general_arogya_sanjeevani_health_insurance_policy_3b90616eba",
+      "product_key": "bajaj_allianz_general::arogya_sanjeevani_health_insurance_policy",
+      "insurer_id": "bajaj_allianz_general",
+      "product_name": "Arogya Sanjeevani Health Insurance Policy",
+      "confidence_score": 75,
+      "grade": "medium",
+      "counts": {
+        "uins": 0,
+        "benefits": 22,
+        "exclusions": 6,
+        "waiting_periods": 6,
+        "financial_values": 5,
+        "sources": 1,
+        "removed_noise_items": 4
+      },
+      "checks": {
+        "missing_uin": true,
+        "few_benefits": false,
+        "too_many_benefits": false,
+        "missing_exclusions": false,
+        "missing_waiting_periods": false,
+        "missing_financial_values": false,
+        "single_source": true,
+        "no_noise_removed": false
+      },
+      "recommendation": "NEEDS_PDF_ENRICHMENT"
+    },
+    {
+      "product_id": "bajaj_allianz_general_family_health_insurance_b3cc65c556",
+      "product_key": "bajaj_allianz_general::family_health_insurance",
+      "insurer_id": "bajaj_allianz_general",
+      "product_name": "Family Health Insurance",
+      "confidence_score": 75,
+      "grade": "medium",
+      "counts": {
+        "uins": 0,
+        "benefits": 38,
+        "exclusions": 3,
+        "waiting_periods": 3,
+        "financial_values": 12,
+        "sources": 1,
+        "removed_noise_items": 6
+      },
+      "checks": {
+        "missing_uin": true,
+        "few_benefits": false,
+        "too_many_benefits": false,
+        "missing_exclusions": false,
+        "missing_waiting_periods": false,
+        "missing_financial_values": false,
+        "single_source": true,
+        "no_noise_removed": false
+      },
+      "recommendation": "NEEDS_PDF_ENRICHMENT"
+    },
+    {
+      "product_id": "bajaj_allianz_general_health_guard_insurance_policy_9bd1d415a7",
+      "product_key": "bajaj_allianz_general::health_guard_insurance_policy",
+      "insurer_id": "bajaj_allianz_general",
+      "product_name": "Health Guard Insurance Policy",
+      "confidence_score": 75,
+      "grade": "medium",
+      "counts": {
+        "uins": 0,
+        "benefits": 33,
+        "exclusions": 7,
+        "waiting_periods": 5,
+        "financial_values": 9,
+        "sources": 1,
+        "removed_noise_items": 5
+      },
+      "checks": {
+        "missing_uin": true,
+        "few_benefits": false,
+        "too_many_benefits": false,
+        "missing_exclusions": false,
+        "missing_waiting_periods": false,
+        "missing_financial_values": false,
+        "single_source": true,
+        "no_noise_removed": false
+      },
+      "recommendation": "NEEDS_PDF_ENRICHMENT"
+    },
+    {
+      "product_id": "bajaj_allianz_general_individual_health_insurance_c000388690",
+      "product_key": "bajaj_allianz_general::individual_health_insurance",
+      "insurer_id": "bajaj_allianz_general",
+      "product_name": "Individual Health Insurance",
+      "confidence_score": 75,
+      "grade": "medium",
+      "counts": {
+        "uins": 0,
+        "benefits": 34,
+        "exclusions": 8,
+        "waiting_periods": 5,
+        "financial_values": 8,
+        "sources": 1,
+        "removed_noise_items": 3
+      },
+      "checks": {
+        "missing_uin": true,
+        "few_benefits": false,
+        "too_many_benefits": false,
+        "missing_exclusions": false,
+        "missing_waiting_periods": false,
+        "missing_financial_values": false,
+        "single_source": true,
+        "no_noise_removed": false
+      },
+      "recommendation": "NEEDS_PDF_ENRICHMENT"
+    },
+    {
+      "product_id": "bajaj_allianz_general_international_health_insurance_ed5ab76787",
+      "product_key": "bajaj_allianz_general::international_health_insurance",
+      "insurer_id": "bajaj_allianz_general",
+      "product_name": "International Health Insurance",
+      "confidence_score": 75,
+      "grade": "medium",
+      "counts": {
+        "uins": 0,
+        "benefits": 26,
+        "exclusions": 7,
+        "waiting_periods": 5,
+        "financial_values": 9,
+        "sources": 1,
+        "removed_noise_items": 3
+      },
+      "checks": {
+        "missing_uin": true,
+        "few_benefits": false,
+        "too_many_benefits": false,
+        "missing_exclusions": false,
+        "missing_waiting_periods": false,
+        "missing_financial_values": false,
+        "single_source": true,
+        "no_noise_removed": false
+      },
+      "recommendation": "NEEDS_PDF_ENRICHMENT"
+    },
+    {
+      "product_id": "bajaj_allianz_general_my_health_care_plan_c009dc1dbb",
+      "product_key": "bajaj_allianz_general::my_health_care_plan",
+      "insurer_id": "bajaj_allianz_general",
+      "product_name": "My Health Care Plan",
+      "confidence_score": 75,
+      "grade": "medium",
+      "counts": {
+        "uins": 0,
+        "benefits": 31,
+        "exclusions": 5,
+        "waiting_periods": 7,
+        "financial_values": 11,
+        "sources": 1,
+        "removed_noise_items": 4
+      },
+      "checks": {
+        "missing_uin": true,
+        "few_benefits": false,
+        "too_many_benefits": false,
+        "missing_exclusions": false,
+        "missing_waiting_periods": false,
+        "missing_financial_values": false,
+        "single_source": true,
+        "no_noise_removed": false
+      },
+      "recommendation": "NEEDS_PDF_ENRICHMENT"
+    },
+    {
+      "product_id": "bajaj_allianz_general_senior_citizen_health_insurance_b8007b1478",
+      "product_key": "bajaj_allianz_general::senior_citizen_health_insurance",
+      "insurer_id": "bajaj_allianz_general",
+      "product_name": "Senior Citizen Health Insurance",
+      "confidence_score": 75,
+      "grade": "medium",
+      "counts": {
+        "uins": 0,
+        "benefits": 28,
+        "exclusions": 3,
+        "waiting_periods": 5,
+        "financial_values": 16,
+        "sources": 1,
+        "removed_noise_items": 7
+      },
+      "checks": {
+        "missing_uin": true,
+        "few_benefits": false,
+        "too_many_benefits": false,
+        "missing_exclusions": false,
+        "missing_waiting_periods": false,
+        "missing_financial_values": false,
+        "single_source": true,
+        "no_noise_removed": false
+      },
+      "recommendation": "NEEDS_PDF_ENRICHMENT"
+    }
+  ]
+}

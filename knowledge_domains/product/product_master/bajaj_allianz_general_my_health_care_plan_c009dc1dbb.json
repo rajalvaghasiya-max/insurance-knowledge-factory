@@ -1,0 +1,1003 @@
+{
+  "product_id": "bajaj_allianz_general_my_health_care_plan_c009dc1dbb",
+  "insurer_id": "bajaj_allianz_general",
+  "product_name": "My Health Care Plan",
+  "product_key": "bajaj_allianz_general::my_health_care_plan",
+  "status": "draft",
+  "created_at": "2026-06-07T13:07:41.761484+00:00",
+  "updated_at": "2026-06-07T13:07:41.761499+00:00",
+  "consolidated_by": "product_consolidation_agent",
+  "consolidator_version": "0.2",
+  "source_urls": [
+    "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html"
+  ],
+  "source_content_hashes": [
+    "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da"
+  ],
+  "source_signal_files": [
+    "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json"
+  ],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Design Your Own Plan",
+      "text": "Get the flexibility to personalise coverage for you and your family with our plan that’s truly modular",
+      "evidence": "Design Your Own Plan\nGet the flexibility to personalise coverage for you and your family with our plan that’s truly modular",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Reinstatement Benefit & Recharge",
+      "text": "Avail the option of unlimited reinstatement of sum insured even if you have exhausted it due to claims",
+      "evidence": "Reinstatement Benefit & Recharge\nAvail the option of unlimited reinstatement of sum insured even if you have exhausted it due to claims",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Non-Medical Cover",
+      "text": "Benefit from consumable coverage (up to SI limit) that covers the cost of items like gloves, syringes, and bandages used during treatment",
+      "evidence": "Non-Medical Cover\nBenefit from consumable coverage (up to SI limit) that covers the cost of items like gloves, syringes, and bandages used during treatment",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Maternity & Baby Care",
+      "text": "Ensure coverage for expenses incurred for maternity, surrogacy, complications of assisted reproductive technologies (ART), and care for your newborn",
+      "evidence": "Maternity & Baby Care\nEnsure coverage for expenses incurred for maternity, surrogacy, complications of assisted reproductive technologies (ART), and care for your newborn",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Preventive Check-Ups",
+      "text": "Avail preventive health check-ups every year from the first year of your policy to stay ahead of health issues",
+      "evidence": "Preventive Check-Ups\nAvail preventive health check-ups every year from the first year of your policy to stay ahead of health issues",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Pre- & Post-Hospitalisation Expenses",
+      "text": "Pre-hospitalisation expenses (up to 60 days) and post-hospitalisation expenses (up to 90 days) with flexible customisation options to suit your needs are covered",
+      "evidence": "Pre- & Post-Hospitalisation Expenses\nPre-hospitalisation expenses (up to 60 days) and post-hospitalisation expenses (up to 90 days) with flexible customisation options to suit your needs are covered",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Out-Patient Treatment (OPD) Expenses",
+      "text": "Doctor consultations at their clinic or online, along with pathology, radiology and annual preventive health check-ups as per specified limits are covered",
+      "evidence": "Out-Patient Treatment (OPD) Expenses\nDoctor consultations at their clinic or online, along with pathology, radiology and annual preventive health check-ups as per specified limits are covered",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Domiciliary Hospitalisation Cost",
+      "text": "Coverage for medical expenses incurred during at-home treatment as per the doctor’s advice in case there are no beds available at the hospital or the patient can’t be moved to the hospital",
+      "evidence": "Domiciliary Hospitalisation Cost\nCoverage for medical expenses incurred during at-home treatment as per the doctor’s advice in case there are no beds available at the hospital or the patient can’t be moved to the hospital",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Advanced Treatment Charges",
+      "text": "Any medical expenses incurred while undergoing advanced treatment methods and modern technological procedures are covered",
+      "evidence": "Advanced Treatment Charges\nAny medical expenses incurred while undergoing advanced treatment methods and modern technological procedures are covered",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Organ Donor Expenses",
+      "text": "Medical expenses for an organ donor’s in-patient treatment during organ harvesting are covered, provided the insured is the recipient of the donated organ",
+      "evidence": "Organ Donor Expenses\nMedical expenses for an organ donor’s in-patient treatment during organ harvesting are covered, provided the insured is the recipient of the donated organ",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Maternity & Newborn Care",
+      "text": "Coverage for expenses incurred during treatment for maternity, surrogacy, complications of assisted reproductive technologies (ART) and newborn",
+      "evidence": "Maternity & Newborn Care\nCoverage for expenses incurred during treatment for maternity, surrogacy, complications of assisted reproductive technologies (ART) and newborn",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Sum Insured Reinstatement",
+      "text": "Exhausted sum insured or SI will be reinstated so that you can avail the full coverage for your next claim in a policy year if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available",
+      "evidence": "Sum Insured Reinstatement\nExhausted sum insured or SI will be reinstated so that you can avail the full coverage for your next claim in a policy year if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Coverage for maternity treatment for a pre-defined, continuous waiting period of 12/ 24/ 36 months",
+      "text": "Expenses for Medical Investigation & Evaluation\nCost of diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Coverage for maternity treatment for a pre-defined, continuous waiting period of 12/ 24/ 36 months\nExpenses for Medical Investigation & Evaluation\nCost of diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "International Cover (Emergency Care Only)",
+      "text": "Medical expenses incurred overseas in case of emergency care can be reimbursed (up to Hospitalisation SI) limit)",
+      "evidence": "International Cover (Emergency Care Only)\nMedical expenses incurred overseas in case of emergency care can be reimbursed (up to Hospitalisation SI) limit)",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Overview of My Health Care Plan",
+      "text": "Introducing a unique\nhealth insurance plan\nthat cares for you the way you want. Now, transforming care your way. The ‘My Healthcare Plan’ is a modular plan that offers the flexibility to curate an individual bouquet of features for yourself and your family.\nIt is an umbrella product for customizable packages. You can now easily buy a mediclaim policy plan that gives you the option to pick and choose the insurance coverage. Design your health care plan based on which the health insurance premium will be determined.\nParameter\nInformation",
+      "evidence": "Overview of My Health Care Plan\nIntroducing a unique\nhealth insurance plan\nthat cares for you the way you want. Now, transforming care your way. The ‘My Healthcare Plan’ is a modular plan that offers the flexibility to curate an individual bouquet of features for yourself and your family.\nIt is an umbrella product for customizable packages. You can now easily buy a mediclaim policy plan that gives you the option to pick and choose the insurance coverage. Design your health care plan based on which the health insurance premium will be determined.\nParameter\nInformation",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Bouquet of Coverages",
+      "text": "Ensure that the mediclaim insurance for family offers an array of coverage for expenses incurred towards hospitalization, modern treatment methods, etc.",
+      "evidence": "Bouquet of Coverages\nEnsure that the mediclaim insurance for family offers an array of coverage for expenses incurred towards hospitalization, modern treatment methods, etc.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Annual Preventive Health Check-up",
+      "text": "Look at if you can avail of free",
+      "evidence": "Annual Preventive Health Check-up\nLook at if you can avail of free",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "preventive health check-ups",
+      "text": "once in every policy year in any of the network hospitals. At Bajaj General Insurance, we are growing strong with 18,400 + network hospitals* across the nation.\nWith My Healthcare Plan, now you need not buy separate maternity insurance cover or baby cover. This plan offers an in-built cover maternity cover, nursing cover and baby cover.",
+      "evidence": "preventive health check-ups\nonce in every policy year in any of the network hospitals. At Bajaj General Insurance, we are growing strong with 18,400 + network hospitals* across the nation.\nWith My Healthcare Plan, now you need not buy separate maternity insurance cover or baby cover. This plan offers an in-built cover maternity cover, nursing cover and baby cover.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Hospital & Day Care SI",
+      "text": "INR 3 Lacs to 5 Cr.\nINR 3 Lacs to 1 Cr.",
+      "evidence": "Hospital & Day Care SI\nINR 3 Lacs to 5 Cr.\nINR 3 Lacs to 1 Cr.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Pre- & Post-Hospitalisation",
+      "text": "Pre: 60 days & Post: 90 days (option to change)\nPre: 30 days & Post: 60 days",
+      "evidence": "Pre- & Post-Hospitalisation\nPre: 60 days & Post: 90 days (option to change)\nPre: 30 days & Post: 60 days",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Maternity Sublimits",
+      "text": "INR 50,000 for SI 5 to 10 Lacs | 75,000 for SI 15 to 20 Lacs | 1,00,000 for SI above 20 Lacs",
+      "evidence": "Maternity Sublimits\nINR 50,000 for SI 5 to 10 Lacs | 75,000 for SI 15 to 20 Lacs | 1,00,000 for SI above 20 Lacs",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "OPD Cover",
+      "text": "Tele-consultation, in-clinic doctor consultation, pathology, radiology, & preventive check-up\nTele-consultation\nHome Nursing (max 10 weeks)\nINR 5,000/week for SI up to 50 Lacs | 10,000/week for SI above 50 Lacs",
+      "evidence": "OPD Cover\nTele-consultation, in-clinic doctor consultation, pathology, radiology, & preventive check-up\nTele-consultation\nHome Nursing (max 10 weeks)\nINR 5,000/week for SI up to 50 Lacs | 10,000/week for SI above 50 Lacs",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Cumulative Bonus",
+      "text": "25% p.a. max 100% for SI 3 to 4 Lacs | 50% p.a. max 100% for SI 5 lacs and above\n10% p.a. max 100%",
+      "evidence": "Cumulative Bonus\n25% p.a. max 100% for SI 3 to 4 Lacs | 50% p.a. max 100% for SI 5 lacs and above\n10% p.a. max 100%",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "SI Reinstatement",
+      "text": "Once for SI 3 & 4 Lacs | Unlimited for SI 5 Lacs and above\nOnce for SI 3 lacs | Unlimited for SI above 3 lacs",
+      "evidence": "SI Reinstatement\nOnce for SI 3 & 4 Lacs | Unlimited for SI 5 Lacs and above\nOnce for SI 3 lacs | Unlimited for SI above 3 lacs",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "health insurance premium calculator online",
+      "text": ", which is simple and quickly calculates the premium amount based on the inputs entered. Whether you are buying individual health insurance or mediclaim insurance for family, using this online tool has benefits:\n- Helps to make an informed decision\n- Easy to use, is quicker and hassle-free\n- Enable you to budget accordingly\nBefore you use a health insurance calculator it’s important to understand that various factors determine the premium. This includes the age of the insured, medical history, lifestyle habits, type of cover, etc.\nTo use the health insurance calculator, to know My Healthcare Plan premium the below details will be required:\n- Select the type of plan like an individual or family health insurance",
+      "evidence": "health insurance premium calculator online\n, which is simple and quickly calculates the premium amount based on the inputs entered. Whether you are buying individual health insurance or mediclaim insurance for family, using this online tool has benefits:\n- Helps to make an informed decision\n- Easy to use, is quicker and hassle-free\n- Enable you to budget accordingly\nBefore you use a health insurance calculator it’s important to understand that various factors determine the premium. This includes the age of the insured, medical history, lifestyle habits, type of cover, etc.\nTo use the health insurance calculator, to know My Healthcare Plan premium the below details will be required:\n- Select the type of plan like an individual or family health insurance",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Items not typically covered in standard insurance plans",
+      "text": "Starting from",
+      "evidence": "Items not typically covered in standard insurance plans\nStarting from",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Create a Profile With Us to Unlock New Benefits",
+      "text": "Customised plans that grow with you",
+      "evidence": "Create a Profile With Us to Unlock New Benefits\nCustomised plans that grow with you",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Proactive coverage for future milestones",
+      "text": "Expert advice tailored to your profile",
+      "evidence": "Proactive coverage for future milestones\nExpert advice tailored to your profile",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Is maternity and newborn baby coverage available in this plan?",
+      "text": "Yes. Maternity coverage is available for sum insured of ₹5 lakh and above, subject to a waiting period. It includes delivery expenses, surrogacy-related costs, complications from assisted reproductive technologies, and newborn care from birth if initiated within 90 days.",
+      "evidence": "Is maternity and newborn baby coverage available in this plan?\nYes. Maternity coverage is available for sum insured of ₹5 lakh and above, subject to a waiting period. It includes delivery expenses, surrogacy-related costs, complications from assisted reproductive technologies, and newborn care from birth if initiated within 90 days.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Is organ donor treatment covered under this policy?",
+      "text": "Yes. Medical expenses for organ donor treatment are covered when the insured is the recipient, including hospitalisation and surgery costs for harvesting the organ, up to the sum insured limit.",
+      "evidence": "Is organ donor treatment covered under this policy?\nYes. Medical expenses for organ donor treatment are covered when the insured is the recipient, including hospitalisation and surgery costs for harvesting the organ, up to the sum insured limit.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "Pre-Existing Diseases",
+      "text": "Treatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 12/24/36 months (as selected) from date of your first My Health Care Plan",
+      "evidence": "Pre-Existing Diseases\nTreatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 12/24/36 months (as selected) from date of your first My Health Care Plan",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Coverage for maternity treatment for a pre-defined, continuous waiting period of 12/ 24/ 36 months",
+      "text": "Expenses for Medical Investigation & Evaluation\nCost of diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Coverage for maternity treatment for a pre-defined, continuous waiting period of 12/ 24/ 36 months\nExpenses for Medical Investigation & Evaluation\nCost of diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Dietary Supplements & Substances",
+      "text": "Cost of supplements that are purchased without a prescription by a certified doctor as a part of treatment, including vitamins, minerals and organic substances",
+      "evidence": "Dietary Supplements & Substances\nCost of supplements that are purchased without a prescription by a certified doctor as a part of treatment, including vitamins, minerals and organic substances",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Treatment for Self-Inflicted Acts",
+      "text": "Medical expenses incurred as a result of self-harm, intoxication, illegal actions, hazardous activities, etc.",
+      "evidence": "Treatment for Self-Inflicted Acts\nMedical expenses incurred as a result of self-harm, intoxication, illegal actions, hazardous activities, etc.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "E-Insurance Account",
+      "text": "Product wise specific list of excluded items",
+      "evidence": "E-Insurance Account\nProduct wise specific list of excluded items",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "waiting_periods": [
+    {
+      "heading": "Initial Waiting Period",
+      "text": "Treatment expenses during the first 30 days except for treatment of accidental injuries",
+      "evidence": "Initial Waiting Period\nTreatment expenses during the first 30 days except for treatment of accidental injuries",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Pre-Existing Diseases",
+      "text": "Treatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 12/24/36 months (as selected) from date of your first My Health Care Plan",
+      "evidence": "Pre-Existing Diseases\nTreatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 12/24/36 months (as selected) from date of your first My Health Care Plan",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Coverage for maternity treatment for a pre-defined, continuous waiting period of 12/ 24/ 36 months",
+      "text": "Expenses for Medical Investigation & Evaluation\nCost of diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Coverage for maternity treatment for a pre-defined, continuous waiting period of 12/ 24/ 36 months\nExpenses for Medical Investigation & Evaluation\nCost of diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Pre- & Post-Hospitalisation",
+      "text": "Pre: 60 days & Post: 90 days (option to change)\nPre: 30 days & Post: 60 days",
+      "evidence": "Pre- & Post-Hospitalisation\nPre: 60 days & Post: 90 days (option to change)\nPre: 30 days & Post: 60 days",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Is maternity and newborn baby coverage available in this plan?",
+      "text": "Yes. Maternity coverage is available for sum insured of ₹5 lakh and above, subject to a waiting period. It includes delivery expenses, surrogacy-related costs, complications from assisted reproductive technologies, and newborn care from birth if initiated within 90 days.",
+      "evidence": "Is maternity and newborn baby coverage available in this plan?\nYes. Maternity coverage is available for sum insured of ₹5 lakh and above, subject to a waiting period. It includes delivery expenses, surrogacy-related costs, complications from assisted reproductive technologies, and newborn care from birth if initiated within 90 days.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "What are the Sum Insured options available under My Health Care Plan?",
+      "text": "Options range from ₹3 lakh to ₹75 lakh and ₹1 crore to ₹5 crore. Available choices include ₹3, ₹4, ₹5, ₹7.5, ₹10, ₹15, ₹20, ₹25, ₹30, ₹35, ₹40, ₹45, ₹50, ₹75 lakh, and ₹1, ₹2, ₹3, ₹4, ₹5 crore.\nCan I migrate or port my existing health insurance policy to My Health Care Plan?\nYes. You can port or migrate your existing policy under IRDAI norms. Waiting periods for pre-existing diseases may be credited, provided the previous policy was continuous and underwriting approval is granted.",
+      "evidence": "What are the Sum Insured options available under My Health Care Plan?\nOptions range from ₹3 lakh to ₹75 lakh and ₹1 crore to ₹5 crore. Available choices include ₹3, ₹4, ₹5, ₹7.5, ₹10, ₹15, ₹20, ₹25, ₹30, ₹35, ₹40, ₹45, ₹50, ₹75 lakh, and ₹1, ₹2, ₹3, ₹4, ₹5 crore.\nCan I migrate or port my existing health insurance policy to My Health Care Plan?\nYes. You can port or migrate your existing policy under IRDAI norms. Waiting periods for pre-existing diseases may be credited, provided the previous policy was continuous and underwriting approval is granted.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "What is the waiting period under My Health Care Plan?",
+      "text": "The plan includes a 30-day initial waiting period, a 24-month waiting period for specified diseases/procedures, and a 36-month waiting period for pre-existing conditions, with modification options.",
+      "evidence": "What is the waiting period under My Health Care Plan?\nThe plan includes a 30-day initial waiting period, a 24-month waiting period for specified diseases/procedures, and a 36-month waiting period for pre-existing conditions, with modification options.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "riders_or_addons": [
+    {
+      "heading": "Additional Covers",
+      "text": "What else can you get?",
+      "evidence": "Additional Covers\nWhat else can you get?",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Add or remove riders",
+      "text": "Confirm details and proceed",
+      "evidence": "Add or remove riders\nConfirm details and proceed",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Waiver of Room Capping",
+      "text": "Tooltip text\nRemoves single room type restriction*",
+      "evidence": "Waiver of Room Capping\nTooltip text\nRemoves single room type restriction*",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "room_rent_limits": [
+    {
+      "heading": "Room Limit",
+      "text": "Single Private for SI 3 to 10 Lacs | Actuals for SI above 10 Lacs (option to change)\nSingle Private for SI 3 to 10 Lacs | Actuals for SI above 10 Lacs (option to change)",
+      "evidence": "Room Limit\nSingle Private for SI 3 to 10 Lacs | Actuals for SI above 10 Lacs (option to change)\nSingle Private for SI 3 to 10 Lacs | Actuals for SI above 10 Lacs (option to change)",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Waiver of Room Capping",
+      "text": "Tooltip text\nRemoves single room type restriction*",
+      "evidence": "Waiver of Room Capping\nTooltip text\nRemoves single room type restriction*",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Covers actual room rent expenses without a cap",
+      "text": "Starting from",
+      "evidence": "Covers actual room rent expenses without a cap\nStarting from",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "Reinstatement Benefit & Recharge",
+      "text": "Avail the option of unlimited reinstatement of sum insured even if you have exhausted it due to claims",
+      "evidence": "Reinstatement Benefit & Recharge\nAvail the option of unlimited reinstatement of sum insured even if you have exhausted it due to claims",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Sum Insured Reinstatement",
+      "text": "Exhausted sum insured or SI will be reinstated so that you can avail the full coverage for your next claim in a policy year if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available",
+      "evidence": "Sum Insured Reinstatement\nExhausted sum insured or SI will be reinstated so that you can avail the full coverage for your next claim in a policy year if needed\nRecharge (For SI 5 Lacs Onwards)\nIf an unfortunate claim exhausts Sum Insured limit, the then additional amount of 20% Sum Insured (up to 25 INR lacs) will be available",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Deductibles & Co-pays",
+      "text": "Part of the claim will be borne by you (the policyholder) if you have opted for deductibles or co-pay\nNote",
+      "evidence": "Deductibles & Co-pays\nPart of the claim will be borne by you (the policyholder) if you have opted for deductibles or co-pay\nNote",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Overview of My Health Care Plan",
+      "text": "Introducing a unique\nhealth insurance plan\nthat cares for you the way you want. Now, transforming care your way. The ‘My Healthcare Plan’ is a modular plan that offers the flexibility to curate an individual bouquet of features for yourself and your family.\nIt is an umbrella product for customizable packages. You can now easily buy a mediclaim policy plan that gives you the option to pick and choose the insurance coverage. Design your health care plan based on which the health insurance premium will be determined.\nParameter\nInformation",
+      "evidence": "Overview of My Health Care Plan\nIntroducing a unique\nhealth insurance plan\nthat cares for you the way you want. Now, transforming care your way. The ‘My Healthcare Plan’ is a modular plan that offers the flexibility to curate an individual bouquet of features for yourself and your family.\nIt is an umbrella product for customizable packages. You can now easily buy a mediclaim policy plan that gives you the option to pick and choose the insurance coverage. Design your health care plan based on which the health insurance premium will be determined.\nParameter\nInformation",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Bouquet of Coverages",
+      "text": "Ensure that the mediclaim insurance for family offers an array of coverage for expenses incurred towards hospitalization, modern treatment methods, etc.",
+      "evidence": "Bouquet of Coverages\nEnsure that the mediclaim insurance for family offers an array of coverage for expenses incurred towards hospitalization, modern treatment methods, etc.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Quick Claim Settlement",
+      "text": "Sixty minutes is all it takes!",
+      "evidence": "Quick Claim Settlement\nSixty minutes is all it takes!",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "health insurance premium calculator online",
+      "text": ", which is simple and quickly calculates the premium amount based on the inputs entered. Whether you are buying individual health insurance or mediclaim insurance for family, using this online tool has benefits:\n- Helps to make an informed decision\n- Easy to use, is quicker and hassle-free\n- Enable you to budget accordingly\nBefore you use a health insurance calculator it’s important to understand that various factors determine the premium. This includes the age of the insured, medical history, lifestyle habits, type of cover, etc.\nTo use the health insurance calculator, to know My Healthcare Plan premium the below details will be required:\n- Select the type of plan like an individual or family health insurance",
+      "evidence": "health insurance premium calculator online\n, which is simple and quickly calculates the premium amount based on the inputs entered. Whether you are buying individual health insurance or mediclaim insurance for family, using this online tool has benefits:\n- Helps to make an informed decision\n- Easy to use, is quicker and hassle-free\n- Enable you to budget accordingly\nBefore you use a health insurance calculator it’s important to understand that various factors determine the premium. This includes the age of the insured, medical history, lifestyle habits, type of cover, etc.\nTo use the health insurance calculator, to know My Healthcare Plan premium the below details will be required:\n- Select the type of plan like an individual or family health insurance",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Entry Age",
+      "text": "18 years to 65 years\nFor Dependent Children/Grandchildren: 3 months to 30 years",
+      "evidence": "Entry Age\n18 years to 65 years\nFor Dependent Children/Grandchildren: 3 months to 30 years",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Bouquet of Coverages",
+      "text": "Ensure that the mediclaim insurance for family offers an array of coverage for expenses incurred towards hospitalization, modern treatment methods, etc.",
+      "evidence": "Bouquet of Coverages\nEnsure that the mediclaim insurance for family offers an array of coverage for expenses incurred towards hospitalization, modern treatment methods, etc.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Family Visit",
+      "text": "INR 25,000 for SI up to 10 Lacs | 50,000 for SI above 10 Lacs\nINR 25,000 for SI up to 10 Lacs | 50,000 for SI above 10 Lacs\nSuitable for",
+      "evidence": "Family Visit\nINR 25,000 for SI up to 10 Lacs | 50,000 for SI above 10 Lacs\nINR 25,000 for SI up to 10 Lacs | 50,000 for SI above 10 Lacs\nSuitable for",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "health insurance premium calculator online",
+      "text": ", which is simple and quickly calculates the premium amount based on the inputs entered. Whether you are buying individual health insurance or mediclaim insurance for family, using this online tool has benefits:\n- Helps to make an informed decision\n- Easy to use, is quicker and hassle-free\n- Enable you to budget accordingly\nBefore you use a health insurance calculator it’s important to understand that various factors determine the premium. This includes the age of the insured, medical history, lifestyle habits, type of cover, etc.\nTo use the health insurance calculator, to know My Healthcare Plan premium the below details will be required:\n- Select the type of plan like an individual or family health insurance",
+      "evidence": "health insurance premium calculator online\n, which is simple and quickly calculates the premium amount based on the inputs entered. Whether you are buying individual health insurance or mediclaim insurance for family, using this online tool has benefits:\n- Helps to make an informed decision\n- Easy to use, is quicker and hassle-free\n- Enable you to budget accordingly\nBefore you use a health insurance calculator it’s important to understand that various factors determine the premium. This includes the age of the insured, medical history, lifestyle habits, type of cover, etc.\nTo use the health insurance calculator, to know My Healthcare Plan premium the below details will be required:\n- Select the type of plan like an individual or family health insurance",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+        "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "financial_signals": {
+    "sum_insured_values": [
+      {
+        "value": "INR 1 Lac",
+        "reason": "sum_insured_context",
+        "heading": "Baby Care (SI)",
+        "evidence": "Baby Care (SI)\nINR 1 Lac for SI up to 4 Lacs | 5 Lacs for SI 5 to 10 Lacs | 10 Lacs for SI 15 to 50 Lacs | 15 Lacs for SI above 50 Lacs",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 10 Lacs",
+        "reason": "sum_insured_context",
+        "heading": "Airlift Cover",
+        "evidence": "Airlift Cover\nINR 10 Lacs for SI 50 Lacs to 1 Cr. | 20 Lacs for SI above 1 Cr.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 3 Lacs",
+        "reason": "sum_insured_context",
+        "heading": "Hospital & Day Care SI",
+        "evidence": "Hospital & Day Care SI\nINR 3 Lacs to 5 Cr.\nINR 3 Lacs to 1 Cr.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "Rs. 3 lakhs",
+        "reason": "sum_insured_context",
+        "heading": "sum insured",
+        "evidence": "sum insured\noptions ranging from Rs. 3 lakhs to Rs. 5 crores. Choose an adequate sum insured that suits your budget.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "Rs. 5 crores",
+        "reason": "sum_insured_context",
+        "heading": "sum insured",
+        "evidence": "sum insured\noptions ranging from Rs. 3 lakhs to Rs. 5 crores. Choose an adequate sum insured that suits your budget.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹1 crore",
+        "reason": "sum_insured_context",
+        "heading": "What are the Sum Insured options available under My Health Care Plan?",
+        "evidence": "What are the Sum Insured options available under My Health Care Plan?\nOptions range from ₹3 lakh to ₹75 lakh and ₹1 crore to ₹5 crore. Available choices include ₹3, ₹4, ₹5, ₹7.5, ₹10, ₹15, ₹20, ₹25, ₹30, ₹35, ₹40, ₹45, ₹50, ₹75 lakh, and ₹1, ₹2, ₹3, ₹4, ₹5 crore.\nCan I migrate or port my existing health insurance policy to My Health Care Plan?\nYes. You can port or migrate your existing policy under IRDAI norms. Waiting periods for pre-existing diseases may be credited, provided the previous policy was continuous and underwriting approval is granted.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹3 lakh",
+        "reason": "sum_insured_context",
+        "heading": "What are the Sum Insured options available under My Health Care Plan?",
+        "evidence": "What are the Sum Insured options available under My Health Care Plan?\nOptions range from ₹3 lakh to ₹75 lakh and ₹1 crore to ₹5 crore. Available choices include ₹3, ₹4, ₹5, ₹7.5, ₹10, ₹15, ₹20, ₹25, ₹30, ₹35, ₹40, ₹45, ₹50, ₹75 lakh, and ₹1, ₹2, ₹3, ₹4, ₹5 crore.\nCan I migrate or port my existing health insurance policy to My Health Care Plan?\nYes. You can port or migrate your existing policy under IRDAI norms. Waiting periods for pre-existing diseases may be credited, provided the previous policy was continuous and underwriting approval is granted.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹5 crore",
+        "reason": "sum_insured_context",
+        "heading": "What are the Sum Insured options available under My Health Care Plan?",
+        "evidence": "What are the Sum Insured options available under My Health Care Plan?\nOptions range from ₹3 lakh to ₹75 lakh and ₹1 crore to ₹5 crore. Available choices include ₹3, ₹4, ₹5, ₹7.5, ₹10, ₹15, ₹20, ₹25, ₹30, ₹35, ₹40, ₹45, ₹50, ₹75 lakh, and ₹1, ₹2, ₹3, ₹4, ₹5 crore.\nCan I migrate or port my existing health insurance policy to My Health Care Plan?\nYes. You can port or migrate your existing policy under IRDAI norms. Waiting periods for pre-existing diseases may be credited, provided the previous policy was continuous and underwriting approval is granted.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹5 lakh",
+        "reason": "sum_insured_context",
+        "heading": "Is maternity and newborn baby coverage available in this plan?",
+        "evidence": "Is maternity and newborn baby coverage available in this plan?\nYes. Maternity coverage is available for sum insured of ₹5 lakh and above, subject to a waiting period. It includes delivery expenses, surrogacy-related costs, complications from assisted reproductive technologies, and newborn care from birth if initiated within 90 days.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹75 lakh",
+        "reason": "sum_insured_context",
+        "heading": "What are the Sum Insured options available under My Health Care Plan?",
+        "evidence": "What are the Sum Insured options available under My Health Care Plan?\nOptions range from ₹3 lakh to ₹75 lakh and ₹1 crore to ₹5 crore. Available choices include ₹3, ₹4, ₹5, ₹7.5, ₹10, ₹15, ₹20, ₹25, ₹30, ₹35, ₹40, ₹45, ₹50, ₹75 lakh, and ₹1, ₹2, ₹3, ₹4, ₹5 crore.\nCan I migrate or port my existing health insurance policy to My Health Care Plan?\nYes. You can port or migrate your existing policy under IRDAI norms. Waiting periods for pre-existing diseases may be credited, provided the previous policy was continuous and underwriting approval is granted.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      }
+    ],
+    "premium_values": [
+      {
+        "value": "INR 907",
+        "reason": "premium_context_current_product",
+        "heading": "Respect Rider (Senior Care)",
+        "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+          "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
+          "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
+          "extractor_version": "0.7"
+        }
+      }
+    ],
+    "benefit_amount_values": [],
+    "tax_amount_values": [],
+    "discount_values": []
+  },
+  "quality": {
+    "source_count": 1,
+    "has_uin": false,
+    "has_benefits": true,
+    "has_exclusions": true,
+    "has_waiting_periods": true,
+    "confidence": "medium",
+    "notes": [],
+    "removed_noise_items": 4
+  }
+}

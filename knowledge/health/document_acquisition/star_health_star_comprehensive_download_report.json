@@ -1,0 +1,34 @@
+{
+  "entity_id": "star_health:star_comprehensive",
+  "input_file": "knowledge/health/document_acquisition/star_health_star_comprehensive_live_document_links.json",
+  "output_dir": "knowledge/health/star_health/star_comprehensive/documents",
+  "downloaded": [
+    {
+      "document_type": "brochure",
+      "label": "Brochure",
+      "url": "https://d28c6jni2fmamz.cloudfront.net/Brochure_Star_Comprehensive_Insurance_Policy_V_15_Web_633bcfcaaf.pdf",
+      "output_path": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+      "success": true,
+      "error": null,
+      "bytes": 3857163
+    },
+    {
+      "document_type": "policy_wording",
+      "label": "Policy Clause",
+      "url": "https://d28c6jni2fmamz.cloudfront.net/Policy_Star_Comprehensive_Insurance_Policy_V_21_3a414ab104.pdf",
+      "output_path": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+      "success": true,
+      "error": null,
+      "bytes": 2101643
+    },
+    {
+      "document_type": "prospectus",
+      "label": "Prospectus",
+      "url": "https://d28c6jni2fmamz.cloudfront.net/Prospectus_Star_Comprehensive_Insurance_Policy_V_12_dc6058c95e.pdf",
+      "output_path": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+      "success": true,
+      "error": null,
+      "bytes": 2479350
+    }
+  ]
+}

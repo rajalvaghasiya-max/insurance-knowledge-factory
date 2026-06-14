@@ -1,0 +1,273 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788.json",
+  "insurer_id": "hdfc_life",
+  "url": "https://www.hdfclife.com/",
+  "page_title": "Life Insurance: Buy Best Life Insurance from HDFC Life Online in 2026",
+  "content_hash": "8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788",
+  "page_intent": "homepage",
+  "extracted_at": "2026-06-07T11:46:07.386718+00:00",
+  "product_names": [],
+  "uins": [
+    "101L164V08",
+    "101L180V01",
+    "101N134V28",
+    "101N136V04",
+    "101N146V05",
+    "101N189V01"
+  ],
+  "benefits": [
+    {
+      "heading": "Receive plan benefits, savings alerts & important reminders.",
+      "text": "NoYes\nAll\nWebpages",
+      "evidence": "Receive plan benefits, savings alerts & important reminders.\nNoYes\nAll\nWebpages"
+    },
+    {
+      "heading": "Customize your premium payment options – Single, Limited or Regular",
+      "text": "Choose from 5 convenient Benefit options to customize your payouts",
+      "evidence": "Customize your premium payment options – Single, Limited or Regular\nChoose from 5 convenient Benefit options to customize your payouts"
+    },
+    {
+      "heading": "Premium Break Benefit29 for up to 12 months",
+      "text": "Special Rates for Salaried & Women28\nWith so many considerations, let us help you to make easy decisions for your life insurance needs",
+      "evidence": "Premium Break Benefit29 for up to 12 months\nSpecial Rates for Salaried & Women28\nWith so many considerations, let us help you to make easy decisions for your life insurance needs"
+    },
+    {
+      "heading": "Endowment Policy",
+      "text": "The endowment policy provide guaranteed returns and protection of life insurance. By choosing an endowment plan, you can experience extensive coverage with the opportunity to save regularly. Thus, a policyholder expects to achieve a lump sum once the policy matures. To calculate the final payout of this policy you can use the savings calculator. In case of your sudden death during the policy tenure, your nominee will be eligible for death benefits.",
+      "evidence": "Endowment Policy\nThe endowment policy provide guaranteed returns and protection of life insurance. By choosing an endowment plan, you can experience extensive coverage with the opportunity to save regularly. Thus, a policyholder expects to achieve a lump sum once the policy matures. To calculate the final payout of this policy you can use the savings calculator. In case of your sudden death during the policy tenure, your nominee will be eligible for death benefits."
+    },
+    {
+      "heading": "Child Plans",
+      "text": "Child insurance plan helps secure your child’s financial future by saving for education and marriage costs. Child plans provide maturity benefits when the child turns 18, either as a lump sum or in yearly payments. They also include insurance for parents, offering financial support if the insured parent passes away during the policy period.",
+      "evidence": "Child Plans\nChild insurance plan helps secure your child’s financial future by saving for education and marriage costs. Child plans provide maturity benefits when the child turns 18, either as a lump sum or in yearly payments. They also include insurance for parents, offering financial support if the insured parent passes away during the policy period."
+    },
+    {
+      "heading": "If you have a plan with a due premium amount, use the payouts to pay it.",
+      "text": "Make sure dividends or bonuses are deposited with the insurance company so that interest can be earned on them.\nThese benefits are in addition to the regular maturity benefits that are guaranteed by the life insurance company. If applicable, some insurers offer terminal bonuses upon maturity along with paid-up additions.",
+      "evidence": "If you have a plan with a due premium amount, use the payouts to pay it.\nMake sure dividends or bonuses are deposited with the insurance company so that interest can be earned on them.\nThese benefits are in addition to the regular maturity benefits that are guaranteed by the life insurance company. If applicable, some insurers offer terminal bonuses upon maturity along with paid-up additions."
+    },
+    {
+      "heading": "Annuity Plans",
+      "text": "Annuity plans ensure you get regular income after you retire, helping you build savings for the future. Whether you opt for an immediate annuity plan that starts payments right away or a deferred annuity plan that accumulates value over time, these financial products provide steady payments throughout retirement.\nMoney back policy\nMoney Back Policy is a type of life insurance plan that offers both life cover and regular returns during the term of the policy. It combines the benefits of life insurance and investment, providing financial protection along with steady returns at specific intervals.",
+      "evidence": "Annuity Plans\nAnnuity plans ensure you get regular income after you retire, helping you build savings for the future. Whether you opt for an immediate annuity plan that starts payments right away or a deferred annuity plan that accumulates value over time, these financial products provide steady payments throughout retirement.\nMoney back policy\nMoney Back Policy is a type of life insurance plan that offers both life cover and regular returns during the term of the policy. It combines the benefits of life insurance and investment, providing financial protection along with steady returns at specific intervals."
+    },
+    {
+      "heading": "Death Benefit",
+      "text": "Upon the demise of the life assured the beneficiary of the policy receives a sum of money as the death benefit. Objective of death benefit is to provide financial support to the beneficiary in case of the life assured’s absence.",
+      "evidence": "Death Benefit\nUpon the demise of the life assured the beneficiary of the policy receives a sum of money as the death benefit. Objective of death benefit is to provide financial support to the beneficiary in case of the life assured’s absence."
+    },
+    {
+      "heading": "Tax Saving Benefit",
+      "text": "Life insurance is one of the financial tools that offer dual tax benefits. For the premiums you pay, you can avail tax deductions under Section 80C of the Income Tax Act10. Also, the maturity and death benefit are tax-free under Section 10(10D) of the Income Tax Act10. The GST on life insurance premiums has been reduced from 18% to 0%, with the change proposed to be effective from September 22, 2025.",
+      "evidence": "Tax Saving Benefit\nLife insurance is one of the financial tools that offer dual tax benefits. For the premiums you pay, you can avail tax deductions under Section 80C of the Income Tax Act10. Also, the maturity and death benefit are tax-free under Section 10(10D) of the Income Tax Act10. The GST on life insurance premiums has been reduced from 18% to 0%, with the change proposed to be effective from September 22, 2025."
+    },
+    {
+      "heading": "Maturity Benefit",
+      "text": "Life insurance plans other than term life insurance offer maturity benefits at the end of the term of the policy. For example, if you get a ULIP for 15 years then at the end of 15 year you will receive the maturity benefit.",
+      "evidence": "Maturity Benefit\nLife insurance plans other than term life insurance offer maturity benefits at the end of the term of the policy. For example, if you get a ULIP for 15 years then at the end of 15 year you will receive the maturity benefit."
+    },
+    {
+      "heading": "How Does Life Insurance Work?",
+      "text": "Life Insurance is a legal contract between the policy holder and the insurer. Here are some aspects that will help you understand life insurance better:\nAgreement\nLife Insurance is an agreement between the policy holder and an insurance company. The policyholder pays a premium to obtain the desired life cover as per the terms & conditions of the agreement. In case of death of the policyholder the beneficiary receives the death benefit.",
+      "evidence": "How Does Life Insurance Work?\nLife Insurance is a legal contract between the policy holder and the insurer. Here are some aspects that will help you understand life insurance better:\nAgreement\nLife Insurance is an agreement between the policy holder and an insurance company. The policyholder pays a premium to obtain the desired life cover as per the terms & conditions of the agreement. In case of death of the policyholder the beneficiary receives the death benefit."
+    },
+    {
+      "heading": "Important terms related of Life Insurance",
+      "text": "Insured\nAn insured is an individual whose life is financially protected with life insurance.\nInsurer\nAn insurer is an entity that offers financial coverage and bears financial risk in exchange for premium payments. The insurer pays the death benefit in case of the insured’s death\nBeneficiary\nBeneficiary is the person or entity legally designated to receive the insurance benefits, such as the death benefit, upon the insured’s death.",
+      "evidence": "Important terms related of Life Insurance\nInsured\nAn insured is an individual whose life is financially protected with life insurance.\nInsurer\nAn insurer is an entity that offers financial coverage and bears financial risk in exchange for premium payments. The insurer pays the death benefit in case of the insured’s death\nBeneficiary\nBeneficiary is the person or entity legally designated to receive the insurance benefits, such as the death benefit, upon the insured’s death."
+    },
+    {
+      "heading": "Death Benefit",
+      "text": "Death benefit is the amount paid to the beneficiary of the life insurance in case of death of the insured.",
+      "evidence": "Death Benefit\nDeath benefit is the amount paid to the beneficiary of the life insurance in case of death of the insured."
+    },
+    {
+      "heading": "What are the 3 benefits of term insurance?",
+      "text": "The benefits of term insurance are affordable premiums, financial protection for your loved ones and tax exemptions.\nIs it good to have a term insurance plan?\nIt is possible for a family to achieve their financial goals as well as meet their day-to-day expenses by purchasing a term insurance policy. The dependants of the insured do not suffer financially if a term insurance of adequate life cover is in place. You can opt for the best term insurance plan for 1 crore, like HDFC Life Click 2 Protect Supreme Plus to ensure your family’s future against any uncertainty.",
+      "evidence": "What are the 3 benefits of term insurance?\nThe benefits of term insurance are affordable premiums, financial protection for your loved ones and tax exemptions.\nIs it good to have a term insurance plan?\nIt is possible for a family to achieve their financial goals as well as meet their day-to-day expenses by purchasing a term insurance policy. The dependants of the insured do not suffer financially if a term insurance of adequate life cover is in place. You can opt for the best term insurance plan for 1 crore, like HDFC Life Click 2 Protect Supreme Plus to ensure your family’s future against any uncertainty."
+    },
+    {
+      "heading": "Is accidental death covered in term insurance?",
+      "text": "Accidental death is covered by a term insurance policy. The sum assured on a term insurance policy will pay out no matter what the cause of death is, whether it is a result of a health issue or an accident.\nWhat happens at the end of a term life insurance policy?\nWhen a term life insurance policy expires, the policyholder does not have to take any action. A policyholder will be notified that the policy is no longer in effect; no premiums are payable, and no death benefits would be paid out.",
+      "evidence": "Is accidental death covered in term insurance?\nAccidental death is covered by a term insurance policy. The sum assured on a term insurance policy will pay out no matter what the cause of death is, whether it is a result of a health issue or an accident.\nWhat happens at the end of a term life insurance policy?\nWhen a term life insurance policy expires, the policyholder does not have to take any action. A policyholder will be notified that the policy is no longer in effect; no premiums are payable, and no death benefits would be paid out."
+    },
+    {
+      "heading": "What are the Death Benefits under Term life Insurance?",
+      "text": "Death Benefits are paid to your dependents in a lump sum payment if you die unexpectedly. But few term insurance policies do provide a monthly income along with a lump sum amount to assist with regular expenses.",
+      "evidence": "What are the Death Benefits under Term life Insurance?\nDeath Benefits are paid to your dependents in a lump sum payment if you die unexpectedly. But few term insurance policies do provide a monthly income along with a lump sum amount to assist with regular expenses."
+    },
+    {
+      "heading": "benefits of term insurance",
+      "text": "types of life insurance\ntypes of term insurance",
+      "evidence": "benefits of term insurance\ntypes of life insurance\ntypes of term insurance"
+    },
+    {
+      "heading": "**Provided all due premiums have been paid and the policy is in force.",
+      "text": "##Individual claim settlement ratio by number of policies as per audited annual statistics for FY 24-25\n1. Tax benefits are subject to conditions under Section 10 and other provisions of the Income Tax Act, 1961. Tax Laws are subject to change from time to time.\n4. Guaranteed Benefit is paid on survival during policy term provided all due premiums are paid during the premium payment term.\n8. HDFC Life Guaranteed Income Insurance Plan UIN: 101N146V05. A Non-Linked, Non-Participating Individual Life Insurance Savings Plan.\n9. HDFC Life Sanchay Par Advantage (UIN: 101N136V04), A Non-Linked Participating, Life Insurance Plan coverage is available in this product.\n10. Tax benefits & exemptions are subject to conditions of the Income Tax Act, 1961 and its provisions. Tax Laws are subject to change from time to time. Customer is requested to seek tax advice from his Chartered Accountant or personal tax advisor with respect to his personal tax liabilities under the Income-tax law.\n15.Loyalty addition would be added to the fund starting from 10 policy anniversary for the other than ‘Single Premium’ policies paying annualized premium of ₹ 1,00,000 at least and for all the Single Premium paying policies.",
+      "evidence": "**Provided all due premiums have been paid and the policy is in force.\n##Individual claim settlement ratio by number of policies as per audited annual statistics for FY 24-25\n1. Tax benefits are subject to conditions under Section 10 and other provisions of the Income Tax Act, 1961. Tax Laws are subject to change from time to time.\n4. Guaranteed Benefit is paid on survival during policy term provided all due premiums are paid during the premium payment term.\n8. HDFC Life Guaranteed Income Insurance Plan UIN: 101N146V05. A Non-Linked, Non-Participating Individual Life Insurance Savings Plan.\n9. HDFC Life Sanchay Par Advantage (UIN: 101N136V04), A Non-Linked Participating, Life Insurance Plan coverage is available in this product.\n10. Tax benefits & exemptions are subject to conditions of the Income Tax Act, 1961 and its provisions. Tax Laws are subject to change from time to time. Customer is requested to seek tax advice from his Chartered Accountant or personal tax advisor with respect"
+    },
+    {
+      "heading": "25. The premium amount is exclusive of taxes & levies.",
+      "text": "26. HDFC Life Click 2 Protect Supreme Plus (UIN: 101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product.\n28. HDFC Life Click 2 Protect Supreme Plus (UIN:101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product: 10% discount on first year premium would be applicable for only Salaried customers, under Regular Pay & Limited Pay. A 15% discount on the base premium rates will be applicable for female lives.\n29. Applicable under HDFC Life Click 2 Protect Supreme Plus if the policy has completed at least five (5) policy years from the risk commencement date and all the due premiums have been received in full and the policy is in force. If the premium break benefit has been exercised in the last 5 policy years, then the next premium break benefit shall not be allowed. The premium break benefit shall not be available during the last policy year of the premium payment term.\n36. Applicable for all in force policies after a waiting period of 1 year. Please refer to policy documents for Terms & Conditions",
+      "evidence": "25. The premium amount is exclusive of taxes & levies.\n26. HDFC Life Click 2 Protect Supreme Plus (UIN: 101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product.\n28. HDFC Life Click 2 Protect Supreme Plus (UIN:101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product: 10% discount on first year premium would be applicable for only Salaried customers, under Regular Pay & Limited Pay. A 15% discount on the base premium rates will be applicable for female lives.\n29. Applicable under HDFC Life Click 2 Protect Supreme Plus if the policy has completed at least five (5) policy years from the risk commencement date and all the due premiums have been received in full and the policy is in force. If the premium break benefit has been exercised in the last 5 policy years, then the next premium "
+    }
+  ],
+  "exclusions": [],
+  "waiting_periods": [
+    {
+      "heading": "99.68% Individual Death Claims Settlement Ratio##",
+      "text": "🚨 Leverage untapped opportunities for greater value | Explore Top 500 Smart Value 50 Fund now live in HDFC Life ULIPs ⏳ Don’t miss the opportunity! 🚨",
+      "evidence": "99.68% Individual Death Claims Settlement Ratio##\n🚨 Leverage untapped opportunities for greater value | Explore Top 500 Smart Value 50 Fund now live in HDFC Life ULIPs ⏳ Don’t miss the opportunity! 🚨"
+    },
+    {
+      "heading": "25. The premium amount is exclusive of taxes & levies.",
+      "text": "26. HDFC Life Click 2 Protect Supreme Plus (UIN: 101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product.\n28. HDFC Life Click 2 Protect Supreme Plus (UIN:101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product: 10% discount on first year premium would be applicable for only Salaried customers, under Regular Pay & Limited Pay. A 15% discount on the base premium rates will be applicable for female lives.\n29. Applicable under HDFC Life Click 2 Protect Supreme Plus if the policy has completed at least five (5) policy years from the risk commencement date and all the due premiums have been received in full and the policy is in force. If the premium break benefit has been exercised in the last 5 policy years, then the next premium break benefit shall not be allowed. The premium break benefit shall not be available during the last policy year of the premium payment term.\n36. Applicable for all in force policies after a waiting period of 1 year. Please refer to policy documents for Terms & Conditions",
+      "evidence": "25. The premium amount is exclusive of taxes & levies.\n26. HDFC Life Click 2 Protect Supreme Plus (UIN: 101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product.\n28. HDFC Life Click 2 Protect Supreme Plus (UIN:101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product: 10% discount on first year premium would be applicable for only Salaried customers, under Regular Pay & Limited Pay. A 15% discount on the base premium rates will be applicable for female lives.\n29. Applicable under HDFC Life Click 2 Protect Supreme Plus if the policy has completed at least five (5) policy years from the risk commencement date and all the due premiums have been received in full and the policy is in force. If the premium break benefit has been exercised in the last 5 policy years, then the next premium "
+    }
+  ],
+  "riders_or_addons": [],
+  "sum_insured_values": [],
+  "premium_values": [],
+  "benefit_amount_values": [],
+  "tax_amount_values": [],
+  "discount_values": [],
+  "room_rent_limits": [
+    {
+      "heading": "Senior Citizen",
+      "text": "Life insurance options like retirement and pension plans help senior citizens build a financial corpus for their post-retirement years. To plan better, individuals can use an annuity calculator to estimate their future payouts. Annuity plans, in particular, offer a steady income stream after retirement, ensuring long-term financial security.",
+      "evidence": "Senior Citizen\nLife insurance options like retirement and pension plans help senior citizens build a financial corpus for their post-retirement years. To plan better, individuals can use an annuity calculator to estimate their future payouts. Annuity plans, in particular, offer a steady income stream after retirement, ensuring long-term financial security."
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "99.68% Individual Death Claims Settlement Ratio##",
+      "text": "🚨 Leverage untapped opportunities for greater value | Explore Top 500 Smart Value 50 Fund now live in HDFC Life ULIPs ⏳ Don’t miss the opportunity! 🚨",
+      "evidence": "99.68% Individual Death Claims Settlement Ratio##\n🚨 Leverage untapped opportunities for greater value | Explore Top 500 Smart Value 50 Fund now live in HDFC Life ULIPs ⏳ Don’t miss the opportunity! 🚨"
+    },
+    {
+      "heading": "Check claim settlement ratio",
+      "text": "Life insurance company’s individual death claim settlement ratio tells you how likely they are to settle your nominee’s claim. You can check a company’s Individual Death Claim Settlement Ratio online. HDFC Life has an Individual Death Claim Settlement Ratio (CSR) of 99.68%.##",
+      "evidence": "Check claim settlement ratio\nLife insurance company’s individual death claim settlement ratio tells you how likely they are to settle your nominee’s claim. You can check a company’s Individual Death Claim Settlement Ratio online. HDFC Life has an Individual Death Claim Settlement Ratio (CSR) of 99.68%.##"
+    },
+    {
+      "heading": "We have honoured 99.68% Individual Claims!*",
+      "text": "At HDFC Life, we ensure a hassle-free and uniquely sensitive claim experience. We are always doing our utmost to enable faster settlement of claims, with our Claim Settlement Ratio reflecting this assurance.",
+      "evidence": "We have honoured 99.68% Individual Claims!*\nAt HDFC Life, we ensure a hassle-free and uniquely sensitive claim experience. We are always doing our utmost to enable faster settlement of claims, with our Claim Settlement Ratio reflecting this assurance."
+    },
+    {
+      "heading": "Obtain and complete the claim form",
+      "text": "To officially raise a claim the beneficiary will need to obtain the claim form from the life insurance company’s website or branch. Then the form should be completely filled with the required information.",
+      "evidence": "Obtain and complete the claim form\nTo officially raise a claim the beneficiary will need to obtain the claim form from the life insurance company’s website or branch. Then the form should be completely filled with the required information."
+    },
+    {
+      "heading": "Disclaimer",
+      "text": "T&C*\n*. For more details on other plans, please visit product category page on the website:- www.hdfclife.com",
+      "evidence": "Disclaimer\nT&C*\n*. For more details on other plans, please visit product category page on the website:- www.hdfclife.com"
+    },
+    {
+      "heading": "**Provided all due premiums have been paid and the policy is in force.",
+      "text": "##Individual claim settlement ratio by number of policies as per audited annual statistics for FY 24-25\n1. Tax benefits are subject to conditions under Section 10 and other provisions of the Income Tax Act, 1961. Tax Laws are subject to change from time to time.\n4. Guaranteed Benefit is paid on survival during policy term provided all due premiums are paid during the premium payment term.\n8. HDFC Life Guaranteed Income Insurance Plan UIN: 101N146V05. A Non-Linked, Non-Participating Individual Life Insurance Savings Plan.\n9. HDFC Life Sanchay Par Advantage (UIN: 101N136V04), A Non-Linked Participating, Life Insurance Plan coverage is available in this product.\n10. Tax benefits & exemptions are subject to conditions of the Income Tax Act, 1961 and its provisions. Tax Laws are subject to change from time to time. Customer is requested to seek tax advice from his Chartered Accountant or personal tax advisor with respect to his personal tax liabilities under the Income-tax law.\n15.Loyalty addition would be added to the fund starting from 10 policy anniversary for the other than ‘Single Premium’ policies paying annualized premium of ₹ 1,00,000 at least and for all the Single Premium paying policies.",
+      "evidence": "**Provided all due premiums have been paid and the policy is in force.\n##Individual claim settlement ratio by number of policies as per audited annual statistics for FY 24-25\n1. Tax benefits are subject to conditions under Section 10 and other provisions of the Income Tax Act, 1961. Tax Laws are subject to change from time to time.\n4. Guaranteed Benefit is paid on survival during policy term provided all due premiums are paid during the premium payment term.\n8. HDFC Life Guaranteed Income Insurance Plan UIN: 101N146V05. A Non-Linked, Non-Participating Individual Life Insurance Savings Plan.\n9. HDFC Life Sanchay Par Advantage (UIN: 101N136V04), A Non-Linked Participating, Life Insurance Plan coverage is available in this product.\n10. Tax benefits & exemptions are subject to conditions of the Income Tax Act, 1961 and its provisions. Tax Laws are subject to change from time to time. Customer is requested to seek tax advice from his Chartered Accountant or personal tax advisor with respect"
+    },
+    {
+      "heading": "25. The premium amount is exclusive of taxes & levies.",
+      "text": "26. HDFC Life Click 2 Protect Supreme Plus (UIN: 101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product.\n28. HDFC Life Click 2 Protect Supreme Plus (UIN:101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product: 10% discount on first year premium would be applicable for only Salaried customers, under Regular Pay & Limited Pay. A 15% discount on the base premium rates will be applicable for female lives.\n29. Applicable under HDFC Life Click 2 Protect Supreme Plus if the policy has completed at least five (5) policy years from the risk commencement date and all the due premiums have been received in full and the policy is in force. If the premium break benefit has been exercised in the last 5 policy years, then the next premium break benefit shall not be allowed. The premium break benefit shall not be available during the last policy year of the premium payment term.\n36. Applicable for all in force policies after a waiting period of 1 year. Please refer to policy documents for Terms & Conditions",
+      "evidence": "25. The premium amount is exclusive of taxes & levies.\n26. HDFC Life Click 2 Protect Supreme Plus (UIN: 101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product.\n28. HDFC Life Click 2 Protect Supreme Plus (UIN:101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product: 10% discount on first year premium would be applicable for only Salaried customers, under Regular Pay & Limited Pay. A 15% discount on the base premium rates will be applicable for female lives.\n29. Applicable under HDFC Life Click 2 Protect Supreme Plus if the policy has completed at least five (5) policy years from the risk commencement date and all the due premiums have been received in full and the policy is in force. If the premium break benefit has been exercised in the last 5 policy years, then the next premium "
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Tax Saving Benefit",
+      "text": "Life insurance is one of the financial tools that offer dual tax benefits. For the premiums you pay, you can avail tax deductions under Section 80C of the Income Tax Act10. Also, the maturity and death benefit are tax-free under Section 10(10D) of the Income Tax Act10. The GST on life insurance premiums has been reduced from 18% to 0%, with the change proposed to be effective from September 22, 2025.",
+      "evidence": "Tax Saving Benefit\nLife insurance is one of the financial tools that offer dual tax benefits. For the premiums you pay, you can avail tax deductions under Section 80C of the Income Tax Act10. Also, the maturity and death benefit are tax-free under Section 10(10D) of the Income Tax Act10. The GST on life insurance premiums has been reduced from 18% to 0%, with the change proposed to be effective from September 22, 2025."
+    },
+    {
+      "heading": "What are the 3 benefits of term insurance?",
+      "text": "The benefits of term insurance are affordable premiums, financial protection for your loved ones and tax exemptions.\nIs it good to have a term insurance plan?\nIt is possible for a family to achieve their financial goals as well as meet their day-to-day expenses by purchasing a term insurance policy. The dependants of the insured do not suffer financially if a term insurance of adequate life cover is in place. You can opt for the best term insurance plan for 1 crore, like HDFC Life Click 2 Protect Supreme Plus to ensure your family’s future against any uncertainty.",
+      "evidence": "What are the 3 benefits of term insurance?\nThe benefits of term insurance are affordable premiums, financial protection for your loved ones and tax exemptions.\nIs it good to have a term insurance plan?\nIt is possible for a family to achieve their financial goals as well as meet their day-to-day expenses by purchasing a term insurance policy. The dependants of the insured do not suffer financially if a term insurance of adequate life cover is in place. You can opt for the best term insurance plan for 1 crore, like HDFC Life Click 2 Protect Supreme Plus to ensure your family’s future against any uncertainty."
+    },
+    {
+      "heading": "**Provided all due premiums have been paid and the policy is in force.",
+      "text": "##Individual claim settlement ratio by number of policies as per audited annual statistics for FY 24-25\n1. Tax benefits are subject to conditions under Section 10 and other provisions of the Income Tax Act, 1961. Tax Laws are subject to change from time to time.\n4. Guaranteed Benefit is paid on survival during policy term provided all due premiums are paid during the premium payment term.\n8. HDFC Life Guaranteed Income Insurance Plan UIN: 101N146V05. A Non-Linked, Non-Participating Individual Life Insurance Savings Plan.\n9. HDFC Life Sanchay Par Advantage (UIN: 101N136V04), A Non-Linked Participating, Life Insurance Plan coverage is available in this product.\n10. Tax benefits & exemptions are subject to conditions of the Income Tax Act, 1961 and its provisions. Tax Laws are subject to change from time to time. Customer is requested to seek tax advice from his Chartered Accountant or personal tax advisor with respect to his personal tax liabilities under the Income-tax law.\n15.Loyalty addition would be added to the fund starting from 10 policy anniversary for the other than ‘Single Premium’ policies paying annualized premium of ₹ 1,00,000 at least and for all the Single Premium paying policies.",
+      "evidence": "**Provided all due premiums have been paid and the policy is in force.\n##Individual claim settlement ratio by number of policies as per audited annual statistics for FY 24-25\n1. Tax benefits are subject to conditions under Section 10 and other provisions of the Income Tax Act, 1961. Tax Laws are subject to change from time to time.\n4. Guaranteed Benefit is paid on survival during policy term provided all due premiums are paid during the premium payment term.\n8. HDFC Life Guaranteed Income Insurance Plan UIN: 101N146V05. A Non-Linked, Non-Participating Individual Life Insurance Savings Plan.\n9. HDFC Life Sanchay Par Advantage (UIN: 101N136V04), A Non-Linked Participating, Life Insurance Plan coverage is available in this product.\n10. Tax benefits & exemptions are subject to conditions of the Income Tax Act, 1961 and its provisions. Tax Laws are subject to change from time to time. Customer is requested to seek tax advice from his Chartered Accountant or personal tax advisor with respect"
+    },
+    {
+      "heading": "25. The premium amount is exclusive of taxes & levies.",
+      "text": "26. HDFC Life Click 2 Protect Supreme Plus (UIN: 101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product.\n28. HDFC Life Click 2 Protect Supreme Plus (UIN:101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product: 10% discount on first year premium would be applicable for only Salaried customers, under Regular Pay & Limited Pay. A 15% discount on the base premium rates will be applicable for female lives.\n29. Applicable under HDFC Life Click 2 Protect Supreme Plus if the policy has completed at least five (5) policy years from the risk commencement date and all the due premiums have been received in full and the policy is in force. If the premium break benefit has been exercised in the last 5 policy years, then the next premium break benefit shall not be allowed. The premium break benefit shall not be available during the last policy year of the premium payment term.\n36. Applicable for all in force policies after a waiting period of 1 year. Please refer to policy documents for Terms & Conditions",
+      "evidence": "25. The premium amount is exclusive of taxes & levies.\n26. HDFC Life Click 2 Protect Supreme Plus (UIN: 101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product.\n28. HDFC Life Click 2 Protect Supreme Plus (UIN:101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product: 10% discount on first year premium would be applicable for only Salaried customers, under Regular Pay & Limited Pay. A 15% discount on the base premium rates will be applicable for female lives.\n29. Applicable under HDFC Life Click 2 Protect Supreme Plus if the policy has completed at least five (5) policy years from the risk commencement date and all the due premiums have been received in full and the policy is in force. If the premium break benefit has been exercised in the last 5 policy years, then the next premium "
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "For NRI Customers",
+      "text": "(To Buy a Policy)\nCall (All Days, Local charges apply)\n+91- 8916613503",
+      "evidence": "For NRI Customers\n(To Buy a Policy)\nCall (All Days, Local charges apply)\n+91- 8916613503"
+    },
+    {
+      "heading": "NRI-Friendly Plan",
+      "text": "100x + New Fund\n100x + New Fund",
+      "evidence": "NRI-Friendly Plan\n100x + New Fund\n100x + New Fund"
+    },
+    {
+      "heading": "I Want To*",
+      "text": "Buy a term insurance\nInvest for my child's future\nInvest in an investment plan\nInvest for my retirement\nGet 100% guaranteed returns",
+      "evidence": "I Want To*\nBuy a term insurance\nInvest for my child's future\nInvest in an investment plan\nInvest for my retirement\nGet 100% guaranteed returns"
+    },
+    {
+      "heading": "Life insurance cover to the extent of 105% of total Premium(s) paid including top-up premium",
+      "text": "To build a retirement corpus",
+      "evidence": "Life insurance cover to the extent of 105% of total Premium(s) paid including top-up premium\nTo build a retirement corpus"
+    },
+    {
+      "heading": "3 Questions, Tailored Plans",
+      "text": "Answer 3 simple questions and find the best suitable plans as per your goal!",
+      "evidence": "3 Questions, Tailored Plans\nAnswer 3 simple questions and find the best suitable plans as per your goal!"
+    },
+    {
+      "heading": "Retirement Plans",
+      "text": "A retirement plan or pension plan is an investment plan designed to ensure you’re financially secure when you retire. It lets you invest money while you’re working, building up a savings fund that you can use when you stop working. Investing in a retirement plan is a smart, disciplined way to prepare for a comfortable and worry-free retirement.",
+      "evidence": "Retirement Plans\nA retirement plan or pension plan is an investment plan designed to ensure you’re financially secure when you retire. It lets you invest money while you’re working, building up a savings fund that you can use when you stop working. Investing in a retirement plan is a smart, disciplined way to prepare for a comfortable and worry-free retirement."
+    },
+    {
+      "heading": "Child Plans",
+      "text": "Child insurance plan helps secure your child’s financial future by saving for education and marriage costs. Child plans provide maturity benefits when the child turns 18, either as a lump sum or in yearly payments. They also include insurance for parents, offering financial support if the insured parent passes away during the policy period.",
+      "evidence": "Child Plans\nChild insurance plan helps secure your child’s financial future by saving for education and marriage costs. Child plans provide maturity benefits when the child turns 18, either as a lump sum or in yearly payments. They also include insurance for parents, offering financial support if the insured parent passes away during the policy period."
+    },
+    {
+      "heading": "Annuity Plans",
+      "text": "Annuity plans ensure you get regular income after you retire, helping you build savings for the future. Whether you opt for an immediate annuity plan that starts payments right away or a deferred annuity plan that accumulates value over time, these financial products provide steady payments throughout retirement.\nMoney back policy\nMoney Back Policy is a type of life insurance plan that offers both life cover and regular returns during the term of the policy. It combines the benefits of life insurance and investment, providing financial protection along with steady returns at specific intervals.",
+      "evidence": "Annuity Plans\nAnnuity plans ensure you get regular income after you retire, helping you build savings for the future. Whether you opt for an immediate annuity plan that starts payments right away or a deferred annuity plan that accumulates value over time, these financial products provide steady payments throughout retirement.\nMoney back policy\nMoney Back Policy is a type of life insurance plan that offers both life cover and regular returns during the term of the policy. It combines the benefits of life insurance and investment, providing financial protection along with steady returns at specific intervals."
+    },
+    {
+      "heading": "Senior Citizen",
+      "text": "Life insurance options like retirement and pension plans help senior citizens build a financial corpus for their post-retirement years. To plan better, individuals can use an annuity calculator to estimate their future payouts. Annuity plans, in particular, offer a steady income stream after retirement, ensuring long-term financial security.",
+      "evidence": "Senior Citizen\nLife insurance options like retirement and pension plans help senior citizens build a financial corpus for their post-retirement years. To plan better, individuals can use an annuity calculator to estimate their future payouts. Annuity plans, in particular, offer a steady income stream after retirement, ensuring long-term financial security."
+    },
+    {
+      "heading": "- Endowment plan offers you 100% guaranteed** returns on your investment along with a life cover",
+      "text": "- Child Plan gives you the opportunity to invest and secure your child’s financial future\n- Retirement & pension plan helps you save for your retirement",
+      "evidence": "- Endowment plan offers you 100% guaranteed** returns on your investment along with a life cover\n- Child Plan gives you the opportunity to invest and secure your child’s financial future\n- Retirement & pension plan helps you save for your retirement"
+    },
+    {
+      "heading": "Have You Wondered Why Some People Cannot Manage Money?",
+      "text": "Money troubles are rarely just about income. Explore the real reasons why people struggle with financial management and the habits that can help you turn the tide for good.\nSecuring your dreams, even when you live miles away from home!\nInsurance at the Top: The One Thing Your Portfolio Should Not Replace\nThe Chief Caregiving Officer: Managing the “Sandwich” Without Getting Squeezed\nCaring for ageing parents while raising children can stretch your finances thin. Discover how the sandwich generation can manage caregiving costs without compromising their future.",
+      "evidence": "Have You Wondered Why Some People Cannot Manage Money?\nMoney troubles are rarely just about income. Explore the real reasons why people struggle with financial management and the habits that can help you turn the tide for good.\nSecuring your dreams, even when you live miles away from home!\nInsurance at the Top: The One Thing Your Portfolio Should Not Replace\nThe Chief Caregiving Officer: Managing the “Sandwich” Without Getting Squeezed\nCaring for ageing parents while raising children can stretch your finances thin. Discover how the sandwich generation can manage caregiving costs without compromising their future."
+    },
+    {
+      "heading": "Investment Plans",
+      "text": "savings plan\nULIP\nretirement plans\nhealth insurance plans\nchild insurance plans\ngroup insurance plans\nbmi calculator\ncompound interest calculator\nterm insurance calculator\nwhat is term insurance\n2 crore term insurance\n50 lakhs term insurance\n5 crore term insurance\ninvestment plan for 5 years\ninvestment plan for 10 years\nget pension of 30000 per month\nget pension of 50000 per month\nULIP Returns in 10 Years\nULIP Returns in 5 Years",
+      "evidence": "Investment Plans\nsavings plan\nULIP\nretirement plans\nhealth insurance plans\nchild insurance plans\ngroup insurance plans\nbmi calculator\ncompound interest calculator\nterm insurance calculator\nwhat is term insurance\n2 crore term insurance\n50 lakhs term insurance\n5 crore term insurance\ninvestment plan for 5 years\ninvestment plan for 10 years\nget pension of 30000 per month\nget pension of 50000 per month\nULIP Returns in 10 Years\nULIP Returns in 5 Years"
+    },
+    {
+      "heading": "Investment Plans for NRI",
+      "text": "Health Insurance of smokers\nHealth Insurance of Self employed\nTypes of health insurance",
+      "evidence": "Investment Plans for NRI\nHealth Insurance of smokers\nHealth Insurance of Self employed\nTypes of health insurance"
+    },
+    {
+      "heading": "Retirement Planning",
+      "text": "Best Term Insurance Plan for 1 Crore",
+      "evidence": "Retirement Planning\nBest Term Insurance Plan for 1 Crore"
+    }
+  ]
+}

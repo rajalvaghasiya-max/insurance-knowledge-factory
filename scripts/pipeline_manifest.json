@@ -1,0 +1,118 @@
+{
+  "schema_version": "0.1",
+  "description": "Defines lightweight pipeline layers and dependency order for Insurance Knowledge Factory.",
+  "generated_at": "2026-06-09T15:35:55.398769+00:00",
+  "layers": [
+    {
+      "layer_id": "discovery",
+      "display_name": "Discovery",
+      "depends_on": [],
+      "outputs": [
+        "url_queue"
+      ]
+    },
+    {
+      "layer_id": "capture",
+      "display_name": "Capture",
+      "depends_on": [
+        "discovery"
+      ],
+      "outputs": [
+        "raw_html",
+        "raw_text",
+        "capture_metadata"
+      ]
+    },
+    {
+      "layer_id": "download",
+      "display_name": "Document Download",
+      "depends_on": [
+        "discovery"
+      ],
+      "outputs": [
+        "raw_pdf",
+        "download_metadata"
+      ]
+    },
+    {
+      "layer_id": "parse",
+      "display_name": "Document Parsing",
+      "depends_on": [
+        "capture",
+        "download"
+      ],
+      "outputs": [
+        "sections",
+        "tables",
+        "clauses",
+        "lists",
+        "chunks"
+      ]
+    },
+    {
+      "layer_id": "extract",
+      "display_name": "Knowledge Extraction",
+      "depends_on": [
+        "parse"
+      ],
+      "outputs": [
+        "structured_facts"
+      ]
+    },
+    {
+      "layer_id": "validate",
+      "display_name": "Domain Validation",
+      "depends_on": [
+        "extract"
+      ],
+      "outputs": [
+        "validated_facts",
+        "quality_flags"
+      ]
+    },
+    {
+      "layer_id": "semantic",
+      "display_name": "Semantic Enrichment",
+      "depends_on": [
+        "validate"
+      ],
+      "outputs": [
+        "semantic_facts",
+        "trap_flags",
+        "advisor_insights"
+      ]
+    },
+    {
+      "layer_id": "knowledge_repository",
+      "display_name": "Knowledge Repository Write",
+      "depends_on": [
+        "semantic"
+      ],
+      "outputs": [
+        "knowledge_json"
+      ]
+    }
+  ],
+  "rerun_rules": [
+    {
+      "change_type": "source_content_changed",
+      "rerun_from_layer": "capture"
+    },
+    {
+      "change_type": "downloaded_document_changed",
+      "rerun_from_layer": "download"
+    },
+    {
+      "change_type": "parser_code_changed",
+      "rerun_from_layer": "parse"
+    },
+    {
+      "change_type": "extractor_code_changed",
+      "rerun_from_layer": "extract"
+    },
+    {
+      "change_type": "semantic_registry_changed",
+      "rerun_from_layer": "semantic"
+    }
+  ]
+}

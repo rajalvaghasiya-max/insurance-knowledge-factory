@@ -1,0 +1,511 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "extractor_version": "0.3",
+  "metadata": {
+    "product_name": "Activ One",
+    "uin": "ADIHLIP24097V012324"
+  },
+  "eligibility": {
+    "adult_entry_age": null,
+    "dependent_child_entry_age": "91 days to 25 years",
+    "source": {
+      "source_type": "policy_wording",
+      "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+      "page_number": 46
+    },
+    "confidence": 0.9500000000000001,
+    "validated": true,
+    "validated_by": [
+      {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 1
+      },
+      {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 27
+      },
+      {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 46
+      }
+    ]
+  },
+  "sum_insured_options": {},
+  "waiting_periods": {
+    "pre_existing_disease_waiting_period": {
+      "duration_months": 36,
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 8
+      },
+      "confidence": 0.96,
+      "validated": true,
+      "validated_by": []
+    },
+    "specified_disease_waiting_period": {
+      "duration_months": 24,
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.99,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 12
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 10
+        },
+        {
+          "source_type": "customer_information_sheet",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+          "page_number": 7
+        }
+      ]
+    },
+    "initial_waiting_period": {
+      "duration_days": 30,
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 28
+      },
+      "confidence": 0.99,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 28
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 29
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 47
+        },
+        {
+          "source_type": "customer_information_sheet",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+          "page_number": 8
+        }
+      ]
+    },
+    "delivery_newborn_waiting_period": {
+      "duration_months": 24,
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 6
+      },
+      "confidence": 0.95,
+      "validated": true,
+      "validated_by": []
+    },
+    "bariatric_surgery_waiting_period": {
+      "duration_months": 36,
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 3
+      },
+      "confidence": 0.95,
+      "validated": true,
+      "validated_by": []
+    }
+  },
+  "core_benefits": {
+    "in_patient_treatment": {
+      "value": true,
+      "raw_text": "force for the person(s) in the Policy Schedule. All the Benefits under this Section might not be applicable to the Insured Person(s), please refer to the Policy Schedule for the list of Benefits applicable to You. C.1 Hospitalization Treatment C.1.1 In-Patient Treatment The Company shall indemnify the Medical Expenses incurred for Hospitalization of the Insured Person during the Policy Period due to Illness or Injur, for one or more of the following: a. Room Rent, boarding, nursing expenses as provided by the Hospital / Nursing Home. b. Intensive Care Unit (ICU) Charges / Intensive Cardiac Care Unit (ICCU) expenses. c. Surgeon, anaesthetist, Medical Practitioner, consultants, specialist’s fees during Hospitalization and forming part of the Hospital bill. d. Investigative treatments and diagnostic procedures directly related to Hospitalization. e. Medicines and drugs prescribed in writing by Medical Practitioner. f. Intravenous fluids, blood transfusion, surgical appliances, allowable consumables and / or enteral feedings. g. Operation theatre charges. h. The cost of prosthetics and other devices or equipment, if implanted internally during Surger. C.1.1.1 Other Expenses Covered a. Expenses incurred on road Ambulance (domestic only) if the Insured Person is required to be transferred to the nearest Hospital for Emergency Care or from one Hospital to another Hospital or from Hospital to Home following Hospitalization. b. Dental Treatment under Inpatient Care, medically necessitated due to Illness or Injur. c. Plastic Surger, m",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 29
+      },
+      "confidence": 0.93,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 2
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 29
+        }
+      ]
+    },
+    "day_care_treatment": {
+      "value": true,
+      "raw_text": "uring Surgery. C.1.1.1 Other Expenses Covered a. Road Ambulance: We will pay up to Base Sum Insured b. Dental Treatment under Inpatient Care, medically necessitated due to Illness or Injury c. Plastic Surgery, medically necessitated due to Injury d. All Day Care Treatments e. Expenses incurred towards treatment taken by the Insured Person during In-patient Treatment or Day Care Treatment arising out of any of the below mentioned Indicative list of Modern Procedures / Treatments (Below mentioned list can be modified basis medical advancements and evolution). Variants Sr. No Section C. Benefits Covered Under the Policy Uterine Artery Embolization and HIFU (High intensity focused ultrasound) Balloon Sinuplasty Deep Brain Stimulation Immunotherapy - Monoclonal Antibody to be given as injection Oral Chemotherapy Intra Vitreal Injections Vaporisation of the Prostrate (Green laser treatment or holmium laser treatment) Robotic Surgeries Bronchial Thermoplasty Stem Cell Therapy: Hematopoietic Stem Cells for Bone Marrow Transplant for Haematological Conditions Stereotactic Radio Surgeries IONM - (Intra Operative Neuro Monitoring) Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 2
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 2
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 29
+        },
+        {
+          "source_type": "customer_information_sheet",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+          "page_number": 2
+        }
+      ]
+    },
+    "ayush_treatment": {
+      "value": true,
+      "raw_text": "e Insurer as disclosed in website (www.adityabirlahealth.com/healthinsurance) / notified to the policyholders are not admissible. However, in case of life threatening situations or following an accident, expenses up to the stage of stabilization are payable but not the complete claim. D.1.12. Treatment for, Alcoholism, drug or substance abuse or any addictive condition and consequences thereof. (Code- Excl12) D.1.13. Treatments received in heath hydros, nature cure clinics, spas or similar establishments or private beds registered as a nursing home attached to such establishments or where admission is arranged wholly or partly for domestic reasons. (Code- Excl13) D.1.14. Dietary supplements and substances that can be purchased without prescription, including but not limited to Vitamins, minerals and organic substances unless prescribed by a medical practitioner as part of hospitalization claim or day care procedure (Code- Excl14) D.1.15. Refractive Error:(Code- Excl15) - Expenses related to the treatment for correction of eye sight due to refractive error less than 7 .5 dioptres. D.1.16. Unproven Treatments:(Code- Excl16) Expenses related to any unproven treatment, services and supplies for or in connection with any treatment. Unproven treatments are treatments, procedures or supplies that lack significant medical documentation to support their effectiveness. D.1.17. Sterility and Infertility: (Code- Excl17) Expenses related to sterility and infertility. This includes: i. Any type of contraception, sterilization ii. Assisted",
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 14
+      },
+      "confidence": 0.93,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 14
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 27
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 2
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 30
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 33
+        }
+      ]
+    },
+    "pre_hospitalization": {
+      "value": true,
+      "raw_text": "3 Years 2 Years 30 Days Reduction in Specific Disease Waiting Period Claim Protect (Non - Medical Expense Waiver) Room Rent Type Options Per Claim Deductible Preferred Provider Network (PPN) Discount Critical Illness Cover [Initial Waiting Period - 60 Days and Survival Period - 15 Days] Personal Accident Cover (Accidental Death, Permanent Total Disability, Permanent Partial Disability) Super Credit (increases irrespective of claim) Chronic Care (Day 1 In-patient Hospitalization) Applicable for Listed Chronic Conditions: 1. Diabetes 2. Hypertension 3. Asthma 4. Hyperlipidemia 5. COPD 6. Obesity 7. Coronary Artery Disease (PTCA done prior to 1 year) Chronic Management Program (OPD) Cancer Booster: 1. Covers Pre-Hospitalization and Post-Hospitalization medical expense 2. Covers Day Care Treatment upto Sum Insured Durable Equipment Cover: 1. Ventilator 2. Wheelchair 3. Prosthetic Device 4. Suction Machine 5. Commode Chairs 6. Infusion Pump 7. Continuous Passive Motion Devices in case of Knee Replacement 8. Oxygen Concentrator Compassionate Visit Second Medical Opinion for listed Major Illness Annual Screening Package for Cancer Diagnosed Patients Annual Health Check-up Pre-Existing Diseases Waiting Period Specific Diseases Waiting Period Initial Waiting Period (Excluding Accidental Hospitalization) Waiting Period - Inbuilt Cover Optional Covers Registered Oﬃce: 9th Floor, Tower1, One World Centre, Jupiter Mills Compound, 841, Senapati Bapat Marg, Elphinstone Road, Mumbai 400013. CIN:U66000MH2015PLC263677 IRDA Registration No. 1",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 47
+      },
+      "confidence": 0.9,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 47
+        }
+      ]
+    },
+    "post_hospitalization": {
+      "value": true,
+      "raw_text": "Expenses incurred, related to an admissible Hospitalization of the Insured Person under Section C.1 (Hospitalization Treatment) or Section C.4 (Domiciliar Hospitalization) or Section C.5 (Home Health Care) or Section C.6 (AYUSH Treatment) for up to 90 days immediately prior to the date of such Hospitalization. C.3 Post-Hospitalization Expenses The Company shall indemnify the Post-Hospitalization Medical Expenses incurred, related to an admissible Hospitalization of the Insured Person under Section C.1 (Hospitalization Treatment) or Section C.4 (Domiciliar Hospitalization) or Section C.5 (Home Health Care) or Section C.6 (AYUSH Treatment) for up to 180 days from the date of discharge from the Hospital. C.4 Domiciliar Hospitalization The Company shall indemnify the Medical Expenses incurred during the Policy Period on Domiciliar Hospitalization of the Insured Person due to Illness or Injur provided that: a. Domiciliar Hospitalization continues for at least 3 consecutive days. b. The condition of the Insured Person is such that he / she could not be removed / admitted to a Hospital. or, the Medically Necessar Treatment is taken at Home on account of non-availability of room in a Hospital of Home city. The Domiciliar Hospitalization is prescribed in writing by treating Medical Practitioner C.5 Home Health Care The Company shall indemnify the Medical Expenses incurred towards the Insured Person availing Medically Necessar Treatment at Home during the Policy Period, if prescribed in writing by the treating Medical Practitioner, p",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 30
+      },
+      "confidence": 0.93,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 3
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 27
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 30
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 46
+        }
+      ]
+    },
+    "domiciliary_hospitalization": {
+      "value": true,
+      "raw_text": "of hearing” in both ears. 17. Disclosure of information norm: means the policy shall be void and all premium paid hereon shall be forfeited to the Company in the event of misrepresentation, mis-description or non-disclosure of any material fact. 18. Domiciliary Hospitalization: means medical treatment for an illness / disease / injury which in the normal course would require care and treatment at a hospital but is actually taken while confined at home under any of the following circumstances: Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 2
+      },
+      "confidence": 0.9,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 2
+        }
+      ]
+    },
+    "home_care_treatment": {
+      "value": true,
+      "raw_text": "22. Empanelled Service Providers: means service provider (Doctor’s clinic, Diagnostic centre, Medicine, Drug vendor, medical service provider and Home care treatment provider) enlisted by Us, TPA or jointly by Us and TPA to provide OPD medical services to an Insured Person by a Cashless Facility. 23. Evidence Based Clinical Practice means process of making clinical decisions for Inpatient Care using current best evidence in conjugation with clinical expertise. 24. E-Consultation means opinion from a Medical Practitioner who holds a valid registration from the medical council of any state or medical council of India or council for Indian medicine or for homeopathy set up by the Government of India or a state government and is thereby entitled to practice medicine within its jurisdiction; and is acting within the scope and jurisdiction of his license. 25. Fulminant Viral Hepatitis: a sub-massive to massive necrosis of the liver by any virus, leading precipitously to liver failure. This diagnosis must be supported by all of the following: a. Rapid decreasing of liver size; and b. Necrosis involving entire lobules, leaving only a collapsed reticular framework; and c. Rapid deterioration of liver function tests; and d. Deepening jaundice; and e. Hepatic encephalopathy. Acute Hepatitis infection or carrier status alone does not meet the diagnostic criteria. 26. Fulminant Hepatitis: a sub-massive to massive necrosis of the liver",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 7
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "road_ambulance": {
+      "value": true,
+      "raw_text": "acs, 75 Lacs, 1 Crore, 2 Crores, 3 Crores, 4 Crores, 5 Crores, 6 Crores INR 2 Lacs, 3 Lacs, 4 Lacs, 5 Lacs, 7 Lacs, 10 Lacs, 15 Lacs, 20 Lacs, 25 Lacs, 50 Lacs, 75 Lacs, 1 Crore, 2 Crores, 3 Crores, 4 Crores, 5 Crores, 6 Crores Room Rent ICU Charges Road Ambulance Cover (per hospitalization) Day Care Treatments Modern Procedures / Treatments HIV / AIDS and STD Cover Mental Illness Hospitalization Obesity Treatment Non-payable items will be covered (all 4 lists of Annexure I) Non-payable items will be covered (all 4 lists of Annexure I) NA Actuals up to Base Sum Insured Actuals up to Base Sum Insured Actuals up to Base Sum Insured Actuals up to Base Sum Insured Listed & Cashless NA Listed & Cashless NA 2X - Day 1 NA 2nd claim onwards - unlimited times (up to Base Sum Insured) Super Reload Super Credit (increases irrespective of claim) 100% of BSI per year, up to 500% of Base Sum Insured (up to Max of 3 Cr under this benefit) 50% of BSI per year, up to 100% of Base Sum Insured (up to Max of 3 Cr under this benefit) 50% of BSI per year, up to 100% of Base Sum Insured (up to Max of INR 4 Cr under this benefit) 100% of BSI per year, up to 500% of Base Sum Insured (up to Max of 3 Cr under this benefit) 2X Cover Unlimited Refill NA In-built Covers Benefits MAX VYTL NXT VIP VIP + MAX+ SAVR Product Name: Activ One, Product UIN: ADIHLIP24097V012324 Product Benefit Table - Activ One Pre-Hospitalization Expenses (up to Base Sum Insured) Post-Hospitalization Expenses (up to Base Sum Insured) Claim Protect (Non-Medical Expense Waiver) Dom",
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 27
+      },
+      "confidence": 0.9,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 27
+        }
+      ]
+    },
+    "air_ambulance": {
+      "value": true,
+      "raw_text": "re of the Insured Person shall be Reimbursed by the Company to return to the country of residence subject to the conditions mentioned in the Policy Document. Emergency Hospitalisation Emergency MedicaI Evacuation Global Compassionate visit Emergency Air Ambulance Care and/or transportation of minor children Return of mortal remains Medical referral Medical Repatriation OPD Cover Loss of Passport Loss of checked-in baggage Trip Cancellation & Interruption Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 5
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "organ_donor_expenses": {
+      "value": true,
+      "raw_text": "all indemnify the Medical Expenses incurred for Inpatient Care of the Insured Person under Ayurveda, Yoga and Naturopathy, Unani, Siddha and Homeopathy systems of medicines during the Policy Period in any AYUSH Hospital or AYUSH Day Care Centre. C.7 Organ Donor Expenses The Company shall indemnify the Medical Expenses listed under Section C.1 (Hospitalization Treatment) which are incurred during the Policy Period towards the organ donor’s Hospitalization for harvesting of the donated organ where an Insured Person is the recipient, subject to the following conditions: a. The Organ donor is any person whose organ has been made available in accordance and in compliance with the Transplantation of Human Organs Act 1994, the Transplantation of Human Organ (amendment) Act, 2011, Transplantation of Human Organs and Tissues Rules, 2014 and other applicable laws and / or regulations, as amended from time to time. b. Recipient Insured Person’s claim under Section C.1 (Hospitalization Treatment) is admissible under the Policy in relation to such organ transplant. c. Expenses listed below are excluded from this Cover: i. The organ donors Pre-Hospitalization Expenses and Post-Hospitalization Expenses. ii. Expenses related to organ transportation or preservation. iii. Any other Medical Expenses or Hospitalization of the organ donor consequent to the organ harvesting. C.8 Super Reload If the Base Sum Insured along with accumulated Super Credit (if applicable) for the Policy Year in respect of the Insured Person, is completely exhausted or",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 30
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 3
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 7
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 27
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 30
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 30
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 34
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 46
+        },
+        {
+          "source_type": "customer_information_sheet",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+          "page_number": 1
+        },
+        {
+          "source_type": "customer_information_sheet",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+          "page_number": 2
+        }
+      ]
+    },
+    "automatic_restoration": {
+      "value": true,
+      "raw_text": "y year 1 2 3 4 5 6 7 8 Policy Type Floater Floater Floater Floater Floater Floater Floater Floater Base Sum Insured (BSI) 10,00,000 10,00,000 10,00,000 10,00,000 10,00,000 10,00,000 10,00,000 10,00,000 Claims No Yes Yes No No No Yes No Super Credit (100% of SI) on next year renewal* NA 100% of BSI = 10,00,000 100% of BSI = 10,00,000 100% of BSI = 10,00,000 100% of BSI = 10,00,000 100% of BSI = 10,00,000 NA NA Total Available Sum Insured 10,00,000 20,00,000 30,00,000 40,00,000 50,00,000 60,00,000 60,00,000 60,00,000 Paid through Base Sum Insured + Super Reload (Full) Super Reload (Full) Super Reload(Partial) Super Reload(Partial) Super Reload (Full) Admissible claim amount 20,00,000 10,00,000 5,00,000 5,00,000 10,00,000 Super Credit NIL NIL NIL NIL NIL Super Reload (2X-Day 1 Cover and Unlimited Reload) 10,00,000 10,00,000 5,00,000 5,00,000 10,00,000 Base Sum Insured 10,00,000 NIL NIL NIL NIL Claim Amount 20,00,000 10,00,000 5,00,000 5,00,000 10,00,000 Policy Type Floater Floater Floater Floater Floater Claim No 1st Claim 2nd Claim 3rd Claim 4th Claim 5th Claim Policy Year 1 1 1 1 1 An Insured Person with Activ One (MAX Plan), Tenure 1 Year, Second Policy Year in progress, one claim in Year 1, Base Sum Insured INR 10,00,000 No. of Claim C.22.17 Annual Screening Package for Cancer Diagnosed Patients On availing this Optional Cover, the Company shall reimburse the Medical Expenses incurred up to the limit specified in the Policy Schedule/Product Benefit Table for an Annual Screening Package for the Insured Person(s) subject to c",
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 10
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "bariatric_surgery": {
+      "value": true,
+      "raw_text": "n impacting mental health of the Insured. h. Obesity Treatment: Medical Expenses incurred towards treatment taken by the Insured Person during Hospitalization under Hospitalization Treatment of the Insured Person arising out of Hospitalization for a Bariatric Surgery during the Policy Period subject to the conditions that needs to be fulfilled as per Section D.1.6– Standard Exclusions - Obesity / Weight Control (Code- Excl06) in the Policy Document. C.2 Pre-Hospitalization Expenses The Company shall indemnify the Pre-Hospitalization Medical Expenses incurred, related to an admissible Hospitalization of the Insured Person under Hospitalization Treatment or Domiciliary Hospitalization or Home Health care or AYUSH treatment for up to 90 days immediately prior to the date of such Hospitalization as mentioned in the Policy Schedule. C.3 Post-Hospitalization Expenses The Company shall indemnify the Post-Hospitalization Medical Expenses incurred, related to an admissible Hospitalization of the Insured Person under Hospitalization Treatment or Domiciliary Hospitalization or Home Health care or AYUSH treatment for up to 180 days from the date of discharge from the Hospital as mentioned in the Policy Schedule. C.4 Claim Protect (Non-Medical Expense Waiver) The Company shall indemnify the Non-Medical Expenses listed under Annexure I (all 4 lists) to this Policy incurred in relation to a claim admissible under Hospitalization Treatment or Domiciliary Hospitalization or Home Health care or AYUSH treatment or Organ Donor Expenses during t",
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 3
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "hospital_cash": {
+      "value": true,
+      "raw_text": "C.16 Hospital Cash Cover for Parents OR Parents-in-law The Company shall pay the Daily Cash Benefit as specified in the Policy Schedule for each continuous and completed 24 hours of Hospitalization during the Policy Year related to an admissible Hospitalization of any or both Parents/Parents-in-law of the Primary Insured Person subject to the conditions mentioned in the Policy Document. C.17 Global Cover (Emergency Only) The Company shall indemnify the Insured Person for Emergency Medical Expenses which are diagnosed and incurred outside India, but within those regions as specified in the Policy Schedule, related to the Benefits mentioned below, subject to the conditions mentioned in the Policy Document: The Company shall indemnify the Medical Expenses incurred for the Hospitalization of the Insured Person until they reach a Medically Stable Condition during the Policy Period subject to the conditions mentioned in the Policy Document. Our Service Provider will arrange, and the Company shall indemnify the expenses, for ambulance services under appropriate medical supervision on Cashless Facility basis only, when an adequate medical facility is not available proximate to the Insured Person, as determined by the Insured Person's attending physician and agreed by Us / Our Service Provider",
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 5
+      },
+      "confidence": 0.9,
+      "validated": true
+    }
+  },
+  "product_facts": {
+    "copay": {
+      "value": "10% co-payment for insured persons whose age at entry is 61 years and above",
+      "raw_text": "C.10.6 Preferred Provider Network (PPN) Discount On availing this Optional Cover, the Policyholder will be entitled for a discount of 10% on the premium payable subject to below conditions: i. If the Insured Person takes treatment as applicable under Section C in a Hospital other than those listed as “Preferred Provider Network”, then the Policyholder / Insured Person shall bear a Co-Payment of 10% on each and ever claim arising in such regard. ii. The updated list of Hospitals listed as “Preferred Provider Network” can be referred to on Our website. C.10.7 Critical Illness cover On availing this Optional Cover, if the Insured Person suﬀers from a Critical Illness of the nature as specified in this Section during the Policy Period and while the Policy is in force, then We shall pay the Sum Insured as mentioned in the Policy Schedule / Product Benefit Table for that Critical Illness a\u001ber completion of 60 days from the Commencement Date and provided that the Critical Illness is first diagnosed or first manifests itself during the Policy Period as a first incidence. List of Critical Illnesses as Applicable: Conditions i. Our total, cumulative, maximum liability during the lifetime of the Insured Person is upto the limit specified in the Policy Schedule. ii. Once a claim for a listed condition is admissible in respect of an Insured Person, no further Renewals shall be allowed for that Insured Person under this Bene",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 35
+      },
+      "confidence": 0.96,
+      "validated": true,
+      "applies_when": "Age at entry is 61 years and above",
+      "exception": "Does not apply if entered before 61 and renewed continuously without break"
+    },
+    "room_rent_limit": {
+      "value": "Private Single A/C Room",
+      "raw_text": "ion for which the Insured person’s hospitalization was required, and b. The In-patient hospitalization claim for such hospitalization is admissible by the Insurance company. 54. Qualified Nurse: means a person who holds a valid registration from the Nursing Council of India or the Nursing Council of any state in India. 55. Renewal: means the terms on which the contract of insurance can be renewed on mutual consent with a provision of grace period for treating the renewal continuous for the purpose of gaining credit for pre-existing diseases, time-bound exclusions and for all Waiting Periods. 56. Room Rent: means the amount charged by a Hospital towards Room and Boarding expenses and shall include the associated medical expenses. 57. Surgery or Surgical Procedure: means manual and / or operative procedure (s) required for treatment of an illness or injury, correction of deformities and defects, diagnosis and cure of diseases, relief from suffering and prolongation of life, performed in a hospital or day care centre by a medical practitioner. 58. Surgical Treatment for benign Brain Tumour: a. We will be covering surgical treatment of Benign solid brain tumour limited to; i. Surgical Removal of solid brain tumour through Intra cranial surgery by the route of Burr Hole Procedure or Craniotomy ii. Embolization of Intra cranial blood vessels, needed for the treatment of solid brain Tumour b. Benign solid brain tumour is defined as a life threatening, non-cancerous tumour in the brain, cranial nerves or meninges within the skull. T",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 5
+      },
+      "confidence": 0.95,
+      "validated": true
+    }
+  },
+  "discounts": {
+    "long_term_discount": {
+      "value": "Long-term / multi-year discount available",
+      "raw_text": "Discounts Sr. Number 1 2 Description Family Discount for 2 or 3 members for 4 members or more Long term Policy Discount Policy Term-2 years Policy Term-3 years 5% 10% 7.50% 10% Percentage of Premium excluding GST Product Name: Activ One, Product UIN: ADIHLIP24097V012324 E.2.15. Endorsements This Policy constitutes the complete contract of insurance. This Policy cannot be modified by anyone (including an insurance agent or broker) except the Company. Any change or modification that the Company makes will be evidenced by a written endorsement signed and stamped by the Company. E.2.16. Communication & Notice Policy and any communication related to the Policy shall be sent to through electronic modes or to the address of the following: a. The Policyholder’s, at the address / e-mail address specified in the Policy Schedule. b. To the Company, at the address specified in the Policy Schedule. c. Insurance agents, brokers, other person or entity is / are not authorised to receive any notice on the behalf of the Company, unless stated in writing by the Company. E.2.17. Instalment Premium payment through Auto Debit / ECS Facility a. If premium payment is opted for by instalments through auto debit / ECS facility, a separate authorization form shall be submitted by Insured Person specifying",
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 25
+      },
+      "confidence": 0.9,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 25
+        }
+      ]
+    },
+    "wellness_discount": {
+      "value": "Wellness-linked discount available",
+      "raw_text": "and every admissible claim made under this Policy, and the Insured Person shall bear on his / her own account an amount equal to the opted Deductible subject to the conditions mentioned in the Policy Document. C.22.6 Preferred Provider Network (PPN) Discount On availing this Optional Cover, the Policyholder will be entitled for a discount of 10% on the premium payable subject to the conditions mentioned in the Policy Document. C.22.7 Critical Illness cover On availing this Optional Cover, if the Insured Person suffers from a Critical Illness of the nature as specified in this Section during the Policy Period and while the Policy is in force, then We shall pay the Sum Insured as mentioned in the Policy Schedule / Product Benefit Table for that Critical Illness after completion of 60 days from the Commencement Date and survival of the Insured Person for 15 days following the first diagnosis of the Critical Illness/undergoing the Surgical Procedure for the first time subject to the conditions as mentioned in the Policy Document. List of Critical Illnesses as Applicable: C.22.8 Personal Accident Cover On availing this Optional Cover, We will pay the amount specified in the Policy Schedule as a lump sum pay out in case of Accidental Death, Permanent Total Disablement and Permanent Partial Disablement up to the limit specified in the Policy Schedule subject to conditions mentioned in the Policy Document. Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 8
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "online_discount": {
+      "value": "Online purchase discount available",
+      "raw_text": "and every admissible claim made under this Policy, and the Insured Person shall bear on his / her own account an amount equal to the opted Deductible subject to the conditions mentioned in the Policy Document. C.22.6 Preferred Provider Network (PPN) Discount On availing this Optional Cover, the Policyholder will be entitled for a discount of 10% on the premium payable subject to the conditions mentioned in the Policy Document. C.22.7 Critical Illness cover On availing this Optional Cover, if the Insured Person suffers from a Critical Illness of the nature as specified in this Section during the Policy Period and while the Policy is in force, then We shall pay the Sum Insured as mentioned in the Policy Schedule / Product Benefit Table for that Critical Illness after completion of 60 days from the Commencement Date and survival of the Insured Person for 15 days following the first diagnosis of the Critical Illness/undergoing the Surgical Procedure for the first time subject to the conditions as mentioned in the Policy Document. List of Critical Illnesses as Applicable: C.22.8 Personal Accident Cover On availing this Optional Cover, We will pay the amount specified in the Policy Schedule as a lump sum pay out in case of Accidental Death, Permanent Total Disablement and Permanent Partial Disablement up to the limit specified in the Policy Schedule subject to conditions mentioned in the Policy Document. Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+        "page_number": 8
+      },
+      "confidence": 0.9,
+      "validated": true
+    }
+  },
+  "optional_covers": {
+    "buy_back_ped_waiting_period": {
+      "value": "PED waiting period can be reduced from 36 months to 12 months on payment of additional premium",
+      "raw_text": "to be confirmed by a specialist medical practitioner. 32. Loss of Speech: Total and irrecoverable loss of the ability to speak as a result of injury or disease to the vocal cords. The inability to speak must be established for a continuous period of 12 months. This diagnosis must be supported by medical evidence furnished by and Ear, Nose, Throat (ENT) specialist. 33. Major Organ / Bone Marrow Transplant: a. The actual undergoing of a transplant of: i. One of the following human organs: heart, lung, liver, kidney, pancreas, that resulted from irreversible end-stage failure of the relevant organ, or ii. Human bone marrow using haematopoietic stem cells. The undergoing of a transplant has to be confirmed by a specialist medical practitioner. b. The following are excluded: i. Other stem-cell transplants ii. Where only islets of langerhans are transplanted 34. Medical Advice: means any consultation or advice from a Medical Practitioner including the issuance of any prescription or follow-up prescription. Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+        "page_number": 3
+      },
+      "confidence": 0.95,
+      "validated": true
+    }
+  },
+  "summary": {
+    "documents_used": [
+      "customer_information_sheet",
+      "policy_wording",
+      "prospectus"
+    ],
+    "pages_scanned": 99
+  }
+}

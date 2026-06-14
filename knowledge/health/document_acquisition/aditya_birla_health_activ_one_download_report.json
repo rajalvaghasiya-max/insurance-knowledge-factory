@@ -1,0 +1,34 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "input_file": "knowledge/health/document_acquisition/aditya_birla_health_activ_one_live_document_links.json",
+  "output_dir": "knowledge/health/aditya_birla_health/activ_one/documents",
+  "downloaded": [
+    {
+      "document_type": "policy_wording",
+      "label": "Policy Wording",
+      "url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/NXT/product-information/policy-document.pdf",
+      "output_path": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+      "success": true,
+      "error": null,
+      "bytes": 13082478
+    },
+    {
+      "document_type": "prospectus",
+      "label": "Prospectus",
+      "url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/prospectus.pdf",
+      "output_path": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+      "success": true,
+      "error": null,
+      "bytes": 455035
+    },
+    {
+      "document_type": "customer_information_sheet",
+      "label": "CIS Document",
+      "url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/NXT/product-information/customer-information-sheet.pdf",
+      "output_path": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+      "success": true,
+      "error": null,
+      "bytes": 598021
+    }
+  ]
+}

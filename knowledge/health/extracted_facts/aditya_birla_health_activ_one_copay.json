@@ -1,0 +1,11 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "field": "copay",
+  "status": "not_found",
+  "message": "No co-pay evidence found within entity scope.",
+  "searched_root": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health",
+  "files_scanned": 8,
+  "skipped_by_entity_guard": 0,
+  "candidate_count": 0,
+  "extracted_at": "2026-06-10T05:11:27.232162+00:00"
+}

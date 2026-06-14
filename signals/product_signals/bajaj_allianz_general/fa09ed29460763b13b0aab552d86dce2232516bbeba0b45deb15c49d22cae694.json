@@ -1,0 +1,390 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\fa09ed29460763b13b0aab552d86dce2232516bbeba0b45deb15c49d22cae694.json",
+  "insurer_id": "bajaj_allianz_general",
+  "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html",
+  "page_title": "International Health Insurance: Buy Global Health Care Plan",
+  "content_hash": "fa09ed29460763b13b0aab552d86dce2232516bbeba0b45deb15c49d22cae694",
+  "page_intent": "individual_product",
+  "extracted_at": "2026-06-07T11:46:07.362292+00:00",
+  "product_names": [
+    {
+      "name": "International Health Insurance",
+      "source": "url_slug",
+      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html"
+    }
+  ],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Worldwide Comprehensive Health Care",
+      "text": "Provides extensive medical coverage across the globe and includes a wide range of healthcare services ensuring you receive quality care wherever you are in the world.",
+      "evidence": "Worldwide Comprehensive Health Care\nProvides extensive medical coverage across the globe and includes a wide range of healthcare services ensuring you receive quality care wherever you are in the world."
+    },
+    {
+      "heading": "PED Treatment Coverage After 12 Months",
+      "text": "Pre-existing diseases (PEDs) are covered after a waiting period of only 12 months from the start of the policy if they are declared and accepted by the insurer",
+      "evidence": "PED Treatment Coverage After 12 Months\nPre-existing diseases (PEDs) are covered after a waiting period of only 12 months from the start of the policy if they are declared and accepted by the insurer"
+    },
+    {
+      "heading": "Air Ambulance",
+      "text": "Ambulance transportation in an airplane or helicopter for emergency life-threatening health conditions",
+      "evidence": "Air Ambulance\nAmbulance transportation in an airplane or helicopter for emergency life-threatening health conditions"
+    },
+    {
+      "heading": "Hospitalisation & Day Care Expenses",
+      "text": "Covers hospitalisation expenses at actuals for domestic & up to single private AC room for international and all types of day care procedures, surgeries, ICU expenses at actuals",
+      "evidence": "Hospitalisation & Day Care Expenses\nCovers hospitalisation expenses at actuals for domestic & up to single private AC room for international and all types of day care procedures, surgeries, ICU expenses at actuals"
+    },
+    {
+      "heading": "Air Ambulance",
+      "text": "Covers air ambulance transportation to the nearest hospital but return transportation by air ambulance is not covered",
+      "evidence": "Air Ambulance\nCovers air ambulance transportation to the nearest hospital but return transportation by air ambulance is not covered"
+    },
+    {
+      "heading": "Local Road Ambulance",
+      "text": "Covers expenses incurred on an ambulance offered by a healthcare or ambulance service provider for transferring to the nearest hospital",
+      "evidence": "Local Road Ambulance\nCovers expenses incurred on an ambulance offered by a healthcare or ambulance service provider for transferring to the nearest hospital"
+    },
+    {
+      "heading": "Pre- & Post-Hospitalisation Expenses",
+      "text": "60 days Pre and 180 days Post -hospitalisation expenses for treatments in India and 45 days Pre and 90 days Post -hospitalisation expenses for treatments outside India",
+      "evidence": "Pre- & Post-Hospitalisation Expenses\n60 days Pre and 180 days Post -hospitalisation expenses for treatments in India and 45 days Pre and 90 days Post -hospitalisation expenses for treatments outside India"
+    },
+    {
+      "heading": "Advancement Treatment Charges",
+      "text": "Any medical expenses incurred while undergoing advanced treatment methods and modern technological procedures are covered",
+      "evidence": "Advancement Treatment Charges\nAny medical expenses incurred while undergoing advanced treatment methods and modern technological procedures are covered"
+    },
+    {
+      "heading": "Organ Donor Expenses",
+      "text": "Medical expenses incurred for an organ donor's in-patient treatment during organ harvesting are covered if insured is the recepient of the donated organ",
+      "evidence": "Organ Donor Expenses\nMedical expenses incurred for an organ donor's in-patient treatment during organ harvesting are covered if insured is the recepient of the donated organ"
+    },
+    {
+      "heading": "International OPD Cover (Imperial Plus Plan)",
+      "text": "When overseas if you need to consult a doctor for out-patient treatment, we will cover expenses incurred for doctor fees, diagnostic fees, prescription drugs and prescribed physiotherapy\nNote:",
+      "evidence": "International OPD Cover (Imperial Plus Plan)\nWhen overseas if you need to consult a doctor for out-patient treatment, we will cover expenses incurred for doctor fees, diagnostic fees, prescription drugs and prescribed physiotherapy\nNote:"
+    },
+    {
+      "heading": "Maternity related expenses are excluded",
+      "text": "Expenses for Medical Investigation & Evaluation\nCost of diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Maternity related expenses are excluded\nExpenses for Medical Investigation & Evaluation\nCost of diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment"
+    },
+    {
+      "heading": "International Health Insurance – Importance, Benefits & Coverage Details",
+      "text": "Travelling abroad is an exciting experience, whether for work, study, or leisure. However, unexpected health emergencies can turn challenging sometimes. This is where having an adequate short-term international health insurance plan can be a lifesaver. It ensures you are covered for medical expenses that may arise during your stay abroad, allowing you to focus on making the most of your trip.\nLet’s explore the importance, benefits and coverage details of overseas health insurance and guide you on how to buy international health insurance effectively.\nAt-A-Glance",
+      "evidence": "International Health Insurance – Importance, Benefits & Coverage Details\nTravelling abroad is an exciting experience, whether for work, study, or leisure. However, unexpected health emergencies can turn challenging sometimes. This is where having an adequate short-term international health insurance plan can be a lifesaver. It ensures you are covered for medical expenses that may arise during your stay abroad, allowing you to focus on making the most of your trip.\nLet’s explore the importance, benefits and coverage details of overseas health insurance and guide you on how to buy international health insurance effectively.\nAt-A-Glance"
+    },
+    {
+      "heading": "Hospitalisation & Day Care expenses (SI)",
+      "text": "INR 37.5 Lacs & USD 1 Lac | INR 56 Lacs & USD 1.5 Lacs | INR 75 Lacs & USD 2 Lacs\nINR 1.12 Cr & USD 3 Lacs | INR 1.875 Cr & USD 5 Lacs | INR 3.75 Cr & USD 10 Lacs",
+      "evidence": "Hospitalisation & Day Care expenses (SI)\nINR 37.5 Lacs & USD 1 Lac | INR 56 Lacs & USD 1.5 Lacs | INR 75 Lacs & USD 2 Lacs\nINR 1.12 Cr & USD 3 Lacs | INR 1.875 Cr & USD 5 Lacs | INR 3.75 Cr & USD 10 Lacs"
+    },
+    {
+      "heading": "Pre- & Post-Hospitalization Cover",
+      "text": "Domestic: 60 days Pre & 180 days Post & International: 45 days Pre & 90 days Post\nDomestic: 60 days Pre & 180 days Post & International: 45 days Pre & 90 days Post",
+      "evidence": "Pre- & Post-Hospitalization Cover\nDomestic: 60 days Pre & 180 days Post & International: 45 days Pre & 90 days Post\nDomestic: 60 days Pre & 180 days Post & International: 45 days Pre & 90 days Post"
+    },
+    {
+      "heading": "Organ Donor Expenses",
+      "text": "Domestic: INR 500,000 & International: USD 30,000\nDomestic: INR 500,000 & International: USD 50,000",
+      "evidence": "Organ Donor Expenses\nDomestic: INR 500,000 & International: USD 30,000\nDomestic: INR 500,000 & International: USD 50,000"
+    },
+    {
+      "heading": "Air Ambulance",
+      "text": "As per specified limit\nAs per specified limit",
+      "evidence": "Air Ambulance\nAs per specified limit\nAs per specified limit"
+    },
+    {
+      "heading": "What are the Features of International Health Insurance?",
+      "text": "At times, choosing global medical insurance could seem to be a tough task. However, being adequately covered is the need of the hour.\nMedical inflation\ncan take a toll on your pocket. And, if you are abroad, it becomes extremely crucial to have a global health insurance policy in place. You surely would not wish to spend money from your pocket or settle for any mediocre health care services. Read on to know about some of the features of our Global Health Care plan:",
+      "evidence": "What are the Features of International Health Insurance?\nAt times, choosing global medical insurance could seem to be a tough task. However, being adequately covered is the need of the hour.\nMedical inflation\ncan take a toll on your pocket. And, if you are abroad, it becomes extremely crucial to have a global health insurance policy in place. You surely would not wish to spend money from your pocket or settle for any mediocre health care services. Read on to know about some of the features of our Global Health Care plan:"
+    },
+    {
+      "heading": "Adequate Coverage",
+      "text": "With our Global Health Care plan, you remain worry-free; you need not compromise on availing of the best medical services or treatment, whether domestic or international. If you have an overseas medical insurance policy, you will be provided with suitable cover for expenses related to hospitalisation, maternity consultations, etc.",
+      "evidence": "Adequate Coverage\nWith our Global Health Care plan, you remain worry-free; you need not compromise on availing of the best medical services or treatment, whether domestic or international. If you have an overseas medical insurance policy, you will be provided with suitable cover for expenses related to hospitalisation, maternity consultations, etc."
+    },
+    {
+      "heading": "Comprehensive coverage",
+      "text": "Emergency only\nCost\nHigher compared to travel insurance",
+      "evidence": "Comprehensive coverage\nEmergency only\nCost\nHigher compared to travel insurance"
+    },
+    {
+      "heading": "4. Hospitalisation Coverage",
+      "text": ": The plan provides substantial coverage for both daycare procedures and inpatient hospitalisation to ensure you are adequately protected during treatment.",
+      "evidence": "4. Hospitalisation Coverage\n: The plan provides substantial coverage for both daycare procedures and inpatient hospitalisation to ensure you are adequately protected during treatment."
+    },
+    {
+      "heading": "1. Best For",
+      "text": ": Frequent flyers, long-term expats or families wanting extensive coverage similar to what they have at home.",
+      "evidence": "1. Best For\n: Frequent flyers, long-term expats or families wanting extensive coverage similar to what they have at home."
+    },
+    {
+      "heading": "High Sum Insured Options",
+      "text": ": Healthcare costs in countries like the USA and UK can be staggering. Bajaj offers coverage up to $1,000,000, ensuring that even complex surgeries or long-term hospitalisations are fully covered without draining your savings.",
+      "evidence": "High Sum Insured Options\n: Healthcare costs in countries like the USA and UK can be staggering. Bajaj offers coverage up to $1,000,000, ensuring that even complex surgeries or long-term hospitalisations are fully covered without draining your savings."
+    },
+    {
+      "heading": "Select suitable coverage",
+      "text": "Check discounts & offers",
+      "evidence": "Select suitable coverage\nCheck discounts & offers"
+    },
+    {
+      "heading": "Create a Profile With Us to Unlock New Benefits",
+      "text": "Customised plans that grow with you",
+      "evidence": "Create a Profile With Us to Unlock New Benefits\nCustomised plans that grow with you"
+    },
+    {
+      "heading": "Proactive coverage for future milestones",
+      "text": "Expert advice tailored to your profile",
+      "evidence": "Proactive coverage for future milestones\nExpert advice tailored to your profile"
+    },
+    {
+      "heading": "What does International Health Insurance typically cover?",
+      "text": "Hospitalisation, outpatient care, daycare procedures, ambulance costs, preventive check-ups, mental health treatment, and in some plans, modern therapies, palliative care, or rehabilitation.",
+      "evidence": "What does International Health Insurance typically cover?\nHospitalisation, outpatient care, daycare procedures, ambulance costs, preventive check-ups, mental health treatment, and in some plans, modern therapies, palliative care, or rehabilitation."
+    },
+    {
+      "heading": "Is emergency evacuation covered under International Health Insurance claims?",
+      "text": "Yes. Many plans cover emergency medical evacuation when treatment is unavailable locally, including air ambulance or transfers to suitable facilities within policy limits.",
+      "evidence": "Is emergency evacuation covered under International Health Insurance claims?\nYes. Many plans cover emergency medical evacuation when treatment is unavailable locally, including air ambulance or transfers to suitable facilities within policy limits."
+    },
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "Air Ambulance",
+      "text": "Covers air ambulance transportation to the nearest hospital but return transportation by air ambulance is not covered",
+      "evidence": "Air Ambulance\nCovers air ambulance transportation to the nearest hospital but return transportation by air ambulance is not covered"
+    },
+    {
+      "heading": "Pre-Existing Diseases (PED)",
+      "text": "Treatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Global Health Care Policy",
+      "evidence": "Pre-Existing Diseases (PED)\nTreatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Global Health Care Policy"
+    },
+    {
+      "heading": "Maternity related expenses are excluded",
+      "text": "Expenses for Medical Investigation & Evaluation\nCost of diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment",
+      "evidence": "Maternity related expenses are excluded\nExpenses for Medical Investigation & Evaluation\nCost of diagnostic procedures and medical evaluation unrelated to the current diagnosis or treatment"
+    },
+    {
+      "heading": "Dietary Supplements & Substances",
+      "text": "Cost of supplements that are purchased without a prescription by a certified doctor as a part of treatment, including vitamins, minerals and organic substances",
+      "evidence": "Dietary Supplements & Substances\nCost of supplements that are purchased without a prescription by a certified doctor as a part of treatment, including vitamins, minerals and organic substances"
+    },
+    {
+      "heading": "Treatment for Self-Inflicted Acts",
+      "text": "Medical expenses incurred as a result of self-harm, intoxication, illegal actions, hazardous activities, etc.",
+      "evidence": "Treatment for Self-Inflicted Acts\nMedical expenses incurred as a result of self-harm, intoxication, illegal actions, hazardous activities, etc."
+    },
+    {
+      "heading": "What are the common reasons for International Health Insurance claim rejection?",
+      "text": "Incomplete paperwork, false information, excluded treatments, undisclosed pre-existing conditions, or fraudulent claims.",
+      "evidence": "What are the common reasons for International Health Insurance claim rejection?\nIncomplete paperwork, false information, excluded treatments, undisclosed pre-existing conditions, or fraudulent claims."
+    },
+    {
+      "heading": "E-Insurance Account",
+      "text": "Product wise specific list of excluded items",
+      "evidence": "E-Insurance Account\nProduct wise specific list of excluded items"
+    }
+  ],
+  "waiting_periods": [
+    {
+      "heading": "PED Treatment Coverage After 12 Months",
+      "text": "Pre-existing diseases (PEDs) are covered after a waiting period of only 12 months from the start of the policy if they are declared and accepted by the insurer",
+      "evidence": "PED Treatment Coverage After 12 Months\nPre-existing diseases (PEDs) are covered after a waiting period of only 12 months from the start of the policy if they are declared and accepted by the insurer"
+    },
+    {
+      "heading": "Initial Waiting Period",
+      "text": "Treatment expenses during the first 30 days except for treatment of accidental injuries",
+      "evidence": "Initial Waiting Period\nTreatment expenses during the first 30 days except for treatment of accidental injuries"
+    },
+    {
+      "heading": "Pre-Existing Diseases (PED)",
+      "text": "Treatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Global Health Care Policy",
+      "evidence": "Pre-Existing Diseases (PED)\nTreatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 36 months from date of your first Global Health Care Policy"
+    },
+    {
+      "heading": "30 days initial waiting period | 36 months PED | 24 months specified diseases",
+      "text": "Note",
+      "evidence": "30 days initial waiting period | 36 months PED | 24 months specified diseases\nNote"
+    },
+    {
+      "heading": "What are the common reasons for International Health Insurance claim rejection?",
+      "text": "Incomplete paperwork, false information, excluded treatments, undisclosed pre-existing conditions, or fraudulent claims.",
+      "evidence": "What are the common reasons for International Health Insurance claim rejection?\nIncomplete paperwork, false information, excluded treatments, undisclosed pre-existing conditions, or fraudulent claims."
+    }
+  ],
+  "riders_or_addons": [
+    {
+      "heading": "Dental Treatment (Optional)",
+      "text": "Provides financial protection for various dental treatments and procedures promoting improved oral health",
+      "evidence": "Dental Treatment (Optional)\nProvides financial protection for various dental treatments and procedures promoting improved oral health"
+    },
+    {
+      "heading": "Additional Covers",
+      "text": "What else can you get?",
+      "evidence": "Additional Covers\nWhat else can you get?"
+    },
+    {
+      "heading": "Add or remove riders",
+      "text": "Confirm details and proceed",
+      "evidence": "Add or remove riders\nConfirm details and proceed"
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ],
+  "sum_insured_values": [
+    {
+      "value": "₹1.12 crore",
+      "reason": "sum_insured_context",
+      "heading": "Domestic Sum Insured Amount(s)",
+      "evidence": "Domestic Sum Insured Amount(s)\n₹1.12 crore, ₹1.87 crore and ₹3.75 crore"
+    },
+    {
+      "value": "₹1.87 crore",
+      "reason": "sum_insured_context",
+      "heading": "Domestic Sum Insured Amount(s)",
+      "evidence": "Domestic Sum Insured Amount(s)\n₹1.12 crore, ₹1.87 crore and ₹3.75 crore"
+    },
+    {
+      "value": "₹3.75 crore",
+      "reason": "sum_insured_context",
+      "heading": "Domestic Sum Insured Amount(s)",
+      "evidence": "Domestic Sum Insured Amount(s)\n₹1.12 crore, ₹1.87 crore and ₹3.75 crore"
+    },
+    {
+      "value": "₹37.5 lakh",
+      "reason": "sum_insured_context",
+      "heading": "Domestic Sum Insured Amount(s)",
+      "evidence": "Domestic Sum Insured Amount(s)\n₹37.5 lakh, ₹56 lakh and ₹75 lakh"
+    },
+    {
+      "value": "₹56 lakh",
+      "reason": "sum_insured_context",
+      "heading": "Domestic Sum Insured Amount(s)",
+      "evidence": "Domestic Sum Insured Amount(s)\n₹37.5 lakh, ₹56 lakh and ₹75 lakh"
+    },
+    {
+      "value": "₹75 lakh",
+      "reason": "sum_insured_context",
+      "heading": "Domestic Sum Insured Amount(s)",
+      "evidence": "Domestic Sum Insured Amount(s)\n₹37.5 lakh, ₹56 lakh and ₹75 lakh"
+    }
+  ],
+  "premium_values": [],
+  "benefit_amount_values": [
+    {
+      "value": "INR 500,000",
+      "reason": "benefit_amount_context",
+      "heading": "Organ Donor Expenses",
+      "evidence": "Organ Donor Expenses\nDomestic: INR 500,000 & International: USD 30,000\nDomestic: INR 500,000 & International: USD 50,000"
+    },
+    {
+      "value": "USD 30,000",
+      "reason": "benefit_amount_context",
+      "heading": "Organ Donor Expenses",
+      "evidence": "Organ Donor Expenses\nDomestic: INR 500,000 & International: USD 30,000\nDomestic: INR 500,000 & International: USD 50,000"
+    },
+    {
+      "value": "USD 50,000",
+      "reason": "benefit_amount_context",
+      "heading": "Organ Donor Expenses",
+      "evidence": "Organ Donor Expenses\nDomestic: INR 500,000 & International: USD 30,000\nDomestic: INR 500,000 & International: USD 50,000"
+    }
+  ],
+  "tax_amount_values": [],
+  "discount_values": [],
+  "room_rent_limits": [
+    {
+      "heading": "Hospitalisation & Day Care Expenses",
+      "text": "Covers hospitalisation expenses at actuals for domestic & up to single private AC room for international and all types of day care procedures, surgeries, ICU expenses at actuals",
+      "evidence": "Hospitalisation & Day Care Expenses\nCovers hospitalisation expenses at actuals for domestic & up to single private AC room for international and all types of day care procedures, surgeries, ICU expenses at actuals"
+    },
+    {
+      "heading": "Room Limits",
+      "text": "Domestic: At actuals & International: Single Private AC, ICU at Actuals\nDomestic: At actuals & International: Single Private AC, ICU at Actuals",
+      "evidence": "Room Limits\nDomestic: At actuals & International: Single Private AC, ICU at Actuals\nDomestic: At actuals & International: Single Private AC, ICU at Actuals"
+    },
+    {
+      "heading": "2. Original Final Hospital Bill",
+      "text": ": Must show a cost-wise breakup of all charges (room rent, doctor fees, OT charges, consumables, etc.).",
+      "evidence": "2. Original Final Hospital Bill\n: Must show a cost-wise breakup of all charges (room rent, doctor fees, OT charges, consumables, etc.)."
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "Deductibles & Co-pays",
+      "text": "Part of the claim will be borne by you (the policyholder) if you have opted for deductibles or co-pay\nNote",
+      "evidence": "Deductibles & Co-pays\nPart of the claim will be borne by you (the policyholder) if you have opted for deductibles or co-pay\nNote"
+    },
+    {
+      "heading": "3. Reimbursement Option",
+      "text": ": If medical services are availed at a non-network hospital, the insured can utilise the reimbursement facility.",
+      "evidence": "3. Reimbursement Option\n: If medical services are availed at a non-network hospital, the insured can utilise the reimbursement facility."
+    },
+    {
+      "heading": "Quick Claim Settlement",
+      "text": "Sixty minutes is all it takes!",
+      "evidence": "Quick Claim Settlement\nSixty minutes is all it takes!"
+    },
+    {
+      "heading": "1. Claim Form",
+      "text": ": Duly filled and signed by the policyholder.",
+      "evidence": "1. Claim Form\n: Duly filled and signed by the policyholder."
+    },
+    {
+      "heading": "What documents are required for an International Health Insurance claim?",
+      "text": "Claim form, hospital bills, prescriptions, test reports, discharge summaries, and for accident-related claims, a police report.",
+      "evidence": "What documents are required for an International Health Insurance claim?\nClaim form, hospital bills, prescriptions, test reports, discharge summaries, and for accident-related claims, a police report."
+    },
+    {
+      "heading": "What are the common reasons for International Health Insurance claim rejection?",
+      "text": "Incomplete paperwork, false information, excluded treatments, undisclosed pre-existing conditions, or fraudulent claims.",
+      "evidence": "What are the common reasons for International Health Insurance claim rejection?\nIncomplete paperwork, false information, excluded treatments, undisclosed pre-existing conditions, or fraudulent claims."
+    },
+    {
+      "heading": "Is emergency evacuation covered under International Health Insurance claims?",
+      "text": "Yes. Many plans cover emergency medical evacuation when treatment is unavailable locally, including air ambulance or transfers to suitable facilities within policy limits.",
+      "evidence": "Is emergency evacuation covered under International Health Insurance claims?\nYes. Many plans cover emergency medical evacuation when treatment is unavailable locally, including air ambulance or transfers to suitable facilities within policy limits."
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "Adequate Coverage",
+      "text": "With our Global Health Care plan, you remain worry-free; you need not compromise on availing of the best medical services or treatment, whether domestic or international. If you have an overseas medical insurance policy, you will be provided with suitable cover for expenses related to hospitalisation, maternity consultations, etc.",
+      "evidence": "Adequate Coverage\nWith our Global Health Care plan, you remain worry-free; you need not compromise on availing of the best medical services or treatment, whether domestic or international. If you have an overseas medical insurance policy, you will be provided with suitable cover for expenses related to hospitalisation, maternity consultations, etc."
+    },
+    {
+      "heading": "Select suitable coverage",
+      "text": "Check discounts & offers",
+      "evidence": "Select suitable coverage\nCheck discounts & offers"
+    },
+    {
+      "heading": "Is emergency evacuation covered under International Health Insurance claims?",
+      "text": "Yes. Many plans cover emergency medical evacuation when treatment is unavailable locally, including air ambulance or transfers to suitable facilities within policy limits.",
+      "evidence": "Is emergency evacuation covered under International Health Insurance claims?\nYes. Many plans cover emergency medical evacuation when treatment is unavailable locally, including air ambulance or transfers to suitable facilities within policy limits."
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ]
+}

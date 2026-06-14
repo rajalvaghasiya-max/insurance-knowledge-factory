@@ -1,0 +1,19 @@
+{
+  "entity_id": "star_health:star_comprehensive",
+  "coverage_score": 0,
+  "status": "INCOMPLETE",
+  "coverage": {
+    "policy_wording": false,
+    "customer_information_sheet": false,
+    "prospectus": false,
+    "brochure": false,
+    "webpage": false
+  },
+  "evidence": {
+    "policy_wording": [],
+    "customer_information_sheet": [],
+    "prospectus": [],
+    "brochure": [],
+    "webpage": []
+  }
+}

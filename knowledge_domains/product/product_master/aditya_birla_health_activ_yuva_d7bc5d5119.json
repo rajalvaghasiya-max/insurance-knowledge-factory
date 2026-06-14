@@ -1,0 +1,353 @@
+{
+  "product_id": "aditya_birla_health_activ_yuva_d7bc5d5119",
+  "insurer_id": "aditya_birla_health",
+  "product_name": "Activ Yuva",
+  "product_key": "aditya_birla_health::activ_yuva",
+  "status": "draft",
+  "created_at": "2026-06-07T13:07:41.727911+00:00",
+  "updated_at": "2026-06-07T13:07:41.727928+00:00",
+  "consolidated_by": "product_consolidation_agent",
+  "consolidator_version": "0.2",
+  "source_urls": [
+    "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage"
+  ],
+  "source_content_hashes": [
+    "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0"
+  ],
+  "source_signal_files": [
+    "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json"
+  ],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Covers eligible hospitalisation expenses upto your sum insured",
+      "text": "Activ Yuva provides strong in-patient medical cover for planned and emergency hospitalisation. Hospitalisation expenses are covered on actuals up to the Sum Insured, provided the minimum hospitalisation criteria is met (2 hours for regular treatments; 24 hours for AYUSH).\nThis includes:",
+      "evidence": "Covers eligible hospitalisation expenses upto your sum insured\nActiv Yuva provides strong in-patient medical cover for planned and emergency hospitalisation. Hospitalisation expenses are covered on actuals up to the Sum Insured, provided the minimum hospitalisation criteria is met (2 hours for regular treatments; 24 hours for AYUSH).\nThis includes:",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "covered like any other medical condition",
+      "text": "Modern and advanced medical procedures\nincluding listed high-end treatments",
+      "evidence": "covered like any other medical condition\nModern and advanced medical procedures\nincluding listed high-end treatments",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Activ Yuva provides strong in-patient medical cover for planned and emergency hospitalisation.",
+      "text": "Hospitalisation expenses are covered on actuals up to the Sum Insured, provided the minimum hospitalisation criteria is met (2 hours for regular treatments; 24 hours for AYUSH).\nThis includes:",
+      "evidence": "Activ Yuva provides strong in-patient medical cover for planned and emergency hospitalisation.\nHospitalisation expenses are covered on actuals up to the Sum Insured, provided the minimum hospitalisation criteria is met (2 hours for regular treatments; 24 hours for AYUSH).\nThis includes:",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Health insurance works best when you clearly understand both what is covered and what is not.",
+      "text": "Below is a detailed, customer-friendly explanation of exclusions under Activ Yuva, based on the policy wording.\nThese exclusions are standard across health insurance and are important to set the right expectations.",
+      "evidence": "Health insurance works best when you clearly understand both what is covered and what is not.\nBelow is a detailed, customer-friendly explanation of exclusions under Activ Yuva, based on the policy wording.\nThese exclusions are standard across health insurance and are important to set the right expectations.",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "which is covered from Day 1.",
+      "text": "This waiting period exists to prevent misuse of insurance for pre-planned treatments immediately after purchase.",
+      "evidence": "which is covered from Day 1.\nThis waiting period exists to prevent misuse of insurance for pre-planned treatments immediately after purchase.",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "After completion of the waiting period, these conditions are covered as per policy terms.",
+      "text": "If you opt for the",
+      "evidence": "After completion of the waiting period, these conditions are covered as per policy terms.\nIf you opt for the",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Explore helpful answers about Activ Yuva’s benefits, coverage, and features.",
+      "text": "What is Activ yuva?\nActiv Yuva is designed for young individuals and families:\nAdults aged\n18 to 65 years\ncan purchase the policy",
+      "evidence": "Explore helpful answers about Activ Yuva’s benefits, coverage, and features.\nWhat is Activ yuva?\nActiv Yuva is designed for young individuals and families:\nAdults aged\n18 to 65 years\ncan purchase the policy",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Dependent children can be covered from",
+      "text": "91 days up to 25 years\n(under Family Floater / Multi-Individual plans)\nIndividual policies can be purchased from\n18 years onwards\nWhat policy types are available?\nYou can choose the structure that suits your needs:\nIndividual\n– separate policy for each person\nMulti-Individual",
+      "evidence": "Dependent children can be covered from\n91 days up to 25 years\n(under Family Floater / Multi-Individual plans)\nIndividual policies can be purchased from\n18 years onwards\nWhat policy types are available?\nYou can choose the structure that suits your needs:\nIndividual\n– separate policy for each person\nMulti-Individual",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Health insurance with OPD cover",
+      "text": "Ayush treatment\nCorona virus health insurance",
+      "evidence": "Health insurance with OPD cover\nAyush treatment\nCorona virus health insurance",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Health insurance with OPD cover",
+      "text": "Ayush treatment\nCorona virus health insurance\nLarge payout plans",
+      "evidence": "Health insurance with OPD cover\nAyush treatment\nCorona virus health insurance\nLarge payout plans",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "Health insurance works best when you clearly understand both what is covered and what is not.",
+      "text": "Below is a detailed, customer-friendly explanation of exclusions under Activ Yuva, based on the policy wording.\nThese exclusions are standard across health insurance and are important to set the right expectations.",
+      "evidence": "Health insurance works best when you clearly understand both what is covered and what is not.\nBelow is a detailed, customer-friendly explanation of exclusions under Activ Yuva, based on the policy wording.\nThese exclusions are standard across health insurance and are important to set the right expectations.",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "1. Initial Waiting Period Exclusion",
+      "text": "When you buy Activ Yuva, there is an",
+      "evidence": "1. Initial Waiting Period Exclusion\nWhen you buy Activ Yuva, there is an",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "waiting_periods": [
+    {
+      "heading": "1. Initial Waiting Period Exclusion",
+      "text": "When you buy Activ Yuva, there is an",
+      "evidence": "1. Initial Waiting Period Exclusion\nWhen you buy Activ Yuva, there is an",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "initial waiting period of 30 days",
+      "text": "from the policy start date.\nDuring these 30 days,",
+      "evidence": "initial waiting period of 30 days\nfrom the policy start date.\nDuring these 30 days,",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "which is covered from Day 1.",
+      "text": "This waiting period exists to prevent misuse of insurance for pre-planned treatments immediately after purchase.",
+      "evidence": "which is covered from Day 1.\nThis waiting period exists to prevent misuse of insurance for pre-planned treatments immediately after purchase.",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "After completion of the waiting period, these conditions are covered as per policy terms.",
+      "text": "If you opt for the",
+      "evidence": "After completion of the waiting period, these conditions are covered as per policy terms.\nIf you opt for the",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "and the applicable waiting period is completed.",
+      "text": "Until then:",
+      "evidence": "and the applicable waiting period is completed.\nUntil then:",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "riders_or_addons": [
+    {
+      "heading": "FitForward Premium | Elite | Ultra (Optional)",
+      "text": "HealthReturns™",
+      "evidence": "FitForward Premium | Elite | Ultra (Optional)\nHealthReturns™",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "room_rent_limits": [
+    {
+      "heading": "Room rent and ICU charges, without restrictive capping, up to your Sum Insured",
+      "text": "All daycare procedures, where treatment does not require 24-hour admission\nModern and advanced medical procedures, including listed high-end treatments",
+      "evidence": "Room rent and ICU charges, without restrictive capping, up to your Sum Insured\nAll daycare procedures, where treatment does not require 24-hour admission\nModern and advanced medical procedures, including listed high-end treatments",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "Health insurance claim",
+      "text": "Employer health insurance\nHealth care for young adults\nSuper topup health insurance",
+      "evidence": "Health insurance claim\nEmployer health insurance\nHealth care for young adults\nSuper topup health insurance",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "tax_signals": [],
+  "suitability_signals": [
+    {
+      "heading": "Family Floater / Multi-Individual:",
+      "text": "91 days to 25 years\nIndividual policy:\nminimum entry age 18 years\nPolicy structure\nIndividual, Multi-Individual and Family Floater options\nFamily definition:\n2 adults and 4 dependent children (2A + 4C)",
+      "evidence": "Family Floater / Multi-Individual:\n91 days to 25 years\nIndividual policy:\nminimum entry age 18 years\nPolicy structure\nIndividual, Multi-Individual and Family Floater options\nFamily definition:\n2 adults and 4 dependent children (2A + 4C)",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Explore helpful answers about Activ Yuva’s benefits, coverage, and features.",
+      "text": "What is Activ yuva?\nActiv Yuva is designed for young individuals and families:\nAdults aged\n18 to 65 years\ncan purchase the policy",
+      "evidence": "Explore helpful answers about Activ Yuva’s benefits, coverage, and features.\nWhat is Activ yuva?\nActiv Yuva is designed for young individuals and families:\nAdults aged\n18 to 65 years\ncan purchase the policy",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Dependent children can be covered from",
+      "text": "91 days up to 25 years\n(under Family Floater / Multi-Individual plans)\nIndividual policies can be purchased from\n18 years onwards\nWhat policy types are available?\nYou can choose the structure that suits your needs:\nIndividual\n– separate policy for each person\nMulti-Individual",
+      "evidence": "Dependent children can be covered from\n91 days up to 25 years\n(under Family Floater / Multi-Individual plans)\nIndividual policies can be purchased from\n18 years onwards\nWhat policy types are available?\nYou can choose the structure that suits your needs:\nIndividual\n– separate policy for each person\nMulti-Individual",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Health insurance claim",
+      "text": "Employer health insurance\nHealth care for young adults\nSuper topup health insurance",
+      "evidence": "Health insurance claim\nEmployer health insurance\nHealth care for young adults\nSuper topup health insurance",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Health Insurance For Family",
+      "text": "Hospital cash insurance",
+      "evidence": "Health Insurance For Family\nHospital cash insurance",
+      "source": {
+        "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
+        "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+        "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "financial_signals": {
+    "sum_insured_values": [],
+    "premium_values": [],
+    "benefit_amount_values": [],
+    "tax_amount_values": [],
+    "discount_values": []
+  },
+  "quality": {
+    "source_count": 1,
+    "has_uin": false,
+    "has_benefits": true,
+    "has_exclusions": true,
+    "has_waiting_periods": true,
+    "confidence": "medium",
+    "notes": [],
+    "removed_noise_items": 4
+  }
+}

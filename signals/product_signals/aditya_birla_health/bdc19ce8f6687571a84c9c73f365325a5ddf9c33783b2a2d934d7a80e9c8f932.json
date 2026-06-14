@@ -1,0 +1,63 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\bdc19ce8f6687571a84c9c73f365325a5ddf9c33783b2a2d934d7a80e9c8f932.json",
+  "insurer_id": "aditya_birla_health",
+  "url": "https://pensionfund.adityabirlacapital.com/",
+  "page_title": "Home",
+  "content_hash": "bdc19ce8f6687571a84c9c73f365325a5ddf9c33783b2a2d934d7a80e9c8f932",
+  "page_intent": "homepage",
+  "extracted_at": "2026-06-07T11:46:07.220252+00:00",
+  "product_names": [],
+  "uins": [],
+  "benefits": [],
+  "exclusions": [],
+  "waiting_periods": [],
+  "riders_or_addons": [],
+  "sum_insured_values": [],
+  "premium_values": [],
+  "benefit_amount_values": [],
+  "tax_amount_values": [],
+  "discount_values": [],
+  "room_rent_limits": [],
+  "claim_process_signals": [
+    {
+      "heading": "DISCLAIMER",
+      "text": "Give a missed call to connect on:\n76690 03333",
+      "evidence": "DISCLAIMER\nGive a missed call to connect on:\n76690 03333"
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Hi, I'm Mr. Samajhdaar.",
+      "text": "I am Mr. Samajhdaar, your trusted guide to understanding the world of NPS and retirement planning.\nI simplify complex concepts, such as tax savings, disciplined investing, and long-term financial security, into easy-to-understand, actionable insights.\nMy goal is to help every Indian investor make informed and confident decisions for a secure future.\nBecause when it comes to retirement planning, being Samajhdaar truly matters.",
+      "evidence": "Hi, I'm Mr. Samajhdaar.\nI am Mr. Samajhdaar, your trusted guide to understanding the world of NPS and retirement planning.\nI simplify complex concepts, such as tax savings, disciplined investing, and long-term financial security, into easy-to-understand, actionable insights.\nMy goal is to help every Indian investor make informed and confident decisions for a secure future.\nBecause when it comes to retirement planning, being Samajhdaar truly matters."
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "CHECK YOUR CORPORATE NPS",
+      "text": "Wealth creation is exciting. Retirement planning is wise.",
+      "evidence": "CHECK YOUR CORPORATE NPS\nWealth creation is exciting. Retirement planning is wise."
+    },
+    {
+      "heading": "Hi, I'm Mr. Samajhdaar.",
+      "text": "I am Mr. Samajhdaar, your trusted guide to understanding the world of NPS and retirement planning.\nI simplify complex concepts, such as tax savings, disciplined investing, and long-term financial security, into easy-to-understand, actionable insights.\nMy goal is to help every Indian investor make informed and confident decisions for a secure future.\nBecause when it comes to retirement planning, being Samajhdaar truly matters.",
+      "evidence": "Hi, I'm Mr. Samajhdaar.\nI am Mr. Samajhdaar, your trusted guide to understanding the world of NPS and retirement planning.\nI simplify complex concepts, such as tax savings, disciplined investing, and long-term financial security, into easy-to-understand, actionable insights.\nMy goal is to help every Indian investor make informed and confident decisions for a secure future.\nBecause when it comes to retirement planning, being Samajhdaar truly matters."
+    },
+    {
+      "heading": "WATCH NOW",
+      "text": "Early retirement planning\nhelps you...",
+      "evidence": "WATCH NOW\nEarly retirement planning\nhelps you..."
+    },
+    {
+      "heading": "Stay Ahead of Inflation",
+      "text": "Build a retirement corpus that grows with time.",
+      "evidence": "Stay Ahead of Inflation\nBuild a retirement corpus that grows with time."
+    },
+    {
+      "heading": "Protect Financial Independence",
+      "text": "Secure the freedom to live life your way.\nPlan a financially secure retirement with us",
+      "evidence": "Protect Financial Independence\nSecure the freedom to live life your way.\nPlan a financially secure retirement with us"
+    }
+  ]
+}

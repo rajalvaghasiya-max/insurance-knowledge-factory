@@ -1,0 +1,138 @@
+{
+  "source_metadata_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\metadata\\hdfc_life\\www.hdfclife.com_group-insurance-plans_customer-service.json",
+  "insurer_id": "hdfc_life",
+  "url": "https://www.hdfclife.com/group-insurance-plans/customer-service",
+  "page_title": "Customer Service - Group Insurance | HDFC Life",
+  "content_hash": "3f18474f0f066c7e940e258679992ee5639c5a632d2542a39a4d5a6dc6f570bb",
+  "parsed_at": "2026-06-07T08:19:02.701007+00:00",
+  "raw_character_count": 8329,
+  "cleaned_character_count": 8327,
+  "section_count_before_filter": 34,
+  "section_count": 11,
+  "chunk_count": 11,
+  "sections": [
+    {
+      "heading": "Receive plan benefits, savings alerts & important reminders.",
+      "text": "NoYes\nAll\nWebpages"
+    },
+    {
+      "heading": "For NRI Customers",
+      "text": "(To Buy a Policy)\nCall (All Days, Local charges apply)\n+91- 8916613503"
+    },
+    {
+      "heading": "Contact Us",
+      "text": "Customers or members can write to us at: service@hdfclife.com or call us at 022 6844 6530 (Mon to Sat 10 AM to 7 PM IST)"
+    },
+    {
+      "heading": "For Master Policy Holders",
+      "text": "Our Group Operations team is available to assist you based on your plan type:\nFor Group Term Insurance (GTI): groupoperations@hdfclife.com\nFor Credit Protect (CP): cpgroupops@hdfclife.com"
+    },
+    {
+      "heading": "For Group Unit Linked Plan: groupfunding@hdfclife.com",
+      "text": "INT/GS/03/23/1404\nTo read the complete definitions as stated by IRDAI and displayed across this website, you can refer the specimen policy documents. For product details you can refer the product brochures\nPopular links\nTerm insurance"
+    },
+    {
+      "heading": "Types of Term Insurance",
+      "text": "Term insurance for Housewife"
+    },
+    {
+      "heading": "Term Insurance for Doctors",
+      "text": "Term insurance for Diabetics"
+    },
+    {
+      "heading": "Health Insurance for Smokers",
+      "text": "Health Insurance of Self employed\nTypes of health insurance"
+    },
+    {
+      "heading": "Life Insurance for NRI",
+      "text": "What is nominee in insurance"
+    },
+    {
+      "heading": "HDFC International Life and Re Company Limited",
+      "text": "Credila"
+    },
+    {
+      "heading": "UW philosophy PWD/PMI/PLHA",
+      "text": "UW approach on Transgender persons\nGlossary"
+    }
+  ],
+  "chunks": [
+    {
+      "section_index": 0,
+      "heading": "Receive plan benefits, savings alerts & important reminders.",
+      "text": "NoYes\nAll\nWebpages",
+      "chunk_index": 0,
+      "character_count": 18
+    },
+    {
+      "section_index": 1,
+      "heading": "For NRI Customers",
+      "text": "(To Buy a Policy)\nCall (All Days, Local charges apply)\n+91- 8916613503",
+      "chunk_index": 1,
+      "character_count": 70
+    },
+    {
+      "section_index": 2,
+      "heading": "Contact Us",
+      "text": "Customers or members can write to us at: service@hdfclife.com or call us at 022 6844 6530 (Mon to Sat 10 AM to 7 PM IST)",
+      "chunk_index": 2,
+      "character_count": 120
+    },
+    {
+      "section_index": 3,
+      "heading": "For Master Policy Holders",
+      "text": "Our Group Operations team is available to assist you based on your plan type:\nFor Group Term Insurance (GTI): groupoperations@hdfclife.com\nFor Credit Protect (CP): cpgroupops@hdfclife.com",
+      "chunk_index": 3,
+      "character_count": 187
+    },
+    {
+      "section_index": 4,
+      "heading": "For Group Unit Linked Plan: groupfunding@hdfclife.com",
+      "text": "INT/GS/03/23/1404\nTo read the complete definitions as stated by IRDAI and displayed across this website, you can refer the specimen policy documents. For product details you can refer the product brochures\nPopular links\nTerm insurance",
+      "chunk_index": 4,
+      "character_count": 234
+    },
+    {
+      "section_index": 5,
+      "heading": "Types of Term Insurance",
+      "text": "Term insurance for Housewife",
+      "chunk_index": 5,
+      "character_count": 28
+    },
+    {
+      "section_index": 6,
+      "heading": "Term Insurance for Doctors",
+      "text": "Term insurance for Diabetics",
+      "chunk_index": 6,
+      "character_count": 28
+    },
+    {
+      "section_index": 7,
+      "heading": "Health Insurance for Smokers",
+      "text": "Health Insurance of Self employed\nTypes of health insurance",
+      "chunk_index": 7,
+      "character_count": 59
+    },
+    {
+      "section_index": 8,
+      "heading": "Life Insurance for NRI",
+      "text": "What is nominee in insurance",
+      "chunk_index": 8,
+      "character_count": 28
+    },
+    {
+      "section_index": 9,
+      "heading": "HDFC International Life and Re Company Limited",
+      "text": "Credila",
+      "chunk_index": 9,
+      "character_count": 7
+    },
+    {
+      "section_index": 10,
+      "heading": "UW philosophy PWD/PMI/PLHA",
+      "text": "UW approach on Transgender persons\nGlossary",
+      "chunk_index": 10,
+      "character_count": 43
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "run_id": "20260608_214747",
+  "app_name": "Insurance Knowledge Factory",
+  "version": "0.1.0",
+  "started_at": "2026-06-08T16:17:47.692469+00:00",
+  "completed_at": "2026-06-08T16:32:45.467421+00:00",
+  "duration_seconds": 897.77,
+  "max_urls_per_queue": 5,
+  "total_attempted": 45,
+  "total_captured": 44,
+  "total_failed": 1,
+  "total_skipped": 79,
+  "queue_summaries": [
+    {
+      "queue_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\discovery\\url_queue\\aditya_birla_health_discovered_urls.json",
+      "attempted": 5,
+      "captured": 5,
+      "failed": 0,
+      "skipped": 15,
+      "total_items": 116
+    },
+    {
+      "queue_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\discovery\\url_queue\\bajaj_allianz_general_discovered_urls.json",
+      "attempted": 5,
+      "captured": 5,
+      "failed": 0,
+      "skipped": 15,
+      "total_items": 177
+    },
+    {
+      "queue_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\discovery\\url_queue\\bima_bharosa_discovered_urls.json",
+      "attempted": 5,
+      "captured": 5,
+      "failed": 0,
+      "skipped": 1,
+      "total_items": 7
+    },
+    {
+      "queue_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\discovery\\url_queue\\general_insurance_council_discovered_urls.json",
+      "attempted": 5,
+      "captured": 4,
+      "failed": 1,
+      "skipped": 0,
+      "total_items": 67
+    },
+    {
+      "queue_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\discovery\\url_queue\\hdfc_life_discovered_urls.json",
+      "attempted": 5,
+      "captured": 5,
+      "failed": 0,
+      "skipped": 15,
+      "total_items": 276
+    },
+    {
+      "queue_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\discovery\\url_queue\\irdai_discovered_urls.json",
+      "attempted": 5,
+      "captured": 5,
+      "failed": 0,
+      "skipped": 0,
+      "total_items": 313
+    },
+    {
+      "queue_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\discovery\\url_queue\\lic_india_discovered_urls.json",
+      "attempted": 5,
+      "captured": 5,
+      "failed": 0,
+      "skipped": 15,
+      "total_items": 55
+    },
+    {
+      "queue_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\discovery\\url_queue\\life_insurance_council_discovered_urls.json",
+      "attempted": 5,
+      "captured": 5,
+      "failed": 0,
+      "skipped": 3,
+      "total_items": 33
+    },
+    {
+      "queue_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\discovery\\url_queue\\star_health_discovered_urls.json",
+      "attempted": 5,
+      "captured": 5,
+      "failed": 0,
+      "skipped": 15,
+      "total_items": 140
+    }
+  ]
+}

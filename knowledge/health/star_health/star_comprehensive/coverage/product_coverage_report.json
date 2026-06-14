@@ -1,0 +1,114 @@
+{
+  "entity_id": "star_health:star_comprehensive",
+  "coverage_version": "0.1",
+  "input_file": "knowledge/health/star_health/star_comprehensive/intelligence/product_intelligence.json",
+  "overall_coverage": 100.0,
+  "coverage_status": "READY",
+  "sections": {
+    "metadata": {
+      "coverage": 100.0,
+      "present_count": 2,
+      "expected_count": 2,
+      "present_fields": [
+        "product_name",
+        "uin"
+      ],
+      "missing_fields": []
+    },
+    "eligibility": {
+      "coverage": 100.0,
+      "present_count": 2,
+      "expected_count": 2,
+      "present_fields": [
+        "adult_entry_age",
+        "dependent_child_entry_age"
+      ],
+      "missing_fields": []
+    },
+    "sum_insured_options": {
+      "coverage": 100.0,
+      "present_count": 1,
+      "expected_count": 1,
+      "present_fields": [
+        "values"
+      ],
+      "missing_fields": []
+    },
+    "waiting_periods": {
+      "coverage": 100.0,
+      "present_count": 5,
+      "expected_count": 5,
+      "present_fields": [
+        "pre_existing_disease_waiting_period",
+        "specified_disease_waiting_period",
+        "initial_waiting_period",
+        "delivery_newborn_waiting_period",
+        "bariatric_surgery_waiting_period"
+      ],
+      "missing_fields": []
+    },
+    "product_facts": {
+      "coverage": 100.0,
+      "present_count": 2,
+      "expected_count": 2,
+      "present_fields": [
+        "copay",
+        "room_rent_limit"
+      ],
+      "missing_fields": []
+    },
+    "core_benefits": {
+      "coverage": 100.0,
+      "present_count": 15,
+      "expected_count": 15,
+      "present_fields": [
+        "in_patient_treatment",
+        "day_care_treatment",
+        "ayush_treatment",
+        "pre_hospitalization",
+        "post_hospitalization",
+        "domiciliary_hospitalization",
+        "home_care_treatment",
+        "road_ambulance",
+        "air_ambulance",
+        "organ_donor_expenses",
+        "automatic_restoration",
+        "delivery_newborn_cover",
+        "bariatric_surgery",
+        "hospital_cash",
+        "wellness_program"
+      ],
+      "missing_fields": []
+    },
+    "discounts": {
+      "coverage": 100.0,
+      "present_count": 3,
+      "expected_count": 3,
+      "present_fields": [
+        "long_term_discount",
+        "wellness_discount",
+        "online_discount"
+      ],
+      "missing_fields": []
+    },
+    "optional_covers": {
+      "coverage": 100.0,
+      "present_count": 1,
+      "expected_count": 1,
+      "present_fields": [
+        "buy_back_ped_waiting_period"
+      ],
+      "missing_fields": []
+    }
+  },
+  "missing_fields": [],
+  "quality": {
+    "validator_status": "PASS",
+    "validator_score": 100,
+    "error_count": 0,
+    "warning_count": 0
+  },
+  "recommendations": [
+    "Product coverage is strong enough for advisor-facing intelligence after review."
+  ]
+}

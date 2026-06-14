@@ -1,0 +1,19 @@
+{
+    "entity_id": "aditya_birla_health:activ_one",
+    "metadata": {
+      "product_name": "Activ One",
+      "uin": "ADIHLIP24097V012324"
+    },
+    "waiting_periods": {
+      "pre_existing_disease_waiting_period": 36,
+      "specified_disease_waiting_period": 24,
+      "initial_waiting_period": 30,
+      "critical_illness_initial_waiting_period": 60
+    },
+    "product_facts": {
+      "restoration_benefit": "Super Reload / Restoration available",
+      "ayush_cover": true,
+      "day_care_treatment": true,
+      "domiciliary_treatment": true
+    }
+  }

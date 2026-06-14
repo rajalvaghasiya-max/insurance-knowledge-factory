@@ -1,0 +1,96 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\81a6cbcd58994871e2efaaa445437a1c59b11ac586db6c7cf4f54d738daebd76.json",
+  "insurer_id": "bajaj_allianz_general",
+  "url": "https://www.bajajgeneralinsurance.com/",
+  "page_title": "Bajaj General Insurance (Formerly Bajaj Allianz)",
+  "content_hash": "81a6cbcd58994871e2efaaa445437a1c59b11ac586db6c7cf4f54d738daebd76",
+  "page_intent": "homepage",
+  "extracted_at": "2026-06-07T11:46:07.305035+00:00",
+  "product_names": [],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Create a Profile With Us to Unlock New Benefits",
+      "text": "Customised plans that grow with you",
+      "evidence": "Create a Profile With Us to Unlock New Benefits\nCustomised plans that grow with you"
+    },
+    {
+      "heading": "Proactive coverage for future milestones",
+      "text": "Expert advice tailored to your profile",
+      "evidence": "Proactive coverage for future milestones\nExpert advice tailored to your profile"
+    },
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "E-Insurance Account",
+      "text": "Product wise specific list of excluded items",
+      "evidence": "E-Insurance Account\nProduct wise specific list of excluded items"
+    }
+  ],
+  "waiting_periods": [],
+  "riders_or_addons": [
+    {
+      "heading": "Step-by-Step Guide on Health Insurance Reimbursement",
+      "text": "Health Prime Rider–A Rider for all Health Care Product",
+      "evidence": "Step-by-Step Guide on Health Insurance Reimbursement\nHealth Prime Rider–A Rider for all Health Care Product"
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ],
+  "sum_insured_values": [],
+  "premium_values": [],
+  "benefit_amount_values": [],
+  "tax_amount_values": [],
+  "discount_values": [],
+  "room_rent_limits": [],
+  "claim_process_signals": [
+    {
+      "heading": "Step-by-Step Guide on Health Insurance Reimbursement",
+      "text": "Health Prime Rider–A Rider for all Health Care Product",
+      "evidence": "Step-by-Step Guide on Health Insurance Reimbursement\nHealth Prime Rider–A Rider for all Health Care Product"
+    },
+    {
+      "heading": "Claim Support",
+      "text": "Super fast claim settlement! I initiated a claim for my car windscreen, which was broken due to a tree fall today, and it was settled within one hour. I appreciate the efforts of Omkar",
+      "evidence": "Claim Support\nSuper fast claim settlement! I initiated a claim for my car windscreen, which was broken due to a tree fall today, and it was settled within one hour. I appreciate the efforts of Omkar"
+    },
+    {
+      "heading": "Quick Claim Settlement",
+      "text": "Good claim settlement service, even during the lockdown, has enabled me to sell the Bajaj General Health Policy to more customers.",
+      "evidence": "Quick Claim Settlement\nGood claim settlement service, even during the lockdown, has enabled me to sell the Bajaj General Health Policy to more customers."
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "Senior Citizens",
+      "text": "Women\nFarmers\nEntrepreneurs\nYouth\nFamily\n#ForwardKaroCare\nTrusted by 17 Crore+ customers!",
+      "evidence": "Senior Citizens\nWomen\nFarmers\nEntrepreneurs\nYouth\nFamily\n#ForwardKaroCare\nTrusted by 17 Crore+ customers!"
+    },
+    {
+      "heading": "Senior Citizens",
+      "text": "Your golden years secured!\nWomen\nShield for the Wonder Woman in you\nFarmers\nAgainst all odds–you grow, we protect\nEntrepreneurs\nProtect your passion without breaking your bank account\nYouth\nFor the digi-savvy you",
+      "evidence": "Senior Citizens\nYour golden years secured!\nWomen\nShield for the Wonder Woman in you\nFarmers\nAgainst all odds–you grow, we protect\nEntrepreneurs\nProtect your passion without breaking your bank account\nYouth\nFor the digi-savvy you"
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ]
+}

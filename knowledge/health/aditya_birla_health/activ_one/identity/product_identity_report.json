@@ -1,0 +1,22 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "identity_audit_version": "0.1",
+  "input_file": "knowledge/health/aditya_birla_health/activ_one/intelligence/product_intelligence.json",
+  "status": "PASS",
+  "score": 100,
+  "error_count": 0,
+  "warning_count": 0,
+  "issues": [],
+  "identity": {
+    "entity_id": "aditya_birla_health:activ_one",
+    "insurer_slug": "aditya_birla_health",
+    "product_slug": "activ_one",
+    "product_name": "Activ One",
+    "uin": "ADIHLIP24097V012324",
+    "identity_key": "ADIHLIP24097V012324",
+    "identity_key_type": "uin",
+    "ready_for_deduplication": true,
+    "ready_for_policy_ai_matching": true,
+    "ready_for_irdai_reconciliation": true
+  }
+}

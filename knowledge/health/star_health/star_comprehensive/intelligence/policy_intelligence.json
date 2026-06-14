@@ -1,0 +1,140 @@
+{
+  "entity_id": "star_health:star_comprehensive",
+  "extractor_version": "0.4",
+  "metadata": {
+    "product_name": null,
+    "uin": null
+  },
+  "waiting_periods": [
+    {
+      "type": "pre_existing_disease_waiting_period",
+      "duration_months": 36,
+      "raw_text": "5 / 47 STAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED | POLICY WORDINGS Star Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526 | POL / COMP / V.24 / 2025 iii. \u0007must have been prescribed by a Medical Practitioner iv. \u0007must conform to the professional standards widely accepted in international medical practice or by the medical community in India. Migration: Migration means a facility provided to policyholders (including all members under family cover and group policies), to transfer the credits gained for pre-existing diseases and specific waiting periods from one health insurance policy to another with the same insurer. Network Provider: Network Provider means hospitals or health care providers enlisted by an insurer, TPA or jointly by an Insurer and TPA to provide medical services to an insured by a cashless facility. New Born Baby: New Born Baby means baby born during the Policy Period and is aged up to 90 days Non-Network Provider: Non-Network means any hospital, day care center or other provider that is not part of the network. Notification of Claim: Notification of Claim means the process of intimating a claim to the insurer or TPA through any of the recognized modes of communication. OPD treatment: OPD treatment means the one in which the Insured visits a clinic/hospital or associated facility like a consultation room for diagnosis and treatment based on the ad",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 6
+      },
+      "confidence": 0.97,
+      "validated": true
+    },
+    {
+      "type": "specified_disease_waiting_period",
+      "duration_months": 36,
+      "raw_text": "29 / 47 STAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED | POLICY WORDINGS Star Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526 | POL / COMP / V.24 / 2025 25. \u0007Optional Cover (Buy Back of Pre-Existing Disease Waiting Period): On payment of additional premium the Insured Person has the option to opt for reduction of waiting period in respect of Pre-Existing Diseases from 36 months to 12 months. This option is available only for the first purchase of this Star Comprehensive Insurance Policy and only upto Sum Insured chosen at that time. This option is not available for renewal or policies ported from other Insurance Companies. The Insured Person has to undergo pre-acceptance medical screening at Company’s nominated center. If we accept the proposal, we will reimburse at least 50% of the costs incurred by the member undertaking such pre- acceptance medical screening. Where the Insured Person has opted for this benefit the exclusions shall read as follows; 1. Pre-Existing Diseases : Code Excl 01 A. \u0007Expenses related to the treatment of a pre-existing Disease (PED) and its direct complications shall be excluded until the expiry of 12 months of continuous coverage after the date of inception of the first policy with insurer B. \u0007In case of enhancement of Sum Insured the exclusion shall apply afresh to the extent of Sum Insured increase C. \u0007Coverage under the policy after th",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 30
+      },
+      "confidence": 0.75,
+      "validated": false
+    },
+    {
+      "type": "initial_waiting_period",
+      "duration_days": 30,
+      "applies_to": "illness",
+      "exception": "accident",
+      "raw_text": "Fissure in Ano, Hemorrhoids, Pilonidal Sinus and Fistula, Rectal Prolapse, Stress Incontinence xii. Varicose veins and Varicose ulcers xiii. \u0007All types of transplant and related surgeries. xiv. \u0007Congenital Internal disease / defect (except to the extent provided under Section II.14 for New Born) 3. 30-day waiting period – Code Excl 03 A. \u0007Expenses related to the treatment of any illness within 30 days from the first policy commencement date shall be excluded except claims arising due to an accident, provided the same are covered B. \u0007This exclusion shall not, however, apply if the Insured Person has Continuous Coverage for more than twelve months C. \u0007The within referred waiting period is made applicable to the enhanced Sum Insured in the event of granting higher Sum Insured subsequently",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 32
+      },
+      "confidence": 0.98,
+      "validated": true
+    }
+  ],
+  "exclusions": [],
+  "summary": {
+    "waiting_periods_count": 3,
+    "exclusions_count": 0,
+    "product_facts_count": 7
+  },
+  "product_facts": {
+    "ayush_cover": {
+      "field": "ayush_cover",
+      "value": true,
+      "raw_text": "ent means a sudden, unforeseen and involuntary event caused by external, visible and violent means. Any one Illness: Any one Illness means continuous period of illness and it includes relapse within 45 days from the date of last consultation with the Hospital/Nursing Home where treatment was taken. AYUSH Day Care Centre: AYUSH Day Care Centre means and includes Community Health Centre (CHC), Primary Health Centre (PHC), Dispensary, Clinic, Polyclinic or any such health centre which is registered with the local authorities, wherever applicable and having facilities for carrying out treatment procedures and medical or surgical/para- surgical interventions or both under the supervision of registered AYUSH Medical Practitioner (s) on day care basis without in-patient services and must comply with all the following criterion: i. \u0007Having qualified registered AYUSH Medical Practitioner(s) in charge; ii. \u0007Having dedicated AYUSH therapy Sections as required and/or has equipped operation theatre where surgical procedures are to be carried out; iii. \u0007Maintaining daily records of the patients and making them accessible to the insurance company’s authorized representative. AYUSH Hospital: An AYUSH Hospital is a healthcare facility wherein medical/surgical/ para-surgical treatment procedures and interventions are carried out by AYUSH Medical Practitioner(s) comprising of any of the following: i. \u0007Central or State Government AYUSH Hospital; or ii. \u0007Teaching hospital attached to AYUSH Colleg",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 2
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "copay": {
+      "field": "copay",
+      "value": "Mentioned, review required",
+      "raw_text": "birth, and which is abnormal with reference to form, structure or position. i. \u0007Internal Congenital Anomaly: Congenital anomaly which is not in the visible and accessible parts of the body ii. \u0007External Congenital Anomaly: Congenital anomaly which is in the visible and accessible parts of the body Co-payment: Co-payment means a cost- sharing requirement under a health insurance policy that provides that the policyholder/ insured will bear a specified percentage of the admissible claim amount. A co-payment does not reduce the Sum Insured. Cumulative Bonus: Cumulative Bonus means any increase or addition in the Sum Insured granted by the insurer without an associated increase in premium. Day Care Centre: A day care centre means any institution established for day care treatment of illness and / or injuries or a medical set up within a hospital and which has been registered with the local authorities, wherever applicable and is under the supervision of a registered and qualified Medical Practitioner AND must comply with all minimum criteria as under :- i. \u0007has qualified nursing staff under its employment; ii. \u0007has qualified medical practitioner/s in charge; iii. \u0007has a fully equipment operation theatre of its own where surgical procedures are carried out; iv. \u0007maintains daily records of patients and will make these accessible to the insurance company’s authorized personnel. Day Care treatment: Day Care treatment means medical treatment and/or surgical procedure which is; i. \u0007Un",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 3
+      },
+      "confidence": 0.65,
+      "validated": false
+    },
+    "day_care_treatment": {
+      "field": "day_care_treatment",
+      "value": true,
+      "raw_text": "the admissible claim amount. A co-payment does not reduce the Sum Insured. Cumulative Bonus: Cumulative Bonus means any increase or addition in the Sum Insured granted by the insurer without an associated increase in premium. Day Care Centre: A day care centre means any institution established for day care treatment of illness and / or injuries or a medical set up within a hospital and which has been registered with the local authorities, wherever applicable and is under the supervision of a registered and qualified Medical Practitioner AND must comply with all minimum criteria as under :- i. \u0007has qualified nursing staff under its employment; ii. \u0007has qualified medical practitioner/s in charge; iii. \u0007has a fully equipment operation theatre of its own where surgical procedures are carried out; iv. \u0007maintains daily records of patients and will make these accessible to the insurance company’s authorized personnel. Day Care treatment: Day Care treatment means medical treatment and/or surgical procedure which is; i. \u0007Undertaken under General or Local Anesthesia in a hospital/day care centre in less than 24 hrs because of technological advancement, and",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 3
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "domiciliary_treatment": {
+      "field": "domiciliary_treatment",
+      "value": true,
+      "raw_text": "h including examinations, fillings (where appropriate), crowns, extractions and surgery. Disclosure to information norm: The policy shall be void and all premium paid thereon shall be forfeited to the Company in the event of misrepresentation, mis-description or non-disclosure of any material fact. Domiciliary Hospitalization: Domiciliary Hospitalization means medical treatment for an illness/disease/injury which in the normal course would require care and treatment at a hospital but is actually taken while confined at home under any of the following circumstances: i. \u0007the condition of the patient is such that he/she is not in a condition to be removed to a hospital, or ii. \u0007the patient takes treatment at home on account of non-availability of room in a hospital. Grace Period: Grace Period means the specified period of time, immediately following the premium due date during which premium payment can be made to renew or continue a policy in force without loss of continuity benefits pertaining to waiting periods and coverage of pre-existing diseases. Coverage need not be available during the period for which no premium is received. The grace period for payment of the premium for all types of insurance policies shall be: fifteen days where premium payment mode is monthly and thirty days in all other cases. Provided the insurers shall offer coverage during the grace period, if the premium is paid in instalments during the Policy Period. Hospital: A Hospital means any institution",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 4
+      },
+      "confidence": 0.9,
+      "validated": true
+    },
+    "maternity_cover": {
+      "field": "maternity_cover",
+      "value": "Conditional / as per policy schedule",
+      "raw_text": "r wards. ICU Charges: ICU (Intensive Care Unit) Charges means the amount charged by a Hospital towards ICU expenses which shall include the expenses for ICU bed, general medical support services provided to any ICU patient including monitoring devices, critical care nursing and intensivist charges. Maternity Expenses: Maternity expenses means i. \u0007Medical treatment expenses traceable to childbirth (including complicated deliveries and caesarean Sections incurred during Hospitalization). ii. \u0007expenses towards the lawful medical termination of pregnancy during the Policy Period. Medical Advice: Medical Advice means any consultation or advice from a Medical Practitioner including the issue of any prescription or follow-up prescription. Medical Expenses: Medical expenses means those expenses that an Insured Person has necessarily and actually incurred for medical treatment on account of Illness or Accident on the advice of a Medical Practitioner, as long as these are no more than would have been payable if the Insured Person had not been insured and no more than other hospitals or doctors in the same locality would have charged for the same medical treatment. Medical Practitioner: Medical Practitioner is a person who holds a valid registration from the Medical Council of any State or Medical Council of India or Council for Indian Medicine or for Homeopathy set up by the Government of India or a State Government and is thereby entitled to practice medicine within its jurisdiction;",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 5
+      },
+      "confidence": 0.8,
+      "validated": false
+    },
+    "room_rent_limit": {
+      "field": "room_rent_limit",
+      "value": "Mentioned, review required",
+      "raw_text": "injury involved. Renewal: Renewal means the terms on which the contract of insurance can be renewed on mutual consent with a provision of grace period for treating the renewal continuous for the purpose of gaining credit for pre-existing diseases, time-bound exclusions and for all waiting periods. Room Rent: Room Rent means the amount charged by a Hospital towards Room and Boarding expenses and shall include the associated medical expenses. Specific Waiting Period: Specific Waiting Period means a period up to 36 months from the commencement of a health insurance policy during which period specified diseases/treatments (except due to an Accident) are not covered. On completion of the period, diseases/treatments shall be covered provided the policy has been continuously renewed without any break. Surgery or Surgical Procedure: Surgery or Surgical Procedure means manual and / or operative procedure(s) required for treatment of an illness or injury, correction of deformities and defects, diagnosis and cure of diseases, relief from suffering and prolongation of life, performed in a hospital or day care centre by a medical practitioner. Unproven/Experimental treatment: Unproven/ Experimental treatment means the treatment including drug experimental therapy which is not based on established medical practice in India, is treatment experimental or unproven. S P E C I F I C D E F I N I T I O N S Associated medical expenses: Associated Medical Expenses means expenses that shall include",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 7
+      },
+      "confidence": 0.65,
+      "validated": false
+    },
+    "restoration_benefit": {
+      "field": "restoration_benefit",
+      "value": "Super Reload / Restoration available",
+      "raw_text": "Yearly mode by the Policy Holder/ Insured. In-Patient means an Insured Person who is admitted to Hospital and stays there for a minimum period of 24 hours for the sole purpose of receiving treatment. Limit of Coverage: Limit of Coverage means Basic Sum Insured plus the Cumulative Bonus earned plus Restored Sum Insured, wherever applicable. Policy Period/Policy Year: Policy Period / Policy Year means a year following the commencement date and its subsequent annual anniversary. Policy Term: Policy Term means the period between the commencement date and expiry date specified in the schedule. Private Single A/C Room: Private Single A/C Room means a single occupancy air- conditioned room with attached wash room and a couch for the attendant. The room may have a television and /or a telephone. Such room must be the most economical of all accommodations available in that hospital as single occupancy. This does not include Deluxe room or a suite. Sum Insured: Sum Insured wherever it appears shall mean Basic Sum Insured, except otherwise expressed. Zone A: Delhi, New Delhi, Faridabad, Gurugram, Shahdara, Gautam Buddha Nagar, Ghaziabad, Mewat, Alwar, Baghpat, Bharatpur, Bhiwani, Bulandshahar, Fatehabad, Hisar, Jhajjar, Jind, Kaithal, Karnal, Kurukshetra, Mahendragarh, Meerut, Muzaffar Nagar, Palwal, Panchsheel Nagar (Hapur), Panipat, Rewari, Rohtak, Saharanpur, Sirsa, Sonipat, Charkhi Dadri, Gujarat, Daman and Diu, Dadra and Nagar Haveli, Mumbai (including suburban), Thane, Palghar an",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 8
+      },
+      "confidence": 0.93,
+      "validated": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "entity_id": "star_health:star_comprehensive",
+  "identity_audit_version": "0.1",
+  "input_file": "knowledge/health/star_health/star_comprehensive/intelligence/product_intelligence.json",
+  "status": "PASS",
+  "score": 100,
+  "error_count": 0,
+  "warning_count": 0,
+  "issues": [],
+  "identity": {
+    "entity_id": "star_health:star_comprehensive",
+    "insurer_slug": "star_health",
+    "product_slug": "star_comprehensive",
+    "product_name": "Star Comprehensive Insurance Policy",
+    "uin": "SHAHLIP26044V092526",
+    "identity_key": "SHAHLIP26044V092526",
+    "identity_key_type": "uin",
+    "ready_for_deduplication": true,
+    "ready_for_policy_ai_matching": true,
+    "ready_for_irdai_reconciliation": true
+  }
+}

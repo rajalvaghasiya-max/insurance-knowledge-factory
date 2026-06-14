@@ -1,0 +1,896 @@
+{
+  "entity_id": "star_health:star_comprehensive",
+  "extractor_version": "0.3",
+  "metadata": {
+    "product_name": "Star Comprehensive Insurance Policy",
+    "uin": "SHAHLIP26044V092526"
+  },
+  "eligibility": {
+    "adult_entry_age": "18 years to 65 years",
+    "dependent_child_entry_age": "91 days to 25 years",
+    "source": {
+      "source_type": "brochure",
+      "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+      "page_number": 3
+    },
+    "confidence": 0.9500000000000001,
+    "validated": true,
+    "validated_by": [
+      {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+        "page_number": 2
+      },
+      {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+        "page_number": 52
+      },
+      {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+        "page_number": 53
+      },
+      {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 3
+      }
+    ]
+  },
+  "sum_insured_options": {
+    "values": [
+      500000,
+      750000,
+      1000000,
+      1500000,
+      2000000,
+      2500000,
+      5000000,
+      7500000,
+      10000000
+    ],
+    "values_raw": [
+      "5,00,000",
+      "7,50,000",
+      "10,00,000",
+      "15,00,000",
+      "20,00,000",
+      "25,00,000",
+      "50,00,000",
+      "75,00,000",
+      "1,00,00,000"
+    ],
+    "source": {
+      "source_type": "prospectus",
+      "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+      "page_number": 3
+    },
+    "confidence": 0.95,
+    "validated": true
+  },
+  "waiting_periods": {
+    "pre_existing_disease_waiting_period": {
+      "duration_months": 36,
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.99,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 12
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 27
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 30
+        }
+      ]
+    },
+    "specified_disease_waiting_period": {
+      "duration_months": 24,
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.99,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 12
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 28
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 30
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 30
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 31
+        }
+      ]
+    },
+    "initial_waiting_period": {
+      "duration_days": 30,
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 12
+      },
+      "confidence": 0.99,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 12
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 12
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 16
+        }
+      ]
+    },
+    "delivery_newborn_waiting_period": {
+      "duration_months": 24,
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 8
+      },
+      "confidence": 0.98,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 8
+        },
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 12
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 14
+        }
+      ]
+    },
+    "bariatric_surgery_waiting_period": {
+      "duration_months": 36,
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 9
+      },
+      "confidence": 0.99,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 9
+        },
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 12
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 10
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 15
+        }
+      ]
+    }
+  },
+  "core_benefits": {
+    "in_patient_treatment": {
+      "value": true,
+      "raw_text": "ry or contracts any disease or suffer from any illness and if such disease or injury shall require the Insured person, upon the advice of a duly qualified Medical Practitioner to incur Hospitalization expenses for Medical / Surgical treatment at any Nursing Home / Hospital in India as an In-patient for medically necessary treatment, the Company will indemnify the Insured Person such expenses as are reasonably and necessarily incurred under the Coverage but not exceeding the sum insured/ annual sum insured/ appropriate benefit stated in the Policy schedule. 1. \u0007In-patient Treatment: We will cover the following Medical Expenses incurred in respect of Hospitalization of the Insured Person during the Policy Period, up to the Sum Insured specified in the Policy Schedule against this In-Patient treatment: i. \u0007Room (Private Single A/C room), Boarding and Nursing Expenses as provided by the Hospital / Nursing Home. Note: Any hospitalization expenses arising under this Policy, which vary based on the room rent occupied by the Insured Person will be considered in proportion to the room rent limit / room category stated in the Policy or actuals whichever is less. ii. \u0007Surgeon, Anesthetist, Medical Practitioner, Consultants, Specialist Fees. iii. \u0007Anesthesia, blood, oxygen, operation theatre charges, ICU charges, surgical appliances, medicines and drugs, diagnostic materials and X-ray, diagnostic imaging modalities, dialysis, chemotherapy, radiotherapy, cost of pacemaker, stent and similar expenses. With regard to coronary stenting, med",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 9
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 4
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 4
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 9
+        }
+      ]
+    },
+    "day_care_treatment": {
+      "value": true,
+      "raw_text": "urveda, Unani, Siddha and Homeopathy systems of medicines in an AYUSH Hospital are payable up to the Sum Insured. Note: Claims under Yoga and Naturopathy system of treatment will be payable subject to prior approval from the company. AYUSH Treatment All day care procedures are covered up to Sum Insured. This policy is subject to Co-payment of 10% of each and every claim amount for fresh as well as renewal policies for Insured Persons whose age at the time of entry is 61 years and above. This co-payment will not apply for those Insured Persons who have entered the policy before attaining 61 years of age and renew the policy continuously without any break. For detailed understanding of this benefit, kindly refer the Prospectus document of Star Comprehensive Insurance Policy available in our website download section. Day Care Treatment This discount is only applicable for Insured Persons aged up to 59 years. In case of floater policies, age of the eldest member will be taken into consideration for the calculation of this discount. Co-Payment Covered up to Sum Insured for expenses such as Room Rent (Single Private A/C Room), Boarding and Nursing Expenses, ICU charges, Fees for Surgeon, Anesthetist, Medical Practitioner, Consultants and Specialists, Anesthesia, Blood, Oxygen, Operation Theatre charges, Surgical Appliances, Medicines and Drugs, Diagnostic Materials and X-ray, diagnostic imaging modalities, Dialysis, Chemotherapy, Radiotherapy, cost of Pacemaker, stent and such other similar expenses. Coverages In-patient Treatment",
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 4
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 4
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 4
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 9
+        }
+      ]
+    },
+    "ayush_treatment": {
+      "value": true,
+      "raw_text": "Medical expenses for Inpatient Hospitalization incurred on treatment under Ayurveda, Unani, Siddha and Homeopathy systems of medicines in an AYUSH Hospital are payable up to the Sum Insured. Note: Claims under Yoga and Naturopathy system of treatment will be payable subject to prior approval from the company. AYUSH Treatment All day care procedures are covered up to Sum Insured. This policy is subject to Co-payment of 10% of each and every claim amount for fresh as well as renewal policies for Insured Persons whose age at the time of entry is 61 years and above. This co-payment will not apply for those Insured Persons who have entered the policy before attaining 61 years of age and renew the policy continuously without any break. For detailed understanding of this benefit, kindly refer the Prospectus document of Star Comprehensive Insurance Policy available in our website download section. Day Care Treatment This discount is only applicable for Insured Persons aged up to 59 years. In case of floater policies, age of the eldest member will be taken into consideration for the calculation of this discount. Co-Payment Covered up to Sum Insured for expenses such as Room Rent (Single Private A/C Room), Boarding and Nursing Expenses, ICU charges, Fees for Surgeon, Anesthetist, Medical Practitioner, Consultants and Specialists, Anesthesia, Blood, Oxygen, Operation Theatre charges, Surgical Appliances, Medicines and Drugs, Diagnostic Materials a",
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 4
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 4
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 4
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 9
+        }
+      ]
+    },
+    "pre_hospitalization": {
+      "value": true,
+      "raw_text": "10 / 47 STAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED | POLICY WORDINGS Star Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526 | POL / COMP / V.24 / 2025 5. \u0007Pre-Hospitalization Expenses: Medical expenses incurred for a period not exceeding 60 days prior to the date of hospitalization are payable subject to an admissible hospitalization claim. 6. \u0007Post-Hospitalization Expenses: Medical expenses incurred for a period up to 90 days from the date of discharge from the hospital wherever recommended by the Medical Practitioner / Hospital, where the treatment was taken are payable, provided i. \u0007such expenses so incurred are following an admissible claim for hospitalization and ii. \u0007such expenses so incurred are in respect of ailment for which the Insured Person was hospitalized. 7. \u0007Road Ambulance: Subject to an admissible hospitalization claim, road ambulance expenses incurred for the following are payable :- i. \u0007for transportation of the Insured Person by private ambulance service to go to hospital when this is needed for medical reasons or ii. \u0007for transportation of the Insured Person by private ambulance service from one hospital to another hospital for better medical treatment or iii. \u0007for transportation of the Insured Person from the hospital where treatment is taken to their place of residence (if it is in same city) provided the requirement of an ambulance to the residence is certified by the medical practitioner. 8. \u0007Air Ambulance:",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.93,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 6
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 11
+        }
+      ]
+    },
+    "post_hospitalization": {
+      "value": true,
+      "raw_text": "hospitals or health care providers enlisted by an insurer, TPA or jointly by an Insurer and TPA to provide medical services to an insured by a cashless facility. New Born Baby: New Born Baby means baby born during the Policy Period and is aged up to 90 days Non-Network Provider: Non-Network means any hospital, day care center or other provider that is not part of the network. Notification of Claim: Notification of Claim means the process of intimating a claim to the insurer or TPA through any of the recognized modes of communication. OPD treatment: OPD treatment means the one in which the Insured visits a clinic/hospital or associated facility like a consultation room for diagnosis and treatment based on the advice of a Medial Practitioner. The insured is not admitted as a day care or in-patient. Pre-Existing Disease: Pre-Existing Disease (PED) means any condition, ailment, injury or disease: i. \u0007that is/are diagnosed by a physician not more than 36 months prior to the date of commencement of the policy issued by the insurer; or ii. \u0007for which medical advice or treatment was recommended by, or received from, a physician, not more than 36 months prior to the date of commencement of the policy. Pre-Hospitalization Medical Expenses: Pre- Hospitalization Medical Expenses means medical expenses incurred during pre-defined number of days preceding the hospitalization of the Insured Person, provided that: i. \u0007Such medical expenses are incurred for the same condition for which the Insured Person’s hospitalization was required and ii",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 6
+      },
+      "confidence": 0.93,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 6
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 6
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 11
+        }
+      ]
+    },
+    "domiciliary_hospitalization": {
+      "value": true,
+      "raw_text": "ate), crowns, extractions and surgery. Disclosure to information norm: The policy shall be void and all premium paid thereon shall be forfeited to the Company in the event of misrepresentation, mis-description or non-disclosure of any material fact. Domiciliary Hospitalization: Domiciliary Hospitalization means medical treatment for an illness/disease/injury which in the normal course would require care and treatment at a hospital but is actually taken while confined at home under any of the following circumstances: i. \u0007the condition of the patient is such that he/she is not in a condition to be removed to a hospital, or ii. \u0007the patient takes treatment at home on account of non-availability of room in a hospital. Grace Period: Grace Period means the specified period of time, immediately following the premium due date during which premium payment can be made to renew or continue a policy in force without loss of continuity benefits pertaining to waiting periods and coverage of pre-existing diseases. Coverage need not be available during the period for which no premium is received. The grace period for payment of the premium for all types of insurance policies shall be: fifteen days where premium payment mode is monthly and thirty days in all other cases. Provided the insurers shall offer coverage during the grace period, if the premium is paid in instalments during the Policy Period. Hospital: A Hospital means any institution established for in-patient care and day care treatment of illness and/or injuries and which has been",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 4
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 6
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 7
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 4
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 12
+        }
+      ]
+    },
+    "home_care_treatment": {
+      "value": true,
+      "raw_text": "tate a Redo Surgery / ICU admission will be covered. The coverage limit under this Section is over and above the Limit of Coverage and up to the Basic Sum Insured. This additional Sum Insured can be utilized by the Donor and not by the Insured. 10. \u0007Home Care Treatment: Payable up to 10% of the Sum Insured subject to maximum of Rs. 5 lakhs in a Policy Year, for treatment availed by the Insured Person at home, only for the specified conditions mentioned below, which in normal course would require care and treatment at a hospital but is actually taken at home provided that: i. \u0007The Medical practitioner advises the Insured person to undergo treatment at home",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 6
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 7
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 11
+        }
+      ]
+    },
+    "road_ambulance": {
+      "value": true,
+      "raw_text": "ITED | POLICY WORDINGS Star Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526 | POL / COMP / V.24 / 2025 5. \u0007Pre-Hospitalization Expenses: Medical expenses incurred for a period not exceeding 60 days prior to the date of hospitalization are payable subject to an admissible hospitalization claim. 6. \u0007Post-Hospitalization Expenses: Medical expenses incurred for a period up to 90 days from the date of discharge from the hospital wherever recommended by the Medical Practitioner / Hospital, where the treatment was taken are payable, provided i. \u0007such expenses so incurred are following an admissible claim for hospitalization and ii. \u0007such expenses so incurred are in respect of ailment for which the Insured Person was hospitalized. 7. \u0007Road Ambulance: Subject to an admissible hospitalization claim, road ambulance expenses incurred for the following are payable :- i. \u0007for transportation of the Insured Person by private ambulance service to go to hospital when this is needed for medical reasons or ii. \u0007for transportation of the Insured Person by private ambulance service from one hospital to another hospital for better medical treatment or iii. \u0007for transportation of the Insured Person from the hospital where treatment is taken to their place of residence (if it is in same city) provided the requirement of an ambulance to the residence is certified by the medical practitioner. 8. \u0007Air Ambulance: Subject to an admissible hospitalization claim, the Insured Person(s) is/are eligible for reimbursement of expenses incurred toward",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 5
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 6
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 11
+        }
+      ]
+    },
+    "air_ambulance": {
+      "value": true,
+      "raw_text": "or iii. \u0007for transportation of the Insured Person from the hospital where treatment is taken to their place of residence (if it is in same city) provided the requirement of an ambulance to the residence is certified by the medical practitioner. 8. \u0007Air Ambulance: Subject to an admissible hospitalization claim, the Insured Person(s) is/are eligible for reimbursement of expenses incurred towards the cost of air ambulance service up to Rs.2,50,000/- per hospitalization not exceeding Rs.5,00,000/- per Policy Period, if the said service was availed on the advice of the treating Medical Practitioner / Hospital. Expenses towards Air ambulance service is payable for only from the place of first occurrence of the illness / accident to the nearest hospital. Such Air ambulance should have been duly licensed to operate as such by Competent Authorities of the Government/s. 9. \u0007Organ Donor Expenses: In-patient hospitalization expenses incurred for organ transplantation from the Donor to the Recipient Insured Person are payable provided the claim for transplantation is payable. In addition, the expenses incurred by the Donor (if any) for the complications that necessitate a Redo Surgery / ICU admission will be covered. The coverage limit under this Section is over and above the Limit of Coverage and up to the Basic Sum Insured. This additional Sum Insured can be utilized by the Donor and not by the Insured. 10. \u0007Home Care Treatment: Payable up to 10% of the Sum Insured subject to maximum of Rs. 5 lakhs in a Policy Year, for treatment avai",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 6
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 6
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 11
+        }
+      ]
+    },
+    "organ_donor_expenses": {
+      "value": true,
+      "raw_text": "ds Air ambulance service is payable for only from the place of first occurrence of the illness / accident to the nearest hospital. Such Air ambulance should have been duly licensed to operate as such by Competent Authorities of the Government/s. 9. \u0007Organ Donor Expenses: In-patient hospitalization expenses incurred for organ transplantation from the Donor to the Recipient Insured Person are payable provided the claim for transplantation is payable. In addition, the expenses incurred by the Donor (if any) for the complications that necessitate a Redo Surgery / ICU admission will be covered. The coverage limit under this Section is over and above the Limit of Coverage and up to the Basic Sum Insured. This additional Sum Insured can be utilized by the Donor and not by the Insured. 10. \u0007Home Care Treatment: Payable up to 10% of the Sum Insured subject to maximum of Rs. 5 lakhs in a Policy Year, for treatment availed by the Insured Person at home, only for the specified conditions mentioned below, which in normal course would require care and treatment at a hospital but is actually taken at home provided that: i. \u0007The Medical practitioner advises the Insured person to undergo treatment at home",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 6
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 6
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 11
+        }
+      ]
+    },
+    "automatic_restoration": {
+      "value": true,
+      "raw_text": "Key features Automatic Restoration of Sum Insured for both related and unrelated illnesses Coverage for Delivery and Newborn Expenses Coverage for Outpatient consultation including Dental and Ophthalmic treatments Cumulative Bonus accumulation up to 100% of Sum Insured",
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 2
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 2
+        },
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 7
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 8
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 13
+        }
+      ]
+    },
+    "delivery_newborn_cover": {
+      "value": true,
+      "raw_text": "(or) Treatment of the New Born. Expenses incurred as in-patient for Delivery including Delivery by Caesarean section (including prenatal and post-natal expenses) are payable for a maximum of 2 deliveries during the lifetime under this policy. Where the Sum Insured under the Policy is ₹7.5 Lac or above, the Insured Person will be eligible for Cumulative bonus calculated at 100% of the basic Sum Insured for each claim free year subject to a maximum of 100% of the basic Sum Insured. Coverage is available for the below; This Benefit is not available for Modern Treatment. The basic Sum Insured shall be automatically restored once in a Policy Year by 100% upon exhaustion of basic Sum Insured and accrued Cumulative Bonus, if any. Such Restored basic Sum Insured can be utilized for all claims during the policy period. Delivery and New Born Cover Automatic Restoration of SI Where the Sum Insured under the Policy is ₹5 Lac, the Insured Person will be eligible for Cumulative bonus calculated at 50% of the basic Sum Insured for each claim free year subject to a maximum of 100% of the basic Sum Insured. Cumulative Bonus However, this benefit shall not cover Asthma, Bronchitis, Chronic Nephritis and Nephritic Syndrome, Diarrhoea and all types of Dysenteries including Gastro-enteritis, Diabetes Mellitus and Insipidus, Epilepsy, Hypertension, Influenza, Cough and Cold, all Psychia",
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 7
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 7
+        },
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 8
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 9
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 13
+        }
+      ]
+    },
+    "bariatric_surgery": {
+      "value": true,
+      "raw_text": "es on Medical Consultations as an Outpatient for other than Dental and Ophthalmic treatments are payable with a limit of ₹300/- per consultation. This benefit is payable only on cashless basis. Out-patient Medical Consultation The limit of cover for Bariatric Surgery forms part of base Sum Insured and is subject to a waiting period of 36 months. Sum Insured (₹) Limit of per consultation is ₹300/- 50,00,000/-, 75,00,000/- and 1,00,00,000/- 5,000/- 25,00,000/- 3,300/- 20,00,000/- 3,000/- 15,00,000/- 2,400/- 10,00,000/- 2,100/- 7,50,000/- 1,500/- 5,00,000/- Limit for Outpatient consultation per Policy Period for other than Dental and Ophthalmic Treatments (up to ₹) 1,200/- Sum Insured (₹) 5,00,000/- to 15,00,000/- Limit per Policy Period (₹) 2,50,000/- Above 15,00,000/- 5,00,000/- The expenses incurred on hospitalization for bariatric surgical procedure and its complications thereof are payable up to the specified limits during the policy period. Bariatric Surgery Bariatric Surgery",
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 9
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 9
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 10
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 14
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 15
+        }
+      ]
+    },
+    "hospital_cash": {
+      "value": true,
+      "raw_text": "the wellness program, can be utilized to get discount in premium. The following table shows the discount on premiums available under the Wellness Program. Star Wellness Program Coverage available for Accidental Death and Permanent Total Disablement Hospital Cash Sum Insured (₹) 50,00,000/-, 75,00,000/- and 1,00,00,000/- 2,500/- 25,00,000/- 1,500/- 15,00,000/- and 20,00,000/- 1,000/- 7,50,000/- and 10,00,000/- 750/- 5,00,000/- Hospital Cash Benefit - Limit of Company’s liability per day (₹) 500/-",
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 11
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 14
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 18
+        }
+      ]
+    },
+    "wellness_program": {
+      "value": true,
+      "raw_text": "Wellness Points Earned 751 to 1000 10% 601 to 750 7% 351 to 600 5% 200 to 350 Discount in Premium 2% * The sum insured for this cover is separately indicated in policy schedule. Cover is available for one Insured Person as opted by the Proposer. Dependent children and persons above 70 years can be covered under accidental death and permanent total disablement up to the Sum Insured of ₹10,00,000/- Permanent Total Disability following an accident For more information, Please visit our website: www.starhealth.in. Accidental Death This program is intended to promote, incentivize and to reward the Insured Persons’ healthy lifestyle through various wellness activities. The wellness activities as detailed in the website is designed to help the Insured Person to earn wellness reward points which will be tracked and monitored by the Company. The wellness points earned by the Insured Person(s) under the wellness program, can be utilized to get discount in premium. The following table shows the discount on premiums available under the Wellness Program. Star Wellness Program Coverage available for Accidental Death and Permanent Total Disablement Hospital Cash Sum Insured (₹) 50,00,000/-, 75,00,000/- and 1,00,00,000/- 2,500/- 25,00,000/- 1,500/- 15,00,000/- and 20,00,000/- 1,000/- 7,50,000/-",
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 11
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 18
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 19
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 25
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 26
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 27
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 21
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 22
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 27
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 28
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 29
+        }
+      ]
+    }
+  },
+  "product_facts": {
+    "copay": {
+      "value": "10% co-payment for insured persons whose age at entry is 61 years and above",
+      "raw_text": "wing an admissible claim under Section II.23, the coverage under Personal Accident insurance upon renewal will be applicable for the person to be chosen by the Proposer at the time of renewal, subject to other terms, conditions contained herein. I. \u0007Co-payment: This policy is subject to co-payment of 10% of each and every claim amount for fresh as well as renewal policies for Insured Persons whose age at the time of entry is 61 years and above. This co-payment will not apply for those insured persons who have entered the policy before attaining 61 years of age and renew the policy continuously without any break. This co-payment is applicable for Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, II.8, II.9, II.10, II.11, II.15 and II.25. 3. \u0007Complete Discharge: Any payment to the policyholder, Insured Person or his/ her nominees or his/ her legal representative or assignee or to the Hospital, as the case may be, for any benefit under the policy shall be a valid discharge towards payment of claim by the Company to the extent of that amount for the particular claim. 4. Multiple Policies Not Applicable for Sections II.19, II.22, II.23 and II.24 i. \u0007ln case of multiple policies taken by an Insured Person during a period from one or more insurers to indemnify treatment costs, the Insured Person shall have the right to require a settlement of his/her claim in terms of any of his/her policies. ln all such cases the insurer chosen by the Insured Person shall be obliged to settle the claim as long as the claim is within the limits of",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 39
+      },
+      "confidence": 0.99,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 4
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 38
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 39
+        }
+      ],
+      "applies_when": "Age at entry is 61 years and above",
+      "exception": "Does not apply if entered before 61 and renewed continuously without break"
+    },
+    "room_rent_limit": {
+      "value": "Private Single A/C Room",
+      "raw_text": "ry or contracts any disease or suffer from any illness and if such disease or injury shall require the Insured person, upon the advice of a duly qualified Medical Practitioner to incur Hospitalization expenses for Medical / Surgical treatment at any Nursing Home / Hospital in India as an In-patient for medically necessary treatment, the Company will indemnify the Insured Person such expenses as are reasonably and necessarily incurred under the Coverage but not exceeding the sum insured/ annual sum insured/ appropriate benefit stated in the Policy schedule. 1. \u0007In-patient Treatment: We will cover the following Medical Expenses incurred in respect of Hospitalization of the Insured Person during the Policy Period, up to the Sum Insured specified in the Policy Schedule against this In-Patient treatment: i. \u0007Room (Private Single A/C room), Boarding and Nursing Expenses as provided by the Hospital / Nursing Home. Note: Any hospitalization expenses arising under this Policy, which vary based on the room rent occupied by the Insured Person will be considered in proportion to the room rent limit / room category stated in the Policy or actuals whichever is less. ii. \u0007Surgeon, Anesthetist, Medical Practitioner, Consultants, Specialist Fees. iii. \u0007Anesthesia, blood, oxygen, operation theatre charges, ICU charges, surgical appliances, medicines and drugs, diagnostic materials and X-ray, diagnostic imaging modalities, dialysis, chemotherapy, radiotherapy, cost of pacemaker, stent and similar expenses. With regard to coronary stenting, med",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 9
+      },
+      "confidence": 0.98,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 4
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 8
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 9
+        }
+      ]
+    }
+  },
+  "discounts": {
+    "long_term_discount": {
+      "value": "Long-term / multi-year discount available",
+      "raw_text": "Favourable Claim Experience Discount: Insured Person may be eligible for a discount of 5% during renewals on Policy premium based on the past claim history at the Policy level. This discount is applicable only if no claim is made under the Policy or the total claim amount is up to Rs. 25,000/- in the preceding three years. Discounts Instalment Facility Policy Tenure Entry Age Long-term Discount: 2-year policy term – 10% discount on the 2nd year premium 3-year policy term – 10% discount on the 2nd year premium and 12.5% discount on the 3rd year premium Wellness Discount: Up to 10% on renewal premium Online Discount: 5% discount when you buy this Insurance online at www.starhealth.in Monthly, Quarterly and Half-yearly options are available 1 / 2 / 3 years ₹5 L, ₹7.5 L, ₹10 L, ₹15 L, ₹20 L, ₹25 L, ₹50 L, ₹75 L, ₹1 Cr Sum Insured (SI) For Adults: 18 years to 65 years For Dependent Children: 91 days to 25 years (Floater Policy)",
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 3
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 3
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 2
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 41
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 40
+        }
+      ]
+    },
+    "wellness_discount": {
+      "value": "Wellness-linked discount available",
+      "raw_text": "Wellness Points Earned 751 to 1000 10% 601 to 750 7% 351 to 600 5% 200 to 350 Discount in Premium 2% * The sum insured for this cover is separately indicated in policy schedule. Cover is available for one Insured Person as opted by the Proposer. Dependent children and persons above 70 years can be covered under accidental death and permanent total disablement up to the Sum Insured of ₹10,00,000/- Permanent Total Disability following an accident For more information, Please visit our website: www.starhealth.in. Accidental Death This program is intended to promote, incentivize and to reward the Insured Persons’ healthy lifestyle through various wellness activities. The wellness activities as detailed in the website is designed to help the Insured Person to earn wellness reward points which will be tracked and monitored by the Company. The wellness points earned by the Insured Person(s) under the wellness program, can be utilized to get discount in premium. The following table shows the discount on premiums available under the Wellness Program. Star Wellness Program Coverage available for Accidental Death and Permanent Total Disablement Hospital Cash Sum Insured (₹) 50,00,000/-, 75,00,000/- and 1,00,00,000/- 2,500/- 25,00,000/- 1,500/- 15,00,000/- and 20,00,000/- 1,000/- 7,50,000/-",
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 11
+      },
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "brochure",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+          "page_number": 11
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 18
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 19
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 25
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 26
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+          "page_number": 27
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 21
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 22
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 27
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 28
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+          "page_number": 29
+        }
+      ]
+    },
+    "online_discount": {
+      "value": "Online purchase discount available",
+      "raw_text": "Favourable Claim Experience Discount: Insured Person may be eligible for a discount of 5% during renewals on Policy premium based on the past claim history at the Policy level. This discount is applicable only if no claim is made under the Policy or the total claim amount is up to Rs. 25,000/- in the preceding three years. Discounts Instalment Facility Policy Tenure Entry Age Long-term Discount: 2-year policy term – 10% discount on the 2nd year premium 3-year policy term – 10% discount on the 2nd year premium and 12.5% discount on the 3rd year premium Wellness Discount: Up to 10% on renewal premium Online Discount: 5% discount when you buy this Insurance online at www.starhealth.in Monthly, Quarterly and Half-yearly options are available 1 / 2 / 3 years ₹5 L, ₹7.5 L, ₹10 L, ₹15 L, ₹20 L, ₹25 L, ₹50 L, ₹75 L, ₹1 Cr Sum Insured (SI) For Adults: 18 years to 65 years For Dependent Children: 91 days to 25 years (Floater Policy)",
+      "source": {
+        "source_type": "brochure",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/brochure.pdf",
+        "page_number": 3
+      },
+      "confidence": 0.9,
+      "validated": true
+    }
+  },
+  "optional_covers": {
+    "buy_back_ped_waiting_period": {
+      "value": "PED waiting period can be reduced from 36 months to 12 months on payment of additional premium",
+      "raw_text": "29 / 47 STAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED | POLICY WORDINGS Star Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526 | POL / COMP / V.24 / 2025 25. \u0007Optional Cover (Buy Back of Pre-Existing Disease Waiting Period): On payment of additional premium the Insured Person has the option to opt for reduction of waiting period in respect of Pre-Existing Diseases from 36 months to 12 months. This option is available only for the first purchase of this Star Comprehensive Insurance Policy and only upto Sum Insured chosen at that time. This option is not available for renewal or policies ported from other Insurance Companies. The Insured Person has to undergo pre-acceptance medical screening at Company’s nominated center. If we accept the proposal, we will reimburse at least 50% of the costs incurred by the member undertaking such pre- acceptance medical screening. Where the Insured Person has opted for this benefit the exclusions shall read as follows; 1. Pre-Existing Diseases : Code Excl 01 A. \u0007Expenses related to the treatment of a pre-existing Disease (PED) and its direct complications shall be excluded until the expiry of 12 months of continuous coverage after the date of inception of the first policy with insurer B. \u0007In case of enhancement of Sum Insured the exclusion shall apply afresh to the extent of Sum Insured increase C. \u0007Coverage under the policy after the expiry of 12 months for any pre- existing disease is subject to the same being declar",
+      "source": {
+        "source_type": "policy_wording",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/policy_wording.pdf",
+        "page_number": 30
+      },
+      "confidence": 0.95,
+      "validated": true
+    }
+  },
+  "summary": {
+    "documents_used": [
+      "brochure",
+      "policy_wording",
+      "prospectus"
+    ],
+    "pages_scanned": 114
+  }
+}

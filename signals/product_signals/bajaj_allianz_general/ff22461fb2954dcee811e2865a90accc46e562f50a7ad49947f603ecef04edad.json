@@ -1,0 +1,514 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\ff22461fb2954dcee811e2865a90accc46e562f50a7ad49947f603ecef04edad.json",
+  "insurer_id": "bajaj_allianz_general",
+  "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html",
+  "page_title": "Buy Family Health Insurance Plans Online in India 2026",
+  "content_hash": "ff22461fb2954dcee811e2865a90accc46e562f50a7ad49947f603ecef04edad",
+  "page_intent": "individual_product",
+  "extracted_at": "2026-06-07T11:46:07.372069+00:00",
+  "product_names": [
+    {
+      "name": "Family Health Insurance",
+      "source": "url_slug",
+      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html"
+    }
+  ],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Preventive Check-ups",
+      "text": "Avail free preventive health check-ups to encourage regular health monitoring and early detection of potential health issues.",
+      "evidence": "Preventive Check-ups\nAvail free preventive health check-ups to encourage regular health monitoring and early detection of potential health issues."
+    },
+    {
+      "heading": "Hospitalisation Expenses",
+      "text": "Covers hospitalisation costs, including a choice of room types and all types of daycare procedures and surgeries.",
+      "evidence": "Hospitalisation Expenses\nCovers hospitalisation costs, including a choice of room types and all types of daycare procedures and surgeries."
+    },
+    {
+      "heading": "Pre and Post-Hospitalisation Expenses",
+      "text": "Covers medical expenses for up to 60 days before and 90 days after hospitalisation, with options for customisation as needed.",
+      "evidence": "Pre and Post-Hospitalisation Expenses\nCovers medical expenses for up to 60 days before and 90 days after hospitalisation, with options for customisation as needed."
+    },
+    {
+      "heading": "Road Ambulance",
+      "text": "Reimburses reasonable ambulance expenses per valid hospitalisation claim when availing services from a healthcare or ambulance provider.",
+      "evidence": "Road Ambulance\nReimburses reasonable ambulance expenses per valid hospitalisation claim when availing services from a healthcare or ambulance provider."
+    },
+    {
+      "heading": "Organ Donor Expense",
+      "text": "Covers the medical costs for an organ donor's in-patient treatment when harvesting an organ for the insured person.",
+      "evidence": "Organ Donor Expense\nCovers the medical costs for an organ donor's in-patient treatment when harvesting an organ for the insured person."
+    },
+    {
+      "heading": "Reinstatement Benefit",
+      "text": "Restores 100% of the base sum insured for in-patient hospitalisation, ensuring full coverage for the policy year.",
+      "evidence": "Reinstatement Benefit\nRestores 100% of the base sum insured for in-patient hospitalisation, ensuring full coverage for the policy year."
+    },
+    {
+      "heading": "Daily Cash Allowance",
+      "text": "Provides a fixed daily cash benefit during hospitalisation to help cover incidental expenses not included in the primary health insurance.",
+      "evidence": "Daily Cash Allowance\nProvides a fixed daily cash benefit during hospitalisation to help cover incidental expenses not included in the primary health insurance."
+    },
+    {
+      "heading": "Investigation & Evaluation",
+      "text": "Medical expenses solely for diagnostic or evaluation purposes that are not related to the current diagnosis and treatment are not covered.",
+      "evidence": "Investigation & Evaluation\nMedical expenses solely for diagnostic or evaluation purposes that are not related to the current diagnosis and treatment are not covered."
+    },
+    {
+      "heading": "Self-Inflicted Injuries",
+      "text": "Expenses arising from self-inflicted injuries, suicide attempts, insanity, or involvement in illegal activities are not covered.",
+      "evidence": "Self-Inflicted Injuries\nExpenses arising from self-inflicted injuries, suicide attempts, insanity, or involvement in illegal activities are not covered."
+    },
+    {
+      "heading": "Maternity Cover",
+      "text": "Provides financial support for delivery expenses, prenatal and postnatal care, and newborn medical costs",
+      "evidence": "Maternity Cover\nProvides financial support for delivery expenses, prenatal and postnatal care, and newborn medical costs"
+    },
+    {
+      "heading": "What is Family Health Insurance?",
+      "text": "Family health insurance, or a family mediclaim policy, is a kind of insurance that provides comprehensive health coverage for all family members. At Bajaj General Insurance Limited , we design these health insurance policies for families to offer them financial protection against medical expenses arising from hospitalisations, surgeries, and other treatments.\nFamily health insurance plans typically cover immediate family members, including spouses, children, and sometimes parents. If you opt for health insurance plans for your family, you safeguard them against unexpected medical costs, promoting better health and peace of mind.",
+      "evidence": "What is Family Health Insurance?\nFamily health insurance, or a family mediclaim policy, is a kind of insurance that provides comprehensive health coverage for all family members. At Bajaj General Insurance Limited , we design these health insurance policies for families to offer them financial protection against medical expenses arising from hospitalisations, surgeries, and other treatments.\nFamily health insurance plans typically cover immediate family members, including spouses, children, and sometimes parents. If you opt for health insurance plans for your family, you safeguard them against unexpected medical costs, promoting better health and peace of mind."
+    },
+    {
+      "heading": "6. Daycare Procedures Cover",
+      "text": ": Medical expenses incurred during the treatment of listed daycare procedures or surgeries are covered under family floater health insurance.",
+      "evidence": "6. Daycare Procedures Cover\n: Medical expenses incurred during the treatment of listed daycare procedures or surgeries are covered under family floater health insurance."
+    },
+    {
+      "heading": "7. Convalescence Benefit",
+      "text": ": In case of continuous hospitalisation of more than 10 days, you will be eligible for a benefit payout of up to ₹7500 per year, provided the hospitalisation claim is admissible.",
+      "evidence": "7. Convalescence Benefit\n: In case of continuous hospitalisation of more than 10 days, you will be eligible for a benefit payout of up to ₹7500 per year, provided the hospitalisation claim is admissible."
+    },
+    {
+      "heading": "9. Sum Insured Reinstatement",
+      "text": ": If your sum insured and the cumulative bonus (if any) have been completely exhausted during the policy year, we will reinstate it.",
+      "evidence": "9. Sum Insured Reinstatement\n: If your sum insured and the cumulative bonus (if any) have been completely exhausted during the policy year, we will reinstate it."
+    },
+    {
+      "heading": "10. Pre and Post-Hospitalisation",
+      "text": ": The policy covers medical expenses 60 days immediately before and 90 days immediately after hospitalisation.",
+      "evidence": "10. Pre and Post-Hospitalisation\n: The policy covers medical expenses 60 days immediately before and 90 days immediately after hospitalisation."
+    },
+    {
+      "heading": "Cover",
+      "text": ": Our family health coverage plans cover ambulance expenses incurred up to ₹20,000 during each policy period.",
+      "evidence": "Cover\n: Our family health coverage plans cover ambulance expenses incurred up to ₹20,000 during each policy period."
+    },
+    {
+      "heading": "12. Organ Donor Expenses Cover",
+      "text": ": Expenses towards organ donors' treatment for harvesting donated organs are covered under this policy.",
+      "evidence": "12. Organ Donor Expenses Cover\n: Expenses towards organ donors' treatment for harvesting donated organs are covered under this policy."
+    },
+    {
+      "heading": "13. Daily Cash Benefit",
+      "text": ": A daily cash benefit of ₹500 per day, for up to 10 days during each policy year, will be payable as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy for an admissible claim.",
+      "evidence": "13. Daily Cash Benefit\n: A daily cash benefit of ₹500 per day, for up to 10 days during each policy year, will be payable as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy for an admissible claim."
+    },
+    {
+      "heading": "14. Maternity/Newborn Baby Cover",
+      "text": ": Maternity expenses and medical expenses towards the treatment of a newborn baby are covered under the medical insurance for the family and are subject to specific terms and conditions. This feature is available under the Gold & Platinum Plan.",
+      "evidence": "14. Maternity/Newborn Baby Cover\n: Maternity expenses and medical expenses towards the treatment of a newborn baby are covered under the medical insurance for the family and are subject to specific terms and conditions. This feature is available under the Gold & Platinum Plan."
+    },
+    {
+      "heading": "Preventive Health Check-up",
+      "text": "At the end of a block of every continuous period, as mentioned in the family health insurance plans coverage during which you have held our Health Guard Policy, you are eligible for a free Preventive Health checkup. These health checkups ensure that you detect any kind of issues in your body at an early stage and work on their treatment. This might not seem that important, but it makes a world of difference in positive healthcare.",
+      "evidence": "Preventive Health Check-up\nAt the end of a block of every continuous period, as mentioned in the family health insurance plans coverage during which you have held our Health Guard Policy, you are eligible for a free Preventive Health checkup. These health checkups ensure that you detect any kind of issues in your body at an early stage and work on their treatment. This might not seem that important, but it makes a world of difference in positive healthcare."
+    },
+    {
+      "heading": "Portability Benefit",
+      "text": "Suppose you and your loved ones are insured under any other family health insurance policy. In that case, you can switch to this policy with all accrued benefits after due allowances for waiting periods and enjoy the available benefits of the policy. The benefits that you will be able to retain include cumulative bonuses.",
+      "evidence": "Portability Benefit\nSuppose you and your loved ones are insured under any other family health insurance policy. In that case, you can switch to this policy with all accrued benefits after due allowances for waiting periods and enjoy the available benefits of the policy. The benefits that you will be able to retain include cumulative bonuses."
+    },
+    {
+      "heading": "Discount on Policy",
+      "text": "With us, not only can you enjoy the classic benefits of a long-term family health insurance policy, but also enjoy it with a discount. On our family health insurance plans, you can avail a long-term policy discount of 4% for 2 years and 8% for 3 years. This provides a slight financial relief while getting the policy.",
+      "evidence": "Discount on Policy\nWith us, not only can you enjoy the classic benefits of a long-term family health insurance policy, but also enjoy it with a discount. On our family health insurance plans, you can avail a long-term policy discount of 4% for 2 years and 8% for 3 years. This provides a slight financial relief while getting the policy."
+    },
+    {
+      "heading": "Why Should You Buy Bajaj General Family Health Insurance?",
+      "text": "Purchasing a health insurance policy for the family online from Bajaj General Insurance Limited comes with numerous advantages. Below are the 8 benefits you can get if you buy family health coverage plans from us:",
+      "evidence": "Why Should You Buy Bajaj General Family Health Insurance?\nPurchasing a health insurance policy for the family online from Bajaj General Insurance Limited comes with numerous advantages. Below are the 8 benefits you can get if you buy family health coverage plans from us:"
+    },
+    {
+      "heading": "Cumulative Bonuses",
+      "text": "If you spend a claim-free year, you can get a cumulative bonus on your family health insurance plans. This means your sum insured increases by a few % as specified in your policy document.",
+      "evidence": "Cumulative Bonuses\nIf you spend a claim-free year, you can get a cumulative bonus on your family health insurance plans. This means your sum insured increases by a few % as specified in your policy document."
+    },
+    {
+      "heading": "Flexible Plans",
+      "text": "There are various kinds of plans that we offer for your family. On top of this, you can get add-ons on your base plans, such as Non-Medical Expense, Maternity Cover, and Bariatric Surgery Cover.",
+      "evidence": "Flexible Plans\nThere are various kinds of plans that we offer for your family. On top of this, you can get add-ons on your base plans, such as Non-Medical Expense, Maternity Cover, and Bariatric Surgery Cover."
+    },
+    {
+      "heading": "Already Trusted",
+      "text": "We have a customer base of over 17 crore customers that have put their trust in us. This reflects our commitment to you so you can have a reliable shoulder in a crisis.\nTop Reasons to Choose the Bajaj General Health Guard Policy\nBajaj General Insurance Limited Health Guard Policy is one of the best family health insurance plans due to its extensive benefits and features.",
+      "evidence": "Already Trusted\nWe have a customer base of over 17 crore customers that have put their trust in us. This reflects our commitment to you so you can have a reliable shoulder in a crisis.\nTop Reasons to Choose the Bajaj General Health Guard Policy\nBajaj General Insurance Limited Health Guard Policy is one of the best family health insurance plans due to its extensive benefits and features."
+    },
+    {
+      "heading": "2. Immediate family coverage.",
+      "text": "3. Includes AYUSH treatment.",
+      "evidence": "2. Immediate family coverage.\n3. Includes AYUSH treatment."
+    },
+    {
+      "heading": "Holistic Coverage",
+      "text": "1. Comprehensive health insurance plans for the entire family.",
+      "evidence": "Holistic Coverage\n1. Comprehensive health insurance plans for the entire family."
+    },
+    {
+      "heading": "Key Advantage",
+      "text": "Every individual gets personalised coverage, which is beneficial for older members needing extensive care.",
+      "evidence": "Key Advantage\nEvery individual gets personalised coverage, which is beneficial for older members needing extensive care."
+    },
+    {
+      "heading": "Smaller, younger families without high-risk medical needs are aiming for budget-friendly coverage.",
+      "text": "Focus",
+      "evidence": "Smaller, younger families without high-risk medical needs are aiming for budget-friendly coverage.\nFocus"
+    },
+    {
+      "heading": "Emphasis on affordable, comprehensive coverage with shared benefits among family members.",
+      "text": "Things to Consider Before Buying a Family Health Insurance Plan\nSelecting the best family health policy in India requires careful consideration of factors that impact coverage and affordability.",
+      "evidence": "Emphasis on affordable, comprehensive coverage with shared benefits among family members.\nThings to Consider Before Buying a Family Health Insurance Plan\nSelecting the best family health policy in India requires careful consideration of factors that impact coverage and affordability."
+    },
+    {
+      "heading": "Coverage",
+      "text": ": Ensure your plan includes expenses for doctor visits, diagnostic tests, and medications both before and after hospitalisation.",
+      "evidence": "Coverage\n: Ensure your plan includes expenses for doctor visits, diagnostic tests, and medications both before and after hospitalisation."
+    },
+    {
+      "heading": "5. Daycare Procedures",
+      "text": ": Check if daycare treatments are covered, as these don’t require a 24-hour hospital stay but can be costly.",
+      "evidence": "5. Daycare Procedures\n: Check if daycare treatments are covered, as these don’t require a 24-hour hospital stay but can be costly."
+    },
+    {
+      "heading": "6. Ambulance Services",
+      "text": ": Confirm if ambulance charges are included, as these can provide valuable support in emergencies or for planned treatments.",
+      "evidence": "6. Ambulance Services\n: Confirm if ambulance charges are included, as these can provide valuable support in emergencies or for planned treatments."
+    },
+    {
+      "heading": ": Inform the BGIL HAT team about the hospitalisation.",
+      "text": "Step 2",
+      "evidence": ": Inform the BGIL HAT team about the hospitalisation.\nStep 2"
+    },
+    {
+      "heading": "11. Obstetric history from the treating doctor (in maternity cases).",
+      "text": "12. FIR copy (in accident case).\n13. Additional requirements for some exceptional cases:\n1) A lens sticker with a bill copy, in case of a cataract operation.\n2) Use an implant sticker with a copy of the bill, in case of surgery.\n3) A stent sticker with a bill copy, in case of a heart-related treatment.",
+      "evidence": "11. Obstetric history from the treating doctor (in maternity cases).\n12. FIR copy (in accident case).\n13. Additional requirements for some exceptional cases:\n1) A lens sticker with a bill copy, in case of a cataract operation.\n2) Use an implant sticker with a copy of the bill, in case of surgery.\n3) A stent sticker with a bill copy, in case of a heart-related treatment."
+    },
+    {
+      "heading": "Select suitable coverage",
+      "text": "Check discounts & offers",
+      "evidence": "Select suitable coverage\nCheck discounts & offers"
+    },
+    {
+      "heading": "Buy comprehensive coverages",
+      "text": "Get secure\nHERizon",
+      "evidence": "Buy comprehensive coverages\nGet secure\nHERizon"
+    },
+    {
+      "heading": "Items not typically covered in standard insurance plans",
+      "text": "Starting from",
+      "evidence": "Items not typically covered in standard insurance plans\nStarting from"
+    },
+    {
+      "heading": "Create your profile to unlock exclusive benefits.",
+      "text": "Customised plans that grow with you",
+      "evidence": "Create your profile to unlock exclusive benefits.\nCustomised plans that grow with you"
+    },
+    {
+      "heading": "Proactive coverage for future milestones",
+      "text": "Expert advice tailored to your profile",
+      "evidence": "Proactive coverage for future milestones\nExpert advice tailored to your profile"
+    },
+    {
+      "heading": "Does the Family Health Care plan cover ambulance charges?",
+      "text": "Yes, the policy covers reasonable ambulance expenses incurred for transporting the insured to the nearest hospital in case of a medical emergency. The reimbursement is subject to the maximum limit specified in the policy schedule.",
+      "evidence": "Does the Family Health Care plan cover ambulance charges?\nYes, the policy covers reasonable ambulance expenses incurred for transporting the insured to the nearest hospital in case of a medical emergency. The reimbursement is subject to the maximum limit specified in the policy schedule."
+    },
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "Investigation & Evaluation",
+      "text": "Medical expenses solely for diagnostic or evaluation purposes that are not related to the current diagnosis and treatment are not covered.",
+      "evidence": "Investigation & Evaluation\nMedical expenses solely for diagnostic or evaluation purposes that are not related to the current diagnosis and treatment are not covered."
+    },
+    {
+      "heading": "Self-Inflicted Injuries",
+      "text": "Expenses arising from self-inflicted injuries, suicide attempts, insanity, or involvement in illegal activities are not covered.",
+      "evidence": "Self-Inflicted Injuries\nExpenses arising from self-inflicted injuries, suicide attempts, insanity, or involvement in illegal activities are not covered."
+    },
+    {
+      "heading": "E-Insurance Account",
+      "text": "Product wise specific list of excluded items",
+      "evidence": "E-Insurance Account\nProduct wise specific list of excluded items"
+    }
+  ],
+  "waiting_periods": [
+    {
+      "heading": "Specific Disease/Procedure",
+      "text": "A 24-month waiting period applies to expenses related to the treatment of specified conditions, surgeries, and medical procedures.",
+      "evidence": "Specific Disease/Procedure\nA 24-month waiting period applies to expenses related to the treatment of specified conditions, surgeries, and medical procedures."
+    },
+    {
+      "heading": "Portability Benefit",
+      "text": "Suppose you and your loved ones are insured under any other family health insurance policy. In that case, you can switch to this policy with all accrued benefits after due allowances for waiting periods and enjoy the available benefits of the policy. The benefits that you will be able to retain include cumulative bonuses.",
+      "evidence": "Portability Benefit\nSuppose you and your loved ones are insured under any other family health insurance policy. In that case, you can switch to this policy with all accrued benefits after due allowances for waiting periods and enjoy the available benefits of the policy. The benefits that you will be able to retain include cumulative bonuses."
+    },
+    {
+      "heading": "1. Sum Insured",
+      "text": ": Choose an adequate sum insured to cover all family members, especially those with pre-existing conditions or specific medical needs.",
+      "evidence": "1. Sum Insured\n: Choose an adequate sum insured to cover all family members, especially those with pre-existing conditions or specific medical needs."
+    }
+  ],
+  "riders_or_addons": [
+    {
+      "heading": "Flexible Plans",
+      "text": "There are various kinds of plans that we offer for your family. On top of this, you can get add-ons on your base plans, such as Non-Medical Expense, Maternity Cover, and Bariatric Surgery Cover.",
+      "evidence": "Flexible Plans\nThere are various kinds of plans that we offer for your family. On top of this, you can get add-ons on your base plans, such as Non-Medical Expense, Maternity Cover, and Bariatric Surgery Cover."
+    },
+    {
+      "heading": "Add or remove riders",
+      "text": "Confirm details and proceed",
+      "evidence": "Add or remove riders\nConfirm details and proceed"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST"
+    },
+    {
+      "heading": "Waiver of Room Capping",
+      "text": "Tooltip text\nRemoves single room type restriction*",
+      "evidence": "Waiver of Room Capping\nTooltip text\nRemoves single room type restriction*"
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ],
+  "sum_insured_values": [
+    {
+      "value": "INR 1 Lakh",
+      "reason": "sum_insured_context",
+      "heading": "Sum Insured Options",
+      "evidence": "Sum Insured Options\nINR 1 Lakh to INR 25 Lakhs\nINR 50,000 to INR 10 Lakhs"
+    },
+    {
+      "value": "INR 10 Lakhs",
+      "reason": "sum_insured_context",
+      "heading": "Sum Insured Options",
+      "evidence": "Sum Insured Options\nINR 1 Lakh to INR 25 Lakhs\nINR 50,000 to INR 10 Lakhs"
+    },
+    {
+      "value": "INR 25 Lakhs",
+      "reason": "sum_insured_context",
+      "heading": "Sum Insured Options",
+      "evidence": "Sum Insured Options\nINR 1 Lakh to INR 25 Lakhs\nINR 50,000 to INR 10 Lakhs"
+    },
+    {
+      "value": "INR 50,000",
+      "reason": "sum_insured_context",
+      "heading": "Sum Insured Options",
+      "evidence": "Sum Insured Options\nINR 1 Lakh to INR 25 Lakhs\nINR 50,000 to INR 10 Lakhs"
+    },
+    {
+      "value": "₹1 crore",
+      "reason": "sum_insured_context",
+      "heading": "3. Multiple Sum Insured Options",
+      "evidence": "3. Multiple Sum Insured Options\n: Enjoy the flexibility to choose between 3 plan variants along with the Sum Insured options ranging from ₹1.5 lakh to ₹1 crore."
+    },
+    {
+      "value": "₹1.5 lakh",
+      "reason": "sum_insured_context",
+      "heading": "3. Multiple Sum Insured Options",
+      "evidence": "3. Multiple Sum Insured Options\n: Enjoy the flexibility to choose between 3 plan variants along with the Sum Insured options ranging from ₹1.5 lakh to ₹1 crore."
+    }
+  ],
+  "premium_values": [],
+  "benefit_amount_values": [
+    {
+      "value": "₹500",
+      "reason": "benefit_amount_context",
+      "heading": "13. Daily Cash Benefit",
+      "evidence": "13. Daily Cash Benefit\n: A daily cash benefit of ₹500 per day, for up to 10 days during each policy year, will be payable as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy for an admissible claim."
+    },
+    {
+      "value": "₹7500",
+      "reason": "benefit_amount_context",
+      "heading": "7. Convalescence Benefit",
+      "evidence": "7. Convalescence Benefit\n: In case of continuous hospitalisation of more than 10 days, you will be eligible for a benefit payout of up to ₹7500 per year, provided the hospitalisation claim is admissible."
+    }
+  ],
+  "tax_amount_values": [
+    {
+      "value": "₹1,00,000",
+      "reason": "tax_context",
+      "heading": "Tax Saving",
+      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
+    },
+    {
+      "value": "₹25,000",
+      "reason": "tax_context",
+      "heading": "Tax Saving",
+      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
+    },
+    {
+      "value": "₹50,000",
+      "reason": "tax_context",
+      "heading": "Tax Saving",
+      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
+    },
+    {
+      "value": "₹75,000",
+      "reason": "tax_context",
+      "heading": "Tax Saving",
+      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
+    }
+  ],
+  "discount_values": [],
+  "room_rent_limits": [
+    {
+      "heading": "Room Rent Limit",
+      "text": "As per actual expenses",
+      "evidence": "Room Rent Limit\nAs per actual expenses"
+    },
+    {
+      "heading": "Waiver of Room Capping",
+      "text": "Tooltip text\nRemoves single room type restriction*",
+      "evidence": "Waiver of Room Capping\nTooltip text\nRemoves single room type restriction*"
+    },
+    {
+      "heading": "Covers actual room rent expenses without a cap",
+      "text": "Starting from",
+      "evidence": "Covers actual room rent expenses without a cap\nStarting from"
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "Road Ambulance",
+      "text": "Reimburses reasonable ambulance expenses per valid hospitalisation claim when availing services from a healthcare or ambulance provider.",
+      "evidence": "Road Ambulance\nReimburses reasonable ambulance expenses per valid hospitalisation claim when availing services from a healthcare or ambulance provider."
+    },
+    {
+      "heading": "What is Family Health Insurance?",
+      "text": "Family health insurance, or a family mediclaim policy, is a kind of insurance that provides comprehensive health coverage for all family members. At Bajaj General Insurance Limited , we design these health insurance policies for families to offer them financial protection against medical expenses arising from hospitalisations, surgeries, and other treatments.\nFamily health insurance plans typically cover immediate family members, including spouses, children, and sometimes parents. If you opt for health insurance plans for your family, you safeguard them against unexpected medical costs, promoting better health and peace of mind.",
+      "evidence": "What is Family Health Insurance?\nFamily health insurance, or a family mediclaim policy, is a kind of insurance that provides comprehensive health coverage for all family members. At Bajaj General Insurance Limited , we design these health insurance policies for families to offer them financial protection against medical expenses arising from hospitalisations, surgeries, and other treatments.\nFamily health insurance plans typically cover immediate family members, including spouses, children, and sometimes parents. If you opt for health insurance plans for your family, you safeguard them against unexpected medical costs, promoting better health and peace of mind."
+    },
+    {
+      "heading": "7. Convalescence Benefit",
+      "text": ": In case of continuous hospitalisation of more than 10 days, you will be eligible for a benefit payout of up to ₹7500 per year, provided the hospitalisation claim is admissible.",
+      "evidence": "7. Convalescence Benefit\n: In case of continuous hospitalisation of more than 10 days, you will be eligible for a benefit payout of up to ₹7500 per year, provided the hospitalisation claim is admissible."
+    },
+    {
+      "heading": "13. Daily Cash Benefit",
+      "text": ": A daily cash benefit of ₹500 per day, for up to 10 days during each policy year, will be payable as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy for an admissible claim.",
+      "evidence": "13. Daily Cash Benefit\n: A daily cash benefit of ₹500 per day, for up to 10 days during each policy year, will be payable as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy for an admissible claim."
+    },
+    {
+      "heading": "Tax Saving",
+      "text": "Under Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000.",
+      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
+    },
+    {
+      "heading": "Quick Claim Settlement",
+      "text": "Sixty minutes is all it takes!",
+      "evidence": "Quick Claim Settlement\nSixty minutes is all it takes!"
+    },
+    {
+      "heading": "Cumulative Bonuses",
+      "text": "If you spend a claim-free year, you can get a cumulative bonus on your family health insurance plans. This means your sum insured increases by a few % as specified in your policy document.",
+      "evidence": "Cumulative Bonuses\nIf you spend a claim-free year, you can get a cumulative bonus on your family health insurance plans. This means your sum insured increases by a few % as specified in your policy document."
+    },
+    {
+      "heading": ": Register your policy and health card number in the app, and then register the claim.",
+      "text": "Step 3",
+      "evidence": ": Register your policy and health card number in the app, and then register the claim.\nStep 3"
+    },
+    {
+      "heading": ": Fill the claim form and arrange for the hospital-related documents.",
+      "text": "Step 4",
+      "evidence": ": Fill the claim form and arrange for the hospital-related documents.\nStep 4"
+    },
+    {
+      "heading": ": Upload the documents using the app menu.",
+      "text": "Step 5",
+      "evidence": ": Upload the documents using the app menu.\nStep 5"
+    },
+    {
+      "heading": "The steps to apply for a reimbursement claim are as follows:",
+      "text": "Step 1",
+      "evidence": "The steps to apply for a reimbursement claim are as follows:\nStep 1"
+    },
+    {
+      "heading": ": To register your claim online, click here.",
+      "text": "Step 3",
+      "evidence": ": To register your claim online, click here.\nStep 3"
+    },
+    {
+      "heading": "Does the Family Health Care plan cover ambulance charges?",
+      "text": "Yes, the policy covers reasonable ambulance expenses incurred for transporting the insured to the nearest hospital in case of a medical emergency. The reimbursement is subject to the maximum limit specified in the policy schedule.",
+      "evidence": "Does the Family Health Care plan cover ambulance charges?\nYes, the policy covers reasonable ambulance expenses incurred for transporting the insured to the nearest hospital in case of a medical emergency. The reimbursement is subject to the maximum limit specified in the policy schedule."
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Tax Saving",
+      "text": "Under Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000.",
+      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
+    },
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "What is Family Health Insurance?",
+      "text": "Family health insurance, or a family mediclaim policy, is a kind of insurance that provides comprehensive health coverage for all family members. At Bajaj General Insurance Limited , we design these health insurance policies for families to offer them financial protection against medical expenses arising from hospitalisations, surgeries, and other treatments.\nFamily health insurance plans typically cover immediate family members, including spouses, children, and sometimes parents. If you opt for health insurance plans for your family, you safeguard them against unexpected medical costs, promoting better health and peace of mind.",
+      "evidence": "What is Family Health Insurance?\nFamily health insurance, or a family mediclaim policy, is a kind of insurance that provides comprehensive health coverage for all family members. At Bajaj General Insurance Limited , we design these health insurance policies for families to offer them financial protection against medical expenses arising from hospitalisations, surgeries, and other treatments.\nFamily health insurance plans typically cover immediate family members, including spouses, children, and sometimes parents. If you opt for health insurance plans for your family, you safeguard them against unexpected medical costs, promoting better health and peace of mind."
+    },
+    {
+      "heading": "6. Daycare Procedures Cover",
+      "text": ": Medical expenses incurred during the treatment of listed daycare procedures or surgeries are covered under family floater health insurance.",
+      "evidence": "6. Daycare Procedures Cover\n: Medical expenses incurred during the treatment of listed daycare procedures or surgeries are covered under family floater health insurance."
+    },
+    {
+      "heading": "Tax Saving",
+      "text": "Under Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000.",
+      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
+    },
+    {
+      "heading": "Smaller, younger families without high-risk medical needs are aiming for budget-friendly coverage.",
+      "text": "Focus",
+      "evidence": "Smaller, younger families without high-risk medical needs are aiming for budget-friendly coverage.\nFocus"
+    },
+    {
+      "heading": "Select suitable coverage",
+      "text": "Check discounts & offers",
+      "evidence": "Select suitable coverage\nCheck discounts & offers"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST"
+    },
+    {
+      "heading": "Family Floater Health Insurance",
+      "text": "Why juggle policies when one app can do it all?",
+      "evidence": "Family Floater Health Insurance\nWhy juggle policies when one app can do it all?"
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ]
+}

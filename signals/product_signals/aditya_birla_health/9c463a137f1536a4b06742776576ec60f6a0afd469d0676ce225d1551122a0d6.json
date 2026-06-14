@@ -1,0 +1,63 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\9c463a137f1536a4b06742776576ec60f6a0afd469d0676ce225d1551122a0d6.json",
+  "insurer_id": "aditya_birla_health",
+  "url": "https://www.adityabirlacapital.com/healthinsurance/faqs",
+  "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
+  "content_hash": "9c463a137f1536a4b06742776576ec60f6a0afd469d0676ce225d1551122a0d6",
+  "page_intent": "faq",
+  "extracted_at": "2026-06-07T11:46:07.205416+00:00",
+  "product_names": [],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "HealthReturns™ with EAT.MOVE.HEAL + Maternity Cover + OPD Cover",
+      "text": "5,218 **/annum",
+      "evidence": "HealthReturns™ with EAT.MOVE.HEAL + Maternity Cover + OPD Cover\n5,218 **/annum"
+    },
+    {
+      "heading": "Up to Rs. 95* lakh coverage with an affordable premium",
+      "text": "₹962*/annum",
+      "evidence": "Up to Rs. 95* lakh coverage with an affordable premium\n₹962*/annum"
+    },
+    {
+      "heading": "Health insurance with OPD cover",
+      "text": "Ayush treatment\nCorona virus health insurance",
+      "evidence": "Health insurance with OPD cover\nAyush treatment\nCorona virus health insurance"
+    },
+    {
+      "heading": "Health insurance with OPD cover",
+      "text": "Ayush treatment\nCorona virus health insurance\nLarge payout plans",
+      "evidence": "Health insurance with OPD cover\nAyush treatment\nCorona virus health insurance\nLarge payout plans"
+    }
+  ],
+  "exclusions": [],
+  "waiting_periods": [],
+  "riders_or_addons": [],
+  "sum_insured_values": [],
+  "premium_values": [],
+  "benefit_amount_values": [],
+  "tax_amount_values": [],
+  "discount_values": [],
+  "room_rent_limits": [],
+  "claim_process_signals": [
+    {
+      "heading": "Health insurance claim",
+      "text": "Employer health insurance\nHealth care for young adults\nSuper topup health insurance",
+      "evidence": "Health insurance claim\nEmployer health insurance\nHealth care for young adults\nSuper topup health insurance"
+    }
+  ],
+  "tax_signals": [],
+  "suitability_signals": [
+    {
+      "heading": "Health insurance claim",
+      "text": "Employer health insurance\nHealth care for young adults\nSuper topup health insurance",
+      "evidence": "Health insurance claim\nEmployer health insurance\nHealth care for young adults\nSuper topup health insurance"
+    },
+    {
+      "heading": "Health Insurance For Family",
+      "text": "Hospital cash insurance",
+      "evidence": "Health Insurance For Family\nHospital cash insurance"
+    }
+  ]
+}

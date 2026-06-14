@@ -1,0 +1,88 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "field": "room_rent_limit",
+  "status": "extracted",
+  "fact": {
+    "fact_id": "fact:aditya_birla_health:activ_one:room_rent_limit",
+    "entity_id": "aditya_birla_health:activ_one",
+    "entity_type": "product",
+    "insurance_line": "health",
+    "field": "room_rent_limit",
+    "value": "No Limit",
+    "raw_value": "No room rent limit",
+    "unit": "text",
+    "metadata": {
+      "value_type": "no_limit",
+      "proportionate_deduction_detected_nearby": false
+    },
+    "evidence": {
+      "text": "No Capping on Medical Expenses + Super Reload ₹6,177*/annum Up to 100% premium back + Dura",
+      "evidence_type": "clause",
+      "page": null,
+      "section": "Room Rent",
+      "table_id": null,
+      "row_id": null,
+      "chunk_id": null
+    },
+    "source": {
+      "source_document": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+      "source_type": "webpage",
+      "source_url": null,
+      "source_file_path": "parsed/html_sections/aditya_birla_health/2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
+      "source_hash": null,
+      "document_version": null,
+      "effective_date": null
+    },
+    "confidence": {
+      "score": 0.9,
+      "method": "regex",
+      "reason": "Matched room rent phrase using rule-based pattern.",
+      "requires_review": false
+    },
+    "extraction": {
+      "agent_name": "room_rent_extractor",
+      "agent_version": "0.2",
+      "extracted_at": "2026-06-09T17:34:12.608157+00:00",
+      "parser_version": null,
+      "model_name": null
+    },
+    "validation": {
+      "status": "valid",
+      "messages": [],
+      "review_recommendation": "safe_to_publish",
+      "validated_at": "2026-06-09T17:34:12.631210+00:00",
+      "validator_name": "health_domain_validator",
+      "validator_version": "0.1.2"
+    }
+  },
+  "validation_report": {
+    "validator_name": "health_domain_validator",
+    "validator_version": "0.1.2",
+    "entity_id": "aditya_birla_health:activ_one",
+    "validation_mode": "fact",
+    "validated_at": "2026-06-09T17:34:12.631210+00:00",
+    "summary": {
+      "facts_checked": 1,
+      "valid": 1,
+      "warnings": 0,
+      "errors": 0,
+      "needs_review": 0
+    },
+    "missing_critical_fields": [],
+    "missing_important_fields": [],
+    "review_recommendation": "safe_to_publish",
+    "results": [
+      {
+        "fact_id": "fact:aditya_birla_health:activ_one:room_rent_limit",
+        "field": "room_rent_limit",
+        "status": "valid",
+        "messages": [],
+        "validated_at": "2026-06-09T17:34:12.631231+00:00"
+      }
+    ]
+  },
+  "candidate_count": 54,
+  "files_scanned": 8,
+  "skipped_by_entity_guard": 0,
+  "extracted_at": "2026-06-09T17:34:12.631239+00:00"
+}

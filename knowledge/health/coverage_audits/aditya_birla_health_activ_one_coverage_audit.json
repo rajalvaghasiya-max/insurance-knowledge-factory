@@ -1,0 +1,31 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "coverage_score": 80,
+  "status": "READY",
+  "coverage": {
+    "policy_wording": true,
+    "customer_information_sheet": true,
+    "prospectus": true,
+    "brochure": false,
+    "webpage": true
+  },
+  "evidence": {
+    "policy_wording": [
+      "knowledge/health/coverage_audits/aditya_birla_health_activ_one_coverage_audit.json",
+      "knowledge/health/document_acquisition/aditya_birla_health_activ_one_download_report.json",
+      "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+      "archive/text/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_health-assesment_ha-request.txt"
+    ],
+    "customer_information_sheet": [
+      "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf"
+    ],
+    "prospectus": [
+      "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf"
+    ],
+    "brochure": [],
+    "webpage": [
+      "knowledge/health/document_acquisition/aditya_birla_health_activ_one_filtered_document_urls.json",
+      "archive/metadata/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one.json"
+    ]
+  }
+}

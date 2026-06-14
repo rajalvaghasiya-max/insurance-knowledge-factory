@@ -1,0 +1,28 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "field": "copay",
+  "router_version": "0.3",
+  "priority_sources": [
+    "policy_wording",
+    "customer_information_sheet",
+    "cis",
+    "prospectus",
+    "brochure",
+    "webpage"
+  ],
+  "candidate_count": 1,
+  "rejected_counts": {
+    "not_entity_match": 227,
+    "blocked_context": 143,
+    "unsupported_source_type": 0
+  },
+  "candidates": [
+    {
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\metadata\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one.json",
+      "relative_path": "archive/metadata/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one.json",
+      "source_type": "webpage",
+      "priority": 5,
+      "match_reason": "strong_product_match"
+    }
+  ]
+}

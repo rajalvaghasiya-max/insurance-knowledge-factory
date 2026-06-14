@@ -1,0 +1,1129 @@
+{
+  "product_id": "bajaj_allianz_general_senior_citizen_health_insurance_b8007b1478",
+  "insurer_id": "bajaj_allianz_general",
+  "product_name": "Senior Citizen Health Insurance",
+  "product_key": "bajaj_allianz_general::senior_citizen_health_insurance",
+  "status": "draft",
+  "created_at": "2026-06-07T13:07:41.747889+00:00",
+  "updated_at": "2026-06-07T13:07:41.747902+00:00",
+  "consolidated_by": "product_consolidation_agent",
+  "consolidator_version": "0.2",
+  "source_urls": [
+    "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html"
+  ],
+  "source_content_hashes": [
+    "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086"
+  ],
+  "source_signal_files": [
+    "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json"
+  ],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Get comprehensive health coverage for your old age",
+      "text": "Take care of your old age medical treatment needs\nCovers higher health care costs you may incur in your old age and reduces the financial burden on you and your family to ensure peace of mind",
+      "evidence": "Get comprehensive health coverage for your old age\nTake care of your old age medical treatment needs\nCovers higher health care costs you may incur in your old age and reduces the financial burden on you and your family to ensure peace of mind",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Floater Policy Option Available",
+      "text": "Get the option to cover multiple family members under a single sum insured so that you can utilise the total coverage amount for one or all insured members",
+      "evidence": "Floater Policy Option Available\nGet the option to cover multiple family members under a single sum insured so that you can utilise the total coverage amount for one or all insured members",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Mental Health Treatment (IPD Basis)",
+      "text": "Coverage for in-patient department (IPD) treatment of mental health problems including hospitalization expenses",
+      "evidence": "Mental Health Treatment (IPD Basis)\nCoverage for in-patient department (IPD) treatment of mental health problems including hospitalization expenses",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Domiciliary Hospitalisation Cost (Only for Plan B)",
+      "text": "Coverage for medical expenses incurred during at-home treatment as per the doctor’s advice in case there are no beds available at the hospital or the patient can’t be moved to the hospital",
+      "evidence": "Domiciliary Hospitalisation Cost (Only for Plan B)\nCoverage for medical expenses incurred during at-home treatment as per the doctor’s advice in case there are no beds available at the hospital or the patient can’t be moved to the hospital",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Advanced Treatment Charges",
+      "text": "Any medical expenses incurred while undergoing advanced treatment methods and modern technological procedures are covered",
+      "evidence": "Advanced Treatment Charges\nAny medical expenses incurred while undergoing advanced treatment methods and modern technological procedures are covered",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Cover your loved ones under one plan or keep it personal with individual coverage options",
+      "text": "Note",
+      "evidence": "Cover your loved ones under one plan or keep it personal with individual coverage options\nNote",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Non-Medical Expenses",
+      "text": "Coverage for non-medical expenses (such as consumables) within the in-patient hospitalisation sum insured for health indemnity product plans with SI of INR 5 lacs and above\nNote",
+      "evidence": "Non-Medical Expenses\nCoverage for non-medical expenses (such as consumables) within the in-patient hospitalisation sum insured for health indemnity product plans with SI of INR 5 lacs and above\nNote",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "after a waiting period.",
+      "text": "Cumulative bonus:\nAvail 10%\ncumulative bonus",
+      "evidence": "after a waiting period.\nCumulative bonus:\nAvail 10%\ncumulative bonus",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Financial Protection",
+      "text": "Senior citizen health insurance helps manage healthcare costs. It covers hospitalisation expenses, doctor consultations, medications, and other medical bills, reducing the financial burden on you and your loved ones.",
+      "evidence": "Financial Protection\nSenior citizen health insurance helps manage healthcare costs. It covers hospitalisation expenses, doctor consultations, medications, and other medical bills, reducing the financial burden on you and your loved ones.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Preventive Care:",
+      "text": "Some plans cover preventive health checkups, allowing for early detection of potential issues and promoting overall well-being.",
+      "evidence": "Preventive Care:\nSome plans cover preventive health checkups, allowing for early detection of potential issues and promoting overall well-being.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Tax benefits for senior citizen medical insurance include deductions under",
+      "text": "Section 80D of the Income Tax Act\n. It allows senior citizens to claim deductions on premiums paid for their health insurance policies.",
+      "evidence": "Tax benefits for senior citizen medical insurance include deductions under\nSection 80D of the Income Tax Act\n. It allows senior citizens to claim deductions on premiums paid for their health insurance policies.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Additional Benefits With Your Senior Citizen Health Insurance Plan",
+      "text": "Health insurance plans with various benefits especially formulated to protect senior citizens from extensive medical bills:",
+      "evidence": "Additional Benefits With Your Senior Citizen Health Insurance Plan\nHealth insurance plans with various benefits especially formulated to protect senior citizens from extensive medical bills:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Hospital Cash Tax:",
+      "text": "Avail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit under Section 80D is, then, Rs 1 lakh.",
+      "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit under Section 80D is, then, Rs 1 lakh.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Hospital & Day Care SI",
+      "text": "INR 50,000 to INR 5 lacs\nINR 3 lacs to INR 10 lacs",
+      "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 5 lacs\nINR 3 lacs to INR 10 lacs",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "3% of hospitalisation expenses",
+      "text": "Pre: 30 days & Post: 60 days",
+      "evidence": "3% of hospitalisation expenses\nPre: 30 days & Post: 60 days",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "What is Covered under the Senior Citizen Mediclaim Policy?",
+      "text": "Senior citizen mediclaim policies offer a range of coverage options, but some major benefits offered by the best health insurance policy for senior citizens include:",
+      "evidence": "What is Covered under the Senior Citizen Mediclaim Policy?\nSenior citizen mediclaim policies offer a range of coverage options, but some major benefits offered by the best health insurance policy for senior citizens include:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Pre & Post-Hospitalization",
+      "text": "Covers expenses related to doctor consultations, medications, and diagnostic tests before and after hospitalisation.\nIt's important to note that specific coverage details may vary depending on the chosen policy. Always carefully review the policy wording to understand what's included in your plan.",
+      "evidence": "Pre & Post-Hospitalization\nCovers expenses related to doctor consultations, medications, and diagnostic tests before and after hospitalisation.\nIt's important to note that specific coverage details may vary depending on the chosen policy. Always carefully review the policy wording to understand what's included in your plan.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Why Choose Bajaj General Insurance Limited Silver Health Plan for Senior Citizens?",
+      "text": "Peace of Mind for Golden Years:\nFocus on enjoying your retirement without worrying about unexpected medical bills. The Silver Health Plan helps manage hospitalisation costs, protecting your savings.",
+      "evidence": "Why Choose Bajaj General Insurance Limited Silver Health Plan for Senior Citizens?\nPeace of Mind for Golden Years:\nFocus on enjoying your retirement without worrying about unexpected medical bills. The Silver Health Plan helps manage hospitalisation costs, protecting your savings.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Comprehensive Coverage:",
+      "text": "This plan goes beyond just hospitalisation expenses. It covers pre and post-hospitalisation care, and ambulance charges, and offers free health check-ups.",
+      "evidence": "Comprehensive Coverage:\nThis plan goes beyond just hospitalisation expenses. It covers pre and post-hospitalisation care, and ambulance charges, and offers free health check-ups.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Rewarding Healthy Habits:",
+      "text": "The Silver Health Plan incentivises a healthy lifestyle by offering a cumulative bonus for claim-free years, effectively increasing your coverage over time.\nWider Entry Age Limit: Enroll in a\nhealth insurance plan\neven at a later stage in life. The Bajaj General Insurance Limited Silver Health Plan has a higher entry age compared to some standard plans.",
+      "evidence": "Rewarding Healthy Habits:\nThe Silver Health Plan incentivises a healthy lifestyle by offering a cumulative bonus for claim-free years, effectively increasing your coverage over time.\nWider Entry Age Limit: Enroll in a\nhealth insurance plan\neven at a later stage in life. The Bajaj General Insurance Limited Silver Health Plan has a higher entry age compared to some standard plans.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "SOS alert, on-call doctor, 24X7 ambulance service, etc.",
+      "text": "Starting from\nINR 710\n+ GST",
+      "evidence": "SOS alert, on-call doctor, 24X7 ambulance service, etc.\nStarting from\nINR 710\n+ GST",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Items not typicallly covered in standard insurance plans",
+      "text": "Starting from\nINR 311\n+ GST",
+      "evidence": "Items not typicallly covered in standard insurance plans\nStarting from\nINR 311\n+ GST",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "● Obstetric history from the treating doctor (in maternity cases).",
+      "text": "● FIR copy (in case of an accident).\n● A requirement for some special cases.\n● In case of a cataract operation-lens sticker with a bill copy.\n● In case of a surgery-implant sticker with a bill copy.\n● In case of a heart-related treatment-stent sticker with a bill copy.",
+      "evidence": "● Obstetric history from the treating doctor (in maternity cases).\n● FIR copy (in case of an accident).\n● A requirement for some special cases.\n● In case of a cataract operation-lens sticker with a bill copy.\n● In case of a surgery-implant sticker with a bill copy.\n● In case of a heart-related treatment-stent sticker with a bill copy.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Create your profile to unlock exclusive benefits.",
+      "text": "Customised plans that grow with you",
+      "evidence": "Create your profile to unlock exclusive benefits.\nCustomised plans that grow with you",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Proactive coverage for future milestones",
+      "text": "Expert advice tailored to your profile",
+      "evidence": "Proactive coverage for future milestones\nExpert advice tailored to your profile",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "What is the eligibility age for buying Health Insurance for Senior Citizens?",
+      "text": "Bajaj General Insurance offers senior citizens' health insurance for individuals aged 60 years and above. The health policy for parents under this plan ensures they receive medical coverage tailored to their age-specific needs and health risks.",
+      "evidence": "What is the eligibility age for buying Health Insurance for Senior Citizens?\nBajaj General Insurance offers senior citizens' health insurance for individuals aged 60 years and above. The health policy for parents under this plan ensures they receive medical coverage tailored to their age-specific needs and health risks.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Are day care procedures covered in Health Insurance for Senior Citizens?",
+      "text": "Yes, Bajaj General Insurance includes a wide range of day care procedures under its health insurance for senior citizens. This ensures coverage even for treatments that don't require 24-hour hospitalisation, offering more value from the policy.",
+      "evidence": "Are day care procedures covered in Health Insurance for Senior Citizens?\nYes, Bajaj General Insurance includes a wide range of day care procedures under its health insurance for senior citizens. This ensures coverage even for treatments that don't require 24-hour hospitalisation, offering more value from the policy.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "Pre-Existing Diseases",
+      "text": "Treatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 12 months (as selected) from date of your first Silver Health Policy",
+      "evidence": "Pre-Existing Diseases\nTreatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 12 months (as selected) from date of your first Silver Health Policy",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Treatment for Self-Inflicted Acts",
+      "text": "Medical expenses incurred as a result of self-harm, intoxication, illegal actions, hazardous activities, etc.",
+      "evidence": "Treatment for Self-Inflicted Acts\nMedical expenses incurred as a result of self-harm, intoxication, illegal actions, hazardous activities, etc.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "E-Insurance Account",
+      "text": "Product wise specific list of excluded items",
+      "evidence": "E-Insurance Account\nProduct wise specific list of excluded items",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "waiting_periods": [
+    {
+      "heading": "Initial Waiting Period",
+      "text": "Treatment expenses during the first 30 days except for treatment of accidental injuries",
+      "evidence": "Initial Waiting Period\nTreatment expenses during the first 30 days except for treatment of accidental injuries",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Pre-Existing Diseases",
+      "text": "Treatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 12 months (as selected) from date of your first Silver Health Policy",
+      "evidence": "Pre-Existing Diseases\nTreatment expenses for pre-existing diseases such as diabetes, asthma, thyroid and other PED, are excluded until 12 months (as selected) from date of your first Silver Health Policy",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "after a waiting period.",
+      "text": "Cumulative bonus:\nAvail 10%\ncumulative bonus",
+      "evidence": "after a waiting period.\nCumulative bonus:\nAvail 10%\ncumulative bonus",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Hospital Cash Tax:",
+      "text": "Avail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit under Section 80D is, then, Rs 1 lakh.",
+      "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit under Section 80D is, then, Rs 1 lakh.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "3% of hospitalisation expenses",
+      "text": "Pre: 30 days & Post: 60 days",
+      "evidence": "3% of hospitalisation expenses\nPre: 30 days & Post: 60 days",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "riders_or_addons": [
+    {
+      "heading": "Additional Covers",
+      "text": "What else can you get?",
+      "evidence": "Additional Covers\nWhat else can you get?",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Non-Medical Expenses",
+      "text": "Coverage for non-medical expenses (such as consumables) within the in-patient hospitalisation sum insured for health indemnity product plans with SI of INR 5 lacs and above\nNote",
+      "evidence": "Non-Medical Expenses\nCoverage for non-medical expenses (such as consumables) within the in-patient hospitalisation sum insured for health indemnity product plans with SI of INR 5 lacs and above\nNote",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Co-payment Waiver:",
+      "text": "Allows you to opt out of co-payments, a fixed amount you might have to pay for a claim along with the insurance company.",
+      "evidence": "Co-payment Waiver:\nAllows you to opt out of co-payments, a fixed amount you might have to pay for a claim along with the insurance company.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance for senior citizens",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Add or remove riders",
+      "text": "Confirm details and proceed",
+      "evidence": "Add or remove riders\nConfirm details and proceed",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "room_rent_limits": [
+    {
+      "heading": "Room Rent Capping Discount",
+      "text": "Get discount on policy premium (10% for SI up to INR 2 lacs & 5% for SI INR 3 lacs and above) if you opt for room rent limit of 1% of sum insured\nNote",
+      "evidence": "Room Rent Capping Discount\nGet discount on policy premium (10% for SI up to INR 2 lacs & 5% for SI INR 3 lacs and above) if you opt for room rent limit of 1% of sum insured\nNote",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Room Rent",
+      "text": "Single private AC room | ICU (at actual)\nSingle private AC room | ICU (at actual)",
+      "evidence": "Room Rent\nSingle private AC room | ICU (at actual)\nSingle private AC room | ICU (at actual)",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "Part of the claim will be borne by you (the policyholder) as per the chosen Plan",
+      "text": "Note",
+      "evidence": "Part of the claim will be borne by you (the policyholder) as per the chosen Plan\nNote",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Key Features of Health Insurance Plan for Senior Citizen",
+      "text": "A mediclaim policy that offers complete health insurance solutions for senior citizens with a wide range of features:",
+      "evidence": "Key Features of Health Insurance Plan for Senior Citizen\nA mediclaim policy that offers complete health insurance solutions for senior citizens with a wide range of features:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "up to your limit of indemnity for every claim-free year, maximum limit up to 50%.",
+      "text": "High entry age:",
+      "evidence": "up to your limit of indemnity for every claim-free year, maximum limit up to 50%.\nHigh entry age:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Co-payment Waiver:",
+      "text": "Allows you to opt out of co-payments, a fixed amount you might have to pay for a claim along with the insurance company.",
+      "evidence": "Co-payment Waiver:\nAllows you to opt out of co-payments, a fixed amount you might have to pay for a claim along with the insurance company.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Tax benefits for senior citizen medical insurance include deductions under",
+      "text": "Section 80D of the Income Tax Act\n. It allows senior citizens to claim deductions on premiums paid for their health insurance policies.",
+      "evidence": "Tax benefits for senior citizen medical insurance include deductions under\nSection 80D of the Income Tax Act\n. It allows senior citizens to claim deductions on premiums paid for their health insurance policies.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "After every 4 claim-free years",
+      "text": "After every 2 years with a limit of up to 1% of SI or INR 5,000 (whichever is lower)",
+      "evidence": "After every 4 claim-free years\nAfter every 2 years with a limit of up to 1% of SI or INR 5,000 (whichever is lower)",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "What is Covered under the Senior Citizen Mediclaim Policy?",
+      "text": "Senior citizen mediclaim policies offer a range of coverage options, but some major benefits offered by the best health insurance policy for senior citizens include:",
+      "evidence": "What is Covered under the Senior Citizen Mediclaim Policy?\nSenior citizen mediclaim policies offer a range of coverage options, but some major benefits offered by the best health insurance policy for senior citizens include:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Rewarding Healthy Habits:",
+      "text": "The Silver Health Plan incentivises a healthy lifestyle by offering a cumulative bonus for claim-free years, effectively increasing your coverage over time.\nWider Entry Age Limit: Enroll in a\nhealth insurance plan\neven at a later stage in life. The Bajaj General Insurance Limited Silver Health Plan has a higher entry age compared to some standard plans.",
+      "evidence": "Rewarding Healthy Habits:\nThe Silver Health Plan incentivises a healthy lifestyle by offering a cumulative bonus for claim-free years, effectively increasing your coverage over time.\nWider Entry Age Limit: Enroll in a\nhealth insurance plan\neven at a later stage in life. The Bajaj General Insurance Limited Silver Health Plan has a higher entry age compared to some standard plans.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "● To register your claim online",
+      "text": "click here",
+      "evidence": "● To register your claim online\nclick here",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "To register your claim online",
+      "text": "click here",
+      "evidence": "To register your claim online\nclick here",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Tax benefits for senior citizen medical insurance include deductions under",
+      "text": "Section 80D of the Income Tax Act\n. It allows senior citizens to claim deductions on premiums paid for their health insurance policies.",
+      "evidence": "Tax benefits for senior citizen medical insurance include deductions under\nSection 80D of the Income Tax Act\n. It allows senior citizens to claim deductions on premiums paid for their health insurance policies.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Hospital Cash Tax:",
+      "text": "Avail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit under Section 80D is, then, Rs 1 lakh.",
+      "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit under Section 80D is, then, Rs 1 lakh.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "● Tax Benefits:",
+      "text": "Get tax deductions under Section 80D of the Income Tax Act for the premiums you pay towards your health insurance policy.",
+      "evidence": "● Tax Benefits:\nGet tax deductions under Section 80D of the Income Tax Act for the premiums you pay towards your health insurance policy.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Key Features of Health Insurance Plan for Senior Citizen",
+      "text": "A mediclaim policy that offers complete health insurance solutions for senior citizens with a wide range of features:",
+      "evidence": "Key Features of Health Insurance Plan for Senior Citizen\nA mediclaim policy that offers complete health insurance solutions for senior citizens with a wide range of features:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Just for You",
+      "text": "Specifically designed for senior citizens",
+      "evidence": "Just for You\nSpecifically designed for senior citizens",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Financial Protection",
+      "text": "Senior citizen health insurance helps manage healthcare costs. It covers hospitalisation expenses, doctor consultations, medications, and other medical bills, reducing the financial burden on you and your loved ones.",
+      "evidence": "Financial Protection\nSenior citizen health insurance helps manage healthcare costs. It covers hospitalisation expenses, doctor consultations, medications, and other medical bills, reducing the financial burden on you and your loved ones.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Tax benefits for senior citizen medical insurance include deductions under",
+      "text": "Section 80D of the Income Tax Act\n. It allows senior citizens to claim deductions on premiums paid for their health insurance policies.",
+      "evidence": "Tax benefits for senior citizen medical insurance include deductions under\nSection 80D of the Income Tax Act\n. It allows senior citizens to claim deductions on premiums paid for their health insurance policies.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Additional Benefits With Your Senior Citizen Health Insurance Plan",
+      "text": "Health insurance plans with various benefits especially formulated to protect senior citizens from extensive medical bills:",
+      "evidence": "Additional Benefits With Your Senior Citizen Health Insurance Plan\nHealth insurance plans with various benefits especially formulated to protect senior citizens from extensive medical bills:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Hospital Cash Tax:",
+      "text": "Avail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit under Section 80D is, then, Rs 1 lakh.",
+      "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit under Section 80D is, then, Rs 1 lakh.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "What is Covered under the Senior Citizen Mediclaim Policy?",
+      "text": "Senior citizen mediclaim policies offer a range of coverage options, but some major benefits offered by the best health insurance policy for senior citizens include:",
+      "evidence": "What is Covered under the Senior Citizen Mediclaim Policy?\nSenior citizen mediclaim policies offer a range of coverage options, but some major benefits offered by the best health insurance policy for senior citizens include:",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Why Choose Bajaj General Insurance Limited Silver Health Plan for Senior Citizens?",
+      "text": "Peace of Mind for Golden Years:\nFocus on enjoying your retirement without worrying about unexpected medical bills. The Silver Health Plan helps manage hospitalisation costs, protecting your savings.",
+      "evidence": "Why Choose Bajaj General Insurance Limited Silver Health Plan for Senior Citizens?\nPeace of Mind for Golden Years:\nFocus on enjoying your retirement without worrying about unexpected medical bills. The Silver Health Plan helps manage hospitalisation costs, protecting your savings.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance for senior citizens",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "What is the eligibility age for buying Health Insurance for Senior Citizens?",
+      "text": "Bajaj General Insurance offers senior citizens' health insurance for individuals aged 60 years and above. The health policy for parents under this plan ensures they receive medical coverage tailored to their age-specific needs and health risks.",
+      "evidence": "What is the eligibility age for buying Health Insurance for Senior Citizens?\nBajaj General Insurance offers senior citizens' health insurance for individuals aged 60 years and above. The health policy for parents under this plan ensures they receive medical coverage tailored to their age-specific needs and health risks.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "Are day care procedures covered in Health Insurance for Senior Citizens?",
+      "text": "Yes, Bajaj General Insurance includes a wide range of day care procedures under its health insurance for senior citizens. This ensures coverage even for treatments that don't require 24-hour hospitalisation, offering more value from the policy.",
+      "evidence": "Are day care procedures covered in Health Insurance for Senior Citizens?\nYes, Bajaj General Insurance includes a wide range of day care procedures under its health insurance for senior citizens. This ensures coverage even for treatments that don't require 24-hour hospitalisation, offering more value from the policy.",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "source": {
+        "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+        "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+        "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+        "extractor_version": "0.7"
+      }
+    }
+  ],
+  "financial_signals": {
+    "sum_insured_values": [
+      {
+        "value": "INR 10 lacs",
+        "reason": "sum_insured_context",
+        "heading": "Hospital & Day Care SI",
+        "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 5 lacs\nINR 3 lacs to INR 10 lacs",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 3 lacs",
+        "reason": "sum_insured_context",
+        "heading": "Hospital & Day Care SI",
+        "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 5 lacs\nINR 3 lacs to INR 10 lacs",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 5 lacs",
+        "reason": "sum_insured_context",
+        "heading": "Hospital & Day Care SI",
+        "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 5 lacs\nINR 3 lacs to INR 10 lacs",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 5 lacs",
+        "reason": "sum_insured_context",
+        "heading": "Non-Medical Expenses",
+        "evidence": "Non-Medical Expenses\nCoverage for non-medical expenses (such as consumables) within the in-patient hospitalisation sum insured for health indemnity product plans with SI of INR 5 lacs and above\nNote",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 50,000",
+        "reason": "sum_insured_context",
+        "heading": "Choose adequate sum insured from INR 50,000 to 10 lacs that suits your need",
+        "evidence": "Choose adequate sum insured from INR 50,000 to 10 lacs that suits your need\nEntry Age up to 80 Years\nYou are eligible to get this health insurance plan between 46 years to 80 years of age",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 50,000",
+        "reason": "sum_insured_context",
+        "heading": "Hospital & Day Care SI",
+        "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 5 lacs\nINR 3 lacs to INR 10 lacs",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹10 lakhs",
+        "reason": "sum_insured_context",
+        "heading": "What are the sum insured options available under the Silver Health ?",
+        "evidence": "What are the sum insured options available under the Silver Health ?\nUnder Silver Health Plan A, you can choose a sum insured ranging from ₹50,000 to ₹5 lakhs. For Plan B, the sum insured can range between ₹3 lakhs and ₹10 lakhs.\nWhat is the entry age for the Silver Health policy?\nThe plan is available to individuals or families with an age range of 46 to 80 years.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹3 lakhs",
+        "reason": "sum_insured_context",
+        "heading": "What are the sum insured options available under the Silver Health ?",
+        "evidence": "What are the sum insured options available under the Silver Health ?\nUnder Silver Health Plan A, you can choose a sum insured ranging from ₹50,000 to ₹5 lakhs. For Plan B, the sum insured can range between ₹3 lakhs and ₹10 lakhs.\nWhat is the entry age for the Silver Health policy?\nThe plan is available to individuals or families with an age range of 46 to 80 years.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹5 lakhs",
+        "reason": "sum_insured_context",
+        "heading": "What are the sum insured options available under the Silver Health ?",
+        "evidence": "What are the sum insured options available under the Silver Health ?\nUnder Silver Health Plan A, you can choose a sum insured ranging from ₹50,000 to ₹5 lakhs. For Plan B, the sum insured can range between ₹3 lakhs and ₹10 lakhs.\nWhat is the entry age for the Silver Health policy?\nThe plan is available to individuals or families with an age range of 46 to 80 years.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "₹50,000",
+        "reason": "sum_insured_context",
+        "heading": "What are the sum insured options available under the Silver Health ?",
+        "evidence": "What are the sum insured options available under the Silver Health ?\nUnder Silver Health Plan A, you can choose a sum insured ranging from ₹50,000 to ₹5 lakhs. For Plan B, the sum insured can range between ₹3 lakhs and ₹10 lakhs.\nWhat is the entry age for the Silver Health policy?\nThe plan is available to individuals or families with an age range of 46 to 80 years.",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      }
+    ],
+    "premium_values": [],
+    "benefit_amount_values": [],
+    "tax_amount_values": [
+      {
+        "value": "Rs 1 lakh",
+        "reason": "tax_context",
+        "heading": "Hospital Cash Tax:",
+        "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit ",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "Rs 25,000",
+        "reason": "tax_context",
+        "heading": "Hospital Cash Tax:",
+        "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit ",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "Rs 50,000",
+        "reason": "tax_context",
+        "heading": "Hospital Cash Tax:",
+        "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit ",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "Rs 75,000",
+        "reason": "tax_context",
+        "heading": "Hospital Cash Tax:",
+        "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit ",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      }
+    ],
+    "discount_values": [
+      {
+        "value": "INR 2 lacs",
+        "reason": "discount_context",
+        "heading": "Room Rent Capping Discount",
+        "evidence": "Room Rent Capping Discount\nGet discount on policy premium (10% for SI up to INR 2 lacs & 5% for SI INR 3 lacs and above) if you opt for room rent limit of 1% of sum insured\nNote",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      },
+      {
+        "value": "INR 3 lacs",
+        "reason": "discount_context",
+        "heading": "Room Rent Capping Discount",
+        "evidence": "Room Rent Capping Discount\nGet discount on policy premium (10% for SI up to INR 2 lacs & 5% for SI INR 3 lacs and above) if you opt for room rent limit of 1% of sum insured\nNote",
+        "source": {
+          "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
+          "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
+          "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
+          "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
+          "extractor_version": "0.7"
+        }
+      }
+    ]
+  },
+  "quality": {
+    "source_count": 1,
+    "has_uin": false,
+    "has_benefits": true,
+    "has_exclusions": true,
+    "has_waiting_periods": true,
+    "confidence": "medium",
+    "notes": [],
+    "removed_noise_items": 7
+  }
+}

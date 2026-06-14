@@ -1,0 +1,84 @@
+{
+  "entity_id": "aditya_birla_health:activ_one",
+  "field": "ped_waiting_period",
+  "status": "extracted",
+  "fact": {
+    "fact_id": "fact:aditya_birla_health:activ_one:ped_waiting_period",
+    "entity_id": "aditya_birla_health:activ_one",
+    "entity_type": "product",
+    "insurance_line": "health",
+    "field": "ped_waiting_period",
+    "value": 36,
+    "raw_value": "3 years",
+    "unit": "months",
+    "evidence": {
+      "text": "Pre-Existing Diseases Waiting Period 3 years",
+      "evidence_type": "clause",
+      "page": null,
+      "section": "Waiting Periods",
+      "table_id": null,
+      "row_id": null,
+      "chunk_id": null
+    },
+    "source": {
+      "source_document": "b595c652240b203b9c7b94fd16df115f2dbf10980b88942219b27bd9e9136271.json",
+      "source_type": "webpage",
+      "source_url": null,
+      "source_file_path": "parsed/html_sections/aditya_birla_health/b595c652240b203b9c7b94fd16df115f2dbf10980b88942219b27bd9e9136271.json",
+      "source_hash": null,
+      "document_version": null,
+      "effective_date": null
+    },
+    "confidence": {
+      "score": 0.82,
+      "method": "regex",
+      "reason": "Matched PED waiting period phrase using rule-based pattern.",
+      "requires_review": false
+    },
+    "extraction": {
+      "agent_name": "ped_waiting_period_extractor",
+      "agent_version": "0.1",
+      "extracted_at": "2026-06-09T16:53:51.759292+00:00",
+      "parser_version": null,
+      "model_name": null
+    },
+    "validation": {
+      "status": "valid",
+      "messages": [],
+      "review_recommendation": "publish_with_warning",
+      "validated_at": "2026-06-09T16:53:51.795090+00:00",
+      "validator_name": "health_domain_validator",
+      "validator_version": "0.1.1"
+    }
+  },
+  "validation_report": {
+    "validator_name": "health_domain_validator",
+    "validator_version": "0.1.1",
+    "entity_id": "aditya_birla_health:activ_one",
+    "validated_at": "2026-06-09T16:53:51.795090+00:00",
+    "summary": {
+      "facts_checked": 1,
+      "valid": 1,
+      "warnings": 0,
+      "errors": 0,
+      "needs_review": 0
+    },
+    "missing_critical_fields": [],
+    "missing_important_fields": [
+      "copay",
+      "room_rent_limit",
+      "specific_disease_waiting_period"
+    ],
+    "review_recommendation": "publish_with_warning",
+    "results": [
+      {
+        "fact_id": "fact:aditya_birla_health:activ_one:ped_waiting_period",
+        "field": "ped_waiting_period",
+        "status": "valid",
+        "messages": [],
+        "validated_at": "2026-06-09T16:53:51.795115+00:00"
+      }
+    ]
+  },
+  "extracted_at": "2026-06-09T16:53:51.795122+00:00"
+}

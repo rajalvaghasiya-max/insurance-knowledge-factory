@@ -1,0 +1,59 @@
+[
+    {
+      "source_id": "irdai",
+      "name": "Insurance Regulatory and Development Authority of India",
+      "source_type": "regulator",
+      "website": "https://irdai.gov.in",
+      "seed_urls": [
+        "https://irdai.gov.in",
+        "https://irdai.gov.in/life-insurers1",
+        "https://irdai.gov.in/non-life-insurers1",
+        "https://irdai.gov.in/health-insurers1"
+      ],
+      "crawl_priority": 1,
+      "crawl_frequency": "monthly",
+      "storage_layer": "regulatory_intelligence",
+      "status": "active"
+    },
+    {
+      "source_id": "life_insurance_council",
+      "name": "Life Insurance Council",
+      "source_type": "industry_body",
+      "website": "https://www.lifeinscouncil.org/code/HomePage",
+      "seed_urls": [
+        "https://www.lifeinscouncil.org/code/HomePage",
+        "https://www.lifeinscouncil.org/industry%20information/list_of_fund_NAVs.aspx",
+        "https://www.lifeinscouncil.org/consumers/ListOfCompanies"
+      ],
+      "crawl_priority": 1,
+      "crawl_frequency": "monthly",
+      "storage_layer": "market_intelligence",
+      "status": "active"
+    },
+    {
+      "source_id": "bima_bharosa",
+      "name": "Bima Bharosa",
+      "source_type": "consumer_grievance_platform",
+      "website": "https://bimabharosa.irdai.gov.in/Home/Home",
+      "seed_urls": [
+        "https://bimabharosa.irdai.gov.in/Home/Home"
+      ],
+      "crawl_priority": 2,
+      "crawl_frequency": "monthly",
+      "storage_layer": "regulatory_intelligence",
+      "status": "active"
+    },
+    {
+      "source_id": "general_insurance_council",
+      "name": "General Insurance Council",
+      "source_type": "industry_body",
+      "website": "https://www.gicouncil.in",
+      "seed_urls": [
+        "https://www.gicouncil.in"
+      ],
+      "crawl_priority": 2,
+      "crawl_frequency": "monthly",
+      "storage_layer": "market_intelligence",
+      "status": "active"
+    }
+  ]

@@ -1,0 +1,383 @@
+{
+  "extractor_version": "0.7",
+  "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\8d92f14e86e25e5939db03716d47a56f527cf731e262bb368c7d3bfee8d6b121.json",
+  "insurer_id": "bajaj_allianz_general",
+  "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/comprehensive-health-insurance.html",
+  "page_title": "A Guide to What is a Comprehensive Health Insurance Plan",
+  "content_hash": "8d92f14e86e25e5939db03716d47a56f527cf731e262bb368c7d3bfee8d6b121",
+  "page_intent": "article",
+  "extracted_at": "2026-06-07T11:46:07.310381+00:00",
+  "product_names": [],
+  "uins": [],
+  "benefits": [
+    {
+      "heading": "Comprehensive coverage",
+      "text": "It offers extensive coverage for a wide range of medical expenses including room rent, doctor’s fees, nursing charges, surgery costs, medical tests and other healthcare needs, ensuring you get the care you need without worrying about big hospitalisation bills.",
+      "evidence": "Comprehensive coverage\nIt offers extensive coverage for a wide range of medical expenses including room rent, doctor’s fees, nursing charges, surgery costs, medical tests and other healthcare needs, ensuring you get the care you need without worrying about big hospitalisation bills."
+    },
+    {
+      "heading": "Cumulative Bonus",
+      "text": "You are rewarded with a cumulative bonus for each claim-free year, which typically increases the sum insured without an additional premium, encouraging you to maintain good health.",
+      "evidence": "Cumulative Bonus\nYou are rewarded with a cumulative bonus for each claim-free year, which typically increases the sum insured without an additional premium, encouraging you to maintain good health."
+    },
+    {
+      "heading": "Hospitalization & Day Care Expenses",
+      "text": "Covers hospitalization expenses & Day Care procedures & surgeries with Room rent limit as specified and ICU at actuals",
+      "evidence": "Hospitalization & Day Care Expenses\nCovers hospitalization expenses & Day Care procedures & surgeries with Room rent limit as specified and ICU at actuals"
+    },
+    {
+      "heading": "Pre and post hospitalization expenses",
+      "text": "Coverage available as specified under the plan with option to customize as required in specified plans\nOut-patient treatment (OPD) expenses\nCoverage available in select plans for Tele Consultation, In-clinic Doctor Consultation, Pathalogy, radiology and annual preventive health check up as per limit specified",
+      "evidence": "Pre and post hospitalization expenses\nCoverage available as specified under the plan with option to customize as required in specified plans\nOut-patient treatment (OPD) expenses\nCoverage available in select plans for Tele Consultation, In-clinic Doctor Consultation, Pathalogy, radiology and annual preventive health check up as per limit specified"
+    },
+    {
+      "heading": "Maternity and Newborn Coverage",
+      "text": "Many comprehensive plans offer coverage for maternity-related expenses, including prenatal and postnatal care, delivery charges, and newborn care, supporting you during significant life events.",
+      "evidence": "Maternity and Newborn Coverage\nMany comprehensive plans offer coverage for maternity-related expenses, including prenatal and postnatal care, delivery charges, and newborn care, supporting you during significant life events."
+    },
+    {
+      "heading": "Domiciliary Hospitalization",
+      "text": "Coverage available in select plans for Medical Expenses, that are incurred on home treatment on the advice of the attending Medical Practitioner cause patient cannot be moved to hospital or hospital bed is not available\nModern Treatment Methods and Advancement in Technologies\nMedical expenses incurred in undergoing treatment using modern and advanced technologies or procedures",
+      "evidence": "Domiciliary Hospitalization\nCoverage available in select plans for Medical Expenses, that are incurred on home treatment on the advice of the attending Medical Practitioner cause patient cannot be moved to hospital or hospital bed is not available\nModern Treatment Methods and Advancement in Technologies\nMedical expenses incurred in undergoing treatment using modern and advanced technologies or procedures"
+    },
+    {
+      "heading": "Organ Donor Expense",
+      "text": "Coverage available in select plans for Medical expenses incurred for organ donor's in-patient treatment for harvesting the donated organ if insured is the receiver",
+      "evidence": "Organ Donor Expense\nCoverage available in select plans for Medical expenses incurred for organ donor's in-patient treatment for harvesting the donated organ if insured is the receiver"
+    },
+    {
+      "heading": "Sum Insured Reinstatement",
+      "text": "Sum Insured exhausted will be reinstated and available fully for next claim as specified under the plan\nRecharge benefit\nIf an unfortunate claim exhausts Sum Insured limit, the then additional Sum Insured would be available in select plans",
+      "evidence": "Sum Insured Reinstatement\nSum Insured exhausted will be reinstated and available fully for next claim as specified under the plan\nRecharge benefit\nIf an unfortunate claim exhausts Sum Insured limit, the then additional Sum Insured would be available in select plans"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service"
+    },
+    {
+      "heading": "Personalized Coverage",
+      "text": "Wide range of products & plans to suit your needs",
+      "evidence": "Personalized Coverage\nWide range of products & plans to suit your needs"
+    },
+    {
+      "heading": "only cover hospitalisation expenses. However,",
+      "text": "comprehensive health insurance\n, on the other hand, covers post-hospitalisation expenses, day-care procedures, and ambulance charges.\nAt-A-Glance",
+      "evidence": "only cover hospitalisation expenses. However,\ncomprehensive health insurance\n, on the other hand, covers post-hospitalisation expenses, day-care procedures, and ambulance charges.\nAt-A-Glance"
+    },
+    {
+      "heading": "Hospital & Day Care SI",
+      "text": "SI: INR 3 Lacs to INR 5 Crs.\nSI: INR 3 Lacs to INR 1 Cr.\nIndia SI: INR 37.5 Lacs to INR 75 Lacs | International SI: USD 1 Lac to USD 10 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 3 Lacs to INR 50 Lacs",
+      "evidence": "Hospital & Day Care SI\nSI: INR 3 Lacs to INR 5 Crs.\nSI: INR 3 Lacs to INR 1 Cr.\nIndia SI: INR 37.5 Lacs to INR 75 Lacs | International SI: USD 1 Lac to USD 10 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 3 Lacs to INR 50 Lacs"
+    },
+    {
+      "heading": "Maternity Sublimits",
+      "text": "INR 50,000 for SI 5 to 10 Lacs | INR 75,000 for SI 15 to 20 Lacs | INR1,00,000 for SI above 20 Lacs",
+      "evidence": "Maternity Sublimits\nINR 50,000 for SI 5 to 10 Lacs | INR 75,000 for SI 15 to 20 Lacs | INR1,00,000 for SI above 20 Lacs"
+    },
+    {
+      "heading": "Air Ambulance",
+      "text": "INR 10 Lacs for SI 50 Lacs to 1 Cr INR 20 Lacs for SI above 1 Cr",
+      "evidence": "Air Ambulance\nINR 10 Lacs for SI 50 Lacs to 1 Cr INR 20 Lacs for SI above 1 Cr"
+    },
+    {
+      "heading": "Not Covered",
+      "text": "As per specified limits within the plans\nAs per specified limits within the plans\nAs per specified limits within the plans",
+      "evidence": "Not Covered\nAs per specified limits within the plans\nAs per specified limits within the plans\nAs per specified limits within the plans"
+    },
+    {
+      "heading": "Cumulative Bonus",
+      "text": "25% p.a. up to 100% for SI 3 & 4 lacs | 50% pa. up to 100% for SI 5 Lacs and above\n10% p.a up to 100%\n20% p.a up to 100% for Domestic SI\n10% p.a up to 100%\n10% p.a up to 100%",
+      "evidence": "Cumulative Bonus\n25% p.a. up to 100% for SI 3 & 4 lacs | 50% pa. up to 100% for SI 5 Lacs and above\n10% p.a up to 100%\n20% p.a up to 100% for Domestic SI\n10% p.a up to 100%\n10% p.a up to 100%"
+    },
+    {
+      "heading": "SI Reinstatement",
+      "text": "Once per year for SI 3 & 4 Lacs | Unlimited for SI 5 Lacs and above\nOnce per year for SI 3 Lacs | Unlimited for SI above 3 Lacs",
+      "evidence": "SI Reinstatement\nOnce per year for SI 3 & 4 Lacs | Unlimited for SI 5 Lacs and above\nOnce per year for SI 3 Lacs | Unlimited for SI above 3 Lacs"
+    },
+    {
+      "heading": "The benefits of",
+      "text": "comprehensive health insurance\ninclude",
+      "evidence": "The benefits of\ncomprehensive health insurance\ninclude"
+    },
+    {
+      "heading": "Comprehensive Coverage",
+      "text": "With a comprehensive coverage, you get an extended coverage. It includes hospitalisation, medications, surgery, diagnostics and medical expenses for AYUSH hospitalisation. Hence, when you find yourself in unforeseen medical events, a comprehensive plan steps in to guard you.",
+      "evidence": "Comprehensive Coverage\nWith a comprehensive coverage, you get an extended coverage. It includes hospitalisation, medications, surgery, diagnostics and medical expenses for AYUSH hospitalisation. Hence, when you find yourself in unforeseen medical events, a comprehensive plan steps in to guard you."
+    },
+    {
+      "heading": "Tax Benefits",
+      "text": "If you are paying your premiums for comprehensive health insurance plans, then you are eligible for a tax deduction under Section 80D. According to the Income Tax Section 80D, a minimum of ₹50,000 deduction is available for senior citizens and a ₹25,000 tax deduction for non-senior citizens in each financial year.",
+      "evidence": "Tax Benefits\nIf you are paying your premiums for comprehensive health insurance plans, then you are eligible for a tax deduction under Section 80D. According to the Income Tax Section 80D, a minimum of ₹50,000 deduction is available for senior citizens and a ₹25,000 tax deduction for non-senior citizens in each financial year."
+    },
+    {
+      "heading": "Domiciliary Hospitalisation",
+      "text": "You get coverage benefits for selected medical expenses in at-home treatment on the advice of the doctor. Meaning, if you are diagnosed with a disease and, due to your health condition, the doctor has prescribed at-home treatment because you cannot be moved to the hospital. Your insurance company will give you coverage for this.",
+      "evidence": "Domiciliary Hospitalisation\nYou get coverage benefits for selected medical expenses in at-home treatment on the advice of the doctor. Meaning, if you are diagnosed with a disease and, due to your health condition, the doctor has prescribed at-home treatment because you cannot be moved to the hospital. Your insurance company will give you coverage for this."
+    },
+    {
+      "heading": "Riders or Add-on Benefits",
+      "text": "You can increase or enhance your comprehensive health insurance plan with additional coverage. Bajaj General Insurance offers the benefit of choosing additional coverage from health prime rider, respect rider (senior care), and non-medical expense rider.",
+      "evidence": "Riders or Add-on Benefits\nYou can increase or enhance your comprehensive health insurance plan with additional coverage. Bajaj General Insurance offers the benefit of choosing additional coverage from health prime rider, respect rider (senior care), and non-medical expense rider."
+    },
+    {
+      "heading": "Additional Benefits of Buying Comprehensive Health Insurance",
+      "text": "Buying a comprehensive health insurance plan from Bajaj General Insurance offers you additional benefits",
+      "evidence": "Additional Benefits of Buying Comprehensive Health Insurance\nBuying a comprehensive health insurance plan from Bajaj General Insurance offers you additional benefits"
+    },
+    {
+      "heading": "Hospital Cash Daily Allowance",
+      "text": "We agree to pay reasonable and customary expenses in respect of an admissible claim. Hospital cash daily allowance. It includes AYUSH hospitalisation and day care treatment, hospitalisation for a minimum of 24 hours, inpatient care, intensive care unit and others.",
+      "evidence": "Hospital Cash Daily Allowance\nWe agree to pay reasonable and customary expenses in respect of an admissible claim. Hospital cash daily allowance. It includes AYUSH hospitalisation and day care treatment, hospitalisation for a minimum of 24 hours, inpatient care, intensive care unit and others."
+    },
+    {
+      "heading": "Compare Plans:",
+      "text": "Use online comparison tools to compare different comprehensive health insurance plans based on coverage, premiums, and benefits.",
+      "evidence": "Compare Plans:\nUse online comparison tools to compare different comprehensive health insurance plans based on coverage, premiums, and benefits."
+    },
+    {
+      "heading": "Inclusions and Exclusions:",
+      "text": "You should always consider reading the inclusions and exclusions. These offer a complete understanding of the benefits that you will get. Reading the exclusions provides you with a clear idea of what is not covered in the plan and helps you to make an informed decision.",
+      "evidence": "Inclusions and Exclusions:\nYou should always consider reading the inclusions and exclusions. These offer a complete understanding of the benefits that you will get. Reading the exclusions provides you with a clear idea of what is not covered in the plan and helps you to make an informed decision."
+    },
+    {
+      "heading": "Select suitable coverage",
+      "text": "Check discounts & offers",
+      "evidence": "Select suitable coverage\nCheck discounts & offers"
+    },
+    {
+      "heading": "Pre and Post-Hospitalisation Expenses",
+      "text": "These plans cover medical expenses incurred before and after Hospitalisation, such as diagnostic tests, follow-up consultations, and medications. This ensures that you receive complete care without financial worries.",
+      "evidence": "Pre and Post-Hospitalisation Expenses\nThese plans cover medical expenses incurred before and after Hospitalisation, such as diagnostic tests, follow-up consultations, and medications. This ensures that you receive complete care without financial worries."
+    },
+    {
+      "heading": "Preventive Health Check-ups",
+      "text": "Many comprehensive health insurance plans offer free",
+      "evidence": "Preventive Health Check-ups\nMany comprehensive health insurance plans offer free"
+    },
+    {
+      "heading": "preventive health check-ups",
+      "text": ", encouraging policyholders to monitor their health regularly and detect any potential health issues early.",
+      "evidence": "preventive health check-ups\n, encouraging policyholders to monitor their health regularly and detect any potential health issues early."
+    },
+    {
+      "heading": "Ambulance Charges",
+      "text": "In case of an emergency, the cost of ambulance services can be high. Comprehensive health insurance plans often cover ambulance charges, ensuring that you receive timely medical attention without worrying about transportation costs.",
+      "evidence": "Ambulance Charges\nIn case of an emergency, the cost of ambulance services can be high. Comprehensive health insurance plans often cover ambulance charges, ensuring that you receive timely medical attention without worrying about transportation costs."
+    },
+    {
+      "heading": "1. Hospitalisation and daycare expenses.",
+      "text": "2. Outpatient treatment (OPD) expenses.",
+      "evidence": "1. Hospitalisation and daycare expenses.\n2. Outpatient treatment (OPD) expenses."
+    },
+    {
+      "heading": "4. Domiciliary hospitalisation expenses.",
+      "text": "5. Modern treatment methods and advanced technology used in treatment/",
+      "evidence": "4. Domiciliary hospitalisation expenses.\n5. Modern treatment methods and advanced technology used in treatment/"
+    },
+    {
+      "heading": "6. AYUSH hospitalisation.",
+      "text": "7. Organ donor expenses.\n8. External medical aid expenses",
+      "evidence": "6. AYUSH hospitalisation.\n7. Organ donor expenses.\n8. External medical aid expenses"
+    },
+    {
+      "heading": "Create a Profile With Us to Unlock New Benefits",
+      "text": "Customised plans that grow with you",
+      "evidence": "Create a Profile With Us to Unlock New Benefits\nCustomised plans that grow with you"
+    },
+    {
+      "heading": "Proactive coverage for future milestones",
+      "text": "Expert advice tailored to your profile",
+      "evidence": "Proactive coverage for future milestones\nExpert advice tailored to your profile"
+    },
+    {
+      "heading": "Physiotherapy coverage health insurance",
+      "text": "under Bajaj General Insurance's Comprehensive Health Plan depends on the nature of the treatment taken. If physiotherapy is part of a covered hospitalization/day-care treatment or falls within the plan’s specified pre-/post-hospitalization period and is medically prescribed, it may be payable as per policy terms and limits. Standalone OPD physiotherapy is covered only if your selected plan includes OPD benefits that allow it.\nAre outpatient (OPD) expenses included in a comprehensive health insurance plan?\nOPD cover health insurance is available under Bajaj General Insurance's Comprehensive Health Insurance in select plans. Where included, it can cover expenses such as tele-consultations, in-clinic doctor consultations, pathology/radiology tests, and an annual preventive health check-up—up to the limits specified in your chosen plan.",
+      "evidence": "Physiotherapy coverage health insurance\nunder Bajaj General Insurance's Comprehensive Health Plan depends on the nature of the treatment taken. If physiotherapy is part of a covered hospitalization/day-care treatment or falls within the plan’s specified pre-/post-hospitalization period and is medically prescribed, it may be payable as per policy terms and limits. Standalone OPD physiotherapy is covered only if your selected plan includes OPD benefits that allow it.\nAre outpatient (OPD) expenses included in a comprehensive health insurance plan?\nOPD cover health insurance is available under Bajaj General Insurance's Comprehensive Health Insurance in select plans. Where included, it can cover expenses such as tele-consultations, in-clinic doctor consultations, pathology/radiology tests, and an annual preventive health check-up—up to the limits specified in your chosen plan."
+    },
+    {
+      "heading": "Is air ambulance service covered under comprehensive health insurance?",
+      "text": "Air ambulance coverage health insurance is available under Bajaj General Insurance Comprehensive Health Insurance in select plans.",
+      "evidence": "Is air ambulance service covered under comprehensive health insurance?\nAir ambulance coverage health insurance is available under Bajaj General Insurance Comprehensive Health Insurance in select plans."
+    },
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "exclusions": [
+    {
+      "heading": "Self Inflicted Acts",
+      "text": "Medical expenses incurred as a result of self-harm, as a result of intoxication, illegal actions, hazardous activities, etc.",
+      "evidence": "Self Inflicted Acts\nMedical expenses incurred as a result of self-harm, as a result of intoxication, illegal actions, hazardous activities, etc."
+    },
+    {
+      "heading": "Not Covered",
+      "text": "As per specified limits within the plans\nAs per specified limits within the plans\nAs per specified limits within the plans",
+      "evidence": "Not Covered\nAs per specified limits within the plans\nAs per specified limits within the plans\nAs per specified limits within the plans"
+    },
+    {
+      "heading": "Read the Fine Print:",
+      "text": "Understand the terms and conditions, including exclusions and waiting periods, before purchasing a policy.",
+      "evidence": "Read the Fine Print:\nUnderstand the terms and conditions, including exclusions and waiting periods, before purchasing a policy."
+    },
+    {
+      "heading": "Inclusions and Exclusions:",
+      "text": "You should always consider reading the inclusions and exclusions. These offer a complete understanding of the benefits that you will get. Reading the exclusions provides you with a clear idea of what is not covered in the plan and helps you to make an informed decision.",
+      "evidence": "Inclusions and Exclusions:\nYou should always consider reading the inclusions and exclusions. These offer a complete understanding of the benefits that you will get. Reading the exclusions provides you with a clear idea of what is not covered in the plan and helps you to make an informed decision."
+    },
+    {
+      "heading": "E-Insurance Account",
+      "text": "Product wise specific list of excluded items",
+      "evidence": "E-Insurance Account\nProduct wise specific list of excluded items"
+    }
+  ],
+  "waiting_periods": [
+    {
+      "heading": "Read the Fine Print:",
+      "text": "Understand the terms and conditions, including exclusions and waiting periods, before purchasing a policy.",
+      "evidence": "Read the Fine Print:\nUnderstand the terms and conditions, including exclusions and waiting periods, before purchasing a policy."
+    }
+  ],
+  "riders_or_addons": [
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service"
+    },
+    {
+      "heading": "Non Medical Expense Rider",
+      "text": "Covers cost of consumable items (e.g., gloves, syringes, bandages) used during treatment, up to specified limit.",
+      "evidence": "Non Medical Expense Rider\nCovers cost of consumable items (e.g., gloves, syringes, bandages) used during treatment, up to specified limit."
+    },
+    {
+      "heading": "Riders or Add-on Benefits",
+      "text": "You can increase or enhance your comprehensive health insurance plan with additional coverage. Bajaj General Insurance offers the benefit of choosing additional coverage from health prime rider, respect rider (senior care), and non-medical expense rider.",
+      "evidence": "Riders or Add-on Benefits\nYou can increase or enhance your comprehensive health insurance plan with additional coverage. Bajaj General Insurance offers the benefit of choosing additional coverage from health prime rider, respect rider (senior care), and non-medical expense rider."
+    },
+    {
+      "heading": "Add or remove riders",
+      "text": "Confirm details and proceed",
+      "evidence": "Add or remove riders\nConfirm details and proceed"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance services for senior citizens.\nDesigned for senior citizens\nStarting\nINR 907\n+ GST",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance services for senior citizens.\nDesigned for senior citizens\nStarting\nINR 907\n+ GST"
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ],
+  "sum_insured_values": [],
+  "premium_values": [],
+  "benefit_amount_values": [],
+  "tax_amount_values": [],
+  "discount_values": [],
+  "room_rent_limits": [
+    {
+      "heading": "Comprehensive coverage",
+      "text": "It offers extensive coverage for a wide range of medical expenses including room rent, doctor’s fees, nursing charges, surgery costs, medical tests and other healthcare needs, ensuring you get the care you need without worrying about big hospitalisation bills.",
+      "evidence": "Comprehensive coverage\nIt offers extensive coverage for a wide range of medical expenses including room rent, doctor’s fees, nursing charges, surgery costs, medical tests and other healthcare needs, ensuring you get the care you need without worrying about big hospitalisation bills."
+    },
+    {
+      "heading": "Hospitalization & Day Care Expenses",
+      "text": "Covers hospitalization expenses & Day Care procedures & surgeries with Room rent limit as specified and ICU at actuals",
+      "evidence": "Hospitalization & Day Care Expenses\nCovers hospitalization expenses & Day Care procedures & surgeries with Room rent limit as specified and ICU at actuals"
+    },
+    {
+      "heading": "Room Limits",
+      "text": "SI INR 3 Lacs to INR 10 Lacs: Single Pvt. Room | SI above INR 10 Lacs as per Actuals (option to change)\nSI INR 3 Lacs to INR 10 Lacs: Single Pvt. Room | SI above INR 10 Lacs as per Actuals (option to change)\nDomestic: At Actuals | Overseas: Single Private AC Room | ICU: At Actuals\nSI INR 3 Lacs to INR 7.5 Lacs: Single Private AC room | SI INR 10 Lacs and above: At Actuals | ICU: At Actuals\nSI INR 3 Lacs to INR 7.5 Lacs: Single Private AC room | SI INR 10 Lacs and above: At Actuals | ICU: At Actuals\nPre/post expenses\n60/90 days (option to change)\n30/60 days\nDomestic- 60/ 180 days International- 45/ 90 days\n60/90 days\n60/90 days",
+      "evidence": "Room Limits\nSI INR 3 Lacs to INR 10 Lacs: Single Pvt. Room | SI above INR 10 Lacs as per Actuals (option to change)\nSI INR 3 Lacs to INR 10 Lacs: Single Pvt. Room | SI above INR 10 Lacs as per Actuals (option to change)\nDomestic: At Actuals | Overseas: Single Private AC Room | ICU: At Actuals\nSI INR 3 Lacs to INR 7.5 Lacs: Single Private AC room | SI INR 10 Lacs and above: At Actuals | ICU: At Actuals\nSI INR 3 Lacs to INR 7.5 Lacs: Single Private AC room | SI INR 10 Lacs and above: At Actuals | ICU: At Actuals\nPre/post expenses\n60/90 days (option to change)\n30/60 days\nDomestic- 60/ 180 days International- 45/ 90 days\n60/90 days\n60/90 days"
+    }
+  ],
+  "claim_process_signals": [
+    {
+      "heading": "Cumulative Bonus",
+      "text": "You are rewarded with a cumulative bonus for each claim-free year, which typically increases the sum insured without an additional premium, encouraging you to maintain good health.",
+      "evidence": "Cumulative Bonus\nYou are rewarded with a cumulative bonus for each claim-free year, which typically increases the sum insured without an additional premium, encouraging you to maintain good health."
+    },
+    {
+      "heading": "Sum Insured Reinstatement",
+      "text": "Sum Insured exhausted will be reinstated and available fully for next claim as specified under the plan\nRecharge benefit\nIf an unfortunate claim exhausts Sum Insured limit, the then additional Sum Insured would be available in select plans",
+      "evidence": "Sum Insured Reinstatement\nSum Insured exhausted will be reinstated and available fully for next claim as specified under the plan\nRecharge benefit\nIf an unfortunate claim exhausts Sum Insured limit, the then additional Sum Insured would be available in select plans"
+    },
+    {
+      "heading": "Part of the claim will have to be borne by you if you have Deductible or Copay",
+      "text": "Note",
+      "evidence": "Part of the claim will have to be borne by you if you have Deductible or Copay\nNote"
+    },
+    {
+      "heading": "Hospital Cash Daily Allowance",
+      "text": "We agree to pay reasonable and customary expenses in respect of an admissible claim. Hospital cash daily allowance. It includes AYUSH hospitalisation and day care treatment, hospitalisation for a minimum of 24 hours, inpatient care, intensive care unit and others.",
+      "evidence": "Hospital Cash Daily Allowance\nWe agree to pay reasonable and customary expenses in respect of an admissible claim. Hospital cash daily allowance. It includes AYUSH hospitalisation and day care treatment, hospitalisation for a minimum of 24 hours, inpatient care, intensive care unit and others."
+    },
+    {
+      "heading": "No Claim Bonus",
+      "text": "If you do not make any claims during a policy year, you are rewarded with a No Claim Bonus, which can be in the form of a discount on the premium or an increase in the sum insured.",
+      "evidence": "No Claim Bonus\nIf you do not make any claims during a policy year, you are rewarded with a No Claim Bonus, which can be in the form of a discount on the premium or an increase in the sum insured."
+    },
+    {
+      "heading": "Get claim up to Rs 20,000 with our App",
+      "text": "24*7 Assistance\nfor continuous support",
+      "evidence": "Get claim up to Rs 20,000 with our App\n24*7 Assistance\nfor continuous support"
+    }
+  ],
+  "tax_signals": [
+    {
+      "heading": "Tax Benefits",
+      "text": "If you are paying your premiums for comprehensive health insurance plans, then you are eligible for a tax deduction under Section 80D. According to the Income Tax Section 80D, a minimum of ₹50,000 deduction is available for senior citizens and a ₹25,000 tax deduction for non-senior citizens in each financial year.",
+      "evidence": "Tax Benefits\nIf you are paying your premiums for comprehensive health insurance plans, then you are eligible for a tax deduction under Section 80D. According to the Income Tax Section 80D, a minimum of ₹50,000 deduction is available for senior citizens and a ₹25,000 tax deduction for non-senior citizens in each financial year."
+    },
+    {
+      "heading": "Tax benefits are subject to changes in tax laws.",
+      "text": "Beware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.",
+      "evidence": "Tax benefits are subject to changes in tax laws.\nBeware Of Spurious Phone Calls: IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint."
+    }
+  ],
+  "suitability_signals": [
+    {
+      "heading": "Family Floater & Individual Plans",
+      "text": "You can decide to cover your family members under shared Sum Insured (Floater) or Separate Sum Insured (Individual)",
+      "evidence": "Family Floater & Individual Plans\nYou can decide to cover your family members under shared Sum Insured (Floater) or Separate Sum Insured (Individual)"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Senior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service",
+      "evidence": "Respect Rider (Senior Care)\nSenior citizens can avail emergency assistance with services such as SOS alert, doctor on call, and 24x7 ambulance service"
+    },
+    {
+      "heading": "Plan Types",
+      "text": "Individual & Family Floater plans\nIndividual & Family Floater plans\nIndividual & Family plans\nIndividual & Family Floater plans\nIndividual & Family Floater plans",
+      "evidence": "Plan Types\nIndividual & Family Floater plans\nIndividual & Family Floater plans\nIndividual & Family plans\nIndividual & Family Floater plans\nIndividual & Family Floater plans"
+    },
+    {
+      "heading": "Tax Benefits",
+      "text": "If you are paying your premiums for comprehensive health insurance plans, then you are eligible for a tax deduction under Section 80D. According to the Income Tax Section 80D, a minimum of ₹50,000 deduction is available for senior citizens and a ₹25,000 tax deduction for non-senior citizens in each financial year.",
+      "evidence": "Tax Benefits\nIf you are paying your premiums for comprehensive health insurance plans, then you are eligible for a tax deduction under Section 80D. According to the Income Tax Section 80D, a minimum of ₹50,000 deduction is available for senior citizens and a ₹25,000 tax deduction for non-senior citizens in each financial year."
+    },
+    {
+      "heading": "Select suitable coverage",
+      "text": "Check discounts & offers",
+      "evidence": "Select suitable coverage\nCheck discounts & offers"
+    },
+    {
+      "heading": "Respect Rider (Senior Care)",
+      "text": "Tooltip text\nEmergency assistance services for senior citizens.\nDesigned for senior citizens\nStarting\nINR 907\n+ GST",
+      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance services for senior citizens.\nDesigned for senior citizens\nStarting\nINR 907\n+ GST"
+    },
+    {
+      "heading": "Family Floater Health Insurance",
+      "text": "Why juggle policies when one App can do it all?",
+      "evidence": "Family Floater Health Insurance\nWhy juggle policies when one App can do it all?"
+    },
+    {
+      "heading": "View More",
+      "text": "© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!",
+      "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
+    }
+  ]
+}
