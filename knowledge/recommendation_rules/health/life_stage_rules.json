@@ -1,0 +1,138 @@
+{
+  "domain": "health",
+  "version": "0.2",
+  "description": "Life-stage based adjustments for health insurance recommendation needs.",
+  "life_stages": {
+    "young_unmarried": {
+      "factor_id": "young_unmarried",
+      "display_name": "Young Unmarried",
+      "description": "Individual who has started working and usually has fewer dependents.",
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 2,
+          "reason": "Early purchase can help build stronger long-term health protection.",
+          "customer_friendly_reason": "Starting with adequate cover early can protect you from future medical cost increases."
+        },
+        "wellness": {
+          "score_delta": 3,
+          "reason": "Young customers often value preventive health and wellness-linked benefits.",
+          "customer_friendly_reason": "Wellness benefits may reward healthy habits and preventive checkups."
+        },
+        "room_rent_flexibility": {
+          "score_delta": 1,
+          "reason": "Room flexibility is useful but not usually the highest priority at this stage.",
+          "customer_friendly_reason": "Some flexibility in room choice can help during hospitalization."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "married_planning_family": {
+      "factor_id": "married_planning_family",
+      "display_name": "Married / Planning Family",
+      "description": "Married customer or couple likely to plan children in the near future.",
+      "adjustments": {
+        "maternity_or_newborn": {
+          "score_delta": 7,
+          "reason": "Maternity and newborn benefits become highly relevant for family planning.",
+          "customer_friendly_reason": "If you are planning a family, maternity and newborn-related benefits become important."
+        },
+        "low_waiting_period": {
+          "score_delta": 4,
+          "reason": "Waiting periods matter because maternity and some disease benefits may not be immediately available.",
+          "customer_friendly_reason": "Lower waiting periods may help you use important benefits sooner."
+        },
+        "high_sum_insured": {
+          "score_delta": 2,
+          "reason": "Family responsibilities increase the need for stronger health protection.",
+          "customer_friendly_reason": "A higher cover can be useful as your family responsibilities grow."
+        },
+        "wellness": {
+          "score_delta": 3,
+          "reason": "Preventive care and wellness benefits are useful for young families.",
+          "customer_friendly_reason": "Wellness benefits may support preventive health for the family."
+        },
+        "avoid_copay": {
+          "score_delta": 1,
+          "reason": "Avoiding co-pay improves claim predictability.",
+          "customer_friendly_reason": "Lower or no co-pay can reduce your share of claim expenses."
+        },
+        "room_rent_flexibility": {
+          "score_delta": 2,
+          "reason": "Family hospitalization in metro or private hospitals can make room rent flexibility useful.",
+          "customer_friendly_reason": "Room rent flexibility can help avoid restrictions during hospitalization."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "family_with_kids": {
+      "factor_id": "family_with_kids",
+      "display_name": "Family With Kids",
+      "description": "Customer with dependent children and higher family health protection needs.",
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 4,
+          "reason": "Family floater policies need adequate cover for multiple members.",
+          "customer_friendly_reason": "With children, a higher family cover can help protect everyone better."
+        },
+        "wellness": {
+          "score_delta": 3,
+          "reason": "Wellness and preventive care are useful for family health management.",
+          "customer_friendly_reason": "Wellness benefits may support regular health checkups and preventive care."
+        },
+        "avoid_copay": {
+          "score_delta": 3,
+          "reason": "Avoiding co-pay reduces out-of-pocket uncertainty during family claims.",
+          "customer_friendly_reason": "No or lower co-pay can reduce your share of claim expenses."
+        },
+        "low_waiting_period": {
+          "score_delta": 2,
+          "reason": "Lower waiting periods improve usability of benefits for family members.",
+          "customer_friendly_reason": "Lower waiting periods can make policy benefits usable sooner."
+        },
+        "room_rent_flexibility": {
+          "score_delta": 2,
+          "reason": "Room rent flexibility can matter during hospitalization of any family member.",
+          "customer_friendly_reason": "Room flexibility can help you choose suitable hospital accommodation."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "retired_senior": {
+      "factor_id": "retired_senior",
+      "display_name": "Retired Senior",
+      "description": "Retired or senior citizen customer with higher claim probability and cost sensitivity.",
+      "adjustments": {
+        "avoid_copay": {
+          "score_delta": 5,
+          "reason": "Co-pay can materially increase out-of-pocket expenses for senior citizens.",
+          "customer_friendly_reason": "For seniors, avoiding co-pay can reduce claim-time expenses."
+        },
+        "low_waiting_period": {
+          "score_delta": 4,
+          "reason": "Existing conditions and age-related illnesses make waiting periods very important.",
+          "customer_friendly_reason": "Lower waiting periods may help you access important benefits sooner."
+        },
+        "room_rent_flexibility": {
+          "score_delta": 4,
+          "reason": "Room restrictions can significantly affect claim payout in senior hospitalization.",
+          "customer_friendly_reason": "Room rent flexibility can reduce claim deductions linked to room category."
+        },
+        "high_sum_insured": {
+          "score_delta": 2,
+          "reason": "Senior healthcare costs can be high, but affordability must be checked.",
+          "customer_friendly_reason": "A higher cover may help with larger medical expenses, subject to affordability."
+        },
+        "wellness": {
+          "score_delta": 1,
+          "reason": "Wellness is useful but core hospitalization conditions are higher priority for seniors.",
+          "customer_friendly_reason": "Wellness benefits are useful, but claim conditions matter more."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    }
+  }
+}

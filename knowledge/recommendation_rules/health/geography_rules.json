@@ -1,0 +1,73 @@
+{
+  "domain": "health",
+  "version": "0.2",
+  "description": "Location and city-tier based adjustments for health insurance recommendations.",
+  "city_tiers": {
+    "metro": {
+      "factor_id": "metro",
+      "display_name": "Metro City",
+      "description": "Large metro cities usually have higher hospitalization, room, and treatment costs.",
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 3,
+          "reason": "Treatment costs are generally higher in metro cities.",
+          "customer_friendly_reason": "Hospitals in metro cities can be expensive, so a higher cover may be useful."
+        },
+        "room_rent_flexibility": {
+          "score_delta": 2,
+          "reason": "Room costs are generally higher in metro hospitals.",
+          "customer_friendly_reason": "Room rent flexibility can help reduce restrictions during hospitalization."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "tier_1": {
+      "factor_id": "tier_1",
+      "display_name": "Tier 1 City",
+      "description": "Large non-metro city with moderate-to-high healthcare costs.",
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 2,
+          "reason": "Treatment costs can still be significant in tier 1 cities.",
+          "customer_friendly_reason": "A reasonably higher cover can help manage treatment costs."
+        },
+        "room_rent_flexibility": {
+          "score_delta": 1,
+          "reason": "Room category restrictions can affect claim payout.",
+          "customer_friendly_reason": "Some room rent flexibility can be useful during hospitalization."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "tier_2": {
+      "factor_id": "tier_2",
+      "display_name": "Tier 2 City",
+      "description": "Mid-sized city with moderate healthcare costs.",
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 1,
+          "reason": "Medical inflation still supports adequate cover even outside metro cities.",
+          "customer_friendly_reason": "Adequate cover is still important even if treatment costs are lower than metros."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "small_town": {
+      "factor_id": "small_town",
+      "display_name": "Small Town",
+      "description": "Smaller town where local treatment costs may be lower, though referral to larger cities may happen.",
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 0,
+          "reason": "Local treatment costs may be lower, but base cover requirement remains.",
+          "customer_friendly_reason": "Your cover should still be adequate, especially if treatment may happen in a larger city."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    }
+  }
+}

@@ -1,0 +1,477 @@
+{
+  "generated_at": "2026-06-15T17:07:44.911097+00:00",
+  "context_engine_version": "0.3",
+  "profile_id": "young_family_mumbai",
+  "domain": "health",
+  "profile": {
+    "profile_id": "young_family_mumbai",
+    "domain": "health",
+    "life_stage": "married_planning_family",
+    "age": 32,
+    "location": {
+      "pincode": "400001",
+      "city": "Mumbai",
+      "city_tier": "metro"
+    },
+    "financial_profile": {
+      "annual_income": 1800000,
+      "monthly_budget_for_premium": 4500,
+      "existing_health_cover": 500000,
+      "existing_savings": 800000
+    },
+    "family_members": [
+      {
+        "relation": "self",
+        "age": 32
+      },
+      {
+        "relation": "spouse",
+        "age": 30
+      }
+    ],
+    "needs": {
+      "maternity_or_newborn": true,
+      "wellness": true,
+      "high_sum_insured": true,
+      "low_waiting_period": true,
+      "senior_citizen": false
+    },
+    "preferences": {
+      "avoid_copay": true,
+      "prefer_room_rent_no_limit": true
+    },
+    "future_context": {}
+  },
+  "source_files": {
+    "profile": "samples/customer_profiles/young_family_mumbai.json",
+    "rules_dir": "knowledge/recommendation_rules/health"
+  },
+  "matched_context": {
+    "life_stage": "married_planning_family",
+    "city_tier": "metro",
+    "income_band": "upper_middle",
+    "existing_cover_band": "low_cover"
+  },
+  "derived_future_context": {
+    "family_expansion_probability": "high",
+    "income_growth_probability": "medium",
+    "cover_upgrade_need_next_2_3_years": "high",
+    "family_floater_relevance": "high"
+  },
+  "need_scores": [
+    {
+      "need_id": "high_sum_insured",
+      "display_name": "High Sum Insured",
+      "short_label": "High Cover",
+      "category": "coverage",
+      "description": "Need for a larger health insurance cover to protect against high hospitalization costs.",
+      "customer_friendly_description": "A higher cover can help reduce out-of-pocket expenses during major hospitalization.",
+      "advisor_explanation": "Important where medical costs, family size, lifestyle, income level, or city of residence justify higher protection.",
+      "relevant_fields": [
+        "sum_insured_options.values"
+      ],
+      "related_needs": [
+        "room_rent_flexibility",
+        "avoid_copay"
+      ],
+      "risk_caution": "Higher sum insured may increase premium. Affordability should be checked.",
+      "compliance_note": "Recommendation should be based on customer affordability and documented protection need.",
+      "base_score": 6,
+      "raw_score": 16,
+      "adjustments": [
+        {
+          "factor_type": "life_stage",
+          "factor_id": "married_planning_family",
+          "factor_display_name": "Married / Planning Family",
+          "score_delta": 2,
+          "reason": "Family responsibilities increase the need for stronger health protection.",
+          "customer_friendly_reason": "A higher cover can be useful as your family responsibilities grow."
+        },
+        {
+          "factor_type": "geography",
+          "factor_id": "metro",
+          "factor_display_name": "Metro City",
+          "score_delta": 3,
+          "reason": "Treatment costs are generally higher in metro cities.",
+          "customer_friendly_reason": "Hospitals in metro cities can be expensive, so a higher cover may be useful."
+        },
+        {
+          "factor_type": "income",
+          "factor_id": "upper_middle",
+          "factor_display_name": "Upper Middle Income",
+          "score_delta": 2,
+          "reason": "Higher income can support stronger cover and better hospital choice.",
+          "customer_friendly_reason": "Your income may support a higher cover for better protection."
+        },
+        {
+          "factor_type": "existing_cover",
+          "factor_id": "low_cover",
+          "factor_display_name": "Low Existing Cover",
+          "score_delta": 3,
+          "reason": "Existing cover may be insufficient for major hospitalization.",
+          "customer_friendly_reason": "Your current cover may not be enough for large medical bills."
+        }
+      ],
+      "raw_priority_score": 16,
+      "normalized_priority_score": 10,
+      "final_score": 10,
+      "impact": "high",
+      "enabled_by_profile": true,
+      "activation_sources": [
+        "existing_cover",
+        "explicit_need",
+        "geography",
+        "income",
+        "life_stage"
+      ],
+      "activation_strength": "explicit",
+      "activation_evidence_count": 5,
+      "need_confidence": "very_high",
+      "recommendation_horizon": "immediate"
+    },
+    {
+      "need_id": "low_waiting_period",
+      "display_name": "Lower Waiting Periods",
+      "short_label": "Low Waiting",
+      "category": "waiting_period",
+      "description": "Need for shorter waiting periods for pre-existing disease, specified disease, maternity, or initial coverage.",
+      "customer_friendly_description": "Lower waiting periods can help you access certain benefits sooner.",
+      "advisor_explanation": "Important for customers with existing health conditions, family planning needs, or urgency around coverage usability.",
+      "relevant_fields": [
+        "waiting_periods.pre_existing_disease_waiting_period",
+        "waiting_periods.initial_waiting_period",
+        "waiting_periods.specified_disease_waiting_period",
+        "waiting_periods.delivery_newborn_waiting_period"
+      ],
+      "related_needs": [
+        "maternity_or_newborn",
+        "avoid_copay"
+      ],
+      "risk_caution": "Waiting period comparison must be based on exact policy wording and benefit context.",
+      "compliance_note": "Do not claim coverage is immediately available unless explicitly supported by evidence.",
+      "base_score": 5,
+      "raw_score": 11,
+      "adjustments": [
+        {
+          "factor_type": "life_stage",
+          "factor_id": "married_planning_family",
+          "factor_display_name": "Married / Planning Family",
+          "score_delta": 4,
+          "reason": "Waiting periods matter because maternity and some disease benefits may not be immediately available.",
+          "customer_friendly_reason": "Lower waiting periods may help you use important benefits sooner."
+        },
+        {
+          "factor_type": "existing_cover",
+          "factor_id": "low_cover",
+          "factor_display_name": "Low Existing Cover",
+          "score_delta": 2,
+          "reason": "Lower waiting periods improve usability of incremental protection.",
+          "customer_friendly_reason": "Lower waiting periods may make added coverage useful sooner."
+        }
+      ],
+      "raw_priority_score": 11,
+      "normalized_priority_score": 10,
+      "final_score": 10,
+      "impact": "high",
+      "enabled_by_profile": true,
+      "activation_sources": [
+        "existing_cover",
+        "explicit_need",
+        "life_stage"
+      ],
+      "activation_strength": "explicit",
+      "activation_evidence_count": 3,
+      "need_confidence": "high",
+      "recommendation_horizon": "immediate"
+    },
+    {
+      "need_id": "room_rent_flexibility",
+      "display_name": "Room Rent Flexibility",
+      "short_label": "Room Flexibility",
+      "category": "benefits",
+      "description": "Need for flexible room rent eligibility or fewer room category restrictions.",
+      "customer_friendly_description": "Room rent flexibility may help you choose better hospital rooms without proportionate deductions.",
+      "advisor_explanation": "Important in metro cities and higher-cost hospitals where room category can affect total claim payout.",
+      "relevant_fields": [
+        "product_facts.room_rent_limit"
+      ],
+      "related_needs": [
+        "high_sum_insured",
+        "avoid_copay"
+      ],
+      "risk_caution": "Room rent limits may trigger proportionate deductions depending on policy terms.",
+      "compliance_note": "Room rent claims impact should be explained carefully and evidence-backed.",
+      "base_score": 5,
+      "raw_score": 11,
+      "adjustments": [
+        {
+          "factor_type": "life_stage",
+          "factor_id": "married_planning_family",
+          "factor_display_name": "Married / Planning Family",
+          "score_delta": 2,
+          "reason": "Family hospitalization in metro or private hospitals can make room rent flexibility useful.",
+          "customer_friendly_reason": "Room rent flexibility can help avoid restrictions during hospitalization."
+        },
+        {
+          "factor_type": "geography",
+          "factor_id": "metro",
+          "factor_display_name": "Metro City",
+          "score_delta": 2,
+          "reason": "Room costs are generally higher in metro hospitals.",
+          "customer_friendly_reason": "Room rent flexibility can help reduce restrictions during hospitalization."
+        },
+        {
+          "factor_type": "income",
+          "factor_id": "upper_middle",
+          "factor_display_name": "Upper Middle Income",
+          "score_delta": 2,
+          "reason": "Customer may prefer better room category and hospital flexibility.",
+          "customer_friendly_reason": "Room rent flexibility can help you choose better hospital accommodation."
+        }
+      ],
+      "raw_priority_score": 11,
+      "normalized_priority_score": 10,
+      "final_score": 10,
+      "impact": "high",
+      "enabled_by_profile": true,
+      "activation_sources": [
+        "explicit_preference",
+        "geography",
+        "income",
+        "life_stage"
+      ],
+      "activation_strength": "explicit",
+      "activation_evidence_count": 4,
+      "need_confidence": "very_high",
+      "recommendation_horizon": "immediate"
+    },
+    {
+      "need_id": "maternity_or_newborn",
+      "display_name": "Maternity / Newborn Cover",
+      "short_label": "Maternity",
+      "category": "maternity",
+      "description": "Need for maternity, delivery, and newborn-related benefits.",
+      "customer_friendly_description": "Useful if you are planning a family or may need maternity and newborn-related support.",
+      "advisor_explanation": "Highly relevant for married couples planning children. Waiting periods and benefit limits must be checked carefully.",
+      "relevant_fields": [
+        "core_benefits.delivery_newborn_cover",
+        "waiting_periods.delivery_newborn_waiting_period"
+      ],
+      "related_needs": [
+        "low_waiting_period",
+        "high_sum_insured"
+      ],
+      "risk_caution": "Maternity benefits usually have waiting periods, sub-limits, and eligibility conditions.",
+      "compliance_note": "Do not imply immediate maternity coverage unless waiting period and conditions are verified.",
+      "base_score": 3,
+      "raw_score": 10,
+      "adjustments": [
+        {
+          "factor_type": "life_stage",
+          "factor_id": "married_planning_family",
+          "factor_display_name": "Married / Planning Family",
+          "score_delta": 7,
+          "reason": "Maternity and newborn benefits become highly relevant for family planning.",
+          "customer_friendly_reason": "If you are planning a family, maternity and newborn-related benefits become important."
+        }
+      ],
+      "raw_priority_score": 10,
+      "normalized_priority_score": 10,
+      "final_score": 10,
+      "impact": "high",
+      "enabled_by_profile": true,
+      "activation_sources": [
+        "explicit_need",
+        "life_stage"
+      ],
+      "activation_strength": "explicit",
+      "activation_evidence_count": 2,
+      "need_confidence": "high",
+      "recommendation_horizon": "immediate"
+    },
+    {
+      "need_id": "avoid_copay",
+      "display_name": "Avoid Co-pay",
+      "short_label": "No Co-pay",
+      "category": "cost_sharing",
+      "description": "Need to avoid mandatory co-payment during claims.",
+      "customer_friendly_description": "A plan with no or lower co-pay may reduce your share of claim expenses.",
+      "advisor_explanation": "Especially important for senior citizens, customers with higher claim probability, or customers who want predictable out-of-pocket cost.",
+      "relevant_fields": [
+        "product_facts.copay"
+      ],
+      "related_needs": [
+        "high_sum_insured",
+        "low_waiting_period"
+      ],
+      "risk_caution": "Co-pay may vary by age, zone, claim type, room category, or network rules.",
+      "compliance_note": "Co-pay interpretation must be verified against policy wording.",
+      "base_score": 5,
+      "raw_score": 7,
+      "adjustments": [
+        {
+          "factor_type": "life_stage",
+          "factor_id": "married_planning_family",
+          "factor_display_name": "Married / Planning Family",
+          "score_delta": 1,
+          "reason": "Avoiding co-pay improves claim predictability.",
+          "customer_friendly_reason": "Lower or no co-pay can reduce your share of claim expenses."
+        },
+        {
+          "factor_type": "income",
+          "factor_id": "upper_middle",
+          "factor_display_name": "Upper Middle Income",
+          "score_delta": 1,
+          "reason": "Customer may prefer lower out-of-pocket exposure during claims.",
+          "customer_friendly_reason": "Avoiding co-pay can reduce claim-time expenses."
+        }
+      ],
+      "raw_priority_score": 7,
+      "normalized_priority_score": 7,
+      "final_score": 7,
+      "impact": "medium",
+      "enabled_by_profile": true,
+      "activation_sources": [
+        "explicit_preference",
+        "income",
+        "life_stage"
+      ],
+      "activation_strength": "explicit",
+      "activation_evidence_count": 3,
+      "need_confidence": "high",
+      "recommendation_horizon": "immediate"
+    },
+    {
+      "need_id": "wellness",
+      "display_name": "Wellness Benefits",
+      "short_label": "Wellness",
+      "category": "wellness",
+      "description": "Need for wellness, preventive health, health rewards, or wellness-linked benefits.",
+      "customer_friendly_description": "Wellness benefits may reward healthy behavior or support preventive care.",
+      "advisor_explanation": "Useful for health-conscious customers and families interested in preventive care and long-term engagement.",
+      "relevant_fields": [
+        "core_benefits.wellness_program",
+        "discounts.wellness_discount"
+      ],
+      "related_needs": [
+        "high_sum_insured"
+      ],
+      "risk_caution": "Wellness benefits should not be treated as a substitute for core hospitalization coverage.",
+      "compliance_note": "Wellness rewards and discounts should be explained as per policy terms.",
+      "base_score": 4,
+      "raw_score": 7,
+      "adjustments": [
+        {
+          "factor_type": "life_stage",
+          "factor_id": "married_planning_family",
+          "factor_display_name": "Married / Planning Family",
+          "score_delta": 3,
+          "reason": "Preventive care and wellness benefits are useful for young families.",
+          "customer_friendly_reason": "Wellness benefits may support preventive health for the family."
+        }
+      ],
+      "raw_priority_score": 7,
+      "normalized_priority_score": 7,
+      "final_score": 7,
+      "impact": "medium",
+      "enabled_by_profile": true,
+      "activation_sources": [
+        "explicit_need",
+        "life_stage"
+      ],
+      "activation_strength": "explicit",
+      "activation_evidence_count": 2,
+      "need_confidence": "high",
+      "recommendation_horizon": "immediate"
+    }
+  ],
+  "top_priorities": [
+    {
+      "need_id": "high_sum_insured",
+      "display_name": "High Sum Insured",
+      "raw_priority_score": 16,
+      "normalized_priority_score": 10,
+      "final_score": 10,
+      "impact": "high",
+      "activation_strength": "explicit",
+      "activation_sources": [
+        "existing_cover",
+        "explicit_need",
+        "geography",
+        "income",
+        "life_stage"
+      ],
+      "need_confidence": "very_high",
+      "activation_evidence_count": 5,
+      "recommendation_horizon": "immediate"
+    },
+    {
+      "need_id": "low_waiting_period",
+      "display_name": "Lower Waiting Periods",
+      "raw_priority_score": 11,
+      "normalized_priority_score": 10,
+      "final_score": 10,
+      "impact": "high",
+      "activation_strength": "explicit",
+      "activation_sources": [
+        "existing_cover",
+        "explicit_need",
+        "life_stage"
+      ],
+      "need_confidence": "high",
+      "activation_evidence_count": 3,
+      "recommendation_horizon": "immediate"
+    },
+    {
+      "need_id": "room_rent_flexibility",
+      "display_name": "Room Rent Flexibility",
+      "raw_priority_score": 11,
+      "normalized_priority_score": 10,
+      "final_score": 10,
+      "impact": "high",
+      "activation_strength": "explicit",
+      "activation_sources": [
+        "explicit_preference",
+        "geography",
+        "income",
+        "life_stage"
+      ],
+      "need_confidence": "very_high",
+      "activation_evidence_count": 4,
+      "recommendation_horizon": "immediate"
+    },
+    {
+      "need_id": "maternity_or_newborn",
+      "display_name": "Maternity / Newborn Cover",
+      "raw_priority_score": 10,
+      "normalized_priority_score": 10,
+      "final_score": 10,
+      "impact": "high",
+      "activation_strength": "explicit",
+      "activation_sources": [
+        "explicit_need",
+        "life_stage"
+      ],
+      "need_confidence": "high",
+      "activation_evidence_count": 2,
+      "recommendation_horizon": "immediate"
+    },
+    {
+      "need_id": "avoid_copay",
+      "display_name": "Avoid Co-pay",
+      "raw_priority_score": 7,
+      "normalized_priority_score": 7,
+      "final_score": 7,
+      "impact": "medium",
+      "activation_strength": "explicit",
+      "activation_sources": [
+        "explicit_preference",
+        "income",
+        "life_stage"
+      ],
+      "need_confidence": "high",
+      "activation_evidence_count": 3,
+      "recommendation_horizon": "immediate"
+    }
+  ]
+}

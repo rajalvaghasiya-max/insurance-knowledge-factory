@@ -1,0 +1,69 @@
+{
+  "queue_version": "0.1",
+  "generated_at": "2026-06-16T17:03:48.068773+00:00",
+  "entity_id": "aditya_birla_health:activ_one",
+  "stage": null,
+  "job_count": 3,
+  "jobs": [
+    {
+      "job_id": "job_4224a2173f217506d7d0",
+      "document_id": "doc_d20a8488ecb3243f6de2",
+      "entity_ids": [
+        "aditya_birla_health:activ_one"
+      ],
+      "stage": "document_processing",
+      "stage_priority": 1,
+      "assigned_engine": "Document Processing Engine",
+      "artifact_type": "raw_evidence",
+      "document_type": "policy_wording",
+      "evidence_role": "legal_authority",
+      "authority_score": 100,
+      "relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/policy_wording.json",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge\\health\\aditya_birla_health\\activ_one\\parsed\\policy_wording.json",
+      "document_hash": "e04bc4575d35e10bc86707ceeb839adf8a59f579bd27584c1b9000201bdac217",
+      "status": "planned",
+      "planned_at": "2026-06-16T17:03:48.068733+00:00",
+      "reason": "Document Processing Engine is required for policy_wording (legal_authority) before downstream manufacturing can continue."
+    },
+    {
+      "job_id": "job_d340a8a073bb33e8192c",
+      "document_id": "doc_6a2da3c45c99ed2f4f44",
+      "entity_ids": [
+        "aditya_birla_health:activ_one"
+      ],
+      "stage": "document_processing",
+      "stage_priority": 1,
+      "assigned_engine": "Document Processing Engine",
+      "artifact_type": "raw_evidence",
+      "document_type": "prospectus",
+      "evidence_role": "product_disclosure",
+      "authority_score": 75,
+      "relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/prospectus.json",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge\\health\\aditya_birla_health\\activ_one\\parsed\\prospectus.json",
+      "document_hash": "de9debd9d1c1982886368fc5c79b2c0dcad3b68d2c61e550a84ea1816bf4be26",
+      "status": "planned",
+      "planned_at": "2026-06-16T17:03:48.068753+00:00",
+      "reason": "Document Processing Engine is required for prospectus (product_disclosure) before downstream manufacturing can continue."
+    },
+    {
+      "job_id": "job_6b906ba8542acaac51db",
+      "document_id": "doc_4d4bcfafdc05c5f449ec",
+      "entity_ids": [
+        "aditya_birla_health:activ_one"
+      ],
+      "stage": "document_processing",
+      "stage_priority": 1,
+      "assigned_engine": "Document Processing Engine",
+      "artifact_type": "raw_evidence",
+      "document_type": "webpage",
+      "evidence_role": "published_web_source",
+      "authority_score": 45,
+      "relative_path": "archive/metadata/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one.json",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\metadata\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one.json",
+      "document_hash": "32a4f44d88d30879c072923b53730a911fec62e78bb04619e5312da86ebf8cdf",
+      "status": "planned",
+      "planned_at": "2026-06-16T17:03:48.068766+00:00",
+      "reason": "Document Processing Engine is required for webpage (published_web_source) before downstream manufacturing can continue."
+    }
+  ]
+}

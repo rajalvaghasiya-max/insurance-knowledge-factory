@@ -1,7 +1,8 @@
 {
   "entity_id": "aditya_birla_health:activ_one",
   "field": "copay",
-  "router_version": "0.3",
+  "router_version": "0.5",
+  "generated_at": "2026-06-16T16:03:54.500447+00:00",
   "priority_sources": [
     "policy_wording",
     "customer_information_sheet",
@@ -10,19 +11,319 @@
     "brochure",
     "webpage"
   ],
-  "candidate_count": 1,
+  "candidate_count": 3,
+  "evidence_count": 3,
+  "bundle_count": 3,
   "rejected_counts": {
-    "not_entity_match": 227,
-    "blocked_context": 143,
-    "unsupported_source_type": 0
+    "not_entity_match": 214,
+    "blocked_context": 163,
+    "unsupported_source_type": 0,
+    "excluded_derived_artifact": 35,
+    "duplicate_lower_score": 0
   },
   "candidates": [
     {
+      "evidence_id": "ev_ac2cdaa3707b84055ba2",
+      "document_id": "doc_3ed4f0f17903846195ee",
+      "entity_id": "aditya_birla_health:activ_one",
+      "field": "copay",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge\\health\\aditya_birla_health\\activ_one\\parsed\\policy_wording.json",
+      "relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/policy_wording.json",
+      "source_type": "policy_wording",
+      "document_type": "policy_wording",
+      "artifact_type": "raw_evidence",
+      "evidence_role": "legal_authority",
+      "priority": 0,
+      "routing_score": 117,
+      "scoring_breakdown": {
+        "product_match": 50,
+        "source_priority": 35,
+        "field_keyword_match": 20,
+        "legal_source_bonus": 12
+      },
+      "match_reason": "strong_product_match",
+      "matched_aliases": [
+        "activ-one",
+        "activ_one",
+        "activ one"
+      ],
+      "field_hits": [
+        "co-pay",
+        "co-payment",
+        "deductible"
+      ],
+      "document_hash": "e04bc4575d35e10bc86707ceeb839adf8a59f579bd27584c1b9000201bdac217",
+      "logical_document_key": "policy_wording|knowledge/health/aditya_birla_health/activ_one|policy-wording",
+      "file_size_bytes": 277818,
+      "modified_at": "2026-06-10T09:09:20.357217+00:00",
+      "selected_reasons": [
+        "Product matched using explicit product alias",
+        "Highest legal authority source",
+        "Contains field keywords: co-pay, co-payment, deductible"
+      ],
+      "page": null,
+      "section": null,
+      "confidence": 0.95,
+      "status": "candidate"
+    },
+    {
+      "evidence_id": "ev_b6bac5c5061df255d589",
+      "document_id": "doc_9a409248d99de718c542",
+      "entity_id": "aditya_birla_health:activ_one",
+      "field": "copay",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge\\health\\aditya_birla_health\\activ_one\\parsed\\prospectus.json",
+      "relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/prospectus.json",
+      "source_type": "prospectus",
+      "document_type": "prospectus",
+      "artifact_type": "raw_evidence",
+      "evidence_role": "product_disclosure",
+      "priority": 3,
+      "routing_score": 67,
+      "scoring_breakdown": {
+        "product_match": 50,
+        "source_priority": 17,
+        "field_keyword_match": 0,
+        "source_bonus": 0
+      },
+      "match_reason": "strong_product_match",
+      "matched_aliases": [
+        "activ-one",
+        "activ_one",
+        "activ one"
+      ],
+      "field_hits": [],
+      "document_hash": "de9debd9d1c1982886368fc5c79b2c0dcad3b68d2c61e550a84ea1816bf4be26",
+      "logical_document_key": "prospectus|knowledge/health/aditya_birla_health/activ_one|prospectus",
+      "file_size_bytes": 150536,
+      "modified_at": "2026-06-10T09:09:20.485686+00:00",
+      "selected_reasons": [
+        "Product matched using explicit product alias",
+        "Product disclosure source"
+      ],
+      "page": null,
+      "section": null,
+      "confidence": 0.78,
+      "status": "candidate"
+    },
+    {
+      "evidence_id": "ev_72562673382883ec9c35",
+      "document_id": "doc_1377d7ff319ec14e38b6",
+      "entity_id": "aditya_birla_health:activ_one",
+      "field": "copay",
       "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\metadata\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one.json",
       "relative_path": "archive/metadata/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one.json",
       "source_type": "webpage",
+      "document_type": "webpage",
+      "artifact_type": "raw_evidence",
+      "evidence_role": "published_web_source",
       "priority": 5,
-      "match_reason": "strong_product_match"
+      "routing_score": 55,
+      "scoring_breakdown": {
+        "product_match": 50,
+        "source_priority": 5,
+        "field_keyword_match": 0,
+        "source_bonus": 0
+      },
+      "match_reason": "strong_product_match",
+      "matched_aliases": [
+        "activ-one",
+        "activ_one"
+      ],
+      "field_hits": [],
+      "document_hash": "32a4f44d88d30879c072923b53730a911fec62e78bb04619e5312da86ebf8cdf",
+      "logical_document_key": "webpage|archive/metadata/aditya_birla_health|www-adityabirlacapital-com-healthinsurance-activ-one",
+      "file_size_bytes": 1139,
+      "modified_at": "2026-06-08T16:01:22.071819+00:00",
+      "selected_reasons": [
+        "Product matched using explicit product alias",
+        "Published product webpage or webpage metadata"
+      ],
+      "page": null,
+      "section": null,
+      "confidence": 0.65,
+      "status": "candidate"
+    }
+  ],
+  "evidence_records": [
+    {
+      "evidence_id": "ev_ac2cdaa3707b84055ba2",
+      "document_id": "doc_3ed4f0f17903846195ee",
+      "entity_id": "aditya_birla_health:activ_one",
+      "field": "copay",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge\\health\\aditya_birla_health\\activ_one\\parsed\\policy_wording.json",
+      "relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/policy_wording.json",
+      "source_type": "policy_wording",
+      "document_type": "policy_wording",
+      "artifact_type": "raw_evidence",
+      "evidence_role": "legal_authority",
+      "priority": 0,
+      "routing_score": 117,
+      "scoring_breakdown": {
+        "product_match": 50,
+        "source_priority": 35,
+        "field_keyword_match": 20,
+        "legal_source_bonus": 12
+      },
+      "match_reason": "strong_product_match",
+      "matched_aliases": [
+        "activ-one",
+        "activ_one",
+        "activ one"
+      ],
+      "field_hits": [
+        "co-pay",
+        "co-payment",
+        "deductible"
+      ],
+      "document_hash": "e04bc4575d35e10bc86707ceeb839adf8a59f579bd27584c1b9000201bdac217",
+      "logical_document_key": "policy_wording|knowledge/health/aditya_birla_health/activ_one|policy-wording",
+      "file_size_bytes": 277818,
+      "modified_at": "2026-06-10T09:09:20.357217+00:00",
+      "selected_reasons": [
+        "Product matched using explicit product alias",
+        "Highest legal authority source",
+        "Contains field keywords: co-pay, co-payment, deductible"
+      ],
+      "page": null,
+      "section": null,
+      "confidence": 0.95,
+      "status": "candidate"
+    },
+    {
+      "evidence_id": "ev_b6bac5c5061df255d589",
+      "document_id": "doc_9a409248d99de718c542",
+      "entity_id": "aditya_birla_health:activ_one",
+      "field": "copay",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge\\health\\aditya_birla_health\\activ_one\\parsed\\prospectus.json",
+      "relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/prospectus.json",
+      "source_type": "prospectus",
+      "document_type": "prospectus",
+      "artifact_type": "raw_evidence",
+      "evidence_role": "product_disclosure",
+      "priority": 3,
+      "routing_score": 67,
+      "scoring_breakdown": {
+        "product_match": 50,
+        "source_priority": 17,
+        "field_keyword_match": 0,
+        "source_bonus": 0
+      },
+      "match_reason": "strong_product_match",
+      "matched_aliases": [
+        "activ-one",
+        "activ_one",
+        "activ one"
+      ],
+      "field_hits": [],
+      "document_hash": "de9debd9d1c1982886368fc5c79b2c0dcad3b68d2c61e550a84ea1816bf4be26",
+      "logical_document_key": "prospectus|knowledge/health/aditya_birla_health/activ_one|prospectus",
+      "file_size_bytes": 150536,
+      "modified_at": "2026-06-10T09:09:20.485686+00:00",
+      "selected_reasons": [
+        "Product matched using explicit product alias",
+        "Product disclosure source"
+      ],
+      "page": null,
+      "section": null,
+      "confidence": 0.78,
+      "status": "candidate"
+    },
+    {
+      "evidence_id": "ev_72562673382883ec9c35",
+      "document_id": "doc_1377d7ff319ec14e38b6",
+      "entity_id": "aditya_birla_health:activ_one",
+      "field": "copay",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\metadata\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one.json",
+      "relative_path": "archive/metadata/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one.json",
+      "source_type": "webpage",
+      "document_type": "webpage",
+      "artifact_type": "raw_evidence",
+      "evidence_role": "published_web_source",
+      "priority": 5,
+      "routing_score": 55,
+      "scoring_breakdown": {
+        "product_match": 50,
+        "source_priority": 5,
+        "field_keyword_match": 0,
+        "source_bonus": 0
+      },
+      "match_reason": "strong_product_match",
+      "matched_aliases": [
+        "activ-one",
+        "activ_one"
+      ],
+      "field_hits": [],
+      "document_hash": "32a4f44d88d30879c072923b53730a911fec62e78bb04619e5312da86ebf8cdf",
+      "logical_document_key": "webpage|archive/metadata/aditya_birla_health|www-adityabirlacapital-com-healthinsurance-activ-one",
+      "file_size_bytes": 1139,
+      "modified_at": "2026-06-08T16:01:22.071819+00:00",
+      "selected_reasons": [
+        "Product matched using explicit product alias",
+        "Published product webpage or webpage metadata"
+      ],
+      "page": null,
+      "section": null,
+      "confidence": 0.65,
+      "status": "candidate"
+    }
+  ],
+  "evidence_bundles": [
+    {
+      "bundle_id": "bundle_18f3776e731e8e45d45e",
+      "document_id": "doc_3ed4f0f17903846195ee",
+      "entity_id": "aditya_birla_health:activ_one",
+      "field": "copay",
+      "source_type": "policy_wording",
+      "best_evidence_id": "ev_ac2cdaa3707b84055ba2",
+      "best_relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/policy_wording.json",
+      "best_routing_score": 117,
+      "representations": [
+        {
+          "evidence_id": "ev_ac2cdaa3707b84055ba2",
+          "relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/policy_wording.json",
+          "source_type": "policy_wording",
+          "routing_score": 117,
+          "document_hash": "e04bc4575d35e10bc86707ceeb839adf8a59f579bd27584c1b9000201bdac217"
+        }
+      ]
+    },
+    {
+      "bundle_id": "bundle_45efbdb8d53e6776f978",
+      "document_id": "doc_9a409248d99de718c542",
+      "entity_id": "aditya_birla_health:activ_one",
+      "field": "copay",
+      "source_type": "prospectus",
+      "best_evidence_id": "ev_b6bac5c5061df255d589",
+      "best_relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/prospectus.json",
+      "best_routing_score": 67,
+      "representations": [
+        {
+          "evidence_id": "ev_b6bac5c5061df255d589",
+          "relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/prospectus.json",
+          "source_type": "prospectus",
+          "routing_score": 67,
+          "document_hash": "de9debd9d1c1982886368fc5c79b2c0dcad3b68d2c61e550a84ea1816bf4be26"
+        }
+      ]
+    },
+    {
+      "bundle_id": "bundle_04d5ed3e8684290eae0f",
+      "document_id": "doc_1377d7ff319ec14e38b6",
+      "entity_id": "aditya_birla_health:activ_one",
+      "field": "copay",
+      "source_type": "webpage",
+      "best_evidence_id": "ev_72562673382883ec9c35",
+      "best_relative_path": "archive/metadata/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one.json",
+      "best_routing_score": 55,
+      "representations": [
+        {
+          "evidence_id": "ev_72562673382883ec9c35",
+          "relative_path": "archive/metadata/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one.json",
+          "source_type": "webpage",
+          "routing_score": 55,
+          "document_hash": "32a4f44d88d30879c072923b53730a911fec62e78bb04619e5312da86ebf8cdf"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,337 @@
+{
+  "registry_version": "0.1",
+  "generated_at": "2026-06-16T16:11:42.938455+00:00",
+  "base_roots": [
+    "knowledge",
+    "parsed",
+    "archive"
+  ],
+  "entity_ids": [
+    "aditya_birla_health:activ_one"
+  ],
+  "document_count": 3,
+  "rejected_counts": {
+    "excluded_derived_artifact": 35,
+    "unsupported_file_type": 0,
+    "not_entity_match": 377,
+    "blocked_context": 0,
+    "duplicate_document": 0
+  },
+  "documents": [
+    {
+      "document_id": "doc_d20a8488ecb3243f6de2",
+      "artifact_type": "raw_evidence",
+      "document_type": "policy_wording",
+      "source_type": "policy_wording",
+      "evidence_role": "legal_authority",
+      "authority_score": 100,
+      "entity_ids": [
+        "aditya_birla_health:activ_one"
+      ],
+      "entity_matches": [
+        {
+          "entity_id": "aditya_birla_health:activ_one",
+          "match_reason": "strong_product_match",
+          "matched_aliases": [
+            "activ-one",
+            "activ_one",
+            "activ one"
+          ]
+        }
+      ],
+      "relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/policy_wording.json",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge\\health\\aditya_birla_health\\activ_one\\parsed\\policy_wording.json",
+      "source_url": null,
+      "document_hash": "e04bc4575d35e10bc86707ceeb839adf8a59f579bd27584c1b9000201bdac217",
+      "logical_document_key": "policy_wording|knowledge/health/aditya_birla_health/activ_one|policy-wording",
+      "file_size_bytes": 277818,
+      "modified_at": "2026-06-10T09:09:20.357217+00:00",
+      "effective_date": null,
+      "version_label": null,
+      "status": "active",
+      "registry_notes": [
+        "Highest authority source for legal interpretation"
+      ],
+      "processing_pipeline": {
+        "registered": {
+          "status": "completed",
+          "updated_at": "2026-06-16T17:03:48.059156+00:00",
+          "notes": [
+            "Document exists in Evidence Registry"
+          ]
+        },
+        "document_processing": {
+          "status": "completed",
+          "updated_at": "2026-06-17T16:53:18.499624+00:00",
+          "notes": [
+            "Processed Document Asset manufactured by Department III v2.0",
+            "quality_score=98.0",
+            "certification=certified",
+            "manifest=knowledge/factory/processing_manifests/doc_d20a8488ecb3243f6de2_pdoc_72d03e57d4b49c68d69a11fc_processing_manifest.json",
+            "certification_report=knowledge/factory/certification_reports/doc_d20a8488ecb3243f6de2_pdoc_72d03e57d4b49c68d69a11fc_certification_report.json"
+          ],
+          "output_path": "knowledge/factory/processed_documents/doc_d20a8488ecb3243f6de2_pdoc_72d03e57d4b49c68d69a11fc_processed_document_v2.json"
+        },
+        "section_extraction": {
+          "status": "pending",
+          "updated_at": "2026-06-17T16:24:23.557336+00:00",
+          "notes": [
+            "Unlocked after document_processing completed"
+          ]
+        },
+        "table_extraction": {
+          "status": "pending",
+          "updated_at": "2026-06-17T16:24:23.557339+00:00",
+          "notes": [
+            "Unlocked after document_processing completed"
+          ]
+        },
+        "clause_extraction": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for section extraction"
+          ]
+        },
+        "knowledge_extraction": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for clauses/sections"
+          ]
+        },
+        "ontology_mapping": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for knowledge extraction"
+          ]
+        },
+        "validation": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for ontology mapping"
+          ]
+        },
+        "published": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for validation"
+          ]
+        }
+      }
+    },
+    {
+      "document_id": "doc_6a2da3c45c99ed2f4f44",
+      "artifact_type": "raw_evidence",
+      "document_type": "prospectus",
+      "source_type": "prospectus",
+      "evidence_role": "product_disclosure",
+      "authority_score": 75,
+      "entity_ids": [
+        "aditya_birla_health:activ_one"
+      ],
+      "entity_matches": [
+        {
+          "entity_id": "aditya_birla_health:activ_one",
+          "match_reason": "strong_product_match",
+          "matched_aliases": [
+            "activ-one",
+            "activ_one",
+            "activ one"
+          ]
+        }
+      ],
+      "relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/prospectus.json",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge\\health\\aditya_birla_health\\activ_one\\parsed\\prospectus.json",
+      "source_url": null,
+      "document_hash": "de9debd9d1c1982886368fc5c79b2c0dcad3b68d2c61e550a84ea1816bf4be26",
+      "logical_document_key": "prospectus|knowledge/health/aditya_birla_health/activ_one|prospectus",
+      "file_size_bytes": 150536,
+      "modified_at": "2026-06-10T09:09:20.485686+00:00",
+      "effective_date": null,
+      "version_label": null,
+      "status": "active",
+      "registry_notes": [
+        "Product disclosure source"
+      ],
+      "processing_pipeline": {
+        "registered": {
+          "status": "completed",
+          "updated_at": "2026-06-16T17:03:48.059203+00:00",
+          "notes": [
+            "Document exists in Evidence Registry"
+          ]
+        },
+        "document_processing": {
+          "status": "pending",
+          "updated_at": null,
+          "notes": []
+        },
+        "section_extraction": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for document processing"
+          ]
+        },
+        "table_extraction": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for document processing"
+          ]
+        },
+        "clause_extraction": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for section extraction"
+          ]
+        },
+        "knowledge_extraction": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for clauses/sections"
+          ]
+        },
+        "ontology_mapping": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for knowledge extraction"
+          ]
+        },
+        "validation": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for ontology mapping"
+          ]
+        },
+        "published": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for validation"
+          ]
+        }
+      }
+    },
+    {
+      "document_id": "doc_4d4bcfafdc05c5f449ec",
+      "artifact_type": "raw_evidence",
+      "document_type": "webpage",
+      "source_type": "webpage",
+      "evidence_role": "published_web_source",
+      "authority_score": 45,
+      "entity_ids": [
+        "aditya_birla_health:activ_one"
+      ],
+      "entity_matches": [
+        {
+          "entity_id": "aditya_birla_health:activ_one",
+          "match_reason": "strong_product_match",
+          "matched_aliases": [
+            "activ-one",
+            "activ_one"
+          ]
+        }
+      ],
+      "relative_path": "archive/metadata/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one.json",
+      "path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\metadata\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one.json",
+      "source_url": "https://www.adityabirlacapital.com/healthinsurance/activ-one",
+      "document_hash": "32a4f44d88d30879c072923b53730a911fec62e78bb04619e5312da86ebf8cdf",
+      "logical_document_key": "webpage|archive/metadata/aditya_birla_health|www-adityabirlacapital-com-healthinsurance-activ-one",
+      "file_size_bytes": 1139,
+      "modified_at": "2026-06-08T16:01:22.071819+00:00",
+      "effective_date": null,
+      "version_label": null,
+      "status": "active",
+      "registry_notes": [
+        "Published web source; useful for latest public product page"
+      ],
+      "processing_pipeline": {
+        "registered": {
+          "status": "completed",
+          "updated_at": "2026-06-16T17:03:48.059227+00:00",
+          "notes": [
+            "Document exists in Evidence Registry"
+          ]
+        },
+        "document_processing": {
+          "status": "pending",
+          "updated_at": null,
+          "notes": []
+        },
+        "section_extraction": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for document processing"
+          ]
+        },
+        "table_extraction": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for document processing"
+          ]
+        },
+        "clause_extraction": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for section extraction"
+          ]
+        },
+        "knowledge_extraction": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for clauses/sections"
+          ]
+        },
+        "ontology_mapping": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for knowledge extraction"
+          ]
+        },
+        "validation": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for ontology mapping"
+          ]
+        },
+        "published": {
+          "status": "blocked",
+          "updated_at": null,
+          "notes": [
+            "Waiting for validation"
+          ]
+        }
+      }
+    }
+  ],
+  "factory": {
+    "factory_manager_version": "0.1",
+    "initialized_at": "2026-06-16T17:03:48.059244+00:00",
+    "pipeline_stages": [
+      "registered",
+      "document_processing",
+      "section_extraction",
+      "table_extraction",
+      "clause_extraction",
+      "knowledge_extraction",
+      "ontology_mapping",
+      "validation",
+      "published"
+    ]
+  }
+}

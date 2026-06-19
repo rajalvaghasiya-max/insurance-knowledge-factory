@@ -15,7 +15,13 @@ def main():
         "--base-roots",
         nargs="*",
         default=["knowledge", "parsed", "archive"],
-        help="Base roots to scan."
+        help="Base roots to scan.",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=20,
+        help="Number of candidates to print.",
     )
 
     args = parser.parse_args()
@@ -31,7 +37,8 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     safe_entity = args.entity_id.replace(":", "_").replace("/", "_").replace("\\", "_").lower()
-    output_path = output_dir / f"{safe_entity}_{args.field}_routing_plan.json"
+    safe_field = args.field.replace("/", "_").replace("\\", "_").lower()
+    output_path = output_dir / f"{safe_entity}_{safe_field}_routing_plan.json"
 
     with output_path.open("w", encoding="utf-8") as f:
         json.dump(plan, f, indent=2, ensure_ascii=False)
@@ -44,12 +51,20 @@ def main():
     print(f"Field       : {args.field}")
     print(f"Version     : {plan['router_version']}")
     print(f"Candidates  : {plan['candidate_count']}")
+    print(f"Bundles     : {plan['bundle_count']}")
     print(f"Rejected    : {plan['rejected_counts']}")
     print(f"Output      : {output_path}")
     print("Priority    : " + " > ".join(plan["priority_sources"]))
 
-    for item in plan["candidates"][:20]:
-        print(f"[{item['source_type']}] [{item['match_reason']}] {item['relative_path']}")
+    for item in plan["candidates"][: args.limit]:
+        field_hits = ", ".join(item.get("field_hits", [])[:4]) or "no field keyword"
+        print(
+            f"[{item['source_type']}] "
+            f"[score={item['routing_score']}] "
+            f"[{item['match_reason']}] "
+            f"[{field_hits}] "
+            f"{item['relative_path']}"
+        )
 
     print("=" * 70)
 

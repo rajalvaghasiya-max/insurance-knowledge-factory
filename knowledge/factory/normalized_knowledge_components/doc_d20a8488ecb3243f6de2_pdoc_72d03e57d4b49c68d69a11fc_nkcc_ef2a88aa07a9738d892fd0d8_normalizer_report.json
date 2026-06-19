@@ -1,0 +1,63 @@
+{
+  "report_type": "knowledge_component_normalizer_report",
+  "report_id": "kcnr_258c615d1431672cb76ad0c3",
+  "report_version": "1.0",
+  "created_at": "2026-06-19T15:47:01.847963+00:00",
+  "department": "department_04_knowledge_manufacturing",
+  "production_line": "knowledge_component_manufacturing",
+  "engine": "KnowledgeComponentNormalizer",
+  "document_id": "doc_d20a8488ecb3243f6de2",
+  "processed_document_asset_id": "pdoc_72d03e57d4b49c68d69a11fc",
+  "source_collection_id": "kcc_24cd57d4a8adf54f63894fc0",
+  "source_collection_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge\\factory\\knowledge_components\\doc_d20a8488ecb3243f6de2_pdoc_72d03e57d4b49c68d69a11fc_kcc_24cd57d4a8adf54f63894fc0_knowledge_component_collection.json",
+  "normalized_collection_id": "nkcc_ef2a88aa07a9738d892fd0d8",
+  "normalized_collection_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\knowledge\\factory\\normalized_knowledge_components\\doc_d20a8488ecb3243f6de2_pdoc_72d03e57d4b49c68d69a11fc_nkcc_ef2a88aa07a9738d892fd0d8_normalized_component_collection.json",
+  "raw_components_received": 2196,
+  "normalized_components_created": 1181,
+  "components_merged": 1026,
+  "duplicate_groups": 29,
+  "duplicate_shadow_components": 82,
+  "noise_components": 115,
+  "metadata_components": 0,
+  "active_components": 984,
+  "cross_references_preserved": 154,
+  "warnings": [
+    {
+      "type": "duplicate_consolidation",
+      "severity": "low",
+      "message": "82 duplicate components retained as duplicate_shadow with provenance preserved."
+    }
+  ],
+  "quality_score": 99.94,
+  "validation_status": "passed",
+  "statistics": {
+    "raw_components_received": 2196,
+    "components_after_definition_split": 2207,
+    "normalized_components_created": 1181,
+    "components_merged": 1026,
+    "duplicate_groups": 29,
+    "duplicate_shadow_components": 82,
+    "noise_components": 115,
+    "metadata_components": 0,
+    "active_components": 984,
+    "component_type_counts": {
+      "reference": 29,
+      "paragraph": 307,
+      "list_item": 509,
+      "noise": 120,
+      "title": 212,
+      "note": 4
+    },
+    "status_counts": {
+      "active": 984,
+      "duplicate_shadow": 82,
+      "noise": 115
+    },
+    "cross_references_preserved": 154,
+    "average_words_per_component": 33.35,
+    "max_words_per_component": 517,
+    "title_to_paragraph_ratio": 0.69,
+    "department_boundary": "normalized_components_only_no_semantic_insurance_interpretation"
+  },
+  "next_stage": "knowledge_component_classification"
+}

@@ -1,0 +1,196 @@
+{
+  "generated_at": "2026-06-14T15:45:02.754238+00:00",
+  "explanation_object_version": "1.0",
+  "profile_id": "young_family",
+  "profile_context": {
+    "profile_id": "young_family",
+    "life_stage": "married_planning_family",
+    "age": 32,
+    "family_members": [
+      {
+        "relation": "self",
+        "age": 32
+      },
+      {
+        "relation": "spouse",
+        "age": 30
+      }
+    ],
+    "needs": {
+      "maternity_or_newborn": true,
+      "wellness": true,
+      "high_sum_insured": true,
+      "low_waiting_period": true,
+      "senior_citizen": false
+    },
+    "preferences": {
+      "avoid_copay": true,
+      "prefer_room_rent_no_limit": true
+    }
+  },
+  "source_files": {
+    "profile": "samples/customer_profiles/young_family.json",
+    "recommendation": "knowledge/health/recommendations/young_family__star_health_star_comprehensive__vs__aditya_birla_health_activ_one_comparison_recommendation.json",
+    "comparison": "knowledge/health/comparisons/star_health_star_comprehensive__vs__aditya_birla_health_activ_one_comparison.json"
+  },
+  "product_identity": {
+    "product_a": {
+      "entity_id": "star_health:star_comprehensive",
+      "product_name": "Star Comprehensive Insurance Policy",
+      "uin": "SHAHLIP26044V092526",
+      "source_file": "knowledge/health/star_health/star_comprehensive/intelligence/product_intelligence.json"
+    },
+    "product_b": {
+      "entity_id": "aditya_birla_health:activ_one",
+      "product_name": "Activ One",
+      "uin": "ADIHLIP24097V012324",
+      "source_file": "knowledge/health/aditya_birla_health/activ_one/intelligence/product_intelligence.json"
+    }
+  },
+  "quality_gate": {
+    "status": "REVIEW_REQUIRED",
+    "reason": "One or more compared products have quality warnings.",
+    "warnings": [
+      "aditya_birla_health:activ_one validation status is REVIEW_REQUIRED.",
+      "aditya_birla_health:activ_one coverage status is USABLE_WITH_REVIEW."
+    ]
+  },
+  "recommendation_status": "REVIEW_REQUIRED",
+  "preferred_product": null,
+  "explanation_units": [
+    {
+      "unit_id": "maternity_or_newborn::core_benefits.delivery_newborn_cover",
+      "title": "Maternity & Newborn Relevance",
+      "need": "maternity_or_newborn",
+      "field": "core_benefits.delivery_newborn_cover",
+      "favours": "star_health:star_comprehensive",
+      "favours_product_name": "Star Comprehensive Insurance Policy",
+      "against_or_unknown_for": "aditya_birla_health:activ_one",
+      "against_or_unknown_product_name": "Activ One",
+      "importance_score": null,
+      "impact": "unknown",
+      "confidence": "medium",
+      "evidence_type": "comparison_missing_data",
+      "evidence_summary": "core_benefits.delivery_newborn_cover is available for Star Comprehensive Insurance Policy but not extracted for Activ One.",
+      "explanation": "For the profile need 'maternity_or_newborn', the comparison found usable information for Star Comprehensive Insurance Policy on 'core_benefits.delivery_newborn_cover', while equivalent information was not extracted for Activ One.",
+      "cautions": [
+        "This signal is based on missing comparison data for one product, not confirmed absence of the benefit.",
+        "Quality gate is not PASS, so this explanation should be treated as review input."
+      ],
+      "source_signal": {
+        "need": "maternity_or_newborn",
+        "field": "core_benefits.delivery_newborn_cover",
+        "favours": "star_health:star_comprehensive",
+        "favours_product_name": "Star Comprehensive Insurance Policy",
+        "against_or_unknown_for": "aditya_birla_health:activ_one",
+        "against_or_unknown_product_name": "Activ One",
+        "reason": "core_benefits.delivery_newborn_cover is available for Star Comprehensive Insurance Policy but not extracted for Activ One.",
+        "confidence": "medium",
+        "evidence_type": "comparison_missing_data"
+      }
+    },
+    {
+      "unit_id": "wellness::core_benefits.wellness_program",
+      "title": "Wellness Relevance",
+      "need": "wellness",
+      "field": "core_benefits.wellness_program",
+      "favours": "star_health:star_comprehensive",
+      "favours_product_name": "Star Comprehensive Insurance Policy",
+      "against_or_unknown_for": "aditya_birla_health:activ_one",
+      "against_or_unknown_product_name": "Activ One",
+      "importance_score": null,
+      "impact": "unknown",
+      "confidence": "medium",
+      "evidence_type": "comparison_missing_data",
+      "evidence_summary": "core_benefits.wellness_program is available for Star Comprehensive Insurance Policy but not extracted for Activ One.",
+      "explanation": "For the profile need 'wellness', the comparison found usable information for Star Comprehensive Insurance Policy on 'core_benefits.wellness_program', while equivalent information was not extracted for Activ One.",
+      "cautions": [
+        "This signal is based on missing comparison data for one product, not confirmed absence of the benefit.",
+        "Quality gate is not PASS, so this explanation should be treated as review input."
+      ],
+      "source_signal": {
+        "need": "wellness",
+        "field": "core_benefits.wellness_program",
+        "favours": "star_health:star_comprehensive",
+        "favours_product_name": "Star Comprehensive Insurance Policy",
+        "against_or_unknown_for": "aditya_birla_health:activ_one",
+        "against_or_unknown_product_name": "Activ One",
+        "reason": "core_benefits.wellness_program is available for Star Comprehensive Insurance Policy but not extracted for Activ One.",
+        "confidence": "medium",
+        "evidence_type": "comparison_missing_data"
+      }
+    },
+    {
+      "unit_id": "high_sum_insured::sum_insured_options.values",
+      "title": "Sum Insured Relevance",
+      "need": "high_sum_insured",
+      "field": "sum_insured_options.values",
+      "favours": "star_health:star_comprehensive",
+      "favours_product_name": "Star Comprehensive Insurance Policy",
+      "against_or_unknown_for": "aditya_birla_health:activ_one",
+      "against_or_unknown_product_name": "Activ One",
+      "importance_score": null,
+      "impact": "unknown",
+      "confidence": "medium",
+      "evidence_type": "comparison_missing_data",
+      "evidence_summary": "sum_insured_options.values is available for Star Comprehensive Insurance Policy but not extracted for Activ One.",
+      "explanation": "For the profile need 'high_sum_insured', the comparison found usable information for Star Comprehensive Insurance Policy on 'sum_insured_options.values', while equivalent information was not extracted for Activ One.",
+      "cautions": [
+        "This signal is based on missing comparison data for one product, not confirmed absence of the benefit.",
+        "Quality gate is not PASS, so this explanation should be treated as review input."
+      ],
+      "source_signal": {
+        "need": "high_sum_insured",
+        "field": "sum_insured_options.values",
+        "favours": "star_health:star_comprehensive",
+        "favours_product_name": "Star Comprehensive Insurance Policy",
+        "against_or_unknown_for": "aditya_birla_health:activ_one",
+        "against_or_unknown_product_name": "Activ One",
+        "reason": "sum_insured_options.values is available for Star Comprehensive Insurance Policy but not extracted for Activ One.",
+        "confidence": "medium",
+        "evidence_type": "comparison_missing_data"
+      }
+    }
+  ],
+  "risk_cautions": [
+    "Recommendation quality gate is not PASS. Do not use as final advice without review.",
+    "Comparison contains missing data. Missing data should not be interpreted as benefit absence.",
+    "One or more products have validation or coverage warnings.",
+    "No final preferred product was selected by the recommendation engine."
+  ],
+  "followup_context": {
+    "can_answer_followups": true,
+    "recommended_sources": [
+      "product_intelligence",
+      "comparison_report",
+      "recommendation_report",
+      "evidence_router"
+    ],
+    "known_relevant_fields": [
+      "core_benefits.delivery_newborn_cover",
+      "core_benefits.wellness_program",
+      "eligibility.adult_entry_age",
+      "sum_insured_options.values",
+      "sum_insured_options.values_raw"
+    ],
+    "allowed_followup_topics": [
+      "eligibility",
+      "sum_insured",
+      "waiting_periods",
+      "copay",
+      "room_rent",
+      "benefits",
+      "discounts",
+      "optional_covers",
+      "claims",
+      "exclusions"
+    ],
+    "principle": "Channel summaries are views only. Follow-up answers should use the full knowledge base and evidence, not only pre-rendered summaries."
+  },
+  "channel_renderers_pending": [
+    "advisor_talking_points",
+    "customer_summary",
+    "sales_enablement_points",
+    "api_summary"
+  ]
+}
