@@ -1,0 +1,107 @@
+{
+  "distillation_id": "kdr_f825201b784b9e3aec125417",
+  "observation": {
+    "observation_id": "COPAY-OBS-001",
+    "concept_id": "copay",
+    "title": "Customer calculates Copay on total hospital bill",
+    "observation": "Customer assumes Copay is calculated on the total hospital bill instead of the admissible claim amount after non-medical deductions and policy conditions.",
+    "category": "customer_reality",
+    "observation_type": "misconception",
+    "source": "advisor_experience",
+    "confidence": "very high",
+    "frequency": "very high",
+    "financial_impact": "high",
+    "emotional_impact": "very high",
+    "decision_impact": "high",
+    "affected_personas": [
+      "retail_customer",
+      "family_floater_buyer",
+      "senior_citizen"
+    ],
+    "linked_concepts": [
+      "admissible_claim",
+      "claim_settlement",
+      "non_medical_expenses"
+    ],
+    "status": "validated",
+    "metadata": {}
+  },
+  "classification": {
+    "primary_category": "customer_reality",
+    "primary_type": "misconception",
+    "detected_signals": [
+      "claim",
+      "financial",
+      "misconception"
+    ],
+    "needs_human_review": false
+  },
+  "knowledge_potential": {
+    "financial": 10,
+    "teaching": 10,
+    "behaviour": 10,
+    "decision": 8,
+    "relationship": 6,
+    "emotional": 10,
+    "overall": 9.0
+  },
+  "manufacturing_opportunities": [
+    {
+      "asset_type": "mental_model_asset",
+      "reason": "Observation reveals an incorrect customer mental model.",
+      "priority": "high",
+      "target_department": "MMTS"
+    },
+    {
+      "asset_type": "understanding_gap",
+      "reason": "Incorrect belief must be compared with actual reality.",
+      "priority": "high",
+      "target_department": "Department V"
+    },
+    {
+      "asset_type": "verification_question",
+      "reason": "Misconception needs a scenario to verify transformation.",
+      "priority": "medium",
+      "target_department": "Department V"
+    },
+    {
+      "asset_type": "financial_simulation",
+      "reason": "Observation contains financial consequence or calculation potential.",
+      "priority": "high",
+      "target_department": "Department V"
+    },
+    {
+      "asset_type": "golden_rule",
+      "reason": "Financial risk should be compressed into a memorable rule.",
+      "priority": "medium",
+      "target_department": "Department V"
+    },
+    {
+      "asset_type": "claims_intelligence",
+      "reason": "Observation describes claim-stage reality.",
+      "priority": "high",
+      "target_department": "Claims Intelligence"
+    },
+    {
+      "asset_type": "decision_case",
+      "reason": "Claim surprise can become a decision intelligence case.",
+      "priority": "medium",
+      "target_department": "Decision Intelligence"
+    }
+  ],
+  "relationships": [
+    "admissible_claim",
+    "claim_settlement",
+    "copay",
+    "non_medical_expenses"
+  ],
+  "confidence": 0.97,
+  "review_required": true,
+  "factory_signature": {
+    "factory": "PolicyScna Knowledge Factory",
+    "production_line": "KnowledgeDistillationEngine",
+    "version": "1.0",
+    "deterministic": true,
+    "created_at": "2026-06-22T15:36:19.349732+00:00"
+  }
+}

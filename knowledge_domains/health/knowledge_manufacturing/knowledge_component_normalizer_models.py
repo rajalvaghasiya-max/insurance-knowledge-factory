@@ -131,6 +131,7 @@ class KnowledgeComponentNormalizerReport:
     quality_score: float
     validation_status: str
     statistics: dict[str, Any]
+    department_boundary: str
     next_stage: str = "knowledge_component_classification"
 
     def to_dict(self) -> dict[str, Any]:

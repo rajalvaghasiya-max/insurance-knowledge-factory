@@ -144,7 +144,10 @@ class KnowledgeComponentScanner:
                     ),
                     quality=ComponentQuality(confidence=1.0, quality_score=100.0, warnings=[]),
                     references=self._references(text, source),
-                    notes=["Table component preserved from processed document table object."],
+                    notes=[
+                        "Table component preserved from processed document table object. "
+                        "No insurance semantic interpretation performed."
+                    ],
                 )
             )
             sequence += 1

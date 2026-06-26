@@ -79,15 +79,21 @@ class KnowledgeComponentNormalizer:
 
     def is_metadata_or_noise(self, text: str) -> tuple[str | None, str | None]:
         key = self.key_text(text)
+
+        match_text = self.normalize_unicode(text).lower()
+        match_text = re.sub(r"\s+", " ", match_text).strip()
+
         if not key:
             return "noise", "empty_or_whitespace"
         if len(key) <= 2 and key not in {"no", "or"}:
             return "noise", "too_short"
         if key in {"or", "and", "the", "of", "to"}:
             return "noise", "connector_only"
+
         for pattern in self.FOOTER_PATTERNS:
-            if pattern.search(key):
+            if pattern.search(match_text):
                 return "metadata", "repeated_header_footer_or_product_identity"
+
         return None, None
 
     def looks_like_continuation(self, previous: dict[str, Any], current: dict[str, Any]) -> bool:
@@ -100,11 +106,17 @@ class KnowledgeComponentNormalizer:
         if not prev_text or not cur_text:
             return False
 
+        previous_kind, _ = self.is_metadata_or_noise(prev_text)
+        current_kind, _ = self.is_metadata_or_noise(cur_text)
+
+        if previous_kind is not None or current_kind is not None:
+            return False
+
         prev_type = previous.get("component_type")
         cur_type = current.get("component_type")
-        if cur_type in {"reference", "noise", "metadata", "table"}:
+        if cur_type in {"title", "reference", "noise", "metadata", "table"}:
             return False
-        if prev_type in {"reference", "noise", "metadata", "table"}:
+        if prev_type in {"title", "reference", "noise", "metadata", "table"}:
             return False
 
         # Same source section is the safest merge signal.
@@ -148,6 +160,10 @@ class KnowledgeComponentNormalizer:
             clone["text"] = part_text
             clone["normalized_text"] = self.key_text(part_text)
             clone["component_id"] = f"{component.get('component_id')}_split_{idx+1}"
+            clone["original_component_ids"] = list(
+                component.get("original_component_ids")
+                or [component.get("component_id")]
+            )
             clone["component_type"] = "list_item"
             clone.setdefault("notes", [])
             clone["notes"] = list(clone.get("notes", [])) + [
@@ -272,7 +288,13 @@ class KnowledgeComponentNormalizer:
         elif status == "duplicate_shadow":
             quality["quality_score"] = min(float(quality.get("quality_score", 85.0)), 85.0)
 
-        original_ids = [comp.get("component_id")] + list(comp.get("merged_component_ids") or [])
+        original_ids = list(
+            comp.get("original_component_ids")
+            or [comp.get("component_id")]
+        )
+        original_ids.extend(
+            list(comp.get("merged_component_ids") or [])
+        )
         original_ids = [x for x in original_ids if x]
         norm_id_seed = "|".join([
             comp.get("document_id", ""),
@@ -498,6 +520,7 @@ class KnowledgeComponentNormalizer:
             quality_score=quality_score,
             validation_status=validation_status,
             statistics=statistics,
+            department_boundary=statistics["department_boundary"],
         )
         return collection, report
 

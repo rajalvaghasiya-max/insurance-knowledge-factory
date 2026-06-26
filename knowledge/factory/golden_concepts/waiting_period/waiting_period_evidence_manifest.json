@@ -1,0 +1,147 @@
+{
+    "manifest_id": "evidence_manifest_waiting_period_v1",
+    "manifest_type": "concept_evidence_manifest",
+    "manifest_version": "1.0",
+    "concept_id": "waiting_period",
+    "concept_name": "Waiting Period",
+    "scope": {
+      "insurance_line": "health",
+      "insurer_id": "aditya_birla_health",
+      "product_reference": "Activ One MAX+",
+      "source_scope": "website evidence only",
+      "effective_date_known": false
+    },
+    "evidence_standard": {
+      "source_strength": "webpage",
+      "verification_status": "website_supported_not_policy_wording",
+      "publication_recommendation": "usable_with_source_disclosure",
+      "limitations": [
+        "Website content may change and may not contain all contractual conditions.",
+        "This manifest does not establish the full condition list for specific-disease waiting periods.",
+        "This manifest does not establish continuity, portability, waiver, or buyback treatment.",
+        "Policy wording or Customer Information Sheet should supersede this evidence when available."
+      ]
+    },
+    "source_documents": [
+      {
+        "source_id": "source_activ_one_max_plus_webpage_v1",
+        "source_type": "webpage",
+        "insurer_id": "aditya_birla_health",
+        "product_reference": "Activ One MAX+",
+        "source_metadata_file": "archive/metadata/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemaxplus_activ-one-max-plus.json",
+        "parsed_content_file": "parsed/html_sections/aditya_birla_health/b595c652240b203b9c7b94fd16df115f2dbf10980b88942219b27bd9e9136271.json",
+        "content_hash": "b595c652240b203b9c7b94fd16df115f2dbf10980b88942219b27bd9e9136271",
+        "source_strength": "webpage"
+      }
+    ],
+    "supported_claims": [
+      {
+        "claim_id": "waiting_period.ped.duration",
+        "claim_type": "product_waiting_period",
+        "waiting_period_type": "pre_existing_disease",
+        "value": 3,
+        "unit": "years",
+        "normalized_value": 36,
+        "normalized_unit": "months",
+        "evidence_ref": {
+          "source_id": "source_activ_one_max_plus_webpage_v1",
+          "heading": "Pre-Existing Diseases Waiting Period",
+          "text": "3 years",
+          "section_index": 47,
+          "chunk_index": 47
+        },
+        "confidence": "high",
+        "status": "supported"
+      },
+      {
+        "claim_id": "waiting_period.specific_disease.duration",
+        "claim_type": "product_waiting_period",
+        "waiting_period_type": "specific_disease",
+        "value": 2,
+        "unit": "years",
+        "normalized_value": 24,
+        "normalized_unit": "months",
+        "evidence_ref": {
+          "source_id": "source_activ_one_max_plus_webpage_v1",
+          "heading": "Specific Diseases Waiting Period",
+          "text": "2 years",
+          "section_index": 48,
+          "chunk_index": 48
+        },
+        "confidence": "high",
+        "status": "supported"
+      },
+      {
+        "claim_id": "waiting_period.initial.duration",
+        "claim_type": "product_waiting_period",
+        "waiting_period_type": "initial",
+        "value": 30,
+        "unit": "days",
+        "evidence_ref": {
+          "source_id": "source_activ_one_max_plus_webpage_v1",
+          "heading": "Initial Waiting Period (Excluding Accidental Hospitalization)",
+          "text": "30 days",
+          "section_index": 49,
+          "chunk_index": 49
+        },
+        "exceptions": [
+          "Accidental hospitalization is excluded from the displayed initial waiting-period heading."
+        ],
+        "confidence": "high",
+        "status": "supported"
+      },
+      {
+        "claim_id": "waiting_period.chronic_care.day_one_exception",
+        "claim_type": "plan_specific_exception",
+        "waiting_period_type": "optional_chronic_care_benefit",
+        "value": "no_waiting_period",
+        "evidence_ref": {
+          "source_id": "source_activ_one_max_plus_webpage_v1",
+          "heading": "Chronic Care (Day 1 In-Patient Hospitalization) - Optional",
+          "text": "This benefit provides Day 1 In-Patient Hospitalization (No waiting period) for listed chronic conditions.",
+          "section_index": 40,
+          "chunk_index": 40
+        },
+        "limitations": [
+          "Applies only to the optional Chronic Care benefit.",
+          "The webpage must not be used to infer eligibility or the complete list of covered conditions."
+        ],
+        "confidence": "medium",
+        "status": "supported_with_limitations"
+      }
+    ],
+    "unsupported_or_not_yet_verified": [
+      {
+        "topic": "specific disease list",
+        "reason": "The webpage states a duration but does not provide the complete condition list in the captured section."
+      },
+      {
+        "topic": "continuity and portability treatment",
+        "reason": "No contractual evidence has been collected yet."
+      },
+      {
+        "topic": "waiting-period waiver or buyback",
+        "reason": "No product-specific evidence has been collected yet."
+      },
+      {
+        "topic": "policy wording precedence",
+        "reason": "Policy wording has not yet been attached to this manifest."
+      }
+    ],
+    "legacy_assets_retained_for_comparison": [
+      {
+        "asset_path": "knowledge/factory/golden_concepts/waiting_period/waiting_period_meaning_asset.json",
+        "role": "legacy_concept_seed",
+        "status": "not_current_evidence_authority"
+      },
+      {
+        "asset_path": "knowledge/factory/golden_concepts/waiting_period/understanding_assets/ua_288963e783a66b695ddb8e90_understanding_asset_manufacturing_asset.json",
+        "role": "legacy_understanding_asset",
+        "status": "comparison_only"
+      }
+    ],
+    "certification": {
+      "status": "READY_FOR_KNOWLEDGE_MANUFACTURING",
+      "reason": "Three core waiting-period types are website-supported for one product variant, with explicit source limitations."
+    }
+  }

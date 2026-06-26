@@ -1,0 +1,42 @@
+{
+    "concept_id": "waiting_period",
+    "product_reference": {
+      "insurer": "Aditya Birla Health Insurance",
+      "product_name": "Activ One",
+      "product_uin": "ADIHLIP24097V012324"
+    },
+    "timeline_convention": {
+      "value": "AFTER_COMPLETION_OF_PERIOD",
+      "evidence_status": "SUPPORTED_FOR_OPTIONAL_REDUCTION_CLAUSES_ONLY",
+      "reason": "The policy wording for optional reductions states that claims become admissible after one year or after the specified number of years."
+    },
+    "evidence_backed_examples": [
+    {
+        "example_id": "activ_one_c10_1_reduced_specific_disease_1_year",
+        "waiting_period_type": "reduced_specific_disease_waiting_period",
+        "waiting_period_value": 1,
+        "waiting_period_unit": "years",
+        "activation_convention": "AFTER_COMPLETION_OF_PERIOD",
+        "scope": "Optional Cover C.10.1 only",
+        "claim_eligibility_note": "Illustrative timeline only; continuity without a break and the Policy Schedule remain relevant."
+    }
+
+    ],
+    "unresolved_items": [
+      {
+        "waiting_period_type": "base_initial_waiting_period",
+        "status": "DO_NOT_AUTOMATE_YET",
+        "reason": "The exact base D.1.3 clause and its date-boundary wording have not yet been isolated."
+      },
+      {
+        "waiting_period_type": "base_specific_disease_waiting_period",
+        "status": "DO_NOT_AUTOMATE_YET",
+        "reason": "The exact base Section D clause still needs to be isolated."
+      },
+      {
+        "waiting_period_type": "base_pre_existing_disease_waiting_period",
+        "status": "DO_NOT_AUTOMATE_YET",
+        "reason": "The exact base Section D clause still needs to be isolated."
+      }
+    ]
+  }

@@ -97,21 +97,23 @@ def test_scanner_output_includes_required_component_contract_fields():
     assert component["notes"]
 
 
-def test_scanner_preserves_ordering_with_previous_and_next_component_ids():
-    collection, _ = KnowledgeComponentScanner().scan(fake_processed_document())
+def test_scanner_preserves_sequence_order():
+    collection, _ = KnowledgeComponentScanner().scan(
+        fake_processed_document()
+    )
     components = collection.to_dict()["components"]
 
     assert [component["sequence"] for component in components] == list(
         range(1, len(components) + 1)
     )
-    assert components[0]["previous_component_id"] is None
-    assert components[0]["next_component_id"] == components[1]["component_id"]
-    assert components[-1]["previous_component_id"] == components[-2]["component_id"]
-    assert components[-1]["next_component_id"] is None
-    for previous, current, following in zip(components, components[1:], components[2:]):
-        assert current["previous_component_id"] == previous["component_id"]
-        assert current["next_component_id"] == following["component_id"]
-
+    assert all(
+        "previous_component_id" not in component
+        for component in components
+    )
+    assert all(
+        "next_component_id" not in component
+        for component in components
+    )
 
 def test_scanner_does_not_perform_insurance_semantic_interpretation():
     collection, _ = KnowledgeComponentScanner().scan(fake_processed_document())

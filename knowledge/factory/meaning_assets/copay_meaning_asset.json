@@ -1,0 +1,74 @@
+{
+  "asset_id": "meaning_copay_v1",
+  "asset_type": "meaning_asset",
+  "schema_version": "meaning_asset_v1.0",
+  "concept_id": "copay",
+  "canonical_name": "Copay",
+  "aliases": ["Co-payment", "Co-pay", "Cost Sharing"],
+  "category": "claim_cost_sharing",
+  "core_meaning": "A policy condition where the policyholder pays a fixed percentage of every admissible claim amount.",
+  "business_purpose": "Share claim cost between insurer and customer, often in exchange for lower premium.",
+  "functional_behaviour": "During claim settlement, the insurer first determines the admissible claim amount and then applies the copay percentage to calculate the customer contribution.",
+  "trigger": "Approved hospitalization claim where copay applies under policy terms.",
+  "inputs": [
+    "hospital_bill",
+    "policy_terms",
+    "copay_percentage",
+    "admissible_claim_amount",
+    "non_payable_items"
+  ],
+  "outputs": [
+    "customer_contribution",
+    "insurer_contribution"
+  ],
+  "calculation_basis": "admissible_claim_amount",
+  "dependencies": [
+    "hospitalization",
+    "claim_assessment",
+    "policy_conditions",
+    "admissible_claim_amount"
+  ],
+  "constraints": [
+    "Applies only if the policy includes copay.",
+    "Copay percentage must be applied as specified in the policy wording or policy schedule."
+  ],
+  "exceptions": [
+    "None unless explicitly waived by policy terms."
+  ],
+  "relationships": {
+    "depends_on": ["admissible_claim_amount", "claim_assessment"],
+    "related_to": ["deductible", "claim_settlement", "room_rent_limit", "non_payable_items"],
+    "commonly_confused_with": ["deductible"]
+  },
+  "misinterpretations": [
+    {
+      "misinterpretation": "Copay applies on the total hospital bill.",
+      "actual_meaning": "Copay applies on the admissible claim amount approved by the insurer."
+    },
+    {
+      "misinterpretation": "Copay is the only amount customer pays.",
+      "actual_meaning": "Customer may also pay non-payable expenses separately."
+    }
+  ],
+  "policy_examples": [
+    {
+      "scenario": "Hospital bill is ₹1,00,000, admissible claim is ₹90,000, and copay is 20%.",
+      "result": "Customer pays ₹10,000 non-payable amount plus ₹18,000 copay; insurer pays ₹72,000."
+    }
+  ],
+  "confidence": {
+    "canonical_confidence": 1.0,
+    "requires_review": false
+  },
+  "evidence": [
+    {
+      "evidence_id": "manual_golden_copay_example_v1",
+      "source_type": "golden_concept_design",
+      "note": "Created from project golden Copay example for Department V validation. Replace or supplement with policy evidence during Semantic Manufacturing Line implementation."
+    }
+  ],
+  "review_status": "approved_golden_asset",
+  "certification": {
+    "status": "golden_reference"
+  }
+}
