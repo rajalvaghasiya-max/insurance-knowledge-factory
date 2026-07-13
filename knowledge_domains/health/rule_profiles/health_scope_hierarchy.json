@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "domain": "health",
+  "purpose": "Canonical Health scope hierarchy for deterministic, evidence-preserving scope reconciliation.",
+  "scope_terms": {
+    "international_emergency_care": {
+      "parents": ["international_cover"],
+      "aliases": ["international_emergency_care_only"],
+      "inferred_health_cover": "international_emergency_care"
+    },
+    "doctor_consultation": {
+      "parents": ["outpatient_or_consultation_service"],
+      "aliases": [],
+      "inferred_health_cover": "doctor_consultation_cover"
+    },
+    "doctor_prescribed_investigations": {
+      "parents": ["diagnostic_service"],
+      "aliases": [],
+      "inferred_health_cover": "doctor_prescribed_investigations_cover"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Conditional Rule Evaluation Boundary",
+  "description": "Design-time contract only. It carries evaluation decisions and calculation readiness, not claim calculations or advice.",
+  "type": "object",
+  "required": ["trace_id", "rule_id", "source_artifact_path", "source_artifact_sha256", "scenario_id", "scenario_fingerprint", "applicability", "effect_readiness", "evaluator_id", "evaluator_version"],
+  "properties": {
+    "trace_id": {"type": "string", "minLength": 1},
+    "rule_id": {"type": "string", "minLength": 1},
+    "source_artifact_path": {"type": "string", "minLength": 1},
+    "source_artifact_sha256": {"type": "string", "minLength": 1},
+    "scenario_id": {"type": "string", "minLength": 1},
+    "scenario_fingerprint": {"type": "string", "minLength": 1},
+    "applicability": {"type": "object"},
+    "effect_readiness": {"type": "object"},
+    "evaluator_id": {"type": "string", "minLength": 1},
+    "evaluator_version": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

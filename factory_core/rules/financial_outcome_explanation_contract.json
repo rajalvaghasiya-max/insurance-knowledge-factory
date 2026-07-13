@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "capability": "financial_outcome_explanation_contract",
+  "input_requirements": [
+    "evidence-assembled conditional rule",
+    "applicability status applies",
+    "calculated fixed-percentage financial effect"
+  ],
+  "output_statuses": ["explainable", "not_explainable"],
+  "explicit_non_goals": [
+    "claim admissibility decision",
+    "claim settlement decision",
+    "recommendation or persuasion",
+    "LLM-generated explanation",
+    "allowed-set value selection"
+  ]
+}

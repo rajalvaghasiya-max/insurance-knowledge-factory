@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://policyscna.local/schemas/canonical-fact-evidence-model-v1.json",
+  "title": "PolicyScna Canonical Fact & Evidence Model v1",
+  "description": "Contract-level schema. Existing artifacts remain source systems until adapters are introduced.",
+  "type": "object",
+  "required": ["schema_version", "entities"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "entities": {
+      "type": "object",
+      "required": [
+        "insurer",
+        "product_identity",
+        "product_version",
+        "source_document",
+        "document_version",
+        "evidence_span",
+        "knowledge_assertion",
+        "publication_decision"
+      ],
+      "properties": {
+        "insurer": {"$ref": "#/$defs/insurer"},
+        "product_identity": {"$ref": "#/$defs/product_identity"},
+        "product_version": {"$ref": "#/$defs/product_version"},
+        "source_document": {"$ref": "#/$defs/source_document"},
+        "document_version": {"$ref": "#/$defs/document_version"},
+        "evidence_span": {"$ref": "#/$defs/evidence_span"},
+        "knowledge_assertion": {"$ref": "#/$defs/knowledge_assertion"},
+        "publication_decision": {"$ref": "#/$defs/publication_decision"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "insurer": {"type": "object", "required": ["insurer_id", "legal_name"], "properties": {"insurer_id": {"$ref": "#/$defs/id"}, "legal_name": {"$ref": "#/$defs/id"}, "insurer_type": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "product_identity": {"type": "object", "required": ["product_id", "insurer_id", "domain", "product_name"], "properties": {"product_id": {"$ref": "#/$defs/id"}, "insurer_id": {"$ref": "#/$defs/id"}, "domain": {"$ref": "#/$defs/id"}, "product_name": {"$ref": "#/$defs/id"}, "uin": {"type": ["string", "null"]}, "product_family_name": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "product_version": {"type": "object", "required": ["product_version_id", "product_id"], "properties": {"product_version_id": {"$ref": "#/$defs/id"}, "product_id": {"$ref": "#/$defs/id"}, "version_label": {"type": ["string", "null"]}, "effective_from": {"type": ["string", "null"]}, "effective_to": {"type": ["string", "null"]}, "lifecycle_status": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "source_document": {"type": "object", "required": ["source_document_id", "insurer_id", "document_type", "canonical_title"], "properties": {"source_document_id": {"$ref": "#/$defs/id"}, "insurer_id": {"$ref": "#/$defs/id"}, "document_type": {"$ref": "#/$defs/id"}, "canonical_title": {"$ref": "#/$defs/id"}, "product_version_id": {"type": ["string", "null"]}, "source_url": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "document_version": {"type": "object", "required": ["document_version_id", "source_document_id", "content_sha256", "captured_at"], "properties": {"document_version_id": {"$ref": "#/$defs/id"}, "source_document_id": {"$ref": "#/$defs/id"}, "content_sha256": {"$ref": "#/$defs/sha256"}, "captured_at": {"$ref": "#/$defs/id"}, "effective_from": {"type": ["string", "null"]}, "effective_to": {"type": ["string", "null"]}, "storage_locator": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "evidence_span": {"type": "object", "required": ["evidence_span_id", "document_version_id", "source_char_start", "source_char_end", "text_sha256", "extraction_method"], "properties": {"evidence_span_id": {"$ref": "#/$defs/id"}, "document_version_id": {"$ref": "#/$defs/id"}, "source_char_start": {"type": "integer", "minimum": 0}, "source_char_end": {"type": "integer", "minimum": 1}, "text_sha256": {"$ref": "#/$defs/sha256"}, "extraction_method": {"$ref": "#/$defs/id"}, "source_page": {"type": ["integer", "null"], "minimum": 1}}, "additionalProperties": false},
+    "knowledge_assertion": {"type": "object", "required": ["assertion_id", "product_version_id", "concept_id", "assertion_kind", "payload", "evidence_span_ids", "validation_status", "publication_status"], "properties": {"assertion_id": {"$ref": "#/$defs/id"}, "product_version_id": {"$ref": "#/$defs/id"}, "concept_id": {"$ref": "#/$defs/id"}, "assertion_kind": {"enum": ["scalar_fact", "conditional_rule"]}, "payload": {"type": "object"}, "evidence_span_ids": {"type": "array", "items": {"$ref": "#/$defs/id"}}, "validation_status": {"enum": ["candidate", "evidence_routed", "evidence_assembled", "needs_review", "verified", "rejected"]}, "publication_status": {"enum": ["unpublished", "authoritative", "superseded", "withdrawn"]}, "source_artifact_sha256": {"type": ["string", "null"], "pattern": "^[A-Fa-f0-9]{64}$"}}, "additionalProperties": false},
+    "publication_decision": {"type": "object", "required": ["publication_decision_id", "assertion_id", "decision_status", "decided_at", "decision_reason"], "properties": {"publication_decision_id": {"$ref": "#/$defs/id"}, "assertion_id": {"$ref": "#/$defs/id"}, "decision_status": {"enum": ["unpublished", "authoritative", "superseded", "withdrawn"]}, "decided_at": {"$ref": "#/$defs/id"}, "decision_reason": {"$ref": "#/$defs/id"}, "source_artifact_sha256": {"type": ["string", "null"], "pattern": "^[A-Fa-f0-9]{64}$"}, "supersedes_publication_decision_id": {"type": ["string", "null"]}}, "additionalProperties": false}
+  }
+}

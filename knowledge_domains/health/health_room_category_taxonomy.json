@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "domain": "health",
+  "purpose": "room_category_eligibility_only",
+  "categories": [
+    "general_ward",
+    "twin_sharing_ac_room",
+    "single_private_non_ac_room",
+    "single_private_ac_room",
+    "deluxe_private_ac_room",
+    "suite_room",
+    "intensive_care_unit"
+  ],
+  "guardrails": [
+    "ICU is outside the ordinary room-category hierarchy.",
+    "A potentially above entitlement result is not a financial deduction decision.",
+    "Unknown room labels remain indeterminate."
+  ]
+}
