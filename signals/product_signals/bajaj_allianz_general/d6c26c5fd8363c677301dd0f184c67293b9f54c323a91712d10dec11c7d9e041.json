@@ -1,20 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\d6c26c5fd8363c677301dd0f184c67293b9f54c323a91712d10dec11c7d9e041.json",
   "insurer_id": "bajaj_allianz_general",
   "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans.html",
   "page_title": "Health Insurance: Buy Medical Insurance Plans @₹15/day*",
   "content_hash": "d6c26c5fd8363c677301dd0f184c67293b9f54c323a91712d10dec11c7d9e041",
-  "page_intent": "article_or_product_related",
-  "extracted_at": "2026-06-07T11:46:07.348104+00:00",
-  "product_names": [
-    {
-      "name": "Health Insurance Plans",
-      "source": "url_slug",
-      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans.html"
-    }
-  ],
+  "page_intent": "product_listing",
+  "asset_scope": "category",
+  "classification_reason": "matched category URL marker; category override from URL marker",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.520567+00:00",
+  "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Comprehensive Health insurance",

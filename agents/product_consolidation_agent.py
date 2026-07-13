@@ -14,13 +14,13 @@ class ProductConsolidationAgent:
     Converts product signal files into canonical product-level records.
 
     Quality rules:
-    - Only uses page_intent = individual_product
-    - Only uses signals with product_names
+    - Only uses asset_scope = product_specific
+    - Only uses product-scoped signals with product_names
     - Keeps source URLs and evidence
     - Removes noisy/navigation/premium-only pseudo benefit records
     """
 
-    VERSION = "0.2"
+    VERSION = "0.3"
 
     def utc_now_iso(self) -> str:
         return datetime.now(timezone.utc).isoformat()
@@ -109,7 +109,12 @@ class ProductConsolidationAgent:
         }
 
     def is_eligible_signal(self, signal: dict) -> bool:
-        return signal.get("page_intent") == "individual_product" and bool(signal.get("product_names"))
+        """Allow only explicitly product-scoped, named source assets to consolidate."""
+        return (
+            signal.get("asset_scope") == "product_specific"
+            and signal.get("page_intent") == "individual_product"
+            and bool(signal.get("product_names"))
+        )
 
     def get_primary_product_name(self, signal: dict) -> str:
         product_names = signal.get("product_names", [])

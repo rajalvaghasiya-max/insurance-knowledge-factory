@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 from typing import Any, Dict, Iterable, List, Tuple
 
 from factory_sdk import stable_hash
@@ -19,9 +20,33 @@ class LearningPathBuilder:
     def build_paths(self, primitive_collection: Dict[str, Any]) -> List[LearningPath]:
         primitives = primitive_collection.get("primitives", [])
         primitive_index = self._index_primitives(primitives)
+
+        # A buying-decision path is valid only when an explicitly governed
+        # suitability primitive exists. Generic concept education must not
+        # manufacture recommendation-layer curriculum by implication.
+        templates = [
+            template
+            for template in STANDARD_LEARNING_PATH_TEMPLATES
+            if template.path_type != "buying_decision"
+            or "suitability" in primitive_index
+        ]
+        allowed_path_types = {template.path_type for template in templates}
+
         paths: List[LearningPath] = []
-        for template in STANDARD_LEARNING_PATH_TEMPLATES:
-            path = self._build_path_from_template(primitive_collection, primitive_index, template)
+        for template in templates:
+            path = self._build_path_from_template(
+                primitive_collection,
+                primitive_index,
+                template,
+            )
+            path = replace(
+                path,
+                recommended_next_paths=[
+                    path_type
+                    for path_type in path.recommended_next_paths
+                    if path_type in allowed_path_types
+                ],
+            )
             paths.append(path)
         return paths
 
@@ -36,12 +61,21 @@ class LearningPathBuilder:
         warnings: List[str] = []
         steps: List[LearningPathStep] = []
 
+        soft_optional_types = {
+            "suitability",
+            "advisor_note",
+            "source_example",
+        }
+
         for primitive_type in template.primitive_sequence:
             primitive = primitive_index.get(primitive_type)
             if primitive:
                 steps.append(self._step(len(steps) + 1, primitive, mandatory=True))
-            else:
-                warnings.append(f"Missing mandatory primitive type for path {template.path_type}: {primitive_type}")
+            elif primitive_type not in soft_optional_types:
+                warnings.append(
+                    f"Missing mandatory primitive type for path "
+                    f"{template.path_type}: {primitive_type}"
+                )
 
         for primitive_type in template.optional_primitive_sequence:
             primitive = primitive_index.get(primitive_type)
@@ -58,6 +92,16 @@ class LearningPathBuilder:
             prefix="lpath",
         )
 
+        success_criteria = list(template.success_criteria)
+        if "suitability" not in primitive_index:
+            success_criteria = [
+                criterion.replace(
+                    "define, explain, calculate, compare, and teach",
+                    "define, explain, calculate, and teach",
+                )
+                for criterion in success_criteria
+            ]
+
         return LearningPath(
             path_id=path_id,
             path_type=template.path_type,
@@ -70,7 +114,7 @@ class LearningPathBuilder:
             estimated_duration_seconds=template.estimated_duration_seconds,
             difficulty=template.difficulty,
             steps=steps,
-            success_criteria=template.success_criteria,
+            success_criteria=success_criteria,
             recommended_next_paths=template.recommended_next_paths,
             tags=template.tags,
             warnings=warnings,
@@ -96,3 +140,4 @@ class LearningPathBuilder:
             if primitive_type and primitive_type not in index:
                 index[primitive_type] = primitive
         return index
+

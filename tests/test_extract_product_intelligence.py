@@ -32,10 +32,9 @@ def test_extract_metadata_ignores_placeholder_uin_and_captures_valid_uin():
 
     metadata = extractor.extract_metadata(pages)
 
-    assert metadata == {
-        "product_name": "Activ One",
-        "uin": "ABC1234567V01",
-    }
+    assert metadata["product_name"] == "Activ One"
+    assert metadata["uin"] == "ABC1234567V01"
+    assert metadata["uin_candidate"]["source"]["page_number"] == 2
 
 
 def test_extract_eligibility_rejects_impossible_adult_age_range():

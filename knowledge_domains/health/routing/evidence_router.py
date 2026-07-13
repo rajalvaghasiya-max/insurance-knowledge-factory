@@ -86,6 +86,14 @@ class EvidenceRouter:
             "brochure",
             "webpage",
         ],
+        "initial_waiting_period": [
+            "policy_wording",
+            "customer_information_sheet",
+            "cis",
+            "prospectus",
+            "brochure",
+            "webpage",
+        ],
         "room_rent": [
             "policy_wording",
             "customer_information_sheet",
@@ -164,6 +172,16 @@ class EvidenceRouter:
             "waiting period",
             "pre-existing condition",
             "pre existing condition",
+        ],
+        "initial_waiting_period": [
+            "initial waiting period",
+            "initial wait",
+            "first 30 days",
+            "first 60 days",
+            "first 90 days",
+            "accidental injuries",
+            "accidental hospitalization",
+            "excluding accidental hospitalization",
         ],
         "specific_disease_waiting_period": [
             "specific disease",

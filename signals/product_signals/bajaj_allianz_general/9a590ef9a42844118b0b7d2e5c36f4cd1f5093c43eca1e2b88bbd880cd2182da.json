@@ -1,20 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da.json",
   "insurer_id": "bajaj_allianz_general",
   "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
   "page_title": "My Health Care Plan Coverage & Benefits | Bajaj General",
   "content_hash": "9a590ef9a42844118b0b7d2e5c36f4cd1f5093c43eca1e2b88bbd880cd2182da",
-  "page_intent": "individual_product",
-  "extracted_at": "2026-06-07T11:46:07.322074+00:00",
-  "product_names": [
-    {
-      "name": "My Health Care Plan",
-      "source": "url_slug",
-      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html"
-    }
-  ],
+  "page_intent": "product_listing",
+  "asset_scope": "category",
+  "classification_reason": "matched category URL marker; category override from URL marker",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.478166+00:00",
+  "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "My Health Care Plan Coverage & Benefits | Bajaj General",
@@ -283,76 +281,8 @@
       "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
     }
   ],
-  "sum_insured_values": [
-    {
-      "value": "INR 1 Lac",
-      "reason": "sum_insured_context",
-      "heading": "Baby Care (SI)",
-      "evidence": "Baby Care (SI)\nINR 1 Lac for SI up to 4 Lacs | 5 Lacs for SI 5 to 10 Lacs | 10 Lacs for SI 15 to 50 Lacs | 15 Lacs for SI above 50 Lacs"
-    },
-    {
-      "value": "INR 10 Lacs",
-      "reason": "sum_insured_context",
-      "heading": "Airlift Cover",
-      "evidence": "Airlift Cover\nINR 10 Lacs for SI 50 Lacs to 1 Cr. | 20 Lacs for SI above 1 Cr."
-    },
-    {
-      "value": "INR 3 Lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 3 Lacs to 5 Cr.\nINR 3 Lacs to 1 Cr."
-    },
-    {
-      "value": "Rs. 3 lakhs",
-      "reason": "sum_insured_context",
-      "heading": "sum insured",
-      "evidence": "sum insured\noptions ranging from Rs. 3 lakhs to Rs. 5 crores. Choose an adequate sum insured that suits your budget."
-    },
-    {
-      "value": "Rs. 5 crores",
-      "reason": "sum_insured_context",
-      "heading": "sum insured",
-      "evidence": "sum insured\noptions ranging from Rs. 3 lakhs to Rs. 5 crores. Choose an adequate sum insured that suits your budget."
-    },
-    {
-      "value": "₹1 crore",
-      "reason": "sum_insured_context",
-      "heading": "What are the Sum Insured options available under My Health Care Plan?",
-      "evidence": "What are the Sum Insured options available under My Health Care Plan?\nOptions range from ₹3 lakh to ₹75 lakh and ₹1 crore to ₹5 crore. Available choices include ₹3, ₹4, ₹5, ₹7.5, ₹10, ₹15, ₹20, ₹25, ₹30, ₹35, ₹40, ₹45, ₹50, ₹75 lakh, and ₹1, ₹2, ₹3, ₹4, ₹5 crore.\nCan I migrate or port my existing health insurance policy to My Health Care Plan?\nYes. You can port or migrate your existing policy under IRDAI norms. Waiting periods for pre-existing diseases may be credited, provided the previous policy was continuous and underwriting approval is granted."
-    },
-    {
-      "value": "₹3 lakh",
-      "reason": "sum_insured_context",
-      "heading": "What are the Sum Insured options available under My Health Care Plan?",
-      "evidence": "What are the Sum Insured options available under My Health Care Plan?\nOptions range from ₹3 lakh to ₹75 lakh and ₹1 crore to ₹5 crore. Available choices include ₹3, ₹4, ₹5, ₹7.5, ₹10, ₹15, ₹20, ₹25, ₹30, ₹35, ₹40, ₹45, ₹50, ₹75 lakh, and ₹1, ₹2, ₹3, ₹4, ₹5 crore.\nCan I migrate or port my existing health insurance policy to My Health Care Plan?\nYes. You can port or migrate your existing policy under IRDAI norms. Waiting periods for pre-existing diseases may be credited, provided the previous policy was continuous and underwriting approval is granted."
-    },
-    {
-      "value": "₹5 crore",
-      "reason": "sum_insured_context",
-      "heading": "What are the Sum Insured options available under My Health Care Plan?",
-      "evidence": "What are the Sum Insured options available under My Health Care Plan?\nOptions range from ₹3 lakh to ₹75 lakh and ₹1 crore to ₹5 crore. Available choices include ₹3, ₹4, ₹5, ₹7.5, ₹10, ₹15, ₹20, ₹25, ₹30, ₹35, ₹40, ₹45, ₹50, ₹75 lakh, and ₹1, ₹2, ₹3, ₹4, ₹5 crore.\nCan I migrate or port my existing health insurance policy to My Health Care Plan?\nYes. You can port or migrate your existing policy under IRDAI norms. Waiting periods for pre-existing diseases may be credited, provided the previous policy was continuous and underwriting approval is granted."
-    },
-    {
-      "value": "₹5 lakh",
-      "reason": "sum_insured_context",
-      "heading": "Is maternity and newborn baby coverage available in this plan?",
-      "evidence": "Is maternity and newborn baby coverage available in this plan?\nYes. Maternity coverage is available for sum insured of ₹5 lakh and above, subject to a waiting period. It includes delivery expenses, surrogacy-related costs, complications from assisted reproductive technologies, and newborn care from birth if initiated within 90 days."
-    },
-    {
-      "value": "₹75 lakh",
-      "reason": "sum_insured_context",
-      "heading": "What are the Sum Insured options available under My Health Care Plan?",
-      "evidence": "What are the Sum Insured options available under My Health Care Plan?\nOptions range from ₹3 lakh to ₹75 lakh and ₹1 crore to ₹5 crore. Available choices include ₹3, ₹4, ₹5, ₹7.5, ₹10, ₹15, ₹20, ₹25, ₹30, ₹35, ₹40, ₹45, ₹50, ₹75 lakh, and ₹1, ₹2, ₹3, ₹4, ₹5 crore.\nCan I migrate or port my existing health insurance policy to My Health Care Plan?\nYes. You can port or migrate your existing policy under IRDAI norms. Waiting periods for pre-existing diseases may be credited, provided the previous policy was continuous and underwriting approval is granted."
-    }
-  ],
-  "premium_values": [
-    {
-      "value": "INR 907",
-      "reason": "premium_context_current_product",
-      "heading": "Respect Rider (Senior Care)",
-      "evidence": "Respect Rider (Senior Care)\nTooltip text\nEmergency assistance for senior citizens\nDesigned specifically for senior citizens\nStarting from\nINR 907\n+ GST"
-    }
-  ],
+  "sum_insured_values": [],
+  "premium_values": [],
   "benefit_amount_values": [],
   "tax_amount_values": [],
   "discount_values": [],

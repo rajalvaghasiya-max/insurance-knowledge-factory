@@ -94,9 +94,18 @@ class LearningPrimitiveManufacturingLine(FactoryProductionLine):
         )
         return collection.to_dict()
 
-    def _build_primitives(self, meaning: Dict[str, Any], evidence_refs: List[str]) -> List[LearningPrimitive]:
+    def _build_primitives(
+        self,
+        meaning: Dict[str, Any],
+        evidence_refs: List[str],
+    ) -> List[LearningPrimitive]:
         concept_id = meaning["concept_id"]
-        if concept_id == "copay":
+        governance = meaning.get("governance", {})
+        is_governed_generic_concept = (
+            isinstance(governance, dict)
+            and bool(governance.get("source_governed_record_id"))
+        )
+        if concept_id == "copay" and not is_governed_generic_concept:
             return self._build_copay_primitives(meaning, evidence_refs)
         return self._build_generic_primitives(meaning, evidence_refs)
 
@@ -323,38 +332,237 @@ class LearningPrimitiveManufacturingLine(FactoryProductionLine):
             )
         return primitives
 
-    def _build_generic_primitives(self, meaning: Dict[str, Any], evidence_refs: List[str]) -> List[LearningPrimitive]:
+    def _build_generic_primitives(
+        self,
+        meaning: Dict[str, Any],
+        evidence_refs: List[str],
+    ) -> List[LearningPrimitive]:
+        """Build field-driven primitives for any governed meaning asset.
+
+        This path restructures only content already present in the meaning asset.
+        It does not add personalized advice, suitability judgments,
+        recommendations, claim decisions, or final customer-facing answers.
+        """
         concept_id = meaning["concept_id"]
         concept_name = meaning["canonical_name"]
-        return [
+        confidence_value = (
+            float(meaning.get("confidence", {}).get("canonical_confidence", 0.8))
+            if isinstance(meaning.get("confidence"), dict)
+            else 0.8
+        )
+
+        primitives: List[LearningPrimitive] = [
             self._primitive(
                 concept_id=concept_id,
                 concept_name=concept_name,
                 primitive_type="definition",
                 learning_objective=f"Customer should be able to define {concept_name}.",
-                content={"text": meaning.get("core_meaning", "")},
+                content={
+                    "text": meaning.get("core_meaning", ""),
+                    "canonical_meaning": meaning.get("core_meaning", ""),
+                },
                 delivery_tags=["consumer", "advisor", "learning"],
                 evidence_refs=evidence_refs,
                 source_meaning_fields=["core_meaning"],
-                confidence=float(meaning.get("confidence", {}).get("canonical_confidence", 0.8))
-                if isinstance(meaning.get("confidence"), dict)
-                else 0.8,
+                confidence=confidence_value,
+            ),
+            self._primitive(
+                concept_id=concept_id,
+                concept_name=concept_name,
+                primitive_type="meaning",
+                learning_objective=(
+                    f"Customer understands how {concept_name} operates under policy terms."
+                ),
+                content={
+                    "text": meaning.get("functional_behaviour", ""),
+                    "calculation_basis": meaning.get("calculation_basis"),
+                    "trigger": meaning.get("trigger"),
+                },
+                delivery_tags=["consumer", "advisor", "claim", "learning"],
+                evidence_refs=evidence_refs,
+                source_meaning_fields=[
+                    "functional_behaviour",
+                    "calculation_basis",
+                    "trigger",
+                ],
+                confidence=confidence_value,
             ),
             self._primitive(
                 concept_id=concept_id,
                 concept_name=concept_name,
                 primitive_type="purpose",
                 learning_objective=f"Customer understands why {concept_name} exists.",
-                content={"text": meaning.get("business_purpose", "")},
+                content={
+                    "text": meaning.get("business_purpose", ""),
+                    "business_purpose": meaning.get("business_purpose", ""),
+                },
                 delivery_tags=["consumer", "advisor", "learning"],
                 evidence_refs=evidence_refs,
                 source_meaning_fields=["business_purpose"],
-                confidence=float(meaning.get("confidence", {}).get("canonical_confidence", 0.8))
-                if isinstance(meaning.get("confidence"), dict)
-                else 0.8,
+                confidence=confidence_value,
+            ),
+            self._primitive(
+                concept_id=concept_id,
+                concept_name=concept_name,
+                primitive_type="money_flow",
+                learning_objective=(
+                    f"Customer understands the sequence in which {concept_name} "
+                    "affects eligible insurer assessment."
+                ),
+                content={
+                    "inputs": meaning.get("inputs", []),
+                    "outputs": meaning.get("outputs", []),
+                    "functional_behaviour": meaning.get(
+                        "functional_behaviour", ""
+                    ),
+                    "visual_hint": "process_flow_diagram",
+                },
+                delivery_tags=["consumer", "advisor", "claim", "visual"],
+                evidence_refs=evidence_refs,
+                source_meaning_fields=[
+                    "inputs",
+                    "outputs",
+                    "functional_behaviour",
+                ],
+                difficulty="intermediate",
+                confidence=confidence_value,
             ),
         ]
 
+        examples = meaning.get("policy_examples", [])
+        if isinstance(examples, list) and examples:
+            primitives.append(
+                self._primitive(
+                    concept_id=concept_id,
+                    concept_name=concept_name,
+                    primitive_type="worked_example",
+                    learning_objective=(
+                        f"Customer can follow a governed example of {concept_name}."
+                    ),
+                    content={
+                        "policy_examples": examples,
+                        "calculation_basis": meaning.get("calculation_basis"),
+                    },
+                    delivery_tags=[
+                        "consumer",
+                        "advisor",
+                        "claim",
+                        "calculation",
+                    ],
+                    evidence_refs=evidence_refs,
+                    source_meaning_fields=[
+                        "policy_examples",
+                        "calculation_basis",
+                        "inputs",
+                        "outputs",
+                    ],
+                    difficulty="intermediate",
+                    confidence=confidence_value,
+                )
+            )
+
+        misinterpretations = meaning.get("misinterpretations", [])
+        if isinstance(misinterpretations, list) and misinterpretations:
+            primitives.append(
+                self._primitive(
+                    concept_id=concept_id,
+                    concept_name=concept_name,
+                    primitive_type="misconception",
+                    learning_objective=(
+                        f"Customer avoids common misunderstandings about "
+                        f"{concept_name}."
+                    ),
+                    content={
+                        "source_misinterpretations": misinterpretations,
+                        "canonical_meaning": meaning.get("core_meaning", ""),
+                    },
+                    delivery_tags=[
+                        "consumer",
+                        "advisor",
+                        "claim",
+                        "warning",
+                    ],
+                    evidence_refs=evidence_refs,
+                    source_meaning_fields=[
+                        "misinterpretations",
+                        "core_meaning",
+                    ],
+                    confidence=confidence_value,
+                )
+            )
+
+        relationships = meaning.get("relationships", {})
+        related: List[str] = []
+        if isinstance(relationships, dict):
+            for key in (
+                "related_to",
+                "commonly_confused_with",
+                "depends_on",
+                "subset",
+            ):
+                value = relationships.get(key, [])
+                if isinstance(value, list):
+                    related.extend(str(item) for item in value)
+                elif isinstance(value, str):
+                    related.append(value)
+        related = sorted(set(item for item in related if item))
+        if related:
+            primitives.append(
+                self._primitive(
+                    concept_id=concept_id,
+                    concept_name=concept_name,
+                    primitive_type="related_concepts",
+                    learning_objective=(
+                        f"Customer can connect {concept_name} with nearby "
+                        "insurance concepts."
+                    ),
+                    content={
+                        "related_concepts": related,
+                        "source_relationships": relationships,
+                    },
+                    delivery_tags=["consumer", "advisor", "learning"],
+                    evidence_refs=evidence_refs,
+                    source_meaning_fields=["relationships"],
+                    confidence=confidence_value,
+                )
+            )
+
+        constraints = meaning.get("constraints", [])
+        exceptions = meaning.get("exceptions", [])
+        if constraints or exceptions:
+            primitives.append(
+                self._primitive(
+                    concept_id=concept_id,
+                    concept_name=concept_name,
+                    primitive_type="faq",
+                    learning_objective=(
+                        f"Customer understands the boundaries of {concept_name}."
+                    ),
+                    content={
+                        "question": (
+                            f"Does {concept_name} always work the same way?"
+                        ),
+                        "answer": (
+                            "No. The applicable policy wording, schedule, "
+                            "admissibility, limits, and documented exceptions "
+                            "must be checked."
+                        ),
+                        "constraints": constraints,
+                        "exceptions": exceptions,
+                    },
+                    delivery_tags=[
+                        "consumer",
+                        "advisor",
+                        "claim",
+                        "faq",
+                    ],
+                    evidence_refs=evidence_refs,
+                    source_meaning_fields=["constraints", "exceptions"],
+                    confidence=confidence_value,
+                )
+            )
+
+        return primitives
     def quality_check(
         self, raw_input: Dict[str, Any], manufactured_asset: Dict[str, Any]
     ) -> Tuple[float, List[QualityWarning], List[str]]:
@@ -384,15 +592,34 @@ class LearningPrimitiveManufacturingLine(FactoryProductionLine):
             errors.append(f"Primitives missing traceability: {missing_traceability}")
             quality_score = min(quality_score, 70.0)
 
-        if raw_input.get("concept_id") == "copay" and len(primitives) < 10:
+        governance = raw_input.get("governance", {})
+        is_governed_generic_concept = (
+            isinstance(governance, dict)
+            and bool(governance.get("source_governed_record_id"))
+        )
+
+        if (
+            raw_input.get("concept_id") == "copay"
+            and not is_governed_generic_concept
+            and len(primitives) < 10
+        ):
             warnings.append(
                 QualityWarning(
                     type="golden_concept_coverage",
                     severity="medium",
-                    message="Copay golden concept should normally produce at least 10 primitives.",
+                    message=(
+                        "Legacy Copay golden concept should normally produce "
+                        "at least 10 primitives."
+                    ),
                 )
             )
             quality_score = min(quality_score, 90.0)
+        if is_governed_generic_concept and len(primitives) < 6:
+            errors.append(
+                "Governed generic concept meaning assets must manufacture at least "
+                "6 traceable learning primitives."
+            )
+            quality_score = min(quality_score, 60.0)
 
         return quality_score, warnings, errors
 
@@ -472,3 +699,4 @@ class LearningPrimitiveManufacturingLine(FactoryProductionLine):
                 else:
                     refs.append(str(item))
         return sorted(set(refs))
+

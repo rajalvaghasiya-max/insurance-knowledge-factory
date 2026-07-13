@@ -22,13 +22,20 @@ class LearningPathValidator:
             self._validate_path(path, primitive_ids, warnings, errors)
 
         path_types = {path.get("path_type") for path in paths}
+        primitive_types = {
+            primitive.get("primitive_type")
+            for primitive in primitive_collection.get("primitives", [])
+        }
+
         required_path_types = {
             "quick_understanding",
             "claim_understanding",
-            "buying_decision",
             "advisor_teaching",
             "deep_learning",
         }
+        if "suitability" in primitive_types:
+            required_path_types.add("buying_decision")
+
         missing = sorted(required_path_types - path_types)
         if missing:
             errors.append(f"Missing standard learning paths: {missing}")
@@ -49,6 +56,12 @@ class LearningPathValidator:
             errors.append(f"Path missing target_persona: {path_type}")
         if not path.get("success_criteria"):
             warnings.append(f"Path missing success_criteria: {path_type}")
+
+        for path_warning in path.get("warnings", []):
+            if str(path_warning).strip():
+                warnings.append(
+                    f"Path {path_type}: {str(path_warning).strip()}"
+                )
 
         steps = path.get("steps", [])
         if not steps:
@@ -71,3 +84,4 @@ class LearningPathValidator:
 
             if not step.get("learning_objective"):
                 warnings.append(f"Path {path_type} step missing learning objective: {primitive_id}")
+

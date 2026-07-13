@@ -11,9 +11,11 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=1, help="Maximum jobs to process from factory queue.")
     parser.add_argument("--dry-run", action="store_true", help="Process without writing outputs or updating registry.")
     parser.add_argument("--print-json", action="store_true", help="Print full JSON result.")
+    parser.add_argument("--registry-path", default=None, help="Optional evidence/factory input registry path.")
+    parser.add_argument("--factory-dir", default=None, help="Optional factory run directory.")
 
     args = parser.parse_args()
-    engine = DocumentProcessingEngine()
+    engine = DocumentProcessingEngine(registry_path=args.registry_path, factory_dir=args.factory_dir)
     result = engine.run_from_queue(limit=args.limit, write=not args.dry_run)
 
     print()
@@ -21,6 +23,9 @@ def main() -> None:
     print("DEPARTMENT III — DOCUMENT PROCESSING ENGINE v2.0")
     print("=" * 78)
     print(f"Version     : {result['document_processing_engine_version']}")
+    print(f"Registry    : {engine.factory_manager.paths.registry_path}")
+    print(f"Queue       : {engine.factory_manager.paths.queue_path}")
+    print(f"Factory dir : {engine.factory_manager.paths.factory_dir}")
     print(f"Jobs        : {result['job_count']}")
     print(f"Completed   : {result['completed_count']}")
     print(f"Certified   : {result['certified_count']}")

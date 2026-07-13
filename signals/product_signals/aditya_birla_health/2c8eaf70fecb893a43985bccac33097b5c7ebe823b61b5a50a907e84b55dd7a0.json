@@ -1,12 +1,15 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0.json",
   "insurer_id": "aditya_birla_health",
   "url": "https://www.adityabirlacapital.com/healthinsurance/activ-yuva-homepage",
   "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
   "content_hash": "2c8eaf70fecb893a43985bccac33097b5c7ebe823b61b5a50a907e84b55dd7a0",
   "page_intent": "individual_product",
-  "extracted_at": "2026-06-07T11:46:07.188545+00:00",
+  "asset_scope": "product_specific",
+  "classification_reason": "matched approved individual-product URL marker; mapped from page intent 'individual_product'",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.211506+00:00",
   "product_names": [
     {
       "name": "Activ Yuva",
@@ -15,6 +18,7 @@
     }
   ],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "HealthReturns™ with EAT.MOVE.HEAL + Maternity Cover + OPD Cover",

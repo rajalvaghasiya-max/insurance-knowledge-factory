@@ -454,9 +454,9 @@ class KnowledgeComponentScanner:
 class KnowledgeComponentScannerRunner:
     """File-oriented runner used by scripts/run_knowledge_component_scanner.py."""
 
-    def __init__(self, project_root: str | Path = ".") -> None:
+    def __init__(self, project_root: str | Path = ".", output_dir: str | Path | None = None) -> None:
         self.project_root = Path(project_root)
-        self.output_dir = self.project_root / "knowledge" / "factory" / "knowledge_components"
+        self.output_dir = Path(output_dir) if output_dir is not None else self.project_root / "knowledge" / "factory" / "knowledge_components"
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.scanner = KnowledgeComponentScanner()
 

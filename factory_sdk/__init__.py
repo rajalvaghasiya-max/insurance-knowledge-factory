@@ -14,8 +14,12 @@ from .factory_sdk_models import (
     to_plain_data,
     utc_now_iso,
 )
+
 from .core import (
+    AssetDisposition,
     AssetStatus,
+    AssetTrustBasis,
+    RuntimeReadiness,
     CertificationGateResult,
     FactoryAsset,
     FactoryCertification,
@@ -43,7 +47,10 @@ __all__ = [
     "QualityWarning",
     "to_plain_data",
     "utc_now_iso",
+    "AssetDisposition",
     "AssetStatus",
+    "AssetTrustBasis",
+    "RuntimeReadiness",
     "CertificationGateResult",
     "FactoryAsset",
     "FactoryCertification",

@@ -7,9 +7,10 @@ from pathlib import Path
 from typing import Any
 
 from config.settings import BASE_DIR
+from agents.uin_candidate_extractor import UinCandidateExtractor
 
 
-EXTRACTOR_VERSION = "0.3"
+EXTRACTOR_VERSION = "0.4"
 
 SOURCE_PRIORITY = {
     "metadata": ["customer_information_sheet", "prospectus", "policy_wording", "brochure"],
@@ -272,21 +273,7 @@ def make_fact(
     return fact
     
 def extract_metadata(pages: list[dict[str, Any]]) -> dict[str, Any]:
-    """
-    Metadata Intelligence v0.2
-
-    Goals:
-    - Extract product_name.
-    - Extract real IRDAI UIN.
-    - Ignore placeholder UIN values like XXXXXXXXXXXXXX.
-    - Continue scanning all pages until a valid UIN is found.
-    - Support formats like:
-        Product UIN: ADIHLIP24097V012324
-        UIN : SHAHLIP26044V092526
-        UIN No. 121N105V01
-        Unique Identification No: XXXXX
-    """
-
+    """Extract product metadata and preserve provenance for the selected UIN candidate."""
     ordered_pages = sorted(
         pages,
         key=lambda p: (
@@ -296,7 +283,8 @@ def extract_metadata(pages: list[dict[str, Any]]) -> dict[str, Any]:
     )
 
     product_name = None
-    uin = None
+    selected_uin_candidate = None
+    uin_extractor = UinCandidateExtractor()
 
     name_patterns = [
         r"Product\s+Name\s*:\s*([^,\n|]+)",
@@ -304,37 +292,6 @@ def extract_metadata(pages: list[dict[str, Any]]) -> dict[str, Any]:
         r"(Activ\s+One)",
     ]
 
-    uin_patterns = [
-        r"Product\s+UIN\s*[:\-]?\s*([A-Z0-9]{8,30})",
-        r"UIN\s+No\.?\s*[:\-]?\s*([A-Z0-9]{8,30})",
-        r"UIN\s*[:\-]?\s*([A-Z0-9]{8,30})",
-        r"Unique\s+Identification\s+No\.?\s*[:\-]?\s*([A-Z0-9]{8,30})",
-    ]
-
-    def valid_uin(candidate: str | None) -> bool:
-        if not candidate:
-            return False
-
-        candidate = candidate.strip().upper()
-
-        if "XXXXX" in candidate:
-            return False
-
-        if not re.match(r"^[A-Z0-9]{8,30}$", candidate):
-            return False
-
-        if not re.search(r"[A-Z]", candidate):
-            return False
-
-        if not re.search(r"\d", candidate):
-            return False
-
-        if not re.search(r"V\d{2,}", candidate):
-            return False
-
-        return True
-
-    # Scan all pages. Do not stop after placeholder UIN.
     for page in ordered_pages:
         text = page.get("text", "")
 
@@ -345,26 +302,18 @@ def extract_metadata(pages: list[dict[str, Any]]) -> dict[str, Any]:
                     product_name = normalize(match.group(1))
                     break
 
-        if not uin:
-            for pattern in uin_patterns:
-                matches = re.findall(pattern, text, re.I)
+        if selected_uin_candidate is None:
+            candidates = uin_extractor.extract(text, source=source_ref(page))
+            if candidates:
+                selected_uin_candidate = candidates[0]
 
-                for candidate in matches:
-                    candidate = candidate.strip().upper()
-
-                    if valid_uin(candidate):
-                        uin = candidate
-                        break
-
-                if uin:
-                    break
-
-        if product_name and uin:
+        if product_name and selected_uin_candidate:
             break
 
     return {
         "product_name": product_name,
-        "uin": uin,
+        "uin": selected_uin_candidate["uin"] if selected_uin_candidate else None,
+        "uin_candidate": selected_uin_candidate,
     }
 
 

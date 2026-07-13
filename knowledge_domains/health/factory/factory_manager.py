@@ -63,12 +63,21 @@ class FactoryManager:
         "published": "Knowledge Publisher",
     }
 
-    def __init__(self, registry_path: Path | None = None):
+    def __init__(self, registry_path: Path | None = None, factory_dir: Path | None = None):
         self.registry = EvidenceRegistry(registry_path=registry_path)
-        self.paths = self.get_factory_paths(self.registry.paths.registry_path)
+        self.paths = self.get_factory_paths(self.registry.paths.registry_path, factory_dir=factory_dir)
 
-    def get_factory_paths(self, registry_path: Path) -> FactoryPaths:
-        factory_dir = BASE_DIR / "knowledge" / "factory"
+    def get_factory_paths(self, registry_path: Path, factory_dir: Path | None = None) -> FactoryPaths:
+        """Resolve factory paths inside the project root.
+
+        Command-line callers commonly provide a relative --factory-dir.  Resolve it
+        against BASE_DIR once so every downstream engine writes absolute paths and
+        can safely derive project-relative provenance paths.
+        """
+        configured_dir = Path(factory_dir) if factory_dir is not None else BASE_DIR / "knowledge" / "factory"
+        if not configured_dir.is_absolute():
+            configured_dir = BASE_DIR / configured_dir
+        factory_dir = configured_dir.resolve()
         return FactoryPaths(
             factory_dir=factory_dir,
             queue_path=factory_dir / "job_queue.json",
@@ -267,6 +276,19 @@ class FactoryManager:
             "relative_path": doc.get("relative_path"),
             "path": doc.get("path"),
             "document_hash": doc.get("document_hash"),
+            "source_document_id": doc.get("source_document_id"),
+            "source_type": doc.get("source_type"),
+            "source_url": doc.get("source_url"),
+            "source_page_url": doc.get("source_page_url"),
+            "raw_evidence_relative_path": doc.get("raw_evidence_relative_path"),
+            "raw_evidence_path": doc.get("raw_evidence_path"),
+            "parse_id": doc.get("parse_id"),
+            "parse_artifact_hash": doc.get("parse_artifact_hash"),
+            "parser_version": doc.get("parser_version"),
+            "quality_audit_id": doc.get("quality_audit_id"),
+            "quality_status": doc.get("quality_status"),
+            "processing_input_hash": doc.get("processing_input_hash"),
+            "registry_version": self.registry.VERSION,
             "status": "planned",
             "planned_at": self.utc_now(),
             "reason": self.job_reason(doc, stage),

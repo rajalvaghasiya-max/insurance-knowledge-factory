@@ -1,20 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\ff22461fb2954dcee811e2865a90accc46e562f50a7ad49947f603ecef04edad.json",
   "insurer_id": "bajaj_allianz_general",
   "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html",
   "page_title": "Buy Family Health Insurance Plans Online in India 2026",
   "content_hash": "ff22461fb2954dcee811e2865a90accc46e562f50a7ad49947f603ecef04edad",
-  "page_intent": "individual_product",
-  "extracted_at": "2026-06-07T11:46:07.372069+00:00",
-  "product_names": [
-    {
-      "name": "Family Health Insurance",
-      "source": "url_slug",
-      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html"
-    }
-  ],
+  "page_intent": "product_listing",
+  "asset_scope": "category",
+  "classification_reason": "matched category URL marker; category override from URL marker",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.552590+00:00",
+  "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Preventive Check-ups",
@@ -293,85 +291,10 @@
       "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
     }
   ],
-  "sum_insured_values": [
-    {
-      "value": "INR 1 Lakh",
-      "reason": "sum_insured_context",
-      "heading": "Sum Insured Options",
-      "evidence": "Sum Insured Options\nINR 1 Lakh to INR 25 Lakhs\nINR 50,000 to INR 10 Lakhs"
-    },
-    {
-      "value": "INR 10 Lakhs",
-      "reason": "sum_insured_context",
-      "heading": "Sum Insured Options",
-      "evidence": "Sum Insured Options\nINR 1 Lakh to INR 25 Lakhs\nINR 50,000 to INR 10 Lakhs"
-    },
-    {
-      "value": "INR 25 Lakhs",
-      "reason": "sum_insured_context",
-      "heading": "Sum Insured Options",
-      "evidence": "Sum Insured Options\nINR 1 Lakh to INR 25 Lakhs\nINR 50,000 to INR 10 Lakhs"
-    },
-    {
-      "value": "INR 50,000",
-      "reason": "sum_insured_context",
-      "heading": "Sum Insured Options",
-      "evidence": "Sum Insured Options\nINR 1 Lakh to INR 25 Lakhs\nINR 50,000 to INR 10 Lakhs"
-    },
-    {
-      "value": "₹1 crore",
-      "reason": "sum_insured_context",
-      "heading": "3. Multiple Sum Insured Options",
-      "evidence": "3. Multiple Sum Insured Options\n: Enjoy the flexibility to choose between 3 plan variants along with the Sum Insured options ranging from ₹1.5 lakh to ₹1 crore."
-    },
-    {
-      "value": "₹1.5 lakh",
-      "reason": "sum_insured_context",
-      "heading": "3. Multiple Sum Insured Options",
-      "evidence": "3. Multiple Sum Insured Options\n: Enjoy the flexibility to choose between 3 plan variants along with the Sum Insured options ranging from ₹1.5 lakh to ₹1 crore."
-    }
-  ],
+  "sum_insured_values": [],
   "premium_values": [],
-  "benefit_amount_values": [
-    {
-      "value": "₹500",
-      "reason": "benefit_amount_context",
-      "heading": "13. Daily Cash Benefit",
-      "evidence": "13. Daily Cash Benefit\n: A daily cash benefit of ₹500 per day, for up to 10 days during each policy year, will be payable as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy for an admissible claim."
-    },
-    {
-      "value": "₹7500",
-      "reason": "benefit_amount_context",
-      "heading": "7. Convalescence Benefit",
-      "evidence": "7. Convalescence Benefit\n: In case of continuous hospitalisation of more than 10 days, you will be eligible for a benefit payout of up to ₹7500 per year, provided the hospitalisation claim is admissible."
-    }
-  ],
-  "tax_amount_values": [
-    {
-      "value": "₹1,00,000",
-      "reason": "tax_context",
-      "heading": "Tax Saving",
-      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
-    },
-    {
-      "value": "₹25,000",
-      "reason": "tax_context",
-      "heading": "Tax Saving",
-      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
-    },
-    {
-      "value": "₹50,000",
-      "reason": "tax_context",
-      "heading": "Tax Saving",
-      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
-    },
-    {
-      "value": "₹75,000",
-      "reason": "tax_context",
-      "heading": "Tax Saving",
-      "evidence": "Tax Saving\nUnder Section 80D, you can claim ₹25,000 annually for all kinds of family health insurance plans premiums for yourself, spouse, and children (if you are under 60). Paying for senior-citizen parents allows an additional ₹50,000 deduction. This lets taxpayers below 60 claim up to ₹75,000, while those above 60 paying premiums for senior parents can claim up to ₹1,00,000."
-    }
-  ],
+  "benefit_amount_values": [],
+  "tax_amount_values": [],
   "discount_values": [],
   "room_rent_limits": [
     {

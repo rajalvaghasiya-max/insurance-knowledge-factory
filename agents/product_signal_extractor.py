@@ -5,11 +5,13 @@ from urllib.parse import urlparse
 
 from storage.registry_store import load_json, save_json
 from config.settings import BASE_DIR
+from agents.source_asset_classifier import SourceAssetClassifier
+from agents.uin_candidate_extractor import UinCandidateExtractor
 
 
 class ProductSignalExtractor:
     """
-    Product Signal Extractor v0.7
+    Product Signal Extractor v0.8
 
     Quality improvements:
     - Stronger page_intent precedence
@@ -24,49 +26,15 @@ class ProductSignalExtractor:
     - Filters premium values to current product context to avoid cross-sell card leakage
     """
 
-    VERSION = "0.7"
+    VERSION = "0.8"
 
-    HOME_PATHS = {"", "/", "/home", "/homepage"}
-
-    GENERIC_PRODUCT_SLUGS = {
-        "health-insurance-plans",
-        "term-insurance-plans",
-        "life-insurance-plans",
-        "insurance-plan",
-        "insurance-plans",
-        "healthinsurance",
-        "homepage",
-        "home",
-        "customer-service",
-        "faqs",
-        "faq",
-        "claims",
-        "claim",
-        "downloads",
-        "download",
-        "calculators",
-        "calculator",
-    }
-
-    KNOWN_PRODUCT_SLUG_KEYWORDS = [
-        "activ-yuva",
-        "activ-one",
-        "activonemax",
-        "activ-one-max",
-        "activ-one-max-plus",
-        "health-guard",
-        "my-health-care",
-        "arogya-sanjeevani",
-        "silver-health",
-        "global-health-care",
-        "international-health-insurance",
-        "family-health-insurance",
-        "individual-health-insurance",
-        "senior-citizens",
-        "click-2-protect",
-        "sanchay",
-        "jeevan",
-    ]
+    def __init__(
+        self,
+        classifier: SourceAssetClassifier | None = None,
+        uin_candidate_extractor: UinCandidateExtractor | None = None,
+    ) -> None:
+        self.classifier = classifier or SourceAssetClassifier()
+        self.uin_candidate_extractor = uin_candidate_extractor or UinCandidateExtractor()
 
     def utc_now_iso(self) -> str:
         return datetime.now(timezone.utc).isoformat()
@@ -78,7 +46,8 @@ class ProductSignalExtractor:
         url = parsed.get("url", "") or ""
         page_title = parsed.get("page_title", "") or ""
 
-        page_intent = self.detect_page_intent(url, page_title)
+        classification = self.classify_source_asset(url, page_title)
+        page_intent = classification["page_intent"]
 
         signals = {
             "extractor_version": self.VERSION,
@@ -88,9 +57,13 @@ class ProductSignalExtractor:
             "page_title": page_title,
             "content_hash": parsed.get("content_hash"),
             "page_intent": page_intent,
+            "asset_scope": classification["asset_scope"],
+            "classification_reason": classification["classification_reason"],
+            "classification_rules_version": classification["classification_rules_version"],
             "extracted_at": self.utc_now_iso(),
             "product_names": [],
             "uins": [],
+            "uin_candidates": [],
             "benefits": [],
             "exclusions": [],
             "waiting_periods": [],
@@ -106,8 +79,18 @@ class ProductSignalExtractor:
             "suitability_signals": [],
         }
 
-        full_text = self.join_sections(sections)
-        signals["uins"] = self.extract_uins(full_text)
+        signals["uin_candidates"] = self.extract_uin_candidates_from_sections(
+            sections=sections,
+            source_context={
+                "source_parsed_file": str(parsed_file),
+                "insurer_id": signals["insurer_id"],
+                "url": url,
+                "content_hash": signals["content_hash"],
+            },
+        )
+        signals["uins"] = sorted(
+            {candidate["uin"] for candidate in signals["uin_candidates"]}
+        )
 
         product_name = self.extract_product_name_from_page(
             page_title=page_title,
@@ -171,9 +154,11 @@ class ProductSignalExtractor:
             "insurer_id": signals["insurer_id"],
             "url": signals["url"],
             "page_intent": page_intent,
+            "asset_scope": signals["asset_scope"],
             "output_path": str(output_path),
             "product_names": len(signals["product_names"]),
             "uins": len(signals["uins"]),
+            "uin_candidates": len(signals["uin_candidates"]),
             "benefits": len(signals["benefits"]),
             "exclusions": len(signals["exclusions"]),
             "waiting_periods": len(signals["waiting_periods"]),
@@ -185,54 +170,16 @@ class ProductSignalExtractor:
             "discount_values": len(signals["discount_values"]),
         }
 
+    def classify_source_asset(self, url: str, page_title: str) -> dict[str, str]:
+        return self.classifier.classify(url=url, page_title=page_title)
+
     def detect_page_intent(self, url: str, page_title: str) -> str:
-        parsed = urlparse(url)
-        path = parsed.path.lower().rstrip("/")
-        slug = path.split("/")[-1]
-        text = f"{url} {page_title}".lower()
-
-        if path in self.HOME_PATHS or slug in {"home", "homepage"}:
-            return "homepage"
-        if any(x in text for x in ["customer-service", "customer service", "support", "contact-us"]):
-            return "customer_service"
-        if "calculator" in text or "calculators" in text:
-            return "calculator"
-        if slug in {"faq", "faqs"} or "/faq" in path or "/faqs" in path:
-            return "faq"
-        if any(x in text for x in ["investor", "financial-information", "annual-report", "public-disclosure"]):
-            return "institution"
-        if any(x in text for x in ["download", "brochure", "policy-wording", "policy wording", "proposal-form"]):
-            return "document_listing"
-        if self.is_known_individual_product_slug(slug, url):
-            return "individual_product"
-
-        listing_slugs = {
-            "health-insurance-plans",
-            "term-insurance-plans",
-            "life-insurance-plans",
-            "insurance-plan",
-            "insurance-plans",
-            "endowment-plans",
-            "whole-life-plans",
-            "money-back-plans",
-        }
-        if slug in listing_slugs:
-            return "product_listing"
-        if "claim" in text:
-            return "claim"
-        if "glossary" in text:
-            return "glossary"
-        if any(x in text for x in ["what-is", "guide", "benefits", "types-of", "tax"]):
-            return "article"
-        if any(x in text for x in ["insurance", "plan", "policy"]):
-            return "article_or_product_related"
-        return "article_or_other"
+        """Compatibility wrapper for callers that only need page intent."""
+        return self.classify_source_asset(url, page_title)["page_intent"]
 
     def is_known_individual_product_slug(self, slug: str, url: str) -> bool:
-        if not slug or slug in self.GENERIC_PRODUCT_SLUGS:
-            return False
-        text = f"{slug} {url}".lower()
-        return any(keyword in text for keyword in self.KNOWN_PRODUCT_SLUG_KEYWORDS)
+        classification = self.classify_source_asset(url, "")
+        return classification["page_intent"] == "individual_product"
 
     def extract_product_name_from_page(self, page_title: str, url: str, sections: list[dict], page_intent: str) -> dict | None:
         if page_intent not in {"individual_product", "article_or_product_related"}:
@@ -469,14 +416,43 @@ class ProductSignalExtractor:
             return None
 
     def extract_uins(self, text: str) -> list[str]:
-        patterns = [r"\b\d{3}[A-Z]\d{3}V\d{2}\b", r"\bUIN[:\s-]*([0-9]{3}[A-Z][0-9]{3}V[0-9]{2})\b"]
-        found = set()
-        for pattern in patterns:
-            for match in re.findall(pattern, text, flags=re.IGNORECASE):
-                if isinstance(match, tuple):
-                    match = match[0]
-                found.add(match.upper())
-        return sorted(found)
+        """Compatibility helper returning values from shared candidate extraction."""
+        return sorted(
+            {
+                candidate["uin"]
+                for candidate in self.uin_candidate_extractor.extract(text)
+            }
+        )
+
+    def extract_uin_candidates_from_sections(
+        self,
+        *,
+        sections: list[dict],
+        source_context: dict,
+    ) -> list[dict]:
+        """Extract candidates with section-local provenance for later identity resolution."""
+        candidates: list[dict] = []
+
+        for section_index, section in enumerate(sections):
+            heading = str(section.get("heading", "")).strip()
+            text = str(section.get("text", "")).strip()
+            section_text = "\n".join(part for part in (heading, text) if part)
+            if not section_text:
+                continue
+
+            context = {
+                **source_context,
+                "section_index": section_index,
+                "section_heading": heading or None,
+            }
+            candidates.extend(
+                self.uin_candidate_extractor.extract(
+                    section_text,
+                    source=context,
+                )
+            )
+
+        return candidates
 
     def extract_money_values(self, text: str) -> list[str]:
         patterns = [
@@ -654,7 +630,25 @@ class ProductSignalExtractor:
                     seen.add(marker)
                     unique.append(item)
             signals[key] = unique
-        signals["uins"] = sorted(set(signals.get("uins", [])))
+        candidates = signals.get("uin_candidates", [])
+        seen_candidates = set()
+        unique_candidates = []
+        for candidate in candidates:
+            source = candidate.get("source", {})
+            marker = (
+                candidate.get("uin"),
+                source.get("source_parsed_file"),
+                source.get("section_index"),
+                candidate.get("match_start"),
+            )
+            if marker in seen_candidates:
+                continue
+            seen_candidates.add(marker)
+            unique_candidates.append(candidate)
+        signals["uin_candidates"] = unique_candidates
+        signals["uins"] = sorted(
+            {candidate.get("uin") for candidate in unique_candidates if candidate.get("uin")}
+        )
 
         for financial_key in [
             "sum_insured_values",

@@ -1,0 +1,156 @@
+{
+  "aliases": [
+    "Copay"
+  ],
+  "asset_id": "meaning_copay_23057a70fa4d6935",
+  "asset_type": "meaning_asset",
+  "asset_version": "1.0",
+  "business_purpose": "A copay can increase the customer's out-of-pocket share for a covered claim or benefit. It may be mandatory, optional, or conditional, and it does not by itself establish what the insurer will finally pay.",
+  "calculation_basis": "insured_borne_copay_amount = applicable_copay_percentage multiplied by the policy-defined calculation base, only when supported by the applicable policy terms. The remaining amount is not a guaranteed insurer payment.",
+  "canonical_name": "Copay",
+  "category": "claim_cost_sharing",
+  "certification": {
+    "human_reviewed": true,
+    "review_decision_id": "gcrev_copay_v1",
+    "status": "governed_source_approved"
+  },
+  "concept_id": "copay",
+  "confidence": {
+    "canonical_confidence": 1.0,
+    "requires_review": false,
+    "review_basis": "approved_governed_generic_concept_record"
+  },
+  "constraints": [
+    "This record does not state any insurer-specific or product-specific copay.",
+    "It does not determine whether a copay applies to a customer's policy or claim.",
+    "It does not determine the policy-defined calculation base.",
+    "It does not determine claim admissibility, settlement, entitlement, or recommendation.",
+    "The percentage, mandatory or voluntary status, calculation base, applicability conditions, sequencing, stacking, waiver, and affected benefits must come from governed product knowledge and applicable policy wording.",
+    "A customer's selected or applicable copay must be verified from the policy schedule, proposal, endorsement, certificate, or other applicable customer document."
+  ],
+  "core_meaning": "A copay is a policy cost-sharing condition under which the insured bears a stated percentage of an amount determined under the applicable policy terms when the copay applies.",
+  "dependencies": [
+    "policy_terms",
+    "copay_applicability",
+    "policy_defined_calculation_base",
+    "customer_selected_copay"
+  ],
+  "evidence": [
+    {
+      "evidence_id": "copay_bajaj_my_health_care_voluntary_mechanism_v1",
+      "evidence_text": "Voluntary co-payment Discount a. In the Voluntary co-payment option is opted, then a discount corresponding to the co-payment opted would be applicable. b. If a claim has been admitted under In-patient Hospitalization Treatment then, the Insured shall bear a 5% or 10% or 15% or 20% (proportion to extent to discount availed) of the eligible claim amount payable under this Policy and Our liability, if any, shall only be in excess of that sum and would be subject to the Sum Insured.",
+      "extracted_content_scope": "generic_insurance_concept",
+      "hosting_document_scope": "product_specific",
+      "product_context_excluded": true,
+      "publisher": "Bajaj General Insurance Limited",
+      "source_document_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__9479fe6f6ce7.pdf",
+      "source_locator": "processed/pdf_parse/9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade.json::$.pages[32].text::page=33",
+      "source_sha256": "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade",
+      "source_title": "My Health Care Plan 1 Policy Wording",
+      "source_type": "insurer_policy_wording_generic_mechanism"
+    }
+  ],
+  "evidence_refs": [
+    "copay_bajaj_my_health_care_voluntary_mechanism_v1"
+  ],
+  "exceptions": [
+    "No generic waiver, stacking rule, calculation sequence, or claim-wide applicability is asserted. Each must be established from governed product and customer-document evidence."
+  ],
+  "factory_signature": {
+    "adapter_version": "1.0",
+    "deterministic": true,
+    "factory": "PolicyScna Knowledge Factory",
+    "production_line": "GovernedConceptToMeaningAssetAdapter",
+    "schema_version": "meaning_asset_v1.0"
+  },
+  "functional_behaviour": "When an applicable copay condition is triggered, the customer bears the stated percentage of the policy-defined calculation base. The percentage, calculation base, and scope must be checked in the applicable policy and customer documents.",
+  "governance": {
+    "concept_scope": "generic_insurance_concept",
+    "customer_answer_state": "not_created",
+    "customer_document_boundary": "A customer's selected or applicable copay must be verified from the policy schedule, proposal, endorsement, certificate, or other applicable customer document.",
+    "entitlement_state": "not_evaluated",
+    "product_specific_boundary": "The percentage, mandatory or voluntary status, calculation base, applicability conditions, sequencing, stacking, waiver, and affected benefits must come from governed product knowledge and applicable policy wording.",
+    "publication_state": "not_published",
+    "recommendation_state": "not_created",
+    "review_decision": {
+      "decision": "approve_for_governed_generic_concept_creation",
+      "rationale": "The bounded policy-wording mechanism was reviewed for generic copay meaning only. Product-specific percentages, discount entitlements, applicability, insurer liability, and customer selection remain excluded.",
+      "review_decision_id": "gcrev_copay_v1",
+      "reviewed_at": "2026-07-12T16:06:03.4734954Z",
+      "reviewer_identity": "rajal_vaghasiya"
+    },
+    "source_governed_record_id": "gconcept_2ff721fa507ca015f6b8",
+    "source_knowledge_version": "1.0",
+    "source_record_type": "governed_generic_concept_record_v0_2",
+    "source_schema_version": "0.2"
+  },
+  "inputs": [
+    "applicable_copay_percentage",
+    "policy_defined_calculation_base",
+    "copay_applicability",
+    "policy_terms"
+  ],
+  "misinterpretations": [
+    {
+      "actual_meaning": "A copay is a policy cost-sharing condition under which the insured bears a stated percentage of an amount determined under the applicable policy terms when the copay applies.",
+      "misinterpretation": "A copay does not automatically apply to every claim."
+    },
+    {
+      "actual_meaning": "A copay is a policy cost-sharing condition under which the insured bears a stated percentage of an amount determined under the applicable policy terms when the copay applies.",
+      "misinterpretation": "A copay percentage does not necessarily apply to the total hospital bill."
+    },
+    {
+      "actual_meaning": "A copay is a policy cost-sharing condition under which the insured bears a stated percentage of an amount determined under the applicable policy terms when the copay applies.",
+      "misinterpretation": "The insurer does not automatically pay the entire remaining percentage."
+    },
+    {
+      "actual_meaning": "A copay is a policy cost-sharing condition under which the insured bears a stated percentage of an amount determined under the applicable policy terms when the copay applies.",
+      "misinterpretation": "A copay is not always voluntary and is not always mandatory."
+    },
+    {
+      "actual_meaning": "A copay is a policy cost-sharing condition under which the insured bears a stated percentage of an amount determined under the applicable policy terms when the copay applies.",
+      "misinterpretation": "Another copay or deductible may also apply if the policy terms provide for it."
+    }
+  ],
+  "notes": [
+    "This adapter restructures approved governed concept content.",
+    "It does not publish content, create a customer answer, determine entitlement, or make a recommendation."
+  ],
+  "outputs": [
+    "insured_borne_copay_amount",
+    "remaining_amount_for_insurer_assessment"
+  ],
+  "policy_examples": [
+    {
+      "result": "The illustrated insured-borne copay amount is 18000. This does not establish claim entitlement or guarantee that the insurer pays the remaining amount.",
+      "scenario": "The policy-defined calculation base is 90000 and the applicable copay is 20%.",
+      "source_example": {
+        "boundary": "Illustrative only. This assumes the policy terms establish a 20% copay on a calculation base of 90000. It does not establish claim entitlement or guarantee payment of the remaining amount.",
+        "copay_percentage": 20,
+        "insured_borne_copay_amount": 18000,
+        "policy_defined_calculation_base": 90000,
+        "remaining_amount_for_insurer_assessment": 72000
+      }
+    }
+  ],
+  "relationships": {
+    "commonly_confused_with": [
+      "deductible"
+    ],
+    "depends_on": [
+      "policy_terms",
+      "copay_applicability",
+      "policy_defined_calculation_base"
+    ],
+    "related_to": [
+      "admissible_claim",
+      "deductible",
+      "eligible_claim_amount",
+      "non_payable_expense",
+      "sum_insured"
+    ]
+  },
+  "review_status": "approved_governed_generic_concept",
+  "schema_version": "meaning_asset_v1.0",
+  "trigger": "A copay is evaluated only when the applicable policy terms require the insured to bear a stated percentage for the relevant claim, benefit, or circumstance."
+}

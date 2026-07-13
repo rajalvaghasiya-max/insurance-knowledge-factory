@@ -32,6 +32,7 @@ class HealthDomainValidator:
     VALID_UNITS = {
         "ped_waiting_period": {"months", "days", "years"},
         "specific_disease_waiting_period": {"months", "days", "years"},
+        "initial_waiting_period": {"months", "days", "years"},
         "copay": {"percent", "%"},
         "room_rent_limit": {"INR", "percent", "room_category", "text", None},
         "sub_limit": {"INR", "percent", "text", None},

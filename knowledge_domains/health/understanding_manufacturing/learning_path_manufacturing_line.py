@@ -148,18 +148,45 @@ class LearningPathManufacturingLine(FactoryProductionLine):
         else:
             gates_failed.append("no_duplicate_primitives_within_path")
 
+        primitive_types = {
+            primitive.get("primitive_type")
+            for primitive in raw_input.get("primitives", [])
+        }
         expected_path_types = {
             "quick_understanding",
             "claim_understanding",
-            "buying_decision",
             "advisor_teaching",
             "deep_learning",
         }
+        if "suitability" in primitive_types:
+            expected_path_types.add("buying_decision")
+
         actual_path_types = {path.get("path_type") for path in paths}
         if expected_path_types.issubset(actual_path_types):
             gates_passed.append("standard_paths_manufactured")
         else:
             gates_failed.append("standard_paths_manufactured")
+
+        boundary_sensitive_tags = {"recommendation", "purchase"}
+        if "suitability" not in primitive_types:
+            no_buying_path = "buying_decision" not in actual_path_types
+            no_boundary_tags = all(
+                not boundary_sensitive_tags.intersection(
+                    set(path.get("tags", []))
+                )
+                for path in paths
+            )
+            no_boundary_navigation = all(
+                "buying_decision"
+                not in path.get("recommended_next_paths", [])
+                for path in paths
+            )
+            if no_buying_path and no_boundary_tags and no_boundary_navigation:
+                gates_passed.append("recommendation_boundary_preserved")
+            else:
+                gates_failed.append("recommendation_boundary_preserved")
+        else:
+            gates_passed.append("recommendation_boundary_preserved")
 
         if all(gate not in gates_failed for gate in [
             "path_learning_goals_present",
@@ -168,6 +195,7 @@ class LearningPathManufacturingLine(FactoryProductionLine):
             "ordered_steps_valid",
             "no_duplicate_primitives_within_path",
             "standard_paths_manufactured",
+            "recommendation_boundary_preserved",
         ]):
             gates_passed.append("learning_path_contract_preserved")
         else:
@@ -245,3 +273,4 @@ class LearningPathManufacturingLine(FactoryProductionLine):
             if len(primitive_ids) != len(set(primitive_ids)):
                 return False
         return True
+

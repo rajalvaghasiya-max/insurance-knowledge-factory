@@ -1,20 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\c65e4629d265a2fb8899e0c726c13c972d911bcc11d728eea97dbcf4bfcfc15e.json",
   "insurer_id": "bajaj_allianz_general",
   "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
   "page_title": "Buy Arogya Sanjeevani Health Insurance Policy Online @ Best Price",
   "content_hash": "c65e4629d265a2fb8899e0c726c13c972d911bcc11d728eea97dbcf4bfcfc15e",
-  "page_intent": "individual_product",
-  "extracted_at": "2026-06-07T11:46:07.333866+00:00",
-  "product_names": [
-    {
-      "name": "Arogya Sanjeevani Health Insurance Policy",
-      "source": "url_slug",
-      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html"
-    }
-  ],
+  "page_intent": "product_listing",
+  "asset_scope": "category",
+  "classification_reason": "matched category URL marker; category override from URL marker",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.494431+00:00",
+  "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Pre and Post Hospitalisation Expenses",
@@ -223,38 +221,7 @@
       "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
     }
   ],
-  "sum_insured_values": [
-    {
-      "value": "INR 25 lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 25 lacs\nRoom Limit (Normal | ICU)\nNormal Room 2% of SI upto INR 5,000 | ICU 5% of SI upto INR 10,000"
-    },
-    {
-      "value": "INR 50,000",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 25 lacs\nRoom Limit (Normal | ICU)\nNormal Room 2% of SI upto INR 5,000 | ICU 5% of SI upto INR 10,000"
-    },
-    {
-      "value": "₹10,00,000",
-      "reason": "sum_insured_context",
-      "heading": "What is the range of the sum insured in the Arogya Sanjeevani Health Insurance Policy?",
-      "evidence": "What is the range of the sum insured in the Arogya Sanjeevani Health Insurance Policy?\nThe sum insured under the Arogya Sanjeevani Health Insurance Policy typically ranges from ₹50,000 to ₹10,00,000. This wide range allows policyholders to choose the coverage amount that best suits their medical needs and financial capacity within standard health insurance plans."
-    },
-    {
-      "value": "₹25 Lakh",
-      "reason": "sum_insured_context",
-      "heading": "What is the eligibility age for the Arogya Sanjeevani Health Insurance Policy?",
-      "evidence": "What is the eligibility age for the Arogya Sanjeevani Health Insurance Policy?\nEligibility for the Arogya Sanjeevani Health Insurance Policy begins at 18 years for adults and 3 months for dependent children, who can be covered up to 25 years of age. Coverage for adults extends up to 65 years, making it a comprehensive option for families seeking affordable health insurance plans.\nWhat are the sum-insured options under the standard health insurance?\nThe Arogya Sanjeevani Policy provides a sum insured range from ₹50k to ₹25 Lakh, ensuring standardized yet affordable coverage."
-    },
-    {
-      "value": "₹50,000",
-      "reason": "sum_insured_context",
-      "heading": "What is the range of the sum insured in the Arogya Sanjeevani Health Insurance Policy?",
-      "evidence": "What is the range of the sum insured in the Arogya Sanjeevani Health Insurance Policy?\nThe sum insured under the Arogya Sanjeevani Health Insurance Policy typically ranges from ₹50,000 to ₹10,00,000. This wide range allows policyholders to choose the coverage amount that best suits their medical needs and financial capacity within standard health insurance plans."
-    }
-  ],
+  "sum_insured_values": [],
   "premium_values": [],
   "benefit_amount_values": [],
   "tax_amount_values": [],

@@ -1,14 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\9c463a137f1536a4b06742776576ec60f6a0afd469d0676ce225d1551122a0d6.json",
   "insurer_id": "aditya_birla_health",
   "url": "https://www.adityabirlacapital.com/healthinsurance/faqs",
   "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
   "content_hash": "9c463a137f1536a4b06742776576ec60f6a0afd469d0676ce225d1551122a0d6",
   "page_intent": "faq",
-  "extracted_at": "2026-06-07T11:46:07.205416+00:00",
+  "asset_scope": "generic_knowledge",
+  "classification_reason": "matched FAQ marker; mapped from page intent 'faq'",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.256448+00:00",
   "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "HealthReturns™ with EAT.MOVE.HEAL + Maternity Cover + OPD Cover",

@@ -15,12 +15,14 @@ def main() -> None:
         help="Factory Manager action to run.",
     )
     parser.add_argument("--entity-id", default=None, help="Optional entity filter.")
+    parser.add_argument("--registry-path", default=None, help="Optional evidence/factory input registry path.")
+    parser.add_argument("--factory-dir", default=None, help="Optional factory run directory.")
     parser.add_argument("--stage", default=None, help="Optional pipeline stage filter.")
     parser.add_argument("--limit", type=int, default=None, help="Optional max jobs to plan.")
     parser.add_argument("--print-json", action="store_true", help="Print full JSON output.")
 
     args = parser.parse_args()
-    manager = FactoryManager()
+    manager = FactoryManager(registry_path=args.registry_path, factory_dir=args.factory_dir)
 
     init_result = None
     queue = None
@@ -49,8 +51,8 @@ def main() -> None:
 
     if queue:
         print(f"Jobs        : {queue['job_count']}")
-        print("Queue       : knowledge/factory/job_queue.json")
-        print("Event Log   : knowledge/factory/event_log.jsonl")
+        print(f"Queue       : {manager.paths.queue_path}")
+        print(f"Event Log   : {manager.paths.event_log_path}")
         print("-" * 70)
         for job in queue["jobs"][:20]:
             entity_text = ", ".join(job.get("entity_ids", []))

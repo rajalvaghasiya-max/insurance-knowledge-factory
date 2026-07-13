@@ -1,0 +1,1 @@
+{"errors":[],"gates_failed":[],"gates_passed":["deterministic_declared","asset_type_matches_contract","department_boundary_preserved","learning_objectives_present","primitive_content_present","traceability_preserved"],"quality_score":100.0,"validation_status":"passed","warnings":[]}

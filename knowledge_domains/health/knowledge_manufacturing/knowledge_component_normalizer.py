@@ -526,9 +526,9 @@ class KnowledgeComponentNormalizer:
 
 
 class KnowledgeComponentNormalizerRunner:
-    def __init__(self, project_root: Path):
+    def __init__(self, project_root: Path, output_dir: Path | None = None):
         self.project_root = project_root
-        self.output_dir = project_root / "knowledge" / "factory" / "normalized_knowledge_components"
+        self.output_dir = output_dir if output_dir is not None else project_root / "knowledge" / "factory" / "normalized_knowledge_components"
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.normalizer = KnowledgeComponentNormalizer()
 

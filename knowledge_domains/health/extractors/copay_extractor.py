@@ -23,7 +23,11 @@ class CopayExtractor:
     COPAY_PATTERNS = [
         re.compile(r"((?:no|zero|nil|without)\s+(?:co[- ]?pay|copay|co[- ]?payment|co[- ]?insurance))", re.I),
         re.compile(r"((?P<pct>\d{1,3})\s*%\s*(?:co[- ]?pay|copay|co[- ]?payment|co[- ]?insurance)[^.:\n]{0,160})", re.I),
-        re.compile(r"((?:co[- ]?pay|copay|co[- ]?payment|co[- ]?insurance)[^.:\n]{0,120}(?P<pct>\d{1,3})\s*%)", re.I),
+        re.compile(
+            r"((?:co[- ]?pay|copay|co[- ]?payment|co[- ]?insurance)"
+            r"[^.:\n]{0,120}?(?P<pct>\d{1,3})\s*%)",
+            re.I,
+        ),
     ]
 
     def utc_now(self) -> str:

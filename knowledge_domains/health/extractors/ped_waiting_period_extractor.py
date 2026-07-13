@@ -7,25 +7,27 @@ from pathlib import Path
 from typing import Any
 
 from config.settings import BASE_DIR
-from knowledge_domains.health.validators.health_domain_validator import HealthDomainValidator
+from knowledge_domains.health.validators.health_domain_validator import (
+    HealthDomainValidator,
+)
 
 
 class PedWaitingPeriodExtractor:
     """
-    PED Waiting Period Extractor v0.1
+    PED Waiting Period Extractor v0.2
 
     Purpose:
-        Create the first evidence-backed health insurance fact:
-        ped_waiting_period
+        Extract evidence-backed PED waiting-period facts within entity scope.
 
     Design:
         - Lightweight rule/regex based
         - No LLM dependency
-        - Produces evidence_schema-compatible fact object
+        - Enforces entity/path guard by default
+        - Produces evidence-schema-compatible fact objects
         - Validates using HealthDomainValidator
     """
 
-    VERSION = "0.1"
+    VERSION = "0.2"
 
     PED_PATTERNS = [
         re.compile(
@@ -56,10 +58,22 @@ class PedWaitingPeriodExtractor:
         entity_id: str,
         search_root: Path,
         insurance_line: str = "health",
+        enforce_entity_guard: bool = True,
     ) -> dict[str, Any]:
-        candidates = []
+        candidates: list[dict[str, Any]] = []
+        skipped_by_entity_guard = 0
+        files_scanned = 0
+        entity_tokens = self.entity_tokens(entity_id)
 
         for path in self.iter_supported_files(search_root):
+            if enforce_entity_guard and not self.path_matches_entity(
+                path,
+                entity_tokens,
+            ):
+                skipped_by_entity_guard += 1
+                continue
+
+            files_scanned += 1
             text = self.read_text_from_file(path)
 
             if not text:
@@ -85,8 +99,11 @@ class PedWaitingPeriodExtractor:
                 "entity_id": entity_id,
                 "field": "ped_waiting_period",
                 "status": "not_found",
-                "message": "No PED waiting period evidence found.",
+                "message": "No PED waiting period evidence found within entity scope.",
                 "searched_root": str(search_root),
+                "files_scanned": files_scanned,
+                "skipped_by_entity_guard": skipped_by_entity_guard,
+                "candidate_count": len(candidates),
                 "extracted_at": self.utc_now(),
             }
 
@@ -95,7 +112,6 @@ class PedWaitingPeriodExtractor:
             entity_id=entity_id,
             facts=[best_fact],
             validation_mode="fact",
-
         )
 
         best_fact["validation"] = {
@@ -113,8 +129,76 @@ class PedWaitingPeriodExtractor:
             "status": "extracted",
             "fact": best_fact,
             "validation_report": validation_report,
+            "candidate_count": len(candidates),
+            "files_scanned": files_scanned,
+            "skipped_by_entity_guard": skipped_by_entity_guard,
             "extracted_at": self.utc_now(),
         }
+
+    def entity_tokens(self, entity_id: str) -> set[str]:
+        raw = entity_id.lower()
+        tokens = set(re.split(r"[:_\-/\s]+", raw))
+        tokens = {
+            token
+            for token in tokens
+            if token and token not in {"health", "insurance", "product"}
+        }
+
+        alias_map = {
+            "aditya_birla_health:activ_one": {
+                "aditya",
+                "birla",
+                "aditya_birla_health",
+                "activ",
+                "active",
+                "one",
+                "activ_one",
+                "active_one",
+            }
+        }
+
+        tokens.update(alias_map.get(raw, set()))
+        return tokens
+
+    def path_matches_entity(
+        self,
+        path: Path,
+        entity_tokens: set[str],
+    ) -> bool:
+        path_text = str(path).lower().replace("\\", "/")
+
+        if (
+            "aditya_birla_health" in entity_tokens
+            and "aditya_birla_health" in path_text
+        ):
+            return True
+
+        if (
+            "activ_one" in entity_tokens
+            and (
+                "activ_one" in path_text
+                or "active-one" in path_text
+                or "activ-one" in path_text
+            )
+        ):
+            return True
+
+        if any(
+            token in path_text
+            for token in entity_tokens
+            if len(token) >= 5
+        ):
+            return True
+
+        parent_text = str(path.parent).lower().replace("\\", "/")
+
+        if (
+            "aditya_birla_health" in parent_text
+            and {"activ", "one"} & entity_tokens
+        ):
+            return True
+
+        return False
 
     def iter_supported_files(self, root: Path):
         if not root.exists():
@@ -129,7 +213,6 @@ class PedWaitingPeriodExtractor:
             if path.suffix.lower() not in supported:
                 continue
 
-            # Skip registry/config files and very large files for this first proof.
             lower = str(path).lower()
 
             if "\\.venv\\" in lower or "/.venv/" in lower:
@@ -143,40 +226,25 @@ class PedWaitingPeriodExtractor:
     def read_text_from_file(self, path: Path) -> str:
         try:
             raw = path.read_text(encoding="utf-8", errors="ignore")
-        except Exception:
+        except OSError:
             return ""
 
         if path.suffix.lower() == ".json":
             try:
-                data = json.loads(raw)
-                return self.flatten_json_to_text(data)
-            except Exception:
+                loaded = json.loads(raw)
+            except json.JSONDecodeError:
                 return raw
+
+            return json.dumps(
+                loaded,
+                ensure_ascii=False,
+            )
 
         return raw
 
-    def flatten_json_to_text(self, data: Any) -> str:
-        parts = []
-
-        def walk(obj: Any):
-            if isinstance(obj, dict):
-                for value in obj.values():
-                    walk(value)
-            elif isinstance(obj, list):
-                for item in obj:
-                    walk(item)
-            elif isinstance(obj, (str, int, float)):
-                parts.append(str(obj))
-
-        walk(data)
-        return "\n".join(parts)
-
     def find_ped_match(self, text: str) -> re.Match | None:
-        normalized = re.sub(r"\s+", " ", text)
-
         for pattern in self.PED_PATTERNS:
-            match = pattern.search(normalized)
-
+            match = pattern.search(text)
             if match:
                 return match
 
@@ -209,7 +277,10 @@ class PedWaitingPeriodExtractor:
 
         evidence_text = self.clean_evidence(match.group(1))
 
-        relative_path = path.relative_to(BASE_DIR) if path.is_relative_to(BASE_DIR) else path
+        try:
+            relative_path = path.relative_to(BASE_DIR)
+        except ValueError:
+            relative_path = path
 
         return {
             "fact_id": f"fact:{entity_id}:ped_waiting_period",
@@ -241,7 +312,10 @@ class PedWaitingPeriodExtractor:
             "confidence": {
                 "score": 0.82,
                 "method": "regex",
-                "reason": "Matched PED waiting period phrase using rule-based pattern.",
+                "reason": (
+                    "Matched PED waiting period phrase using "
+                    "rule-based pattern."
+                ),
                 "requires_review": False,
             },
             "extraction": {
@@ -261,14 +335,27 @@ class PedWaitingPeriodExtractor:
 
         return text
 
-    def infer_section(self, full_text: str, match_start: int) -> str | None:
+    def infer_section(
+        self,
+        full_text: str,
+        match_start: int,
+    ) -> str | None:
         before = full_text[:match_start]
-        lines = [line.strip() for line in before.splitlines() if line.strip()]
+        lines = [
+            line.strip()
+            for line in before.splitlines()
+            if line.strip()
+        ]
 
         for line in reversed(lines[-20:]):
             if len(line) <= 80 and any(
                 token in line.lower()
-                for token in ["waiting", "exclusion", "pre-existing", "disease"]
+                for token in [
+                    "waiting",
+                    "exclusion",
+                    "pre-existing",
+                    "disease",
+                ]
             ):
                 return line
 
@@ -294,7 +381,10 @@ class PedWaitingPeriodExtractor:
 
         return "unknown"
 
-    def select_best_candidate(self, candidates: list[dict[str, Any]]) -> dict[str, Any] | None:
+    def select_best_candidate(
+        self,
+        candidates: list[dict[str, Any]],
+    ) -> dict[str, Any] | None:
         if not candidates:
             return None
 

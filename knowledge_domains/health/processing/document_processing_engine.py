@@ -49,7 +49,8 @@ class DocumentProcessingEngine:
     VERSION = "2.0"
     DEPARTMENT = "department_03_document_processing"
 
-    def __init__(self):
+    def __init__(self, registry_path: Path | None = None, factory_dir: Path | None = None):
+        self.project_root = Path(registry_path).resolve().parent.parent if registry_path is not None else BASE_DIR
         self.loader = DocumentLoaderEngine()
         self.reader = DocumentReaderEngine()
         self.section_extractor = SectionExtractionEngine()
@@ -59,10 +60,10 @@ class DocumentProcessingEngine:
         self.validation_engine = ProcessedDocumentValidationEngine()
         self.quality_engine = ProcessedDocumentQualityEngine()
         self.certification_engine = DepartmentCertificationEngine()
-        self.factory_manager = FactoryManager()
-        self.output_dir = BASE_DIR / "knowledge" / "factory" / "processed_documents"
-        self.manifest_dir = BASE_DIR / "knowledge" / "factory" / "processing_manifests"
-        self.certification_dir = BASE_DIR / "knowledge" / "factory" / "certification_reports"
+        self.factory_manager = FactoryManager(registry_path=registry_path, factory_dir=factory_dir)
+        self.output_dir = self.factory_manager.paths.factory_dir / "processed_documents"
+        self.manifest_dir = self.factory_manager.paths.factory_dir / "processing_manifests"
+        self.certification_dir = self.factory_manager.paths.factory_dir / "certification_reports"
 
     def process_job(self, job: dict[str, Any], *, write: bool = True) -> dict[str, Any]:
         if job.get("stage") != "document_processing":
@@ -121,9 +122,9 @@ class DocumentProcessingEngine:
                 self.write_json(manifest_path, asdict(manifest))
                 self.write_json(certification_path, asdict(certification))
 
-                relative_output = str(output_path.relative_to(BASE_DIR)).replace("\\", "/")
-                relative_manifest = str(manifest_path.relative_to(BASE_DIR)).replace("\\", "/")
-                relative_certification = str(certification_path.relative_to(BASE_DIR)).replace("\\", "/")
+                relative_output = str(output_path.relative_to(self.project_root)).replace("\\", "/")
+                relative_manifest = str(manifest_path.relative_to(self.project_root)).replace("\\", "/")
+                relative_certification = str(certification_path.relative_to(self.project_root)).replace("\\", "/")
                 stage_status = "completed" if certification.certification_status == "certified" else "completed_with_warnings"
                 self.factory_manager.mark_stage(
                     document_id=document_id,
@@ -161,9 +162,9 @@ class DocumentProcessingEngine:
                 "job_id": job.get("job_id"),
                 "document_id": document_id,
                 "asset_id": asset.asset_id,
-                "output_path": str(output_path.relative_to(BASE_DIR)).replace("\\", "/"),
-                "manifest_path": str(manifest_path.relative_to(BASE_DIR)).replace("\\", "/"),
-                "certification_report_path": str(certification_path.relative_to(BASE_DIR)).replace("\\", "/"),
+                "output_path": str(output_path.relative_to(self.project_root)).replace("\\", "/"),
+                "manifest_path": str(manifest_path.relative_to(self.project_root)).replace("\\", "/"),
+                "certification_report_path": str(certification_path.relative_to(self.project_root)).replace("\\", "/"),
                 "quality_score": asset.quality.overall_score if asset.quality else None,
                 "certification_status": certification.certification_status,
                 "section_count": len(sections),
@@ -216,7 +217,7 @@ class DocumentProcessingEngine:
         processing_time_ms: float,
     ) -> ProcessedDocumentAsset:
         document_id = job["document_id"]
-        asset_id = stable_id("pdoc", f"{document_id}|{job.get('document_hash')}|{self.VERSION}|{PROCESSING_CONTRACT_VERSION}")
+        asset_id = stable_id("pdoc", f"{document_id}|{job.get('processing_input_hash') or job.get('document_hash')}|{self.VERSION}|{PROCESSING_CONTRACT_VERSION}")
         source = ProcessingSource(
             document_id=document_id,
             document_type=job.get("document_type"),
@@ -229,6 +230,12 @@ class DocumentProcessingEngine:
             evidence_id=job.get("evidence_id"),
             registry_version=job.get("registry_version"),
             document_version=job.get("version") or job.get("document_version"),
+            source_document_id=job.get("source_document_id"),
+            raw_evidence_relative_path=job.get("raw_evidence_relative_path"),
+            parse_artifact_hash=job.get("parse_artifact_hash"),
+            parser_version=job.get("parser_version"),
+            quality_audit_id=job.get("quality_audit_id"),
+            processing_input_hash=job.get("processing_input_hash"),
         )
         pages = []
         for page in normalized_pages:
@@ -366,7 +373,7 @@ class DocumentProcessingEngine:
             engine="DocumentProcessingEngine",
             document_id=asset.document_id,
             asset_id=asset.asset_id,
-            asset_path=str(output_path.relative_to(BASE_DIR)).replace("\\", "/"),
+            asset_path=str(output_path.relative_to(self.project_root)).replace("\\", "/"),
             quality_score=asset.quality.overall_score if asset.quality else 0.0,
             validation_status=validation.get("status", "unknown"),
             warnings_count=len(asset.warnings),
@@ -390,14 +397,21 @@ class DocumentProcessingEngine:
             json.dump(payload, file, indent=2, ensure_ascii=False)
 
     def load_queue(self, queue_path: Path | None = None) -> dict[str, Any]:
-        queue_path = queue_path or (BASE_DIR / "knowledge" / "factory" / "job_queue.json")
-        if not queue_path.exists():
-            raise FileNotFoundError(f"Factory job queue not found: {queue_path}")
-        with queue_path.open("r", encoding="utf-8") as file:
+        """Load the queue belonging to this engine's factory run scope."""
+        resolved_queue_path = queue_path or self.factory_manager.paths.queue_path
+        if not resolved_queue_path.exists():
+            raise FileNotFoundError(f"Factory job queue not found: {resolved_queue_path}")
+        with resolved_queue_path.open("r", encoding="utf-8") as file:
             return json.load(file)
 
-    def run_from_queue(self, *, limit: int | None = None, write: bool = True) -> dict[str, Any]:
-        queue = self.load_queue()
+    def run_from_queue(
+        self,
+        *,
+        limit: int | None = None,
+        write: bool = True,
+        queue_path: Path | None = None,
+    ) -> dict[str, Any]:
+        queue = self.load_queue(queue_path=queue_path)
         jobs = [job for job in queue.get("jobs", []) if job.get("stage") == "document_processing"]
         if limit is not None:
             jobs = jobs[: max(0, limit)]

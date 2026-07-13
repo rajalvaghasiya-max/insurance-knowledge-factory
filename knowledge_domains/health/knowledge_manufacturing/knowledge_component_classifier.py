@@ -36,9 +36,9 @@ from knowledge_domains.health.knowledge_manufacturing.knowledge_component_classi
 class KnowledgeComponentClassifier:
     """Classifies normalized components into document-level component roles."""
 
-    def __init__(self, project_root: Optional[Path] = None) -> None:
+    def __init__(self, project_root: Optional[Path] = None, output_dir: Optional[Path] = None) -> None:
         self.project_root = Path(project_root or Path.cwd())
-        self.output_dir = self.project_root / "knowledge" / "factory" / "classified_knowledge_components"
+        self.output_dir = Path(output_dir) if output_dir is not None else self.project_root / "knowledge" / "factory" / "classified_knowledge_components"
 
     def classify_file(self, normalized_collection_path: Path, dry_run: bool = False) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         normalized_collection_path = Path(normalized_collection_path)

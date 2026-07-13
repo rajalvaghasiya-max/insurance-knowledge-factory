@@ -1,20 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\fa09ed29460763b13b0aab552d86dce2232516bbeba0b45deb15c49d22cae694.json",
   "insurer_id": "bajaj_allianz_general",
   "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html",
   "page_title": "International Health Insurance: Buy Global Health Care Plan",
   "content_hash": "fa09ed29460763b13b0aab552d86dce2232516bbeba0b45deb15c49d22cae694",
-  "page_intent": "individual_product",
-  "extracted_at": "2026-06-07T11:46:07.362292+00:00",
-  "product_names": [
-    {
-      "name": "International Health Insurance",
-      "source": "url_slug",
-      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html"
-    }
-  ],
+  "page_intent": "product_listing",
+  "asset_scope": "category",
+  "classification_reason": "matched category URL marker; category override from URL marker",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.538137+00:00",
+  "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Worldwide Comprehensive Health Care",
@@ -243,65 +241,9 @@
       "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
     }
   ],
-  "sum_insured_values": [
-    {
-      "value": "₹1.12 crore",
-      "reason": "sum_insured_context",
-      "heading": "Domestic Sum Insured Amount(s)",
-      "evidence": "Domestic Sum Insured Amount(s)\n₹1.12 crore, ₹1.87 crore and ₹3.75 crore"
-    },
-    {
-      "value": "₹1.87 crore",
-      "reason": "sum_insured_context",
-      "heading": "Domestic Sum Insured Amount(s)",
-      "evidence": "Domestic Sum Insured Amount(s)\n₹1.12 crore, ₹1.87 crore and ₹3.75 crore"
-    },
-    {
-      "value": "₹3.75 crore",
-      "reason": "sum_insured_context",
-      "heading": "Domestic Sum Insured Amount(s)",
-      "evidence": "Domestic Sum Insured Amount(s)\n₹1.12 crore, ₹1.87 crore and ₹3.75 crore"
-    },
-    {
-      "value": "₹37.5 lakh",
-      "reason": "sum_insured_context",
-      "heading": "Domestic Sum Insured Amount(s)",
-      "evidence": "Domestic Sum Insured Amount(s)\n₹37.5 lakh, ₹56 lakh and ₹75 lakh"
-    },
-    {
-      "value": "₹56 lakh",
-      "reason": "sum_insured_context",
-      "heading": "Domestic Sum Insured Amount(s)",
-      "evidence": "Domestic Sum Insured Amount(s)\n₹37.5 lakh, ₹56 lakh and ₹75 lakh"
-    },
-    {
-      "value": "₹75 lakh",
-      "reason": "sum_insured_context",
-      "heading": "Domestic Sum Insured Amount(s)",
-      "evidence": "Domestic Sum Insured Amount(s)\n₹37.5 lakh, ₹56 lakh and ₹75 lakh"
-    }
-  ],
+  "sum_insured_values": [],
   "premium_values": [],
-  "benefit_amount_values": [
-    {
-      "value": "INR 500,000",
-      "reason": "benefit_amount_context",
-      "heading": "Organ Donor Expenses",
-      "evidence": "Organ Donor Expenses\nDomestic: INR 500,000 & International: USD 30,000\nDomestic: INR 500,000 & International: USD 50,000"
-    },
-    {
-      "value": "USD 30,000",
-      "reason": "benefit_amount_context",
-      "heading": "Organ Donor Expenses",
-      "evidence": "Organ Donor Expenses\nDomestic: INR 500,000 & International: USD 30,000\nDomestic: INR 500,000 & International: USD 50,000"
-    },
-    {
-      "value": "USD 50,000",
-      "reason": "benefit_amount_context",
-      "heading": "Organ Donor Expenses",
-      "evidence": "Organ Donor Expenses\nDomestic: INR 500,000 & International: USD 30,000\nDomestic: INR 500,000 & International: USD 50,000"
-    }
-  ],
+  "benefit_amount_values": [],
   "tax_amount_values": [],
   "discount_values": [],
   "room_rent_limits": [

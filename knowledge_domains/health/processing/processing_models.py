@@ -52,6 +52,12 @@ class ProcessingSource:
     evidence_id: str | None = None
     registry_version: str | None = None
     document_version: str | None = None
+    source_document_id: str | None = None
+    raw_evidence_relative_path: str | None = None
+    parse_artifact_hash: str | None = None
+    parser_version: str | None = None
+    quality_audit_id: str | None = None
+    processing_input_hash: str | None = None
 
 
 @dataclass

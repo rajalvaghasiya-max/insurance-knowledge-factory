@@ -1,9 +1,23 @@
 {
   "entity_id": "star_health:star_comprehensive",
-  "extractor_version": "0.3",
+  "extractor_version": "0.4",
   "metadata": {
     "product_name": "Star Comprehensive Insurance Policy",
-    "uin": "SHAHLIP26044V092526"
+    "uin": "SHAHLIP26044V092526",
+    "uin_candidate": {
+      "uin": "SHAHLIP26044V092526",
+      "candidate_status": "format_valid_candidate",
+      "extraction_method": "uin_label",
+      "raw_text": "UIN : SHAHLIP26044V092526",
+      "evidence_text": "XXXXXXXXXXXXXX | POL / SS / V.1 / 2024 STAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED | PROSPECTUS Star Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526 | PROS / COMP / V.15 / 2025 1 / 52 STAR COMPREHENSIVE INSURANCE POLICY Unique Identification No: SHAHLIP26044V092526 The Specific Feature o",
+      "match_start": 225,
+      "match_end": 250,
+      "source": {
+        "source_type": "prospectus",
+        "source_file": "knowledge/health/star_health/star_comprehensive/documents/prospectus.pdf",
+        "page_number": 2
+      }
+    }
   },
   "eligibility": {
     "adult_entry_age": "18 years to 65 years",

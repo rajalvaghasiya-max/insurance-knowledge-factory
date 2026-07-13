@@ -1,20 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086.json",
   "insurer_id": "bajaj_allianz_general",
   "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
   "page_title": "Senior Citizen Health Insurance & Mediclaim Policy for 60+",
   "content_hash": "1f4cc96bf4e9dc573b7afeb5dbecd3a597211ac27b8f100fe59be7fd4411c086",
-  "page_intent": "individual_product",
-  "extracted_at": "2026-06-07T11:46:07.281503+00:00",
-  "product_names": [
-    {
-      "name": "Senior Citizen Health Insurance",
-      "source": "url_slug",
-      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html"
-    }
-  ],
+  "page_intent": "product_listing",
+  "asset_scope": "category",
+  "classification_reason": "matched category URL marker; category override from URL marker",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.419993+00:00",
+  "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Get comprehensive health coverage for your old age",
@@ -258,110 +256,11 @@
       "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
     }
   ],
-  "sum_insured_values": [
-    {
-      "value": "INR 10 lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 5 lacs\nINR 3 lacs to INR 10 lacs"
-    },
-    {
-      "value": "INR 3 lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 5 lacs\nINR 3 lacs to INR 10 lacs"
-    },
-    {
-      "value": "INR 5 lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 5 lacs\nINR 3 lacs to INR 10 lacs"
-    },
-    {
-      "value": "INR 5 lacs",
-      "reason": "sum_insured_context",
-      "heading": "Non-Medical Expenses",
-      "evidence": "Non-Medical Expenses\nCoverage for non-medical expenses (such as consumables) within the in-patient hospitalisation sum insured for health indemnity product plans with SI of INR 5 lacs and above\nNote"
-    },
-    {
-      "value": "INR 50,000",
-      "reason": "sum_insured_context",
-      "heading": "Choose adequate sum insured from INR 50,000 to 10 lacs that suits your need",
-      "evidence": "Choose adequate sum insured from INR 50,000 to 10 lacs that suits your need\nEntry Age up to 80 Years\nYou are eligible to get this health insurance plan between 46 years to 80 years of age"
-    },
-    {
-      "value": "INR 50,000",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 50,000 to INR 5 lacs\nINR 3 lacs to INR 10 lacs"
-    },
-    {
-      "value": "₹10 lakhs",
-      "reason": "sum_insured_context",
-      "heading": "What are the sum insured options available under the Silver Health ?",
-      "evidence": "What are the sum insured options available under the Silver Health ?\nUnder Silver Health Plan A, you can choose a sum insured ranging from ₹50,000 to ₹5 lakhs. For Plan B, the sum insured can range between ₹3 lakhs and ₹10 lakhs.\nWhat is the entry age for the Silver Health policy?\nThe plan is available to individuals or families with an age range of 46 to 80 years."
-    },
-    {
-      "value": "₹3 lakhs",
-      "reason": "sum_insured_context",
-      "heading": "What are the sum insured options available under the Silver Health ?",
-      "evidence": "What are the sum insured options available under the Silver Health ?\nUnder Silver Health Plan A, you can choose a sum insured ranging from ₹50,000 to ₹5 lakhs. For Plan B, the sum insured can range between ₹3 lakhs and ₹10 lakhs.\nWhat is the entry age for the Silver Health policy?\nThe plan is available to individuals or families with an age range of 46 to 80 years."
-    },
-    {
-      "value": "₹5 lakhs",
-      "reason": "sum_insured_context",
-      "heading": "What are the sum insured options available under the Silver Health ?",
-      "evidence": "What are the sum insured options available under the Silver Health ?\nUnder Silver Health Plan A, you can choose a sum insured ranging from ₹50,000 to ₹5 lakhs. For Plan B, the sum insured can range between ₹3 lakhs and ₹10 lakhs.\nWhat is the entry age for the Silver Health policy?\nThe plan is available to individuals or families with an age range of 46 to 80 years."
-    },
-    {
-      "value": "₹50,000",
-      "reason": "sum_insured_context",
-      "heading": "What are the sum insured options available under the Silver Health ?",
-      "evidence": "What are the sum insured options available under the Silver Health ?\nUnder Silver Health Plan A, you can choose a sum insured ranging from ₹50,000 to ₹5 lakhs. For Plan B, the sum insured can range between ₹3 lakhs and ₹10 lakhs.\nWhat is the entry age for the Silver Health policy?\nThe plan is available to individuals or families with an age range of 46 to 80 years."
-    }
-  ],
+  "sum_insured_values": [],
   "premium_values": [],
   "benefit_amount_values": [],
-  "tax_amount_values": [
-    {
-      "value": "Rs 1 lakh",
-      "reason": "tax_context",
-      "heading": "Hospital Cash Tax:",
-      "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit "
-    },
-    {
-      "value": "Rs 25,000",
-      "reason": "tax_context",
-      "heading": "Hospital Cash Tax:",
-      "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit "
-    },
-    {
-      "value": "Rs 50,000",
-      "reason": "tax_context",
-      "heading": "Hospital Cash Tax:",
-      "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit "
-    },
-    {
-      "value": "Rs 75,000",
-      "reason": "tax_context",
-      "heading": "Hospital Cash Tax:",
-      "evidence": "Hospital Cash Tax:\nAvail income tax benefit under Section 80D of the Income Tax Act.*\n*On opting for a Senior Health Plan for your parents, you can avail Rs 25,000 per annum as a deduction against your taxes (provided you are not over 60 years). If you pay a premium for your parents who are senior citizens (age 60 or above), the maximum\nhealth insurance benefit\nfor tax purposes is capped at Rs 50,000. As a taxpayer, you may, therefore, maximise tax benefit under Section 80D up to a total of Rs 75,000, if you are below 60 years of age and your parents are senior citizens. If you are above the age of 60 years and are paying a medical insurance premium for your parents, the maximum tax benefit "
-    }
-  ],
-  "discount_values": [
-    {
-      "value": "INR 2 lacs",
-      "reason": "discount_context",
-      "heading": "Room Rent Capping Discount",
-      "evidence": "Room Rent Capping Discount\nGet discount on policy premium (10% for SI up to INR 2 lacs & 5% for SI INR 3 lacs and above) if you opt for room rent limit of 1% of sum insured\nNote"
-    },
-    {
-      "value": "INR 3 lacs",
-      "reason": "discount_context",
-      "heading": "Room Rent Capping Discount",
-      "evidence": "Room Rent Capping Discount\nGet discount on policy premium (10% for SI up to INR 2 lacs & 5% for SI INR 3 lacs and above) if you opt for room rent limit of 1% of sum insured\nNote"
-    }
-  ],
+  "tax_amount_values": [],
+  "discount_values": [],
   "room_rent_limits": [
     {
       "heading": "Room Rent Capping Discount",
