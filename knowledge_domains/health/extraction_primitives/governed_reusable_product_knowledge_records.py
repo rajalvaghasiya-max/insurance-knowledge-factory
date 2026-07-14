@@ -92,6 +92,30 @@ def _validate_content_review_submission(content_review_submission: Mapping[str, 
     return doc
 
 
+def _validate_source_facts(value: object, package_key: str) -> list[Any]:
+    facts = _items(value, f"{package_key}.source_facts")
+    if not facts:
+        raise GovernedReusableProductKnowledgeRecordError(f"{package_key}.source_facts must not be empty")
+    validated: list[Any] = []
+    for index, fact in enumerate(facts):
+        entry = _mapping(fact, f"{package_key}.source_facts[{index}]")
+        _text(entry.get("governed_fact_id"), f"{package_key}.source_facts[{index}].governed_fact_id")
+        validated.append(entry)
+    return validated
+
+
+def _validate_source_evidence(value: object, package_key: str) -> list[Any]:
+    evidence = _items(value, f"{package_key}.source_evidence")
+    if not evidence:
+        raise GovernedReusableProductKnowledgeRecordError(f"{package_key}.source_evidence must not be empty")
+    validated: list[Any] = []
+    for index, item in enumerate(evidence):
+        entry = _mapping(item, f"{package_key}.source_evidence[{index}]")
+        _text(entry.get("bounded_evidence_identity"), f"{package_key}.source_evidence[{index}].bounded_evidence_identity")
+        validated.append(entry)
+    return validated
+
+
 def _validate_package_template(package: Mapping[str, Any]) -> dict[str, Any]:
     package_key = _text(package.get("package_key"), "package.package_key")
     if package.get("content_review_status") != "pending_human_authoring_and_review":
@@ -110,9 +134,9 @@ def _validate_package_template(package: Mapping[str, Any]) -> dict[str, Any]:
         "title": _text(package.get("title"), f"{package_key}.title"),
         "package_intent": _text(package.get("package_intent"), f"{package_key}.package_intent"),
         "human_reviewed_content": _validate_human_content(_mapping(package.get("human_authored_content"), f"{package_key}.human_authored_content"), package_key),
-        "source_facts": list(_items(package.get("source_facts"), f"{package_key}.source_facts")),
+        "source_facts": _validate_source_facts(package.get("source_facts"), package_key),
         "source_publication_decisions": list(_items(package.get("source_publication_decisions"), f"{package_key}.source_publication_decisions")),
-        "source_evidence": list(_items(package.get("source_evidence"), f"{package_key}.source_evidence")),
+        "source_evidence": _validate_source_evidence(package.get("source_evidence"), package_key),
     }
 
 
@@ -133,10 +157,15 @@ class GovernedReusableProductKnowledgeRecordContract:
         created_by = _text(created_by, "created_by")
         created_at = _text(created_at, "created_at")
 
-        package_by_key = {
-            _text(item.get("package_key"), "package.package_key"): _validate_package_template(_mapping(item, "packages[]"))
-            for item in _items(package_doc.get("packages"), "package_templates.packages")
-        }
+        package_by_key: dict[str, dict[str, Any]] = {}
+        for item in _items(package_doc.get("packages"), "package_templates.packages"):
+            validated_package = _validate_package_template(_mapping(item, "packages[]"))
+            package_key = validated_package["package_key"]
+            if package_key in package_by_key:
+                raise GovernedReusableProductKnowledgeRecordError(
+                    f"duplicate package_key in package_templates.packages: {package_key}"
+                )
+            package_by_key[package_key] = validated_package
         if not package_by_key:
             raise GovernedReusableProductKnowledgeRecordError("no package templates available")
 
@@ -205,6 +234,8 @@ class GovernedReusableProductKnowledgeRecordContract:
                 },
                 "non_publication_guardrail": "reusable_product_knowledge_record_no_publication_entitlement_or_customer_answer",
             })
+
+        records.sort(key=lambda record: record["package_key"])
 
         payload_for_document_id = {
             "source_package_template_document_id": package_doc.get("template_document_id"),
