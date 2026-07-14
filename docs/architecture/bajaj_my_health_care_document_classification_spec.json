@@ -7,7 +7,7 @@
       "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json",
       "classification": "reusable_generic",
       "reuse_action": "reusable_evidence_candidate",
-      "review_rationale": "Publicly downloadable policy wording PDF served directly from the insurer's official download-documents domain (bajajgeneralinsurance.com), matching the same primary_legal / reusable_generic pattern already used for other Bajaj Allianz and Aditya Birla Health policy wordings registered in this factory."
+      "review_rationale": "Publicly downloadable policy wording PDF served directly from the insurer's official download-documents domain (bajajgeneralinsurance.com), matching the same primary_legal / reusable_generic pattern already used for other Bajaj Allianz and Aditya Birla Health policy wordings registered in this factory. This document is reusable evidence for the Bajaj Allianz My Health Care product, but reusable_generic classification is not, by itself, proof that this document is currently applicable for publication; current applicability is a separate, later temporal/currentness determination."
     }
   ]
 }

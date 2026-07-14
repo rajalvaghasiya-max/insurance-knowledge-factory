@@ -1,21 +1,34 @@
 {
-  "document_kind": "product_identity_reference_review_template_v1",
-  "status": "draft_not_executable_pending_human_uin_verification",
   "schema_version": "1.0",
-  "record_type": "product_identity_reference_review_template_v1",
-  "reviewed_by_human": false,
+  "record_type": "product_identity_reference_v1",
+  "reviewed_by_human": true,
   "product_identity": {
     "entity_id": "bajaj_allianz_general:my_health_care",
     "insurer_id": "bajaj_allianz_general",
     "product_id": "my_health_care",
     "canonical_product_name": "My Health Care Plan",
-    "uin": null
+    "uin": "BAJHLIP26074V022526"
   },
   "aliases": [
     "My Health Care Plan",
     "My Health Care Plan1"
   ],
-  "identity_evidence": [],
-  "review_rationale": null,
-  "template_note": "This file is a human-review template, not a valid product_identity_reference_v1 specification. Its record_type is deliberately set to product_identity_reference_review_template_v1 so ProductIdentityReference.build_from_spec_file() cannot accept it: the contract requires record_type == product_identity_reference_v1 and rejects anything else immediately. No governed UIN exists anywhere in this repository for Bajaj Allianz My Health Care (registry/uin_registry.json is empty; the product-master record at knowledge_domains/product/product_master/bajaj_allianz_general_my_health_care_plan_c009dc1dbb.json records uins: [] and quality.has_uin: false). The contract itself has no supported representation for an unknown or pending UIN -- product_identity.uin must be a real, non-empty compact identifier, and identity_evidence must include a uin_exact_match signal with manual_reviewed verification before resolution_status can be resolved. Rather than fabricate a placeholder that would silently pass the contract's shape check, this file uses a JSON null for uin, an empty identity_evidence array, reviewed_by_human: false, and a non-matching record_type, so a human reviewer must deliberately complete and retype this document into a real product_identity_reference_v1 record -- supplying the verified UIN and at least one uin_exact_match / manual_reviewed identity_evidence entry -- before it can ever be executed against the real contract."
+  "identity_evidence": [
+    {
+      "signal_type": "uin_exact_match",
+      "verification": "document_embedded_text",
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json"
+    },
+    {
+      "signal_type": "canonical_title_match",
+      "verification": "document_embedded_text",
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json"
+    },
+    {
+      "signal_type": "manual_product_review",
+      "verification": "manual_reviewed",
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json"
+    }
+  ],
+  "review_rationale": "UIN BAJHLIP26074V022526 confirmed via text embedded in the registered Bajaj Allianz My Health Care Plan policy wording, corroborated by an exact canonical product title match and a manual product review comparing the policy wording against the insurer's official product page. This establishes reviewed product identity only; it does not establish document-version compatibility or current entitlement."
 }

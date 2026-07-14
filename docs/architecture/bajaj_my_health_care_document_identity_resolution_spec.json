@@ -8,17 +8,32 @@
   "documents": [
     {
       "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json",
-      "resolution_status": "unresolved",
-      "temporal_status": "unknown",
+      "resolution_status": "resolved",
+      "temporal_status": "compatibility_unverified",
       "identity_signals": [
+        {
+          "signal_type": "uin_exact_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json"
+        },
         {
           "signal_type": "canonical_title_match",
           "verification": "document_embedded_text",
           "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json"
+        },
+        {
+          "signal_type": "manual_document_review",
+          "verification": "manual_reviewed",
+          "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json"
         }
       ],
       "classification_manifest_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_document_classification.json",
-      "review_rationale": "DRAFT - NOT READY FOR EXECUTION. resolution_status is honestly recorded as unresolved and temporal_status as unknown because two upstream governed artifacts do not yet exist: (1) the immutable source PDF and its generic_source_registration output (archive/ is not present in this environment), and (2) a resolved product_identity_reference record, which itself requires a governed UIN that does not exist anywhere in this repository (registry/uin_registry.json is empty). DocumentIdentityResolutionOverlay.build() will fail at _load_product_identity_reference and again at the registration_path file-existence check until both are supplied. This spec documents the intended overlay shape only; it must not be executed to assert current or resolved status."
+      "capture_provenance": {
+        "source_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+        "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "capture_reference": "pdfobs_5f30aafa8ec0f6fbbc09"
+      },
+      "review_rationale": "Product and document identity are resolved: UIN BAJHLIP26074V022526 exact-matches text embedded in the registered policy wording, corroborated by an exact canonical title match and a manual document review binding this specific immutable document version to the Bajaj Allianz My Health Care Plan product identity. Resolved identity is distinct from current compatibility: no currentness evidence has been independently verified for this document version, so temporal_status is compatibility_unverified rather than current. This overlay does not claim current entitlement publication eligibility and does not itself publish a product fact."
     }
   ]
 }
