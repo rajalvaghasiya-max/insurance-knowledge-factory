@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "overlay_type": "document_identity_resolution_overlay_v1",
+  "reviewed_by_human": true,
+  "product_identity_reference": {
+    "identity_record_path": "knowledge/factory/product_identity_references/bajaj_allianz_general_my_health_care.product_identity_reference.json"
+  },
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json",
+      "resolution_status": "unresolved",
+      "temporal_status": "unknown",
+      "identity_signals": [
+        {
+          "signal_type": "canonical_title_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json"
+        }
+      ],
+      "classification_manifest_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_document_classification.json",
+      "review_rationale": "DRAFT - NOT READY FOR EXECUTION. resolution_status is honestly recorded as unresolved and temporal_status as unknown because two upstream governed artifacts do not yet exist: (1) the immutable source PDF and its generic_source_registration output (archive/ is not present in this environment), and (2) a resolved product_identity_reference record, which itself requires a governed UIN that does not exist anywhere in this repository (registry/uin_registry.json is empty). DocumentIdentityResolutionOverlay.build() will fail at _load_product_identity_reference and again at the registration_path file-existence check until both are supplied. This spec documents the intended overlay shape only; it must not be executed to assert current or resolved status."
+    }
+  ]
+}

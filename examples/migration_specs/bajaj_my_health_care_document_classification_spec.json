@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "classification_type": "document_classification_reuse_policy_v1",
+  "reviewed_by_human": true,
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json",
+      "classification": "reusable_generic",
+      "reuse_action": "reusable_evidence_candidate",
+      "review_rationale": "Publicly downloadable policy wording PDF served directly from the insurer's official download-documents domain (bajajgeneralinsurance.com), matching the same primary_legal / reusable_generic pattern already used for other Bajaj Allianz and Aditya Birla Health policy wordings registered in this factory."
+    }
+  ]
+}
