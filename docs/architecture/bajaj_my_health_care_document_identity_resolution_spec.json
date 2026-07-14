@@ -33,7 +33,7 @@
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
         "capture_reference": "pdfobs_5f30aafa8ec0f6fbbc09"
       },
-      "review_rationale": "Product and document identity are resolved: UIN BAJHLIP26074V022526 exact-matches text embedded in the registered policy wording, corroborated by an exact canonical title match and a manual document review binding this specific immutable document version to the Bajaj Allianz My Health Care Plan product identity. Resolved identity is distinct from current compatibility: no currentness evidence has been independently verified for this document version, so temporal_status is compatibility_unverified rather than current. This overlay does not claim current entitlement publication eligibility and does not itself publish a product fact."
+      "review_rationale": "Product and document identity are resolved: UIN BAJHLIP26074V022526 exact-matches text embedded in the registered policy wording, corroborated by an exact canonical title match and a manual document review binding this specific immutable document version to the Bajaj Allianz My Health Care Plan product identity. Resolved identity is distinct from current compatibility: no currentness evidence has been independently verified for this document version, so temporal_status is compatibility_unverified rather than current. This overlay does not claim current-entitlement publication eligibility and does not itself publish a product fact."
     }
   ]
 }
