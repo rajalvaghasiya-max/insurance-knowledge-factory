@@ -1,6 +1,13 @@
 {
   "document_kind": "product_identity_review_packet_v1",
-  "status": "awaiting_human_identity_decision",
+  "status": "approved",
+  "human_decision": "approved",
+  "approved_by": "CTO",
+  "approval_reference": "Manufacturing Order MO-006B.1",
+  "approved_entity_id": "star_health:star_comprehensive",
+  "approved_uin": "SHAHLIP26044V092526",
+  "approved_source_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+  "approval_note": "Approval was supplied explicitly by the CTO in MO-006B.1. The automated identity audit recorded below (product_identity_report.json) is corroborating evidence only and is not, and has never been, represented as the human approval itself.",
   "entity_id_proposed": "star_health:star_comprehensive",
   "insurer_id": "star_health",
   "product_id": "star_comprehensive",
@@ -39,8 +46,10 @@
     "policy_wording": {
       "url": "https://d28c6jni2fmamz.cloudfront.net/Policy_Star_Comprehensive_Insurance_Policy_V_21_3a414ab104.pdf",
       "declared_bytes": 2101643,
-      "sha256": null,
-      "sha256_available": false
+      "approved_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+      "sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+      "sha256_available": true,
+      "sha256_source": "Supplied and approved by the CTO in MO-006B.1"
     },
     "prospectus": {
       "url": "https://d28c6jni2fmamz.cloudfront.net/Prospectus_Star_Comprehensive_Insurance_Policy_V_12_dc6058c95e.pdf",
@@ -57,11 +66,11 @@
     "source_report": "knowledge/health/document_acquisition/star_health_star_comprehensive_download_report.json"
   },
   "conflicts_or_uncertainty": [
-    "No SHA-256 is recorded for any of the three candidate documents anywhere in the repository, and none of the underlying PDF bytes are present locally (knowledge/health/star_health/star_comprehensive/documents/ does not exist in this checkout, and .gitignore excludes knowledge/**/documents/). A generic_source_registration specification requires an exact, governed SHA-256; none can currently be computed or cited.",
-    "The UIN candidate (SHAHLIP26044V092526) was extracted from the PROSPECTUS document, not from the preferred policy_wording document itself. A human reviewer should confirm the UIN is also present in, and consistent with, the actual policy wording text before it is treated as the governed identity for a policy-wording-anchored migration.",
-    "The old-pipeline identity audit (product_identity_report.json) is an automated, score-based check (identity_audit_version 0.1, PASS, score 100) -- it is not a human-reviewed record. It is useful corroborating evidence but does not by itself satisfy the generic contract's manual_reviewed / reviewed_by_human requirements.",
-    "The version marker on the prospectus evidence text ('PROS / COMP / V.15 / 2025') is a prospectus revision label, not independently verified as the currentness marker for the policy wording document specifically."
+    "RESOLVED (MO-006B.1): the policy_wording SHA-256 was previously unavailable; the CTO has since supplied and approved it (see approved_source_sha256). Prospectus and brochure remain unqualified and out of scope for this migration.",
+    "RESOLVED (MO-006B.1): the UIN candidate (SHAHLIP26044V092526) was originally sourced from the PROSPECTUS rather than the policy wording; the CTO's explicit approval in MO-006B.1 accepts this UIN as the governed identity for the product regardless of which document it was first observed in.",
+    "The old-pipeline identity audit (product_identity_report.json) remains an automated, score-based check (identity_audit_version 0.1, PASS, score 100) -- it is not, and was never treated as, the human approval itself. The CTO's explicit approval in MO-006B.1 is the human decision of record.",
+    "The version marker on the prospectus evidence text ('PROS / COMP / V.15 / 2025') is a prospectus revision label, not independently verified as the currentness marker for the policy wording document specifically. This is unchanged and unrelated to the identity approval: temporal_status remains compatibility_unverified in the executable specifications."
   ],
-  "recommended_identity_decision": "Do not resolve identity yet. Two governed inputs are required before a real product_identity_reference_v1 record can be authored: (1) acquire the exact policy_wording PDF (or another qualifying source) and compute a real, citable SHA-256, and (2) obtain explicit human verification of the candidate UIN (SHAHLIP26044V092526) against the actual source document, recorded as a manual_reviewed identity-evidence signal, analogous to the human sign-off the CTO explicitly supplied for Bajaj My Health Care in Manufacturing Order MO-004B. Until both are supplied, only a non-executable draft identity specification should exist for this product.",
-  "human_decision_required": "Approve or correct the candidate UIN (SHAHLIP26044V092526) against the actual policy wording source text, and confirm this packet's proposed entity_id (star_health:star_comprehensive) as the governed identity, so that reviewed_by_human=true and a manual_reviewed identity-evidence signal can be added to a real product_identity_reference_v1 specification."
+  "recommended_identity_decision": "APPROVED (MO-006B.1). entity_id star_health:star_comprehensive, UIN SHAHLIP26044V092526, and source SHA-256 b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f are now the governed values used in the executable product_identity_reference_v1, document_identity_resolution_overlay_v1, and migration manifest specifications for this product.",
+  "human_decision_required": "None outstanding for identity approval. Remaining open item: the source PDF itself is gitignored and not committed to this repository; it must be present at archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf in any environment that runs the generic migration end to end."
 }

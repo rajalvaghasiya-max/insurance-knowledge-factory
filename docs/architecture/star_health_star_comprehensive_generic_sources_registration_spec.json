@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "registration_type": "generic_source_registration_bundle_v1",
+  "product_context": {
+    "insurer_id": "star_health",
+    "product_id": "star_comprehensive",
+    "product_display_name": "Star Comprehensive Insurance Policy",
+    "source_scope": "reusable_generic",
+    "reviewed_generic_source_confirmation": true
+  },
+  "documents": [
+    {
+      "document_id": "star_health_star_comprehensive_policy_wording_v1",
+      "source_document_id": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+      "canonical_title": "Star Comprehensive Insurance Policy - Policy Wording",
+      "document_type": "policy_wording",
+      "authority_role": "primary_legal",
+      "audience_scope": "generic_public",
+      "document_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+      "extracted_text_output_path": "archive/text/star_health/star_comprehensive_policy_wording_2025.txt",
+      "evidence_markers": [
+        "Star Comprehensive"
+      ],
+      "source_issued_label": null,
+      "registration_output_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+    }
+  ]
+}

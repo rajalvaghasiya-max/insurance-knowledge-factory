@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "overlay_type": "document_identity_resolution_overlay_v1",
+  "reviewed_by_human": true,
+  "product_identity_reference": {
+    "identity_record_path": "knowledge/factory/product_identity_references/star_health_star_comprehensive.product_identity_reference.json"
+  },
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+      "resolution_status": "resolved",
+      "temporal_status": "compatibility_unverified",
+      "identity_signals": [
+        {
+          "signal_type": "uin_exact_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+        },
+        {
+          "signal_type": "canonical_title_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+        },
+        {
+          "signal_type": "manual_document_review",
+          "verification": "manual_reviewed",
+          "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+        }
+      ],
+      "classification_manifest_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_classification.json",
+      "capture_provenance": {
+        "source_url": "https://d28c6jni2fmamz.cloudfront.net/Policy_Star_Comprehensive_Insurance_Policy_V_21_3a414ab104.pdf",
+        "capture_reference": "knowledge/health/document_acquisition/star_health_star_comprehensive_download_report.json"
+      },
+      "review_rationale": "Product and document identity are resolved: UIN SHAHLIP26044V092526 exact-matches text embedded in the registered policy wording, corroborated by an exact canonical title match and a manual document review binding this specific immutable document version to the Star Health Comprehensive product identity approved by the CTO in MO-006B.1. Resolved identity is distinct from current compatibility: no currentness evidence has been independently verified for this document version, so temporal_status is compatibility_unverified rather than current. This overlay does not claim current-entitlement publication eligibility and does not itself publish a product fact."
+    }
+  ]
+}
