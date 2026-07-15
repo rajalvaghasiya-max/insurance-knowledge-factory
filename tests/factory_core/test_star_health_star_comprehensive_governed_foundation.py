@@ -122,13 +122,32 @@ def test_no_star_specific_runner_script_exists():
 
 # --- 12/14: generic runner compatibility and missing-source fail-closed --
 
-def test_generic_runner_executes_star_manifest_and_fails_closed_on_missing_source():
-    """In this clean checkout the gitignored source PDF is absent. The
-    real, unmodified generic runner (not a Star-specific one) must reach
-    exactly this boundary and fail closed -- proving the manifest and
-    all four specs are otherwise wired correctly."""
+def test_generic_runner_fails_closed_on_missing_source_in_isolated_repository(tmp_path):
+    """Case 1 (MO-006B.2): deterministic, filesystem-independent proof that
+    the real generic runner fails closed when the approved source document
+    is absent. Uses an isolated temporary repository containing the real
+    Star manifest and all four real Star specifications but no source
+    file -- it does not depend on, inspect, or assume anything about
+    whether the developer's own checkout happens to have the source PDF.
+    This must pass identically in a clean manufacturing checkout, the
+    authoritative local workspace (where the source exists), and CI."""
+    import shutil
+
+    root = tmp_path
+    for relative in (
+        STAR_MANIFEST_PATH,
+        STAR_IDENTITY_SPEC_PATH,
+        STAR_OVERLAY_SPEC_PATH,
+        "docs/architecture/star_health_star_comprehensive_document_classification_spec.json",
+        "docs/architecture/star_health_star_comprehensive_generic_sources_registration_spec.json",
+    ):
+        destination = root / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(Path(relative), destination)
+
+    # Deliberately do not create anything at APPROVED_SOURCE_PATH under root.
     with pytest.raises(GovernedProductMigrationError, match="source document was not found"):
-        run_migration(".", STAR_MANIFEST_PATH)
+        run_migration(root, root / STAR_MANIFEST_PATH)
 
 
 # --- 13: source-hash mismatch fails closed when a runtime source exists --
@@ -230,8 +249,16 @@ def _prepare_star_shadow_repository_root(tmp_path):
 
 
 def test_full_pipeline_reproduces_expected_governed_states(tmp_path):
-    """Real identity and overlay contracts, real Star specifications; only
-    the two PDF-dependent stages are seeded, exactly as for Bajaj."""
+    """Case 2 (MO-006B.2): deterministic, filesystem-independent proof that
+    the real generic runner succeeds and reproduces the exact approved
+    governed states, using an isolated temporary repository and the
+    existing proven seeded-fixture pattern (require_expected_source is
+    mocked to point at a stand-in path, since fabricating real bytes that
+    hash to the CTO-approved SHA-256 is not possible without the actual
+    source document). Real identity and overlay contracts, real Star
+    specifications; only the two PDF-dependent stages are seeded, exactly
+    as for the equivalent Bajaj test. Passes identically regardless of
+    whether the developer's own checkout has the real source PDF."""
     root = _prepare_star_shadow_repository_root(tmp_path)
     with patch(
         "scripts.run_governed_product_migration.GenericSourceRegistration.register_from_spec_file",
