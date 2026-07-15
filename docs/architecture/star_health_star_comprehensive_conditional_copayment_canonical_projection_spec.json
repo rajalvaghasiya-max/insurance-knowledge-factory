@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "projection_type": "generic_legal_condition_canonical_projection_v1",
+  "reviewed_by_human": true,
+  "binding_manifest_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_legal_condition_binding/star_comprehensive_conditional_copayment.json",
+  "classification_manifest_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_comprehensive_document_classification.json",
+  "product_context": {
+    "insurer_id": "star_health",
+    "insurer_legal_name": "Star Health and Allied Insurance Company Limited",
+    "insurer_type": "health_insurer",
+    "product_id": "star_comprehensive",
+    "product_name": "Star Comprehensive Insurance Policy",
+    "product_family_name": "Star Comprehensive Insurance Policy",
+    "domain": "health",
+    "product_version_id": "pv_star_health_star_comprehensive_shahlip26044v092526",
+    "product_version_label": "UIN SHAHLIP26044V092526",
+    "product_uin": "SHAHLIP26044V092526"
+  }
+}

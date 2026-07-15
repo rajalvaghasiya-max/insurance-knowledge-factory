@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "gate_type": "canonical_publication_decision_gate_v1",
+  "reviewed_by_human": true,
+  "canonical_projection_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/canonical_projection/star_comprehensive_conditional_copayment.canonical.json",
+  "classification_manifest_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_comprehensive_document_classification.json",
+  "product_version_id": "pv_star_health_star_comprehensive_shahlip26044v092526",
+  "approved_rule_types": [
+    "conditional_copayment_rule"
+  ],
+  "assertion_ids": [
+    "ka_3ba01cbf47f6e3d5"
+  ],
+  "source_document_bindings": [
+    {
+      "source_document_id": "src_star_health_star_comprehensive_policy_wording_2025",
+      "document_id": "star_health_star_comprehensive_policy_wording_2025",
+      "document_version_id": "docver_star_health_star_comprehensive_policy_wording_2025_b1dbe8fb78646f75"
+    },
+    {
+      "source_document_id": "src_star_health_star_comprehensive_prospectus_2025",
+      "document_id": "star_health_star_comprehensive_prospectus_2025",
+      "document_version_id": "docver_star_health_star_comprehensive_prospectus_2025_0404693147bd5202"
+    }
+  ]
+}
