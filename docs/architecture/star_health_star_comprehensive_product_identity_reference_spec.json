@@ -1,0 +1,20 @@
+{
+  "document_kind": "product_identity_reference_review_template_v1",
+  "status": "draft_not_executable_pending_human_uin_verification",
+  "schema_version": "1.0",
+  "record_type": "product_identity_reference_review_template_v1",
+  "reviewed_by_human": false,
+  "product_identity": {
+    "entity_id": "star_health:star_comprehensive",
+    "insurer_id": "star_health",
+    "product_id": "star_comprehensive",
+    "canonical_product_name": "Star Comprehensive Insurance Policy",
+    "uin": "SHAHLIP26044V092526"
+  },
+  "aliases": [
+    "Star Comprehensive Insurance Policy"
+  ],
+  "identity_evidence": [],
+  "review_rationale": null,
+  "template_note": "This file is a human-review template, not a valid product_identity_reference_v1 specification. record_type is deliberately set to product_identity_reference_review_template_v1 so ProductIdentityReference.build_from_spec_file() cannot accept it -- the real contract requires record_type == product_identity_reference_v1 and rejects anything else immediately. The uin value above (SHAHLIP26044V092526) is a real, evidenced extraction cited in full in docs/architecture/star_health_star_comprehensive_identity_review_packet.json, but it is explicitly labeled candidate_status: format_valid_candidate by an automated audit, not a human-reviewed record. No equivalent human-review authorization exists yet for Star, unlike the CTO-approved Bajaj My Health Care identity specification (MO-004B). identity_evidence is intentionally left empty and reviewed_by_human is false rather than asserting a manual_reviewed signal that has not occurred. See the identity review packet for the full evidence, conflicts, and the exact human decision required before this file can be retyped into a real, executable product_identity_reference_v1 record."
+}
