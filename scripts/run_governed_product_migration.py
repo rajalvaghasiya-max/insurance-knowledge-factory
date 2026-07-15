@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping
@@ -32,9 +33,16 @@ class GovernedProductMigrationError(RuntimeError):
     pass
 
 
+_SUPPORTED_SCHEMA_VERSION = "1.0"
+_SUPPORTED_MANIFEST_TYPE = "governed_product_migration_manifest_v1"
+_SUPPORTED_DOMAIN = "health"
+_SHA256_PATTERN = re.compile(r"^[0-9a-fA-F]{64}$")
+
 _REQUIRED_SPEC_KEYS = ("generic_registration", "classification", "identity", "overlay")
 _REQUIRED_OUTPUT_KEYS = ("bundle", "classification", "identity", "overlay")
 _REQUIRED_MANIFEST_KEYS = (
+    "schema_version",
+    "manifest_type",
     "domain",
     "insurer_id",
     "product_id",
@@ -66,6 +74,41 @@ def _nonempty_str(value: object, label: str) -> str:
     return value
 
 
+def _safe_relative_path(value: object, label: str) -> str:
+    """Structural path-safety check, independent of repository_root.
+
+    Rejects absolute paths and any '..' path-traversal component outright.
+    A second, repository_root-aware check (_resolve_under_root) is applied
+    at usage time as defense in depth.
+    """
+    text = _nonempty_str(value, label)
+    candidate = Path(text)
+    if candidate.is_absolute():
+        raise GovernedProductMigrationError(f"{label} must be a relative path; found an absolute path: {text!r}")
+    if ".." in candidate.parts:
+        raise GovernedProductMigrationError(f"{label} must not contain '..' path traversal: {text!r}")
+    return text
+
+
+def _resolve_under_root(root: Path, relative: str, label: str) -> Path:
+    resolved_root = root.resolve()
+    candidate = (root / relative).resolve()
+    try:
+        candidate.relative_to(resolved_root)
+    except ValueError as exc:
+        raise GovernedProductMigrationError(
+            f"{label} must resolve inside repository_root; {relative!r} escapes {resolved_root}"
+        ) from exc
+    return candidate
+
+
+def _validate_sha256(value: object, label: str) -> str:
+    text = _nonempty_str(value, label)
+    if not _SHA256_PATTERN.match(text):
+        raise GovernedProductMigrationError(f"{label} must be exactly 64 hexadecimal characters")
+    return text.lower()
+
+
 def load_manifest(manifest_path: str | Path) -> MigrationManifest:
     """Load and structurally validate a governed migration manifest.
 
@@ -86,6 +129,15 @@ def load_manifest(manifest_path: str | Path) -> MigrationManifest:
     if missing:
         raise GovernedProductMigrationError("Migration manifest is missing required key(s): " + ", ".join(missing))
 
+    if raw.get("schema_version") != _SUPPORTED_SCHEMA_VERSION:
+        raise GovernedProductMigrationError(f"Migration manifest schema_version must be {_SUPPORTED_SCHEMA_VERSION!r}")
+    if raw.get("manifest_type") != _SUPPORTED_MANIFEST_TYPE:
+        raise GovernedProductMigrationError(f"Migration manifest manifest_type must be {_SUPPORTED_MANIFEST_TYPE!r}")
+    if raw.get("domain") != _SUPPORTED_DOMAIN:
+        raise GovernedProductMigrationError(
+            f"Migration manifest domain must be {_SUPPORTED_DOMAIN!r}; this runner supports Health only"
+        )
+
     specs = raw["specs"]
     if not isinstance(specs, dict):
         raise GovernedProductMigrationError("Migration manifest 'specs' must be an object")
@@ -105,10 +157,10 @@ def load_manifest(manifest_path: str | Path) -> MigrationManifest:
         insurer_id=_nonempty_str(raw["insurer_id"], "insurer_id"),
         product_id=_nonempty_str(raw["product_id"], "product_id"),
         entity_id=_nonempty_str(raw["entity_id"], "entity_id"),
-        expected_source_path=_nonempty_str(raw["expected_source_path"], "expected_source_path"),
-        expected_source_sha256=_nonempty_str(raw["expected_source_sha256"], "expected_source_sha256").lower(),
-        specs={key: _nonempty_str(specs[key], f"specs.{key}") for key in _REQUIRED_SPEC_KEYS},
-        outputs={key: _nonempty_str(outputs[key], f"outputs.{key}") for key in _REQUIRED_OUTPUT_KEYS},
+        expected_source_path=_safe_relative_path(raw["expected_source_path"], "expected_source_path"),
+        expected_source_sha256=_validate_sha256(raw["expected_source_sha256"], "expected_source_sha256"),
+        specs={key: _safe_relative_path(specs[key], f"specs.{key}") for key in _REQUIRED_SPEC_KEYS},
+        outputs={key: _safe_relative_path(outputs[key], f"outputs.{key}") for key in _REQUIRED_OUTPUT_KEYS},
     )
 
 
@@ -121,7 +173,7 @@ def sha256_file(path: Path) -> str:
 
 
 def require_expected_source(root: Path, manifest: MigrationManifest) -> Path:
-    source = root / manifest.expected_source_path
+    source = _resolve_under_root(root, manifest.expected_source_path, "expected_source_path")
     if not source.is_file():
         raise GovernedProductMigrationError(
             f"Required immutable source document was not found: {manifest.expected_source_path}"
@@ -137,7 +189,11 @@ def require_expected_source(root: Path, manifest: MigrationManifest) -> Path:
 
 
 def require_spec_files(root: Path, manifest: MigrationManifest) -> None:
-    missing = [relative for relative in manifest.specs.values() if not (root / relative).is_file()]
+    missing = []
+    for label, relative in manifest.specs.items():
+        candidate = _resolve_under_root(root, relative, f"specs.{label}")
+        if not candidate.is_file():
+            missing.append(relative)
     if missing:
         raise GovernedProductMigrationError("Required migration specification file(s) missing: " + ", ".join(missing))
 
@@ -148,6 +204,14 @@ def run_migration(repository_root: str | Path, manifest_path: str | Path) -> dic
 
     require_spec_files(root, manifest)
     source = require_expected_source(root, manifest)
+
+    # Defense in depth: every configured spec/output path must independently
+    # resolve inside repository_root, in addition to the structural
+    # (relative, no '..') check already performed by load_manifest.
+    for label, relative in manifest.specs.items():
+        _resolve_under_root(root, relative, f"specs.{label}")
+    for label, relative in manifest.outputs.items():
+        _resolve_under_root(root, relative, f"outputs.{label}")
 
     source_runner = GenericSourceRegistration()
     source_result = source_runner.register_from_spec_file(
@@ -184,13 +248,20 @@ def run_migration(repository_root: str | Path, manifest_path: str | Path) -> dic
     overlay_result = overlay_runner.build_from_spec_file(
         spec_path=root / manifest.specs["overlay"], repository_root=root
     )
+    overlay_entity_id = overlay_result.manifest["product_identity_reference"]["entity_id"]
+    if overlay_entity_id != manifest.entity_id or overlay_entity_id != resolved_entity_id:
+        raise GovernedProductMigrationError(
+            "Overlay entity_id does not agree with the migration manifest and/or the product identity "
+            f"stage. Overlay resolved {overlay_entity_id!r}; manifest declares {manifest.entity_id!r}; "
+            f"identity stage resolved {resolved_entity_id!r}. Stop: do not proceed on a mismatched product identity."
+        )
     overlay_path = overlay_runner.write_output(
         overlay_result, repository_root=root, output_path=manifest.outputs["overlay"]
     )
 
     decision = overlay_result.manifest["documents"][0]["identity_resolution"]
     return {
-        "entity_id": overlay_result.manifest["product_identity_reference"]["entity_id"],
+        "entity_id": overlay_entity_id,
         "source_path": str(source),
         "source_sha256": manifest.expected_source_sha256,
         "bundle_output_path": str(bundle_path),
@@ -210,7 +281,7 @@ def run_migration(repository_root: str | Path, manifest_path: str | Path) -> dic
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Run the narrow, non-mutating, specification-driven governed product migration."
+        description="Run the narrow, specification-driven governed product migration."
     )
     parser.add_argument("--migration-spec", required=True, help="Path to a governed migration manifest JSON file.")
     parser.add_argument("--repository-root", required=True)

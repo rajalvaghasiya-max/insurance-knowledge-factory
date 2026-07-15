@@ -18,6 +18,8 @@ BAJAJ_MANIFEST_PATH = "docs/architecture/bajaj_my_health_care_migration_manifest
 
 def _write_manifest(tmp_path, **overrides):
     manifest = {
+        "schema_version": "1.0",
+        "manifest_type": "governed_product_migration_manifest_v1",
         "domain": "health",
         "insurer_id": "bajaj_allianz_general",
         "product_id": "my_health_care",
@@ -58,6 +60,84 @@ def test_missing_manifest_required_key_fails_closed(tmp_path):
     manifest_path.write_text(json.dumps({"domain": "health"}), encoding="utf-8")
     with pytest.raises(GovernedProductMigrationError, match="missing required key"):
         load_manifest(manifest_path)
+
+
+def test_unsupported_schema_version_fails_closed(tmp_path):
+    manifest_path = _write_manifest(tmp_path, schema_version="2.0")
+    with pytest.raises(GovernedProductMigrationError, match="schema_version must be"):
+        load_manifest(manifest_path)
+
+
+def test_incorrect_manifest_type_fails_closed(tmp_path):
+    manifest_path = _write_manifest(tmp_path, manifest_type="some_other_manifest_v1")
+    with pytest.raises(GovernedProductMigrationError, match="manifest_type must be"):
+        load_manifest(manifest_path)
+
+
+def test_malformed_sha256_fails_closed(tmp_path):
+    manifest_path = _write_manifest(tmp_path, expected_source_sha256="not-a-real-hash")
+    with pytest.raises(GovernedProductMigrationError, match="64 hexadecimal characters"):
+        load_manifest(manifest_path)
+
+
+def test_malformed_sha256_wrong_length_fails_closed(tmp_path):
+    manifest_path = _write_manifest(tmp_path, expected_source_sha256="ab" * 30)
+    with pytest.raises(GovernedProductMigrationError, match="64 hexadecimal characters"):
+        load_manifest(manifest_path)
+
+
+def test_unsupported_domain_fails_closed(tmp_path):
+    manifest_path = _write_manifest(tmp_path, domain="motor")
+    with pytest.raises(GovernedProductMigrationError, match="domain must be"):
+        load_manifest(manifest_path)
+
+
+def test_absolute_configured_path_fails_closed(tmp_path):
+    manifest_path = _write_manifest(tmp_path, expected_source_path="/etc/passwd")
+    with pytest.raises(GovernedProductMigrationError, match="must be a relative path"):
+        load_manifest(manifest_path)
+
+
+def test_absolute_spec_path_fails_closed(tmp_path):
+    manifest_path = _write_manifest(
+        tmp_path,
+        specs={
+            "generic_registration": "/absolute/registration_spec.json",
+            "classification": "classification_spec.json",
+            "identity": "identity_spec.json",
+            "overlay": "overlay_spec.json",
+        },
+    )
+    with pytest.raises(GovernedProductMigrationError, match="must be a relative path"):
+        load_manifest(manifest_path)
+
+
+def test_repository_path_traversal_fails_closed(tmp_path):
+    manifest_path = _write_manifest(tmp_path, expected_source_path="../../etc/passwd")
+    with pytest.raises(GovernedProductMigrationError, match="path traversal"):
+        load_manifest(manifest_path)
+
+
+def test_repository_path_traversal_in_output_fails_closed(tmp_path):
+    manifest_path = _write_manifest(
+        tmp_path,
+        outputs={
+            "bundle": "../escaped_bundle.json",
+            "classification": "outputs/classification.json",
+            "identity": "outputs/identity.json",
+            "overlay": "outputs/overlay.json",
+        },
+    )
+    with pytest.raises(GovernedProductMigrationError, match="path traversal"):
+        load_manifest(manifest_path)
+
+
+def test_valid_repository_relative_paths_are_accepted(tmp_path):
+    manifest_path = _write_manifest(tmp_path)
+    manifest = load_manifest(manifest_path)
+    assert manifest.expected_source_path == "source.pdf"
+    assert manifest.specs["identity"] == "identity_spec.json"
+    assert manifest.outputs["identity"] == "outputs/identity.json"
 
 
 def test_missing_source_fails_closed(tmp_path):
@@ -228,7 +308,7 @@ def test_valid_bajaj_execution_reproduces_approved_governance_states(tmp_path):
     assert result["current_entitlement_publication_eligibility"] == "blocked"
 
 
-def test_unresolved_identity_entity_id_mismatch_fails_closed(tmp_path):
+def test_manifest_identity_mismatch_fails_closed(tmp_path):
     root = _prepare_shadow_repository_root(tmp_path)
     manifest = json.loads((root / BAJAJ_MANIFEST_PATH).read_text(encoding="utf-8"))
     manifest["entity_id"] = "bajaj_allianz_general:a_different_product"
@@ -246,6 +326,46 @@ def test_unresolved_identity_entity_id_mismatch_fails_closed(tmp_path):
     ):
         with pytest.raises(GovernedProductMigrationError, match="does not agree with the resolved product identity"):
             run_migration(root, mismatched_manifest_path)
+
+
+def test_overlay_identity_mismatch_fails_closed(tmp_path):
+    """The manifest and the identity stage's in-memory result may agree,
+    but if the identity record actually persisted to disk (and thus read
+    back by the overlay stage) disagrees -- e.g. a stale or tampered file --
+    the overlay-stage cross-check must independently catch it."""
+    root = _prepare_shadow_repository_root(tmp_path)
+
+    def _write_tampered_identity_output(result, *, repository_root, output_path):
+        tampered = json.loads(json.dumps(dict(result.manifest)))
+        tampered["product_identity"] = dict(tampered["product_identity"])
+        tampered["product_identity"]["entity_id"] = "bajaj_allianz_general:tampered_product"
+        tampered["product_identity"]["product_id"] = "tampered_product"
+        target = Path(repository_root) / output_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(json.dumps(tampered), encoding="utf-8")
+        return target
+
+    with patch(
+        "scripts.run_governed_product_migration.GenericSourceRegistration.register_from_spec_file",
+        return_value=_FakeSourceResult(),
+    ), patch(
+        "scripts.run_governed_product_migration.GenericSourceRegistration.write_outputs",
+        return_value=root / "ignored_bundle.json",
+    ), patch(
+        "scripts.run_governed_product_migration.DocumentClassificationPolicy.classify_from_spec_file",
+        return_value=_FakeClassificationResult(),
+    ), patch(
+        "scripts.run_governed_product_migration.DocumentClassificationPolicy.write_output",
+        return_value=root / _CLASSIFICATION_OUTPUT_RELATIVE,
+    ), patch(
+        "scripts.run_governed_product_migration.require_expected_source",
+        return_value=root / "ignored.pdf",
+    ), patch(
+        "scripts.run_governed_product_migration.ProductIdentityReference.write_output",
+        side_effect=_write_tampered_identity_output,
+    ):
+        with pytest.raises(GovernedProductMigrationError, match="Overlay entity_id does not agree"):
+            run_migration(root, BAJAJ_MANIFEST_PATH)
 
 
 def test_deterministic_semantic_output_across_two_runs(tmp_path):

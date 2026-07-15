@@ -25,7 +25,7 @@ def run_bajaj_migration(repository_root: str | Path) -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Run the narrow, non-mutating Bajaj My Health Care governed migration "
+        description="Run the narrow Bajaj My Health Care governed migration "
         "(thin wrapper around the generic governed product migration runner)."
     )
     parser.add_argument("--repository-root", required=True)
