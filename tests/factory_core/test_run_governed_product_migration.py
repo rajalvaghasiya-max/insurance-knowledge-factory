@@ -426,6 +426,27 @@ def test_bajaj_compatibility_sha_constant_matches_governed_manifest():
     assert EXPECTED_POLICY_WORDING_SHA256 == "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade"
 
 
+def test_bajaj_wrapper_importable_from_external_working_directory(tmp_path, monkeypatch):
+    """The wrapper's compatibility constant must resolve correctly even
+    when the process current working directory is not the repository
+    root -- it must be anchored to the module's own file location, not
+    to CWD-relative manifest loading."""
+    import importlib
+    import scripts.run_bajaj_my_health_care_governed_migration as bajaj_wrapper
+
+    external_dir = tmp_path / "somewhere_else_entirely"
+    external_dir.mkdir()
+    monkeypatch.chdir(external_dir)
+
+    reloaded = importlib.reload(bajaj_wrapper)
+
+    expected_manifest = load_manifest(
+        Path(reloaded.__file__).resolve().parents[1] / "docs/architecture/bajaj_my_health_care_migration_manifest.json"
+    )
+    assert reloaded.EXPECTED_POLICY_WORDING_SHA256 == expected_manifest.expected_source_sha256
+    assert reloaded.EXPECTED_POLICY_WORDING_SHA256 == "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade"
+
+
 def test_thin_bajaj_wrapper_delegates_without_duplicated_logic():
     from scripts.run_bajaj_my_health_care_governed_migration import run_bajaj_migration
 

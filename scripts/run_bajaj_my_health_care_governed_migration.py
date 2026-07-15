@@ -15,14 +15,21 @@ from typing import Any
 
 from scripts.run_governed_product_migration import load_manifest, run_migration
 
-MANIFEST_PATH = "docs/architecture/bajaj_my_health_care_migration_manifest.json"
+# Anchored to this module's own location, not the process current working
+# directory. Using a bare repository-relative string with load_manifest()
+# depends on CWD == repository root at import time, which does not hold in
+# every invocation context (e.g. imported from an external working
+# directory). This module lives at <repository_root>/scripts/<this file>,
+# so parents[1] is the repository root regardless of CWD.
+PACKAGE_ROOT = Path(__file__).resolve().parents[1]
+MANIFEST_PATH = Path("docs/architecture/bajaj_my_health_care_migration_manifest.json")
 
 # Backward-compatible constant. Mechanically derived from the governed
 # migration manifest at import time -- not an independently maintained
 # duplicate of the hash. Any future change to the approved source
 # document's hash must be made in the manifest; this constant will
 # always reflect that single governed value.
-EXPECTED_POLICY_WORDING_SHA256 = load_manifest(MANIFEST_PATH).expected_source_sha256
+EXPECTED_POLICY_WORDING_SHA256 = load_manifest(PACKAGE_ROOT / MANIFEST_PATH).expected_source_sha256
 
 
 def run_bajaj_migration(repository_root: str | Path) -> dict[str, Any]:
