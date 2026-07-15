@@ -13,9 +13,16 @@ import argparse
 from pathlib import Path
 from typing import Any
 
-from scripts.run_governed_product_migration import run_migration
+from scripts.run_governed_product_migration import load_manifest, run_migration
 
 MANIFEST_PATH = "docs/architecture/bajaj_my_health_care_migration_manifest.json"
+
+# Backward-compatible constant. Mechanically derived from the governed
+# migration manifest at import time -- not an independently maintained
+# duplicate of the hash. Any future change to the approved source
+# document's hash must be made in the manifest; this constant will
+# always reflect that single governed value.
+EXPECTED_POLICY_WORDING_SHA256 = load_manifest(MANIFEST_PATH).expected_source_sha256
 
 
 def run_bajaj_migration(repository_root: str | Path) -> dict[str, Any]:

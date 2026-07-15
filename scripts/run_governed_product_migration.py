@@ -20,7 +20,7 @@ import hashlib
 import json
 import re
 from dataclasses import dataclass
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any, Mapping
 
 from factory_core.canonical.generic_source_registration import GenericSourceRegistration
@@ -75,17 +75,35 @@ def _nonempty_str(value: object, label: str) -> str:
 
 
 def _safe_relative_path(value: object, label: str) -> str:
-    """Structural path-safety check, independent of repository_root.
+    """Structural path-safety check, independent of repository_root, and
+    independent of the host operating system's own Path.is_absolute()
+    interpretation.
 
-    Rejects absolute paths and any '..' path-traversal component outright.
-    A second, repository_root-aware check (_resolve_under_root) is applied
-    at usage time as defense in depth.
+    pathlib.Path(...).is_absolute() alone is not reliable here: on a
+    Windows host it does not classify POSIX-rooted paths like
+    '/etc/passwd' as absolute, and on a POSIX host it does not classify
+    Windows drive-qualified or UNC paths as absolute. This check
+    explicitly evaluates the candidate under PurePosixPath,
+    PureWindowsPath, and the host-native Path, and rejects it if any of
+    those interpretations, or a leading UNC marker, or a drive letter,
+    consider it non-relative. It also rejects any '..' traversal
+    component under either POSIX or Windows path splitting.
+
+    A second, repository_root-aware check (_resolve_under_root) is
+    applied at usage time as defense in depth.
     """
     text = _nonempty_str(value, label)
-    candidate = Path(text)
-    if candidate.is_absolute():
-        raise GovernedProductMigrationError(f"{label} must be a relative path; found an absolute path: {text!r}")
-    if ".." in candidate.parts:
+    if (
+        Path(text).is_absolute()
+        or PurePosixPath(text).is_absolute()
+        or PureWindowsPath(text).is_absolute()
+        or text.startswith("\\\\")
+        or (":" in text[:3])
+    ):
+        raise GovernedProductMigrationError(
+            f"{label} must be a repository-relative path; found an absolute, drive-qualified, or UNC path: {text!r}"
+        )
+    if ".." in PurePosixPath(text).parts or ".." in PureWindowsPath(text).parts:
         raise GovernedProductMigrationError(f"{label} must not contain '..' path traversal: {text!r}")
     return text
 

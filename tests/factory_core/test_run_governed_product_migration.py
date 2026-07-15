@@ -94,7 +94,7 @@ def test_unsupported_domain_fails_closed(tmp_path):
 
 def test_absolute_configured_path_fails_closed(tmp_path):
     manifest_path = _write_manifest(tmp_path, expected_source_path="/etc/passwd")
-    with pytest.raises(GovernedProductMigrationError, match="must be a relative path"):
+    with pytest.raises(GovernedProductMigrationError, match="absolute, drive-qualified, or UNC"):
         load_manifest(manifest_path)
 
 
@@ -108,7 +108,35 @@ def test_absolute_spec_path_fails_closed(tmp_path):
             "overlay": "overlay_spec.json",
         },
     )
-    with pytest.raises(GovernedProductMigrationError, match="must be a relative path"):
+    with pytest.raises(GovernedProductMigrationError, match="absolute, drive-qualified, or UNC"):
+        load_manifest(manifest_path)
+
+
+def test_posix_rooted_path_rejected_regardless_of_host_os(tmp_path):
+    """pathlib.Path(...).is_absolute() alone does not classify a
+    POSIX-rooted path as absolute on a Windows host. This must be
+    rejected regardless of the host operating system."""
+    manifest_path = _write_manifest(tmp_path, expected_source_path="/etc/passwd")
+    with pytest.raises(GovernedProductMigrationError, match="absolute, drive-qualified, or UNC"):
+        load_manifest(manifest_path)
+
+
+def test_windows_drive_qualified_path_rejected(tmp_path):
+    for candidate in (r"C:\absolute\registration_spec.json", "C:/absolute/registration_spec.json"):
+        manifest_path = _write_manifest(tmp_path, expected_source_path=candidate)
+        with pytest.raises(GovernedProductMigrationError, match="absolute, drive-qualified, or UNC"):
+            load_manifest(manifest_path)
+
+
+def test_unc_path_rejected(tmp_path):
+    manifest_path = _write_manifest(tmp_path, expected_source_path=r"\\server\share\registration_spec.json")
+    with pytest.raises(GovernedProductMigrationError, match="absolute, drive-qualified, or UNC"):
+        load_manifest(manifest_path)
+
+
+def test_windows_style_traversal_rejected(tmp_path):
+    manifest_path = _write_manifest(tmp_path, expected_source_path=r"..\..\etc\passwd")
+    with pytest.raises(GovernedProductMigrationError, match="path traversal"):
         load_manifest(manifest_path)
 
 
@@ -388,6 +416,14 @@ def test_deterministic_semantic_output_across_two_runs(tmp_path):
     )
     for key in semantic_keys:
         assert result_a[key] == result_b[key], f"{key} differs between runs: {result_a[key]!r} vs {result_b[key]!r}"
+
+
+def test_bajaj_compatibility_sha_constant_matches_governed_manifest():
+    from scripts.run_bajaj_my_health_care_governed_migration import EXPECTED_POLICY_WORDING_SHA256
+
+    manifest = load_manifest(BAJAJ_MANIFEST_PATH)
+    assert EXPECTED_POLICY_WORDING_SHA256 == manifest.expected_source_sha256
+    assert EXPECTED_POLICY_WORDING_SHA256 == "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade"
 
 
 def test_thin_bajaj_wrapper_delegates_without_duplicated_logic():
