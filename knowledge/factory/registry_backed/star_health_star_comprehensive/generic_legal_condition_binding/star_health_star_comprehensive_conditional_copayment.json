@@ -1,0 +1,46 @@
+{
+  "assertions": [
+    {
+      "assertion_id": "ga_star_comprehensive_entry_age_61_conditional_copayment_v1",
+      "assertion_type": "conditional_copayment_rule",
+      "evidence": [
+        {
+          "authority_role": "primary_legal",
+          "candidate_id": "candidate_page_39",
+          "candidate_text_sha256": "ea3aa9a64bd799fbdcc52bdebb48a5b6917c90673451cf84230005506bb09594",
+          "document_id": "star_health_star_comprehensive_policy_wording_v1",
+          "document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+          "source_char_range": {
+            "end": 107019,
+            "start": 103605
+          },
+          "source_page": 39
+        }
+      ],
+      "publication_status": "bound_not_published",
+      "reviewed_statement": "Star Comprehensive applies a 10% co-payment to each and every claim for fresh as well as renewal policies where the insured person's age at entry is 61 years or above. The co-payment does not apply where the insured person entered the policy before attaining 61 years of age and renewed continuously without a break. The policy wording limits this co-payment to Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, II.8, II.9, II.10, II.11, II.15 and II.25.",
+      "scope": "reusable_generic_product_legal_condition",
+      "semantic_key": "copayment.entry_age_61_or_above.ten_percent_condition"
+    }
+  ],
+  "binding_status": "reviewed_generic_legal_conditions_bound_not_published",
+  "binding_type": "generic_legal_condition_binding_v1",
+  "bound_at": "2026-07-16T16:27:46.200990+00:00",
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/star_health_star_comprehensive_generic_source_bundle.json",
+  "generic_source_bundle_sha256": "a5cad01371bc6494f5293a02f988b35b074da1112f424e81f1bf89f791fd0288",
+  "guardrails": [
+    "No policy-instance or group-specific source may be selected.",
+    "At least one primary legal source is required for each assertion.",
+    "Brochure/discovery-only sources cannot establish reusable legal assertions.",
+    "Generic legal condition binding binds legal mechanisms only; product entitlement values remain blocked pending Product Benefit Table or CIS evidence.",
+    "This manifest does not publish or modify any conditional-rule artifact."
+  ],
+  "product_context": {
+    "insurer_id": "star_health",
+    "product_display_name": "Star Comprehensive Insurance Policy",
+    "product_id": "star_comprehensive",
+    "source_scope": "reusable_generic"
+  },
+  "reviewed_by_human": true,
+  "schema_version": "1.0"
+}

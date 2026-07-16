@@ -1,0 +1,39 @@
+{
+  "notes": [
+    "Each source remains a separately hashed immutable document version.",
+    "Evidence candidates require human review before any legacy evidence binding or canonical lineage manifest.",
+    "This bundle does not publish rules, modify conditional-rule artifacts, or infer a product benefit from a brochure."
+  ],
+  "product_context": {
+    "insurer_id": "star_health",
+    "product_display_name": "Star Comprehensive Insurance Policy",
+    "product_id": "star_comprehensive",
+    "reviewed_generic_source_confirmation": true,
+    "source_scope": "reusable_generic"
+  },
+  "registered_at": "2026-07-16T16:24:57.943356+00:00",
+  "registration_status": "generic_sources_registered_evidence_review_required",
+  "registration_type": "generic_source_registration_bundle_v1",
+  "reuse_policy": {
+    "allowed": "reusable_generic_source_only",
+    "blocked": [
+      "policy_instance_documents",
+      "group_specific_schedules",
+      "member_certificates",
+      "quotes_tied_to_a_person_or_group"
+    ],
+    "brochure_usage": "discovery_only_not_sufficient_for_reusable_entitlement_assertion"
+  },
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "audience_scope": "generic_public",
+      "authority_role": "primary_legal",
+      "document_id": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "evidence_candidate_count": 47,
+      "registration_output_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+      "registration_status": "source_registered_evidence_review_required"
+    }
+  ]
+}
