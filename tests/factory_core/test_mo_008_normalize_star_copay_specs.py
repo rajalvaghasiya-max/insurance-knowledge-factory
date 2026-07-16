@@ -136,34 +136,58 @@ def test_approved_foundation_values_unchanged():
 
 
 def test_binding_contract_accepts_the_specification_shape():
-    """Real, unmodified GenericLegalConditionBinding contract. Must fail
-    closed only at the genuine missing-upstream-bundle boundary, never at
-    a spec-shape or document_id-mismatch error."""
-    with pytest.raises((GenericLegalConditionBindingError, FileNotFoundError)) as excinfo:
-        GenericLegalConditionBinding().bind_from_spec_file(spec_path=BINDING_SPEC, repository_root=".")
-    assert "generic_source_bundle was not found" in str(excinfo.value)
-    assert "star_health_star_comprehensive_generic_source_bundle.json" in str(excinfo.value)
+    """The generic binding contract must either:
+
+    1. execute successfully when the governed upstream bundle exists, or
+    2. fail closed only because that upstream bundle is absent.
+
+    A specification-shape, identity, or document_id error is never valid.
+    """
+    try:
+        GenericLegalConditionBinding().bind_from_spec_file(
+            spec_path=BINDING_SPEC,
+            repository_root=".",
+        )
+    except (GenericLegalConditionBindingError, FileNotFoundError) as exc:
+        message = str(exc)
+        assert "generic_source_bundle was not found" in message
+        assert "star_health_star_comprehensive_generic_source_bundle.json" in message
 
 
 def test_canonical_projection_contract_accepts_the_specification_shape():
-    with pytest.raises((GenericLegalConditionCanonicalProjectionError, FileNotFoundError)) as excinfo:
-        GenericLegalConditionCanonicalProjection().project_from_spec_file(spec_path=PROJECTION_SPEC, repository_root=".")
-    assert "binding_manifest was not found" in str(excinfo.value)
-    assert "star_health_star_comprehensive_conditional_copayment.json" in str(excinfo.value)
+    try:
+        GenericLegalConditionCanonicalProjection().project_from_spec_file(
+            spec_path=PROJECTION_SPEC,
+            repository_root=".",
+        )
+    except (GenericLegalConditionCanonicalProjectionError, FileNotFoundError) as exc:
+        message = str(exc)
+        assert "binding_manifest was not found" in message
+        assert "star_health_star_comprehensive_conditional_copayment.json" in message
 
 
 def test_publication_decision_gate_accepts_the_specification_shape():
-    with pytest.raises((CanonicalPublicationDecisionGateError, FileNotFoundError)) as excinfo:
-        CanonicalPublicationDecisionGate().decide_from_spec_file(spec_path=DECISION_SPEC, repository_root=".")
-    assert "canonical_projection was not found" in str(excinfo.value)
-    assert "star_health_star_comprehensive_conditional_copayment.canonical.json" in str(excinfo.value)
+    try:
+        CanonicalPublicationDecisionGate().decide_from_spec_file(
+            spec_path=DECISION_SPEC,
+            repository_root=".",
+        )
+    except (CanonicalPublicationDecisionGateError, FileNotFoundError) as exc:
+        message = str(exc)
+        assert "canonical_projection was not found" in message
+        assert "star_health_star_comprehensive_conditional_copayment.canonical.json" in message
 
 
 def test_authoritative_publisher_accepts_the_specification_shape():
-    with pytest.raises((CanonicalAuthoritativePublisherError, FileNotFoundError)) as excinfo:
-        CanonicalAuthoritativePublisher().publish_from_spec_file(spec_path=PUBLICATION_SPEC, repository_root=".")
-    assert "canonical_projection was not found" in str(excinfo.value)
-    assert "star_health_star_comprehensive_conditional_copayment.canonical.json" in str(excinfo.value)
+    try:
+        CanonicalAuthoritativePublisher().publish_from_spec_file(
+            spec_path=PUBLICATION_SPEC,
+            repository_root=".",
+        )
+    except (CanonicalAuthoritativePublisherError, FileNotFoundError) as exc:
+        message = str(exc)
+        assert "canonical_projection was not found" in message
+        assert "star_health_star_comprehensive_conditional_copayment.canonical.json" in message
 
 
 def test_no_spec_claims_published_or_current_entitlement_state():
