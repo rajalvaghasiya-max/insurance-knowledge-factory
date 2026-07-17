@@ -25,9 +25,9 @@
   ],
   "binding_status": "reviewed_generic_legal_conditions_bound_not_published",
   "binding_type": "generic_legal_condition_binding_v1",
-  "bound_at": "2026-07-16T16:27:46.200990+00:00",
+  "bound_at": "2026-07-17T15:20:57.230811+00:00",
   "generic_source_bundle_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/star_health_star_comprehensive_generic_source_bundle.json",
-  "generic_source_bundle_sha256": "a5cad01371bc6494f5293a02f988b35b074da1112f424e81f1bf89f791fd0288",
+  "generic_source_bundle_sha256": "fa56d4497170e6534bb435a699c97fb4c2b6445f48b894709c45a01ed4757900",
   "guardrails": [
     "No policy-instance or group-specific source may be selected.",
     "At least one primary legal source is required for each assertion.",

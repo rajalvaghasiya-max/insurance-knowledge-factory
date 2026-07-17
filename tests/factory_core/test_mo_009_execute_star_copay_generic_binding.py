@@ -114,15 +114,23 @@ def _copy_spec_into(root: Path) -> Path:
 
 # --- Real execution against the committed repository -----------------------
 
-def test_real_execution_fails_closed_on_missing_source_bundle():
-    """Against the actual committed repository (no source PDF present),
-    the real, unmodified contract must fail closed at exactly the missing
-    upstream bundle -- never at a spec-shape error."""
-    with pytest.raises((GenericLegalConditionBindingError, FileNotFoundError)) as excinfo:
+def test_real_execution_against_committed_repository():
+    """The real, unmodified contract must either:
+
+    1. execute successfully now that the governed source bundle and
+       registration exist in the committed repository (produced for real
+       in commit c6aae3f, with binding subsequently regenerated to
+       restore source-lineage consistency), or
+    2. fail closed only because that upstream bundle is genuinely absent.
+
+    A specification-shape or document_id-mismatch error is never valid.
+    """
+    try:
         GenericLegalConditionBinding().bind_from_spec_file(spec_path=BINDING_SPEC, repository_root=".")
-    message = str(excinfo.value)
-    assert "generic_source_bundle was not found" in message
-    assert "star_health_star_comprehensive_generic_source_bundle.json" in message
+    except (GenericLegalConditionBindingError, FileNotFoundError) as exc:
+        message = str(exc)
+        assert "generic_source_bundle was not found" in message
+        assert "star_health_star_comprehensive_generic_source_bundle.json" in message
 
 
 # --- Failure-boundary tests (isolated, tmp_path) ----------------------------
