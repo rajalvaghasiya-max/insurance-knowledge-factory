@@ -1,0 +1,66 @@
+# Deterministic line-endings policy (MO-011).
+#
+# Why this file exists: governed artifacts in this repository (generic
+# source bundles, migration manifests, binding/canonical-projection
+# outputs, and every other JSON/JSONL record under knowledge/factory/
+# and docs/architecture/) are immutable, byte-hashed lineage records.
+# Several generic contracts (see factory_core/canonical/) compute and
+# compare SHA-256 over the *raw bytes* of these files, not over
+# parsed/normalized JSON. A line-ending change (LF -> CRLF or back)
+# changes the byte content without changing the data, which is
+# indistinguishable from real tampering to a raw-byte hash check --
+# and is exactly what those checks are designed to catch. See
+# docs/architecture/MO-011_DETERMINISTIC_LINE_ENDINGS.md for the full
+# incident writeup and rationale.
+#
+# Default: treat text files as text and normalize to LF, both in the
+# working tree and in what Git stores, regardless of host OS
+# autocrlf settings.
+* text=auto eol=lf
+
+# Governed and structured data formats -- must be LF for byte-hash
+# stability.
+*.json      text eol=lf
+*.jsonl     text eol=lf
+*.yaml      text eol=lf
+*.yml       text eol=lf
+*.toml      text eol=lf
+
+# Source and scripting formats.
+*.py        text eol=lf
+*.ps1       text eol=lf
+*.psm1      text eol=lf
+*.psd1      text eol=lf
+*.sh        text eol=lf
+*.bash      text eol=lf
+
+# Documentation.
+*.md        text eol=lf
+*.txt       text eol=lf
+*.rst       text eol=lf
+
+# Windows batch/command files are conventionally CRLF; forcing LF on
+# these can break native Windows execution. Explicitly preserved.
+*.bat       text eol=crlf
+*.cmd       text eol=crlf
+
+# Common binary formats -- never subject to text normalization, diffing,
+# or line-ending conversion.
+*.pdf       binary
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.ico       binary
+*.zip       binary
+*.gz        binary
+*.tar       binary
+*.7z        binary
+*.xlsx      binary
+*.xls       binary
+*.docx      binary
+*.pptx      binary
+*.woff      binary
+*.woff2     binary
+*.ttf       binary
+*.otf       binary
