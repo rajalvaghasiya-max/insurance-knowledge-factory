@@ -147,3 +147,84 @@ clauses, calculate insurance outcomes, compare products, determine
 suitability, or generate recommendations or final answers. It decides
 *whether* context is sufficient -- it never answers the insurance
 question itself.
+
+---
+
+# `planning` component (MO-015 v0.1)
+
+The third executable stage: the **Reasoning Planner**.
+
+## Responsibility
+
+Transform validated Intent Analyzer + Context Builder output into an
+explicit, validated execution plan: a governed plan type, an ordered
+sequence of governed steps, the evidence categories and calculation
+types those steps will need, required domain capabilities, inherited
+assumptions/conflicts/limitations, governed stop conditions, and an
+expected outcome type. **The planner declares what must be done; it
+does not do it.**
+
+## Input/output boundary
+
+Input: validated `IntentAnalyzerOutput` + `ContextBuilderOutput` +
+`domain` + `planning_mode`. Output: a `ReasoningPlan` -- see
+[`contracts/reasoning_plan.py`](contracts/reasoning_plan.py). No
+document, fact, or governed entity ID is ever retrieved or embedded;
+`build_plan`'s own validation and the separate
+[`planning/validator.py`](planning/validator.py) both fail closed on
+governance violations (e.g. a plan step type not allowed for its
+plan type, a recommendation plan missing its safety gate, a
+`CLARIFICATION_REQUIRED` plan containing executable steps).
+
+## Plan types
+
+The 10 governed plan types (`planning/registry.py`:
+`PLAN_TYPE_DEFINITIONS`) are centrally mapped from each governed
+intent (`INTENT_TO_PLAN_TYPE`), each with a fixed execution mode
+(`PLAN_TYPE_TO_EXECUTION_MODE`: `DIRECT_GROUNDED`, `INTERPRETIVE`, or
+`DECISION_SUPPORT`) and a default expected outcome
+(`PLAN_TYPE_TO_EXPECTED_OUTCOME`).
+
+## Step registry
+
+24 governed step types (`STEP_REGISTRY`), each with a stage owner
+(`PLANNING`, `EVIDENCE_RESOLVER`, `REASONING_ENGINE`, `SAFETY_GATE`,
+`EXPLANATION_GENERATOR`, `RESPONSE_ASSEMBLER`) and the set of plan
+types it's allowed to appear in. A step being *declared* in a plan
+(e.g. `FORM_CONDITIONAL_RECOMMENDATION`, `COMPARE_OPTIONS`) does not
+mean that capability exists yet -- it means a later milestone's stage
+is expected to perform it.
+
+## Planning versus execution
+
+This is the central distinction of the whole component. `plan()`
+never calls the Knowledge Factory, never performs arithmetic, and
+never produces a comparison/suitability/recommendation result --
+`required_evidence` and `required_calculations` are declarations
+(category + subject reference + which step would need it), not
+resolved facts or computed values. Every test in
+`tests/insurance_intelligence/test_reasoning_planner.py` that touches
+a scenario capable of "looking answered" (claim scenario, calculation,
+recommendation) explicitly asserts no calculated value or resolved
+fact ever appears in the plan.
+
+## Stop conditions
+
+Governed stop-condition types (`MISSING_REQUIRED_CONTEXT`,
+`UNRESOLVED_CONTEXT_CONFLICT`, `REQUIRED_DOCUMENT_FAILED`,
+`OUT_OF_SCOPE_REQUEST`, etc.) are derived directly from the Context
+Builder's own missing-context/conflict/answerability output --
+the planner never re-decides sufficiency itself, it only translates
+Context Builder's decision into the plan's `plan_status` and
+`execution_mode`. Evidence-stage conditions (e.g.
+`REQUIRED_EVIDENCE_MISSING`) are included as `PLANNED_FUTURE_CHECK`
+entries -- named for completeness, not yet evaluated.
+
+## Explicit non-goals
+
+Does not retrieve any document or fact, resolve authoritative entity
+IDs, interpret insurance clauses, calculate claim values, compare
+actual products, assess suitability, make a recommendation, generate
+user-facing explanations, or invoke an LLM provider. The presence of
+a later-stage step type in a plan (e.g. `GENERATE_CONSUMER_EXPLANATION`)
+does not mean the Explanation Generator (MO-018) exists yet.
