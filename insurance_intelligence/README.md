@@ -237,3 +237,11 @@ does not mean the Explanation Generator (MO-018) exists yet.
 The Evidence Resolver is the first read-only bridge from a validated Reasoning Plan to governed Knowledge Factory records. It resolves candidate references through narrow registry-backed adapters, applies source-authority and version requirements, verifies byte-level lineage, packages only explicit supported claims, and reports requirement-level sufficiency and a structured trace. The initial real integration is deliberately bounded to the governed Star Health Star Comprehensive conditional co-payment lineage produced by MO-009/MO-010.
 
 The resolver may decide which governed evidence applies. It does not calculate, derive insurance implications, compare products, assess suitability, recommend an action, or generate a final answer. In `STRICT` mode, missing or mismatched required lineage fails closed. Repository access is read-only and tests hash the pilot artifacts before and after resolution.
+
+---
+
+# `reasoning` component (MO-017 v0.1)
+
+The Reasoning Engine consumes only a validated Reasoning Plan and a governed Evidence Resolver output. It uses a versioned deterministic rule registry to produce structured, evidence-linked findings while preserving the distinction between direct facts, conditional derivations, and unresolved implications. Assumptions must be explicit and approved; missing context, failed lineage, unresolved versions, and material conflicts block supported findings.
+
+The initial executable pilot is limited to Star Health Star Comprehensive conditional co-payment. It can derive the documented insured cost-sharing obligation, preserve the trigger condition, and report unresolved case-specific applicability without inventing customer facts. The component does not retrieve evidence, calculate claim amounts, assess suitability, recommend a product or action, generate user-facing prose, or invoke an LLM.
