@@ -228,3 +228,12 @@ actual products, assess suitability, make a recommendation, generate
 user-facing explanations, or invoke an LLM provider. The presence of
 a later-stage step type in a plan (e.g. `GENERATE_CONSUMER_EXPLANATION`)
 does not mean the Explanation Generator (MO-018) exists yet.
+
+
+---
+
+# `evidence` component (MO-016 v0.1)
+
+The Evidence Resolver is the first read-only bridge from a validated Reasoning Plan to governed Knowledge Factory records. It resolves candidate references through narrow registry-backed adapters, applies source-authority and version requirements, verifies byte-level lineage, packages only explicit supported claims, and reports requirement-level sufficiency and a structured trace. The initial real integration is deliberately bounded to the governed Star Health Star Comprehensive conditional co-payment lineage produced by MO-009/MO-010.
+
+The resolver may decide which governed evidence applies. It does not calculate, derive insurance implications, compare products, assess suitability, recommend an action, or generate a final answer. In `STRICT` mode, missing or mismatched required lineage fails closed. Repository access is read-only and tests hash the pilot artifacts before and after resolution.
