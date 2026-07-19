@@ -162,6 +162,19 @@ RULE_REGISTRY: tuple[IntentRule, ...] = (
         basis="matched_phrase",
         exclude_patterns=_p(r"\bquotes?\b", r"\bmy (two |2 )?polic(y|ies)\b"),
     ),
+    # Lowest-priority fallback: a bare "compare X" with no second subject
+    # named in the sentence. Deliberately low priority so any of the more
+    # specific comparison rules above always take precedence when they
+    # apply; this exists so the Context Builder (not the Intent Analyzer)
+    # is the stage that identifies and asks for the missing second subject.
+    IntentRule(
+        rule_id="product_comparison_bare",
+        intent="PRODUCT_COMPARISON",
+        patterns=_p(r"\bcompare\b"),
+        priority=40,
+        confidence=0.6,
+        basis="matched_term",
+    ),
     # Tier 70 -- document interpretation (specific passage / clause from a document).
     IntentRule(
         rule_id="document_interpretation",

@@ -76,3 +76,74 @@ input/output contract**, without changing anything downstream. The
 deterministic v0.1 baseline exists so behaviour is fully testable and
 explainable before that integration, and can continue to serve as a
 fallback/validation path afterward.
+
+---
+
+# `context` component (MO-014 v0.1)
+
+The second executable stage: the **Context Builder**.
+
+## Responsibility
+
+Given Intent Analyzer output plus user-provided, conversational,
+session, and document-metadata context, assemble typed,
+provenance-tagged context items; detect missing required context,
+conflicts, and assumptions; compute a deterministic completeness
+score; and decide the request's answerability -- or produce targeted
+clarification questions (at most three, ordered by materiality).
+
+## Inputs and outputs
+
+Input: the validated `IntentAnalyzerOutput` plus `user_context`,
+`conversation_context`, `document_context`, and `session_context`.
+Output: `resolved_context`, `missing_required_context`,
+`missing_optional_context`, `conflicts`, `assumptions`,
+`context_completeness`, `answerability`, `clarification_questions`.
+See [`contracts/context.py`](contracts/context.py) for the full
+executable contract.
+
+## Provenance model
+
+Every resolved context item carries one of the seven governed MO-012
+provenance statuses (`USER_PROVIDED`, `DOCUMENT_RESOLVED`,
+`SYSTEM_DERIVED`, `ASSUMED`, `UNVERIFIED`, `STALE`, `SUPERSEDED`).
+Resolution follows a fixed deterministic precedence: explicit current
+user value > session (prior user) value > document metadata >
+system-derived (from Intent Analyzer candidate entities or a resolved
+follow-up reference) > assumption. A required-context registry
+(`context/requirements.py`) centrally maps each governed intent to
+its required and optional context keys -- it is not scattered through
+conditional logic in the builder.
+
+## Answerability model
+
+One of the six governed MO-012 outcomes
+(`ANSWERABLE`, `ANSWERABLE_WITH_ASSUMPTIONS`, `PARTIALLY_ANSWERABLE`,
+`CLARIFICATION_REQUIRED`, `NOT_ANSWERABLE`, `OUT_OF_SCOPE`) is
+determined by explicit gates -- required context and blocking
+conflicts, never the numeric completeness score alone. A blocking
+(high-materiality, unresolved) conflict or any missing required
+context forces `CLARIFICATION_REQUIRED`; a failed required document
+forces `NOT_ANSWERABLE`; an intent whose only gap is an optional
+product/policy reference (e.g. `CLAUSE_IMPLICATION`) is
+`PARTIALLY_ANSWERABLE` rather than fully blocked.
+
+## Conflict and assumption boundaries
+
+Repeated context keys with distinct values are detected as conflicts.
+An explicit user correction (detected via a bounded marker-phrase
+heuristic, e.g. "sorry", "actually") resolves in favour of the later
+value, marking the earlier one `SUPERSEDED`; otherwise the conflict
+remains `UNRESOLVED` and blocks answerability. System-derived values
+never override explicit user-provided values. High-materiality
+assumptions must be visible, not silently created.
+
+## Explicit non-goals
+
+Same boundary discipline as the Intent Analyzer, extended: the
+Context Builder does not resolve authoritative product/policy
+identity, retrieve documents, establish insurance facts, interpret
+clauses, calculate insurance outcomes, compare products, determine
+suitability, or generate recommendations or final answers. It decides
+*whether* context is sufficient -- it never answers the insurance
+question itself.
