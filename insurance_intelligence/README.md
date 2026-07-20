@@ -238,10 +238,10 @@ The Evidence Resolver is the first read-only bridge from a validated Reasoning P
 
 The resolver may decide which governed evidence applies. It does not calculate, derive insurance implications, compare products, assess suitability, recommend an action, or generate a final answer. In `STRICT` mode, missing or mismatched required lineage fails closed. Repository access is read-only and tests hash the pilot artifacts before and after resolution.
 
----
+## Decision and Safety Gate (MO-018)
 
-# `reasoning` component (MO-017 v0.1)
+The Decision and Safety Gate consumes the validated reasoning plan, governed evidence-resolution output, and structured reasoning findings. It evaluates findings deterministically, preserves blocking evidence and clarification requirements, and emits an evidence-locked approved response packet only when communication is safe.
 
-The Reasoning Engine consumes only a validated Reasoning Plan and a governed Evidence Resolver output. It uses a versioned deterministic rule registry to produce structured, evidence-linked findings while preserving the distinction between direct facts, conditional derivations, and unresolved implications. Assumptions must be explicit and approved; missing context, failed lineage, unresolved versions, and material conflicts block supported findings.
+The first executable pilot covers Star Health Star Comprehensive conditional co-payment. General clause meaning may be approved with explicit conditions; case-specific applicability is withheld until the documented trigger context is supplied. Failed lineage, unresolved versions, material conflicts, unsupported reasoning, and recommendation operations fail closed.
 
-The initial executable pilot is limited to Star Health Star Comprehensive conditional co-payment. It can derive the documented insured cost-sharing obligation, preserve the trigger condition, and report unresolved case-specific applicability without inventing customer facts. The component does not retrieve evidence, calculate claim amounts, assess suitability, recommend a product or action, generate user-facing prose, or invoke an LLM.
+The gate does not generate prose, explanations, recommendations, or final answers. Those remain downstream responsibilities.
