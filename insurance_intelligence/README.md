@@ -245,3 +245,11 @@ The Decision and Safety Gate consumes the validated reasoning plan, governed evi
 The first executable pilot covers Star Health Star Comprehensive conditional co-payment. General clause meaning may be approved with explicit conditions; case-specific applicability is withheld until the documented trigger context is supplied. Failed lineage, unresolved versions, material conflicts, unsupported reasoning, and recommendation operations fail closed.
 
 The gate does not generate prose, explanations, recommendations, or final answers. Those remain downstream responsibilities.
+
+## Explanation Generator (MO-019)
+
+The Explanation Generator consumes only a Decision Gate-approved, evidence-locked response packet (or an approved clarification requirement). It selects a registered audience/style profile, renders deterministic sections, applies only meaning-preserving registered terminology, validates the draft against approved findings and evidence, and emits a structured explanation trace.
+
+The initial executable pilot covers Star Health Star Comprehensive conditional co-payment. It preserves the documented 10% amount, triggering condition, evidence references, and limitations; a case-specific unresolved trigger produces only a clarification draft. Any fidelity failure withholds the generated sections.
+
+The generator does not retrieve evidence, perform new reasoning, change the Decision Gate outcome, expose withheld findings, recommend products, calculate claim amounts, or assemble the final user response.
