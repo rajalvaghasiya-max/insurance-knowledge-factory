@@ -253,3 +253,7 @@ The Explanation Generator consumes only a Decision Gate-approved, evidence-locke
 The initial executable pilot covers Star Health Star Comprehensive conditional co-payment. It preserves the documented 10% amount, triggering condition, evidence references, and limitations; a case-specific unresolved trigger produces only a clarification draft. Any fidelity failure withholds the generated sections.
 
 The generator does not retrieve evidence, perform new reasoning, change the Decision Gate outcome, expose withheld findings, recommend products, calculate claim amounts, or assemble the final user response.
+
+## MO-020 Response Assembler
+
+The Response Assembler consumes only an eligible Decision Gate output and a fidelity-validated Explanation Generator output. It selects a governed response format, arranges approved sections, preserves evidence, limitations, assumptions, and clarification questions, validates the complete draft, and emits a deterministic structured response. The Star Comprehensive conditional co-payment pilot supports both a general answer path and a clarification-only case-specific path. It performs no retrieval, reasoning, explanation generation, examples, calculations, recommendations, or suitability assessment.
