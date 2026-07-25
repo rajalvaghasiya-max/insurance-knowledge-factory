@@ -1,5 +1,10 @@
 """End-to-end Intelligence Layer evaluation contracts, scenarios, and service."""
 
+from insurance_intelligence.evaluation.deterministic import (
+    DeterministicCheck,
+    DeterministicEvaluatorError,
+    DeterministicLLMEvaluator,
+)
 from insurance_intelligence.evaluation.dataset import (
     EvaluationDataset,
     EvaluationDatasetError,
@@ -19,6 +24,9 @@ from insurance_intelligence.evaluation.service import (
 )
 
 __all__ = [
+    "DeterministicCheck",
+    "DeterministicEvaluatorError",
+    "DeterministicLLMEvaluator",
     "EvaluationBaselineReport",
     "EvaluationDataset",
     "EvaluationDatasetError",
