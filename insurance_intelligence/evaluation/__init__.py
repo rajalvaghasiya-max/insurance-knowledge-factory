@@ -23,7 +23,29 @@ from insurance_intelligence.evaluation.service import (
     ScenarioBaseline,
 )
 
+from insurance_intelligence.evaluation.harness import (
+    ControlledHarnessConfig,
+    ControlledHarnessError,
+    build_evaluation_input,
+    execute_controlled_case,
+    execute_controlled_cases,
+)
+from insurance_intelligence.evaluation.provider import (
+    ControlledEvaluationProvider,
+    ControlledProviderError,
+    ControlledProviderExecutionError,
+    ControlledProviderTimeout,
+    ProviderRequest,
+    ProviderResponse,
+)
+
 __all__ = [
+    "ControlledEvaluationProvider",
+    "ControlledHarnessConfig",
+    "ControlledHarnessError",
+    "ControlledProviderError",
+    "ControlledProviderExecutionError",
+    "ControlledProviderTimeout",
     "DeterministicCheck",
     "DeterministicEvaluatorError",
     "DeterministicLLMEvaluator",
@@ -34,8 +56,13 @@ __all__ = [
     "EvaluationScenarioRegistryError",
     "EvaluationService",
     "EvaluationServiceError",
+    "ProviderRequest",
+    "ProviderResponse",
     "ScenarioBaseline",
     "build_default_registry",
+    "build_evaluation_input",
     "default_scenarios",
+    "execute_controlled_case",
+    "execute_controlled_cases",
     "load_evaluation_dataset",
 ]
