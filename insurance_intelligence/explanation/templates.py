@@ -56,14 +56,37 @@ def _customer_subject(value: str) -> str:
     return value.strip()
 
 
+def _semantic_clauses(finding: Finding) -> tuple[str | None, str | None, str | None]:
+    return (
+        finding.trigger or finding.condition,
+        finding.exception,
+        finding.applicability_scope,
+    )
+
+
 def _plain_finding_text(finding: Finding, *, audience: str) -> str:
     subject = _customer_subject(finding.subject) if audience == "CUSTOMER" else finding.subject.strip()
     predicate = finding.predicate.strip().replace("_", " ")
     effect = finding.object_or_effect.strip()
-    statement = f"{subject} {predicate} {effect}"
-    if finding.condition:
-        statement = f"When {finding.condition.strip()}, {statement}"
-    return _ensure_sentence(statement)
+    trigger, exception, applicability_scope = _semantic_clauses(finding)
+    clauses: list[str] = []
+    if finding.predicate == "must_bear":
+        clauses.append(_ensure_sentence(f"Trigger: {trigger}"))
+        clauses.append(_ensure_sentence(f"Obligation: {subject} {predicate} {effect}"))
+    elif finding.predicate == "is_not_triggered":
+        clauses.append(_ensure_sentence(f"Trigger: {trigger}"))
+        clauses.append(_ensure_sentence(f"Outcome: {effect}"))
+    elif finding.predicate == "requires_trigger_context":
+        clauses.append(_ensure_sentence(f"Trigger to confirm: {trigger}"))
+        clauses.append(_ensure_sentence(f"Applicability: {effect}"))
+    else:
+        statement = f"{subject} {predicate} {effect}"
+        clauses.append(_ensure_sentence(statement))
+    if exception:
+        clauses.append(_ensure_sentence(f"Exception: {exception}"))
+    if applicability_scope:
+        clauses.append(_ensure_sentence(f"Scope: {applicability_scope}"))
+    return " ".join(clauses)
 
 
 def _talking_point_text(finding: Finding) -> str:
@@ -151,9 +174,12 @@ def render_explanation_templates(
             template_id = "advisor_talking_point_v1"
         elif explanation_input.explanation_mode == "DETAILED":
             section_type = "MEANING"
-            text = _join_subject_predicate(finding)
-            if finding.condition:
-                text = _ensure_sentence(f"This applies when {finding.condition.strip()}. {text}")
+            if finding.exception or finding.applicability_scope:
+                text = _plain_finding_text(finding, audience=explanation_input.audience)
+            else:
+                text = _join_subject_predicate(finding)
+                if finding.condition:
+                    text = _ensure_sentence(f"This applies when {finding.condition.strip()}. {text}")
             template_id = "detailed_finding_v1"
         else:
             section_type = "MEANING"
@@ -194,18 +220,26 @@ def render_explanation_templates(
         )
         template_ids.append(template_id)
 
-        if finding.condition and style.preserve_conditions:
-            sections.append(
-                build_section(
-                    section_id=_stable_id("section", explanation_input.request_id, finding_id, "condition"),
-                    section_type="CONDITION",
-                    status="DRAFTED",
-                    text=_ensure_sentence(f"This applies only when {finding.condition.strip()}"),
-                    approved_finding_ids=(finding_id,),
-                    evidence_ids=tuple(sorted(finding.evidence_ids)),
+        if style.preserve_conditions:
+            trigger, exception, applicability_scope = _semantic_clauses(finding)
+            for clause_type, clause_text in (
+                ("TRIGGER", trigger),
+                ("EXCEPTION", exception),
+                ("SCOPE", applicability_scope),
+            ):
+                if not clause_text:
+                    continue
+                sections.append(
+                    build_section(
+                        section_id=_stable_id("section", explanation_input.request_id, finding_id, clause_type.lower()),
+                        section_type="CONDITION",
+                        status="DRAFTED",
+                        text=_ensure_sentence(f"{clause_type.title()}: {clause_text}"),
+                        approved_finding_ids=(finding_id,),
+                        evidence_ids=tuple(sorted(finding.evidence_ids)),
+                    )
                 )
-            )
-            template_ids.append("condition_notice_v1")
+                template_ids.append("condition_notice_v1" if clause_type == "TRIGGER" else f"{clause_type.lower()}_notice_v1")
 
     if limitation_ids and style.preserve_limitations:
         sections.append(

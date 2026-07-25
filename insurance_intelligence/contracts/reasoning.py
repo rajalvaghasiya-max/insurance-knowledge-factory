@@ -221,6 +221,9 @@ class Finding:
     assumption_ids: tuple[str, ...]
     limitations: tuple[str, ...]
     confidence: float
+    trigger: str | None = None
+    exception: str | None = None
+    applicability_scope: str | None = None
 
 
 def build_finding(
@@ -241,10 +244,20 @@ def build_finding(
     assumption_ids: Sequence[str] = (),
     limitations: Sequence[str] = (),
     condition: str | None = None,
+    trigger: str | None = None,
+    exception: str | None = None,
+    applicability_scope: str | None = None,
     confidence: float = 1.0,
 ) -> Finding:
     if condition is not None:
         _require_nonempty_str(condition, "finding.condition")
+    if trigger is not None:
+        _require_nonempty_str(trigger, "finding.trigger")
+    if exception is not None:
+        _require_nonempty_str(exception, "finding.exception")
+    if applicability_scope is not None:
+        _require_nonempty_str(applicability_scope, "finding.applicability_scope")
+    resolved_trigger = trigger if trigger is not None else condition
     validated_evidence = _require_unique(evidence_ids, "finding.evidence_ids")
     if finding_status in {"SUPPORTED", "SUPPORTED_WITH_LIMITATIONS", "CONDITIONAL", "PARTIALLY_SUPPORTED"} and not validated_evidence:
         raise ReasoningContractError("supported findings must reference at least one evidence_id")
@@ -255,7 +268,10 @@ def build_finding(
         subject=_require_nonempty_str(subject, "finding.subject"),
         predicate=_require_nonempty_str(predicate, "finding.predicate"),
         object_or_effect=_require_nonempty_str(object_or_effect, "finding.object_or_effect"),
-        condition=condition,
+        condition=condition if condition is not None else resolved_trigger,
+        trigger=resolved_trigger,
+        exception=exception,
+        applicability_scope=applicability_scope,
         scope=_require_nonempty_str(scope, "finding.scope"),
         finding_status=_require_member(finding_status, FINDING_STATUSES, "finding.finding_status"),
         derivation_type=_require_member(derivation_type, DERIVATION_TYPES, "finding.derivation_type"),

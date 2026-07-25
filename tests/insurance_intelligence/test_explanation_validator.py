@@ -332,3 +332,78 @@ def test_identical_inputs_produce_identical_result():
 def test_invalid_input_type_fails():
     with pytest.raises(ExplanationValidationError, match="explanation_input"):
         validate_explanation_fidelity(explanation_input=object(), sections=(), findings_by_id={})
+
+
+def semantic_finding(*, predicate="must_bear"):
+    base = finding()
+    effect = {
+        "must_bear": "10% of the admissible claim amount",
+        "is_not_triggered": "the documented conditional co-payment obligation is not triggered",
+        "requires_trigger_context": "case-specific applicability cannot be concluded from the approved context",
+    }[predicate]
+    return replace(
+        base,
+        predicate=predicate,
+        object_or_effect=effect,
+        condition="for Insured Persons whose age at the time of entry is 61 years and above",
+        trigger="for Insured Persons whose age at the time of entry is 61 years and above",
+        exception=(
+            "This co-payment will not apply for those insured persons who have entered the policy before "
+            "attaining 61 years of age and renew the policy continuously without any break"
+        ),
+        applicability_scope=(
+            "This co-payment is applicable for Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, II.8, "
+            "II.9, II.10, II.11, II.15 and II.25"
+        ),
+    )
+
+
+def semantic_section(text):
+    return build_section(
+        section_id="semantic-1",
+        section_type="MEANING",
+        status="DRAFTED",
+        text=text,
+        approved_finding_ids=("finding-1",),
+        evidence_ids=("evidence-1",),
+        limitation_ids=("limitation-1",),
+    )
+
+
+def semantic_text(outcome):
+    return (
+        "Trigger: for Insured Persons whose age at the time of entry is 61 years and above. "
+        f"{outcome} "
+        "Exception: This co-payment will not apply for those insured persons who have entered the policy before "
+        "attaining 61 years of age and renew the policy continuously without any break. "
+        "Scope: This co-payment is applicable for Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, II.8, "
+        "II.9, II.10, II.11, II.15 and II.25."
+    )
+
+
+def test_semantic_validator_rejects_when_where():
+    text = semantic_text("Obligation: you must bear 10% of the admissible claim amount.").replace("Trigger: for", "When where")
+    assert validate((semantic_section(text),), findings={"finding-1": semantic_finding()}).validation_status == "FAILED_UNSUPPORTED_CONTENT"
+
+
+def test_semantic_validator_rejects_omitted_exception():
+    text = semantic_text("Obligation: you must bear 10% of the admissible claim amount.")
+    text = text.split(" Exception:")[0] + " " + text.split(" Scope:")[1].join(("Scope:", ""))
+    assert validate((semantic_section(text),), findings={"finding-1": semantic_finding()}).validation_status == "FAILED_MISSING_CONDITION"
+
+
+def test_semantic_validator_rejects_omitted_scope():
+    text = semantic_text("Obligation: you must bear 10% of the admissible claim amount.").split(" Scope:")[0]
+    assert validate((semantic_section(text),), findings={"finding-1": semantic_finding()}).validation_status == "FAILED_MISSING_CONDITION"
+
+
+def test_semantic_validator_rejects_unresolved_as_obligation():
+    text = semantic_text("Obligation: you must bear 10% of the admissible claim amount.")
+    result = validate((semantic_section(text),), findings={"finding-1": semantic_finding(predicate="requires_trigger_context")})
+    assert result.validation_status == "FAILED_UNSUPPORTED_CONTENT"
+
+
+def test_semantic_validator_rejects_nonapplicability_as_positive_obligation():
+    text = semantic_text("Obligation: you must bear 10% of the admissible claim amount.")
+    result = validate((semantic_section(text),), findings={"finding-1": semantic_finding(predicate="is_not_triggered")})
+    assert result.validation_status == "FAILED_UNSUPPORTED_CONTENT"
