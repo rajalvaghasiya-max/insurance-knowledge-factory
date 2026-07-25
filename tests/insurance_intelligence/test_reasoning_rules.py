@@ -227,3 +227,53 @@ def test_real_star_copay_semantics_are_separate_for_all_applicability_cases():
     assert confirmed.predicate == "must_bear"
     assert excepted.predicate == "is_not_triggered"
     assert unresolved.predicate == "requires_trigger_context"
+
+GOVERNED_STAR_REVIEWED_STATEMENT = (
+    "Star Comprehensive applies a 10% co-payment to each and every claim for fresh as well as renewal policies "
+    "where the insured person's age at entry is 61 years or above. The co-payment does not apply where the "
+    "insured person entered the policy before attaining 61 years of age and renewed continuously without a "
+    "break. The policy wording limits this co-payment to Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, "
+    "II.8, II.9, II.10, II.11, II.15 and II.25."
+)
+
+
+def test_governed_star_reviewed_statement_preserves_exception_and_scope_byte_for_byte():
+    item = evidence(
+        claim=GOVERNED_STAR_REVIEWED_STATEMENT,
+        source_excerpt=GOVERNED_STAR_REVIEWED_STATEMENT,
+    )
+    finding = conditional_copayment_obligation(data(items=(item,)))[0]
+
+    assert finding.trigger == "where the insured person's age at entry is 61 years or above"
+    assert finding.exception == (
+        "The co-payment does not apply where the insured person entered the policy before attaining 61 years "
+        "of age and renewed continuously without a break"
+    )
+    assert finding.applicability_scope == (
+        "The policy wording limits this co-payment to Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, "
+        "II.8, II.9, II.10, II.11, II.15 and II.25"
+    )
+
+
+def test_exception_signal_fails_closed_when_clause_cannot_be_extracted():
+    item = evidence(
+        claim=(
+            "A 10% co-payment applies when treatment occurs outside the documented network. "
+            "The co-payment is waived for continuously renewed members."
+        ),
+        source_excerpt=None,
+    )
+    with pytest.raises(ReasoningRuleError, match="signals an exception"):
+        conditional_copayment_obligation(data(items=(item,)))
+
+
+def test_scope_signal_fails_closed_when_clause_cannot_be_extracted():
+    item = evidence(
+        claim=(
+            "A 10% co-payment applies when treatment occurs outside the documented network. "
+            "The co-payment is confined to listed inpatient sections."
+        ),
+        source_excerpt=None,
+    )
+    with pytest.raises(ReasoningRuleError, match="signals applicability scope"):
+        conditional_copayment_obligation(data(items=(item,)))

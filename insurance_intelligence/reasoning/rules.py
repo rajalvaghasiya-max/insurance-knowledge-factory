@@ -135,10 +135,42 @@ _TRIGGER_PATTERNS = (
     re.compile(r"(?:when|if|where|in case|provided that|subject to)\s+[^.;]+", re.I),
 )
 _EXCEPTION_PATTERNS = (
-    re.compile(r"(?:this co-payment will not apply|does not apply|will not apply)\s+for\s+[^.;]+", re.I),
+    re.compile(
+        r"(?:this|the)\s+co-payment\s+"
+        r"(?:does not apply|is not applicable|will not apply|shall not apply)\s+"
+        r"(?:for|where|when|if)\s+[^.;]+",
+        re.I,
+    ),
+    re.compile(
+        r"(?:does not apply|is not applicable|will not apply|shall not apply)\s+"
+        r"(?:for|where|when|if)\s+[^.;]+",
+        re.I,
+    ),
 )
 _SCOPE_PATTERNS = (
-    re.compile(r"this co-payment is applicable for\s+.+$", re.I),
+    re.compile(
+        r"(?:the\s+policy\s+wording\s+)?limits\s+(?:this|the)\s+co-payment\s+to\s+.+?(?=\.\s+[A-Z]|;|$)",
+        re.I,
+    ),
+    re.compile(
+        r"(?:this|the)\s+co-payment\s+is\s+applicable\s+(?:only\s+)?(?:for|to)\s+.+?(?=\.\s+[A-Z]|;|$)",
+        re.I,
+    ),
+    re.compile(r"(?:applicable\s+only\s+to|only\s+for)\s+.+?(?=\.\s+[A-Z]|;|$)", re.I),
+)
+_EXCEPTION_SIGNAL_PATTERNS = (
+    re.compile(
+        r"\bco-payment\b.{0,100}\b(?:does\s+not\s+apply|is\s+not\s+applicable|"
+        r"will\s+not\s+apply|shall\s+not\s+apply|waived|exempt)\b",
+        re.I,
+    ),
+)
+_SCOPE_SIGNAL_PATTERNS = (
+    re.compile(
+        r"(?:\b(?:limits?|restricts?|confines?)\b.{0,80}\bco-payment\b.{0,30}\bto\b|"
+        r"\bco-payment\b.{0,100}\b(?:applicable\s+only|limited\s+to|restricted\s+to|confined\s+to)\b)",
+        re.I,
+    ),
 )
 
 
@@ -161,6 +193,14 @@ def _conditional_semantics(evidence: EvidencePackage) -> tuple[str, str | None, 
     applicability_scope = _first_clause(text, _SCOPE_PATTERNS)
     if not trigger:
         raise ReasoningRuleError("conditional co-payment evidence must contain a documented trigger condition")
+    if any(pattern.search(text) for pattern in _EXCEPTION_SIGNAL_PATTERNS) and not exception:
+        raise ReasoningRuleError(
+            "conditional co-payment evidence signals an exception that could not be extracted safely"
+        )
+    if any(pattern.search(text) for pattern in _SCOPE_SIGNAL_PATTERNS) and not applicability_scope:
+        raise ReasoningRuleError(
+            "conditional co-payment evidence signals applicability scope that could not be extracted safely"
+        )
     return trigger, exception, applicability_scope
 
 
