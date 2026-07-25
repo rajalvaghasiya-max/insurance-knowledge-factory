@@ -195,3 +195,35 @@ def test_rule_outputs_contain_no_recommendation_or_final_answer_fields():
     assert not hasattr(finding, "recommendation")
     assert not hasattr(finding, "answer")
     assert not hasattr(finding, "explanation")
+
+REAL_STAR_COPAY_STATEMENT = (
+    "This policy is subject to co-payment of 10% of each and every claim amount for fresh as well as renewal "
+    "policies for Insured Persons whose age at the time of entry is 61 years and above. "
+    "This co-payment will not apply for those insured persons who have entered the policy before attaining "
+    "61 years of age and renew the policy continuously without any break. "
+    "This co-payment is applicable for Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, II.8, II.9, II.10, "
+    "II.11, II.15 and II.25."
+)
+
+
+def test_real_star_copay_semantics_are_separate_for_all_applicability_cases():
+    item = evidence(claim=REAL_STAR_COPAY_STATEMENT, source_excerpt=REAL_STAR_COPAY_STATEMENT)
+    confirmed = conditional_copayment_obligation(data(items=(item,)))[0]
+    excepted = conditional_copayment_nontriggered(
+        data(items=(item,), context={"conditional_copayment_trigger_status": "NOT_TRIGGERED"})
+    )[0]
+    unresolved = conditional_copayment_trigger_unresolved(data(items=(item,)))[0]
+
+    for finding in (confirmed, excepted, unresolved):
+        assert finding.trigger == "for Insured Persons whose age at the time of entry is 61 years and above"
+        assert finding.exception == (
+            "This co-payment will not apply for those insured persons who have entered the policy before "
+            "attaining 61 years of age and renew the policy continuously without any break"
+        )
+        assert finding.applicability_scope == (
+            "This co-payment is applicable for Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, II.8, "
+            "II.9, II.10, II.11, II.15 and II.25"
+        )
+    assert confirmed.predicate == "must_bear"
+    assert excepted.predicate == "is_not_triggered"
+    assert unresolved.predicate == "requires_trigger_context"

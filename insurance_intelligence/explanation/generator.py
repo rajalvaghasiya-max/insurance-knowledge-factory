@@ -63,7 +63,7 @@ def _scope(input_value: ExplanationGeneratorInput) -> str:
 def _source_terms(findings: Mapping[str, Finding]) -> tuple[str, ...]:
     terms: set[str] = set()
     for finding in findings.values():
-        text = " ".join((finding.subject, finding.predicate, finding.object_or_effect, finding.condition))
+        text = " ".join(filter(None, (finding.subject, finding.predicate, finding.object_or_effect, finding.condition, finding.exception, finding.applicability_scope)))
         for candidate in (
             "admissible claim amount",
             "conditional co-payment",

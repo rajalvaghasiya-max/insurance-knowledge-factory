@@ -42,6 +42,8 @@ _RECOMMENDATION_PATTERNS = (
 )
 _CURRENCY_PATTERN = re.compile(r"(?:₹|rs\.?|inr)\s*\d[\d,]*(?:\.\d+)?", re.I)
 _NUMBER_PATTERN = re.compile(r"(?<![A-Za-z])\d+(?:\.\d+)?%?")
+_MALFORMED_CONDITION_PATTERN = re.compile(r"\bwhen\s+where\b", re.I)
+_POSITIVE_OBLIGATION_PATTERN = re.compile(r"\b(must bear|must pay|you pay|co-payment applies|obligation applies)\b", re.I)
 
 
 def _stable_id(prefix: str, *parts: str) -> str:
@@ -234,7 +236,39 @@ def validate_explanation_fidelity(
         if not condition_ok:
             failures.append("FAILED_MISSING_CONDITION")
 
-        source_numbers = set(_numbers(" ".join((finding.object_or_effect, finding.condition))))
+        semantic_values = tuple(filter(None, (finding.trigger or finding.condition, finding.exception, finding.applicability_scope)))
+        malformed = bool(_MALFORMED_CONDITION_PATTERN.search(related_text))
+        conflated = bool(
+            finding.trigger
+            and finding.exception
+            and (
+                _normalise(finding.exception) in _normalise(finding.trigger)
+                or "not apply" in _normalise(finding.trigger)
+            )
+        )
+        exception_ok = not finding.exception or _normalise(finding.exception) in _normalise(related_text)
+        scope_ok = not finding.applicability_scope or _normalise(finding.applicability_scope) in _normalise(related_text)
+        unresolved_obligation = finding.predicate == "requires_trigger_context" and bool(_POSITIVE_OBLIGATION_PATTERN.search(related_text))
+        nonapp_obligation = finding.predicate == "is_not_triggered" and bool(_POSITIVE_OBLIGATION_PATTERN.search(related_text))
+        semantic_ok = not any((malformed, conflated, not exception_ok, not scope_ok, unresolved_obligation, nonapp_obligation))
+        checks.append(
+            _check(
+                request_id=explanation_input.request_id,
+                check_type="CONDITIONAL_SEMANTIC_INTEGRITY",
+                status="PASSED" if semantic_ok else "FAILED",
+                description=(
+                    f"Trigger, exception, scope and applicability outcome are preserved for {finding_id}."
+                    if semantic_ok
+                    else f"Conditional semantics are unsafe or incomplete for {finding_id}."
+                ),
+                source_references=(finding_id,),
+                section_ids=related_ids,
+            )
+        )
+        if not semantic_ok:
+            failures.append("FAILED_MISSING_CONDITION" if (not exception_ok or not scope_ok) else "FAILED_UNSUPPORTED_CONTENT")
+
+        source_numbers = set(_numbers(" ".join(filter(None, (finding.object_or_effect,) + semantic_values))))
         rendered_numbers = set(_numbers(related_text))
         numeric_ok = source_numbers <= rendered_numbers and not (rendered_numbers - source_numbers)
         checks.append(
@@ -282,7 +316,7 @@ def validate_explanation_fidelity(
 
     unsupported = any(pattern.search(all_text) for pattern in _RECOMMENDATION_PATTERNS)
     new_currency = bool(_CURRENCY_PATTERN.search(all_text)) and not any(
-        _CURRENCY_PATTERN.search(" ".join((findings_by_id[item].object_or_effect, findings_by_id[item].condition)))
+        _CURRENCY_PATTERN.search(" ".join(filter(None, (findings_by_id[item].object_or_effect, findings_by_id[item].condition, findings_by_id[item].exception, findings_by_id[item].applicability_scope))))
         for item in approved_ids
     )
     checks.append(

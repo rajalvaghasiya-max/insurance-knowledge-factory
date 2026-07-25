@@ -121,7 +121,6 @@ def direct_documented_fact(data: RuleInput) -> tuple[Finding, ...]:
 
 
 _PERCENTAGE = re.compile(r"(?<!\d)(\d{1,3}(?:\.\d+)?)\s*%")
-_CONDITION_HINTS = ("when ", "if ", "where ", "in case ", "provided that ", "subject to ")
 
 
 def _percentage(evidence: EvidencePackage) -> str:
@@ -131,19 +130,43 @@ def _percentage(evidence: EvidencePackage) -> str:
             return f"{match.group(1)}%"
     raise ReasoningRuleError("conditional co-payment evidence must contain a documented percentage")
 
+_TRIGGER_PATTERNS = (
+    re.compile(r"(?:for\s+)?insured persons? whose age at the time of entry is [^.;]+", re.I),
+    re.compile(r"(?:when|if|where|in case|provided that|subject to)\s+[^.;]+", re.I),
+)
+_EXCEPTION_PATTERNS = (
+    re.compile(r"(?:this co-payment will not apply|does not apply|will not apply)\s+for\s+[^.;]+", re.I),
+)
+_SCOPE_PATTERNS = (
+    re.compile(r"this co-payment is applicable for\s+.+$", re.I),
+)
+
+
+def _clean_clause(value: str) -> str:
+    return " ".join(value.strip().rstrip(" .;").split())
+
+
+def _first_clause(text: str, patterns: Sequence[re.Pattern[str]]) -> str | None:
+    for pattern in patterns:
+        match = pattern.search(text)
+        if match:
+            return _clean_clause(match.group(0))
+    return None
+
+
+def _conditional_semantics(evidence: EvidencePackage) -> tuple[str, str | None, str | None]:
+    text = " ".join((evidence.claim or evidence.source_excerpt or "").split())
+    trigger = _first_clause(text, _TRIGGER_PATTERNS)
+    exception = _first_clause(text, _EXCEPTION_PATTERNS)
+    applicability_scope = _first_clause(text, _SCOPE_PATTERNS)
+    if not trigger:
+        raise ReasoningRuleError("conditional co-payment evidence must contain a documented trigger condition")
+    return trigger, exception, applicability_scope
+
 
 def _condition(evidence: EvidencePackage) -> str:
-    claim = " ".join(evidence.claim.split())
-    lowered = claim.lower()
-    positions = [(lowered.find(hint), hint) for hint in _CONDITION_HINTS if lowered.find(hint) >= 0]
-    if positions:
-        position, _ = min(positions)
-        return claim[position:].rstrip(" .;")
-    context = evidence.section or evidence.field_or_topic
-    if context and context.strip() and context.strip().lower() not in {"copay", "conditional_copayment"}:
-        return context.strip()
-    raise ReasoningRuleError("conditional co-payment evidence must contain a documented trigger condition")
-
+    """Backward-compatible trigger accessor without consuming later clauses."""
+    return _conditional_semantics(evidence)[0]
 
 def _copay_evidence(data: RuleInput) -> EvidencePackage:
     candidates = [
@@ -163,7 +186,7 @@ def conditional_copayment_obligation(data: RuleInput) -> tuple[Finding, ...]:
     rule_id = "conditional_copayment_obligation_v1"
     evidence = _copay_evidence(data)
     percentage = _percentage(evidence)
-    condition = _condition(evidence)
+    trigger, exception, applicability_scope = _conditional_semantics(evidence)
     effect = f"{percentage} of the admissible claim amount"
     finding = build_finding(
         finding_id=_finding_id(rule_id, data, (evidence.evidence_id,), effect),
@@ -172,7 +195,10 @@ def conditional_copayment_obligation(data: RuleInput) -> tuple[Finding, ...]:
         subject="insured",
         predicate="must_bear",
         object_or_effect=effect,
-        condition=condition,
+        condition=trigger,
+        trigger=trigger,
+        exception=exception,
+        applicability_scope=applicability_scope,
         scope=data.scope,
         finding_status="CONDITIONAL",
         derivation_type="CONDITIONAL_DERIVATION",
@@ -190,7 +216,7 @@ def conditional_copayment_nontriggered(data: RuleInput) -> tuple[Finding, ...]:
     status = data.approved_context.get("conditional_copayment_trigger_status")
     if status != "NOT_TRIGGERED":
         raise ReasoningRuleError("approved trigger status NOT_TRIGGERED is required")
-    condition = _condition(evidence)
+    trigger, exception, applicability_scope = _conditional_semantics(evidence)
     effect = "the documented conditional co-payment obligation is not triggered"
     finding = build_finding(
         finding_id=_finding_id(rule_id, data, (evidence.evidence_id,), effect),
@@ -199,7 +225,10 @@ def conditional_copayment_nontriggered(data: RuleInput) -> tuple[Finding, ...]:
         subject="conditional co-payment obligation",
         predicate="is_not_triggered",
         object_or_effect=effect,
-        condition=f"approved context establishes that {condition} does not apply",
+        condition=f"approved context establishes that {trigger} does not apply",
+        trigger=trigger,
+        exception=exception,
+        applicability_scope=applicability_scope,
         scope=data.scope,
         finding_status="SUPPORTED",
         derivation_type="DETERMINISTIC_DERIVATION",
@@ -217,7 +246,7 @@ def conditional_copayment_trigger_unresolved(data: RuleInput) -> tuple[Finding, 
     status = data.approved_context.get("conditional_copayment_trigger_status", "UNRESOLVED")
     if status not in {None, "UNRESOLVED"}:
         raise ReasoningRuleError("trigger-unresolved rule requires absent or UNRESOLVED trigger status")
-    condition = _condition(evidence)
+    trigger, exception, applicability_scope = _conditional_semantics(evidence)
     effect = "case-specific applicability cannot be concluded from the approved context"
     finding = build_finding(
         finding_id=_finding_id(rule_id, data, (evidence.evidence_id,), effect),
@@ -226,7 +255,10 @@ def conditional_copayment_trigger_unresolved(data: RuleInput) -> tuple[Finding, 
         subject="conditional co-payment clause",
         predicate="requires_trigger_context",
         object_or_effect=effect,
-        condition=condition,
+        condition=trigger,
+        trigger=trigger,
+        exception=exception,
+        applicability_scope=applicability_scope,
         scope=data.scope,
         finding_status="PARTIALLY_SUPPORTED",
         derivation_type="CONDITIONAL_DERIVATION",
