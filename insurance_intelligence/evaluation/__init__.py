@@ -39,6 +39,18 @@ from insurance_intelligence.evaluation.provider import (
     ProviderResponse,
 )
 
+from insurance_intelligence.evaluation.deepeval import (
+    DeepEvalAdvisoryError,
+    DeepEvalDependencyUnavailable,
+    DeepEvalMetricConfig,
+    DeepEvalMetricError,
+    DeepEvalMetricRequest,
+    DeepEvalMetricRunner,
+    DeepEvalMetricTimeout,
+    evaluate_deepeval_metric,
+    evaluate_deepeval_metrics,
+)
+
 from insurance_intelligence.evaluation.hhem import (
     HHEMAdvisoryConfig,
     HHEMAdvisoryError,
@@ -58,6 +70,13 @@ __all__ = [
     "ControlledProviderError",
     "ControlledProviderExecutionError",
     "ControlledProviderTimeout",
+    "DeepEvalAdvisoryError",
+    "DeepEvalDependencyUnavailable",
+    "DeepEvalMetricConfig",
+    "DeepEvalMetricError",
+    "DeepEvalMetricRequest",
+    "DeepEvalMetricRunner",
+    "DeepEvalMetricTimeout",
     "DeterministicCheck",
     "DeterministicEvaluatorError",
     "DeterministicLLMEvaluator",
@@ -83,6 +102,8 @@ __all__ = [
     "default_scenarios",
     "execute_controlled_case",
     "execute_controlled_cases",
+    "evaluate_deepeval_metric",
+    "evaluate_deepeval_metrics",
     "evaluate_hhem_advisory",
     "evaluate_hhem_batch",
     "load_evaluation_dataset",
