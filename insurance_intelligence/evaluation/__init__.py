@@ -1,5 +1,10 @@
 """End-to-end Intelligence Layer evaluation contracts, scenarios, and service."""
 
+from insurance_intelligence.evaluation.dataset import (
+    EvaluationDataset,
+    EvaluationDatasetError,
+    load_evaluation_dataset,
+)
 from insurance_intelligence.evaluation.scenarios import (
     EvaluationScenarioRegistry,
     EvaluationScenarioRegistryError,
@@ -15,6 +20,8 @@ from insurance_intelligence.evaluation.service import (
 
 __all__ = [
     "EvaluationBaselineReport",
+    "EvaluationDataset",
+    "EvaluationDatasetError",
     "EvaluationScenarioRegistry",
     "EvaluationScenarioRegistryError",
     "EvaluationService",
@@ -22,4 +29,5 @@ __all__ = [
     "ScenarioBaseline",
     "build_default_registry",
     "default_scenarios",
+    "load_evaluation_dataset",
 ]

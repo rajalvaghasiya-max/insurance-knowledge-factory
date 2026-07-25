@@ -1,0 +1,215 @@
+{
+  "category": "KNOWN_BAD",
+  "cases": [
+    {
+      "case_id": "kb-001",
+      "title": "Malformed conditional wording",
+      "category": "KNOWN_BAD",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kb-001-1",
+          "component": "TRIGGER",
+          "expected_text": "where the insured person's age at entry is 61 years or above",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "MISSING_CONDITION"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": "When where the insured person age at entry is 61 years or above, a 10% co-payment applies.",
+      "historical_defect_id": null,
+      "tags": []
+    },
+    {
+      "case_id": "kb-002",
+      "title": "Missing exception",
+      "category": "KNOWN_BAD",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kb-002-1",
+          "component": "EXCEPTION",
+          "expected_text": "does not apply where the insured person entered before 61 and renewed continuously without a break",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "MISSING_EXCEPTION"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": []
+    },
+    {
+      "case_id": "kb-003",
+      "title": "Missing scope",
+      "category": "KNOWN_BAD",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kb-003-1",
+          "component": "APPLICABILITY_SCOPE",
+          "expected_text": "Sections II.1 through II.25 as listed",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "MISSING_SCOPE"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": []
+    },
+    {
+      "case_id": "kb-004",
+      "title": "Invented percentage",
+      "category": "KNOWN_BAD",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kb-004-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "NUMERICAL_ALTERATION"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": "A 20% co-payment applies.",
+      "historical_defect_id": null,
+      "tags": []
+    },
+    {
+      "case_id": "kb-005",
+      "title": "Resolved obligation from unresolved applicability",
+      "category": "KNOWN_BAD",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kb-005-1",
+          "component": "UNCERTAINTY",
+          "expected_text": "applicability remains unresolved",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "CERTAINTY_INFLATION"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": []
+    },
+    {
+      "case_id": "kb-006",
+      "title": "Unsupported recommendation",
+      "category": "KNOWN_BAD",
+      "responsibility": "SUITABILITY_RECOMMENDATION",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kb-006-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "UNSUPPORTED_RECOMMENDATION"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": []
+    },
+    {
+      "case_id": "kb-007",
+      "title": "Coverage converted to payment guarantee",
+      "category": "KNOWN_BAD",
+      "responsibility": "CLAIM_PAYMENT_PREDICTION",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kb-007-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "CLAIM_PAYMENT_PREDICTION"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": []
+    }
+  ]
+}
