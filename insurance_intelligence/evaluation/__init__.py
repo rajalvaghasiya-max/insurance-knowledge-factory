@@ -39,6 +39,18 @@ from insurance_intelligence.evaluation.provider import (
     ProviderResponse,
 )
 
+from insurance_intelligence.evaluation.hhem import (
+    HHEMAdvisoryConfig,
+    HHEMAdvisoryError,
+    HHEMInferenceError,
+    HHEMInferenceTimeout,
+    HHEMModelUnavailable,
+    HHEMScoreRequest,
+    HHEMScorer,
+    evaluate_hhem_advisory,
+    evaluate_hhem_batch,
+)
+
 __all__ = [
     "ControlledEvaluationProvider",
     "ControlledHarnessConfig",
@@ -56,6 +68,13 @@ __all__ = [
     "EvaluationScenarioRegistryError",
     "EvaluationService",
     "EvaluationServiceError",
+    "HHEMAdvisoryConfig",
+    "HHEMAdvisoryError",
+    "HHEMInferenceError",
+    "HHEMInferenceTimeout",
+    "HHEMModelUnavailable",
+    "HHEMScoreRequest",
+    "HHEMScorer",
     "ProviderRequest",
     "ProviderResponse",
     "ScenarioBaseline",
@@ -64,5 +83,7 @@ __all__ = [
     "default_scenarios",
     "execute_controlled_case",
     "execute_controlled_cases",
+    "evaluate_hhem_advisory",
+    "evaluate_hhem_batch",
     "load_evaluation_dataset",
 ]
