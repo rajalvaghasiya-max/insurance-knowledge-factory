@@ -1,0 +1,12 @@
+{
+  "dataset_id": "policyscna-mo-022f-controlled-evaluation",
+  "dataset_version": "1.0.0",
+  "schema_version": "1.0",
+  "case_count": 24,
+  "files": [
+    "known_good.json",
+    "known_bad.json",
+    "adversarial.json",
+    "historical_regressions.json"
+  ]
+}
