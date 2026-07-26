@@ -1,0 +1,208 @@
+{
+  "contract_id": "p2_star_pilot_execution_and_acceptance_v1",
+  "contract_version": "1.0",
+  "phase": "P2",
+  "title": "Star Comprehensive Pilot Certification and Hardening",
+  "status": "PLANNED",
+  "predecessor": {
+    "milestone": "MO-023J",
+    "closure_commit": "bc1d8b4",
+    "outcome": "PASS",
+    "full_suite_tests_passed": 2493
+  },
+  "objective": "Certify the Star Comprehensive pilot as a governed, publication-aware, adversarially tested insurance-intelligence slice without expanding product scope or weakening existing safety boundaries.",
+  "entry_criteria": [
+    "MO-023J closure remains PASS.",
+    "Generic topic completeness and rule certification infrastructure remains unchanged unless a defect is proven.",
+    "Star conditional-copayment and room-rent certification cases remain deterministic PASS.",
+    "All existing repository tests pass before each bounded unit begins."
+  ],
+  "execution_units": [
+    {
+      "unit_id": "P2.1",
+      "name": "Star topic-level completeness requirements",
+      "purpose": "Define the minimum governed component set required for each Star pilot topic before explanation is permitted.",
+      "required_artifacts": [
+        "A machine-readable Star pilot topic completeness profile.",
+        "Deterministic tests for COMPLETE, PARTIAL, CONFLICTING and NOT_AVAILABLE outcomes.",
+        "Explicit proof that missing trigger, exception, scope or consequence semantics blocks explanation where required."
+      ],
+      "pass_conditions": [
+        "Each pilot topic references a registered generic topic and exact version.",
+        "Required and optional components are explicit.",
+        "Explanation permission is deterministic and status-sensitive.",
+        "No topic-specific exception bypasses the generic evaluator."
+      ],
+      "blocked_conditions": [
+        "A required component cannot be mapped to governed evidence.",
+        "The topic profile depends on unregistered or inferred semantics.",
+        "Explanation permission cannot be derived deterministically."
+      ]
+    },
+    {
+      "unit_id": "P2.2",
+      "name": "Second materially different Star governed rule",
+      "purpose": "Certify one additional Star rule whose semantics are materially different from conditional copayment and room-rent coverage limit.",
+      "required_artifacts": [
+        "One governed Star certification case using an existing generic topic.",
+        "Authoritative source, version, page and lineage trace.",
+        "Mutation tests proving missing or conflicting semantics block certification."
+      ],
+      "pass_conditions": [
+        "The rule is not a restatement of copayment or room-rent logic.",
+        "The generic runner and contracts require no product-specific modification.",
+        "The case produces deterministic PASS on intact evidence and BLOCKED or FAIL on defined mutations."
+      ],
+      "blocked_conditions": [
+        "No authoritative governed Star rule is available for a materially different topic.",
+        "The case requires weakening generic contracts or inventing unsupported semantics."
+      ]
+    },
+    {
+      "unit_id": "P2.3",
+      "name": "Publication decision proof",
+      "purpose": "Prove the governed transition from bound knowledge to an explicit publication decision.",
+      "required_artifacts": [
+        "A publication decision record for each certified Star pilot rule.",
+        "A deterministic decision evaluator or validation test.",
+        "Recorded reasons, evidence references, limitations and decision status."
+      ],
+      "pass_conditions": [
+        "Every pilot rule has an explicit PUBLISH, WITHHOLD or BLOCKED decision.",
+        "No bound_not_published rule is treated as published.",
+        "Decision records are traceable to certification and evidence outputs."
+      ],
+      "blocked_conditions": [
+        "Publication status is implicit, missing or inferred from file presence.",
+        "A decision lacks traceability or safety limitations."
+      ]
+    },
+    {
+      "unit_id": "P2.4",
+      "name": "Authoritative publication proof",
+      "purpose": "Prove that only rules with an approved publication decision enter the authoritative publication layer.",
+      "required_artifacts": [
+        "Authoritative publication records for rules approved by P2.3.",
+        "Negative tests proving withheld or blocked rules cannot be published.",
+        "Immutable trace from publication record to decision, certification, evidence and source version."
+      ],
+      "pass_conditions": [
+        "Published records are exact projections of approved governed semantics.",
+        "Withheld and blocked rules remain absent from authoritative publication.",
+        "No publication record claims or guarantees claim payment."
+      ],
+      "blocked_conditions": [
+        "Publication can occur without an approved decision.",
+        "Published semantics diverge from the certified rule.",
+        "Traceability is incomplete."
+      ]
+    },
+    {
+      "unit_id": "P2.5",
+      "name": "Adversarial pilot evaluation",
+      "purpose": "Execute a deterministic adversarial dataset against the complete Star pilot path.",
+      "required_artifacts": [
+        "A versioned adversarial case catalogue.",
+        "Executable evaluation harness and result record.",
+        "Failure classification for hallucination, omission, scope drift, recommendation leakage, status loss and claim-payment guarantee language."
+      ],
+      "pass_conditions": [
+        "All critical safety cases pass.",
+        "No unsupported recommendation or claim-payment guarantee is emitted.",
+        "Warnings, limitations and partial or blocked statuses reach the final governed output.",
+        "Every failure is reproducible and classified."
+      ],
+      "blocked_conditions": [
+        "Any critical safety case fails.",
+        "Evaluation results are nondeterministic or lack traceability.",
+        "A known critical failure is accepted without an explicit blocking decision."
+      ]
+    },
+    {
+      "unit_id": "P2.6",
+      "name": "Legacy recommendation bypass classification",
+      "purpose": "Resolve, remove or formally classify every legacy path that can bypass governed recommendation detection or safety gating.",
+      "required_artifacts": [
+        "An inventory of legacy recommendation-capable paths.",
+        "A disposition for each path: removed, routed, blocked or explicitly deferred.",
+        "Regression tests for implicit recommendation language and bypass attempts."
+      ],
+      "pass_conditions": [
+        "No active unclassified bypass path remains.",
+        "All active recommendation-capable paths route through the governed safety gate.",
+        "Deferred paths are disabled or demonstrably unreachable in the Star pilot."
+      ],
+      "blocked_conditions": [
+        "An active recommendation bypass remains unclassified.",
+        "A deferred path can still influence pilot output.",
+        "Implicit recommendation detection remains materially incomplete."
+      ]
+    },
+    {
+      "unit_id": "P2.7",
+      "name": "Star pilot certification closure",
+      "purpose": "Issue the final bounded certification decision for the Star Comprehensive pilot.",
+      "required_artifacts": [
+        "Machine-readable pilot closure record.",
+        "Merge and test evidence for P2.1 through P2.6.",
+        "Final PASS, FAIL or BLOCKED outcome with unresolved limitations."
+      ],
+      "pass_conditions": [
+        "P2.1 through P2.6 are PASS.",
+        "All critical adversarial cases pass.",
+        "Publication boundaries are proven.",
+        "No active legacy recommendation bypass remains.",
+        "Full repository suite passes."
+      ],
+      "blocked_conditions": [
+        "Any mandatory unit is FAIL or BLOCKED.",
+        "Any critical safety case fails.",
+        "Publication or bypass status remains ambiguous."
+      ]
+    }
+  ],
+  "execution_order": [
+    "P2.1",
+    "P2.2",
+    "P2.3",
+    "P2.4",
+    "P2.5",
+    "P2.6",
+    "P2.7"
+  ],
+  "global_acceptance_rules": {
+    "pass": [
+      "All mandatory units pass in sequence.",
+      "All critical safety and publication-boundary tests pass.",
+      "The final repository suite passes without excluding existing tests.",
+      "The Star pilot remains bounded to certified topics and governed publications."
+    ],
+    "fail": [
+      "A deterministic requirement is implemented incorrectly but can be corrected within scope.",
+      "A non-critical adversarial case fails and is not yet resolved."
+    ],
+    "blocked": [
+      "Authoritative evidence is unavailable for a mandatory rule.",
+      "A critical safety or publication-boundary failure remains.",
+      "An active legacy recommendation bypass remains reachable.",
+      "The final outcome would require inventing semantics or weakening governance."
+    ]
+  },
+  "scope_boundaries": {
+    "included": [
+      "Star Comprehensive pilot topics and certified rules.",
+      "Topic completeness, certification, publication governance, adversarial evaluation and recommendation bypass control.",
+      "Existing generic topic and certification infrastructure."
+    ],
+    "excluded": [
+      "Broad insurer or product expansion.",
+      "Product comparison, ranking or suitability engines.",
+      "Consumer or advisor UI work.",
+      "Database migration or scale optimization.",
+      "Motor, Life or Claims expansion.",
+      "Any claim-payment guarantee."
+    ]
+  },
+  "initial_next_unit": "P2.1",
+  "final_decision": "NOT_YET_EVALUATED"
+}
