@@ -1,0 +1,31 @@
+{
+  "result_id": "result_ccb2ec1515626862_9198b4c9dd6c1cb1",
+  "request_id": "example_inflation_approximate",
+  "calculator_id": "INFLATION_ADJUSTED_FV_APPROX",
+  "calculator_version": 1,
+  "status": "SUCCESS",
+  "reason": null,
+  "output_values": {
+    "real_future_value": "121899.44"
+  },
+  "output_units": {
+    "real_future_value": "money"
+  },
+  "rounding": {
+    "real_future_value": {
+      "decimal_places": 2,
+      "mode": "ROUND_HALF_UP"
+    }
+  },
+  "warnings": [
+    "APPROXIMATE METHOD: not the exact Fisher relationship. Diverges from INFLATION_ADJUSTED_FV, increasingly so at higher rates or longer horizons.",
+    "This is a projection based on stated nominal-rate and inflation assumptions, not a guaranteed outcome.",
+    "APPROXIMATE METHOD: uses (nominal_rate - inflation_rate) as a shortcut for the real rate. This is NOT the exact Fisher relationship and will diverge from the exact 'INFLATION_ADJUSTED_FV' calculator's result, especially at higher rates or longer time horizons. Use INFLATION_ADJUSTED_FV for an exact result."
+  ],
+  "limitations": [
+    "This is a mathematical projection based on the inputs and assumptions provided; it is not a guarantee of any future outcome."
+  ],
+  "trace_id": "trace_ccb2ec1515626862_9198b4c9dd6c1cb1",
+  "deterministic_input_hash": "ccb2ec1515626862eae361e35ecc3eff76dd93ba1613b6ebd93484dc18f1a779",
+  "deterministic_output_hash": "9198b4c9dd6c1cb1cd0a8261cbe6eaf4a25a853385c884a5366401d1abe260f1"
+}

@@ -1,0 +1,29 @@
+{
+  "result_id": "result_6a6d9f92f5ae1b01_5e8bfe4198be57dc",
+  "request_id": "example_fv_100000_8pct_15y_life003_regression",
+  "calculator_id": "FV_LUMP_SUM",
+  "calculator_version": 1,
+  "status": "SUCCESS",
+  "reason": null,
+  "output_values": {
+    "future_value": "317216.91"
+  },
+  "output_units": {
+    "future_value": "money"
+  },
+  "rounding": {
+    "future_value": {
+      "decimal_places": 2,
+      "mode": "ROUND_HALF_UP"
+    }
+  },
+  "warnings": [
+    "This is a projection based on the stated rate and is not a guaranteed outcome."
+  ],
+  "limitations": [
+    "This is a mathematical projection based on the inputs and assumptions provided; it is not a guarantee of any future outcome."
+  ],
+  "trace_id": "trace_6a6d9f92f5ae1b01_5e8bfe4198be57dc",
+  "deterministic_input_hash": "6a6d9f92f5ae1b01e0bf0b0c992c9a400566740b076e1335c2553c8db22497bb",
+  "deterministic_output_hash": "5e8bfe4198be57dcffe937e09aef8953da03353fd86c115ca0fa1c478a7629b3"
+}

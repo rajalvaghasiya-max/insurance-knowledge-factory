@@ -1,0 +1,16 @@
+{
+  "request_id": "example_fv_100000_8pct_15y_life003_regression",
+  "calculator_id": "FV_LUMP_SUM",
+  "calculator_version": 1,
+  "calculation_date": "2026-07-26",
+  "input_values": {
+    "present_value": "100000",
+    "periodic_rate": "8",
+    "periods": "15"
+  },
+  "input_units": {
+    "periodic_rate": "percentage"
+  },
+  "currency": "INR",
+  "idempotency_key": "example_fv_100000_8pct_15y_life003_regression_v1"
+}

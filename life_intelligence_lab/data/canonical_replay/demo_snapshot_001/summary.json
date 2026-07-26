@@ -1,0 +1,15 @@
+{
+  "accepted_count": 5,
+  "observations_sha256": "7c93b14ace78a0a46ae8d9eb1ebd0e9499d7253241e6c204826a3abe0d9a3def",
+  "rejected_by_reason": {
+    "duplicate_row: same scheme_code/nav_date/isin as line 11": 1,
+    "invalid_nav_date": 1,
+    "invalid_nav_format": 1,
+    "invalid_scheme_code": 1,
+    "malformed_row: expected at least 6 semicolon-delimited fields, got 4": 1,
+    "missing_scheme_name": 1,
+    "nav_not_positive": 2
+  },
+  "rejected_count": 8,
+  "rejected_sha256": "031050f3fb39ce63f14173256a5e53b94bb65dbef05c14a6d618575b5b1dba14"
+}

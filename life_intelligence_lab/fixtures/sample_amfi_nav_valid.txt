@@ -1,0 +1,12 @@
+Scheme Code;ISIN Div Payout/ ISIN Growth;ISIN Div Reinvestment;Scheme Name;Net Asset Value;Date
+
+Open Ended Schemes(Overnight Fund)
+
+118551;INF209K01UN8;-;Axis Overnight Fund - Regular Plan - Growth;1234.5678;25-Jul-2026
+118552;INF209K01UO6;INF209K01UP3;Axis Overnight Fund - Regular Plan - IDCW;1050.1234;25-Jul-2026
+118553;-;-;Axis Overnight Fund - Direct Plan - Growth;1245.9999;25-Jul-2026
+
+Open Ended Schemes(Liquid Fund)
+
+119551;INF109K01234;-;Sample Liquid Fund - Regular Plan - Growth;2345.6700;25-Jul-2026
+119552;INF109K01235;INF109K01236;Sample Liquid Fund - Regular Plan - IDCW;1500.0000;25-Jul-2026

@@ -1,0 +1,14 @@
+{
+  "request_id": "example_cagr_100000_200000_6y",
+  "calculator_id": "CAGR",
+  "calculator_version": 1,
+  "calculation_date": "2026-07-26",
+  "input_values": {
+    "beginning_value": "100000",
+    "ending_value": "200000",
+    "periods": "6"
+  },
+  "input_units": {},
+  "currency": null,
+  "idempotency_key": "example_cagr_100000_200000_6y_v1"
+}

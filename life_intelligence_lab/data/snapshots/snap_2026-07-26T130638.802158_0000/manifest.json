@@ -1,0 +1,15 @@
+{
+  "snapshot_id": "snap_2026-07-26T130638.802158_0000",
+  "source_id": "amfi_navall_txt",
+  "source_url": "https://www.amfiindia.com/spages/NAVAll.txt",
+  "retrieval_timestamp": "2026-07-26T13:06:38.802158+00:00",
+  "http_status": 403,
+  "content_type": null,
+  "raw_file_path": null,
+  "raw_sha256": null,
+  "adapter_version": "amfi-nav-adapter/0.1.0",
+  "status": "http_error",
+  "warnings": [
+    "fetch_failed: HTTP Error 403: Forbidden"
+  ]
+}

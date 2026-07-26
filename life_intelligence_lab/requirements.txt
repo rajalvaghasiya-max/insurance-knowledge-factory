@@ -1,0 +1,9 @@
+# life_intelligence_lab prototype -- runtime dependencies
+#
+# This prototype deliberately uses ONLY the Python standard library at
+# runtime (urllib, hashlib, json, decimal, dataclasses, re, datetime).
+# There are no third-party runtime dependencies to declare.
+#
+# This file exists as an explicit, isolated dependency declaration for
+# this sandbox, separate from any dependency file used by PolicyScna's
+# active Health implementation, per the working-boundary requirement.

@@ -1,0 +1,19 @@
+{
+  "request_id": "example_inflation_exact_deflate_nominal",
+  "calculator_id": "INFLATION_ADJUSTED_FV",
+  "calculator_version": 1,
+  "calculation_date": "2026-07-26",
+  "input_values": {
+    "present_value": "100000",
+    "nominal_rate": "8",
+    "inflation_rate": "6",
+    "periods": "10"
+  },
+  "input_units": {
+    "nominal_rate": "percentage",
+    "inflation_rate": "percentage"
+  },
+  "currency": "INR",
+  "method": "deflate_nominal",
+  "idempotency_key": "example_inflation_exact_deflate_nominal_v1"
+}

@@ -1,0 +1,19 @@
+{
+  "result_id": "result_failed_93abe3cb42d212d3f7650fde",
+  "request_id": "example_cagr_failed_closed_zero_beginning",
+  "calculator_id": "CAGR",
+  "calculator_version": 1,
+  "status": "FAILED_CLOSED",
+  "reason": "cagr_beginning_value_zero: beginning value cannot be zero",
+  "output_values": null,
+  "output_units": null,
+  "rounding": null,
+  "warnings": [],
+  "limitations": [
+    "This is a mathematical projection based on the inputs and assumptions provided; it is not a guarantee of any future outcome.",
+    "CAGR requires beginning_value != 0 and periods > 0; negative beginning/ending values are rejected by default and require an explicit allow_negative_values=true."
+  ],
+  "trace_id": null,
+  "deterministic_input_hash": "93abe3cb42d212d3f7650fde0511b6e9dedc070de483e1d922dac2c86819d17d",
+  "deterministic_output_hash": null
+}

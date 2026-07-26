@@ -1,0 +1,36 @@
+{
+  "result_id": "result_1fb7b21b3ff2749e_07ba4269b0c7b7df",
+  "request_id": "example_cagr_100000_200000_6y",
+  "calculator_id": "CAGR",
+  "calculator_version": 1,
+  "status": "SUCCESS",
+  "reason": null,
+  "output_values": {
+    "cagr": "0.122462",
+    "cagr_percentage": "12.2462"
+  },
+  "output_units": {
+    "cagr": "decimal",
+    "cagr_percentage": "decimal"
+  },
+  "rounding": {
+    "cagr": {
+      "decimal_places": 6,
+      "mode": "ROUND_HALF_UP"
+    },
+    "cagr_percentage": {
+      "decimal_places": 4,
+      "mode": "ROUND_HALF_UP"
+    }
+  },
+  "warnings": [
+    "CAGR smooths an irregular growth path into a single annualized figure; it is not a guaranteed future rate."
+  ],
+  "limitations": [
+    "This is a mathematical projection based on the inputs and assumptions provided; it is not a guarantee of any future outcome.",
+    "CAGR requires beginning_value != 0 and periods > 0; negative beginning/ending values are rejected by default and require an explicit allow_negative_values=true."
+  ],
+  "trace_id": "trace_1fb7b21b3ff2749e_07ba4269b0c7b7df",
+  "deterministic_input_hash": "1fb7b21b3ff2749eba0c59e467de4f8bc24f80b30a9975499d9955d30931cb40",
+  "deterministic_output_hash": "07ba4269b0c7b7dfb62ec13200d7a7445b62c09cdb4e17cb7018be984568841f"
+}

@@ -1,0 +1,90 @@
+{
+  "trace_id": "trace_69906e5f31fd9160_7c60d7ce77732bc7",
+  "request_id": "example_inflation_exact_deflate_nominal",
+  "calculator_id": "INFLATION_ADJUSTED_FV",
+  "calculator_version": 1,
+  "formula_id": "INFLATION_ADJUSTED_FV_FORMULA_V1",
+  "calculation_date": "2026-07-26",
+  "currency": "INR",
+  "method": "deflate_nominal",
+  "normalized_inputs": [
+    {
+      "field_name": "present_value",
+      "original_value": "100000",
+      "original_unit": null,
+      "normalized_value": "100000",
+      "normalized_unit": "decimal"
+    },
+    {
+      "field_name": "nominal_rate",
+      "original_value": "8",
+      "original_unit": "percentage",
+      "normalized_value": "0.08",
+      "normalized_unit": "decimal_fraction"
+    },
+    {
+      "field_name": "inflation_rate",
+      "original_value": "6",
+      "original_unit": "percentage",
+      "normalized_value": "0.06",
+      "normalized_unit": "decimal_fraction"
+    },
+    {
+      "field_name": "periods",
+      "original_value": "10",
+      "original_unit": null,
+      "normalized_value": "10",
+      "normalized_unit": "periods"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "description": "Compute nominal growth factor (1 + nominal_rate)^periods",
+      "expression": "(1 + 0.08)^10",
+      "unrounded_value": "2.15892499727278669824"
+    },
+    {
+      "step_number": 2,
+      "description": "Compute nominal future value",
+      "expression": "100000 * 2.15892499727278669824",
+      "unrounded_value": "215892.49972727866982400000"
+    },
+    {
+      "step_number": 3,
+      "description": "Compute inflation discount factor (1 + inflation_rate)^periods",
+      "expression": "(1 + 0.06)^10",
+      "unrounded_value": "1.79084769654285362176"
+    },
+    {
+      "step_number": 4,
+      "description": "Deflate the nominal future value by the inflation discount factor",
+      "expression": "215892.49972727866982400000 / 1.79084769654285362176",
+      "unrounded_value": "120553.2442228609844791078861"
+    }
+  ],
+  "output_before_rounding": {
+    "real_future_value": "120553.2442228609844791078861"
+  },
+  "output_after_rounding": {
+    "real_future_value": "120553.24"
+  },
+  "rounding_applied": {
+    "real_future_value": {
+      "decimal_places": 2,
+      "mode": "ROUND_HALF_UP"
+    }
+  },
+  "warnings": [
+    "This is a projection based on stated nominal-rate and inflation assumptions, not a guaranteed outcome.",
+    "Computed using the exact 'deflate_nominal' method."
+  ],
+  "implementation_adapter_id": "life_intelligence_lab.calculators.formulas.inflation_adjusted",
+  "implementation_version": "life-intelligence-lab-calc-runtime/0.1.0",
+  "dependency_versions": {
+    "decimal_module": "python_stdlib_decimal",
+    "runtime_version": "life-intelligence-lab-calc-runtime/0.1.0"
+  },
+  "input_hash": "69906e5f31fd916065039c781eacd7e0ac13d7abed01e57bbd8cfd62f9da311f",
+  "output_hash": "7c60d7ce77732bc79c0712f5f1cdd1cb943ed49da6fce2360ff57e85a830c873"
+}

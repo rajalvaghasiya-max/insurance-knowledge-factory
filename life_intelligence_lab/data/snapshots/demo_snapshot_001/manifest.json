@@ -1,0 +1,13 @@
+{
+  "snapshot_id": "demo_snapshot_001",
+  "source_id": "amfi_navall_txt",
+  "source_url": "https://www.amfiindia.com/spages/NAVAll.txt",
+  "retrieval_timestamp": "2026-07-26T13:06:30.012207+00:00",
+  "http_status": 200,
+  "content_type": "text/plain",
+  "raw_file_path": "life_intelligence_lab/data/snapshots/demo_snapshot_001/raw.txt",
+  "raw_sha256": "40e8f52208058aba9405e6ba43d5b5402cd8e033b0a8e380b2f49c1756590ba3",
+  "adapter_version": "amfi-nav-adapter/0.1.0",
+  "status": "ok",
+  "warnings": []
+}

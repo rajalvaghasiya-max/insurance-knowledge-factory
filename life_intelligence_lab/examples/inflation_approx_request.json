@@ -1,0 +1,18 @@
+{
+  "request_id": "example_inflation_approximate",
+  "calculator_id": "INFLATION_ADJUSTED_FV_APPROX",
+  "calculator_version": 1,
+  "calculation_date": "2026-07-26",
+  "input_values": {
+    "present_value": "100000",
+    "nominal_rate": "8",
+    "inflation_rate": "6",
+    "periods": "10"
+  },
+  "input_units": {
+    "nominal_rate": "percentage",
+    "inflation_rate": "percentage"
+  },
+  "currency": "INR",
+  "idempotency_key": "example_inflation_approximate_v1"
+}

@@ -1,0 +1,29 @@
+{
+  "result_id": "result_97331b165263bd86_ee4c2d2b73d11dcd",
+  "request_id": "example_fv_100000_8pct_10y",
+  "calculator_id": "FV_LUMP_SUM",
+  "calculator_version": 1,
+  "status": "SUCCESS",
+  "reason": null,
+  "output_values": {
+    "future_value": "215892.50"
+  },
+  "output_units": {
+    "future_value": "money"
+  },
+  "rounding": {
+    "future_value": {
+      "decimal_places": 2,
+      "mode": "ROUND_HALF_UP"
+    }
+  },
+  "warnings": [
+    "This is a projection based on the stated rate and is not a guaranteed outcome."
+  ],
+  "limitations": [
+    "This is a mathematical projection based on the inputs and assumptions provided; it is not a guarantee of any future outcome."
+  ],
+  "trace_id": "trace_97331b165263bd86_ee4c2d2b73d11dcd",
+  "deterministic_input_hash": "97331b165263bd86a1991a0c9c4620793655b02f9850d929f0968a666f00bc98",
+  "deterministic_output_hash": "ee4c2d2b73d11dcd69ee35ad82cae728336589b824be90844fce27431f69cc9a"
+}

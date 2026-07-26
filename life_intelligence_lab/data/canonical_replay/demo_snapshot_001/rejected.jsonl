@@ -1,0 +1,8 @@
+{"line_number":12,"raw_line":"ABCDE;INF109K01235;-;Bad Scheme Code Fund;1000.0000;25-Jul-2026","section":"Open Ended Schemes(Liquid Fund)","reason":"invalid_scheme_code","source_snapshot_id":"demo_snapshot_001"}
+{"line_number":13,"raw_line":"119553;INF109K01236;-;Zero NAV Fund;0.0000;25-Jul-2026","section":"Open Ended Schemes(Liquid Fund)","reason":"nav_not_positive","source_snapshot_id":"demo_snapshot_001"}
+{"line_number":14,"raw_line":"119554;INF109K01237;-;Negative NAV Fund;-5.0000;25-Jul-2026","section":"Open Ended Schemes(Liquid Fund)","reason":"nav_not_positive","source_snapshot_id":"demo_snapshot_001"}
+{"line_number":15,"raw_line":"119555;INF109K01238;-;Bad Date Fund;1000.0000;2026/07/25","section":"Open Ended Schemes(Liquid Fund)","reason":"invalid_nav_date","source_snapshot_id":"demo_snapshot_001"}
+{"line_number":16,"raw_line":"119556;INF109K01239;-;NA NAV Fund;N.A.;25-Jul-2026","section":"Open Ended Schemes(Liquid Fund)","reason":"invalid_nav_format","source_snapshot_id":"demo_snapshot_001"}
+{"line_number":17,"raw_line":"119557;INF109K01240;-;;1000.0000;25-Jul-2026","section":"Open Ended Schemes(Liquid Fund)","reason":"missing_scheme_name","source_snapshot_id":"demo_snapshot_001"}
+{"line_number":18,"raw_line":"119558;INF109K01241;-;Too Few Fields Fund","section":"Open Ended Schemes(Liquid Fund)","reason":"malformed_row: expected at least 6 semicolon-delimited fields, got 4","source_snapshot_id":"demo_snapshot_001"}
+{"line_number":20,"raw_line":"119551;INF109K01234;-;Sample Liquid Fund - Regular Plan - Growth;2345.6700;25-Jul-2026","section":"Open Ended Schemes(Liquid Fund)","reason":"duplicate_row: same scheme_code/nav_date/isin as line 11","source_snapshot_id":"demo_snapshot_001"}
