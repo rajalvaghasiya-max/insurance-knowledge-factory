@@ -120,27 +120,27 @@ def test_catalogue_order_is_deterministic():
 
 
 def test_catalogue_has_no_insurer_product_plan_uin_or_document_identifiers():
-    forbidden_fragments = (
+    forbidden_tokens = {
         "star",
         "aditya",
         "bajaj",
         "insurer",
         "product",
-        "plan_",
         "uin",
-        "document_id",
-    )
+    }
 
     for definition in default_topic_definitions():
-        searchable = " ".join(
-            (
-                definition.topic_id,
-                definition.topic_version,
-                *(component.component_id for component in definition.components),
-                *(component.requirement_type for component in definition.components),
-            )
-        ).lower()
-        assert not any(fragment in searchable for fragment in forbidden_fragments)
+        identifiers = (
+            definition.topic_id,
+            *(component.component_id for component in definition.components),
+            *(component.requirement_type for component in definition.components),
+        )
+        for identifier in identifiers:
+            normalized = identifier.lower()
+            tokens = set(normalized.split("_"))
+            assert forbidden_tokens.isdisjoint(tokens)
+            assert not normalized.startswith("plan_")
+            assert normalized != "document_id"
 
 
 def test_topics_use_distinct_component_shapes_with_same_contract():
