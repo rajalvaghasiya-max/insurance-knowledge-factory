@@ -39,6 +39,12 @@ from insurance_intelligence.evaluation.provider import (
     ProviderResponse,
 )
 
+from insurance_intelligence.evaluation.disagreement import (
+    EvaluationDisagreementError,
+    analyze_evaluation_disagreement,
+    analyze_evaluation_disagreements,
+)
+
 from insurance_intelligence.evaluation.deepeval import (
     DeepEvalAdvisoryError,
     DeepEvalDependencyUnavailable,
@@ -83,6 +89,7 @@ __all__ = [
     "EvaluationBaselineReport",
     "EvaluationDataset",
     "EvaluationDatasetError",
+    "EvaluationDisagreementError",
     "EvaluationScenarioRegistry",
     "EvaluationScenarioRegistryError",
     "EvaluationService",
@@ -97,6 +104,8 @@ __all__ = [
     "ProviderRequest",
     "ProviderResponse",
     "ScenarioBaseline",
+    "analyze_evaluation_disagreement",
+    "analyze_evaluation_disagreements",
     "build_default_registry",
     "build_evaluation_input",
     "default_scenarios",
