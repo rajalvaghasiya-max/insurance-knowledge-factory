@@ -1,8 +1,4 @@
-"""Generic topic-completeness capability.
-
-MO-023I.1 defines contracts only. Evaluation and registry behaviour are added
-in later bounded implementation units.
-"""
+"""Generic topic-completeness capability."""
 
 from insurance_intelligence.contracts.topic_completeness import (
     COMPLETENESS_STATUSES,
@@ -21,6 +17,10 @@ from insurance_intelligence.contracts.topic_completeness import (
     build_component_result,
     build_topic_definition,
 )
+from insurance_intelligence.topic_completeness.registry import (
+    TopicCompletenessRegistry,
+    TopicCompletenessRegistryError,
+)
 
 __all__ = [
     "COMPLETENESS_STATUSES",
@@ -30,6 +30,8 @@ __all__ = [
     "SUPPORTED_CONTRACT_VERSION",
     "UNRESOLVED_APPLICABILITY_POLICIES",
     "TopicCompletenessContractError",
+    "TopicCompletenessRegistry",
+    "TopicCompletenessRegistryError",
     "TopicCompletenessResult",
     "TopicComponentDefinition",
     "TopicComponentResult",
