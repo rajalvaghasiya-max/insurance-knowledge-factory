@@ -21,9 +21,9 @@ def test_activ_one_replication_case_passes_unchanged_generic_runner():
     )
 
     assert result.outcome == "PASS"
-    assert result.completeness_result.status == "COMPLETE"
-    assert result.completeness_result.explanation_permitted is True
-    assert result.failure_reasons == ()
+    assert result.actual_completeness_status == "COMPLETE"
+    assert result.actual_explanation_permitted is True
+    assert result.failures == ()
     assert case.expected_outcome == result.outcome
 
 
