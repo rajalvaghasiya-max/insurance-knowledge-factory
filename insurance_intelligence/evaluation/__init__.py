@@ -45,6 +45,13 @@ from insurance_intelligence.evaluation.disagreement import (
     analyze_evaluation_disagreements,
 )
 
+from insurance_intelligence.evaluation.responsibility import (
+    ResponsibilityDecisionError,
+    ResponsibilityEvidence,
+    build_responsibility_decision,
+    build_responsibility_decision_report,
+)
+
 from insurance_intelligence.evaluation.deepeval import (
     DeepEvalAdvisoryError,
     DeepEvalDependencyUnavailable,
@@ -103,10 +110,14 @@ __all__ = [
     "HHEMScorer",
     "ProviderRequest",
     "ProviderResponse",
+    "ResponsibilityDecisionError",
+    "ResponsibilityEvidence",
     "ScenarioBaseline",
     "analyze_evaluation_disagreement",
     "analyze_evaluation_disagreements",
     "build_default_registry",
+    "build_responsibility_decision",
+    "build_responsibility_decision_report",
     "build_evaluation_input",
     "default_scenarios",
     "execute_controlled_case",
