@@ -12,6 +12,10 @@ from insurance_intelligence.contracts.rule_certification import (
     build_rule_certification_expectation,
     build_rule_certification_result,
 )
+from insurance_intelligence.rule_certification.runner import (
+    RuleCertificationRunnerError,
+    run_rule_certification,
+)
 
 __all__ = [
     "CERTIFICATION_OUTCOMES",
@@ -21,7 +25,9 @@ __all__ = [
     "RuleCertificationContractError",
     "RuleCertificationExpectation",
     "RuleCertificationResult",
+    "RuleCertificationRunnerError",
     "build_component_certification_expectation",
     "build_rule_certification_expectation",
     "build_rule_certification_result",
+    "run_rule_certification",
 ]
