@@ -1,8 +1,8 @@
 {
-  "contract_id": "p2_star_pilot_execution_and_acceptance_v1",
-  "contract_version": "1.0",
+  "contract_id": "p2_generic_hardening_with_star_pilot_v2",
+  "contract_version": "2.0",
   "phase": "P2",
-  "title": "Star Comprehensive Pilot Certification and Hardening",
+  "title": "Generic Insurance-Intelligence Hardening with Star Comprehensive Pilot Proof",
   "status": "PLANNED",
   "predecessor": {
     "milestone": "MO-023J",
@@ -10,154 +10,267 @@
     "outcome": "PASS",
     "full_suite_tests_passed": 2493
   },
-  "objective": "Certify the Star Comprehensive pilot as a governed, publication-aware, adversarially tested insurance-intelligence slice without expanding product scope or weakening existing safety boundaries.",
+  "architecture_principle": "Every P2 unit must produce a reusable generic capability or governance artifact first, then prove it using Star Comprehensive as the bounded pilot. Product-specific fixtures, governed records and evaluation cases may reference Star; generic contracts, evaluators, runners and decision logic must not depend on Star identifiers or semantics.",
+  "objective": "Build and harden generic topic-profile, publication-governance, adversarial-evaluation and bypass-control capabilities, then certify their first bounded application using Star Comprehensive without expanding product scope or weakening safety boundaries.",
   "entry_criteria": [
     "MO-023J closure remains PASS.",
     "Generic topic completeness and rule certification infrastructure remains unchanged unless a defect is proven.",
-    "Star conditional-copayment and room-rent certification cases remain deterministic PASS.",
+    "Star conditional-copayment and room-rent certification cases remain deterministic PASS as pilot fixtures.",
     "All existing repository tests pass before each bounded unit begins."
   ],
+  "separation_rules": {
+    "generic_layer": [
+      "Contracts, schemas, registries, evaluators, runners and decision logic use domain-neutral identifiers and behavior.",
+      "Generic code must not import Star-specific fixtures, governed records or constants.",
+      "A generic capability is accepted only when its behavior can be exercised with non-Star data without code modification."
+    ],
+    "pilot_layer": [
+      "Star-specific artifacts are limited to governed evidence, topic profiles, certification fixtures, publication records and evaluation cases.",
+      "Star pilot proof must invoke the generic layer through its public contracts.",
+      "Pilot-specific limitations cannot weaken or bypass generic acceptance rules."
+    ]
+  },
   "execution_units": [
     {
       "unit_id": "P2.1",
-      "name": "Star topic-level completeness requirements",
-      "purpose": "Define the minimum governed component set required for each Star pilot topic before explanation is permitted.",
-      "required_artifacts": [
-        "A machine-readable Star pilot topic completeness profile.",
-        "Deterministic tests for COMPLETE, PARTIAL, CONFLICTING and NOT_AVAILABLE outcomes.",
-        "Explicit proof that missing trigger, exception, scope or consequence semantics blocks explanation where required."
-      ],
-      "pass_conditions": [
-        "Each pilot topic references a registered generic topic and exact version.",
-        "Required and optional components are explicit.",
-        "Explanation permission is deterministic and status-sensitive.",
-        "No topic-specific exception bypasses the generic evaluator."
-      ],
+      "name": "Generic topic-profile requirements with Star pilot profiles",
+      "purpose": "Define a reusable governed topic-profile mechanism that declares the component set required before explanation is permitted, then apply it to Star pilot topics.",
+      "generic_capability": {
+        "deliverables": [
+          "A versioned generic topic-profile contract or schema referencing registered topic IDs and versions.",
+          "A generic profile validator or evaluator integration that uses the existing topic completeness evaluator.",
+          "Deterministic tests for COMPLETE, PARTIAL, CONFLICTING and NOT_AVAILABLE outcomes using generic fixtures."
+        ],
+        "pass_conditions": [
+          "Profiles declare required and optional components without product-specific code paths.",
+          "Explanation permission remains derived by the generic evaluator and is status-sensitive.",
+          "The profile mechanism can be reused by another insurer or product without changing its contract or evaluator."
+        ]
+      },
+      "pilot_proof": {
+        "product": "Star Comprehensive",
+        "deliverables": [
+          "Machine-readable Star pilot profiles for the selected certified topics.",
+          "Star regression cases proving missing trigger, exception, scope, consequence or other required semantics block explanation where applicable."
+        ],
+        "pass_conditions": [
+          "Each Star profile references an existing registered generic topic and exact version.",
+          "No Star-only exception bypasses the generic profile validator or completeness evaluator."
+        ]
+      },
       "blocked_conditions": [
-        "A required component cannot be mapped to governed evidence.",
-        "The topic profile depends on unregistered or inferred semantics.",
+        "A required generic profile behavior can only be implemented with Star-specific branching.",
+        "A required pilot component cannot be mapped to governed evidence.",
+        "The profile depends on unregistered or inferred semantics.",
         "Explanation permission cannot be derived deterministically."
       ]
     },
     {
       "unit_id": "P2.2",
-      "name": "Second materially different Star governed rule",
-      "purpose": "Certify one additional Star rule whose semantics are materially different from conditional copayment and room-rent coverage limit.",
-      "required_artifacts": [
-        "One governed Star certification case using an existing generic topic.",
-        "Authoritative source, version, page and lineage trace.",
-        "Mutation tests proving missing or conflicting semantics block certification."
-      ],
-      "pass_conditions": [
-        "The rule is not a restatement of copayment or room-rent logic.",
-        "The generic runner and contracts require no product-specific modification.",
-        "The case produces deterministic PASS on intact evidence and BLOCKED or FAIL on defined mutations."
-      ],
+      "name": "Generic rule-certification reuse with a third Star pilot rule",
+      "purpose": "Prove that the existing generic certification capability supports an additional materially different rule, using Star as the pilot fixture rather than adding Star-specific infrastructure.",
+      "generic_capability": {
+        "deliverables": [
+          "No new product-specific behavior in generic certification contracts, runner or topic catalogue.",
+          "Reusable mutation-test patterns for missing, conflicting and authority-invalid evidence."
+        ],
+        "pass_conditions": [
+          "The existing generic runner and contracts execute the case unchanged.",
+          "Mutation behavior is expressed through generic evidence and completeness contracts.",
+          "Any discovered generic defect is corrected without embedding Star identifiers or semantics."
+        ]
+      },
+      "pilot_proof": {
+        "product": "Star Comprehensive",
+        "deliverables": [
+          "One governed Star certification case using an existing generic topic materially different from conditional copayment and room-rent coverage limit.",
+          "Authoritative source, version, page and lineage trace.",
+          "Mutation tests proving missing or conflicting semantics block certification."
+        ],
+        "pass_conditions": [
+          "The Star rule is not a restatement of copayment or room-rent logic.",
+          "The intact case produces deterministic PASS and defined mutations produce BLOCKED or FAIL."
+        ]
+      },
       "blocked_conditions": [
-        "No authoritative governed Star rule is available for a materially different topic.",
-        "The case requires weakening generic contracts or inventing unsupported semantics."
+        "No authoritative governed Star rule is available for a materially different registered topic.",
+        "The case requires weakening generic contracts or inventing unsupported semantics.",
+        "The generic runner requires a Star-specific code path."
       ]
     },
     {
       "unit_id": "P2.3",
-      "name": "Publication decision proof",
-      "purpose": "Prove the governed transition from bound knowledge to an explicit publication decision.",
-      "required_artifacts": [
-        "A publication decision record for each certified Star pilot rule.",
-        "A deterministic decision evaluator or validation test.",
-        "Recorded reasons, evidence references, limitations and decision status."
-      ],
-      "pass_conditions": [
-        "Every pilot rule has an explicit PUBLISH, WITHHOLD or BLOCKED decision.",
-        "No bound_not_published rule is treated as published.",
-        "Decision records are traceable to certification and evidence outputs."
-      ],
+      "name": "Generic publication-decision capability with Star decisions",
+      "purpose": "Build a reusable governed transition from certified knowledge to an explicit publication decision, then apply it to the Star pilot rules.",
+      "generic_capability": {
+        "deliverables": [
+          "A versioned publication-decision contract supporting PUBLISH, WITHHOLD and BLOCKED.",
+          "A deterministic generic decision builder, evaluator or validator.",
+          "Generic validation of certification references, evidence trace, limitations, decision reasons and decision status."
+        ],
+        "pass_conditions": [
+          "Publication status is explicit and never inferred from file presence.",
+          "A bound_not_published rule cannot be treated as published.",
+          "The decision capability contains no product-specific branching and accepts any governed subject reference."
+        ]
+      },
+      "pilot_proof": {
+        "product": "Star Comprehensive",
+        "deliverables": [
+          "A publication decision record for each certified Star pilot rule.",
+          "Trace from each Star decision to certification and governed evidence outputs."
+        ],
+        "pass_conditions": [
+          "Every Star pilot rule has an explicit PUBLISH, WITHHOLD or BLOCKED decision.",
+          "Each decision preserves rule-specific limitations and non-guarantee language."
+        ]
+      },
       "blocked_conditions": [
         "Publication status is implicit, missing or inferred from file presence.",
-        "A decision lacks traceability or safety limitations."
+        "A decision lacks traceability or safety limitations.",
+        "The generic decision capability depends on Star-specific identifiers."
       ]
     },
     {
       "unit_id": "P2.4",
-      "name": "Authoritative publication proof",
-      "purpose": "Prove that only rules with an approved publication decision enter the authoritative publication layer.",
-      "required_artifacts": [
-        "Authoritative publication records for rules approved by P2.3.",
-        "Negative tests proving withheld or blocked rules cannot be published.",
-        "Immutable trace from publication record to decision, certification, evidence and source version."
-      ],
-      "pass_conditions": [
-        "Published records are exact projections of approved governed semantics.",
-        "Withheld and blocked rules remain absent from authoritative publication.",
-        "No publication record claims or guarantees claim payment."
-      ],
+      "name": "Generic authoritative-publication capability with Star publication proof",
+      "purpose": "Build a reusable authoritative publication gate that admits only approved decisions, then prove it with Star pilot records.",
+      "generic_capability": {
+        "deliverables": [
+          "A versioned authoritative-publication contract and deterministic publication gate.",
+          "Negative tests proving WITHHOLD and BLOCKED decisions cannot produce authoritative publication.",
+          "Immutable generic trace from publication record to decision, certification, evidence and source version."
+        ],
+        "pass_conditions": [
+          "Publication cannot occur without an approved PUBLISH decision.",
+          "Published semantics must be an exact governed projection of the certified rule.",
+          "The publication gate is reusable across products and topics without code modification."
+        ]
+      },
+      "pilot_proof": {
+        "product": "Star Comprehensive",
+        "deliverables": [
+          "Authoritative Star publication records only for rules approved by P2.3.",
+          "Star negative cases proving withheld or blocked rules remain unpublished."
+        ],
+        "pass_conditions": [
+          "Published Star records preserve exact certified semantics and complete lineage.",
+          "No Star publication record claims or guarantees claim payment."
+        ]
+      },
       "blocked_conditions": [
         "Publication can occur without an approved decision.",
         "Published semantics diverge from the certified rule.",
-        "Traceability is incomplete."
+        "Traceability is incomplete.",
+        "The publication gate contains Star-specific branching."
       ]
     },
     {
       "unit_id": "P2.5",
-      "name": "Adversarial pilot evaluation",
-      "purpose": "Execute a deterministic adversarial dataset against the complete Star pilot path.",
-      "required_artifacts": [
-        "A versioned adversarial case catalogue.",
-        "Executable evaluation harness and result record.",
-        "Failure classification for hallucination, omission, scope drift, recommendation leakage, status loss and claim-payment guarantee language."
-      ],
-      "pass_conditions": [
-        "All critical safety cases pass.",
-        "No unsupported recommendation or claim-payment guarantee is emitted.",
-        "Warnings, limitations and partial or blocked statuses reach the final governed output.",
-        "Every failure is reproducible and classified."
-      ],
+      "name": "Generic adversarial-evaluation capability with Star pilot dataset",
+      "purpose": "Build a reusable adversarial case contract, runner and result model, then execute the first bounded dataset against the Star pilot path.",
+      "generic_capability": {
+        "deliverables": [
+          "A versioned generic adversarial-case catalogue contract.",
+          "A deterministic evaluation runner and result record independent of product identity.",
+          "Generic failure classification for hallucination, omission, scope drift, recommendation leakage, status loss and claim-payment guarantee language."
+        ],
+        "pass_conditions": [
+          "Evaluation inputs and expected outcomes are machine-readable and reproducible.",
+          "Criticality, failure class, actual outcome and trace references are recorded deterministically.",
+          "The runner can execute a non-Star catalogue without code modification."
+        ]
+      },
+      "pilot_proof": {
+        "product": "Star Comprehensive",
+        "deliverables": [
+          "A versioned Star adversarial case catalogue.",
+          "An executable Star evaluation result record covering the complete governed pilot path."
+        ],
+        "pass_conditions": [
+          "All critical Star safety cases pass.",
+          "No unsupported recommendation or claim-payment guarantee is emitted.",
+          "Warnings, limitations and partial or blocked statuses reach the final governed output.",
+          "Every Star failure is reproducible and classified."
+        ]
+      },
       "blocked_conditions": [
         "Any critical safety case fails.",
         "Evaluation results are nondeterministic or lack traceability.",
-        "A known critical failure is accepted without an explicit blocking decision."
+        "A known critical failure is accepted without an explicit blocking decision.",
+        "The evaluation runner embeds Star-specific behavior."
       ]
     },
     {
       "unit_id": "P2.6",
-      "name": "Legacy recommendation bypass classification",
-      "purpose": "Resolve, remove or formally classify every legacy path that can bypass governed recommendation detection or safety gating.",
-      "required_artifacts": [
-        "An inventory of legacy recommendation-capable paths.",
-        "A disposition for each path: removed, routed, blocked or explicitly deferred.",
-        "Regression tests for implicit recommendation language and bypass attempts."
-      ],
-      "pass_conditions": [
-        "No active unclassified bypass path remains.",
-        "All active recommendation-capable paths route through the governed safety gate.",
-        "Deferred paths are disabled or demonstrably unreachable in the Star pilot."
-      ],
+      "name": "Generic bypass inventory and control with Star reachability proof",
+      "purpose": "Create a reusable inventory and disposition model for legacy recommendation-capable paths, then prove that no unsafe bypass is reachable in the Star pilot.",
+      "generic_capability": {
+        "deliverables": [
+          "A versioned bypass-inventory and disposition contract.",
+          "A reusable classification vocabulary: removed, routed, blocked or explicitly deferred.",
+          "Generic regression patterns for implicit recommendation language and safety-gate bypass attempts."
+        ],
+        "pass_conditions": [
+          "Every discovered recommendation-capable path has an explicit disposition and reachability status.",
+          "All active recommendation-capable paths route through the governed safety gate.",
+          "Deferred paths must be disabled or demonstrably unreachable for any certified pilot."
+        ]
+      },
+      "pilot_proof": {
+        "product": "Star Comprehensive",
+        "deliverables": [
+          "A Star pilot reachability view over the generic bypass inventory.",
+          "Regression tests showing no classified unsafe path can influence Star pilot output."
+        ],
+        "pass_conditions": [
+          "No active unclassified bypass path remains reachable in the Star pilot.",
+          "Implicit recommendation detection covers the Star pilot adversarial cases."
+        ]
+      },
       "blocked_conditions": [
         "An active recommendation bypass remains unclassified.",
         "A deferred path can still influence pilot output.",
-        "Implicit recommendation detection remains materially incomplete."
+        "Implicit recommendation detection remains materially incomplete.",
+        "Bypass control is implemented only for Star-specific call paths."
       ]
     },
     {
       "unit_id": "P2.7",
-      "name": "Star pilot certification closure",
-      "purpose": "Issue the final bounded certification decision for the Star Comprehensive pilot.",
-      "required_artifacts": [
-        "Machine-readable pilot closure record.",
-        "Merge and test evidence for P2.1 through P2.6.",
-        "Final PASS, FAIL or BLOCKED outcome with unresolved limitations."
-      ],
-      "pass_conditions": [
-        "P2.1 through P2.6 are PASS.",
-        "All critical adversarial cases pass.",
-        "Publication boundaries are proven.",
-        "No active legacy recommendation bypass remains.",
-        "Full repository suite passes."
-      ],
+      "name": "Generic hardening and Star pilot certification closure",
+      "purpose": "Issue separate bounded decisions for generic capability readiness and the Star Comprehensive pilot application.",
+      "generic_capability": {
+        "deliverables": [
+          "A machine-readable generic P2 capability-closure record.",
+          "Merge and test evidence for generic deliverables from P2.1 through P2.6.",
+          "Final PASS, FAIL or BLOCKED outcome for generic capability readiness."
+        ],
+        "pass_conditions": [
+          "All mandatory generic capability deliverables from P2.1 through P2.6 are PASS.",
+          "No generic contract, evaluator, runner, decision gate or control depends on Star identifiers or semantics.",
+          "Cross-product reuse is demonstrated by contract-level or fixture-level tests."
+        ]
+      },
+      "pilot_proof": {
+        "product": "Star Comprehensive",
+        "deliverables": [
+          "A separate machine-readable Star pilot certification closure record.",
+          "Merge, publication and adversarial-test evidence for all Star pilot proofs.",
+          "Final PASS, FAIL or BLOCKED outcome with unresolved pilot limitations."
+        ],
+        "pass_conditions": [
+          "All Star pilot proofs from P2.1 through P2.6 are PASS.",
+          "All critical Star adversarial cases pass.",
+          "Star publication boundaries are proven.",
+          "No active legacy recommendation bypass remains reachable in the Star pilot.",
+          "The full repository suite passes."
+        ]
+      },
       "blocked_conditions": [
-        "Any mandatory unit is FAIL or BLOCKED.",
+        "Any mandatory generic capability or Star pilot proof is FAIL or BLOCKED.",
         "Any critical safety case fails.",
-        "Publication or bypass status remains ambiguous."
+        "Publication or bypass status remains ambiguous.",
+        "A generic capability is implemented through Star-specific branching."
       ]
     }
   ],
@@ -172,27 +285,29 @@
   ],
   "global_acceptance_rules": {
     "pass": [
-      "All mandatory units pass in sequence.",
+      "All mandatory generic capability deliverables pass in sequence.",
+      "All Star pilot proofs pass without weakening the generic layer.",
       "All critical safety and publication-boundary tests pass.",
       "The final repository suite passes without excluding existing tests.",
-      "The Star pilot remains bounded to certified topics and governed publications."
+      "Generic capability readiness and Star pilot certification are recorded as separate decisions."
     ],
     "fail": [
-      "A deterministic requirement is implemented incorrectly but can be corrected within scope.",
+      "A deterministic generic or pilot requirement is implemented incorrectly but can be corrected within scope.",
       "A non-critical adversarial case fails and is not yet resolved."
     ],
     "blocked": [
-      "Authoritative evidence is unavailable for a mandatory rule.",
+      "Authoritative evidence is unavailable for a mandatory pilot proof.",
       "A critical safety or publication-boundary failure remains.",
       "An active legacy recommendation bypass remains reachable.",
+      "A required generic capability can only be implemented with product-specific branching.",
       "The final outcome would require inventing semantics or weakening governance."
     ]
   },
   "scope_boundaries": {
     "included": [
-      "Star Comprehensive pilot topics and certified rules.",
-      "Topic completeness, certification, publication governance, adversarial evaluation and recommendation bypass control.",
-      "Existing generic topic and certification infrastructure."
+      "Generic topic-profile, publication-governance, adversarial-evaluation and bypass-control capabilities.",
+      "Existing generic topic completeness and rule certification infrastructure.",
+      "Star Comprehensive as the first bounded pilot proof only."
     ],
     "excluded": [
       "Broad insurer or product expansion.",
@@ -204,5 +319,6 @@
     ]
   },
   "initial_next_unit": "P2.1",
-  "final_decision": "NOT_YET_EVALUATED"
+  "generic_capability_decision": "NOT_YET_EVALUATED",
+  "star_pilot_decision": "NOT_YET_EVALUATED"
 }
