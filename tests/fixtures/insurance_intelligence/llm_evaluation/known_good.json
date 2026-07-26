@@ -1,0 +1,267 @@
+{
+  "category": "KNOWN_GOOD",
+  "cases": [
+    {
+      "case_id": "kg-001",
+      "title": "Complete Star copayment explanation",
+      "category": "KNOWN_GOOD",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kg-001-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "kg-001-2",
+          "component": "EFFECT",
+          "expected_text": "applies to each and every claim",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "kg-001-3",
+          "component": "TRIGGER",
+          "expected_text": "where the insured person's age at entry is 61 years or above",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "kg-001-4",
+          "component": "EXCEPTION",
+          "expected_text": "does not apply where the insured person entered before 61 and renewed continuously without a break",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "kg-001-5",
+          "component": "APPLICABILITY_SCOPE",
+          "expected_text": "Sections II.1 through II.25 as listed",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [],
+      "expected_outcome": "PASS",
+      "reference_output": "Star Comprehensive applies a 10% co-payment to each and every claim for fresh as well as renewal policies where the insured person's age at entry is 61 years or above. The co-payment does not apply where the insured person entered the policy before attaining 61 years of age and renewed continuously without a break. The policy wording limits this co-payment to Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, II.8, II.9, II.10, II.11, II.15 and II.25.",
+      "historical_defect_id": null,
+      "tags": [
+        "star",
+        "copayment",
+        "complete"
+      ]
+    },
+    {
+      "case_id": "kg-002",
+      "title": "Trigger confirmed",
+      "category": "KNOWN_GOOD",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kg-002-1",
+          "component": "TRIGGER",
+          "expected_text": "where the insured person's age at entry is 61 years or above",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "kg-002-2",
+          "component": "EFFECT",
+          "expected_text": "applies to each and every claim",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [],
+      "expected_outcome": "PASS",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": [
+        "trigger"
+      ]
+    },
+    {
+      "case_id": "kg-003",
+      "title": "Exception confirmed",
+      "category": "KNOWN_GOOD",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kg-003-1",
+          "component": "EXCEPTION",
+          "expected_text": "does not apply where the insured person entered before 61 and renewed continuously without a break",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "kg-003-2",
+          "component": "EFFECT",
+          "expected_text": "applies to each and every claim",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [],
+      "expected_outcome": "PASS",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "case_id": "kg-004",
+      "title": "Applicability unresolved",
+      "category": "KNOWN_GOOD",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kg-004-1",
+          "component": "UNCERTAINTY",
+          "expected_text": "applicability remains unresolved",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [],
+      "expected_outcome": "REVIEW_REQUIRED",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": [
+        "unresolved"
+      ]
+    },
+    {
+      "case_id": "kg-005",
+      "title": "Customer audience adaptation",
+      "category": "KNOWN_GOOD",
+      "responsibility": "AUDIENCE_ADAPTATION",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kg-005-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "kg-005-2",
+          "component": "AUDIENCE",
+          "expected_text": "customer",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [],
+      "expected_outcome": "PASS",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": [
+        "customer"
+      ]
+    },
+    {
+      "case_id": "kg-006",
+      "title": "Advisor explanation ordering",
+      "category": "KNOWN_GOOD",
+      "responsibility": "EXPLANATION_ORDERING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "kg-006-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "kg-006-2",
+          "component": "TRIGGER",
+          "expected_text": "where the insured person's age at entry is 61 years or above",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "kg-006-3",
+          "component": "EXCEPTION",
+          "expected_text": "does not apply where the insured person entered before 61 and renewed continuously without a break",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "kg-006-4",
+          "component": "APPLICABILITY_SCOPE",
+          "expected_text": "Sections II.1 through II.25 as listed",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [],
+      "expected_outcome": "PASS",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": [
+        "advisor"
+      ]
+    }
+  ]
+}

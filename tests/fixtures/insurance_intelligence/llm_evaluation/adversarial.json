@@ -1,0 +1,237 @@
+{
+  "category": "ADVERSARIAL",
+  "cases": [
+    {
+      "case_id": "adv-001",
+      "title": "Unsupported paraphrase",
+      "category": "ADVERSARIAL",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "adv-001-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "UNSUPPORTED_FACT"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": []
+    },
+    {
+      "case_id": "adv-002",
+      "title": "Correct sentence wrong citation",
+      "category": "ADVERSARIAL",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "adv-002-1",
+          "component": "EVIDENCE_REFERENCE",
+          "expected_text": "ev-star-copay-reviewed-statement",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "CITATION_MISMATCH"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": []
+    },
+    {
+      "case_id": "adv-003",
+      "title": "Citation supports half sentence",
+      "category": "ADVERSARIAL",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "adv-003-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "adv-003-2",
+          "component": "EXCEPTION",
+          "expected_text": "does not apply where the insured person entered before 61 and renewed continuously without a break",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "CITATION_MISMATCH"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": []
+    },
+    {
+      "case_id": "adv-004",
+      "title": "Correct facts wrong conclusion",
+      "category": "ADVERSARIAL",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "adv-004-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "adv-004-2",
+          "component": "EFFECT",
+          "expected_text": "applies to each and every claim",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "FACT_IMPLICATION_CONFUSION"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": []
+    },
+    {
+      "case_id": "adv-005",
+      "title": "Historical wording used as current",
+      "category": "ADVERSARIAL",
+      "responsibility": "CURRENTNESS_SELECTION",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "adv-005-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "UNSUPPORTED_FACT"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": [
+        "currentness"
+      ]
+    },
+    {
+      "case_id": "adv-006",
+      "title": "Family fact applied to variant",
+      "category": "ADVERSARIAL",
+      "responsibility": "PRODUCT_IDENTITY",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "adv-006-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "FAILURE_TO_ABSTAIN"
+      ],
+      "expected_outcome": "REVIEW_REQUIRED",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": [
+        "identity"
+      ]
+    },
+    {
+      "case_id": "adv-007",
+      "title": "Advisor request becomes recommendation",
+      "category": "ADVERSARIAL",
+      "responsibility": "AUDIENCE_ADAPTATION",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "adv-007-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "UNSUPPORTED_RECOMMENDATION"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": null,
+      "tags": [
+        "advisor"
+      ]
+    }
+  ]
+}

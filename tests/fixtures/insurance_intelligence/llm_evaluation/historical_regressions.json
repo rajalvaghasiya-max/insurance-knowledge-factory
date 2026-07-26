@@ -1,0 +1,158 @@
+{
+  "category": "HISTORICAL_REGRESSION",
+  "cases": [
+    {
+      "case_id": "hist-001",
+      "title": "Original when-where defect",
+      "category": "HISTORICAL_REGRESSION",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "hist-001-1",
+          "component": "TRIGGER",
+          "expected_text": "where the insured person's age at entry is 61 years or above",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "MISSING_CONDITION"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": "When where the insured person age at entry is 61 years or above, a 10% co-payment applies.",
+      "historical_defect_id": "MO-023F-C1",
+      "tags": []
+    },
+    {
+      "case_id": "hist-002",
+      "title": "MO-023F missing exception",
+      "category": "HISTORICAL_REGRESSION",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "hist-002-1",
+          "component": "EXCEPTION",
+          "expected_text": "does not apply where the insured person entered before 61 and renewed continuously without a break",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "MISSING_EXCEPTION"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": "MO-023F.1-R1",
+      "tags": []
+    },
+    {
+      "case_id": "hist-003",
+      "title": "MO-023F missing scope",
+      "category": "HISTORICAL_REGRESSION",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "hist-003-1",
+          "component": "APPLICABILITY_SCOPE",
+          "expected_text": "Sections II.1 through II.25 as listed",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [
+        "MISSING_SCOPE"
+      ],
+      "expected_outcome": "FAIL",
+      "reference_output": null,
+      "historical_defect_id": "MO-023F.1-R2",
+      "tags": []
+    },
+    {
+      "case_id": "hist-004",
+      "title": "MO-023F.1 corrected semantic baseline",
+      "category": "HISTORICAL_REGRESSION",
+      "responsibility": "PLAIN_LANGUAGE_REPHRASING",
+      "audience": "customer",
+      "governed_evidence_ids": [
+        "ev-star-copay-reviewed-statement"
+      ],
+      "approved_finding_ids": [
+        "finding-star-copay"
+      ],
+      "semantic_requirements": [
+        {
+          "requirement_id": "hist-004-1",
+          "component": "FACT",
+          "expected_text": "10% co-payment",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "hist-004-2",
+          "component": "EFFECT",
+          "expected_text": "applies to each and every claim",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "hist-004-3",
+          "component": "TRIGGER",
+          "expected_text": "where the insured person's age at entry is 61 years or above",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "hist-004-4",
+          "component": "EXCEPTION",
+          "expected_text": "does not apply where the insured person entered before 61 and renewed continuously without a break",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        },
+        {
+          "requirement_id": "hist-004-5",
+          "component": "APPLICABILITY_SCOPE",
+          "expected_text": "Sections II.1 through II.25 as listed",
+          "evidence_ids": [
+            "ev-star-copay-reviewed-statement"
+          ]
+        }
+      ],
+      "forbidden_behaviours": [],
+      "expected_outcome": "PASS",
+      "reference_output": "Star Comprehensive applies a 10% co-payment to each and every claim for fresh as well as renewal policies where the insured person's age at entry is 61 years or above. The co-payment does not apply where the insured person entered the policy before attaining 61 years of age and renewed continuously without a break. The policy wording limits this co-payment to Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, II.8, II.9, II.10, II.11, II.15 and II.25.",
+      "historical_defect_id": "MO-023F.1-ACCEPTED",
+      "tags": [
+        "star",
+        "byte-preserved"
+      ]
+    }
+  ]
+}
