@@ -1,0 +1,17 @@
+{
+  "request_id": "example_xirr_same_sign_failure",
+  "calculator_id": "XIRR_DATED",
+  "calculator_version": 1,
+  "calculation_date": "2026-07-26",
+  "input_values": {
+    "day_count_convention": "ACT_365",
+    "duplicate_date_policy": "REJECT_DUPLICATES"
+  },
+  "input_units": {},
+  "currency": null,
+  "idempotency_key": "example_xirr_same_sign_failure_v1",
+  "cash_flows": [
+    {"date": "2020-01-01", "amount": "100", "currency": "INR", "source_type": "withdrawal"},
+    {"date": "2020-06-01", "amount": "200", "currency": "INR", "source_type": "withdrawal"}
+  ]
+}

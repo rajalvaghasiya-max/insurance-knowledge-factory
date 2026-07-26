@@ -41,12 +41,21 @@ def hash_input(
     currency: Optional[str],
     method: Optional[str],
     normalized_inputs: Dict[str, str],
+    extra_content: Optional[dict] = None,
 ) -> str:
     """
     Hash of exactly the content that determines a calculation's outcome:
     which calculator+version, what date context, what currency/method,
     and the fully normalized (decimal-safe-string) input values -- with
     input field names sorted so key order never depends on iteration order.
+
+    `extra_content` is new in LIFE-PROTOTYPE-003, used only by dated
+    cash-flow calculators to fold the normalized cash-flow list into the
+    input hash (two different cash-flow lists MUST hash differently).
+    It is included in the payload ONLY when not `None`, so every
+    pre-existing Prototype 002 calculator (which never passes it)
+    produces the byte-identical hash payload -- and therefore the
+    byte-identical hash value -- it always has.
     """
     payload = {
         "calculator_id": calculator_id,
@@ -56,6 +65,8 @@ def hash_input(
         "method": method,
         "normalized_inputs": dict(sorted(normalized_inputs.items())),
     }
+    if extra_content is not None:
+        payload["extra_content"] = extra_content
     return sha256_hex(_dumps_compact(payload))
 
 

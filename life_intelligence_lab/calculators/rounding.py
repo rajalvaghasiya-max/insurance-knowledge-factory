@@ -29,14 +29,21 @@ ROUNDING_MODE = ROUND_HALF_UP
 
 def round_money(value: Decimal, decimal_places: int = DEFAULT_MONEY_DECIMAL_PLACES) -> Decimal:
     quantum = Decimal(1).scaleb(-decimal_places)
-    return value.quantize(quantum, rounding=ROUNDING_MODE)
+    rounded = value.quantize(quantum, rounding=ROUNDING_MODE)
+    # Decimal distinguishes -0 from +0; a tiny negative residual (e.g. from
+    # an XNPV consistency check at a solved root) can legitimately round to
+    # "-0.00", which is confusing noise for a money display, not meaningful
+    # information -- normalize it to positive zero.
+    return abs(rounded) if rounded == 0 else rounded
 
 
 def round_rate_fraction(value: Decimal, decimal_places: int = DEFAULT_RATE_DECIMAL_PLACES) -> Decimal:
     quantum = Decimal(1).scaleb(-decimal_places)
-    return value.quantize(quantum, rounding=ROUNDING_MODE)
+    rounded = value.quantize(quantum, rounding=ROUNDING_MODE)
+    return abs(rounded) if rounded == 0 else rounded
 
 
 def round_rate_percentage(value: Decimal, decimal_places: int = DEFAULT_RATE_PERCENTAGE_DECIMAL_PLACES) -> Decimal:
     quantum = Decimal(1).scaleb(-decimal_places)
-    return value.quantize(quantum, rounding=ROUNDING_MODE)
+    rounded = value.quantize(quantum, rounding=ROUNDING_MODE)
+    return abs(rounded) if rounded == 0 else rounded

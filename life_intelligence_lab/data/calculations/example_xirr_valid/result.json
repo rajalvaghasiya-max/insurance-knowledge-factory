@@ -1,0 +1,41 @@
+{
+  "result_id": "result_d9508147af41de12_afa7ba529536c179",
+  "request_id": "example_xirr_valid",
+  "calculator_id": "XIRR_DATED",
+  "calculator_version": 1,
+  "status": "SUCCESS",
+  "reason": null,
+  "output_values": {
+    "rate": "0.634297",
+    "rate_percentage": "63.4297"
+  },
+  "output_units": {
+    "rate": "decimal",
+    "rate_percentage": "decimal"
+  },
+  "rounding": {
+    "rate": {
+      "decimal_places": 6,
+      "mode": "ROUND_HALF_UP"
+    },
+    "rate_percentage": {
+      "decimal_places": 4,
+      "mode": "ROUND_HALF_UP"
+    }
+  },
+  "warnings": [],
+  "limitations": [
+    "This is a mathematical projection based on the inputs and assumptions provided; it is not a guarantee of any future outcome.",
+    "Only the ACT_365 day-count convention is currently supported.",
+    "When root_status is MULTIPLE_ROOTS_POSSIBLE, the returned rate is a candidate only, not guaranteed to be uniquely or economically correct."
+  ],
+  "trace_id": "trace_d9508147af41de12_afa7ba529536c179",
+  "deterministic_input_hash": "d9508147af41de12ac9ee884f18c597dcff1d58a2725c1fcff5a9f2b2ae565a2",
+  "deterministic_output_hash": "afa7ba529536c1797b4a91f0d5566e2d3a77f1c6eb888e6dbfc22b6e90f1cf45",
+  "root_status": "SINGLE_ROOT",
+  "dated_cash_flow_summary": {
+    "root_status": "SINGLE_ROOT",
+    "day_count_convention": "ACT_365",
+    "duplicate_date_policy": "REJECT_DUPLICATES"
+  }
+}

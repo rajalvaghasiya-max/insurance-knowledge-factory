@@ -119,6 +119,25 @@ def validate_result(result: CalculationResult, trace: Optional[CalculationTrace]
     if not trace_complete:
         reasons.append("trace is missing one or more required (non-empty) fields")
 
+    # For dated cash-flow calculators, the ORIGINAL input_hash folded in the
+    # normalized cash-flow list (see runtime.py / canonical.hash_input's
+    # `extra_content`). To genuinely recompute (not just re-trust) that
+    # hash, we must reconstruct the identical extra_content from the
+    # trace's own dated_cash_flow_context -- which is exactly why that
+    # context stores "normalized_cash_flows" and "duplicate_date_operations"
+    # verbatim as their own dict content, not just a summary.
+    recomputed_extra_content = None
+    if trace.dated_cash_flow_context is not None:
+        normalized_cfs = trace.dated_cash_flow_context.get("normalized_cash_flows") or []
+        # Match runtime.py's hash basis exactly: sequence is excluded from
+        # hashed content (it is input-order provenance, not economically
+        # meaningful content) -- see cash_flow.cash_flow_to_hashable_dict.
+        hashable_cfs = [{k: v for k, v in cf.items() if k != "sequence"} for cf in normalized_cfs]
+        recomputed_extra_content = {
+            "cash_flows": hashable_cfs,
+            "duplicate_date_operations": trace.dated_cash_flow_context.get("duplicate_date_operations"),
+        }
+
     recomputed_input_hash = canonical.hash_input(
         calculator_id=trace.calculator_id,
         calculator_version=trace.calculator_version,
@@ -126,6 +145,7 @@ def validate_result(result: CalculationResult, trace: Optional[CalculationTrace]
         currency=trace.currency,
         method=trace.method,
         normalized_inputs=normalized_inputs_to_dict(trace.normalized_inputs),
+        extra_content=recomputed_extra_content,
     )
     input_hash_reproducible = (
         recomputed_input_hash == trace.input_hash == result.deterministic_input_hash
@@ -154,6 +174,57 @@ def validate_result(result: CalculationResult, trace: Optional[CalculationTrace]
     checks["result_references_correct_trace"] = result_references_correct_trace
     if not result_references_correct_trace:
         reasons.append(f"result.trace_id ({result.trace_id}) != trace.trace_id ({trace.trace_id})")
+
+    # --- LIFE-PROTOTYPE-003: dated cash-flow-specific checks --------------------
+    # Only meaningful (and only run) when this trace actually carries a
+    # dated_cash_flow_context -- Prototype 002's calculators never populate
+    # it, so these three checks are simply absent from their `checks` dict
+    # rather than trivially True, keeping the check set honest about what
+    # was actually verified for each calculator family.
+    if trace.dated_cash_flow_context is not None:
+        from life_intelligence_lab.calculators.adapters.pyxirr_adapter import dependency_fingerprint
+
+        recorded_fingerprint = trace.dated_cash_flow_context.get("dependency_fingerprint")
+        live_fingerprint = dependency_fingerprint()
+        fingerprint_matches = recorded_fingerprint == live_fingerprint
+        checks["dependency_fingerprint_matches"] = fingerprint_matches
+        if not fingerprint_matches:
+            reasons.append(
+                f"dependency_fingerprint mismatch: trace recorded '{recorded_fingerprint}', "
+                f"live environment is '{live_fingerprint}' -- the pinned dependency may have "
+                f"changed since this trace was produced."
+            )
+
+        recorded_root_status = trace.dated_cash_flow_context.get("root_status")
+        normalized_cfs = trace.dated_cash_flow_context.get("normalized_cash_flows") or []
+        from decimal import Decimal as _Decimal
+        amounts_in_order = [_Decimal(cf["amount"]) for cf in normalized_cfs]
+        non_zero_signs = [1 if a > 0 else -1 for a in amounts_in_order if a != 0]
+        actual_sign_changes = sum(
+            1 for prev, curr in zip(non_zero_signs, non_zero_signs[1:]) if prev != curr
+        )
+        expected_multi_root = actual_sign_changes > 1
+        root_status_consistent = (
+            recorded_root_status is None  # e.g. XNPV_DATED, which has no root_status concept
+            or (expected_multi_root and recorded_root_status == "MULTIPLE_ROOTS_POSSIBLE")
+            or (not expected_multi_root and recorded_root_status in ("SINGLE_ROOT", "NO_ROOT_FOUND", "DEPENDENCY_FAILURE", "INVALID_CASH_FLOWS"))
+        )
+        checks["root_status_consistent_with_sign_changes"] = root_status_consistent
+        if not root_status_consistent:
+            reasons.append(
+                f"root_status '{recorded_root_status}' is inconsistent with {actual_sign_changes} "
+                f"detected sign changes in the normalized cash flows."
+            )
+
+        xnpv_check = trace.dated_cash_flow_context.get("xnpv_consistency_check")
+        if xnpv_check is not None and xnpv_check.get("xnpv_at_root") is not None:
+            xnpv_within_tolerance = bool(xnpv_check.get("within_tolerance"))
+            checks["xnpv_consistency_within_tolerance"] = xnpv_within_tolerance
+            if not xnpv_within_tolerance:
+                reasons.append(
+                    f"XNPV at the candidate root ({xnpv_check.get('xnpv_at_root')}) was not "
+                    f"within the declared tolerance ({xnpv_check.get('tolerance')})."
+                )
 
     overall = "valid" if all(checks.values()) else "invalid"
 

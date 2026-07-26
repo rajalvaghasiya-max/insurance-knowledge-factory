@@ -74,6 +74,7 @@ def trace_to_dict(trace: CalculationTrace) -> dict:
         "dependency_versions": trace.dependency_versions,
         "input_hash": trace.input_hash,
         "output_hash": trace.output_hash,
+        "dated_cash_flow_context": trace.dated_cash_flow_context,
     }
     return {k: full[k] for k in CALCULATION_TRACE_FIELD_ORDER}
 
@@ -99,6 +100,7 @@ def trace_from_dict(d: dict) -> CalculationTrace:
         dependency_versions=d["dependency_versions"],
         input_hash=d["input_hash"],
         output_hash=d["output_hash"],
+        dated_cash_flow_context=d.get("dated_cash_flow_context"),
     )
 
 
@@ -118,6 +120,8 @@ def result_to_dict(result: CalculationResult) -> dict:
         "trace_id": result.trace_id,
         "deterministic_input_hash": result.deterministic_input_hash,
         "deterministic_output_hash": result.deterministic_output_hash,
+        "root_status": result.root_status,
+        "dated_cash_flow_summary": result.dated_cash_flow_summary,
     }
     return {k: full[k] for k in CALCULATION_RESULT_FIELD_ORDER}
 

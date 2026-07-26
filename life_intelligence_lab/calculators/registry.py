@@ -22,12 +22,21 @@ from typing import Dict, Optional
 from life_intelligence_lab.calculators.contracts import (
     CALCULATOR_STATUS_ACTIVE,
     CALCULATOR_STATUS_RETIRED,
+    DAY_COUNT_ACT_365,
+    DUPLICATE_DATE_POLICY_NET,
+    DUPLICATE_DATE_POLICY_REJECT,
     CalculatorDefinition,
     FIELD_KIND_COUNT,
     FIELD_KIND_DECIMAL,
+    FIELD_KIND_DECIMAL_LIST,
     FIELD_KIND_FLAG,
     FIELD_KIND_MONEY,
     FIELD_KIND_RATE,
+    FIELD_KIND_STRING,
+)
+from life_intelligence_lab.calculators.adapters.pyxirr_adapter import (
+    ADAPTER_VERSION as PYXIRR_ADAPTER_VERSION,
+    dependency_fingerprint as pyxirr_dependency_fingerprint,
 )
 
 _MONEY_ROUNDING = {"money_decimal_places": 2, "mode": "ROUND_HALF_UP"}
@@ -211,6 +220,155 @@ _register(CalculatorDefinition(
         "INFLATION_ADJUSTED_FV, increasingly so at higher rates or longer horizons."
     ],
     limitations=_STANDARD_LIMITATIONS,
+))
+
+# --- LIFE-PROTOTYPE-003: dated and periodic cash-flow calculators ----------
+
+_DATED_CASH_FLOW_ROUNDING = {
+    "rate_decimal_places": 6, "rate_percentage_decimal_places": 4, "mode": "ROUND_HALF_UP",
+}
+_ROOT_HANDLING_POLICY = (
+    "PolicyScna candidate-root policy v1: chronological sign changes are counted after "
+    "normalization; exactly one sign change is reported as root_status=SINGLE_ROOT, more than "
+    "one as root_status=MULTIPLE_ROOTS_POSSIBLE (candidate only, never presented as uniquely "
+    "correct). The candidate rate itself is whatever the pinned pyxirr version's solver "
+    "returns -- this policy governs how that candidate is LABELLED, not how it is computed."
+)
+_DEPENDENCY_FINGERPRINT = pyxirr_dependency_fingerprint()
+
+_register(CalculatorDefinition(
+    calculator_id="XIRR_DATED",
+    calculator_version=1,
+    display_name="XIRR — Internal Rate of Return for Dated Cash Flows",
+    formula_id="XIRR_DATED_FORMULA_V1",
+    formula_description="Solves XNPV(r) = 0 for irregular, dated cash flows via the contained PyXirrAdapter.",
+    required_input_schema={
+        "day_count_convention": {"kind": FIELD_KIND_STRING, "required": True, "allowed_values": (DAY_COUNT_ACT_365,)},
+        "duplicate_date_policy": {
+            "kind": FIELD_KIND_STRING, "required": True,
+            "allowed_values": (DUPLICATE_DATE_POLICY_REJECT, DUPLICATE_DATE_POLICY_NET),
+        },
+    },
+    output_schema={"rate": "decimal", "rate_percentage": "decimal"},
+    supported_units=[],
+    supported_methods=[],
+    compounding_convention="annualized effective rate implied by ACT_365 year fractions",
+    timing_convention="irregular, dated cash flows",
+    rounding_policy=_DATED_CASH_FLOW_ROUNDING,
+    implementation_adapter_id="life_intelligence_lab.calculators.formulas.xirr",
+    status=CALCULATOR_STATUS_ACTIVE,
+    requires_currency=False,
+    requires_cash_flows=True,
+    supersedes=None,
+    supported_day_count_conventions=[DAY_COUNT_ACT_365],
+    supported_duplicate_date_policies=[DUPLICATE_DATE_POLICY_REJECT, DUPLICATE_DATE_POLICY_NET],
+    root_handling_policy=_ROOT_HANDLING_POLICY,
+    adapter_version=PYXIRR_ADAPTER_VERSION,
+    dependency_fingerprint=_DEPENDENCY_FINGERPRINT,
+    warnings=[],
+    limitations=_STANDARD_LIMITATIONS + [
+        "Only the ACT_365 day-count convention is currently supported.",
+        "When root_status is MULTIPLE_ROOTS_POSSIBLE, the returned rate is a candidate only, "
+        "not guaranteed to be uniquely or economically correct.",
+    ],
+))
+
+_register(CalculatorDefinition(
+    calculator_id="XNPV_DATED",
+    calculator_version=1,
+    display_name="XNPV — Net Present Value for Dated Cash Flows",
+    formula_id="XNPV_DATED_FORMULA_V1",
+    formula_description="XNPV(r) = sum_i CF_i / (1+r)^year_fraction(d0,di), evaluated via the contained PyXirrAdapter.",
+    required_input_schema={
+        "rate": {"kind": FIELD_KIND_RATE, "required": True},
+        "day_count_convention": {"kind": FIELD_KIND_STRING, "required": True, "allowed_values": (DAY_COUNT_ACT_365,)},
+        "duplicate_date_policy": {
+            "kind": FIELD_KIND_STRING, "required": True,
+            "allowed_values": (DUPLICATE_DATE_POLICY_REJECT, DUPLICATE_DATE_POLICY_NET),
+        },
+    },
+    output_schema={"xnpv": "money"},
+    supported_units=["decimal", "percentage"],
+    supported_methods=[],
+    compounding_convention="ACT_365 year-fraction discounting",
+    timing_convention="irregular, dated cash flows",
+    rounding_policy=_MONEY_ROUNDING,
+    implementation_adapter_id="life_intelligence_lab.calculators.formulas.xnpv",
+    status=CALCULATOR_STATUS_ACTIVE,
+    requires_currency=False,
+    requires_cash_flows=True,
+    supersedes=None,
+    supported_day_count_conventions=[DAY_COUNT_ACT_365],
+    supported_duplicate_date_policies=[DUPLICATE_DATE_POLICY_REJECT, DUPLICATE_DATE_POLICY_NET],
+    root_handling_policy=None,  # XNPV evaluates at a given rate; it does not solve for a root
+    adapter_version=PYXIRR_ADAPTER_VERSION,
+    dependency_fingerprint=_DEPENDENCY_FINGERPRINT,
+    warnings=[],
+    limitations=_STANDARD_LIMITATIONS + ["Only the ACT_365 day-count convention is currently supported."],
+))
+
+_register(CalculatorDefinition(
+    calculator_id="IRR_PERIODIC",
+    calculator_version=1,
+    display_name="Periodic Internal Rate of Return",
+    formula_id="IRR_PERIODIC_FORMULA_V1",
+    formula_description="Solves for r such that sum_i CF_i / (1+r)^i = 0 over regular, undated periods.",
+    required_input_schema={
+        "cash_flows": {"kind": FIELD_KIND_DECIMAL_LIST, "required": True},
+    },
+    output_schema={"rate": "decimal", "rate_percentage": "decimal"},
+    supported_units=[],
+    supported_methods=[],
+    compounding_convention="regular periodic compounding (period length undated/implicit)",
+    timing_convention="regular, undated periods indexed 0..n-1",
+    rounding_policy=_DATED_CASH_FLOW_ROUNDING,
+    implementation_adapter_id="life_intelligence_lab.calculators.formulas.irr_periodic",
+    status=CALCULATOR_STATUS_ACTIVE,
+    requires_currency=False,
+    requires_cash_flows=False,
+    supersedes=None,
+    supported_day_count_conventions=[],
+    supported_duplicate_date_policies=[],
+    root_handling_policy=_ROOT_HANDLING_POLICY,
+    adapter_version=PYXIRR_ADAPTER_VERSION,
+    dependency_fingerprint=_DEPENDENCY_FINGERPRINT,
+    warnings=[],
+    limitations=_STANDARD_LIMITATIONS + [
+        "Deliberately separate from XIRR_DATED: no dates, no day-count convention. Do not "
+        "conflate periodic IRR with dated XIRR."
+    ],
+))
+
+_register(CalculatorDefinition(
+    calculator_id="NPV_PERIODIC",
+    calculator_version=1,
+    display_name="Periodic Net Present Value",
+    formula_id="NPV_PERIODIC_FORMULA_V1",
+    formula_description="NPV(r) = sum_i CF_i / (1+r)^i over regular, undated periods.",
+    required_input_schema={
+        "rate": {"kind": FIELD_KIND_RATE, "required": True},
+        "cash_flows": {"kind": FIELD_KIND_DECIMAL_LIST, "required": True},
+    },
+    output_schema={"npv": "money"},
+    supported_units=["decimal", "percentage"],
+    supported_methods=[],
+    compounding_convention="regular periodic compounding (period length undated/implicit)",
+    timing_convention="regular, undated periods indexed 0..n-1",
+    rounding_policy=_MONEY_ROUNDING,
+    implementation_adapter_id="life_intelligence_lab.calculators.formulas.npv_periodic",
+    status=CALCULATOR_STATUS_ACTIVE,
+    requires_currency=True,
+    requires_cash_flows=False,
+    supersedes=None,
+    supported_day_count_conventions=[],
+    supported_duplicate_date_policies=[],
+    root_handling_policy=None,
+    adapter_version=PYXIRR_ADAPTER_VERSION,
+    dependency_fingerprint=_DEPENDENCY_FINGERPRINT,
+    warnings=[],
+    limitations=_STANDARD_LIMITATIONS + [
+        "Deliberately separate from XNPV_DATED: no dates, no day-count convention."
+    ],
 ))
 
 

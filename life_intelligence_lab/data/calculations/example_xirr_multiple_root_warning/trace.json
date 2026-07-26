@@ -1,0 +1,211 @@
+{
+  "trace_id": "trace_3567c4556eecce31_68fb7383790e7f99",
+  "request_id": "example_xirr_multiple_root_warning",
+  "calculator_id": "XIRR_DATED",
+  "calculator_version": 1,
+  "formula_id": "XIRR_DATED_FORMULA_V1",
+  "calculation_date": "2026-07-26",
+  "currency": "INR",
+  "method": null,
+  "normalized_inputs": [
+    {
+      "field_name": "day_count_convention",
+      "original_value": "ACT_365",
+      "original_unit": null,
+      "normalized_value": "ACT_365",
+      "normalized_unit": "code"
+    },
+    {
+      "field_name": "duplicate_date_policy",
+      "original_value": "REJECT_DUPLICATES",
+      "original_unit": null,
+      "normalized_value": "REJECT_DUPLICATES",
+      "normalized_unit": "code"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "description": "Normalize 4 dated cash flows and count chronological sign changes",
+      "expression": "sign_changes(['-100', '1000', '-100', '-1000']) = 2",
+      "unrounded_value": "2"
+    },
+    {
+      "step_number": 2,
+      "description": "Solve XNPV(r) = 0 via the contained PyXirrAdapter (day-count: ACT_365)",
+      "expression": "xirr(['2020-01-01', '2020-06-01', '2020-12-01', '2021-06-01'], ['-100', '1000', '-100', '-1000'])",
+      "unrounded_value": "0.24867716300762766"
+    },
+    {
+      "step_number": 3,
+      "description": "XNPV consistency check at the candidate rate (should be ~0)",
+      "expression": "xnpv(0.24867716300762766, ...)",
+      "unrounded_value": "-1.932562554429751E-9"
+    }
+  ],
+  "output_before_rounding": {
+    "rate": "0.24867716300762766",
+    "rate_percentage": "24.86771630076276600"
+  },
+  "output_after_rounding": {
+    "rate": "0.248677",
+    "rate_percentage": "24.8677"
+  },
+  "rounding_applied": {
+    "rate": {
+      "decimal_places": 6,
+      "mode": "ROUND_HALF_UP"
+    },
+    "rate_percentage": {
+      "decimal_places": 4,
+      "mode": "ROUND_HALF_UP"
+    }
+  },
+  "warnings": [
+    "MULTIPLE ROOTS POSSIBLE: 2 sign changes were detected in these cash flows (chronological order). The returned rate is a CANDIDATE root only, not guaranteed to be the unique or economically correct one. Do not treat it as authoritative without independent review."
+  ],
+  "implementation_adapter_id": "life_intelligence_lab.calculators.formulas.xirr",
+  "implementation_version": "life-intelligence-lab-calc-runtime/0.1.0",
+  "dependency_versions": {
+    "decimal_module": "python_stdlib_decimal",
+    "runtime_version": "life-intelligence-lab-calc-runtime/0.1.0"
+  },
+  "input_hash": "3567c4556eecce31c80074f1c5b4ebb5becfa031d2a02713fd8149f3b0cb2db2",
+  "output_hash": "68fb7383790e7f99c01f28c0832db417472e3dff2c8c8402f3ec94abecb26a1d",
+  "dated_cash_flow_context": {
+    "original_cash_flows": [
+      {
+        "cash_flow_id": "cf_46c20c1f96cd649c2b6b",
+        "date": "2020-01-01",
+        "amount": "-100",
+        "currency": "INR",
+        "source_type": "premium",
+        "source_reference": null,
+        "description": null,
+        "sequence": 0
+      },
+      {
+        "cash_flow_id": "cf_b8260c015d73dc0632db",
+        "date": "2020-06-01",
+        "amount": "1000",
+        "currency": "INR",
+        "source_type": "withdrawal",
+        "source_reference": null,
+        "description": null,
+        "sequence": 1
+      },
+      {
+        "cash_flow_id": "cf_afa8d9748841b079e1f9",
+        "date": "2020-12-01",
+        "amount": "-100",
+        "currency": "INR",
+        "source_type": "premium",
+        "source_reference": null,
+        "description": null,
+        "sequence": 2
+      },
+      {
+        "cash_flow_id": "cf_ba025c57e4d9044f8919",
+        "date": "2021-06-01",
+        "amount": "-1000",
+        "currency": "INR",
+        "source_type": "withdrawal",
+        "source_reference": null,
+        "description": null,
+        "sequence": 3
+      }
+    ],
+    "normalized_cash_flows": [
+      {
+        "cash_flow_id": "cf_46c20c1f96cd649c2b6b",
+        "date": "2020-01-01",
+        "amount": "-100",
+        "currency": "INR",
+        "source_type": "premium",
+        "source_reference": null,
+        "description": null,
+        "sequence": 0
+      },
+      {
+        "cash_flow_id": "cf_b8260c015d73dc0632db",
+        "date": "2020-06-01",
+        "amount": "1000",
+        "currency": "INR",
+        "source_type": "withdrawal",
+        "source_reference": null,
+        "description": null,
+        "sequence": 1
+      },
+      {
+        "cash_flow_id": "cf_afa8d9748841b079e1f9",
+        "date": "2020-12-01",
+        "amount": "-100",
+        "currency": "INR",
+        "source_type": "premium",
+        "source_reference": null,
+        "description": null,
+        "sequence": 2
+      },
+      {
+        "cash_flow_id": "cf_ba025c57e4d9044f8919",
+        "date": "2021-06-01",
+        "amount": "-1000",
+        "currency": "INR",
+        "source_type": "withdrawal",
+        "source_reference": null,
+        "description": null,
+        "sequence": 3
+      }
+    ],
+    "duplicate_date_policy": "REJECT_DUPLICATES",
+    "duplicate_date_operations": [],
+    "base_date": "2020-01-01",
+    "day_count_convention": "ACT_365",
+    "year_fractions": [
+      {
+        "cash_flow_id": "cf_46c20c1f96cd649c2b6b",
+        "date": "2020-01-01",
+        "year_fraction": "0.0"
+      },
+      {
+        "cash_flow_id": "cf_b8260c015d73dc0632db",
+        "date": "2020-06-01",
+        "year_fraction": "0.41643835616438357"
+      },
+      {
+        "cash_flow_id": "cf_afa8d9748841b079e1f9",
+        "date": "2020-12-01",
+        "year_fraction": "0.9178082191780822"
+      },
+      {
+        "cash_flow_id": "cf_ba025c57e4d9044f8919",
+        "date": "2021-06-01",
+        "year_fraction": "1.4164383561643836"
+      }
+    ],
+    "solver_adapter_id": "life_intelligence_lab.calculators.adapters.pyxirr_adapter.PyXirrAdapter",
+    "solver_adapter_version": "pyxirr-adapter/0.1.0",
+    "dependency_name": "pyxirr",
+    "dependency_version": "0.10.8",
+    "dependency_fingerprint": "pyxirr==0.10.8+life_intelligence_lab.calculators.adapters.pyxirr_adapter.PyXirrAdapter@pyxirr-adapter/0.1.0",
+    "solver_status": "converged",
+    "root_search_bounds": null,
+    "candidate_roots": [
+      "0.24867716300762766"
+    ],
+    "selected_candidate_root": "0.24867716300762766",
+    "root_status": "MULTIPLE_ROOTS_POSSIBLE",
+    "convergence_info": {
+      "converged": true
+    },
+    "tolerance": "0.01",
+    "solver_warnings": [
+      "MULTIPLE ROOTS POSSIBLE: 2 sign changes were detected in these cash flows (chronological order). The returned rate is a CANDIDATE root only, not guaranteed to be the unique or economically correct one. Do not treat it as authoritative without independent review."
+    ],
+    "xnpv_consistency_check": {
+      "xnpv_at_root": "-1.932562554429751E-9",
+      "tolerance": "0.01",
+      "within_tolerance": true
+    }
+  }
+}

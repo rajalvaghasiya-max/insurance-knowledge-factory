@@ -1,0 +1,33 @@
+{
+  "result_id": "result_99c467b5fa318504_1ab61bfa7fe4313d",
+  "request_id": "example_xnpv_valid",
+  "calculator_id": "XNPV_DATED",
+  "calculator_version": 1,
+  "status": "SUCCESS",
+  "reason": null,
+  "output_values": {
+    "xnpv": "0.00"
+  },
+  "output_units": {
+    "xnpv": "money"
+  },
+  "rounding": {
+    "xnpv": {
+      "decimal_places": 2,
+      "mode": "ROUND_HALF_UP"
+    }
+  },
+  "warnings": [],
+  "limitations": [
+    "This is a mathematical projection based on the inputs and assumptions provided; it is not a guarantee of any future outcome.",
+    "Only the ACT_365 day-count convention is currently supported."
+  ],
+  "trace_id": "trace_99c467b5fa318504_1ab61bfa7fe4313d",
+  "deterministic_input_hash": "99c467b5fa3185047ec3932a19b61c5d8fd9efe3ed33272c8a7a159798955daf",
+  "deterministic_output_hash": "1ab61bfa7fe4313df7203937b2e00d48e956c7f394b40accf4aefc639d37dc84",
+  "root_status": null,
+  "dated_cash_flow_summary": {
+    "day_count_convention": "ACT_365",
+    "duplicate_date_policy": "REJECT_DUPLICATES"
+  }
+}

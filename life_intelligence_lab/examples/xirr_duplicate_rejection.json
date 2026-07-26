@@ -1,0 +1,18 @@
+{
+  "request_id": "example_xirr_duplicate_rejection",
+  "calculator_id": "XIRR_DATED",
+  "calculator_version": 1,
+  "calculation_date": "2026-07-26",
+  "input_values": {
+    "day_count_convention": "ACT_365",
+    "duplicate_date_policy": "REJECT_DUPLICATES"
+  },
+  "input_units": {},
+  "currency": null,
+  "idempotency_key": "example_xirr_duplicate_rejection_v1",
+  "cash_flows": [
+    {"date": "2020-01-01", "amount": "-10000", "currency": "INR", "source_type": "premium"},
+    {"date": "2020-01-01", "amount": "-500", "currency": "INR", "source_type": "premium"},
+    {"date": "2021-01-01", "amount": "12000", "currency": "INR", "source_type": "maturity_value"}
+  ]
+}

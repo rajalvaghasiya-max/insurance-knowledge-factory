@@ -177,3 +177,135 @@ production runtime could reuse this prototype's structure directly:
 None of that wiring exists yet. This prototype proves the deterministic
 core in isolation, exactly as LIFE-PROTOTYPE-001 proved the deterministic
 data-ingestion core in isolation.
+
+---
+
+# LIFE-PROTOTYPE-003 addendum — Dated Cash-Flow Runtime
+
+## Why XIRR is registered (not computed ad hoc)
+
+Exactly the same reason as every Prototype 002 calculator: `XIRR_DATED`
+is a `CalculatorDefinition` entry in `registry.py`, looked up by
+`(calculator_id, calculator_version)` through the identical
+`runtime.execute_calculation_request` dispatch mechanism. Nothing about
+adding a *dated* calculator required a second orchestrator — the same
+"the runtime may invoke only a registered calculator ID and version"
+guarantee that already held for `FV_LUMP_SUM` holds for `XIRR_DATED`
+without modification.
+
+## Why the numerical engine is hidden behind an adapter
+
+`calculators/adapters/pyxirr_adapter.py::PyXirrAdapter` is the ONLY file
+in this codebase that imports `pyxirr`. Every formula module
+(`xirr.py`, `xnpv.py`, `irr_periodic.py`, `npv_periodic.py`) receives a
+`PyXirrAdapter` instance (or constructs a default one) and calls its
+methods (`.xirr()`, `.xnpv()`, `.irr_periodic()`, `.npv_periodic()`) —
+never `pyxirr.xirr()` directly. This buys three things:
+
+1. **Replaceability.** Swapping `pyxirr` for a different solver would
+   mean rewriting `PyXirrAdapter`'s internals; no `CalculatorDefinition`,
+   no formula module's public interface, and no caller changes.
+2. **Testability without a real failure.** `PyXirrAdapter.__init__`
+   accepts an injectable `engine` (default: the real `pyxirr` module).
+   Tests pass a fake engine that raises an arbitrary exception,
+   proving `DependencyFailureError` handling deterministically — the
+   same dependency-injection pattern LIFE-PROTOTYPE-001 used for its
+   HTTP `fetch_fn`.
+3. **Absorbing the dependency's actual failure vocabulary.** pyxirr
+   signals "no root" and "rate ≤ -1" by returning `None` (not raising),
+   and signals "wrong sign pattern" via its own `InvalidPaymentsError`.
+   The adapter is where these three genuinely different behaviors get
+   translated into one uniform `SolveOutcome` shape
+   (`converged`/`value`/`error_reason`) — no caller of the adapter needs
+   to know pyxirr's specific quirks.
+
+## Why day-count is explicit
+
+`ACT_365` must be named in every `XIRR_DATED`/`XNPV_DATED` request
+(`day_count_convention` in `input_values`) — there is no default. This
+matters concretely: this pinned pyxirr version's `DayCount` enum has
+**no plain `ACT_365` member** at all (only `ACT_365F`, `ACT_365_25`,
+etc.). The mapping `"ACT_365" -> DayCount.ACT_365F` in
+`pyxirr_adapter.py`'s `_DAY_COUNT_MAP` was **verified empirically**
+before being relied on: `PyXirrAdapter().xirr(...)` with that mapping
+reproduces the assignment's exact expected known-answer vector
+(`0.6342972615260243`) — see `PROTOTYPE_REPORT_003.md`. Had this mapping
+been assumed instead of checked, the whole calculator would have quietly
+computed correct-looking but subtly wrong answers for every real
+request; this is exactly the class of error explicit, tested, recorded
+conventions exist to prevent.
+
+## Why duplicate-date handling is explicit
+
+`duplicate_date_policy` is a required input with no default, same
+reasoning as day-count. `NET_SAME_DATE` never runs unless a caller
+selects it, and even then the netting is never invisible: every original
+flow and the netting operation (`DuplicateDateOperation`, with the
+original ids, original amounts, and net amount) is retained in
+`CalculationTrace.dated_cash_flow_context`. A same-date net that sums to
+exactly zero is kept as an explicit zero-amount flow rather than
+dropped — dropping would be a second, silent transformation stacked on
+top of the first, and "silently" is precisely what this policy forbids.
+
+## Why multiple roots are not silently resolved
+
+`formulas/xirr.py` counts chronological sign changes itself (a pure,
+dependency-free function, `count_sign_changes` in the adapter module) —
+it does not ask pyxirr whether the cash flows are "conventional." More
+than one sign change sets `root_status=MULTIPLE_ROOTS_POSSIBLE` and
+attaches an explicit warning; the candidate rate pyxirr returned is still
+surfaced (never discarded), but is never labelled `SINGLE_ROOT` and
+never described as economically correct. `root_handling_policy` on the
+`CalculatorDefinition` names this as a specific PolicyScna convention
+(candidate-labelling, not root-selection) rather than an implicit
+inheritance of "whatever the dependency happened to return."
+
+## Why same-sign flows fail closed
+
+An all-positive or all-negative cash-flow list is well-formed (every
+individual date/amount/currency parses fine) but has no rate of return
+to compute — there is nothing to solve for. This is a `DomainError`
+(not a `NormalizationError`): the same INVALID_INPUT-vs-FAILED_CLOSED
+distinction Prototype 002 established for CAGR's zero-beginning-value
+case applies identically here, tagged
+`root_status=INVALID_CASH_FLOWS`. The precondition is checked in the
+formula module itself, *before* the adapter is even called — so this
+never depends on however pyxirr happens to react to a same-sign list
+(which, empirically, is its own `InvalidPaymentsError`, but PolicyScna's
+own check runs first and does not rely on that dependency behavior).
+
+## How dependency versions participate in replay
+
+`PyXirrAdapter`'s module-level `INSTALLED_DEPENDENCY_VERSION` (read from
+`pyxirr.__version__` at import time) and `dependency_fingerprint()`
+(combining dependency name, installed version, adapter id, and adapter
+version into one string) are embedded in every dated calculator's
+`CalculationTrace.dated_cash_flow_context`. `validation.py`'s
+`validate_result` **recomputes** this fingerprint live and compares it
+against what the trace recorded — if a different pyxirr version were
+installed later and a replay attempted, the mismatch would be caught by
+`dependency_fingerprint_matches`, not silently ignored. Within a single
+environment (as in this sandbox), the fingerprint is identical across
+runs, which is what makes byte-identical replay possible at all — replay
+determinism assumes the pinned dependency hasn't moved underneath it,
+and that assumption is now a checked one, not an implicit one.
+
+## A note on hash extension without disrupting Prototype 002
+
+Two different cash-flow lists must hash differently, so
+`canonical.hash_input` gained an optional `extra_content` parameter,
+included in the hashed payload only when not `None`. Every Prototype 002
+calculator never passes it, so their hash payload — and therefore their
+hash *value* — is byte-for-byte unchanged; this was verified directly
+against the exact hash already published in `PROTOTYPE_REPORT_002.md`
+(`test_prototype_002_hash_unaffected_by_prototype_003_extension`).
+`CashFlow.sequence` (original input position) is deliberately excluded
+from what gets hashed, even though it's a real field: two logically
+identical cash-flow sets entered in different order must hash
+identically (`test_cash_flow_order_permutation_does_not_change_hash`) —
+this was caught as a real bug during development (a first implementation
+folded `sequence` into both the id derivation and the hash content,
+which broke permutation invariance) and fixed by deriving
+`cash_flow_id` from content alone and excluding `sequence` from the hash
+basis specifically, while still keeping it in the human-readable trace
+for provenance.

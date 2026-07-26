@@ -1,0 +1,12 @@
+{
+  "request_id": "example_irr_periodic_valid",
+  "calculator_id": "IRR_PERIODIC",
+  "calculator_version": 1,
+  "calculation_date": "2026-07-26",
+  "input_values": {
+    "cash_flows": ["-250000", "100000", "150000", "200000", "250000", "300000"]
+  },
+  "input_units": {},
+  "currency": null,
+  "idempotency_key": "example_irr_periodic_valid_v1"
+}

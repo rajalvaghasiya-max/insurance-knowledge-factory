@@ -20,6 +20,7 @@ from life_intelligence_lab.calculators.contracts import (
     CalculatorDefinition,
     FIELD_KIND_COUNT,
     FIELD_KIND_DECIMAL,
+    FIELD_KIND_DECIMAL_LIST,
     FIELD_KIND_FLAG,
     FIELD_KIND_MONEY,
     FIELD_KIND_RATE,
@@ -33,6 +34,18 @@ SUPPORTED_CURRENCIES = ("INR", "USD", "GBP", "EUR")
 
 class NormalizationError(Exception):
     """Raised with a short, stable reason code as the message."""
+
+
+def to_decimal_safe(raw: object, field_name: str) -> Decimal:
+    """
+    Public wrapper around the decimal-safe parser below, exposed
+    specifically for reuse by `calculators/cash_flow.py` (Prototype 003)
+    -- this is the "reuse the existing calculator framework... normalisation"
+    requirement satisfied by exposing one function rather than
+    duplicating float/NaN/Infinity/bool rejection logic in a second
+    module.
+    """
+    return _to_decimal_safe(raw, field_name)
 
 
 def _to_decimal_safe(raw: object, field_name: str) -> Decimal:
@@ -102,7 +115,11 @@ def _normalize_string_field(field_name: str, raw_value: object, schema_entry: di
     value = raw_value.strip().upper()
     allowed = schema_entry.get("allowed_values")
     if allowed is not None and value not in allowed:
-        raise NormalizationError(f"unsupported_currency_format:{field_name}:{raw_value}")
+        # Use a reason code appropriate to what this field actually is, not a
+        # currency-specific one hardcoded for every whitelisted string field
+        # (day_count_convention, duplicate_date_policy, etc. are NOT currencies).
+        reason_prefix = schema_entry.get("unsupported_value_reason", "unsupported_value")
+        raise NormalizationError(f"{reason_prefix}:{field_name}:{raw_value}")
     return value
 
 
@@ -178,6 +195,17 @@ def normalize_request_inputs(
                 normalized_unit="periods",
             ))
 
+        elif kind == FIELD_KIND_DECIMAL_LIST:
+            decimal_list = _normalize_decimal_list_field(field_name, raw_value)
+            import json as _json
+            normalized.append(NormalizedInput(
+                field_name=field_name,
+                original_value=str(raw_value),
+                original_unit=unit,
+                normalized_value=_json.dumps([str(d) for d in decimal_list]),
+                normalized_unit="decimal_list",
+            ))
+
         elif kind == FIELD_KIND_STRING:
             value = _normalize_string_field(field_name, raw_value, schema_entry)
             normalized.append(NormalizedInput(
@@ -203,6 +231,29 @@ def normalize_request_inputs(
     return normalized
 
 
+def validate_iso_date(raw: object, field_name: str) -> str:
+    """
+    Strict ISO-8601 (YYYY-MM-DD) date validator, exposed for reuse by
+    `calculators/cash_flow.py`. Deliberately stricter than Prototype
+    001's AMFI DD-Mon-YYYY parser -- this cash-flow contract requires
+    callers to supply already-ISO dates rather than attempting to guess
+    among multiple input formats, keeping normalization unambiguous.
+    """
+    if not isinstance(raw, str):
+        raise NormalizationError(f"invalid_date_format:{field_name}: expected an ISO-8601 date string")
+    value = raw.strip()
+    import re as _re
+    from datetime import date as _date
+
+    if not _re.match(r"^\d{4}-\d{2}-\d{2}$", value):
+        raise NormalizationError(f"invalid_date_format:{field_name}: '{raw}' is not YYYY-MM-DD")
+    try:
+        parsed = _date.fromisoformat(value)
+    except ValueError:
+        raise NormalizationError(f"invalid_date_format:{field_name}: '{raw}' is not a real calendar date") from None
+    return parsed.isoformat()
+
+
 def validate_currency(currency: Optional[str]) -> str:
     """
     Validates the top-level CalculationRequest.currency field. Currency
@@ -216,6 +267,16 @@ def validate_currency(currency: Optional[str]) -> str:
     if value not in SUPPORTED_CURRENCIES:
         raise NormalizationError(f"unsupported_currency_format:currency:{currency}")
     return value
+
+
+def _normalize_decimal_list_field(field_name: str, raw_value: object) -> List[Decimal]:
+    if not isinstance(raw_value, list) or len(raw_value) == 0:
+        raise NormalizationError(f"empty_or_invalid_list:{field_name}")
+    values = []
+    for i, item in enumerate(raw_value):
+        decimal_value = _to_decimal_safe(item, f"{field_name}[{i}]")
+        values.append(decimal_value)
+    return values
 
 
 def normalize_method(calc_def: CalculatorDefinition, method: Optional[str]) -> Optional[str]:
@@ -232,13 +293,16 @@ def normalized_inputs_to_dict(normalized: List[NormalizedInput]) -> Dict[str, st
     return {ni.field_name: ni.normalized_value for ni in normalized}
 
 
-def normalized_inputs_to_decimal_map(normalized: List[NormalizedInput]) -> Dict[str, Decimal]:
+def normalized_inputs_to_decimal_map(normalized: List[NormalizedInput]) -> Dict[str, object]:
+    import json as _json
     result = {}
     for ni in normalized:
         if ni.normalized_unit == "boolean":
             result[ni.field_name] = ni.normalized_value == "true"
         elif ni.normalized_unit == "code":
             result[ni.field_name] = ni.normalized_value
+        elif ni.normalized_unit == "decimal_list":
+            result[ni.field_name] = [Decimal(v) for v in _json.loads(ni.normalized_value)]
         else:
             result[ni.field_name] = Decimal(ni.normalized_value)
     return result

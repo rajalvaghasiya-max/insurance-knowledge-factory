@@ -1,0 +1,18 @@
+{
+  "result_id": "result_unresolvable_cc0d385d7a7987f6",
+  "request_id": "example_xirr_duplicate_rejection",
+  "calculator_id": "XIRR_DATED",
+  "calculator_version": 1,
+  "status": "INVALID_INPUT",
+  "reason": "duplicate_date_rejected:2020-01-01",
+  "output_values": null,
+  "output_units": null,
+  "rounding": null,
+  "warnings": [],
+  "limitations": [],
+  "trace_id": null,
+  "deterministic_input_hash": null,
+  "deterministic_output_hash": null,
+  "root_status": null,
+  "dated_cash_flow_summary": null
+}

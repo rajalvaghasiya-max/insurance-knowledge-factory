@@ -1,0 +1,56 @@
+{
+  "trace_id": "trace_f2d064883bb5f51c_e8ab1f2b6f713a4f",
+  "request_id": "example_npv_periodic_valid",
+  "calculator_id": "NPV_PERIODIC",
+  "calculator_version": 1,
+  "formula_id": "NPV_PERIODIC_FORMULA_V1",
+  "calculation_date": "2026-07-26",
+  "currency": "INR",
+  "method": null,
+  "normalized_inputs": [
+    {
+      "field_name": "rate",
+      "original_value": "0.5672303344358535",
+      "original_unit": "decimal",
+      "normalized_value": "0.5672303344358535",
+      "normalized_unit": "decimal_fraction"
+    },
+    {
+      "field_name": "cash_flows",
+      "original_value": "['-250000', '100000', '150000', '200000', '250000', '300000']",
+      "original_unit": null,
+      "normalized_value": "[\"-250000\", \"100000\", \"150000\", \"200000\", \"250000\", \"300000\"]",
+      "normalized_unit": "decimal_list"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "description": "Evaluate periodic NPV at rate 0.5672303344358535 over 6 flows",
+      "expression": "npv(0.5672303344358535, ['-250000', '100000', '150000', '200000', '250000', '300000'])",
+      "unrounded_value": "7.639755494892597E-11"
+    }
+  ],
+  "output_before_rounding": {
+    "npv": "7.639755494892597E-11"
+  },
+  "output_after_rounding": {
+    "npv": "0.00"
+  },
+  "rounding_applied": {
+    "npv": {
+      "decimal_places": 2,
+      "mode": "ROUND_HALF_UP"
+    }
+  },
+  "warnings": [],
+  "implementation_adapter_id": "life_intelligence_lab.calculators.formulas.npv_periodic",
+  "implementation_version": "life-intelligence-lab-calc-runtime/0.1.0",
+  "dependency_versions": {
+    "decimal_module": "python_stdlib_decimal",
+    "runtime_version": "life-intelligence-lab-calc-runtime/0.1.0"
+  },
+  "input_hash": "f2d064883bb5f51cb85b67d1247432d3f296eb378350206413eef5e9fa9855fd",
+  "output_hash": "e8ab1f2b6f713a4f197a3b117582bac0b5f6765199d69c71442a571764f0fe91",
+  "dated_cash_flow_context": null
+}

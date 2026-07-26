@@ -1,8 +1,19 @@
 # life_intelligence_lab prototype -- runtime dependencies
 #
-# This prototype deliberately uses ONLY the Python standard library at
-# runtime (urllib, hashlib, json, decimal, dataclasses, re, datetime).
-# There are no third-party runtime dependencies to declare.
+# Prototype 001/002 use ONLY the Python standard library at runtime.
+#
+# Prototype 003 (LIFE-PROTOTYPE-003) adds ONE pinned third-party
+# dependency, used exclusively behind calculators/adapters/pyxirr_adapter.py
+# -- no caller, CLI request, agent, or explanation invokes it directly.
+#
+#   pyxirr==0.10.8
+#   Licence: Unlicense (public domain equivalent)
+#   Home page: https://github.com/Anexen/pyxirr
+#   Installed via: pip install pyxirr==0.10.8 --break-system-packages
+#
+# This pin is sandbox-only. It has NOT been added to, and must never be
+# added to, any root/production dependency file.
+pyxirr==0.10.8
 #
 # This file exists as an explicit, isolated dependency declaration for
 # this sandbox, separate from any dependency file used by PolicyScna's

@@ -1,0 +1,20 @@
+{
+  "request_id": "example_xnpv_valid",
+  "calculator_id": "XNPV_DATED",
+  "calculator_version": 1,
+  "calculation_date": "2026-07-26",
+  "input_values": {
+    "rate": "0.6342972615260243",
+    "day_count_convention": "ACT_365",
+    "duplicate_date_policy": "REJECT_DUPLICATES"
+  },
+  "input_units": {"rate": "decimal"},
+  "currency": null,
+  "idempotency_key": "example_xnpv_valid_v1",
+  "cash_flows": [
+    {"date": "2020-01-01", "amount": "-10000", "currency": "INR", "source_type": "premium"},
+    {"date": "2020-03-01", "amount": "5750", "currency": "INR", "source_type": "withdrawal"},
+    {"date": "2020-10-30", "amount": "4250", "currency": "INR", "source_type": "withdrawal"},
+    {"date": "2021-02-15", "amount": "3250", "currency": "INR", "source_type": "maturity_value"}
+  ]
+}

@@ -136,3 +136,123 @@ calculator families exist; scheme/product-specific insurance logic,
 XIRR/SIP/HLV, tax rules, market-data fetching, and any form of
 recommendation or product comparison are all explicitly out of scope for
 this prototype and not present anywhere in the code.
+
+---
+
+# LIFE-PROTOTYPE-003 addendum — Dated Cash-Flow Runtime (XIRR / XNPV)
+
+**Status: `EXPERIMENTAL`.**
+
+Extends the calculator runtime above with a dated and periodic
+cash-flow calculator family, reusing every structure documented above
+(registry, normalization, runtime, validation, hashing, CLI, replay)
+rather than building a second framework. See `CALCULATOR_ARCHITECTURE.md`
+for the design rationale and `PROTOTYPE_REPORT_003.md` for full evidence.
+
+## Supported calculators (new)
+
+| Calculator ID | Formula | Dates? | Root-solving? |
+|---|---|---|---|
+| `XIRR_DATED` v1 | Solves XNPV(r)=0 for irregular dated flows | Yes | Yes (via pyxirr) |
+| `XNPV_DATED` v1 | Evaluates NPV at a caller-supplied rate for dated flows | Yes | No (rate given, not solved) |
+| `IRR_PERIODIC` v1 | Solves for r over regular, undated periods | No | Yes (via pyxirr) |
+| `NPV_PERIODIC` v1 | Evaluates NPV at a given rate over regular periods | No | No |
+
+`IRR_PERIODIC`/`NPV_PERIODIC` are deliberately separate from
+`XIRR_DATED`/`XNPV_DATED` — no dates, no day-count convention, no
+duplicate-date policy. Do not conflate the two families.
+
+## Cash-flow sign convention
+
+Outflows (premiums, investments) are negative; inflows (withdrawals,
+maturity, surrender values) are positive — the standard financial
+convention. XIRR/IRR require at least one flow of each sign; an
+all-positive or all-negative series fails closed
+(`root_status=INVALID_CASH_FLOWS`), it is never silently accepted or
+defaulted to zero.
+
+## Day-count conventions
+
+Only `ACT_365` is supported in this prototype (mapped internally to the
+pinned pyxirr version's `DayCount.ACT_365F`, verified empirically against
+the known-answer XIRR vector before being relied on — see
+`CALCULATOR_ARCHITECTURE.md`). Requesting any other convention name is
+rejected (`INVALID_INPUT`), not silently substituted.
+
+## Duplicate-date policies
+
+- `REJECT_DUPLICATES` (default expectation) — more than one cash flow on
+  the same date is rejected outright (`INVALID_INPUT`).
+- `NET_SAME_DATE` — same-date flows are summed into one net flow. Every
+  original flow and the netting operation itself are retained in the
+  trace (`dated_cash_flow_context.duplicate_date_operations`) — nothing
+  is silently combined. A net that sums to exactly zero is **retained
+  explicitly** as a zero-amount flow, not dropped.
+
+Duplicate dates are never netted implicitly — the policy must always be
+stated explicitly in the request.
+
+## Multiple-root policy
+
+Chronological sign changes are counted (pure, dependency-free counting,
+not a root-finding algorithm) after normalization:
+
+- Exactly one sign change → `root_status=SINGLE_ROOT`.
+- More than one sign change → `root_status=MULTIPLE_ROOTS_POSSIBLE`. The
+  solved rate is still returned, but explicitly labelled a **candidate
+  only**, with a warning, never presented as uniquely or economically
+  correct. This is a named PolicyScna policy (`root_handling_policy` on
+  each `CalculatorDefinition`), not an unstated assumption.
+- No solvable root → `root_status=NO_ROOT_FOUND`, fails closed with no
+  numeric output.
+- An underlying engine exception (not an expected sign-pattern signal)
+  → `root_status=DEPENDENCY_FAILURE`, fails closed.
+
+## Dependency
+
+`pyxirr==0.10.8` (License: Unlicense), pinned in
+`life_intelligence_lab/requirements.txt` only — never in a root/production
+dependency file. Used exclusively behind
+`calculators/adapters/pyxirr_adapter.py::PyXirrAdapter` — no caller, CLI
+request, agent, or explanation invokes `pyxirr` directly.
+
+## Commands (new)
+
+```bash
+python -m life_intelligence_lab.scripts.run_calculator \
+  --calculator XIRR_DATED --version 1 \
+  --input life_intelligence_lab/examples/xirr_valid.json
+
+python -m life_intelligence_lab.scripts.replay_calculation \
+  --request life_intelligence_lab/examples/xirr_valid.json \
+  --compare-to life_intelligence_lab/data/calculations/example_xirr_valid
+```
+
+The existing CLI (`run_calculator.py`/`replay_calculation.py`) needed no
+changes to support dated cash flows — see `CALCULATOR_ARCHITECTURE.md`.
+
+## Failures (new, in addition to Prototype 002's five statuses)
+
+Dated/periodic calculators use the same five `CalculationResult.status`
+values as Prototype 002, plus a populated `root_status` field
+(`SINGLE_ROOT` / `MULTIPLE_ROOTS_POSSIBLE` / `NO_ROOT_FOUND` /
+`NON_CONVERGENT` / `INVALID_CASH_FLOWS` / `DEPENDENCY_FAILURE`) wherever
+root-solving is relevant. A `FAILED_CLOSED` result never contains a
+numeric rate or XNPV value, regardless of root_status.
+
+## Limitations (new)
+
+- Only `ACT_365` day-count is supported.
+- `NON_CONVERGENT` is a defined root_status value, but the pinned pyxirr
+  version does not distinguish "no root exists" from "solver did not
+  converge" — both surface as `None`, so this prototype maps both to
+  `NO_ROOT_FOUND` rather than fabricating a distinction the dependency
+  doesn't provide.
+- Duplicate-date netting provenance order (`original_cash_flow_ids`
+  within one `DuplicateDateOperation`) is not independently verified
+  permutation-invariant when duplicate entries themselves are reordered
+  relative to each other — a narrower case than the general cash-flow
+  -list permutation invariance, which *is* verified.
+- No bounded root scan across multiple candidates is implemented; only
+  the single candidate pyxirr's solver returns is surfaced, labelled
+  appropriately by `root_status`.

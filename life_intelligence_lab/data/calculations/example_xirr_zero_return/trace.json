@@ -1,0 +1,157 @@
+{
+  "trace_id": "trace_c5f72d378789019d_5cee2b044b804a05",
+  "request_id": "example_xirr_zero_return",
+  "calculator_id": "XIRR_DATED",
+  "calculator_version": 1,
+  "formula_id": "XIRR_DATED_FORMULA_V1",
+  "calculation_date": "2026-07-26",
+  "currency": "INR",
+  "method": null,
+  "normalized_inputs": [
+    {
+      "field_name": "day_count_convention",
+      "original_value": "ACT_365",
+      "original_unit": null,
+      "normalized_value": "ACT_365",
+      "normalized_unit": "code"
+    },
+    {
+      "field_name": "duplicate_date_policy",
+      "original_value": "REJECT_DUPLICATES",
+      "original_unit": null,
+      "normalized_value": "REJECT_DUPLICATES",
+      "normalized_unit": "code"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "description": "Normalize 2 dated cash flows and count chronological sign changes",
+      "expression": "sign_changes(['-1000', '1000']) = 1",
+      "unrounded_value": "1"
+    },
+    {
+      "step_number": 2,
+      "description": "Solve XNPV(r) = 0 via the contained PyXirrAdapter (day-count: ACT_365)",
+      "expression": "xirr(['2020-01-01', '2021-01-01'], ['-1000', '1000'])",
+      "unrounded_value": "0.0"
+    },
+    {
+      "step_number": 3,
+      "description": "XNPV consistency check at the candidate rate (should be ~0)",
+      "expression": "xnpv(0.0, ...)",
+      "unrounded_value": "0.0"
+    }
+  ],
+  "output_before_rounding": {
+    "rate": "0.0",
+    "rate_percentage": "0.0"
+  },
+  "output_after_rounding": {
+    "rate": "0.000000",
+    "rate_percentage": "0.0000"
+  },
+  "rounding_applied": {
+    "rate": {
+      "decimal_places": 6,
+      "mode": "ROUND_HALF_UP"
+    },
+    "rate_percentage": {
+      "decimal_places": 4,
+      "mode": "ROUND_HALF_UP"
+    }
+  },
+  "warnings": [],
+  "implementation_adapter_id": "life_intelligence_lab.calculators.formulas.xirr",
+  "implementation_version": "life-intelligence-lab-calc-runtime/0.1.0",
+  "dependency_versions": {
+    "decimal_module": "python_stdlib_decimal",
+    "runtime_version": "life-intelligence-lab-calc-runtime/0.1.0"
+  },
+  "input_hash": "c5f72d378789019d6d7e54bc0b9ef647e311b8c595fd5a3ead278792664f8c36",
+  "output_hash": "5cee2b044b804a053479f1a7272c853bcd7ba9790a3ca746f3a041f4d56f659e",
+  "dated_cash_flow_context": {
+    "original_cash_flows": [
+      {
+        "cash_flow_id": "cf_3a50106ddb2fec363b3f",
+        "date": "2020-01-01",
+        "amount": "-1000",
+        "currency": "INR",
+        "source_type": "premium",
+        "source_reference": null,
+        "description": null,
+        "sequence": 0
+      },
+      {
+        "cash_flow_id": "cf_3974410097cca81efb79",
+        "date": "2021-01-01",
+        "amount": "1000",
+        "currency": "INR",
+        "source_type": "maturity_value",
+        "source_reference": null,
+        "description": null,
+        "sequence": 1
+      }
+    ],
+    "normalized_cash_flows": [
+      {
+        "cash_flow_id": "cf_3a50106ddb2fec363b3f",
+        "date": "2020-01-01",
+        "amount": "-1000",
+        "currency": "INR",
+        "source_type": "premium",
+        "source_reference": null,
+        "description": null,
+        "sequence": 0
+      },
+      {
+        "cash_flow_id": "cf_3974410097cca81efb79",
+        "date": "2021-01-01",
+        "amount": "1000",
+        "currency": "INR",
+        "source_type": "maturity_value",
+        "source_reference": null,
+        "description": null,
+        "sequence": 1
+      }
+    ],
+    "duplicate_date_policy": "REJECT_DUPLICATES",
+    "duplicate_date_operations": [],
+    "base_date": "2020-01-01",
+    "day_count_convention": "ACT_365",
+    "year_fractions": [
+      {
+        "cash_flow_id": "cf_3a50106ddb2fec363b3f",
+        "date": "2020-01-01",
+        "year_fraction": "0.0"
+      },
+      {
+        "cash_flow_id": "cf_3974410097cca81efb79",
+        "date": "2021-01-01",
+        "year_fraction": "1.0027397260273974"
+      }
+    ],
+    "solver_adapter_id": "life_intelligence_lab.calculators.adapters.pyxirr_adapter.PyXirrAdapter",
+    "solver_adapter_version": "pyxirr-adapter/0.1.0",
+    "dependency_name": "pyxirr",
+    "dependency_version": "0.10.8",
+    "dependency_fingerprint": "pyxirr==0.10.8+life_intelligence_lab.calculators.adapters.pyxirr_adapter.PyXirrAdapter@pyxirr-adapter/0.1.0",
+    "solver_status": "converged",
+    "root_search_bounds": null,
+    "candidate_roots": [
+      "0.0"
+    ],
+    "selected_candidate_root": "0.0",
+    "root_status": "SINGLE_ROOT",
+    "convergence_info": {
+      "converged": true
+    },
+    "tolerance": "0.01",
+    "solver_warnings": [],
+    "xnpv_consistency_check": {
+      "xnpv_at_root": "0.0",
+      "tolerance": "0.01",
+      "within_tolerance": true
+    }
+  }
+}

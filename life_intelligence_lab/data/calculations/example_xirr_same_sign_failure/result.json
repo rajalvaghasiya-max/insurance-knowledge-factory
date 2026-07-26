@@ -1,0 +1,22 @@
+{
+  "result_id": "result_failed_93acb3ae3e243ba822a77517",
+  "request_id": "example_xirr_same_sign_failure",
+  "calculator_id": "XIRR_DATED",
+  "calculator_version": 1,
+  "status": "FAILED_CLOSED",
+  "reason": "xirr_requires_at_least_one_positive_and_one_negative_flow",
+  "output_values": null,
+  "output_units": null,
+  "rounding": null,
+  "warnings": [],
+  "limitations": [
+    "This is a mathematical projection based on the inputs and assumptions provided; it is not a guarantee of any future outcome.",
+    "Only the ACT_365 day-count convention is currently supported.",
+    "When root_status is MULTIPLE_ROOTS_POSSIBLE, the returned rate is a candidate only, not guaranteed to be uniquely or economically correct."
+  ],
+  "trace_id": null,
+  "deterministic_input_hash": "93acb3ae3e243ba822a775174195cae8b470f1bbe4685ccb358f93c296463d21",
+  "deterministic_output_hash": null,
+  "root_status": "INVALID_CASH_FLOWS",
+  "dated_cash_flow_summary": null
+}
