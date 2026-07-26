@@ -17,6 +17,10 @@ from insurance_intelligence.contracts.topic_completeness import (
     build_component_result,
     build_topic_definition,
 )
+from insurance_intelligence.topic_completeness.adapter import (
+    TopicCompletenessAdapterError,
+    evaluate_registered_topic,
+)
 from insurance_intelligence.topic_completeness.catalogue import (
     CATALOGUE_VERSION,
     build_conditional_obligation_definition,
@@ -43,6 +47,7 @@ __all__ = [
     "EXPLANATION_BLOCKING_STATUSES",
     "SUPPORTED_CONTRACT_VERSION",
     "UNRESOLVED_APPLICABILITY_POLICIES",
+    "TopicCompletenessAdapterError",
     "TopicCompletenessContractError",
     "TopicCompletenessEvaluationError",
     "TopicCompletenessRegistry",
@@ -61,5 +66,6 @@ __all__ = [
     "build_topic_definition",
     "build_waiting_period_definition",
     "default_topic_definitions",
+    "evaluate_registered_topic",
     "evaluate_topic_completeness",
 ]
