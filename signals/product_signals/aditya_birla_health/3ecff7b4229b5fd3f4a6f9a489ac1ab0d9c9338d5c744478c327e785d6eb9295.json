@@ -1,14 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\3ecff7b4229b5fd3f4a6f9a489ac1ab0d9c9338d5c744478c327e785d6eb9295.json",
   "insurer_id": "aditya_birla_health",
   "url": "https://lifeinsurance.adityabirlacapital.com/",
   "page_title": "Buy Best Life Insurance Plans in India 2026",
   "content_hash": "3ecff7b4229b5fd3f4a6f9a489ac1ab0d9c9338d5c744478c327e785d6eb9295",
   "page_intent": "homepage",
-  "extracted_at": "2026-06-07T11:46:07.196499+00:00",
+  "asset_scope": "generic_knowledge",
+  "classification_reason": "matched home path; mapped from page intent 'homepage'",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.234609+00:00",
   "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Benefits of Life Insurance in India",

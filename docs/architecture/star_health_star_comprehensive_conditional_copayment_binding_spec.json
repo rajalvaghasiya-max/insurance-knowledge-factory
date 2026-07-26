@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "generic_legal_condition_binding_v1",
+  "reviewed_by_human": true,
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/star_health_star_comprehensive_generic_source_bundle.json",
+  "assertions": [
+    {
+      "assertion_id": "ga_star_comprehensive_entry_age_61_conditional_copayment_v1",
+      "assertion_type": "conditional_copayment_rule",
+      "semantic_key": "copayment.entry_age_61_or_above.ten_percent_condition",
+      "reviewed_statement": "Star Comprehensive applies a 10% co-payment to each and every claim for fresh as well as renewal policies where the insured person's age at entry is 61 years or above. The co-payment does not apply where the insured person entered the policy before attaining 61 years of age and renewed continuously without a break. The policy wording limits this co-payment to Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, II.8, II.9, II.10, II.11, II.15 and II.25.",
+      "evidence_selections": [
+        {
+          "document_id": "star_health_star_comprehensive_policy_wording_v1",
+          "candidate_id": "candidate_page_39",
+          "candidate_text_sha256": "ea3aa9a64bd799fbdcc52bdebb48a5b6917c90673451cf84230005506bb09594"
+        }
+      ]
+    }
+  ]
+}
+

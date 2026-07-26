@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "publisher_type": "canonical_authoritative_publisher_v1",
+  "approved_by_human": true,
+  "canonical_projection_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/canonical_projection/star_health_star_comprehensive_conditional_copayment.canonical.json",
+  "publication_decision_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/publication_decision/star_health_star_comprehensive_conditional_copayment.eligibility.json",
+  "product_version_id": "pv_star_health_star_comprehensive_shahlip26044v092526",
+  "assertion_ids": [
+    "ka_3ba01cbf47f6e3d5"
+  ]
+}

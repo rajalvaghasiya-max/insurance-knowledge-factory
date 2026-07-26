@@ -1,0 +1,373 @@
+{
+  "registry_name": "PolicyScna Health Field Registry",
+  "schema_version": "0.2",
+  "domain": "health",
+  "purpose": "Define canonical Health insurance fields that the Factory may manufacture, validate, compare, and explain.",
+  "field_maturity_levels": [
+    "extractor_supported",
+    "limited_candidate",
+    "router_supported",
+    "evidence_discoverable"
+  ],
+  "fields": [
+    {
+      "field_id": "copay",
+      "display_name": "Co-pay",
+      "field_family": "cost_sharing",
+      "operational_field_ids": [
+        "copay"
+      ],
+      "value_contract": {
+        "primary_value_types": [
+          "percentage",
+          "no_copay",
+          "text"
+        ],
+        "allowed_units": [
+          "percent",
+          "text"
+        ]
+      },
+      "evidence_expectations": {
+        "preferred_source_types": [
+          "policy_wording",
+          "customer_information_sheet",
+          "cis",
+          "prospectus",
+          "brochure",
+          "webpage"
+        ],
+        "requires_entity_scope_guard": true
+      },
+      "maturity": "extractor_supported",
+      "production_readiness": "production_candidate",
+      "notes": [
+        "Applicability may be age-based, zone-based, treatment-based, hospital-based, all-claims, or unknown.",
+        "A zero value means no co-pay only when directly supported by evidence."
+      ]
+    },
+    {
+      "field_id": "room_rent",
+      "display_name": "Room Rent Eligibility and Limit",
+      "field_family": "hospitalization_limits",
+      "operational_field_ids": [
+        "room_rent_limit"
+      ],
+      "value_contract": {
+        "primary_value_types": [
+          "no_limit",
+          "room_category",
+          "percentage_of_sum_insured",
+          "fixed_amount",
+          "text"
+        ],
+        "allowed_units": [
+          "INR",
+          "percent",
+          "room_category",
+          "text"
+        ],
+        "structured_dimensions": [
+          "limit_or_eligibility",
+          "proportionate_deduction_detected_nearby"
+        ]
+      },
+      "evidence_expectations": {
+        "preferred_source_types": [
+          "policy_wording",
+          "customer_information_sheet",
+          "cis",
+          "prospectus",
+          "brochure",
+          "webpage"
+        ],
+        "requires_entity_scope_guard": true
+      },
+      "maturity": "extractor_supported",
+      "production_readiness": "production_candidate",
+      "notes": [
+        "room_rent_limit is the current operational field ID.",
+        "The canonical concept includes both monetary caps and room-category eligibility."
+      ]
+    },
+    {
+      "field_id": "ped_waiting_period",
+      "display_name": "Pre-existing Disease Waiting Period",
+      "field_family": "waiting_periods",
+      "operational_field_ids": [
+        "ped_waiting_period"
+      ],
+      "value_contract": {
+        "primary_value_types": [
+          "duration"
+        ],
+        "allowed_units": [
+          "months",
+          "days",
+          "years"
+        ]
+      },
+      "evidence_expectations": {
+        "preferred_source_types": [
+          "policy_wording",
+          "customer_information_sheet",
+          "cis",
+          "prospectus",
+          "brochure",
+          "webpage"
+        ],
+        "requires_entity_scope_guard": true
+      },
+      "maturity": "extractor_supported",
+      "production_readiness": "production_candidate",
+      "notes": [
+        "Current extractor normalizes values to months.",
+        "Entity-scope guarding is enforced and protected by positive and negative regression tests."
+      ]
+    },
+    {
+      "field_id": "specific_disease_waiting_period",
+      "display_name": "Specific Disease Waiting Period",
+      "field_family": "waiting_periods",
+      "operational_field_ids": [
+        "specific_disease_waiting_period"
+      ],
+      "value_contract": {
+        "primary_value_types": [
+          "duration",
+          "disease_schedule"
+        ],
+        "allowed_units": [
+          "months",
+          "days",
+          "years",
+          "text"
+        ]
+      },
+      "evidence_expectations": {
+        "preferred_source_types": [
+          "policy_wording",
+          "customer_information_sheet",
+          "cis",
+          "prospectus",
+          "brochure"
+        ],
+        "requires_entity_scope_guard": true
+      },
+      "maturity": "router_supported",
+      "production_readiness": "discovery_only",
+      "notes": [
+        "Requires a structured extractor and disease-schedule handling before production manufacturing."
+      ]
+    },
+    {
+      "field_id": "restoration_benefit",
+      "display_name": "Restoration Benefit",
+      "field_family": "sum_insured_behavior",
+      "operational_field_ids": [
+        "restoration_benefit"
+      ],
+      "value_contract": {
+        "primary_value_types": [
+          "structured_benefit",
+          "text"
+        ],
+        "allowed_units": [
+          "percent",
+          "text",
+          null
+        ],
+        "structured_dimensions": [
+          "restore_amount",
+          "trigger_claim",
+          "frequency",
+          "availability_for_same_illness",
+          "availability_for_related_illness"
+        ]
+      },
+      "evidence_expectations": {
+        "preferred_source_types": [
+          "policy_wording",
+          "brochure",
+          "customer_information_sheet",
+          "cis",
+          "webpage"
+        ],
+        "requires_entity_scope_guard": true
+      },
+      "maturity": "router_supported",
+      "production_readiness": "discovery_only",
+      "notes": [
+        "Marketing names such as Reload, Reinstatement, and Refill may map to this concept.",
+        "Requires a structured extractor before comparison or recommendation use."
+      ]
+    },
+    {
+      "field_id": "initial_waiting_period",
+      "display_name": "Initial Waiting Period",
+      "field_family": "waiting_periods",
+      "operational_field_ids": [
+        "initial_waiting_period"
+      ],
+      "value_contract": {
+        "primary_value_types": [
+          "duration"
+        ],
+        "allowed_units": [
+          "months",
+          "days",
+          "years"
+        ],
+        "structured_dimensions": [
+          "accident_exception"
+        ]
+      },
+      "evidence_expectations": {
+        "preferred_source_types": [
+          "policy_wording",
+          "customer_information_sheet",
+          "cis",
+          "prospectus",
+          "brochure",
+          "webpage"
+        ],
+        "requires_entity_scope_guard": true
+      },
+      "maturity": "extractor_supported",
+      "production_readiness": "production_candidate",
+      "notes": [
+        "Extractor supports heading-based and inline duration forms.",
+        "Entity-scope guarding, unit validation, and evidence-router support are protected by direct tests.",
+        "Accident exceptions are captured only when explicitly stated in evidence."
+      ]
+    },
+    {
+      "field_id": "currency_sub_limit",
+      "display_name": "Currency Sub-limit or Limit",
+      "field_family": "monetary_limits",
+      "operational_field_ids": [
+        "currency_sub_limit"
+      ],
+      "value_contract": {
+        "primary_value_types": [
+          "currency"
+        ],
+        "allowed_units": [
+          "INR"
+        ],
+        "structured_dimensions": [
+          "benefit_scope",
+          "sum_insured_band_scope"
+        ]
+      },
+      "selection_policy": {
+        "reviewed_role": "sub_limit_or_limit",
+        "requires_benefit_scope": true,
+        "requires_band_scope": false,
+        "positive_inr_currency_only": true,
+        "canonical_identity_includes_normalized_value": false
+      },
+      "evidence_expectations": {
+        "preferred_source_types": [
+          "policy_wording",
+          "customer_information_sheet",
+          "cis",
+          "prospectus",
+          "brochure",
+          "webpage"
+        ],
+        "requires_entity_scope_guard": true
+      },
+      "maturity": "extractor_supported",
+      "production_readiness": "production_candidate",
+      "notes": [
+        "Selected only from immutable accepted reviews with a named benefit scope.",
+        "A band scope is optional but preserved when reviewed."
+      ]
+    },
+    {
+      "field_id": "currency_deductible_option",
+      "display_name": "Currency Deductible Option",
+      "field_family": "cost_sharing",
+      "operational_field_ids": [
+        "currency_deductible_option"
+      ],
+      "value_contract": {
+        "primary_value_types": [
+          "currency"
+        ],
+        "allowed_units": [
+          "INR"
+        ],
+        "structured_dimensions": [
+          "benefit_scope",
+          "sum_insured_band_scope"
+        ]
+      },
+      "selection_policy": {
+        "reviewed_role": "deductible",
+        "requires_benefit_scope": true,
+        "requires_band_scope": false,
+        "positive_inr_currency_only": true,
+        "canonical_identity_includes_normalized_value": true
+      },
+      "evidence_expectations": {
+        "preferred_source_types": [
+          "policy_wording",
+          "customer_information_sheet",
+          "cis",
+          "prospectus",
+          "brochure"
+        ],
+        "requires_entity_scope_guard": true
+      },
+      "maturity": "limited_candidate",
+      "production_readiness": "governed_candidate_only",
+      "notes": [
+        "Represents a reviewed deductible amount or deductible option; it does not establish customer-specific applicability or entitlement."
+      ]
+    },
+    {
+      "field_id": "currency_sum_insured_threshold",
+      "display_name": "Currency Sum Insured Threshold",
+      "field_family": "sum_insured_behavior",
+      "operational_field_ids": [
+        "currency_sum_insured_threshold"
+      ],
+      "value_contract": {
+        "primary_value_types": [
+          "currency"
+        ],
+        "allowed_units": [
+          "INR"
+        ],
+        "structured_dimensions": [
+          "benefit_scope",
+          "sum_insured_band_scope"
+        ]
+      },
+      "selection_policy": {
+        "reviewed_role": "sum_insured",
+        "requires_benefit_scope": true,
+        "requires_band_scope": true,
+        "positive_inr_currency_only": true,
+        "canonical_identity_includes_normalized_value": false
+      },
+      "evidence_expectations": {
+        "preferred_source_types": [
+          "policy_wording",
+          "customer_information_sheet",
+          "cis",
+          "prospectus",
+          "brochure"
+        ],
+        "requires_entity_scope_guard": true
+      },
+      "maturity": "limited_candidate",
+      "production_readiness": "governed_candidate_only",
+      "notes": [
+        "Represents a reviewed eligibility, option, or benefit threshold. It is not itself a premium, discount, benefit amount, or entitlement conclusion."
+      ]
+    }
+  ]
+}

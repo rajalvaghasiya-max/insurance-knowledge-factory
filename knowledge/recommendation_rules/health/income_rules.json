@@ -1,0 +1,95 @@
+{
+  "domain": "health",
+  "version": "0.2",
+  "description": "Income-band based adjustments for health insurance recommendation needs.",
+  "income_bands": {
+    "low": {
+      "factor_id": "low",
+      "display_name": "Low Income",
+      "annual_income_max": 600000,
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": -1,
+          "reason": "Affordability may limit premium capacity.",
+          "customer_friendly_reason": "A higher cover is useful, but premium affordability should be considered carefully."
+        },
+        "wellness": {
+          "score_delta": 1,
+          "reason": "Preventive benefits may help reduce long-term health risk.",
+          "customer_friendly_reason": "Wellness benefits may support preventive care."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "middle": {
+      "factor_id": "middle",
+      "display_name": "Middle Income",
+      "annual_income_min": 600001,
+      "annual_income_max": 1500000,
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 1,
+          "reason": "Customer may support moderate premium for better protection.",
+          "customer_friendly_reason": "You may be able to balance better cover with affordable premium."
+        },
+        "room_rent_flexibility": {
+          "score_delta": 1,
+          "reason": "Room flexibility may be affordable and useful.",
+          "customer_friendly_reason": "Room flexibility can reduce restrictions at claim time."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "upper_middle": {
+      "factor_id": "upper_middle",
+      "display_name": "Upper Middle Income",
+      "annual_income_min": 1500001,
+      "annual_income_max": 3000000,
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 2,
+          "reason": "Higher income can support stronger cover and better hospital choice.",
+          "customer_friendly_reason": "Your income may support a higher cover for better protection."
+        },
+        "room_rent_flexibility": {
+          "score_delta": 2,
+          "reason": "Customer may prefer better room category and hospital flexibility.",
+          "customer_friendly_reason": "Room rent flexibility can help you choose better hospital accommodation."
+        },
+        "avoid_copay": {
+          "score_delta": 1,
+          "reason": "Customer may prefer lower out-of-pocket exposure during claims.",
+          "customer_friendly_reason": "Avoiding co-pay can reduce claim-time expenses."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "high": {
+      "factor_id": "high",
+      "display_name": "High Income",
+      "annual_income_min": 3000001,
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 3,
+          "reason": "Higher income can support higher premium and stronger protection.",
+          "customer_friendly_reason": "You may be able to afford higher protection for major medical costs."
+        },
+        "room_rent_flexibility": {
+          "score_delta": 2,
+          "reason": "Customer may prefer premium hospital rooms and fewer restrictions.",
+          "customer_friendly_reason": "Room rent flexibility can support better hospital room choices."
+        },
+        "avoid_copay": {
+          "score_delta": 2,
+          "reason": "Customer may prefer predictable claims with lower cost sharing.",
+          "customer_friendly_reason": "Avoiding co-pay can reduce your share of expenses during claims."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    }
+  }
+}

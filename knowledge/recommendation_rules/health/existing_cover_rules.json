@@ -1,0 +1,75 @@
+{
+  "domain": "health",
+  "version": "0.2",
+  "description": "Existing health cover based adjustments for recommendation needs.",
+  "existing_cover_bands": {
+    "none": {
+      "factor_id": "none",
+      "display_name": "No Existing Cover",
+      "cover_max": 0,
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 4,
+          "reason": "No existing cover creates a strong protection gap.",
+          "customer_friendly_reason": "Since you do not have health cover, building adequate protection becomes important."
+        },
+        "low_waiting_period": {
+          "score_delta": 2,
+          "reason": "Waiting periods matter more when there is no backup cover.",
+          "customer_friendly_reason": "Lower waiting periods may help you access benefits sooner."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "low_cover": {
+      "factor_id": "low_cover",
+      "display_name": "Low Existing Cover",
+      "cover_min": 1,
+      "cover_max": 500000,
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 3,
+          "reason": "Existing cover may be insufficient for major hospitalization.",
+          "customer_friendly_reason": "Your current cover may not be enough for large medical bills."
+        },
+        "low_waiting_period": {
+          "score_delta": 2,
+          "reason": "Lower waiting periods improve usability of incremental protection.",
+          "customer_friendly_reason": "Lower waiting periods may make added coverage useful sooner."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "moderate_cover": {
+      "factor_id": "moderate_cover",
+      "display_name": "Moderate Existing Cover",
+      "cover_min": 500001,
+      "cover_max": 1000000,
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 1,
+          "reason": "Existing cover provides some protection but may still need enhancement.",
+          "customer_friendly_reason": "You have some cover, but increasing protection may still be useful."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    },
+    "adequate_cover": {
+      "factor_id": "adequate_cover",
+      "display_name": "Adequate Existing Cover",
+      "cover_min": 1000001,
+      "adjustments": {
+        "high_sum_insured": {
+          "score_delta": 0,
+          "reason": "Existing cover appears reasonably strong, subject to family size and city costs.",
+          "customer_friendly_reason": "Your current cover may be adequate, but it should still be checked against family size and medical costs."
+        }
+      },
+      "version": "0.2",
+      "status": "active"
+    }
+  }
+}

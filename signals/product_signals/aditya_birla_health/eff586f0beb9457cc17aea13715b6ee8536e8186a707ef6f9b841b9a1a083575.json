@@ -1,14 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\eff586f0beb9457cc17aea13715b6ee8536e8186a707ef6f9b841b9a1a083575.json",
   "insurer_id": "aditya_birla_health",
   "url": "https://www.adityabirlacapital.com/abc-of-calculators",
   "page_title": "Financial Calculators for All Your Financial Needs - ABC of Money",
   "content_hash": "eff586f0beb9457cc17aea13715b6ee8536e8186a707ef6f9b841b9a1a083575",
   "page_intent": "calculator",
-  "extracted_at": "2026-06-07T11:46:07.254809+00:00",
+  "asset_scope": "generic_knowledge",
+  "classification_reason": "matched calculator marker; mapped from page intent 'calculator'",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.377461+00:00",
   "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Plan your taxes to claim suitable tax benefits and enhance",

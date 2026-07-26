@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Conditional Rule Applicability Evaluation Contract",
+  "description": "Read-only deterministic evaluation of declared ConditionalRule predicates against normalized scenario inputs. This contract excludes effect selection, monetary calculation, advice, and explanation.",
+  "type": "object",
+  "required": ["rule_id", "status", "predicate_assessments", "reasons"],
+  "properties": {
+    "rule_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["applies", "does_not_apply", "indeterminate"]},
+    "predicate_assessments": {"type": "array"},
+    "reasons": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

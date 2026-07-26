@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "manifest_type": "governed_product_migration_manifest_v1",
+  "domain": "health",
+  "insurer_id": "bajaj_allianz_general",
+  "product_id": "my_health_care",
+  "entity_id": "bajaj_allianz_general:my_health_care",
+  "expected_source_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__9479fe6f6ce7.pdf",
+  "expected_source_sha256": "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade",
+  "specs": {
+    "generic_registration": "docs/architecture/bajaj_my_health_care_generic_sources_registration_spec.json",
+    "classification": "docs/architecture/bajaj_my_health_care_document_classification_spec.json",
+    "identity": "docs/architecture/bajaj_my_health_care_product_identity_reference_spec.json",
+    "overlay": "docs/architecture/bajaj_my_health_care_document_identity_resolution_spec.json"
+  },
+  "outputs": {
+    "bundle": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/bajaj_my_health_care_generic_source_bundle.json",
+    "classification": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_document_classification.json",
+    "identity": "knowledge/factory/product_identity_references/bajaj_allianz_general_my_health_care.product_identity_reference.json",
+    "overlay": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_document_identity_resolution.json"
+  }
+}

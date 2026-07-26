@@ -1,0 +1,58 @@
+{
+  "register_id": "copay_observation_register_sample",
+  "concept_id": "copay",
+  "version": "1.0",
+  "observations": [
+    {
+      "observation_id": "COPAY-OBS-001",
+      "concept_id": "copay",
+      "category": "customer_reality",
+      "observation_type": "misconception",
+      "title": "Customer calculates Copay on total hospital bill",
+      "observation": "Customer assumes Copay is calculated on the total hospital bill instead of the admissible claim amount after non-medical deductions and policy conditions.",
+      "source": "advisor_experience",
+      "confidence": "very high",
+      "frequency": "very high",
+      "financial_impact": "high",
+      "emotional_impact": "very high",
+      "decision_impact": "high",
+      "affected_personas": ["retail_customer", "family_floater_buyer", "senior_citizen"],
+      "linked_concepts": ["admissible_claim", "claim_settlement", "non_medical_expenses"],
+      "status": "validated"
+    },
+    {
+      "observation_id": "COPAY-OBS-002",
+      "concept_id": "copay",
+      "category": "decision_reality",
+      "observation_type": "behaviour_pattern",
+      "title": "Customer buys cheaper Zone policy without considering treatment city",
+      "observation": "Customer chooses a low premium Zone C policy but later seeks treatment in Mumbai or Delhi, triggering a large zone copay cash liability.",
+      "source": "advisor_experience",
+      "confidence": "high",
+      "frequency": "high",
+      "financial_impact": "very high",
+      "emotional_impact": "high",
+      "decision_impact": "critical",
+      "affected_personas": ["parent_buyer", "tier_2_customer", "tier_3_customer"],
+      "linked_concepts": ["zone_copay", "premium", "hospital_network"],
+      "status": "validated"
+    },
+    {
+      "observation_id": "COPAY-OBS-003",
+      "concept_id": "copay",
+      "category": "advisor_reality",
+      "observation_type": "advisor_insight",
+      "title": "Advisor should write a mock bill before closing sale",
+      "observation": "A master advisor writes a mock hospital bill and shows expected out-of-pocket cash before issuing a copay-linked policy, preventing claim-stage surprise.",
+      "source": "expert_observation",
+      "confidence": "high",
+      "frequency": "medium",
+      "financial_impact": "high",
+      "emotional_impact": "high",
+      "decision_impact": "high",
+      "affected_personas": ["advisor", "retail_customer"],
+      "linked_concepts": ["financial_simulation", "advisor_checklist", "claim_settlement"],
+      "status": "observed"
+    }
+  ]
+}

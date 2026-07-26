@@ -1,6 +1,7 @@
-requests
-beautifulsoup4
-lxml
-python-dotenv
-tqdm
-playwright
+requests==2.34.2
+beautifulsoup4==4.15.0
+lxml==6.1.1
+python-dotenv==1.2.2
+tqdm==4.68.2
+playwright==1.60.0
+pytest==9.1.0

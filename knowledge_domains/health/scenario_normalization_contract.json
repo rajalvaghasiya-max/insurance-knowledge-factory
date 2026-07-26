@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Health Scenario Normalization Boundary",
+  "description": "Domain-owned, strict conversion of reviewed raw Health scenario labels into EvaluationScenario inputs.",
+  "type": "object",
+  "required": ["status", "input_assessments", "reasons"],
+  "properties": {
+    "status": {"enum": ["normalized", "rejected"]},
+    "scenario_id": {"type": ["string", "null"]},
+    "entity_id": {"type": ["string", "null"]},
+    "normalized_inputs": {"type": ["object", "null"], "additionalProperties": {"type": "string"}},
+    "input_assessments": {"type": "array"},
+    "reasons": {"type": "array", "items": {"type": "string"}}
+  }
+}

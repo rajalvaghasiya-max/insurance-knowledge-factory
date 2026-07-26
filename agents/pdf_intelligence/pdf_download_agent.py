@@ -31,9 +31,10 @@ class PDFDownloadAgent:
         - compute SHA256 hash
         - avoid duplicate downloads
         - maintain PDF registry
+        - emit portable, durable download-observation metadata
     """
 
-    VERSION = "0.2"
+    VERSION = "0.3"
 
     MAX_WORKERS = 3
     TIMEOUT_SECONDS = 60
@@ -176,6 +177,58 @@ class PDFDownloadAgent:
 
         return registry
 
+    def repository_relative_path(self, path_value: str | Path | None) -> str | None:
+        """Return a repository-relative POSIX locator when the artifact is local to this repo.
+
+        The legacy ``local_path`` field is retained for compatibility, but new records must
+        use this portable locator rather than depending on a machine-specific absolute path.
+        """
+        if not path_value:
+            return None
+
+        try:
+            path = Path(path_value).resolve()
+            return path.relative_to(BASE_DIR.resolve()).as_posix()
+        except (OSError, ValueError):
+            return None
+
+    def sha256_if_file(self, path_value: str | Path | None) -> str | None:
+        if not path_value:
+            return None
+        try:
+            path = Path(path_value)
+            if not path.is_file():
+                return None
+            return hashlib.sha256(path.read_bytes()).hexdigest()
+        except OSError:
+            return None
+
+    def source_page_artifact_metadata(self, source_html_file: str | None) -> dict:
+        return {
+            "source_page_artifact_path": self.repository_relative_path(source_html_file),
+            "source_page_artifact_sha256": self.sha256_if_file(source_html_file),
+        }
+
+    def response_transport_metadata(self, response: requests.Response) -> dict:
+        """Capture non-authoritative HTTP observation metadata without inferring currentness."""
+        headers = response.headers
+        return {
+            "final_url": response.url,
+            "etag": headers.get("ETag"),
+            "last_modified": headers.get("Last-Modified"),
+            "content_disposition": headers.get("Content-Disposition"),
+        }
+
+    def stable_observation_id(self, *, url_key: str, sha256: str | None, observed_at: str) -> str:
+        """Create a deterministic ID for one observed retrieval event.
+
+        ``observed_at`` is included intentionally: repeated checks of the same bytes are
+        distinct observations. The same persisted inputs always produce the same ID.
+        """
+        payload = "|".join([url_key, sha256 or "no_sha256", observed_at])
+        digest = hashlib.sha256(payload.encode("utf-8")).hexdigest()[:20]
+        return f"pdfobs_{digest}"
+
     def process_item(
         self,
         item: dict,
@@ -194,6 +247,7 @@ class PDFDownloadAgent:
             "url_key": url_key,
             "source_page_url": item.get("source_page_url"),
             "source_html_file": item.get("source_html_file"),
+            **self.source_page_artifact_metadata(item.get("source_html_file")),
             "confidence_score": item.get("confidence_score"),
             "status": None,
             "error": None,
@@ -210,6 +264,7 @@ class PDFDownloadAgent:
 
         try:
             response = self.fetch_url(url)
+            response_metadata = self.response_transport_metadata(response)
             validation = self.validate_response(response, url)
 
             # Retry once with Referer. Useful for HDFC-like protected DAM URLs.
@@ -222,6 +277,7 @@ class PDFDownloadAgent:
                     url=url,
                     referer=item.get("source_page_url"),
                 )
+                response_metadata = self.response_transport_metadata(response)
                 validation = self.validate_response(response, url)
 
             if not validation["valid"]:
@@ -232,6 +288,12 @@ class PDFDownloadAgent:
                     "http_status": response.status_code,
                     "content_type": response.headers.get("Content-Type"),
                     "content_length": response.headers.get("Content-Length"),
+                    **response_metadata,
+                    "observation_id": self.stable_observation_id(
+                        url_key=url_key,
+                        sha256=None,
+                        observed_at=base_result["processed_at"],
+                    ),
                 }
 
             content = response.content
@@ -246,8 +308,17 @@ class PDFDownloadAgent:
                     "file_size_bytes": len(content),
                     "http_status": response.status_code,
                     "content_type": response.headers.get("Content-Type"),
-                    "local_path": previous_url_record.get("local_path") if previous_url_record else None,
-                    "original_filename": self.extract_filename_from_url(url),
+                    "local_path": previous_url_record.get("current_local_path") or previous_url_record.get("local_path") if previous_url_record else None,
+                    "raw_pdf_relative_path": self.repository_relative_path(
+                        (previous_url_record.get("current_local_path") or previous_url_record.get("local_path")) if previous_url_record else None
+                    ),
+                    **response_metadata,
+                    "observation_id": self.stable_observation_id(
+                        url_key=url_key,
+                        sha256=sha256,
+                        observed_at=base_result["processed_at"],
+                    ),
+                    "original_filename": self.extract_filename_from_url(response_metadata["final_url"] or url),
                 }
 
             output_path = self.output_path_for_item(item, sha256)
@@ -265,7 +336,14 @@ class PDFDownloadAgent:
                 "http_status": response.status_code,
                 "content_type": response.headers.get("Content-Type"),
                 "local_path": str(output_path),
-                "original_filename": self.extract_filename_from_url(url),
+                "raw_pdf_relative_path": self.repository_relative_path(output_path),
+                **response_metadata,
+                "observation_id": self.stable_observation_id(
+                    url_key=url_key,
+                    sha256=sha256,
+                    observed_at=base_result["processed_at"],
+                ),
+                "original_filename": self.extract_filename_from_url(response_metadata["final_url"] or url),
             }
 
         except Exception as exc:
@@ -362,8 +440,16 @@ class PDFDownloadAgent:
             "content_type": result.get("content_type"),
             "http_status": result.get("http_status"),
             "local_path": result.get("local_path"),
+            "raw_pdf_relative_path": result.get("raw_pdf_relative_path"),
             "source_page_url": result.get("source_page_url"),
             "source_html_file": result.get("source_html_file"),
+            "source_page_artifact_path": result.get("source_page_artifact_path"),
+            "source_page_artifact_sha256": result.get("source_page_artifact_sha256"),
+            "final_url": result.get("final_url"),
+            "etag": result.get("etag"),
+            "last_modified": result.get("last_modified"),
+            "content_disposition": result.get("content_disposition"),
+            "observation_id": result.get("observation_id"),
             "confidence_score": result.get("confidence_score"),
             "checked_at": result["processed_at"],
             "downloaded_at": result["processed_at"] if result["status"] in {"downloaded", "new_version_downloaded"} else None,
@@ -381,6 +467,7 @@ class PDFDownloadAgent:
                 "first_seen_at": result["processed_at"],
                 "current_sha256": sha256,
                 "current_local_path": result.get("local_path"),
+                "current_raw_pdf_relative_path": result.get("raw_pdf_relative_path"),
                 "last_checked_at": result["processed_at"],
                 "last_changed_at": result["processed_at"],
                 "versions": [],
@@ -391,6 +478,7 @@ class PDFDownloadAgent:
         if result["status"] in {"downloaded", "new_version_downloaded"}:
             url_record["current_sha256"] = sha256
             url_record["current_local_path"] = result.get("local_path")
+            url_record["current_raw_pdf_relative_path"] = result.get("raw_pdf_relative_path")
             url_record["last_changed_at"] = result["processed_at"]
             url_record["versions"].append(version_record)
 
@@ -398,6 +486,8 @@ class PDFDownloadAgent:
             url_record["current_sha256"] = sha256
             if result.get("local_path"):
                 url_record["current_local_path"] = result.get("local_path")
+            if result.get("raw_pdf_relative_path"):
+                url_record["current_raw_pdf_relative_path"] = result.get("raw_pdf_relative_path")
             # Keep history compact: do not append unchanged checks as full versions.
             url_record["last_unchanged_check"] = version_record
 

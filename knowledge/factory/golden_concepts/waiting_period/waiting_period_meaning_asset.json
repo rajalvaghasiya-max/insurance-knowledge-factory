@@ -1,0 +1,123 @@
+{
+  "asset_id": "meaning_waiting_period_v1",
+  "asset_type": "meaning_asset",
+  "concept_id": "waiting_period",
+  "canonical_name": "Waiting Period",
+  "aliases": [
+    "Initial Waiting Period",
+    "Disease Waiting Period",
+    "Specific Disease Waiting Period",
+    "Pre-existing Disease Waiting Period",
+    "PED Waiting Period"
+  ],
+  "category": "Coverage Activation Timeline",
+  "core_meaning": "A policy condition where coverage for specified illnesses, treatments, or benefits becomes active only after a defined period from the policy start date or another policy-defined trigger.",
+  "business_purpose": "Protect the insurer against immediate claims for already-existing or predictable conditions and define when coverage for specific benefits begins.",
+  "functional_behaviour": "When a claim is made, the insurer compares the claim date and condition or benefit type against the applicable waiting period. If the claim occurs before the waiting period is completed, the claim for that condition or benefit is not payable unless an exception applies.",
+  "trigger": "Policy start date, policy inception date, continuity start date, or another policy-defined start point for the relevant waiting period.",
+  "inputs": [
+    "policy_start_date",
+    "waiting_period_duration",
+    "claim_date",
+    "condition_or_treatment",
+    "benefit_type",
+    "policy_continuity_status"
+  ],
+  "outputs": [
+    "coverage_active",
+    "coverage_not_yet_active",
+    "claim_payable_status",
+    "waiting_period_end_date"
+  ],
+  "calculation_basis": "waiting_period_end_date = applicable_start_date + waiting_period_duration",
+  "dependencies": [
+    "policy_start_date",
+    "policy_continuity",
+    "claim_date",
+    "condition_category",
+    "policy_terms"
+  ],
+  "constraints": [
+    "Applies only to conditions, treatments, or benefits listed under the relevant waiting period clause.",
+    "Different benefits or illnesses may have different waiting periods.",
+    "Coverage may depend on continuous renewal where continuity benefits are applicable."
+  ],
+  "exceptions": [
+    "Accidental hospitalization may be covered from day one if policy terms allow it.",
+    "Waiting period may be reduced or waived if portability, continuity, or buyback provisions apply under policy terms."
+  ],
+  "relationships": {
+    "depends_on": [
+      "policy_start_date",
+      "claim_date",
+      "condition_category",
+      "policy_continuity"
+    ],
+    "related_to": [
+      "pre_existing_disease",
+      "initial_waiting_period",
+      "specific_disease_waiting_period",
+      "continuity_benefit",
+      "claim_settlement"
+    ],
+    "commonly_confused_with": [
+      "exclusion",
+      "moratorium_period"
+    ],
+    "subset": [
+      "initial_waiting_period",
+      "specific_disease_waiting_period",
+      "pre_existing_disease_waiting_period"
+    ]
+  },
+  "misinterpretations": [
+    {
+      "misinterpretation": "Waiting Period means no claim is payable at all.",
+      "actual_meaning": "Only specified illnesses, treatments, or benefits may be restricted during the waiting period. Other covered events may still be payable if policy terms allow."
+    },
+    {
+      "misinterpretation": "Once one waiting period is over, every condition is covered.",
+      "actual_meaning": "Different conditions and benefits can have different waiting periods. Each applicable waiting period must be checked separately."
+    },
+    {
+      "misinterpretation": "Waiting Period is the same as a permanent exclusion.",
+      "actual_meaning": "A waiting period delays coverage for a defined time. A permanent exclusion may never be covered unless policy terms change."
+    }
+  ],
+  "policy_examples": [
+    {
+      "scenario": "Policy starts on 1 Jan 2026 with a 30-day initial waiting period. Illness hospitalization happens on 15 Jan 2026.",
+      "result": "The illness claim is not payable because it occurred before the 30-day waiting period ended."
+    },
+    {
+      "scenario": "Policy starts on 1 Jan 2026 with a 30-day initial waiting period. Illness hospitalization happens on 15 Feb 2026.",
+      "result": "The claim may be considered because the initial waiting period has ended, subject to all other policy terms."
+    }
+  ],
+  "timeline_examples": [
+    {
+      "start_date": "2026-01-01",
+      "waiting_period_days": 30,
+      "waiting_period_end_date": "2026-01-31",
+      "claim_before_end": "2026-01-15",
+      "claim_after_end": "2026-02-15"
+    }
+  ],
+  "confidence": {
+    "canonical_confidence": 1.0,
+    "relationship_confidence": 0.9,
+    "requires_review": false
+  },
+  "evidence": [
+    {
+      "evidence_id": "manual_golden_waiting_period_example_v1",
+      "source_type": "manual_golden_concept",
+      "note": "Golden validation meaning asset created for GMVS-001 Waiting Period. Replace or enrich with policy-backed evidence when connecting to real insurer documents."
+    }
+  ],
+  "review_status": "approved_for_golden_validation",
+  "certification": {
+    "status": "golden_validation_seed",
+    "human_reviewed": true
+  }
+}

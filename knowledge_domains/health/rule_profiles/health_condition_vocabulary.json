@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "domain": "health",
+  "purpose": "Canonical vocabulary used by Health parsers to emit conditional-rule predicates. It is not product evidence and must not encode insurer-specific rules.",
+  "dimensions": {
+    "claim_route": {
+      "allowed_values": [
+        "cashless",
+        "reimbursement",
+        "reimbursement_unspecified"
+      ]
+    },
+    "pre_approval_status": {
+      "allowed_values": [
+        "pre_approved",
+        "not_pre_approved",
+        "unknown"
+      ]
+    },
+    "selection_mode": {
+      "allowed_values": [
+        "voluntary",
+        "mandatory"
+      ]
+    },
+    "care_context": {
+      "allowed_values": [
+        "international_emergency_care",
+        "domestic_care",
+        "unknown"
+      ]
+    },
+    "service_type": {
+      "allowed_values": [
+        "doctor_consultation",
+        "doctor_prescribed_investigations",
+        "unknown"
+      ]
+    }
+  }
+}

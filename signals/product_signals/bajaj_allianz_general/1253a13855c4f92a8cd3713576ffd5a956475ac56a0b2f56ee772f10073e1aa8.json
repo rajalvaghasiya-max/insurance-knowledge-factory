@@ -1,20 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\1253a13855c4f92a8cd3713576ffd5a956475ac56a0b2f56ee772f10073e1aa8.json",
   "insurer_id": "bajaj_allianz_general",
   "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/individual-health-insurance-plans.html",
   "page_title": "Individual Health Insurance: Buy Personalised Medical Plan Online GST Free",
   "content_hash": "1253a13855c4f92a8cd3713576ffd5a956475ac56a0b2f56ee772f10073e1aa8",
-  "page_intent": "individual_product",
-  "extracted_at": "2026-06-07T11:46:07.265381+00:00",
-  "product_names": [
-    {
-      "name": "Individual Health Insurance",
-      "source": "url_slug",
-      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans/individual-health-insurance-plans.html"
-    }
-  ],
+  "page_intent": "product_listing",
+  "asset_scope": "category",
+  "classification_reason": "matched category URL marker; category override from URL marker",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.405761+00:00",
+  "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Get comprehensive coverage for your health",
@@ -303,59 +301,9 @@
       "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
     }
   ],
-  "sum_insured_values": [
-    {
-      "value": "INR 1 Cr",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
-    },
-    {
-      "value": "INR 3 Lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
-    },
-    {
-      "value": "INR 5 Lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
-    },
-    {
-      "value": "INR 5 lacs",
-      "reason": "sum_insured_context",
-      "heading": "Convalescence Benefit",
-      "evidence": "Convalescence Benefit\nINR 5,000/policy year\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above"
-    },
-    {
-      "value": "INR 50 Lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
-    }
-  ],
+  "sum_insured_values": [],
   "premium_values": [],
-  "benefit_amount_values": [
-    {
-      "value": "INR 20,000",
-      "reason": "benefit_amount_context",
-      "heading": "Road Ambulance",
-      "evidence": "Road Ambulance\nINR 20,000/policy year\nINR 20,000/policy year\nINR 20,000/policy year"
-    },
-    {
-      "value": "Rs 500",
-      "reason": "benefit_amount_context",
-      "heading": "Daily Cash Benefit",
-      "evidence": "Daily Cash Benefit\nA daily cash benefit of Rs 500 per day, for up to 10 days, during each policy year, is provided as accommodation expenses for one parent/legal guardian to stay with a minor insured under the policy, for an admissible claim."
-    },
-    {
-      "value": "Rs 7500",
-      "reason": "benefit_amount_context",
-      "heading": "Convalescence Benefit",
-      "evidence": "Convalescence Benefit\nYou will be eligible for a benefit payout of up to Rs 7500 annually, in case of continuous hospitalisation for a period of 10 days or more and provided that your hospitalisation claim is admissible."
-    }
-  ],
+  "benefit_amount_values": [],
   "tax_amount_values": [],
   "discount_values": [],
   "room_rent_limits": [

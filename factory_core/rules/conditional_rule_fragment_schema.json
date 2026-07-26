@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://policyscna.local/schemas/conditional-rule-fragment/v1",
+  "title": "Conditional Rule Fragment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fragment_id",
+    "concept_id",
+    "rule_type",
+    "role",
+    "completeness",
+    "evidence",
+    "provenance",
+    "applies_when",
+    "coverage_scope",
+    "unresolved_ambiguities"
+  ],
+  "properties": {
+    "fragment_id": {"type": "string", "minLength": 1},
+    "concept_id": {"type": "string", "minLength": 1},
+    "rule_type": {"type": "string", "minLength": 1},
+    "role": {"enum": ["rule_candidate", "supporting_definition", "exception_or_limit", "unresolved"]},
+    "completeness": {"enum": ["complete", "partial", "support_only", "ambiguous"]},
+    "effect": {"type": ["object", "null"]},
+    "applies_when": {"type": "array"},
+    "coverage_scope": {"type": "array"},
+    "evidence": {"type": "object"},
+    "provenance": {
+      "type": "object",
+      "required": ["parser_id", "parser_version"],
+      "properties": {
+        "parser_id": {"type": "string", "minLength": 1},
+        "parser_version": {"type": "string", "minLength": 1},
+        "field_profile_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "assembly_group_hint": {"type": ["string", "null"]},
+    "unresolved_ambiguities": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "source_text_hash": {"type": ["string", "null"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"completeness": {"const": "complete"}}},
+      "then": {"properties": {"effect": {"type": "object"}}, "required": ["effect"]}
+    },
+    {
+      "if": {"properties": {"completeness": {"const": "ambiguous"}}},
+      "then": {"properties": {"unresolved_ambiguities": {"minItems": 1}}}
+    }
+  ]
+}

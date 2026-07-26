@@ -1,14 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\81a6cbcd58994871e2efaaa445437a1c59b11ac586db6c7cf4f54d738daebd76.json",
   "insurer_id": "bajaj_allianz_general",
   "url": "https://www.bajajgeneralinsurance.com/",
   "page_title": "Bajaj General Insurance (Formerly Bajaj Allianz)",
   "content_hash": "81a6cbcd58994871e2efaaa445437a1c59b11ac586db6c7cf4f54d738daebd76",
   "page_intent": "homepage",
-  "extracted_at": "2026-06-07T11:46:07.305035+00:00",
+  "asset_scope": "generic_knowledge",
+  "classification_reason": "matched home path; mapped from page intent 'homepage'",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.451272+00:00",
   "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Create a Profile With Us to Unlock New Benefits",

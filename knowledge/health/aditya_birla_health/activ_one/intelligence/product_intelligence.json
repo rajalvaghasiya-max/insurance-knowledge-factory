@@ -1,9 +1,23 @@
 {
   "entity_id": "aditya_birla_health:activ_one",
-  "extractor_version": "0.3",
+  "extractor_version": "0.4",
   "metadata": {
     "product_name": "Activ One",
-    "uin": "ADIHLIP24097V012324"
+    "uin": "ADIHLIP24097V012324",
+    "uin_candidate": {
+      "uin": "ADIHLIP24097V012324",
+      "candidate_status": "format_valid_candidate",
+      "extraction_method": "product_uin_label",
+      "raw_text": "Product UIN: ADIHLIP24097V012324",
+      "evidence_text": "This document provides key information about your policy. You are also advised to go through your policy document. Product Name: Activ One, Product UIN: ADIHLIP24097V012324 Insured Person X Y Z Individual Sum Insured INR. XXXXXX INR. XXXXXX INR. XXXXXX Family Floater Sum Insured INR. XXXXXX 04. DESCRIPTION Acti",
+      "match_start": 349,
+      "match_end": 381,
+      "source": {
+        "source_type": "customer_information_sheet",
+        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+        "page_number": 1
+      }
+    }
   },
   "eligibility": {
     "adult_entry_age": null,
@@ -466,25 +480,76 @@
     },
     "wellness_discount": {
       "value": "Wellness-linked discount available",
-      "raw_text": "and every admissible claim made under this Policy, and the Insured Person shall bear on his / her own account an amount equal to the opted Deductible subject to the conditions mentioned in the Policy Document. C.22.6 Preferred Provider Network (PPN) Discount On availing this Optional Cover, the Policyholder will be entitled for a discount of 10% on the premium payable subject to the conditions mentioned in the Policy Document. C.22.7 Critical Illness cover On availing this Optional Cover, if the Insured Person suffers from a Critical Illness of the nature as specified in this Section during the Policy Period and while the Policy is in force, then We shall pay the Sum Insured as mentioned in the Policy Schedule / Product Benefit Table for that Critical Illness after completion of 60 days from the Commencement Date and survival of the Insured Person for 15 days following the first diagnosis of the Critical Illness/undergoing the Surgical Procedure for the first time subject to the conditions as mentioned in the Policy Document. List of Critical Illnesses as Applicable: C.22.8 Personal Accident Cover On availing this Optional Cover, We will pay the amount specified in the Policy Schedule as a lump sum pay out in case of Accidental Death, Permanent Total Disablement and Permanent Partial Disablement up to the limit specified in the Policy Schedule subject to conditions mentioned in the Policy Document. Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+      "raw_text": "at Our Network Providers / Empanelled Service Providers on a Cashless Facility. Health AssessmentTM measures MER including BP, BMI, HWR and smoking status, Blood Sugar and Total Cholesterol. After the results of the Health Assessment are received, a Healthy Heart Score (HHS) will be generated. Charges for the same be borne by Us once in a Policy Year. All tests mentioned as a part of Health AssessmentTM shall be conducted together. Conditions to avail Health Assessments are specified in the Policy Document. C.21.2 HealthReturnsTM An Insured Person can earn HealthReturnsTM by looking after his/her health and being physically active on a regular basis. How to Earn HealthReturnsTM Earned by way of a percentage of Premium through Healthy Heart Score and Active Dayz Step 1 – Complete Health questionnaire & Health AssessmentTM (applicable for each individual Insured Person) Step 2 – Earn Active Dayz™ by being physically active on an ongoing basis Step3- Calculation Methodology of HealthReturnsTM :The Insured Person shall earn HealthReturns™ based on the Healthy Heart Score™, the fitness assess- ment result and the number of Active Dayz™ recorded. HealthReturns™ is accrued monthly according to the grid mentioned in the Policy Document. For the Eligibility and Conditions to avail HealthReturnsTM, please refer the Policy Document. Earned HealthReturnsTM can be utilized by any covered Insured Person under a Policy. How can one spend HealthReturnsTM: Reward amounts under HealthReturns™ may be utilized by an Insured Person towards the f",
       "source": {
         "source_type": "prospectus",
         "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
-        "page_number": 8
+        "page_number": 7
       },
-      "confidence": 0.9,
-      "validated": true
-    },
-    "online_discount": {
-      "value": "Online purchase discount available",
-      "raw_text": "and every admissible claim made under this Policy, and the Insured Person shall bear on his / her own account an amount equal to the opted Deductible subject to the conditions mentioned in the Policy Document. C.22.6 Preferred Provider Network (PPN) Discount On availing this Optional Cover, the Policyholder will be entitled for a discount of 10% on the premium payable subject to the conditions mentioned in the Policy Document. C.22.7 Critical Illness cover On availing this Optional Cover, if the Insured Person suffers from a Critical Illness of the nature as specified in this Section during the Policy Period and while the Policy is in force, then We shall pay the Sum Insured as mentioned in the Policy Schedule / Product Benefit Table for that Critical Illness after completion of 60 days from the Commencement Date and survival of the Insured Person for 15 days following the first diagnosis of the Critical Illness/undergoing the Surgical Procedure for the first time subject to the conditions as mentioned in the Policy Document. List of Critical Illnesses as Applicable: C.22.8 Personal Accident Cover On availing this Optional Cover, We will pay the amount specified in the Policy Schedule as a lump sum pay out in case of Accidental Death, Permanent Total Disablement and Permanent Partial Disablement up to the limit specified in the Policy Schedule subject to conditions mentioned in the Policy Document. Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
-      "source": {
-        "source_type": "prospectus",
-        "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
-        "page_number": 8
-      },
-      "confidence": 0.9,
-      "validated": true
+      "confidence": 0.9400000000000001,
+      "validated": true,
+      "validated_by": [
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 7
+        },
+        {
+          "source_type": "prospectus",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+          "page_number": 30
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 28
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 31
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 32
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 33
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 41
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 43
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 45
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 47
+        },
+        {
+          "source_type": "policy_wording",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+          "page_number": 56
+        },
+        {
+          "source_type": "customer_information_sheet",
+          "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+          "page_number": 13
+        }
+      ]
     }
   },
   "optional_covers": {

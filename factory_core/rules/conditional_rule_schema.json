@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://policyscna.local/schemas/conditional-rule.schema.json",
+  "title": "ConditionalRule",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "rule_id",
+    "concept_id",
+    "rule_type",
+    "effect",
+    "applies_when",
+    "coverage_scope",
+    "evidence",
+    "status",
+    "unresolved_ambiguities"
+  ],
+  "properties": {
+    "rule_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "concept_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rule_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operator",
+        "value"
+      ],
+      "properties": {
+        "operator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean"
+          ]
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "basis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "applies_when": {
+      "$ref": "#/$defs/predicates"
+    },
+    "coverage_scope": {
+      "$ref": "#/$defs/predicates"
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_evidence",
+        "corroborating_evidence"
+      ],
+      "properties": {
+        "primary_evidence": {
+          "$ref": "#/$defs/evidenceReference"
+        },
+        "corroborating_evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "evidence_assembled_not_fact_extracted",
+        "blocked_by_ambiguity"
+      ]
+    },
+    "unresolved_ambiguities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "assembly_key": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "evidence_assembled_not_fact_extracted"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "unresolved_ambiguities": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "blocked_by_ambiguity"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "unresolved_ambiguities": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "predicates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "dimension",
+          "operator",
+          "value"
+        ],
+        "properties": {
+          "dimension": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operator": {
+            "enum": [
+              "equals",
+              "in",
+              "not_equals",
+              "greater_than_or_equal",
+              "less_than_or_equal"
+            ]
+          },
+          "value": {}
+        }
+      }
+    },
+    "evidenceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "document_id",
+        "document_type",
+        "authority_score"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "document_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "document_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_score": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fragment_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_char_range": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "corroboration_role": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

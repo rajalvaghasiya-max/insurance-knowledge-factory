@@ -43,7 +43,7 @@ class RoomRentExtractor:
     ROOM_PATTERNS = [
         # No room rent limit / without room rent capping
         re.compile(
-            r"((?:room\s+rent[^.:\n]{0,80})?(?:no|without)\s+(?:room\s+rent\s+)?(?:capping|cap|limit|restriction)[^.:\n]{0,80})",
+            r"((?:room\s+rent[^.:\n]{0,80})?(?:no|without)\s+(?:a\s+)?(?:room\s+rent\s+)?(?:capping|cap|limit|restriction)[^.:\n]{0,80})",
             re.IGNORECASE,
         ),
         # Single Private Room / Any Room / Shared Room
@@ -247,9 +247,12 @@ class RoomRentExtractor:
 
     def find_room_rent_matches(self, text: str) -> list[dict[str, Any]]:
         normalized = re.sub(r"\s+", " ", text)
+        
         matches = []
+        seen_match_keys: set[tuple[int, int, str]] = set()
 
         lower = normalized.lower()
+
         keyword_positions = []
 
         for keyword in self.ROOM_RENT_KEYWORDS:
@@ -271,14 +274,27 @@ class RoomRentExtractor:
         for window_start, window in windows:
             for pattern in self.ROOM_PATTERNS:
                 for match in pattern.finditer(window):
+                    absolute_start = window_start + match.start()
+                    absolute_end = window_start + match.end()
+                    match_key = (
+                        absolute_start,
+                        absolute_end,
+                        pattern.pattern,
+                    )
+
+                    if match_key in seen_match_keys:
+                        continue
+
+                    seen_match_keys.add(match_key)
                     matches.append(
                         {
                             "match": match,
-                            "absolute_start": window_start + match.start(),
+                            "absolute_start": absolute_start,
                             "window": window,
                             "pattern": pattern.pattern,
                         }
                     )
+
 
         return matches
 
@@ -351,7 +367,11 @@ class RoomRentExtractor:
         groupdict = match.groupdict()
         evidence_l = evidence_text.lower()
 
-        if re.search(r"(?:no|without)\s+(?:room\s+rent\s+)?(?:capping|cap|limit|restriction)", evidence_l):
+        if re.search(
+            r"(?:no|without)\s+(?:a\s+)?(?:room\s+rent\s+)?"
+            r"(?:capping|cap|limit|restriction)",
+            evidence_l,
+        ):
             return "No Limit", "text", "No room rent limit", "no_limit"
 
         if groupdict.get("category"):

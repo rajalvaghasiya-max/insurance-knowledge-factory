@@ -1,12 +1,15 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788.json",
   "insurer_id": "hdfc_life",
   "url": "https://www.hdfclife.com/",
   "page_title": "Life Insurance: Buy Best Life Insurance from HDFC Life Online in 2026",
   "content_hash": "8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788",
   "page_intent": "homepage",
-  "extracted_at": "2026-06-07T11:46:07.386718+00:00",
+  "asset_scope": "generic_knowledge",
+  "classification_reason": "matched home path; mapped from page intent 'homepage'",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.583367+00:00",
   "product_names": [],
   "uins": [
     "101L164V08",
@@ -15,6 +18,144 @@
     "101N136V04",
     "101N146V05",
     "101N189V01"
+  ],
+  "uin_candidates": [
+    {
+      "uin": "101N189V01",
+      "candidate_status": "format_valid_candidate",
+      "extraction_method": "uin_label",
+      "raw_text": "UIN: 101N189V01",
+      "evidence_text": "HDFC Life Click 2 Protect Supreme Plus NEW UIN: 101N189V01 A plan that provides you varying cover along with comprehensive protection as per your evolving needs * Did you know? Just ₹19/day for peac",
+      "match_start": 43,
+      "match_end": 58,
+      "source": {
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788.json",
+        "insurer_id": "hdfc_life",
+        "url": "https://www.hdfclife.com/",
+        "content_hash": "8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788",
+        "section_index": 9,
+        "section_heading": "HDFC Life Click 2 Protect Supreme Plus NEW"
+      }
+    },
+    {
+      "uin": "101N134V28",
+      "candidate_status": "format_valid_candidate",
+      "extraction_method": "uin_label",
+      "raw_text": "UIN: 101N134V28",
+      "evidence_text": "HDFC Life Sanchay Plus TRENDING UIN: 101N134V28 Looking for safe financial instrument which provides alternate source of income Guaranteed** Income4 for period of 25 or 30 years",
+      "match_start": 32,
+      "match_end": 47,
+      "source": {
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788.json",
+        "insurer_id": "hdfc_life",
+        "url": "https://www.hdfclife.com/",
+        "content_hash": "8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788",
+        "section_index": 10,
+        "section_heading": "HDFC Life Sanchay Plus TRENDING"
+      }
+    },
+    {
+      "uin": "101L180V01",
+      "candidate_status": "format_valid_candidate",
+      "extraction_method": "uin_label",
+      "raw_text": "UIN: 101L180V01",
+      "evidence_text": "HDFC Life Sampoorn Nivesh Plus UIN: 101L180V01",
+      "match_start": 31,
+      "match_end": 46,
+      "source": {
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788.json",
+        "insurer_id": "hdfc_life",
+        "url": "https://www.hdfclife.com/",
+        "content_hash": "8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788",
+        "section_index": 12,
+        "section_heading": "HDFC Life Sampoorn Nivesh Plus"
+      }
+    },
+    {
+      "uin": "101L164V08",
+      "candidate_status": "format_valid_candidate",
+      "extraction_method": "uin_label",
+      "raw_text": "UIN: 101L164V08",
+      "evidence_text": "HDFC Life Smart Pension Plan UIN: 101L164V08 A Unit Linked, Non-Participating Individual Pension plan that ensures you have a regular income and lead an independent life without compro",
+      "match_start": 29,
+      "match_end": 44,
+      "source": {
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788.json",
+        "insurer_id": "hdfc_life",
+        "url": "https://www.hdfclife.com/",
+        "content_hash": "8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788",
+        "section_index": 15,
+        "section_heading": "HDFC Life Smart Pension Plan"
+      }
+    },
+    {
+      "uin": "101N146V05",
+      "candidate_status": "format_valid_candidate",
+      "extraction_method": "uin_label",
+      "raw_text": "UIN: 101N146V05",
+      "evidence_text": "rvival during policy term provided all due premiums are paid during the premium payment term. 8. HDFC Life Guaranteed Income Insurance Plan UIN: 101N146V05. A Non-Linked, Non-Participating Individual Life Insurance Savings Plan. 9. HDFC Life Sanchay Par Advantage (UIN: 101N136V04), A Non-Linked",
+      "match_start": 509,
+      "match_end": 524,
+      "source": {
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788.json",
+        "insurer_id": "hdfc_life",
+        "url": "https://www.hdfclife.com/",
+        "content_hash": "8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788",
+        "section_index": 65,
+        "section_heading": "**Provided all due premiums have been paid and the policy is in force."
+      }
+    },
+    {
+      "uin": "101N136V04",
+      "candidate_status": "format_valid_candidate",
+      "extraction_method": "uin_label",
+      "raw_text": "UIN: 101N136V04",
+      "evidence_text": "Insurance Plan UIN: 101N146V05. A Non-Linked, Non-Participating Individual Life Insurance Savings Plan. 9. HDFC Life Sanchay Par Advantage (UIN: 101N136V04), A Non-Linked Participating, Life Insurance Plan coverage is available in this product. 10. Tax benefits & exemptions are subject to condi",
+      "match_start": 634,
+      "match_end": 649,
+      "source": {
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788.json",
+        "insurer_id": "hdfc_life",
+        "url": "https://www.hdfclife.com/",
+        "content_hash": "8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788",
+        "section_index": 65,
+        "section_heading": "**Provided all due premiums have been paid and the policy is in force."
+      }
+    },
+    {
+      "uin": "101N189V01",
+      "candidate_status": "format_valid_candidate",
+      "extraction_method": "uin_label",
+      "raw_text": "UIN: 101N189V01",
+      "evidence_text": "25. The premium amount is exclusive of taxes & levies. 26. HDFC Life Click 2 Protect Supreme Plus (UIN: 101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in th",
+      "match_start": 99,
+      "match_end": 114,
+      "source": {
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788.json",
+        "insurer_id": "hdfc_life",
+        "url": "https://www.hdfclife.com/",
+        "content_hash": "8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788",
+        "section_index": 66,
+        "section_heading": "25. The premium amount is exclusive of taxes & levies."
+      }
+    },
+    {
+      "uin": "101N189V01",
+      "candidate_status": "format_valid_candidate",
+      "extraction_method": "uin_label",
+      "raw_text": "UIN:101N189V01",
+      "evidence_text": "isk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in this product. 28. HDFC Life Click 2 Protect Supreme Plus (UIN:101N189V01) is a Non-Linked, Non-Participating, Individual, Pure Risk Premium/ Savings Life Insurance Plan. Life Insurance Coverage is available in th",
+      "match_start": 310,
+      "match_end": 324,
+      "source": {
+        "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788.json",
+        "insurer_id": "hdfc_life",
+        "url": "https://www.hdfclife.com/",
+        "content_hash": "8b4ea3c888eebc39589568764d94c05952664095a24884d2b720cf57696b8788",
+        "section_index": 66,
+        "section_heading": "25. The premium amount is exclusive of taxes & levies."
+      }
+    }
   ],
   "benefits": [
     {

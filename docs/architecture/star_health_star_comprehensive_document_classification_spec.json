@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "classification_type": "document_classification_reuse_policy_v1",
+  "reviewed_by_human": true,
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+      "classification": "reusable_generic",
+      "reuse_action": "reusable_evidence_candidate",
+      "review_rationale": "Publicly downloadable policy wording PDF served from Star Health and Allied Insurance's official CloudFront document distribution domain, matching the same primary_legal / reusable_generic pattern already used for the Bajaj Allianz My Health Care policy wording registered in this factory. This document is reusable evidence for the Star Health Comprehensive product, but reusable_generic classification is not, by itself, proof that this document is currently applicable for publication; current applicability remains a separate, later temporal/currentness determination and is not asserted by this classification."
+    }
+  ]
+}

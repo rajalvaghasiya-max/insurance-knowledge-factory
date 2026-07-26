@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "overlay_type": "document_identity_resolution_overlay_v1",
+  "reviewed_by_human": true,
+  "product_identity_reference": {
+    "identity_record_path": "knowledge/factory/product_identity_references/bajaj_allianz_general_my_health_care.product_identity_reference.json"
+  },
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json",
+      "resolution_status": "resolved",
+      "temporal_status": "compatibility_unverified",
+      "identity_signals": [
+        {
+          "signal_type": "uin_exact_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json"
+        },
+        {
+          "signal_type": "canonical_title_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json"
+        },
+        {
+          "signal_type": "manual_document_review",
+          "verification": "manual_reviewed",
+          "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json"
+        }
+      ],
+      "classification_manifest_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_document_classification.json",
+      "capture_provenance": {
+        "source_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+        "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "capture_reference": "pdfobs_5f30aafa8ec0f6fbbc09"
+      },
+      "review_rationale": "Product and document identity are resolved: UIN BAJHLIP26074V022526 exact-matches text embedded in the registered policy wording, corroborated by an exact canonical title match and a manual document review binding this specific immutable document version to the Bajaj Allianz My Health Care Plan product identity. Resolved identity is distinct from current compatibility: no currentness evidence has been independently verified for this document version, so temporal_status is compatibility_unverified rather than current. This overlay does not claim current-entitlement publication eligibility and does not itself publish a product fact."
+    }
+  ]
+}

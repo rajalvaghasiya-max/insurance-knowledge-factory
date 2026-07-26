@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Governed arithmetic for one applicable fixed percentage rule only.",
+  "inputs": ["evidence_assembled_conditional_rule", "applicability_decision", "explicit_admissible_claim_amount"],
+  "supported_effect": {"operator": "insured_bears_percentage", "value_kind": "fixed", "unit": "percent", "basis": "admissible_claim_amount"},
+  "outputs": ["insured_share_amount", "insurer_share_amount", "applied_percentage", "not_calculable_reason"],
+  "out_of_scope": ["claim_admissibility", "deductibles", "caps", "multi_rule_aggregation", "option_selection", "customer_advice"]
+}

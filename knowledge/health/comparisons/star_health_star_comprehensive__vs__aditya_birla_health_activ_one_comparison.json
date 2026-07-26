@@ -1,0 +1,164 @@
+{
+  "generated_at": "2026-06-14T13:37:06.648532+00:00",
+  "comparison_version": "0.3.1",
+  "entity_a": "star_health:star_comprehensive",
+  "entity_b": "aditya_birla_health:activ_one",
+  "product_a": {
+    "entity_id": "star_health:star_comprehensive",
+    "product_name": "Star Comprehensive Insurance Policy",
+    "uin": "SHAHLIP26044V092526",
+    "source_file": "knowledge/health/star_health/star_comprehensive/intelligence/product_intelligence.json"
+  },
+  "product_b": {
+    "entity_id": "aditya_birla_health:activ_one",
+    "product_name": "Activ One",
+    "uin": "ADIHLIP24097V012324",
+    "source_file": "knowledge/health/aditya_birla_health/activ_one/intelligence/product_intelligence.json"
+  },
+  "quality": {
+    "product_a": {
+      "entity_id": "star_health:star_comprehensive",
+      "validation_status": "PASS",
+      "validation_score": 100,
+      "coverage_status": "READY",
+      "coverage_score": 100.0,
+      "validation_file": "knowledge/health/star_health/star_comprehensive/validation/product_intelligence_validation_report.json",
+      "coverage_file": "knowledge/health/star_health/star_comprehensive/coverage/product_coverage_report.json"
+    },
+    "product_b": {
+      "entity_id": "aditya_birla_health:activ_one",
+      "validation_status": "REVIEW_REQUIRED",
+      "validation_score": 85,
+      "coverage_status": "USABLE_WITH_REVIEW",
+      "coverage_score": 85.07,
+      "validation_file": "knowledge/health/aditya_birla_health/activ_one/validation/product_intelligence_validation_report.json",
+      "coverage_file": "knowledge/health/aditya_birla_health/activ_one/coverage/product_coverage_report.json"
+    }
+  },
+  "summary": {
+    "difference_count": 0,
+    "missing_data_count": 5,
+    "quality_warning_count": 2
+  },
+  "differences": [],
+  "missing_data": [
+    {
+      "field": "eligibility.adult_entry_age",
+      "missing_for": "aditya_birla_health:activ_one",
+      "available_for": "star_health:star_comprehensive",
+      "available_value": "18 years to 65 years"
+    },
+    {
+      "field": "sum_insured_options.values",
+      "missing_for": "aditya_birla_health:activ_one",
+      "available_for": "star_health:star_comprehensive",
+      "available_value": [
+        500000,
+        750000,
+        1000000,
+        1500000,
+        2000000,
+        2500000,
+        5000000,
+        7500000,
+        10000000
+      ]
+    },
+    {
+      "field": "sum_insured_options.values_raw",
+      "missing_for": "aditya_birla_health:activ_one",
+      "available_for": "star_health:star_comprehensive",
+      "available_value": [
+        "5,00,000",
+        "7,50,000",
+        "10,00,000",
+        "15,00,000",
+        "20,00,000",
+        "25,00,000",
+        "50,00,000",
+        "75,00,000",
+        "1,00,00,000"
+      ]
+    },
+    {
+      "field": "core_benefits.delivery_newborn_cover",
+      "missing_for": "aditya_birla_health:activ_one",
+      "available_for": "star_health:star_comprehensive",
+      "available_value": true
+    },
+    {
+      "field": "core_benefits.wellness_program",
+      "missing_for": "aditya_birla_health:activ_one",
+      "available_for": "star_health:star_comprehensive",
+      "available_value": true
+    }
+  ],
+  "quality_warnings": [
+    "aditya_birla_health:activ_one validation status is REVIEW_REQUIRED.",
+    "aditya_birla_health:activ_one coverage status is USABLE_WITH_REVIEW."
+  ],
+  "winner_signals": [],
+  "advisor_view": {
+    "product_identity": {
+      "product_a": {
+        "entity_id": "star_health:star_comprehensive",
+        "product_name": "Star Comprehensive Insurance Policy",
+        "uin": "SHAHLIP26044V092526"
+      },
+      "product_b": {
+        "entity_id": "aditya_birla_health:activ_one",
+        "product_name": "Activ One",
+        "uin": "ADIHLIP24097V012324"
+      }
+    },
+    "groups": [
+      {
+        "group": "Eligibility",
+        "items": [
+          {
+            "field": "eligibility.adult_entry_age",
+            "label": "Adult Entry Age",
+            "product_a_value": "18 years to 65 years",
+            "product_b_value": "Not Extracted",
+            "comparison_type": "missing_data"
+          }
+        ]
+      },
+      {
+        "group": "Sum Insured",
+        "items": [
+          {
+            "field": "sum_insured_options.values",
+            "label": "Sum Insured Options",
+            "product_a_value": "500000, 750000, 1000000, 1500000, 2000000, 2500000, 5000000, 7500000, 10000000",
+            "product_b_value": "Not Extracted",
+            "comparison_type": "missing_data"
+          }
+        ]
+      },
+      {
+        "group": "Core Benefits",
+        "items": [
+          {
+            "field": "core_benefits.delivery_newborn_cover",
+            "label": "Delivery & Newborn Cover",
+            "product_a_value": "Available",
+            "product_b_value": "Not Extracted",
+            "comparison_type": "missing_data"
+          },
+          {
+            "field": "core_benefits.wellness_program",
+            "label": "Wellness Program",
+            "product_a_value": "Available",
+            "product_b_value": "Not Extracted",
+            "comparison_type": "missing_data"
+          }
+        ]
+      }
+    ]
+  },
+  "recommendations": [
+    "Resolve quality warnings before using this comparison in advisor-facing workflows.",
+    "Comparison has missing fields. Improve product extraction before relying on differences."
+  ]
+}

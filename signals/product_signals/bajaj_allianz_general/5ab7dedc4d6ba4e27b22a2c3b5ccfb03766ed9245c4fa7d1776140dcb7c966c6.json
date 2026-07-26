@@ -1,20 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6.json",
   "insurer_id": "bajaj_allianz_general",
   "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
   "page_title": "Buy Health Guard Policy Online: Fast Claim Settlement",
   "content_hash": "5ab7dedc4d6ba4e27b22a2c3b5ccfb03766ed9245c4fa7d1776140dcb7c966c6",
-  "page_intent": "individual_product",
-  "extracted_at": "2026-06-07T11:46:07.294318+00:00",
-  "product_names": [
-    {
-      "name": "Health Guard Insurance Policy",
-      "source": "url_slug",
-      "evidence": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html"
-    }
-  ],
+  "page_intent": "product_listing",
+  "asset_scope": "category",
+  "classification_reason": "matched category URL marker; category override from URL marker",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.434674+00:00",
+  "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Get comprehensive coverage for your health",
@@ -303,65 +301,9 @@
       "evidence": "View More\n© Copyright 2025 Bajaj General- All Rights Reserved\nWith GST waiver, individual and family floater policies for health, personal accident, and travel insurance (on retail basis) are 18% cheaper from 22 September 2025. Secure what matters at an affordable price!"
     }
   ],
-  "sum_insured_values": [
-    {
-      "value": "INR 1 Cr",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
-    },
-    {
-      "value": "INR 3 Lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
-    },
-    {
-      "value": "INR 5 Lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
-    },
-    {
-      "value": "INR 5 lacs",
-      "reason": "sum_insured_context",
-      "heading": "Convalescence Benefit",
-      "evidence": "Convalescence Benefit\nINR 5,000/policy year\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above\nINR 5,000/policy year for sum insured up to INR 5 lacs | INR 7,500/policy year for sum insured of 7.5 lacs and above"
-    },
-    {
-      "value": "INR 50 Lacs",
-      "reason": "sum_insured_context",
-      "heading": "Hospital & Day Care SI",
-      "evidence": "Hospital & Day Care SI\nINR 1.5/ 2 Lacs\nINR 3 Lacs to INR 50 Lacs\nINR 5 Lacs to INR 1 Cr."
-    },
-    {
-      "value": "₹1 crore",
-      "reason": "sum_insured_context",
-      "heading": "Sum Insured Options: ₹5 lakh to ₹1 crore",
-      "evidence": "Sum Insured Options: ₹5 lakh to ₹1 crore\nIf you’re looking to go beyond basic protection and ensure holistic healthcare security, the Platinum plan is your go-to choice."
-    },
-    {
-      "value": "₹10 lakh",
-      "reason": "sum_insured_context",
-      "heading": "Added Benefits:",
-      "evidence": "Added Benefits:\nMaternity cover (₹15,000 for normal delivery and ₹25,000 for Caesarean delivery for Sum Insured ₹3–7.5 lakh; ₹25,000 for normal delivery and ₹35,000 for Caesarean delivery for Sum Insured ₹10 lakh & above)"
-    },
-    {
-      "value": "₹5 lakh",
-      "reason": "sum_insured_context",
-      "heading": "Sum Insured Options: ₹5 lakh to ₹1 crore",
-      "evidence": "Sum Insured Options: ₹5 lakh to ₹1 crore\nIf you’re looking to go beyond basic protection and ensure holistic healthcare security, the Platinum plan is your go-to choice."
-    }
-  ],
+  "sum_insured_values": [],
   "premium_values": [],
-  "benefit_amount_values": [
-    {
-      "value": "INR 20,000",
-      "reason": "benefit_amount_context",
-      "heading": "Road Ambulance",
-      "evidence": "Road Ambulance\nINR 20,000/policy year\nINR 20,000/policy year\nINR 20,000/policy year"
-    }
-  ],
+  "benefit_amount_values": [],
   "tax_amount_values": [],
   "discount_values": [],
   "room_rent_limits": [

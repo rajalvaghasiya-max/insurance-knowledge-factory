@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "product_identity_reference_v1",
+  "reviewed_by_human": true,
+  "product_identity": {
+    "entity_id": "star_health:star_comprehensive",
+    "insurer_id": "star_health",
+    "product_id": "star_comprehensive",
+    "canonical_product_name": "Star Comprehensive Insurance Policy",
+    "uin": "SHAHLIP26044V092526"
+  },
+  "aliases": [
+    "Star Comprehensive Insurance Policy"
+  ],
+  "identity_evidence": [
+    {
+      "signal_type": "uin_exact_match",
+      "verification": "document_embedded_text",
+      "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+    },
+    {
+      "signal_type": "canonical_title_match",
+      "verification": "document_embedded_text",
+      "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+    },
+    {
+      "signal_type": "manual_product_review",
+      "verification": "manual_reviewed",
+      "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+    }
+  ],
+  "review_rationale": "UIN SHAHLIP26044V092526 approved by the CTO as the governed identity for Star Comprehensive Insurance Policy (Manufacturing Order MO-006B.1), confirmed via text embedded in the registered policy wording, corroborated by an exact canonical product title match and a manual product review. This approval supersedes the automated identity audit alone (knowledge/health/star_health/star_comprehensive/identity/product_identity_report.json), which is corroborating evidence, not the human approval itself. This record establishes reviewed product identity only; it does not establish document-version compatibility or current entitlement."
+}

@@ -1,14 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\bajaj_allianz_general\\8d92f14e86e25e5939db03716d47a56f527cf731e262bb368c7d3bfee8d6b121.json",
   "insurer_id": "bajaj_allianz_general",
   "url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/comprehensive-health-insurance.html",
   "page_title": "A Guide to What is a Comprehensive Health Insurance Plan",
   "content_hash": "8d92f14e86e25e5939db03716d47a56f527cf731e262bb368c7d3bfee8d6b121",
-  "page_intent": "article",
-  "extracted_at": "2026-06-07T11:46:07.310381+00:00",
+  "page_intent": "product_listing",
+  "asset_scope": "category",
+  "classification_reason": "matched category URL marker; category override from URL marker",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.463897+00:00",
   "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Comprehensive coverage",

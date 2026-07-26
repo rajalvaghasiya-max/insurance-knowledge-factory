@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "domain": "health",
+  "purpose": "Classify published-rule scope predicates as scenario-facing or rule metadata.",
+  "scope_predicates": [
+    {"dimension": "health_cover", "value": "doctor_prescribed_investigations_cover", "role": "scenario_required"},
+    {"dimension": "health_cover", "value": "doctor_consultation_cover", "role": "scenario_required"},
+    {"dimension": "health_cover", "value": "international_emergency_care", "role": "scenario_required"},
+    {"dimension": "health_scope", "value": "international_emergency_care_only", "role": "scenario_required"},
+    {"dimension": "health_scope", "value": "claim_mode_specific", "role": "rule_metadata_only"},
+    {"dimension": "health_scope", "value": "voluntary_option", "role": "rule_metadata_only"}
+  ],
+  "unknown_policy": "unreviewed"
+}

@@ -1,12 +1,15 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\ed57908632e6e1eb719cf0277168686a192ff414fcda985c92c7c75e1e6b7e21.json",
   "insurer_id": "aditya_birla_health",
   "url": "https://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMax=activ-one-max",
   "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
   "content_hash": "ed57908632e6e1eb719cf0277168686a192ff414fcda985c92c7c75e1e6b7e21",
   "page_intent": "individual_product",
-  "extracted_at": "2026-06-07T11:46:07.240979+00:00",
+  "asset_scope": "product_specific",
+  "classification_reason": "matched approved individual-product URL marker; mapped from page intent 'individual_product'",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.350924+00:00",
   "product_names": [
     {
       "name": "Activ One Max",
@@ -15,6 +18,7 @@
     }
   ],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "HealthReturns™ with EAT.MOVE.HEAL + Maternity Cover + OPD Cover",

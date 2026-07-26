@@ -1,0 +1,127 @@
+{
+  "canonical_bundle": {
+    "assertions": [
+      {
+        "assertion_id": "ka_8c9fd2695abdf24b",
+        "assertion_kind": "conditional_rule",
+        "concept_id": "copayment.entry_age_61_or_above.ten_percent_condition",
+        "evidence_span_ids": [
+          "esp_67e4ab282ac7be61"
+        ],
+        "payload": {
+          "reviewed_statement": "Star Comprehensive applies a 10% co-payment to each and every claim for fresh as well as renewal policies where the insured person's age at entry is 61 years or above. The co-payment does not apply where the insured person entered the policy before attaining 61 years of age and renewed continuously without a break. The policy wording limits this co-payment to Sections II.1, II.2, II.3, II.4, II.5, II.6, II.7, II.8, II.9, II.10, II.11, II.15 and II.25.",
+          "rule_id": "ga_star_comprehensive_entry_age_61_conditional_copayment_v1",
+          "rule_type": "conditional_copayment_rule",
+          "scope": "reusable_generic_product_legal_condition",
+          "source_binding_assertion_id": "ga_star_comprehensive_entry_age_61_conditional_copayment_v1"
+        },
+        "product_version_id": "pv_star_health_star_comprehensive_shahlip26044v092526",
+        "publication_status": "unpublished",
+        "source_artifact_sha256": "caaff2add0217b93a77b77afc862f26872ed9146c4f14054d4c85eaaff8bb984",
+        "validation_status": "evidence_assembled"
+      }
+    ],
+    "document_versions": [
+      {
+        "captured_at": "2026-07-16T16:24:57.943191+00:00",
+        "content_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+        "document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+        "effective_from": null,
+        "effective_to": null,
+        "source_document_id": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+        "storage_locator": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+        "evidence_span_id": "esp_67e4ab282ac7be61",
+        "extraction_method": "pypdf_text_v1",
+        "source_char_end": 107019,
+        "source_char_start": 103605,
+        "source_page": 39,
+        "text_sha256": "ea3aa9a64bd799fbdcc52bdebb48a5b6917c90673451cf84230005506bb09594"
+      }
+    ],
+    "insurers": [
+      {
+        "insurer_id": "star_health",
+        "insurer_type": "health_insurer",
+        "legal_name": "Star Health and Allied Insurance Company Limited"
+      }
+    ],
+    "product_identities": [
+      {
+        "domain": "health",
+        "insurer_id": "star_health",
+        "product_family_name": "Star Comprehensive Insurance Policy",
+        "product_id": "star_comprehensive",
+        "product_name": "Star Comprehensive Insurance Policy",
+        "uin": "SHAHLIP26044V092526"
+      }
+    ],
+    "product_versions": [
+      {
+        "effective_from": null,
+        "effective_to": null,
+        "lifecycle_status": null,
+        "product_id": "star_comprehensive",
+        "product_version_id": "pv_star_health_star_comprehensive_shahlip26044v092526",
+        "version_label": "UIN SHAHLIP26044V092526"
+      }
+    ],
+    "publication_decisions": [
+      {
+        "assertion_id": "ka_8c9fd2695abdf24b",
+        "decided_at": "2026-07-17T15:21:13.133017+00:00",
+        "decision_reason": "Projected from reviewed generic legal binding; publication authority has not been granted.",
+        "decision_status": "unpublished",
+        "publication_decision_id": "pd_3391b70eaf6a1c02",
+        "source_artifact_sha256": "caaff2add0217b93a77b77afc862f26872ed9146c4f14054d4c85eaaff8bb984",
+        "supersedes_publication_decision_id": null
+      }
+    ],
+    "source_documents": [
+      {
+        "canonical_title": "Star Comprehensive Insurance Policy - Policy Wording",
+        "document_type": "policy_wording",
+        "insurer_id": "star_health",
+        "product_version_id": "pv_star_health_star_comprehensive_shahlip26044v092526",
+        "source_document_id": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+        "source_url": null
+      }
+    ]
+  },
+  "projection_report": {
+    "binding_manifest_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_legal_condition_binding/star_health_star_comprehensive_conditional_copayment.json",
+    "binding_manifest_sha256": "caaff2add0217b93a77b77afc862f26872ed9146c4f14054d4c85eaaff8bb984",
+    "classification_manifest_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_classification.json",
+    "classification_manifest_sha256": "4ae177e75b44504ad4dfd3df99b367bc20f5a91ac8a79cc682f21d3ea0d21ee6",
+    "generic_source_bundle_sha256": "fa56d4497170e6534bb435a699c97fb4c2b6445f48b894709c45a01ed4757900",
+    "guardrails": [
+      "Only documents classified reusable_generic with reuse_action reusable_evidence_candidate may be projected.",
+      "Discovery-only, restricted policy-instance, group-specific, unclassified, or hash-mismatched documents are rejected.",
+      "All projected assertions remain unpublished and non-authoritative.",
+      "This projection cannot create room-category, room-rent-limit, or ICU-limit entitlement values.",
+      "The projection writes a separate derived artifact and does not modify source registrations, binding manifests, or conditional-rule artifacts."
+    ],
+    "projection_status": "validated_read_only_canonical_projection_not_published",
+    "projection_type": "generic_legal_condition_canonical_projection_v1",
+    "schema_version": "1.0",
+    "validation": {
+      "counts": {
+        "assertions": 1,
+        "document_versions": 1,
+        "evidence_spans": 1,
+        "insurers": 1,
+        "product_identities": 1,
+        "product_versions": 1,
+        "publication_decisions": 1,
+        "source_documents": 1
+      },
+      "schema_version": "1.0",
+      "valid": true
+    }
+  },
+  "schema_version": "1.0"
+}

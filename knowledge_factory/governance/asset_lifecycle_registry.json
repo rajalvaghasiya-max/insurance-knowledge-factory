@@ -1,0 +1,92 @@
+{
+    "registry_name": "PolicyScna Factory Asset Lifecycle Registry",
+    "schema_version": "1.0",
+    "purpose": "Declare the authoritative lifecycle interpretation of selected Factory assets without rewriting historical generated artifacts.",
+    "dimensions": {
+      "trust_basis": [
+        "evidence_backed",
+        "derived_from_approved_inputs",
+        "illustrative",
+        "unverified",
+        "invalid_for_use"
+      ],
+      "runtime_readiness": [
+        "standalone",
+        "runtime_dependent",
+        "blocked"
+      ],
+      "disposition": [
+        "active",
+        "deprecated",
+        "quarantined"
+      ]
+    },
+    "assets": [
+      {
+        "asset_path": "knowledge/factory/golden_concepts/waiting_period/waiting_period_evidence_manifest.json",
+        "asset_type": "evidence_manifest",
+        "trust_basis": "evidence_backed",
+        "runtime_readiness": "standalone",
+        "disposition": "active",
+        "notes": [
+          "Canonical evidence/configuration input for Waiting Period knowledge manufacturing.",
+          "Some individual evidence entries may have narrower applicability or limitations."
+        ]
+      },
+      {
+        "asset_path": "knowledge/factory/golden_concepts/waiting_period/waiting_period_timeline_evidence_profile.json",
+        "asset_type": "timeline_evidence_profile",
+        "trust_basis": "evidence_backed",
+        "runtime_readiness": "runtime_dependent",
+        "disposition": "active",
+        "notes": [
+          "Requires runtime policy and claim dates.",
+          "Rules marked DO_NOT_AUTOMATE_YET must not be automated."
+        ]
+      },
+      {
+        "asset_path": "knowledge/factory/meaning_assets/copay_meaning_asset.json",
+        "asset_type": "meaning_asset",
+        "trust_basis": "derived_from_approved_inputs",
+        "runtime_readiness": "standalone",
+        "disposition": "active",
+        "notes": [
+          "Golden-reference learning input for the Copay concept.",
+          "Not a product-specific policy fact."
+        ]
+      },
+      {
+        "asset_path": "knowledge/factory/financial_outcomes/copay/",
+        "asset_type": "financial_outcome_simulation_output",
+        "trust_basis": "illustrative",
+        "runtime_readiness": "standalone",
+        "disposition": "active",
+        "notes": [
+          "Educational Copay simulation output.",
+          "Must not be represented as a product-specific claim outcome."
+        ]
+      },
+      {
+        "asset_path": "knowledge/factory/golden_concepts/waiting_period/timeline_test_output/",
+        "asset_type": "timeline_test_output",
+        "trust_basis": "derived_from_approved_inputs",
+        "runtime_readiness": "runtime_dependent",
+        "disposition": "active",
+        "notes": [
+          "Test-run output only.",
+          "Not canonical evidence and not a reusable product fact."
+        ]
+      },
+      {
+        "asset_path": "knowledge/factory/quarantine/",
+        "asset_type": "quarantined_artifact",
+        "trust_basis": "invalid_for_use",
+        "runtime_readiness": "blocked",
+        "disposition": "quarantined",
+        "notes": [
+          "Never consume as production truth.",
+          "Retained only for audit, diagnosis, and regression prevention."
+        ]
+      }
+    ]
+  }

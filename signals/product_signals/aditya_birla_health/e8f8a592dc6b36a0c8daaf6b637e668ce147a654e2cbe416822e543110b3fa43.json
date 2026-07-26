@@ -1,14 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\aditya_birla_health\\e8f8a592dc6b36a0c8daaf6b637e668ce147a654e2cbe416822e543110b3fa43.json",
   "insurer_id": "aditya_birla_health",
   "url": "https://www.adityabirlacapital.com/healthinsurance/homepage",
   "page_title": "Aditya Birla Health Insurance | Buy Mediclaim Policy in India",
   "content_hash": "e8f8a592dc6b36a0c8daaf6b637e668ce147a654e2cbe416822e543110b3fa43",
   "page_intent": "homepage",
-  "extracted_at": "2026-06-07T11:46:07.229675+00:00",
+  "asset_scope": "generic_knowledge",
+  "classification_reason": "matched home path; mapped from page intent 'homepage'",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.330833+00:00",
   "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "HealthReturns™ with EAT.MOVE.HEAL + Maternity Cover + OPD Cover",

@@ -1,6 +1,6 @@
 {
   "created_at": "2026-06-07T15:06:50.904234+00:00",
-  "updated_at": "2026-06-07T15:36:01.236043+00:00",
+  "updated_at": "2026-07-05T02:43:39.801961+00:00",
   "agent": "pdf_download_agent",
   "agent_version": "0.1",
   "by_url": {
@@ -37,7 +37,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:34:10.684113+00:00",
+      "last_checked_at": "2026-07-05T02:42:37.278955+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\customer_information_sheet\\customer-information-sheet__ef5a27e067e0.pdf",
       "last_unchanged_check": {
         "insurer_id": "aditya_birla_health",
@@ -50,13 +50,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\customer_information_sheet\\customer-information-sheet__ef5a27e067e0.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/customer_information_sheet/customer-information-sheet__ef5a27e067e0.pdf",
         "source_page_url": "http://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMax=activ-one-max",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+        "source_page_artifact_path": "archive/raw_html/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+        "source_page_artifact_sha256": "ec6669a96d8636e5a69fe98bf4c07fdf9c67fb22147850fe0d9ad911f4944b00",
+        "final_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/MAX/product-information/customer-information-sheet.pdf",
+        "etag": "W/\"92224-198cc7eabdf\"",
+        "last_modified": "Thu, 21 Aug 2025 11:58:30 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_963f8b74ab24daa528d7",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:34:10.684113+00:00",
+        "checked_at": "2026-07-05T02:42:37.278955+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/customer_information_sheet/customer-information-sheet__ef5a27e067e0.pdf"
     },
     "http://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/maxplus/product-information/customer-information-sheet.pdf": {
       "insurer_id": "aditya_birla_health",
@@ -91,7 +100,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:34:13.430007+00:00",
+      "last_checked_at": "2026-07-05T02:42:42.855671+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\customer_information_sheet\\customer-information-sheet__578244d7e997.pdf",
       "last_unchanged_check": {
         "insurer_id": "aditya_birla_health",
@@ -104,13 +113,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\customer_information_sheet\\customer-information-sheet__578244d7e997.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/customer_information_sheet/customer-information-sheet__578244d7e997.pdf",
         "source_page_url": "http://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMaxplus=activ-one-max-plus",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one_activonemaxplus_activ-one-max-plus.html",
+        "source_page_artifact_path": "archive/raw_html/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemaxplus_activ-one-max-plus.html",
+        "source_page_artifact_sha256": "1a658c66f0e524ebc585758ee92af3ad6e10241e8fb8566b010ea2c23dd9ffbf",
+        "final_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/MAXplus/product-information/customer-information-sheet.pdf",
+        "etag": "W/\"91f33-198cc7eac0e\"",
+        "last_modified": "Thu, 21 Aug 2025 11:58:30 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_3570607e7b9ab68496c1",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:34:13.430007+00:00",
+        "checked_at": "2026-07-05T02:42:42.855671+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/customer_information_sheet/customer-information-sheet__578244d7e997.pdf"
     },
     "https://lifeinsurance.adityabirlacapital.com/uploads/absli_super_term_plan_v01_brochure_8b9b57ef0d.pdf": {
       "insurer_id": "aditya_birla_health",
@@ -145,7 +163,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:34:18.098807+00:00",
+      "last_checked_at": "2026-07-05T02:42:46.394285+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\brochure\\ABSLI_Super_Term_Plan_V01_Brochure_8b9b57ef0d__00682bb9b8aa.pdf",
       "last_unchanged_check": {
         "insurer_id": "aditya_birla_health",
@@ -158,13 +176,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\brochure\\ABSLI_Super_Term_Plan_V01_Brochure_8b9b57ef0d__00682bb9b8aa.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/brochure/ABSLI_Super_Term_Plan_V01_Brochure_8b9b57ef0d__00682bb9b8aa.pdf",
         "source_page_url": "https://lifeinsurance.adityabirlacapital.com/",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\lifeinsurance.adityabirlacapital.com_.html",
+        "source_page_artifact_path": "archive/raw_html/aditya_birla_health/lifeinsurance.adityabirlacapital.com_.html",
+        "source_page_artifact_sha256": "9612aa98640ef28dde64ad2e7ad2e9b72d24e672c2b3b13f847b2b9cc68bae48",
+        "final_url": "https://lifeinsurance.adityabirlacapital.com/uploads/ABSLI_Super_Term_Plan_V01_Brochure_8b9b57ef0d.pdf",
+        "etag": "\"6852bcd0-2b52c3\"",
+        "last_modified": "Wed, 18 Jun 2025 13:19:12 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_a437b531ce6c9fe679a3",
         "confidence_score": 35,
-        "checked_at": "2026-06-07T15:34:18.098807+00:00",
+        "checked_at": "2026-07-05T02:42:46.394285+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/brochure/ABSLI_Super_Term_Plan_V01_Brochure_8b9b57ef0d__00682bb9b8aa.pdf"
     },
     "http://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/prospectus.pdf": {
       "insurer_id": "aditya_birla_health",
@@ -199,7 +226,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:34:29.953085+00:00",
+      "last_checked_at": "2026-07-05T02:42:51.907615+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\prospectus\\prospectus__8923d6457d36.pdf",
       "last_unchanged_check": {
         "insurer_id": "aditya_birla_health",
@@ -212,13 +239,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\prospectus\\prospectus__8923d6457d36.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/prospectus/prospectus__8923d6457d36.pdf",
         "source_page_url": "http://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMax=activ-one-max",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+        "source_page_artifact_path": "archive/raw_html/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+        "source_page_artifact_sha256": "ec6669a96d8636e5a69fe98bf4c07fdf9c67fb22147850fe0d9ad911f4944b00",
+        "final_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/prospectus.pdf",
+        "etag": "W/\"6f17b-198cc7eae8e\"",
+        "last_modified": "Thu, 21 Aug 2025 11:58:31 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_cc1908685cbde6d34d97",
         "confidence_score": 75,
-        "checked_at": "2026-06-07T15:34:29.953085+00:00",
+        "checked_at": "2026-07-05T02:42:51.907615+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/prospectus/prospectus__8923d6457d36.pdf"
     },
     "http://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/max/product-information/policy-document.pdf": {
       "insurer_id": "aditya_birla_health",
@@ -253,7 +289,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:34:10.683186+00:00",
+      "last_checked_at": "2026-07-05T02:42:37.278008+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\policy_wording\\policy-document__2bff34649e0e.pdf",
       "last_unchanged_check": {
         "insurer_id": "aditya_birla_health",
@@ -266,13 +302,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\policy_wording\\policy-document__2bff34649e0e.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/policy_wording/policy-document__2bff34649e0e.pdf",
         "source_page_url": "http://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMax=activ-one-max",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+        "source_page_artifact_path": "archive/raw_html/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+        "source_page_artifact_sha256": "ec6669a96d8636e5a69fe98bf4c07fdf9c67fb22147850fe0d9ad911f4944b00",
+        "final_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/MAX/product-information/policy-document.pdf",
+        "etag": "W/\"c84d89-19e8202208d\"",
+        "last_modified": "Mon, 01 Jun 2026 07:07:18 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_3322d59e663620268d31",
         "confidence_score": 85,
-        "checked_at": "2026-06-07T15:34:10.683186+00:00",
+        "checked_at": "2026-07-05T02:42:37.278008+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/policy_wording/policy-document__2bff34649e0e.pdf"
     },
     "http://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/maxplus/product-information/policy-document.pdf": {
       "insurer_id": "aditya_birla_health",
@@ -307,7 +352,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:34:10.683731+00:00",
+      "last_checked_at": "2026-07-05T02:42:37.278407+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\policy_wording\\policy-document__38bb879030d9.pdf",
       "last_unchanged_check": {
         "insurer_id": "aditya_birla_health",
@@ -320,13 +365,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\policy_wording\\policy-document__38bb879030d9.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/policy_wording/policy-document__38bb879030d9.pdf",
         "source_page_url": "http://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMaxplus=activ-one-max-plus",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one_activonemaxplus_activ-one-max-plus.html",
+        "source_page_artifact_path": "archive/raw_html/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemaxplus_activ-one-max-plus.html",
+        "source_page_artifact_sha256": "1a658c66f0e524ebc585758ee92af3ad6e10241e8fb8566b010ea2c23dd9ffbf",
+        "final_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/MAXplus/product-information/policy-document.pdf",
+        "etag": "W/\"c816d7-19e82022168\"",
+        "last_modified": "Mon, 01 Jun 2026 07:07:18 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_c2e84c7d01d31e8fa88b",
         "confidence_score": 85,
-        "checked_at": "2026-06-07T15:34:10.683731+00:00",
+        "checked_at": "2026-07-05T02:42:37.278407+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/policy_wording/policy-document__38bb879030d9.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-pw/arogya-sanjeevani-policy_pw.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -361,7 +415,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:17.565860+00:00",
+      "last_checked_at": "2026-07-05T02:42:56.328233+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Arogya-Sanjeevani-Policy_PW__2f558679344c.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -374,13 +428,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Arogya-Sanjeevani-Policy_PW__2f558679344c.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Arogya-Sanjeevani-Policy_PW__2f558679344c.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+        "source_page_artifact_sha256": "d9984d73f877bffcfcf91c23d9dca77b03e0e8be50df64e433f79d8b987d416d",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/Arogya-Sanjeevani-Policy_PW.pdf",
+        "etag": "\"0x8DE5FF6427BF9DA\"",
+        "last_modified": "Fri, 30 Jan 2026 11:54:01 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_68c5d3cf72b8e66d1972",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:17.565860+00:00",
+        "checked_at": "2026-07-05T02:42:56.328233+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Arogya-Sanjeevani-Policy_PW__2f558679344c.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-pw/family-health-care-silver-pw.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -415,7 +478,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:18.195738+00:00",
+      "last_checked_at": "2026-07-05T02:42:57.593015+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Family-Health-Care-Silver-PW__d9b401b6e704.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -428,13 +491,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Family-Health-Care-Silver-PW__d9b401b6e704.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Family-Health-Care-Silver-PW__d9b401b6e704.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+        "source_page_artifact_sha256": "c255eda1a94850e8ad368d0b78978be3569dcfe6b6e6d99e5377a2fbc11aaa91",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/Family-Health-Care-Silver-PW.pdf",
+        "etag": "\"0x8DE5F19F4F4E3D3\"",
+        "last_modified": "Thu, 29 Jan 2026 09:37:02 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_05a585b8145f62708f3c",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:18.195738+00:00",
+        "checked_at": "2026-07-05T02:42:57.593015+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Family-Health-Care-Silver-PW__d9b401b6e704.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-pw/global-health-care_pw.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -469,7 +541,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:18.559062+00:00",
+      "last_checked_at": "2026-07-05T02:42:59.218325+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Global-Health-Care_PW__7bf5708dde3c.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -482,13 +554,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Global-Health-Care_PW__7bf5708dde3c.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Global-Health-Care_PW__7bf5708dde3c.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+        "source_page_artifact_sha256": "28e646fba6b4c0f62e5c1a56d3414cc913749128edece177cfad451116223cee",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/Global-Health-Care_PW.pdf",
+        "etag": "\"0x8DE5F192EED3C52\"",
+        "last_modified": "Thu, 29 Jan 2026 09:31:29 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_47fec20622fd369c781f",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:18.559062+00:00",
+        "checked_at": "2026-07-05T02:42:59.218325+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Global-Health-Care_PW__7bf5708dde3c.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-pw/health-guard_pw.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -523,7 +604,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:18.799837+00:00",
+      "last_checked_at": "2026-07-05T02:43:01.079154+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Health-Guard_PW__193417d10fda.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -536,13 +617,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Health-Guard_PW__193417d10fda.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Health-Guard_PW__193417d10fda.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+        "source_page_artifact_sha256": "30ae2a3624de4f3c0c9d6a9951eef4595d4561fb76b2b7991b2c140618af2751",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/Health-Guard_PW.pdf",
+        "etag": "\"0x8DE75B90C9AE0A5\"",
+        "last_modified": "Fri, 27 Feb 2026 04:31:17 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_0233344450d392bd4e82",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:18.799837+00:00",
+        "checked_at": "2026-07-05T02:43:01.079154+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Health-Guard_PW__193417d10fda.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-pw/my-health-care-plan1-pw.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -577,7 +667,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:19.257793+00:00",
+      "last_checked_at": "2026-07-05T02:43:02.237320+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\My-Health-Care-Plan1-PW__9479fe6f6ce7.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -590,13 +680,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\My-Health-Care-Plan1-PW__9479fe6f6ce7.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__9479fe6f6ce7.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+        "source_page_artifact_sha256": "5c76599eed2b4c7e629c0b43e1bfa0b4129cfd784c5c3019a1683cb241eebc7c",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+        "etag": "\"0x8DE994E6935252D\"",
+        "last_modified": "Mon, 13 Apr 2026 11:18:38 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_5f30aafa8ec0f6fbbc09",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:19.257793+00:00",
+        "checked_at": "2026-07-05T02:43:02.237320+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__9479fe6f6ce7.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-pw/silver-health_pw.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -631,7 +730,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:19.502656+00:00",
+      "last_checked_at": "2026-07-05T02:43:02.667073+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Silver-Health_PW__65ba0c2e260c.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -644,13 +743,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Silver-Health_PW__65ba0c2e260c.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Silver-Health_PW__65ba0c2e260c.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+        "source_page_artifact_sha256": "bf801638485acccb583223e57a59c5227353114051aebc2315c070d9157f5edb",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/Silver-Health_PW.pdf",
+        "etag": "\"0x8DE5F05AC33A586\"",
+        "last_modified": "Thu, 29 Jan 2026 07:11:50 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_33557c1ef86c6727ccc5",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:19.502656+00:00",
+        "checked_at": "2026-07-05T02:43:02.667073+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Silver-Health_PW__65ba0c2e260c.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-cis/arogya-sanjeevani_cis.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -685,7 +793,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:20.040721+00:00",
+      "last_checked_at": "2026-07-05T02:43:04.275975+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Arogya-Sanjeevani_CIS__15bd1d0fe549.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -698,13 +806,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Arogya-Sanjeevani_CIS__15bd1d0fe549.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Arogya-Sanjeevani_CIS__15bd1d0fe549.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+        "source_page_artifact_sha256": "d9984d73f877bffcfcf91c23d9dca77b03e0e8be50df64e433f79d8b987d416d",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-CIS/Arogya-Sanjeevani_CIS.pdf",
+        "etag": "\"0x8DE5FF5FCB012AC\"",
+        "last_modified": "Fri, 30 Jan 2026 11:52:04 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_dfe33dd425547001a0fb",
         "confidence_score": 85,
-        "checked_at": "2026-06-07T15:35:20.040721+00:00",
+        "checked_at": "2026-07-05T02:43:04.275975+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Arogya-Sanjeevani_CIS__15bd1d0fe549.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-cis/family-health-care_cis.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -739,7 +856,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:20.367898+00:00",
+      "last_checked_at": "2026-07-05T02:43:04.411682+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Family-Health-Care_CIS__4e4866f55fcb.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -752,13 +869,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Family-Health-Care_CIS__4e4866f55fcb.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Family-Health-Care_CIS__4e4866f55fcb.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+        "source_page_artifact_sha256": "c255eda1a94850e8ad368d0b78978be3569dcfe6b6e6d99e5377a2fbc11aaa91",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-CIS/Family-Health-Care_CIS.pdf",
+        "etag": "\"0x8DE5FF485B58FBC\"",
+        "last_modified": "Fri, 30 Jan 2026 11:41:35 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_b64b59c6482214ae5cc2",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:20.367898+00:00",
+        "checked_at": "2026-07-05T02:43:04.411682+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Family-Health-Care_CIS__4e4866f55fcb.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-guard/health-guard-cis-print.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -793,7 +919,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:21.260874+00:00",
+      "last_checked_at": "2026-07-05T02:43:06.750765+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Health-Guard-CIS-print__b1b03949cf91.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -806,13 +932,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Health-Guard-CIS-print__b1b03949cf91.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Health-Guard-CIS-print__b1b03949cf91.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+        "source_page_artifact_sha256": "30ae2a3624de4f3c0c9d6a9951eef4595d4561fb76b2b7991b2c140618af2751",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-guard/Health-Guard-CIS-print.pdf",
+        "etag": "\"0x8DE7503A2764AEB\"",
+        "last_modified": "Thu, 26 Feb 2026 06:52:40 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_3eceefbf7b4118f9cd6c",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:21.260874+00:00",
+        "checked_at": "2026-07-05T02:43:06.750765+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Health-Guard-CIS-print__b1b03949cf91.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-cis/global-health-care_cis.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -847,7 +982,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:22.717379+00:00",
+      "last_checked_at": "2026-07-05T02:43:09.896144+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Global-Health-Care_CIS__de44f7c7839e.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -860,13 +995,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Global-Health-Care_CIS__de44f7c7839e.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Global-Health-Care_CIS__de44f7c7839e.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+        "source_page_artifact_sha256": "28e646fba6b4c0f62e5c1a56d3414cc913749128edece177cfad451116223cee",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-CIS/Global-Health-Care_CIS.pdf",
+        "etag": "\"0x8DE5FF4E01CA343\"",
+        "last_modified": "Fri, 30 Jan 2026 11:44:06 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_aabe5f7a911b4ba16f84",
         "confidence_score": 75,
-        "checked_at": "2026-06-07T15:35:22.717379+00:00",
+        "checked_at": "2026-07-05T02:43:09.896144+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Global-Health-Care_CIS__de44f7c7839e.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-cis/my-health-care-plan1_cis.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -901,7 +1045,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:39.789835+00:00",
+      "last_checked_at": "2026-07-05T02:43:11.873810+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\My-Health-Care-Plan1_CIS__a7c2ae280065.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -914,13 +1058,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\My-Health-Care-Plan1_CIS__a7c2ae280065.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/My-Health-Care-Plan1_CIS__a7c2ae280065.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+        "source_page_artifact_sha256": "5c76599eed2b4c7e629c0b43e1bfa0b4129cfd784c5c3019a1683cb241eebc7c",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-CIS/My-Health-Care-Plan1_CIS.pdf",
+        "etag": "\"0x8DE750254B3C6BC\"",
+        "last_modified": "Thu, 26 Feb 2026 06:43:20 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_c300f705bda41590a2fb",
         "confidence_score": 75,
-        "checked_at": "2026-06-07T15:35:39.789835+00:00",
+        "checked_at": "2026-07-05T02:43:11.873810+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/My-Health-Care-Plan1_CIS__a7c2ae280065.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-cis/silver-health_cis.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -955,7 +1108,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:44.415988+00:00",
+      "last_checked_at": "2026-07-05T02:43:12.359286+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Silver-Health_CIS__76a3c48a23d3.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -968,13 +1121,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Silver-Health_CIS__76a3c48a23d3.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Silver-Health_CIS__76a3c48a23d3.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+        "source_page_artifact_sha256": "bf801638485acccb583223e57a59c5227353114051aebc2315c070d9157f5edb",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-CIS/Silver-Health_CIS.pdf",
+        "etag": "\"0x8DE608EB2CB84CE\"",
+        "last_modified": "Sat, 31 Jan 2026 06:05:13 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_12bb29b31199ced51db4",
         "confidence_score": 75,
-        "checked_at": "2026-06-07T15:35:44.415988+00:00",
+        "checked_at": "2026-07-05T02:43:12.359286+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Silver-Health_CIS__76a3c48a23d3.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/arogya-sanjeevani/arogya-sanjeevani-brochure.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1009,7 +1171,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:44.670057+00:00",
+      "last_checked_at": "2026-07-05T02:43:13.579865+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\AROGYA-SANJEEVANI-brochure__fa7fb9f0755f.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1022,13 +1184,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\AROGYA-SANJEEVANI-brochure__fa7fb9f0755f.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/AROGYA-SANJEEVANI-brochure__fa7fb9f0755f.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+        "source_page_artifact_sha256": "d9984d73f877bffcfcf91c23d9dca77b03e0e8be50df64e433f79d8b987d416d",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Arogya-Sanjeevani/AROGYA-SANJEEVANI-brochure.pdf",
+        "etag": "\"0x8DE706B9ACD937F\"",
+        "last_modified": "Fri, 20 Feb 2026 10:34:19 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_e050608a5aa245c4be19",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:44.670057+00:00",
+        "checked_at": "2026-07-05T02:43:13.579865+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/AROGYA-SANJEEVANI-brochure__fa7fb9f0755f.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-guard/health-guard-brochure-print.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1063,7 +1234,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:45.465032+00:00",
+      "last_checked_at": "2026-07-05T02:43:15.057590+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\Health-Guard-Brochure-print__a413bc85b441.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1076,13 +1247,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\Health-Guard-Brochure-print__a413bc85b441.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/Health-Guard-Brochure-print__a413bc85b441.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+        "source_page_artifact_sha256": "30ae2a3624de4f3c0c9d6a9951eef4595d4561fb76b2b7991b2c140618af2751",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-guard/Health-Guard-Brochure-print.pdf",
+        "etag": "\"0x8DE7503578B3329\"",
+        "last_modified": "Thu, 26 Feb 2026 06:50:34 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_af54d9d78198cbf514d8",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:45.465032+00:00",
+        "checked_at": "2026-07-05T02:43:15.057590+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/Health-Guard-Brochure-print__a413bc85b441.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/family-health-care-policy/family_health_care_brochure_silver.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1117,7 +1297,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:45.313112+00:00",
+      "last_checked_at": "2026-07-05T02:43:14.711186+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\Family_health_care_brochure_silver__fe75ad87d621.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1130,13 +1310,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\Family_health_care_brochure_silver__fe75ad87d621.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/Family_health_care_brochure_silver__fe75ad87d621.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+        "source_page_artifact_sha256": "c255eda1a94850e8ad368d0b78978be3569dcfe6b6e6d99e5377a2fbc11aaa91",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/family-health-care-policy/Family_health_care_brochure_silver.pdf",
+        "etag": "\"0x8DE70710BC49856\"",
+        "last_modified": "Fri, 20 Feb 2026 11:13:16 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_17dc422dda12c3d4c3fb",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:45.313112+00:00",
+        "checked_at": "2026-07-05T02:43:14.711186+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/Family_health_care_brochure_silver__fe75ad87d621.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/global-health-care/global-health-care-brochure-final.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1171,7 +1360,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:46.677566+00:00",
+      "last_checked_at": "2026-07-05T02:43:18.701329+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\Global-Health-Care-Brochure-Final__52672fc96b65.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1184,13 +1373,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\Global-Health-Care-Brochure-Final__52672fc96b65.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/Global-Health-Care-Brochure-Final__52672fc96b65.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+        "source_page_artifact_sha256": "28e646fba6b4c0f62e5c1a56d3414cc913749128edece177cfad451116223cee",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Global-Health-Care/Global-Health-Care-Brochure-Final.pdf",
+        "etag": "\"0x8DE706CDC8E3A80\"",
+        "last_modified": "Fri, 20 Feb 2026 10:43:19 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_66682640e57a4c56164a",
         "confidence_score": 75,
-        "checked_at": "2026-06-07T15:35:46.677566+00:00",
+        "checked_at": "2026-07-05T02:43:18.701329+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/Global-Health-Care-Brochure-Final__52672fc96b65.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/silver-health/silver_health.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1225,7 +1423,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:47.906783+00:00",
+      "last_checked_at": "2026-07-05T02:43:20.594038+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\silver_health__e85651b54f85.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1238,13 +1436,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\silver_health__e85651b54f85.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/silver_health__e85651b54f85.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+        "source_page_artifact_sha256": "bf801638485acccb583223e57a59c5227353114051aebc2315c070d9157f5edb",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/silver-health/silver_health.pdf",
+        "etag": "\"0x8DE2DB26CD0ACFA\"",
+        "last_modified": "Thu, 27 Nov 2025 12:42:28 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_e82d0504670b017f2c6b",
         "confidence_score": 75,
-        "checked_at": "2026-06-07T15:35:47.906783+00:00",
+        "checked_at": "2026-07-05T02:43:20.594038+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/silver_health__e85651b54f85.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/my-health-care-plan/my-health-care-plan-1-brochure.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1279,7 +1486,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:47.270677+00:00",
+      "last_checked_at": "2026-07-05T02:43:18.989932+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\My-Health-Care-plan-1-brochure__65908e2fab54.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1292,13 +1499,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\My-Health-Care-plan-1-brochure__65908e2fab54.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/My-Health-Care-plan-1-brochure__65908e2fab54.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+        "source_page_artifact_sha256": "5c76599eed2b4c7e629c0b43e1bfa0b4129cfd784c5c3019a1683cb241eebc7c",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/My-Health-Care-Plan/My-Health-Care-plan-1-brochure.pdf",
+        "etag": "\"0x8DE75020F6AE63C\"",
+        "last_modified": "Thu, 26 Feb 2026 06:41:24 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_08b110648eedbc78b949",
         "confidence_score": 75,
-        "checked_at": "2026-06-07T15:35:47.270677+00:00",
+        "checked_at": "2026-07-05T02:43:18.989932+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/My-Health-Care-plan-1-brochure__65908e2fab54.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/product-wise-specific-list-of-excluded-items.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1333,7 +1549,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:49.234425+00:00",
+      "last_checked_at": "2026-07-05T02:43:23.054163+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\exclusion_annexure\\PRODUCT-WISE-SPECIFIC-LIST-OF-EXCLUDED-ITEMS__10f0a6fdd674.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1346,13 +1562,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\exclusion_annexure\\PRODUCT-WISE-SPECIFIC-LIST-OF-EXCLUDED-ITEMS__10f0a6fdd674.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/exclusion_annexure/PRODUCT-WISE-SPECIFIC-LIST-OF-EXCLUDED-ITEMS__10f0a6fdd674.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_.html",
+        "source_page_artifact_sha256": "9addb6a01346be2cd25d63ee3e600c2c53ebe137254636f3def3acc036f23d04",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/PRODUCT-WISE-SPECIFIC-LIST-OF-EXCLUDED-ITEMS.pdf",
+        "etag": "\"0x8DD50FFED6D8945\"",
+        "last_modified": "Wed, 19 Feb 2025 16:10:28 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_80783e4662121bc3e680",
         "confidence_score": 85,
-        "checked_at": "2026-06-07T15:35:49.234425+00:00",
+        "checked_at": "2026-07-05T02:43:23.054163+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/exclusion_annexure/PRODUCT-WISE-SPECIFIC-LIST-OF-EXCLUDED-ITEMS__10f0a6fdd674.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/claim/reimbursementforma+b2013-editable.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1387,7 +1612,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:49.313415+00:00",
+      "last_checked_at": "2026-07-05T02:43:23.407040+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\claim_form\\ReimbursementFormA_B2013-editable__0dc3c1854ea7.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1400,13 +1625,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\claim_form\\ReimbursementFormA_B2013-editable__0dc3c1854ea7.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/claim_form/ReimbursementFormA_B2013-editable__0dc3c1854ea7.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+        "source_page_artifact_sha256": "d9984d73f877bffcfcf91c23d9dca77b03e0e8be50df64e433f79d8b987d416d",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/claim/ReimbursementFormA+B2013-editable.pdf",
+        "etag": "\"0x8DE8EE7933A78BC\"",
+        "last_modified": "Tue, 31 Mar 2026 05:37:19 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_9e0a41cff62fa237e3a0",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:49.313415+00:00",
+        "checked_at": "2026-07-05T02:43:23.407040+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/claim_form/ReimbursementFormA_B2013-editable__0dc3c1854ea7.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/arogya-sanjeevani/arogya-sanjeevani-pf.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1441,7 +1675,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:49.757818+00:00",
+      "last_checked_at": "2026-07-05T02:43:24.392545+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\Arogya-Sanjeevani-PF__3c77c82d93f0.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1454,13 +1688,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\Arogya-Sanjeevani-PF__3c77c82d93f0.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/Arogya-Sanjeevani-PF__3c77c82d93f0.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+        "source_page_artifact_sha256": "d9984d73f877bffcfcf91c23d9dca77b03e0e8be50df64e433f79d8b987d416d",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Arogya-Sanjeevani/Arogya-Sanjeevani-PF.pdf",
+        "etag": "\"0x8DE072A3F8C0071\"",
+        "last_modified": "Thu, 09 Oct 2025 11:51:56 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_e6f6af1a94938f5e9e26",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:49.757818+00:00",
+        "checked_at": "2026-07-05T02:43:24.392545+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/Arogya-Sanjeevani-PF__3c77c82d93f0.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/family-health-care-policy/family-health-care-pf-gold.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1495,7 +1738,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:49.965796+00:00",
+      "last_checked_at": "2026-07-05T02:43:24.967981+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\family-health-care-PF-gold__f382bd39301b.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1508,13 +1751,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\family-health-care-PF-gold__f382bd39301b.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/family-health-care-PF-gold__f382bd39301b.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+        "source_page_artifact_sha256": "c255eda1a94850e8ad368d0b78978be3569dcfe6b6e6d99e5377a2fbc11aaa91",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/family-health-care-policy/family-health-care-PF-gold.pdf",
+        "etag": "\"0x8DE072C2B639E0A\"",
+        "last_modified": "Thu, 09 Oct 2025 12:05:42 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_8bfaed7f01821b2ccce3",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:49.965796+00:00",
+        "checked_at": "2026-07-05T02:43:24.967981+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/family-health-care-PF-gold__f382bd39301b.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-guard/health-guard-proposal-form-print.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1549,7 +1801,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:50.747056+00:00",
+      "last_checked_at": "2026-07-05T02:43:26.004164+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\Health-Guard-Proposal-Form-print__89c82e879744.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1562,13 +1814,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\Health-Guard-Proposal-Form-print__89c82e879744.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/Health-Guard-Proposal-Form-print__89c82e879744.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+        "source_page_artifact_sha256": "30ae2a3624de4f3c0c9d6a9951eef4595d4561fb76b2b7991b2c140618af2751",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-guard/Health-Guard-Proposal-Form-print.pdf",
+        "etag": "\"0x8DE75040E87D664\"",
+        "last_modified": "Thu, 26 Feb 2026 06:55:41 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_9a0c877a23b83507c4c1",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:50.747056+00:00",
+        "checked_at": "2026-07-05T02:43:26.004164+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/Health-Guard-Proposal-Form-print__89c82e879744.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/global-health-care/ghc-proposal-form.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1603,7 +1864,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:50.982467+00:00",
+      "last_checked_at": "2026-07-05T02:43:26.006552+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\GHC-Proposal-Form__09b294f5ac68.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1616,13 +1877,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\GHC-Proposal-Form__09b294f5ac68.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/GHC-Proposal-Form__09b294f5ac68.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+        "source_page_artifact_sha256": "28e646fba6b4c0f62e5c1a56d3414cc913749128edece177cfad451116223cee",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Global-Health-Care/GHC-Proposal-Form.pdf",
+        "etag": "\"0x8DE072C9ED6006A\"",
+        "last_modified": "Thu, 09 Oct 2025 12:08:55 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_955be49da89635400e86",
         "confidence_score": 75,
-        "checked_at": "2026-06-07T15:35:50.982467+00:00",
+        "checked_at": "2026-07-05T02:43:26.006552+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/GHC-Proposal-Form__09b294f5ac68.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/my-health-care-plan/my-healthcare-plan-pf-offline.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1657,7 +1927,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:51.185794+00:00",
+      "last_checked_at": "2026-07-05T02:43:26.336627+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\My-Healthcare-Plan-PF-offline__d5cda2250315.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1670,13 +1940,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\My-Healthcare-Plan-PF-offline__d5cda2250315.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/My-Healthcare-Plan-PF-offline__d5cda2250315.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+        "source_page_artifact_sha256": "5c76599eed2b4c7e629c0b43e1bfa0b4129cfd784c5c3019a1683cb241eebc7c",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/My-Health-Care-Plan/My-Healthcare-Plan-PF-offline.pdf",
+        "etag": "\"0x8DE75020E192E1C\"",
+        "last_modified": "Thu, 26 Feb 2026 06:41:22 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_79aacc64d963fc85d237",
         "confidence_score": 75,
-        "checked_at": "2026-06-07T15:35:51.185794+00:00",
+        "checked_at": "2026-07-05T02:43:26.336627+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/My-Healthcare-Plan-PF-offline__d5cda2250315.pdf"
     },
     "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/silver-health/silver_health_pf.pdf": {
       "insurer_id": "bajaj_allianz_general",
@@ -1711,7 +1990,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:51.390045+00:00",
+      "last_checked_at": "2026-07-05T02:43:27.899129+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\Silver_health_pf__4da32e997779.pdf",
       "last_unchanged_check": {
         "insurer_id": "bajaj_allianz_general",
@@ -1724,13 +2003,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\Silver_health_pf__4da32e997779.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/Silver_health_pf__4da32e997779.pdf",
         "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+        "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+        "source_page_artifact_sha256": "bf801638485acccb583223e57a59c5227353114051aebc2315c070d9157f5edb",
+        "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/silver-health/Silver_health_pf.pdf",
+        "etag": "\"0x8DE072C7850E48C\"",
+        "last_modified": "Thu, 09 Oct 2025 12:07:51 GMT",
+        "content_disposition": "inline",
+        "observation_id": "pdfobs_cbc77c81181e79d5f8e5",
         "confidence_score": 75,
-        "checked_at": "2026-06-07T15:35:51.390045+00:00",
+        "checked_at": "2026-07-05T02:43:27.899129+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/Silver_health_pf__4da32e997779.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/hdfc-life-income-benefit-on-accidental-disability-rider-non-linked.pdf": {
       "insurer_id": "hdfc_life",
@@ -1765,7 +2053,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:51.824995+00:00",
+      "last_checked_at": "2026-07-05T02:43:28.630598+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Income-Benefit-on-accidental-disability-Rider-Non-Linked__0bed3f904efb.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -1778,13 +2066,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Income-Benefit-on-accidental-disability-Rider-Non-Linked__0bed3f904efb.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Income-Benefit-on-accidental-disability-Rider-Non-Linked__0bed3f904efb.pdf",
         "source_page_url": "https://www.hdfclife.com/term-insurance-plans",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans.html",
+        "source_page_artifact_sha256": "fcc1b7fda07adc6c0aaf70ced1229e63fbad5b806919f352f4eae88f62ab3d67",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/HDFC-Life-Income-Benefit-on-accidental-disability-Rider-Non-Linked.pdf",
+        "etag": "\"36f34-63dd5e53443c0-gzip\"",
+        "last_modified": "Tue, 02 Sep 2025 18:45:43 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_7efd4d8cfe81f95d1f92",
         "confidence_score": 90,
-        "checked_at": "2026-06-07T15:35:51.824995+00:00",
+        "checked_at": "2026-07-05T02:43:28.630598+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Income-Benefit-on-accidental-disability-Rider-Non-Linked__0bed3f904efb.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/hdfc-waiver-of-premium-rider.pdf": {
       "insurer_id": "hdfc_life",
@@ -1819,7 +2116,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:52.103662+00:00",
+      "last_checked_at": "2026-07-05T02:43:28.927684+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Waiver-of-Premium-Rider__cbac798c8597.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -1832,13 +2129,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Waiver-of-Premium-Rider__cbac798c8597.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Waiver-of-Premium-Rider__cbac798c8597.pdf",
         "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-elite-plus",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-elite-plus.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-elite-plus.html",
+        "source_page_artifact_sha256": "af759a92c9b1ff97956b3b4258635a24df2a2eeae38b3632c9e9dfd55a890c6a",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/HDFC-Waiver-of-Premium-Rider.pdf",
+        "etag": "\"c106c-629b18ebd8840-gzip\"",
+        "last_modified": "Fri, 20 Dec 2024 11:00:41 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_68c669b97d3c99317581",
         "confidence_score": 90,
-        "checked_at": "2026-06-07T15:35:52.103662+00:00",
+        "checked_at": "2026-07-05T02:43:28.927684+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Waiver-of-Premium-Rider__cbac798c8597.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/hdfc-life-critical-illness-plus-rider.pdf": {
       "insurer_id": "hdfc_life",
@@ -1873,7 +2179,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:52.226370+00:00",
+      "last_checked_at": "2026-07-05T02:43:29.123336+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Critical-Illness-Plus-Rider__54b0b2b18dd9.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -1886,13 +2192,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Critical-Illness-Plus-Rider__54b0b2b18dd9.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Critical-Illness-Plus-Rider__54b0b2b18dd9.pdf",
         "source_page_url": "https://www.hdfclife.com/term-insurance-plans",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans.html",
+        "source_page_artifact_sha256": "fcc1b7fda07adc6c0aaf70ced1229e63fbad5b806919f352f4eae88f62ab3d67",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/HDFC-Life-Critical-Illness-Plus-Rider.pdf",
+        "etag": "\"a5a35-5cd0b355a54c0-gzip\"",
+        "last_modified": "Tue, 28 Sep 2021 09:55:07 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_77109d697622d2aaf722",
         "confidence_score": 85,
-        "checked_at": "2026-06-07T15:35:52.226370+00:00",
+        "checked_at": "2026-07-05T02:43:29.123336+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Critical-Illness-Plus-Rider__54b0b2b18dd9.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/hdfc-life-protect-plus-rider-non-linked.pdf": {
       "insurer_id": "hdfc_life",
@@ -1927,7 +2242,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:52.345183+00:00",
+      "last_checked_at": "2026-07-05T02:43:31.537398+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Protect-Plus-Rider-Non-Linked__4f4982cf0033.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -1940,13 +2255,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Protect-Plus-Rider-Non-Linked__4f4982cf0033.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Protect-Plus-Rider-Non-Linked__4f4982cf0033.pdf",
         "source_page_url": "https://www.hdfclife.com/term-insurance-plans",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans.html",
+        "source_page_artifact_sha256": "fcc1b7fda07adc6c0aaf70ced1229e63fbad5b806919f352f4eae88f62ab3d67",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/HDFC-Life-Protect-Plus-Rider-Non-Linked.pdf",
+        "etag": "\"42d1c-628463eb2f040-gzip\"",
+        "last_modified": "Mon, 02 Dec 2024 09:33:45 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_94467843effd2a9a7358",
         "confidence_score": 85,
-        "checked_at": "2026-06-07T15:35:52.345183+00:00",
+        "checked_at": "2026-07-05T02:43:31.537398+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Protect-Plus-Rider-Non-Linked__4f4982cf0033.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/hdfc-life-livewell-rider-non-linked-brochure.pdf": {
       "insurer_id": "hdfc_life",
@@ -1981,7 +2305,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:53.109076+00:00",
+      "last_checked_at": "2026-07-05T02:43:32.668129+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Livewell-Rider-Non-Linked-Brochure__ea9a808b677a.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -1994,13 +2318,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Livewell-Rider-Non-Linked-Brochure__ea9a808b677a.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Livewell-Rider-Non-Linked-Brochure__ea9a808b677a.pdf",
         "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-supreme-plus",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-supreme-plus.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-supreme-plus.html",
+        "source_page_artifact_sha256": "c204891a7766137f71fc1216e625c92d8f8777896a77d8edf1ecf69130c5a909",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/HDFC-Life-Livewell-Rider-Non-Linked-Brochure.pdf",
+        "etag": "\"48736-6388b1b2ff000-gzip\"",
+        "last_modified": "Fri, 27 Jun 2025 10:26:08 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_9ea110140279f3ce1b6f",
         "confidence_score": 85,
-        "checked_at": "2026-06-07T15:35:53.109076+00:00",
+        "checked_at": "2026-07-05T02:43:32.668129+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Livewell-Rider-Non-Linked-Brochure__ea9a808b677a.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/mc062124237-v01-hdfc-life-click-2-protect-life-retail-brochure.pdf": {
       "insurer_id": "hdfc_life",
@@ -2035,7 +2368,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:53.319664+00:00",
+      "last_checked_at": "2026-07-05T02:43:32.672311+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\MC062124237-V01-HDFC-Life-Click-2-Protect-Life-Retail-Brochure__82ceecb7e8f9.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -2048,13 +2381,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\MC062124237-V01-HDFC-Life-Click-2-Protect-Life-Retail-Brochure__82ceecb7e8f9.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/MC062124237-V01-HDFC-Life-Click-2-Protect-Life-Retail-Brochure__82ceecb7e8f9.pdf",
         "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-life",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-life.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-life.html",
+        "source_page_artifact_sha256": "6f5c8ec0c1dd71045bd51cadab128865f971fa1bc4bced1a189a99d1a1be0a45",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/MC062124237-V01-HDFC-Life-Click-2-Protect-Life-Retail-Brochure.pdf",
+        "etag": "\"4924e-6453408695280-gzip\"",
+        "last_modified": "Fri, 05 Dec 2025 13:00:42 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_d95bbd1da9ca702eed74",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:53.319664+00:00",
+        "checked_at": "2026-07-05T02:43:32.672311+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/MC062124237-V01-HDFC-Life-Click-2-Protect-Life-Retail-Brochure__82ceecb7e8f9.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/hdfc-life-health-plus-rider-non-linked-retail-brochure.pdf": {
       "insurer_id": "hdfc_life",
@@ -2089,7 +2431,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:53.063371+00:00",
+      "last_checked_at": "2026-07-05T02:43:32.664985+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Health-Plus-Rider-Non-Linked-Retail-Brochure__d7e855358300.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -2102,13 +2444,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Health-Plus-Rider-Non-Linked-Retail-Brochure__d7e855358300.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Health-Plus-Rider-Non-Linked-Retail-Brochure__d7e855358300.pdf",
         "source_page_url": "https://www.hdfclife.com/term-insurance-plans",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans.html",
+        "source_page_artifact_sha256": "fcc1b7fda07adc6c0aaf70ced1229e63fbad5b806919f352f4eae88f62ab3d67",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/HDFC-Life-Health-Plus-Rider-Non-Linked-Retail-Brochure.pdf",
+        "etag": "\"1cc446-62846470b2b40-gzip\"",
+        "last_modified": "Mon, 02 Dec 2024 09:36:05 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_882671e7e8dfc928dcd4",
         "confidence_score": 85,
-        "checked_at": "2026-06-07T15:35:53.063371+00:00",
+        "checked_at": "2026-07-05T02:43:32.664985+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Health-Plus-Rider-Non-Linked-Retail-Brochure__d7e855358300.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/click-2-protect-elite-plus-brochure.pdf": {
       "insurer_id": "hdfc_life",
@@ -2143,7 +2494,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:53.728366+00:00",
+      "last_checked_at": "2026-07-05T02:43:34.811732+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\click-2-protect-elite-plus-brochure__66aa5a40083e.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -2156,13 +2507,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\click-2-protect-elite-plus-brochure__66aa5a40083e.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/click-2-protect-elite-plus-brochure__66aa5a40083e.pdf",
         "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-elite-plus",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-elite-plus.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-elite-plus.html",
+        "source_page_artifact_sha256": "af759a92c9b1ff97956b3b4258635a24df2a2eeae38b3632c9e9dfd55a890c6a",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/click-2-protect-elite-plus-brochure.pdf",
+        "etag": "\"81165-62ea1b4ab4700-gzip\"",
+        "last_modified": "Fri, 21 Feb 2025 07:11:56 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_5d26ef4273c479bdfc05",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:53.728366+00:00",
+        "checked_at": "2026-07-05T02:43:34.811732+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/click-2-protect-elite-plus-brochure__66aa5a40083e.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/click-2-protect-ultimate-brochure.pdf": {
       "insurer_id": "hdfc_life",
@@ -2197,7 +2557,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:54.213548+00:00",
+      "last_checked_at": "2026-07-05T02:43:35.176618+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\Click-2-Protect-Ultimate-Brochure__94e6dac197b3.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -2210,13 +2570,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\Click-2-Protect-Ultimate-Brochure__94e6dac197b3.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/Click-2-Protect-Ultimate-Brochure__94e6dac197b3.pdf",
         "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-ultimate",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-ultimate.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-ultimate.html",
+        "source_page_artifact_sha256": "423478a20118b0135525e3cc2301652898a39da55251c2066142a7ff21c1c534",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/Click-2-Protect-Ultimate-Brochure.pdf",
+        "etag": "\"1dae61-62ceb9a2f6d00-gzip\"",
+        "last_modified": "Thu, 30 Jan 2025 12:31:16 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_d5bde45f65aad36baf21",
         "confidence_score": 70,
-        "checked_at": "2026-06-07T15:35:54.213548+00:00",
+        "checked_at": "2026-07-05T02:43:35.176618+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/Click-2-Protect-Ultimate-Brochure__94e6dac197b3.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/term-insurance-plan/click-2-protect-life/hdfc-life-click-2-protect-life-101n139v02-brochure.pdf": {
       "insurer_id": "hdfc_life",
@@ -2251,7 +2620,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:54.510118+00:00",
+      "last_checked_at": "2026-07-05T02:43:35.521813+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Click-2-Protect-Life-101N139V02-Brochure__c04baeba0303.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -2264,13 +2633,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Click-2-Protect-Life-101N139V02-Brochure__c04baeba0303.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Click-2-Protect-Life-101N139V02-Brochure__c04baeba0303.pdf",
         "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-life",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-life.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-life.html",
+        "source_page_artifact_sha256": "6f5c8ec0c1dd71045bd51cadab128865f971fa1bc4bced1a189a99d1a1be0a45",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/term-insurance-plan/click-2-protect-life/HDFC-Life-Click-2-Protect-Life-101N139V02-Brochure.pdf",
+        "etag": "\"4bd85-5d2b092f28e40-gzip\"",
+        "last_modified": "Thu, 09 Dec 2021 06:18:25 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_c928fa802b95a2180176",
         "confidence_score": 70,
-        "checked_at": "2026-06-07T15:35:54.510118+00:00",
+        "checked_at": "2026-07-05T02:43:35.521813+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Click-2-Protect-Life-101N139V02-Brochure__c04baeba0303.pdf"
     },
     "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/customer-services/policy-servicing-pdf/group-traditional-form/group-funding-claims-form.pdf": {
       "insurer_id": "hdfc_life",
@@ -2305,7 +2683,7 @@
           "version_status": "migrated_existing"
         }
       ],
-      "last_checked_at": "2026-06-07T15:35:54.642620+00:00",
+      "last_checked_at": "2026-07-05T02:43:37.262706+00:00",
       "current_local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\claim_form\\Group-Funding-Claims-Form__5d2579960b93.pdf",
       "last_unchanged_check": {
         "insurer_id": "hdfc_life",
@@ -2318,13 +2696,22 @@
         "content_type": "application/pdf",
         "http_status": 200,
         "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\claim_form\\Group-Funding-Claims-Form__5d2579960b93.pdf",
+        "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/claim_form/Group-Funding-Claims-Form__5d2579960b93.pdf",
         "source_page_url": "https://www.hdfclife.com/group-insurance-plans/customer-service",
         "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_group-insurance-plans_customer-service.html",
+        "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_group-insurance-plans_customer-service.html",
+        "source_page_artifact_sha256": "198624873d20096aaac488c517fc440bf11d62d42de9bc7a1e7cead45f591d48",
+        "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/customer-services/policy-servicing-pdf/Group-Traditional-Form/Group-Funding-Claims-Form.pdf",
+        "etag": "\"20b19-5c93383d76600-gzip\"",
+        "last_modified": "Tue, 10 Aug 2021 12:19:36 GMT",
+        "content_disposition": null,
+        "observation_id": "pdfobs_39855f1da456a95f8bdd",
         "confidence_score": 80,
-        "checked_at": "2026-06-07T15:35:54.642620+00:00",
+        "checked_at": "2026-07-05T02:43:37.262706+00:00",
         "downloaded_at": null,
         "version_status": "unchanged"
-      }
+      },
+      "current_raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/claim_form/Group-Funding-Claims-Form__5d2579960b93.pdf"
     }
   },
   "by_hash": {
@@ -2339,10 +2726,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\customer_information_sheet\\customer-information-sheet__ef5a27e067e0.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/customer_information_sheet/customer-information-sheet__ef5a27e067e0.pdf",
       "source_page_url": "http://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMax=activ-one-max",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+      "source_page_artifact_path": "archive/raw_html/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+      "source_page_artifact_sha256": "ec6669a96d8636e5a69fe98bf4c07fdf9c67fb22147850fe0d9ad911f4944b00",
+      "final_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/MAX/product-information/customer-information-sheet.pdf",
+      "etag": "W/\"92224-198cc7eabdf\"",
+      "last_modified": "Thu, 21 Aug 2025 11:58:30 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_963f8b74ab24daa528d7",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:34:10.684113+00:00",
+      "checked_at": "2026-07-05T02:42:37.278955+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2357,10 +2752,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\customer_information_sheet\\customer-information-sheet__578244d7e997.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/customer_information_sheet/customer-information-sheet__578244d7e997.pdf",
       "source_page_url": "http://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMaxplus=activ-one-max-plus",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one_activonemaxplus_activ-one-max-plus.html",
+      "source_page_artifact_path": "archive/raw_html/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemaxplus_activ-one-max-plus.html",
+      "source_page_artifact_sha256": "1a658c66f0e524ebc585758ee92af3ad6e10241e8fb8566b010ea2c23dd9ffbf",
+      "final_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/MAXplus/product-information/customer-information-sheet.pdf",
+      "etag": "W/\"91f33-198cc7eac0e\"",
+      "last_modified": "Thu, 21 Aug 2025 11:58:30 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_3570607e7b9ab68496c1",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:34:13.430007+00:00",
+      "checked_at": "2026-07-05T02:42:42.855671+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2375,10 +2778,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\brochure\\ABSLI_Super_Term_Plan_V01_Brochure_8b9b57ef0d__00682bb9b8aa.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/brochure/ABSLI_Super_Term_Plan_V01_Brochure_8b9b57ef0d__00682bb9b8aa.pdf",
       "source_page_url": "https://lifeinsurance.adityabirlacapital.com/",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\lifeinsurance.adityabirlacapital.com_.html",
+      "source_page_artifact_path": "archive/raw_html/aditya_birla_health/lifeinsurance.adityabirlacapital.com_.html",
+      "source_page_artifact_sha256": "9612aa98640ef28dde64ad2e7ad2e9b72d24e672c2b3b13f847b2b9cc68bae48",
+      "final_url": "https://lifeinsurance.adityabirlacapital.com/uploads/ABSLI_Super_Term_Plan_V01_Brochure_8b9b57ef0d.pdf",
+      "etag": "\"6852bcd0-2b52c3\"",
+      "last_modified": "Wed, 18 Jun 2025 13:19:12 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_a437b531ce6c9fe679a3",
       "confidence_score": 35,
-      "checked_at": "2026-06-07T15:34:18.098807+00:00",
+      "checked_at": "2026-07-05T02:42:46.394285+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2393,10 +2804,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\prospectus\\prospectus__8923d6457d36.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/prospectus/prospectus__8923d6457d36.pdf",
       "source_page_url": "http://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMax=activ-one-max",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+      "source_page_artifact_path": "archive/raw_html/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+      "source_page_artifact_sha256": "ec6669a96d8636e5a69fe98bf4c07fdf9c67fb22147850fe0d9ad911f4944b00",
+      "final_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/prospectus.pdf",
+      "etag": "W/\"6f17b-198cc7eae8e\"",
+      "last_modified": "Thu, 21 Aug 2025 11:58:31 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_cc1908685cbde6d34d97",
       "confidence_score": 75,
-      "checked_at": "2026-06-07T15:34:29.953085+00:00",
+      "checked_at": "2026-07-05T02:42:51.907615+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2411,10 +2830,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\policy_wording\\policy-document__2bff34649e0e.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/policy_wording/policy-document__2bff34649e0e.pdf",
       "source_page_url": "http://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMax=activ-one-max",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+      "source_page_artifact_path": "archive/raw_html/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemax_activ-one-max.html",
+      "source_page_artifact_sha256": "ec6669a96d8636e5a69fe98bf4c07fdf9c67fb22147850fe0d9ad911f4944b00",
+      "final_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/MAX/product-information/policy-document.pdf",
+      "etag": "W/\"c84d89-19e8202208d\"",
+      "last_modified": "Mon, 01 Jun 2026 07:07:18 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_3322d59e663620268d31",
       "confidence_score": 85,
-      "checked_at": "2026-06-07T15:34:10.683186+00:00",
+      "checked_at": "2026-07-05T02:42:37.278008+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2429,10 +2856,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\aditya_birla_health\\policy_wording\\policy-document__38bb879030d9.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/aditya_birla_health/policy_wording/policy-document__38bb879030d9.pdf",
       "source_page_url": "http://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneMaxplus=activ-one-max-plus",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\aditya_birla_health\\www.adityabirlacapital.com_healthinsurance_activ-one_activonemaxplus_activ-one-max-plus.html",
+      "source_page_artifact_path": "archive/raw_html/aditya_birla_health/www.adityabirlacapital.com_healthinsurance_activ-one_activonemaxplus_activ-one-max-plus.html",
+      "source_page_artifact_sha256": "1a658c66f0e524ebc585758ee92af3ad6e10241e8fb8566b010ea2c23dd9ffbf",
+      "final_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/MAXplus/product-information/policy-document.pdf",
+      "etag": "W/\"c816d7-19e82022168\"",
+      "last_modified": "Mon, 01 Jun 2026 07:07:18 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_c2e84c7d01d31e8fa88b",
       "confidence_score": 85,
-      "checked_at": "2026-06-07T15:34:10.683731+00:00",
+      "checked_at": "2026-07-05T02:42:37.278407+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2447,10 +2882,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Arogya-Sanjeevani-Policy_PW__2f558679344c.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Arogya-Sanjeevani-Policy_PW__2f558679344c.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+      "source_page_artifact_sha256": "d9984d73f877bffcfcf91c23d9dca77b03e0e8be50df64e433f79d8b987d416d",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/Arogya-Sanjeevani-Policy_PW.pdf",
+      "etag": "\"0x8DE5FF6427BF9DA\"",
+      "last_modified": "Fri, 30 Jan 2026 11:54:01 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_68c5d3cf72b8e66d1972",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:17.565860+00:00",
+      "checked_at": "2026-07-05T02:42:56.328233+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2465,10 +2908,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Family-Health-Care-Silver-PW__d9b401b6e704.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Family-Health-Care-Silver-PW__d9b401b6e704.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+      "source_page_artifact_sha256": "c255eda1a94850e8ad368d0b78978be3569dcfe6b6e6d99e5377a2fbc11aaa91",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/Family-Health-Care-Silver-PW.pdf",
+      "etag": "\"0x8DE5F19F4F4E3D3\"",
+      "last_modified": "Thu, 29 Jan 2026 09:37:02 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_05a585b8145f62708f3c",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:18.195738+00:00",
+      "checked_at": "2026-07-05T02:42:57.593015+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2483,10 +2934,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Global-Health-Care_PW__7bf5708dde3c.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Global-Health-Care_PW__7bf5708dde3c.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+      "source_page_artifact_sha256": "28e646fba6b4c0f62e5c1a56d3414cc913749128edece177cfad451116223cee",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/Global-Health-Care_PW.pdf",
+      "etag": "\"0x8DE5F192EED3C52\"",
+      "last_modified": "Thu, 29 Jan 2026 09:31:29 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_47fec20622fd369c781f",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:18.559062+00:00",
+      "checked_at": "2026-07-05T02:42:59.218325+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2501,10 +2960,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Health-Guard_PW__193417d10fda.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Health-Guard_PW__193417d10fda.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+      "source_page_artifact_sha256": "30ae2a3624de4f3c0c9d6a9951eef4595d4561fb76b2b7991b2c140618af2751",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/Health-Guard_PW.pdf",
+      "etag": "\"0x8DE75B90C9AE0A5\"",
+      "last_modified": "Fri, 27 Feb 2026 04:31:17 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_0233344450d392bd4e82",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:18.799837+00:00",
+      "checked_at": "2026-07-05T02:43:01.079154+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2519,10 +2986,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\My-Health-Care-Plan1-PW__9479fe6f6ce7.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__9479fe6f6ce7.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+      "source_page_artifact_sha256": "5c76599eed2b4c7e629c0b43e1bfa0b4129cfd784c5c3019a1683cb241eebc7c",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+      "etag": "\"0x8DE994E6935252D\"",
+      "last_modified": "Mon, 13 Apr 2026 11:18:38 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_5f30aafa8ec0f6fbbc09",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:19.257793+00:00",
+      "checked_at": "2026-07-05T02:43:02.237320+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2537,10 +3012,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\policy_wording\\Silver-Health_PW__65ba0c2e260c.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/Silver-Health_PW__65ba0c2e260c.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+      "source_page_artifact_sha256": "bf801638485acccb583223e57a59c5227353114051aebc2315c070d9157f5edb",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/Silver-Health_PW.pdf",
+      "etag": "\"0x8DE5F05AC33A586\"",
+      "last_modified": "Thu, 29 Jan 2026 07:11:50 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_33557c1ef86c6727ccc5",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:19.502656+00:00",
+      "checked_at": "2026-07-05T02:43:02.667073+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2555,10 +3038,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Arogya-Sanjeevani_CIS__15bd1d0fe549.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Arogya-Sanjeevani_CIS__15bd1d0fe549.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+      "source_page_artifact_sha256": "d9984d73f877bffcfcf91c23d9dca77b03e0e8be50df64e433f79d8b987d416d",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-CIS/Arogya-Sanjeevani_CIS.pdf",
+      "etag": "\"0x8DE5FF5FCB012AC\"",
+      "last_modified": "Fri, 30 Jan 2026 11:52:04 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_dfe33dd425547001a0fb",
       "confidence_score": 85,
-      "checked_at": "2026-06-07T15:35:20.040721+00:00",
+      "checked_at": "2026-07-05T02:43:04.275975+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2573,10 +3064,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Family-Health-Care_CIS__4e4866f55fcb.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Family-Health-Care_CIS__4e4866f55fcb.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+      "source_page_artifact_sha256": "c255eda1a94850e8ad368d0b78978be3569dcfe6b6e6d99e5377a2fbc11aaa91",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-CIS/Family-Health-Care_CIS.pdf",
+      "etag": "\"0x8DE5FF485B58FBC\"",
+      "last_modified": "Fri, 30 Jan 2026 11:41:35 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_b64b59c6482214ae5cc2",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:20.367898+00:00",
+      "checked_at": "2026-07-05T02:43:04.411682+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2591,10 +3090,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Health-Guard-CIS-print__b1b03949cf91.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Health-Guard-CIS-print__b1b03949cf91.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+      "source_page_artifact_sha256": "30ae2a3624de4f3c0c9d6a9951eef4595d4561fb76b2b7991b2c140618af2751",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-guard/Health-Guard-CIS-print.pdf",
+      "etag": "\"0x8DE7503A2764AEB\"",
+      "last_modified": "Thu, 26 Feb 2026 06:52:40 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_3eceefbf7b4118f9cd6c",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:21.260874+00:00",
+      "checked_at": "2026-07-05T02:43:06.750765+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2609,10 +3116,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Global-Health-Care_CIS__de44f7c7839e.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Global-Health-Care_CIS__de44f7c7839e.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+      "source_page_artifact_sha256": "28e646fba6b4c0f62e5c1a56d3414cc913749128edece177cfad451116223cee",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-CIS/Global-Health-Care_CIS.pdf",
+      "etag": "\"0x8DE5FF4E01CA343\"",
+      "last_modified": "Fri, 30 Jan 2026 11:44:06 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_aabe5f7a911b4ba16f84",
       "confidence_score": 75,
-      "checked_at": "2026-06-07T15:35:22.717379+00:00",
+      "checked_at": "2026-07-05T02:43:09.896144+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2627,10 +3142,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\My-Health-Care-Plan1_CIS__a7c2ae280065.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/My-Health-Care-Plan1_CIS__a7c2ae280065.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+      "source_page_artifact_sha256": "5c76599eed2b4c7e629c0b43e1bfa0b4129cfd784c5c3019a1683cb241eebc7c",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-CIS/My-Health-Care-Plan1_CIS.pdf",
+      "etag": "\"0x8DE750254B3C6BC\"",
+      "last_modified": "Thu, 26 Feb 2026 06:43:20 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_c300f705bda41590a2fb",
       "confidence_score": 75,
-      "checked_at": "2026-06-07T15:35:39.789835+00:00",
+      "checked_at": "2026-07-05T02:43:11.873810+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2645,10 +3168,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\customer_information_sheet\\Silver-Health_CIS__76a3c48a23d3.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/customer_information_sheet/Silver-Health_CIS__76a3c48a23d3.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+      "source_page_artifact_sha256": "bf801638485acccb583223e57a59c5227353114051aebc2315c070d9157f5edb",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-CIS/Silver-Health_CIS.pdf",
+      "etag": "\"0x8DE608EB2CB84CE\"",
+      "last_modified": "Sat, 31 Jan 2026 06:05:13 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_12bb29b31199ced51db4",
       "confidence_score": 75,
-      "checked_at": "2026-06-07T15:35:44.415988+00:00",
+      "checked_at": "2026-07-05T02:43:12.359286+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2663,10 +3194,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\AROGYA-SANJEEVANI-brochure__fa7fb9f0755f.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/AROGYA-SANJEEVANI-brochure__fa7fb9f0755f.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+      "source_page_artifact_sha256": "d9984d73f877bffcfcf91c23d9dca77b03e0e8be50df64e433f79d8b987d416d",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Arogya-Sanjeevani/AROGYA-SANJEEVANI-brochure.pdf",
+      "etag": "\"0x8DE706B9ACD937F\"",
+      "last_modified": "Fri, 20 Feb 2026 10:34:19 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_e050608a5aa245c4be19",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:44.670057+00:00",
+      "checked_at": "2026-07-05T02:43:13.579865+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2681,10 +3220,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\Health-Guard-Brochure-print__a413bc85b441.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/Health-Guard-Brochure-print__a413bc85b441.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+      "source_page_artifact_sha256": "30ae2a3624de4f3c0c9d6a9951eef4595d4561fb76b2b7991b2c140618af2751",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-guard/Health-Guard-Brochure-print.pdf",
+      "etag": "\"0x8DE7503578B3329\"",
+      "last_modified": "Thu, 26 Feb 2026 06:50:34 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_af54d9d78198cbf514d8",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:45.465032+00:00",
+      "checked_at": "2026-07-05T02:43:15.057590+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2699,10 +3246,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\Family_health_care_brochure_silver__fe75ad87d621.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/Family_health_care_brochure_silver__fe75ad87d621.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+      "source_page_artifact_sha256": "c255eda1a94850e8ad368d0b78978be3569dcfe6b6e6d99e5377a2fbc11aaa91",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/family-health-care-policy/Family_health_care_brochure_silver.pdf",
+      "etag": "\"0x8DE70710BC49856\"",
+      "last_modified": "Fri, 20 Feb 2026 11:13:16 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_17dc422dda12c3d4c3fb",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:45.313112+00:00",
+      "checked_at": "2026-07-05T02:43:14.711186+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2717,10 +3272,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\Global-Health-Care-Brochure-Final__52672fc96b65.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/Global-Health-Care-Brochure-Final__52672fc96b65.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+      "source_page_artifact_sha256": "28e646fba6b4c0f62e5c1a56d3414cc913749128edece177cfad451116223cee",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Global-Health-Care/Global-Health-Care-Brochure-Final.pdf",
+      "etag": "\"0x8DE706CDC8E3A80\"",
+      "last_modified": "Fri, 20 Feb 2026 10:43:19 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_66682640e57a4c56164a",
       "confidence_score": 75,
-      "checked_at": "2026-06-07T15:35:46.677566+00:00",
+      "checked_at": "2026-07-05T02:43:18.701329+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2735,10 +3298,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\silver_health__e85651b54f85.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/silver_health__e85651b54f85.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+      "source_page_artifact_sha256": "bf801638485acccb583223e57a59c5227353114051aebc2315c070d9157f5edb",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/silver-health/silver_health.pdf",
+      "etag": "\"0x8DE2DB26CD0ACFA\"",
+      "last_modified": "Thu, 27 Nov 2025 12:42:28 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_e82d0504670b017f2c6b",
       "confidence_score": 75,
-      "checked_at": "2026-06-07T15:35:47.906783+00:00",
+      "checked_at": "2026-07-05T02:43:20.594038+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2753,10 +3324,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\brochure\\My-Health-Care-plan-1-brochure__65908e2fab54.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/brochure/My-Health-Care-plan-1-brochure__65908e2fab54.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+      "source_page_artifact_sha256": "5c76599eed2b4c7e629c0b43e1bfa0b4129cfd784c5c3019a1683cb241eebc7c",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/My-Health-Care-Plan/My-Health-Care-plan-1-brochure.pdf",
+      "etag": "\"0x8DE75020F6AE63C\"",
+      "last_modified": "Thu, 26 Feb 2026 06:41:24 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_08b110648eedbc78b949",
       "confidence_score": 75,
-      "checked_at": "2026-06-07T15:35:47.270677+00:00",
+      "checked_at": "2026-07-05T02:43:18.989932+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2771,10 +3350,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\exclusion_annexure\\PRODUCT-WISE-SPECIFIC-LIST-OF-EXCLUDED-ITEMS__10f0a6fdd674.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/exclusion_annexure/PRODUCT-WISE-SPECIFIC-LIST-OF-EXCLUDED-ITEMS__10f0a6fdd674.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_.html",
+      "source_page_artifact_sha256": "9addb6a01346be2cd25d63ee3e600c2c53ebe137254636f3def3acc036f23d04",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/PRODUCT-WISE-SPECIFIC-LIST-OF-EXCLUDED-ITEMS.pdf",
+      "etag": "\"0x8DD50FFED6D8945\"",
+      "last_modified": "Wed, 19 Feb 2025 16:10:28 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_80783e4662121bc3e680",
       "confidence_score": 85,
-      "checked_at": "2026-06-07T15:35:49.234425+00:00",
+      "checked_at": "2026-07-05T02:43:23.054163+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2789,10 +3376,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\claim_form\\ReimbursementFormA_B2013-editable__0dc3c1854ea7.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/claim_form/ReimbursementFormA_B2013-editable__0dc3c1854ea7.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+      "source_page_artifact_sha256": "d9984d73f877bffcfcf91c23d9dca77b03e0e8be50df64e433f79d8b987d416d",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/claim/ReimbursementFormA+B2013-editable.pdf",
+      "etag": "\"0x8DE8EE7933A78BC\"",
+      "last_modified": "Tue, 31 Mar 2026 05:37:19 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_9e0a41cff62fa237e3a0",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:49.313415+00:00",
+      "checked_at": "2026-07-05T02:43:23.407040+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2807,10 +3402,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\Arogya-Sanjeevani-PF__3c77c82d93f0.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/Arogya-Sanjeevani-PF__3c77c82d93f0.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/arogya-sanjeevani-standard-health-insurance-policy.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_arogya-sanjeevani-standard-health-insurance-policy.html.html",
+      "source_page_artifact_sha256": "d9984d73f877bffcfcf91c23d9dca77b03e0e8be50df64e433f79d8b987d416d",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Arogya-Sanjeevani/Arogya-Sanjeevani-PF.pdf",
+      "etag": "\"0x8DE072A3F8C0071\"",
+      "last_modified": "Thu, 09 Oct 2025 11:51:56 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_e6f6af1a94938f5e9e26",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:49.757818+00:00",
+      "checked_at": "2026-07-05T02:43:24.392545+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2825,10 +3428,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\family-health-care-PF-gold__f382bd39301b.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/family-health-care-PF-gold__f382bd39301b.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/family-health-insurance-india.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_family-health-insurance-india.html.html",
+      "source_page_artifact_sha256": "c255eda1a94850e8ad368d0b78978be3569dcfe6b6e6d99e5377a2fbc11aaa91",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/family-health-care-policy/family-health-care-PF-gold.pdf",
+      "etag": "\"0x8DE072C2B639E0A\"",
+      "last_modified": "Thu, 09 Oct 2025 12:05:42 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_8bfaed7f01821b2ccce3",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:49.965796+00:00",
+      "checked_at": "2026-07-05T02:43:24.967981+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2843,10 +3454,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\Health-Guard-Proposal-Form-print__89c82e879744.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/Health-Guard-Proposal-Form-print__89c82e879744.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-guard-insurance-policy.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-guard-insurance-policy.html.html",
+      "source_page_artifact_sha256": "30ae2a3624de4f3c0c9d6a9951eef4595d4561fb76b2b7991b2c140618af2751",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-guard/Health-Guard-Proposal-Form-print.pdf",
+      "etag": "\"0x8DE75040E87D664\"",
+      "last_modified": "Thu, 26 Feb 2026 06:55:41 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_9a0c877a23b83507c4c1",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:50.747056+00:00",
+      "checked_at": "2026-07-05T02:43:26.004164+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2861,10 +3480,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\GHC-Proposal-Form__09b294f5ac68.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/GHC-Proposal-Form__09b294f5ac68.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/international-health-insurance.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_international-health-insurance.html.html",
+      "source_page_artifact_sha256": "28e646fba6b4c0f62e5c1a56d3414cc913749128edece177cfad451116223cee",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Global-Health-Care/GHC-Proposal-Form.pdf",
+      "etag": "\"0x8DE072C9ED6006A\"",
+      "last_modified": "Thu, 09 Oct 2025 12:08:55 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_955be49da89635400e86",
       "confidence_score": 75,
-      "checked_at": "2026-06-07T15:35:50.982467+00:00",
+      "checked_at": "2026-07-05T02:43:26.006552+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2879,10 +3506,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\My-Healthcare-Plan-PF-offline__d5cda2250315.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/My-Healthcare-Plan-PF-offline__d5cda2250315.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_my-health-care-plan.html.html",
+      "source_page_artifact_sha256": "5c76599eed2b4c7e629c0b43e1bfa0b4129cfd784c5c3019a1683cb241eebc7c",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/My-Health-Care-Plan/My-Healthcare-Plan-PF-offline.pdf",
+      "etag": "\"0x8DE75020E192E1C\"",
+      "last_modified": "Thu, 26 Feb 2026 06:41:22 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_79aacc64d963fc85d237",
       "confidence_score": 75,
-      "checked_at": "2026-06-07T15:35:51.185794+00:00",
+      "checked_at": "2026-07-05T02:43:26.336627+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2897,10 +3532,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\bajaj_allianz_general\\proposal_form\\Silver_health_pf__4da32e997779.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/bajaj_allianz_general/proposal_form/Silver_health_pf__4da32e997779.pdf",
       "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-for-senior-citizens.html",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\bajaj_allianz_general\\www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+      "source_page_artifact_path": "archive/raw_html/bajaj_allianz_general/www.bajajgeneralinsurance.com_health-insurance-plans_health-insurance-for-senior-citizens.html.html",
+      "source_page_artifact_sha256": "bf801638485acccb583223e57a59c5227353114051aebc2315c070d9157f5edb",
+      "final_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/silver-health/Silver_health_pf.pdf",
+      "etag": "\"0x8DE072C7850E48C\"",
+      "last_modified": "Thu, 09 Oct 2025 12:07:51 GMT",
+      "content_disposition": "inline",
+      "observation_id": "pdfobs_cbc77c81181e79d5f8e5",
       "confidence_score": 75,
-      "checked_at": "2026-06-07T15:35:51.390045+00:00",
+      "checked_at": "2026-07-05T02:43:27.899129+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2915,10 +3558,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Income-Benefit-on-accidental-disability-Rider-Non-Linked__0bed3f904efb.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Income-Benefit-on-accidental-disability-Rider-Non-Linked__0bed3f904efb.pdf",
       "source_page_url": "https://www.hdfclife.com/term-insurance-plans",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans.html",
+      "source_page_artifact_sha256": "fcc1b7fda07adc6c0aaf70ced1229e63fbad5b806919f352f4eae88f62ab3d67",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/HDFC-Life-Income-Benefit-on-accidental-disability-Rider-Non-Linked.pdf",
+      "etag": "\"36f34-63dd5e53443c0-gzip\"",
+      "last_modified": "Tue, 02 Sep 2025 18:45:43 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_7efd4d8cfe81f95d1f92",
       "confidence_score": 90,
-      "checked_at": "2026-06-07T15:35:51.824995+00:00",
+      "checked_at": "2026-07-05T02:43:28.630598+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2933,10 +3584,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Waiver-of-Premium-Rider__cbac798c8597.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Waiver-of-Premium-Rider__cbac798c8597.pdf",
       "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-elite-plus",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-elite-plus.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-elite-plus.html",
+      "source_page_artifact_sha256": "af759a92c9b1ff97956b3b4258635a24df2a2eeae38b3632c9e9dfd55a890c6a",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/HDFC-Waiver-of-Premium-Rider.pdf",
+      "etag": "\"c106c-629b18ebd8840-gzip\"",
+      "last_modified": "Fri, 20 Dec 2024 11:00:41 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_68c669b97d3c99317581",
       "confidence_score": 90,
-      "checked_at": "2026-06-07T15:35:52.103662+00:00",
+      "checked_at": "2026-07-05T02:43:28.927684+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2951,10 +3610,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Critical-Illness-Plus-Rider__54b0b2b18dd9.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Critical-Illness-Plus-Rider__54b0b2b18dd9.pdf",
       "source_page_url": "https://www.hdfclife.com/term-insurance-plans",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans.html",
+      "source_page_artifact_sha256": "fcc1b7fda07adc6c0aaf70ced1229e63fbad5b806919f352f4eae88f62ab3d67",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/HDFC-Life-Critical-Illness-Plus-Rider.pdf",
+      "etag": "\"a5a35-5cd0b355a54c0-gzip\"",
+      "last_modified": "Tue, 28 Sep 2021 09:55:07 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_77109d697622d2aaf722",
       "confidence_score": 85,
-      "checked_at": "2026-06-07T15:35:52.226370+00:00",
+      "checked_at": "2026-07-05T02:43:29.123336+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2969,10 +3636,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Protect-Plus-Rider-Non-Linked__4f4982cf0033.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Protect-Plus-Rider-Non-Linked__4f4982cf0033.pdf",
       "source_page_url": "https://www.hdfclife.com/term-insurance-plans",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans.html",
+      "source_page_artifact_sha256": "fcc1b7fda07adc6c0aaf70ced1229e63fbad5b806919f352f4eae88f62ab3d67",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-links/HDFC-Life-Protect-Plus-Rider-Non-Linked.pdf",
+      "etag": "\"42d1c-628463eb2f040-gzip\"",
+      "last_modified": "Mon, 02 Dec 2024 09:33:45 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_94467843effd2a9a7358",
       "confidence_score": 85,
-      "checked_at": "2026-06-07T15:35:52.345183+00:00",
+      "checked_at": "2026-07-05T02:43:31.537398+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -2987,10 +3662,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Livewell-Rider-Non-Linked-Brochure__ea9a808b677a.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Livewell-Rider-Non-Linked-Brochure__ea9a808b677a.pdf",
       "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-supreme-plus",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-supreme-plus.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-supreme-plus.html",
+      "source_page_artifact_sha256": "c204891a7766137f71fc1216e625c92d8f8777896a77d8edf1ecf69130c5a909",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/HDFC-Life-Livewell-Rider-Non-Linked-Brochure.pdf",
+      "etag": "\"48736-6388b1b2ff000-gzip\"",
+      "last_modified": "Fri, 27 Jun 2025 10:26:08 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_9ea110140279f3ce1b6f",
       "confidence_score": 85,
-      "checked_at": "2026-06-07T15:35:53.109076+00:00",
+      "checked_at": "2026-07-05T02:43:32.668129+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -3005,10 +3688,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\MC062124237-V01-HDFC-Life-Click-2-Protect-Life-Retail-Brochure__82ceecb7e8f9.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/MC062124237-V01-HDFC-Life-Click-2-Protect-Life-Retail-Brochure__82ceecb7e8f9.pdf",
       "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-life",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-life.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-life.html",
+      "source_page_artifact_sha256": "6f5c8ec0c1dd71045bd51cadab128865f971fa1bc4bced1a189a99d1a1be0a45",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/MC062124237-V01-HDFC-Life-Click-2-Protect-Life-Retail-Brochure.pdf",
+      "etag": "\"4924e-6453408695280-gzip\"",
+      "last_modified": "Fri, 05 Dec 2025 13:00:42 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_d95bbd1da9ca702eed74",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:53.319664+00:00",
+      "checked_at": "2026-07-05T02:43:32.672311+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -3023,10 +3714,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Health-Plus-Rider-Non-Linked-Retail-Brochure__d7e855358300.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Health-Plus-Rider-Non-Linked-Retail-Brochure__d7e855358300.pdf",
       "source_page_url": "https://www.hdfclife.com/term-insurance-plans",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans.html",
+      "source_page_artifact_sha256": "fcc1b7fda07adc6c0aaf70ced1229e63fbad5b806919f352f4eae88f62ab3d67",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/HDFC-Life-Health-Plus-Rider-Non-Linked-Retail-Brochure.pdf",
+      "etag": "\"1cc446-62846470b2b40-gzip\"",
+      "last_modified": "Mon, 02 Dec 2024 09:36:05 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_882671e7e8dfc928dcd4",
       "confidence_score": 85,
-      "checked_at": "2026-06-07T15:35:53.063371+00:00",
+      "checked_at": "2026-07-05T02:43:32.664985+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -3041,10 +3740,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\click-2-protect-elite-plus-brochure__66aa5a40083e.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/click-2-protect-elite-plus-brochure__66aa5a40083e.pdf",
       "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-elite-plus",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-elite-plus.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-elite-plus.html",
+      "source_page_artifact_sha256": "af759a92c9b1ff97956b3b4258635a24df2a2eeae38b3632c9e9dfd55a890c6a",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/click-2-protect-elite-plus-brochure.pdf",
+      "etag": "\"81165-62ea1b4ab4700-gzip\"",
+      "last_modified": "Fri, 21 Feb 2025 07:11:56 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_5d26ef4273c479bdfc05",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:53.728366+00:00",
+      "checked_at": "2026-07-05T02:43:34.811732+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -3059,10 +3766,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\Click-2-Protect-Ultimate-Brochure__94e6dac197b3.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/Click-2-Protect-Ultimate-Brochure__94e6dac197b3.pdf",
       "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-ultimate",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-ultimate.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-ultimate.html",
+      "source_page_artifact_sha256": "423478a20118b0135525e3cc2301652898a39da55251c2066142a7ff21c1c534",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/brochure-pdf/Click-2-Protect-Ultimate-Brochure.pdf",
+      "etag": "\"1dae61-62ceb9a2f6d00-gzip\"",
+      "last_modified": "Thu, 30 Jan 2025 12:31:16 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_d5bde45f65aad36baf21",
       "confidence_score": 70,
-      "checked_at": "2026-06-07T15:35:54.213548+00:00",
+      "checked_at": "2026-07-05T02:43:35.176618+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -3077,10 +3792,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\brochure\\HDFC-Life-Click-2-Protect-Life-101N139V02-Brochure__c04baeba0303.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/brochure/HDFC-Life-Click-2-Protect-Life-101N139V02-Brochure__c04baeba0303.pdf",
       "source_page_url": "https://www.hdfclife.com/term-insurance-plans/click-2-protect-life",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_term-insurance-plans_click-2-protect-life.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_term-insurance-plans_click-2-protect-life.html",
+      "source_page_artifact_sha256": "6f5c8ec0c1dd71045bd51cadab128865f971fa1bc4bced1a189a99d1a1be0a45",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/products-page/term-insurance-plan/click-2-protect-life/HDFC-Life-Click-2-Protect-Life-101N139V02-Brochure.pdf",
+      "etag": "\"4bd85-5d2b092f28e40-gzip\"",
+      "last_modified": "Thu, 09 Dec 2021 06:18:25 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_c928fa802b95a2180176",
       "confidence_score": 70,
-      "checked_at": "2026-06-07T15:35:54.510118+00:00",
+      "checked_at": "2026-07-05T02:43:35.521813+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     },
@@ -3095,10 +3818,18 @@
       "content_type": "application/pdf",
       "http_status": 200,
       "local_path": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_pdf\\hdfc_life\\claim_form\\Group-Funding-Claims-Form__5d2579960b93.pdf",
+      "raw_pdf_relative_path": "archive/raw_pdf/hdfc_life/claim_form/Group-Funding-Claims-Form__5d2579960b93.pdf",
       "source_page_url": "https://www.hdfclife.com/group-insurance-plans/customer-service",
       "source_html_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\archive\\raw_html\\hdfc_life\\www.hdfclife.com_group-insurance-plans_customer-service.html",
+      "source_page_artifact_path": "archive/raw_html/hdfc_life/www.hdfclife.com_group-insurance-plans_customer-service.html",
+      "source_page_artifact_sha256": "198624873d20096aaac488c517fc440bf11d62d42de9bc7a1e7cead45f591d48",
+      "final_url": "https://www.hdfclife.com/content/dam/hdfclifeinsurancecompany/customer-services/policy-servicing-pdf/Group-Traditional-Form/Group-Funding-Claims-Form.pdf",
+      "etag": "\"20b19-5c93383d76600-gzip\"",
+      "last_modified": "Tue, 10 Aug 2021 12:19:36 GMT",
+      "content_disposition": null,
+      "observation_id": "pdfobs_39855f1da456a95f8bdd",
       "confidence_score": 80,
-      "checked_at": "2026-06-07T15:35:54.642620+00:00",
+      "checked_at": "2026-07-05T02:43:37.262706+00:00",
       "downloaded_at": null,
       "version_status": "unchanged"
     }

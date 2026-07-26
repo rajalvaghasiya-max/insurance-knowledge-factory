@@ -1,14 +1,18 @@
 {
-  "extractor_version": "0.7",
+  "extractor_version": "0.8",
   "source_parsed_file": "C:\\Users\\rajal\\insurance-knowledge-factory\\parsed\\html_sections\\hdfc_life\\3f18474f0f066c7e940e258679992ee5639c5a632d2542a39a4d5a6dc6f570bb.json",
   "insurer_id": "hdfc_life",
   "url": "https://www.hdfclife.com/group-insurance-plans/customer-service",
   "page_title": "Customer Service - Group Insurance | HDFC Life",
   "content_hash": "3f18474f0f066c7e940e258679992ee5639c5a632d2542a39a4d5a6dc6f570bb",
   "page_intent": "customer_service",
-  "extracted_at": "2026-06-07T11:46:07.382569+00:00",
+  "asset_scope": "generic_knowledge",
+  "classification_reason": "matched customer-service marker; mapped from page intent 'customer_service'",
+  "classification_rules_version": "1.0",
+  "extracted_at": "2026-06-27T04:29:57.570528+00:00",
   "product_names": [],
   "uins": [],
+  "uin_candidates": [],
   "benefits": [
     {
       "heading": "Receive plan benefits, savings alerts & important reminders.",

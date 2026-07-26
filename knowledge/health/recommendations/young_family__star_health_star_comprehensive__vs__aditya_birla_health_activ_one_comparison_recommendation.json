@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-06-14T14:08:57.279166+00:00",
+  "recommendation_version": "0.1",
+  "profile_id": "young_family",
+  "profile": {
+    "profile_id": "young_family",
+    "life_stage": "married_planning_family",
+    "age": 32,
+    "family_members": [
+      {
+        "relation": "self",
+        "age": 32
+      },
+      {
+        "relation": "spouse",
+        "age": 30
+      }
+    ],
+    "needs": {
+      "maternity_or_newborn": true,
+      "wellness": true,
+      "high_sum_insured": true,
+      "low_waiting_period": true,
+      "senior_citizen": false
+    },
+    "preferences": {
+      "avoid_copay": true,
+      "prefer_room_rent_no_limit": true
+    }
+  },
+  "comparison_used": "knowledge/health/comparisons/star_health_star_comprehensive__vs__aditya_birla_health_activ_one_comparison.json",
+  "entities": {
+    "entity_a": "star_health:star_comprehensive",
+    "entity_b": "aditya_birla_health:activ_one"
+  },
+  "quality_gate": {
+    "status": "REVIEW_REQUIRED",
+    "reason": "One or more compared products have quality warnings.",
+    "warnings": [
+      "aditya_birla_health:activ_one validation status is REVIEW_REQUIRED.",
+      "aditya_birla_health:activ_one coverage status is USABLE_WITH_REVIEW."
+    ]
+  },
+  "signals": [
+    {
+      "need": "maternity_or_newborn",
+      "field": "core_benefits.delivery_newborn_cover",
+      "favours": "star_health:star_comprehensive",
+      "favours_product_name": "Star Comprehensive Insurance Policy",
+      "against_or_unknown_for": "aditya_birla_health:activ_one",
+      "against_or_unknown_product_name": "Activ One",
+      "reason": "core_benefits.delivery_newborn_cover is available for Star Comprehensive Insurance Policy but not extracted for Activ One.",
+      "confidence": "medium",
+      "evidence_type": "comparison_missing_data"
+    },
+    {
+      "need": "wellness",
+      "field": "core_benefits.wellness_program",
+      "favours": "star_health:star_comprehensive",
+      "favours_product_name": "Star Comprehensive Insurance Policy",
+      "against_or_unknown_for": "aditya_birla_health:activ_one",
+      "against_or_unknown_product_name": "Activ One",
+      "reason": "core_benefits.wellness_program is available for Star Comprehensive Insurance Policy but not extracted for Activ One.",
+      "confidence": "medium",
+      "evidence_type": "comparison_missing_data"
+    },
+    {
+      "need": "high_sum_insured",
+      "field": "sum_insured_options.values",
+      "favours": "star_health:star_comprehensive",
+      "favours_product_name": "Star Comprehensive Insurance Policy",
+      "against_or_unknown_for": "aditya_birla_health:activ_one",
+      "against_or_unknown_product_name": "Activ One",
+      "reason": "sum_insured_options.values is available for Star Comprehensive Insurance Policy but not extracted for Activ One.",
+      "confidence": "medium",
+      "evidence_type": "comparison_missing_data"
+    }
+  ],
+  "advisor_summary": [
+    "3 profile-relevant signal(s) were found from the comparison.",
+    "Star Comprehensive Insurance Policy has the strongest extracted signal count for this profile.",
+    "Quality warnings are present, so this should be treated as advisor review input, not a final recommendation.",
+    "Some comparison fields are missing. Improve extraction coverage before making a final recommendation."
+  ],
+  "recommendation": {
+    "status": "REVIEW_REQUIRED",
+    "preferred_product": null,
+    "reason": "Comparison quality is limited by validation or coverage warnings."
+  }
+}

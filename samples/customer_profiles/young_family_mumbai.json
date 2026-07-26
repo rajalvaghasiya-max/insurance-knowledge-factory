@@ -1,0 +1,39 @@
+{
+  "profile_id": "young_family_mumbai",
+  "domain": "health",
+  "life_stage": "married_planning_family",
+  "age": 32,
+  "location": {
+    "pincode": "400001",
+    "city": "Mumbai",
+    "city_tier": "metro"
+  },
+  "financial_profile": {
+    "annual_income": 1800000,
+    "monthly_budget_for_premium": 4500,
+    "existing_health_cover": 500000,
+    "existing_savings": 800000
+  },
+  "family_members": [
+    {
+      "relation": "self",
+      "age": 32
+    },
+    {
+      "relation": "spouse",
+      "age": 30
+    }
+  ],
+  "needs": {
+    "maternity_or_newborn": true,
+    "wellness": true,
+    "high_sum_insured": true,
+    "low_waiting_period": true,
+    "senior_citizen": false
+  },
+  "preferences": {
+    "avoid_copay": true,
+    "prefer_room_rent_no_limit": true
+  },
+  "future_context": {}
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "manifest_type": "governed_product_migration_manifest_v1",
+  "domain": "health",
+  "insurer_id": "star_health",
+  "product_id": "star_comprehensive",
+  "entity_id": "star_health:star_comprehensive",
+  "expected_source_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+  "expected_source_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+  "specs": {
+    "generic_registration": "docs/architecture/star_health_star_comprehensive_generic_sources_registration_spec.json",
+    "classification": "docs/architecture/star_health_star_comprehensive_document_classification_spec.json",
+    "identity": "docs/architecture/star_health_star_comprehensive_product_identity_reference_spec.json",
+    "overlay": "docs/architecture/star_health_star_comprehensive_document_identity_resolution_spec.json"
+  },
+  "outputs": {
+    "bundle": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/star_health_star_comprehensive_generic_source_bundle.json",
+    "classification": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_classification.json",
+    "identity": "knowledge/factory/product_identity_references/star_health_star_comprehensive.product_identity_reference.json",
+    "overlay": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_identity_resolution.json"
+  }
+}
