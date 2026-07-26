@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "record_type": "milestone_certification_closure",
+  "milestone_id": "MO-023J",
+  "milestone_name": "Generic Governed Rule Certification",
+  "closure_scope": "P1 generic topic completeness and governed rule certification",
+  "certification_outcome": "PASS",
+  "certified_at_milestone_head": "a2f3441",
+  "completed_units": [
+    {
+      "unit_id": "MO-023J.1",
+      "name": "Generic Rule Certification Contracts",
+      "pull_request": 19,
+      "merge_reference": "445fc26"
+    },
+    {
+      "unit_id": "MO-023J.2",
+      "name": "Generic Rule Certification Runner",
+      "pull_request": 20,
+      "merge_reference": "6f8be27"
+    },
+    {
+      "unit_id": "MO-023J.3",
+      "name": "Generic Rule Certification Fixtures",
+      "pull_request": 21,
+      "merge_reference": "f12b03e"
+    },
+    {
+      "unit_id": "MO-023J.4",
+      "name": "Star Conditional Copayment Certification",
+      "pull_request": 22,
+      "merge_reference": "4c9988e"
+    },
+    {
+      "unit_id": "MO-023J.5",
+      "name": "Star Room-Rent Certification",
+      "pull_request": 23,
+      "merge_reference": "a939d59"
+    },
+    {
+      "unit_id": "P1.7",
+      "name": "Cross-Product Certification Replication",
+      "pull_request": 24,
+      "merge_reference": "a2f3441"
+    }
+  ],
+  "certified_cases": [
+    {
+      "insurer_id": "star_health",
+      "product_id": "star_comprehensive",
+      "topic_id": "conditional_obligation",
+      "rule": "entry-age conditional copayment",
+      "expected_outcome": "PASS"
+    },
+    {
+      "insurer_id": "star_health",
+      "product_id": "star_comprehensive",
+      "topic_id": "coverage_limit",
+      "rule": "room-rent category and proportional consequence",
+      "expected_outcome": "PASS"
+    },
+    {
+      "insurer_id": "aditya_birla_health",
+      "product_id": "activ_one",
+      "topic_id": "waiting_period",
+      "rule": "specified-disease and procedure waiting period",
+      "expected_outcome": "PASS"
+    }
+  ],
+  "generic_reuse_proof": {
+    "contracts_modified_for_replication": false,
+    "topic_catalogue_modified_for_replication": false,
+    "completeness_evaluator_modified_for_replication": false,
+    "certification_runner_modified_for_replication": false,
+    "conclusion": "The same generic topic completeness and certification infrastructure executed insurer- and product-specific cases without product-specific changes to generic infrastructure."
+  },
+  "validation_evidence": {
+    "focused_certification_tests_passed": 58,
+    "insurance_intelligence_tests_passed": 1539,
+    "full_repository_tests_passed": 2486,
+    "validated_milestone_head": "a2f3441"
+  },
+  "governance_boundaries": [
+    "This closure certifies internal rule-certification behavior only.",
+    "This closure does not publish any product rule or change an authoritative publication decision.",
+    "A certification PASS does not guarantee claim payment, admissibility, coverage, suitability, or recommendation correctness for an individual policy instance.",
+    "Only the named products, rules, topics, evidence records, and versions are within this closure scope.",
+    "No UI, database, broad insurer expansion, ranking, comparison, or recommendation capability is certified by this record."
+  ],
+  "deferred_to_p2": [
+    "topic-level completeness requirements for the wider Star pilot",
+    "additional materially different governed rule types beyond the certified set",
+    "authoritative publication and publication-decision verification where still pending",
+    "adversarial evaluation dataset execution",
+    "legacy recommendation bypass-path resolution or formal classification"
+  ],
+  "closure_decision": {
+    "mo_023j_closed": true,
+    "p1_certification_scope_closed": true,
+    "ready_to_start_p2": true,
+    "publication_authorized": false
+  }
+}
