@@ -17,6 +17,10 @@ from insurance_intelligence.contracts.topic_completeness import (
     build_component_result,
     build_topic_definition,
 )
+from insurance_intelligence.topic_completeness.evaluator import (
+    TopicCompletenessEvaluationError,
+    evaluate_topic_completeness,
+)
 from insurance_intelligence.topic_completeness.registry import (
     TopicCompletenessRegistry,
     TopicCompletenessRegistryError,
@@ -30,6 +34,7 @@ __all__ = [
     "SUPPORTED_CONTRACT_VERSION",
     "UNRESOLVED_APPLICABILITY_POLICIES",
     "TopicCompletenessContractError",
+    "TopicCompletenessEvaluationError",
     "TopicCompletenessRegistry",
     "TopicCompletenessRegistryError",
     "TopicCompletenessResult",
@@ -40,4 +45,5 @@ __all__ = [
     "build_component_definition",
     "build_component_result",
     "build_topic_definition",
+    "evaluate_topic_completeness",
 ]
