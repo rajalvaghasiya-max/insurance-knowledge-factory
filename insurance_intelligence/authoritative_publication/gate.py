@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from hashlib import sha256
+import re
 
 from insurance_intelligence.contracts.authoritative_publication import (
     AuthoritativePublicationInput,
@@ -18,6 +19,31 @@ class AuthoritativePublicationGateError(ValueError):
 def _contains_boundary(values: tuple[str, ...], token: str) -> bool:
     normalized = token.casefold()
     return any(normalized in item.casefold() for item in values)
+
+
+def _contains_affirmative_claim_payment_guarantee(values: tuple[str, ...]) -> bool:
+    """Detect affirmative claim-payment guarantees without blocking disclaimers.
+
+    Safety limitations such as "does not guarantee claim payment" are required
+    governance language and must remain publishable. Only affirmative guarantee
+    statements are blocked.
+    """
+    affirmative_patterns = (
+        re.compile(r"\bguarantee(?:s|d)?\s+(?:the\s+)?claim\s+payment\b"),
+        re.compile(r"\bclaim\s+payment\s+(?:is|will\s+be)\s+guaranteed\b"),
+    )
+    negation_pattern = re.compile(
+        r"\b(?:does\s+not|do\s+not|did\s+not|cannot|can\s+not|will\s+not|not)\s+$"
+    )
+
+    for value in values:
+        normalized = " ".join(value.casefold().split())
+        for pattern in affirmative_patterns:
+            for match in pattern.finditer(normalized):
+                prefix = normalized[max(0, match.start() - 24) : match.start()]
+                if not negation_pattern.search(prefix):
+                    return True
+    return False
 
 
 def _stable_receipt_id(*parts: str) -> str:
@@ -66,7 +92,7 @@ def create_authoritative_publication(
         failures.append("Evidence trace must exactly match the decision.")
     if _contains_boundary(projection.limitations, "bound_not_published"):
         failures.append("bound_not_published cannot cross the publication gate.")
-    if _contains_boundary(projection.limitations, "guarantee claim payment"):
+    if _contains_affirmative_claim_payment_guarantee(projection.limitations):
         failures.append("Claim-payment guarantee language is not publishable.")
 
     if failures:
