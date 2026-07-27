@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "record_id": "policyscna-p2-6-bypass-inventory-and-star-reachability",
+  "record_version": "1.0.0",
+  "unit_id": "P2.6",
+  "title": "Generic bypass inventory and control with Star reachability proof",
+  "generic_capability_decision": "PASS",
+  "star_pilot_decision": "PASS",
+  "certified_pilot": "star_health:star_comprehensive:conditional_copayment",
+  "classification_vocabulary": {
+    "dispositions": [
+      "REMOVED",
+      "ROUTED",
+      "BLOCKED",
+      "EXPLICITLY_DEFERRED"
+    ],
+    "reachability": [
+      "ACTIVE_GOVERNED",
+      "ACTIVE_UNGOVERNED",
+      "CERTIFIED_PILOT_UNREACHABLE",
+      "STATIC_ARTIFACT_UNREACHABLE",
+      "TEST_ONLY",
+      "DEAD_OR_OBSOLETE",
+      "UNKNOWN"
+    ]
+  },
+  "inventory_summary": {
+    "total_entries": 8,
+    "governed_controls": 1,
+    "legacy_executable_utilities": 3,
+    "legacy_static_artifacts": 3,
+    "test_only_paths": 1,
+    "active_ungoverned_paths": 0
+  },
+  "inventory": [
+    {
+      "path": "insurance_intelligence/decision/gate.py",
+      "kind": "GOVERNED_CONTROL",
+      "disposition": "ROUTED",
+      "reachability": "ACTIVE_GOVERNED"
+    },
+    {
+      "path": "scripts/build_recommendation_context.py",
+      "kind": "EXECUTABLE_UTILITY",
+      "disposition": "EXPLICITLY_DEFERRED",
+      "reachability": "CERTIFIED_PILOT_UNREACHABLE"
+    },
+    {
+      "path": "scripts/compare_products.py",
+      "kind": "EXECUTABLE_UTILITY",
+      "disposition": "EXPLICITLY_DEFERRED",
+      "reachability": "CERTIFIED_PILOT_UNREACHABLE"
+    },
+    {
+      "path": "scripts/recommend_products.py",
+      "kind": "EXECUTABLE_UTILITY",
+      "disposition": "EXPLICITLY_DEFERRED",
+      "reachability": "CERTIFIED_PILOT_UNREACHABLE"
+    },
+    {
+      "path": "knowledge/health/comparisons/star_health_star_comprehensive__vs__aditya_birla_health_activ_one_comparison.json",
+      "kind": "STATIC_ARTIFACT",
+      "disposition": "EXPLICITLY_DEFERRED",
+      "reachability": "STATIC_ARTIFACT_UNREACHABLE"
+    },
+    {
+      "path": "knowledge/health/recommendations/young_family__star_health_star_comprehensive__vs__aditya_birla_health_activ_one_comparison_recommendation.json",
+      "kind": "STATIC_ARTIFACT",
+      "disposition": "EXPLICITLY_DEFERRED",
+      "reachability": "STATIC_ARTIFACT_UNREACHABLE"
+    },
+    {
+      "path": "knowledge/health/explanations/young_family__star_health_star_comprehensive__vs__aditya_birla_health_activ_one_comparison_explanation.json",
+      "kind": "STATIC_ARTIFACT",
+      "disposition": "EXPLICITLY_DEFERRED",
+      "reachability": "STATIC_ARTIFACT_UNREACHABLE"
+    },
+    {
+      "path": "tests/test_recommend_products.py",
+      "kind": "TEST_PATH",
+      "disposition": "EXPLICITLY_DEFERRED",
+      "reachability": "TEST_ONLY"
+    }
+  ],
+  "star_reachability_proof": {
+    "runtime_entry_points_reviewed": [
+      "insurance_intelligence/orchestration/star_comprehensive_pilot.py",
+      "insurance_intelligence/orchestration/service.py",
+      "scripts/run_certified_product_response_pilot.py",
+      "scripts/run_full_knowledge_to_explanation_certification.py",
+      "scripts/run_intelligence_response.py"
+    ],
+    "legacy_runtime_imports_found": 0,
+    "legacy_static_artifact_reads_found": 0,
+    "focused_safety_tests": 172,
+    "focused_safety_result": "PASS",
+    "conclusion": "No active legacy recommendation-capable path can influence the certified Star pilot output."
+  },
+  "scope_boundaries": {
+    "included": [
+      "Generic inventory and validation contracts.",
+      "Explicit disposition and reachability classification.",
+      "Static proof that certified Star entry points do not reference legacy recommendation utilities or artifacts."
+    ],
+    "excluded": [
+      "Deletion or modification of legacy utilities and artifacts.",
+      "Certification of product comparison, ranking, individualized suitability or recommendations.",
+      "Any claim-payment guarantee."
+    ]
+  },
+  "limitations": [
+    "EXPLICITLY_DEFERRED means the path remains in the repository but is outside every certified pilot runtime.",
+    "This record does not certify the correctness or safety of manually executing legacy utilities.",
+    "Future routing of a deferred path requires a new governed review and regression proof."
+  ]
+}
