@@ -16,6 +16,9 @@ from insurance_intelligence.publication_decision.star_health import (
     build_star_conditional_copayment_publication_decision,
     build_star_room_rent_publication_decision,
 )
+from insurance_intelligence.rule_certification.star_health import (
+    build_star_comprehensive_conditional_copayment_case,
+)
 from insurance_intelligence.rule_certification.star_health_bariatric_surgery import (
     build_star_comprehensive_bariatric_surgery_case,
 )
@@ -97,7 +100,7 @@ def build_star_bariatric_surgery_authoritative_publication() -> AuthoritativePub
 def build_star_conditional_copayment_authoritative_publication() -> AuthoritativePublicationRecord:
     """Attempting publication must fail because P2.3 explicitly WITHHOLDS it."""
     decision = build_star_conditional_copayment_publication_decision()
-    case = build_star_comprehensive_room_rent_case()
+    case = build_star_comprehensive_conditional_copayment_case()
     projection = _projection_from_case(
         projection_id="publication-projection:star-comprehensive:conditional-copayment",
         decision=decision,
