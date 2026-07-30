@@ -11,12 +11,24 @@ from datetime import date
 
 from insurance_intelligence.contracts.terminology import (
     InsurerMarketingTerm,
+    TerminologyPublicationStatus,
     TerminologyResolutionResult,
+    TerminologyReviewStatus,
 )
 from insurance_intelligence.terminology.alias_resolver import (
     ExactAliasTerminologyResolver,
 )
 from insurance_intelligence.terminology.resolver import normalise_terminology_text
+
+_ELIGIBLE_REVIEW_STATUSES = frozenset(
+    {TerminologyReviewStatus.HUMAN_APPROVED, TerminologyReviewStatus.PUBLISHED}
+)
+_ELIGIBLE_PUBLICATION_STATUSES = frozenset(
+    {
+        TerminologyPublicationStatus.ELIGIBLE,
+        TerminologyPublicationStatus.AUTHORITATIVE,
+    }
+)
 
 
 class TerminologyContextError(ValueError):
@@ -29,6 +41,17 @@ def _optional_text(value: str | None, field_name: str) -> str | None:
     if not isinstance(value, str) or not value.strip():
         raise TerminologyContextError(f"{field_name} must be non-empty text when supplied")
     return value.strip()
+
+
+def _is_active(
+    effective_from: date | None,
+    effective_to: date | None,
+    as_of: date,
+) -> bool:
+    return not (
+        (effective_from is not None and as_of < effective_from)
+        or (effective_to is not None and as_of > effective_to)
+    )
 
 
 @dataclass(frozen=True)
@@ -173,13 +196,18 @@ class ContextualTerminologyResolver:
             item.term_id
             for item in self.resolver.resolver.marketing_terms
             if normalise_terminology_text(item.display_name) == key
+            and _is_active(item.effective_from, item.effective_to, as_of)
+            and item.review_status in _ELIGIBLE_REVIEW_STATUSES
+            and item.publication_status in _ELIGIBLE_PUBLICATION_STATUSES
         }
         for alias in self.resolver.aliases:
             if normalise_terminology_text(alias.alias_text) != key:
                 continue
-            if alias.effective_from is not None and as_of < alias.effective_from:
+            if not _is_active(alias.effective_from, alias.effective_to, as_of):
                 continue
-            if alias.effective_to is not None and as_of > alias.effective_to:
+            if alias.review_status not in _ELIGIBLE_REVIEW_STATUSES:
+                continue
+            if alias.publication_status not in _ELIGIBLE_PUBLICATION_STATUSES:
                 continue
             term_ids.add(alias.term_id)
         return tuple(
@@ -188,8 +216,9 @@ class ContextualTerminologyResolver:
                     item
                     for item in self.resolver.resolver.marketing_terms
                     if item.term_id in term_ids
-                    and (item.effective_from is None or as_of >= item.effective_from)
-                    and (item.effective_to is None or as_of <= item.effective_to)
+                    and _is_active(item.effective_from, item.effective_to, as_of)
+                    and item.review_status in _ELIGIBLE_REVIEW_STATUSES
+                    and item.publication_status in _ELIGIBLE_PUBLICATION_STATUSES
                 ),
                 key=lambda item: item.term_id,
             )
