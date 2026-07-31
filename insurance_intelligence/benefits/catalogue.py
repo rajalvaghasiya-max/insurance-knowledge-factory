@@ -1,4 +1,4 @@
-"""Governed benefit catalogue entries for MO-025C."""
+"""Governed benefit catalogue entries for MO-025C and MO-025D."""
 from __future__ import annotations
 
 from datetime import date
@@ -26,8 +26,12 @@ RESTORATION_BENEFIT_CONCEPT = BenefitConcept(
         "trigger_timing",
         "same_hospitalization_use",
         "subsequent_hospitalization_use",
+        "first_claim_use",
+        "partial_restoration_use",
+        "maximum_liability_per_claim_percentage",
         "same_illness_use",
         "covered_section_scope",
+        "utilization_sequence",
         "relapse_window_days",
         "policy_year_reset",
         "carry_over_between_policy_years",
