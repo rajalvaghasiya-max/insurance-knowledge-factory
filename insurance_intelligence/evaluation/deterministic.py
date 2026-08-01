@@ -59,8 +59,6 @@ def _contains_phrase(output: str, expected: str) -> bool:
     if not expected_tokens:
         return False
 
-    # Governed phrases may be safely paraphrased, but all material lexical anchors
-    # must remain. Stop words are ignored; no semantic model is used.
     anchors = tuple(
         token
         for token in expected_tokens
@@ -77,11 +75,30 @@ def _has_trigger_paraphrase(output: str, expected: str) -> bool:
     normalised = _normalise(output)
     has_threshold = "61" in normalised and any(
         phrase in normalised
-        for phrase in ("61 years or above", "61 or above", "61 years or older", "61 or older", "age 61")
+        for phrase in (
+            "61 years or above",
+            "61 or above",
+            "61 years or older",
+            "61 years old or older",
+            "61 or older",
+            "age 61",
+        )
     )
     has_entry = any(
         term in normalised
-        for term in ("age at entry", "when they entered", "when you entered", "when they joined", "when you joined", "entered the policy", "entered the plan", "joined the policy", "joined the plan")
+        for term in (
+            "age at entry",
+            "when they entered",
+            "when you entered",
+            "when they first entered",
+            "when you first entered",
+            "when they joined",
+            "when you joined",
+            "entered the policy",
+            "entered the plan",
+            "joined the policy",
+            "joined the plan",
+        )
     )
     has_condition = any(
         term in normalised
@@ -114,10 +131,9 @@ def _has_exception_paraphrase(output: str, expected: str) -> bool:
         phrase in normalised
         for phrase in ("does not apply", "doesn't apply", "not apply", "is exempt", "are exempt")
     )
-    has_pre_61_entry = "before 61" in normalised and any(
-        term in normalised
-        for term in ("entered", "joined", "entry")
-    )
+    has_pre_61_entry = any(
+        phrase in normalised for phrase in ("before 61", "before age 61", "before turning 61")
+    ) and any(term in normalised for term in ("entered", "joined", "entry"))
     has_continuity = any(
         phrase in normalised
         for phrase in ("renewed continuously", "continuous renewal", "continuously renewed")
@@ -149,10 +165,6 @@ def _has_invalid_scope_range(output: str, governed_sections: set[str]) -> bool:
 def _scope_present(case: EvaluationCase, output: str, expected: str) -> bool:
     normalised = _normalise(output)
     observed_sections = _section_set(output)
-
-    # A reference output can carry the authoritative non-contiguous section set.
-    # When available, require exact preservation and reject shorthand ranges that
-    # silently introduce omitted sections.
     governed_sections = _section_set(case.reference_output or "")
     if governed_sections:
         return (
