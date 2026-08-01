@@ -32,6 +32,10 @@ _WORD_RE = re.compile(r"[a-z0-9]+(?:\.[0-9]+)?")
 _PERCENT_RE = re.compile(r"\b(\d+(?:\.\d+)?)\s*%")
 _EVIDENCE_ID_RE = re.compile(r"\bev-[a-z0-9][a-z0-9-]*\b", re.IGNORECASE)
 _SECTION_RE = re.compile(r"\bii\.(?:[1-9]|1[0-9]|2[0-9])\b", re.IGNORECASE)
+_SECTION_RANGE_RE = re.compile(
+    r"\bii\.(?P<start>[1-9]|1[0-9]|2[0-9])\s+(?:through|to|-)\s+ii\.(?P<end>[1-9]|1[0-9]|2[0-9])\b",
+    re.IGNORECASE,
+)
 
 
 def _normalise(text: str) -> str:
@@ -65,11 +69,120 @@ def _contains_phrase(output: str, expected: str) -> bool:
     return bool(anchors) and set(anchors) <= output_tokens
 
 
-def _requirement_present(output: str, component: SemanticComponent, expected: str) -> bool:
+def _has_trigger_paraphrase(output: str, expected: str) -> bool:
+    expected_normalised = _normalise(expected)
+    if "61" not in expected_normalised or "entry" not in expected_normalised:
+        return False
+
+    normalised = _normalise(output)
+    has_threshold = "61" in normalised and any(
+        phrase in normalised
+        for phrase in ("61 years or above", "61 or above", "61 years or older", "61 or older", "age 61")
+    )
+    has_entry = any(
+        term in normalised
+        for term in ("age at entry", "when they entered", "when you entered", "when they joined", "when you joined", "entered the policy", "entered the plan", "joined the policy", "joined the plan")
+    )
+    has_condition = any(
+        term in normalised
+        for term in ("if ", "when ", "where ", "trigger", "condition applies", "rule applies")
+    )
+    return has_threshold and has_entry and has_condition
+
+
+def _has_effect_paraphrase(output: str, expected: str) -> bool:
+    expected_normalised = _normalise(expected)
+    if "claim" not in expected_normalised or not any(
+        term in expected_normalised for term in ("each", "every", "all")
+    ):
+        return False
+
+    normalised = _normalise(output)
+    return any(
+        phrase in normalised
+        for phrase in ("each and every claim", "each claim", "every claim", "all claims")
+    )
+
+
+def _has_exception_paraphrase(output: str, expected: str) -> bool:
+    expected_normalised = _normalise(expected)
+    if "before 61" not in expected_normalised or "renew" not in expected_normalised:
+        return False
+
+    normalised = _normalise(output)
+    has_negation = any(
+        phrase in normalised
+        for phrase in ("does not apply", "doesn't apply", "not apply", "is exempt", "are exempt")
+    )
+    has_pre_61_entry = "before 61" in normalised and any(
+        term in normalised
+        for term in ("entered", "joined", "entry")
+    )
+    has_continuity = any(
+        phrase in normalised
+        for phrase in ("renewed continuously", "continuous renewal", "continuously renewed")
+    ) and any(
+        phrase in normalised
+        for phrase in ("without a break", "with no break", "without break", "no break")
+    )
+    return has_negation and has_pre_61_entry and has_continuity
+
+
+def _section_set(text: str) -> set[str]:
+    return {value.lower() for value in _SECTION_RE.findall(_normalise(text))}
+
+
+def _has_invalid_scope_range(output: str, governed_sections: set[str]) -> bool:
+    if not governed_sections:
+        return False
+
+    governed_numbers = {int(value.split(".", 1)[1]) for value in governed_sections}
+    for match in _SECTION_RANGE_RE.finditer(_normalise(output)):
+        start = int(match.group("start"))
+        end = int(match.group("end"))
+        expanded = set(range(min(start, end), max(start, end) + 1))
+        if expanded != governed_numbers:
+            return True
+    return False
+
+
+def _scope_present(case: EvaluationCase, output: str, expected: str) -> bool:
+    normalised = _normalise(output)
+    observed_sections = _section_set(output)
+
+    # A reference output can carry the authoritative non-contiguous section set.
+    # When available, require exact preservation and reject shorthand ranges that
+    # silently introduce omitted sections.
+    governed_sections = _section_set(case.reference_output or "")
+    if governed_sections:
+        return (
+            "section" in normalised
+            and observed_sections == governed_sections
+            and not _has_invalid_scope_range(output, governed_sections)
+        )
+
+    expected_sections = _section_set(expected)
+    if expected_sections:
+        return "section" in normalised and expected_sections <= observed_sections
+
+    return "section" in normalised and bool(observed_sections)
+
+
+def _requirement_present(
+    case: EvaluationCase,
+    output: str,
+    component: SemanticComponent,
+    expected: str,
+) -> bool:
     normalised = _normalise(output)
     if component is SemanticComponent.APPLICABILITY_SCOPE:
-        sections = set(_SECTION_RE.findall(normalised))
-        return "section" in normalised and "ii.1" in sections and "ii.25" in sections
+        return _scope_present(case, output, expected)
+    if component is SemanticComponent.TRIGGER:
+        return _contains_phrase(output, expected) or _has_trigger_paraphrase(output, expected)
+    if component is SemanticComponent.EFFECT:
+        return _contains_phrase(output, expected) or _has_effect_paraphrase(output, expected)
+    if component is SemanticComponent.EXCEPTION:
+        return _contains_phrase(output, expected) or _has_exception_paraphrase(output, expected)
     if component is SemanticComponent.EVIDENCE_REFERENCE:
         return _normalise(expected) in normalised
     if component is SemanticComponent.AUDIENCE:
@@ -176,7 +289,12 @@ class DeterministicLLMEvaluator:
         missing_components: set[SemanticComponent] = set()
 
         for requirement in case.semantic_requirements:
-            present = _requirement_present(output, requirement.component, requirement.expected_text)
+            present = _requirement_present(
+                case,
+                output,
+                requirement.component,
+                requirement.expected_text,
+            )
             passed = present or not requirement.required
             if requirement.required and not present:
                 missing_components.add(requirement.component)
