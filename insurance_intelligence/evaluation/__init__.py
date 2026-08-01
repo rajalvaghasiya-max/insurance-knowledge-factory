@@ -76,6 +76,13 @@ from insurance_intelligence.evaluation.hhem import (
     evaluate_hhem_batch,
 )
 
+from insurance_intelligence.evaluation.semantic_fidelity import (
+    SemanticFidelityError,
+    build_human_review_packet,
+    compare_semantics,
+    route_fidelity_result,
+)
+
 __all__ = [
     "ControlledEvaluationProvider",
     "ControlledHarnessConfig",
@@ -113,12 +120,15 @@ __all__ = [
     "ResponsibilityDecisionError",
     "ResponsibilityEvidence",
     "ScenarioBaseline",
+    "SemanticFidelityError",
     "analyze_evaluation_disagreement",
     "analyze_evaluation_disagreements",
     "build_default_registry",
+    "build_human_review_packet",
     "build_responsibility_decision",
     "build_responsibility_decision_report",
     "build_evaluation_input",
+    "compare_semantics",
     "default_scenarios",
     "execute_controlled_case",
     "execute_controlled_cases",
@@ -127,4 +137,5 @@ __all__ = [
     "evaluate_hhem_advisory",
     "evaluate_hhem_batch",
     "load_evaluation_dataset",
+    "route_fidelity_result",
 ]
