@@ -169,6 +169,7 @@ def _has_exception_paraphrase(output: str, expected: str) -> bool:
         phrase in normalised
         for phrase in (
             "renewed continuously",
+            "renewed it continuously",
             "continuous renewal",
             "continuously renewed",
         )
