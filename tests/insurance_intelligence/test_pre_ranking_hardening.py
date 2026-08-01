@@ -93,7 +93,7 @@ def _star_explanation_input():
         request_id="request-star-copayment",
         decision_output=decision,
         audience="CUSTOMER",
-        reading_level="PLAIN",
+        reading_level="SIMPLE",
         explanation_mode="PLAIN_LANGUAGE",
     )
 
@@ -102,10 +102,10 @@ def test_rendered_star_copayment_preserves_trigger_obligation_exception_and_scop
     finding = _star_copayment_finding()
     explanation_input = _star_explanation_input()
     style = build_style_definition(
-        style_id="customer-plain-structural-regression",
+        style_id="customer-simple-structural-regression",
         style_version="1.0",
         audience="CUSTOMER",
-        reading_level="PLAIN",
+        reading_level="SIMPLE",
         explanation_modes=("PLAIN_LANGUAGE",),
         preserve_conditions=True,
         preserve_limitations=True,
