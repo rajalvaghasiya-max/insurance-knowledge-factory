@@ -149,7 +149,7 @@ def test_wrong_concept_is_blocked_by_discovery():
 def test_unpublished_requested_implementation_is_not_discovered():
     unpublished = replace(
         STAR_COMPREHENSIVE_RESTORATION_IMPLEMENTATION,
-        publication_status=PublicationStatus.DRAFT,
+        publication_status=PublicationStatus.NOT_PUBLISHED,
     )
     result = orchestrate_governed_comparison(
         _request(), registry=(unpublished, ACTIV_ONE_NXT_RESTORATION_IMPLEMENTATION)
@@ -161,7 +161,7 @@ def test_unpublished_requested_implementation_is_not_discovered():
 def test_unapproved_requested_implementation_is_not_discovered():
     unapproved = replace(
         STAR_COMPREHENSIVE_RESTORATION_IMPLEMENTATION,
-        review_status=ReviewStatus.PENDING,
+        review_status=ReviewStatus.REVIEWED,
     )
     result = orchestrate_governed_comparison(
         _request(), registry=(unapproved, ACTIV_ONE_NXT_RESTORATION_IMPLEMENTATION)
