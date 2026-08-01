@@ -62,7 +62,25 @@ def _contains_phrase(output: str, expected: str) -> bool:
     anchors = tuple(
         token
         for token in expected_tokens
-        if token not in {"a", "an", "and", "as", "at", "be", "before", "for", "in", "is", "of", "or", "the", "to", "where", "with"}
+        if token
+        not in {
+            "a",
+            "an",
+            "and",
+            "as",
+            "at",
+            "be",
+            "before",
+            "for",
+            "in",
+            "is",
+            "of",
+            "or",
+            "the",
+            "to",
+            "where",
+            "with",
+        }
     )
     return bool(anchors) and set(anchors) <= output_tokens
 
@@ -102,7 +120,14 @@ def _has_trigger_paraphrase(output: str, expected: str) -> bool:
     )
     has_condition = any(
         term in normalised
-        for term in ("if ", "when ", "where ", "trigger", "condition applies", "rule applies")
+        for term in (
+            "if ",
+            "when ",
+            "where ",
+            "trigger",
+            "condition applies",
+            "rule applies",
+        )
     )
     return has_threshold and has_entry and has_condition
 
@@ -129,14 +154,24 @@ def _has_exception_paraphrase(output: str, expected: str) -> bool:
     normalised = _normalise(output)
     has_negation = any(
         phrase in normalised
-        for phrase in ("does not apply", "doesn't apply", "not apply", "is exempt", "are exempt")
+        for phrase in (
+            "does not apply",
+            "doesn't apply",
+            "not apply",
+            "is exempt",
+            "are exempt",
+        )
     )
     has_pre_61_entry = any(
-        phrase in normalised for phrase in ("before 61", "before age 61", "before turning 61")
+        phrase in normalised for phrase in ("before 61", "before age 61")
     ) and any(term in normalised for term in ("entered", "joined", "entry"))
     has_continuity = any(
         phrase in normalised
-        for phrase in ("renewed continuously", "continuous renewal", "continuously renewed")
+        for phrase in (
+            "renewed continuously",
+            "continuous renewal",
+            "continuously renewed",
+        )
     ) and any(
         phrase in normalised
         for phrase in ("without a break", "with no break", "without break", "no break")
@@ -199,7 +234,9 @@ def _requirement_present(
         return _normalise(expected) in normalised
     if component is SemanticComponent.AUDIENCE:
         if _normalise(expected) == "customer":
-            return not any(term in normalised for term in ("underwriter", "actuarial", "loss ratio"))
+            return not any(
+                term in normalised for term in ("underwriter", "actuarial", "loss ratio")
+            )
     return _contains_phrase(output, expected)
 
 
@@ -231,17 +268,35 @@ def _detect_forbidden(
     if behaviour is ForbiddenBehaviour.CERTAINTY_INFLATION:
         return any(
             phrase in normalised
-            for phrase in ("definitely applies", "certainly applies", "guaranteed", "without doubt", "always applies")
+            for phrase in (
+                "definitely applies",
+                "certainly applies",
+                "guaranteed",
+                "without doubt",
+                "always applies",
+            )
         )
     if behaviour is ForbiddenBehaviour.UNSUPPORTED_RECOMMENDATION:
         return any(
             phrase in normalised
-            for phrase in ("i recommend", "we recommend", "you should buy", "you should choose", "best plan", "must buy")
+            for phrase in (
+                "i recommend",
+                "we recommend",
+                "you should buy",
+                "you should choose",
+                "best plan",
+                "must buy",
+            )
         )
     if behaviour is ForbiddenBehaviour.CLAIM_PAYMENT_PREDICTION:
         return any(
             phrase in normalised
-            for phrase in ("claim will be paid", "claim is guaranteed", "insurer will pay", "claim will definitely")
+            for phrase in (
+                "claim will be paid",
+                "claim is guaranteed",
+                "insurer will pay",
+                "claim will definitely",
+            )
         )
     if behaviour is ForbiddenBehaviour.CITATION_MISMATCH:
         cited = {value.lower() for value in _EVIDENCE_ID_RE.findall(output)}
@@ -254,18 +309,35 @@ def _detect_forbidden(
     if behaviour is ForbiddenBehaviour.FACT_IMPLICATION_CONFUSION:
         return any(
             phrase in normalised
-            for phrase in ("therefore the claim", "this means the claim will", "so the insurer will pay")
+            for phrase in (
+                "therefore the claim",
+                "this means the claim will",
+                "so the insurer will pay",
+            )
         )
     if behaviour is ForbiddenBehaviour.FAILURE_TO_ABSTAIN:
         abstention = any(
             phrase in normalised
-            for phrase in ("cannot determine", "cannot confirm", "cannot be confirmed", "insufficient evidence", "remains unresolved", "needs review")
+            for phrase in (
+                "cannot determine",
+                "cannot confirm",
+                "cannot be confirmed",
+                "insufficient evidence",
+                "remains unresolved",
+                "needs review",
+            )
         )
         return not abstention
     if behaviour is ForbiddenBehaviour.UNSUPPORTED_FACT:
         return any(
             phrase in normalised
-            for phrase in ("covers all treatments", "covers everything", "has no exclusions", "worldwide coverage", "all claims are covered")
+            for phrase in (
+                "covers all treatments",
+                "covers everything",
+                "has no exclusions",
+                "worldwide coverage",
+                "all claims are covered",
+            )
         )
     return False
 
