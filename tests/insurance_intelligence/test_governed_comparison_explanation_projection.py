@@ -75,7 +75,11 @@ def test_projection_preserves_side_product_identities():
     assert result.left.insurer_id == "star_health"
     assert result.left.product_id == "star_comprehensive"
     assert result.right.insurer_id == "aditya_birla_health"
-    assert result.right.product_id == "activ_one_nxt"
+    assert result.right.product_id == "activ_one"
+    assert (
+        result.right.product_variant_id
+        == ACTIV_ONE_NXT_RESTORATION_IMPLEMENTATION.product_variant_id
+    )
 
 
 def test_shared_mechanics_are_deterministically_ordered():
