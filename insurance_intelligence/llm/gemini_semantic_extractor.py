@@ -43,6 +43,16 @@ _GEMINI_SCHEMA_KEYS = {
     "propertyOrdering",
 }
 
+_LOGICAL_OPERATOR_INSTRUCTION = (
+    "Logical operator recovery is mandatory whenever the attribute contract includes "
+    "logical_operator. If multiple conditions are explicitly joined by 'and', 'all', "
+    "'together', or an equivalent conjunctive structure, return logical_operator='AND'. "
+    "If conditions are explicitly joined by 'or', 'either', or an equivalent alternative "
+    "structure, return logical_operator='OR'. Do not omit logical_operator or mark it "
+    "unresolved when the relationship is explicit in the rendered text. Do not invent an "
+    "operator when the relationship is not explicit."
+)
+
 
 def compile_gemini_schema(value: object) -> object:
     """Compile provider-neutral JSON Schema into Gemini's supported subset."""
@@ -66,6 +76,11 @@ def compile_gemini_schema(value: object) -> object:
     return value
 
 
+def build_gemini_extraction_prompt(prompt: str) -> str:
+    """Add provider-specific extraction rules without changing canonical semantics."""
+    return f"{_LOGICAL_OPERATOR_INSTRUCTION}\n\n{_text(prompt, 'prompt')}"
+
+
 @dataclass(frozen=True)
 class GeminiExtractionTrace:
     trace_id: str
@@ -82,7 +97,7 @@ class GeminiSemanticExtractor:
     api_key: str
     model: str = "gemini-3.1-flash-lite"
     endpoint_base: str = "https://generativelanguage.googleapis.com/v1beta/models"
-    prompt_version: str = "semantic-extractor-gemini-v1"
+    prompt_version: str = "semantic-extractor-gemini-v2"
     timeout_seconds: int = 180
 
     def __post_init__(self) -> None:
@@ -124,11 +139,11 @@ class GeminiSemanticExtractor:
             raise GeminiSemanticExtractorError(
                 "Gemini free-tier extraction is restricted to PUBLIC or SYNTHETIC data"
             )
-        prompt = _text(prompt, "prompt")
+        governed_prompt = build_gemini_extraction_prompt(prompt)
         request_id = _text(request_id, "request_id")
         endpoint = f"{self.endpoint_base}/{self.model}:generateContent"
         body = {
-            "contents": [{"parts": [{"text": prompt}]}],
+            "contents": [{"parts": [{"text": governed_prompt}]}],
             "generationConfig": {
                 "responseMimeType": "application/json",
                 "responseSchema": compile_gemini_schema(schema),
@@ -184,5 +199,6 @@ __all__ = [
     "GeminiExtractionTrace",
     "GeminiSemanticExtractor",
     "GeminiSemanticExtractorError",
+    "build_gemini_extraction_prompt",
     "compile_gemini_schema",
 ]
