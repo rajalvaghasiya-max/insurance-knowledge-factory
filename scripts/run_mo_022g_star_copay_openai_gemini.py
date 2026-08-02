@@ -6,7 +6,10 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 import json
 from pathlib import Path
+from time import sleep
 
+from insurance_intelligence.llm.gemini_semantic_extractor import GeminiSemanticExtractorError
+from insurance_intelligence.llm.openai_component_locked import OpenAIComponentLockedError
 from insurance_intelligence.llm.openai_gemini_cross_provider import OpenAIGeminiCrossProvider
 from scripts.run_mo_022g_star_copay_live import build_live_policy, build_star_copay_contract
 
@@ -20,19 +23,39 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--audience", default="customer")
     parser.add_argument("--reading-level", default="plain_language")
     parser.add_argument("--data-classification", choices=("PUBLIC", "SYNTHETIC"), default="PUBLIC")
+    parser.add_argument("--max-attempts", type=int, default=3)
     return parser
+
+
+def _evaluate_with_retries(args: argparse.Namespace):
+    if args.max_attempts < 1 or args.max_attempts > 5:
+        raise SystemExit("--max-attempts must be between 1 and 5")
+    provider = OpenAIGeminiCrossProvider.from_environment()
+    for attempt in range(1, args.max_attempts + 1):
+        try:
+            return provider.evaluate(
+                build_star_copay_contract(),
+                audience=args.audience,
+                reading_level=args.reading_level,
+                policy=build_live_policy(),
+                certification=None,
+                data_classification=args.data_classification,
+            )
+        except (OpenAIComponentLockedError, GeminiSemanticExtractorError) as exc:
+            if attempt >= args.max_attempts:
+                raise
+            delay_seconds = 2 ** (attempt - 1)
+            print(
+                f"Transient provider failure on attempt {attempt}/{args.max_attempts}: {exc}"
+            )
+            print(f"Retrying after {delay_seconds} second(s)...")
+            sleep(delay_seconds)
+    raise RuntimeError("unreachable")
 
 
 def main() -> int:
     args = _parser().parse_args()
-    result = OpenAIGeminiCrossProvider.from_environment().evaluate(
-        build_star_copay_contract(),
-        audience=args.audience,
-        reading_level=args.reading_level,
-        policy=build_live_policy(),
-        certification=None,
-        data_classification=args.data_classification,
-    )
+    result = _evaluate_with_retries(args)
     payload = {
         "schema_version": "1.0",
         "run_type": "MO-022G_OPENAI_GEMINI_CROSS_PROVIDER",
