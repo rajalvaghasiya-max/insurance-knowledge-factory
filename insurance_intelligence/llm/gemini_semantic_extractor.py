@@ -27,9 +27,20 @@ def _stable_id(prefix: str, *parts: object) -> str:
 
 
 _GEMINI_SCHEMA_KEYS = {
-    "type", "format", "description", "nullable", "enum", "items",
-    "properties", "required", "minItems", "maxItems", "minimum",
-    "maximum", "anyOf", "propertyOrdering",
+    "type",
+    "format",
+    "description",
+    "nullable",
+    "enum",
+    "items",
+    "properties",
+    "required",
+    "minItems",
+    "maxItems",
+    "minimum",
+    "maximum",
+    "anyOf",
+    "propertyOrdering",
 }
 
 
@@ -69,10 +80,10 @@ class GeminiExtractionTrace:
 @dataclass(frozen=True)
 class GeminiSemanticExtractor:
     api_key: str
-    model: str = "gemini-3.5-flash-lite"
+    model: str = "gemini-3.1-flash-lite"
     endpoint_base: str = "https://generativelanguage.googleapis.com/v1beta/models"
     prompt_version: str = "semantic-extractor-gemini-v1"
-    timeout_seconds: int = 60
+    timeout_seconds: int = 180
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "api_key", _text(self.api_key, "api_key"))
@@ -88,7 +99,18 @@ class GeminiSemanticExtractor:
 
     @classmethod
     def from_environment(cls) -> "GeminiSemanticExtractor":
-        return cls(api_key=os.environ.get("GEMINI_API_KEY", ""))
+        timeout_text = os.environ.get("GEMINI_TIMEOUT_SECONDS", "180")
+        try:
+            timeout_seconds = int(timeout_text)
+        except ValueError as exc:
+            raise GeminiSemanticExtractorError(
+                "GEMINI_TIMEOUT_SECONDS must be an integer"
+            ) from exc
+        return cls(
+            api_key=os.environ.get("GEMINI_API_KEY", ""),
+            model=os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite"),
+            timeout_seconds=timeout_seconds,
+        )
 
     def extract(
         self,
@@ -116,7 +138,10 @@ class GeminiSemanticExtractor:
         try:
             response = requests.post(
                 endpoint,
-                headers={"Content-Type": "application/json", "x-goog-api-key": self.api_key},
+                headers={
+                    "Content-Type": "application/json",
+                    "x-goog-api-key": self.api_key,
+                },
                 json=body,
                 timeout=self.timeout_seconds,
             )
@@ -138,7 +163,9 @@ class GeminiSemanticExtractor:
             raise GeminiSemanticExtractorError("Gemini structured output is not valid JSON") from exc
         if not isinstance(parsed, Mapping):
             raise GeminiSemanticExtractorError("Gemini structured output must be an object")
-        canonical_output = json.dumps(parsed, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+        canonical_output = json.dumps(
+            parsed, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+        )
         return (
             GeminiExtractionTrace(
                 trace_id=_stable_id("gemini-stage", request_id, canonical_output),
@@ -154,6 +181,8 @@ class GeminiSemanticExtractor:
 
 
 __all__ = [
-    "GeminiExtractionTrace", "GeminiSemanticExtractor",
-    "GeminiSemanticExtractorError", "compile_gemini_schema",
+    "GeminiExtractionTrace",
+    "GeminiSemanticExtractor",
+    "GeminiSemanticExtractorError",
+    "compile_gemini_schema",
 ]
