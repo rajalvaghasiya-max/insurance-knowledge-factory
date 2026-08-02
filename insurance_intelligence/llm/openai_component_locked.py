@@ -1,9 +1,10 @@
 """OpenAI integration for component-locked rendering and semantic extraction.
 
-Rendering and extraction are separate provider calls.  The renderer receives the
-approved canonical contract and may return simplified text only.  The extractor
-receives only rendered text plus component identities and reconstructs semantics
-for deterministic MO-022G comparison.  Neither call can publish an explanation.
+Rendering and extraction are separate provider calls. The renderer receives the
+approved canonical contract and may return simplified text only. The extractor
+receives rendered text plus component identities and the canonical attribute
+vocabulary, but never the expected attribute values. It reconstructs semantics
+for deterministic MO-022G comparison. Neither call can publish an explanation.
 """
 from __future__ import annotations
 
@@ -20,6 +21,7 @@ from insurance_intelligence.contracts.semantic_fidelity import (
     ExplanationSemanticContract,
     FidelityRoutingPolicy,
     RuleFamilyCertification,
+    SemanticAttribute,
 )
 from insurance_intelligence.llm.component_locked import (
     ComponentLockedRenderRequest,
@@ -44,6 +46,17 @@ def _text(value: object, field_name: str) -> str:
 def _stable_id(prefix: str, *parts: object) -> str:
     payload = "\x1f".join(str(part) for part in parts)
     return f"{prefix}-{sha256(payload.encode('utf-8')).hexdigest()[:16]}"
+
+
+def _attribute_value_type(attribute: SemanticAttribute) -> str:
+    value = attribute.value
+    if isinstance(value, bool):
+        return "boolean"
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return "number"
+    if isinstance(value, tuple):
+        return "string_array"
+    return "string"
 
 
 @dataclass(frozen=True)
@@ -95,6 +108,13 @@ def _renderer_schema(request: ComponentLockedRenderRequest) -> dict[str, object]
 def _extractor_schema(request: ComponentLockedRenderRequest) -> dict[str, object]:
     component_ids = [item.component_id for item in request.instructions]
     kinds = [item.kind.value for item in request.instructions]
+    attribute_names = sorted(
+        {
+            attribute.name
+            for instruction in request.instructions
+            for attribute in instruction.attributes
+        }
+    )
     semantic_value = {
         "anyOf": [
             {"type": "string"},
@@ -116,8 +136,12 @@ def _extractor_schema(request: ComponentLockedRenderRequest) -> dict[str, object
                     "type": "object",
                     "additionalProperties": False,
                     "required": [
-                        "component_id", "kind", "reconstructed_attributes", "confidence",
-                        "extractor_agreement", "unresolved_reasons"
+                        "component_id",
+                        "kind",
+                        "reconstructed_attributes",
+                        "confidence",
+                        "extractor_agreement",
+                        "unresolved_reasons",
                     ],
                     "properties": {
                         "component_id": {"type": "string", "enum": component_ids},
@@ -129,15 +153,20 @@ def _extractor_schema(request: ComponentLockedRenderRequest) -> dict[str, object
                                 "additionalProperties": False,
                                 "required": ["name", "value"],
                                 "properties": {
-                                    "name": {"type": "string", "minLength": 1},
+                                    "name": {"type": "string", "enum": attribute_names},
                                     "value": semantic_value,
                                 },
                             },
                         },
                         "confidence": {"type": "number", "minimum": 0, "maximum": 1},
-                        "extractor_agreement": {"type": "number", "minimum": 0, "maximum": 1},
+                        "extractor_agreement": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                        },
                         "unresolved_reasons": {
-                            "type": "array", "items": {"type": "string"}
+                            "type": "array",
+                            "items": {"type": "string"},
                         },
                     },
                 },
@@ -176,15 +205,18 @@ class OpenAIComponentLockedProvider:
     renderer_model: str = "gpt-5-mini-2025-08-07"
     extractor_model: str = "gpt-5-mini-2025-08-07"
     endpoint: str = "https://api.openai.com/v1/responses"
-    renderer_prompt_version: str = "component-locked-renderer-v1"
-    extractor_prompt_version: str = "semantic-extractor-v1"
+    renderer_prompt_version: str = "component-locked-renderer-v2"
+    extractor_prompt_version: str = "semantic-extractor-v2"
     timeout_seconds: int = 60
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "api_key", _text(self.api_key, "api_key"))
         for field_name in (
-            "renderer_model", "extractor_model", "endpoint",
-            "renderer_prompt_version", "extractor_prompt_version"
+            "renderer_model",
+            "extractor_model",
+            "endpoint",
+            "renderer_prompt_version",
+            "extractor_prompt_version",
         ):
             object.__setattr__(self, field_name, _text(getattr(self, field_name), field_name))
         if not self.endpoint.startswith("https://"):
@@ -279,11 +311,15 @@ class OpenAIComponentLockedProvider:
         certification: RuleFamilyCertification | None,
     ) -> OpenAIComponentLockedResult:
         request = build_component_locked_request(
-            contract, audience=audience, reading_level=reading_level
+            contract,
+            audience=audience,
+            reading_level=reading_level,
         )
         render_prompt = (
             "Simplify wording only. Do not add, remove, infer, generalise, narrow, or change "
-            "any fact or semantic relationship. Return each requested component exactly once.\n"
+            "any fact or semantic relationship. Return each requested component exactly once. "
+            "For an exception component, explicitly name the rule or effect that the exception "
+            "negates; do not use an unqualified phrase such as 'does not apply'.\n"
             f"REQUEST={request.canonical_payload}"
         )
         rendering_trace, rendered = self._call(
@@ -298,15 +334,34 @@ class OpenAIComponentLockedProvider:
         rendered_components = rendered.get("components")
         if not isinstance(rendered_components, list):
             raise OpenAIComponentLockedError("renderer output is missing components")
+
+        attribute_contracts = [
+            {
+                "component_id": instruction.component_id,
+                "kind": instruction.kind.value,
+                "attributes": [
+                    {
+                        "name": attribute.name,
+                        "value_type": _attribute_value_type(attribute),
+                    }
+                    for attribute in instruction.attributes
+                ],
+            }
+            for instruction in request.instructions
+        ]
         extraction_input = {
             "contract_id": request.contract_id,
             "components": rendered_components,
-            "allowed_component_ids": [item.component_id for item in request.instructions],
+            "attribute_contracts": attribute_contracts,
         }
         extraction_prompt = (
             "Reconstruct only the literal semantics expressed in each rendered component. "
-            "Do not correct the text using outside knowledge and do not compare it with an expected answer. "
-            "Mark ambiguity in unresolved_reasons and lower confidence.\n"
+            "Do not correct the text using outside knowledge and do not compare it with expected "
+            "values. For each component, return exactly the canonical attribute names listed in "
+            "attribute_contracts, using the declared value types. The attribute names and types "
+            "define the ontology only; infer every value solely from the rendered text. If a "
+            "required value cannot be recovered literally, include an unresolved reason and lower "
+            "confidence rather than inventing a value.\n"
             f"INPUT={json.dumps(extraction_input, sort_keys=True, separators=(',', ':'))}"
         )
         extraction_trace, extracted = self._call(
@@ -322,7 +377,9 @@ class OpenAIComponentLockedProvider:
         if not isinstance(extracted_components, list):
             raise OpenAIComponentLockedError("extractor output is missing components")
         rendered_by_id = {
-            item.get("component_id"): item for item in rendered_components if isinstance(item, Mapping)
+            item.get("component_id"): item
+            for item in rendered_components
+            if isinstance(item, Mapping)
         }
         combined_components: list[dict[str, object]] = []
         for item in extracted_components:
@@ -332,16 +389,18 @@ class OpenAIComponentLockedProvider:
             rendered_item = rendered_by_id.get(component_id)
             if not isinstance(rendered_item, Mapping):
                 raise OpenAIComponentLockedError("extractor returned an unknown component")
-            combined_components.append({
-                "component_id": component_id,
-                "kind": item.get("kind"),
-                "text": rendered_item.get("text"),
-                "reconstructed_attributes": item.get("reconstructed_attributes"),
-                "confidence": item.get("confidence"),
-                "extractor_ids": [self.extractor_prompt_version],
-                "extractor_agreement": item.get("extractor_agreement"),
-                "unresolved_reasons": item.get("unresolved_reasons"),
-            })
+            combined_components.append(
+                {
+                    "component_id": component_id,
+                    "kind": item.get("kind"),
+                    "text": rendered_item.get("text"),
+                    "reconstructed_attributes": item.get("reconstructed_attributes"),
+                    "confidence": item.get("confidence"),
+                    "extractor_ids": [self.extractor_prompt_version],
+                    "extractor_agreement": item.get("extractor_agreement"),
+                    "unresolved_reasons": item.get("unresolved_reasons"),
+                }
+            )
         outcome = evaluate_component_locked_rendering(
             contract,
             request,
