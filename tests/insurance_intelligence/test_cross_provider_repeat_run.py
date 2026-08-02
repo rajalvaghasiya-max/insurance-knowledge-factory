@@ -60,6 +60,24 @@ def _artifact(*, agreed: bool = True, matched: bool = True) -> dict[str, object]
     }
 
 
+def _tuple_artifact() -> dict[str, object]:
+    artifact = _artifact()
+    artifact["agreements"] = tuple(artifact["agreements"])
+    artifact["routing_result"]["reason_codes"] = tuple(
+        artifact["routing_result"]["reason_codes"]
+    )
+    artifact["semantic_report"]["hard_failure_codes"] = tuple(
+        artifact["semantic_report"]["hard_failure_codes"]
+    )
+    artifact["semantic_report"]["unresolved_component_ids"] = tuple(
+        artifact["semantic_report"]["unresolved_component_ids"]
+    )
+    artifact["semantic_report"]["comparisons"] = tuple(
+        artifact["semantic_report"]["comparisons"]
+    )
+    return artifact
+
+
 def test_cross_provider_repeat_run_marks_exact_batch_stable():
     evidence = build_cross_provider_repeat_run_evidence(
         [_artifact(), _artifact(), _artifact()], required_run_count=3
@@ -71,6 +89,16 @@ def test_cross_provider_repeat_run_marks_exact_batch_stable():
     assert evidence.preflight_passed_every_run is True
     assert evidence.minimum_observed_confidence == 0.9
     assert evidence.certification_granted is False
+
+
+def test_cross_provider_repeat_run_accepts_tuple_shaped_runtime_artifacts():
+    evidence = build_cross_provider_repeat_run_evidence(
+        [_tuple_artifact(), _tuple_artifact(), _tuple_artifact()],
+        required_run_count=3,
+    )
+
+    assert evidence.status == "CROSS_PROVIDER_SEMANTICALLY_STABLE"
+    assert evidence.completed_run_count == 3
 
 
 def test_cross_provider_repeat_run_fails_closed_on_one_disagreement():
