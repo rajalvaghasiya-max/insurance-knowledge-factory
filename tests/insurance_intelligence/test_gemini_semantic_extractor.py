@@ -50,9 +50,21 @@ def test_gemini_extractor_returns_governed_trace(monkeypatch):
     )
     assert output == {"components": [{"component_id": "x"}]}
     assert trace.provider == "google"
-    assert trace.model == "gemini-3.5-flash-lite"
+    assert trace.model == "gemini-3.1-flash-lite"
     assert captured["headers"]["x-goog-api-key"] == "test-key"
     assert captured["json"]["generationConfig"]["responseMimeType"] == "application/json"
+    assert captured["timeout"] == 180
+
+
+def test_gemini_from_environment_supports_governed_overrides(monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
+    monkeypatch.setenv("GEMINI_MODEL", "gemini-test-model")
+    monkeypatch.setenv("GEMINI_TIMEOUT_SECONDS", "240")
+
+    extractor = GeminiSemanticExtractor.from_environment()
+
+    assert extractor.model == "gemini-test-model"
+    assert extractor.timeout_seconds == 240
 
 
 def test_compile_gemini_schema_removes_unsupported_keywords_recursively():
