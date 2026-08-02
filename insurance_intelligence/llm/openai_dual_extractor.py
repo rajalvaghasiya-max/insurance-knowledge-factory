@@ -21,6 +21,7 @@ from insurance_intelligence.llm.openai_component_locked import (
     OpenAIComponentLockedProvider,
     OpenAIStageTrace,
     _attribute_value_type,
+    _canonical_values,
     _extractor_schema,
     _renderer_schema,
 )
@@ -51,7 +52,7 @@ def _preserve_disagreement_reason(
     *,
     has_disagreement: bool,
 ) -> SemanticRenderingOutcome:
-    """Expose the precise causes of an incomplete dual-extractor proof."""
+    """Keep generic proof failures and expose their precise dual-extractor cause."""
     if not has_disagreement:
         return outcome
     reason_codes = tuple(
@@ -95,7 +96,7 @@ class OpenAIDualExtractorResult:
 class OpenAIDualExtractorProvider:
     provider: OpenAIComponentLockedProvider
     extractor_b_model: str | None = None
-    extractor_b_prompt_version: str = "semantic-extractor-v3-independent-b"
+    extractor_b_prompt_version: str = "semantic-extractor-v4-independent-b"
 
     @classmethod
     def from_environment(cls) -> "OpenAIDualExtractorProvider":
@@ -143,6 +144,7 @@ class OpenAIDualExtractorProvider:
                     {
                         "name": attribute.name,
                         "value_type": _attribute_value_type(attribute),
+                        "allowed_values": list(_canonical_values(attribute.name)),
                     }
                     for attribute in instruction.attributes
                 ],
@@ -157,9 +159,12 @@ class OpenAIDualExtractorProvider:
         extraction_prompt = (
             "Independently reconstruct only the literal semantics expressed in each rendered "
             "component. Do not use outside knowledge, expected values, another extractor output, "
-            "or self-reported agreement. Return exactly the canonical attribute names and codec "
-            "values permitted by attribute_contracts. Infer every value solely from the rendered "
-            "text. If a value cannot be recovered literally, add an unresolved reason.\n"
+            "or self-reported agreement. Return every canonical attribute name exactly once. "
+            "For an attribute with non-empty allowed_values, the returned value MUST be exactly "
+            "one listed token; never return a prose synonym. For an attribute with empty "
+            "allowed_values, infer a value of the declared value_type solely from the rendered "
+            "text. If a value cannot be recovered literally or mapped unambiguously to one "
+            "allowed token, add an unresolved reason.\n"
             f"INPUT={json.dumps(extraction_input, sort_keys=True, separators=(',', ':'))}"
         )
         extractor_a_trace, extracted_a = self.provider._call(
@@ -168,7 +173,7 @@ class OpenAIDualExtractorProvider:
             schema_name="component_semantic_extraction_a",
             schema=_extractor_schema(request),
             stage="EXTRACTION_A",
-            prompt_version=self.provider.extractor_prompt_version,
+            prompt_version="semantic-extractor-v4-independent-a",
             request_id=request.request_id,
         )
         extractor_b_trace, extracted_b = self.provider._call(
@@ -241,7 +246,7 @@ class OpenAIDualExtractorProvider:
                     "reconstructed_attributes": item_a.get("reconstructed_attributes"),
                     "confidence": min(confidence_values) if confidence_values else 0.0,
                     "extractor_ids": [
-                        self.provider.extractor_prompt_version,
+                        "semantic-extractor-v4-independent-a",
                         self.extractor_b_prompt_version,
                     ],
                     "extractor_agreement": 1.0 if agreed else 0.0,
