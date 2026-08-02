@@ -7,34 +7,19 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 
-from insurance_intelligence.llm.openai_dual_extractor import OpenAIDualExtractorProvider
+from insurance_intelligence.llm.openai_dual_extractor import (
+    OpenAIDualExtractorProvider,
+    OpenAIDualExtractorResult,
+)
 from scripts.run_mo_022g_star_copay_live import build_live_policy, build_star_copay_contract
 
 
 DEFAULT_OUTPUT = Path("outputs/evaluation/mo_022g_star_copay_dual_extractor.json")
 
 
-def _parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description="Run one governed MO-022G Star copay dual-extractor case."
-    )
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
-    parser.add_argument("--audience", default="customer")
-    parser.add_argument("--reading-level", default="plain_language")
-    return parser
-
-
-def main() -> int:
-    args = _parser().parse_args()
-    provider = OpenAIDualExtractorProvider.from_environment()
-    result = provider.evaluate(
-        build_star_copay_contract(),
-        audience=args.audience,
-        reading_level=args.reading_level,
-        policy=build_live_policy(),
-        certification=None,
-    )
-    payload = {
+def result_payload(result: OpenAIDualExtractorResult) -> dict[str, object]:
+    """Serialize one dual-extractor result into the governed local artifact shape."""
+    return {
         "schema_version": "1.0",
         "run_type": "MO-022G_DUAL_EXTRACTOR_LIVE_CERTIFICATION",
         "created_at": datetime.now(timezone.utc).isoformat(),
@@ -57,6 +42,29 @@ def main() -> int:
             else None
         ),
     }
+
+
+def _parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Run one governed MO-022G Star copay dual-extractor case."
+    )
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--audience", default="customer")
+    parser.add_argument("--reading-level", default="plain_language")
+    return parser
+
+
+def main() -> int:
+    args = _parser().parse_args()
+    provider = OpenAIDualExtractorProvider.from_environment()
+    result = provider.evaluate(
+        build_star_copay_contract(),
+        audience=args.audience,
+        reading_level=args.reading_level,
+        policy=build_live_policy(),
+        certification=None,
+    )
+    payload = result_payload(result)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(payload, indent=2, sort_keys=True, ensure_ascii=False, default=str) + "\n",
