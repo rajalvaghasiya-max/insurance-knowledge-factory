@@ -51,11 +51,17 @@ def _preserve_disagreement_reason(
     *,
     has_disagreement: bool,
 ) -> SemanticRenderingOutcome:
-    """Keep the generic proof failure and expose its precise dual-extractor cause."""
+    """Expose the precise causes of an incomplete dual-extractor proof."""
     if not has_disagreement:
         return outcome
     reason_codes = tuple(
-        sorted(set(outcome.routing_result.reason_codes) | {"LOW_EXTRACTOR_AGREEMENT"})
+        sorted(
+            set(outcome.routing_result.reason_codes)
+            | {
+                "LOW_EXTRACTOR_AGREEMENT",
+                "SEMANTIC_EXTRACTION_UNRESOLVED",
+            }
+        )
     )
     routing_result = replace(outcome.routing_result, reason_codes=reason_codes)
     review_packet = outcome.human_review_packet
