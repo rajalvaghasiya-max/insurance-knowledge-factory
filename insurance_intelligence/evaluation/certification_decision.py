@@ -31,6 +31,13 @@ class ControlledCertificationStatus(str, Enum):
     REJECTED = "REJECTED"
 
 
+class CertificationConfidenceMode(str, Enum):
+    """Controls how provider-reported confidence affects certification."""
+
+    THRESHOLD_REQUIRED = "THRESHOLD_REQUIRED"
+    DETERMINISTIC_PROOF_PRIMARY = "DETERMINISTIC_PROOF_PRIMARY"
+
+
 def _text(value: object, field: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise CertificationDecisionError(f"{field} must be non-empty text")
@@ -68,6 +75,7 @@ class CertificationDecisionPolicy:
     minimum_confidence: float
     required_stability_status: str = "CROSS_PROVIDER_SEMANTICALLY_STABLE"
     require_human_approval: bool = True
+    confidence_mode: CertificationConfidenceMode = CertificationConfidenceMode.THRESHOLD_REQUIRED
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "policy_id", _text(self.policy_id, "policy_id"))
@@ -79,6 +87,8 @@ class CertificationDecisionPolicy:
         )
         if not isinstance(self.require_human_approval, bool):
             raise CertificationDecisionError("require_human_approval must be boolean")
+        if not isinstance(self.confidence_mode, CertificationConfidenceMode):
+            raise CertificationDecisionError("confidence_mode must be a CertificationConfidenceMode")
 
 
 @dataclass(frozen=True)
@@ -110,6 +120,9 @@ class ControlledCertificationDecision:
     rule_family_version: str
     batch_id: str
     policy_id: str
+    confidence_mode: CertificationConfidenceMode
+    minimum_observed_confidence: float
+    minimum_required_confidence: float
     reviewer_id: str | None
     approved_evidence_ids: tuple[str, ...]
     certification_effect: str
@@ -142,7 +155,18 @@ def decide_controlled_certification(
         reasons.add("UNRESOLVED_COMPONENT_PRESENT")
     if not evidence.preflight_passed_every_run:
         reasons.add("RULE_FAMILY_PREFLIGHT_NOT_PROVEN")
-    if evidence.minimum_observed_confidence < policy.minimum_confidence:
+
+    deterministic_proof_complete = not reasons
+    if (
+        policy.confidence_mode is CertificationConfidenceMode.THRESHOLD_REQUIRED
+        and evidence.minimum_observed_confidence < policy.minimum_confidence
+    ):
+        reasons.add("MINIMUM_CONFIDENCE_NOT_MET")
+    elif (
+        policy.confidence_mode is CertificationConfidenceMode.DETERMINISTIC_PROOF_PRIMARY
+        and not deterministic_proof_complete
+        and evidence.minimum_observed_confidence < policy.minimum_confidence
+    ):
         reasons.add("MINIMUM_CONFIDENCE_NOT_MET")
 
     reviewer_id: str | None = None
@@ -167,6 +191,7 @@ def decide_controlled_certification(
     payload = {
         "batch_id": evidence.batch_id,
         "policy_id": policy.policy_id,
+        "confidence_mode": policy.confidence_mode.value,
         "reviewer_id": reviewer_id,
         "approved_evidence_ids": approved_ids,
         "status": status.value,
@@ -181,6 +206,9 @@ def decide_controlled_certification(
         rule_family_version=evidence.rule_family_version,
         batch_id=evidence.batch_id,
         policy_id=policy.policy_id,
+        confidence_mode=policy.confidence_mode,
+        minimum_observed_confidence=evidence.minimum_observed_confidence,
+        minimum_required_confidence=policy.minimum_confidence,
         reviewer_id=reviewer_id,
         approved_evidence_ids=approved_ids,
         certification_effect="GRANT" if granted else "NONE",
@@ -189,6 +217,7 @@ def decide_controlled_certification(
 
 
 __all__ = [
+    "CertificationConfidenceMode",
     "CertificationDecisionError",
     "CertificationDecisionPolicy",
     "ControlledCertificationDecision",
