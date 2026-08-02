@@ -50,7 +50,7 @@ def test_gemini_extractor_returns_governed_trace(monkeypatch):
     )
     assert output == {"components": [{"component_id": "x"}]}
     assert trace.provider == "google"
-    assert trace.model == "gemini-2.5-flash-lite"
+    assert trace.model == "gemini-3.5-flash-lite"
     assert captured["headers"]["x-goog-api-key"] == "test-key"
     assert captured["json"]["generationConfig"]["responseMimeType"] == "application/json"
 
