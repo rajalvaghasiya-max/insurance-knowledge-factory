@@ -100,7 +100,7 @@ def _extractor_schema(request: ComponentLockedRenderRequest) -> dict[str, object
             {"type": "string"},
             {"type": "number"},
             {"type": "boolean"},
-            {"type": "array", "items": {"type": "string"}, "uniqueItems": True},
+            {"type": "array", "items": {"type": "string"}},
         ]
     }
     return {
@@ -137,7 +137,7 @@ def _extractor_schema(request: ComponentLockedRenderRequest) -> dict[str, object
                         "confidence": {"type": "number", "minimum": 0, "maximum": 1},
                         "extractor_agreement": {"type": "number", "minimum": 0, "maximum": 1},
                         "unresolved_reasons": {
-                            "type": "array", "items": {"type": "string"}, "uniqueItems": True
+                            "type": "array", "items": {"type": "string"}
                         },
                     },
                 },
