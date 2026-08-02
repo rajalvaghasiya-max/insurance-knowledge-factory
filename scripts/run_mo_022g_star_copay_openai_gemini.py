@@ -8,13 +8,33 @@ import json
 from pathlib import Path
 from time import sleep
 
+from insurance_intelligence.contracts.rule_family_registry import (
+    RuleFamilyBinding,
+    build_conditional_copayment_family,
+)
 from insurance_intelligence.llm.gemini_semantic_extractor import GeminiSemanticExtractorError
+from insurance_intelligence.llm.governed_cross_provider import GovernedCrossProviderEvaluator
 from insurance_intelligence.llm.openai_component_locked import OpenAIComponentLockedError
 from insurance_intelligence.llm.openai_gemini_cross_provider import OpenAIGeminiCrossProvider
 from scripts.run_mo_022g_star_copay_live import build_live_policy, build_star_copay_contract
 
 
 DEFAULT_OUTPUT = Path("outputs/evaluation/mo_022g_star_copay_openai_gemini.json")
+
+
+def build_star_copay_family_binding() -> RuleFamilyBinding:
+    contract = build_star_copay_contract()
+    return RuleFamilyBinding(
+        family_id="CONDITIONAL_COPAYMENT",
+        family_version="1.0",
+        contract_id=contract.contract_id,
+        component_roles=(
+            ("trigger", "entry-age-trigger"),
+            ("effect", "copay-effect"),
+            ("exception", "continuous-renewal-exception"),
+            ("scope", "applicability-scope"),
+        ),
+    )
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -30,11 +50,16 @@ def _parser() -> argparse.ArgumentParser:
 def _evaluate_with_retries(args: argparse.Namespace):
     if args.max_attempts < 1 or args.max_attempts > 5:
         raise SystemExit("--max-attempts must be between 1 and 5")
-    provider = OpenAIGeminiCrossProvider.from_environment()
+    evaluator = GovernedCrossProviderEvaluator(
+        provider=OpenAIGeminiCrossProvider.from_environment(),
+        family=build_conditional_copayment_family(),
+        binding=build_star_copay_family_binding(),
+    )
+    contract = build_star_copay_contract()
     for attempt in range(1, args.max_attempts + 1):
         try:
-            return provider.evaluate(
-                build_star_copay_contract(),
+            return evaluator.evaluate(
+                contract,
                 audience=args.audience,
                 reading_level=args.reading_level,
                 policy=build_live_policy(),
@@ -61,6 +86,11 @@ def main() -> int:
         "run_type": "MO-022G_OPENAI_GEMINI_CROSS_PROVIDER",
         "created_at": datetime.now(timezone.utc).isoformat(),
         "data_classification": args.data_classification,
+        "rule_family_preflight": {
+            "family_id": "CONDITIONAL_COPAYMENT",
+            "family_version": "1.0",
+            "status": "PASSED",
+        },
         "certification_effect": "NONE",
         "certification_granted": False,
         "renderer_trace": asdict(result.rendering_trace),
@@ -78,6 +108,7 @@ def main() -> int:
     print("=" * 72)
     print("MO-022G OPENAI + GEMINI CROSS-PROVIDER RUN")
     print("=" * 72)
+    print("Rule-family preflight: PASSED")
     print(f"Routing decision     : {result.outcome.routing_result.decision.value}")
     print(f"Reason codes         : {', '.join(result.outcome.routing_result.reason_codes)}")
     print(f"Cross-provider match : {'EXACT' if not disagreed else 'DISAGREED'}")
