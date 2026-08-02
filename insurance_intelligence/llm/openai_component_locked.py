@@ -2,9 +2,9 @@
 
 Rendering and extraction are separate provider calls. The renderer receives the
 approved canonical contract and may return simplified text only. The extractor
-receives rendered text plus component identities and the canonical attribute
-vocabulary, but never the expected attribute values. It reconstructs semantics
-for deterministic MO-022G comparison. Neither call can publish an explanation.
+receives rendered text plus component identities, canonical attribute names,
+types, and ontology vocabularies, but never expected values. Neither call can
+publish an explanation.
 """
 from __future__ import annotations
 
@@ -59,6 +59,22 @@ def _attribute_value_type(attribute: SemanticAttribute) -> str:
     return "string"
 
 
+_CANONICAL_VALUE_CODECS: dict[str, tuple[str, ...]] = {
+    "operator": ("<", "<=", "=", ">=", ">"),
+    "age_operator": ("<", "<=", "=", ">=", ">"),
+    "logical_operator": ("AND", "OR"),
+    "subject": ("insured_person", "policyholder", "insurer", "claimant"),
+    "attribute": ("age_at_entry", "current_age", "policy_tenure", "claim_amount"),
+    "effect_type": ("copayment", "deductible", "coverage", "exclusion", "waiting_period"),
+    "claim_scope": ("each_and_every_claim", "aggregate_claims", "specified_claims"),
+    "mode": ("exact_set", "range", "all"),
+}
+
+
+def _canonical_values(attribute_name: str) -> tuple[str, ...]:
+    return _CANONICAL_VALUE_CODECS.get(attribute_name, ())
+
+
 @dataclass(frozen=True)
 class OpenAIStageTrace:
     trace_id: str
@@ -109,11 +125,9 @@ def _extractor_schema(request: ComponentLockedRenderRequest) -> dict[str, object
     component_ids = [item.component_id for item in request.instructions]
     kinds = [item.kind.value for item in request.instructions]
     attribute_names = sorted(
-        {
-            attribute.name
-            for instruction in request.instructions
-            for attribute in instruction.attributes
-        }
+        attribute.name
+        for instruction in request.instructions
+        for attribute in instruction.attributes
     )
     semantic_value = {
         "anyOf": [
@@ -206,7 +220,7 @@ class OpenAIComponentLockedProvider:
     extractor_model: str = "gpt-5-mini-2025-08-07"
     endpoint: str = "https://api.openai.com/v1/responses"
     renderer_prompt_version: str = "component-locked-renderer-v2"
-    extractor_prompt_version: str = "semantic-extractor-v2"
+    extractor_prompt_version: str = "semantic-extractor-v3"
     timeout_seconds: int = 60
 
     def __post_init__(self) -> None:
@@ -343,6 +357,7 @@ class OpenAIComponentLockedProvider:
                     {
                         "name": attribute.name,
                         "value_type": _attribute_value_type(attribute),
+                        "canonical_values": list(_canonical_values(attribute.name)),
                     }
                     for attribute in instruction.attributes
                 ],
@@ -357,11 +372,12 @@ class OpenAIComponentLockedProvider:
         extraction_prompt = (
             "Reconstruct only the literal semantics expressed in each rendered component. "
             "Do not correct the text using outside knowledge and do not compare it with expected "
-            "values. For each component, return exactly the canonical attribute names listed in "
-            "attribute_contracts, using the declared value types. The attribute names and types "
-            "define the ontology only; infer every value solely from the rendered text. If a "
-            "required value cannot be recovered literally, include an unresolved reason and lower "
-            "confidence rather than inventing a value.\n"
+            "values. Return exactly the canonical attribute names listed for each component. "
+            "Use the declared value type. When canonical_values is non-empty, encode the literal "
+            "meaning using exactly one of those ontology tokens; these are the allowed vocabulary, "
+            "not the expected answer. Infer every value solely from rendered text. If no canonical "
+            "token faithfully represents the text, add an unresolved reason and lower confidence "
+            "rather than inventing or paraphrasing a token.\n"
             f"INPUT={json.dumps(extraction_input, sort_keys=True, separators=(',', ':'))}"
         )
         extraction_trace, extracted = self._call(
