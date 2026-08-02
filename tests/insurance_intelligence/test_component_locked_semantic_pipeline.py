@@ -88,7 +88,7 @@ def contract():
 
 
 @pytest.fixture
-def request(contract):
+def rendering_request(contract):
     return build_component_locked_request(
         contract,
         audience="customer",
@@ -177,33 +177,33 @@ def _valid_payload(*, confidence=0.99, agreement=1.0, scope_sections=None):
     }
 
 
-def test_request_locks_every_canonical_component(contract, request):
-    assert request.contract_id == contract.contract_id
-    assert tuple(item.component_id for item in request.instructions) == tuple(
+def test_request_locks_every_canonical_component(contract, rendering_request):
+    assert rendering_request.contract_id == contract.contract_id
+    assert tuple(item.component_id for item in rendering_request.instructions) == tuple(
         item.component_id for item in contract.components
     )
-    assert "Return every component exactly once" in request.canonical_payload
+    assert "Return every component exactly once" in rendering_request.canonical_payload
 
 
-def test_parser_requires_exact_component_coverage(request):
+def test_parser_requires_exact_component_coverage(rendering_request):
     payload = _valid_payload()
     payload["components"].pop()
     with pytest.raises(ComponentLockedRenderingError, match="exactly cover"):
-        parse_component_locked_output(payload, request)
+        parse_component_locked_output(payload, rendering_request)
 
 
-def test_parser_rejects_unknown_component(request):
+def test_parser_rejects_unknown_component(rendering_request):
     payload = _valid_payload()
     payload["components"][0]["component_id"] = "invented-component"
     with pytest.raises(ComponentLockedRenderingError, match="unknown component_id"):
-        parse_component_locked_output(payload, request)
+        parse_component_locked_output(payload, rendering_request)
 
 
 def test_exact_semantic_match_is_auto_approved_and_assembled(
-    contract, request, policy, certification
+    contract, rendering_request, policy, certification
 ):
     outcome = evaluate_component_locked_rendering(
-        contract, request, _valid_payload(), policy, certification
+        contract, rendering_request, _valid_payload(), policy, certification
     )
     assert outcome.routing_result.decision is FidelityRoutingDecision.AUTO_APPROVED
     assert outcome.verified_explanation is not None
@@ -213,12 +213,12 @@ def test_exact_semantic_match_is_auto_approved_and_assembled(
 
 
 def test_non_contiguous_scope_expansion_is_auto_rejected(
-    contract, request, policy, certification
+    contract, rendering_request, policy, certification
 ):
     expanded = tuple(f"II.{value}" for value in range(1, 26))
     outcome = evaluate_component_locked_rendering(
         contract,
-        request,
+        rendering_request,
         _valid_payload(scope_sections=expanded),
         policy,
         certification,
@@ -229,31 +229,31 @@ def test_non_contiguous_scope_expansion_is_auto_rejected(
     assert outcome.human_review_packet is None
 
 
-def test_changed_percentage_is_auto_rejected(contract, request, policy, certification):
+def test_changed_percentage_is_auto_rejected(contract, rendering_request, policy, certification):
     payload = _valid_payload()
     effect = next(item for item in payload["components"] if item["component_id"] == "copay-effect")
     effect["reconstructed_attributes"] = _attributes(
         effect_type="copayment", percentage=20, claim_scope="each_and_every_claim"
     )
-    outcome = evaluate_component_locked_rendering(contract, request, payload, policy, certification)
+    outcome = evaluate_component_locked_rendering(contract, rendering_request, payload, policy, certification)
     assert outcome.routing_result.decision is FidelityRoutingDecision.AUTO_REJECTED
     assert "EXACT_VALUE_CHANGED" in outcome.routing_result.reason_codes
 
 
-def test_changed_operator_is_auto_rejected(contract, request, policy, certification):
+def test_changed_operator_is_auto_rejected(contract, rendering_request, policy, certification):
     payload = _valid_payload()
     trigger = payload["components"][0]
     trigger["reconstructed_attributes"] = _attributes(
         subject="insured_person", attribute="age_at_entry", operator=">", value=61
     )
-    outcome = evaluate_component_locked_rendering(contract, request, payload, policy, certification)
+    outcome = evaluate_component_locked_rendering(contract, rendering_request, payload, policy, certification)
     assert outcome.routing_result.decision is FidelityRoutingDecision.AUTO_REJECTED
     assert "SEMANTIC_LOGIC_CHANGED" in outcome.routing_result.reason_codes
 
 
-def test_low_confidence_routes_to_human_review(contract, request, policy, certification):
+def test_low_confidence_routes_to_human_review(contract, rendering_request, policy, certification):
     outcome = evaluate_component_locked_rendering(
-        contract, request, _valid_payload(confidence=0.90), policy, certification
+        contract, rendering_request, _valid_payload(confidence=0.90), policy, certification
     )
     assert outcome.routing_result.decision is FidelityRoutingDecision.HUMAN_REVIEW_REQUIRED
     assert outcome.verified_explanation is None
@@ -261,26 +261,26 @@ def test_low_confidence_routes_to_human_review(contract, request, policy, certif
     assert "LOW_EXTRACTION_CONFIDENCE" in outcome.human_review_packet.reason_codes
 
 
-def test_low_extractor_agreement_routes_to_review(contract, request, policy, certification):
+def test_low_extractor_agreement_routes_to_review(contract, rendering_request, policy, certification):
     outcome = evaluate_component_locked_rendering(
-        contract, request, _valid_payload(agreement=0.80), policy, certification
+        contract, rendering_request, _valid_payload(agreement=0.80), policy, certification
     )
     assert outcome.routing_result.decision is FidelityRoutingDecision.HUMAN_REVIEW_REQUIRED
     assert "LOW_EXTRACTOR_AGREEMENT" in outcome.routing_result.reason_codes
 
 
-def test_unresolved_semantics_route_to_review(contract, request, policy, certification):
+def test_unresolved_semantics_route_to_review(contract, rendering_request, policy, certification):
     payload = _valid_payload()
     payload["components"][0]["unresolved_reasons"] = ["operator_ambiguous"]
-    outcome = evaluate_component_locked_rendering(contract, request, payload, policy, certification)
+    outcome = evaluate_component_locked_rendering(contract, rendering_request, payload, policy, certification)
     assert outcome.routing_result.decision is FidelityRoutingDecision.HUMAN_REVIEW_REQUIRED
     assert "SEMANTIC_PROOF_INCOMPLETE" in outcome.routing_result.reason_codes
     assert "entry-age-trigger" in outcome.human_review_packet.component_ids
 
 
-def test_uncertified_rule_family_routes_to_review(contract, request, policy):
+def test_uncertified_rule_family_routes_to_review(contract, rendering_request, policy):
     outcome = evaluate_component_locked_rendering(
-        contract, request, _valid_payload(), policy, None
+        contract, rendering_request, _valid_payload(), policy, None
     )
     assert outcome.routing_result.decision is FidelityRoutingDecision.HUMAN_REVIEW_REQUIRED
     assert "RULE_FAMILY_NOT_CERTIFIED" in outcome.routing_result.reason_codes
