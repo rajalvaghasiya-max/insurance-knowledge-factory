@@ -26,6 +26,51 @@ def _stable_id(prefix: str, *parts: object) -> str:
     return f"{prefix}-{sha256(payload.encode('utf-8')).hexdigest()[:16]}"
 
 
+_GEMINI_SCHEMA_KEYS = {
+    "type",
+    "format",
+    "description",
+    "nullable",
+    "enum",
+    "items",
+    "properties",
+    "required",
+    "minItems",
+    "maxItems",
+    "minimum",
+    "maximum",
+    "anyOf",
+    "propertyOrdering",
+}
+
+
+def compile_gemini_schema(value: object) -> object:
+    """Compile provider-neutral JSON Schema into Gemini's supported subset.
+
+    Gemini's REST Schema is not full JSON Schema. Unsupported control keywords
+    such as ``additionalProperties`` are intentionally removed here; strictness
+    remains enforced by local parsing and the deterministic canonical gate.
+    """
+    if isinstance(value, Mapping):
+        compiled: dict[str, object] = {}
+        for key, item in value.items():
+            if key not in _GEMINI_SCHEMA_KEYS:
+                continue
+            if key == "properties" and isinstance(item, Mapping):
+                compiled[key] = {
+                    str(name): compile_gemini_schema(schema)
+                    for name, schema in item.items()
+                }
+            else:
+                compiled[key] = compile_gemini_schema(item)
+        return compiled
+    if isinstance(value, list):
+        return [compile_gemini_schema(item) for item in value]
+    if isinstance(value, tuple):
+        return [compile_gemini_schema(item) for item in value]
+    return value
+
+
 @dataclass(frozen=True)
 class GeminiExtractionTrace:
     trace_id: str
@@ -80,7 +125,7 @@ class GeminiSemanticExtractor:
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {
                 "responseMimeType": "application/json",
-                "responseSchema": dict(schema),
+                "responseSchema": compile_gemini_schema(schema),
                 "temperature": 0,
             },
         }
@@ -134,4 +179,5 @@ __all__ = [
     "GeminiExtractionTrace",
     "GeminiSemanticExtractor",
     "GeminiSemanticExtractorError",
+    "compile_gemini_schema",
 ]
