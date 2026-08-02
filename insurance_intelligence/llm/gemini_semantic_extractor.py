@@ -27,30 +27,14 @@ def _stable_id(prefix: str, *parts: object) -> str:
 
 
 _GEMINI_SCHEMA_KEYS = {
-    "type",
-    "format",
-    "description",
-    "nullable",
-    "enum",
-    "items",
-    "properties",
-    "required",
-    "minItems",
-    "maxItems",
-    "minimum",
-    "maximum",
-    "anyOf",
-    "propertyOrdering",
+    "type", "format", "description", "nullable", "enum", "items",
+    "properties", "required", "minItems", "maxItems", "minimum",
+    "maximum", "anyOf", "propertyOrdering",
 }
 
 
 def compile_gemini_schema(value: object) -> object:
-    """Compile provider-neutral JSON Schema into Gemini's supported subset.
-
-    Gemini's REST Schema is not full JSON Schema. Unsupported control keywords
-    such as ``additionalProperties`` are intentionally removed here; strictness
-    remains enforced by local parsing and the deterministic canonical gate.
-    """
+    """Compile provider-neutral JSON Schema into Gemini's supported subset."""
     if isinstance(value, Mapping):
         compiled: dict[str, object] = {}
         for key, item in value.items():
@@ -85,7 +69,7 @@ class GeminiExtractionTrace:
 @dataclass(frozen=True)
 class GeminiSemanticExtractor:
     api_key: str
-    model: str = "gemini-2.5-flash-lite"
+    model: str = "gemini-3.5-flash-lite"
     endpoint_base: str = "https://generativelanguage.googleapis.com/v1beta/models"
     prompt_version: str = "semantic-extractor-gemini-v1"
     timeout_seconds: int = 60
@@ -126,17 +110,13 @@ class GeminiSemanticExtractor:
             "generationConfig": {
                 "responseMimeType": "application/json",
                 "responseSchema": compile_gemini_schema(schema),
-                "temperature": 0,
             },
         }
         started = monotonic()
         try:
             response = requests.post(
                 endpoint,
-                headers={
-                    "Content-Type": "application/json",
-                    "x-goog-api-key": self.api_key,
-                },
+                headers={"Content-Type": "application/json", "x-goog-api-key": self.api_key},
                 json=body,
                 timeout=self.timeout_seconds,
             )
@@ -158,9 +138,7 @@ class GeminiSemanticExtractor:
             raise GeminiSemanticExtractorError("Gemini structured output is not valid JSON") from exc
         if not isinstance(parsed, Mapping):
             raise GeminiSemanticExtractorError("Gemini structured output must be an object")
-        canonical_output = json.dumps(
-            parsed, sort_keys=True, separators=(",", ":"), ensure_ascii=False
-        )
+        canonical_output = json.dumps(parsed, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
         return (
             GeminiExtractionTrace(
                 trace_id=_stable_id("gemini-stage", request_id, canonical_output),
@@ -176,8 +154,6 @@ class GeminiSemanticExtractor:
 
 
 __all__ = [
-    "GeminiExtractionTrace",
-    "GeminiSemanticExtractor",
-    "GeminiSemanticExtractorError",
-    "compile_gemini_schema",
+    "GeminiExtractionTrace", "GeminiSemanticExtractor",
+    "GeminiSemanticExtractorError", "compile_gemini_schema",
 ]
