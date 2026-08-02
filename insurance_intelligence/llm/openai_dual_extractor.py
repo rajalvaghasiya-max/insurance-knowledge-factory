@@ -6,7 +6,7 @@ models do not self-report agreement for certification gating.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import json
 from typing import Mapping
 
@@ -44,6 +44,28 @@ def _canonical_attributes(item: Mapping[str, object]) -> str:
         normalized.append({"name": name.strip(), "value": attribute.get("value")})
     normalized.sort(key=lambda value: value["name"])
     return json.dumps(normalized, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+
+def _preserve_disagreement_reason(
+    outcome: SemanticRenderingOutcome,
+    *,
+    has_disagreement: bool,
+) -> SemanticRenderingOutcome:
+    """Keep the generic proof failure and expose its precise dual-extractor cause."""
+    if not has_disagreement:
+        return outcome
+    reason_codes = tuple(
+        sorted(set(outcome.routing_result.reason_codes) | {"LOW_EXTRACTOR_AGREEMENT"})
+    )
+    routing_result = replace(outcome.routing_result, reason_codes=reason_codes)
+    review_packet = outcome.human_review_packet
+    if review_packet is not None:
+        review_packet = replace(review_packet, reason_codes=reason_codes)
+    return replace(
+        outcome,
+        routing_result=routing_result,
+        human_review_packet=review_packet,
+    )
 
 
 @dataclass(frozen=True)
@@ -227,6 +249,10 @@ class OpenAIDualExtractorProvider:
             {"components": combined},
             policy,
             certification,
+        )
+        outcome = _preserve_disagreement_reason(
+            outcome,
+            has_disagreement=any(not item.agreed for item in agreements),
         )
         return OpenAIDualExtractorResult(
             rendering_trace=rendering_trace,
