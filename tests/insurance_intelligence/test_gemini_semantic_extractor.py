@@ -7,6 +7,7 @@ import pytest
 from insurance_intelligence.llm.gemini_semantic_extractor import (
     GeminiSemanticExtractor,
     GeminiSemanticExtractorError,
+    build_gemini_extraction_prompt,
     compile_gemini_schema,
 )
 
@@ -51,9 +52,19 @@ def test_gemini_extractor_returns_governed_trace(monkeypatch):
     assert output == {"components": [{"component_id": "x"}]}
     assert trace.provider == "google"
     assert trace.model == "gemini-3.1-flash-lite"
+    assert trace.prompt_version == "semantic-extractor-gemini-v2"
     assert captured["headers"]["x-goog-api-key"] == "test-key"
     assert captured["json"]["generationConfig"]["responseMimeType"] == "application/json"
     assert captured["timeout"] == 180
+
+
+def test_gemini_prompt_requires_explicit_logical_operator_recovery():
+    prompt = build_gemini_extraction_prompt("INPUT={}")
+
+    assert "logical_operator='AND'" in prompt
+    assert "logical_operator='OR'" in prompt
+    assert "Do not omit logical_operator" in prompt
+    assert prompt.endswith("INPUT={}")
 
 
 def test_gemini_from_environment_supports_governed_overrides(monkeypatch):
