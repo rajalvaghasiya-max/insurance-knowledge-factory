@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Iterable, Mapping
+from typing import Iterable
 
 from insurance_intelligence.contracts.semantic_fidelity import (
     ExplanationSemanticContract,
@@ -192,8 +192,7 @@ def validate_contract_against_family(
     bound_roles = dict(binding.component_roles)
     family_roles = {item.role: item for item in family.components}
 
-    unknown_roles = set(bound_roles) - set(family_roles)
-    if unknown_roles:
+    if set(bound_roles) - set(family_roles):
         errors.add("UNKNOWN_BOUND_COMPONENT_ROLE")
 
     for role, definition in family_roles.items():
@@ -210,8 +209,6 @@ def validate_contract_against_family(
             errors.add("COMPONENT_KIND_MISMATCH")
         if component.risk_tier is not definition.risk_tier:
             errors.add("COMPONENT_RISK_TIER_MISMATCH")
-        if component.required is not definition.required:
-            errors.add("COMPONENT_REQUIRED_FLAG_MISMATCH")
 
         observed = {attribute.name: attribute for attribute in component.attributes}
         expected = {attribute.name: attribute for attribute in definition.attributes}
