@@ -1,0 +1,69 @@
+from __future__ import annotations
+
+import json
+
+import pytest
+
+from insurance_intelligence.llm.gemini_semantic_extractor import (
+    GeminiSemanticExtractor,
+    GeminiSemanticExtractorError,
+)
+
+
+class _Response:
+    status_code = 200
+    text = ""
+
+    def json(self):
+        return {
+            "candidates": [
+                {
+                    "content": {
+                        "parts": [
+                            {"text": json.dumps({"components": [{"component_id": "x"}]})}
+                        ]
+                    }
+                }
+            ]
+        }
+
+
+def test_gemini_extractor_returns_governed_trace(monkeypatch):
+    captured = {}
+
+    def _post(url, **kwargs):
+        captured["url"] = url
+        captured.update(kwargs)
+        return _Response()
+
+    monkeypatch.setattr(
+        "insurance_intelligence.llm.gemini_semantic_extractor.requests.post",
+        _post,
+    )
+    extractor = GeminiSemanticExtractor(api_key="test-key")
+    trace, output = extractor.extract(
+        prompt="extract",
+        schema={"type": "object"},
+        request_id="request-1",
+        data_classification="PUBLIC",
+    )
+    assert output == {"components": [{"component_id": "x"}]}
+    assert trace.provider == "google"
+    assert trace.model == "gemini-2.5-flash-lite"
+    assert captured["headers"]["x-goog-api-key"] == "test-key"
+    assert captured["json"]["generationConfig"]["responseMimeType"] == "application/json"
+
+
+def test_gemini_extractor_rejects_customer_data(monkeypatch):
+    monkeypatch.setattr(
+        "insurance_intelligence.llm.gemini_semantic_extractor.requests.post",
+        lambda *args, **kwargs: pytest.fail("provider must not be called"),
+    )
+    extractor = GeminiSemanticExtractor(api_key="test-key")
+    with pytest.raises(GeminiSemanticExtractorError, match="PUBLIC or SYNTHETIC"):
+        extractor.extract(
+            prompt="extract",
+            schema={"type": "object"},
+            request_id="request-1",
+            data_classification="CUSTOMER_CONFIDENTIAL",
+        )
