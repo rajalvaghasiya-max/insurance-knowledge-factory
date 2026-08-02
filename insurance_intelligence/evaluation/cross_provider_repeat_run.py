@@ -1,6 +1,7 @@
 """Aggregate governed OpenAI+Gemini runs into non-certifying stability evidence."""
 from __future__ import annotations
 
+from collections.abc import Sequence as RuntimeSequence
 from dataclasses import asdict, dataclass
 from hashlib import sha256
 import json
@@ -20,6 +21,21 @@ def _text(value: object, field: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise CrossProviderRepeatRunError(f"{field} must be non-empty text")
     return value.strip()
+
+
+def _sequence(value: object, field: str, *, allow_empty: bool = True) -> RuntimeSequence[object]:
+    if isinstance(value, (str, bytes)) or not isinstance(value, RuntimeSequence):
+        raise CrossProviderRepeatRunError(f"{field} must be an array")
+    if not allow_empty and not value:
+        raise CrossProviderRepeatRunError(f"{field} must not be empty")
+    return value
+
+
+def _text_sequence(value: object, field: str) -> tuple[str, ...]:
+    values = _sequence(value, field)
+    if not all(isinstance(item, str) for item in values):
+        raise CrossProviderRepeatRunError(f"{field} must contain text values")
+    return tuple(values)
 
 
 @dataclass(frozen=True)
@@ -99,8 +115,7 @@ def build_cross_provider_repeat_run_evidence(
         preflight = artifact.get("rule_family_preflight")
         if not all(isinstance(item, Mapping) for item in (renderer, openai, gemini, routing, report, preflight)):
             raise CrossProviderRepeatRunError("traces, routing, report, and preflight must be objects")
-        if not isinstance(agreements, list) or not agreements:
-            raise CrossProviderRepeatRunError("agreements must not be empty")
+        agreements = _sequence(agreements, "agreements", allow_empty=False)
         assert isinstance(renderer, Mapping) and isinstance(openai, Mapping)
         assert isinstance(gemini, Mapping) and isinstance(routing, Mapping)
         assert isinstance(report, Mapping) and isinstance(preflight, Mapping)
@@ -135,9 +150,7 @@ def build_cross_provider_repeat_run_evidence(
         elif all_ids != expected_components:
             raise CrossProviderRepeatRunError("component identities must remain stable across runs")
 
-        comparisons = report.get("comparisons")
-        if not isinstance(comparisons, list) or not comparisons:
-            raise CrossProviderRepeatRunError("semantic comparisons must not be empty")
+        comparisons = _sequence(report.get("comparisons"), "semantic comparisons", allow_empty=False)
         matched_ids: list[str] = []
         confidences: list[float] = []
         for item in comparisons:
@@ -150,12 +163,9 @@ def build_cross_provider_repeat_run_evidence(
             if item.get("status") == "MATCHED":
                 matched_ids.append(_text(item.get("component_id"), "comparison.component_id"))
 
-        reason_codes = routing.get("reason_codes")
-        hard_failures = report.get("hard_failure_codes")
-        unresolved = report.get("unresolved_component_ids")
-        if not all(isinstance(value, list) and all(isinstance(x, str) for x in value)
-                   for value in (reason_codes, hard_failures, unresolved)):
-            raise CrossProviderRepeatRunError("reason and failure fields must be text arrays")
+        reason_codes = _text_sequence(routing.get("reason_codes"), "routing.reason_codes")
+        hard_failures = _text_sequence(report.get("hard_failure_codes"), "report.hard_failure_codes")
+        unresolved = _text_sequence(report.get("unresolved_component_ids"), "report.unresolved_component_ids")
 
         latency_values = (
             renderer.get("latency_ms"), openai.get("latency_ms"), gemini.get("latency_ms")
