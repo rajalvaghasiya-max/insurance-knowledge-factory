@@ -13,16 +13,18 @@ from insurance_intelligence.contracts.rule_family_registry import (
 from insurance_intelligence.evaluation.cross_provider_repeat_run import (
     build_cross_provider_repeat_run_evidence,
 )
+from insurance_intelligence.llm.governed_cross_provider import (
+    GovernedCrossProviderEvaluator,
+)
 from insurance_intelligence.llm.openai_gemini_cross_provider import (
     OpenAIGeminiCrossProvider,
-)
-from insurance_intelligence.llm.governed_cross_provider import (
-    build_binding_for_contract,
-    evaluate_governed_cross_provider,
 )
 from scripts.run_mo_022g_star_copay_live import (
     build_live_policy,
     build_star_copay_contract,
+)
+from scripts.run_mo_022g_star_copay_openai_gemini import (
+    build_star_copay_family_binding,
 )
 
 
@@ -43,15 +45,12 @@ def _parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _run_artifact(args: argparse.Namespace) -> dict[str, object]:
+def _run_artifact(
+    args: argparse.Namespace, evaluator: GovernedCrossProviderEvaluator
+) -> dict[str, object]:
     contract = build_star_copay_contract()
-    family = build_conditional_copayment_family()
-    binding = build_binding_for_contract(contract)
-    result = evaluate_governed_cross_provider(
-        provider=OpenAIGeminiCrossProvider.from_environment(),
-        contract=contract,
-        family=family,
-        binding=binding,
+    result = evaluator.evaluate(
+        contract,
         audience=args.audience,
         reading_level=args.reading_level,
         policy=build_live_policy(),
@@ -66,8 +65,8 @@ def _run_artifact(args: argparse.Namespace) -> dict[str, object]:
         "certification_effect": "NONE",
         "certification_granted": False,
         "rule_family_preflight": {
-            "family_id": family.family_id,
-            "family_version": family.version,
+            "family_id": evaluator.family.family_id,
+            "family_version": evaluator.family.version,
             "status": "PASSED",
         },
         "renderer_trace": asdict(result.rendering_trace),
@@ -92,10 +91,15 @@ def main() -> int:
     if args.runs < 2 or args.runs > 10:
         raise SystemExit("--runs must be between 2 and 10")
 
+    evaluator = GovernedCrossProviderEvaluator(
+        provider=OpenAIGeminiCrossProvider.from_environment(),
+        family=build_conditional_copayment_family(),
+        binding=build_star_copay_family_binding(),
+    )
     artifacts: list[dict[str, object]] = []
     for index in range(1, args.runs + 1):
         print(f"Running governed cross-provider case {index}/{args.runs}...")
-        artifacts.append(_run_artifact(args))
+        artifacts.append(_run_artifact(args, evaluator))
 
     evidence = build_cross_provider_repeat_run_evidence(
         artifacts, required_run_count=args.runs
@@ -118,15 +122,15 @@ def main() -> int:
     print("=" * 72)
     print("MO-022G OPENAI + GEMINI REPEAT BATCH")
     print("=" * 72)
-    print(f"Status                  : {evidence.status}")
-    print(f"Exact agreement every run: {evidence.exact_agreement_every_run}")
-    print(f"All components matched  : {evidence.all_components_matched}")
-    print(f"Hard-failure free        : {evidence.hard_failure_free}")
-    print(f"Unresolved free          : {evidence.unresolved_free}")
-    print(f"Preflight passed         : {evidence.preflight_passed_every_run}")
-    print(f"Minimum confidence       : {evidence.minimum_observed_confidence:.2f}")
-    print(f"Output                   : {args.output}")
-    print("Certification            : NOT GRANTED BY THIS BATCH")
+    print(f"Status                    : {evidence.status}")
+    print(f"Exact agreement every run : {evidence.exact_agreement_every_run}")
+    print(f"All components matched    : {evidence.all_components_matched}")
+    print(f"Hard-failure free          : {evidence.hard_failure_free}")
+    print(f"Unresolved free            : {evidence.unresolved_free}")
+    print(f"Preflight passed           : {evidence.preflight_passed_every_run}")
+    print(f"Minimum confidence         : {evidence.minimum_observed_confidence:.2f}")
+    print(f"Output                     : {args.output}")
+    print("Certification              : NOT GRANTED BY THIS BATCH")
     return 0
 
 
