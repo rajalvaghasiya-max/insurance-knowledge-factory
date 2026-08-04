@@ -15,10 +15,14 @@ from insurance_intelligence.contracts.semantic_fidelity import (
     FidelityRoutingPolicy,
     RuleFamilyCertification,
 )
+from insurance_intelligence.llm.cached_openai_renderer import CachedOpenAIRenderer
 from insurance_intelligence.llm.component_locked import build_component_locked_request
 from insurance_intelligence.llm.gemini_semantic_extractor import (
     GeminiExtractionTrace,
     GeminiSemanticExtractor,
+)
+from insurance_intelligence.llm.governed_artifact_store import (
+    FilesystemGovernedArtifactStore,
 )
 from insurance_intelligence.llm.openai_component_locked import (
     OpenAIComponentLockedError,
@@ -59,6 +63,26 @@ def _with_disagreement_reasons(
     return replace(outcome, routing_result=routing, human_review_packet=packet)
 
 
+def _evidence_ids(contract: ExplanationSemanticContract) -> tuple[str, ...]:
+    values = set(contract.approved_finding_ids)
+    for component in contract.components:
+        values.update(component.evidence_ids)
+    return tuple(sorted(values))
+
+
+def _fallback_binding(contract: ExplanationSemanticContract) -> dict[str, object]:
+    return {
+        "contract_id": contract.contract_id,
+        "components": [
+            {
+                "component_id": component.component_id,
+                "kind": component.kind.value,
+            }
+            for component in contract.components
+        ],
+    }
+
+
 @dataclass(frozen=True)
 class OpenAIGeminiCrossProviderResult:
     rendering_trace: OpenAIStageTrace
@@ -66,18 +90,27 @@ class OpenAIGeminiCrossProviderResult:
     gemini_extractor_trace: GeminiExtractionTrace
     agreements: tuple[DualExtractorAgreement, ...]
     outcome: SemanticRenderingOutcome
+    renderer_cache_hit: bool = False
+    renderer_cache_key: str | None = None
+    artifact_store_root: str | None = None
 
 
 @dataclass(frozen=True)
 class OpenAIGeminiCrossProvider:
     openai: OpenAIComponentLockedProvider
     gemini: GeminiSemanticExtractor
+    renderer_store: FilesystemGovernedArtifactStore | None = None
 
     @classmethod
-    def from_environment(cls) -> "OpenAIGeminiCrossProvider":
+    def from_environment(
+        cls,
+        *,
+        renderer_store: FilesystemGovernedArtifactStore | None = None,
+    ) -> "OpenAIGeminiCrossProvider":
         return cls(
             openai=OpenAIComponentLockedProvider.from_environment(),
             gemini=GeminiSemanticExtractor.from_environment(),
+            renderer_store=renderer_store,
         )
 
     def evaluate(
@@ -89,6 +122,8 @@ class OpenAIGeminiCrossProvider:
         policy: FidelityRoutingPolicy,
         certification: RuleFamilyCertification | None,
         data_classification: str,
+        cache_rule_family_version: str = "UNVERSIONED",
+        cache_binding: Mapping[str, object] | None = None,
     ) -> OpenAIGeminiCrossProviderResult:
         request = build_component_locked_request(
             contract,
@@ -102,15 +137,43 @@ class OpenAIGeminiCrossProvider:
             "negates; do not use an unqualified phrase such as 'does not apply'.\n"
             f"REQUEST={request.canonical_payload}"
         )
-        rendering_trace, rendered = self.openai._call(
-            model=self.openai.renderer_model,
-            prompt=render_prompt,
-            schema_name="component_locked_rendering",
-            schema=_renderer_schema(request),
-            stage="RENDERING",
-            prompt_version=self.openai.renderer_prompt_version,
-            request_id=request.request_id,
-        )
+        renderer_cache_hit = False
+        renderer_cache_key: str | None = None
+        artifact_store_root: str | None = None
+        renderer_schema = _renderer_schema(request)
+        if self.renderer_store is None:
+            rendering_trace, rendered = self.openai._call(
+                model=self.openai.renderer_model,
+                prompt=render_prompt,
+                schema_name="component_locked_rendering",
+                schema=renderer_schema,
+                stage="RENDERING",
+                prompt_version=self.openai.renderer_prompt_version,
+                request_id=request.request_id,
+            )
+        else:
+            cached = CachedOpenAIRenderer(
+                provider=self.openai,
+                store=self.renderer_store,
+            ).render(
+                prompt=render_prompt,
+                schema_name="component_locked_rendering",
+                schema=renderer_schema,
+                request_id=request.request_id,
+                contract_payload=request.canonical_payload,
+                evidence_ids=_evidence_ids(contract),
+                rule_family_id=contract.rule_family,
+                rule_family_version=cache_rule_family_version,
+                binding=cache_binding or _fallback_binding(contract),
+                audience=audience,
+                reading_level=reading_level,
+                data_classification=data_classification,
+            )
+            rendering_trace = cached.trace
+            rendered = cached.output
+            renderer_cache_hit = cached.cache_hit
+            renderer_cache_key = cached.cache_key
+            artifact_store_root = str(self.renderer_store.root)
         rendered_components = rendered.get("components")
         if not isinstance(rendered_components, list):
             raise OpenAIComponentLockedError("renderer output is missing components")
@@ -228,6 +291,9 @@ class OpenAIGeminiCrossProvider:
             gemini_extractor_trace=gemini_trace,
             agreements=tuple(agreements),
             outcome=outcome,
+            renderer_cache_hit=renderer_cache_hit,
+            renderer_cache_key=renderer_cache_key,
+            artifact_store_root=artifact_store_root,
         )
 
 
