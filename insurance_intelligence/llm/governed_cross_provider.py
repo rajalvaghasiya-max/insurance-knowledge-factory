@@ -1,7 +1,7 @@
 """Governed cross-provider execution with mandatory rule-family preflight."""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 
 from insurance_intelligence.contracts.rule_family_registry import (
     RuleFamilyBinding,
@@ -55,6 +55,8 @@ class GovernedCrossProviderEvaluator:
             policy=policy,
             certification=certification,
             data_classification=data_classification,
+            cache_rule_family_version=self.family.version,
+            cache_binding=asdict(self.binding),
         )
 
 
