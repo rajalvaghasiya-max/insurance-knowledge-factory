@@ -57,6 +57,7 @@ class CachedOpenAIRenderer:
             "max_output_tokens": 1800,
             "response_format": "json_schema_strict",
             "schema_name": schema_name,
+            "prompt_hash": _hash(prompt),
         }
         identity = GovernedArtifactIdentity(
             stage="RENDERING",
