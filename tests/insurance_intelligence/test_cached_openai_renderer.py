@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from dataclasses import replace
-
 from insurance_intelligence.llm.cached_openai_renderer import CachedOpenAIRenderer
 from insurance_intelligence.llm.governed_artifact_store import FilesystemGovernedArtifactStore
 from insurance_intelligence.llm.openai_component_locked import (
@@ -81,10 +79,9 @@ def test_prompt_model_or_schema_drift_requires_fresh_provider_call(tmp_path):
 
     _render(renderer)
     _render(renderer, prompt="render changed")
-    changed_model = CachedOpenAIRenderer(
-        replace(provider, renderer_model="different-model"), store
-    )
-    _render(changed_model, prompt="render changed")
+    object.__setattr__(provider, "renderer_model", "different-model")
+    _render(renderer, prompt="render changed")
+    object.__setattr__(provider, "renderer_model", "gpt-5-mini-2025-08-07")
     _render(
         renderer,
         schema={"type": "object", "properties": {"components": {"type": "array"}}},
