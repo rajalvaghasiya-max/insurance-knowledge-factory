@@ -13,7 +13,7 @@ from tests.insurance_intelligence.test_openai_gemini_cross_provider import (
 )
 
 
-def test_identical_cross_provider_evaluation_reuses_renderer_and_openai_extractor(monkeypatch, tmp_path):
+def test_identical_cross_provider_evaluation_replays_with_zero_provider_calls(monkeypatch, tmp_path):
     counts = {"openai": 0, "gemini": 0}
     openai_responses = iter(
         [
@@ -62,15 +62,21 @@ def test_identical_cross_provider_evaluation_reuses_renderer_and_openai_extracto
     }
 
     first = provider.evaluate(build_star_copay_contract(), **arguments)
+    counts_after_first = dict(counts)
     second = provider.evaluate(build_star_copay_contract(), **arguments)
 
     assert first.renderer_cache_hit is False
     assert first.openai_extractor_cache_hit is False
+    assert first.gemini_extractor_cache_hit is False
+    assert counts_after_first == {"openai": 2, "gemini": 1}
+
     assert second.renderer_cache_hit is True
     assert second.openai_extractor_cache_hit is True
+    assert second.gemini_extractor_cache_hit is True
     assert first.renderer_cache_key == second.renderer_cache_key
     assert first.openai_extractor_cache_key == second.openai_extractor_cache_key
+    assert first.gemini_extractor_cache_key == second.gemini_extractor_cache_key
     assert second.artifact_store_root == str(tmp_path)
-    assert counts == {"openai": 2, "gemini": 2}
+    assert counts == counts_after_first
     assert all(item.agreed for item in first.agreements)
     assert all(item.agreed for item in second.agreements)
