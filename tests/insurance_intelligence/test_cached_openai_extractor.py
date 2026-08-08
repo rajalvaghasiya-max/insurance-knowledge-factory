@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from dataclasses import replace
-
 from insurance_intelligence.llm.cached_openai_extractor import CachedOpenAIExtractor
 from insurance_intelligence.llm.governed_artifact_store import FilesystemGovernedArtifactStore
 from insurance_intelligence.llm.openai_component_locked import (
@@ -101,10 +99,11 @@ def test_rendered_prompt_model_or_schema_drift_requires_fresh_provider_call(tmp_
         extractor,
         rendered=[{"component_id": "trigger", "kind": "TRIGGER", "text": "At least age 61."}],
     )
-    changed_model = CachedOpenAIExtractor(
-        replace(provider, extractor_model="different-model"), store
-    )
-    _extract(changed_model)
+
+    object.__setattr__(provider, "extractor_model", "different-model")
+    _extract(CachedOpenAIExtractor(provider, store))
+
+    object.__setattr__(provider, "extractor_model", "gpt-5-mini-2025-08-07")
     _extract(
         extractor,
         schema={"type": "object", "properties": {"components": {"type": "array"}}},
