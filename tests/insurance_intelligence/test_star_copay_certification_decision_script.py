@@ -69,7 +69,7 @@ def test_load_repeat_evidence_reconstructs_observation_tuples(tmp_path: Path):
     assert evidence.observations[0].agreed_component_ids == ("trigger", "effect")
 
 
-def test_main_writes_review_only_decision(monkeypatch, tmp_path: Path):
+def test_main_writes_both_policy_views_without_provider_calls(monkeypatch, tmp_path: Path):
     source = tmp_path / "batch.json"
     output = tmp_path / "decision.json"
     source.write_text(json.dumps(_batch_payload()), encoding="utf-8")
@@ -87,8 +87,50 @@ def test_main_writes_review_only_decision(monkeypatch, tmp_path: Path):
     assert main() == 0
     payload = json.loads(output.read_text(encoding="utf-8"))
 
+    assert payload["schema_version"] == "2.0"
+    assert payload["provider_calls_performed"] == 0
+    assert payload["replay_source"] == "PERSISTED_REPEAT_RUN_EVIDENCE"
     assert payload["evidence_binding_status"] == "APPROVED"
-    assert payload["human_decision"] == "APPROVE_FOR_REVIEW"
-    assert payload["decision"]["status"] == "REVIEW_ONLY"
-    assert payload["decision"]["reason_codes"] == ["MINIMUM_CONFIDENCE_NOT_MET"]
-    assert payload["decision"]["certification_granted"] is False
+    assert payload["human_decision"] == "APPROVE_FOR_CERTIFICATION_REVIEW"
+
+    v1 = payload["decisions"]["v1_threshold_required"]
+    assert v1["status"] == "REVIEW_ONLY"
+    assert v1["reason_codes"] == ["MINIMUM_CONFIDENCE_NOT_MET"]
+    assert v1["certification_granted"] is False
+
+    v2 = payload["decisions"]["v2_deterministic_proof_primary"]
+    assert v2["status"] == "CERTIFIED"
+    assert v2["reason_codes"] == []
+    assert v2["certification_granted"] is True
+    assert v2["certification_effect"] == "GRANT"
+
+    # Original single-decision fields remain aliases of the v1 policy view.
+    assert payload["decision"] == v1
+    assert payload["policy"] == payload["policies"]["v1_threshold_required"]
+
+
+def test_v2_remains_fail_closed_when_deterministic_proof_is_incomplete(monkeypatch, tmp_path: Path):
+    payload = _batch_payload()
+    payload["stability_evidence"]["all_components_matched"] = False
+    source = tmp_path / "batch.json"
+    output = tmp_path / "decision.json"
+    source.write_text(json.dumps(payload), encoding="utf-8")
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "run_mo_022g_star_copay_certification_decision",
+            "--input",
+            str(source),
+            "--output",
+            str(output),
+        ],
+    )
+
+    assert main() == 0
+    result = json.loads(output.read_text(encoding="utf-8"))
+    v2 = result["decisions"]["v2_deterministic_proof_primary"]
+
+    assert v2["status"] == "REVIEW_ONLY"
+    assert "CANONICAL_MATCH_NOT_PROVEN" in v2["reason_codes"]
+    assert "MINIMUM_CONFIDENCE_NOT_MET" in v2["reason_codes"]
+    assert v2["certification_granted"] is False
