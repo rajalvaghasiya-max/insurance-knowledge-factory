@@ -15,6 +15,7 @@ from insurance_intelligence.contracts.semantic_fidelity import (
     FidelityRoutingPolicy,
     RuleFamilyCertification,
 )
+from insurance_intelligence.llm.cached_openai_extractor import CachedOpenAIExtractor
 from insurance_intelligence.llm.cached_openai_renderer import CachedOpenAIRenderer
 from insurance_intelligence.llm.component_locked import build_component_locked_request
 from insurance_intelligence.llm.gemini_semantic_extractor import (
@@ -92,6 +93,8 @@ class OpenAIGeminiCrossProviderResult:
     outcome: SemanticRenderingOutcome
     renderer_cache_hit: bool = False
     renderer_cache_key: str | None = None
+    openai_extractor_cache_hit: bool = False
+    openai_extractor_cache_key: str | None = None
     artifact_store_root: str | None = None
 
 
@@ -100,17 +103,20 @@ class OpenAIGeminiCrossProvider:
     openai: OpenAIComponentLockedProvider
     gemini: GeminiSemanticExtractor
     renderer_store: FilesystemGovernedArtifactStore | None = None
+    extractor_store: FilesystemGovernedArtifactStore | None = None
 
     @classmethod
     def from_environment(
         cls,
         *,
         renderer_store: FilesystemGovernedArtifactStore | None = None,
+        extractor_store: FilesystemGovernedArtifactStore | None = None,
     ) -> "OpenAIGeminiCrossProvider":
         return cls(
             openai=OpenAIComponentLockedProvider.from_environment(),
             gemini=GeminiSemanticExtractor.from_environment(),
             renderer_store=renderer_store,
+            extractor_store=extractor_store,
         )
 
     def evaluate(
@@ -130,6 +136,8 @@ class OpenAIGeminiCrossProvider:
             audience=audience,
             reading_level=reading_level,
         )
+        binding = cache_binding or _fallback_binding(contract)
+        evidence_ids = _evidence_ids(contract)
         render_prompt = (
             "Simplify wording only. Do not add, remove, infer, generalise, narrow, or change "
             "any fact or semantic relationship. Return each requested component exactly once. "
@@ -139,6 +147,8 @@ class OpenAIGeminiCrossProvider:
         )
         renderer_cache_hit = False
         renderer_cache_key: str | None = None
+        openai_extractor_cache_hit = False
+        openai_extractor_cache_key: str | None = None
         artifact_store_root: str | None = None
         renderer_schema = _renderer_schema(request)
         if self.renderer_store is None:
@@ -161,10 +171,10 @@ class OpenAIGeminiCrossProvider:
                 schema=renderer_schema,
                 request_id=request.request_id,
                 contract_payload=request.canonical_payload,
-                evidence_ids=_evidence_ids(contract),
+                evidence_ids=evidence_ids,
                 rule_family_id=contract.rule_family,
                 rule_family_version=cache_rule_family_version,
-                binding=cache_binding or _fallback_binding(contract),
+                binding=binding,
                 audience=audience,
                 reading_level=reading_level,
                 data_classification=data_classification,
@@ -207,15 +217,43 @@ class OpenAIGeminiCrossProvider:
             f"INPUT={json.dumps(extraction_input, sort_keys=True, separators=(',', ':'))}"
         )
         schema = _extractor_schema(request)
-        openai_trace, extracted_a = self.openai._call(
-            model=self.openai.extractor_model,
-            prompt=extraction_prompt,
-            schema_name="component_semantic_extraction_openai",
-            schema=schema,
-            stage="EXTRACTION_OPENAI",
-            prompt_version="semantic-extractor-v4-cross-provider-openai",
-            request_id=request.request_id,
-        )
+        effective_extractor_store = self.extractor_store or self.renderer_store
+        if effective_extractor_store is None:
+            openai_trace, extracted_a = self.openai._call(
+                model=self.openai.extractor_model,
+                prompt=extraction_prompt,
+                schema_name="component_semantic_extraction_openai",
+                schema=schema,
+                stage="EXTRACTION_OPENAI",
+                prompt_version="semantic-extractor-v4-cross-provider-openai",
+                request_id=request.request_id,
+            )
+        else:
+            cached_extractor = CachedOpenAIExtractor(
+                provider=self.openai,
+                store=effective_extractor_store,
+            ).extract(
+                prompt=extraction_prompt,
+                schema_name="component_semantic_extraction_openai",
+                schema=schema,
+                request_id=request.request_id,
+                contract_payload=request.canonical_payload,
+                rendered_components=rendered_components,
+                evidence_ids=evidence_ids,
+                rule_family_id=contract.rule_family,
+                rule_family_version=cache_rule_family_version,
+                binding=binding,
+                audience=audience,
+                reading_level=reading_level,
+                data_classification=data_classification,
+            )
+            openai_trace = cached_extractor.trace
+            extracted_a = cached_extractor.output
+            openai_extractor_cache_hit = cached_extractor.cache_hit
+            openai_extractor_cache_key = cached_extractor.cache_key
+            if artifact_store_root is None:
+                artifact_store_root = str(effective_extractor_store.root)
+
         gemini_trace, extracted_b = self.gemini.extract(
             prompt=extraction_prompt,
             schema=schema,
@@ -293,6 +331,8 @@ class OpenAIGeminiCrossProvider:
             outcome=outcome,
             renderer_cache_hit=renderer_cache_hit,
             renderer_cache_key=renderer_cache_key,
+            openai_extractor_cache_hit=openai_extractor_cache_hit,
+            openai_extractor_cache_key=openai_extractor_cache_key,
             artifact_store_root=artifact_store_root,
         )
 
