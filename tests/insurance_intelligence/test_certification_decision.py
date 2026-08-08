@@ -13,6 +13,9 @@ from insurance_intelligence.evaluation.certification_decision import (
 from insurance_intelligence.evaluation.cross_provider_repeat_run import (
     CrossProviderRepeatRunEvidence,
 )
+from insurance_intelligence.evaluation.explanation_coherence import (
+    ExplanationCoherenceStatus,
+)
 
 
 def _evidence(
@@ -177,6 +180,51 @@ def test_v2_hard_failure_prevents_certification():
 
     assert decision.status is ControlledCertificationStatus.REVIEW_ONLY
     assert "HARD_FAILURE_PRESENT" in decision.reason_codes
+
+
+def test_incoherent_explanation_blocks_certification_in_both_modes():
+    for policy in (_policy_v1(), _policy_v2()):
+        decision = decide_controlled_certification(
+            _evidence(confidence=1.0),
+            policy=policy,
+            approved_evidence_ids=("evidence-1",),
+            human_review=_approval(),
+            coherence_status=ExplanationCoherenceStatus.INCOHERENT,
+        )
+        assert decision.status is ControlledCertificationStatus.REVIEW_ONLY
+        assert "EXPLANATION_COHERENCE_FAILED" in decision.reason_codes
+        assert decision.certification_granted is False
+        assert decision.coherence_status is ExplanationCoherenceStatus.INCOHERENT
+
+
+def test_incomplete_coherence_proof_blocks_certification_in_both_modes():
+    for policy in (_policy_v1(), _policy_v2()):
+        decision = decide_controlled_certification(
+            _evidence(confidence=1.0),
+            policy=policy,
+            approved_evidence_ids=("evidence-1",),
+            human_review=_approval(),
+            coherence_status=ExplanationCoherenceStatus.INCOMPLETE,
+        )
+        assert decision.status is ControlledCertificationStatus.REVIEW_ONLY
+        assert "EXPLANATION_COHERENCE_NOT_PROVEN" in decision.reason_codes
+        assert decision.certification_granted is False
+        assert decision.coherence_status is ExplanationCoherenceStatus.INCOMPLETE
+
+
+def test_coherent_explanation_preserves_v2_deterministic_certification():
+    decision = decide_controlled_certification(
+        _evidence(confidence=0.9),
+        policy=_policy_v2(),
+        approved_evidence_ids=("evidence-1",),
+        human_review=_approval(),
+        coherence_status=ExplanationCoherenceStatus.COHERENT,
+    )
+
+    assert decision.status is ControlledCertificationStatus.CERTIFIED
+    assert decision.reason_codes == ()
+    assert decision.certification_granted is True
+    assert decision.coherence_status is ExplanationCoherenceStatus.COHERENT
 
 
 def test_human_rejection_is_authoritative_in_both_modes():
