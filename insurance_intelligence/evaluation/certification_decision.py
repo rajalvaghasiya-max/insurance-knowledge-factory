@@ -2,7 +2,7 @@
 
 Repeat-run stability evidence is necessary but never sufficient for certification.
 A decision also requires evidence binding, an explicit human review outcome, and
-all configured policy thresholds to pass.
+all configured deterministic gates to pass.
 """
 from __future__ import annotations
 
@@ -13,6 +13,9 @@ import json
 
 from insurance_intelligence.evaluation.cross_provider_repeat_run import (
     CrossProviderRepeatRunEvidence,
+)
+from insurance_intelligence.evaluation.explanation_coherence import (
+    ExplanationCoherenceStatus,
 )
 
 
@@ -127,6 +130,7 @@ class ControlledCertificationDecision:
     approved_evidence_ids: tuple[str, ...]
     certification_effect: str
     certification_granted: bool
+    coherence_status: ExplanationCoherenceStatus | None = None
 
 
 def decide_controlled_certification(
@@ -135,11 +139,14 @@ def decide_controlled_certification(
     policy: CertificationDecisionPolicy,
     approved_evidence_ids: tuple[str, ...],
     human_review: HumanCertificationReview | None,
+    coherence_status: ExplanationCoherenceStatus | None = None,
 ) -> ControlledCertificationDecision:
     if not isinstance(evidence, CrossProviderRepeatRunEvidence):
         raise CertificationDecisionError("evidence must be CrossProviderRepeatRunEvidence")
     if not isinstance(policy, CertificationDecisionPolicy):
         raise CertificationDecisionError("policy must be CertificationDecisionPolicy")
+    if coherence_status is not None and not isinstance(coherence_status, ExplanationCoherenceStatus):
+        raise CertificationDecisionError("coherence_status must be an ExplanationCoherenceStatus")
     approved_ids = _text_tuple(approved_evidence_ids, "approved_evidence_ids")
 
     reasons: set[str] = set()
@@ -155,6 +162,11 @@ def decide_controlled_certification(
         reasons.add("UNRESOLVED_COMPONENT_PRESENT")
     if not evidence.preflight_passed_every_run:
         reasons.add("RULE_FAMILY_PREFLIGHT_NOT_PROVEN")
+
+    if coherence_status is ExplanationCoherenceStatus.INCOHERENT:
+        reasons.add("EXPLANATION_COHERENCE_FAILED")
+    elif coherence_status is ExplanationCoherenceStatus.INCOMPLETE:
+        reasons.add("EXPLANATION_COHERENCE_NOT_PROVEN")
 
     deterministic_proof_complete = not reasons
     if (
@@ -192,6 +204,7 @@ def decide_controlled_certification(
         "batch_id": evidence.batch_id,
         "policy_id": policy.policy_id,
         "confidence_mode": policy.confidence_mode.value,
+        "coherence_status": coherence_status.value if coherence_status is not None else None,
         "reviewer_id": reviewer_id,
         "approved_evidence_ids": approved_ids,
         "status": status.value,
@@ -213,6 +226,7 @@ def decide_controlled_certification(
         approved_evidence_ids=approved_ids,
         certification_effect="GRANT" if granted else "NONE",
         certification_granted=granted,
+        coherence_status=coherence_status,
     )
 
 
