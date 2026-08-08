@@ -12,6 +12,12 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 
+from insurance_intelligence.contracts.rule_family_registry import RuleFamilyBinding
+from insurance_intelligence.contracts.semantic_fidelity import (
+    SemanticComparisonStatus,
+    SemanticComponentComparison,
+    SemanticFidelityReport,
+)
 from insurance_intelligence.evaluation.certification_decision import (
     CertificationConfidenceMode,
     CertificationDecisionPolicy,
@@ -23,6 +29,10 @@ from insurance_intelligence.evaluation.cross_provider_repeat_run import (
     CrossProviderRepeatRunEvidence,
     CrossProviderRunObservation,
 )
+from insurance_intelligence.evaluation.explanation_coherence import (
+    validate_explanation_coherence,
+)
+from scripts.run_mo_022g_star_copay_live import build_star_copay_contract
 
 
 DEFAULT_INPUT = Path(
@@ -92,17 +102,87 @@ def _policies(minimum_confidence: float) -> tuple[CertificationDecisionPolicy, C
     )
 
 
+def _star_binding() -> RuleFamilyBinding:
+    return RuleFamilyBinding(
+        family_id="CONDITIONAL_COPAYMENT",
+        family_version="1.0",
+        contract_id="contract-star-comprehensive-conditional-copay-v1",
+        component_roles=(
+            ("trigger", "entry-age-trigger"),
+            ("effect", "copay-effect"),
+            ("exception", "continuous-renewal-exception"),
+            ("scope", "applicability-scope"),
+        ),
+    )
+
+
+def _repeat_evidence_fidelity_report(evidence: CrossProviderRepeatRunEvidence) -> SemanticFidelityReport:
+    """Project persisted repeat-run proof into the deterministic coherence interface.
+
+    No semantic values are invented: canonical values come from the immutable Star
+    contract, while MATCHED status is granted only when every persisted observation
+    records that exact component as matched.
+    """
+    contract = build_star_copay_contract()
+    if evidence.contract_id != contract.contract_id:
+        raise SystemExit("repeat evidence contract does not match the governed Star contract")
+    if evidence.rule_family_id != contract.rule_family:
+        raise SystemExit("repeat evidence rule family does not match the governed Star contract")
+
+    comparisons: list[SemanticComponentComparison] = []
+    unresolved: list[str] = []
+    for component in contract.components:
+        matched_every_run = bool(evidence.observations) and all(
+            component.component_id in observation.matched_component_ids
+            for observation in evidence.observations
+        )
+        if matched_every_run:
+            status = SemanticComparisonStatus.MATCHED
+            observed_attributes = component.attributes
+            mismatch_codes: tuple[str, ...] = ()
+        else:
+            status = SemanticComparisonStatus.UNRESOLVED
+            observed_attributes = ()
+            mismatch_codes = ("REPEAT_RUN_COMPONENT_MATCH_NOT_PROVEN",)
+            unresolved.append(component.component_id)
+        comparisons.append(
+            SemanticComponentComparison(
+                component_id=component.component_id,
+                status=status,
+                risk_tier=component.risk_tier,
+                mismatch_codes=mismatch_codes,
+                expected_attributes=component.attributes,
+                observed_attributes=observed_attributes,
+                confidence=evidence.minimum_observed_confidence,
+                extractor_agreement=1.0 if evidence.exact_agreement_every_run else 0.0,
+            )
+        )
+    return SemanticFidelityReport(
+        report_id=f"repeat-replay-{evidence.batch_id}",
+        contract_id=contract.contract_id,
+        comparisons=tuple(comparisons),
+        hard_failure_codes=() if evidence.hard_failure_free else ("REPEAT_RUN_HARD_FAILURE_PRESENT",),
+        unresolved_component_ids=tuple(unresolved),
+    )
+
+
 def main() -> int:
     args = _parser().parse_args()
     evidence = _load_repeat_evidence(args.input)
     policy_v1, policy_v2 = _policies(args.minimum_confidence)
+    coherence = validate_explanation_coherence(
+        build_star_copay_contract(),
+        _star_binding(),
+        _repeat_evidence_fidelity_report(evidence),
+    )
     review = HumanCertificationReview(
         reviewer_id=args.reviewer_id,
         decision=HumanReviewDecision.APPROVE,
         reviewed_evidence_ids=APPROVED_EVIDENCE_IDS,
         rationale=(
             "Approved for governed certification review based on exact three-run cross-provider "
-            "semantic stability. Each policy view remains subject to its own fail-closed gates."
+            "semantic stability and deterministic explanation-coherence proof. Each policy view "
+            "remains subject to its own fail-closed gates."
         ),
     )
     decision_v1 = decide_controlled_certification(
@@ -110,12 +190,14 @@ def main() -> int:
         policy=policy_v1,
         approved_evidence_ids=APPROVED_EVIDENCE_IDS,
         human_review=review,
+        coherence_result=coherence,
     )
     decision_v2 = decide_controlled_certification(
         evidence,
         policy=policy_v2,
         approved_evidence_ids=APPROVED_EVIDENCE_IDS,
         human_review=review,
+        coherence_result=coherence,
     )
     payload = {
         "schema_version": "2.0",
@@ -126,6 +208,7 @@ def main() -> int:
         "provider_calls_performed": 0,
         "replay_source": "PERSISTED_REPEAT_RUN_EVIDENCE",
         "evidence_binding_status": "APPROVED",
+        "coherence_result": asdict(coherence),
         "human_decision": "APPROVE_FOR_CERTIFICATION_REVIEW",
         "human_review": asdict(review),
         "policies": {
@@ -150,6 +233,8 @@ def main() -> int:
     print("=" * 72)
     print(f"Source batch          : {evidence.batch_id}")
     print("Provider calls        : 0")
+    print(f"Coherence             : {coherence.status.value}")
+    print(f"Coherence failures    : {', '.join(coherence.failure_codes) or 'NONE'}")
     print(f"Minimum confidence    : {evidence.minimum_observed_confidence:.2f}")
     print(f"Required confidence   : {args.minimum_confidence:.2f}")
     print(f"V1 threshold-required : {decision_v1.status.value}")
