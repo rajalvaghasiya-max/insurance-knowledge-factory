@@ -15,6 +15,7 @@ from insurance_intelligence.contracts.semantic_fidelity import (
     FidelityRoutingPolicy,
     RuleFamilyCertification,
 )
+from insurance_intelligence.llm.cached_gemini_extractor import CachedGeminiExtractor
 from insurance_intelligence.llm.cached_openai_extractor import CachedOpenAIExtractor
 from insurance_intelligence.llm.cached_openai_renderer import CachedOpenAIRenderer
 from insurance_intelligence.llm.component_locked import build_component_locked_request
@@ -95,6 +96,8 @@ class OpenAIGeminiCrossProviderResult:
     renderer_cache_key: str | None = None
     openai_extractor_cache_hit: bool = False
     openai_extractor_cache_key: str | None = None
+    gemini_extractor_cache_hit: bool = False
+    gemini_extractor_cache_key: str | None = None
     artifact_store_root: str | None = None
 
 
@@ -104,6 +107,7 @@ class OpenAIGeminiCrossProvider:
     gemini: GeminiSemanticExtractor
     renderer_store: FilesystemGovernedArtifactStore | None = None
     extractor_store: FilesystemGovernedArtifactStore | None = None
+    gemini_store: FilesystemGovernedArtifactStore | None = None
 
     @classmethod
     def from_environment(
@@ -111,12 +115,14 @@ class OpenAIGeminiCrossProvider:
         *,
         renderer_store: FilesystemGovernedArtifactStore | None = None,
         extractor_store: FilesystemGovernedArtifactStore | None = None,
+        gemini_store: FilesystemGovernedArtifactStore | None = None,
     ) -> "OpenAIGeminiCrossProvider":
         return cls(
             openai=OpenAIComponentLockedProvider.from_environment(),
             gemini=GeminiSemanticExtractor.from_environment(),
             renderer_store=renderer_store,
             extractor_store=extractor_store,
+            gemini_store=gemini_store,
         )
 
     def evaluate(
@@ -149,6 +155,8 @@ class OpenAIGeminiCrossProvider:
         renderer_cache_key: str | None = None
         openai_extractor_cache_hit = False
         openai_extractor_cache_key: str | None = None
+        gemini_extractor_cache_hit = False
+        gemini_extractor_cache_key: str | None = None
         artifact_store_root: str | None = None
         renderer_schema = _renderer_schema(request)
         if self.renderer_store is None:
@@ -254,12 +262,38 @@ class OpenAIGeminiCrossProvider:
             if artifact_store_root is None:
                 artifact_store_root = str(effective_extractor_store.root)
 
-        gemini_trace, extracted_b = self.gemini.extract(
-            prompt=extraction_prompt,
-            schema=schema,
-            request_id=request.request_id,
-            data_classification=data_classification,
-        )
+        effective_gemini_store = self.gemini_store or self.extractor_store or self.renderer_store
+        if effective_gemini_store is None:
+            gemini_trace, extracted_b = self.gemini.extract(
+                prompt=extraction_prompt,
+                schema=schema,
+                request_id=request.request_id,
+                data_classification=data_classification,
+            )
+        else:
+            cached_gemini = CachedGeminiExtractor(
+                provider=self.gemini,
+                store=effective_gemini_store,
+            ).extract(
+                prompt=extraction_prompt,
+                schema=schema,
+                request_id=request.request_id,
+                contract_payload=request.canonical_payload,
+                rendered_components=rendered_components,
+                evidence_ids=evidence_ids,
+                rule_family_id=contract.rule_family,
+                rule_family_version=cache_rule_family_version,
+                binding=binding,
+                audience=audience,
+                reading_level=reading_level,
+                data_classification=data_classification,
+            )
+            gemini_trace = cached_gemini.trace
+            extracted_b = cached_gemini.output
+            gemini_extractor_cache_hit = cached_gemini.cache_hit
+            gemini_extractor_cache_key = cached_gemini.cache_key
+            if artifact_store_root is None:
+                artifact_store_root = str(effective_gemini_store.root)
 
         components_a = extracted_a.get("components")
         components_b = extracted_b.get("components")
@@ -333,6 +367,8 @@ class OpenAIGeminiCrossProvider:
             renderer_cache_key=renderer_cache_key,
             openai_extractor_cache_hit=openai_extractor_cache_hit,
             openai_extractor_cache_key=openai_extractor_cache_key,
+            gemini_extractor_cache_hit=gemini_extractor_cache_hit,
+            gemini_extractor_cache_key=gemini_extractor_cache_key,
             artifact_store_root=artifact_store_root,
         )
 
