@@ -3,14 +3,10 @@
 from __future__ import annotations
 
 from dataclasses import replace
+from typing import TYPE_CHECKING
 
 from insurance_intelligence.contracts.evidence import EvidenceResolverOutput
 from insurance_intelligence.contracts.topic_completeness import TopicCompletenessResult
-from insurance_intelligence.contracts.topic_profile import (
-    TopicProfile,
-    TopicProfileContractError,
-    validate_registered_topic_profile,
-)
 from insurance_intelligence.topic_completeness.catalogue import (
     build_default_topic_registry,
 )
@@ -22,6 +18,9 @@ from insurance_intelligence.topic_completeness.registry import (
     TopicCompletenessRegistry,
     TopicCompletenessRegistryError,
 )
+
+if TYPE_CHECKING:
+    from insurance_intelligence.contracts.topic_profile import TopicProfile
 
 
 class TopicCompletenessAdapterError(ValueError):
@@ -88,6 +87,12 @@ def evaluate_registered_topic(
         )
 
     if profile is not None:
+        from insurance_intelligence.contracts.topic_profile import (
+            TopicProfile,
+            TopicProfileContractError,
+            validate_registered_topic_profile,
+        )
+
         if not isinstance(profile, TopicProfile):
             raise TopicCompletenessAdapterError("profile must be a TopicProfile")
         if profile.topic_id != definition.topic_id or profile.topic_version != definition.topic_version:
