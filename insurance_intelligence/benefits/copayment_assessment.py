@@ -17,10 +17,13 @@ from insurance_intelligence.benefits.assessment_contracts import (
 from insurance_intelligence.benefits.condition_assessment_projection import (
     GovernedConditionAssessmentProjection,
 )
+from insurance_intelligence.benefits.copayment_assessment_policy import (
+    COPAYMENT_ASSESSMENT_POLICY,
+)
 
 
-COPAYMENT_ASSESSMENT_POLICY_ID = "assessment_policy:health:copayment:v1"
-COPAYMENT_ASSESSMENT_POLICY_VERSION = "1.0"
+COPAYMENT_ASSESSMENT_POLICY_ID = COPAYMENT_ASSESSMENT_POLICY.policy_id
+COPAYMENT_ASSESSMENT_POLICY_VERSION = COPAYMENT_ASSESSMENT_POLICY.policy_version
 
 
 class CopaymentAssessmentError(ValueError):
@@ -39,12 +42,8 @@ def _assessment_id(projection: GovernedConditionAssessmentProjection) -> str:
 
 
 def _band_for_percentage(percentage: float) -> AssessmentBand:
-    """Governed v1 intrinsic severity bands for an applicable copayment percentage."""
-
     if percentage == 0:
         return AssessmentBand.VERY_STRONG
-    if percentage <= 10:
-        return AssessmentBand.MODERATE
     if percentage <= 20:
         return AssessmentBand.RESTRICTIVE
     return AssessmentBand.VERY_RESTRICTIVE
@@ -61,37 +60,14 @@ def assess_conditional_copayment(
         )
     if projection.dimension_id != "copayment":
         raise CopaymentAssessmentError("projection dimension_id must be copayment")
+    if not COPAYMENT_ASSESSMENT_POLICY.is_governed_for_use:
+        raise CopaymentAssessmentError("copayment assessment policy is not governed for use")
 
-    missing_semantics: list[str] = []
-    if not projection.trigger.strip():
-        missing_semantics.append("trigger")
-    # Conditional copayment can legitimately have no exception or no explicit section scope,
-    # but those absences must remain visible as limitations rather than be inferred away.
     limitations: list[str] = []
     if projection.exception is None:
         limitations.append("No governed exception clause is available for this copayment condition.")
     if projection.applicability_scope is None:
         limitations.append("No narrower governed applicability scope is available for this copayment condition.")
-    if missing_semantics:
-        return BenefitAssessment(
-            assessment_id=_assessment_id(projection),
-            implementation_id=f"reasoning_finding:{projection.finding_id}",
-            concept_id="health:cost_sharing:copayment",
-            dimension_id="copayment",
-            decision_role=DecisionRole.PROTECTION_FLOOR,
-            status=AssessmentStatus.NOT_SCORABLE,
-            assessment_band=None,
-            assessment_policy_id=COPAYMENT_ASSESSMENT_POLICY_ID,
-            assessment_policy_version=COPAYMENT_ASSESSMENT_POLICY_VERSION,
-            summary="Copayment assessment is unavailable because required conditional semantics are unresolved.",
-            practical_meaning="PolicyScna will not classify a copayment whose trigger is not governed.",
-            source_mechanic_ids=("copayment_percentage", "copayment_trigger"),
-            evidence_reference_ids=projection.evidence_ids,
-            limitations=tuple(
-                [f"Missing required copayment semantics: {', '.join(missing_semantics)}."]
-                + limitations
-            ),
-        )
 
     band = _band_for_percentage(projection.percentage)
     qualifier = "conditional"
