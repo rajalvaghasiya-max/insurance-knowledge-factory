@@ -142,7 +142,7 @@ STAR_COMPREHENSIVE_WAITING_PERIOD_PUBLICATION = GovernedWaitingPeriodPublication
     publication_status=WaitingPeriodPublicationStatus.PUBLISHED,
     limitations=(
         "This publication covers only the reviewed base waiting-period exclusions.",
-        "Optional Buy Back wording that reduces the PED waiting period to 12 months is not part of this base publication.",
+        "Optional Buy Back wording is outside this base publication and must be handled as a separate governed optional-cover capability.",
         "A waiting-period mechanic does not determine claim admissibility or payment for a specific claim.",
         "Coverage after a PED waiting period remains subject to declaration and insurer acceptance as recorded in the reviewed base clause.",
         "Where a specified disease/procedure is also subject to the PED waiting period, the longer applicable waiting period governs.",
