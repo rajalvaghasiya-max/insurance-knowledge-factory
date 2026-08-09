@@ -183,6 +183,7 @@ def build_room_rent_restriction_from_publication(
         exceptions=publication.exceptions,
         evidence_reference_ids=(publication.evidence_reference_id,),
         governed_source_type=publication.source_authority_type,
+        source_limitations=publication.limitations,
     )
 
 
