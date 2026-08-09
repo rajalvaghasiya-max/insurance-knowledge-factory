@@ -83,11 +83,10 @@ def test_governed_publication_projects_into_active_room_rent_contract() -> None:
     assert restriction.evidence_reference_ids == (
         "ev_activ_one_nxt_room_rent_official_product_page",
     )
-    assert "ADIHLIP24097V012324" in restriction.product_reference.lower().replace(
-        "adihlip24097v012324", "ADIHLIP24097V012324"
-    ) or restriction.product_reference.endswith(
+    assert restriction.product_reference.endswith(
         "pv_aditya_birla_health_activ_one_nxt_adihlip24097v012324"
     )
+    assert restriction.source_limitations == ACTIV_ONE_NXT_ROOM_RENT_PUBLICATION.limitations
 
 
 def test_real_product_assessment_fails_closed_until_pd_is_governed() -> None:
@@ -103,6 +102,10 @@ def test_real_product_assessment_fails_closed_until_pd_is_governed() -> None:
     assert result.evidence_reference_ids == (
         "ev_activ_one_nxt_room_rent_official_product_page",
     )
+    limitations = " ".join(result.limitations).lower()
+    assert "not the policy wording" in limitations
+    assert "different product/uin" in limitations
+    assert "proportionate-deduction applicability is unresolved" in limitations
 
 
 def test_real_product_publication_does_not_create_a_product_verdict() -> None:
