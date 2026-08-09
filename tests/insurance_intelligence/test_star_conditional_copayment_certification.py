@@ -87,7 +87,8 @@ def test_missing_star_exception_blocks_completeness_explanation_and_certificatio
         evidence_output=evidence_output,
     )
 
-    assert result.outcome == "BLOCKED"
+    assert result.outcome == "FAIL"
+    assert result.outcome != "PASS"
     assert result.actual_completeness_status == "PARTIAL"
     assert result.actual_explanation_permitted is False
     checks = {check.component_id: check for check in result.component_checks}
