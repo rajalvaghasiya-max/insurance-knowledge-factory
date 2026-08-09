@@ -50,14 +50,22 @@ STAR_COMPREHENSIVE_COVERAGE = ProductCoverageRecord(
         ConceptCoverageRecord(
             concept_id="copayment",
             status=ConceptCoverageStatus.CERTIFIED,
-            evidence_reference_ids=("ev_star_comprehensive_conditional_copayment_policy_wording",),
+            evidence_reference_ids=(
+                "evidence:star-comprehensive-copayment:governed-statement",
+            ),
             comparison_ready=True,
             decision_support_ready=True,
         ),
         ConceptCoverageRecord(
             concept_id="room_rent_restriction",
             status=ConceptCoverageStatus.CERTIFIED,
-            evidence_reference_ids=("ev_star_comprehensive_room_rent_policy_wording",),
+            evidence_reference_ids=(
+                "evidence:star-comprehensive-room-rent:covered_subject",
+                "evidence:star-comprehensive-room-rent:limit_value",
+                "evidence:star-comprehensive-room-rent:limit_basis",
+                "evidence:star-comprehensive-room-rent:applicability_scope",
+                "evidence:star-comprehensive-room-rent:excess_consequence",
+            ),
             comparison_ready=True,
             decision_support_ready=True,
         ),
