@@ -1,0 +1,58 @@
+{
+  "document_kind": "product_policy_wording_source_binding_v1",
+  "status": "SOURCE_BOUND_REVIEW_REQUIRED",
+  "milestone": "MO-028B",
+  "insurer_id": "aditya_birla_health",
+  "entity_id": "aditya_birla_health:activ_one",
+  "product_reference": "pv_aditya_birla_health_activ_one_nxt_adihlip24097v012324",
+  "canonical_product_name": "Activ One NXT",
+  "governed_product_family_name": "Activ One",
+  "uin": "ADIHLIP24097V012324",
+  "identity_approval_reference": "docs/architecture/aditya_birla_activ_one_identity_review_packet.json",
+  "source_registration": {
+    "document_id": "doc_d20a8488ecb3243f6de2",
+    "document_type": "policy_wording",
+    "source_type": "policy_wording",
+    "evidence_role": "legal_authority",
+    "authority_score": 100,
+    "registered_relative_path": "knowledge/health/aditya_birla_health/activ_one/parsed/policy_wording.json",
+    "document_hash_sha256": "e04bc4575d35e10bc86707ceeb839adf8a59f579bd27584c1b9000201bdac217",
+    "evidence_registry_reference": "knowledge/registry/evidence_registry.json"
+  },
+  "certified_processed_asset": {
+    "asset_id": "pdoc_72d03e57d4b49c68d69a11fc",
+    "asset_path": "knowledge/factory/processed_documents/doc_d20a8488ecb3243f6de2_pdoc_72d03e57d4b49c68d69a11fc_processed_document_v2.json",
+    "processing_manifest": "knowledge/factory/processing_manifests/doc_d20a8488ecb3243f6de2_pdoc_72d03e57d4b49c68d69a11fc_processing_manifest.json",
+    "processing_quality_score": 98.0,
+    "processing_validation_status": "passed",
+    "processing_warning_count": 0,
+    "processing_critical_warning_count": 0
+  },
+  "exact_identity_anchors_in_processed_policy_wording": [
+    "Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+    "Activ One NXT"
+  ],
+  "waiting_period_structure_anchors": [
+    "D.1.1",
+    "D.1.2",
+    "D.1.3",
+    "Pre-Existing Diseases (Code- Excl01)",
+    "Specified disease / procedure Waiting Period: (Code- Excl02)",
+    "30-day Waiting Period (Code- Excl03)"
+  ],
+  "binding_decision": {
+    "exact_uin_present_in_processed_policy_wording": true,
+    "activ_one_nxt_label_present_in_processed_policy_wording": true,
+    "registered_policy_wording_may_be_used_for_waiting_period_candidate_isolation": true,
+    "waiting_period_candidate_review_required": true,
+    "waiting_period_fact_publication_allowed": false,
+    "coverage_registry_promotion_allowed": false
+  },
+  "governance_notes": [
+    "This binding closes the document-to-approved-product identity compatibility gate for evidence review only.",
+    "It does not certify any waiting-period duration, scope, exception, optional modification, claim outcome, or current entitlement.",
+    "Candidate isolation must retain all matching base and optional-cover occurrences until explicit review selects the authoritative base clauses.",
+    "Historical knowledge/health/.../intelligence outputs remain non-authoritative and must not be used as publication proof.",
+    "The optional reduction in Specific Disease Waiting Period and reduction in Pre-Existing Disease Waiting Period must remain separate from base waiting-period mechanics unless separately reviewed and governed."
+  ]
+}
