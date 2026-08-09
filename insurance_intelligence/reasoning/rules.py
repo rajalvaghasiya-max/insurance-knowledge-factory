@@ -130,6 +130,7 @@ def _percentage(evidence: EvidencePackage) -> str:
             return f"{match.group(1)}%"
     raise ReasoningRuleError("conditional co-payment evidence must contain a documented percentage")
 
+
 _TRIGGER_PATTERNS = (
     re.compile(r"(?:for\s+)?insured persons? whose age at the time of entry is [^.;]+", re.I),
     re.compile(r"(?:when|if|where|in case|provided that|subject to)\s+[^.;]+", re.I),
@@ -208,6 +209,7 @@ def _condition(evidence: EvidencePackage) -> str:
     """Backward-compatible trigger accessor without consuming later clauses."""
     return _conditional_semantics(evidence)[0]
 
+
 def _copay_evidence(data: RuleInput) -> EvidencePackage:
     candidates = [
         item
@@ -219,7 +221,12 @@ def _copay_evidence(data: RuleInput) -> EvidencePackage:
     ]
     if not candidates:
         raise ReasoningRuleError("no usable conditional co-payment evidence")
-    return sorted(candidates, key=lambda item: (item.authority_rank, item.evidence_id))[0]
+    selected = sorted(candidates, key=lambda item: (item.authority_rank, item.evidence_id))[0]
+    if not selected.claim.strip():
+        raise ReasoningRuleError(
+            "governed conditional co-payment evidence must contain a non-empty reviewed claim"
+        )
+    return selected
 
 
 def conditional_copayment_obligation(data: RuleInput) -> tuple[Finding, ...]:
