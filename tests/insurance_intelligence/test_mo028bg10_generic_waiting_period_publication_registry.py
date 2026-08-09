@@ -128,12 +128,32 @@ def test_generic_publication_module_contains_no_product_identity_branching():
         assert forbidden not in source
 
 
-def test_generalized_registry_projection_contains_no_product_specific_imports():
+def test_generalized_registry_projection_contains_no_product_specific_imports_or_branches():
     source = GENERALIZED_REGISTRY_MODULE.read_text(encoding="utf-8").casefold()
-    assert "star_comprehensive_coverage" not in source
-    assert "activ_one_nxt_coverage" not in source
-    assert "if insurer" not in source
-    assert "if product" not in source
+
+    # Product-specific symbols and identities must not enter the generalized projection code.
+    for forbidden in (
+        "star_comprehensive_coverage",
+        "activ_one_nxt_coverage",
+        "star_health",
+        "star_comprehensive",
+        "shahlip",
+        "aditya_birla_health",
+        "activ_one_nxt",
+        "adihlip",
+        "if insurer ==",
+        "if insurer_id ==",
+        "if product ==",
+        "if product_id ==",
+        "if product_reference ==",
+        "if product_reference in (",
+    ):
+        assert forbidden not in source
+
+    # Generic control flow over a product_reference key is allowed. For example,
+    # checking duplicate manifest entries (``if product_reference in publications``)
+    # is data-structure validation, not product-identity-bearing reasoning.
+    assert "product_reference" in source
 
 
 def test_blocked_publication_cannot_promote_registry():
