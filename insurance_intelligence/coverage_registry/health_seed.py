@@ -1,8 +1,8 @@
-"""Governed Health coverage seed and current coverage-registry state.
+"""Initial governed Health coverage seed for MO-028A.2.
 
-The registry inventories only coverage demonstrated by authoritative runtime
-artifacts. Product lifecycle is never inferred; until governed lifecycle evidence
-exists, lifecycle status remains STATUS_UNKNOWN.
+This seed inventories only coverage already demonstrated by authoritative runtime
+artifacts. It does not infer product lifecycle. Until a governed lifecycle source
+is added, lifecycle status remains STATUS_UNKNOWN.
 """
 from __future__ import annotations
 
@@ -17,9 +17,6 @@ from insurance_intelligence.benefits.star_comprehensive import (
     STAR_COMPREHENSIVE_PRODUCT_VARIANT_ID,
     STAR_COMPREHENSIVE_RESTORATION_EVIDENCE,
 )
-from insurance_intelligence.benefits.star_comprehensive_waiting_periods import (
-    STAR_COMPREHENSIVE_WAITING_PERIOD_PUBLICATION,
-)
 from insurance_intelligence.coverage_registry.contracts import (
     ConceptCoverageRecord,
     ConceptCoverageStatus,
@@ -32,20 +29,6 @@ from insurance_intelligence.coverage_registry.contracts import (
 
 def _evidence_ids(items: tuple) -> tuple[str, ...]:
     return tuple(item.evidence_reference_id for item in items)
-
-
-def _waiting_period_evidence_ids() -> tuple[str, ...]:
-    """Return stable deduplicated evidence refs from the governed Star publication."""
-    seen: list[str] = []
-    for mechanic in STAR_COMPREHENSIVE_WAITING_PERIOD_PUBLICATION.mechanics:
-        for evidence_id in mechanic.evidence_reference_ids:
-            if evidence_id not in seen:
-                seen.append(evidence_id)
-        for modification in mechanic.modifications:
-            for evidence_id in modification.evidence_reference_ids:
-                if evidence_id not in seen:
-                    seen.append(evidence_id)
-    return tuple(seen)
 
 
 STAR_COMPREHENSIVE_COVERAGE = ProductCoverageRecord(
@@ -88,13 +71,9 @@ STAR_COMPREHENSIVE_COVERAGE = ProductCoverageRecord(
         ),
         ConceptCoverageRecord(
             concept_id="waiting_periods",
-            status=ConceptCoverageStatus.CERTIFIED,
-            evidence_reference_ids=_waiting_period_evidence_ids(),
-            comparison_ready=True,
-            decision_support_ready=False,
+            status=ConceptCoverageStatus.NOT_AUTOMATED,
             limitations=(
-                "Base waiting-period mechanics are certified for factual comparison, but a governed waiting-period assessment policy has not yet been published for decision-support alignment.",
-                "Optional waiting-period modifications such as Buy Back are outside this base publication and require separate governed coverage.",
+                "Base initial, specific-disease, and PED waiting-period clauses are not yet governed for automation.",
             ),
         ),
     ),
