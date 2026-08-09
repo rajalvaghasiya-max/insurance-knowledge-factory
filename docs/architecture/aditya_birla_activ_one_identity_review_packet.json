@@ -1,0 +1,65 @@
+{
+  "document_kind": "product_identity_review_packet_v1",
+  "status": "pending_review",
+  "human_decision": "pending",
+  "approved_by": null,
+  "approval_reference": null,
+  "approved_entity_id": null,
+  "approved_uin": null,
+  "entity_id_proposed": "aditya_birla_health:activ_one",
+  "insurer_id": "aditya_birla_health",
+  "product_id": "activ_one",
+  "canonical_product_name_candidate": "Activ One",
+  "existing_aliases": [
+    "Activ One"
+  ],
+  "uin_candidate": {
+    "value": "ADIHLIP24097V012324",
+    "candidate_status": "format_valid_candidate",
+    "extraction_method": "product_uin_label",
+    "exact_source_location": {
+      "source_type": "customer_information_sheet",
+      "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+      "page_number": 1
+    },
+    "evidence_text": "Product Name: Activ One, Product UIN: ADIHLIP24097V012324",
+    "evidence_field": "knowledge/health/aditya_birla_health/activ_one/intelligence/product_intelligence.json:metadata.uin_candidate"
+  },
+  "product_title_exact_source_location": {
+    "source_type": "customer_information_sheet",
+    "source_file": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+    "page_number": 1,
+    "evidence_field": "knowledge/health/aditya_birla_health/activ_one/intelligence/product_intelligence.json:metadata.product_name"
+  },
+  "old_pipeline_identity_audit_result": {
+    "source_file": "knowledge/health/aditya_birla_health/activ_one/identity/product_identity_report.json",
+    "identity_audit_version": "0.1",
+    "status": "PASS",
+    "score": 100,
+    "error_count": 0,
+    "warning_count": 0,
+    "audit_kind": "automated_score_based_audit",
+    "is_human_review": false
+  },
+  "available_source_material": {
+    "policy_wording": "knowledge/health/aditya_birla_health/activ_one/documents/policy_wording.pdf",
+    "prospectus": "knowledge/health/aditya_birla_health/activ_one/documents/prospectus.pdf",
+    "customer_information_sheet": "knowledge/health/aditya_birla_health/activ_one/documents/customer_information_sheet.pdf",
+    "product_intelligence": "knowledge/health/aditya_birla_health/activ_one/intelligence/product_intelligence.json",
+    "policy_intelligence": "knowledge/health/aditya_birla_health/activ_one/intelligence/policy_intelligence.json"
+  },
+  "pilot_feature_candidate": {
+    "marketing_term": "Super Reload",
+    "canonical_concept_candidate": "restoration",
+    "existing_validation_statement": "Super Reload / Restoration available",
+    "validation_source": "knowledge/health/validations/aditya_birla_health_activ_one_expected.json"
+  },
+  "conflicts_or_uncertainty": [
+    "The existing product_identity_report.json is an automated score-based identity audit and is not a human approval.",
+    "The UIN candidate is directly evidenced in the Customer Information Sheet and corroborated by existing product intelligence, but it has not yet been recorded through product_identity_reference_v1 on this branch.",
+    "Document-version compatibility and current entitlement are not established by product identity approval.",
+    "The exact Super Reload policy-wording clause still requires governed evidence isolation before reasoning implementation. Historical intelligence outputs must not be treated as authoritative proof by themselves."
+  ],
+  "recommended_identity_decision": "Approve entity_id aditya_birla_health:activ_one with canonical product name Activ One and UIN ADIHLIP24097V012324 for governed product identity only. Do not infer document-version compatibility, entitlement, benefit applicability, ranking, or recommendation from this identity decision.",
+  "human_decision_required": "CTO approval or rejection of the proposed entity_id, canonical product name, and UIN. After approval, create product_identity_reference_v1 using the approved identity and explicit manual_product_review evidence."
+}
