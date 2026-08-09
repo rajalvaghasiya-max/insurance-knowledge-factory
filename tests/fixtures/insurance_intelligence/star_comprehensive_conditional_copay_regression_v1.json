@@ -100,10 +100,6 @@
     "contract_id": "contract-star-comprehensive-conditional-copay-v1",
     "component_roles": [
       [
-        "trigger",
-        "entry-age-trigger"
-      ],
-      [
         "effect",
         "copay-effect"
       ],
@@ -114,6 +110,10 @@
       [
         "scope",
         "applicability-scope"
+      ],
+      [
+        "trigger",
+        "entry-age-trigger"
       ]
     ]
   },
