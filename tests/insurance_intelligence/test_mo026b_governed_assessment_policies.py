@@ -126,7 +126,7 @@ def test_unmatched_governed_combination_fails_closed() -> None:
         mechanics=mechanics,
     )
     result = _assess(variant)
-    assert result.status is AssessmentStatus.MODERATE if False else AssessmentStatus.NOT_SCORABLE
+    assert result.status is AssessmentStatus.NOT_SCORABLE
     assert result.assessment_band is None
     assert "no published assessment rule" in result.limitations[0].lower()
 
