@@ -114,7 +114,7 @@ def _evaluate_operation(operation: str):
         reasoning_output=_reasoning_output(item),
         policy_registry=SafetyPolicyRegistry(),
         domain="health",
-        topic="product_comparison",
+        topic="documented_fact",
         decision_context={},
         requested_operations=(operation,),
     )
