@@ -1,0 +1,29 @@
+{
+  "record_type": "generic_waiting_period_publication_manifest_v1",
+  "entries": [
+    {
+      "product_reference": "pv_star_health_star_comprehensive_shahlip26044v092526",
+      "migration_path": "knowledge/factory/migrations/star_comprehensive_waiting_period_generic_migration_v1.json",
+      "publication_id": "waiting_period_fact:star_health:star_comprehensive:base:generic:v1",
+      "authority_class": "POLICY_WORDING",
+      "certification_as_of_date": "2026-08-09",
+      "review_status": "APPROVED",
+      "source_freshness": "CURRENT",
+      "regulatory_overlay_version": null,
+      "comparison_ready": true,
+      "decision_support_ready": false
+    },
+    {
+      "product_reference": "pv_aditya_birla_health_activ_one_nxt_adihlip24097v012324",
+      "migration_path": "knowledge/factory/migrations/activ_one_nxt_waiting_period_generic_migration_v1.json",
+      "publication_id": "waiting_period_fact:aditya_birla_health:activ_one_nxt:base:generic:v1",
+      "authority_class": "POLICY_WORDING",
+      "certification_as_of_date": "2026-08-09",
+      "review_status": "APPROVED",
+      "source_freshness": "CURRENT",
+      "regulatory_overlay_version": null,
+      "comparison_ready": true,
+      "decision_support_ready": false
+    }
+  ]
+}
