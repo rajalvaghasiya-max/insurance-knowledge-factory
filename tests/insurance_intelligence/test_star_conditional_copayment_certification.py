@@ -1,16 +1,16 @@
 from __future__ import annotations
 
-from dataclasses import FrozenInstanceError
+from dataclasses import FrozenInstanceError, replace
 
 import pytest
 
-from insurance_intelligence.rule_certification.runner import run_rule_certification
 from insurance_intelligence.rule_certification.star_health import (
     STAR_COMPREHENSIVE_COPAYMENT_ASSERTION_ID,
     STAR_COMPREHENSIVE_COPAYMENT_BINDING_PATH,
     STAR_COMPREHENSIVE_COPAYMENT_EVIDENCE_HASH,
     STAR_COMPREHENSIVE_COPAYMENT_REVIEWED_STATEMENT,
     build_star_comprehensive_conditional_copayment_case,
+    run_star_comprehensive_conditional_copayment_certification,
 )
 
 
@@ -51,14 +51,8 @@ def test_case_is_bound_to_the_governed_star_artifact_and_primary_legal_evidence(
         )
 
 
-def test_case_certifies_every_conditional_semantic_component_through_real_runner():
-    case = build_star_comprehensive_conditional_copayment_case()
-
-    result = run_rule_certification(
-        expectation=case.expectation,
-        evidence_output=case.evidence_output,
-        domain=case.domain,
-    )
+def test_case_certifies_every_conditional_semantic_component_through_profiled_path():
+    result = run_star_comprehensive_conditional_copayment_certification()
 
     assert result.outcome == "PASS"
     assert result.actual_completeness_status == "COMPLETE"
@@ -73,13 +67,36 @@ def test_case_certifies_every_conditional_semantic_component_through_real_runner
     }
 
 
-def test_case_preserves_publication_and_claim_payment_limitations():
+def test_missing_star_exception_blocks_completeness_explanation_and_certification():
     case = build_star_comprehensive_conditional_copayment_case()
-    result = run_rule_certification(
-        expectation=case.expectation,
-        evidence_output=case.evidence_output,
-        domain=case.domain,
+    evidence_output = replace(
+        case.evidence_output,
+        evidence_packages=tuple(
+            package
+            for package in case.evidence_output.evidence_packages
+            if package.field_or_topic != "EXCEPTION_CONDITION"
+        ),
+        requirement_results=tuple(
+            requirement
+            for requirement in case.evidence_output.requirement_results
+            if not requirement.requirement_id.endswith(":exception_condition")
+        ),
     )
+
+    result = run_star_comprehensive_conditional_copayment_certification(
+        evidence_output=evidence_output,
+    )
+
+    assert result.outcome == "BLOCKED"
+    assert result.actual_completeness_status == "PARTIAL"
+    assert result.actual_explanation_permitted is False
+    checks = {check.component_id: check for check in result.component_checks}
+    assert checks["exception_condition"].actual_status == "MISSING"
+    assert any("exception_condition" in failure for failure in result.failures)
+
+
+def test_case_preserves_publication_and_claim_payment_limitations():
+    result = run_star_comprehensive_conditional_copayment_certification()
 
     joined = " ".join(result.limitations).lower()
     assert "bound_not_published" in joined
