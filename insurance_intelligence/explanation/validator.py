@@ -36,9 +36,15 @@ VALIDATION_STATUSES = frozenset(
 )
 
 _RECOMMENDATION_PATTERNS = (
-    re.compile(r"\b(should|must)\s+(buy|choose|purchase|switch|avoid|recommend)\b", re.I),
-    re.compile(r"\b(best|better|suitable|unsuitable)\s+(plan|policy|product|for you)\b", re.I),
-    re.compile(r"\bwe recommend\b", re.I),
+    re.compile(r"\b(should|must|ought\s+to)\s+(buy|choose|purchase|switch|avoid|recommend|select|pick)\b", re.I),
+    re.compile(r"\b(best|better|ideal|right)\s+(plan|policy|product|option|choice|fit|for\s+you)\b", re.I),
+    re.compile(r"\b(?:more|most)\s+suitable\s+(?:plan|policy|product|option|for\s+you|for\s+your\s+needs)\b", re.I),
+    re.compile(r"\b(?:we|i)\s+(?:would\s+)?recommend\b", re.I),
+    re.compile(r"\byou(?:'d|\s+would)?\s+be\s+better\s+off\s+(?:with|choosing)\b", re.I),
+    re.compile(r"\b(?:fits?|matches?)\s+(?:you|your\s+needs)\s+best\b", re.I),
+    re.compile(r"\b(?:right|best)\s+choice\s+for\s+you\b", re.I),
+    re.compile(r"\b(?:i|we)\s+would\s+(?:go|choose|pick)\s+with\b", re.I),
+    re.compile(r"\bpreferred\s+(?:plan|policy|product|option)\b", re.I),
 )
 _CURRENCY_PATTERN = re.compile(r"(?:₹|rs\.?|inr)\s*\d[\d,]*(?:\.\d+)?", re.I)
 _NUMBER_PATTERN = re.compile(r"(?<![A-Za-z])\d+(?:\.\d+)?%?")
