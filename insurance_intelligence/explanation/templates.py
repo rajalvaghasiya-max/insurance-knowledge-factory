@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import hashlib
+import re
 from typing import Mapping, Sequence
 
 from insurance_intelligence.contracts.decision import DecisionGateOutput
@@ -25,6 +26,12 @@ class ExplanationTemplateError(ValueError):
 
 
 _NON_RENDERABLE_FINDING_STATUSES = frozenset({"CONFLICTING", "UNSUPPORTED", "BLOCKED"})
+_CLAIM_PAYMENT_PREDICTION_PATTERNS = (
+    re.compile(r"\bclaim\s+(?:will|shall)\s+be\s+paid\b", re.I),
+    re.compile(r"\bclaim\s+is\s+guaranteed\b", re.I),
+    re.compile(r"\binsurer\s+(?:will|shall)\s+pay\b", re.I),
+    re.compile(r"\bclaim\s+(?:will|shall)\s+definitely\b", re.I),
+)
 
 
 def _stable_id(prefix: str, *parts: str) -> str:
@@ -72,6 +79,25 @@ def _validate_renderable_status(finding: Finding) -> None:
         raise ExplanationTemplateError(
             "approved finding status is not eligible for explanation rendering: "
             + finding.finding_status
+        )
+
+
+def _validate_claim_payment_language(finding: Finding) -> None:
+    source_text = " ".join(
+        filter(
+            None,
+            (
+                finding.object_or_effect,
+                finding.condition,
+                finding.trigger,
+                finding.exception,
+                finding.applicability_scope,
+            ),
+        )
+    )
+    if any(pattern.search(source_text) for pattern in _CLAIM_PAYMENT_PREDICTION_PATTERNS):
+        raise ExplanationTemplateError(
+            "approved finding implies claim payment or approval and is not eligible for explanation rendering"
         )
 
 
@@ -192,6 +218,7 @@ def render_explanation_templates(
         if not finding.evidence_ids:
             raise ExplanationTemplateError("approved findings must preserve evidence IDs")
         _validate_renderable_status(finding)
+        _validate_claim_payment_language(finding)
 
         if explanation_input.explanation_mode == "ADVISOR_TALKING_POINTS":
             section_type = "ADVISOR_TALKING_POINT"
