@@ -190,14 +190,14 @@ def main() -> int:
         policy=policy_v1,
         approved_evidence_ids=APPROVED_EVIDENCE_IDS,
         human_review=review,
-        coherence_result=coherence,
+        coherence_status=coherence.status,
     )
     decision_v2 = decide_controlled_certification(
         evidence,
         policy=policy_v2,
         approved_evidence_ids=APPROVED_EVIDENCE_IDS,
         human_review=review,
-        coherence_result=coherence,
+        coherence_status=coherence.status,
     )
     payload = {
         "schema_version": "2.0",
