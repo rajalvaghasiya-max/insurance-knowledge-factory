@@ -131,9 +131,16 @@ def _percentage(evidence: EvidencePackage) -> str:
     raise ReasoningRuleError("conditional co-payment evidence must contain a documented percentage")
 
 
+_TRIGGER_BOUNDARY = r"(?=\s+(?:unless|except)\b|[.;]|$)"
 _TRIGGER_PATTERNS = (
-    re.compile(r"(?:for\s+)?insured persons? whose age at the time of entry is [^.;]+", re.I),
-    re.compile(r"(?:when|if|where|in case|provided that|subject to)\s+[^.;]+", re.I),
+    re.compile(
+        rf"(?:for\s+)?insured persons? whose age at the time of entry is .+?{_TRIGGER_BOUNDARY}",
+        re.I,
+    ),
+    re.compile(
+        rf"(?:when|if|where|in case|provided that|subject to)\s+.+?{_TRIGGER_BOUNDARY}",
+        re.I,
+    ),
 )
 _EXCEPTION_PATTERNS = (
     re.compile(
@@ -147,6 +154,8 @@ _EXCEPTION_PATTERNS = (
         r"(?:for|where|when|if)\s+[^.;]+",
         re.I,
     ),
+    re.compile(r"\bunless\s+.+?(?=[.;]|$)", re.I),
+    re.compile(r"\bexcept(?:\s+(?:where|when|if|for))?\s+.+?(?=[.;]|$)", re.I),
 )
 _SCOPE_PATTERNS = (
     re.compile(
@@ -165,6 +174,7 @@ _EXCEPTION_SIGNAL_PATTERNS = (
         r"will\s+not\s+apply|shall\s+not\s+apply|waived|exempt)\b",
         re.I,
     ),
+    re.compile(r"\b(?:unless|except)\b", re.I),
 )
 _SCOPE_SIGNAL_PATTERNS = (
     re.compile(
