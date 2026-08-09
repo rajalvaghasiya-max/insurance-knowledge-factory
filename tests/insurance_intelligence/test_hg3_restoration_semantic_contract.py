@@ -37,9 +37,8 @@ FORBIDDEN_DECISION_SEMANTICS = {
 
 def test_health_terminology_routes_restoration_to_restoration_topic() -> None:
     registry = build_health_concept_registry_v1()
-    restoration = registry.get("health", "health:concept:restoration")
+    restoration = registry.get("health:concept:restoration")
 
-    assert restoration is not None
     assert restoration.concept.canonical_name == "Restoration of sum insured"
     assert restoration.concept_type == "BENEFIT"
     assert restoration.downstream_topic == "restoration"
@@ -109,9 +108,8 @@ def test_restoration_concept_does_not_encode_decision_or_claim_outcome_semantics
 
 def test_terminology_and_benefit_concepts_remain_separate_layers() -> None:
     registry = build_health_concept_registry_v1()
-    terminology = registry.get("health", "health:concept:restoration")
+    terminology = registry.get("health:concept:restoration")
 
-    assert terminology is not None
     assert terminology.concept.concept_family_id != RESTORATION_BENEFIT_CONCEPT.concept_id
     assert terminology.downstream_topic == "restoration"
     assert RESTORATION_BENEFIT_CONCEPT.benefit_family == "sum_insured_behavior"
