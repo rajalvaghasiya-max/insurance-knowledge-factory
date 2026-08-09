@@ -13,6 +13,10 @@ from insurance_intelligence.contracts.rule_certification import (
     build_component_certification_expectation,
     build_rule_certification_expectation,
 )
+from insurance_intelligence.reasoning.rules import (
+    build_rule_input,
+    conditional_copayment_obligation,
+)
 from insurance_intelligence.rule_certification.fixtures import RuleCertificationCaseFixture
 from insurance_intelligence.rule_certification.runner import run_rule_certification
 from insurance_intelligence.topic_completeness.star_pilot_profiles import (
@@ -54,6 +58,54 @@ def _lineage(component_id: str) -> Lineage:
     )
 
 
+def _raw_governed_evidence() -> EvidencePackage:
+    """Return the single reviewed Star statement consumed by production reasoning."""
+    return EvidencePackage(
+        evidence_id="evidence:star-comprehensive-copayment:governed-statement",
+        requirement_id="requirement:star-comprehensive-copayment:governed-statement",
+        subject_reference="product:star_health:star_comprehensive",
+        governed_entity_reference="assertion:" + STAR_COMPREHENSIVE_COPAYMENT_ASSERTION_ID,
+        field_or_topic="conditional_copayment",
+        claim=STAR_COMPREHENSIVE_COPAYMENT_REVIEWED_STATEMENT,
+        evidence_role="DEFINING",
+        source_type="POLICY_WORDING",
+        document_reference="star_health_star_comprehensive_policy_wording_v1",
+        document_version="docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+        effective_from=None,
+        effective_to=None,
+        page=39,
+        section="Conditional co-payment",
+        source_excerpt=STAR_COMPREHENSIVE_COPAYMENT_REVIEWED_STATEMENT,
+        normalized_fact_reference=STAR_COMPREHENSIVE_COPAYMENT_ASSERTION_ID,
+        authority_rank=1,
+        authority_requirement="AUTHORITATIVE",
+        version_status="CURRENT_APPLICABLE",
+        applicability_status="APPLICABLE",
+        lineage=_lineage("governed_statement"),
+        retrieval_basis=(
+            "reviewed_generic_legal_condition_binding",
+            "primary_legal_policy_wording",
+            "candidate_page_39",
+        ),
+        confidence=1.0,
+    )
+
+
+def extract_star_comprehensive_conditional_copayment_finding():
+    """Run the real reviewed Star statement through production semantic extraction."""
+    raw = _raw_governed_evidence()
+    rule_input = build_rule_input(
+        requirement_id=raw.requirement_id,
+        evidence=(raw,),
+        approved_context={},
+        scope="star_health:star_comprehensive",
+    )
+    findings = conditional_copayment_obligation(rule_input)
+    if len(findings) != 1:
+        raise ValueError("Star copayment production extraction must yield exactly one finding")
+    return findings[0]
+
+
 def _evidence(component_id: str, requirement_type: str, claim: str) -> EvidencePackage:
     requirement_id = f"requirement:star-comprehensive-copayment:{component_id}"
     return EvidencePackage(
@@ -79,6 +131,7 @@ def _evidence(component_id: str, requirement_type: str, claim: str) -> EvidenceP
         applicability_status="APPLICABLE",
         lineage=_lineage(component_id),
         retrieval_basis=(
+            "production_conditional_copayment_obligation",
             "reviewed_generic_legal_condition_binding",
             "primary_legal_policy_wording",
             "candidate_page_39",
@@ -102,37 +155,40 @@ def _requirement(component_id: str) -> RequirementResult:
     )
 
 
+def _production_component_claims() -> tuple[tuple[str, str, str], ...]:
+    finding = extract_star_comprehensive_conditional_copayment_finding()
+    components: list[tuple[str, str, str]] = [
+        ("obligation_value", "OBLIGATION_VALUE", finding.object_or_effect),
+        ("trigger_condition", "TRIGGER_CONDITION", finding.trigger or ""),
+        ("calculation_basis", "CALCULATION_BASIS", finding.object_or_effect),
+    ]
+    if finding.applicability_scope:
+        components.append(
+            ("applicability_scope", "APPLICABILITY_SCOPE", finding.applicability_scope)
+        )
+    if finding.exception:
+        components.append(
+            ("exception_condition", "EXCEPTION_CONDITION", finding.exception)
+        )
+    return tuple(components)
+
+
 def build_star_comprehensive_conditional_copayment_case() -> RuleCertificationCaseFixture:
-    """Build the exact governed Star Comprehensive conditional-copayment regression case."""
+    """Build the Star case from production extraction of the governed reviewed statement."""
     case_id = "star_comprehensive_conditional_copayment"
-    component_claims = (
-        ("obligation_value", "OBLIGATION_VALUE", "A 10% co-payment applies to each and every claim."),
-        (
-            "trigger_condition",
-            "TRIGGER_CONDITION",
-            "The trigger is entry age of 61 years or above for fresh or renewal policies.",
-        ),
-        (
-            "applicability_scope",
-            "APPLICABILITY_SCOPE",
-            "The co-payment is limited to Sections II.1-II.11, II.15 and II.25 listed in the reviewed statement.",
-        ),
-        (
-            "exception_condition",
-            "EXCEPTION_CONDITION",
-            "It does not apply where entry occurred before age 61 and renewal continued without a break.",
-        ),
-        (
-            "calculation_basis",
-            "CALCULATION_BASIS",
-            "The percentage is calculated against each and every claim within the stated scope.",
-        ),
-    )
+    component_claims = _production_component_claims()
     evidence = tuple(
         _evidence(component_id, requirement_type, claim)
         for component_id, requirement_type, claim in component_claims
     )
     requirements = tuple(_requirement(component_id) for component_id, _, _ in component_claims)
+    expectation_component_ids = (
+        "obligation_value",
+        "trigger_condition",
+        "applicability_scope",
+        "exception_condition",
+        "calculation_basis",
+    )
     expectation = build_rule_certification_expectation(
         certification_id=case_id,
         governed_subject_reference="assertion:" + STAR_COMPREHENSIVE_COPAYMENT_ASSERTION_ID,
@@ -145,7 +201,7 @@ def build_star_comprehensive_conditional_copayment_case() -> RuleCertificationCa
                 component_id=component_id,
                 acceptable_statuses=("SATISFIED",),
             )
-            for component_id, _, _ in component_claims
+            for component_id in expectation_component_ids
         ),
     )
     output = EvidenceResolverOutput(
@@ -170,7 +226,7 @@ def build_star_comprehensive_conditional_copayment_case() -> RuleCertificationCa
     return RuleCertificationCaseFixture(
         case_id=case_id,
         description=(
-            "Exact governed Star Comprehensive entry-age conditional co-payment regression case."
+            "Star Comprehensive entry-age conditional co-payment certification built from production semantic extraction."
         ),
         domain="health",
         expectation=expectation,
