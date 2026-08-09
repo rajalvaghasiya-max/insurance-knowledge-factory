@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "record_type": "waiting_period_review_decision_v1",
+  "product_reference": "pv_star_health_star_comprehensive_shahlip26044v092526",
+  "insurer_id": "star_health",
+  "product_id": "star_comprehensive",
+  "uin": "SHAHLIP26044V092526",
+  "source_document_id": "star_health_star_comprehensive_policy_wording_v1",
+  "source_document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+  "source_document_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+  "review_status": "APPROVED_FOR_GOVERNED_PROJECTION",
+  "reviewed_by_human": true,
+  "decisions": [
+    {
+      "waiting_period_type": "PRE_EXISTING_DISEASE",
+      "base_candidate_ids": ["candidate_page_31"],
+      "supporting_candidate_ids": ["candidate_page_44"],
+      "rejected_candidates": [
+        {
+          "candidate_id": "candidate_page_30",
+          "reason": "Optional Cover Buy Back wording changes the PED duration from the base 36 months to 12 months and is not the base exclusion."
+        }
+      ],
+      "reviewed_mechanics": {
+        "duration_value": 36,
+        "duration_unit": "MONTHS",
+        "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+        "applies_to": [
+          "treatment of a pre-existing disease",
+          "direct complications of a pre-existing disease"
+        ],
+        "continuity_dependency": "36 months of continuous coverage after inception of the first policy with insurer; portability continuity may reduce the remaining waiting period to the extent of prior coverage",
+        "sum_insured_enhancement_rule": "The exclusion applies afresh to the extent of any Sum Insured increase.",
+        "post_waiting_condition": "Coverage after expiry of 36 months remains subject to the pre-existing disease having been declared at application and accepted by the insurer."
+      }
+    },
+    {
+      "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+      "base_candidate_ids": ["candidate_page_31", "candidate_page_32"],
+      "supporting_candidate_ids": ["candidate_page_44"],
+      "rejected_candidates": [
+        {
+          "candidate_id": "candidate_page_30",
+          "reason": "This occurrence is inside the Optional Cover Buy Back section and is not the base Standard Exclusions clause."
+        }
+      ],
+      "reviewed_mechanics": {
+        "duration_value": 24,
+        "duration_unit": "MONTHS",
+        "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+        "applies_to": [
+          "listed specified diseases",
+          "listed specified procedures and treatments"
+        ],
+        "exceptions": [
+          "claims arising due to an accident"
+        ],
+        "continuity_dependency": "24 months of continuous coverage after inception of the first policy with Star Health; portability continuity may reduce the waiting period to the extent of prior coverage.",
+        "sum_insured_enhancement_rule": "The exclusion applies afresh to the extent of any Sum Insured increase.",
+        "interaction_rule": "If a listed disease/procedure is also subject to the pre-existing disease waiting period, the longer waiting period applies.",
+        "contracted_after_policy_rule": "The waiting period applies even if the listed condition is contracted after policy inception or declared and accepted without a specific exclusion."
+      }
+    },
+    {
+      "waiting_period_type": "INITIAL",
+      "base_candidate_ids": ["candidate_page_32"],
+      "supporting_candidate_ids": ["candidate_page_44"],
+      "rejected_candidates": [],
+      "reviewed_mechanics": {
+        "duration_value": 30,
+        "duration_unit": "DAYS",
+        "start_basis": "POLICY_INCEPTION",
+        "applies_to": [
+          "treatment of any illness within 30 days from the first policy commencement date"
+        ],
+        "exceptions": [
+          "covered claims arising due to an accident",
+          "the exclusion does not apply where the insured person has Continuous Coverage for more than twelve months"
+        ],
+        "sum_insured_enhancement_rule": "The 30-day waiting period applies to the enhanced Sum Insured when a higher Sum Insured is subsequently granted."
+      }
+    }
+  ],
+  "publication_boundary": {
+    "runtime_publication_created": false,
+    "coverage_registry_promoted": false,
+    "reason": "This decision approves exact evidence selection and semantic projection only. Runtime publication and registry promotion require a separate tested step."
+  }
+}
