@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "case_id": "star-comprehensive-conditional-copay-regression-v1",
+  "description": "Immutable regression oracle for the governed Star Comprehensive conditional copayment certification case.",
+  "contract": {
+    "contract_id": "contract-star-comprehensive-conditional-copay-v1",
+    "contract_version": "1.0.0",
+    "rule_family": "CONDITIONAL_COPAYMENT",
+    "approved_finding_ids": [
+      "finding-star-conditional-copay"
+    ],
+    "prohibited_operations": [
+      "ADD_FACT",
+      "REMOVE_FACT",
+      "INFER_FACT",
+      "GENERALISE_SCOPE",
+      "NARROW_SCOPE",
+      "CHANGE_NUMBER",
+      "CHANGE_OPERATOR",
+      "CHANGE_CERTAINTY"
+    ],
+    "components": [
+      {
+        "component_id": "entry-age-trigger",
+        "kind": "TRIGGER",
+        "risk_tier": "RULE_LOGIC",
+        "required": true,
+        "evidence_ids": [
+          "ev-star-copay-reviewed-statement"
+        ],
+        "attributes": {
+          "subject": "insured_person",
+          "attribute": "age_at_entry",
+          "operator": ">=",
+          "value": 61
+        }
+      },
+      {
+        "component_id": "copay-effect",
+        "kind": "EFFECT",
+        "risk_tier": "EXACT_VALUE",
+        "required": true,
+        "evidence_ids": [
+          "ev-star-copay-reviewed-statement"
+        ],
+        "attributes": {
+          "effect_type": "copayment",
+          "percentage": 10,
+          "claim_scope": "each_and_every_claim"
+        }
+      },
+      {
+        "component_id": "continuous-renewal-exception",
+        "kind": "EXCEPTION",
+        "risk_tier": "RULE_LOGIC",
+        "required": true,
+        "evidence_ids": [
+          "ev-star-copay-reviewed-statement"
+        ],
+        "attributes": {
+          "age_operator": "<",
+          "age_value": 61,
+          "continuous_renewal": true,
+          "policy_break": false,
+          "logical_operator": "AND"
+        }
+      },
+      {
+        "component_id": "applicability-scope",
+        "kind": "APPLICABILITY_SCOPE",
+        "risk_tier": "EXACT_VALUE",
+        "required": true,
+        "evidence_ids": [
+          "ev-star-copay-reviewed-statement"
+        ],
+        "attributes": {
+          "mode": "exact_set",
+          "sections": [
+            "II.1",
+            "II.2",
+            "II.3",
+            "II.4",
+            "II.5",
+            "II.6",
+            "II.7",
+            "II.8",
+            "II.9",
+            "II.10",
+            "II.11",
+            "II.15",
+            "II.25"
+          ]
+        }
+      }
+    ]
+  },
+  "binding": {
+    "family_id": "CONDITIONAL_COPAYMENT",
+    "family_version": "1.0",
+    "contract_id": "contract-star-comprehensive-conditional-copay-v1",
+    "component_roles": [
+      [
+        "trigger",
+        "entry-age-trigger"
+      ],
+      [
+        "effect",
+        "copay-effect"
+      ],
+      [
+        "exception",
+        "continuous-renewal-exception"
+      ],
+      [
+        "scope",
+        "applicability-scope"
+      ]
+    ]
+  },
+  "certification": {
+    "minimum_required_confidence": 0.95,
+    "minimum_observed_confidence": 0.9,
+    "coherence_status": "COHERENT",
+    "coherence_failure_codes": [],
+    "v1_threshold_required": {
+      "status": "REVIEW_ONLY",
+      "reason_codes": [
+        "MINIMUM_CONFIDENCE_NOT_MET"
+      ],
+      "certification_granted": false
+    },
+    "v2_deterministic_proof_primary": {
+      "status": "CERTIFIED",
+      "reason_codes": [],
+      "certification_granted": true,
+      "certification_effect": "GRANT"
+    },
+    "missing_component": {
+      "coherence_status": "INCOMPLETE",
+      "coherence_failure_code": "COHERENCE_PROOF_INCOMPLETE",
+      "v2_status": "REVIEW_ONLY",
+      "v2_reason_code": "EXPLANATION_COHERENCE_NOT_PROVEN",
+      "certification_granted": false
+    }
+  }
+}
