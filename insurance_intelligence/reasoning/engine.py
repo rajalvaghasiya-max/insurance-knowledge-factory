@@ -95,6 +95,24 @@ def _execution_id(request_id: str, requirement_id: str, rule: ReasoningRuleDefin
     return _stable_id("execution", {"request_id": request_id, "requirement_id": requirement_id, "rule": rule.registry_key, "status": status})
 
 
+def _validate_registered_outputs(rule: ReasoningRuleDefinition, produced: Sequence[object]) -> None:
+    """Fail closed when runtime findings violate the rule registry contract."""
+    unexpected_types = tuple(
+        sorted(
+            {
+                getattr(item, "finding_type", "<missing>")
+                for item in produced
+                if getattr(item, "finding_type", None) not in rule.output_finding_types
+            }
+        )
+    )
+    if unexpected_types:
+        raise ReasoningRuleError(
+            f"rule {rule.rule_id}@{rule.rule_version} produced unregistered finding types: "
+            f"{unexpected_types}; allowed={rule.output_finding_types}"
+        )
+
+
 class ReasoningEngine:
     """Read-only deterministic orchestrator over validated plan and evidence outputs."""
 
@@ -165,6 +183,7 @@ class ReasoningEngine:
                 try:
                     rule_input = build_rule_input(requirement_id=requirement.requirement_id, evidence=evidence, approved_context=data.reasoning_context, scope="product")
                     produced = execute_rule(rule.rule_id, rule_input)
+                    _validate_registered_outputs(rule, produced)
                 except ReasoningRuleError as exc:
                     rejected.append(rule.rule_id)
                     reason = str(exc)
