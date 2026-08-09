@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 from insurance_intelligence.coverage_registry.contracts import ConceptCoverageStatus
-from insurance_intelligence.coverage_registry.health_seed import (
+from insurance_intelligence.coverage_registry.health_current import (
     ACTIV_ONE_NXT_COVERAGE,
     HEALTH_COVERAGE_REGISTRY,
     STAR_COMPREHENSIVE_COVERAGE,
+)
+from insurance_intelligence.coverage_registry.health_seed import (
+    STAR_COMPREHENSIVE_COVERAGE as MO028A_STAR_COMPREHENSIVE_COVERAGE,
 )
 
 
@@ -41,7 +44,7 @@ def test_activ_one_waiting_periods_remain_not_automated() -> None:
     assert waiting.decision_support_ready is False
 
 
-def test_registry_preserves_both_product_states() -> None:
+def test_registry_preserves_both_current_product_states() -> None:
     star = HEALTH_COVERAGE_REGISTRY.get_product(STAR_COMPREHENSIVE_COVERAGE.product_reference)
     activ = HEALTH_COVERAGE_REGISTRY.get_product(ACTIV_ONE_NXT_COVERAGE.product_reference)
 
@@ -49,6 +52,14 @@ def test_registry_preserves_both_product_states() -> None:
     assert activ is ACTIV_ONE_NXT_COVERAGE
     assert _concept(star, "waiting_periods").status is ConceptCoverageStatus.CERTIFIED
     assert _concept(activ, "waiting_periods").status is ConceptCoverageStatus.NOT_AUTOMATED
+
+
+def test_closed_mo028a_seed_remains_unmodified() -> None:
+    waiting = _concept(MO028A_STAR_COMPREHENSIVE_COVERAGE, "waiting_periods")
+
+    assert waiting.status is ConceptCoverageStatus.NOT_AUTOMATED
+    assert waiting.comparison_ready is False
+    assert waiting.decision_support_ready is False
 
 
 def test_star_waiting_period_evidence_refs_are_deduplicated() -> None:
