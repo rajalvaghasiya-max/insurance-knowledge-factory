@@ -1,8 +1,9 @@
 """Generalized current Health coverage registry for MO-028B.G10.
 
-This module is the post-generalization projection path. It consumes a governed publication
-manifest and generic waiting-period migration/publication components for every listed product.
-Historical MO-028A/MO-028B snapshot modules remain unchanged for certification reproducibility.
+This module is the post-generalization projection path. It consumes the existing Health seed
+registry plus a governed publication manifest and generic waiting-period migration/publication
+components. Historical MO-028A/MO-028B snapshot modules remain unchanged for certification
+reproducibility. Product onboarding does not require product-specific branching here.
 """
 from __future__ import annotations
 
@@ -15,8 +16,7 @@ from insurance_intelligence.coverage_registry.contracts import (
     ProductCoverageRecord,
 )
 from insurance_intelligence.coverage_registry.health_seed import (
-    ACTIV_ONE_NXT_COVERAGE as MO028A_ACTIV_ONE_NXT_COVERAGE,
-    STAR_COMPREHENSIVE_COVERAGE as MO028A_STAR_COMPREHENSIVE_COVERAGE,
+    HEALTH_COVERAGE_REGISTRY as MO028A_HEALTH_COVERAGE_REGISTRY,
 )
 from insurance_intelligence.generic_knowledge.authority_resolution import AuthorityClass
 from insurance_intelligence.generic_knowledge.publication_eligibility import (
@@ -53,8 +53,8 @@ def _build_generalized_products() -> tuple[
         raise ValueError("unsupported Health waiting-period publication manifest")
 
     base_by_reference = {
-        MO028A_STAR_COMPREHENSIVE_COVERAGE.product_reference: MO028A_STAR_COMPREHENSIVE_COVERAGE,
-        MO028A_ACTIV_ONE_NXT_COVERAGE.product_reference: MO028A_ACTIV_ONE_NXT_COVERAGE,
+        product.product_reference: product
+        for product in MO028A_HEALTH_COVERAGE_REGISTRY.products
     }
     generalized_by_reference = dict(base_by_reference)
     publications: dict[str, GovernedWaitingPeriodPublication] = {}
@@ -64,6 +64,8 @@ def _build_generalized_products() -> tuple[
         raise ValueError("publication manifest entries must be a non-empty list")
 
     for entry in entries:
+        if not isinstance(entry, dict):
+            raise ValueError("publication manifest entries must be mappings")
         product_reference = entry["product_reference"]
         if product_reference in publications:
             raise ValueError(f"duplicate publication manifest product: {product_reference}")
@@ -104,23 +106,10 @@ def _build_generalized_products() -> tuple[
 
 
 _GENERALIZED_PRODUCTS, WAITING_PERIOD_PUBLICATIONS = _build_generalized_products()
-
-STAR_COMPREHENSIVE_COVERAGE = next(
-    product
-    for product in _GENERALIZED_PRODUCTS
-    if product.product_reference == MO028A_STAR_COMPREHENSIVE_COVERAGE.product_reference
-)
-ACTIV_ONE_NXT_COVERAGE = next(
-    product
-    for product in _GENERALIZED_PRODUCTS
-    if product.product_reference == MO028A_ACTIV_ONE_NXT_COVERAGE.product_reference
-)
 HEALTH_COVERAGE_REGISTRY = InsuranceIntelligenceCoverageRegistry(_GENERALIZED_PRODUCTS)
 
 
 __all__ = [
-    "ACTIV_ONE_NXT_COVERAGE",
     "HEALTH_COVERAGE_REGISTRY",
-    "STAR_COMPREHENSIVE_COVERAGE",
     "WAITING_PERIOD_PUBLICATIONS",
 ]
