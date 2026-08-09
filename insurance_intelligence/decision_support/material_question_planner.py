@@ -138,51 +138,29 @@ class MaterialQuestionPlan:
         return bool(self.questions)
 
 
-def _pending_confirmation_candidates(
+def _validate_confirmation_candidate(
+    *,
+    candidate: MaterialQuestionCandidate,
     context: CustomerDecisionContext,
-) -> tuple[MaterialQuestionCandidate, ...]:
-    candidates: list[MaterialQuestionCandidate] = []
-    for item in context.pending_circumstance_confirmations:
-        candidates.append(
-            MaterialQuestionCandidate(
-                question_id=f"confirm:circumstance:{item.subject_reference}:{item.circumstance_id}",
-                trigger_type=QuestionTriggerType.PENDING_CIRCUMSTANCE_CONFIRMATION,
-                prompt=(
-                    f"Please confirm what you mean regarding {item.circumstance_id.replace('_', ' ')}."
-                ),
-                target_input_id=f"circumstance:{item.subject_reference}:{item.circumstance_id}",
-                material_dimension_ids=(item.circumstance_id,),
-                trigger_reference_ids=(context.context_id,),
-                priority=MaterialQuestionPriority.HIGH,
-                why_material=(
-                    "This customer circumstance was inferred rather than declared or confirmed and "
-                    "must not drive material decision reasoning until confirmed."
-                ),
+) -> None:
+    if candidate.trigger_type is QuestionTriggerType.PENDING_CIRCUMSTANCE_CONFIRMATION:
+        valid_targets = {
+            f"circumstance:{item.subject_reference}:{item.circumstance_id}"
+            for item in context.pending_circumstance_confirmations
+        }
+        if candidate.target_input_id not in valid_targets:
+            raise MaterialQuestionPlannerError(
+                "circumstance-confirmation question must target a pending inferred circumstance"
             )
-        )
-    for item in context.pending_priority_confirmations:
-        candidates.append(
-            MaterialQuestionCandidate(
-                question_id=f"confirm:priority:{item.priority_id}",
-                trigger_type=QuestionTriggerType.PENDING_PRIORITY_CONFIRMATION,
-                prompt=(
-                    f"Please clarify what matters to you about {item.dimension_id.replace('_', ' ')}."
-                ),
-                target_input_id=f"priority:{item.priority_id}",
-                material_dimension_ids=(item.dimension_id,),
-                trigger_reference_ids=(context.context_id, item.priority_id),
-                priority=(
-                    MaterialQuestionPriority.CRITICAL
-                    if item.importance.value == "CONTROLLING"
-                    else MaterialQuestionPriority.HIGH
-                ),
-                why_material=(
-                    "This priority was inferred rather than declared or confirmed and must not silently "
-                    "drive personalized decision analysis."
-                ),
+    elif candidate.trigger_type is QuestionTriggerType.PENDING_PRIORITY_CONFIRMATION:
+        valid_targets = {
+            f"priority:{item.priority_id}"
+            for item in context.pending_priority_confirmations
+        }
+        if candidate.target_input_id not in valid_targets:
+            raise MaterialQuestionPlannerError(
+                "priority-confirmation question must target a pending inferred priority"
             )
-        )
-    return tuple(candidates)
 
 
 def plan_material_questions(
@@ -190,14 +168,15 @@ def plan_material_questions(
     plan_id: str,
     boundary: PersonalizationBoundaryDecision,
     context: CustomerDecisionContext,
-    externally_triggered_candidates: tuple[MaterialQuestionCandidate, ...] = (),
+    candidates: tuple[MaterialQuestionCandidate, ...],
     max_questions: int = 3,
 ) -> MaterialQuestionPlan:
-    """Plan only questions with traceable material triggers.
+    """Plan only explicitly nominated questions with traceable material triggers.
 
-    Pending inferred customer values are eligible automatically because their
-    confirmation is itself a governance prerequisite. All other questions must be
-    supplied as explicit trigger-backed candidates by governed upstream reasoning.
+    The planner never sweeps all missing or inferred customer fields. Upstream
+    governed reasoning must nominate a question because answering it can materially
+    clarify an active comparison, applicability dependency, hard constraint, or
+    inferred value that is actually needed for the current decision analysis.
     """
 
     if type(boundary) is not PersonalizationBoundaryDecision:
@@ -216,18 +195,20 @@ def plan_material_questions(
         raise MaterialQuestionPlannerError(
             "boundary customer context must match the question-planning context"
         )
-    if not isinstance(externally_triggered_candidates, tuple) or not all(
-        type(item) is MaterialQuestionCandidate for item in externally_triggered_candidates
+    if not isinstance(candidates, tuple) or not all(
+        type(item) is MaterialQuestionCandidate for item in candidates
     ):
         raise MaterialQuestionPlannerError(
-            "externally_triggered_candidates must contain exact MaterialQuestionCandidate values"
+            "candidates must contain exact MaterialQuestionCandidate values"
         )
     if not isinstance(max_questions, int) or isinstance(max_questions, bool) or max_questions < 1:
         raise MaterialQuestionPlannerError("max_questions must be a positive integer")
 
-    all_candidates = _pending_confirmation_candidates(context) + externally_triggered_candidates
+    for candidate in candidates:
+        _validate_confirmation_candidate(candidate=candidate, context=context)
+
     ordered = sorted(
-        all_candidates,
+        candidates,
         key=lambda item: (_PRIORITY_ORDER[item.priority], item.question_id),
     )
 
