@@ -2,8 +2,15 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
+
 from insurance_intelligence.contracts.evidence import EvidenceResolverOutput
 from insurance_intelligence.contracts.topic_completeness import TopicCompletenessResult
+from insurance_intelligence.contracts.topic_profile import (
+    TopicProfile,
+    TopicProfileContractError,
+    validate_registered_topic_profile,
+)
 from insurance_intelligence.topic_completeness.catalogue import (
     build_default_topic_registry,
 )
@@ -34,12 +41,14 @@ def evaluate_registered_topic(
     registry: TopicCompletenessRegistry | None = None,
     topic_version: str | None = None,
     domain: str | None = None,
+    profile: TopicProfile | None = None,
 ) -> TopicCompletenessResult:
     """Resolve a registered topic and evaluate it against governed evidence.
 
-    A new default registry is created when ``registry`` is omitted. The adapter
-    performs lookup and boundary validation only; it does not mutate registry,
-    definition, or resolver output state.
+    A new default registry is created when ``registry`` is omitted. When a
+    validated ``TopicProfile`` is supplied, its required/optional classification
+    is applied only for this evaluation. The registered generic topic definition
+    is never mutated.
     """
     validated_topic_id = _required_text(topic_id, "topic_id")
     validated_version = (
@@ -76,6 +85,38 @@ def evaluate_registered_topic(
         raise TopicCompletenessAdapterError(
             "requested domain does not match registered topic definition: "
             f"{validated_domain!r} != {definition.domain!r}"
+        )
+
+    if profile is not None:
+        if not isinstance(profile, TopicProfile):
+            raise TopicCompletenessAdapterError("profile must be a TopicProfile")
+        if profile.topic_id != definition.topic_id or profile.topic_version != definition.topic_version:
+            raise TopicCompletenessAdapterError(
+                "profile topic identity does not match requested registered topic"
+            )
+        if validated_domain is not None and profile.domain != validated_domain:
+            raise TopicCompletenessAdapterError(
+                "profile domain does not match requested domain"
+            )
+        try:
+            validation = validate_registered_topic_profile(
+                profile=profile,
+                registry=resolved_registry,
+            )
+        except TopicProfileContractError as exc:
+            raise TopicCompletenessAdapterError(str(exc)) from exc
+        if not validation.valid:
+            raise TopicCompletenessAdapterError(
+                "profile is not valid for the registered topic: "
+                + "; ".join(validation.failures)
+            )
+        required_ids = set(profile.required_component_ids)
+        definition = replace(
+            definition,
+            components=tuple(
+                replace(component, required=component.component_id in required_ids)
+                for component in definition.components
+            ),
         )
 
     try:
