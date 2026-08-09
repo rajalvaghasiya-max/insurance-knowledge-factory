@@ -9,10 +9,15 @@ from insurance_intelligence.contracts.evidence import (
     RequirementResult,
 )
 from insurance_intelligence.contracts.rule_certification import (
+    RuleCertificationResult,
     build_component_certification_expectation,
     build_rule_certification_expectation,
 )
 from insurance_intelligence.rule_certification.fixtures import RuleCertificationCaseFixture
+from insurance_intelligence.rule_certification.runner import run_rule_certification
+from insurance_intelligence.topic_completeness.star_pilot_profiles import (
+    build_star_conditional_copayment_profile,
+)
 
 STAR_COMPREHENSIVE_COPAYMENT_BINDING_PATH = (
     "knowledge/factory/registry_backed/star_health_star_comprehensive/"
@@ -171,4 +176,18 @@ def build_star_comprehensive_conditional_copayment_case() -> RuleCertificationCa
         expectation=expectation,
         evidence_output=output,
         expected_outcome="PASS",
+    )
+
+
+def run_star_comprehensive_conditional_copayment_certification(
+    *,
+    evidence_output: EvidenceResolverOutput | None = None,
+) -> RuleCertificationResult:
+    """Run the Star copayment case with its product-specific completeness profile."""
+    case = build_star_comprehensive_conditional_copayment_case()
+    return run_rule_certification(
+        expectation=case.expectation,
+        evidence_output=evidence_output or case.evidence_output,
+        domain=case.domain,
+        profile=build_star_conditional_copayment_profile(),
     )
