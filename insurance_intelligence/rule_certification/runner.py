@@ -11,6 +11,7 @@ from insurance_intelligence.contracts.rule_certification import (
     RuleCertificationResult,
     build_rule_certification_result,
 )
+from insurance_intelligence.contracts.topic_profile import TopicProfile
 from insurance_intelligence.topic_completeness.adapter import (
     TopicCompletenessAdapterError,
     evaluate_registered_topic,
@@ -43,6 +44,7 @@ def run_rule_certification(
     evidence_output: EvidenceResolverOutput,
     registry: TopicCompletenessRegistry | None = None,
     domain: str | None = None,
+    profile: TopicProfile | None = None,
     trace_references: Sequence[str] | None = None,
     limitations: Sequence[str] = (),
 ) -> RuleCertificationResult:
@@ -51,7 +53,9 @@ def run_rule_certification(
     The runner performs no evidence resolution and contains no insurer-specific
     logic. It resolves the exact topic version declared by the expectation,
     evaluates completeness through the stable adapter, and delegates outcome
-    derivation to the certification-result contract builder.
+    derivation to the certification-result contract builder. A supplied topic
+    profile may strengthen the generic topic requirements for a bounded product
+    certification without mutating the registered generic definition.
     """
     if not isinstance(expectation, RuleCertificationExpectation):
         raise RuleCertificationRunnerError(
@@ -67,6 +71,8 @@ def run_rule_certification(
         )
     if domain is not None and (not isinstance(domain, str) or not domain.strip()):
         raise RuleCertificationRunnerError("domain must be a non-empty string")
+    if profile is not None and not isinstance(profile, TopicProfile):
+        raise RuleCertificationRunnerError("profile must be a TopicProfile")
 
     validated_limitations = _text_values(limitations, "limitations")
     if trace_references is None:
@@ -86,6 +92,7 @@ def run_rule_certification(
             evidence_output=evidence_output,
             registry=registry,
             domain=domain.strip() if domain is not None else None,
+            profile=profile,
         )
         return build_rule_certification_result(
             expectation=expectation,
