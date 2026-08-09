@@ -2,8 +2,8 @@
 
 This module defines the active insurance_intelligence contract used to assess
 room-rent restrictions without importing historical knowledge-domain extractors.
-It is intentionally evidence-agnostic at this stage: real-product publication
-must come from the authoritative governed pipeline before assessment is allowed.
+Real-product publications may carry source limitations, and those limitations must
+remain visible through assessment.
 """
 from __future__ import annotations
 
@@ -55,6 +55,7 @@ class GovernedRoomRentRestriction:
     exceptions: tuple[str, ...]
     evidence_reference_ids: tuple[str, ...]
     governed_source_type: str
+    source_limitations: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         for name in ("restriction_id", "product_reference", "governed_source_type"):
@@ -70,9 +71,19 @@ class GovernedRoomRentRestriction:
             )
         if not isinstance(self.exceptions, tuple):
             raise RoomRentAssessmentError("exceptions must be a tuple")
+        if not isinstance(self.source_limitations, tuple) or not all(
+            isinstance(item, str) and item.strip() for item in self.source_limitations
+        ):
+            raise RoomRentAssessmentError(
+                "source_limitations must contain non-empty text values"
+            )
         if not isinstance(self.evidence_reference_ids, tuple) or not self.evidence_reference_ids:
             raise RoomRentAssessmentError("evidence_reference_ids must be a non-empty tuple")
-        cleaned_ids = tuple(item.strip() for item in self.evidence_reference_ids if isinstance(item, str) and item.strip())
+        cleaned_ids = tuple(
+            item.strip()
+            for item in self.evidence_reference_ids
+            if isinstance(item, str) and item.strip()
+        )
         if len(cleaned_ids) != len(self.evidence_reference_ids):
             raise RoomRentAssessmentError("evidence_reference_ids must contain non-empty text")
         if len(cleaned_ids) != len(set(cleaned_ids)):
@@ -82,9 +93,17 @@ class GovernedRoomRentRestriction:
             raise RoomRentAssessmentError("NO_LIMIT room rent cannot carry cap_value")
         if self.cap_type is RoomRentCapType.ROOM_CATEGORY and not self.eligible_room_category:
             raise RoomRentAssessmentError("ROOM_CATEGORY requires eligible_room_category")
-        if self.cap_type in {RoomRentCapType.FIXED_DAILY_AMOUNT, RoomRentCapType.PERCENTAGE_OF_SUM_INSURED} and self.cap_value is None:
-            raise RoomRentAssessmentError("monetary/percentage room-rent caps require cap_value")
-        if self.proportionate_deduction is ProportionateDeductionStatus.APPLIES and not self.proportionate_deduction_scope:
+        if self.cap_type in {
+            RoomRentCapType.FIXED_DAILY_AMOUNT,
+            RoomRentCapType.PERCENTAGE_OF_SUM_INSURED,
+        } and self.cap_value is None:
+            raise RoomRentAssessmentError(
+                "monetary/percentage room-rent caps require cap_value"
+            )
+        if (
+            self.proportionate_deduction is ProportionateDeductionStatus.APPLIES
+            and not self.proportionate_deduction_scope
+        ):
             raise RoomRentAssessmentError(
                 "APPLIES proportionate deduction requires proportionate_deduction_scope"
             )
@@ -111,10 +130,13 @@ def assess_room_rent_restriction(
             "restriction must be the exact GovernedRoomRentRestriction type"
         )
 
-    limitations: list[str] = []
+    limitations: list[str] = list(restriction.source_limitations)
     interactions: list[BenefitInteractionReference] = []
 
     if restriction.proportionate_deduction is ProportionateDeductionStatus.UNKNOWN:
+        limitations.append(
+            "Proportionate-deduction applicability is unresolved on governed evidence."
+        )
         return BenefitAssessment(
             assessment_id=_assessment_id(restriction),
             implementation_id=f"room_rent_restriction:{restriction.restriction_id}",
@@ -137,9 +159,7 @@ def assess_room_rent_restriction(
                 "proportionate_deduction_scope",
             ),
             evidence_reference_ids=restriction.evidence_reference_ids,
-            limitations=(
-                "Proportionate-deduction applicability is unresolved on governed evidence.",
-            ),
+            limitations=tuple(limitations),
         )
 
     if restriction.cap_type is RoomRentCapType.NO_LIMIT:
@@ -171,9 +191,13 @@ def assess_room_rent_restriction(
         )
 
     if restriction.icu_rule is None:
-        limitations.append("No separately governed ICU room-entitlement rule is available in this assessment input.")
+        limitations.append(
+            "No separately governed ICU room-entitlement rule is available in this assessment input."
+        )
     if restriction.exceptions:
-        limitations.append("Documented room-rent exceptions must be read together with the restriction.")
+        limitations.append(
+            "Documented room-rent exceptions must be read together with the restriction."
+        )
     limitations.append(
         "This assessment describes structural policy restrictions only and does not predict the amount payable on any claim."
     )
