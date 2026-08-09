@@ -1,11 +1,11 @@
 {
   "document_kind": "product_identity_review_packet_v1",
-  "status": "pending_review",
-  "human_decision": "pending",
-  "approved_by": null,
-  "approval_reference": null,
-  "approved_entity_id": null,
-  "approved_uin": null,
+  "status": "approved",
+  "human_decision": "approved",
+  "approved_by": "CTO",
+  "approval_reference": "HG-2 explicit CTO approval in PolicyScna project chat on 2026-08-09",
+  "approved_entity_id": "aditya_birla_health:activ_one",
+  "approved_uin": "ADIHLIP24097V012324",
   "entity_id_proposed": "aditya_birla_health:activ_one",
   "insurer_id": "aditya_birla_health",
   "product_id": "activ_one",
@@ -55,11 +55,11 @@
     "validation_source": "knowledge/health/validations/aditya_birla_health_activ_one_expected.json"
   },
   "conflicts_or_uncertainty": [
-    "The existing product_identity_report.json is an automated score-based identity audit and is not a human approval.",
-    "The UIN candidate is directly evidenced in the Customer Information Sheet and corroborated by existing product intelligence, but it has not yet been recorded through product_identity_reference_v1 on this branch.",
+    "RESOLVED (HG-2): the CTO explicitly approved entity_id aditya_birla_health:activ_one, canonical product name Activ One, and UIN ADIHLIP24097V012324 for governed product identity.",
+    "The existing product_identity_report.json remains an automated score-based identity audit and is corroborating evidence only; it is not the human approval itself.",
     "Document-version compatibility and current entitlement are not established by product identity approval.",
     "The exact Super Reload policy-wording clause still requires governed evidence isolation before reasoning implementation. Historical intelligence outputs must not be treated as authoritative proof by themselves."
   ],
-  "recommended_identity_decision": "Approve entity_id aditya_birla_health:activ_one with canonical product name Activ One and UIN ADIHLIP24097V012324 for governed product identity only. Do not infer document-version compatibility, entitlement, benefit applicability, ranking, or recommendation from this identity decision.",
-  "human_decision_required": "CTO approval or rejection of the proposed entity_id, canonical product name, and UIN. After approval, create product_identity_reference_v1 using the approved identity and explicit manual_product_review evidence."
+  "recommended_identity_decision": "APPROVED (HG-2). entity_id aditya_birla_health:activ_one, canonical product name Activ One, and UIN ADIHLIP24097V012324 are the governed identity values for this pilot. This approval establishes product identity only and does not establish document-version compatibility, entitlement, benefit applicability, ranking, or recommendation.",
+  "human_decision_required": "None outstanding for product identity approval. Remaining HG-2 item: isolate the exact Super Reload policy-wording evidence before reasoning implementation."
 }
