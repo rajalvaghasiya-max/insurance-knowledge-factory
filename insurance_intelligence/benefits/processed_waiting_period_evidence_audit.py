@@ -51,11 +51,16 @@ _MARKERS: Mapping[WaitingPeriodType, tuple[str, ...]] = {
         "D.1.1",
         "Code-Excl01",
         "Code Excl 01",
+        "Reduction in Pre-Existing Disease Waiting Period",
+        "Reduction in Pre Existing Disease Waiting Period",
     ),
     WaitingPeriodType.SPECIFIC_DISEASE_PROCEDURE: (
         "D.1.2",
         "Code-Excl02",
         "Code Excl 02",
+        "Reduction in Speciﬁc Disease Waiting Period",
+        "Reduction in Specific Disease Waiting Period",
+        "Reduction in Specific Diseases Waiting Period",
     ),
     WaitingPeriodType.INITIAL: (
         "D.1.3",
