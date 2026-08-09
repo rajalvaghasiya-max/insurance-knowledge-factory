@@ -1,0 +1,89 @@
+{
+  "record_type": "generic_waiting_period_migration_v1",
+  "product_reference": "pv_star_health_star_comprehensive_shahlip26044v092526",
+  "policy_version": "SHAHLIP26044V092526",
+  "ontology_version": "waiting_periods_v1",
+  "inventory_version": "star_comprehensive_waiting_period_migration_v1",
+  "review_decision_version": "STAR_COMPREHENSIVE_WAITING_PERIOD_REVIEW_DECISION.json@1.0",
+  "source": {
+    "document_id": "star_health_star_comprehensive_policy_wording_v1",
+    "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+    "sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+    "authority_class": "POLICY_WORDING"
+  },
+  "units": [
+    {
+      "unit_id": "star_wp_ped_base",
+      "kind": "EXCLUSION",
+      "locator": "candidate_page_31",
+      "evidence_id": "star_waiting_period:candidate_page_31:ped_base",
+      "text_sha256": "b9f28db495943d84bbf6a900df47b18717c6300bf510f88786914ae28be11e77",
+      "excerpt": "Pre-Existing Diseases - Code Excl 01: expenses related to treatment of a pre-existing disease and direct complications are excluded until expiry of 36 months of continuous coverage after inception of the first policy with insurer; portability may reduce the waiting period; enhancement reapplies the exclusion to the increase; post-wait coverage is subject to declaration and insurer acceptance.",
+      "materially_affects": ["DURATION", "START_BASIS", "SCOPE", "CONTINUITY", "PORTABILITY", "SUM_INSURED_ENHANCEMENT", "APPLICABILITY"],
+      "reviewed_mapping": {
+        "kind": "SEMANTIC_FACT",
+        "semantic_type": "BASE_MECHANIC",
+        "reason": "Human-approved base PED mechanic from the certified review decision.",
+        "semantic_value": {
+          "waiting_period_type": "PRE_EXISTING_DISEASE",
+          "duration_value": 36,
+          "duration_unit": "MONTHS",
+          "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+          "applies_to": ["treatment of a pre-existing disease", "direct complications of a pre-existing disease"],
+          "continuity_dependency": "36 months of continuous coverage after inception of the first policy with insurer; portability continuity may reduce the remaining waiting period to the extent of prior coverage",
+          "sum_insured_enhancement_rule": "The exclusion applies afresh to the extent of any Sum Insured increase.",
+          "post_waiting_condition": "Coverage after expiry of 36 months remains subject to the pre-existing disease having been declared at application and accepted by the insurer."
+        }
+      }
+    },
+    {
+      "unit_id": "star_wp_specific_base",
+      "kind": "EXCLUSION",
+      "locator": "candidate_page_31+candidate_page_32",
+      "evidence_id": "star_waiting_period:candidate_page_31:specified_base",
+      "text_sha256": "b9f28db495943d84bbf6a900df47b18717c6300bf510f88786914ae28be11e77",
+      "excerpt": "Specified disease/procedure waiting period - Code Excl 02: listed conditions, surgeries and treatments are excluded for 24 months of continuous coverage after inception of the first policy; accident claims are excepted; enhancement reapplies to the increase; the longer waiting period applies when PED also applies; portability may reduce the waiting period.",
+      "materially_affects": ["DURATION", "START_BASIS", "SCOPE", "EXCEPTION", "CONTINUITY", "PORTABILITY", "SUM_INSURED_ENHANCEMENT", "CROSS_CONCEPT_RELATIONSHIP"],
+      "reviewed_mapping": {
+        "kind": "SEMANTIC_FACT",
+        "semantic_type": "BASE_MECHANIC",
+        "reason": "Human-approved base specified-disease/procedure mechanic from the certified review decision.",
+        "semantic_value": {
+          "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+          "duration_value": 24,
+          "duration_unit": "MONTHS",
+          "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+          "applies_to": ["listed specified diseases", "listed specified procedures and treatments"],
+          "exceptions": ["claims arising due to an accident"],
+          "continuity_dependency": "24 months of continuous coverage after inception of the first policy with Star Health; portability continuity may reduce the waiting period to the extent of prior coverage.",
+          "sum_insured_enhancement_rule": "The exclusion applies afresh to the extent of any Sum Insured increase.",
+          "interaction_rule": "If a listed disease/procedure is also subject to the pre-existing disease waiting period, the longer waiting period applies.",
+          "contracted_after_policy_rule": "The waiting period applies even if the listed condition is contracted after policy inception or declared and accepted without a specific exclusion."
+        }
+      }
+    },
+    {
+      "unit_id": "star_wp_initial_base",
+      "kind": "EXCLUSION",
+      "locator": "candidate_page_32",
+      "evidence_id": "star_waiting_period:candidate_page_32:initial_base",
+      "text_sha256": "214466445fab2fd7fec30d951696479d4999bfc74aea13af40a1b80eddef77eb",
+      "excerpt": "30-day waiting period - Code Excl 03: treatment of illness within 30 days from first policy commencement is excluded except covered accident claims; the exclusion does not apply after more than twelve months of Continuous Coverage; the waiting period applies to enhanced Sum Insured.",
+      "materially_affects": ["DURATION", "START_BASIS", "SCOPE", "EXCEPTION", "CONTINUITY", "SUM_INSURED_ENHANCEMENT"],
+      "reviewed_mapping": {
+        "kind": "SEMANTIC_FACT",
+        "semantic_type": "BASE_MECHANIC",
+        "reason": "Human-approved base initial waiting-period mechanic from the certified review decision.",
+        "semantic_value": {
+          "waiting_period_type": "INITIAL",
+          "duration_value": 30,
+          "duration_unit": "DAYS",
+          "start_basis": "POLICY_INCEPTION",
+          "applies_to": ["treatment of any illness within 30 days from the first policy commencement date"],
+          "exceptions": ["covered claims arising due to an accident", "the exclusion does not apply where the insured person has Continuous Coverage for more than twelve months"],
+          "sum_insured_enhancement_rule": "The 30-day waiting period applies to the enhanced Sum Insured when a higher Sum Insured is subsequently granted."
+        }
+      }
+    }
+  ]
+}
