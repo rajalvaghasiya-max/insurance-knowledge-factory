@@ -13,7 +13,7 @@ from insurance_intelligence.coverage_registry.reporting import (
     build_coverage_review_report,
     render_coverage_review_markdown,
 )
-from scripts.render_health_coverage_review import OUTPUT_PATH
+from scripts.render_current_health_coverage_review import OUTPUT_PATH
 
 
 def _waiting_status(registry, insurer_id: str) -> ConceptCoverageStatus:
@@ -49,3 +49,8 @@ def test_live_review_no_longer_lists_star_waiting_period_gap() -> None:
     rendered = Path(OUTPUT_PATH).read_text(encoding="utf-8")
     assert "Base initial, specific-disease, and PED waiting-period clauses are not yet governed for automation." not in rendered
     assert "Waiting-period semantics have not yet been governed for Activ One NXT decision support." in rendered
+
+
+def test_current_review_path_is_distinct_from_mo028a_artifact() -> None:
+    assert OUTPUT_PATH.name == "CURRENT_HEALTH_INSURANCE_INTELLIGENCE_COVERAGE_REVIEW.md"
+    assert OUTPUT_PATH != Path("docs/architecture/HEALTH_INSURANCE_INTELLIGENCE_COVERAGE_REVIEW.md")
