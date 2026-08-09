@@ -1,0 +1,91 @@
+{
+  "record_type": "generic_waiting_period_migration_v1",
+  "product_reference": "pv_aditya_birla_health_activ_one_nxt_adihlip24097v012324",
+  "policy_version": "ADIHLIP24097V012324",
+  "ontology_version": "waiting_periods_v1",
+  "inventory_version": "activ_one_nxt_waiting_period_migration_v1",
+  "review_decision_version": "ACTIV_ONE_NXT_WAITING_PERIOD_REVIEW_DECISION.json@1.0",
+  "source": {
+    "document_id": "doc_d20a8488ecb3243f6de2",
+    "document_version": "pdoc_72d03e57d4b49c68d69a11fc",
+    "sha256": "e04bc4575d35e10bc86707ceeb839adf8a59f579bd27584c1b9000201bdac217",
+    "authority_class": "POLICY_WORDING"
+  },
+  "units": [
+    {
+      "unit_id": "activ_one_nxt_wp_ped_base",
+      "kind": "EXCLUSION",
+      "locator": "wp_candidate_124e9d18ecae07d9ed02+wp_candidate_79345b48238f58ab1113+wp_candidate_f9e5521c5c4a6961294d",
+      "evidence_id": "activ_one_nxt_waiting_period:ped_base_and_product_table",
+      "text_sha256": "b829a1fdfc2e4f730395d5c1731bb387f952e4a94140ee42aee99e856f5dc2a3",
+      "excerpt": "D.1.1 Pre-Existing Diseases: treatment of a pre-existing disease and direct complications are excluded until expiry of the waiting period specified in the Policy Schedule / Product Benefit Table; continuous coverage and portability may reduce the waiting period; Sum Insured enhancement reapplies the exclusion to the increase; post-wait coverage remains subject to declaration and insurer acceptance. Product Benefit Table: Pre-Existing Diseases Waiting Period = 3 Years.",
+      "materially_affects": ["DURATION", "START_BASIS", "SCOPE", "CONTINUITY", "PORTABILITY", "SUM_INSURED_ENHANCEMENT", "SCHEDULE_DEPENDENCY", "APPLICABILITY"],
+      "reviewed_mapping": {
+        "kind": "SEMANTIC_FACT",
+        "semantic_type": "BASE_MECHANIC",
+        "reason": "Human-approved base PED mechanic; the exclusion delegates duration to the Policy Schedule / Product Benefit Table, whose reviewed product value is 3 Years.",
+        "semantic_value": {
+          "waiting_period_type": "PRE_EXISTING_DISEASE",
+          "duration_value": 3,
+          "duration_unit": "YEARS",
+          "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+          "applies_to": ["treatment of a pre-existing disease", "direct complications of a pre-existing disease"],
+          "duration_evidence_note": "D.1.1 defines the base PED mechanic as schedule/Product Benefit Table-defined; the reviewed product-benefit-table evidence records the PED waiting period as 3 Years.",
+          "schedule_dependency": "Policy Schedule / Product Benefit Table supplies the numeric PED waiting-period duration.",
+          "continuity_dependency": "Continuous coverage after inception of the first policy with insurer; portability continuity reduces the waiting period to the extent of prior coverage.",
+          "sum_insured_enhancement_rule": "The exclusion applies afresh to the extent of any Sum Insured increase.",
+          "post_waiting_condition": "Coverage after expiry of the applicable PED waiting period remains subject to the pre-existing disease having been declared at application and accepted by the insurer."
+        }
+      }
+    },
+    {
+      "unit_id": "activ_one_nxt_wp_specific_base",
+      "kind": "EXCLUSION",
+      "locator": "wp_candidate_124e9d18ecae07d9ed02+wp_candidate_28486a126b79a7249ad0+wp_candidate_79345b48238f58ab1113+wp_candidate_f9e5521c5c4a6961294d",
+      "evidence_id": "activ_one_nxt_waiting_period:specific_base",
+      "text_sha256": "7ad2e31c77817ff140c394fc8a2db789c86ec8db055f0d5f953099c923f2dab8",
+      "excerpt": "D.1.2 Specified disease/procedure waiting period: listed conditions, surgeries and treatments are excluded for 24 months of continuous coverage after inception of the first policy; accident claims are excepted; portability may reduce the waiting period; Sum Insured enhancement reapplies the exclusion; if PED also applies, the longer waiting period governs.",
+      "materially_affects": ["DURATION", "START_BASIS", "SCOPE", "EXCEPTION", "CONTINUITY", "PORTABILITY", "SUM_INSURED_ENHANCEMENT", "CROSS_CONCEPT_RELATIONSHIP"],
+      "reviewed_mapping": {
+        "kind": "SEMANTIC_FACT",
+        "semantic_type": "BASE_MECHANIC",
+        "reason": "Human-approved base specified-disease/procedure mechanic from the certified Activ One NXT review decision.",
+        "semantic_value": {
+          "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+          "duration_value": 24,
+          "duration_unit": "MONTHS",
+          "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+          "applies_to": ["listed specified diseases", "listed specified procedures and treatments"],
+          "exceptions": ["claims arising due to an accident"],
+          "continuity_dependency": "24 months of continuous coverage after inception of the first policy with Aditya Birla Health Insurance; portability continuity reduces the waiting period to the extent of prior coverage.",
+          "sum_insured_enhancement_rule": "The exclusion applies afresh to the extent of any Sum Insured increase.",
+          "interaction_rule": "If a listed disease/procedure is also subject to the pre-existing disease waiting period, the longer waiting period applies.",
+          "contracted_after_policy_rule": "The waiting period applies even if the listed condition is contracted after policy inception or declared and accepted without a specific exclusion."
+        }
+      }
+    },
+    {
+      "unit_id": "activ_one_nxt_wp_initial_base",
+      "kind": "EXCLUSION",
+      "locator": "wp_candidate_b962d57da994bcbe774f+wp_candidate_4761b5332791903247e2+wp_candidate_79345b48238f58ab1113+wp_candidate_f9e5521c5c4a6961294d",
+      "evidence_id": "activ_one_nxt_waiting_period:initial_base",
+      "text_sha256": "fb8e779eded939884181269b2113158b11d40165496f4d9ec7310b394fdb4f5e",
+      "excerpt": "D.1.3 30-day Waiting Period: treatment of illness within 30 days from first policy commencement is excluded except covered accident claims; the exclusion does not apply after more than twelve months of Continuous Coverage; the waiting period applies to enhanced Sum Insured.",
+      "materially_affects": ["DURATION", "START_BASIS", "SCOPE", "EXCEPTION", "CONTINUITY", "SUM_INSURED_ENHANCEMENT"],
+      "reviewed_mapping": {
+        "kind": "SEMANTIC_FACT",
+        "semantic_type": "BASE_MECHANIC",
+        "reason": "Human-approved base initial waiting-period mechanic from the certified Activ One NXT review decision.",
+        "semantic_value": {
+          "waiting_period_type": "INITIAL",
+          "duration_value": 30,
+          "duration_unit": "DAYS",
+          "start_basis": "POLICY_INCEPTION",
+          "applies_to": ["treatment of any illness within 30 days from the first policy commencement date"],
+          "exceptions": ["covered claims arising due to an accident", "the exclusion does not apply where the insured person has Continuous Coverage for more than twelve months"],
+          "sum_insured_enhancement_rule": "The 30-day waiting period applies to the enhanced Sum Insured when a higher Sum Insured is subsequently granted."
+        }
+      }
+    }
+  ]
+}
