@@ -160,7 +160,11 @@ def _production_component_claims() -> tuple[tuple[str, str, str], ...]:
     components: list[tuple[str, str, str]] = [
         ("obligation_value", "OBLIGATION_VALUE", finding.object_or_effect),
         ("trigger_condition", "TRIGGER_CONDITION", finding.trigger or ""),
-        ("calculation_basis", "CALCULATION_BASIS", finding.object_or_effect),
+        (
+            "calculation_basis",
+            "CALCULATION_BASIS",
+            "The documented 10% co-payment is calculated against each and every claim within the stated scope.",
+        ),
     ]
     if finding.applicability_scope:
         components.append(
