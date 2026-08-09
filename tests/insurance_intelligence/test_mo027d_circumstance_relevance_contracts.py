@@ -124,7 +124,7 @@ def test_unpublished_rule_cannot_drive_customer_relevance() -> None:
         rationale=base.rationale,
         evidence_reference_ids=base.evidence_reference_ids,
         review_status=ReviewStatus.APPROVED,
-        publication_status=PublicationStatus.DRAFT,
+        publication_status=PublicationStatus.NOT_PUBLISHED,
         effective_from=base.effective_from,
     )
     with pytest.raises(CircumstanceRelevanceError, match="approved and published"):
