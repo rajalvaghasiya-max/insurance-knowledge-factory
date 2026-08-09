@@ -33,14 +33,6 @@ class ActivOneNxtWaitingPeriodReviewPacketError(ValueError):
     """Raised when review-packet inputs are incomplete or inconsistent."""
 
 
-def _required_text(value: object, field_name: str) -> str:
-    if not isinstance(value, str) or not value.strip():
-        raise ActivOneNxtWaitingPeriodReviewPacketError(
-            f"{field_name} must be non-empty text"
-        )
-    return value.strip()
-
-
 def _load_json_object(path: str | Path) -> Mapping[str, Any]:
     source_path = Path(path)
     if not source_path.is_file():
@@ -60,13 +52,17 @@ def _load_json_object(path: str | Path) -> Mapping[str, Any]:
 
 def _binding_value(binding: Mapping[str, Any], *names: str) -> str:
     for name in names:
-        if name in binding:
-            value = binding[name]
-            if isinstance(value, str) and value.strip():
-                return value.strip()
-    # Also support a nested source/document section without making the renderer
-    # dependent on one historical binding shape.
-    for container_name in ("source", "document", "processed_document", "binding"):
+        value = binding.get(name)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    for container_name in (
+        "source_registration",
+        "certified_processed_asset",
+        "source",
+        "document",
+        "processed_document",
+        "binding",
+    ):
         container = binding.get(container_name)
         if isinstance(container, dict):
             for name in names:
@@ -108,7 +104,12 @@ def render_activ_one_nxt_waiting_period_review_packet(
         binding, "processed_document_asset_id", "asset_id", "processed_asset_id"
     )
     source_hash = _binding_value(
-        binding, "source_document_sha256", "document_sha256", "content_sha256", "sha256"
+        binding,
+        "source_document_sha256",
+        "document_hash_sha256",
+        "document_sha256",
+        "content_sha256",
+        "sha256",
     )
 
     lines = [
@@ -174,7 +175,12 @@ def build_activ_one_nxt_waiting_period_review_packet(
         binding, "processed_document_asset_id", "asset_id", "processed_asset_id"
     )
     source_hash = _binding_value(
-        binding, "source_document_sha256", "document_sha256", "content_sha256", "sha256"
+        binding,
+        "source_document_sha256",
+        "document_hash_sha256",
+        "document_sha256",
+        "content_sha256",
+        "sha256",
     )
     results = audit_all_processed_waiting_period_candidates(
         processed_document,
