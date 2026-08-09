@@ -1,4 +1,4 @@
-"""Deterministic governed product entity resolution for ER-1.
+"""Deterministic governed product entity resolution for ER-1 through ER-3.
 
 This runtime layer consumes already-governed product identity records. It does
 not verify source documents, extract UINs, resolve insurance terminology,
@@ -137,6 +137,18 @@ class ProductEntityResolution:
         if self.status in {"NOT_RESOLVED", "INVALID_INPUT"} and self.candidates:
             raise ValueError(f"{self.status} cannot publish candidates")
 
+    @property
+    def needs_clarification(self) -> bool:
+        """Return whether caller context is required before selecting an entity."""
+        return self.status == "AMBIGUOUS"
+
+    @property
+    def clarification_insurer_ids(self) -> tuple[str, ...]:
+        """Return deterministic insurer choices that can narrow an ambiguity."""
+        if not self.needs_clarification:
+            return ()
+        return tuple(sorted({item.insurer_id for item in self.candidates}))
+
 
 def _stable_id(*parts: object) -> str:
     payload = "\x1f".join("" if part is None else str(part) for part in parts)
@@ -151,11 +163,16 @@ class ProductEntityResolver:
             raise TypeError("registry must be a GovernedProductEntityRegistry")
         self._registry = registry
 
-    def resolve(self, value: object) -> ProductEntityResolution:
+    def resolve(
+        self,
+        value: object,
+        *,
+        insurer_id: object = None,
+    ) -> ProductEntityResolution:
         if not isinstance(value, str) or not value.strip():
             text = value if isinstance(value, str) else repr(value)
             return ProductEntityResolution(
-                resolution_id=_stable_id("INVALID_INPUT", text),
+                resolution_id=_stable_id("INVALID_INPUT", text, insurer_id),
                 input_value=text,
                 status="INVALID_INPUT",
                 selected_entity=None,
@@ -163,18 +180,53 @@ class ProductEntityResolver:
                 match_method=None,
                 reason_codes=("INVALID_PRODUCT_REFERENCE",),
             )
+        if insurer_id is not None and (
+            not isinstance(insurer_id, str) or not insurer_id.strip()
+        ):
+            return ProductEntityResolution(
+                resolution_id=_stable_id("INVALID_INPUT", value, insurer_id),
+                input_value=value.strip(),
+                status="INVALID_INPUT",
+                selected_entity=None,
+                candidates=(),
+                match_method=None,
+                reason_codes=("INVALID_INSURER_CONTEXT",),
+            )
 
         raw = value.strip()
-        entities = self._registry.all_entities()
+        insurer_context = insurer_id.strip() if isinstance(insurer_id, str) else None
+        all_entities = self._registry.all_entities()
+        entities = tuple(
+            item
+            for item in all_entities
+            if insurer_context is None or item.insurer_id == insurer_context
+        )
+
+        if insurer_context is not None and not entities:
+            return ProductEntityResolution(
+                resolution_id=_stable_id(
+                    "NOT_RESOLVED", raw, insurer_context, "INSURER_CONTEXT_NOT_REGISTERED"
+                ),
+                input_value=raw,
+                status="NOT_RESOLVED",
+                selected_entity=None,
+                candidates=(),
+                match_method=None,
+                reason_codes=("INSURER_CONTEXT_NOT_REGISTERED",),
+            )
 
         exact_id = tuple(item for item in entities if item.canonical_entity_id == raw)
         if exact_id:
-            return self._from_candidates(raw, exact_id, "CANONICAL_ENTITY_ID")
+            return self._from_candidates(
+                raw, exact_id, "CANONICAL_ENTITY_ID", insurer_context=insurer_context
+            )
 
         uin_key = _normalise_uin(raw)
         uin_matches = tuple(item for item in entities if item.uin == uin_key)
         if uin_matches:
-            return self._from_candidates(raw, uin_matches, "UIN")
+            return self._from_candidates(
+                raw, uin_matches, "UIN", insurer_context=insurer_context
+            )
 
         language_key = normalise_terminology_text(raw)
         alias_matches = tuple(
@@ -184,7 +236,9 @@ class ProductEntityResolver:
             in {normalise_terminology_text(alias) for alias in item.aliases}
         )
         if alias_matches:
-            return self._from_candidates(raw, alias_matches, "GOVERNED_ALIAS")
+            return self._from_candidates(
+                raw, alias_matches, "GOVERNED_ALIAS", insurer_context=insurer_context
+            )
 
         canonical_name_matches = tuple(
             item
@@ -193,17 +247,25 @@ class ProductEntityResolver:
         )
         if canonical_name_matches:
             return self._from_candidates(
-                raw, canonical_name_matches, "CANONICAL_PRODUCT_NAME"
+                raw,
+                canonical_name_matches,
+                "CANONICAL_PRODUCT_NAME",
+                insurer_context=insurer_context,
             )
 
+        reason = (
+            "NO_GOVERNED_PRODUCT_MATCH_IN_INSURER_CONTEXT"
+            if insurer_context is not None
+            else "NO_GOVERNED_PRODUCT_MATCH"
+        )
         return ProductEntityResolution(
-            resolution_id=_stable_id("NOT_RESOLVED", language_key),
+            resolution_id=_stable_id("NOT_RESOLVED", language_key, insurer_context),
             input_value=raw,
             status="NOT_RESOLVED",
             selected_entity=None,
             candidates=(),
             match_method=None,
-            reason_codes=("NO_GOVERNED_PRODUCT_MATCH",),
+            reason_codes=(reason,),
         )
 
     @staticmethod
@@ -211,12 +273,18 @@ class ProductEntityResolver:
         raw: str,
         candidates: tuple[GovernedProductEntity, ...],
         method: str,
+        *,
+        insurer_context: str | None = None,
     ) -> ProductEntityResolution:
         ordered = tuple(sorted(candidates, key=lambda item: item.canonical_entity_id))
         if len(ordered) > 1:
             return ProductEntityResolution(
                 resolution_id=_stable_id(
-                    "AMBIGUOUS", method, raw, *(item.canonical_entity_id for item in ordered)
+                    "AMBIGUOUS",
+                    method,
+                    raw,
+                    insurer_context,
+                    *(item.canonical_entity_id for item in ordered),
                 ),
                 input_value=raw,
                 status="AMBIGUOUS",
@@ -228,7 +296,7 @@ class ProductEntityResolver:
         selected = ordered[0]
         return ProductEntityResolution(
             resolution_id=_stable_id(
-                "RESOLVED", method, raw, selected.canonical_entity_id
+                "RESOLVED", method, raw, insurer_context, selected.canonical_entity_id
             ),
             input_value=raw,
             status="RESOLVED",
