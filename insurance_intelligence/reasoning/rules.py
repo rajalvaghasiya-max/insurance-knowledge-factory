@@ -130,9 +130,17 @@ def _percentage(evidence: EvidencePackage) -> str:
             return f"{match.group(1)}%"
     raise ReasoningRuleError("conditional co-payment evidence must contain a documented percentage")
 
+
+_TRIGGER_BOUNDARY = r"(?=\s+(?:unless|except)\b|[.;]|$)"
 _TRIGGER_PATTERNS = (
-    re.compile(r"(?:for\s+)?insured persons? whose age at the time of entry is [^.;]+", re.I),
-    re.compile(r"(?:when|if|where|in case|provided that|subject to)\s+[^.;]+", re.I),
+    re.compile(
+        rf"(?:for\s+)?insured persons? whose age at the time of entry is .+?{_TRIGGER_BOUNDARY}",
+        re.I,
+    ),
+    re.compile(
+        rf"(?:when|if|where|in case|provided that|subject to)\s+.+?{_TRIGGER_BOUNDARY}",
+        re.I,
+    ),
 )
 _EXCEPTION_PATTERNS = (
     re.compile(
@@ -146,6 +154,8 @@ _EXCEPTION_PATTERNS = (
         r"(?:for|where|when|if)\s+[^.;]+",
         re.I,
     ),
+    re.compile(r"\bunless\s+.+?(?=[.;]|$)", re.I),
+    re.compile(r"\bexcept(?:\s+(?:where|when|if|for))?\s+.+?(?=[.;]|$)", re.I),
 )
 _SCOPE_PATTERNS = (
     re.compile(
@@ -164,6 +174,7 @@ _EXCEPTION_SIGNAL_PATTERNS = (
         r"will\s+not\s+apply|shall\s+not\s+apply|waived|exempt)\b",
         re.I,
     ),
+    re.compile(r"\b(?:unless|except)\b", re.I),
 )
 _SCOPE_SIGNAL_PATTERNS = (
     re.compile(
@@ -208,6 +219,7 @@ def _condition(evidence: EvidencePackage) -> str:
     """Backward-compatible trigger accessor without consuming later clauses."""
     return _conditional_semantics(evidence)[0]
 
+
 def _copay_evidence(data: RuleInput) -> EvidencePackage:
     candidates = [
         item
@@ -219,7 +231,12 @@ def _copay_evidence(data: RuleInput) -> EvidencePackage:
     ]
     if not candidates:
         raise ReasoningRuleError("no usable conditional co-payment evidence")
-    return sorted(candidates, key=lambda item: (item.authority_rank, item.evidence_id))[0]
+    selected = sorted(candidates, key=lambda item: (item.authority_rank, item.evidence_id))[0]
+    if not selected.claim.strip():
+        raise ReasoningRuleError(
+            "governed conditional co-payment evidence must contain a non-empty reviewed claim"
+        )
+    return selected
 
 
 def conditional_copayment_obligation(data: RuleInput) -> tuple[Finding, ...]:

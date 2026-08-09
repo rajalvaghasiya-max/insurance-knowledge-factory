@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import hashlib
+import re
 from typing import Mapping, Sequence
 
 from insurance_intelligence.contracts.decision import DecisionGateOutput
@@ -22,6 +23,15 @@ from insurance_intelligence.explanation.registry import (
 
 class ExplanationTemplateError(ValueError):
     """Raised when deterministic explanation rendering cannot proceed safely."""
+
+
+_NON_RENDERABLE_FINDING_STATUSES = frozenset({"CONFLICTING", "UNSUPPORTED", "BLOCKED"})
+_CLAIM_PAYMENT_PREDICTION_PATTERNS = (
+    re.compile(r"\bclaim\s+(?:will|shall)\s+be\s+paid\b", re.I),
+    re.compile(r"\bclaim\s+is\s+guaranteed\b", re.I),
+    re.compile(r"\binsurer\s+(?:will|shall)\s+pay\b", re.I),
+    re.compile(r"\bclaim\s+(?:will|shall)\s+definitely\b", re.I),
+)
 
 
 def _stable_id(prefix: str, *parts: str) -> str:
@@ -62,6 +72,46 @@ def _semantic_clauses(finding: Finding) -> tuple[str | None, str | None, str | N
         finding.exception,
         finding.applicability_scope,
     )
+
+
+def _validate_renderable_status(finding: Finding) -> None:
+    if finding.finding_status in _NON_RENDERABLE_FINDING_STATUSES:
+        raise ExplanationTemplateError(
+            "approved finding status is not eligible for explanation rendering: "
+            + finding.finding_status
+        )
+
+
+def _validate_claim_payment_language(finding: Finding) -> None:
+    source_text = " ".join(
+        filter(
+            None,
+            (
+                finding.object_or_effect,
+                finding.condition,
+                finding.trigger,
+                finding.exception,
+                finding.applicability_scope,
+            ),
+        )
+    )
+    if any(pattern.search(source_text) for pattern in _CLAIM_PAYMENT_PREDICTION_PATTERNS):
+        raise ExplanationTemplateError(
+            "approved finding implies claim payment or approval and is not eligible for explanation rendering"
+        )
+
+
+def _apply_status_language(finding: Finding, text: str) -> str:
+    """Make uncertainty/limitations explicit without altering supported semantics."""
+    if finding.finding_status == "PARTIALLY_SUPPORTED":
+        return _ensure_sentence(
+            "This finding is only partially supported by the approved evidence. " + text
+        )
+    if finding.finding_status == "SUPPORTED_WITH_LIMITATIONS":
+        return _ensure_sentence(
+            "This finding is supported with limitations. " + text
+        )
+    return text
 
 
 def _plain_finding_text(finding: Finding, *, audience: str) -> str:
@@ -167,6 +217,8 @@ def render_explanation_templates(
             raise ExplanationTemplateError("finding map key must match finding.finding_id")
         if not finding.evidence_ids:
             raise ExplanationTemplateError("approved findings must preserve evidence IDs")
+        _validate_renderable_status(finding)
+        _validate_claim_payment_language(finding)
 
         if explanation_input.explanation_mode == "ADVISOR_TALKING_POINTS":
             section_type = "ADVISOR_TALKING_POINT"
@@ -185,6 +237,8 @@ def render_explanation_templates(
             section_type = "MEANING"
             text = _plain_finding_text(finding, audience=explanation_input.audience)
             template_id = "plain_finding_v1"
+
+        text = _apply_status_language(finding, text)
 
         for term in sorted(terminology, key=lambda item: (item.priority, item.terminology_id, item.terminology_version)):
             if term.audience != explanation_input.audience:

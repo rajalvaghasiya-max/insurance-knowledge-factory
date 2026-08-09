@@ -44,6 +44,44 @@ def _evidence_by_id(output: EvidenceResolverOutput) -> dict[str, object]:
     return {item.evidence_id: item for item in output.evidence_packages}
 
 
+def _normalise_operation(value: object) -> str:
+    text = str(value).strip().upper()
+    return "_".join(part for part in "".join(char if char.isalnum() else "_" for char in text).split("_") if part)
+
+
+def _is_recommendation_operation(value: object) -> bool:
+    """Detect explicit and implicit recommendation/suitability operation IDs.
+
+    Pure comparison remains allowed. Selection/ranking/preference signals are
+    treated as recommendation-like only when they target a product/policy/plan,
+    option, coverage, or fit decision.
+    """
+    operation = _normalise_operation(value)
+    if not operation:
+        return False
+    tokens = tuple(operation.split("_"))
+    token_set = set(tokens)
+
+    if any(token.startswith("RECOMMEND") or token.startswith("SUITAB") for token in tokens):
+        return True
+
+    decision_verbs = {"CHOOSE", "SELECT", "PICK", "PREFER", "RANK", "RANKING"}
+    has_decision_verb = bool(token_set.intersection(decision_verbs))
+    has_decision_target = any(
+        token.startswith(("PRODUCT", "PLAN", "POLIC", "OPTION", "COVERAGE"))
+        for token in tokens
+    )
+    if has_decision_verb and has_decision_target:
+        return True
+
+    if "BEST" in token_set and (
+        "FIT" in token_set or has_decision_target
+    ):
+        return True
+
+    return False
+
+
 def _issue(
     *, finding: Finding, issue_type: str, severity: str, policy_id: str,
     description: str, blocking: bool, evidence_ids: Sequence[str] = (),
@@ -191,13 +229,17 @@ def evaluate_finding(
             evidence_ids=finding.evidence_ids,
         ))
 
-    operations = tuple(sorted(set(str(item) for item in requested_operations)))
-    recommendation_ops = {"RECOMMEND_PRODUCT", "ASSESS_SUITABILITY", "CHOOSE_PRODUCT"}
-    if recommendation_ops.intersection(operations):
+    operations = tuple(sorted(set(_normalise_operation(item) for item in requested_operations if str(item).strip())))
+    recommendation_ops = tuple(operation for operation in operations if _is_recommendation_operation(operation))
+    if recommendation_ops:
         issues.append(_issue(
             finding=finding, issue_type="RECOMMENDATION_WITHOUT_SUITABILITY", severity="CRITICAL",
             policy_id="recommendation_without_suitability_block_v1",
-            description="Recommendation or suitability operations are outside the approved reasoning scope.", blocking=True,
+            description=(
+                "Recommendation, ranking, selection, preference, or suitability operations are outside "
+                "the approved reasoning scope: " + ", ".join(recommendation_ops)
+            ),
+            blocking=True,
             evidence_ids=finding.evidence_ids,
         ))
 

@@ -1,0 +1,82 @@
+{
+  "record_id": "p2-5-adversarial-evaluation-closure",
+  "schema_version": "1.0",
+  "unit_id": "P2.5",
+  "unit_name": "Generic adversarial-evaluation capability with Star pilot dataset",
+  "decision": "PASS",
+  "scope": {
+    "generic_capability": "PASS",
+    "star_pilot_proof": "PASS",
+    "legacy_bypass_inventory": "DEFERRED_TO_P2.6"
+  },
+  "dataset": {
+    "dataset_id": "policyscna-mo-022f-controlled-evaluation",
+    "dataset_version": "1.0.0",
+    "case_count": 24,
+    "category_counts": {
+      "KNOWN_GOOD": 6,
+      "KNOWN_BAD": 7,
+      "ADVERSARIAL": 7,
+      "HISTORICAL_REGRESSION": 4
+    },
+    "star_adversarial_case_ids": [
+      "adv-001",
+      "adv-002",
+      "adv-003",
+      "adv-004",
+      "adv-005",
+      "adv-006",
+      "adv-007"
+    ],
+    "unsupported_recommendation_case_id": "adv-007"
+  },
+  "pipeline_catalogue": {
+    "scenario_count": 11,
+    "required_scenario_ids": [
+      "star_copay_general_explanation",
+      "star_copay_missing_trigger",
+      "star_copay_trigger_confirmed",
+      "star_copay_trigger_disproved",
+      "star_copay_failed_lineage",
+      "star_copay_version_unresolved",
+      "star_copay_material_conflict",
+      "unsupported_product_recommendation",
+      "star_copay_customer_format",
+      "star_copay_advisor_format",
+      "star_copay_determinism"
+    ]
+  },
+  "verified_controls": [
+    "deterministic_stage_order",
+    "fail_closed_stage_execution",
+    "trace_and_identity_preservation",
+    "unsupported_recommendation_blocking",
+    "claim_payment_guarantee_rejection",
+    "clarification_status_preservation",
+    "insufficient_evidence_status_preservation",
+    "conflicting_evidence_status_preservation",
+    "audience_boundary_preservation",
+    "deterministic_repeat_execution"
+  ],
+  "validation_evidence": {
+    "generic_evaluation_tests": "142 passed",
+    "combined_controlled_evaluation_tests": "246 passed",
+    "insurance_intelligence_suite": "1639 passed",
+    "full_repository_suite": "2586 passed"
+  },
+  "source_references": [
+    "tests/fixtures/insurance_intelligence/llm_evaluation/manifest.json",
+    "tests/fixtures/insurance_intelligence/llm_evaluation/adversarial.json",
+    "tests/insurance_intelligence/test_llm_evaluation_dataset.py",
+    "tests/insurance_intelligence/test_deterministic_llm_evaluator.py",
+    "tests/insurance_intelligence/test_evaluation_scenarios.py",
+    "tests/insurance_intelligence/test_evaluation_runner.py",
+    "tests/insurance_intelligence/test_evaluation_service.py",
+    "docs/architecture/insurance_intelligence/P2_STAR_PILOT_EXECUTION_AND_ACCEPTANCE_CONTRACT.json"
+  ],
+  "limitations": [
+    "This closure records deterministic repository validation and does not guarantee claim payment.",
+    "This closure does not certify product comparison, ranking, suitability or recommendation engines.",
+    "Legacy recommendation-capable path inventory and reachability disposition remain in P2.6 scope."
+  ]
+}

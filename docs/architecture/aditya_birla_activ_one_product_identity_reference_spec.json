@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "product_identity_reference_v1",
+  "reviewed_by_human": true,
+  "product_identity": {
+    "entity_id": "aditya_birla_health:activ_one",
+    "insurer_id": "aditya_birla_health",
+    "product_id": "activ_one",
+    "canonical_product_name": "Activ One",
+    "uin": "ADIHLIP24097V012324"
+  },
+  "aliases": [
+    "Activ One"
+  ],
+  "identity_evidence": [
+    {
+      "signal_type": "uin_exact_match",
+      "verification": "document_embedded_text",
+      "evidence_reference": "knowledge/health/aditya_birla_health/activ_one/intelligence/product_intelligence.json:metadata.uin_candidate"
+    },
+    {
+      "signal_type": "canonical_title_match",
+      "verification": "document_embedded_text",
+      "evidence_reference": "knowledge/health/aditya_birla_health/activ_one/intelligence/product_intelligence.json:metadata.product_name"
+    },
+    {
+      "signal_type": "manual_product_review",
+      "verification": "manual_reviewed",
+      "evidence_reference": "docs/architecture/aditya_birla_activ_one_identity_review_packet.json"
+    }
+  ],
+  "review_rationale": "The CTO explicitly approved entity_id aditya_birla_health:activ_one, canonical product name Activ One, and UIN ADIHLIP24097V012324 during HG-2 on 2026-08-09. The UIN and product title are directly evidenced in the Customer Information Sheet through the existing product intelligence extraction. The historical product_identity_report.json is corroborating evidence only and is not treated as the human approval. This record establishes reviewed product identity only; it does not establish document-version compatibility, current entitlement, benefit applicability, ranking, or recommendation."
+}

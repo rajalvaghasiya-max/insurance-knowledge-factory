@@ -1,0 +1,110 @@
+{
+  "record_id": "p2-7-final-certification-closure",
+  "schema_version": "1.0",
+  "unit_id": "P2.7",
+  "unit_name": "Final generic capability and Star Comprehensive pilot certification closure",
+  "decision": "PASS",
+  "generic_capability_decision": "PASS",
+  "star_pilot_decision": "PASS",
+  "certified_scope": {
+    "domain": "health",
+    "insurer_id": "star_health",
+    "product_id": "star_comprehensive",
+    "certified_topics": [
+      "conditional_copayment",
+      "room_rent",
+      "bariatric_surgery"
+    ],
+    "certified_rule_families": [
+      "conditional_obligation",
+      "coverage_limit",
+      "eligibility_condition"
+    ]
+  },
+  "prerequisite_units": [
+    {
+      "unit_id": "P2.1",
+      "capability": "topic_level_completeness",
+      "decision": "PASS",
+      "evidence": [
+        "insurance_intelligence/topic_completeness/star_pilot_profiles.py",
+        "tests/insurance_intelligence/test_star_pilot_topic_profiles.py"
+      ]
+    },
+    {
+      "unit_id": "P2.2",
+      "capability": "materially_different_rule_type",
+      "decision": "PASS",
+      "evidence": [
+        "insurance_intelligence/rule_certification/star_health_bariatric_surgery.py",
+        "tests/insurance_intelligence/test_star_bariatric_surgery_certification.py"
+      ]
+    },
+    {
+      "unit_id": "P2.3",
+      "capability": "generic_publication_decision",
+      "decision": "PASS",
+      "evidence": [
+        "tests/insurance_intelligence/test_star_publication_decisions.py",
+        "tests/insurance_intelligence/test_publication_decision_evaluator.py"
+      ]
+    },
+    {
+      "unit_id": "P2.4",
+      "capability": "generic_authoritative_publication",
+      "decision": "PASS",
+      "evidence": [
+        "tests/insurance_intelligence/test_star_authoritative_publications.py"
+      ]
+    },
+    {
+      "unit_id": "P2.5",
+      "capability": "adversarial_evaluation",
+      "decision": "PASS",
+      "evidence": [
+        "docs/architecture/insurance_intelligence/P2_5_ADVERSARIAL_EVALUATION_CLOSURE.json",
+        "tests/insurance_intelligence/test_p2_5_adversarial_evaluation_closure.py"
+      ]
+    },
+    {
+      "unit_id": "P2.6",
+      "capability": "bypass_inventory_and_control",
+      "decision": "PASS",
+      "evidence": [
+        "docs/architecture/insurance_intelligence/P2_6_BYPASS_INVENTORY.json",
+        "tests/insurance_intelligence/test_star_bypass_reachability.py"
+      ]
+    }
+  ],
+  "final_controls": {
+    "topic_completeness_enforced": true,
+    "multiple_rule_families_certified": true,
+    "publication_decision_proven": true,
+    "authoritative_publication_proven": true,
+    "adversarial_evaluation_passed": true,
+    "active_ungoverned_recommendation_paths": 0,
+    "legacy_paths_certified_pilot_reachable": 0,
+    "claim_payment_guarantee_certified": false,
+    "product_recommendation_certified": false,
+    "individualized_suitability_certified": false
+  },
+  "validation_evidence": {
+    "p2_6_post_merge_full_repository_suite": "2605 passed",
+    "required_final_validation": "full repository suite must pass after adding this closure record and regression test"
+  },
+  "source_references": [
+    "docs/architecture/insurance_intelligence/P2_STAR_PILOT_EXECUTION_AND_ACCEPTANCE_CONTRACT.json",
+    "docs/architecture/insurance_intelligence/P2_5_ADVERSARIAL_EVALUATION_CLOSURE.json",
+    "docs/architecture/insurance_intelligence/P2_6_BYPASS_INVENTORY.json",
+    "insurance_intelligence/topic_completeness/star_pilot_profiles.py",
+    "tests/insurance_intelligence/test_star_bariatric_surgery_certification.py",
+    "tests/insurance_intelligence/test_star_publication_decisions.py",
+    "tests/insurance_intelligence/test_star_authoritative_publications.py"
+  ],
+  "limitations": [
+    "This closure certifies the bounded generic capability and Star Comprehensive pilot only.",
+    "It does not certify product comparison, ranking, individualized suitability or product recommendations.",
+    "It does not guarantee claim admissibility, claim payment or a specific claim amount.",
+    "Any future activation of explicitly deferred legacy paths requires a new governed review and regression proof."
+  ]
+}
