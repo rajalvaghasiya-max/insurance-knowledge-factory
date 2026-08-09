@@ -132,12 +132,24 @@ def test_hg5_restoration_explanation_preserves_evidence_lineage() -> None:
     assert PROSPECTUS_EVIDENCE_ID in linked
 
 
-def test_hg5_restoration_explanation_preserves_limitations() -> None:
+def test_hg5_restoration_explanation_preserves_approved_limitation_boundary() -> None:
+    result = _generate()
+    limitation_sections = [section for section in result.sections if section.section_type == "LIMITATION"]
+
+    assert result.explanation_status == "DRAFTED_WITH_LIMITATIONS"
+    assert result.fidelity_status == "VERIFIED_WITH_LIMITATIONS"
+    assert len(limitation_sections) == 1
+    assert limitation_sections[0].limitation_ids == (LIMITATION_ID,)
+    assert "limitations remain" in limitation_sections[0].text.casefold()
+
+
+def test_hg5_unapproved_finding_limitation_prose_is_not_silently_rendered() -> None:
     result = _generate()
     text = " ".join(section.text for section in result.sections).casefold()
 
-    assert "maximum liability" in text
-    assert "policy schedule" in text
+    assert "maximum liability from super reload" not in text
+    assert "variant applicability and in-force benefits" not in text
+    assert "does not establish claim entitlement" not in text
 
 
 def test_hg5_restoration_explanation_does_not_recommend_or_guarantee_payment() -> None:
