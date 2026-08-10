@@ -15,6 +15,7 @@ from insurance_intelligence.generic_knowledge.contracts import (
     GenericKnowledgeContractError,
     NormativeUnit,
     NormativeUnitKind,
+    RelationshipType,
 )
 from insurance_intelligence.generic_knowledge.normative_inventory import (
     InventoryAccountingResult,
@@ -133,6 +134,7 @@ def migrate_waiting_period_record(
         reviewed = _mapping(raw.get("reviewed_mapping"), "reviewed_mapping")
         mapping_kind = ReviewedMappingKind(_text(reviewed.get("kind"), "mapping.kind"))
         semantic_type = reviewed.get("semantic_type")
+        relationship_type = reviewed.get("relationship_type")
         mappings.append(
             ReviewedWaitingPeriodMapping(
                 normative_unit_id=unit_id,
@@ -144,6 +146,14 @@ def migrate_waiting_period_record(
                     else None
                 ),
                 semantic_value=reviewed.get("semantic_value"),
+                relationship_type=(
+                    RelationshipType(_text(relationship_type, "relationship_type"))
+                    if relationship_type is not None
+                    else None
+                ),
+                source_concept=reviewed.get("source_concept"),
+                target_concept=reviewed.get("target_concept"),
+                relationship_condition=reviewed.get("relationship_condition"),
             )
         )
 
