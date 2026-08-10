@@ -169,26 +169,34 @@ def _base_rules() -> tuple[InventoryRule, ...]:
     )
 
 
-def _policy(version: str, rules: tuple[InventoryRule, ...]) -> WaitingPeriodConceptPolicy:
+def _policy(
+    version: str,
+    rules: tuple[InventoryRule, ...],
+    *,
+    include_derives_from: bool = False,
+) -> WaitingPeriodConceptPolicy:
     envelope = ConceptRelevanceEnvelope(
         concept="waiting_periods",
         policy_version=version,
         rules=rules,
         required_source_classes=("POLICY_WORDING",),
     )
+    relationships = (
+        RelationshipType.MODIFIES,
+        RelationshipType.WAIVES,
+        RelationshipType.OVERRIDES,
+        RelationshipType.DEPENDS_ON,
+        RelationshipType.APPLIES_WHEN,
+        RelationshipType.INTERACTS_WITH,
+        RelationshipType.LIMITED_BY,
+    )
+    if include_derives_from:
+        relationships = relationships + (RelationshipType.DERIVES_FROM,)
     return WaitingPeriodConceptPolicy(
         concept="waiting_periods",
         policy_version=version,
         envelope=envelope,
-        allowed_relationship_types=(
-            RelationshipType.MODIFIES,
-            RelationshipType.WAIVES,
-            RelationshipType.OVERRIDES,
-            RelationshipType.DEPENDS_ON,
-            RelationshipType.APPLIES_WHEN,
-            RelationshipType.INTERACTS_WITH,
-            RelationshipType.LIMITED_BY,
-        ),
+        allowed_relationship_types=relationships,
         semantic_effects=tuple(WaitingPeriodSemanticEffect),
     )
 
@@ -202,7 +210,8 @@ def waiting_period_concept_policy_v2() -> WaitingPeriodConceptPolicy:
     """Return the additive G11 v2 policy forced by adversarial Health products.
 
     V2 keeps every v1 rule and adds high-recall discovery for maternity/baby-care waits,
-    schedule-selected duration alternatives, and newly-added-insured reset clauses.
+    schedule-selected duration alternatives, and newly-added-insured reset clauses. The v2
+    relationship vocabulary also permits DERIVES_FROM for inherited waits without changing v1.
     """
     v2_rules = _base_rules() + (
         _rule(
@@ -240,7 +249,7 @@ def waiting_period_concept_policy_v2() -> WaitingPeriodConceptPolicy:
             WaitingPeriodSemanticEffect.APPLICABILITY,
         ),
     )
-    return _policy("waiting_period_policy_v2", v2_rules)
+    return _policy("waiting_period_policy_v2", v2_rules, include_derives_from=True)
 
 
 __all__ = [
