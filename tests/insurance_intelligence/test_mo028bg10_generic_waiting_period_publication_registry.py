@@ -45,78 +45,43 @@ def _waiting(product):
     return next(item for item in product.concepts if item.concept_id == "waiting_periods")
 
 
-def test_manifest_contains_only_human_approved_waiting_period_publications():
+def test_manifest_contains_both_human_approved_waiting_period_publications():
     manifest = _manifest()
     assert manifest["record_type"] == "generic_waiting_period_publication_manifest_v1"
     refs = {entry["product_reference"] for entry in manifest["entries"]}
-    assert refs == set(WAITING_PERIOD_PUBLICATIONS) == {STAR_REFERENCE}
-    assert ACTIV_REFERENCE not in refs
+    assert refs == set(WAITING_PERIOD_PUBLICATIONS) == {STAR_REFERENCE, ACTIV_REFERENCE}
 
 
-def test_star_generic_publication_is_eligible_and_published():
-    publication = WAITING_PERIOD_PUBLICATIONS[STAR_REFERENCE]
-    assert publication.published
-    assert publication.eligibility.blockers == ()
-    assert publication.semantic_facts
-    assert publication.evidence_reference_ids
-
-
-def test_star_is_certified_for_waiting_period_comparison():
-    product = HEALTH_COVERAGE_REGISTRY.get_product(STAR_REFERENCE)
-    assert product is not None
-    waiting = _waiting(product)
-    assert waiting.status is ConceptCoverageStatus.CERTIFIED
-    assert waiting.comparison_ready is True
-    assert waiting.decision_support_ready is False
-    assert waiting.evidence_reference_ids
-
-
-def test_activ_remains_not_automated_until_human_review_and_publication():
-    product = HEALTH_COVERAGE_REGISTRY.get_product(ACTIV_REFERENCE)
-    assert product is not None
-    waiting = _waiting(product)
-    assert waiting.status is ConceptCoverageStatus.NOT_AUTOMATED
-    assert waiting.comparison_ready is False
-    assert waiting.decision_support_ready is False
-    assert ACTIV_REFERENCE not in WAITING_PERIOD_PUBLICATIONS
-
-
-def test_activ_review_decision_is_explicitly_pending_human_approval():
+def test_activ_manifest_entry_requires_approved_human_review() -> None:
     decision = _review_decision()
-    assert decision["review_status"] == "PENDING_HUMAN_APPROVAL"
-    assert decision["reviewed_by_human"] is False
-    assert decision["adjudication_status"] == "PROPOSED_REVIEW_DECISION"
-    boundary = decision["publication_boundary"]
-    assert boundary["human_base_clause_review_approved"] is False
-    assert boundary["runtime_publication_created"] is False
-    assert boundary["authoritative_publication_created"] is False
-    assert boundary["coverage_registry_promoted"] is False
+    assert decision["review_status"] == "APPROVED_FOR_GOVERNED_PROJECTION"
+    assert decision["reviewed_by_human"] is True
+    assert decision["adjudication_status"] == "HUMAN_APPROVED_REVIEW_DECISION"
+    activ_entry = next(
+        item for item in _manifest()["entries"] if item["product_reference"] == ACTIV_REFERENCE
+    )
+    assert activ_entry["review_status"] == "APPROVED"
+    assert activ_entry["certification_as_of_date"] == "2026-08-10"
 
 
-def test_activ_proposed_review_keeps_base_and_modifier_candidates_separate():
-    decision = _review_decision()
-    by_type = {item["waiting_period_type"]: item for item in decision["decisions"]}
-    assert set(by_type) == {
-        "PRE_EXISTING_DISEASE",
-        "SPECIFIC_DISEASE_PROCEDURE",
-        "INITIAL",
-    }
-    assert by_type["PRE_EXISTING_DISEASE"]["base_candidate_ids"] == [
-        "wp_candidate_124e9d18ecae07d9ed02"
-    ]
-    assert by_type["SPECIFIC_DISEASE_PROCEDURE"]["base_candidate_ids"] == [
-        "wp_candidate_124e9d18ecae07d9ed02"
-    ]
-    assert by_type["INITIAL"]["base_candidate_ids"] == [
-        "wp_candidate_b962d57da994bcbe774f"
-    ]
-    rejected_reasons = " ".join(
-        rejected["reason"]
-        for item in decision["decisions"]
-        for rejected in item["rejected_candidates"]
-    ).casefold()
-    assert "optional cover" in rejected_reasons
-    assert "chronic-care" in rejected_reasons or "chronic-care benefit" in rejected_reasons
+def test_both_generic_publications_are_eligible_and_published():
+    assert len(WAITING_PERIOD_PUBLICATIONS) == 2
+    for publication in WAITING_PERIOD_PUBLICATIONS.values():
+        assert publication.published
+        assert publication.eligibility.blockers == ()
+        assert publication.semantic_facts
+        assert publication.evidence_reference_ids
+
+
+def test_both_products_are_certified_for_waiting_period_comparison():
+    for product_reference in (STAR_REFERENCE, ACTIV_REFERENCE):
+        product = HEALTH_COVERAGE_REGISTRY.get_product(product_reference)
+        assert product is not None
+        waiting = _waiting(product)
+        assert waiting.status is ConceptCoverageStatus.CERTIFIED
+        assert waiting.comparison_ready is True
+        assert waiting.decision_support_ready is False
+        assert waiting.evidence_reference_ids
 
 
 def test_star_generic_publication_preserves_three_base_mechanics():
@@ -128,21 +93,33 @@ def test_star_generic_publication_preserves_three_base_mechanics():
     assert facts["INITIAL"]["duration_value"] == 30
 
 
-def test_registry_evidence_is_projected_from_star_generic_publication():
-    publication = WAITING_PERIOD_PUBLICATIONS[STAR_REFERENCE]
-    product = HEALTH_COVERAGE_REGISTRY.get_product(STAR_REFERENCE)
-    waiting = _waiting(product)
-    assert waiting.evidence_reference_ids == publication.evidence_reference_ids
+def test_activ_generic_publication_preserves_reviewed_base_mechanics():
+    publication = WAITING_PERIOD_PUBLICATIONS[ACTIV_REFERENCE]
+    facts = {fact.value["waiting_period_type"]: fact.value for fact in publication.semantic_facts}
+    ped = facts["PRE_EXISTING_DISEASE"]
+    assert ped["duration_value"] == 3
+    assert ped["duration_unit"] == "YEARS"
+    assert "policy schedule" in ped["schedule_dependency"].casefold()
+    assert "product benefit table" in ped["schedule_dependency"].casefold()
+    assert facts["SPECIFIC_DISEASE_PROCEDURE"]["duration_value"] == 24
+    assert facts["INITIAL"]["duration_value"] == 30
 
 
-def test_publication_binds_exact_governed_dependencies():
-    publication = WAITING_PERIOD_PUBLICATIONS[STAR_REFERENCE]
-    binding = publication.dependency_binding
-    assert binding.ontology_version == "waiting_periods_v1"
-    assert binding.source_document_id
-    assert binding.source_document_version
-    assert binding.source_hash_sha256
-    assert binding.review_decision_version
+def test_registry_evidence_is_projected_from_generic_publications():
+    for product_reference, publication in WAITING_PERIOD_PUBLICATIONS.items():
+        product = HEALTH_COVERAGE_REGISTRY.get_product(product_reference)
+        waiting = _waiting(product)
+        assert waiting.evidence_reference_ids == publication.evidence_reference_ids
+
+
+def test_publications_bind_exact_governed_dependencies():
+    for publication in WAITING_PERIOD_PUBLICATIONS.values():
+        binding = publication.dependency_binding
+        assert binding.ontology_version == "waiting_periods_v1"
+        assert binding.source_document_id
+        assert binding.source_document_version
+        assert binding.source_hash_sha256
+        assert binding.review_decision_version
 
 
 def test_pre_generalization_snapshot_remains_historically_unchanged():
