@@ -58,6 +58,22 @@ class WaitingPeriodStartBasis(str, Enum):
     INSURED_PERSON_ADDITION_DATE = "INSURED_PERSON_ADDITION_DATE"
 
 
+class WaitingPeriodScopeType(str, Enum):
+    POLICY_WIDE = "POLICY_WIDE"
+    BENEFIT_SCOPED = "BENEFIT_SCOPED"
+
+
+class WaitingPeriodValueSource(str, Enum):
+    PRODUCT_FIXED = "PRODUCT_FIXED"
+    POLICY_SCHEDULE_SELECTED = "POLICY_SCHEDULE_SELECTED"
+
+
+class WaitingPeriodMemberBasis(str, Enum):
+    POLICY_INCEPTION = "POLICY_INCEPTION"
+    MEMBER_ADDITION = "MEMBER_ADDITION"
+    PORTED_CONTINUITY = "PORTED_CONTINUITY"
+
+
 class WaitingPeriodModificationType(str, Enum):
     WAIVER = "WAIVER"
     REDUCTION = "REDUCTION"
@@ -119,7 +135,13 @@ class WaitingPeriodModification:
 
 @dataclass(frozen=True)
 class WaitingPeriodMechanic:
-    """Typed semantic representation of one governed waiting-period clause."""
+    """Typed semantic representation of one governed resolved waiting-period clause.
+
+    Schedule-selected *option domains* are represented separately by the generic mapper's
+    DURATION_SELECTION semantic fact. This resolved mechanic therefore remains scalar and
+    fail-closed: it may identify its value source, but POLICY_SCHEDULE_SELECTED should only
+    be used after an actual schedule has resolved the concrete duration.
+    """
 
     waiting_period_type: WaitingPeriodType
     duration_value: int
@@ -131,6 +153,10 @@ class WaitingPeriodMechanic:
     modifications: tuple[WaitingPeriodModification, ...] = ()
     schedule_dependency: str | None = None
     continuity_dependency: str | None = None
+    scope_type: WaitingPeriodScopeType = WaitingPeriodScopeType.POLICY_WIDE
+    scope_reference: str | None = None
+    value_source: WaitingPeriodValueSource = WaitingPeriodValueSource.PRODUCT_FIXED
+    member_waiting_basis: WaitingPeriodMemberBasis | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.waiting_period_type, WaitingPeriodType):
@@ -148,6 +174,16 @@ class WaitingPeriodMechanic:
         if not isinstance(self.start_basis, WaitingPeriodStartBasis):
             raise WaitingPeriodContractError(
                 "start_basis must be a WaitingPeriodStartBasis"
+            )
+        if not isinstance(self.scope_type, WaitingPeriodScopeType):
+            raise WaitingPeriodContractError("scope_type must be a WaitingPeriodScopeType")
+        if not isinstance(self.value_source, WaitingPeriodValueSource):
+            raise WaitingPeriodContractError("value_source must be a WaitingPeriodValueSource")
+        if self.member_waiting_basis is not None and not isinstance(
+            self.member_waiting_basis, WaitingPeriodMemberBasis
+        ):
+            raise WaitingPeriodContractError(
+                "member_waiting_basis must be a WaitingPeriodMemberBasis"
             )
 
         object.__setattr__(self, "applies_to", _text_tuple(self.applies_to, "applies_to"))
@@ -183,6 +219,21 @@ class WaitingPeriodMechanic:
             "continuity_dependency",
             _optional_text(self.continuity_dependency, "continuity_dependency"),
         )
+        object.__setattr__(
+            self,
+            "scope_reference",
+            _optional_text(self.scope_reference, "scope_reference"),
+        )
+
+        if self.scope_type is WaitingPeriodScopeType.BENEFIT_SCOPED:
+            if self.scope_reference is None:
+                raise WaitingPeriodContractError(
+                    "BENEFIT_SCOPED requires scope_reference"
+                )
+        elif self.scope_reference is not None:
+            raise WaitingPeriodContractError(
+                "POLICY_WIDE must not define scope_reference"
+            )
 
         if self.start_basis is WaitingPeriodStartBasis.POLICY_SCHEDULE_DEFINED:
             if self.schedule_dependency is None:
@@ -194,14 +245,27 @@ class WaitingPeriodMechanic:
                 raise WaitingPeriodContractError(
                     "CONTINUOUS_COVERAGE requires continuity_dependency"
                 )
+        if self.start_basis is WaitingPeriodStartBasis.INSURED_PERSON_ADDITION_DATE:
+            if self.member_waiting_basis is not WaitingPeriodMemberBasis.MEMBER_ADDITION:
+                raise WaitingPeriodContractError(
+                    "INSURED_PERSON_ADDITION_DATE requires MEMBER_ADDITION basis"
+                )
+        if self.member_waiting_basis is WaitingPeriodMemberBasis.PORTED_CONTINUITY:
+            if self.continuity_dependency is None:
+                raise WaitingPeriodContractError(
+                    "PORTED_CONTINUITY requires continuity_dependency"
+                )
 
 
 __all__ = [
     "WaitingPeriodContractError",
     "WaitingPeriodDurationUnit",
     "WaitingPeriodMechanic",
+    "WaitingPeriodMemberBasis",
     "WaitingPeriodModification",
     "WaitingPeriodModificationType",
+    "WaitingPeriodScopeType",
     "WaitingPeriodStartBasis",
     "WaitingPeriodType",
+    "WaitingPeriodValueSource",
 ]
