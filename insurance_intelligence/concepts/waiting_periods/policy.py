@@ -1,8 +1,8 @@
-"""Reusable waiting-period concept policy for MO-028B.G5.
+"""Reusable waiting-period concept policy for MO-028B.G5/G11.
 
 This module contains domain semantics for the waiting-period concept, never insurer/product
-identity.  It supplies the G4 high-recall relevance envelope and declares the semantic effects
-that later mappers must account for.
+identity. It supplies the high-recall relevance envelope and declares the semantic effects that
+later mappers must account for.
 """
 from __future__ import annotations
 
@@ -73,13 +73,8 @@ def _rule(
     )
 
 
-def waiting_period_concept_policy() -> WaitingPeriodConceptPolicy:
-    """Return the reusable waiting-period concept policy.
-
-    Anchors are deliberately broad and high-recall.  They select candidate normative content;
-    they do not decide product facts or publication values.
-    """
-    rules = (
+def _base_rules() -> tuple[InventoryRule, ...]:
+    return (
         _rule(
             "wp_named_waiting_period",
             ("waiting period", "waiting periods"),
@@ -173,15 +168,17 @@ def waiting_period_concept_policy() -> WaitingPeriodConceptPolicy:
         ),
     )
 
+
+def _policy(version: str, rules: tuple[InventoryRule, ...]) -> WaitingPeriodConceptPolicy:
     envelope = ConceptRelevanceEnvelope(
         concept="waiting_periods",
-        policy_version="waiting_period_policy_v1",
+        policy_version=version,
         rules=rules,
         required_source_classes=("POLICY_WORDING",),
     )
     return WaitingPeriodConceptPolicy(
         concept="waiting_periods",
-        policy_version="waiting_period_policy_v1",
+        policy_version=version,
         envelope=envelope,
         allowed_relationship_types=(
             RelationshipType.MODIFIES,
@@ -196,8 +193,59 @@ def waiting_period_concept_policy() -> WaitingPeriodConceptPolicy:
     )
 
 
+def waiting_period_concept_policy() -> WaitingPeriodConceptPolicy:
+    """Return the certified v1 waiting-period high-recall policy."""
+    return _policy("waiting_period_policy_v1", _base_rules())
+
+
+def waiting_period_concept_policy_v2() -> WaitingPeriodConceptPolicy:
+    """Return the additive G11 v2 policy forced by adversarial Health products.
+
+    V2 keeps every v1 rule and adds high-recall discovery for maternity/baby-care waits,
+    schedule-selected duration alternatives, and newly-added-insured reset clauses.
+    """
+    v2_rules = _base_rules() + (
+        _rule(
+            "wp_maternity_baby_care",
+            ("maternity expenses waiting period", "maternity waiting period", "baby care waiting period"),
+            NormativeUnitKind.CONDITION,
+            WaitingPeriodSemanticEffect.DURATION,
+            WaitingPeriodSemanticEffect.START_BASIS,
+            WaitingPeriodSemanticEffect.APPLICABILITY,
+            WaitingPeriodSemanticEffect.REDUCTION,
+        ),
+        _rule(
+            "wp_schedule_duration_selection",
+            (
+                "options available for change in ped waiting period",
+                "options available for change in specific disease waiting period",
+                "change in ped waiting period",
+                "change in specific disease waiting period",
+            ),
+            NormativeUnitKind.APPLICABILITY,
+            WaitingPeriodSemanticEffect.DURATION,
+            WaitingPeriodSemanticEffect.APPLICABILITY,
+            WaitingPeriodSemanticEffect.EFFECTIVE_DATE_OR_VERSION,
+        ),
+        _rule(
+            "wp_new_insured_member_reset",
+            (
+                "newly added insured beneficiary",
+                "insured beneficiary is added to the policy",
+                "insured beneficiary is added to this policy",
+            ),
+            NormativeUnitKind.CONDITION,
+            WaitingPeriodSemanticEffect.START_BASIS,
+            WaitingPeriodSemanticEffect.RENEWAL_OR_REINSTATEMENT_EFFECT,
+            WaitingPeriodSemanticEffect.APPLICABILITY,
+        ),
+    )
+    return _policy("waiting_period_policy_v2", v2_rules)
+
+
 __all__ = [
     "WaitingPeriodConceptPolicy",
     "WaitingPeriodSemanticEffect",
     "waiting_period_concept_policy",
+    "waiting_period_concept_policy_v2",
 ]
