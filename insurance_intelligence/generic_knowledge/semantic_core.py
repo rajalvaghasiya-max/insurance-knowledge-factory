@@ -95,6 +95,23 @@ HEALTH_WAITING_PERIODS = CanonicalConceptIdentity(
     fact_schema_id="waiting_periods_v1",
 )
 
+HEALTH_WAITING_PERIODS_V2 = CanonicalConceptIdentity(
+    canonical_id="health.waiting_periods.base",
+    category=InsuranceCategory.HEALTH,
+    concept_semantic_version="2",
+    fact_schema_id="waiting_periods_v2",
+)
+
+# Stable semantic value identities. Product documents reference these semantics; they never
+# redefine them. New values are additive and existing identifiers remain immutable.
+HEALTH_WAITING_PERIOD_TYPE_IDS = {
+    "INITIAL": "health.waiting_period.initial",
+    "SPECIFIC_DISEASE_PROCEDURE": "health.waiting_period.specified_disease_procedure",
+    "PRE_EXISTING_DISEASE": "health.waiting_period.pre_existing_disease",
+    "MATERNITY": "health.waiting_period.maternity",
+    "BABY_CARE": "health.waiting_period.baby_care",
+}
+
 HEALTH_ONTOLOGY_RELEASE = OntologyRelease("health_ontology_2026_08")
 HEALTH_APPLICABILITY_SCHEMA = ApplicabilitySchemaVersion(
     version_id="health_applicability_v1",
@@ -107,7 +124,9 @@ __all__ = [
     "CanonicalConceptIdentity",
     "HEALTH_APPLICABILITY_SCHEMA",
     "HEALTH_ONTOLOGY_RELEASE",
+    "HEALTH_WAITING_PERIOD_TYPE_IDS",
     "HEALTH_WAITING_PERIODS",
+    "HEALTH_WAITING_PERIODS_V2",
     "InsuranceCategory",
     "OntologyRelease",
     "SemanticCoreError",
