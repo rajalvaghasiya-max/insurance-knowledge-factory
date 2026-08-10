@@ -8,11 +8,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Sequence
 
 from insurance_intelligence.generic_knowledge.authority_resolution import (
     AuthorityResolution,
-    ResolutionStatus,
     blocker_for_authority_resolution,
 )
 from insurance_intelligence.generic_knowledge.contracts import (
@@ -23,7 +21,6 @@ from insurance_intelligence.generic_knowledge.contracts import (
 )
 from insurance_intelligence.generic_knowledge.normative_inventory import (
     InventoryAccountingResult,
-    InventoryReviewStatus,
 )
 
 
@@ -62,6 +59,11 @@ class PublicationDependencyBinding:
     source_hash_sha256: str
     review_decision_version: str
     regulatory_overlay_version: str | None = None
+    ontology_release: str | None = None
+    canonical_concept_id: str | None = None
+    concept_semantic_version: str | None = None
+    applicability_schema_version: str | None = None
+    mapping_policy_version: str | None = None
 
     def __post_init__(self) -> None:
         for field_name in (
@@ -72,12 +74,17 @@ class PublicationDependencyBinding:
             "review_decision_version",
         ):
             object.__setattr__(self, field_name, _text(getattr(self, field_name), field_name))
-        if self.regulatory_overlay_version is not None:
-            object.__setattr__(
-                self,
-                "regulatory_overlay_version",
-                _text(self.regulatory_overlay_version, "regulatory_overlay_version"),
-            )
+        for field_name in (
+            "regulatory_overlay_version",
+            "ontology_release",
+            "canonical_concept_id",
+            "concept_semantic_version",
+            "applicability_schema_version",
+            "mapping_policy_version",
+        ):
+            value = getattr(self, field_name)
+            if value is not None:
+                object.__setattr__(self, field_name, _text(value, field_name))
 
 
 @dataclass(frozen=True)
@@ -205,13 +212,6 @@ def evaluate_publication_eligibility(
             )
         )
 
-    # Inventory review is distinct from semantic/governed approval. An unreviewed
-    # high-recall inventory means the source-coverage accounting itself is not certified.
-    # The current G3 result retains inventory method/version but not review state, so this
-    # gate relies on semantic governed review plus zero material residue until review state
-    # is carried into the result in a later backward-compatible extension.
-
-    # Deterministic blocker de-duplication while preserving independent reasons.
     deduped: dict[tuple[str, str, str], PublicationBlocker] = {}
     for blocker in blockers:
         key = (blocker.code.value, blocker.blocker_id, blocker.reason)
