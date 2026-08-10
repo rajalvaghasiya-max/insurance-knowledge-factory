@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "record_type": "waiting_period_review_decision_v1",
   "product_reference": "pv_aditya_birla_health_activ_one_nxt_adihlip24097v012324",
   "insurer_id": "aditya_birla_health",
@@ -9,14 +9,19 @@
   "processed_document_asset_id": "pdoc_72d03e57d4b49c68d69a11fc",
   "source_document_sha256": "e04bc4575d35e10bc86707ceeb839adf8a59f579bd27584c1b9000201bdac217",
   "review_packet_path": "docs/architecture/ACTIV_ONE_NXT_WAITING_PERIOD_REVIEW_PACKET.md",
-  "review_status": "PENDING_HUMAN_APPROVAL",
-  "reviewed_by_human": false,
-  "adjudication_status": "PROPOSED_REVIEW_DECISION",
-  "governance_note": "The evidence packet has been technically adjudicated into proposed base-clause decisions, but no human approval has been recorded. These decisions must not authorize governed publication or Coverage Registry promotion until a human reviewer explicitly approves them.",
+  "review_status": "APPROVED_FOR_GOVERNED_PROJECTION",
+  "reviewed_by_human": true,
+  "adjudication_status": "HUMAN_APPROVED_REVIEW_DECISION",
+  "human_approval_record": {
+    "approved_on": "2026-08-10",
+    "approval_method": "explicit_project_owner_approval",
+    "approval_scope": "Approve D.1.1, D.1.2 and D.1.3 as authoritative base waiting-period clauses while keeping optional reductions, Chronic Care waivers, portability/continuity, Sum Insured enhancement and new-member reset as separate modifiers or cross-references."
+  },
+  "governance_note": "The evidence packet was technically adjudicated and subsequently explicitly approved by the project owner. This approval authorizes the reviewed base-clause decisions for governed projection; publication and Coverage Registry promotion remain separate tested steps.",
   "decisions": [
     {
       "waiting_period_type": "PRE_EXISTING_DISEASE",
-      "decision_status": "PROPOSED_PENDING_HUMAN_REVIEW",
+      "decision_status": "HUMAN_APPROVED",
       "base_candidate_ids": ["wp_candidate_124e9d18ecae07d9ed02"],
       "supporting_candidate_ids": [
         "wp_candidate_79345b48238f58ab1113",
@@ -56,7 +61,7 @@
     },
     {
       "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
-      "decision_status": "PROPOSED_PENDING_HUMAN_REVIEW",
+      "decision_status": "HUMAN_APPROVED",
       "base_candidate_ids": ["wp_candidate_124e9d18ecae07d9ed02"],
       "supporting_candidate_ids": [
         "wp_candidate_28486a126b79a7249ad0",
@@ -92,7 +97,7 @@
     },
     {
       "waiting_period_type": "INITIAL",
-      "decision_status": "PROPOSED_PENDING_HUMAN_REVIEW",
+      "decision_status": "HUMAN_APPROVED",
       "base_candidate_ids": ["wp_candidate_b962d57da994bcbe774f"],
       "supporting_candidate_ids": [
         "wp_candidate_4761b5332791903247e2",
@@ -125,10 +130,10 @@
     }
   ],
   "publication_boundary": {
-    "human_base_clause_review_approved": false,
+    "human_base_clause_review_approved": true,
     "runtime_publication_created": false,
     "authoritative_publication_created": false,
     "coverage_registry_promoted": false,
-    "reason": "Technical adjudication alone is not human approval. Governed publication and registry promotion are blocked until an explicit human review decision is recorded and validated."
+    "reason": "Human base-clause review is approved. Governed publication and Coverage Registry promotion remain separate tested steps."
   }
 }
