@@ -29,8 +29,25 @@ def test_decision_binds_exact_activ_one_nxt_source_identity() -> None:
     assert payload["source_document_id"] == "doc_d20a8488ecb3243f6de2"
     assert payload["processed_document_asset_id"] == "pdoc_72d03e57d4b49c68d69a11fc"
     assert payload["source_document_sha256"] == "e04bc4575d35e10bc86707ceeb839adf8a59f579bd27584c1b9000201bdac217"
-    assert payload["review_status"] == "APPROVED_FOR_GOVERNED_PROJECTION"
-    assert payload["reviewed_by_human"] is True
+    assert payload["review_status"] == "PENDING_HUMAN_APPROVAL"
+    assert payload["reviewed_by_human"] is False
+    assert payload["adjudication_status"] == "PROPOSED_REVIEW_DECISION"
+
+
+def test_all_candidate_decisions_remain_pending_human_review() -> None:
+    payload = _load()
+    assert payload["decisions"]
+    assert {
+        item["waiting_period_type"] for item in payload["decisions"]
+    } == {
+        "PRE_EXISTING_DISEASE",
+        "SPECIFIC_DISEASE_PROCEDURE",
+        "INITIAL",
+    }
+    assert all(
+        item["decision_status"] == "PROPOSED_PENDING_HUMAN_REVIEW"
+        for item in payload["decisions"]
+    )
 
 
 def test_ped_decision_uses_base_clause_plus_product_table_duration() -> None:
