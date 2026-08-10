@@ -1,15 +1,14 @@
 """Generic governed waiting-period publication and coverage projection for MO-028B.G10.
 
-Product-specific values arrive only through governed migration data.  This module composes
-G8/G9 migration output, G2 authority resolution and G7 publication eligibility into a certified
-publication record, then projects that record into the existing Coverage Registry contract.
-It must never branch on insurer/product identity.
+Product-specific values arrive only through governed migration data. This module composes
+migration output, authority resolution and publication eligibility into a certified publication
+record, then projects that record into the Coverage Registry. It must never branch on
+insurer/product identity.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
 from datetime import date
-from typing import Mapping
 
 from insurance_intelligence.coverage_registry.contracts import (
     ConceptCoverageRecord,
@@ -34,6 +33,11 @@ from insurance_intelligence.generic_knowledge.publication_eligibility import (
     PublicationEligibilityInput,
     SourceFreshnessStatus,
     evaluate_publication_eligibility,
+)
+from insurance_intelligence.generic_knowledge.semantic_core import (
+    HEALTH_APPLICABILITY_SCHEMA,
+    HEALTH_ONTOLOGY_RELEASE,
+    HEALTH_WAITING_PERIODS,
 )
 from insurance_intelligence.generic_knowledge.waiting_period_migration import (
     WaitingPeriodMigrationResult,
@@ -126,6 +130,11 @@ def publish_waiting_period_migration(
         source_hash_sha256=migration.source_hash_sha256,
         review_decision_version=migration.review_decision_version,
         regulatory_overlay_version=regulatory_overlay_version,
+        ontology_release=HEALTH_ONTOLOGY_RELEASE.release_id,
+        canonical_concept_id=HEALTH_WAITING_PERIODS.canonical_id,
+        concept_semantic_version=HEALTH_WAITING_PERIODS.concept_semantic_version,
+        applicability_schema_version=HEALTH_APPLICABILITY_SCHEMA.version_id,
+        mapping_policy_version="waiting_period_mapping_v1",
     )
     eligibility = evaluate_publication_eligibility(
         PublicationEligibilityInput(
