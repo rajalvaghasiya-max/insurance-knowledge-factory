@@ -1,6 +1,6 @@
 """Generic reviewed waiting-period semantic and relationship mapping for MO-028B.G6.
 
-This module does not infer product facts directly from prose.  It consumes source-anchored
+This module does not infer product facts directly from prose. It consumes source-anchored
 NormativeUnit values plus explicit reviewed mapping instructions, validates those instructions
 against reusable waiting-period ontology semantics, preserves applicability/evidence, and emits
 Generic Knowledge SemanticFact / RelationshipFact records plus G3 accounting decisions.
@@ -48,6 +48,8 @@ class WaitingPeriodSemanticType(str, Enum):
     SUM_INSURED_ENHANCEMENT = "SUM_INSURED_ENHANCEMENT"
     SCHEDULE_DEPENDENCY = "SCHEDULE_DEPENDENCY"
     RENEWAL_EFFECT = "RENEWAL_EFFECT"
+    DURATION_SELECTION = "DURATION_SELECTION"
+    NEW_MEMBER_EFFECT = "NEW_MEMBER_EFFECT"
 
 
 class ReviewedMappingKind(str, Enum):
@@ -141,6 +143,17 @@ def _waiting_period_type(value: object) -> str:
         raise WaitingPeriodMappingError("waiting_period_type is not supported by the ontology") from exc
 
 
+def _duration(value: Mapping[str, Any], normalized: dict[str, Any]) -> None:
+    duration_value = normalized.get("duration_value")
+    duration_unit = normalized.get("duration_unit")
+    if type(duration_value) is not int or duration_value < 0:
+        raise WaitingPeriodMappingError("duration_value must be a non-negative integer")
+    try:
+        normalized["duration_unit"] = WaitingPeriodDurationUnit(str(duration_unit)).value
+    except ValueError as exc:
+        raise WaitingPeriodMappingError("duration_unit is not supported by the ontology") from exc
+
+
 def _validate_semantic_value(
     semantic_type: WaitingPeriodSemanticType,
     value: Mapping[str, Any],
@@ -151,14 +164,7 @@ def _validate_semantic_value(
     normalized["waiting_period_type"] = _waiting_period_type(normalized["waiting_period_type"])
 
     if semantic_type in (WaitingPeriodSemanticType.BASE_MECHANIC, WaitingPeriodSemanticType.DURATION):
-        duration_value = normalized.get("duration_value")
-        duration_unit = normalized.get("duration_unit")
-        if type(duration_value) is not int or duration_value < 0:
-            raise WaitingPeriodMappingError("duration_value must be a non-negative integer")
-        try:
-            normalized["duration_unit"] = WaitingPeriodDurationUnit(str(duration_unit)).value
-        except ValueError as exc:
-            raise WaitingPeriodMappingError("duration_unit is not supported by the ontology") from exc
+        _duration(value, normalized)
 
     if semantic_type is WaitingPeriodSemanticType.BASE_MECHANIC:
         try:
@@ -187,6 +193,43 @@ def _validate_semantic_value(
     ):
         detail = normalized.get("detail")
         normalized["detail"] = _text(detail, "detail")
+
+    if semantic_type is WaitingPeriodSemanticType.DURATION_SELECTION:
+        options = normalized.get("duration_options")
+        if not isinstance(options, (list, tuple)) or not options:
+            raise WaitingPeriodMappingError("DURATION_SELECTION requires duration_options")
+        cleaned: list[dict[str, Any]] = []
+        seen: set[tuple[int, str]] = set()
+        for option in options:
+            if not isinstance(option, Mapping):
+                raise WaitingPeriodMappingError("duration_options must contain mappings")
+            candidate = dict(option)
+            duration_value = candidate.get("duration_value")
+            duration_unit = candidate.get("duration_unit")
+            if type(duration_value) is not int or duration_value < 0:
+                raise WaitingPeriodMappingError("duration option value must be a non-negative integer")
+            try:
+                unit = WaitingPeriodDurationUnit(str(duration_unit)).value
+            except ValueError as exc:
+                raise WaitingPeriodMappingError("duration option unit is not supported") from exc
+            key = (duration_value, unit)
+            if key in seen:
+                raise WaitingPeriodMappingError("duration_options must not contain duplicates")
+            seen.add(key)
+            cleaned.append({"duration_value": duration_value, "duration_unit": unit})
+        normalized["duration_options"] = tuple(cleaned)
+        normalized["selection_basis"] = _text(normalized.get("selection_basis"), "selection_basis")
+
+    if semantic_type is WaitingPeriodSemanticType.NEW_MEMBER_EFFECT:
+        normalized["detail"] = _text(normalized.get("detail"), "detail")
+        try:
+            normalized["start_basis"] = WaitingPeriodStartBasis(str(normalized.get("start_basis"))).value
+        except ValueError as exc:
+            raise WaitingPeriodMappingError("start_basis is not supported by the ontology") from exc
+        if normalized["start_basis"] != WaitingPeriodStartBasis.INSURED_PERSON_ADDITION_DATE.value:
+            raise WaitingPeriodMappingError(
+                "NEW_MEMBER_EFFECT requires INSURED_PERSON_ADDITION_DATE start_basis"
+            )
 
     return normalized
 
