@@ -234,6 +234,8 @@ def test_v2_mapper_supports_schedule_duration_selection() -> None:
                         {"duration_value": 3, "duration_unit": "YEARS"},
                     ],
                     "selection_basis": "Policy Schedule",
+                    "value_source": "POLICY_SCHEDULE_SELECTED",
+                    "resolved_value_status": "POLICY_SCHEDULE_BOUND",
                 },
             ),
         ),
@@ -283,6 +285,7 @@ def test_v2_mapper_supports_new_member_reset_semantic() -> None:
                 semantic_value={
                     "waiting_period_type": "PRE_EXISTING_DISEASE",
                     "start_basis": "INSURED_PERSON_ADDITION_DATE",
+                    "member_waiting_basis": "MEMBER_ADDITION",
                     "detail": "waiting periods apply afresh for the newly added insured beneficiary",
                 },
             ),

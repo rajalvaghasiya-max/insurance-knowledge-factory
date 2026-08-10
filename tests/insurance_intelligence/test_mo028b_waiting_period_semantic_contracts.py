@@ -24,11 +24,13 @@ def _base_mechanic(**overrides):
     return WaitingPeriodMechanic(**values)
 
 
-def test_supports_three_material_waiting_period_types():
+def test_supports_material_waiting_period_types():
     assert tuple(item.value for item in WaitingPeriodType) == (
         "INITIAL",
         "SPECIFIC_DISEASE_PROCEDURE",
         "PRE_EXISTING_DISEASE",
+        "MATERNITY",
+        "BABY_CARE",
     )
 
 
