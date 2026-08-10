@@ -14,8 +14,11 @@ from typing import Any, Mapping, Sequence
 
 from insurance_intelligence.benefits.waiting_period_contracts import (
     WaitingPeriodDurationUnit,
+    WaitingPeriodMemberBasis,
+    WaitingPeriodScopeType,
     WaitingPeriodStartBasis,
     WaitingPeriodType,
+    WaitingPeriodValueSource,
 )
 from insurance_intelligence.generic_knowledge.contracts import (
     AccountingState,
@@ -143,7 +146,7 @@ def _waiting_period_type(value: object) -> str:
         raise WaitingPeriodMappingError("waiting_period_type is not supported by the ontology") from exc
 
 
-def _duration(value: Mapping[str, Any], normalized: dict[str, Any]) -> None:
+def _duration(normalized: dict[str, Any]) -> None:
     duration_value = normalized.get("duration_value")
     duration_unit = normalized.get("duration_unit")
     if type(duration_value) is not int or duration_value < 0:
@@ -152,6 +155,32 @@ def _duration(value: Mapping[str, Any], normalized: dict[str, Any]) -> None:
         normalized["duration_unit"] = WaitingPeriodDurationUnit(str(duration_unit)).value
     except ValueError as exc:
         raise WaitingPeriodMappingError("duration_unit is not supported by the ontology") from exc
+
+
+def _scope(normalized: dict[str, Any]) -> None:
+    raw_scope = normalized.get("scope_type", WaitingPeriodScopeType.POLICY_WIDE.value)
+    try:
+        scope_type = WaitingPeriodScopeType(str(raw_scope)).value
+    except ValueError as exc:
+        raise WaitingPeriodMappingError("scope_type is not supported by the ontology") from exc
+    scope_reference = normalized.get("scope_reference")
+    if scope_type == WaitingPeriodScopeType.BENEFIT_SCOPED.value:
+        normalized["scope_reference"] = _text(scope_reference, "scope_reference")
+    elif scope_reference is not None:
+        raise WaitingPeriodMappingError("POLICY_WIDE must not define scope_reference")
+    normalized["scope_type"] = scope_type
+
+
+def _member_basis(normalized: dict[str, Any], *, required: bool = False) -> None:
+    raw = normalized.get("member_waiting_basis")
+    if raw is None:
+        if required:
+            raise WaitingPeriodMappingError("member_waiting_basis is required")
+        return
+    try:
+        normalized["member_waiting_basis"] = WaitingPeriodMemberBasis(str(raw)).value
+    except ValueError as exc:
+        raise WaitingPeriodMappingError("member_waiting_basis is not supported by the ontology") from exc
 
 
 def _validate_semantic_value(
@@ -164,7 +193,7 @@ def _validate_semantic_value(
     normalized["waiting_period_type"] = _waiting_period_type(normalized["waiting_period_type"])
 
     if semantic_type in (WaitingPeriodSemanticType.BASE_MECHANIC, WaitingPeriodSemanticType.DURATION):
-        _duration(value, normalized)
+        _duration(normalized)
 
     if semantic_type is WaitingPeriodSemanticType.BASE_MECHANIC:
         try:
@@ -175,12 +204,21 @@ def _validate_semantic_value(
         if not isinstance(applies_to, (list, tuple)) or not applies_to:
             raise WaitingPeriodMappingError("BASE_MECHANIC requires non-empty applies_to")
         normalized["applies_to"] = tuple(_text(item, "applies_to") for item in applies_to)
+        _scope(normalized)
+        try:
+            normalized["value_source"] = WaitingPeriodValueSource(
+                str(normalized.get("value_source", WaitingPeriodValueSource.PRODUCT_FIXED.value))
+            ).value
+        except ValueError as exc:
+            raise WaitingPeriodMappingError("value_source is not supported by the ontology") from exc
+        _member_basis(normalized)
 
     if semantic_type is WaitingPeriodSemanticType.START_BASIS:
         try:
             normalized["start_basis"] = WaitingPeriodStartBasis(str(normalized.get("start_basis"))).value
         except ValueError as exc:
             raise WaitingPeriodMappingError("start_basis is not supported by the ontology") from exc
+        _member_basis(normalized)
 
     if semantic_type in (
         WaitingPeriodSemanticType.SCOPE,
@@ -193,6 +231,11 @@ def _validate_semantic_value(
     ):
         detail = normalized.get("detail")
         normalized["detail"] = _text(detail, "detail")
+        if semantic_type is WaitingPeriodSemanticType.PORTABILITY:
+            _member_basis(normalized)
+
+    if semantic_type is WaitingPeriodSemanticType.SCOPE:
+        _scope(normalized)
 
     if semantic_type is WaitingPeriodSemanticType.DURATION_SELECTION:
         options = normalized.get("duration_options")
@@ -218,7 +261,24 @@ def _validate_semantic_value(
             seen.add(key)
             cleaned.append({"duration_value": duration_value, "duration_unit": unit})
         normalized["duration_options"] = tuple(cleaned)
-        normalized["selection_basis"] = _text(normalized.get("selection_basis"), "selection_basis")
+        try:
+            normalized["value_source"] = WaitingPeriodValueSource(
+                str(normalized.get("value_source"))
+            ).value
+        except ValueError as exc:
+            raise WaitingPeriodMappingError("DURATION_SELECTION requires valid value_source") from exc
+        if normalized["value_source"] != WaitingPeriodValueSource.POLICY_SCHEDULE_SELECTED.value:
+            raise WaitingPeriodMappingError(
+                "DURATION_SELECTION must be POLICY_SCHEDULE_SELECTED at product-knowledge time"
+            )
+        normalized["resolved_value_status"] = _text(
+            normalized.get("resolved_value_status"), "resolved_value_status"
+        )
+        if normalized["resolved_value_status"] != "POLICY_SCHEDULE_BOUND":
+            raise WaitingPeriodMappingError(
+                "DURATION_SELECTION unresolved product domain must be POLICY_SCHEDULE_BOUND"
+            )
+        _scope(normalized)
 
     if semantic_type is WaitingPeriodSemanticType.NEW_MEMBER_EFFECT:
         normalized["detail"] = _text(normalized.get("detail"), "detail")
@@ -229,6 +289,11 @@ def _validate_semantic_value(
         if normalized["start_basis"] != WaitingPeriodStartBasis.INSURED_PERSON_ADDITION_DATE.value:
             raise WaitingPeriodMappingError(
                 "NEW_MEMBER_EFFECT requires INSURED_PERSON_ADDITION_DATE start_basis"
+            )
+        _member_basis(normalized, required=True)
+        if normalized["member_waiting_basis"] != WaitingPeriodMemberBasis.MEMBER_ADDITION.value:
+            raise WaitingPeriodMappingError(
+                "NEW_MEMBER_EFFECT requires MEMBER_ADDITION member_waiting_basis"
             )
 
     return normalized
