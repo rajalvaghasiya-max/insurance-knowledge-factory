@@ -29,12 +29,25 @@ def test_decision_binds_exact_activ_one_nxt_source_identity() -> None:
     assert payload["source_document_id"] == "doc_d20a8488ecb3243f6de2"
     assert payload["processed_document_asset_id"] == "pdoc_72d03e57d4b49c68d69a11fc"
     assert payload["source_document_sha256"] == "e04bc4575d35e10bc86707ceeb839adf8a59f579bd27584c1b9000201bdac217"
-    assert payload["review_status"] == "PENDING_HUMAN_APPROVAL"
-    assert payload["reviewed_by_human"] is False
-    assert payload["adjudication_status"] == "PROPOSED_REVIEW_DECISION"
+    assert payload["review_status"] == "APPROVED_FOR_GOVERNED_PROJECTION"
+    assert payload["reviewed_by_human"] is True
+    assert payload["adjudication_status"] == "HUMAN_APPROVED_REVIEW_DECISION"
 
 
-def test_all_candidate_decisions_remain_pending_human_review() -> None:
+def test_human_approval_record_is_explicit_and_scoped() -> None:
+    payload = _load()
+    approval = payload["human_approval_record"]
+    assert approval["approved_on"] == "2026-08-10"
+    assert approval["approval_method"] == "explicit_project_owner_approval"
+    scope = approval["approval_scope"]
+    assert "D.1.1" in scope
+    assert "D.1.2" in scope
+    assert "D.1.3" in scope
+    assert "optional reductions" in scope
+    assert "Chronic Care waivers" in scope
+
+
+def test_all_candidate_decisions_are_human_approved() -> None:
     payload = _load()
     assert payload["decisions"]
     assert {
@@ -45,7 +58,7 @@ def test_all_candidate_decisions_remain_pending_human_review() -> None:
         "INITIAL",
     }
     assert all(
-        item["decision_status"] == "PROPOSED_PENDING_HUMAN_REVIEW"
+        item["decision_status"] == "HUMAN_APPROVED"
         for item in payload["decisions"]
     )
 
@@ -104,8 +117,10 @@ def test_initial_decision_preserves_base_30_day_mechanic() -> None:
     assert any("more than twelve months" in item for item in mechanics["exceptions"])
 
 
-def test_review_decision_does_not_publish_or_promote_registry() -> None:
+def test_human_review_approval_does_not_itself_claim_publication() -> None:
     payload = _load()
     boundary = payload["publication_boundary"]
+    assert boundary["human_base_clause_review_approved"] is True
     assert boundary["runtime_publication_created"] is False
+    assert boundary["authoritative_publication_created"] is False
     assert boundary["coverage_registry_promoted"] is False
