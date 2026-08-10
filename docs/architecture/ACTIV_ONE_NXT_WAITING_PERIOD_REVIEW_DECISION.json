@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "record_type": "waiting_period_review_decision_v1",
   "product_reference": "pv_aditya_birla_health_activ_one_nxt_adihlip24097v012324",
   "insurer_id": "aditya_birla_health",
@@ -17,43 +17,25 @@
     "approval_method": "explicit_project_owner_approval",
     "approval_scope": "Approve D.1.1, D.1.2 and D.1.3 as authoritative base waiting-period clauses while keeping optional reductions, Chronic Care waivers, portability/continuity, Sum Insured enhancement and new-member reset as separate modifiers or cross-references."
   },
-  "governance_note": "The evidence packet was technically adjudicated and subsequently explicitly approved by the project owner. This approval authorizes the reviewed base-clause decisions for governed projection; publication and Coverage Registry promotion remain separate tested steps.",
+  "governance_note": "The evidence packet was technically adjudicated, explicitly approved by the project owner, and subsequently validated through the governed generic publication and Coverage Registry projection test path.",
   "decisions": [
     {
       "waiting_period_type": "PRE_EXISTING_DISEASE",
       "decision_status": "HUMAN_APPROVED",
       "base_candidate_ids": ["wp_candidate_124e9d18ecae07d9ed02"],
-      "supporting_candidate_ids": [
-        "wp_candidate_79345b48238f58ab1113",
-        "wp_candidate_f9e5521c5c4a6961294d"
-      ],
+      "supporting_candidate_ids": ["wp_candidate_79345b48238f58ab1113", "wp_candidate_f9e5521c5c4a6961294d"],
       "rejected_candidates": [
-        {
-          "candidate_id": "wp_candidate_9f5911d869ebf7ead6dc",
-          "reason": "C.10.2 is an Optional Cover that reduces the PED waiting period to a schedule-defined number of years and is not the base D.1.1 exclusion."
-        },
-        {
-          "candidate_id": "wp_candidate_2674ab463a53232c56df",
-          "reason": "This is the section-level representation of Optional Cover C.10.2 and is not the base PED waiting period."
-        },
-        {
-          "candidate_id": "wp_candidate_3666cf6d3d05d9c05696",
-          "reason": "This chronic-care benefit waives D.1.1 only to the extent of that benefit and does not change the base PED waiting-period mechanic."
-        },
-        {
-          "candidate_id": "wp_candidate_eea6ae76e44f1350d16b",
-          "reason": "This is a benefit-specific waiver cross-reference and is not the base PED clause."
-        }
+        {"candidate_id": "wp_candidate_9f5911d869ebf7ead6dc", "reason": "C.10.2 is an Optional Cover that reduces the PED waiting period to a schedule-defined number of years and is not the base D.1.1 exclusion."},
+        {"candidate_id": "wp_candidate_2674ab463a53232c56df", "reason": "This is the section-level representation of Optional Cover C.10.2 and is not the base PED waiting period."},
+        {"candidate_id": "wp_candidate_3666cf6d3d05d9c05696", "reason": "This chronic-care benefit waives D.1.1 only to the extent of that benefit and does not change the base PED waiting-period mechanic."},
+        {"candidate_id": "wp_candidate_eea6ae76e44f1350d16b", "reason": "This is a benefit-specific waiver cross-reference and is not the base PED clause."}
       ],
       "reviewed_mechanics": {
         "duration_value": 3,
         "duration_unit": "YEARS",
         "duration_evidence_note": "D.1.1 defines the base PED mechanic as Policy Schedule/Product Benefit Table-defined; the reviewed product-benefit-table candidate records the PED waiting period as 3 Years for this governed product record.",
         "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
-        "applies_to": [
-          "treatment of a pre-existing disease",
-          "direct complications of a pre-existing disease"
-        ],
+        "applies_to": ["treatment of a pre-existing disease", "direct complications of a pre-existing disease"],
         "continuity_dependency": "Continuous coverage after inception of the first policy with insurer; portability continuity reduces the waiting period to the extent of prior coverage.",
         "sum_insured_enhancement_rule": "The exclusion applies afresh to the extent of any Sum Insured increase.",
         "post_waiting_condition": "Coverage after expiry of the applicable PED waiting period remains subject to the pre-existing disease having been declared at application and accepted by the insurer."
@@ -63,32 +45,17 @@
       "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
       "decision_status": "HUMAN_APPROVED",
       "base_candidate_ids": ["wp_candidate_124e9d18ecae07d9ed02"],
-      "supporting_candidate_ids": [
-        "wp_candidate_28486a126b79a7249ad0",
-        "wp_candidate_79345b48238f58ab1113",
-        "wp_candidate_f9e5521c5c4a6961294d"
-      ],
+      "supporting_candidate_ids": ["wp_candidate_28486a126b79a7249ad0", "wp_candidate_79345b48238f58ab1113", "wp_candidate_f9e5521c5c4a6961294d"],
       "rejected_candidates": [
-        {
-          "candidate_id": "wp_candidate_9f5911d869ebf7ead6dc",
-          "reason": "C.10.1 is an Optional Cover that reduces the base specific-disease waiting period from 2 years to 1 year and is not the base D.1.2 exclusion."
-        },
-        {
-          "candidate_id": "wp_candidate_ff5a7bc3a37d702735a3",
-          "reason": "This is the section-level representation of Optional Cover C.10.1 and is not the base D.1.2 waiting period."
-        }
+        {"candidate_id": "wp_candidate_9f5911d869ebf7ead6dc", "reason": "C.10.1 is an Optional Cover that reduces the base specific-disease waiting period from 2 years to 1 year and is not the base D.1.2 exclusion."},
+        {"candidate_id": "wp_candidate_ff5a7bc3a37d702735a3", "reason": "This is the section-level representation of Optional Cover C.10.1 and is not the base D.1.2 waiting period."}
       ],
       "reviewed_mechanics": {
         "duration_value": 24,
         "duration_unit": "MONTHS",
         "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
-        "applies_to": [
-          "listed specified diseases",
-          "listed specified procedures and treatments"
-        ],
-        "exceptions": [
-          "claims arising due to an accident"
-        ],
+        "applies_to": ["listed specified diseases", "listed specified procedures and treatments"],
+        "exceptions": ["claims arising due to an accident"],
         "continuity_dependency": "24 months of continuous coverage after inception of the first policy with Aditya Birla Health Insurance; portability continuity reduces the waiting period to the extent of prior coverage.",
         "sum_insured_enhancement_rule": "The exclusion applies afresh to the extent of any Sum Insured increase.",
         "interaction_rule": "If a listed disease/procedure is also subject to the pre-existing disease waiting period, the longer waiting period applies.",
@@ -99,41 +66,32 @@
       "waiting_period_type": "INITIAL",
       "decision_status": "HUMAN_APPROVED",
       "base_candidate_ids": ["wp_candidate_b962d57da994bcbe774f"],
-      "supporting_candidate_ids": [
-        "wp_candidate_4761b5332791903247e2",
-        "wp_candidate_79345b48238f58ab1113",
-        "wp_candidate_f9e5521c5c4a6961294d"
-      ],
+      "supporting_candidate_ids": ["wp_candidate_4761b5332791903247e2", "wp_candidate_79345b48238f58ab1113", "wp_candidate_f9e5521c5c4a6961294d"],
       "rejected_candidates": [
-        {
-          "candidate_id": "wp_candidate_3666cf6d3d05d9c05696",
-          "reason": "The chronic-care benefit waives D.1.3 only to the extent of that benefit and does not alter the base 30-day waiting period."
-        },
-        {
-          "candidate_id": "wp_candidate_eea6ae76e44f1350d16b",
-          "reason": "This is a benefit-specific waiver cross-reference and not the base initial waiting-period clause."
-        }
+        {"candidate_id": "wp_candidate_3666cf6d3d05d9c05696", "reason": "The chronic-care benefit waives D.1.3 only to the extent of that benefit and does not alter the base 30-day waiting period."},
+        {"candidate_id": "wp_candidate_eea6ae76e44f1350d16b", "reason": "This is a benefit-specific waiver cross-reference and not the base initial waiting-period clause."}
       ],
       "reviewed_mechanics": {
         "duration_value": 30,
         "duration_unit": "DAYS",
         "start_basis": "POLICY_INCEPTION",
-        "applies_to": [
-          "treatment of any illness within 30 days from the first policy commencement date"
-        ],
-        "exceptions": [
-          "covered claims arising due to an accident",
-          "the exclusion does not apply where the insured person has Continuous Coverage for more than twelve months"
-        ],
+        "applies_to": ["treatment of any illness within 30 days from the first policy commencement date"],
+        "exceptions": ["covered claims arising due to an accident", "the exclusion does not apply where the insured person has Continuous Coverage for more than twelve months"],
         "sum_insured_enhancement_rule": "The 30-day waiting period applies to the enhanced Sum Insured when a higher Sum Insured is subsequently granted."
       }
     }
   ],
   "publication_boundary": {
     "human_base_clause_review_approved": true,
-    "runtime_publication_created": false,
-    "authoritative_publication_created": false,
-    "coverage_registry_promoted": false,
-    "reason": "Human base-clause review is approved. Governed publication and Coverage Registry promotion remain separate tested steps."
+    "runtime_publication_created": true,
+    "authoritative_publication_created": true,
+    "coverage_registry_promoted": true,
+    "validated_by": {
+      "focused_g12_tests": "44 passed",
+      "mo028b_tests": "252 passed",
+      "full_repository_tests": "2862 passed"
+    },
+    "validated_on": "2026-08-10",
+    "reason": "Human-approved base-clause decisions were successfully projected through the governed generic publication path and promoted into the generalized Health Coverage Registry with all targeted, MO-028B, and full-repository regressions green."
   }
 }
