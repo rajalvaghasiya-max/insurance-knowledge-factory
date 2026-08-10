@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "record_type": "adversarial_third_product_qualification_v1",
+  "milestone": "MO-028B.G11",
+  "domain": "health",
+  "product": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "insurer_id": "bajaj_allianz_general",
+    "product_id": "my_health_care",
+    "canonical_product_name": "My Health Care Plan",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "authoritative_source": {
+    "document_id": "bajaj_my_health_care_policy_wording_v1",
+    "source_document_sha256": "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade",
+    "source_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__9479fe6f6ce7.pdf",
+    "extracted_text_path": "archive/text/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__9479fe6f6ce7.txt",
+    "authority_role": "primary_legal",
+    "classification": "reusable_generic",
+    "identity_reviewed_by_human": true
+  },
+  "qualification_decision": {
+    "qualified_for_adversarial_inventory": true,
+    "qualified_for_fact_publication": false,
+    "reason": "Identity and primary policy-wording lineage are governed and pinned by exact source hash. G11 must independently inventory waiting-period normative content before semantic mapping or publication."
+  },
+  "g11_inventory_requirements": [
+    "Use the authoritative policy wording source, not historical generated intelligence outputs.",
+    "Inventory must be high-recall and source-anchored before semantic mapping.",
+    "Search beyond standard-exclusion sections for optional covers, benefit-specific waivers, schedules/tables, portability/continuity, renewal effects and sum-insured enhancement behavior.",
+    "Every material normative unit must later be explicitly accounted as mapped, relationship-mapped, non-applicable, corroborating, deferred, conflicted or not-yet-representable.",
+    "No product-identity-bearing reasoning code may be introduced.",
+    "Residue is an expected success signal when the existing semantic model cannot represent a material mechanic."
+  ],
+  "semantic_baseline": {
+    "canonical_concept_id": "health.waiting_periods.base",
+    "ontology_release": "health_ontology_2026_08",
+    "concept_semantic_version": "1",
+    "applicability_schema_version": "health_applicability_v1",
+    "mapping_policy_version": "waiting_period_mapping_v1"
+  }
+}
