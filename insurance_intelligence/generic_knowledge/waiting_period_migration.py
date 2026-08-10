@@ -1,7 +1,7 @@
-"""Generic data-driven waiting-period migration loader for MO-028B.G8.
+"""Generic data-driven waiting-period migration loader for MO-028B.G8/G11.
 
 Product-specific values live in governed migration records. This module validates those records,
-creates source-anchored NormativeUnit values and reviewed G6 mapping instructions, then runs the
+creates source-anchored NormativeUnit values and reviewed mapping instructions, then runs the
 generic mapper and residue accounting path. It must never branch on insurer/product identity.
 """
 from __future__ import annotations
@@ -65,8 +65,17 @@ def _sequence(value: object, name: str) -> Sequence[object]:
     return value
 
 
-def migrate_waiting_period_record(record: Mapping[str, Any]) -> WaitingPeriodMigrationResult:
-    """Run a governed waiting-period migration record through G6 + G3 generically."""
+def migrate_waiting_period_record(
+    record: Mapping[str, Any],
+    *,
+    ontology_version_override: str | None = None,
+) -> WaitingPeriodMigrationResult:
+    """Run a governed waiting-period record through the generic mapper/accounting path.
+
+    ``ontology_version_override`` exists only for governed recertification/backfill. It changes
+    the semantic-version stamp under which the already-reviewed product record is revalidated;
+    it does not change product data, source evidence, or reviewed semantic values.
+    """
     record = _mapping(record, "record")
     if record.get("record_type") != "generic_waiting_period_migration_v1":
         raise WaitingPeriodMigrationError("unsupported migration record_type")
@@ -75,7 +84,12 @@ def migrate_waiting_period_record(record: Mapping[str, Any]) -> WaitingPeriodMig
         product_reference=_text(record.get("product_reference"), "product_reference"),
         policy_version=_text(record.get("policy_version"), "policy_version"),
     )
-    ontology_version = _text(record.get("ontology_version"), "ontology_version")
+    record_ontology_version = _text(record.get("ontology_version"), "ontology_version")
+    ontology_version = (
+        _text(ontology_version_override, "ontology_version_override")
+        if ontology_version_override is not None
+        else record_ontology_version
+    )
     review_decision_version = _text(
         record.get("review_decision_version"), "review_decision_version"
     )
