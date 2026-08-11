@@ -1,7 +1,7 @@
 """Governance and authority integration for MO-028B.G11.C5.
 
 C5 keeps semantic publication, policy-instance resolution, and effective regulatory
-interpretation orthogonal.  It adapts the existing G2 authority resolver and G7 publication
+interpretation orthogonal. It adapts the existing G2 authority resolver and G7 publication
 eligibility decision instead of creating replacement engines.
 """
 from __future__ import annotations
@@ -18,13 +18,11 @@ from insurance_intelligence.generic_knowledge.publication_eligibility import (
     PublicationEligibilityStatus,
 )
 from insurance_intelligence.generic_knowledge.resolution_status import ComputedResolution
-from insurance_intelligence.generic_knowledge.waiting_period_schedule_resolution import (
-    InstanceDocumentClass,
-)
+from insurance_intelligence.generic_knowledge.waiting_period_schedule_resolution import InstanceDocumentClass
 
 
 class GovernanceIntegrationError(ValueError):
-    """Raised when C5 governance contracts violate an invariant."""
+    pass
 
 
 class GovernanceLayer(str, Enum):
@@ -72,13 +70,9 @@ class DocumentAuthorityCapability:
     requires_semantic_review: bool
 
     def __post_init__(self) -> None:
-        for field_name in (
-            "may_supply_semantics",
-            "may_supply_instance_values",
-            "requires_semantic_review",
-        ):
-            if type(getattr(self, field_name)) is not bool:
-                raise GovernanceIntegrationError(f"{field_name} must be boolean")
+        for name in ("may_supply_semantics", "may_supply_instance_values", "requires_semantic_review"):
+            if type(getattr(self, name)) is not bool:
+                raise GovernanceIntegrationError(f"{name} must be boolean")
 
 
 _DOCUMENT_CAPABILITIES = {
@@ -90,9 +84,7 @@ _DOCUMENT_CAPABILITIES = {
 }
 
 
-def document_authority_capability(
-    document_class: InstanceDocumentClass,
-) -> DocumentAuthorityCapability:
+def document_authority_capability(document_class: InstanceDocumentClass) -> DocumentAuthorityCapability:
     if not isinstance(document_class, InstanceDocumentClass):
         raise GovernanceIntegrationError("document_class must be InstanceDocumentClass")
     return _DOCUMENT_CAPABILITIES[document_class]
@@ -106,10 +98,7 @@ class EndorsementReleaseAssessment:
     values_released: bool
 
     def __post_init__(self) -> None:
-        if self.document_class not in (
-            InstanceDocumentClass.ENDORSEMENT,
-            InstanceDocumentClass.RIDER,
-        ):
+        if self.document_class not in (InstanceDocumentClass.ENDORSEMENT, InstanceDocumentClass.RIDER):
             raise GovernanceIntegrationError("release assessment requires endorsement or rider")
         if type(self.semantic_review_approved) is not bool:
             raise GovernanceIntegrationError("semantic_review_approved must be boolean")
@@ -119,11 +108,7 @@ class EndorsementReleaseAssessment:
             raise GovernanceIntegrationError("values release must follow semantic review")
 
 
-def assess_endorsement_release(
-    document_class: InstanceDocumentClass,
-    *,
-    semantic_review_approved: bool,
-) -> EndorsementReleaseAssessment:
+def assess_endorsement_release(document_class: InstanceDocumentClass, *, semantic_review_approved: bool) -> EndorsementReleaseAssessment:
     if document_class not in (InstanceDocumentClass.ENDORSEMENT, InstanceDocumentClass.RIDER):
         raise GovernanceIntegrationError("only endorsements/riders use semantic release gate")
     if type(semantic_review_approved) is not bool:
@@ -183,12 +168,7 @@ class RegulatoryInterpretationAssessment:
             raise GovernanceIntegrationError("contract_fact_publishable must be boolean")
 
 
-def authority_outcome(
-    resolution: AuthorityResolution,
-    *,
-    lower_authority_candidate_present: bool = False,
-) -> AuthorityResolutionOutcome:
-    """Adapt G2 authority resolution into the C5 authority-outcome vocabulary."""
+def authority_outcome(resolution: AuthorityResolution, *, lower_authority_candidate_present: bool = False) -> AuthorityResolutionOutcome:
     if not isinstance(resolution, AuthorityResolution):
         raise GovernanceIntegrationError("resolution must be AuthorityResolution")
     if type(lower_authority_candidate_present) is not bool:
@@ -200,50 +180,44 @@ def authority_outcome(
     return AuthorityResolutionOutcome.NO_CONFLICT
 
 
-def assess_regulatory_interpretation(
-    *,
-    verification_required: bool,
-    effect_class: RegulatoryEffectClass,
-) -> RegulatoryInterpretationAssessment:
-    """Apply the fail-closed C5 rule for unverified regulatory overlays."""
+def assess_regulatory_interpretation(*, verification_required: bool, effect_class: RegulatoryEffectClass) -> RegulatoryInterpretationAssessment:
     if type(verification_required) is not bool:
         raise GovernanceIntegrationError("verification_required must be boolean")
     if not isinstance(effect_class, RegulatoryEffectClass):
         raise GovernanceIntegrationError("effect_class must be RegulatoryEffectClass")
-
     if not verification_required:
         return RegulatoryInterpretationAssessment(
-            layer=GovernanceLayer.REGULATORY_OVERLAY,
-            state=RegulatoryInterpretationState.RESOLVED,
-            effect_class=effect_class,
-            answer_shape=AnswerShape.SCALAR,
-            contract_fact_publishable=True,
+            GovernanceLayer.REGULATORY_OVERLAY,
+            RegulatoryInterpretationState.RESOLVED,
+            effect_class,
+            AnswerShape.SCALAR,
+            True,
         )
     if effect_class is RegulatoryEffectClass.REDUCE_ONLY:
         return RegulatoryInterpretationAssessment(
-            layer=GovernanceLayer.REGULATORY_OVERLAY,
-            state=RegulatoryInterpretationState.VERIFICATION_REQUIRED,
-            effect_class=effect_class,
-            answer_shape=AnswerShape.CONDITIONAL,
-            contract_fact_publishable=True,
-            warnings=("effective interpretation requires regulatory verification",),
+            GovernanceLayer.REGULATORY_OVERLAY,
+            RegulatoryInterpretationState.VERIFICATION_REQUIRED,
+            effect_class,
+            AnswerShape.CONDITIONAL,
+            True,
+            ("effective interpretation requires regulatory verification",),
         )
     if effect_class is RegulatoryEffectClass.BENEFIT_ESTABLISHING:
         return RegulatoryInterpretationAssessment(
-            layer=GovernanceLayer.REGULATORY_OVERLAY,
-            state=RegulatoryInterpretationState.VERIFICATION_REQUIRED,
-            effect_class=effect_class,
-            answer_shape=AnswerShape.UNQUANTIFIED,
-            contract_fact_publishable=False,
-            warnings=("affirmative benefit cannot publish until regulatory verification",),
+            GovernanceLayer.REGULATORY_OVERLAY,
+            RegulatoryInterpretationState.VERIFICATION_REQUIRED,
+            effect_class,
+            AnswerShape.UNQUANTIFIED,
+            False,
+            ("affirmative benefit cannot publish until regulatory verification",),
         )
     return RegulatoryInterpretationAssessment(
-        layer=GovernanceLayer.REGULATORY_OVERLAY,
-        state=RegulatoryInterpretationState.BLOCKED,
-        effect_class=effect_class,
-        answer_shape=AnswerShape.UNQUANTIFIED,
-        contract_fact_publishable=False,
-        warnings=("regulatory effect direction is mixed or unknown",),
+        GovernanceLayer.REGULATORY_OVERLAY,
+        RegulatoryInterpretationState.BLOCKED,
+        effect_class,
+        AnswerShape.UNQUANTIFIED,
+        False,
+        ("regulatory effect direction is mixed or unknown",),
     )
 
 
@@ -257,31 +231,24 @@ def assess_semantic_publication(
     required_operand_governance_blocked: bool = False,
     regulatory_assessment: RegulatoryInterpretationAssessment | None = None,
 ) -> SemanticPublicationAssessment:
-    """Enrich the existing G7 publish/block decision with C5 governance policy.
-
-    Instance-boundness is intentionally absent: C1/C4 resolution state must never be blindly
-    translated into a semantic publication blocker.
-    """
+    """Enrich G7 publication without translating C1/C4 instance status into blockers."""
     if not isinstance(decision, PublicationEligibilityDecision):
         raise GovernanceIntegrationError("decision must be PublicationEligibilityDecision")
     if not isinstance(answer_shape, AnswerShape):
         raise GovernanceIntegrationError("answer_shape must be AnswerShape")
-    for field_name, value in (
+    for name, value in (
         ("well_formed_instance_domain", well_formed_instance_domain),
         ("machine_semantic_conflict_detected", machine_semantic_conflict_detected),
         ("legacy_recertification_required", legacy_recertification_required),
         ("required_operand_governance_blocked", required_operand_governance_blocked),
     ):
         if type(value) is not bool:
-            raise GovernanceIntegrationError(f"{field_name} must be boolean")
-    if regulatory_assessment is not None and not isinstance(
-        regulatory_assessment, RegulatoryInterpretationAssessment
-    ):
+            raise GovernanceIntegrationError(f"{name} must be boolean")
+    if regulatory_assessment is not None and not isinstance(regulatory_assessment, RegulatoryInterpretationAssessment):
         raise GovernanceIntegrationError("regulatory_assessment must be RegulatoryInterpretationAssessment")
 
     blockers = [blocker.code.value for blocker in decision.blockers]
     warnings: list[str] = []
-
     if not well_formed_instance_domain:
         blockers.append("NOT_YET_REPRESENTABLE")
     if legacy_recertification_required:
@@ -293,34 +260,26 @@ def assess_semantic_publication(
         if not regulatory_assessment.contract_fact_publishable:
             blockers.append("UNSAFE_UNVERIFIED_REGULATORY_EFFECT")
 
+    unique_blockers = tuple(sorted(set(blockers)))
+    if unique_blockers or decision.status is PublicationEligibilityStatus.BLOCKED:
+        state = SemanticPublicationState.STALE if "SOURCE_STALE" in unique_blockers else SemanticPublicationState.BLOCKED
+        review_ids = ("candidate_semantic_conflict",) if machine_semantic_conflict_detected else ()
+        return SemanticPublicationAssessment(
+            state=state,
+            answer_shape=answer_shape,
+            blockers=unique_blockers,
+            warnings=tuple(warnings),
+            review_requirement_ids=review_ids,
+        )
+
     if machine_semantic_conflict_detected:
         return SemanticPublicationAssessment(
             state=SemanticPublicationState.REVIEW_REQUIRED,
             answer_shape=answer_shape,
-            blockers=tuple(sorted(set(blockers))),
             warnings=tuple(warnings),
             review_requirement_ids=("candidate_semantic_conflict",),
         )
 
-    if blockers or decision.status is PublicationEligibilityStatus.BLOCKED:
-        state = (
-            SemanticPublicationState.STALE
-            if "SOURCE_STALE" in blockers
-            else SemanticPublicationState.BLOCKED
-        )
-        return SemanticPublicationAssessment(
-            state=state,
-            answer_shape=answer_shape,
-            blockers=tuple(sorted(set(blockers))),
-            warnings=tuple(warnings),
-        )
-
-    if answer_shape is AnswerShape.SCALAR:
-        return SemanticPublicationAssessment(
-            state=SemanticPublicationState.ELIGIBLE,
-            answer_shape=answer_shape,
-            warnings=tuple(warnings),
-        )
     return SemanticPublicationAssessment(
         state=SemanticPublicationState.ELIGIBLE,
         answer_shape=answer_shape,
