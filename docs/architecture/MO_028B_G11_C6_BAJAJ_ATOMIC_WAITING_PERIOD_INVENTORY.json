@@ -1,0 +1,348 @@
+{
+  "schema_version": "1.0",
+  "record_type": "adversarial_waiting_period_atomic_inventory_v1",
+  "milestone": "MO-028B.G11.C6.1",
+  "product": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "canonical_product_name": "My Health Care Plan",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "source": {
+    "document_id": "bajaj_my_health_care_policy_wording_v1",
+    "sha256": "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade",
+    "authority_class": "POLICY_WORDING",
+    "page_count": 53,
+    "source_sufficiency_method": "manual source-first review of the authoritative policy wording; atomic boundaries follow source-expressed normative propositions, not target ontology structure"
+  },
+  "segmentation_invariants": [
+    "NO_SILENT_LOSS",
+    "NO_SILENT_FABRICATION",
+    "SOURCE_EXPRESSION_DETERMINES_UNIT_BOUNDARY",
+    "ONE_ACCOUNTING_DISPOSITION_PER_ATOMIC_UNIT",
+    "NO_MIXED_ACCOUNTING",
+    "AMBIGUOUS_SOURCE_SPLITS_DO_NOT_ENTER_MAPPING"
+  ],
+  "clause_groups": [
+    {"group_id":"cg_ped","original_unit_id":"bajaj_mhc_wp_ped_schedule_selected_base","original_material_effects":["DURATION","START_BASIS","SCOPE","CONTINUITY","PORTABILITY","SUM_INSURED_ENHANCEMENT","SCHEDULE_DEPENDENCY","APPLICABILITY"]},
+    {"group_id":"cg_specific","original_unit_id":"bajaj_mhc_wp_specific_schedule_selected_base","original_material_effects":["DURATION","START_BASIS","SCOPE","EXCEPTION","PORTABILITY","SUM_INSURED_ENHANCEMENT","CROSS_CONCEPT_RELATIONSHIP","SCHEDULE_DEPENDENCY","APPLICABILITY"]},
+    {"group_id":"cg_initial","original_unit_id":"bajaj_mhc_wp_initial_base","original_material_effects":["DURATION","START_BASIS","SCOPE"]},
+    {"group_id":"cg_investigation_initial","original_unit_id":"bajaj_mhc_wp_investigations_benefit_initial","original_material_effects":["DURATION","BENEFIT_SCOPED_OVERRIDE","RENEWAL_OR_REINSTATEMENT_EFFECT","APPLICABILITY"]},
+    {"group_id":"cg_investigation_ped","original_unit_id":"bajaj_mhc_wp_investigations_benefit_ped","original_material_effects":["SCOPE","DURATION","PORTABILITY","BENEFIT_SCOPED_OVERRIDE","SCHEDULE_DEPENDENCY"]},
+    {"group_id":"cg_maternity","original_unit_id":"bajaj_mhc_wp_maternity","original_material_effects":["DURATION","SCOPE","REDUCTION","APPLICABILITY","CROSS_CONCEPT_RELATIONSHIP"]},
+    {"group_id":"cg_baby","original_unit_id":"bajaj_mhc_wp_baby_care","original_material_effects":["DURATION","SCOPE","REDUCTION","APPLICABILITY","CROSS_CONCEPT_RELATIONSHIP"]},
+    {"group_id":"cg_portability","original_unit_id":"bajaj_mhc_wp_portability_continuity","original_material_effects":["CONTINUITY","PORTABILITY"]},
+    {"group_id":"cg_migration","original_unit_id":"bajaj_mhc_wp_migration_continuity","original_material_effects":["CONTINUITY","RENEWAL_OR_REINSTATEMENT_EFFECT","CROSS_CONCEPT_RELATIONSHIP"]},
+    {"group_id":"cg_si_enhancement","original_unit_id":"bajaj_mhc_wp_sum_insured_enhancement","original_material_effects":["SUM_INSURED_ENHANCEMENT","START_BASIS","APPLICABILITY"]},
+    {"group_id":"cg_new_member","original_unit_id":"bajaj_mhc_wp_new_member_reset","original_material_effects":["START_BASIS","APPLICABILITY","RENEWAL_OR_REINSTATEMENT_EFFECT"]},
+    {"group_id":"cg_cataract","original_unit_id":"bajaj_mhc_wp_cataract_schedule_dependency","original_material_effects":["SCHEDULE_DEPENDENCY","CROSS_CONCEPT_RELATIONSHIP","APPLICABILITY"]},
+    {"group_id":"cg_daycare","original_unit_id":"bajaj_mhc_wp_day_care_inherits_standard_waits","original_material_effects":["SCOPE","APPLICABILITY","CROSS_CONCEPT_RELATIONSHIP"]}
+  ],
+  "atomic_units": [
+    {
+      "atomic_unit_id":"bajaj_mhc_ped_base_wait",
+      "parent_clause_group_id":"cg_ped",
+      "source_pages":[20],
+      "source_locator":"page 20, Standard Exclusions, PED clause 1(a)",
+      "source_line_range":"996-999",
+      "source_support_summary":"PED and direct complications are excluded for a continuous-coverage period from first My Health Care Plan inception; the opted period is stated in the Policy Schedule.",
+      "normative_proposition":"PED waiting period is a policy-wide base exclusion measured from first My Health Care Plan inception with a Policy-Schedule-selected duration.",
+      "material_effects":["DURATION","START_BASIS","SCOPE","SCHEDULE_DEPENDENCY","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_ped_duration_selection_domain",
+      "parent_clause_group_id":"cg_ped",
+      "source_pages":[53],
+      "source_locator":"page 53, waiting-period option table",
+      "source_line_range":"2695-2741",
+      "source_support_summary":"Plan 1 records PED 36 months and the table lists change options of 1, 2 and 3 years.",
+      "normative_proposition":"PED duration has a governed selectable domain of 1, 2 or 3 years, with Plan 1 showing 36 months.",
+      "material_effects":["DURATION","SCHEDULE_DEPENDENCY","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_ped_si_enhancement_reapplication",
+      "parent_clause_group_id":"cg_ped",
+      "source_pages":[20],
+      "source_locator":"page 20, PED clause 1(b)",
+      "source_line_range":"1000-1001",
+      "source_support_summary":"The PED exclusion applies afresh to the increased Sum Insured extent.",
+      "normative_proposition":"PED waiting period reapplies only to the increased Sum Insured portion after enhancement.",
+      "material_effects":["SUM_INSURED_ENHANCEMENT","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_ped_portability_credit",
+      "parent_clause_group_id":"cg_ped",
+      "source_pages":[20],
+      "source_locator":"page 20, PED clause 1(c)",
+      "source_line_range":"1002-1004",
+      "source_support_summary":"Continuous portability coverage reduces the PED waiting period to the extent of prior coverage.",
+      "normative_proposition":"Eligible portability continuity can reduce the PED waiting period by prior continuous coverage credit.",
+      "material_effects":["CONTINUITY","PORTABILITY","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_ped_post_wait_declaration_condition",
+      "parent_clause_group_id":"cg_ped",
+      "source_pages":[20],
+      "source_locator":"page 20, PED clause 1(d)",
+      "source_line_range":"1005-1006",
+      "source_support_summary":"Post-wait PED coverage requires declaration at application and insurer acceptance.",
+      "normative_proposition":"PED coverage after expiry of the selected wait remains conditional on declaration and acceptance.",
+      "material_effects":["APPLICABILITY","CONTINUITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_specific_base_wait_accident_exception",
+      "parent_clause_group_id":"cg_specific",
+      "source_pages":[20],
+      "source_locator":"page 20, Specific Disease/Procedure clause 2(a)",
+      "source_line_range":"1007-1012",
+      "source_support_summary":"Listed conditions are excluded for a selected continuous-coverage period, with accident claims excluded from this waiting-period exclusion.",
+      "normative_proposition":"Specified disease/procedure wait is a base exclusion from first-plan inception and does not apply to accident claims.",
+      "material_effects":["DURATION","START_BASIS","SCOPE","EXCEPTION","SCHEDULE_DEPENDENCY","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_specific_duration_selection_domain",
+      "parent_clause_group_id":"cg_specific",
+      "source_pages":[53],
+      "source_locator":"page 53, waiting-period option table",
+      "source_line_range":"2695-2741",
+      "source_support_summary":"Plan 1 records 24 months and the specific-disease waiting-period change options are 1, 2 and 3 years.",
+      "normative_proposition":"Specified disease/procedure duration has a selectable domain of 1, 2 or 3 years, with Plan 1 showing 24 months.",
+      "material_effects":["DURATION","SCHEDULE_DEPENDENCY","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_specific_si_enhancement_reapplication",
+      "parent_clause_group_id":"cg_specific",
+      "source_pages":[20],
+      "source_locator":"page 20, Specific Disease/Procedure clause 2(b)",
+      "source_line_range":"1013-1014",
+      "source_support_summary":"The specified-disease exclusion applies afresh to the increased Sum Insured extent.",
+      "normative_proposition":"Specified disease/procedure waiting period reapplies to the increased Sum Insured portion.",
+      "material_effects":["SUM_INSURED_ENHANCEMENT","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_specific_longer_of_ped_relationship",
+      "parent_clause_group_id":"cg_specific",
+      "source_pages":[20],
+      "source_locator":"page 20, Specific Disease/Procedure clause 2(c)",
+      "source_line_range":"1015-1016",
+      "source_support_summary":"When a listed condition also falls under PED, the longer of the two waits applies.",
+      "normative_proposition":"Effective wait for a specified condition that is also PED is the longer of the PED and specified-disease waits.",
+      "material_effects":["CROSS_CONCEPT_RELATIONSHIP","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_specific_post_inception_application",
+      "parent_clause_group_id":"cg_specific",
+      "source_pages":[20],
+      "source_locator":"page 20, Specific Disease/Procedure clause 2(d)",
+      "source_line_range":"1017-1018",
+      "source_support_summary":"The listed-condition waiting period applies even when contracted after risk inception or declared and accepted without a specific exclusion.",
+      "normative_proposition":"Specified disease/procedure wait can apply to listed conditions arising after risk inception or accepted without a specific exclusion.",
+      "material_effects":["APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_specific_portability_credit",
+      "parent_clause_group_id":"cg_specific",
+      "source_pages":[20],
+      "source_locator":"page 20, Specific Disease/Procedure clause 2(e)",
+      "source_line_range":"1019-1021",
+      "source_support_summary":"Applicable portability continuity reduces the specified-disease wait to the extent of prior coverage.",
+      "normative_proposition":"Eligible portability continuity can reduce the specified-disease/procedure wait by prior coverage credit.",
+      "material_effects":["CONTINUITY","PORTABILITY","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_initial_base_wait",
+      "parent_clause_group_id":"cg_initial",
+      "source_pages":[21,53],
+      "source_locator":"page 21 clause 3 and page 53 waiting-period table",
+      "source_line_range":"1054-1061,2695-2702",
+      "source_support_summary":"Illness treatment is excluded for the initial selected period from first policy commencement, except accident; Plan 1 records 30 days.",
+      "normative_proposition":"Initial illness waiting period is 30 days for Plan 1 from first commencement, subject to the stated accident exception.",
+      "material_effects":["DURATION","START_BASIS","SCOPE","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_investigation_initial_wait",
+      "parent_clause_group_id":"cg_investigation_initial",
+      "source_pages":[15],
+      "source_locator":"page 15, Doctor Prescribed Lab and Radiology Cover exclusion 4",
+      "source_line_range":"721-728",
+      "source_support_summary":"Investigation cover has an illness-related 30-day wait in the first policy year and the wait does not apply on renewals.",
+      "normative_proposition":"Doctor Prescribed Lab and Radiology Cover has its own benefit-scoped 30-day illness wait in year one, ceasing on renewal.",
+      "material_effects":["DURATION","BENEFIT_SCOPED_OVERRIDE","RENEWAL_OR_REINSTATEMENT_EFFECT","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_investigation_ped_application",
+      "parent_clause_group_id":"cg_investigation_ped",
+      "source_pages":[15],
+      "source_locator":"page 15, Doctor Prescribed Lab and Radiology Cover exclusion 5(a-b)",
+      "source_line_range":"729-733",
+      "source_support_summary":"The investigation benefit independently applies the PED exclusion and takes the opted PED period from the Policy Schedule.",
+      "normative_proposition":"Doctor Prescribed Lab and Radiology Cover is subject to a benefit-scoped PED wait using the Policy-Schedule-selected PED duration.",
+      "material_effects":["SCOPE","DURATION","BENEFIT_SCOPED_OVERRIDE","SCHEDULE_DEPENDENCY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_investigation_ped_portability_credit",
+      "parent_clause_group_id":"cg_investigation_ped",
+      "source_pages":[15],
+      "source_locator":"page 15, Doctor Prescribed Lab and Radiology Cover exclusion 5(c)",
+      "source_line_range":"734-736",
+      "source_support_summary":"Portability continuity reduces this benefit-scoped PED wait to the extent of prior coverage.",
+      "normative_proposition":"Eligible portability credit applies to the investigation benefit's PED waiting period.",
+      "material_effects":["PORTABILITY","CONTINUITY","BENEFIT_SCOPED_OVERRIDE"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_investigation_ped_declaration_condition",
+      "parent_clause_group_id":"cg_investigation_ped",
+      "source_pages":[15],
+      "source_locator":"page 15, Doctor Prescribed Lab and Radiology Cover exclusion 5(d)",
+      "source_line_range":"737-739",
+      "source_support_summary":"Post-wait PED coverage under the investigation benefit remains subject to declaration and acceptance.",
+      "normative_proposition":"Investigation-cover PED coverage after expiry of the wait requires declaration and insurer acceptance.",
+      "material_effects":["APPLICABILITY","BENEFIT_SCOPED_OVERRIDE"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_maternity_schedule_selected_wait",
+      "parent_clause_group_id":"cg_maternity",
+      "source_pages":[21,53],
+      "source_locator":"page 21 Maternity Package Waiting Period and page 53 table",
+      "source_line_range":"1062-1069,2699-2700",
+      "source_support_summary":"Maternity has a continuous-coverage waiting period selected in the Policy Schedule; Plan 1 records 36 months.",
+      "normative_proposition":"Maternity has a distinct schedule-selected waiting period, with Plan 1 showing 36 months.",
+      "material_effects":["DURATION","SCOPE","APPLICABILITY","SCHEDULE_DEPENDENCY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_maternity_upfront_premium_reduction",
+      "parent_clause_group_id":"cg_maternity",
+      "source_pages":[21,53],
+      "source_locator":"page 21 Maternity Package Waiting Period and page 53 table",
+      "source_line_range":"1067-1069,2699-2700",
+      "source_support_summary":"The maternity wait decreases by one year when a long-term policy is chosen and the entire premium is paid upfront.",
+      "normative_proposition":"Long-term-policy upfront premium payment conditionally reduces maternity waiting period by one year.",
+      "material_effects":["REDUCTION","CROSS_CONCEPT_RELATIONSHIP","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_baby_care_schedule_selected_wait",
+      "parent_clause_group_id":"cg_baby",
+      "source_pages":[21,53],
+      "source_locator":"page 21 Baby Care Waiting Period and page 53 table",
+      "source_line_range":"1072-1078,2701-2702",
+      "source_support_summary":"Baby Care has a continuous-coverage waiting period selected in the Policy Schedule; Plan 1 records 36 months.",
+      "normative_proposition":"Baby Care has a distinct schedule-selected waiting period, with Plan 1 showing 36 months.",
+      "material_effects":["DURATION","SCOPE","APPLICABILITY","SCHEDULE_DEPENDENCY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_baby_care_upfront_premium_reduction",
+      "parent_clause_group_id":"cg_baby",
+      "source_pages":[21,53],
+      "source_locator":"page 21 Baby Care Waiting Period and page 53 table",
+      "source_line_range":"1076-1078,2701-2702",
+      "source_support_summary":"The Baby Care wait decreases by one year when a long-term policy is chosen and the entire premium is paid upfront.",
+      "normative_proposition":"Long-term-policy upfront premium payment conditionally reduces Baby Care waiting period by one year.",
+      "material_effects":["REDUCTION","CROSS_CONCEPT_RELATIONSHIP","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_portability_continuity_general",
+      "parent_clause_group_id":"cg_portability",
+      "source_pages":[28],
+      "source_locator":"page 28 portability norms",
+      "source_line_range":"1400-1406",
+      "source_support_summary":"Eligible portability carries accrued continuity benefits in waiting periods under applicable IRDAI portability guidelines.",
+      "normative_proposition":"Portability is a recognized continuity mechanism for waiting-period credit where continuity requirements are met.",
+      "material_effects":["CONTINUITY","PORTABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_migration_continuity_general",
+      "parent_clause_group_id":"cg_migration",
+      "source_pages":[28],
+      "source_locator":"page 28 Norms on Migration",
+      "source_line_range":"1423-1432",
+      "source_support_summary":"Eligible migration within the insurer carries accrued waiting-period continuity benefits subject to IRDAI migration guidelines.",
+      "normative_proposition":"Migration is a recognized continuity mechanism, while exact effective credit remains dependent on applicable regulatory guidance.",
+      "material_effects":["CONTINUITY","CROSS_CONCEPT_RELATIONSHIP"],
+      "source_sufficiency_review":"CONFIRMED",
+      "governance_note":"BENEFIT_ESTABLISHING regulatory effect; effective credit remains unquantified pending regulatory verification"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_migration_withdrawal_continuity",
+      "parent_clause_group_id":"cg_migration",
+      "source_pages":[28],
+      "source_locator":"page 28 Withdrawal of Policy clause 13(ii)",
+      "source_line_range":"1433-1438",
+      "source_support_summary":"On withdrawal, migration to a similar insurer product at renewal preserves accrued continuity benefits including waiting-period waiver subject to IRDAI guidelines and no break.",
+      "normative_proposition":"Product withdrawal can trigger migration with continuity of waiting-period benefits when the policy has no break, subject to regulatory guidance.",
+      "material_effects":["CONTINUITY","RENEWAL_OR_REINSTATEMENT_EFFECT","CROSS_CONCEPT_RELATIONSHIP"],
+      "source_sufficiency_review":"CONFIRMED",
+      "governance_note":"BENEFIT_ESTABLISHING regulatory effect; effective credit remains unquantified pending regulatory verification"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_si_enhancement_reset_general",
+      "parent_clause_group_id":"cg_si_enhancement",
+      "source_pages":[30,38],
+      "source_locator":"page 30 Change of Sum Insured clause 21 and page 38 Sum Insured Enhancement clause 35(iii)",
+      "source_line_range":"1548-1551,1947-1954",
+      "source_support_summary":"For increased Sum Insured, waits restart only for the enhanced portion from the enhancement effective date as fresh exposure.",
+      "normative_proposition":"Sum Insured enhancement creates a distinct enhanced-amount tranche whose applicable waiting periods restart from the enhancement effective date.",
+      "material_effects":["SUM_INSURED_ENHANCEMENT","START_BASIS","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_new_member_reset",
+      "parent_clause_group_id":"cg_new_member",
+      "source_pages":[38],
+      "source_locator":"page 38 Inclusion of members under the Policy clause 36",
+      "source_line_range":"1955-1958",
+      "source_support_summary":"A member added by endorsement or renewal is treated as being in the first policy year for PED, exclusions and waits.",
+      "normative_proposition":"Newly added insured beneficiaries start applicable waiting-period exposure from their addition policy year, whether added by endorsement or renewal.",
+      "material_effects":["START_BASIS","APPLICABILITY","RENEWAL_OR_REINSTATEMENT_EFFECT"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_cataract_waiting_period_dependency",
+      "parent_clause_group_id":"cg_cataract",
+      "source_pages":[38],
+      "source_locator":"page 38 Cost Sharing clause 33",
+      "source_line_range":"1939-1943",
+      "source_support_summary":"Cataract surgery payment is conditional on expiry of the Policy-Schedule waiting period; separate payment limits vary by SI band.",
+      "normative_proposition":"Cataract payment depends on expiry of a Policy-Schedule-specified waiting period, while SI-band cost sharing remains a separate mechanic.",
+      "material_effects":["SCHEDULE_DEPENDENCY","CROSS_CONCEPT_RELATIONSHIP","APPLICABILITY"],
+      "source_sufficiency_review":"CONFIRMED"
+    },
+    {
+      "atomic_unit_id":"bajaj_mhc_daycare_inherits_standard_waits",
+      "parent_clause_group_id":"cg_daycare",
+      "source_pages":[47],
+      "source_locator":"page 47 Annexure I note ii",
+      "source_line_range":"2427-2432",
+      "source_support_summary":"Standard exclusions and waiting periods apply to day-care procedures according to the medical condition or disease treated.",
+      "normative_proposition":"Day-care procedures inherit applicable standard waiting periods based on the underlying disease or condition.",
+      "material_effects":["SCOPE","APPLICABILITY","CROSS_CONCEPT_RELATIONSHIP"],
+      "source_sufficiency_review":"CONFIRMED"
+    }
+  ],
+  "review_decision": {
+    "atomic_inventory_ready_for_mapping": true,
+    "mixed_accounting_allowed": false,
+    "runtime_normative_unit_contract_changed": false,
+    "automatic_segmentation_used": false,
+    "notes": "The original 13 records remain clause groups. Atomic units are source-expression-based and source-sufficiency reviewed. Repeated source-specific PED/specific clauses are retained where independently stated; the generic SI-enhancement clause remains one broad unit rather than ontology-driven duplication."
+  }
+}
