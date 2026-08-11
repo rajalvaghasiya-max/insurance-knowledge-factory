@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.0",
+  "record_type": "adversarial_waiting_period_reviewed_mapping_v1",
+  "milestone": "MO-028B.G11.C6.2",
+  "product": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "ontology_version": "waiting_periods_v2",
+  "mapping_policy": "existing_generic_g6_plus_c1_c5_no_product_reasoning",
+  "reviewed_mappings": [
+    {
+      "atomic_unit_id": "bajaj_mhc_ped_base_wait",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "START_BASIS",
+      "semantic_value": {"waiting_period_type":"PRE_EXISTING_DISEASE","start_basis":"INSURED_PERSON_FIRST_COVERAGE"},
+      "reason": "The independently selected PED duration is represented by the separate duration-domain unit; this source proposition contributes the governed person-first-coverage start basis."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_ped_duration_selection_domain",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "DURATION_SELECTION",
+      "semantic_value": {"waiting_period_type":"PRE_EXISTING_DISEASE","duration_options":[{"duration_value":1,"duration_unit":"YEARS"},{"duration_value":2,"duration_unit":"YEARS"},{"duration_value":3,"duration_unit":"YEARS"}],"selection_basis":"Policy Schedule","value_source":"POLICY_SCHEDULE_SELECTED","resolved_value_status":"POLICY_SCHEDULE_BOUND"},
+      "reason": "Authoritative wording exposes a certified 1/2/3-year PED selection domain; actual policy value remains schedule-bound."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_ped_si_enhancement_reapplication",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "SUM_INSURED_ENHANCEMENT",
+      "semantic_value": {"waiting_period_type":"PRE_EXISTING_DISEASE","detail":"PED waiting period reapplies only to the increased Sum Insured portion after enhancement."},
+      "reason": "C3 amount-tranche semantics preserve enhanced-portion reapplication without product-specific logic."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_ped_portability_credit",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "PORTABILITY",
+      "semantic_value": {"waiting_period_type":"PRE_EXISTING_DISEASE","detail":"Eligible portability continuity reduces the PED waiting period to the extent of prior continuous coverage.","member_waiting_basis":"PORTED_CONTINUITY"},
+      "reason": "Existing portability semantic plus C3 continuity-source axis represents the source proposition."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_ped_post_wait_declaration_condition",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "APPLIES_WHEN",
+      "source_concept": "waiting_periods",
+      "target_concept": "pre_existing_disease_coverage",
+      "relationship_condition": {"waiting_period_type":"PRE_EXISTING_DISEASE","condition":"PED declared at application and accepted by insurer"},
+      "reason": "The post-wait declaration/acceptance requirement is an applicability relationship rather than another duration fact."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_base_wait_accident_exception",
+      "disposition": "NOT_YET_REPRESENTABLE",
+      "mapping_kind": "NOT_YET_REPRESENTABLE",
+      "reason": "The source expresses the schedule-bound base start/scope and accident exception jointly; current one-disposition G6 vocabulary cannot preserve the full joint proposition without either dropping the start/scope or inventing a scalar base duration."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_duration_selection_domain",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "DURATION_SELECTION",
+      "semantic_value": {"waiting_period_type":"SPECIFIC_DISEASE_PROCEDURE","duration_options":[{"duration_value":1,"duration_unit":"YEARS"},{"duration_value":2,"duration_unit":"YEARS"},{"duration_value":3,"duration_unit":"YEARS"}],"selection_basis":"Policy Schedule","value_source":"POLICY_SCHEDULE_SELECTED","resolved_value_status":"POLICY_SCHEDULE_BOUND"},
+      "reason": "Authoritative wording exposes the specific-disease 1/2/3-year selection domain."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_si_enhancement_reapplication",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "SUM_INSURED_ENHANCEMENT",
+      "semantic_value": {"waiting_period_type":"SPECIFIC_DISEASE_PROCEDURE","detail":"Specified disease/procedure waiting period reapplies to the increased Sum Insured portion."},
+      "reason": "Existing enhancement semantic captures the independently stated specific-wait reapplication."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_longer_of_ped_relationship",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "DERIVES_FROM",
+      "source_concept": "waiting_periods",
+      "target_concept": "pre_existing_disease_waiting_period",
+      "relationship_condition": {"operator":"LONGER_OF","left_operand":"SPECIFIC_DISEASE_PROCEDURE","right_operand":"PRE_EXISTING_DISEASE"},
+      "reason": "C2 REQUIRED_INPUT semantics govern resolution of the independently represented longer-of relationship."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_post_inception_application",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "APPLIES_WHEN",
+      "source_concept": "waiting_periods",
+      "target_concept": "specified_disease_procedure_coverage",
+      "relationship_condition": {"condition":"listed condition may arise after risk inception or be declared and accepted without a specific exclusion"},
+      "reason": "The proposition is an applicability condition, not a new duration."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_portability_credit",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "PORTABILITY",
+      "semantic_value": {"waiting_period_type":"SPECIFIC_DISEASE_PROCEDURE","detail":"Eligible portability continuity reduces the specified-disease/procedure wait to the extent of prior coverage.","member_waiting_basis":"PORTED_CONTINUITY"},
+      "reason": "Existing portability semantic represents the independent source proposition."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_initial_base_wait",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "BASE_MECHANIC",
+      "semantic_value": {"waiting_period_type":"INITIAL","duration_value":30,"duration_unit":"DAYS","start_basis":"POLICY_INCEPTION","applies_to":["illness treatment"],"exclusions_or_exceptions":["accident claims"]},
+      "reason": "Plan 1 gives a scalar 30-day initial wait and the base mechanic preserves its accident exception."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_investigation_initial_wait",
+      "disposition": "NOT_YET_REPRESENTABLE",
+      "mapping_kind": "NOT_YET_REPRESENTABLE",
+      "reason": "The same source proposition combines a benefit-scoped 30-day first-year wait with explicit cessation on renewal; current one-fact G6 vocabulary cannot preserve both the scalar base mechanic and renewal effect without semantic loss."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_investigation_ped_application",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "DEPENDS_ON",
+      "source_concept": "waiting_periods",
+      "target_concept": "doctor_prescribed_lab_and_radiology_cover",
+      "relationship_condition": {"waiting_period_type":"PRE_EXISTING_DISEASE","scope_type":"BENEFIT_SCOPED","scope_reference":"doctor_prescribed_lab_and_radiology_cover","value_source":"POLICY_SCHEDULE_SELECTED"},
+      "reason": "Benefit-scoped Investigation Cover depends on the governed PED wait; C4 projection remains explicit rather than silently copying a value across cells."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_investigation_ped_portability_credit",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "APPLIES_WHEN",
+      "source_concept": "waiting_periods",
+      "target_concept": "doctor_prescribed_lab_and_radiology_cover",
+      "relationship_condition": {"waiting_period_type":"PRE_EXISTING_DISEASE","condition":"eligible portability continuity applies to the benefit-scoped PED waiting period"},
+      "reason": "The source applies portability specifically to the benefit-scoped PED mechanic."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_investigation_ped_declaration_condition",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "APPLIES_WHEN",
+      "source_concept": "waiting_periods",
+      "target_concept": "doctor_prescribed_lab_and_radiology_cover",
+      "relationship_condition": {"waiting_period_type":"PRE_EXISTING_DISEASE","condition":"PED declared at application and accepted by insurer"},
+      "reason": "Declaration and acceptance are modeled as a governed applicability condition."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_maternity_schedule_selected_wait",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "BASE_MECHANIC",
+      "semantic_value": {"waiting_period_type":"MATERNITY","duration_value":36,"duration_unit":"MONTHS","start_basis":"INSURED_PERSON_FIRST_COVERAGE","applies_to":["maternity expenses"],"value_source":"PRODUCT_FIXED"},
+      "reason": "For the Plan-1 wording under review, the authoritative table supplies the governed 36-month scalar; no broader maternity option domain is invented."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_maternity_upfront_premium_reduction",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "MODIFIES",
+      "source_concept": "waiting_periods",
+      "target_concept": "long_term_upfront_premium_condition",
+      "relationship_condition": {"waiting_period_type":"MATERNITY","modifier_direction":"REDUCES","reduction_value":1,"reduction_unit":"YEARS","instance_condition_required":true},
+      "reason": "C2 conditional-modifier semantics preserve the base while the upfront-payment condition is instance-bound."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_baby_care_schedule_selected_wait",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "BASE_MECHANIC",
+      "semantic_value": {"waiting_period_type":"BABY_CARE","duration_value":36,"duration_unit":"MONTHS","start_basis":"INSURED_PERSON_FIRST_COVERAGE","applies_to":["baby care benefit"],"value_source":"PRODUCT_FIXED"},
+      "reason": "For Plan 1 the authoritative table supplies a 36-month Baby Care scalar; no unsupported option domain is invented."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_baby_care_upfront_premium_reduction",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "MODIFIES",
+      "source_concept": "waiting_periods",
+      "target_concept": "long_term_upfront_premium_condition",
+      "relationship_condition": {"waiting_period_type":"BABY_CARE","modifier_direction":"REDUCES","reduction_value":1,"reduction_unit":"YEARS","instance_condition_required":true},
+      "reason": "C2 conditional-modifier semantics preserve the base while the upfront-payment condition remains instance-bound."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_portability_continuity_general",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "CONTINUITY",
+      "semantic_value": {"waiting_period_type":"PRE_EXISTING_DISEASE","detail":"Portability is a recognized continuity mechanism for applicable waiting periods where continuity requirements are met."},
+      "reason": "The generic continuity concept is represented without quantifying credit beyond the source."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_migration_continuity_general",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "CONTINUITY",
+      "semantic_value": {"waiting_period_type":"PRE_EXISTING_DISEASE","detail":"Migration is a recognized continuity mechanism; exact effective waiting-period credit requires regulatory verification."},
+      "reason": "Structural migration semantics are representable; C5 keeps the benefit-establishing effective credit UNQUANTIFIED pending regulatory verification.",
+      "governance": {"regulatory_effect_class":"BENEFIT_ESTABLISHING","answer_shape":"UNQUANTIFIED","effective_credit_status":"REGULATORY_VERIFICATION_REQUIRED"}
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_migration_withdrawal_continuity",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "APPLIES_WHEN",
+      "source_concept": "waiting_periods",
+      "target_concept": "policy_withdrawal_migration",
+      "relationship_condition": {"condition":"product withdrawal migration at renewal with no break and subject to applicable regulatory guidance"},
+      "reason": "Withdrawal-triggered migration is an applicability relationship; exact preserved credit remains governance-blocked."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_si_enhancement_reset_general",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "SUM_INSURED_ENHANCEMENT",
+      "semantic_value": {"waiting_period_type":"PRE_EXISTING_DISEASE","detail":"Applicable waiting periods restart only for each enhanced Sum Insured tranche from its enhancement effective date."},
+      "reason": "C3 tranche identity represents the generic source-expressed enhancement reset without duplicating the clause per waiting-period type."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_new_member_reset",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "NEW_MEMBER_EFFECT",
+      "semantic_value": {"waiting_period_type":"PRE_EXISTING_DISEASE","start_basis":"INSURED_PERSON_ADDITION_DATE","member_waiting_basis":"MEMBER_ADDITION","detail":"applicable waiting periods start from the newly added insured beneficiary's addition policy year"},
+      "reason": "C3 person-event timing represents newly added insured reset independently from continuity source."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_cataract_waiting_period_dependency",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "DEPENDS_ON",
+      "source_concept": "waiting_periods",
+      "target_concept": "cataract_payment",
+      "relationship_condition": {"condition":"cataract payment requires expiry of the Policy-Schedule-specified waiting period","cost_sharing_semantics":"SEPARATE"},
+      "reason": "The waiting-period dependency remains separate from SI-band cost-sharing semantics."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_daycare_inherits_standard_waits",
+      "disposition": "MAPPED_AS_RELATIONSHIP",
+      "mapping_kind": "RELATIONSHIP_FACT",
+      "relationship_type": "DEPENDS_ON",
+      "source_concept": "waiting_periods",
+      "target_concept": "day_care_procedures",
+      "relationship_condition": {"condition":"applicable standard waiting period is selected by the underlying disease or condition"},
+      "reason": "Day-care coverage inherits standard waiting periods through a disease/condition-dependent relationship."
+    }
+  ],
+  "mapping_summary": {
+    "atomic_unit_count": 27,
+    "mapped_semantic_count": 12,
+    "mapped_relationship_count": 13,
+    "true_semantic_residue_count": 2,
+    "true_semantic_residue_ids": ["bajaj_mhc_specific_base_wait_accident_exception","bajaj_mhc_investigation_initial_wait"],
+    "product_identity_reasoning_code_added": false
+  },
+  "representability_report": [
+    {"atomic_unit_id":"bajaj_mhc_specific_base_wait_accident_exception","resolution_class":"TRUE_SEMANTIC_RESIDUE","answer_shape":"UNQUANTIFIED"},
+    {"atomic_unit_id":"bajaj_mhc_investigation_initial_wait","resolution_class":"TRUE_SEMANTIC_RESIDUE","answer_shape":"UNQUANTIFIED"},
+    {"atomic_unit_id":"bajaj_mhc_specific_longer_of_ped_relationship","resolution_class":"DEPENDENCY_BLOCKED","answer_shape":"UNQUANTIFIED","reason":"specific base joint proposition remains residue even though duration-domain relationship is represented"},
+    {"atomic_unit_id":"bajaj_mhc_ped_duration_selection_domain","resolution_class":"INSTANCE_BOUND","answer_shape":"UNQUANTIFIED"},
+    {"atomic_unit_id":"bajaj_mhc_specific_duration_selection_domain","resolution_class":"INSTANCE_BOUND","answer_shape":"UNQUANTIFIED"},
+    {"atomic_unit_id":"bajaj_mhc_maternity_upfront_premium_reduction","resolution_class":"INSTANCE_BOUND","answer_shape":"CONDITIONAL"},
+    {"atomic_unit_id":"bajaj_mhc_baby_care_upfront_premium_reduction","resolution_class":"INSTANCE_BOUND","answer_shape":"CONDITIONAL"},
+    {"atomic_unit_id":"bajaj_mhc_migration_continuity_general","resolution_class":"GOVERNANCE_BLOCKED","answer_shape":"UNQUANTIFIED","regulatory_effect_class":"BENEFIT_ESTABLISHING"}
+  ],
+  "review_decision": {
+    "all_atomic_units_accounted": true,
+    "bajaj_publication_ready": false,
+    "reason": "C6.2 intentionally preserves two source-valid propositions as true semantic residue; publication remains blocked only for affected units until a generic representability decision is made."
+  }
+}
