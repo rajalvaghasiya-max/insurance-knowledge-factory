@@ -117,10 +117,15 @@ def test_initial_decision_preserves_base_30_day_mechanic() -> None:
     assert any("more than twelve months" in item for item in mechanics["exceptions"])
 
 
-def test_human_review_approval_does_not_itself_claim_publication() -> None:
+def test_publication_boundary_records_post_certification_state() -> None:
     payload = _load()
     boundary = payload["publication_boundary"]
     assert boundary["human_base_clause_review_approved"] is True
-    assert boundary["runtime_publication_created"] is False
-    assert boundary["authoritative_publication_created"] is False
-    assert boundary["coverage_registry_promoted"] is False
+    assert boundary["runtime_publication_created"] is True
+    assert boundary["authoritative_publication_created"] is True
+    assert boundary["coverage_registry_promoted"] is True
+    evidence = boundary["certification_evidence"]
+    assert evidence["focused_g12_tests"] == "44 passed"
+    assert evidence["mo028b_suite"] == "252 passed"
+    assert evidence["full_repository"] == "2862 passed"
+    assert evidence["regressions"] == 0
