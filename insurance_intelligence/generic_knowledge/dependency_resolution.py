@@ -12,6 +12,7 @@ Relationships default to NONE. Product identity must never influence propagation
 """
 from __future__ import annotations
 
+from collections.abc import Hashable
 from dataclasses import dataclass
 from enum import Enum
 from typing import Iterable
@@ -57,6 +58,7 @@ class ResolutionOperand:
     operand_id: str
     resolution: ComputedResolution
     applicability: ApplicabilityKey
+    resolution_cell_identity: Hashable | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.operand_id, str) or not self.operand_id.strip():
@@ -66,6 +68,10 @@ class ResolutionOperand:
             raise DependencyResolutionError("resolution must be ComputedResolution")
         if not isinstance(self.applicability, ApplicabilityKey):
             raise DependencyResolutionError("applicability must be ApplicabilityKey")
+        if self.resolution_cell_identity is not None and not isinstance(
+            self.resolution_cell_identity, Hashable
+        ):
+            raise DependencyResolutionError("resolution_cell_identity must be hashable or None")
 
 
 @dataclass(frozen=True)
@@ -125,8 +131,12 @@ def _normalize_operands(operands: Iterable[ResolutionOperand]) -> tuple[Resoluti
 
 
 def _same_applicability_cell(operands: tuple[ResolutionOperand, ...]) -> bool:
-    first = operands[0].applicability
-    return all(operand.applicability == first for operand in operands[1:])
+    first = operands[0]
+    return all(
+        operand.applicability == first.applicability
+        and operand.resolution_cell_identity == first.resolution_cell_identity
+        for operand in operands[1:]
+    )
 
 
 def _validation_conflict() -> ComputedResolution:
@@ -232,7 +242,10 @@ def resolve_conditional_modifier(
         raise DependencyResolutionError("direction must be ModifierDirection")
     if base.operand_id == modifier.operand_id:
         raise DependencyResolutionError("base and modifier operand IDs must differ")
-    if base.applicability != modifier.applicability:
+    if (
+        base.applicability != modifier.applicability
+        or base.resolution_cell_identity != modifier.resolution_cell_identity
+    ):
         conflict = _validation_conflict()
         return EffectiveDependencyResolution(
             mode=ResolutionDependencyMode.CONDITIONAL_MODIFIER,
