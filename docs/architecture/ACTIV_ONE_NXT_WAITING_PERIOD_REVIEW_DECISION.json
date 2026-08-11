@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3",
+  "schema_version": "1.4",
   "record_type": "waiting_period_review_decision_v1",
   "product_reference": "pv_aditya_birla_health_activ_one_nxt_adihlip24097v012324",
   "insurer_id": "aditya_birla_health",
@@ -86,10 +86,11 @@
     "runtime_publication_created": true,
     "authoritative_publication_created": true,
     "coverage_registry_promoted": true,
-    "validated_by": {
+    "certification_evidence": {
       "focused_g12_tests": "44 passed",
-      "mo028b_tests": "252 passed",
-      "full_repository_tests": "2862 passed"
+      "mo028b_suite": "252 passed",
+      "full_repository": "2862 passed",
+      "regressions": 0
     },
     "validated_on": "2026-08-10",
     "reason": "Human-approved base-clause decisions were successfully projected through the governed generic publication path and promoted into the generalized Health Coverage Registry with all targeted, MO-028B, and full-repository regressions green."
