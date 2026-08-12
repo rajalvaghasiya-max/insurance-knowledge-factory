@@ -158,9 +158,12 @@ def test_g11_closure_preserves_genericity_and_adds_no_product_reasoning() -> Non
     }
 
 
-def test_g11_closure_is_certification_gate_not_publication_decision() -> None:
-    decision = _load(CLOSURE)["decision"]
+def test_g11_closure_is_certified_without_becoming_publication_decision() -> None:
+    closure = _load(CLOSURE)
+    decision = closure["decision"]
+    publication = closure["publication_safety"]
     assert decision["g11_adversarial_semantic_generalization_complete"] is True
     assert decision["g11_ready_for_closure_certification_tests"] is True
-    assert decision["g11_closed"] is False
-    assert "MO-028B Health Generalization Certification" in decision["next_action_after_green_tests"]
+    assert decision["g11_closed"] is True
+    assert publication["publication_certified_in_this_artifact"] is False
+    assert publication["zero_residue_implies_publication_ready"] is False
