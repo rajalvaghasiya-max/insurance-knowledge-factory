@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "record_type": "schedule_bound_base_mechanic_adjudication_v1",
+  "milestone": "MO-028B.G11.C6.4",
+  "product": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "prior_adjudication_artifact": "MO_028B_G11_C6_3_BAJAJ_REVISED_MAPPING_ADJUDICATION.json",
+  "remaining_atomic_unit_id": "bajaj_mhc_specific_base_wait_schedule_bound",
+  "replacement_disposition": {
+    "atomic_unit_id": "bajaj_mhc_specific_base_wait_schedule_bound",
+    "disposition": "MAPPED",
+    "mapping_kind": "SEMANTIC_FACT",
+    "semantic_type": "BASE_MECHANIC",
+    "semantic_value": {
+      "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+      "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+      "applies_to": [
+        "specified diseases and procedures covered by the governed exclusion"
+      ],
+      "scope_type": "POLICY_WIDE",
+      "duration_domain_reference": {
+        "semantic_fact_id": "fact_bajaj_mhc_specific_duration_selection_domain_duration_selection",
+        "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+        "ontology_version": "waiting_periods_v2"
+      }
+    },
+    "reason": "The source-valid base mechanic is fully represented without a scalar duration by referencing the separately certified Policy-Schedule-selected DURATION_SELECTION domain. Start basis and policy-wide scope remain on the base mechanic; the duration domain retains separate provenance and is the sole authority for instance selection."
+  },
+  "duration_domain_dependency": {
+    "semantic_fact_id": "fact_bajaj_mhc_specific_duration_selection_domain_duration_selection",
+    "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+    "ontology_version": "waiting_periods_v2",
+    "source_document_id": "bajaj_my_health_care_policy_wording_v1",
+    "source_document_version": "v1",
+    "source_hash_sha256": "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade"
+  },
+  "contract_invariants": [
+    "BASE_MECHANIC_DURATION_MODE_IS_STRUCTURAL",
+    "SCALAR_XOR_DURATION_DOMAIN_REFERENCE",
+    "BASE_MECHANIC_DOES_NOT_AUTHOR_SCHEDULE_VALUE_SOURCE",
+    "DOMAIN_FACT_IS_SOLE_SCHEDULE_SELECTION_AUTHORITY",
+    "DOMAIN_REFERENCE_MATCHES_WAITING_PERIOD_TYPE",
+    "DOMAIN_REFERENCE_MATCHES_ONTOLOGY_VERSION",
+    "DOMAIN_FACT_MATCHES_APPLICABILITY",
+    "DOMAIN_FACT_MATCHES_SCOPE_IDENTITY",
+    "DOMAIN_OPTIONS_ARE_NOT_DUPLICATED_IN_BASE_MECHANIC",
+    "DOMAIN_DEPENDENCY_IS_BOUND_INTO_PUBLICATION_IDENTITY"
+  ],
+  "revised_c6_summary": {
+    "atomic_unit_count": 30,
+    "accounted_unit_count": 30,
+    "true_semantic_residue_count": 0,
+    "product_identity_reasoning_code_added": false,
+    "mixed_accounting_added": false,
+    "new_semantic_type_added": false
+  },
+  "representability_update": {
+    "atomic_unit_id": "bajaj_mhc_specific_base_wait_schedule_bound",
+    "resolution_class": "INSTANCE_BOUND",
+    "answer_shape": "UNQUANTIFIED",
+    "instance_status": "POLICY_SCHEDULE_BOUND"
+  },
+  "dependent_relationship_update": {
+    "atomic_unit_id": "bajaj_mhc_specific_longer_of_ped_relationship",
+    "accounting_state": "MAPPED_AS_RELATIONSHIP",
+    "resolution_class": "INSTANCE_BOUND",
+    "reason": "The longer-of relationship no longer has a representationally blocked operand. Until both PED and specific schedule selections resolve, C2 remains required-input unresolved because the operands are instance-bound."
+  },
+  "decision": {
+    "c6_4_contract_gap_closed": true,
+    "bajaj_true_semantic_residue_count": 0,
+    "bajaj_semantic_representation_complete": true,
+    "bajaj_all_customer_answers_resolved": false,
+    "publication_requires_existing_governance_gates": true,
+    "notes": "Zero semantic residue means the governed product semantics are representable. Schedule-bound, conditional and regulatory-verification-required states remain distinct and continue through C1-C5."
+  }
+}
