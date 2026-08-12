@@ -87,10 +87,16 @@ def test_seed_exact_alias_resolves_with_governance_and_provenance() -> None:
     assert result.alias_registry_snapshot_id.startswith("gcar_")
 
 
-def test_case_and_punctuation_normalisation_remain_deterministic() -> None:
+def test_case_and_whitespace_normalisation_remain_deterministic_without_punctuation_expansion() -> None:
     resolver = GovernedBenefitConceptResolver(build_mo028c_governed_alias_registry())
-    assert resolver.resolve("  road-ambulance ", as_of=AS_OF).status is BenefitConceptIdentityStatus.RESOLVED
-    assert resolver.resolve("  ROAD AMBULANCE ", as_of=AS_OF).concept_id == "health:benefit:road_ambulance"
+    spaced = resolver.resolve("  ROAD AMBULANCE ", as_of=AS_OF)
+    assert spaced.status is BenefitConceptIdentityStatus.RESOLVED
+    assert spaced.concept_id == "health:benefit:road_ambulance"
+
+    punctuated = resolver.resolve("road-ambulance", as_of=AS_OF)
+    assert punctuated.status is BenefitConceptIdentityStatus.NOT_FOUND
+    assert punctuated.selected_concept is None
+    assert punctuated.reason_codes == ("NO_ELIGIBLE_GOVERNED_ALIAS",)
 
 
 def test_unknown_label_is_not_found_and_never_best_guessed() -> None:
