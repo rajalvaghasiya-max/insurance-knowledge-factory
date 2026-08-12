@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "record_type": "mo028b_health_waiting_period_generalization_certification_v1",
+  "milestone": "MO-028B",
+  "domain": "HEALTH",
+  "concept": "waiting_periods",
+  "ontology_version": "waiting_periods_v2",
+  "certification_question": "Can PolicyScna represent, govern, resolve and safely publish Health waiting-period knowledge generically across materially different products without product-specific reasoning?",
+  "pressure_products": [
+    {
+      "role": "LEGACY_BACKWARD_COMPATIBILITY",
+      "insurer": "Star Health",
+      "product": "Star Comprehensive",
+      "product_reference": "pv_star_health_star_comprehensive_shahlip26044v092526",
+      "uin": "SHAHLIP26044V092526",
+      "evidence": {
+        "migration_artifact": "knowledge/factory/migrations/star_comprehensive_waiting_period_generic_migration_v1.json",
+        "semantic_recertification_required": true,
+        "v2_recertification_without_semantic_drift": true,
+        "v2_residue_count": 0
+      },
+      "certified_claim": "Existing certified scalar waiting-period knowledge remains valid under waiting_periods_v2 without semantic drift or new residue."
+    },
+    {
+      "role": "GOVERNED_PUBLICATION_BOUNDARY",
+      "insurer": "Aditya Birla Health Insurance",
+      "product": "Activ One NXT",
+      "product_reference": "pv_aditya_birla_health_activ_one_nxt_adihlip24097v012324",
+      "uin": "ADIHLIP24097V012324",
+      "evidence": {
+        "migration_artifact": "knowledge/factory/migrations/activ_one_nxt_waiting_period_generic_migration_v1.json",
+        "review_decision_artifact": "docs/architecture/ACTIV_ONE_NXT_WAITING_PERIOD_REVIEW_DECISION.json",
+        "human_review_approved": true,
+        "runtime_publication_created": true,
+        "authoritative_publication_created": true,
+        "coverage_registry_promoted": true,
+        "v2_recertification_without_semantic_drift": true,
+        "v2_residue_count": 0
+      },
+      "certified_claim": "Human-reviewed waiting-period facts can traverse the generic publication boundary and Coverage Registry path without bypassing governance."
+    },
+    {
+      "role": "ADVERSARIAL_GENERALIZATION",
+      "insurer": "Bajaj Allianz General",
+      "product": "My Health Care Plan",
+      "entity_id": "bajaj_allianz_general:my_health_care",
+      "uin": "BAJHLIP26074V022526",
+      "evidence": {
+        "g11_closure_artifact": "docs/architecture/MO_028B_G11_BAJAJ_ADVERSARIAL_CLOSURE_CERTIFICATION.json",
+        "atomic_unit_count": 30,
+        "accounted_unit_count": 30,
+        "true_semantic_residue_count": 0,
+        "product_specific_reasoning_added": false
+      },
+      "certified_claim": "Adversarial waiting-period semantics are representable through generic facts, relationships, applicability cells, schedule resolution and governance contracts with zero true semantic residue."
+    }
+  ],
+  "generic_capabilities_certified": [
+    "SOURCE_FIRST_NORMATIVE_INVENTORY",
+    "EXPLICIT_RESIDUE_ACCOUNTING",
+    "GENERIC_WAITING_PERIOD_SEMANTIC_MAPPING",
+    "RELATIONSHIP_MAPPING",
+    "COMPUTED_RESOLUTION_STATUS",
+    "REQUIRED_INPUT_AND_CONDITIONAL_DEPENDENCY_RESOLUTION",
+    "ORTHOGONAL_WAITING_PERIOD_RESOLUTION_CELLS",
+    "AUTHENTICATED_POLICY_SCHEDULE_VALUE_RESOLUTION",
+    "GOVERNANCE_AND_AUTHORITY_INTEGRATION",
+    "SCHEDULE_BOUND_BASE_MECHANIC",
+    "PUBLICATION_DEPENDENCY_BINDING",
+    "COVERAGE_REGISTRY_PROMOTION_FOR_GOVERNED_PUBLICATION"
+  ],
+  "safety_invariants": [
+    "EVIDENCE_BEFORE_EXPLANATION",
+    "UNKNOWN_OVER_INVENTED",
+    "INSTANCE_BOUND_IS_NOT_RESIDUE",
+    "ZERO_RESIDUE_DOES_NOT_MEAN_FULL_INSTANCE_RESOLUTION",
+    "ZERO_RESIDUE_DOES_NOT_MEAN_AUTOMATIC_PUBLICATION",
+    "CONDITIONAL_IS_NOT_SCALAR",
+    "REGULATORY_VERIFICATION_REQUIRED_IS_NOT_AFFIRMATIVE_EFFECTIVE_BENEFIT",
+    "MACHINE_REVIEW_REQUEST_IS_NOT_HUMAN_APPROVAL",
+    "VALID_AUTHORITY_OVERRIDE_IS_NOT_SEMANTIC_CONFLICT",
+    "PRODUCT_IDENTITY_IS_DATA_NOT_REASONING",
+    "FINEST_PUBLISHABLE_UNIT_GATING"
+  ],
+  "scope_limits": {
+    "certified_for": [
+      "Health waiting-period semantic representation",
+      "Health waiting-period governance and publication eligibility",
+      "Health waiting-period policy-instance value binding through governed Policy Schedule resolution",
+      "Generic cross-product semantic compatibility across the three pressure products"
+    ],
+    "not_certified_by_this_milestone": [
+      "all Health benefit families",
+      "sub-limits and room-rent generalization",
+      "claims adjudication",
+      "consumer recommendation ranking",
+      "exact current migration credit without regulatory verification",
+      "automatic legal interpretation of endorsements or riders",
+      "Life or Motor insurance semantics"
+    ]
+  },
+  "closure_criteria": {
+    "star_v2_backward_compatibility": true,
+    "activ_governed_publication_boundary": true,
+    "bajaj_zero_true_semantic_residue": true,
+    "product_specific_reasoning_branches": 0,
+    "full_repository_regressions": 0,
+    "mo028b_ready_to_close_after_final_certification_tests": true
+  },
+  "decision": {
+    "mo028b_health_waiting_period_generalization_complete": true,
+    "mo028b_ready_for_final_certification_tests": true,
+    "mo028b_closed": false,
+    "next_action_after_green_tests": "Close MO-028B and move to the next planned Health semantic family; do not extend waiting-period architecture without new source pressure."
+  }
+}
