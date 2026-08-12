@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "record_type": "adversarial_waiting_period_revised_mapping_adjudication_v1",
+  "milestone": "MO-028B.G11.C6.3",
+  "product": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "base_mapping_artifact": "MO_028B_G11_C6_BAJAJ_REVIEWED_WAITING_PERIOD_MAPPING.json",
+  "resegmentation_artifact": "MO_028B_G11_C6_3_BAJAJ_PROVENANCE_RESEGMENTATION.json",
+  "replacement_dispositions": [
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_base_wait_schedule_bound",
+      "disposition": "NOT_YET_REPRESENTABLE",
+      "mapping_kind": "NOT_YET_REPRESENTABLE",
+      "reason": "The source-valid base mechanic is schedule-bound and jointly carries duration/start/scope. Current BASE_MECHANIC requires a scalar duration, while START_BASIS alone would drop scope and schedule-bound duration. The remaining gap is therefore a generic non-scalar schedule-bound base mechanic, not an exception/qualifier problem."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_accident_exception",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "EXCEPTION",
+      "semantic_value": {
+        "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+        "detail": "The specified disease/procedure waiting-period exclusion does not apply to accident claims."
+      },
+      "reason": "The accident carve-out is independently source-supported and maps through the existing closed EXCEPTION semantic type."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_schedule_dependency",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "SCHEDULE_DEPENDENCY",
+      "semantic_value": {
+        "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+        "detail": "The applicable waiting-period duration is the period opted by the insured and stated in the Policy Schedule."
+      },
+      "reason": "The Policy Schedule dependency is independently source-supported and maps through the existing schedule-dependency semantic."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_investigation_initial_30_day_wait",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "BASE_MECHANIC",
+      "semantic_value": {
+        "waiting_period_type": "INITIAL",
+        "duration_value": 30,
+        "duration_unit": "DAYS",
+        "start_basis": "POLICY_INCEPTION",
+        "applies_to": ["doctor prescribed lab and radiology cover illness claims"],
+        "scope_type": "BENEFIT_SCOPED",
+        "scope_reference": "doctor_prescribed_lab_and_radiology_cover",
+        "value_source": "PRODUCT_FIXED"
+      },
+      "reason": "The first-year 30-day benefit-scoped wait is independently source-supported and fully representable by the existing BASE_MECHANIC contract."
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_investigation_initial_wait_renewal_cessation",
+      "disposition": "MAPPED",
+      "mapping_kind": "SEMANTIC_FACT",
+      "semantic_type": "RENEWAL_EFFECT",
+      "semantic_value": {
+        "waiting_period_type": "INITIAL",
+        "detail": "The benefit-scoped investigation waiting period does not apply on renewals."
+      },
+      "reason": "Renewal cessation is a separately source-supported lifecycle proposition and maps through the existing RENEWAL_EFFECT semantic without embedding it into BASE_MECHANIC."
+    }
+  ],
+  "revised_mapping_summary": {
+    "atomic_unit_count": 30,
+    "mapped_semantic_count": 18,
+    "mapped_relationship_count": 11,
+    "true_semantic_residue_count": 1,
+    "true_semantic_residue_ids": [
+      "bajaj_mhc_specific_base_wait_schedule_bound"
+    ],
+    "product_identity_reasoning_code_added": false,
+    "mixed_accounting_added": false,
+    "new_generic_semantic_contract_added": false
+  },
+  "representability_updates": [
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_base_wait_schedule_bound",
+      "resolution_class": "TRUE_SEMANTIC_RESIDUE",
+      "answer_shape": "UNQUANTIFIED"
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_accident_exception",
+      "resolution_class": "FULLY_REPRESENTED",
+      "answer_shape": "CONDITIONAL"
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_schedule_dependency",
+      "resolution_class": "FULLY_REPRESENTED",
+      "answer_shape": "UNQUANTIFIED"
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_investigation_initial_30_day_wait",
+      "resolution_class": "FULLY_REPRESENTED",
+      "answer_shape": "SCALAR"
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_investigation_initial_wait_renewal_cessation",
+      "resolution_class": "FULLY_REPRESENTED",
+      "answer_shape": "CONDITIONAL"
+    },
+    {
+      "atomic_unit_id": "bajaj_mhc_specific_longer_of_ped_relationship",
+      "resolution_class": "DEPENDENCY_BLOCKED",
+      "answer_shape": "UNQUANTIFIED",
+      "reason": "The relationship remains accounted but its specific-wait operand is representationally blocked by the one remaining base-mechanic gap."
+    }
+  ],
+  "decision": {
+    "c6_3_resegmentation_complete": true,
+    "investigation_cover_residue_closed": true,
+    "accident_exception_residue_closed": true,
+    "remaining_residue_count": 1,
+    "bajaj_publication_ready": false,
+    "next_architecture_question": "Can the generic waiting-period model represent a BASE_MECHANIC whose duration is intentionally POLICY_SCHEDULE_SELECTED rather than scalar, while retaining start basis and scope without duplicating the duration-selection domain?"
+  }
+}
