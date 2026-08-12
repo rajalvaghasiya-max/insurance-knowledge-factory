@@ -197,17 +197,20 @@ def test_specific_accident_and_schedule_dependency_keep_distinct_evidence_lineag
     assert schedule["material_effects"] == ["SCHEDULE_DEPENDENCY", "APPLICABILITY"]
 
 
-def test_remaining_schedule_bound_base_mechanic_gap_is_real_not_artifact_bookkeeping() -> None:
+def test_pre_c6_4_schedule_bound_base_shape_is_rejected_not_artifact_bookkeeping() -> None:
     units = {item["atomic_unit_id"]: item for item in _replacement_units()}
     base_unit = _unit(units["bajaj_mhc_specific_base_wait_schedule_bound"])
-    with pytest.raises(WaitingPeriodMappingError, match="duration_value"):
+    # C6.3 only needs to prove that its pre-C6.4 mapping shape was genuinely
+    # unrepresentable. C6.4 intentionally changed which invariant rejects that
+    # legacy shape, so this historical certification must not pin one error string.
+    with pytest.raises(WaitingPeriodMappingError):
         map_reviewed_waiting_period_units(
             (base_unit,),
             (
                 ReviewedWaitingPeriodMapping(
                     normative_unit_id=base_unit.normative_unit_id,
                     kind=ReviewedMappingKind.SEMANTIC_FACT,
-                    reason="prove current scalar BASE_MECHANIC limitation",
+                    reason="prove pre-C6.4 BASE_MECHANIC limitation",
                     semantic_type=WaitingPeriodSemanticType.BASE_MECHANIC,
                     semantic_value={
                         "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
