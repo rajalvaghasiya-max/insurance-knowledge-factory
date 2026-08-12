@@ -22,6 +22,9 @@ from insurance_intelligence.generic_knowledge.contracts import (
 from insurance_intelligence.generic_knowledge.normative_inventory import (
     InventoryAccountingResult,
 )
+from insurance_intelligence.generic_knowledge.waiting_period_duration_domain import (
+    DurationDomainDependencyBinding,
+)
 
 
 class PublicationEligibilityError(GenericKnowledgeContractError):
@@ -64,6 +67,7 @@ class PublicationDependencyBinding:
     concept_semantic_version: str | None = None
     applicability_schema_version: str | None = None
     mapping_policy_version: str | None = None
+    duration_domain_dependency: DurationDomainDependencyBinding | None = None
 
     def __post_init__(self) -> None:
         for field_name in (
@@ -85,6 +89,12 @@ class PublicationDependencyBinding:
             value = getattr(self, field_name)
             if value is not None:
                 object.__setattr__(self, field_name, _text(value, field_name))
+        if self.duration_domain_dependency is not None and not isinstance(
+            self.duration_domain_dependency, DurationDomainDependencyBinding
+        ):
+            raise PublicationEligibilityError(
+                "duration_domain_dependency must be DurationDomainDependencyBinding or None"
+            )
 
 
 @dataclass(frozen=True)
@@ -240,7 +250,11 @@ def dependency_binding_matches(
     published: PublicationDependencyBinding,
     current: PublicationDependencyBinding,
 ) -> bool:
-    """Return whether a publication's governed dependencies are still exact/current."""
+    """Return whether a publication's governed dependencies are still exact/current.
+
+    Duration-domain dependency identity participates in dataclass equality, so a referenced
+    domain version/source change invalidates the base publication dependency binding.
+    """
     if not isinstance(published, PublicationDependencyBinding) or not isinstance(
         current, PublicationDependencyBinding
     ):
