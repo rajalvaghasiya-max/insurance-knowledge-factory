@@ -191,13 +191,15 @@ def _member_basis(normalized: dict[str, Any], *, required: bool = False) -> None
 def _base_duration_mode(normalized: dict[str, Any]) -> None:
     """Validate scalar XOR schedule-domain-reference duration representation.
 
-    Mode is structural. BASE_MECHANIC does not author a value-source flag: a scalar duration is
+    Mode is structural. BASE_MECHANIC does not emit a value-source flag: a scalar duration is
     product-fixed knowledge; a duration-domain reference delegates value authority to the
-    referenced DURATION_SELECTION fact.
+    referenced DURATION_SELECTION fact. Legacy PRODUCT_FIXED input is accepted and stripped so
+    previously reviewed mappings remain loadable without preserving duplicate state.
     """
-    if "value_source" in normalized:
+    legacy_value_source = normalized.pop("value_source", None)
+    if legacy_value_source not in (None, WaitingPeriodValueSource.PRODUCT_FIXED.value):
         raise WaitingPeriodMappingError(
-            "BASE_MECHANIC must not author value_source; duration mode is structural"
+            "BASE_MECHANIC must not author schedule-selected value_source; duration mode is structural"
         )
 
     has_value = "duration_value" in normalized or "duration_unit" in normalized
