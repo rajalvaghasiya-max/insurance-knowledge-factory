@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "record_type": "mo_028c_g0_benefit_limit_pressure_selection_v1",
+  "milestone": "MO-028C.G0",
+  "objective": "Select a small authoritative Health product pressure set that forces materially different benefit-limit semantics before generic contract implementation.",
+  "selection_invariants": [
+    "SOURCE_PRESSURE_PRECEDES_ONTOLOGY_EXPANSION",
+    "LIMIT_VALUE_IS_NOT_LIMIT_SEMANTICS",
+    "COST_SHARING_INTERACTION_MUST_REMAIN_DISTINGUISHABLE",
+    "BENEFIT_IDENTITY_MUST_BE_GOVERNED_BEFORE_COMPARISON",
+    "ABSENCE_IS_NOT_NO_LIMIT",
+    "PRODUCT_IDENTITY_IS_DATA_NOT_REASONING"
+  ],
+  "selected_products": [
+    {
+      "selection_role": "FIRST_DETAILED_INVENTORY_AND_ADVERSARIAL_COMPOSITION_ANCHOR",
+      "insurer": "Star Health and Allied Insurance Company Limited",
+      "product": "Arogya Sanjeevani Policy",
+      "uin": "SHAHLIP26045V042526",
+      "authoritative_source": {
+        "source_type": "POLICY_WORDING",
+        "document_label": "Arogya Sanjeevani Policy, Star Health And Allied Insurance Co Ltd. Policy Wordings V.14/2025",
+        "source_status": "VERIFIED_CURRENT_OFFICIAL_POLICY_WORDING"
+      },
+      "confirmed_pressure": [
+        {
+          "benefit": "cataract_treatment",
+          "mechanic": "25 percent of Sum Insured or INR 40,000 whichever is lower",
+          "period_scope": "per eye in one Policy Year",
+          "pressure_dimensions": [
+            "PERCENTAGE",
+            "CEILING_COMPOSITION",
+            "PERCENTAGE_BASIS_SUM_INSURED",
+            "PER_EYE_EVENT_SCOPE",
+            "PER_POLICY_YEAR_SCOPE",
+            "INSTANCE_BOUND_CURRENCY_RESULT"
+          ]
+        },
+        {
+          "benefit": "road_ambulance",
+          "mechanic": "maximum INR 2,000 per hospitalization",
+          "pressure_dimensions": [
+            "FIXED_CURRENCY",
+            "PER_HOSPITALIZATION"
+          ]
+        },
+        {
+          "benefit": "modern_treatment_group",
+          "mechanic": "up to 50 percent of Sum Insured during Policy Period",
+          "pressure_dimensions": [
+            "PERCENTAGE",
+            "PERCENTAGE_BASIS_SUM_INSURED",
+            "GROUPED_BENEFIT_IDENTITY",
+            "PER_POLICY_PERIOD"
+          ]
+        },
+        {
+          "benefit": "all_claims",
+          "mechanic": "5 percent co-payment applies to each and every claim; payable amount after co-payment deduction",
+          "pressure_dimensions": [
+            "COST_SHARING_INTERACTION",
+            "COPAY",
+            "ORDERING_RELATIVE_TO_ADMISSIBLE_PAYABLE_AMOUNT"
+          ]
+        },
+        {
+          "benefit": "room_and_icu_limits",
+          "mechanic": "admission above room/ICU limits triggers proportionate reimbursement of other hospital expenses except medicines",
+          "pressure_dimensions": [
+            "PROPORTIONATE_DEDUCTION_INTERACTION",
+            "LIMIT_INTERACTION_NOT_SETTLEMENT_CALCULATION"
+          ],
+          "scope_note": "Adversarial interaction evidence only; room-rent semantic family remains deferred from the first MO-028C implementation slice."
+        }
+      ],
+      "why_selected": "One authoritative wording provides fixed currency, percentage-of-SI, composable ceiling, multiple period/event scopes, global copay interaction, and proportionate-deduction interaction without requiring speculative semantics."
+    },
+    {
+      "selection_role": "SECOND_PRODUCT_FIXED_AND_NESTED_AGGREGATE_PRESSURE",
+      "insurer": "Star Health and Allied Insurance Company Limited",
+      "product": "Star Comprehensive Insurance Policy",
+      "uin": "SHAHLIP26044V092526",
+      "source_status": "OFFICIAL_CURRENT_PRODUCT_SOURCE_VERIFIED; POLICY_WORDING_TO_BE_ANCHORED_DURING_ATOMIC_INVENTORY",
+      "confirmed_pressure": [
+        {
+          "benefit": "air_ambulance",
+          "mechanic": "INR 2,50,000 per hospitalization subject to maximum INR 5,00,000 per policy period",
+          "pressure_dimensions": [
+            "FIXED_CURRENCY",
+            "PER_HOSPITALIZATION",
+            "NESTED_POLICY_PERIOD_AGGREGATE"
+          ]
+        },
+        {
+          "benefit": "home_care_treatment",
+          "mechanic": "10 percent of Sum Insured subject to maximum INR 5 lakh in a Policy Year",
+          "pressure_dimensions": [
+            "PERCENTAGE",
+            "CEILING_COMPOSITION",
+            "PER_POLICY_YEAR"
+          ]
+        },
+        {
+          "benefit": "room_rent",
+          "mechanic": "affirmative no capping within governed room eligibility",
+          "pressure_dimensions": [
+            "AFFIRMATIVE_NO_CAPPING",
+            "NO_LIMIT_VS_ELIGIBILITY_CATEGORY"
+          ],
+          "scope_note": "Used as semantic pressure only; room-rent implementation remains deferred from first slice."
+        },
+        {
+          "benefit": "age_conditioned_claims",
+          "mechanic": "10 percent copay for specified entry-age population",
+          "pressure_dimensions": [
+            "COST_SHARING_INTERACTION",
+            "APPLICABILITY_CONDITION"
+          ]
+        }
+      ],
+      "why_selected": "Provides nested aggregate and percentage-with-ceiling pressure distinct from the Arogya cataract mechanic, plus affirmative no-capping evidence."
+    },
+    {
+      "selection_role": "THIRD_PRODUCT_NO_SUBLIMIT_AND_UP_TO_SUM_INSURED_PRESSURE",
+      "insurer": "Aditya Birla Health Insurance Co. Limited",
+      "product": "Activ One NXT",
+      "uin": "ADIHLIP24097V012324",
+      "source_status": "OFFICIAL_PRODUCT_SOURCE_AND_EXISTING_REPOSITORY_POLICY_WORDING_AVAILABLE; EXACT CLAUSE ANCHORS_REQUIRED_BEFORE MAPPING",
+      "confirmed_pressure": [
+        {
+          "benefit": "base_hospitalization_benefits",
+          "mechanic": "official product materials state no capping/no sub-limits for base benefits, with coverage generally up to Base Sum Insured",
+          "pressure_dimensions": [
+            "AFFIRMATIVE_NO_SUBLIMIT",
+            "UP_TO_SUM_INSURED",
+            "NO_LIMIT_VS_SUM_INSURED_CEILING"
+          ]
+        },
+        {
+          "benefit": "road_ambulance",
+          "mechanic": "covered up to Base Sum Insured under no-capping product representation",
+          "pressure_dimensions": [
+            "UP_TO_SUM_INSURED",
+            "BENEFIT_CONCEPT_IDENTITY_CROSS_PRODUCT"
+          ]
+        }
+      ],
+      "why_selected": "Provides the semantic opposite of explicit sub-limits and forces affirmative NO_LIMIT/NO_SUBLIMIT to remain distinct from UP_TO_SUM_INSURED and from absence of a located limit clause."
+    }
+  ],
+  "g0_scope_decisions": {
+    "first_atomic_inventory_product": "Star Arogya Sanjeevani Policy",
+    "room_rent_first_slice": false,
+    "deductible_in_mo028c": false,
+    "generic_formula_language": false,
+    "fuzzy_benefit_matching_allowed": false,
+    "cost_sharing_interaction_required_for_comparison_safety": true,
+    "benefit_concept_identity_required_before_cross_product_comparison": true
+  },
+  "next_action": "Build source-first atomic normative inventory for Arogya Sanjeevani benefit-limit propositions, preserving cataract composition, period/event scopes, ambulance fixed limit, modern-treatment percentage limit, and cost-sharing interaction evidence. Do not implement G1/G2 contracts until residue/pressure inventory is reviewed."
+}
