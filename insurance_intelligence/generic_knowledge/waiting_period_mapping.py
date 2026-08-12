@@ -31,6 +31,11 @@ from insurance_intelligence.generic_knowledge.contracts import (
 from insurance_intelligence.generic_knowledge.normative_inventory import (
     InventoryAccountingDecision,
 )
+from insurance_intelligence.generic_knowledge.waiting_period_duration_domain import (
+    DurationDomainBindingError,
+    DurationDomainReference,
+    validate_duration_domain_reference,
+)
 
 
 WAITING_PERIOD_CONCEPT = "waiting_periods"
@@ -183,6 +188,41 @@ def _member_basis(normalized: dict[str, Any], *, required: bool = False) -> None
         raise WaitingPeriodMappingError("member_waiting_basis is not supported by the ontology") from exc
 
 
+def _base_duration_mode(normalized: dict[str, Any]) -> None:
+    """Validate scalar XOR schedule-domain-reference duration representation.
+
+    Mode is structural. BASE_MECHANIC does not author a value-source flag: a scalar duration is
+    product-fixed knowledge; a duration-domain reference delegates value authority to the
+    referenced DURATION_SELECTION fact.
+    """
+    if "value_source" in normalized:
+        raise WaitingPeriodMappingError(
+            "BASE_MECHANIC must not author value_source; duration mode is structural"
+        )
+
+    has_value = "duration_value" in normalized or "duration_unit" in normalized
+    has_reference = "duration_domain_reference" in normalized
+    if has_value and has_reference:
+        raise WaitingPeriodMappingError(
+            "BASE_MECHANIC cannot combine scalar duration with duration-domain reference; "
+            "possible fixed-with-schedule-override semantics require a future reviewed mode"
+        )
+    if not has_value and not has_reference:
+        raise WaitingPeriodMappingError(
+            "BASE_MECHANIC requires either scalar duration or duration-domain reference"
+        )
+
+    if has_value:
+        _duration(normalized)
+        return
+
+    try:
+        reference = DurationDomainReference.from_mapping(normalized["duration_domain_reference"])
+    except DurationDomainBindingError as exc:
+        raise WaitingPeriodMappingError(str(exc)) from exc
+    normalized["duration_domain_reference"] = reference.as_mapping()
+
+
 def _validate_semantic_value(
     semantic_type: WaitingPeriodSemanticType,
     value: Mapping[str, Any],
@@ -192,10 +232,11 @@ def _validate_semantic_value(
         raise WaitingPeriodMappingError("semantic_value requires waiting_period_type")
     normalized["waiting_period_type"] = _waiting_period_type(normalized["waiting_period_type"])
 
-    if semantic_type in (WaitingPeriodSemanticType.BASE_MECHANIC, WaitingPeriodSemanticType.DURATION):
+    if semantic_type is WaitingPeriodSemanticType.DURATION:
         _duration(normalized)
 
     if semantic_type is WaitingPeriodSemanticType.BASE_MECHANIC:
+        _base_duration_mode(normalized)
         try:
             normalized["start_basis"] = WaitingPeriodStartBasis(str(normalized.get("start_basis"))).value
         except ValueError as exc:
@@ -205,12 +246,6 @@ def _validate_semantic_value(
             raise WaitingPeriodMappingError("BASE_MECHANIC requires non-empty applies_to")
         normalized["applies_to"] = tuple(_text(item, "applies_to") for item in applies_to)
         _scope(normalized)
-        try:
-            normalized["value_source"] = WaitingPeriodValueSource(
-                str(normalized.get("value_source", WaitingPeriodValueSource.PRODUCT_FIXED.value))
-            ).value
-        except ValueError as exc:
-            raise WaitingPeriodMappingError("value_source is not supported by the ontology") from exc
         _member_basis(normalized)
 
     if semantic_type is WaitingPeriodSemanticType.START_BASIS:
@@ -305,6 +340,32 @@ def _fact_id(unit: NormativeUnit, semantic_type: WaitingPeriodSemanticType) -> s
 
 def _relationship_id(unit: NormativeUnit, relationship_type: RelationshipType) -> str:
     return f"rel_{unit.normative_unit_id}_{relationship_type.value.lower()}"
+
+
+def _validate_duration_domain_edges(semantic_facts: Sequence[SemanticFact]) -> None:
+    fact_index = {fact.fact_id: fact for fact in semantic_facts}
+    for base_fact in semantic_facts:
+        if base_fact.semantic_type != WaitingPeriodSemanticType.BASE_MECHANIC.value:
+            continue
+        raw_reference = base_fact.value.get("duration_domain_reference")
+        if raw_reference is None:
+            continue
+        try:
+            reference = DurationDomainReference.from_mapping(raw_reference)
+            domain_fact = fact_index.get(reference.semantic_fact_id)
+            if domain_fact is None:
+                raise DurationDomainBindingError(
+                    "duration-domain reference points to a missing semantic fact"
+                )
+            validate_duration_domain_reference(
+                base_value=base_fact.value,
+                base_applicability=base_fact.applicability,
+                base_ontology_version=base_fact.ontology_version,
+                reference=reference,
+                domain_fact=domain_fact,
+            )
+        except DurationDomainBindingError as exc:
+            raise WaitingPeriodMappingError(str(exc)) from exc
 
 
 def map_reviewed_waiting_period_units(
@@ -421,6 +482,8 @@ def map_reviewed_waiting_period_units(
                 reason=mapping.reason,
             )
         )
+
+    _validate_duration_domain_edges(semantic_facts)
 
     return WaitingPeriodMappingResult(
         semantic_facts=tuple(semantic_facts),
