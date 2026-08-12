@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "record_type": "g11_bajaj_adversarial_closure_certification_v1",
+  "milestone": "MO-028B.G11",
+  "product": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "canonical_product_name": "My Health Care Plan",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "certification_basis": {
+    "qualification_artifact": "MO_028B_G11_BAJAJ_MY_HEALTH_CARE_ADVERSARIAL_QUALIFICATION.json",
+    "atomic_inventory_artifact": "MO_028B_G11_C6_BAJAJ_ATOMIC_WAITING_PERIOD_INVENTORY.json",
+    "provenance_resegmentation_artifact": "MO_028B_G11_C6_3_BAJAJ_PROVENANCE_RESEGMENTATION.json",
+    "schedule_bound_base_adjudication_artifact": "MO_028B_G11_C6_4_BAJAJ_SCHEDULE_BOUND_BASE_MECHANIC_ADJUDICATION.json",
+    "ontology_version": "waiting_periods_v2"
+  },
+  "semantic_representability": {
+    "atomic_unit_count": 30,
+    "accounted_unit_count": 30,
+    "true_semantic_residue_count": 0,
+    "complete": true,
+    "meaning": "All source-supported Bajaj waiting-period normative propositions are representable by generic PolicyScna semantics or relationships after source-first provenance resegmentation; zero residue does not imply customer-instance resolution."
+  },
+  "resolution_safety": {
+    "policy_schedule_selected_waits": {
+      "status_without_instance_schedule": "POLICY_SCHEDULE_BOUND",
+      "affected_types": ["PRE_EXISTING_DISEASE", "SPECIFIC_DISEASE_PROCEDURE"]
+    },
+    "longer_of_dependency": {
+      "accounting_state": "MAPPED_AS_RELATIONSHIP",
+      "status_before_required_schedule_operands_resolve": "OPERAND_INSTANCE_BOUND"
+    },
+    "conditional_modifiers": {
+      "affected_types": ["MATERNITY", "BABY_CARE"],
+      "state_without_instance_condition": "CONDITIONAL_RANGE"
+    },
+    "migration": {
+      "structural_semantics_represented": true,
+      "regulatory_effect_class": "BENEFIT_ESTABLISHING",
+      "effective_credit_status": "REGULATORY_VERIFICATION_REQUIRED",
+      "answer_shape": "UNQUANTIFIED",
+      "affirmative_effective_benefit_publishable": false
+    },
+    "all_customer_answers_resolved": false
+  },
+  "publication_safety": {
+    "zero_residue_implies_publication_ready": false,
+    "semantic_representation_complete": true,
+    "publication_requires_existing_g7_c5_governance_gates": true,
+    "human_review_still_required_where_configured": true,
+    "source_freshness_still_required": true,
+    "authority_resolution_still_required": true,
+    "regulatory_verification_still_required_for_effective_migration_credit": true,
+    "instance_bound_states_are_not_semantic_residue": true,
+    "publication_certified_in_this_artifact": false
+  },
+  "genericity": {
+    "product_identity_reasoning_code_added": false,
+    "mixed_accounting_added": false,
+    "product_specific_semantic_type_added": false,
+    "new_parallel_governance_engine_added": false
+  },
+  "closure_invariants": [
+    "ZERO_RESIDUE_DOES_NOT_MEAN_FULL_INSTANCE_RESOLUTION",
+    "ZERO_RESIDUE_DOES_NOT_MEAN_AUTOMATIC_PUBLICATION",
+    "INSTANCE_BOUND_IS_NOT_RESIDUE",
+    "CONDITIONAL_IS_NOT_SCALAR",
+    "UNVERIFIED_BENEFIT_ESTABLISHING_REGULATORY_EFFECT_IS_NOT_AFFIRMATIVE_BENEFIT",
+    "ACCOUNTED_RELATIONSHIP_CAN_REMAIN_INSTANCE_BOUND",
+    "PRODUCT_IDENTITY_IS_DATA_NOT_REASONING"
+  ],
+  "decision": {
+    "g11_adversarial_semantic_generalization_complete": true,
+    "g11_ready_for_closure_certification_tests": true,
+    "g11_closed": false,
+    "next_action_after_green_tests": "Close MO-028B.G11 and prepare formal MO-028B Health Generalization Certification; do not add another G11 semantic layer unless closure tests expose a real fail-open."
+  }
+}
