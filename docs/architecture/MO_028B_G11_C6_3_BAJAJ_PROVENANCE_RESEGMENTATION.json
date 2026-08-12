@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "record_type": "adversarial_waiting_period_provenance_resegmentation_v1",
+  "milestone": "MO-028B.G11.C6.3",
+  "supersedes_for_adjudication": [
+    "MO_028B_G11_C6_BAJAJ_ATOMIC_WAITING_PERIOD_INVENTORY.json",
+    "MO_028B_G11_C6_BAJAJ_REVIEWED_WAITING_PERIOD_MAPPING.json"
+  ],
+  "product": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "decision_rule": {
+    "name": "PROVENANCE_SEPARABILITY",
+    "rule": "A source proposition may be split only where each resulting proposition is independently supported by the authoritative source expression. Shared numbered clause does not imply inseparable provenance. Target ontology structure never determines the split.",
+    "invariants": [
+      "NO_SILENT_LOSS",
+      "NO_SILENT_FABRICATION",
+      "SOURCE_EXPRESSION_DETERMINES_UNIT_BOUNDARY",
+      "ONE_ACCOUNTING_DISPOSITION_PER_ATOMIC_UNIT",
+      "NO_MIXED_ACCOUNTING"
+    ]
+  },
+  "replacements": [
+    {
+      "replaces_atomic_unit_id": "bajaj_mhc_specific_base_wait_accident_exception",
+      "parent_clause_group_id": "cg_specific",
+      "replacement_units": [
+        {
+          "atomic_unit_id": "bajaj_mhc_specific_base_wait_schedule_bound",
+          "source_pages": [20],
+          "source_locator": "page 20, Specific Disease/Procedure clause 2(a), base exclusion sentence",
+          "source_line_range": "1008-1010",
+          "source_support_summary": "Specified disease/procedure treatment is excluded for the selected continuous-coverage period measured from first My Health Care Plan inception.",
+          "normative_proposition": "Specified disease/procedure waiting period is a policy-wide schedule-bound base exclusion measured from first-plan inception.",
+          "material_effects": ["DURATION", "START_BASIS", "SCOPE", "APPLICABILITY"],
+          "source_sufficiency_review": "CONFIRMED"
+        },
+        {
+          "atomic_unit_id": "bajaj_mhc_specific_accident_exception",
+          "source_pages": [20],
+          "source_locator": "page 20, Specific Disease/Procedure clause 2(a), accident exception sentence",
+          "source_line_range": "1010-1011",
+          "source_support_summary": "The specified disease/procedure waiting-period exclusion does not apply to claims arising from an accident.",
+          "normative_proposition": "Accident claims are exempt from the specified disease/procedure waiting-period exclusion.",
+          "material_effects": ["EXCEPTION", "APPLICABILITY"],
+          "source_sufficiency_review": "CONFIRMED"
+        },
+        {
+          "atomic_unit_id": "bajaj_mhc_specific_schedule_dependency",
+          "source_pages": [20],
+          "source_locator": "page 20, Specific Disease/Procedure clause 2(a), Policy Schedule sentence",
+          "source_line_range": "1011-1012",
+          "source_support_summary": "The applicable specified-disease waiting period is the period opted by the insured and stated in the Policy Schedule.",
+          "normative_proposition": "Specified disease/procedure waiting-period duration is selected through the Policy Schedule.",
+          "material_effects": ["SCHEDULE_DEPENDENCY", "APPLICABILITY"],
+          "source_sufficiency_review": "CONFIRMED"
+        }
+      ]
+    },
+    {
+      "replaces_atomic_unit_id": "bajaj_mhc_investigation_initial_wait",
+      "parent_clause_group_id": "cg_investigation_initial",
+      "replacement_units": [
+        {
+          "atomic_unit_id": "bajaj_mhc_investigation_initial_30_day_wait",
+          "source_pages": [15],
+          "source_locator": "page 15, Doctor Prescribed Lab and Radiology Cover exclusion 4, first-year wait sentence",
+          "source_line_range": "721-727",
+          "source_support_summary": "Doctor Prescribed Lab and Radiology Cover has a 30-day illness waiting period in the first policy year.",
+          "normative_proposition": "Doctor Prescribed Lab and Radiology Cover has a benefit-scoped 30-day illness waiting period in the first policy year.",
+          "material_effects": ["DURATION", "BENEFIT_SCOPED_OVERRIDE", "APPLICABILITY"],
+          "source_sufficiency_review": "CONFIRMED"
+        },
+        {
+          "atomic_unit_id": "bajaj_mhc_investigation_initial_wait_renewal_cessation",
+          "source_pages": [15],
+          "source_locator": "page 15, Doctor Prescribed Lab and Radiology Cover exclusion 4, renewal sentence",
+          "source_line_range": "728-728",
+          "source_support_summary": "The investigation-cover 30-day waiting period does not apply on renewals.",
+          "normative_proposition": "The benefit-scoped investigation waiting period ceases to apply on renewal.",
+          "material_effects": ["RENEWAL_OR_REINSTATEMENT_EFFECT", "APPLICABILITY"],
+          "source_sufficiency_review": "CONFIRMED"
+        }
+      ]
+    }
+  ],
+  "revised_inventory_summary": {
+    "original_clause_group_count": 13,
+    "certified_c6_1_atomic_unit_count": 27,
+    "removed_composite_unit_count": 2,
+    "added_source_separable_unit_count": 5,
+    "revised_atomic_unit_count": 30,
+    "source_sufficiency_confirmed_count": 30,
+    "mixed_accounting_allowed": false
+  },
+  "adjudication": {
+    "investigation_residue_eliminated_by_source_resegmentation": true,
+    "specific_accident_exception_eliminated_by_source_resegmentation": true,
+    "specific_schedule_dependency_eliminated_by_source_resegmentation": true,
+    "remaining_generic_gap": "SCHEDULE_BOUND_BASE_MECHANIC_WITH_NONSCALAR_DURATION",
+    "new_base_mechanic_qualifier_fields_required": false,
+    "multi_output_mapping_required": false,
+    "generic_proposition_wrapper_required": false
+  }
+}
