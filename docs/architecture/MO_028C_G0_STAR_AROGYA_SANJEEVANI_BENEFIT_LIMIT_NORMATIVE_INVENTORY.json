@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0",
+  "record_type": "mo_028c_g0_benefit_limit_normative_inventory_v1",
+  "milestone": "MO-028C.G0",
+  "product": {
+    "insurer": "Star Health and Allied Insurance Company Limited",
+    "canonical_product_name": "Arogya Sanjeevani Policy",
+    "uin": "SHAHLIP26045V042526"
+  },
+  "source": {
+    "authority_class": "POLICY_WORDING",
+    "document_label": "Arogya Sanjeevani Policy, Star Health And Allied Insurance Co Ltd. Policy Wordings V.14/2025",
+    "document_identity": "star_arogya_sanjeevani_sha_hlip26045v042526_policy_wording_v14_2025",
+    "verification_status": "VERIFIED_CURRENT_OFFICIAL_POLICY_WORDING",
+    "source_pages_used": [7, 8, 9]
+  },
+  "inventory_method": "source_first_high_recall_atomic_normative_inventory",
+  "segmentation_rule": "One independently source-supported governable insurance proposition per normative unit; source expression determines boundaries, not target ontology shape.",
+  "atomic_units": [
+    {
+      "atomic_unit_id": "star_arogya_room_limit",
+      "parent_clause_group_id": "hospitalization_limits",
+      "source_page": 7,
+      "source_line_range": "524-528",
+      "source_locator": "Coverage 1.i Room Rent/Boarding/Nursing",
+      "anchored_excerpt_summary": "Room Rent, Boarding and Nursing expenses are covered up to 2% of Sum Insured subject to maximum INR 5,000 per day.",
+      "normative_proposition": "The hospitalization room/boarding/nursing benefit is limited to 2% of Sum Insured subject to a maximum of INR 5,000 per day.",
+      "material_effects": [
+        "BENEFIT_LIMIT",
+        "PERCENTAGE_BASIS_SUM_INSURED",
+        "CURRENCY_CEILING",
+        "PER_DAY_SCOPE"
+      ],
+      "source_sufficiency_review": "CONFIRMED",
+      "mo028c_scope": "ADVERSARIAL_INTERACTION_EVIDENCE_ONLY",
+      "scope_note": "Room-rent semantic implementation remains deferred from the first MO-028C limit slice."
+    },
+    {
+      "atomic_unit_id": "star_arogya_icu_limit",
+      "parent_clause_group_id": "hospitalization_limits",
+      "source_page": 7,
+      "source_line_range": "529-532",
+      "source_locator": "Coverage 1.ii ICU/ICCU",
+      "anchored_excerpt_summary": "ICU/ICCU expenses are covered up to 5% of Sum Insured subject to maximum INR 10,000 per day.",
+      "normative_proposition": "The ICU/ICCU benefit is limited to 5% of Sum Insured subject to a maximum of INR 10,000 per day.",
+      "material_effects": [
+        "BENEFIT_LIMIT",
+        "PERCENTAGE_BASIS_SUM_INSURED",
+        "CURRENCY_CEILING",
+        "PER_DAY_SCOPE"
+      ],
+      "source_sufficiency_review": "CONFIRMED",
+      "mo028c_scope": "ADVERSARIAL_INTERACTION_EVIDENCE_ONLY",
+      "scope_note": "ICU/room semantic implementation remains deferred from the first MO-028C limit slice."
+    },
+    {
+      "atomic_unit_id": "star_arogya_road_ambulance_limit",
+      "parent_clause_group_id": "other_hospitalization_expenses",
+      "source_page": 7,
+      "source_line_range": "551-553",
+      "source_locator": "Coverage 1.1.v Road Ambulance",
+      "anchored_excerpt_summary": "Road Ambulance expenses are subject to a maximum INR 2,000 per hospitalization.",
+      "normative_proposition": "The Road Ambulance benefit has a fixed maximum of INR 2,000 per hospitalization.",
+      "material_effects": [
+        "BENEFIT_LIMIT",
+        "FIXED_CURRENCY",
+        "PER_HOSPITALIZATION_SCOPE"
+      ],
+      "source_sufficiency_review": "CONFIRMED",
+      "mo028c_scope": "PRIMARY"
+    },
+    {
+      "atomic_unit_id": "star_arogya_room_icu_proportionate_deduction",
+      "parent_clause_group_id": "hospitalization_limits",
+      "source_page": 7,
+      "source_line_range": "560-569",
+      "source_locator": "Coverage Note 2 — room/ICU/ICCU over-limit consequence",
+      "anchored_excerpt_summary": "When room/ICU/ICCU rates exceed the allowed limits, other hospital expenses except medicines are reimbursed in the same proportion as admissible daily room/ICU rate to actual daily rate.",
+      "normative_proposition": "Exceeding the governed room/ICU/ICCU daily limit triggers proportionate reduction of other hospital expenses except medicines, based on admissible-to-actual daily room/ICU rate.",
+      "material_effects": [
+        "COST_SHARING_INTERACTION",
+        "PROPORTIONATE_DEDUCTION",
+        "LIMIT_TRIGGERED_INTERACTION"
+      ],
+      "source_sufficiency_review": "CONFIRMED",
+      "mo028c_scope": "PRIMARY_INTERACTION_PRESSURE"
+    },
+    {
+      "atomic_unit_id": "star_arogya_ayush_up_to_sum_insured",
+      "parent_clause_group_id": "benefit_limits",
+      "source_page": 8,
+      "source_line_range": "572-579",
+      "source_locator": "Coverage 2 AYUSH Treatment",
+      "anchored_excerpt_summary": "AYUSH inpatient treatment is covered during each Policy Year up to the Sum Insured specified in the Policy Schedule.",
+      "normative_proposition": "AYUSH inpatient treatment is covered up to the governed Sum Insured during each Policy Year.",
+      "material_effects": [
+        "BENEFIT_LIMIT",
+        "UP_TO_SUM_INSURED",
+        "PER_POLICY_YEAR_SCOPE",
+        "POLICY_SCHEDULE_SUM_INSURED_REFERENCE"
+      ],
+      "source_sufficiency_review": "CONFIRMED",
+      "mo028c_scope": "PRIMARY"
+    },
+    {
+      "atomic_unit_id": "star_arogya_cataract_limit",
+      "parent_clause_group_id": "benefit_limits",
+      "source_page": 8,
+      "source_line_range": "580-585",
+      "source_locator": "Coverage 3 Cataract Treatment",
+      "anchored_excerpt_summary": "Cataract treatment is limited to 25% of Sum Insured or INR 40,000 whichever is lower, per each eye in one Policy Year.",
+      "normative_proposition": "Cataract treatment is limited to 25% of Sum Insured with a currency ceiling of INR 40,000, taking the lower value, per eye in one Policy Year.",
+      "material_effects": [
+        "BENEFIT_LIMIT",
+        "PERCENTAGE_BASIS_SUM_INSURED",
+        "CURRENCY_CEILING",
+        "LOWER_OF_COMPOSITION",
+        "PER_EYE_SCOPE",
+        "PER_POLICY_YEAR_SCOPE",
+        "INSTANCE_BOUND_CURRENCY_RESULT"
+      ],
+      "source_sufficiency_review": "CONFIRMED",
+      "mo028c_scope": "PRIMARY_ADVERSARIAL"
+    },
+    {
+      "atomic_unit_id": "star_arogya_modern_treatment_group_limit",
+      "parent_clause_group_id": "benefit_limits",
+      "source_page": 8,
+      "source_line_range": "601-625",
+      "source_locator": "Coverage 6 listed modern procedures",
+      "anchored_excerpt_summary": "The listed procedures are covered as inpatient/day-care treatment up to 50% of Sum Insured during the Policy Period.",
+      "normative_proposition": "A governed group of listed modern procedures shares a benefit limit of 50% of Sum Insured during the Policy Period.",
+      "material_effects": [
+        "BENEFIT_LIMIT",
+        "PERCENTAGE_BASIS_SUM_INSURED",
+        "GROUPED_BENEFIT_SCOPE",
+        "PER_POLICY_PERIOD_SCOPE"
+      ],
+      "source_sufficiency_review": "CONFIRMED",
+      "mo028c_scope": "PRIMARY_BENEFIT_IDENTITY_PRESSURE"
+    },
+    {
+      "atomic_unit_id": "star_arogya_global_copay",
+      "parent_clause_group_id": "cost_sharing",
+      "source_page": 9,
+      "source_line_range": "706-712",
+      "source_locator": "Coverage 9 Co-payment",
+      "anchored_excerpt_summary": "Each and every claim is subject to 5% co-payment applicable to the admissible and payable claim amount; amount payable is after deduction of co-payment.",
+      "normative_proposition": "Every claim is subject to a 5% co-payment applied to the admissible/payable claim amount, and the payable amount is after co-payment deduction.",
+      "material_effects": [
+        "COST_SHARING_INTERACTION",
+        "COPAY",
+        "ALL_CLAIMS_SCOPE",
+        "PAYABLE_AMOUNT_ORDERING"
+      ],
+      "source_sufficiency_review": "CONFIRMED",
+      "mo028c_scope": "PRIMARY_INTERACTION_PRESSURE"
+    }
+  ],
+  "inventory_summary": {
+    "atomic_unit_count": 8,
+    "source_sufficiency_confirmed_count": 8,
+    "primary_limit_units": 4,
+    "primary_interaction_units": 2,
+    "deferred_room_icu_limit_units_retained_as_pressure": 2,
+    "semantic_mapping_performed": false,
+    "ontology_extension_performed": false,
+    "product_specific_reasoning_added": false
+  },
+  "pressure_findings": [
+    "PERCENTAGE_AND_CURRENCY_CEILING_MUST_BE_COMPOSED_NOT_FLATTENED",
+    "PER_EYE_AND_PER_POLICY_YEAR_ARE_SIMULTANEOUS_SCOPE_DIMENSIONS",
+    "UP_TO_SUM_INSURED_IS_DISTINCT_FROM_NO_LIMIT",
+    "GROUPED_BENEFIT_SCOPE_REQUIRES_GOVERNED_BENEFIT_IDENTITY",
+    "LIMIT_AND_COPAY_CAN_COEXIST_ON_THE_SAME_CLAIM",
+    "ROOM_LIMIT_CAN_TRIGGER_PROPORTIONATE_DEDUCTION_OF_OTHER_EXPENSES",
+    "UNKNOWN_OR_UNMODELED_INTERACTION_CANNOT_BE_TREATED_AS_SAFE_EQUIVALENCE"
+  ],
+  "decision": {
+    "g0_first_atomic_inventory_complete": true,
+    "ready_for_g1_benefit_identity_contract_review": true,
+    "ready_for_g2_limit_contract_implementation": false,
+    "reason": "Benefit identity is load-bearing for limit semantics and cross-product comparison; establish minimal governed benefit-concept identity before implementing limit mechanics."
+  }
+}
