@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "record_type": "mo_028c_g5_real_product_mapping_qualification_v1",
+  "milestone": "MO-028C.G5",
+  "product": {
+    "insurer": "Star Health and Allied Insurance Company Limited",
+    "canonical_product_name": "Arogya Sanjeevani Policy",
+    "uin": "SHAHLIP26045V042526"
+  },
+  "source_inventory": "docs/architecture/MO_028C_G0_STAR_AROGYA_SANJEEVANI_BENEFIT_LIMIT_NORMATIVE_INVENTORY.json",
+  "source_inventory_atomic_unit_count": 8,
+  "qualification_principle": "Real-source pressure may expose generic ontology or governance gaps; do not force source meaning into an existing contract merely to achieve zero residue.",
+  "unit_qualification": [
+    {"normative_unit_id":"star_arogya_room_limit","status":"REPRESENTABLE_WITH_CURRENT_G1_G4","notes":["PERCENTAGE_OF_SUM_INSURED","INR_CEILING","PER_DAY"]},
+    {"normative_unit_id":"star_arogya_icu_limit","status":"REPRESENTABLE_WITH_CURRENT_G1_G4","notes":["PERCENTAGE_OF_SUM_INSURED","INR_CEILING","PER_DAY"]},
+    {"normative_unit_id":"star_arogya_road_ambulance_limit","status":"REPRESENTABLE_WITH_CURRENT_G1_G4","notes":["FIXED_CURRENCY","PER_HOSPITALIZATION"]},
+    {"normative_unit_id":"star_arogya_room_icu_proportionate_deduction","status":"REPRESENTABLE_AS_REVIEWED_INTERACTION","notes":["PROPORTIONATE_DEDUCTION","ROOM_AND_ICU_TARGET_SCOPE"]},
+    {"normative_unit_id":"star_arogya_ayush_up_to_sum_insured","status":"REPRESENTABLE_WITH_CURRENT_G1_G4","notes":["UP_TO_SUM_INSURED","PER_POLICY_YEAR"]},
+    {"normative_unit_id":"star_arogya_cataract_limit","status":"REPRESENTABLE_WITH_CURRENT_G1_G4","notes":["PERCENTAGE_OF_SUM_INSURED","INR_CEILING","PER_EYE","PER_POLICY_YEAR"]},
+    {"normative_unit_id":"star_arogya_modern_treatment_group_limit","status":"BLOCKED_BY_GENERIC_TIME_SCOPE_GAP","notes":["SOURCE_SAYS_POLICY_PERIOD","CURRENT_G2_HAS_NO_PER_POLICY_PERIOD","MUST_NOT_COERCE_TO_PER_POLICY_YEAR"]},
+    {"normative_unit_id":"star_arogya_global_copay","status":"REPRESENTABLE_AS_PRODUCT_WIDE_INTERACTION_BUT_EXPOSES_EQUIVALENCE_GAP","notes":["5_PERCENT_COPAY_EVERY_CLAIM","ORDER_RELATIVE_TO_LIMIT_NOT_PROVEN","MAPPED_LIMIT_WITH_ZERO_INTERACTION_RULES_MUST_NOT_BE_EQUIVALENCE_READY"]}
+  ],
+  "blocking_findings": [
+    {
+      "id": "G5-B1-PER-POLICY-PERIOD",
+      "classification": "GENERIC_ONTOLOGY_GAP",
+      "problem": "Modern Treatment is limited during the Policy Period, but TimeScope currently has PER_POLICY_YEAR and not PER_POLICY_PERIOD.",
+      "required_fix": "Add source-backed PER_POLICY_PERIOD as a generic TimeScope value; do not translate it to PER_POLICY_YEAR."
+    },
+    {
+      "id": "G5-B2-EMPTY-INTERACTION-FAIL-OPEN",
+      "classification": "GENERIC_COMPARISON_SAFETY_GAP",
+      "problem": "BenefitLimitMechanic.equivalence_ready currently evaluates an empty interaction tuple as ready, which violates UNKNOWN INTERACTION != NO INTERACTION.",
+      "required_fix": "An empty interaction set must block equivalence unless affirmative reviewed interaction completeness/non-applicability is represented. For the current minimal contract, empty interactions must fail closed."
+    }
+  ],
+  "forbidden_shortcuts": [
+    "COERCE_PER_POLICY_PERIOD_TO_PER_POLICY_YEAR",
+    "TREAT_ZERO_INTERACTION_RULES_AS_NO_INTERACTION",
+    "OMIT_MODERN_TREATMENT_FROM_ACCOUNTING",
+    "NARROW_PRODUCT_WIDE_COPAY_TARGETS_TO_ONLY_EASILY_MAPPED_BENEFITS"
+  ],
+  "decision": {
+    "g5_real_product_mapping_certified": false,
+    "implementation_may_continue_after_blockers_fixed": true,
+    "zero_residue_required": false,
+    "zero_silent_residue_required": true
+  }
+}
