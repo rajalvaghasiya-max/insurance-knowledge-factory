@@ -6,7 +6,7 @@ from insurance_intelligence.generic_knowledge.authority_resolution import (
     AuthorityCandidate,
     AuthorityClass,
     AuthorityResolutionError,
-    ResolutionStatus,
+    AuthorityResolutionStatus,
     authority_rank,
     blocker_for_authority_resolution,
     resolve_authority_candidates,
@@ -80,7 +80,7 @@ def test_policy_wording_wins_over_lower_authority_product_sources() -> None:
         semantic_key="ped_duration",
         as_of_date=date(2026, 8, 9),
     )
-    assert result.status is ResolutionStatus.RESOLVED
+    assert result.status is AuthorityResolutionStatus.RESOLVED
     assert result.selected_candidate_ids == ("wording",)
     assert result.semantic_value == {"value": 36, "unit": "MONTHS"}
     assert "brochure" in result.rejected_candidate_ids
@@ -96,7 +96,7 @@ def test_equal_authority_same_value_is_corroborating_not_conflict() -> None:
         semantic_key="ped_duration",
         as_of_date=date(2026, 8, 9),
     )
-    assert result.status is ResolutionStatus.RESOLVED
+    assert result.status is AuthorityResolutionStatus.RESOLVED
     assert result.selected_candidate_ids == ("wording_a", "wording_b")
 
 
@@ -110,7 +110,7 @@ def test_equal_authority_different_values_fail_closed() -> None:
         semantic_key="ped_duration",
         as_of_date=date(2026, 8, 9),
     )
-    assert result.status is ResolutionStatus.CONFLICTED
+    assert result.status is AuthorityResolutionStatus.CONFLICTED
     assert result.semantic_value is None
     blocker = blocker_for_authority_resolution(result, applicability=_app())
     assert blocker is not None
@@ -134,7 +134,7 @@ def test_regulatory_overlay_wins_without_mutating_lower_contract_candidate() -> 
         semantic_key="ped_duration",
         as_of_date=date(2026, 8, 9),
     )
-    assert result.status is ResolutionStatus.RESOLVED
+    assert result.status is AuthorityResolutionStatus.RESOLVED
     assert result.regulatory_overlay_applied is True
     assert result.selected_candidate_ids == ("regulation",)
     assert contract.semantic_value == {"value": 48, "unit": "MONTHS"}
@@ -205,7 +205,7 @@ def test_no_applicable_candidate_blocks_publication() -> None:
         semantic_key="ped_duration",
         as_of_date=date(2026, 8, 9),
     )
-    assert result.status is ResolutionStatus.NO_APPLICABLE_CANDIDATE
+    assert result.status is AuthorityResolutionStatus.NO_APPLICABLE_CANDIDATE
     blocker = blocker_for_authority_resolution(result, applicability=_app())
     assert blocker is not None
     assert blocker.code is PublicationBlockerCode.REVIEW_REQUIRED
