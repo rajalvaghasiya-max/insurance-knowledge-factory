@@ -1,3 +1,5 @@
+import pytest
+
 from insurance_intelligence.benefits.assessment_contracts import (
     AssessmentBand,
     AssessmentStatus,
@@ -6,6 +8,10 @@ from insurance_intelligence.benefits.assessment_contracts import (
 )
 from insurance_intelligence.benefits.comparison_projection_assessment_bridge import (
     assessment_from_comparison_projection,
+)
+from insurance_intelligence.benefits.governed_handoff import (
+    GovernedComparisonHandoff,
+    GovernedHandoffError,
 )
 from insurance_intelligence.decision_support.decision_projection import (
     DecisionProjectionStatus,
@@ -118,3 +124,8 @@ def test_policy_schedule_bound_remains_action_required_in_decision_projection() 
     assert projection.blocking_reference_ids == ("finding-right-ped",)
     assert projection.left.unresolved_findings == ()
     assert "does not choose" in projection.decision_boundary.lower()
+
+    # Personalized decision support is not the factual pre-ranking comparison handoff.
+    # Exact-type enforcement must reject it rather than widening the ranking boundary.
+    with pytest.raises(GovernedHandoffError):
+        GovernedComparisonHandoff(projection=projection)  # type: ignore[arg-type]
