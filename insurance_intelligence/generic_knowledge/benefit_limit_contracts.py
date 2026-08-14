@@ -30,6 +30,7 @@ class PercentageBasis(str, Enum):
 class TimeScope(str, Enum):
     PER_DAY = "PER_DAY"
     PER_POLICY_YEAR = "PER_POLICY_YEAR"
+    PER_POLICY_PERIOD = "PER_POLICY_PERIOD"
     LIFETIME = "LIFETIME"
     UNSPECIFIED = "UNSPECIFIED"
 
@@ -346,6 +347,8 @@ class BenefitLimitMechanic:
         if self.time_scope is TimeScope.UNSPECIFIED:
             return False
         if self.event_scope is EventScope.UNSPECIFIED:
+            return False
+        if not self.cost_sharing_interactions:
             return False
         return all(rule.equivalence_ready for rule in self.cost_sharing_interactions)
 
