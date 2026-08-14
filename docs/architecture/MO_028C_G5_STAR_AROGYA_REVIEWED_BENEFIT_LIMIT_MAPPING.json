@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "mo_028c_g5_reviewed_benefit_limit_mapping_v1",
+  "milestone": "MO-028C.G5",
+  "product_reference": "star_arogya_sanjeevani",
+  "policy_version": "v14_2025",
+  "source_document_id": "star_arogya_sanjeevani_sha_hlip26045v042526_policy_wording_v14_2025",
+  "source_document_version": "v14_2025",
+  "ontology_version": "benefit_limits_v1",
+  "governed_product_scope": {
+    "scope_id": "star_arogya_sanjeevani_all_governed_limit_benefits_v1",
+    "benefit_concept_ids": [
+      "health:benefit:room_rent",
+      "health:benefit:icu",
+      "health:benefit:road_ambulance",
+      "health:benefit:ayush",
+      "health:benefit:cataract",
+      "health:benefit:modern_treatment_group"
+    ]
+  },
+  "limit_propositions": [
+    {"normative_unit_id":"star_arogya_room_limit","raw_benefit_label":"Room Rent","limit_kind":"PERCENTAGE","percentage":2,"percentage_basis":"SUM_INSURED","ceiling_amount":5000,"time_scope":"PER_DAY","evidence_id":"ev_room","locator":"Coverage 1.i Room Rent/Boarding/Nursing"},
+    {"normative_unit_id":"star_arogya_icu_limit","raw_benefit_label":"ICU","limit_kind":"PERCENTAGE","percentage":5,"percentage_basis":"SUM_INSURED","ceiling_amount":10000,"time_scope":"PER_DAY","evidence_id":"ev_icu","locator":"Coverage 1.ii ICU/ICCU"},
+    {"normative_unit_id":"star_arogya_road_ambulance_limit","raw_benefit_label":"Road Ambulance","limit_kind":"FIXED_CURRENCY","amount":2000,"event_scope":"PER_HOSPITALIZATION","evidence_id":"ev_road","locator":"Coverage 1.1.v Road Ambulance"},
+    {"normative_unit_id":"star_arogya_ayush_up_to_sum_insured","raw_benefit_label":"AYUSH","limit_kind":"UP_TO_SUM_INSURED","time_scope":"PER_POLICY_YEAR","evidence_id":"ev_ayush","locator":"Coverage 2 AYUSH Treatment"},
+    {"normative_unit_id":"star_arogya_cataract_limit","raw_benefit_label":"Cataract","limit_kind":"PERCENTAGE","percentage":25,"percentage_basis":"SUM_INSURED","ceiling_amount":40000,"time_scope":"PER_POLICY_YEAR","event_scope":"PER_EYE","evidence_id":"ev_cataract","locator":"Coverage 3 Cataract Treatment"},
+    {"normative_unit_id":"star_arogya_modern_treatment_group_limit","raw_benefit_label":"Modern Treatment","limit_kind":"PERCENTAGE","percentage":50,"percentage_basis":"SUM_INSURED","time_scope":"PER_POLICY_PERIOD","evidence_id":"ev_modern","locator":"Coverage 6 listed modern procedures"}
+  ],
+  "interactions": [
+    {"normative_unit_id":"star_arogya_room_icu_proportionate_deduction","mechanic_type":"PROPORTIONATE_DEDUCTION","applies":"YES","ordering":"AFTER_LIMIT","target_mode":"EXPLICIT_CONCEPT_SET","target_benefit_concept_ids":["health:benefit:room_rent","health:benefit:icu"],"evidence_id":"ev_prop","locator":"Coverage Note 2 room/ICU over-limit consequence"},
+    {"normative_unit_id":"star_arogya_global_copay","mechanic_type":"COPAY","applies":"YES","ordering":"UNKNOWN","target_mode":"PRODUCT_WIDE_GOVERNED_SCOPE","governed_product_scope_id":"star_arogya_sanjeevani_all_governed_limit_benefits_v1","evidence_id":"ev_copay","locator":"Coverage 9 Co-payment"}
+  ],
+  "expected_accounting": {
+    "atomic_unit_count": 8,
+    "mapped_limit_units": 6,
+    "mapped_relationship_units": 2,
+    "residue_units": 0,
+    "zero_silent_residue": true
+  },
+  "governance_notes": [
+    "PER_POLICY_PERIOD is preserved distinctly from PER_POLICY_YEAR.",
+    "Global copay ordering relative to each limit is UNKNOWN; attached mechanics therefore remain not equivalence-ready.",
+    "Proportionate deduction is attached only to Room Rent and ICU because the source makes the limit-triggered target scope explicit.",
+    "No product-specific runtime reasoning is introduced."
+  ]
+}
