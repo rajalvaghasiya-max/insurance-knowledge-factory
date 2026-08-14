@@ -43,6 +43,12 @@ class AuthorityResolutionStatus(str, Enum):
     NO_APPLICABLE_CANDIDATE = "NO_APPLICABLE_CANDIDATE"
 
 
+# Transitional compatibility for pre-AR-2.4 callers. New code must import
+# AuthorityResolutionStatus so authority selection cannot be confused with the semantic
+# readiness ResolutionStatus lattice. This alias is deliberately omitted from __all__.
+ResolutionStatus = AuthorityResolutionStatus
+
+
 _AUTHORITY_RANK: Mapping[AuthorityClass, int] = {
     AuthorityClass.REGULATORY_OVERLAY: 700,
     AuthorityClass.POLICY_WORDING: 600,
