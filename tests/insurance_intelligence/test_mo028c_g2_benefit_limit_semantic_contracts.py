@@ -56,7 +56,23 @@ def test_fixed_currency_ambulance_per_hospitalization_is_representable() -> None
     )
     assert mechanic.amount == MonetaryAmount(2000)
     assert mechanic.is_si_linked is False
-    assert mechanic.equivalence_ready is True
+    assert mechanic.equivalence_ready is False
+
+
+def test_policy_period_scope_is_distinct_from_policy_year() -> None:
+    mechanic = BenefitLimitMechanic(
+        benefit_identity=_identity("health:benefit:modern_treatment_group"),
+        limit_kind=LimitKind.PERCENTAGE,
+        percentage=50,
+        percentage_basis=PercentageBasis.SUM_INSURED,
+        time_scope=TimeScope.PER_POLICY_PERIOD,
+        core_evidence_references=CORE,
+        scope_evidence_references=SCOPE,
+        ontology_version="benefit_limits_v1",
+    )
+    assert mechanic.time_scope is TimeScope.PER_POLICY_PERIOD
+    assert mechanic.time_scope is not TimeScope.PER_POLICY_YEAR
+    assert mechanic.equivalence_ready is False
 
 
 def test_cataract_percentage_ceiling_preserves_per_eye_and_per_policy_year() -> None:
@@ -78,6 +94,7 @@ def test_cataract_percentage_ceiling_preserves_per_eye_and_per_policy_year() -> 
     assert mechanic.time_scope is TimeScope.PER_POLICY_YEAR
     assert mechanic.event_scope is EventScope.PER_EYE
     assert mechanic.is_si_linked is True
+    assert mechanic.equivalence_ready is False
 
 
 def test_percentage_is_not_artificially_capped_at_one_hundred() -> None:
@@ -103,6 +120,7 @@ def test_up_to_sum_insured_is_distinct_and_si_linked() -> None:
     assert mechanic.is_si_linked is True
     assert mechanic.amount is None
     assert mechanic.percentage is None
+    assert mechanic.equivalence_ready is False
 
 
 def test_no_limit_is_affirmative_semantic_shape_and_forbids_scope() -> None:
@@ -113,6 +131,7 @@ def test_no_limit_is_affirmative_semantic_shape_and_forbids_scope() -> None:
         ontology_version="benefit_limits_v1",
     )
     assert mechanic.is_si_linked is False
+    assert mechanic.equivalence_ready is False
     with pytest.raises(BenefitLimitContractError, match="NO_LIMIT forbids scope fields"):
         BenefitLimitMechanic(
             benefit_identity=_identity("health:benefit:ayush"),
@@ -161,6 +180,12 @@ def test_floor_must_not_exceed_ceiling() -> None:
 
 
 def test_unknown_scope_blocks_equivalence_without_blocking_representation() -> None:
+    rule = CostSharingInteractionRule(
+        mechanic_type=CostSharingMechanicType.COPAY,
+        applies=CostSharingApplicability.EXEMPT,
+        ordering=CostSharingOrdering.UNKNOWN,
+        evidence_references=INTERACTION,
+    )
     mechanic = BenefitLimitMechanic(
         benefit_identity=_identity("health:benefit:road_ambulance"),
         limit_kind=LimitKind.FIXED_CURRENCY,
@@ -168,6 +193,7 @@ def test_unknown_scope_blocks_equivalence_without_blocking_representation() -> N
         event_scope=EventScope.UNSPECIFIED,
         core_evidence_references=CORE,
         scope_evidence_references=SCOPE,
+        cost_sharing_interactions=(rule,),
         ontology_version="benefit_limits_v1",
     )
     assert mechanic.equivalence_ready is False
@@ -196,6 +222,36 @@ def test_known_before_after_and_unknown_ordering_remain_structurally_distinct() 
     assert before.equivalence_ready is True
     assert after.equivalence_ready is True
     assert unknown.equivalence_ready is False
+
+
+def test_empty_interaction_inventory_blocks_equivalence() -> None:
+    mechanic = BenefitLimitMechanic(
+        benefit_identity=_identity("health:benefit:road_ambulance"),
+        limit_kind=LimitKind.FIXED_CURRENCY,
+        amount=MonetaryAmount(2000),
+        core_evidence_references=CORE,
+        ontology_version="benefit_limits_v1",
+    )
+    assert mechanic.cost_sharing_interactions == ()
+    assert mechanic.equivalence_ready is False
+
+
+def test_known_exemption_can_make_interaction_dimension_equivalence_ready() -> None:
+    rule = CostSharingInteractionRule(
+        mechanic_type=CostSharingMechanicType.COPAY,
+        applies=CostSharingApplicability.EXEMPT,
+        ordering=CostSharingOrdering.UNKNOWN,
+        evidence_references=INTERACTION,
+    )
+    mechanic = BenefitLimitMechanic(
+        benefit_identity=_identity("health:benefit:road_ambulance"),
+        limit_kind=LimitKind.FIXED_CURRENCY,
+        amount=MonetaryAmount(2000),
+        core_evidence_references=CORE,
+        cost_sharing_interactions=(rule,),
+        ontology_version="benefit_limits_v1",
+    )
+    assert mechanic.equivalence_ready is True
 
 
 def test_unknown_interaction_applicability_blocks_equivalence() -> None:
