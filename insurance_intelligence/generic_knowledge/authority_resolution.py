@@ -35,7 +35,9 @@ class AuthorityClass(str, Enum):
     MARKETING = "MARKETING"
 
 
-class ResolutionStatus(str, Enum):
+class AuthorityResolutionStatus(str, Enum):
+    """Outcome of source-authority selection, distinct from semantic readiness status."""
+
     RESOLVED = "RESOLVED"
     CONFLICTED = "CONFLICTED"
     NO_APPLICABLE_CANDIDATE = "NO_APPLICABLE_CANDIDATE"
@@ -96,7 +98,7 @@ class AuthorityCandidate:
 
 @dataclass(frozen=True)
 class AuthorityResolution:
-    status: ResolutionStatus
+    status: AuthorityResolutionStatus
     concept: str
     semantic_key: str
     as_of_date: date
@@ -108,8 +110,8 @@ class AuthorityResolution:
     regulatory_overlay_applied: bool
 
     def __post_init__(self) -> None:
-        if not isinstance(self.status, ResolutionStatus):
-            raise AuthorityResolutionError("status must be a ResolutionStatus")
+        if not isinstance(self.status, AuthorityResolutionStatus):
+            raise AuthorityResolutionError("status must be an AuthorityResolutionStatus")
         if not isinstance(self.as_of_date, date):
             raise AuthorityResolutionError("as_of_date must be a date")
         for field_name in ("concept", "semantic_key"):
@@ -117,7 +119,7 @@ class AuthorityResolution:
             if not isinstance(value, str) or not value.strip():
                 raise AuthorityResolutionError(f"{field_name} must be non-empty text")
             object.__setattr__(self, field_name, value.strip())
-        if self.status is ResolutionStatus.RESOLVED:
+        if self.status is AuthorityResolutionStatus.RESOLVED:
             if self.selected_authority_class is None:
                 raise AuthorityResolutionError(
                     "resolved result requires selected_authority_class"
@@ -198,7 +200,7 @@ def resolve_authority_candidates(
 
     if not matching:
         return AuthorityResolution(
-            status=ResolutionStatus.NO_APPLICABLE_CANDIDATE,
+            status=AuthorityResolutionStatus.NO_APPLICABLE_CANDIDATE,
             concept=concept,
             semantic_key=semantic_key,
             as_of_date=as_of_date,
@@ -226,7 +228,7 @@ def resolve_authority_candidates(
     if len(values) > 1:
         conflict_ids = tuple(sorted(candidate.candidate_id for candidate in top))
         return AuthorityResolution(
-            status=ResolutionStatus.CONFLICTED,
+            status=AuthorityResolutionStatus.CONFLICTED,
             concept=concept,
             semantic_key=semantic_key,
             as_of_date=as_of_date,
@@ -244,7 +246,7 @@ def resolve_authority_candidates(
     value = top[0].semantic_value
     authority_class = top[0].authority_class
     return AuthorityResolution(
-        status=ResolutionStatus.RESOLVED,
+        status=AuthorityResolutionStatus.RESOLVED,
         concept=concept,
         semantic_key=semantic_key,
         as_of_date=as_of_date,
@@ -267,9 +269,9 @@ def blocker_for_authority_resolution(
         raise AuthorityResolutionError("resolution must be an AuthorityResolution")
     if not isinstance(applicability, ApplicabilityKey):
         raise AuthorityResolutionError("applicability must be an ApplicabilityKey")
-    if resolution.status is ResolutionStatus.RESOLVED:
+    if resolution.status is AuthorityResolutionStatus.RESOLVED:
         return None
-    if resolution.status is ResolutionStatus.CONFLICTED:
+    if resolution.status is AuthorityResolutionStatus.CONFLICTED:
         code = (
             PublicationBlockerCode.REGULATORY_CONFLICT
             if resolution.selected_authority_class is AuthorityClass.REGULATORY_OVERLAY
@@ -301,7 +303,7 @@ __all__ = [
     "AuthorityClass",
     "AuthorityResolution",
     "AuthorityResolutionError",
-    "ResolutionStatus",
+    "AuthorityResolutionStatus",
     "authority_rank",
     "blocker_for_authority_resolution",
     "resolve_authority_candidates",
