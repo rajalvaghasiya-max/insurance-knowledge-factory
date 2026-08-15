@@ -10,6 +10,14 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass
 from pathlib import Path
+import sys
+
+# Support direct execution as `python scripts/audit_historical_intelligence_artifacts.py`.
+# Python otherwise places only the scripts directory on sys.path, unlike pytest or
+# `python -m`, both of which make the repository root importable.
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
 
 from insurance_intelligence.bypass_inventory import build_default_bypass_inventory
 from insurance_intelligence.contracts.bypass_inventory import BypassPathKind
