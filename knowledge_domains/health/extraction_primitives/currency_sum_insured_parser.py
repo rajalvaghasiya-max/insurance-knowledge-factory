@@ -32,7 +32,11 @@ class CurrencySumInsuredParser:
         ("deductible", re.compile(r"\bdeductible\b", re.IGNORECASE)),
         ("premium", re.compile(r"\bpremium\b", re.IGNORECASE)),
         ("sum_insured", re.compile(r"\b(?:sum\s+insured|sum-insured)\b", re.IGNORECASE)),
-        ("sub_limit_or_limit", re.compile(r"\b(?:sub[-\s]?limit|limit|up\s+to)\b", re.IGNORECASE)),
+        ("sub_limit_or_limit", re.compile(r"\b(?:sub[-\s]?limit|limit|up\s+to|upto)\b", re.IGNORECASE)),
+    )
+    _IMMEDIATE_PRE_AMOUNT_LIMIT_RE = re.compile(
+        r"(?:\bup\s+to\b|\bupto\b|\blimit(?:\s+for)?[^.;\n]{0,45}?\bup\s+to\b)\s*$",
+        re.IGNORECASE,
     )
     _CONDITION_PATTERNS = (
         ("sum_insured_band_reference", re.compile(r"\b(?:for|above|upto|up\s+to)\s+SI\b|\bSI\s+\d", re.IGNORECASE)),
@@ -104,8 +108,13 @@ class CurrencySumInsuredParser:
                 normalized_value=normalized_value,
             )
             local_context = self._local_context(normalized, start, end)
-            role_context = normalized[max(0, start - 100):min(len(normalized), end + 100)]
-            role = self._monetary_role(role_context, start - max(0, start - 100), end - max(0, start - 100))
+            role_context_start = max(0, start - 100)
+            role_context = normalized[role_context_start:min(len(normalized), end + 100)]
+            role = self._monetary_role(
+                role_context,
+                start - role_context_start,
+                end - role_context_start,
+            )
             candidates.append(
                 ExtractionCandidateContract.build_candidate(
                     candidate_id=candidate_id,
@@ -167,7 +176,18 @@ class CurrencySumInsuredParser:
 
     @classmethod
     def _monetary_role(cls, text: str, amount_start: int, amount_end: int) -> str:
-        """Return the closest explicit role cue to the amount in local context."""
+        """Return the strongest bounded role cue for the matched amount.
+
+        An explicit limit phrase immediately before the amount outranks a nearby
+        but separate role word after the amount. This prevents compressed table
+        text such as ``Family Visit ... Upto INR 25,000 Renewal premium waiver``
+        from relabelling the benefit limit as a premium. The hint remains review-
+        only; band/column binding and applicability are not resolved here.
+        """
+        prefix = text[max(0, amount_start - 60):amount_start]
+        if cls._IMMEDIATE_PRE_AMOUNT_LIMIT_RE.search(prefix):
+            return "sub_limit_or_limit"
+
         candidates: list[tuple[int, str]] = []
         for role, pattern in cls._ROLE_PATTERNS:
             for match in pattern.finditer(text):
