@@ -1,6 +1,6 @@
 # Phase 2 — Governed Coverage & Readiness Alignment Gate
 
-**Status:** ACTIVE — REPORTING SEPARATION PROVEN; ASSESSMENT CONTRACT INTEGRATION PENDING  
+**Status:** ACTIVE — REPORTING + CONTRACT PROVEN; FIRST REAL PRODUCT ASSESSMENT MATERIALIZED  
 **Date:** 2026-08-15
 
 ## Purpose
@@ -15,17 +15,9 @@ This is an observability/governance correction. It is not a new extractor, publi
 
 `scripts/audit_portfolio_coverage.py` then aggregated those labels and could recommend advisor-facing/comparison use.
 
-Those metrics do not establish:
+Those metrics do not establish current governed source authority, reviewed currentness, semantic review completeness, applicability resolution, publication eligibility, publication state, or absence of unresolved residue.
 
-- current governed source authority;
-- reviewed currentness;
-- semantic review completeness;
-- applicability resolution;
-- publication eligibility;
-- publication state;
-- absence of unresolved residue.
-
-Therefore historical/intelligence completeness and governed readiness are now separate dimensions.
+Therefore historical/intelligence completeness and governed readiness are separate dimensions.
 
 ## Backward-compatibility rule
 
@@ -37,7 +29,7 @@ Their meaning is explicit:
 legacy intelligence coverage != governed readiness != publication state
 ```
 
-Product reports now identify:
+Product reports identify:
 
 ```text
 coverage_semantics = LEGACY_INTELLIGENCE_FIELD_PRESENCE
@@ -45,21 +37,17 @@ coverage_semantics = LEGACY_INTELLIGENCE_FIELD_PRESENCE
 
 ## Governed-readiness reporting boundary
 
-Product reports carry a separate `governed_readiness` block.
-
-When no governed readiness assessment has been materialized, the only safe state is:
+Product reports carry a separate `governed_readiness` block. When no governed readiness assessment has been materialized, the only safe state is:
 
 ```text
 status = NOT_ASSESSED
 ```
 
-The product coverage auditor does not derive governed readiness from legacy field presence or validator score.
+The product coverage auditor does not derive governed readiness from legacy field presence or validator score. The portfolio auditor aggregates legacy coverage and governed readiness separately and does not translate legacy percentages into governed-readiness percentages/statuses.
 
-The portfolio auditor aggregates legacy coverage and governed readiness separately and does not translate legacy percentages into governed-readiness percentages/statuses.
+## Real-product reporting verification
 
-## Real-product verification
-
-Focused reporting regressions:
+Initial focused reporting regressions:
 
 ```text
 11 passed
@@ -76,8 +64,6 @@ Governed readiness     : NOT_ASSESSED
 Quality                 : PASS / 100
 ```
 
-This is the intended result. `READY` remains only the backward-compatible legacy intelligence-presence label and does not establish current governed or publication readiness.
-
 ### Aditya Birla Activ One
 
 ```text
@@ -86,8 +72,6 @@ Legacy coverage status : USABLE_WITH_REVIEW
 Governed readiness     : NOT_ASSESSED
 Quality                 : REVIEW_REQUIRED / 85
 ```
-
-The legacy report still lists waiting-period field presence, but that does not override the current governed waiting-period pressure result where PED numeric duration remains unresolved without schedule/table binding.
 
 ### Health portfolio
 
@@ -99,11 +83,11 @@ Legacy USABLE_WITH_REVIEW        : 1
 Governed readiness NOT_ASSESSED  : 2
 ```
 
-Both products remain in the attention list because neither has a materialized governed-readiness assessment. Strong legacy coverage therefore no longer causes portfolio reporting to imply governed readiness.
+Both products remained in the attention list because neither had a materialized governed-readiness assessment. Strong legacy coverage therefore no longer implied governed readiness.
 
 ## Governed-readiness assessment contract
 
-A generic assessment contract now defines independent dimensions:
+A generic assessment contract defines independent dimensions:
 
 - source governance/currentness;
 - semantic review;
@@ -113,9 +97,7 @@ A generic assessment contract now defines independent dimensions:
 - unresolved residue;
 - evidence references.
 
-The assessment summary status is **derived**, never asserted directly in JSON.
-
-A materialized assessment cannot write its own `status = READY` or `status = PUBLISHED`. Generic code derives one of:
+The assessment summary status is **derived**, never asserted directly in JSON. A materialized assessment cannot write its own `status = READY` or `status = PUBLISHED`. Generic code derives one of:
 
 ```text
 NOT_ASSESSED
@@ -133,7 +115,66 @@ Key fail-closed rules include:
 - `PUBLISHED` is invalid unless source governance, semantic review, applicability, publication eligibility, and residue are fully resolved;
 - entity mismatch and unknown fields fail closed.
 
-This contract does not itself decide that Star or Activ One is ready. Product assessments must be materialized from existing governed evidence under review.
+The product auditor now routes materialized `governed_readiness.json` through this contract rather than trusting editable summary fields.
+
+## Focused contract/integration regression closure
+
+The complete governed-readiness focused set now passes:
+
+```text
+25 passed
+```
+
+Coverage:
+
+- governed-readiness contract derivation and invalid-state behavior;
+- product audit backward compatibility;
+- product audit contract integration;
+- portfolio readiness separation.
+
+The test migration exposed several intentionally strict vocabulary/derivation rules (`CURRENT_GOVERNED`, `INELIGIBLE`, and `BLOCKED` for unresolved applicability/ineligibility). The contract was not weakened to satisfy stale fixtures; fixtures were corrected to model the intended states.
+
+## First real governed product assessment — Star Comprehensive
+
+Materialized:
+
+```text
+knowledge/health/star_health/star_comprehensive/governance/governed_readiness.json
+```
+
+Evidence supports the following conservative product-level dimensions:
+
+```text
+source_governance        = CURRENT_GOVERNED
+semantic_review          = PARTIAL
+applicability            = PARTIAL
+publication_eligibility  = REVIEW_REQUIRED
+publication_state        = NOT_PUBLISHED
+```
+
+Reasons:
+
+- the governed Star policy wording is anchored to the registered current source SHA `b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f`;
+- room-rent and bariatric rules have authoritative publications;
+- conditional copayment remains explicitly withheld / bound-not-published;
+- product-wide semantic review and applicability completeness are not established merely because selected consequential rules are certified;
+- whole-product publication therefore must not be inferred from the existence of some authoritative rule publications.
+
+Explicit unresolved residue:
+
+```text
+conditional_copayment_bound_not_published
+product_level_semantic_review_not_complete
+product_level_applicability_not_fully_resolved
+```
+
+The generic contract should therefore derive:
+
+```text
+REVIEW_REQUIRED
+```
+
+This is intentionally more conservative than legacy `coverage_status = READY` and demonstrates the purpose of the new separation.
 
 ## Portfolio rule
 
@@ -149,6 +190,7 @@ Portfolio reporting must aggregate legacy coverage and governed readiness separa
 - Preserve fail-closed behavior when governed readiness evidence is absent.
 - Do not hand-author an overall readiness status; derive it from assessed dimensions.
 - Do not manufacture assessments merely to improve portfolio metrics.
+- Whole-product readiness must not be inferred from publication of selected rules.
 - No product-specific production reasoning.
 - No frontend, Motor, Life, recommendation-productization, or DB migration scope.
 
@@ -162,8 +204,9 @@ Portfolio reporting must aggregate legacy coverage and governed readiness separa
 6. Portfolio recommendations no longer imply governed/product publication readiness from legacy coverage alone.
 7. Governed-readiness summary status is derived from evidence-backed independent dimensions.
 8. Invalid/inconsistent assessments fail closed.
-9. Relevant regressions remain green.
+9. At least one real product assessment is materialized conservatively from repository evidence.
+10. Relevant regressions remain green.
 
 ## Exit condition
 
-Reporting separation is proven on real Star and Activ One reports. The remaining implementation step is to route materialized `governed_readiness.json` records through the generic assessment contract, then exercise at least one honest governed product assessment without resolving known residue by guesswork and close relevant regressions.
+Reporting separation, the generic assessment contract, and the first real Star assessment are now implemented. The remaining closure step is to regenerate Star and portfolio reports through the materialized assessment, verify that Star derives `REVIEW_REQUIRED` while Activ One remains `NOT_ASSESSED`, then run broader relevant regressions before certifying and freezing this gate.
