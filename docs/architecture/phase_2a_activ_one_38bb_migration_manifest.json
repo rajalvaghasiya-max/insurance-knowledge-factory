@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "manifest_type": "governed_product_migration_manifest_v1",
+  "domain": "health",
+  "insurer_id": "aditya_birla_health",
+  "product_id": "activ_one",
+  "entity_id": "aditya_birla_health:activ_one",
+  "expected_source_path": "archive/raw_pdf/aditya_birla_health/policy_wording/activ_one_current_20260815.pdf",
+  "expected_source_sha256": "38bb879030d905bd6f90915915f1c2e22e27ebe5bc980bba766c69c7ecd90a16",
+  "specs": {
+    "generic_registration": "docs/architecture/phase_2a_activ_one_38bb_current_generic_sources_registration_spec.json",
+    "classification": "docs/architecture/phase_2a_activ_one_38bb_document_classification_spec.json",
+    "identity": "docs/architecture/phase_2a_activ_one_38bb_product_identity_reference_spec.json",
+    "overlay": "docs/architecture/phase_2a_activ_one_38bb_document_identity_resolution_spec.json"
+  },
+  "outputs": {
+    "bundle": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/generic_source_registration/aditya_birla_health_activ_one_38bb879030d9_generic_source_bundle.json",
+    "classification": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/aditya_birla_health_activ_one_document_classification_38bb879030d9.json",
+    "identity": "knowledge/factory/product_identity_references/aditya_birla_health_activ_one_38bb879030d9.product_identity_reference.json",
+    "overlay": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/aditya_birla_health_activ_one_document_identity_resolution_38bb879030d9.json"
+  }
+}
