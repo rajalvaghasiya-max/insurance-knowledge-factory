@@ -1,7 +1,16 @@
 # AFR-N1.C — Health Cumulative Bonus vs Motor NCB Collision Gate
 
-**Status:** IMPLEMENTED — VALIDATION PENDING  
+**Status:** CERTIFIED  
 **Date:** 2026-08-15
+
+## Certification evidence
+
+```text
+AFR-N1.C focused category-collision tests     6 passed
+AFR-N1.A + B + C combined                    18 passed
+insurance_intelligence                     2886 passed
+regressions                                    0
+```
 
 ## Why this slice exists
 
@@ -21,7 +30,7 @@ The two records are sourced from current IRDAI guidance pages:
 - Health: IRDAI Health Department FAQ 30, under the current 2024 Health framework.
 - Motor: IRDAI Motor Insurance — Policy Holder FAQ, under the current General Insurance framework.
 
-These pages are regulator guidance, not regulatory instruments. AFR-N1.C therefore adds an explicit evidence class:
+These pages are regulator guidance, not regulatory instruments. AFR-N1.C therefore uses the explicit evidence class:
 
 `PRIMARY_REGULATOR_GUIDANCE_SOURCE`
 
@@ -84,11 +93,9 @@ adds:
 
 This is a cross-category ontology pressure record only. It does **not** start Motor product onboarding or authorize Motor comparison/recommendation.
 
-## Adversarial tests
+## Certified invariants
 
-`tests/insurance_intelligence/test_afr_n1c_health_cumulative_bonus_motor_ncb_collision.py`
-
-proves:
+The focused tests prove:
 
 1. current Health cumulative bonus preserves its Sum Insured meaning;
 2. current Motor NCB is a distinct Motor identity;
@@ -96,14 +103,5 @@ proves:
 4. Health `NCB` does not silently collapse to cumulative bonus;
 5. Motor `cumulative bonus` does not silently map to Motor NCB;
 6. cross-category canonical-concept lookup fails closed.
-
-## Exit criterion
-
-```text
-AFR-N1.C focused category-collision tests    GREEN
-AFR-N1.A + B + C combined                    GREEN
-insurance_intelligence                       GREEN
-regressions                                      0
-```
 
 AFR-N1 remains open after this slice. The remaining regression set still needs governed pressure for co-payment conditionality, restoration/recharge semantics, and the remaining approved canonical terms.
