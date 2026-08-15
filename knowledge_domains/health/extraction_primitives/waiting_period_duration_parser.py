@@ -31,7 +31,7 @@ class WaitingPeriodDurationParser:
     """
 
     SCHEMA_VERSION = "1.0"
-    VERSION = "1.0"
+    VERSION = "1.1"
     PRIMITIVE_NAME = "waiting_period_duration_parser"
 
     _DURATION_RE = re.compile(
@@ -64,6 +64,13 @@ class WaitingPeriodDurationParser:
             ),
         ),
         (
+            "initial",
+            re.compile(
+                r"(?P<label>(?P<num>\d{1,3})\s*[- ]?\s*(?P<unit>days?)\s+waiting\s+period\s*\([^)]*code\s*-?\s*excl\s*0?3[^)]*\))",
+                re.IGNORECASE,
+            ),
+        ),
+        (
             "maternity",
             re.compile(
                 r"(?P<label>maternity(?:\s+expenses?)?\s+waiting\s+period(?:\s*\([^)]*\))?)"
@@ -76,6 +83,17 @@ class WaitingPeriodDurationParser:
             re.compile(
                 r"(?P<label>baby\s+care\s+waiting\s+period(?:\s*\([^)]*\))?)"
                 r"(?:\s*(?:is|of|:|=|as\s+per))?\s*(?P<num>\d{1,3})\s*[- ]?\s*(?P<unit>days?|months?|years?)\b",
+                re.IGNORECASE,
+            ),
+        ),
+    )
+    _CLAUSE_CATEGORY_PATTERNS = (
+        (
+            "specified_disease_or_procedure",
+            re.compile(
+                r"(?P<label>specified\s+disease\s*/\s*procedure\s+waiting\s+period(?:\s*:\s*)?(?:\([^)]*\))?)"
+                r"(?P<body>.{0,500}?\bshall\s+be\s+excluded\s+until\s+the\s+expiry\s+of\s+)"
+                r"(?P<num>\d{1,3})\s*[- ]?\s*(?P<unit>days?|months?|years?)\b",
                 re.IGNORECASE,
             ),
         ),
@@ -143,7 +161,7 @@ class WaitingPeriodDurationParser:
 
         candidates: list[dict[str, Any]] = []
         seen: set[tuple[int, int, str]] = set()
-        for category, pattern in self._CATEGORY_PATTERNS:
+        for category, pattern in (*self._CATEGORY_PATTERNS, *self._CLAUSE_CATEGORY_PATTERNS):
             for match in pattern.finditer(normalized):
                 number_text = match.groupdict().get("num") or match.groupdict().get("num_after")
                 unit_text = match.groupdict().get("unit") or match.groupdict().get("unit_after")
