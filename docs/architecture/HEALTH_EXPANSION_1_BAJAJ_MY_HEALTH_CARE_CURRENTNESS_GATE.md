@@ -1,6 +1,6 @@
 # HEALTH-EXPANSION-1 — Bajaj My Health Care Currentness Gate
 
-**Status:** ACTIVE — VERSION TRANSITION REQUIRED  
+**Status:** ACTIVE — NEW IMMUTABLE VERSION REGISTRATION REQUIRED  
 **Date:** 2026-08-15
 
 ## Why this is the next milestone
@@ -9,9 +9,9 @@ AR-2.5, AR-3.0 and AFR-N1 are closed. The roadmap therefore returns to Health ex
 
 Bajaj General Insurance My Health Care Plan is selected as the next product because:
 
-- the product identity is already resolved;
-- the registered policy wording is already bound to UIN `BAJHLIP26074V022526`;
-- the existing identity overlay deliberately leaves temporal status at `compatibility_unverified`;
+- historical product/document identity was already resolved;
+- the historical policy wording was bound to UIN `BAJHLIP26074V022526`;
+- the historical identity overlay deliberately left temporal status at `compatibility_unverified`;
 - publication eligibility correctly blocks materialized facts while currentness is unresolved;
 - the official Bajaj product page exposes My Health Care Plan and links its policy wording;
 - the linked policy wording displays UIN `BAJHLIP26074V022526` and title `MY HEALTH CARE PLAN (PLAN 1)`.
@@ -22,11 +22,11 @@ This is therefore a currentness/version-governance completion task, not a new pr
 
 The current fact-publication eligibility contract already blocks `compatibility_unverified` documents.
 
-The gate must not be weakened. The task is to determine whether the registered immutable document remains the current official wording or whether the official source has moved to a new immutable document version.
+The gate must not be weakened. The task is to determine whether the historical registered immutable document remains the current official wording or whether the official source has moved to a new immutable document version.
 
 ## Fresh byte verification result
 
-Registered / retained June 2026 policy wording SHA-256:
+Historical registered / June 2026 policy wording SHA-256:
 
 `9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade`
 
@@ -43,54 +43,75 @@ bytes changed at official source
         ↓
 DO NOT mark old registered version current
         ↓
-retain changed-byte observation
+retain 05dc2913... as a new immutable document version
         ↓
-register new immutable document version
-        ↓
-classify + resolve identity + review currentness
+classification + identity + currentness review
         ↓
 only then evaluate fact publication eligibility
 ```
 
-The mismatch is evidence of a document-version transition. It is not permission to overwrite the old registration or promote existing facts to current status.
+## Historical-baseline recovery result
 
-## Governed mismatch recording
+The current `feature/mo-028b-health-waiting-period-coverage` checkout does not contain:
 
-The repository already provides `SourceObservationRecord`, which compares one observed official PDF against one registered immutable version and emits `bytes_changed_observed` when the hashes differ. The observation record itself does not decide temporal status or publication eligibility.
+- the historical `9479fe6f...` PDF bytes; or
+- the generated historical `policy_wording_registration.json` required by `SourceObservationRecord`.
 
-The reviewed observation specification is:
+Git history preserves the historical hash/path references and June source-observation metadata, but not the historical PDF itself or a restorable generated registration artifact.
 
-`docs/architecture/health_expansion_1_bajaj_my_health_care_source_observation_20260815_spec.json`
+Therefore the changed-byte observation cannot be replayed through `SourceObservationRecord` in this checkout without fabricating the missing historical baseline. That replay is no longer a prerequisite for forward progress.
 
-It binds the fresh hash to the existing registered version for the sole purpose of recording that the official bytes changed.
+The historical version remains metadata-only provenance:
+
+```text
+historical identity/hash reference: 9479fe6f...
+actual bytes in current checkout:    unavailable
+current official bytes:              05dc2913...
+```
+
+This is a repository-retention gap, not permission to reconstruct the old bytes or registration.
+
+## New-version registration path
+
+The `05dc2913...` PDF is retained at:
+
+`archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.pdf`
+
+The reviewed registration specification is:
+
+`docs/architecture/health_expansion_1_bajaj_my_health_care_current_generic_sources_registration_spec.json`
+
+It uses the same logical document identity (`bajaj_my_health_care_policy_wording_v1`) but a new immutable source hash, producing a new document-version identity through the existing generic registration contract.
+
+The new registration output is versioned rather than overwriting any historical name:
+
+`knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json`
 
 ## Required evidence chain from here
 
 ```text
-old registered version: 9479fe6f...
-        ↓ fresh official observation
-new observed bytes: 05dc2913...
+current official PDF: 05dc2913...
         ↓
-SourceObservationRecord = bytes_changed_observed
+GenericSourceRegistration
         ↓
-retain 05dc2913... PDF as immutable artifact
+new immutable document version
         ↓
-new generic source registration / document version
+new-version classification
         ↓
-classification + product identity review
+product identity review
         ↓
-new-version currentness evidence
-        ↓ reviewed temporal decision
+currentness evidence + reviewed temporal decision
         ↓
 existing FactPublicationEligibilityContract
 ```
 
 ## Guardrails
 
-- Do not mutate or replace the `9479fe6f...` registration.
-- Do not mark the old document `current_observed_reviewed`.
-- Do not copy facts from the old version into the new version merely because UIN/title appear unchanged.
-- A matching UIN does not prove byte identity or semantic equivalence.
+- Do not recreate or mutate the missing `9479fe6f...` bytes.
+- Do not mark the historical version `current_observed_reviewed`.
+- Do not overwrite the historical logical references with the new registration output.
+- Do not copy facts from the historical version into the new version merely because UIN/title appear unchanged.
+- A matching UIN does not prove semantic equivalence.
 - A working official URL alone is insufficient to prove currentness.
 - No fact is published merely by registering the new version.
 - No Bajaj-specific reasoning branch is authorized.
@@ -98,17 +119,15 @@ existing FactPublicationEligibilityContract
 
 ## Immediate next action
 
-1. retain the freshly downloaded `05dc2913...` PDF under the immutable archive path named in the source-observation spec;
-2. run `scripts.run_source_observation_record` against the spec;
-3. require output `Byte comparison : bytes_changed_observed`;
-4. preserve that governed observation record;
-5. then onboard the `05dc2913...` artifact as a new immutable document version through existing generic registration/classification/identity contracts.
+1. run the existing generic source-registration runner against the `05dc2913...` spec;
+2. verify a new document-version registration is produced from the retained bytes;
+3. inspect the resulting document version and candidate evidence count;
+4. only then create/update classification and identity-review specs for that exact new version.
 
 ## Exit criterion
 
 ```text
-changed-byte official observation retained
-+ new document version registered immutably
+new document version registered immutably
 + new version identity/classification reviewed
 + new version currentness reviewed
 + publication eligibility behaves through existing generic gate
