@@ -1,29 +1,47 @@
-# Health Domain Manufacturing
+# Health Domain Manufacturing — Transitional Architecture
 
-`knowledge_domains/health/` contains Health-specific evidence routing, field extraction, document processing, knowledge manufacturing, understanding, mental-model, financial-outcome, and timeline capabilities.
+`knowledge_domains/health/` contains a prior Health-specific manufacturing and intelligence generation. It includes evidence routing, field extraction, document processing, knowledge manufacturing, understanding, mental-model, financial-outcome, and timeline capabilities.
 
-Health is the active production domain. The architecture is designed so later Motor and Life domains can reuse Factory contracts while implementing their own domain rules.
+## Current status
 
-## Major areas
+Status: **TRANSITIONAL_REVIEW_REQUIRED**
 
-| Area | Responsibility |
+This package is **not** the canonical location for new PolicyScna insurance-intelligence architecture. The authoritative current architecture is `factory_core/` + `insurance_intelligence/` on the declared certified architecture ref.
+
+Rules:
+
+- Do not add new architectural capability here.
+- `factory_core/` and `insurance_intelligence/` production code must not import `knowledge_domains`.
+- Outputs from this package are not governed insurance truth merely because they are structured or evidence-backed.
+- Reusable upstream capabilities may be migrated selectively after explicit review and new certification.
+- Downstream intelligence such as answering, financial-outcome reasoning, recommendation-like logic, and timeline simulation must be rebuilt/adapted to consume certified current knowledge before authoritative use.
+- Historical tests and fixtures may remain for migration analysis and regression evidence.
+
+## Major areas and AR-2.2 disposition
+
+| Area | Current disposition |
 |---|---|
-| `field_registry/` | Canonical Health field definitions and maturity/readiness contracts. |
-| `evidence/` | Health evidence registry utilities. |
-| `routing/` | Evidence router: selects candidate sources for a requested entity/field. |
-| `extractors/` | Field-specific deterministic extractors, such as Copay, Room Rent, PED wait, and Initial Wait. |
-| `validators/` | Domain validation for extracted facts and support rules. |
-| `processing/` | Controlled document processing into components, clauses, sections, tables, and quality outputs. |
-| `knowledge_manufacturing/` | Component scanning, normalization, classification, concept recognition, knowledge blocks, and topic composition. |
-| `knowledge_distillation/` | Observations, relationships, opportunities, and distillation outputs. |
-| `understanding/` | Understanding asset builder and certification. |
-| `understanding_manufacturing/` | Learning primitive/path/understanding manufacturing lines. |
-| `mental_model_transformation/` | Model detection, gap identification, target model, transformation plan, and verification. |
-| `financial_outcome/` | Financial outcome models, scenario construction, adjudication, shock analysis, quality, and certification. |
-| `waiting_period_timeline/` | Evidence-backed timeline simulation requiring runtime dates and product evidence profile. |
-| `factory/` | Health Factory manager and pipeline status. |
+| `field_registry/` | KEEP as supporting candidate; migrate ownership later if needed. |
+| `evidence/` | KEEP as upstream/support candidate; governed output boundary required. |
+| `routing/` | KEEP capability; candidate evidence routing only. |
+| `extractors/` | KEEP deterministic extraction capability; output is candidate data, not authoritative truth. |
+| `validators/` | KEEP where limited to evidence/domain validation. |
+| `processing/` | KEEP/VERIFY for migration behind current factory governance. |
+| `batch/` | KEEP/VERIFY registry/factory bridge capability. |
+| `factory/` | VERIFY; do not extend as a second Factory architecture. |
+| `knowledge_manufacturing/` | PORT useful algorithms selectively; do not reuse historical trust semantics. |
+| `knowledge_distillation/` | PORT selectively or retain historically. |
+| `conditional_rule_publisher.py` | SUPERSEDED for new authoritative publication; retain historically until migration/coverage equivalence is verified. |
+| `waiting_period_timeline/` | FUTURE CONSUMER CANDIDATE; adapt later to certified waiting-period knowledge. |
+| `customer_document_intelligence/` | SUPERSEDED intelligence path. |
+| `understanding/` | DEFER / research asset. |
+| `understanding_manufacturing/` | DEFER / research asset. |
+| `mental_model_transformation/` | DEFER / research asset. |
+| `financial_outcome/` | DEFER; potential future consumer of certified semantics. |
+| copay/room-rent harnesses | HISTORICAL / evaluation fixtures. |
+| product identity utilities | VERIFY against current `factory_core` product/source identity governance before reuse. |
 
-## Field extraction rule
+## Extraction rule retained for reusable upstream capability
 
 A field extractor is not a general-language summariser. It must:
 
@@ -36,23 +54,19 @@ accept evidence context
 → return unknown/unresolved when support is absent
 ```
 
-Do not add product-specific facts or aliases into Health core logic. Product/insurer registration belongs in governed data or identity/evidence configuration.
-
-## Health data flow
+A successful extraction still does **not** establish authoritative insurance truth. Candidate output must cross the current governed lifecycle before it can be consumed as certified knowledge:
 
 ```text
-product-specific source asset
-→ identity resolution (planned upstream hard gate)
-→ evidence routing
-→ Health field extractor
-→ Health validator
-→ evidence-backed fact
-→ knowledge/understanding/future recommendation assets
+source / candidate evidence
+→ identity / provenance / authority governance
+→ atomic normative inventory / reviewed interpretation
+→ semantic representation
+→ applicability / relationships
+→ validation / residue accounting
+→ publication / certification
+→ governed consumption
 ```
 
-## Current Health milestones
+## Succession rule
 
-- Core fields registered: Copay, Room Rent, PED wait, specified disease wait, restoration, initial wait.
-- Copay: Golden Concept baseline established.
-- Waiting Period: timeline capability built and tested; GCP/GMVS contract alignment remains a maintenance task.
-- Next: Product Signal Safety Contract and Product Identity Resolution before expansion to more Health fields.
+New Health, Motor, or Life semantics belong in the current governed architecture. Domain-specific extraction may remain specialized, but insurance truth must be governed through shared current contracts.
