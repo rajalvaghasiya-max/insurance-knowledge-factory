@@ -23,6 +23,7 @@ def _concept(
     aliases: tuple[str, ...] = (),
     customer_phrases: tuple[str, ...] = (),
     insurer_terms: tuple[str, ...] = (),
+    not_synonyms: tuple[str, ...] = (),
     ambiguity_group: str | None = None,
     downstream_topic: str | None = None,
 ) -> CanonicalConceptDefinition:
@@ -37,6 +38,7 @@ def _concept(
         aliases=aliases,
         customer_phrases=customer_phrases,
         insurer_terms=insurer_terms,
+        not_synonyms=not_synonyms,
         ambiguity_group=ambiguity_group,
         downstream_topic=downstream_topic,
     )
@@ -96,8 +98,9 @@ HEALTH_CONCEPTS_V1: tuple[CanonicalConceptDefinition, ...] = (
         "Restoration of sum insured",
         "A benefit concept under which available cover may be replenished or restored when the governed conditions are satisfied.",
         concept_type="BENEFIT",
-        aliases=("restoration benefit", "restore benefit", "sum insured restoration", "recharge benefit"),
-        customer_phrases=("does my cover come back after a claim", "does the sum insured refill"),
+        aliases=("restoration benefit", "restore benefit", "sum insured restoration"),
+        customer_phrases=("does my cover come back after a claim",),
+        not_synonyms=("recharge", "recharge benefit", "refill", "refill benefit", "reinstatement"),
         downstream_topic="restoration",
     ),
     _concept(
