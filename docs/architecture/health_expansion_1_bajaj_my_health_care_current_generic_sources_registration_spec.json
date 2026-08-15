@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "registration_type": "generic_source_registration_bundle_v1",
+  "product_context": {
+    "insurer_id": "bajaj_allianz_general",
+    "product_id": "my_health_care",
+    "product_display_name": "My Health Care Plan",
+    "source_scope": "reusable_generic",
+    "reviewed_generic_source_confirmation": true
+  },
+  "documents": [
+    {
+      "document_id": "bajaj_my_health_care_policy_wording_v1",
+      "source_document_id": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+      "canonical_title": "My Health Care Plan - Policy Wording",
+      "document_type": "policy_wording",
+      "authority_role": "primary_legal",
+      "audience_scope": "generic_public",
+      "document_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.pdf",
+      "extracted_text_output_path": "archive/text/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.txt",
+      "evidence_markers": [
+        "My Health Care",
+        "BAJHLIP26074V022526"
+      ],
+      "source_issued_label": null,
+      "registration_output_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json"
+    }
+  ]
+}
