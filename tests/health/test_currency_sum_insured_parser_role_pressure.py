@@ -54,3 +54,32 @@ def test_plain_premium_amount_remains_premium_without_immediate_limit_phrase():
 
     assert result["candidate_count"] == 1
     assert result["candidates"][0]["attributes"]["monetary_role_hint"] == "premium"
+
+
+def test_url_less_governed_hash_verified_source_is_accepted():
+    source = _source()
+    source["source_url"] = None
+    source["provenance_status"] = "governed_source_registration_sha256_verified"
+
+    result = CurrencySumInsuredParser().extract_from_pages(
+        source=source,
+        pages=[{"page_number": 1, "text": "Compassionate Visit up to INR 50,000."}],
+    )
+
+    assert result["candidate_count"] == 1
+    assert result["source"]["source_url"] is None
+
+
+def test_url_less_non_governed_source_remains_rejected():
+    source = _source()
+    source["source_url"] = None
+
+    try:
+        CurrencySumInsuredParser().extract_from_pages(
+            source=source,
+            pages=[{"page_number": 1, "text": "Compassionate Visit up to INR 50,000."}],
+        )
+    except Exception as exc:
+        assert "source_url may be null only for governed SHA-256-verified registration provenance" in str(exc)
+    else:
+        raise AssertionError("URL-less non-governed source must fail closed")
