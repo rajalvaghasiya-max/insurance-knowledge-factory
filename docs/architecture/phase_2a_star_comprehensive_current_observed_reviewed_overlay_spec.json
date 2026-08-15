@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "overlay_type": "document_identity_resolution_overlay_v1",
+  "reviewed_by_human": true,
+  "product_identity_reference": {
+    "identity_record_path": "knowledge/factory/product_identity_references/star_health_star_comprehensive.product_identity_reference.json"
+  },
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+      "resolution_status": "resolved",
+      "temporal_status": "current_observed_reviewed",
+      "identity_signals": [
+        {
+          "signal_type": "uin_exact_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+        },
+        {
+          "signal_type": "canonical_title_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+        },
+        {
+          "signal_type": "manual_document_review",
+          "verification": "manual_reviewed",
+          "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+        }
+      ],
+      "classification_manifest_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_classification.json",
+      "source_observation_review": {
+        "observation_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_comprehensive_source_observation_20260815.json",
+        "reviewed_by_human": true,
+        "reviewed_at": "2026-08-15T13:11:00+00:00",
+        "reviewed_temporal_status": "current_observed_reviewed",
+        "review_rationale": "Manual review confirms that the retained official Star Health downloads page presents Star Comprehensive Insurance Policy as a current policy document and that the official linked PDF observed on 2026-08-15 is byte-identical to the registered immutable b1dbe8fb document version. This reviewed temporal status is bounded to that observed official source state and does not itself publish insurance facts."
+      },
+      "currentness_evidence_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_comprehensive_currentness_evidence_20260815.json",
+      "capture_provenance": {
+        "source_url": "https://d28c6jni2fmamz.cloudfront.net/Policy_Star_Comprehensive_Insurance_Policy_V_21_3a414ab104.pdf",
+        "source_page_url": "https://www.starhealth.in/downloads/",
+        "capture_reference": "official_star_health_downloads_page_and_byte_identical_pdf_observation_2026-08-15"
+      },
+      "review_rationale": "The Star Comprehensive product and document identity remain resolved for the immutable registered policy wording. A retained official Star Health downloads-page observation and byte-identical official PDF observation, together with structured positive currentness evidence, support current_observed_reviewed for this same document version. This makes current entitlement publication review eligible but does not itself publish any product fact, legal conclusion, or customer entitlement."
+    }
+  ]
+}
