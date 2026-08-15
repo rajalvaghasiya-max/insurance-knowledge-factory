@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "record_type": "ar_3_0_g4_comparison_readiness_pressure_v1",
+  "milestone": "AR-3.0.G4",
+  "status": "COMPARISON_READINESS_PRESSURE_PROPOSED",
+  "product_reference": "star_health:star_comprehensive",
+  "source_g2_path": "docs/architecture/AR_3_0_G2_STAR_COMPREHENSIVE_DELIVERY_NEWBORN_ATOMIC_MAPPING.json",
+  "source_g3_path": "docs/architecture/AR_3_0_G3_STAR_COMPREHENSIVE_DELIVERY_NEWBORN_GENERIC_MAPPING.json",
+  "comparison_subject": "delivery_newborn",
+  "represented_families": [
+    "benefit_scope",
+    "waiting_periods",
+    "benefit_limits",
+    "expense_exclusions",
+    "benefit_interactions",
+    "event_triggered_reset_relationship"
+  ],
+  "mapped_interactions": [
+    {
+      "interaction_id": "G4-DNB-I01",
+      "description": "The 24-month waiting period applies to the Delivery and New Born benefit scope.",
+      "families": ["waiting_periods", "benefit_scope"],
+      "state": "MAPPED"
+    },
+    {
+      "interaction_id": "G4-DNB-I02",
+      "description": "Continuous renewal conditions the waiting-period rule.",
+      "families": ["waiting_periods", "continuity"],
+      "state": "MAPPED"
+    },
+    {
+      "interaction_id": "G4-DNB-I03",
+      "description": "A claim under Section II.14.A triggers a fresh 24-month waiting-period cycle.",
+      "families": ["benefit_event", "waiting_periods"],
+      "state": "MAPPED_AS_RELATIONSHIP"
+    },
+    {
+      "interaction_id": "G4-DNB-I04",
+      "description": "Pre-hospitalization, post-hospitalization, and Hospital Cash are excluded from the section.",
+      "families": ["expense_exclusions", "benefit_scope", "benefit_interactions"],
+      "state": "MAPPED"
+    },
+    {
+      "interaction_id": "G4-DNB-I05",
+      "description": "Delivery and New Born limits apply to the benefit scope but exact table rows remain unresolved.",
+      "families": ["benefit_limits", "benefit_scope"],
+      "state": "MAPPED_WITH_MATERIAL_RESIDUE"
+    }
+  ],
+  "material_residue": [
+    {
+      "residue_id": "G4-DNB-X01",
+      "source_residue_id": "G2-DNB-X01",
+      "description": "Exact per-delivery limit table values by Sum Insured and delivery type remain unresolved.",
+      "accounting_state": "DEFERRED_WITH_REASON",
+      "material": true,
+      "blocker_code": "MATERIAL_RESIDUE"
+    },
+    {
+      "residue_id": "G4-DNB-X02",
+      "source_residue_id": "G2-DNB-X02",
+      "description": "Exact New Born liability table values by Sum Insured remain unresolved.",
+      "accounting_state": "DEFERRED_WITH_REASON",
+      "material": true,
+      "blocker_code": "MATERIAL_RESIDUE"
+    },
+    {
+      "residue_id": "G4-DNB-X03",
+      "source_residue_id": "G2-DNB-X03",
+      "description": "Unreviewed surrounding Section II.14 mechanics remain outside the represented slice.",
+      "accounting_state": "DEFERRED_WITH_REASON",
+      "material": true,
+      "blocker_code": "MATERIAL_RESIDUE"
+    }
+  ],
+  "readiness_assessment": {
+    "semantic_mapping_complete_for_represented_slice": true,
+    "cross_family_relationships_preserved": true,
+    "material_residue_present": true,
+    "limit_values_complete": false,
+    "section_completeness_established": false,
+    "publication_ready": false,
+    "comparison_ready": false,
+    "customer_applicability_ready": false,
+    "net_product_direction_permitted": false,
+    "decision": "BLOCKED_BY_MATERIAL_RESIDUE"
+  },
+  "dominance_rules": [
+    "MAPPED does not imply comparison-ready.",
+    "A material unresolved limit value blocks comparison readiness for the affected benefit dimension.",
+    "Section-level completeness cannot be asserted while material surrounding-clause residue remains deferred.",
+    "Mapped cross-family relationships do not override a material residue blocker.",
+    "No winner, rank, recommendation, or net product direction may be produced from this pressure record."
+  ],
+  "architecture_result": {
+    "new_generic_contract_required": false,
+    "star_specific_runtime_logic_required": false,
+    "existing_generic_residue_and_blocker_contracts_sufficient": true
+  }
+}
