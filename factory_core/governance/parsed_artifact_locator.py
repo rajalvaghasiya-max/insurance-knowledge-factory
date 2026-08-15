@@ -72,6 +72,7 @@ class ParsedArtifactLocator:
     DEFAULT_ROOTS = (
         "archive",
         "knowledge",
+        "processed",
     )
 
     @classmethod
