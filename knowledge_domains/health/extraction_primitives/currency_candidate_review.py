@@ -32,10 +32,19 @@ class CurrencyCandidateReview:
     # These labels are deliberately a small, deterministic review aid — not an
     # ontology or fact resolver.  They are extracted from text before the
     # monetary amount so a later benefit heading cannot re-label the amount.
+    # New labels are admitted only when real product pressure demonstrates a
+    # reusable health-insurance scope cue in bounded evidence.
     _SCOPE_LABELS = (
         ("family_visit", "family visit"),
+        ("air_ambulance", "air ambulance"),
         ("airlift", "air lift"),
         ("airlift", "airlift"),
+        ("home_care_treatment", "home care treatment"),
+        ("cumulative_bonus", "cumulative bonus"),
+        ("bariatric_surgery", "bariatric surgical procedure"),
+        ("delivery_new_born", "delivery and new born"),
+        ("new_born_cover", "new born cover"),
+        ("consultation_limit", "per consultation"),
         ("maternity", "maternity"),
         ("doctor_consultation", "doctor consultation"),
         ("general_physician_consultation", "general physician"),
