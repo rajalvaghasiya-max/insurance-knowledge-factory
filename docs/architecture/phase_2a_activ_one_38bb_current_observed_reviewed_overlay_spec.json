@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "overlay_type": "document_identity_resolution_overlay_v1",
+  "reviewed_by_human": true,
+  "product_identity_reference": {
+    "identity_record_path": "knowledge/factory/product_identity_references/aditya_birla_health_activ_one_38bb879030d9.product_identity_reference.json"
+  },
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/generic_source_registration/policy_wording_registration_38bb879030d9.json",
+      "resolution_status": "resolved",
+      "temporal_status": "current_observed_reviewed",
+      "identity_signals": [
+        {
+          "signal_type": "uin_exact_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/generic_source_registration/policy_wording_registration_38bb879030d9.json"
+        },
+        {
+          "signal_type": "canonical_title_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/generic_source_registration/policy_wording_registration_38bb879030d9.json"
+        },
+        {
+          "signal_type": "manual_document_review",
+          "verification": "manual_reviewed",
+          "evidence_reference": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/activ_one_38bb_currentness_evidence_20260815.json"
+        }
+      ],
+      "classification_manifest_path": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/aditya_birla_health_activ_one_document_classification_38bb879030d9.json",
+      "source_observation_review": {
+        "observation_record_path": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/activ_one_38bb_source_observation_20260815.json",
+        "reviewed_by_human": true,
+        "reviewed_at": "2026-08-15T13:02:08.630820+00:00",
+        "reviewed_temporal_status": "current_observed_reviewed",
+        "review_rationale": "Manual review confirms that the retained official Activ One NXT product page linked the byte-identical 38bb8790 policy wording observed on 2026-08-15. The reviewed temporal status applies only to this immutable registered document version and does not establish semantic equivalence with the missing historical d7726811 version or publish any product fact."
+      },
+      "currentness_evidence_path": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/activ_one_38bb_currentness_evidence_20260815.json",
+      "capture_provenance": {
+        "source_url": "https://www.adityabirlacapital.com/healthinsurance/assets/pdf/active-one/MAXplus/product-information/policy-document.pdf",
+        "source_page_url": "https://www.adityabirlacapital.com/healthinsurance/activ-one?ActivOneNxt=activ-one-nxt",
+        "capture_reference": "official_observation_2026-08-15_sha256_38bb879030d905bd6f90915915f1c2e22e27ebe5bc980bba766c69c7ecd90a16"
+      },
+      "review_rationale": "Product identity remains resolved for the immutable 38bb8790 policy wording. A byte-identical official-source observation plus structured positive currentness evidence supports reviewed temporal status current_observed_reviewed. This authorizes current-entitlement publication eligibility review only; it does not publish facts or assert equivalence with the unavailable historical d7726811 policy wording bytes."
+    }
+  ]
+}
