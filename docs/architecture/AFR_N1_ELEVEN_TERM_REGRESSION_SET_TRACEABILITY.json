@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "record_type": "afr_n1_regression_set_traceability_manifest_v1",
   "milestone": "AFR-N1",
-  "status": "TRACEABILITY_INCOMPLETE",
+  "status": "HISTORICAL_CRITERION_SUPERSEDED_WITH_PROVENANCE_DEBT",
   "expected_definition_count": 11,
   "confirmed_definition_count": 6,
   "unresolved_definition_count": 5,
@@ -14,6 +14,22 @@
       "The No Claim Bonus vs Cumulative Bonus row explicitly states that there were two contradictory entries, so that row preserves two distinct original definition identities."
     ],
     "authority_note": "This manifest records only identities explicitly preserved by retained project material. It does not infer the remaining identities from later vocabulary seeds or current code."
+  },
+  "recovery_attempt": {
+    "status": "EXHAUSTED_WITH_CURRENT_RETAINED_MATERIAL",
+    "searched_material": [
+      "repository history and architecture documents",
+      "retained Canonical Insurance Ontology artifact",
+      "current PolicyScna roadmap",
+      "attached Project Blueprint Review material",
+      "attached Branch AI Agents for Insurance material",
+      "retained project conversation exports and pasted engineering artifacts",
+      "earlier Concept Knowledge Layer roadmap material"
+    ],
+    "result": "No retained source inspected contains the complete historical eleven-definition list.",
+    "supporting_context_not_promoted_to_identity_evidence": [
+      "An earlier Concept Knowledge Layer roadmap names deductible, co-pay, room-rent limit, waiting period, restoration benefit, sum insured, cashless treatment and pre-existing disease as initial concepts, but that is a later/different list and cannot establish the historical eleven identities."
+    ]
   },
   "confirmed_terms": [
     {
@@ -62,35 +78,45 @@
   "unresolved_slots": [
     {
       "slot": 7,
-      "identity_status": "NOT_RECOVERED",
-      "required_action": "Recover from original eleven-definition source; do not infer from health_seed.py or later ontology vocabulary."
+      "identity_status": "NOT_RECOVERED_PROVENANCE_DEBT",
+      "required_action": "If the original source is later recovered, append the identity with provenance and map it to existing or new certification coverage."
     },
     {
       "slot": 8,
-      "identity_status": "NOT_RECOVERED",
-      "required_action": "Recover from original eleven-definition source; do not infer from health_seed.py or later ontology vocabulary."
+      "identity_status": "NOT_RECOVERED_PROVENANCE_DEBT",
+      "required_action": "If the original source is later recovered, append the identity with provenance and map it to existing or new certification coverage."
     },
     {
       "slot": 9,
-      "identity_status": "NOT_RECOVERED",
-      "required_action": "Recover from original eleven-definition source; do not infer from health_seed.py or later ontology vocabulary."
+      "identity_status": "NOT_RECOVERED_PROVENANCE_DEBT",
+      "required_action": "If the original source is later recovered, append the identity with provenance and map it to existing or new certification coverage."
     },
     {
       "slot": 10,
-      "identity_status": "NOT_RECOVERED",
-      "required_action": "Recover from original eleven-definition source; do not infer from health_seed.py or later ontology vocabulary."
+      "identity_status": "NOT_RECOVERED_PROVENANCE_DEBT",
+      "required_action": "If the original source is later recovered, append the identity with provenance and map it to existing or new certification coverage."
     },
     {
       "slot": 11,
-      "identity_status": "NOT_RECOVERED",
-      "required_action": "Recover from original eleven-definition source; do not infer from health_seed.py or later ontology vocabulary."
+      "identity_status": "NOT_RECOVERED_PROVENANCE_DEBT",
+      "required_action": "If the original source is later recovered, append the identity with provenance and map it to existing or new certification coverage."
     }
   ],
-  "closure_rule": "AFR-N1 overall certification remains held until all eleven identities are recovered with provenance and mapped to certified coverage, or the project explicitly supersedes the historical eleven-term exit criterion through a governed architecture decision.",
+  "governed_supersession": {
+    "decision": "The historical exact-eleven-identity criterion is no longer executable because the complete source list is not retained. It is superseded as a milestone closure blocker, not rewritten as if the five unknown identities were known.",
+    "replacement_certification_basis": [
+      "all six identities explicitly recoverable from the retained source are covered by certified AFR-N1.A through AFR-N1.E gates",
+      "standard-definition source authority, evidence class, version, effective range, category scoping, immutability and fail-closed lookup are adversarially certified",
+      "false-synonym and product-fact separation boundaries are certified",
+      "the five unrecovered historical identities remain explicit provenance debt and are not inferred"
+    ],
+    "non_claim": "This supersession does not claim that the missing five definitions were tested or identified."
+  },
+  "closure_rule": "AFR-N1 may close on the governed replacement certification basis while preserving the five unresolved historical identities as provenance debt. If the original eleven-definition source is later recovered, the manifest must be amended and any genuinely missing semantic coverage must be certified before that recovered identity is treated as governed.",
   "forbidden_shortcuts": [
     "Do not guess the five unresolved terms from the current Health terminology seed.",
     "Do not treat the MO-024 20–30 concept candidate vocabulary as the historical eleven-term source.",
-    "Do not close AFR-N1 on six confirmed identities alone.",
+    "Do not state that all eleven historical identities were recovered or tested.",
     "Do not add semantic production code solely to fill unknown historical slots."
   ]
 }
