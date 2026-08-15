@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "audit_type": "phase_2a_health_onboarding_batch_audit_v1",
+  "products": [
+    {
+      "entity_id": "star_health:star_comprehensive",
+      "display_name": "Star Health Star Comprehensive",
+      "artifacts": {
+        "registration": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "classification": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_classification.json",
+        "product_identity": "knowledge/factory/product_identity_references/star_health_star_comprehensive.product_identity_reference.json",
+        "identity_resolution": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_identity_resolution.json"
+      }
+    },
+    {
+      "entity_id": "bajaj_allianz_general:my_health_care",
+      "display_name": "Bajaj General Insurance My Health Care Plan",
+      "artifacts": {
+        "registration": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json",
+        "classification": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_document_classification_05dc29132434.json",
+        "product_identity": "knowledge/factory/product_identity_references/bajaj_allianz_general_my_health_care_05dc29132434.product_identity_reference.json",
+        "identity_resolution": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_document_identity_resolution_05dc_current_reviewed.json",
+        "currentness_evidence": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_currentness_evidence_05dc_20260815.json"
+      }
+    },
+    {
+      "entity_id": "aditya_birla_health:activ_one",
+      "display_name": "Aditya Birla Health Activ One NXT",
+      "artifacts": {}
+    }
+  ]
+}
