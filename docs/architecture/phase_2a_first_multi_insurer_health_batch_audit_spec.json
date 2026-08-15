@@ -10,7 +10,8 @@
         "registration": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
         "classification": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_classification.json",
         "product_identity": "knowledge/factory/product_identity_references/star_health_star_comprehensive.product_identity_reference.json",
-        "identity_resolution": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_identity_resolution.json"
+        "identity_resolution": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_identity_resolution_current_reviewed.json",
+        "currentness_evidence": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_comprehensive_currentness_evidence_20260815.json"
       }
     },
     {
