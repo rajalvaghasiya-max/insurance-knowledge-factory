@@ -1,135 +1,190 @@
 # HEALTH-EXPANSION-1 — Bajaj My Health Care Currentness Gate
 
-**Status:** ACTIVE — NEW IMMUTABLE VERSION REGISTRATION REQUIRED  
+**Status:** CERTIFIED  
 **Date:** 2026-08-15
 
-## Why this is the next milestone
+## Certification result
 
-AR-2.5, AR-3.0 and AFR-N1 are closed. The roadmap therefore returns to Health expansion as governed data rather than new architecture.
+HEALTH-EXPANSION-1 is certified for Bajaj General Insurance My Health Care Plan.
 
-Bajaj General Insurance My Health Care Plan is selected as the next product because:
+Validated on the current branch:
 
-- historical product/document identity was already resolved;
-- the historical policy wording was bound to UIN `BAJHLIP26074V022526`;
-- the historical identity overlay deliberately left temporal status at `compatibility_unverified`;
-- publication eligibility correctly blocks materialized facts while currentness is unresolved;
-- the official Bajaj product page exposes My Health Care Plan and links its policy wording;
-- the linked policy wording displays UIN `BAJHLIP26074V022526` and title `MY HEALTH CARE PLAN (PLAN 1)`.
+```text
+focused Bajaj publication gate      3 passed
+publication eligibility combined   10 passed
+Health subsystem                  109 passed
+regressions                         0
+```
 
-This is therefore a currentness/version-governance completion task, not a new product-specific reasoning task.
+The certified current immutable policy wording is:
 
-## Existing safe behavior
+- product: `bajaj_allianz_general:my_health_care`
+- logical document id: `bajaj_my_health_care_policy_wording_v1`
+- document version id: `docver_bajaj_my_health_care_policy_wording_v1_05dc291324340d52`
+- SHA-256: `05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158`
+- UIN: `BAJHLIP26074V022526`
+- temporal status: `current_observed_reviewed`
+- evidence review: `eligible_for_evidence_review`
+- current entitlement: `eligible`
 
-The current fact-publication eligibility contract already blocks `compatibility_unverified` documents.
+## Why this milestone mattered
 
-The gate must not be weakened. The task is to determine whether the historical registered immutable document remains the current official wording or whether the official source has moved to a new immutable document version.
-
-## Fresh byte verification result
-
-Historical registered / June 2026 policy wording SHA-256:
+The historical Bajaj policy wording reference used SHA-256:
 
 `9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade`
 
-Fresh official download on 2026-08-15 SHA-256:
+A fresh official download on 2026-08-15 produced:
 
 `05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158`
 
-Result:
+The system did not overwrite or silently promote the historical version. Instead it followed the governed version-transition path:
 
 ```text
-05dc2913... != 9479fe6f...
+historical hash differs from fresh official bytes
         ↓
-bytes changed at official source
-        ↓
-DO NOT mark old registered version current
-        ↓
-retain 05dc2913... as a new immutable document version
-        ↓
-classification + identity + currentness review
-        ↓
-only then evaluate fact publication eligibility
-```
-
-## Historical-baseline recovery result
-
-The current `feature/mo-028b-health-waiting-period-coverage` checkout does not contain:
-
-- the historical `9479fe6f...` PDF bytes; or
-- the generated historical `policy_wording_registration.json` required by `SourceObservationRecord`.
-
-Git history preserves the historical hash/path references and June source-observation metadata, but not the historical PDF itself or a restorable generated registration artifact.
-
-Therefore the changed-byte observation cannot be replayed through `SourceObservationRecord` in this checkout without fabricating the missing historical baseline. That replay is no longer a prerequisite for forward progress.
-
-The historical version remains metadata-only provenance:
-
-```text
-historical identity/hash reference: 9479fe6f...
-actual bytes in current checkout:    unavailable
-current official bytes:              05dc2913...
-```
-
-This is a repository-retention gap, not permission to reconstruct the old bytes or registration.
-
-## New-version registration path
-
-The `05dc2913...` PDF is retained at:
-
-`archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.pdf`
-
-The reviewed registration specification is:
-
-`docs/architecture/health_expansion_1_bajaj_my_health_care_current_generic_sources_registration_spec.json`
-
-It uses the same logical document identity (`bajaj_my_health_care_policy_wording_v1`) but a new immutable source hash, producing a new document-version identity through the existing generic registration contract.
-
-The new registration output is versioned rather than overwriting any historical name:
-
-`knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json`
-
-## Required evidence chain from here
-
-```text
-current official PDF: 05dc2913...
+retain new bytes as immutable source
         ↓
 GenericSourceRegistration
         ↓
-new immutable document version
+reviewed classification
         ↓
-new-version classification
+resolved product/document identity
         ↓
-product identity review
+byte-identical official source observation
         ↓
-currentness evidence + reviewed temporal decision
+structured currentness evidence
+        ↓
+human-reviewed temporal decision
+        ↓
+current_observed_reviewed
         ↓
 existing FactPublicationEligibilityContract
 ```
 
-## Guardrails
+No product-specific reasoning code was introduced.
 
-- Do not recreate or mutate the missing `9479fe6f...` bytes.
-- Do not mark the historical version `current_observed_reviewed`.
-- Do not overwrite the historical logical references with the new registration output.
-- Do not copy facts from the historical version into the new version merely because UIN/title appear unchanged.
-- A matching UIN does not prove semantic equivalence.
-- A working official URL alone is insufficient to prove currentness.
-- No fact is published merely by registering the new version.
-- No Bajaj-specific reasoning branch is authorized.
-- Existing fail-closed publication behavior remains unchanged.
+## Historical-baseline retention note
 
-## Immediate next action
+The current checkout does not retain the historical `9479fe6f...` PDF bytes or the generated historical `policy_wording_registration.json`.
 
-1. run the existing generic source-registration runner against the `05dc2913...` spec;
-2. verify a new document-version registration is produced from the retained bytes;
-3. inspect the resulting document version and candidate evidence count;
-4. only then create/update classification and identity-review specs for that exact new version.
+Git history retains the historical hash/path references and earlier observation metadata. The historical version therefore remains metadata-only provenance in this checkout. It was not reconstructed, fabricated, or silently replaced.
 
-## Exit criterion
+This retention gap did not justify weakening any hash, identity, currentness, or publication guard.
+
+## Certified governance behavior
+
+### 1. New immutable version registration
+
+The fresh official `05dc2913...` PDF was registered through the existing generic registration contract as a distinct immutable document version.
+
+Result:
 
 ```text
-new document version registered immutably
-+ new version identity/classification reviewed
-+ new version currentness reviewed
-+ publication eligibility behaves through existing generic gate
-+ regressions = 0
+source registration  generic_sources_registered_evidence_review_required
+evidence candidates  53
+authority role        primary_legal
 ```
+
+### 2. Classification and identity
+
+The new version passed the existing generic governance path:
+
+```text
+classification       reviewed_document_classifications_recorded_not_published
+product identity     resolved
+document resolution  resolved
+```
+
+The initial new-version overlay correctly remained:
+
+```text
+temporal             compatibility_unverified
+current entitlement  blocked
+```
+
+### 3. Currentness evidence
+
+The exact immutable version was re-observed from the official source and produced:
+
+```text
+byte comparison      byte_identical_observed
+currentness evidence sufficient_for_current_observed_review
+positive evidence    1
+```
+
+The evidence record remained evidence-only and did not itself make a temporal decision.
+
+### 4. Reviewed temporal transition
+
+The reviewed identity-resolution overlay then moved the exact version to:
+
+```text
+resolution           resolved
+temporal             current_observed_reviewed
+evidence review      eligible_for_evidence_review
+current entitlement  eligible
+```
+
+This transition was accepted only because the existing identity-resolution contract could bind:
+
+- the same registration/document version;
+- a human-reviewed byte-identical source observation; and
+- validated structured currentness evidence.
+
+### 5. Publication eligibility pressure
+
+The final adversarial test proved the generic publication contract behaves correctly for the Bajaj version:
+
+```text
+compatibility_unverified
+        → blocked for publication review
+
+current_observed_reviewed
+        → eligible_for_publication_review
+```
+
+In both states:
+
+```text
+publication_state = not_published
+```
+
+Currentness therefore removes only the currentness blocker. It does not publish a product fact.
+
+## Architecture conclusion
+
+HEALTH-EXPANSION-1 proves the post-fitness architecture can absorb a real insurer document-version transition without introducing a new abstraction or product-specific runtime logic.
+
+The architecture correctly preserved:
+
+- immutable document versions;
+- source provenance;
+- classification boundaries;
+- product/document identity separation;
+- currentness as a reviewed decision;
+- fail-closed publication behavior;
+- separation between eligibility and publication.
+
+## Guardrails retained
+
+- Do not recreate or mutate the missing historical `9479fe6f...` bytes.
+- Do not infer semantic equivalence solely from matching UIN/title.
+- A working official URL alone is insufficient for currentness.
+- Currentness eligibility is not fact publication.
+- No Bajaj-specific reasoning branch is authorized.
+- Product expansion continues as governed data unless real product pressure proves a generic architecture defect.
+
+## Exit criterion — PASSED
+
+```text
+new document version registered immutably               PASS
+new version identity/classification reviewed            PASS
+new version currentness reviewed                        PASS
+publication eligibility through existing generic gate   PASS
+focused Bajaj pressure                                  3 passed
+combined publication pressure                          10 passed
+Health subsystem                                      109 passed
+regressions                                             0
+```
+
+**HEALTH-EXPANSION-1: CERTIFIED.**
