@@ -41,6 +41,7 @@ class ExtractionCandidateContract:
     SCHEMA_VERSION = "1.0"
     ENVELOPE_TYPE = "health_extraction_candidate_document_v1"
     CANDIDATE_GUARDRAIL = "evidence_candidate_only"
+    GOVERNED_HASH_VERIFIED_PROVENANCE = "governed_source_registration_sha256_verified"
     _SHA256_RE = re.compile(r"[0-9a-f]{64}")
 
     @classmethod
@@ -238,9 +239,17 @@ class ExtractionCandidateContract:
                 "candidate.source.source_document_id must equal sha256:<candidate.source.sha256>"
             )
         cls._require_nonempty_string(source.get("document_type"), "candidate.source.document_type")
-        cls._require_nonempty_string(source.get("source_url"), "candidate.source.source_url")
         cls._require_nonempty_string(source.get("relative_archive_path"), "candidate.source.relative_archive_path")
         cls._require_nonempty_string(source.get("provenance_status"), "candidate.source.provenance_status")
+
+        source_url = source.get("source_url")
+        if source_url is None:
+            if source.get("provenance_status") != cls.GOVERNED_HASH_VERIFIED_PROVENANCE:
+                raise ExtractionCandidateContractError(
+                    "candidate.source.source_url may be null only for governed SHA-256-verified registration provenance"
+                )
+        else:
+            cls._require_nonempty_string(source_url, "candidate.source.source_url")
 
     @classmethod
     def validate_confidence(cls, confidence: Mapping[str, Any]) -> None:
