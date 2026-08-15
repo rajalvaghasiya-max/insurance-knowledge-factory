@@ -31,6 +31,26 @@ def main() -> int:
     print(f"Review routing records       : {summary['review_routing_record_count']}")
     print(f"Risk tiers                   : {summary['review_risk_tier_counts']}")
     print(f"Product-specific code changes: {summary['product_identity_bearing_production_code_changes']}")
+    print("-" * 70)
+    print("PER-PRODUCT GAP DETAIL")
+    print("-" * 70)
+    for product in result.manifest["products"]:
+        print(f"{product['entity_id']}")
+        missing = product["missing_or_undeclared_artifacts"]
+        if not missing:
+            print("  complete for audited artifact set")
+        else:
+            for key in missing:
+                artifact = product["artifacts"][key]
+                print(f"  {key}: {artifact['status']}")
+        routing = product.get("review_risk_summary")
+        if routing is None:
+            print("  review_risk_routing: unavailable")
+        else:
+            print(
+                "  review_risk_routing: "
+                f"{routing['routing_record_count']} record(s), tiers={routing['tier_counts']}"
+            )
     print("NOTE: read-only audit; no product fact, adjudication, or publication is created")
     return 0
 
