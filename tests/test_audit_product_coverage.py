@@ -88,7 +88,7 @@ def write_governed_readiness(base_dir: Path) -> Path:
                 "source_governance": "CURRENT_GOVERNED",
                 "semantic_review": "PARTIAL",
                 "applicability": "UNRESOLVED",
-                "publication_eligibility": "NOT_ELIGIBLE",
+                "publication_eligibility": "INELIGIBLE",
                 "publication_state": "NOT_PUBLISHED",
                 "unresolved_residue": ["schedule_binding"],
                 "evidence_references": ["governed:test:readiness"],
