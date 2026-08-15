@@ -1,10 +1,10 @@
 # Phase-2A — Star Comprehensive Real Review Workload Diagnosis
 
-Status: **ACTIVE DIAGNOSTIC CHECKPOINT — REVIEW SCALING NOT YET PROVEN**
+Status: **ACTIVE DIAGNOSTIC CHECKPOINT — SENIOR-REVIEW DEMAND REDUCED 50%; PHASE-2A REVIEW SCALING NOT YET FULLY PROVEN**
 
 ## Purpose
 
-Record the first real Phase-2A extraction-to-review-to-MO-029 workload result from the governed Star Comprehensive policy wording and identify the demonstrated upstream bottleneck without weakening review-risk governance.
+Record the first real Phase-2A extraction-to-review-to-MO-029 workload result from the governed Star Comprehensive policy wording, the evidence-backed generic scope-resolution improvement that followed, and the measured effect on review routing without weakening review-risk governance.
 
 ## Governed source
 
@@ -13,13 +13,13 @@ Record the first real Phase-2A extraction-to-review-to-MO-029 workload result fr
 - Parsed artifact: `processed/pdf_parse/b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f.json`
 - Parse result observed locally: 48 pages, 48 pages with text.
 
-## Real workload result
+## Real workload baseline
 
-The existing generic pipeline was executed on the real governed source:
+The generic pipeline was executed on the real governed source:
 
 `registered source -> parsed PDF -> currency candidates -> reviewer-ready groups -> MO-029 review-risk routing`
 
-Observed results:
+Initial observed results:
 
 - Currency candidates: **12**
 - Reviewer-ready groups: **12**
@@ -31,47 +31,72 @@ Observed results:
 - Adjudication created: **none**
 - Publication created: **none**
 
-The Phase-2A onboarding batch audit subsequently reported:
-
-- Products: **3**
-- Products with missing data: **0**
-- Missing/undeclared artifacts: **0**
-- Review routing records: **12**
-- Review routing N/A because no review input: **2**
-- Risk tiers: `critical=0, high=12, medium=0, low=0`
-- Product-specific production-code changes: **0**
-
-Star is now correctly declared `required_when_review_input_exists` for review-risk routing. Bajaj My Health Care and Activ One remain `not_applicable_no_review_input` until reviewer-ready inputs actually exist.
-
-## Flag diagnosis
-
-Observed review flags across the 12 real Star groups:
+Initial flag diagnosis:
 
 - `benefit_scope_unresolved`: **12 / 12**
 - `role_selection_required`: **12 / 12** — structural/neutral by itself in MO-029
 - `table_layout_binding_possible`: **2 / 12**
 - `unresolved_role_hint`: **1 / 12**
 
-Therefore the universal High routing is driven by the universal `benefit_scope_unresolved` flag. The sparse table-layout and role-hint ambiguities do not explain the 12/12 High result.
+The universal High routing was therefore driven by the universal `benefit_scope_unresolved` flag.
+
+## Evidence-backed generic improvement
+
+The 12 bounded Star evidence windows were inspected. They demonstrated reusable review-only scope cues for cases including:
+
+- Air Ambulance
+- Home Care Treatment
+- Cumulative Bonus
+- Bariatric Surgery
+- Delivery / New Born
+- per-consultation limits
+
+The generic currency review scope helper was extended only for reusable evidence cues demonstrated by real product pressure. No Star identity, hash, product branch, entitlement decision, or publication logic was added.
+
+Table-bound ambiguity and unresolved-role ambiguity remain fail-closed.
+
+## Measured post-improvement result
+
+After regenerating the reviewer-ready groups and rerunning MO-029 on the same 12 real candidates, the Phase-2A batch audit reported:
+
+- Products: **3**
+- Products with missing data: **0**
+- Missing/undeclared artifacts: **0**
+- Review routing records: **12**
+- Review routing N/A because no review input: **2**
+- MO-029 Critical: **0**
+- MO-029 High: **6**
+- MO-029 Medium: **6**
+- MO-029 Low: **0**
+- Product-specific production-code changes: **0**
+
+Therefore:
+
+- Senior-review demand changed from **12 / 12** to **6 / 12**.
+- Standard-review routing increased from **0 / 12** to **6 / 12**.
+- Measured reduction in senior-review demand: **50%**.
+- The reduction was achieved by improving deterministic upstream context, not by weakening MO-029 risk thresholds.
+- Grouping compression remains **0%**; the demonstrated efficiency gain is review-tier routing, not candidate-count reduction.
 
 ## Architecture interpretation
 
-This checkpoint does **not** prove sub-linear review scaling. The first real sample shows no grouping compression and no reduction in senior-review demand.
+This is the first real evidence that the Phase-2A architecture can reduce expensive review effort through reusable upstream context resolution while preserving fail-closed governance.
 
-It also does **not** demonstrate that all 12 monetary clauses are inherently high-risk. The current currency review scope helper intentionally recognizes only a small deterministic vocabulary. Product pressure has now demonstrated that this limited vocabulary may itself be the upstream bottleneck.
+It is not yet sufficient to claim that overall Phase-2A review throughput scales sub-linearly across products or insurers. The evidence currently proves one real product sample and one monetary extraction primitive.
 
-The next diagnostic question is therefore narrow:
+The remaining six High groups should be inspected before any further scope-resolution change. Any remaining High status must be retained when caused by genuine table/column binding, unresolved monetary role, or missing section context.
 
-> For each unresolved monetary occurrence, does the already-bounded local evidence contain a reusable, deterministic benefit/section cue that can safely be represented as a review-only scope hint?
+The next diagnostic question is therefore:
 
-Only real evidence may justify extending the generic scope resolver.
+> Which flags and bounded evidence are present on the six remaining High groups, and do they represent legitimate senior-review work or another reusable generic context gap?
 
 ## Guardrails
 
 1. Do **not** lower MO-029 risk thresholds merely to improve workload metrics.
-2. Do **not** reclassify `benefit_scope_unresolved` as lower risk while the scope is genuinely unresolved.
+2. Do **not** reclassify `benefit_scope_unresolved` as lower risk while scope is genuinely unresolved.
 3. Do **not** add Star-specific labels, branches, hashes, product IDs, or reasoning to production scope-resolution code.
 4. Any new scope cue must be generic, evidence-bounded, deterministic, review-only, and demonstrated by real product pressure.
-5. Scope inference must remain distinct from applicability, entitlement, fact acceptance, and publication.
-6. Table/column binding must remain unresolved when layout evidence is insufficient.
-7. The Phase-2A parent gate remains **ACTIVE** until real review-effort scaling evidence and broader regression validation support closure.
+5. Scope inference remains distinct from applicability, entitlement, fact acceptance, and publication.
+6. Table/column binding remains unresolved when layout evidence is insufficient.
+7. Grouping compression and review-tier reduction are separate metrics and must not be conflated.
+8. The Phase-2A parent gate remains **ACTIVE** until broader real-product review evidence and regression validation support closure.
