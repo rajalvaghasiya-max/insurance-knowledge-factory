@@ -1,6 +1,6 @@
 # Phase-2B — Bajaj My Health Care Review-Scaling Replication Checkpoint
 
-Status: **ACTIVE — CROSS-PRODUCT REPLICATION IN PROGRESS**
+Status: **ACTIVE — CROSS-PRODUCT REPLICATION COMPLETE; REGRESSION CLOSURE PENDING**
 Date: 2026-08-15
 
 ## Purpose
@@ -16,56 +16,108 @@ Product under pressure:
 
 ## Generic pipeline execution
 
-The existing generic path was executed without new production code:
+The existing generic path was executed without new product-specific production code:
 
 `governed registration -> governed registered PDF parse -> currency candidates -> reviewer-ready groups -> MO-029 review-risk routing`
 
-Observed Bajaj results:
+Observed Bajaj workload:
 
 - Parsed pages: **53**
 - Pages with text: **53**
 - Currency candidates: **10**
 - Reviewer-ready groups: **10**
 - Grouping compression: **0%**
-- MO-029 Critical: **2**
-- MO-029 High: **5**
-- MO-029 Medium: **3**
-- MO-029 Low: **0**
-- Critical/High groups: **7 / 10 (70%)**
 - Adjudication created: **none**
 - Publication created: **none**
 - Product-identity-bearing production code added for this replication: **0**
 
+## Initial routing result
+
+Initial MO-029 distribution:
+
+- Critical: **2**
+- High: **5**
+- Medium: **3**
+- Low: **0**
+
+Inspection showed both Critical groups were Family Visit benefit limits. The bounded evidence contained explicit phrases such as `Upto INR 25,000` and `Upto INR 50,000`, but the extraction primitive's nearest-role-cue rule selected a later nearby `premium` token from `Renewal premium waiver`, creating `possible_benefit_limit_despite_role_hint` and therefore a Critical route.
+
+This was a generic role-hint precision defect, not a Bajaj-specific semantic rule.
+
+## Evidence-backed generic correction
+
+The generic currency parser was changed so an immediate pre-amount limit phrase such as `up to` / `upto` receives precedence as `sub_limit_or_limit` before the more distant nearest-cue fallback is used.
+
+Guardrails preserved:
+
+- no Bajaj product ID, source hash, product branch, or product-specific reasoning was introduced;
+- normal premium clauses still retain the `premium` role;
+- sum-insured-band binding remains unresolved;
+- MO-029 thresholds were not changed;
+- no fact acceptance, adjudication, or publication was added.
+
+Focused regression after the correction: **14 passed**.
+
+## Measured post-fix result
+
+The same Bajaj parsed artifact was rerun through candidate extraction, reviewer grouping, and MO-029 routing.
+
+Post-fix distribution:
+
+- Critical: **0**
+- High: **7**
+- Medium: **3**
+- Low: **0**
+
+Therefore:
+
+- false Critical escalations changed from **2 -> 0**;
+- the two Family Visit groups correctly remain High because `schedule_or_band_binding_unverified` is still material;
+- total Critical/High workload remains **7 / 10 (70%)**;
+- review-tier precision improved without reducing genuine senior-review demand.
+
+This distinction is important: the objective was not to make the metric look better. The correction removed an incorrect severity reason while preserving legitimate band-binding uncertainty.
+
 ## Cross-product comparison with Star Comprehensive
 
-For the comparable real Star Comprehensive currency-review workload after its evidence-backed generic scope improvement:
+Comparable real currency-review workloads now show:
+
+### Star Comprehensive
 
 - Reviewer-ready groups: **12**
 - Critical: **0**
 - High: **6**
 - Medium: **6**
-- Critical/High groups: **6 / 12 (50%)**
+- Critical/High: **6 / 12 (50%)**
 
-Bajaj therefore demonstrates that the same generic pipeline generalizes across another insurer/product while exposing a different ambiguity profile. The architecture is not assuming every product has the same review-cost distribution.
+### Bajaj My Health Care
 
-## Interpretation
+- Reviewer-ready groups: **10**
+- Critical: **0**
+- High: **7**
+- Medium: **3**
+- Critical/High: **7 / 10 (70%)**
 
-This checkpoint strengthens Phase-2A's scaling claim by showing that the same governed review path runs on a second product with zero new product-specific production code.
+The same generic pipeline therefore works across two insurers/products while correctly preserving different review-cost distributions.
 
-It does **not** justify changing MO-029 thresholds merely because Bajaj has a higher Critical/High proportion.
+## Architecture interpretation
 
-The next diagnostic step is narrow: inspect only the Critical and High Bajaj groups and determine whether their risk is caused by:
+Phase-2B now demonstrates three things beyond Phase-2A:
 
-1. legitimate conflicting role/table/structural ambiguity;
-2. a reusable generic evidence-context gap already demonstrated by the product;
-3. unsupported semantics that should remain explicit residue.
+1. the generic governed review path replicates on a second real insurer/product with zero product-identity-bearing production code;
+2. cross-product pressure can expose a reusable extraction precision defect without requiring a product-specific implementation;
+3. improving upstream precision does not require lowering real downstream risk — Bajaj still has a higher High-review proportion because its dense sum-insured-band structures genuinely require review.
 
-Any generic production change requires real evidence that the current representation is systematically missing reusable context. No Bajaj-specific branch, product ID, hash, or reasoning may be added.
+The remaining seven High groups should remain High unless future generic table/band structure recovery is independently justified by broader product pressure. Phase-2B does not create that capability merely to reduce Bajaj review counts.
+
+## Closure condition
+
+Cross-product replication and routing-precision work are complete. Phase-2B should close only after relevant Health and factory-core regressions confirm that the generic parser correction introduced no broader regression.
 
 ## Guardrails
 
 - No publication or adjudication follows from review routing.
 - No product-specific production reasoning code.
 - No weakening of fail-closed review-risk policy.
-- Table/column and role ambiguity remain unresolved until evidence supports binding.
+- Table/column and sum-insured-band ambiguity remain unresolved until evidence supports binding.
 - Cross-product review effort is measured honestly; unfavorable workload distributions are not normalized away.
