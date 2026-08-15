@@ -5,7 +5,7 @@
   "status": "COMPARISON_READINESS_PRESSURE_PROPOSED",
   "product_reference": "star_health:star_comprehensive",
   "source_g2_path": "docs/architecture/AR_3_0_G2_STAR_COMPREHENSIVE_DELIVERY_NEWBORN_ATOMIC_MAPPING.json",
-  "source_g3_path": "docs/architecture/AR_3_0_G3_STAR_COMPREHENSIVE_DELIVERY_NEWBORN_GENERIC_MAPPING.json",
+  "source_g3_path": "docs/architecture/AR_3_0_G3_STAR_COMPREHENSIVE_DELIVERY_NEWBORN_GENERIC_FAMILY_MAPPING.json",
   "comparison_subject": "delivery_newborn",
   "represented_families": [
     "benefit_scope",
