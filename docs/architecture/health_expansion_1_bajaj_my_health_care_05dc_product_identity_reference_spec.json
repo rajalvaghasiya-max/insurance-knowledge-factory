@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "record_type": "product_identity_reference_v1",
+  "reviewed_by_human": true,
+  "product_identity": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "insurer_id": "bajaj_allianz_general",
+    "product_id": "my_health_care",
+    "canonical_product_name": "My Health Care Plan",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "aliases": [
+    "My Health Care Plan",
+    "My Health Care Plan1"
+  ],
+  "identity_evidence": [
+    {
+      "signal_type": "uin_exact_match",
+      "verification": "document_embedded_text",
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json"
+    },
+    {
+      "signal_type": "canonical_title_match",
+      "verification": "document_embedded_text",
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json"
+    },
+    {
+      "signal_type": "manual_product_review",
+      "verification": "manual_reviewed",
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json"
+    }
+  ],
+  "review_rationale": "The 05dc2913 document version identifies My Health Care Plan and UIN BAJHLIP26074V022526, matching the established Bajaj My Health Care product identity. This resolves product identity for this immutable document version only. It does not claim byte or semantic equivalence with the earlier 9479fe6f version, current applicability, publication eligibility, or customer entitlement."
+}
