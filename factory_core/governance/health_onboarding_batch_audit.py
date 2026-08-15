@@ -80,6 +80,12 @@ def _load_json_if_present(root: Path, relative: str) -> tuple[Mapping[str, Any] 
 class HealthOnboardingBatchAudit:
     SCHEMA_VERSION = "1.0"
     AUDIT_TYPE = "phase_2a_health_onboarding_batch_audit_v1"
+    REVIEW_ROUTING_REQUIRED = "required_when_review_input_exists"
+    REVIEW_ROUTING_NOT_APPLICABLE = "not_applicable_no_review_input"
+    _ALLOWED_REVIEW_ROUTING_APPLICABILITY = {
+        REVIEW_ROUTING_REQUIRED,
+        REVIEW_ROUTING_NOT_APPLICABLE,
+    }
     _ALLOWED_ARTIFACT_KEYS = (
         "registration",
         "classification",
@@ -120,6 +126,7 @@ class HealthOnboardingBatchAudit:
         rows: list[dict[str, Any]] = []
         total_missing = 0
         total_routed_groups = 0
+        routing_not_applicable_count = 0
         tier_totals = {"critical": 0, "high": 0, "medium": 0, "low": 0}
 
         for index, raw_product in enumerate(products):
@@ -128,11 +135,26 @@ class HealthOnboardingBatchAudit:
             if entity_id in seen_entities:
                 raise HealthOnboardingBatchAuditError("product entity_id values must be unique")
             seen_entities.add(entity_id)
+
+            routing_applicability = _text(
+                product.get("review_routing_applicability", cls.REVIEW_ROUTING_REQUIRED),
+                f"products[{index}].review_routing_applicability",
+            )
+            if routing_applicability not in cls._ALLOWED_REVIEW_ROUTING_APPLICABILITY:
+                raise HealthOnboardingBatchAuditError("unsupported review_routing_applicability")
+
             artifacts = _mapping(product.get("artifacts", {}), f"products[{index}].artifacts")
             unknown_keys = sorted(set(artifacts) - set(cls._ALLOWED_ARTIFACT_KEYS))
             if unknown_keys:
                 raise HealthOnboardingBatchAuditError(
                     "unsupported artifact key(s): " + ", ".join(unknown_keys)
+                )
+            if (
+                routing_applicability == cls.REVIEW_ROUTING_NOT_APPLICABLE
+                and artifacts.get("review_risk_routing") is not None
+            ):
+                raise HealthOnboardingBatchAuditError(
+                    "review_risk_routing must not be declared when review routing is not applicable"
                 )
 
             artifact_rows: dict[str, Any] = {}
@@ -140,6 +162,14 @@ class HealthOnboardingBatchAudit:
             routing_summary = None
             for key in cls._ALLOWED_ARTIFACT_KEYS:
                 raw_path = artifacts.get(key)
+                if key == "review_risk_routing" and routing_applicability == cls.REVIEW_ROUTING_NOT_APPLICABLE:
+                    artifact_rows[key] = {
+                        "status": cls.REVIEW_ROUTING_NOT_APPLICABLE,
+                        "path": None,
+                        "sha256": None,
+                    }
+                    routing_not_applicable_count += 1
+                    continue
                 if raw_path is None:
                     artifact_rows[key] = {"status": "not_declared", "path": None, "sha256": None}
                     missing.append(key)
@@ -161,6 +191,7 @@ class HealthOnboardingBatchAudit:
             rows.append({
                 "entity_id": entity_id,
                 "display_name": _text(product.get("display_name"), f"products[{index}].display_name"),
+                "review_routing_applicability": routing_applicability,
                 "artifacts": artifact_rows,
                 "missing_or_undeclared_artifacts": missing,
                 "artifact_completeness_status": "complete_for_declared_audit" if not missing else "incomplete_explicit",
@@ -181,6 +212,7 @@ class HealthOnboardingBatchAudit:
                 ),
                 "missing_or_undeclared_artifact_count": total_missing,
                 "review_routing_record_count": total_routed_groups,
+                "review_routing_not_applicable_no_review_input_count": routing_not_applicable_count,
                 "review_risk_tier_counts": tier_totals,
                 "product_identity_bearing_production_code_changes": 0,
             },
@@ -188,6 +220,7 @@ class HealthOnboardingBatchAudit:
                 "Batch audit is read-only and does not create or mutate product knowledge.",
                 "Product identities and artifact paths are supplied only by the governed batch specification.",
                 "Missing artifacts remain explicit and are never inferred as complete.",
+                "Review-risk routing is required only when reviewer-ready input exists; absence of review input is recorded explicitly rather than converted into fake routing workload.",
                 "Review-risk metrics are workload metadata only and do not adjudicate evidence or publish facts.",
                 "The audit does not authorize product-specific production code.",
             ],
