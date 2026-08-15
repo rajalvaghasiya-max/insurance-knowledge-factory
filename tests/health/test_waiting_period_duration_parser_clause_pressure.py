@@ -40,14 +40,14 @@ def test_extracts_code_excl03_duration_from_duration_first_heading():
     assert candidate["normalized_value"]["unit"] == "days"
 
 
-def test_extracts_specified_disease_duration_later_in_same_exclusion_clause():
+def test_extracts_specified_disease_duration_later_in_same_exclusion_clause_with_pdf_ligature():
     result = WaitingPeriodDurationParser().extract_from_pages(
         source=_source(),
         pages=[
             {
                 "page_number": 10,
                 "text": (
-                    "D.1.2 Specified disease / procedure Waiting Period: (Code- Excl02) "
+                    "D.1.2 Speciﬁed disease / procedure Waiting Period: (Code- Excl02) "
                     "Expenses related to the treatment of the listed Conditions, surgeries / treatments "
                     "shall be excluded until the expiry of 24 months of continuous coverage after the date "
                     "of inception of the first policy with us."
