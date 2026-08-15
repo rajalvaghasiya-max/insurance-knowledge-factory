@@ -17,12 +17,16 @@ def _mechanics(implementation) -> dict[str, object]:
     return {item.dimension_id: item.value for item in implementation.mechanics}
 
 
-def test_recharge_is_a_routing_alias_not_a_separate_governed_benefit_concept() -> None:
-    terminology = build_health_concept_registry_v1().get("health:concept:restoration")
+def test_recharge_is_a_guarded_false_synonym_not_a_restoration_alias() -> None:
+    registry = build_health_concept_registry_v1()
+    terminology = registry.get("health:concept:restoration")
 
     assert terminology.downstream_topic == "restoration"
     assert "restoration benefit" in terminology.aliases
-    assert "recharge benefit" in terminology.aliases
+    assert "recharge benefit" not in terminology.aliases
+    assert "recharge benefit" in terminology.not_synonyms
+    assert terminology.is_false_synonym("recharge benefit") is True
+    assert registry.candidates_for_phrase("recharge benefit", domain="health") == ()
     assert RESTORATION_BENEFIT_CONCEPT.concept_id == RESTORATION_CONCEPT_ID
     assert RESTORATION_BENEFIT_CONCEPT.canonical_name == "Restoration of Sum Insured"
 
