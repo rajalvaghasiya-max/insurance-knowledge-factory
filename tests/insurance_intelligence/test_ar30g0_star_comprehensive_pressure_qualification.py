@@ -1,5 +1,11 @@
+import json
+import shutil
 from pathlib import Path
 
+from factory_core.governance.document_identity_resolution import (
+    DocumentIdentityResolutionOverlay,
+)
+from factory_core.governance.product_identity_reference import ProductIdentityReference
 from insurance_intelligence.benefits.contracts import PublicationStatus, ReviewStatus
 from insurance_intelligence.benefits.star_comprehensive import (
     STAR_COMPREHENSIVE_RESTORATION_IMPLEMENTATION,
@@ -26,10 +32,114 @@ REQUIRED_RESTORATION_DIMENSIONS = {
     "floater_operation",
 }
 
+_STAR_IDENTITY_SPEC = (
+    "docs/architecture/"
+    "star_health_star_comprehensive_product_identity_reference_spec.json"
+)
+_STAR_OVERLAY_SPEC = (
+    "docs/architecture/"
+    "star_health_star_comprehensive_document_identity_resolution_spec.json"
+)
+_STAR_IDENTITY_OUTPUT = (
+    "knowledge/factory/product_identity_references/"
+    "star_health_star_comprehensive.product_identity_reference.json"
+)
+_STAR_OVERLAY_OUTPUT = (
+    "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/"
+    "star_health_star_comprehensive_document_identity_resolution.json"
+)
 
-def test_star_comprehensive_conditional_copay_chain_is_currently_certifiable() -> None:
+# These are retained governed inputs/outputs already present in a clean checkout.
+# DOCUMENT_IDENTITY is intentionally absent: it is a generated migration output
+# and is reproduced below through the real generic governance contracts.
+_STAR_PRESSURE_WORKSPACE_FILES = (
+    _STAR_IDENTITY_SPEC,
+    _STAR_OVERLAY_SPEC,
+    (
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/"
+        "generic_source_registration/policy_wording_registration.json"
+    ),
+    (
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/"
+        "generic_source_registration/"
+        "star_health_star_comprehensive_generic_source_bundle.json"
+    ),
+    (
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/"
+        "star_health_star_comprehensive_document_classification.json"
+    ),
+    (
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/"
+        "generic_legal_condition_binding/"
+        "star_health_star_comprehensive_conditional_copayment.json"
+    ),
+    (
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/"
+        "generic_legal_condition_canonical_projection/"
+        "star_health_star_comprehensive_conditional_copayment.canonical.json"
+    ),
+    (
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/"
+        "publication_decision/"
+        "star_comprehensive_conditional_copayment.eligibility.json"
+    ),
+    (
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/"
+        "authoritative/"
+        "star_comprehensive_conditional_copayment.authoritative.json"
+    ),
+)
+
+
+def _copy_repository_file(workspace: Path, relative: str) -> None:
+    source = Path(relative)
+    assert source.is_file(), f"required retained governed artifact missing: {relative}"
+    destination = workspace / relative
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(source, destination)
+
+
+def _load_json(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _materialize_star_pressure_workspace(workspace: Path) -> Path:
+    for relative in _STAR_PRESSURE_WORKSPACE_FILES:
+        _copy_repository_file(workspace, relative)
+
+    identity_runner = ProductIdentityReference()
+    identity_result = identity_runner.build(
+        spec=_load_json(workspace / _STAR_IDENTITY_SPEC),
+        repository_root=workspace,
+        reviewed_at="2026-08-15T00:00:00+00:00",
+    )
+    identity_runner.write_output(
+        identity_result,
+        repository_root=workspace,
+        output_path=_STAR_IDENTITY_OUTPUT,
+    )
+
+    overlay_runner = DocumentIdentityResolutionOverlay()
+    overlay_result = overlay_runner.build(
+        spec=_load_json(workspace / _STAR_OVERLAY_SPEC),
+        repository_root=workspace,
+        resolved_at="2026-08-15T00:00:00+00:00",
+    )
+    overlay_runner.write_output(
+        overlay_result,
+        repository_root=workspace,
+        output_path=_STAR_OVERLAY_OUTPUT,
+    )
+
+    return workspace
+
+
+def test_star_comprehensive_conditional_copay_chain_is_currently_certifiable(
+    tmp_path: Path,
+) -> None:
+    workspace = _materialize_star_pressure_workspace(tmp_path)
     result = build_star_comprehensive_copay_snapshot(
-        repository_root=Path("."),
+        repository_root=workspace,
         build_request_id="ar30g0-pressure-qualification",
     )
 
@@ -50,6 +160,25 @@ def test_star_comprehensive_conditional_copay_chain_is_currently_certifiable() -
     assert result.publication_ids
     assert result.limitations == (
         "Snapshot certifies the reviewed conditional co-payment artifact chain only.",
+    )
+
+
+def test_ar30g0_reproduces_generated_identity_overlay_in_isolated_workspace(
+    tmp_path: Path,
+) -> None:
+    generated_overlay = tmp_path / _STAR_OVERLAY_OUTPUT
+    assert not generated_overlay.exists()
+
+    _materialize_star_pressure_workspace(tmp_path)
+
+    assert generated_overlay.is_file()
+    overlay = _load_json(generated_overlay)
+    assert overlay["overlay_status"] == (
+        "reviewed_document_identity_resolution_recorded_not_published"
+    )
+    assert overlay["documents"][0]["identity_resolution"]["resolution_status"] == "resolved"
+    assert overlay["documents"][0]["identity_resolution"]["temporal_status"] == (
+        "compatibility_unverified"
     )
 
 
