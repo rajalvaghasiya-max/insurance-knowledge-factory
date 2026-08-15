@@ -50,6 +50,7 @@ def _spec() -> dict:
             {
                 "entity_id": "insurer_b:product_b",
                 "display_name": "Product B",
+                "review_routing_applicability": "not_applicable_no_review_input",
                 "artifacts": {
                     "registration": "data/b_registration.json"
                 },
@@ -67,6 +68,7 @@ def test_batch_audit_is_spec_driven_and_reports_missing_artifacts(tmp_path: Path
 
     assert result["product_count"] == 2
     assert result["batch_summary"]["review_routing_record_count"] == 2
+    assert result["batch_summary"]["review_routing_not_applicable_no_review_input_count"] == 1
     assert result["batch_summary"]["review_risk_tier_counts"] == {
         "critical": 1,
         "high": 0,
@@ -77,6 +79,8 @@ def test_batch_audit_is_spec_driven_and_reports_missing_artifacts(tmp_path: Path
     assert result["products"][0]["artifact_completeness_status"] == "incomplete_explicit"
     assert "classification" in result["products"][0]["missing_or_undeclared_artifacts"]
     assert result["products"][0]["product_specific_production_code_change_required"] is False
+    assert result["products"][1]["artifacts"]["review_risk_routing"]["status"] == "not_applicable_no_review_input"
+    assert "review_risk_routing" not in result["products"][1]["missing_or_undeclared_artifacts"]
 
 
 def test_declared_missing_artifact_remains_explicit(tmp_path: Path):
@@ -84,6 +88,7 @@ def test_declared_missing_artifact_remains_explicit(tmp_path: Path):
     spec["products"] = [{
         "entity_id": "insurer_a:product_a",
         "display_name": "Product A",
+        "review_routing_applicability": "not_applicable_no_review_input",
         "artifacts": {"registration": "data/missing.json"},
     }]
 
@@ -91,6 +96,46 @@ def test_declared_missing_artifact_remains_explicit(tmp_path: Path):
     registration = result["products"][0]["artifacts"]["registration"]
     assert registration["status"] == "declared_missing"
     assert result["products"][0]["artifact_completeness_status"] == "incomplete_explicit"
+
+
+def test_review_routing_not_applicable_does_not_create_fake_gap(tmp_path: Path):
+    _write_json(tmp_path, "data/a_registration.json", {"record": "a"})
+    spec = {
+        "schema_version": "1.0",
+        "audit_type": "phase_2a_health_onboarding_batch_audit_v1",
+        "products": [{
+            "entity_id": "insurer_a:product_a",
+            "display_name": "Product A",
+            "review_routing_applicability": "not_applicable_no_review_input",
+            "artifacts": {
+                "registration": "data/a_registration.json",
+                "classification": "data/a_registration.json",
+                "product_identity": "data/a_registration.json",
+                "identity_resolution": "data/a_registration.json",
+                "currentness_evidence": "data/a_registration.json",
+            },
+        }],
+    }
+
+    result = HealthOnboardingBatchAudit.audit(spec=spec, repository_root=tmp_path).manifest
+    assert result["batch_summary"]["missing_or_undeclared_artifact_count"] == 0
+    assert result["products"][0]["artifact_completeness_status"] == "complete_for_declared_audit"
+    assert result["products"][0]["review_routing_applicability"] == "not_applicable_no_review_input"
+
+
+def test_not_applicable_routing_rejects_declared_routing_artifact(tmp_path: Path):
+    spec = _spec()
+    spec["products"] = [spec["products"][1]]
+    spec["products"][0]["artifacts"]["review_risk_routing"] = "data/routing.json"
+    with pytest.raises(HealthOnboardingBatchAuditError, match="must not be declared"):
+        HealthOnboardingBatchAudit.audit(spec=spec, repository_root=tmp_path)
+
+
+def test_unknown_review_routing_applicability_fails_closed(tmp_path: Path):
+    spec = _spec()
+    spec["products"][0]["review_routing_applicability"] = "skip_review"
+    with pytest.raises(HealthOnboardingBatchAuditError, match="unsupported review_routing_applicability"):
+        HealthOnboardingBatchAudit.audit(spec=spec, repository_root=tmp_path)
 
 
 def test_duplicate_product_identity_fails_closed(tmp_path: Path):
