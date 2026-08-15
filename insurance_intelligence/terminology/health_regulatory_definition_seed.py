@@ -1,7 +1,7 @@
 """Small primary-source Health definition seed for AFR-N1.
 
 This is intentionally not the full ontology seed. AFR-N1 grows it only as the
-primary regulatory source for each definition is pinned. Product wording and
+primary source for each definition is pinned. Product wording and
 marketing/glossary text must not be promoted into this registry merely because
 it contains familiar standardized wording.
 """
@@ -91,11 +91,34 @@ _ROOM_RENT_2020 = GovernedStandardDefinition(
 )
 
 
+_CUMULATIVE_BONUS_2024 = GovernedStandardDefinition(
+    definition_id="irdai.health.cumulative_bonus.2024.v1",
+    canonical_concept_id="health.definition.cumulative_bonus",
+    category=InsuranceCategory.HEALTH,
+    version="1.0",
+    standard_definition=(
+        "Addition in the Sum Insured without an associated increase in premium."
+    ),
+    source=DefinitionSourceReference(
+        source_id="IRDAI_HEALTH_DEPT_FAQ_CURRENT",
+        authority="IRDAI",
+        locator="Health Department FAQ 30 — No Claim Bonus; Cumulative Bonus form",
+        source_title="IRDAI Health Department FAQs",
+    ),
+    evidence_class=DefinitionEvidenceClass.PRIMARY_REGULATOR_GUIDANCE_SOURCE,
+    effective_from=date(2024, 5, 29),
+    effective_to=None,
+    aliases=("cumulative bonus", "health cumulative bonus"),
+    not_synonyms=("motor no claim bonus", "motor NCB"),
+)
+
+
 def build_health_regulatory_definition_registry() -> StandardDefinitionRegistry:
     registry = StandardDefinitionRegistry()
     registry.register(_PED_2020)
     registry.register(_PED_2024)
     registry.register(_ROOM_RENT_2020)
+    registry.register(_CUMULATIVE_BONUS_2024)
     return registry
 
 
