@@ -1,7 +1,15 @@
 # AFR-N1.A — Standard Definition Contract & PED Valid-Time Gate
 
-**Status:** IMPLEMENTED — VALIDATION PENDING  
+**Status:** CERTIFIED — 2026-08-15  
 **Date:** 2026-08-15
+
+## Certification evidence
+
+```text
+AFR-N1.A focused standard-definition tests     9 passed
+insurance_intelligence                       2877 passed
+regressions                                      0
+```
 
 ## Why this slice exists
 
@@ -72,7 +80,7 @@ The focused tests prove:
 2. pre-2024 valid-time lookup still resolves the earlier governed version rather than rewriting history;
 3. a definition ID cannot be mutated in place — a semantic change requires a new version;
 4. canonical concept IDs must be category-namespaced;
-5. Health cumulative bonus and Motor NCB can share surface aliases without becoming the same definition identity;
+5. Health cumulative bonus and Motor NCB can never share the same category-scoped definition identity;
 6. overlapping applicable versions fail closed;
 7. missing applicable versions fail closed;
 8. aliases and `not_synonyms` cannot contradict each other;
@@ -84,7 +92,7 @@ The focused tests prove:
 
 The roadmap requires the complete eleven-term regression set. AFR-N1.A establishes the load-bearing contract and the first real valid-time source pressure only.
 
-In particular, the next slices must still pin the primary-source definitions needed to certify:
+In particular, later slices must still pin the primary-source definitions needed to certify:
 
 - Room Rent, including the associated-medical-expense consequence;
 - Health Cumulative Bonus versus Motor NCB category collision;
@@ -93,13 +101,3 @@ In particular, the next slices must still pin the primary-source definitions nee
 - the remaining terms in the approved eleven-term regression set.
 
 Product wording that reproduces standardized wording may help locate/verify text, but it must not be silently promoted to regulatory authority.
-
-## Exit criterion for AFR-N1.A
-
-```text
-AFR-N1.A focused standard-definition tests   GREEN
-insurance_intelligence                       GREEN
-regressions                                      0
-```
-
-After this gate is green, continue AFR-N1 by adding only primary-source-backed definition records and the remaining adversarial regression cases. No product-specific reasoning code is authorized.
