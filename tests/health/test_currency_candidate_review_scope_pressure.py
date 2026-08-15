@@ -60,6 +60,26 @@ def test_bariatric_scope_hint_does_not_resolve_table_binding():
     assert "table_layout_binding_possible" in flags
 
 
+def test_compassionate_visit_scope_is_inferred_from_named_clause():
+    candidate = _candidate(
+        "C.13.12 Compassionate Visit On availing this Optional Cover, the cost of two way economy class air ticket or travel fare up to maximum of INR 50,000/- as specified in Policy Schedule will be reimbursed.",
+        50000,
+        "INR 50,000",
+    )
+    scope = CurrencyCandidateReview._infer_scope(candidate)
+    assert scope["benefit_scope_key"] == "compassionate_visit"
+
+
+def test_advanced_health_checkup_scope_is_inferred_without_resolving_band_binding():
+    candidate = _candidate(
+        "Advanced Health Check-up (90 days waiting period) Combined Sub-limit of INR 5 Lacs or up to SI, whichever is lower",
+        500000,
+        "INR 5 Lacs",
+    )
+    scope = CurrencyCandidateReview._infer_scope(candidate)
+    assert scope["benefit_scope_key"] == "advanced_health_checkup"
+
+
 def test_unknown_scope_remains_unresolved():
     candidate = _candidate(
         "Dependent Children and persons above 70 years can be covered under this Section up to the Sum Insured of Rs.10,00,000.",
