@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "record_type": "afr_n1_regression_set_traceability_manifest_v1",
+  "milestone": "AFR-N1",
+  "status": "TRACEABILITY_INCOMPLETE",
+  "expected_definition_count": 11,
+  "confirmed_definition_count": 6,
+  "unresolved_definition_count": 5,
+  "source_basis": {
+    "artifact": "PolicyScna — Canonical Insurance Ontology / Architecture & Integration Design",
+    "evidence": [
+      "Section 1.1 states that eleven example definitions motivated the ontology work.",
+      "The same section preserves five consequential error rows.",
+      "The No Claim Bonus vs Cumulative Bonus row explicitly states that there were two contradictory entries, so that row preserves two distinct original definition identities."
+    ],
+    "authority_note": "This manifest records only identities explicitly preserved by retained project material. It does not infer the remaining identities from later vocabulary seeds or current code."
+  },
+  "confirmed_terms": [
+    {
+      "ordinal": 1,
+      "term": "Pre-existing Disease",
+      "identity_status": "CONFIRMED_FROM_RETAINED_SOURCE",
+      "certification_coverage": "AFR-N1.A",
+      "coverage_status": "CERTIFIED"
+    },
+    {
+      "ordinal": 2,
+      "term": "Room Rent",
+      "identity_status": "CONFIRMED_FROM_RETAINED_SOURCE",
+      "certification_coverage": "AFR-N1.B",
+      "coverage_status": "CERTIFIED"
+    },
+    {
+      "ordinal": 3,
+      "term": "No Claim Bonus",
+      "identity_status": "CONFIRMED_FROM_RETAINED_SOURCE",
+      "certification_coverage": "AFR-N1.C",
+      "coverage_status": "CERTIFIED_CATEGORY_COLLISION"
+    },
+    {
+      "ordinal": 4,
+      "term": "Cumulative Bonus",
+      "identity_status": "CONFIRMED_FROM_RETAINED_SOURCE",
+      "certification_coverage": "AFR-N1.C",
+      "coverage_status": "CERTIFIED_CATEGORY_COLLISION"
+    },
+    {
+      "ordinal": 5,
+      "term": "Co-payment",
+      "identity_status": "CONFIRMED_FROM_RETAINED_SOURCE",
+      "certification_coverage": "AFR-N1.D",
+      "coverage_status": "CERTIFIED"
+    },
+    {
+      "ordinal": 6,
+      "term": "Automatic Restoration",
+      "identity_status": "CONFIRMED_FROM_RETAINED_SOURCE",
+      "certification_coverage": "AFR-N1.E",
+      "coverage_status": "CERTIFIED"
+    }
+  ],
+  "unresolved_slots": [
+    {
+      "slot": 7,
+      "identity_status": "NOT_RECOVERED",
+      "required_action": "Recover from original eleven-definition source; do not infer from health_seed.py or later ontology vocabulary."
+    },
+    {
+      "slot": 8,
+      "identity_status": "NOT_RECOVERED",
+      "required_action": "Recover from original eleven-definition source; do not infer from health_seed.py or later ontology vocabulary."
+    },
+    {
+      "slot": 9,
+      "identity_status": "NOT_RECOVERED",
+      "required_action": "Recover from original eleven-definition source; do not infer from health_seed.py or later ontology vocabulary."
+    },
+    {
+      "slot": 10,
+      "identity_status": "NOT_RECOVERED",
+      "required_action": "Recover from original eleven-definition source; do not infer from health_seed.py or later ontology vocabulary."
+    },
+    {
+      "slot": 11,
+      "identity_status": "NOT_RECOVERED",
+      "required_action": "Recover from original eleven-definition source; do not infer from health_seed.py or later ontology vocabulary."
+    }
+  ],
+  "closure_rule": "AFR-N1 overall certification remains held until all eleven identities are recovered with provenance and mapped to certified coverage, or the project explicitly supersedes the historical eleven-term exit criterion through a governed architecture decision.",
+  "forbidden_shortcuts": [
+    "Do not guess the five unresolved terms from the current Health terminology seed.",
+    "Do not treat the MO-024 20–30 concept candidate vocabulary as the historical eleven-term source.",
+    "Do not close AFR-N1 on six confirmed identities alone.",
+    "Do not add semantic production code solely to fill unknown historical slots."
+  ]
+}
