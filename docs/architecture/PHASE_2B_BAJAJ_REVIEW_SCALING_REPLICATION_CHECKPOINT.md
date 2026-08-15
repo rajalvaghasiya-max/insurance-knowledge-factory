@@ -1,6 +1,6 @@
 # Phase-2B — Bajaj My Health Care Review-Scaling Replication Checkpoint
 
-Status: **ACTIVE — CROSS-PRODUCT REPLICATION COMPLETE; REGRESSION CLOSURE PENDING**
+Status: **CERTIFIED — CROSS-PRODUCT REPLICATION COMPLETE AND REGRESSION-CLEAN**
 Date: 2026-08-15
 
 ## Purpose
@@ -100,19 +100,33 @@ Comparable real currency-review workloads now show:
 
 The same generic pipeline therefore works across two insurers/products while correctly preserving different review-cost distributions.
 
-## Architecture interpretation
+## Regression closure
 
-Phase-2B now demonstrates three things beyond Phase-2A:
+Relevant subsystem regressions after the generic parser correction are green:
 
-1. the generic governed review path replicates on a second real insurer/product with zero product-identity-bearing production code;
-2. cross-product pressure can expose a reusable extraction precision defect without requiring a product-specific implementation;
-3. improving upstream precision does not require lowering real downstream risk — Bajaj still has a higher High-review proportion because its dense sum-insured-band structures genuinely require review.
+- Health: **116 passed**
+- factory_core: **127 passed**
+- focused role/scope/routing set: **14 passed**
 
-The remaining seven High groups should remain High unless future generic table/band structure recovery is independently justified by broader product pressure. Phase-2B does not create that capability merely to reduce Bajaj review counts.
+No regression was observed in the relevant Health or governance-core surfaces.
 
-## Closure condition
+## Certification decision
 
-Cross-product replication and routing-precision work are complete. Phase-2B should close only after relevant Health and factory-core regressions confirm that the generic parser correction introduced no broader regression.
+**Phase-2B is CERTIFIED.**
+
+The certification claim is deliberately narrow:
+
+1. the generic governed review path replicated on a second real insurer/product with zero product-identity-bearing production code;
+2. cross-product pressure exposed one reusable extraction precision defect, which was corrected generically;
+3. false Critical escalation was eliminated without weakening MO-029 or suppressing genuine High-risk sum-insured-band ambiguity;
+4. the correction is regression-clean across the relevant Health and factory-core test suites;
+5. no adjudication, canonical fact selection, publication, or product-specific reasoning was introduced.
+
+This certification does **not** claim that dense table/band structures are solved automatically. The remaining seven High groups are legitimate unresolved review work and remain fail-closed.
+
+## Freeze rule
+
+Phase-2B is frozen after certification. Do not continue tuning Bajaj solely to reduce High counts. Reopen only for a real regression or if later product pressure independently proves a reusable generic table/band recovery requirement.
 
 ## Guardrails
 
