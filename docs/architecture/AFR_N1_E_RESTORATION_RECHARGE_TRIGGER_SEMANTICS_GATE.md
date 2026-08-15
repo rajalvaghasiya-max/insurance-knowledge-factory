@@ -1,6 +1,6 @@
 # AFR-N1.E — Restoration vs Recharge / Trigger-Semantics Gate
 
-**Status:** REVALIDATION PENDING AFTER ACCEPTANCE-CRITERION REPAIR  
+**Status:** CERTIFIED  
 **Date:** 2026-08-15
 
 ## Why this slice exists
@@ -20,13 +20,13 @@ The first N1.E implementation treated `recharge benefit` as a routing alias. Its
 
 The subsequent AFR-N1 gap assessment compared that implementation against the approved Canonical Insurance Ontology acceptance criterion and found a mismatch: the approved design explicitly requires `restoration ≠ recharge` to be preserved as a false-synonym guard rather than silently normalized as an alias.
 
-Therefore the green mechanics result is retained as evidence, but N1.E is not certified until the corrected false-synonym behavior is revalidated.
+The canonical terminology boundary was repaired and revalidated successfully.
 
 ## Architecture decision
 
-No new `recharge` benefit concept is introduced merely because an insurer uses alternate marketing language. But `recharge`, `recharge benefit`, `refill`, `refill benefit`, and `reinstatement` are no longer exact aliases of the canonical restoration terminology concept.
+No new `recharge` benefit concept is introduced merely because an insurer uses alternate marketing language. But `recharge`, `recharge benefit`, `refill`, `refill benefit`, and `reinstatement` are not exact aliases of the canonical restoration terminology concept.
 
-The canonical terminology contract now supports explicit `not_synonyms`. A false-synonym phrase is not entered into the exact phrase index and therefore cannot silently resolve to restoration.
+The canonical terminology contract supports explicit `not_synonyms`. A false-synonym phrase is not entered into the exact phrase index and therefore cannot silently resolve to restoration.
 
 This does **not** prevent a governed product implementation such as Activ One NXT `Super Reload` from referencing the generic restoration benefit concept. That mapping is product-governed and mechanic-rich; it is not inferred merely from the word `reload`.
 
@@ -70,7 +70,7 @@ subsequent admission   : yes
 
 Therefore neither a common ontology concept nor similar marketing language may manufacture shared product behavior.
 
-## Corrected invariant
+## Certified invariant
 
 ```text
 EXACT CANONICAL TERMINOLOGY
@@ -93,29 +93,18 @@ GOVERNED PRODUCT IMPLEMENTATION
     explicit trigger + timing + frequency + use mechanics
 ```
 
-## Adversarial tests
-
-`tests/insurance_intelligence/test_afr_n1e_restoration_recharge_trigger_semantics.py`
-
-now proves:
-
-1. `recharge benefit` is an explicit false synonym and does not exact-resolve as restoration;
-2. the product-neutral restoration concept requires explicit trigger/use dimensions;
-3. Star preserves its once-after-exhaustion/subsequent-hospitalization mechanics;
-4. Activ One NXT Super Reload preserves its unlimited/insufficient-capacity/same-claim mechanics;
-5. both implementations share a governed benefit concept while retaining different behavior signatures;
-6. shared benefit-concept identity does not imply identical entitlement or claim behavior.
-
-The older HG-3 restoration regression has also been updated so the repository no longer contains a conflicting assertion that `recharge benefit` must be a restoration alias.
-
-## Exit criterion
+## Certification evidence
 
 ```text
-AFR-N1.E focused restoration/recharge tests   GREEN
-HG-3 restoration semantic regression          GREEN
-AFR-N1.A through E combined                   GREEN
-insurance_intelligence                        GREEN
-regressions                                       0
+AFR-N1.E focused restoration/recharge tests   6 passed
+HG-3 restoration semantic regression          6 passed
+AFR-N1.A through E combined                   30 passed
+insurance_intelligence                        2898 passed
+regressions                                   0
 ```
 
-No new product-specific reasoning code is authorized by this repair. The change is confined to the canonical terminology boundary and its tests.
+## What this certification does not claim
+
+AFR-N1.E does not claim that every insurer marketing term containing `reload`, `recharge`, `refill` or similar wording maps to restoration. Product-specific mapping remains governed by product evidence.
+
+It also does not certify AFR-N1 as a whole. The approved architecture says the original eleven pasted definitions are the regression set, while the retained design artifact explicitly identifies only five of those eleven. AFR-N1 closure therefore remains blocked on exact regression-set traceability rather than on this gate.
