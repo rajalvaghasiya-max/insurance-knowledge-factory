@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "classification_type": "document_classification_reuse_policy_v1",
+  "reviewed_by_human": true,
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/generic_source_registration/policy_wording_registration_38bb879030d9.json",
+      "classification": "reusable_generic",
+      "reuse_action": "reusable_evidence_candidate",
+      "review_rationale": "Fresh official Activ One policy wording downloaded on 2026-08-15 from Aditya Birla Health Insurance. The immutable bytes are SHA-256 38bb879030d905bd6f90915915f1c2e22e27ebe5bc980bba766c69c7ecd90a16 and the document is expected to contain Activ One identity markers including UIN ADIHLIP24097V012324. Classification permits governed evidence review only; it does not establish current applicability, semantic equivalence with the historical d7726811 version, publication eligibility, or customer entitlement."
+    }
+  ]
+}
