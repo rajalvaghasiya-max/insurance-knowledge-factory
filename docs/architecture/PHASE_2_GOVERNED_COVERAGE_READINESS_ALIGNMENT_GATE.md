@@ -1,6 +1,6 @@
 # Phase 2 — Governed Coverage & Readiness Alignment Gate
 
-**Status:** ACTIVE — REAL PRODUCT DERIVATION PROVEN; BROADER REGRESSION CLOSURE PENDING  
+**Status:** CERTIFIED AND FROZEN  
 **Date:** 2026-08-15
 
 ## Purpose
@@ -115,7 +115,7 @@ Key fail-closed rules include:
 - `PUBLISHED` is invalid unless source governance, semantic review, applicability, publication eligibility, and residue are fully resolved;
 - entity mismatch and unknown fields fail closed.
 
-The product auditor now routes materialized `governed_readiness.json` through this contract rather than trusting editable summary fields.
+The product auditor routes materialized `governed_readiness.json` through this contract rather than trusting editable summary fields.
 
 ## Focused contract/integration regression closure
 
@@ -214,11 +214,51 @@ Star governed readiness REVIEW_REQUIRED
 
 The reporting system therefore no longer allows historical extraction completeness to masquerade as current governed or publication readiness.
 
-## Portfolio rule
+## Final regression closure
 
-Portfolio reporting must aggregate legacy coverage and governed readiness separately. It must never average or translate legacy coverage percentages into governed-readiness percentages/statuses.
+Broader regression validation across the changed governance/reporting surfaces is green:
 
-## Guardrails
+```text
+tests/factory_core                                      : 139 passed
+focused product/portfolio governed-readiness audit set : 14 passed
+regressions                                             : 0
+```
+
+Together with the earlier focused governed-readiness contract/integration set:
+
+```text
+25 passed
+```
+
+No contract weakening, product-specific reasoning, publication shortcut, or readiness backfill was introduced to obtain closure.
+
+## Certified architecture outcome
+
+The approved reporting model is now:
+
+```text
+legacy intelligence coverage
+!=
+governed readiness
+!=
+publication state
+```
+
+Governed readiness is materialized only from explicit governed evidence and independent dimensions, and summary status is derived generically and fail-closed.
+
+A product may therefore legitimately be:
+
+```text
+legacy coverage READY
++
+governed readiness REVIEW_REQUIRED
+```
+
+without contradiction.
+
+Absence of a governed assessment remains `NOT_ASSESSED`; it must not be auto-filled to improve portfolio metrics.
+
+## Guardrails frozen by this gate
 
 - Do not delete or reinterpret historical product-intelligence data.
 - Do not mark a product publication-ready from coverage percentage.
@@ -232,20 +272,22 @@ Portfolio reporting must aggregate legacy coverage and governed readiness separa
 - No product-specific production reasoning.
 - No frontend, Motor, Life, recommendation-productization, or DB migration scope.
 
-## Acceptance criteria
+## Acceptance criteria — final result
 
-1. Existing legacy coverage tests remain valid.
-2. Product reports explicitly identify the legacy metric semantics.
-3. Product reports expose a separate governed-readiness state.
-4. Missing governed readiness yields `NOT_ASSESSED`, never `READY`.
-5. Portfolio reports aggregate governed readiness separately.
-6. Portfolio recommendations no longer imply governed/product publication readiness from legacy coverage alone.
-7. Governed-readiness summary status is derived from evidence-backed independent dimensions.
-8. Invalid/inconsistent assessments fail closed.
-9. At least one real product assessment is materialized conservatively from repository evidence.
-10. Real product/portfolio regeneration proves legacy coverage and governed readiness can diverge safely.
-11. Relevant regressions remain green.
+1. Existing legacy coverage tests remain valid — **PASS**.
+2. Product reports explicitly identify the legacy metric semantics — **PASS**.
+3. Product reports expose a separate governed-readiness state — **PASS**.
+4. Missing governed readiness yields `NOT_ASSESSED`, never `READY` — **PASS**.
+5. Portfolio reports aggregate governed readiness separately — **PASS**.
+6. Portfolio recommendations no longer imply governed/product publication readiness from legacy coverage alone — **PASS**.
+7. Governed-readiness summary status is derived from evidence-backed independent dimensions — **PASS**.
+8. Invalid/inconsistent assessments fail closed — **PASS**.
+9. At least one real product assessment is materialized conservatively from repository evidence — **PASS (Star Comprehensive)**.
+10. Real product/portfolio regeneration proves legacy coverage and governed readiness can diverge safely — **PASS**.
+11. Relevant regressions remain green — **PASS: 139 + 14; regressions 0**.
 
-## Exit condition
+## Closure decision
 
-Reporting separation, the generic assessment contract, the first real Star assessment, and real Star/portfolio derivation are proven. The remaining closure step is broader regression validation across the changed governance/reporting surfaces. If those regressions are green, certify and freeze this gate. Activ One remains `NOT_ASSESSED`; materializing its assessment is not required to close this gate and must not be done merely to improve portfolio metrics.
+**CERTIFIED AND FROZEN.**
+
+This gate is complete. Activ One remains `NOT_ASSESSED`; materializing its readiness assessment is explicitly **not** required for this gate and must only happen when its governed evidence is intentionally reviewed. Further tuning of these reporting semantics for metric improvement is out of scope unless future product pressure demonstrates a real contract defect.
