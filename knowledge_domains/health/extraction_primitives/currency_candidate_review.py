@@ -51,6 +51,8 @@ class CurrencyCandidateReview:
         ("specialist_consultation", "specialists"),
         ("wellness_discount", "wellness discount"),
         ("minimum_premium", "minimum premium"),
+        ("compassionate_visit", "compassionate visit"),
+        ("advanced_health_checkup", "advanced health check-up"),
     )
 
     def review(self, candidate_document: Mapping[str, Any]) -> dict[str, Any]:
