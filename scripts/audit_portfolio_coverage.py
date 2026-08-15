@@ -10,7 +10,7 @@ from typing import Any
 from config.settings import BASE_DIR
 
 
-PORTFOLIO_AUDIT_VERSION = "0.1"
+PORTFOLIO_AUDIT_VERSION = "0.2"
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -27,25 +27,19 @@ def find_coverage_reports(domain: str) -> list[Path]:
 
 
 def entity_from_report_path(path: Path, domain: str) -> str:
-    """
-    Expected:
-    knowledge/health/<insurer>/<product>/coverage/product_coverage_report.json
-    """
     relative = path.relative_to(BASE_DIR / "knowledge" / domain)
     parts = relative.parts
 
     if len(parts) < 4:
         return "unknown:unknown"
 
-    insurer_slug = parts[0]
-    product_slug = parts[1]
-
-    return f"{insurer_slug}:{product_slug}"
+    return f"{parts[0]}:{parts[1]}"
 
 
 def summarize_products(reports: list[dict[str, Any]]) -> dict[str, Any]:
     status_counter = Counter()
     validator_status_counter = Counter()
+    governed_readiness_counter = Counter()
 
     total_coverage = 0.0
     total_validator_score = 0.0
@@ -58,6 +52,13 @@ def summarize_products(reports: list[dict[str, Any]]) -> dict[str, Any]:
         quality = report.get("quality", {})
         validator_status_counter[quality.get("validator_status", "UNKNOWN")] += 1
 
+        governed = report.get("governed_readiness")
+        if isinstance(governed, dict):
+            governed_status = governed.get("status", "NOT_ASSESSED")
+        else:
+            governed_status = "NOT_ASSESSED"
+        governed_readiness_counter[governed_status] += 1
+
         validator_score = quality.get("validator_score")
         if isinstance(validator_score, (int, float)):
             total_validator_score += float(validator_score)
@@ -67,8 +68,13 @@ def summarize_products(reports: list[dict[str, Any]]) -> dict[str, Any]:
 
     return {
         "total_products": total_products,
+        "legacy_coverage_status_counts": dict(status_counter),
         "coverage_status_counts": dict(status_counter),
+        "governed_readiness_status_counts": dict(governed_readiness_counter),
         "validator_status_counts": dict(validator_status_counter),
+        "average_legacy_intelligence_coverage": (
+            round(total_coverage / total_products, 2) if total_products else 0
+        ),
         "average_coverage": round(total_coverage / total_products, 2) if total_products else 0,
         "average_validator_score": (
             round(total_validator_score / validator_score_count, 2)
@@ -86,10 +92,7 @@ def summarize_missing_fields(reports: list[dict[str, Any]]) -> list[dict[str, An
             counter[field] += 1
 
     return [
-        {
-            "field": field,
-            "missing_in_products": count,
-        }
+        {"field": field, "missing_in_products": count}
         for field, count in counter.most_common()
     ]
 
@@ -99,27 +102,21 @@ def summarize_section_coverage(reports: list[dict[str, Any]]) -> dict[str, Any]:
     section_counts = defaultdict(int)
 
     for report in reports:
-        sections = report.get("sections", {})
-
-        for section_name, section_data in sections.items():
+        for section_name, section_data in report.get("sections", {}).items():
             coverage = section_data.get("coverage")
-
             if isinstance(coverage, (int, float)):
                 section_totals[section_name] += float(coverage)
                 section_counts[section_name] += 1
 
-    summary = {}
-
-    for section_name in sorted(section_totals):
-        summary[section_name] = {
+    return {
+        section_name: {
             "average_coverage": round(
-                section_totals[section_name] / section_counts[section_name],
-                2,
+                section_totals[section_name] / section_counts[section_name], 2
             ),
             "products_counted": section_counts[section_name],
         }
-
-    return summary
+        for section_name in sorted(section_totals)
+    }
 
 
 def products_requiring_attention(reports: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -127,6 +124,12 @@ def products_requiring_attention(reports: list[dict[str, Any]]) -> list[dict[str
 
     for report in reports:
         quality = report.get("quality", {})
+        governed = report.get("governed_readiness")
+        governed_status = (
+            governed.get("status", "NOT_ASSESSED")
+            if isinstance(governed, dict)
+            else "NOT_ASSESSED"
+        )
 
         coverage = float(report.get("overall_coverage", 0))
         coverage_status = report.get("coverage_status")
@@ -139,6 +142,7 @@ def products_requiring_attention(reports: list[dict[str, Any]]) -> list[dict[str
             or validator_status in ["FAIL", "REVIEW_REQUIRED"]
             or error_count > 0
             or coverage < 85
+            or governed_status not in {"READY", "PUBLISHED"}
         )
 
         if requires_attention:
@@ -147,6 +151,7 @@ def products_requiring_attention(reports: list[dict[str, Any]]) -> list[dict[str
                     "entity_id": report.get("entity_id"),
                     "overall_coverage": coverage,
                     "coverage_status": coverage_status,
+                    "governed_readiness_status": governed_status,
                     "validator_status": validator_status,
                     "validator_score": quality.get("validator_score"),
                     "error_count": error_count,
@@ -157,6 +162,7 @@ def products_requiring_attention(reports: list[dict[str, Any]]) -> list[dict[str
 
     attention.sort(
         key=lambda x: (
+            x.get("governed_readiness_status") in {"READY", "PUBLISHED"},
             x.get("error_count", 0) == 0,
             x.get("overall_coverage", 0),
         )
@@ -173,38 +179,43 @@ def build_recommendations(
     recommendations = []
 
     if portfolio_summary["total_products"] == 0:
-        recommendations.append("No product coverage reports found. Run product-level coverage audits first.")
-        return recommendations
+        return ["No product coverage reports found. Run product-level coverage audits first."]
+
+    readiness_counts = portfolio_summary.get("governed_readiness_status_counts", {})
+    not_assessed = readiness_counts.get("NOT_ASSESSED", 0)
+    if not_assessed:
+        recommendations.append(
+            f"Materialize governed-readiness assessments for {not_assessed} product(s); legacy coverage percentages do not establish current or publication readiness."
+        )
 
     if attention:
-        recommendations.append("Review products requiring attention before using them in advisor-facing workflows.")
+        recommendations.append(
+            "Review products requiring attention before customer/advisor-facing use of governed product facts."
+        )
 
     if top_missing_fields:
         top = top_missing_fields[0]
         recommendations.append(
-            f"Prioritize extractor improvement for '{top['field']}', missing in {top['missing_in_products']} product(s)."
+            f"Prioritize legacy extractor improvement for '{top['field']}', missing in {top['missing_in_products']} product(s), without treating extraction completeness as governed readiness."
         )
 
-    avg_coverage = portfolio_summary.get("average_coverage", 0)
+    avg_coverage = portfolio_summary.get("average_legacy_intelligence_coverage", 0)
     if avg_coverage < 80:
-        recommendations.append("Portfolio coverage is below target. Improve extraction coverage before scaling further.")
-    elif avg_coverage >= 90:
-        recommendations.append("Portfolio coverage is strong. Next focus should be quality hardening and comparison intelligence.")
+        recommendations.append(
+            "Legacy intelligence coverage is below target; improve extraction coverage independently of governed-readiness work."
+        )
 
     return recommendations
 
 
 def audit_portfolio(domain: str) -> dict[str, Any]:
     paths = find_coverage_reports(domain)
-
     reports = []
 
     for path in paths:
         report = load_json(path)
-
         if not report.get("entity_id"):
             report["entity_id"] = entity_from_report_path(path, domain)
-
         report["_source_file"] = str(path.relative_to(BASE_DIR)).replace("\\", "/")
         reports.append(report)
 
@@ -217,6 +228,14 @@ def audit_portfolio(domain: str) -> dict[str, Any]:
         "generated_at": datetime.now(UTC).isoformat(),
         "portfolio_audit_version": PORTFOLIO_AUDIT_VERSION,
         "domain": domain,
+        "reporting_semantics": {
+            "legacy_intelligence_coverage": (
+                "Field-presence/completeness metric from historical product intelligence artifacts."
+            ),
+            "governed_readiness": (
+                "Separate governed/current/applicability/publication-readiness assessment; never inferred from legacy coverage."
+            ),
+        },
         "portfolio_summary": portfolio_summary,
         "section_coverage_summary": section_summary,
         "top_missing_fields": top_missing_fields,
@@ -226,6 +245,11 @@ def audit_portfolio(domain: str) -> dict[str, Any]:
                 "entity_id": r.get("entity_id"),
                 "overall_coverage": r.get("overall_coverage"),
                 "coverage_status": r.get("coverage_status"),
+                "governed_readiness_status": (
+                    r.get("governed_readiness", {}).get("status", "NOT_ASSESSED")
+                    if isinstance(r.get("governed_readiness"), dict)
+                    else "NOT_ASSESSED"
+                ),
                 "validator_status": r.get("quality", {}).get("validator_status"),
                 "validator_score": r.get("quality", {}).get("validator_score"),
                 "missing_fields_count": len(r.get("missing_fields", [])),
@@ -234,9 +258,7 @@ def audit_portfolio(domain: str) -> dict[str, Any]:
             for r in reports
         ],
         "recommendations": build_recommendations(
-            portfolio_summary,
-            top_missing_fields,
-            attention,
+            portfolio_summary, top_missing_fields, attention
         ),
     }
 
@@ -244,13 +266,8 @@ def audit_portfolio(domain: str) -> dict[str, Any]:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     out_path = out_dir / "portfolio_coverage_report.json"
-    out_path.write_text(
-        json.dumps(report, indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
-
+    out_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
     report["output_file"] = str(out_path.relative_to(BASE_DIR)).replace("\\", "/")
-
     return report
 
 
@@ -260,47 +277,36 @@ def print_report(report: dict[str, Any]):
     print("=" * 70)
     print("PORTFOLIO COVERAGE AUDIT")
     print("=" * 70)
-    print(f"Domain              : {report['domain']}")
-    print(f"Version             : {report['portfolio_audit_version']}")
-    print(f"Products            : {summary['total_products']}")
-    print(f"Average Coverage    : {summary['average_coverage']}%")
-    print(f"Avg Validator Score : {summary['average_validator_score']}")
-    print(f"Output              : {report['output_file']}")
+    print(f"Domain                 : {report['domain']}")
+    print(f"Version                : {report['portfolio_audit_version']}")
+    print(f"Products               : {summary['total_products']}")
+    print(f"Avg Legacy Coverage    : {summary['average_legacy_intelligence_coverage']}%")
+    print(f"Avg Validator Score    : {summary['average_validator_score']}")
+    print(f"Output                 : {report['output_file']}")
     print("-" * 70)
 
-    print("Coverage Status Counts:")
-    for status, count in summary["coverage_status_counts"].items():
+    print("Legacy Coverage Status Counts:")
+    for status, count in summary["legacy_coverage_status_counts"].items():
         print(f"  {status}: {count}")
 
-    print("-" * 70)
-
-    print("Validator Status Counts:")
-    for status, count in summary["validator_status_counts"].items():
+    print("Governed Readiness Status Counts:")
+    for status, count in summary["governed_readiness_status_counts"].items():
         print(f"  {status}: {count}")
-
-    print("-" * 70)
-
-    print("Top Missing Fields:")
-    for item in report["top_missing_fields"][:10]:
-        print(f"  {item['field']}: {item['missing_in_products']}")
 
     print("-" * 70)
 
     print("Products Requiring Attention:")
     for item in report["products_requiring_attention"][:20]:
         print(
-            f"  {item['entity_id']} | "
-            f"coverage={item['overall_coverage']} | "
-            f"coverage_status={item['coverage_status']} | "
+            f"  {item['entity_id']} | legacy_coverage={item['overall_coverage']} | "
+            f"legacy_status={item['coverage_status']} | governed={item['governed_readiness_status']} | "
             f"validator={item['validator_status']}"
         )
 
     print("-" * 70)
-
     print("Recommendations:")
     for rec in report["recommendations"]:
         print(f"  - {rec}")
-
     print("=" * 70)
 
 
@@ -308,7 +314,6 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--domain", default="health")
     args = parser.parse_args()
-
     report = audit_portfolio(args.domain)
     print_report(report)
 
