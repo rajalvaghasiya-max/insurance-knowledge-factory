@@ -30,7 +30,8 @@
         "registration": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/generic_source_registration/policy_wording_registration_38bb879030d9.json",
         "classification": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/aditya_birla_health_activ_one_document_classification_38bb879030d9.json",
         "product_identity": "knowledge/factory/product_identity_references/aditya_birla_health_activ_one_38bb879030d9.product_identity_reference.json",
-        "identity_resolution": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/aditya_birla_health_activ_one_document_identity_resolution_38bb879030d9.json"
+        "identity_resolution": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/aditya_birla_health_activ_one_document_identity_resolution_38bb_current_reviewed.json",
+        "currentness_evidence": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/activ_one_38bb_currentness_evidence_20260815.json"
       }
     }
   ]
