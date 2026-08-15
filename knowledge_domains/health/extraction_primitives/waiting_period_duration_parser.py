@@ -91,7 +91,7 @@ class WaitingPeriodDurationParser:
         (
             "specified_disease_or_procedure",
             re.compile(
-                r"(?P<label>specified\s+disease\s*/\s*procedure\s+waiting\s+period(?:\s*:\s*)?(?:\([^)]*\))?)"
+                r"(?P<label>speci(?:fied|ﬁed)\s+disease\s*/\s*procedure\s+waiting\s+period(?:\s*:\s*)?(?:\([^)]*\))?)"
                 r"(?P<body>.{0,500}?\bshall\s+be\s+excluded\s+until\s+the\s+expiry\s+of\s+)"
                 r"(?P<num>\d{1,3})\s*[- ]?\s*(?P<unit>days?|months?|years?)\b",
                 re.IGNORECASE,
