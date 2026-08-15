@@ -1,7 +1,16 @@
 # AFR-N1.B — Room Rent Semantic-Preservation Gate
 
-**Status:** IMPLEMENTED — VALIDATION PENDING  
+**Status:** CERTIFIED — 2026-08-15  
 **Date:** 2026-08-15
+
+## Certification evidence
+
+```text
+AFR-N1.B focused room-rent tests       3 passed
+AFR-N1.A + AFR-N1.B combined          12 passed
+insurance_intelligence              2880 passed
+regressions                             0
+```
 
 ## Pressure being tested
 
@@ -30,7 +39,7 @@ Therefore:
 
 ## Implementation
 
-`insurance_intelligence/terminology/health_regulatory_definition_seed.py` now contains the historical Room Rent governed definition:
+`insurance_intelligence/terminology/health_regulatory_definition_seed.py` contains the historical Room Rent governed definition:
 
 ```text
 canonical concept : health.definition.room_rent
@@ -51,14 +60,5 @@ No new ontology abstraction was required. The AFR-N1.A valid-time contract is su
 3. the concept cannot be simplified to room charge only;
 4. the record remains primary-regulatory-source governed;
 5. a current lookup fails closed while current primary-source authority is unresolved.
-
-## Exit criterion
-
-```text
-AFR-N1.B focused room-rent tests       GREEN
-AFR-N1.A + AFR-N1.B combined           GREEN
-insurance_intelligence                 GREEN
-regressions                                0
-```
 
 AFR-N1.B is a semantic-preservation pressure gate, not permission to infer product-specific room-rent limits, proportional deductions, eligibility, or claim outcomes. Those remain product-fact/applicability concerns.
