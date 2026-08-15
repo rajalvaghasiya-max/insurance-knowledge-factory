@@ -4,12 +4,13 @@ from knowledge_domains.health.extraction_primitives.currency_sum_insured_parser 
 
 
 def _source():
+    sha256 = "a" * 64
     return {
         "entity_id": "test_insurer:test_product",
         "insurer_id": "test_insurer",
         "document_type": "policy_wording",
-        "source_document_id": "test_doc",
-        "sha256": "a" * 64,
+        "source_document_id": f"sha256:{sha256}",
+        "sha256": sha256,
         "source_url": "https://example.test/policy.pdf",
         "source_page_url": "https://example.test/product",
         "relative_archive_path": "archive/test/policy.pdf",
