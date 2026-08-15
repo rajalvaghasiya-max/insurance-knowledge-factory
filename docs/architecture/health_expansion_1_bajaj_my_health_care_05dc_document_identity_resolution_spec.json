@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "overlay_type": "document_identity_resolution_overlay_v1",
+  "reviewed_by_human": true,
+  "product_identity_reference": {
+    "identity_record_path": "knowledge/factory/product_identity_references/bajaj_allianz_general_my_health_care_05dc29132434.product_identity_reference.json"
+  },
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json",
+      "resolution_status": "resolved",
+      "temporal_status": "compatibility_unverified",
+      "identity_signals": [
+        {
+          "signal_type": "uin_exact_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json"
+        },
+        {
+          "signal_type": "canonical_title_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json"
+        },
+        {
+          "signal_type": "manual_document_review",
+          "verification": "manual_reviewed",
+          "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json"
+        }
+      ],
+      "classification_manifest_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_document_classification_05dc29132434.json",
+      "capture_provenance": {
+        "source_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+        "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+        "capture_reference": "manual_official_download_2026-08-15_sha256_05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158"
+      },
+      "review_rationale": "Product and document identity are resolved for the newly observed immutable 05dc2913 version using matching UIN/title signals and manual review. Temporal status remains compatibility_unverified because the new bytes have not yet passed a retained currentness-evidence review establishing current applicability. This overlay deliberately does not claim semantic equivalence with the earlier 9479fe6f version, current-entitlement publication eligibility, or published product facts."
+    }
+  ]
+}
