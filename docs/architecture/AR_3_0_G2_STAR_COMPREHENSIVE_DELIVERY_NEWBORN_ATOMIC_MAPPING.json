@@ -1,0 +1,229 @@
+{
+  "schema_version": "1.0",
+  "record_type": "ar_3_0_g2_atomic_normative_mapping_v1",
+  "milestone": "AR-3.0.G2",
+  "status": "ATOMIC_MAPPING_PROPOSED_NOT_BOUND",
+  "product_reference": "star_health:star_comprehensive",
+  "source_pressure_id": "G1-INT-02",
+  "source_inventory_path": "docs/architecture/AR_3_0_G1_STAR_COMPREHENSIVE_EVIDENCE_INVENTORY.json",
+  "source_registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+  "source_document_id": "star_health_star_comprehensive_policy_wording_v1",
+  "source_document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+  "source_content_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+  "source_markers": [
+    "Delivery and New Born",
+    "up to the limits mentioned in the table below per Delivery",
+    "waiting period of 24 months",
+    "A waiting period of 24 months will apply afresh following a claim under Section II.14.A",
+    "Pre-hospitalization and Post Hospitalization expenses and Hospital Cash Benefit are not applicable for this Section"
+  ],
+  "atomic_normative_units": [
+    {
+      "unit_id": "G2-DNB-01",
+      "semantic_role": "BENEFIT_SCOPE",
+      "proposition": "Section II.14 establishes a Delivery and New Born benefit scope.",
+      "source_marker": "Delivery and New Born",
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    },
+    {
+      "unit_id": "G2-DNB-02",
+      "semantic_role": "DELIVERY_LIMIT_RULE",
+      "proposition": "Delivery expenses are subject to a per-delivery limit table.",
+      "source_marker": "up to the limits mentioned in the table below per Delivery",
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    },
+    {
+      "unit_id": "G2-DNB-03",
+      "semantic_role": "NEWBORN_LIMIT_RULE",
+      "proposition": "New Born cover has a separate company-liability limit represented in the benefit table.",
+      "source_marker": "Limit of Company's liability for New Born Cover Rs.",
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    },
+    {
+      "unit_id": "G2-DNB-04",
+      "semantic_role": "WAITING_PERIOD_DURATION",
+      "proposition": "The section is subject to a 24-month waiting period.",
+      "source_marker": "waiting period of 24 months",
+      "normalized_value": {
+        "duration": 24,
+        "unit": "months"
+      },
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    },
+    {
+      "unit_id": "G2-DNB-05",
+      "semantic_role": "WAITING_PERIOD_ANCHOR",
+      "proposition": "The waiting period runs from the first commencement of Star Comprehensive Insurance Policy.",
+      "source_marker": "date of first commencement of Star Comprehensive Insurance Policy",
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    },
+    {
+      "unit_id": "G2-DNB-06",
+      "semantic_role": "CONTINUITY_CONDITION",
+      "proposition": "The waiting-period rule depends on continuous renewal with the Company.",
+      "source_marker": "continuous renewal thereof with the Company",
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    },
+    {
+      "unit_id": "G2-DNB-07",
+      "semantic_role": "RESET_TRIGGER",
+      "proposition": "A claim under Section II.14.A triggers a fresh waiting-period cycle.",
+      "source_marker": "following a claim under Section II.14.A",
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    },
+    {
+      "unit_id": "G2-DNB-08",
+      "semantic_role": "RESET_EFFECT",
+      "proposition": "Following the reset trigger, a fresh 24-month waiting period applies.",
+      "source_marker": "A waiting period of 24 months will apply afresh",
+      "normalized_value": {
+        "duration": 24,
+        "unit": "months",
+        "reset_behavior": "RESTART_AFTER_TRIGGER"
+      },
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    },
+    {
+      "unit_id": "G2-DNB-09",
+      "semantic_role": "EXPENSE_EXCLUSION",
+      "proposition": "Pre-hospitalization expenses are not applicable to this section.",
+      "source_marker": "Pre-hospitalization",
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    },
+    {
+      "unit_id": "G2-DNB-10",
+      "semantic_role": "EXPENSE_EXCLUSION",
+      "proposition": "Post-hospitalization expenses are not applicable to this section.",
+      "source_marker": "Post Hospitalization expenses",
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    },
+    {
+      "unit_id": "G2-DNB-11",
+      "semantic_role": "BENEFIT_INTERACTION_EXCLUSION",
+      "proposition": "Hospital Cash Benefit is not applicable to this section.",
+      "source_marker": "Hospital Cash Benefit are not applicable for this Section",
+      "binding_status": "CANDIDATE_NOT_GOVERNED"
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "G2-DNB-R01",
+      "type": "LIMIT_APPLIES_TO",
+      "from_unit": "G2-DNB-02",
+      "to_unit": "G2-DNB-01"
+    },
+    {
+      "relationship_id": "G2-DNB-R02",
+      "type": "LIMIT_APPLIES_TO",
+      "from_unit": "G2-DNB-03",
+      "to_unit": "G2-DNB-01"
+    },
+    {
+      "relationship_id": "G2-DNB-R03",
+      "type": "WAITING_PERIOD_APPLIES_TO",
+      "from_unit": "G2-DNB-04",
+      "to_unit": "G2-DNB-01"
+    },
+    {
+      "relationship_id": "G2-DNB-R04",
+      "type": "ANCHORS",
+      "from_unit": "G2-DNB-05",
+      "to_unit": "G2-DNB-04"
+    },
+    {
+      "relationship_id": "G2-DNB-R05",
+      "type": "CONDITIONS",
+      "from_unit": "G2-DNB-06",
+      "to_unit": "G2-DNB-04"
+    },
+    {
+      "relationship_id": "G2-DNB-R06",
+      "type": "TRIGGERS",
+      "from_unit": "G2-DNB-07",
+      "to_unit": "G2-DNB-08"
+    },
+    {
+      "relationship_id": "G2-DNB-R07",
+      "type": "RESTARTS",
+      "from_unit": "G2-DNB-08",
+      "to_unit": "G2-DNB-04"
+    },
+    {
+      "relationship_id": "G2-DNB-R08",
+      "type": "EXCLUDES_FROM",
+      "from_unit": "G2-DNB-09",
+      "to_unit": "G2-DNB-01"
+    },
+    {
+      "relationship_id": "G2-DNB-R09",
+      "type": "EXCLUDES_FROM",
+      "from_unit": "G2-DNB-10",
+      "to_unit": "G2-DNB-01"
+    },
+    {
+      "relationship_id": "G2-DNB-R10",
+      "type": "EXCLUDES_FROM",
+      "from_unit": "G2-DNB-11",
+      "to_unit": "G2-DNB-01"
+    }
+  ],
+  "residue": [
+    {
+      "residue_id": "G2-DNB-X01",
+      "description": "Exact per-delivery table values by Sum Insured and delivery type are not yet atomically captured in this gate.",
+      "required_action": "REVIEW_EXACT_TABLE_ROWS_BEFORE_FACT_BINDING",
+      "blocks": [
+        "LIMIT_VALUE_PUBLICATION",
+        "COMPARISON_READINESS"
+      ]
+    },
+    {
+      "residue_id": "G2-DNB-X02",
+      "description": "Exact New Born liability table values by Sum Insured are not yet atomically captured in this gate.",
+      "required_action": "REVIEW_EXACT_TABLE_ROWS_BEFORE_FACT_BINDING",
+      "blocks": [
+        "LIMIT_VALUE_PUBLICATION",
+        "COMPARISON_READINESS"
+      ]
+    },
+    {
+      "residue_id": "G2-DNB-X03",
+      "description": "Any additional eligibility, sublimit, event-count, or dependent-condition text surrounding Section II.14 remains outside this first G2 slice unless explicitly represented above.",
+      "required_action": "REVIEW_SECTION_RESIDUE_BEFORE_COMPLETENESS_CLAIM",
+      "blocks": [
+        "SECTION_COMPLETENESS",
+        "COMPARISON_READINESS"
+      ]
+    }
+  ],
+  "accounting": {
+    "g1_observed_mechanics": [
+      "per-delivery limit table",
+      "newborn liability limit",
+      "24-month first-commencement wait",
+      "continuous-renewal condition",
+      "post-claim waiting-period reset",
+      "pre/post-hospitalization exclusion interaction",
+      "hospital-cash exclusion interaction"
+    ],
+    "accounted_as_atomic_units": [
+      "24-month first-commencement wait",
+      "continuous-renewal condition",
+      "post-claim waiting-period reset",
+      "pre/post-hospitalization exclusion interaction",
+      "hospital-cash exclusion interaction"
+    ],
+    "accounted_as_atomic_plus_residue": [
+      "per-delivery limit table",
+      "newborn liability limit"
+    ],
+    "unaccounted_mechanics": []
+  },
+  "guardrails": [
+    "This G2 record decomposes source text; it does not publish a governed product fact.",
+    "Atomic mapping must not be interpreted as customer applicability or comparison readiness.",
+    "Unknown table values and unreviewed surrounding clause text remain explicit residue.",
+    "No Star-specific reasoning branch is authorized by this mapping.",
+    "G3 may map generic semantic families only after G2 accounting is complete and residue remains explicit."
+  ]
+}
