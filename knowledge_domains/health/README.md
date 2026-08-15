@@ -6,7 +6,7 @@
 
 Status: **TRANSITIONAL_REVIEW_REQUIRED**
 
-This package is **not** the canonical location for new PolicyScna insurance-intelligence architecture. The authoritative current architecture is `factory_core/` + `insurance_intelligence/` on the declared certified architecture ref.
+This package is not the canonical location for new PolicyScna insurance-intelligence architecture. The authoritative current architecture is `factory_core/` + `insurance_intelligence/` on the declared certified architecture ref.
 
 Rules:
 
