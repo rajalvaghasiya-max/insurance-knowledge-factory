@@ -12,7 +12,10 @@ def main() -> int:
     )
     parser.add_argument("--repository-root", default=".")
     parser.add_argument("--registration-path", required=True)
-    parser.add_argument("--source-url", required=True)
+    parser.add_argument(
+        "--source-url",
+        help="Optional source URL metadata. Reviewer-supplied governed registrations may omit it.",
+    )
     parser.add_argument("--entity-id", required=True)
     parser.add_argument("--insurer-id", required=True)
     parser.add_argument("--output-path")
