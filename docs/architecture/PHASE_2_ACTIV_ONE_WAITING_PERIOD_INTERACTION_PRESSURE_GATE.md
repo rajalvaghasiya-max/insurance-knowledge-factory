@@ -1,6 +1,6 @@
 # Phase 2 — Activ One Waiting-Period Interaction Pressure Gate
 
-**Status:** ACTIVE — SEMANTIC PRESSURE COMPLETE; REGRESSION CLOSURE PENDING  
+**Status:** CERTIFIED AND FROZEN  
 **Date:** 2026-08-15
 
 ## Purpose
@@ -29,7 +29,7 @@ The current Health intelligence coverage review still identifies Activ One waiti
 
 ## Existing generic path
 
-The starting evidence path is:
+The exercised evidence path was:
 
 `current governed parsed wording -> waiting-period duration candidates -> evidence consolidation -> human semantic review against existing waiting-period contracts`
 
@@ -49,7 +49,7 @@ current Activ One waiting-period pressure
 0 product-identity-bearing production code
 ```
 
-A new generic abstraction is allowed only if the current governed wording proves that the existing waiting-period contract cannot safely represent a real semantic interaction.
+**Result: PASSED.**
 
 ## Measured extraction pressure
 
@@ -202,7 +202,19 @@ Publication: none
 
 Candidate extraction and consolidation remain evidence-review stages only.
 
-## Guardrails
+## Regression closure
+
+User-validated regression results on 2026-08-15:
+
+```text
+Health subsystem : 124 passed
+factory_core     : 128 passed
+Regressions      : 0
+```
+
+These results close the gate without weakening extraction guardrails or resolving schedule/table applicability by guesswork.
+
+## Guardrails preserved at closure
 
 - Use only the current governed `38bb...` wording for current semantic evidence.
 - Do not copy values from historical Activ One NXT intelligence as facts.
@@ -214,9 +226,7 @@ Candidate extraction and consolidation remain evidence-review stages only.
 - No insurer/product-specific production branch, source-hash branch, or threshold change.
 - No frontend, Motor, Life, database migration, recommendation-productization, or public-launch scope.
 
-## Measurements
-
-Measured at this checkpoint:
+## Final measurements
 
 - duration candidates: 4;
 - consolidated groups: 2;
@@ -228,8 +238,14 @@ Measured at this checkpoint:
 - new generic semantic abstraction: 0;
 - product-identity-bearing production-code changes: 0;
 - adjudication side effects: 0;
-- publication side effects: 0.
+- publication side effects: 0;
+- Health regression suite: 124 passed;
+- factory_core regression suite: 128 passed.
 
-## Exit condition
+## Certification
 
-Semantic pressure and architecture mapping are complete. The gate closes when relevant regressions are green and this measured result is certified without resolving schedule/table applicability by guesswork.
+**CERTIFIED AND FROZEN — 2026-08-15.**
+
+The current governed Activ One wording has successfully exercised the generic waiting-period evidence path. The real product pressure required only generic extraction/normalization improvements; it did not require a new semantic abstraction. Remaining schedule/table applicability is explicit unresolved residue and remains fail-closed.
+
+Reopen this gate only if future independent product pressure proves that the existing waiting-period semantic contract cannot safely represent a real interaction, or if a generic schedule/table-binding capability is introduced and separately governed.
