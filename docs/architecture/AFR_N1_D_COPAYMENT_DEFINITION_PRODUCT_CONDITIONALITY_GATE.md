@@ -1,7 +1,16 @@
 # AFR-N1.D — Co-payment Definition vs Product Conditionality Gate
 
-**Status:** IMPLEMENTED — VALIDATION PENDING  
+**Status:** CERTIFIED  
 **Date:** 2026-08-15
+
+## Certification evidence
+
+```text
+AFR-N1.D focused copayment tests       6 passed
+AFR-N1.A + B + C + D combined         24 passed
+insurance_intelligence               2892 passed
+regressions                              0
+```
 
 ## Why this slice exists
 
@@ -18,7 +27,7 @@ AFR-N1.D pressure-tests that separation using:
 
 Current IRDAI Health guidance defines co-payment structurally as a specified amount / percentage of the admissible claim amount to be paid by the policyholder / insured.
 
-The governed standard-definition seed therefore adds:
+The governed standard-definition seed therefore contains:
 
 ```text
 canonical concept : health.definition.copayment
@@ -60,26 +69,8 @@ PRODUCT BINDING + RULE
 
 Neither layer may substitute for the other.
 
-## Adversarial tests
+## Certified result
 
-`tests/insurance_intelligence/test_afr_n1d_copayment_definition_product_conditionality.py`
+AFR-N1.D proves that the standard-definition layer can carry the product-neutral meaning of co-payment while the governed product/rule layer independently carries conditional value, trigger, exception and scope. No Star-specific product mechanics leak into the ontology definition, and no ontology definition is treated as evidence that a product actually imposes a co-payment.
 
-proves:
-
-1. the current definition preserves the generic cost-sharing structure;
-2. co-payment aliases resolve only in the explicit Health category;
-3. the standard definition does not contain Star-specific 10%, age, renewal or section terms;
-4. the certified Star product binding supplies value, trigger, exception and scope;
-5. definition and product binding are complementary rather than interchangeable;
-6. the standard-definition contract contains no product/applicability/claim-outcome fields.
-
-## Exit criterion
-
-```text
-AFR-N1.D focused copayment tests       GREEN
-AFR-N1.A + B + C + D combined         GREEN
-insurance_intelligence                 GREEN
-regressions                                0
-```
-
-AFR-N1 remains open after this gate. The next hostile semantic case is restoration versus recharge/trigger semantics; no product-specific reasoning code is authorized by this ontology gate.
+AFR-N1 remains open. The next hostile semantic case is restoration/recharge terminology versus product-specific trigger semantics.
