@@ -1,8 +1,8 @@
 """Governed, category-scoped standard-definition contracts for AFR-N1.
 
-This module is deliberately separate from ``concept_registry``.  The existing
+This module is deliberately separate from ``concept_registry``. The existing
 terminology registry owns language routing (canonical IDs, names and aliases).
-This module owns authoritative definition versions.  It does not map product
+This module owns authoritative definition versions. It does not map product
 facts, infer applicability, retrieve evidence, compare products or recommend.
 
 A standard definition is immutable, category-scoped and valid-time aware.
@@ -29,6 +29,7 @@ class InsuranceCategory(str, Enum):
 
 class DefinitionEvidenceClass(str, Enum):
     PRIMARY_REGULATORY_SOURCE = "PRIMARY_REGULATORY_SOURCE"
+    PRIMARY_REGULATOR_GUIDANCE_SOURCE = "PRIMARY_REGULATOR_GUIDANCE_SOURCE"
     PRIMARY_CONTRACT_SOURCE = "PRIMARY_CONTRACT_SOURCE"
 
 
@@ -42,11 +43,15 @@ def _text(value: object, field_name: str) -> str:
     return value.strip()
 
 
+def _normalise(value: str) -> str:
+    return " ".join(value.casefold().split())
+
+
 def _text_tuple(values: tuple[str, ...], field_name: str) -> tuple[str, ...]:
     if not isinstance(values, tuple):
         raise StandardDefinitionError(f"{field_name} must be a tuple")
     cleaned = tuple(_text(value, f"{field_name}[]") for value in values)
-    normalized = tuple(value.casefold() for value in cleaned)
+    normalized = tuple(_normalise(value) for value in cleaned)
     if len(normalized) != len(set(normalized)):
         raise StandardDefinitionError(f"{field_name} must not contain duplicates")
     return cleaned
@@ -115,8 +120,8 @@ class GovernedStandardDefinition:
             raise StandardDefinitionError("effective_to cannot precede effective_from")
         aliases = _text_tuple(self.aliases, "aliases")
         not_synonyms = _text_tuple(self.not_synonyms, "not_synonyms")
-        overlap = {value.casefold() for value in aliases} & {
-            value.casefold() for value in not_synonyms
+        overlap = {_normalise(value) for value in aliases} & {
+            _normalise(value) for value in not_synonyms
         }
         if overlap:
             raise StandardDefinitionError("aliases and not_synonyms must not overlap")
@@ -191,6 +196,40 @@ class StandardDefinitionRegistry:
         if len(matches) != 1:
             raise StandardDefinitionError(
                 "multiple governed standard definitions overlap for category/concept/as_of"
+            )
+        return matches[0]
+
+    def resolve_alias(
+        self,
+        *,
+        category: InsuranceCategory,
+        alias: str,
+        as_of: date,
+    ) -> GovernedStandardDefinition:
+        """Resolve one exact governed alias inside an explicit insurance category.
+
+        Category is mandatory. The same surface phrase may be valid in more than one
+        insurance line and must never be resolved through a cross-category shortcut.
+        """
+        if not isinstance(category, InsuranceCategory):
+            raise StandardDefinitionError("category must be an InsuranceCategory")
+        alias_key = _normalise(_text(alias, "alias"))
+        if not isinstance(as_of, date):
+            raise StandardDefinitionError("as_of must be a date")
+        matches = tuple(
+            definition
+            for definition in self._by_id.values()
+            if definition.category is category
+            and definition.applies_on(as_of)
+            and alias_key in {_normalise(value) for value in definition.aliases}
+        )
+        if not matches:
+            raise StandardDefinitionError(
+                "no governed standard definition is applicable for category/alias/as_of"
+            )
+        if len(matches) != 1:
+            raise StandardDefinitionError(
+                "multiple governed standard definitions match category/alias/as_of"
             )
         return matches[0]
 
