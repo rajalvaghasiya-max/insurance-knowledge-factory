@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "classification_type": "document_classification_reuse_policy_v1",
+  "reviewed_by_human": true,
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json",
+      "classification": "reusable_generic",
+      "reuse_action": "reusable_evidence_candidate",
+      "review_rationale": "Freshly downloaded public policy wording from Bajaj General Insurance's official My Health Care Plan document URL on 2026-08-15. The immutable bytes are SHA-256 05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158 and the registered document contains the My Health Care Plan identity markers including UIN BAJHLIP26074V022526. Classification as reusable_generic permits evidence review only; it does not establish current applicability, semantic equivalence with the earlier 9479fe6f version, publication eligibility, or customer entitlement."
+    }
+  ]
+}
