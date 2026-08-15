@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "record_type": "document_currentness_evidence_record_v1",
+  "reviewed_by_human": true,
+  "registered_document": {
+    "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json"
+  },
+  "source_observation": {
+    "observation_record_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_source_observation_05dc_20260815_current.json"
+  },
+  "evidence_items": [
+    {
+      "evidence_type": "official_product_page_document_link",
+      "evidence_status": "supports_currentness_review",
+      "verification": "retained_official_html_manual_review",
+      "observed_text": "The official Bajaj My Health Care product page exposes a Policy Wordings download for My Health Care Plan and links the observed official PDF URL.",
+      "evidence_reference": "archive/web/bajaj_allianz_general/my_health_care/product_page_20260815.html",
+      "linked_document_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+      "link_label": "Policy Wordings"
+    },
+    {
+      "evidence_type": "official_uin_reference",
+      "evidence_status": "supports_currentness_review",
+      "verification": "document_embedded_text_manual_review",
+      "observed_text": "The observed official policy wording identifies My Health Care Plan (Plan 1) with UIN BAJHLIP26074V022526.",
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json"
+    }
+  ],
+  "reviewed_at": "2026-08-15T15:47:00+05:30",
+  "review_rationale": "The current official Bajaj product page exposes the policy-wording link, the freshly retained official PDF is byte-identical to the newly registered 05dc29132434 document version, and the document-embedded UIN matches the reviewed product identity. This evidence supports temporal currentness review only; it does not itself change temporal status, publish facts, or establish customer entitlement."
+}
