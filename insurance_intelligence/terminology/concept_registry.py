@@ -2,8 +2,9 @@
 
 This registry sits before product-specific terminology mapping. It models the
 insurance concepts a user may be referring to, together with governed exact
-aliases. It deliberately does not resolve ambiguity, retrieve evidence, infer
-product applicability, compare products, or recommend anything.
+aliases and explicit false-synonym guards. It deliberately does not resolve
+ambiguity, retrieve evidence, infer product applicability, compare products, or
+recommend anything.
 """
 from __future__ import annotations
 
@@ -59,6 +60,7 @@ class CanonicalConceptDefinition:
     aliases: tuple[str, ...] = ()
     customer_phrases: tuple[str, ...] = ()
     insurer_terms: tuple[str, ...] = ()
+    not_synonyms: tuple[str, ...] = ()
     ambiguity_group: str | None = None
     downstream_topic: str | None = None
 
@@ -86,6 +88,21 @@ class CanonicalConceptDefinition:
             "insurer_terms",
             _unique_text(self.insurer_terms, "insurer_terms"),
         )
+        object.__setattr__(
+            self,
+            "not_synonyms",
+            _unique_text(self.not_synonyms, "not_synonyms"),
+        )
+
+        language_keys = set(self.language_keys())
+        false_friend_keys = {
+            normalise_terminology_text(value) for value in self.not_synonyms
+        }
+        if language_keys & false_friend_keys:
+            raise CanonicalConceptRegistryError(
+                "not_synonyms must not overlap canonical names, aliases, customer phrases, or insurer terms"
+            )
+
         if self.ambiguity_group is not None:
             object.__setattr__(
                 self,
@@ -115,6 +132,12 @@ class CanonicalConceptDefinition:
             *self.insurer_terms,
         )
         return tuple(sorted(set(normalise_terminology_text(value) for value in values)))
+
+    def is_false_synonym(self, phrase: str) -> bool:
+        key = normalise_terminology_text(_text(phrase, "phrase"))
+        return key in {
+            normalise_terminology_text(value) for value in self.not_synonyms
+        }
 
 
 class CanonicalConceptRegistry:
