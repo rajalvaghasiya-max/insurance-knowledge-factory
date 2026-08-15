@@ -1,0 +1,21 @@
+{
+  "assessment_version": "0.1",
+  "entity_id": "star_health:star_comprehensive",
+  "source_governance": "CURRENT_GOVERNED",
+  "semantic_review": "PARTIAL",
+  "applicability": "PARTIAL",
+  "publication_eligibility": "REVIEW_REQUIRED",
+  "publication_state": "NOT_PUBLISHED",
+  "unresolved_residue": [
+    "conditional_copayment_bound_not_published",
+    "product_level_semantic_review_not_complete",
+    "product_level_applicability_not_fully_resolved"
+  ],
+  "evidence_references": [
+    "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+    "tests/insurance_intelligence/test_star_publication_decisions.py",
+    "tests/insurance_intelligence/test_star_authoritative_publications.py",
+    "docs/architecture/PHASE_2_STAR_ROOM_RENT_GENERIC_REPRESENTATION_GATE.md"
+  ],
+  "note": "Product-level governed readiness is intentionally conservative. The current governed source is established and selected consequential rules are certified/published, but conditional copayment remains withheld and product-wide semantic/applicability completeness is not established. The summary status must therefore be derived by the generic readiness contract rather than asserted here."
+}
