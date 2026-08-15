@@ -1,6 +1,6 @@
 # Phase-2A — Star Comprehensive Real Review Workload Diagnosis
 
-Status: **ACTIVE DIAGNOSTIC CHECKPOINT — SENIOR-REVIEW DEMAND REDUCED 50%; PHASE-2A REVIEW SCALING NOT YET FULLY PROVEN**
+Status: **STAR REVIEW-SCALING CHECKPOINT COMPLETE — SENIOR-REVIEW DEMAND REDUCED 50%; PHASE-2A PARENT GATE REMAINS ACTIVE**
 
 ## Purpose
 
@@ -78,17 +78,30 @@ Therefore:
 - The reduction was achieved by improving deterministic upstream context, not by weakening MO-029 risk thresholds.
 - Grouping compression remains **0%**; the demonstrated efficiency gain is review-tier routing, not candidate-count reduction.
 
+## Residual High-risk classification
+
+The six remaining High groups were inspected against their bounded evidence rather than optimized mechanically.
+
+They fall into legitimate residual ambiguity classes:
+
+1. **Bariatric table-bound amount** — scope is recognized as `bariatric_surgery`, but the evidence explicitly points to limits in a table. `table_layout_binding_possible` remains a valid High-risk reason.
+2. **Second bariatric amount with clipped local context** — the bounded evidence starts after enough of the preceding phrase has been lost that automatically borrowing the neighboring amount's bariatric scope would be unsafe. It remains unresolved and High.
+3. **Dense treatment/procedure table row — first occurrence** — the amount is embedded in a flattened sequence of Sum Insured and per-treatment limits. Safe row/column binding is unavailable in the bounded evidence, so scope remains unresolved.
+4. **Delivery / New Born table amount** — `new_born_cover` scope is recognized, but the monetary role remains unresolved across a multi-column table. `unresolved_role_hint` correctly retains High routing.
+5. **Dense treatment/procedure table row — second occurrence** — as above, flattened row/column structure prevents safe scope binding.
+6. **Section-bound Sum Insured limit** — the evidence says the amount applies “under this Section,” but the governing section heading is not present in the bounded candidate. Inferring the missing section from product knowledge would cross the evidence boundary.
+
+These six groups are therefore treated as legitimate senior-review work for this checkpoint. No further Star-specific or keyword-only optimization is justified.
+
 ## Architecture interpretation
 
 This is the first real evidence that the Phase-2A architecture can reduce expensive review effort through reusable upstream context resolution while preserving fail-closed governance.
 
 It is not yet sufficient to claim that overall Phase-2A review throughput scales sub-linearly across products or insurers. The evidence currently proves one real product sample and one monetary extraction primitive.
 
-The remaining six High groups should be inspected before any further scope-resolution change. Any remaining High status must be retained when caused by genuine table/column binding, unresolved monetary role, or missing section context.
+The Star diagnostic itself is complete. Further reduction in these six High groups would require new generic structural capabilities such as table row/column binding or section-heading propagation, and those capabilities should only be built when additional real product pressure proves they are broadly necessary.
 
-The next diagnostic question is therefore:
-
-> Which flags and bounded evidence are present on the six remaining High groups, and do they represent legitimate senior-review work or another reusable generic context gap?
+The remaining Phase-2A work is therefore not more Star optimization. It is regression/certification evidence and broader review-scaling evidence where real reviewer-ready inputs exist.
 
 ## Guardrails
 
@@ -99,4 +112,5 @@ The next diagnostic question is therefore:
 5. Scope inference remains distinct from applicability, entitlement, fact acceptance, and publication.
 6. Table/column binding remains unresolved when layout evidence is insufficient.
 7. Grouping compression and review-tier reduction are separate metrics and must not be conflated.
-8. The Phase-2A parent gate remains **ACTIVE** until broader real-product review evidence and regression validation support closure.
+8. Missing governing section context must not be reconstructed from product identity or external knowledge inside the review layer.
+9. The Phase-2A parent gate remains **ACTIVE** until broader real-product review evidence and regression validation support closure.
