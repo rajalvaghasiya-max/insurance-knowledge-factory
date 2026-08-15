@@ -85,7 +85,7 @@ def write_governed_readiness(base_dir: Path) -> Path:
             {
                 "assessment_version": "0.1",
                 "entity_id": ENTITY_ID,
-                "source_governance": "CURRENT_REVIEWED",
+                "source_governance": "CURRENT_GOVERNED",
                 "semantic_review": "PARTIAL",
                 "applicability": "UNRESOLVED",
                 "publication_eligibility": "NOT_ELIGIBLE",
@@ -224,11 +224,11 @@ def test_governed_readiness_file_fails_closed_when_required_fields_missing(isola
             {
                 "assessment_version": "0.1",
                 "entity_id": ENTITY_ID,
-                "source_governance": "CURRENT_REVIEWED",
+                "source_governance": "CURRENT_GOVERNED",
             }
         ),
         encoding="utf-8",
     )
 
-    with pytest.raises(ValueError, match="missing required field"):
+    with pytest.raises(ValueError, match=r"missing governed-readiness field\(s\)"):
         audit_product_coverage.audit(ENTITY_ID)
