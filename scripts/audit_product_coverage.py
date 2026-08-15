@@ -6,10 +6,14 @@ from pathlib import Path
 from typing import Any
 
 from config.settings import BASE_DIR
+from factory_core.governance.governed_readiness import (
+    ASSESSMENT_VERSION,
+    assessment_from_mapping,
+)
 
 
 COVERAGE_VERSION = "0.2"
-GOVERNED_READINESS_VERSION = "0.1"
+GOVERNED_READINESS_VERSION = ASSESSMENT_VERSION
 
 
 EXPECTED_FIELDS = {
@@ -179,10 +183,12 @@ def load_validation_report(entity_id: str) -> dict[str, Any] | None:
 
 
 def load_governed_readiness(entity_id: str) -> dict[str, Any]:
-    """Load a separately materialized governed-readiness assessment.
+    """Load and validate a separately materialized governed-readiness assessment.
 
     Legacy product-intelligence presence MUST NOT be used to synthesize governed
-    readiness. Absence therefore fails closed as NOT_ASSESSED.
+    readiness. Absence therefore fails closed as NOT_ASSESSED. When an assessment
+    exists, its summary status is derived by the generic governed-readiness
+    contract rather than trusted from JSON.
     """
     insurer_slug, product_slug = entity_id.split(":")
     path = (
@@ -206,46 +212,28 @@ def load_governed_readiness(entity_id: str) -> dict[str, Any]:
             "publication_eligibility": "NOT_ASSESSED",
             "publication_state": "NOT_ASSESSED",
             "unresolved_residue": [],
+            "evidence_references": [],
             "note": (
                 "No governed-readiness assessment is materialized. Legacy intelligence "
                 "coverage must not be interpreted as governed or publication readiness."
             ),
         }
 
-    assessment = load_json(path)
-    if not isinstance(assessment, dict):
-        raise ValueError("governed_readiness.json must contain a JSON object")
-
-    required = {
-        "status",
-        "source_governance",
-        "semantic_review",
-        "applicability",
-        "publication_eligibility",
-        "publication_state",
-        "unresolved_residue",
-    }
-    missing = sorted(required - set(assessment))
-    if missing:
-        raise ValueError(
-            "governed_readiness.json missing required field(s): " + ", ".join(missing)
-        )
-    if not isinstance(assessment["unresolved_residue"], list):
-        raise ValueError("governed_readiness.unresolved_residue must be a list")
+    raw = load_json(path)
+    assessment = assessment_from_mapping(raw, expected_entity_id=entity_id)
 
     return {
-        "readiness_version": assessment.get(
-            "readiness_version", GOVERNED_READINESS_VERSION
-        ),
-        "status": assessment["status"],
+        "readiness_version": assessment.assessment_version,
+        "status": assessment.status,
         "assessment_file": str(path.relative_to(BASE_DIR)).replace("\\", "/"),
-        "source_governance": assessment["source_governance"],
-        "semantic_review": assessment["semantic_review"],
-        "applicability": assessment["applicability"],
-        "publication_eligibility": assessment["publication_eligibility"],
-        "publication_state": assessment["publication_state"],
-        "unresolved_residue": assessment["unresolved_residue"],
-        "note": assessment.get("note"),
+        "source_governance": assessment.source_governance,
+        "semantic_review": assessment.semantic_review,
+        "applicability": assessment.applicability,
+        "publication_eligibility": assessment.publication_eligibility,
+        "publication_state": assessment.publication_state,
+        "unresolved_residue": list(assessment.unresolved_residue),
+        "evidence_references": list(assessment.evidence_references),
+        "note": assessment.note,
     }
 
 
@@ -369,7 +357,7 @@ def build_recommendations(
         recommendations.append(
             "Governed readiness is not assessed; do not infer current, applicable, publication-eligible, or published status from coverage percentage."
         )
-    elif governed_readiness_status not in {"READY", "PUBLISHED"}:
+    elif governed_readiness_status not in {"READY_FOR_PUBLICATION_REVIEW", "PUBLISHED"}:
         recommendations.append(
             "Governed readiness requires attention before customer/advisor-facing use of governed product facts."
         )
