@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "record_type": "ar_3_0_g1_commercial_pressure_evidence_inventory_v1",
+  "milestone": "AR-3.0.G1",
+  "status": "EVIDENCE_INVENTORIED_NOT_YET_BOUND",
+  "product_reference": "star_health:star_comprehensive",
+  "source_authority": {
+    "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+    "document_id": "star_health_star_comprehensive_policy_wording_v1",
+    "document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+    "content_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+    "document_type": "policy_wording",
+    "authority_role": "PRIMARY_LEGAL_EVIDENCE_CANDIDATE"
+  },
+  "transitional_locator_only": [
+    {
+      "path": "knowledge/health/star_health/star_comprehensive/intelligence/product_intelligence.json",
+      "authority": false,
+      "permitted_use": "LOCATE_CANDIDATE_SOURCE_TEXT_ONLY",
+      "prohibited_use": "DO_NOT_PROMOTE_EXTRACTED_VALUES_OR_VALIDATED_FLAGS_AS_GOVERNED_TRUTH"
+    },
+    {
+      "path": "knowledge/health/star_health/star_comprehensive/intelligence/policy_intelligence.json",
+      "authority": false,
+      "permitted_use": "LOCATE_CANDIDATE_SOURCE_TEXT_ONLY",
+      "prohibited_use": "DO_NOT_PROMOTE_EXTRACTED_VALUES_OR_VALIDATED_FLAGS_AS_GOVERNED_TRUTH"
+    },
+    {
+      "path": "knowledge/health/coverage_audits/star_health_star_comprehensive_coverage_audit.json",
+      "authority": false,
+      "permitted_use": "HISTORICAL_CONTEXT_ONLY",
+      "prohibited_use": "DO_NOT_USE_AS_CURRENT_PRODUCT_COVERAGE_OR_GAP_TRUTH"
+    }
+  ],
+  "candidate_pressure_units": [
+    {
+      "pressure_id": "G1-WP-01",
+      "candidate_family": "initial_waiting_period",
+      "source_markers": [
+        "30-day waiting period",
+        "Expenses related to the treatment of any illness within 30 days",
+        "except claims arising due to an accident"
+      ],
+      "observed_mechanics": [
+        "duration",
+        "first-policy-commencement anchor",
+        "accident exception",
+        "renewal interaction"
+      ],
+      "g1_disposition": "ELIGIBLE_FOR_G2_ATOMIC_REVIEW_NOT_A_GOVERNED_FACT"
+    },
+    {
+      "pressure_id": "G1-WP-02",
+      "candidate_family": "specified_disease_procedure_waiting_period",
+      "source_markers": [
+        "expiry of 24 months of continuous coverage",
+        "This exclusion shall not be applicable for claims arising due to an accident"
+      ],
+      "observed_mechanics": [
+        "duration",
+        "continuous-coverage condition",
+        "listed-condition scope",
+        "accident exception",
+        "sum-insured-enhancement interaction",
+        "portability continuity interaction"
+      ],
+      "g1_disposition": "ELIGIBLE_FOR_G2_ATOMIC_REVIEW_NOT_A_GOVERNED_FACT"
+    },
+    {
+      "pressure_id": "G1-WP-03",
+      "candidate_family": "pre_existing_disease_waiting_period",
+      "source_markers": [
+        "excluded until the expiry of 36 months of continuous coverage",
+        "pre-existing Disease (PED) and its direct complications"
+      ],
+      "observed_mechanics": [
+        "duration",
+        "continuous-coverage condition",
+        "PED-plus-direct-complications scope",
+        "disclosure-and-acceptance interaction",
+        "sum-insured-enhancement interaction",
+        "portability continuity interaction"
+      ],
+      "g1_disposition": "ELIGIBLE_FOR_G2_ATOMIC_REVIEW_NOT_A_GOVERNED_FACT"
+    },
+    {
+      "pressure_id": "G1-INT-01",
+      "candidate_family": "ped_waiting_period_buyback",
+      "source_markers": [
+        "Buy Back of Pre-Existing Disease Waiting Period",
+        "from 36 months to 12 months",
+        "only for the first purchase of this Star Comprehensive Insurance Policy"
+      ],
+      "observed_mechanics": [
+        "optional-cover premium dependency",
+        "base-wait reduction",
+        "first-purchase-only condition",
+        "sum-insured boundary",
+        "renewal/portability eligibility interaction"
+      ],
+      "g1_disposition": "HIGH_VALUE_G2_INTERACTION_PRESSURE_NOT_A_GOVERNED_FACT"
+    },
+    {
+      "pressure_id": "G1-LIM-01",
+      "candidate_family": "bariatric_surgery_limit",
+      "source_markers": [
+        "Bariatric Surgery",
+        "payable subject to limits",
+        "maximum limit of Rs.2,50,000/- and Rs.5,00,000/-",
+        "inclusive of pre-hospitalization and post-hospitalization expenses"
+      ],
+      "observed_mechanics": [
+        "sum-insured-dependent limit table",
+        "benefit cap",
+        "pre/post-hospitalization inclusion in cap",
+        "36-month waiting-period interaction",
+        "minimum-age condition"
+      ],
+      "g1_disposition": "HIGH_VALUE_G2_LIMIT_INTERACTION_PRESSURE_NOT_A_GOVERNED_FACT"
+    },
+    {
+      "pressure_id": "G1-INT-02",
+      "candidate_family": "delivery_newborn_waiting_and_limit_interaction",
+      "source_markers": [
+        "Delivery and New Born",
+        "up to the limits mentioned in the table below per Delivery",
+        "waiting period of 24 months",
+        "A waiting period of 24 months will apply afresh following a claim under Section II.14.A"
+      ],
+      "observed_mechanics": [
+        "per-delivery limit table",
+        "newborn liability limit",
+        "24-month first-commencement wait",
+        "continuous-renewal condition",
+        "post-claim waiting-period reset",
+        "pre/post-hospitalization exclusion interaction",
+        "hospital-cash exclusion interaction"
+      ],
+      "g1_disposition": "HIGHEST_VALUE_G2_INTERACTION_PRESSURE_NOT_A_GOVERNED_FACT"
+    }
+  ],
+  "g1_guardrails": [
+    "Inventory membership does not assert publication, current entitlement, comparison readiness, or customer applicability.",
+    "Every candidate must be decomposed into atomic normative units in G2 before any reviewed proposition binding.",
+    "Source markers are discovery anchors inside the registered immutable policy wording; they are not a substitute for exact clause review.",
+    "Transitional extraction confidence or validation flags confer no authority in AR-3.0.",
+    "No new generic abstraction is authorized by G1 inventory alone.",
+    "Unknown ordering, exception, scope, reset, and sum-insured interactions must remain explicit and fail closed."
+  ],
+  "recommended_g2_order": [
+    "G1-INT-02",
+    "G1-INT-01",
+    "G1-LIM-01",
+    "G1-WP-03",
+    "G1-WP-02",
+    "G1-WP-01"
+  ]
+}
