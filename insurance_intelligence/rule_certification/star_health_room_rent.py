@@ -1,4 +1,13 @@
-"""Governed Star Comprehensive room-rent certification case (MO-023J.5)."""
+"""Legacy compatibility/parity fixture for the Star Comprehensive room-rent certification case.
+
+This module preserves the original MO-023J.5 Python-coded Star case as a regression oracle while
+Phase-2 Health scaling uses governed-data certification records materialized through the generic
+rule-certification loader and unchanged generic runner.
+
+Do not copy this module as the onboarding pattern for new products. New Health product semantics
+should be represented as governed data/evidence against insurer-independent contracts unless real
+product pressure proves a missing generic abstraction.
+"""
 
 from __future__ import annotations
 
@@ -101,7 +110,7 @@ def _requirement(component_id: str) -> RequirementResult:
 
 
 def build_star_comprehensive_room_rent_case() -> RuleCertificationCaseFixture:
-    """Build the exact Star Comprehensive room-category and proportional-limit case."""
+    """Build the historical Python-coded parity case for Star Comprehensive room rent."""
     case_id = "star_comprehensive_room_rent"
     component_claims = (
         (
