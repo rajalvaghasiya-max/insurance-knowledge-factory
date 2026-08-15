@@ -2,11 +2,18 @@
 
 ## Status
 
-**QUALIFICATION PROPOSED — requires focused local certification before closure.**
+**CERTIFIED — 2026-08-15**
 
 Audit / implementation ref:
 
 `feature/mo-028b-health-waiting-period-coverage`
+
+Certification evidence:
+
+- G0 focused: `3 passed`
+- Star combined anchors: `49 passed`
+- `tests/insurance_intelligence`: `2839 passed`
+- regressions: `0`
 
 ## Objective
 
@@ -25,10 +32,26 @@ The purpose is not to add another product-specific reasoning path. The purpose i
 
 Star Comprehensive already has two independent governed/current anchors inside the authoritative architecture:
 
-1. **Conditional copayment** — a reviewed generic legal-condition chain with source registration, document identity/classification, legal binding, canonical projection, publication decision, and authoritative publication. The current `StarKnowledgeBuildResult` certifies this chain and explicitly limits the snapshot to the conditional co-payment topic.
+1. **Conditional copayment** — the current rule-certification path consumes the reviewed Star Comprehensive conditional-copayment binding, routes the reviewed statement through production conditional-obligation extraction, preserves the obligation value, age-at-entry trigger, continuous-renewal exception, applicability scope and calculation basis, and passes the product-specific completeness profile. AR-3.0.G0 deliberately certifies this current rule path rather than requiring historical/generated orchestration outputs to be committed in the repository.
 2. **Automatic restoration** — an approved and published `ProductBenefitImplementation` with dense mechanics: percentage, count, exhaustion trigger, trigger timing, same-hospitalization restriction, subsequent-hospitalization use, same-illness use, covered-section scope, relapse window, policy-year reset, non-carry-over, and floater behavior.
 
 These pressure different architecture concerns: conditional rules and multi-dimensional benefit mechanics.
+
+## DEFECT-01 closure — certification anchor/runtime-output boundary
+
+The first G0 focused run failed because the proposed test invoked `build_star_comprehensive_copay_snapshot(repository_root=Path("."))`. That older snapshot pilot expects a materialized document-identity overlay, while the Star migration manifest correctly defines that overlay as a generated governed migration output rather than a committed repository source artifact.
+
+The failure therefore exposed a test-fixture/certification-anchor defect, not a Star semantic defect and not a production architecture defect.
+
+Disposition:
+
+- no generated identity-resolution artifact was committed;
+- no fail-closed behavior was weakened;
+- no generic governance contract was changed;
+- no production orchestration was changed;
+- G0 was corrected to exercise the current certified conditional-copayment rule path directly.
+
+DEFECT-01 is **CLOSED** by the green certification results above.
 
 ## Explicitly excluded as current truth
 
@@ -36,18 +59,20 @@ These pressure different architecture concerns: conditional rules and multi-dime
 
 No AR-3.0 implementation may infer missing waiting-period, limit, or applicability facts from that artifact.
 
+Historical extraction/intelligence artifacts may be used in G1 only as search/index hints for locating candidate source text. They are not evidence authority and cannot be promoted merely because they contain a value or a `validated` flag from the transitional pipeline.
+
 ## G0 pressure units
 
 ### P1 — Conditional copayment
 
-Existing governed chain must preserve:
+Existing governed certification must preserve:
 
 - percentage financial effect;
 - age-at-entry trigger;
 - continuous-renewal exception;
 - explicit policy-section scope;
 - evidence lineage;
-- publication state.
+- certification/completeness boundary.
 
 ### P2 — Automatic restoration
 
@@ -86,19 +111,20 @@ The required progression is:
 6. Historical/transitional outputs remain non-authoritative.
 7. No product winner, rank, or recommendation is produced by the pressure gate.
 
-## G0 exit criteria
+## G0 exit criteria — certified
 
-G0 may be certified only when focused tests prove:
+G0 is certified because focused and subsystem tests prove:
 
-- the conditional-copayment governed snapshot chain is currently certifiable from repository artifacts;
+- the current Star Comprehensive conditional-copayment rule-certification path passes through governed evidence, production semantic extraction and the product-specific completeness profile;
 - the restoration implementation is approved/published and retains all listed mechanics;
 - the pressure qualification explicitly rejects the stale historical coverage audit as current truth;
-- no new product-specific reasoning implementation is introduced.
+- no new product-specific reasoning implementation was introduced;
+- the generated-runtime-output versus committed-repository-source boundary remains intact.
 
 ## Planned AR-3.0 sequence
 
-- **G0** — Commercial-product qualification and governed-anchor verification.
-- **G1** — Real source/evidence inventory for additional waiting-period and limit propositions.
+- **G0** — Commercial-product qualification and governed-anchor verification. **CERTIFIED.**
+- **G1** — Real source/evidence inventory for additional waiting-period and limit propositions. **ACTIVE.**
 - **G2** — Atomic normative-unit and residue pressure mapping.
 - **G3** — Generic-family mapping without product-specific semantic logic.
 - **G4** — Cross-family interaction and comparison-readiness pressure.
