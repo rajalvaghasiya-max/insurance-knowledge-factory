@@ -1,6 +1,6 @@
 # Phase 2 — Star Room-Rent Generic Representation Gate
 
-**Status:** ACTIVE — DATA-DRIVEN SEMANTIC MIGRATION PRESSURE STARTED  
+**Status:** ACTIVE — GENERIC REPRESENTATION PROVEN; BROADER REGRESSION CLOSURE PENDING  
 **Date:** 2026-08-15
 
 ## Purpose
@@ -11,7 +11,7 @@ This gate is not a new room-rent extractor, not a new ontology project, and not 
 
 ## Why this pressure case
 
-The current Star Comprehensive room-rent certification already preserves materially important product semantics:
+The current Star Comprehensive room-rent certification preserves materially important product semantics:
 
 - covered room/boarding/nursing and room-linked hospitalization expenses;
 - categorical limit: Private Single A/C room;
@@ -20,7 +20,7 @@ The current Star Comprehensive room-rent certification already preserves materia
 - applicability limited to hospitalization expenses that vary based on room rent;
 - no claim-payment guarantee.
 
-However, those semantics currently live in `insurance_intelligence/rule_certification/star_health_room_rent.py`, a Star-specific production module.
+Those semantics historically lived in `insurance_intelligence/rule_certification/star_health_room_rent.py`, a Star-specific Python certification module.
 
 Phase-2 scaling has established the standing acceptance criterion that normal Health expansion should require:
 
@@ -28,7 +28,7 @@ Phase-2 scaling has established the standing acceptance criterion that normal He
 0 product-identity-bearing production reasoning code
 ```
 
-The correct next test is therefore whether the existing generic contracts can carry the same semantics as governed data/evidence, allowing the Star-specific module to become compatibility/audit scaffolding rather than the production scaling pattern.
+The tested question was whether the existing generic contracts can carry the same semantics as governed data/evidence, allowing the Star-specific module to become compatibility/parity scaffolding rather than the production scaling pattern.
 
 ## Governed source under pressure
 
@@ -43,7 +43,7 @@ No source identity or currentness change is part of this gate.
 
 ## Existing generic semantic capacity
 
-The generic `coverage_limit` topic already defines the components needed for this rule:
+The generic `coverage_limit` topic already defines the components required by this rule:
 
 - `covered_subject`
 - `limit_value`
@@ -51,9 +51,68 @@ The generic `coverage_limit` topic already defines the components needed for thi
 - `applicability_scope`
 - optional `excess_consequence`
 
-The gate must first attempt to express the Star room-rent rule entirely through these existing generic components and existing evidence/lineage contracts.
+No new room-rent ontology abstraction was required.
 
-A new abstraction is allowed only if real semantics cannot be represented without material loss.
+## Implemented scaling path
+
+The approved generic path demonstrated by this gate is:
+
+```text
+governed certification JSON
+-> strict insurer-independent data loader
+-> existing RuleCertificationExpectation
+   + existing EvidenceResolverOutput
+-> unchanged insurer-independent RuleCertificationRunner
+```
+
+Implemented artifacts:
+
+- generic loader for governed certification case data;
+- governed Star room-rent certification case record;
+- parity tests comparing the governed-data-loaded case with the legacy Python case;
+- unchanged generic runner.
+
+The loader reuses existing contract builders and `EvidenceResolverOutput` validation and fails closed on unknown/invalid data rather than defining an alternative certification schema.
+
+## Semantic parity result
+
+The governed-data case preserves all certified semantics from the legacy Python case:
+
+1. **Covered subject** — in-patient room, boarding, nursing, and room-linked hospitalization expenses.
+2. **Categorical limit value** — Private Single A/C room; no monetary room-rent cap is fabricated.
+3. **Limit basis** — policy-stated room category or actuals, whichever is less.
+4. **Applicability scope** — hospitalization expenses that vary based on room rent occupied by the insured person.
+5. **Excess consequence** — proportional consideration for room-linked expenses when the permitted category is exceeded.
+6. **Claim guardrail** — the proportional mechanism does not itself establish claim admissibility or payment.
+7. **Lineage** — source path, policy SHA, governed registration record, candidate identity, page 9, section, and evidence identity are preserved.
+
+Parity tests require equality of the expectation and resolver-output contracts and run the governed-data case through the unchanged generic certification runner.
+
+## Focused regression evidence
+
+First focused migration set:
+
+```text
+18 passed
+```
+
+Legacy + governed-data + generic-runner parity set:
+
+```text
+26 passed
+```
+
+No behavioral divergence was observed between the legacy Python fixture and governed-data-loaded case.
+
+## Legacy module classification decision
+
+`insurance_intelligence/rule_certification/star_health_room_rent.py` is retained temporarily as a **legacy compatibility/parity fixture and regression oracle**.
+
+It is no longer the approved scaling pattern for onboarding future Health products.
+
+The module documentation now explicitly states that it must not be copied as the onboarding pattern. Future product semantics should be represented as governed data/evidence against insurer-independent contracts unless real product pressure proves a missing generic abstraction.
+
+Deletion is intentionally deferred while the module remains useful as an independent parity oracle.
 
 ## Standing acceptance criterion
 
@@ -63,19 +122,14 @@ Star room-rent governed representation
 0 new Star-specific production reasoning code
 ```
 
-The existing Star-specific certification module may be retained temporarily for regression parity, but it must not be treated as the future onboarding template.
+Result at this checkpoint:
 
-## Semantic parity target
-
-A generic/data-driven representation must preserve at minimum:
-
-1. **Covered subject** — room, boarding, nursing, and room-linked hospitalization expenses.
-2. **Categorical limit value** — Private Single A/C room; do not fabricate a monetary room cap.
-3. **Limit basis** — policy-stated room category or actuals, whichever is less, as expressed by the governed wording.
-4. **Applicability scope** — hospitalization expenses that vary based on room rent occupied by the insured person.
-5. **Excess consequence** — proportional consideration for room-linked expenses when the permitted room category is exceeded.
-6. **Claim guardrail** — this rule does not itself establish claim admissibility or payment.
-7. **Lineage** — source/page/section/hash/evidence identity must remain traceable.
+```text
+new product-identity-bearing production reasoning paths = 0
+new room-rent semantic abstractions = 0
+legacy Python fixture retained for parity = yes
+governed-data scaling path proven = yes
+```
 
 ## Guardrails
 
@@ -86,20 +140,23 @@ A generic/data-driven representation must preserve at minimum:
 - Do not weaken evidence authority, currentness, lineage, or completeness requirements.
 - Do not add Star/product/source-hash branching to generic production code.
 - Do not create a new room-rent ontology abstraction unless generic `coverage_limit` components prove insufficient.
+- Do not use the retained legacy fixture as the template for new product onboarding.
 - No frontend, Motor, Life, database migration, or recommendation-productization scope.
 
 ## Measurements
 
-Record at minimum:
+Measured at this checkpoint:
 
-- whether all five generic `coverage_limit` components can represent the existing certified rule;
-- any semantic residue not representable by the existing contracts;
-- lineage/evidence parity with the current certification case;
-- completeness outcome under the generic topic definition;
-- number of new product-identity-bearing production-code paths;
-- whether the existing Star-specific module can be demoted to compatibility/audit status;
-- regressions across `tests/insurance_intelligence`, `tests/health`, and relevant `tests/factory_core` coverage.
+- all five generic `coverage_limit` components represent the certified room-rent rule;
+- material semantic residue not representable by the generic contracts: none observed;
+- lineage/evidence parity with legacy case: preserved;
+- governed-data certification through generic runner: PASS;
+- focused regression sets: 18 passed, then 26 passed;
+- new product-identity-bearing production-code paths: 0;
+- existing Star-specific module can be demoted to compatibility/parity status: yes;
+- adjudication behavior changed: no;
+- publication behavior changed: no.
 
 ## Exit condition
 
-This gate closes when the existing certified Star room-rent semantics have been represented through generic/data-driven contracts with no material semantic loss, lineage remains governed, no product-specific production path is introduced, relevant regressions are green, and the future scaling status of the old Star-specific certification module is explicitly decided.
+Generic/data-driven semantic parity and the legacy-module classification decision are complete. The gate closes after broader relevant regressions confirm that the new generic loader/data path and module reclassification introduce no subsystem regressions.
