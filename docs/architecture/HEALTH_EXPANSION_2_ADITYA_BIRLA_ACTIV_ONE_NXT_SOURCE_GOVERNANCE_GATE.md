@@ -1,59 +1,58 @@
 # HEALTH-EXPANSION-2 — Aditya Birla Activ One NXT Source Governance Gate
 
-**Status:** SELECTED — SOURCE REGISTRATION AUDIT PENDING  
+**Status:** SUPERSEDED AS PRIMARY MILESTONE — RETAINED AS AUDIT FIXTURE  
 **Date:** 2026-08-15
 
-## Why this is the next Health scaling target
+## Governance correction
 
-HEALTH-EXPANSION-1 certified that a changed official policy wording can be onboarded as a new immutable version, reviewed for currentness, and passed through the existing publication-eligibility gate without product-specific runtime logic.
+This file originally selected Aditya Birla Health Activ One NXT as the next Health scaling milestone because the repository already contains a published `Super Reload` implementation with explicit evidence hashes and mechanic-level semantics.
 
-The next scaling case should pressure a different failure mode rather than repeat the Bajaj currentness exercise.
+That selection is retained for historical traceability, but it is no longer the primary Phase-2 execution milestone.
 
-Aditya Birla Health Activ One NXT is selected because the repository already contains a published, approved `Super Reload` benefit implementation with explicit policy-wording and prospectus evidence references, including:
+The Phase-2 roadmap acceptance criterion is stricter: normal product expansion must happen as governed data, with zero product-identity-bearing production code. Repeating or extending `insurance_intelligence/benefits/activ_one_nxt.py` as the onboarding pattern would normalize plan-specific coding and would be the wrong scaling direction.
+
+## Permitted use of Activ One NXT
+
+Activ One NXT may still be used as an **audit fixture** to answer questions about existing historical product-specific code, including:
+
+- whether its evidence hashes are traceable to governed immutable sources;
+- whether old published mechanics remain consistent with current generic contracts;
+- whether the historical implementation exposes migration or succession debt;
+- whether a future data-only representation can reproduce the same semantics without product-specific runtime code.
+
+It must **not** be used as precedent for creating more product-specific Python modules.
+
+## Hard guardrail
+
+For normal new Health product onboarding:
+
+```text
+new product source + governed data/spec artifacts
+        ↓
+generic registration / classification / identity / currentness
+        ↓
+generic semantic extraction / review / residue / publication
+        ↓
+product-identity-bearing production Python changes = 0
+```
+
+If a new product cannot be represented safely without production-code changes, that is treated as evidence of a missing reusable semantic capability. Any resulting code change must be generic and product-neutral; insurer/product identity must remain in governed data.
+
+## Relationship to Phase-2A
+
+The active successor milestone is:
+
+`PHASE_2A_DATA_ONLY_HEALTH_ONBOARDING_AND_REVIEW_SCALING_GATE.md`
+
+Activ One NXT can be sampled inside that milestone only as a compatibility/audit fixture. It is not the next plan-specific implementation task.
+
+## Historical evidence references retained
+
+The existing historical implementation references:
 
 - product variant id `pv_aditya_birla_health_activ_one_nxt_adihlip24097v012324`;
-- policy wording source id `aditya_birla_health_activ_one_policy_wording_adihlip24097v012324`;
 - policy wording SHA-256 `d7726811cfdf2c3c31c3750eb0bd4a55203b20cf79d44fc6849dbc77ba556451`;
-- prospectus source id `aditya_birla_health_activ_one_prospectus_adihlip24097v012324`;
 - prospectus SHA-256 `8923d6457d368c9d80d097032a7b784c65b30ba07ae68ea7474af7569332fa56`;
 - behavior signature `bsig:activ_one_nxt:super_reload:100pct_unlimited_exhausted_or_insufficient_same_claim`.
 
-The implementation is already richer than a scalar benefit flag. It models trigger requirement, trigger timing, same-hospitalization use, subsequent-hospitalization use, first-claim use, partial restoration use, maximum liability per claim, covered-section scope, utilization sequence, policy-year reset, and floater operation.
-
-## Milestone question
-
-Can the already-published Activ One NXT Super Reload implementation be traced end-to-end to governed immutable source registrations, reviewed document identity/currentness, and the same source hashes it claims — without introducing a product-specific production bypass?
-
-## Immediate audit
-
-First determine whether the exact source hashes referenced by the published benefit implementation are present in the governed source registry or only embedded as evidence references in `insurance_intelligence/benefits/activ_one_nxt.py`.
-
-The milestone must fail closed if:
-
-- a claimed evidence hash has no governed immutable registration;
-- a registered source hash differs from the implementation evidence reference;
-- product/document identity is unresolved;
-- currentness is unresolved where publication requires it;
-- prospectus and policy wording are silently treated as equal authority;
-- benefit mechanics cannot be traced back to the cited source version.
-
-## Guardrails
-
-- Do not rewrite the Super Reload mechanic model merely to satisfy registration plumbing.
-- Do not treat marketing label `Super Reload` as a new generic restoration concept.
-- Do not infer currentness from UIN or a working URL alone.
-- Do not add Aditya-Birla-specific runtime reasoning.
-- Preserve policy wording as primary legal authority and prospectus as corroborating evidence according to existing source-role contracts.
-- If the old evidence hashes are no longer current at the official source, onboard new immutable versions rather than mutating old evidence references silently.
-
-## Exit criterion
-
-```text
-exact evidence hashes audited
-+ immutable governed source registration exists or is created for each required source
-+ classification/identity/currentness are reviewed at the correct authority level
-+ published Super Reload mechanics remain traceable to governed evidence
-+ hash or version drift fails closed
-+ no product-specific runtime branch
-+ relevant regressions = 0
-```
+These references remain useful for succession and traceability review, but no new plan-specific implementation work is authorized by this document.
