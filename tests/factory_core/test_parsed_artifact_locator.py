@@ -48,6 +48,17 @@ def test_locates_parsed_artifact_by_sha_and_shape(tmp_path: Path):
     assert result["matches"][0]["valid_text_page_count"] == 2
 
 
+def test_locates_canonical_processed_pdf_parse_by_default(tmp_path: Path):
+    _write(tmp_path, f"processed/pdf_parse/{SHA}.json", _parsed())
+
+    result = ParsedArtifactLocator.locate(repository_root=tmp_path, source_sha256=SHA).manifest
+
+    assert "processed" in result["search_roots"]
+    assert result["locator_status"] == "located"
+    assert result["match_count"] == 1
+    assert result["matches"][0]["path"] == f"processed/pdf_parse/{SHA}.json"
+
+
 def test_missing_sha_is_explicit_not_found(tmp_path: Path):
     (tmp_path / "archive").mkdir()
     result = ParsedArtifactLocator.locate(repository_root=tmp_path, source_sha256=SHA).manifest
