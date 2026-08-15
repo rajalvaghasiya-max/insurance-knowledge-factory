@@ -113,12 +113,35 @@ _CUMULATIVE_BONUS_2024 = GovernedStandardDefinition(
 )
 
 
+_COPAYMENT_2024 = GovernedStandardDefinition(
+    definition_id="irdai.health.copayment.2024.v1",
+    canonical_concept_id="health.definition.copayment",
+    category=InsuranceCategory.HEALTH,
+    version="1.0",
+    standard_definition=(
+        "Co-payment is a specified amount / percentage of the admissible claim amount "
+        "to be paid by policyholder / insured."
+    ),
+    source=DefinitionSourceReference(
+        source_id="IRDAI_HEALTH_DEPT_FAQ_CURRENT",
+        authority="IRDAI",
+        locator="Health Department FAQ 12 — What is co-payment?",
+        source_title="IRDAI Health Department FAQs",
+    ),
+    evidence_class=DefinitionEvidenceClass.PRIMARY_REGULATOR_GUIDANCE_SOURCE,
+    effective_from=date(2024, 5, 29),
+    effective_to=None,
+    aliases=("co-payment", "copayment", "co payment"),
+)
+
+
 def build_health_regulatory_definition_registry() -> StandardDefinitionRegistry:
     registry = StandardDefinitionRegistry()
     registry.register(_PED_2020)
     registry.register(_PED_2024)
     registry.register(_ROOM_RENT_2020)
     registry.register(_CUMULATIVE_BONUS_2024)
+    registry.register(_COPAYMENT_2024)
     return registry
 
 
