@@ -1,6 +1,6 @@
 # Phase 2 — Star Room-Rent Generic Representation Gate
 
-**Status:** ACTIVE — GENERIC REPRESENTATION PROVEN; BROADER REGRESSION CLOSURE PENDING  
+**Status:** CERTIFIED AND FROZEN  
 **Date:** 2026-08-15
 
 ## Purpose
@@ -88,9 +88,9 @@ The governed-data case preserves all certified semantics from the legacy Python 
 
 Parity tests require equality of the expectation and resolver-output contracts and run the governed-data case through the unchanged generic certification runner.
 
-## Focused regression evidence
+## Regression evidence
 
-First focused migration set:
+Focused migration set:
 
 ```text
 18 passed
@@ -102,15 +102,24 @@ Legacy + governed-data + generic-runner parity set:
 26 passed
 ```
 
+Broader closure regressions:
+
+```text
+insurance_intelligence : 2903 passed
+health                 : 124 passed
+factory_core           : 128 passed
+regressions            : 0
+```
+
 No behavioral divergence was observed between the legacy Python fixture and governed-data-loaded case.
 
 ## Legacy module classification decision
 
-`insurance_intelligence/rule_certification/star_health_room_rent.py` is retained temporarily as a **legacy compatibility/parity fixture and regression oracle**.
+`insurance_intelligence/rule_certification/star_health_room_rent.py` is retained as a **legacy compatibility/parity fixture and regression oracle**.
 
-It is no longer the approved scaling pattern for onboarding future Health products.
+It is not the approved scaling pattern for onboarding future Health products.
 
-The module documentation now explicitly states that it must not be copied as the onboarding pattern. Future product semantics should be represented as governed data/evidence against insurer-independent contracts unless real product pressure proves a missing generic abstraction.
+The module documentation explicitly states that it must not be copied as the onboarding pattern. Future product semantics should be represented as governed data/evidence against insurer-independent contracts unless real product pressure proves a missing generic abstraction.
 
 Deletion is intentionally deferred while the module remains useful as an independent parity oracle.
 
@@ -122,7 +131,7 @@ Star room-rent governed representation
 0 new Star-specific production reasoning code
 ```
 
-Result at this checkpoint:
+Certified result:
 
 ```text
 new product-identity-bearing production reasoning paths = 0
@@ -130,6 +139,17 @@ new room-rent semantic abstractions = 0
 legacy Python fixture retained for parity = yes
 governed-data scaling path proven = yes
 ```
+
+## Architecture decision
+
+**Decision: CERTIFY THE GOVERNED-DATA + GENERIC-CONTRACT REPRESENTATION AS THE HEALTH SCALING PATTERN FOR THIS RULE SHAPE.**
+
+This certification is narrow:
+
+- it proves that the Star room-rent certification case can be represented through governed data and existing generic contracts without semantic loss;
+- it does not claim that every future room-rent rule will fit without additional generic semantic pressure;
+- it does not authorize claim adjudication, publication, or inference of missing monetary limits;
+- it does not make the legacy Star-specific module authoritative for new onboarding.
 
 ## Guardrails
 
@@ -139,24 +159,25 @@ governed-data scaling path proven = yes
 - Do not convert this into claim adjudication.
 - Do not weaken evidence authority, currentness, lineage, or completeness requirements.
 - Do not add Star/product/source-hash branching to generic production code.
-- Do not create a new room-rent ontology abstraction unless generic `coverage_limit` components prove insufficient.
+- Do not create a new room-rent ontology abstraction unless generic `coverage_limit` components prove insufficient under future independent pressure.
 - Do not use the retained legacy fixture as the template for new product onboarding.
 - No frontend, Motor, Life, database migration, or recommendation-productization scope.
 
 ## Measurements
 
-Measured at this checkpoint:
+Certified measurements:
 
 - all five generic `coverage_limit` components represent the certified room-rent rule;
 - material semantic residue not representable by the generic contracts: none observed;
 - lineage/evidence parity with legacy case: preserved;
 - governed-data certification through generic runner: PASS;
 - focused regression sets: 18 passed, then 26 passed;
+- broader regressions: 2903 insurance_intelligence, 124 health, 128 factory_core;
 - new product-identity-bearing production-code paths: 0;
-- existing Star-specific module can be demoted to compatibility/parity status: yes;
+- existing Star-specific module demoted to compatibility/parity status: yes;
 - adjudication behavior changed: no;
 - publication behavior changed: no.
 
-## Exit condition
+## Freeze rule
 
-Generic/data-driven semantic parity and the legacy-module classification decision are complete. The gate closes after broader relevant regressions confirm that the new generic loader/data path and module reclassification introduce no subsystem regressions.
+This gate is closed. Do not reopen it merely to remove the legacy fixture or optimize test structure. Revisit only if an independently governed Health product proves that the generic `coverage_limit` representation cannot preserve materially important room-rent semantics safely.
