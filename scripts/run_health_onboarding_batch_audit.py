@@ -37,6 +37,10 @@ def main() -> int:
     print(f"  declared_missing           : {gap_status_counts.get('declared_missing', 0)}")
     print(f"  not_declared               : {gap_status_counts.get('not_declared', 0)}")
     print(f"Review routing records       : {summary['review_routing_record_count']}")
+    print(
+        "Routing N/A (no input)       : "
+        f"{summary['review_routing_not_applicable_no_review_input_count']}"
+    )
     print(f"Risk tiers                   : {summary['review_risk_tier_counts']}")
     print(f"Product-specific code changes: {summary['product_identity_bearing_production_code_changes']}")
     print("-" * 70)
@@ -51,6 +55,7 @@ def main() -> int:
             for key in missing:
                 artifact = product["artifacts"][key]
                 print(f"  {key}: {artifact['status']}")
+        print(f"  review_routing_applicability: {product['review_routing_applicability']}")
         routing = product.get("review_risk_summary")
         if routing is not None:
             print(
