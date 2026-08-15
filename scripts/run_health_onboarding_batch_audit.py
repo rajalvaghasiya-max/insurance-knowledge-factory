@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 from pathlib import Path
 
 from factory_core.governance.health_onboarding_batch_audit import HealthOnboardingBatchAudit
@@ -21,6 +22,11 @@ def main() -> int:
         result, repository_root=Path(args.repository_root), output_path=args.output_path
     )
     summary = result.manifest["batch_summary"]
+    gap_status_counts = Counter()
+    for product in result.manifest["products"]:
+        for key in product["missing_or_undeclared_artifacts"]:
+            gap_status_counts[product["artifacts"][key]["status"]] += 1
+
     print("=" * 70)
     print("PHASE-2A HEALTH ONBOARDING BATCH AUDIT")
     print("=" * 70)
@@ -28,6 +34,8 @@ def main() -> int:
     print(f"Products                     : {result.manifest['product_count']}")
     print(f"Products with missing data   : {summary['products_with_explicit_missing_artifacts']}")
     print(f"Missing/undeclared artifacts : {summary['missing_or_undeclared_artifact_count']}")
+    print(f"  declared_missing           : {gap_status_counts.get('declared_missing', 0)}")
+    print(f"  not_declared               : {gap_status_counts.get('not_declared', 0)}")
     print(f"Review routing records       : {summary['review_routing_record_count']}")
     print(f"Risk tiers                   : {summary['review_risk_tier_counts']}")
     print(f"Product-specific code changes: {summary['product_identity_bearing_production_code_changes']}")
@@ -44,9 +52,7 @@ def main() -> int:
                 artifact = product["artifacts"][key]
                 print(f"  {key}: {artifact['status']}")
         routing = product.get("review_risk_summary")
-        if routing is None:
-            print("  review_risk_routing: unavailable")
-        else:
+        if routing is not None:
             print(
                 "  review_risk_routing: "
                 f"{routing['routing_record_count']} record(s), tiers={routing['tier_counts']}"
