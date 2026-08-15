@@ -76,21 +76,23 @@ def write_validation_report(
     return validation_path
 
 
-def write_governed_readiness(base_dir: Path, status: str = "REVIEW_REQUIRED") -> Path:
+def write_governed_readiness(base_dir: Path) -> Path:
     governance_dir = base_dir / "knowledge" / "health" / "test_insurer" / "test_product" / "governance"
     governance_dir.mkdir(parents=True)
     path = governance_dir / "governed_readiness.json"
     path.write_text(
         json.dumps(
             {
-                "readiness_version": "0.1",
-                "status": status,
+                "assessment_version": "0.1",
+                "entity_id": ENTITY_ID,
                 "source_governance": "CURRENT_REVIEWED",
                 "semantic_review": "PARTIAL",
                 "applicability": "UNRESOLVED",
                 "publication_eligibility": "NOT_ELIGIBLE",
                 "publication_state": "NOT_PUBLISHED",
                 "unresolved_residue": ["schedule_binding"],
+                "evidence_references": ["governed:test:readiness"],
+                "note": "Synthetic governed-readiness fixture for product-audit integration tests.",
             }
         ),
         encoding="utf-8",
@@ -217,7 +219,16 @@ def test_governed_readiness_file_fails_closed_when_required_fields_missing(isola
     write_product_intelligence(isolated_base_dir)
     governance_dir = isolated_base_dir / "knowledge" / "health" / "test_insurer" / "test_product" / "governance"
     governance_dir.mkdir(parents=True)
-    (governance_dir / "governed_readiness.json").write_text(json.dumps({"status": "READY"}), encoding="utf-8")
+    (governance_dir / "governed_readiness.json").write_text(
+        json.dumps(
+            {
+                "assessment_version": "0.1",
+                "entity_id": ENTITY_ID,
+                "source_governance": "CURRENT_REVIEWED",
+            }
+        ),
+        encoding="utf-8",
+    )
 
     with pytest.raises(ValueError, match="missing required field"):
         audit_product_coverage.audit(ENTITY_ID)
