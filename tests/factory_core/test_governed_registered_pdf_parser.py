@@ -60,10 +60,30 @@ def test_parses_registered_pdf_to_hash_addressed_generic_artifact(tmp_path: Path
     payload = json.loads(output.read_text(encoding="utf-8"))
     assert payload["sha256"] == sha256
     assert payload["source_document_id"] == f"sha256:{sha256}"
+    assert payload["source_url"] == "https://example.test/policy.pdf"
     assert payload["relative_archive_path"] == "archive/raw_documents/policy.pdf"
     assert payload["provenance_status"] == "governed_source_registration_sha256_verified"
     assert payload["pages"][0]["page_number"] == 1
     assert "500000" in payload["pages"][0]["text"]
+
+
+def test_parses_reviewer_supplied_registered_pdf_without_source_url(tmp_path: Path) -> None:
+    sha256 = _write_pdf(tmp_path / "archive" / "raw_documents" / "policy.pdf", "Reviewer supplied evidence")
+    registration_path = _write_registration(tmp_path, sha256)
+
+    result = GovernedRegisteredPdfParser(repository_root=tmp_path).parse(
+        registration_path=registration_path,
+        entity_id="insurer:product",
+        insurer_id="insurer",
+    )
+
+    payload = result["payload"]
+    assert result["status"] == "parsed"
+    assert payload["source_url"] is None
+    assert payload["relative_archive_path"] == "archive/raw_documents/policy.pdf"
+    assert payload["sha256"] == sha256
+    assert payload["provenance_status"] == "governed_source_registration_sha256_verified"
+    assert "source URL may be absent for reviewer-supplied governed sources" in payload["guardrails"]
 
 
 def test_fails_closed_when_registered_hash_does_not_match_bytes(tmp_path: Path) -> None:
