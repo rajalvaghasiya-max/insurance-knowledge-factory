@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "record_type": "ar_3_0_g5_education_decision_support_pressure_v1",
+  "milestone": "AR-3.0.G5",
+  "status": "EDUCATION_DECISION_SUPPORT_PRESSURE_PROPOSED",
+  "product_reference": "star_health:star_comprehensive",
+  "comparison_subject": "delivery_newborn",
+  "source_g2_path": "docs/architecture/AR_3_0_G2_STAR_COMPREHENSIVE_DELIVERY_NEWBORN_ATOMIC_MAPPING.json",
+  "source_g4_path": "docs/architecture/AR_3_0_G4_STAR_COMPREHENSIVE_COMPARISON_READINESS_PRESSURE.json",
+  "production_contracts": {
+    "decision_sufficiency_path": "insurance_intelligence/decision_support/decision_sufficiency.py",
+    "decision_projection_path": "insurance_intelligence/decision_support/decision_projection.py",
+    "required_unknown_status": "BLOCKED_BY_PRODUCT_UNKNOWN",
+    "required_projection_status": "ACTION_REQUIRED"
+  },
+  "education_projection": {
+    "permitted": true,
+    "known_mechanics": [
+      "Delivery and New Born is a distinct benefit scope.",
+      "The benefit is subject to a 24-month waiting period.",
+      "The waiting period is anchored to first commencement and depends on continuous renewal.",
+      "A claim under Section II.14.A triggers a fresh 24-month waiting-period cycle.",
+      "Pre-hospitalization and post-hospitalization expenses are not applicable to this section.",
+      "Hospital Cash Benefit is not applicable to this section.",
+      "Delivery and New Born benefits are subject to limit tables whose exact values remain unresolved in the governed AR-3.0 slice."
+    ],
+    "required_limitations": [
+      "Exact per-delivery table values by Sum Insured and delivery type are unresolved.",
+      "Exact New Born liability table values by Sum Insured are unresolved.",
+      "Section II.14 surrounding-clause completeness is not established."
+    ],
+    "prohibited_claims": [
+      "exact unresolved delivery limit values",
+      "exact unresolved newborn limit values",
+      "complete section coverage",
+      "comparison-ready status",
+      "customer-specific applicability conclusion",
+      "winner",
+      "ranking",
+      "recommendation",
+      "net product direction"
+    ]
+  },
+  "decision_support_pressure": {
+    "material_product_unknown_dimension": "delivery_newborn_limit_values",
+    "required_alignment_state": "UNRESOLVED",
+    "required_sufficiency_state": "BLOCKED_BY_PRODUCT_UNKNOWN",
+    "required_projection_state": "ACTION_REQUIRED",
+    "must_preserve_unresolved_finding": true,
+    "must_preserve_blocking_reference": true,
+    "must_remain_non_verdict": true
+  },
+  "architecture_result": {
+    "new_generic_contract_required": false,
+    "star_specific_runtime_logic_required": false,
+    "existing_decision_sufficiency_contract_sufficient": true,
+    "existing_education_first_projection_contract_sufficient": true
+  },
+  "guardrails": [
+    "Education may explain governed known mechanics while explicitly naming material unknowns.",
+    "Education permission does not imply comparison readiness or customer applicability readiness.",
+    "A material product unknown must remain unresolved through alignment, sufficiency, and projection.",
+    "ACTION_REQUIRED must not be softened into READY_WITH_LIMITATIONS when a material product fact is unknown.",
+    "The decision projection must not choose, rank, recommend, or imply a net product direction.",
+    "No unresolved limit value may be inferred from transitional intelligence or historical comparison artifacts."
+  ]
+}
