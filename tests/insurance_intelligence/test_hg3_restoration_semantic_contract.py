@@ -35,7 +35,7 @@ FORBIDDEN_DECISION_SEMANTICS = {
 }
 
 
-def test_health_terminology_routes_restoration_to_restoration_topic() -> None:
+def test_health_terminology_routes_restoration_without_false_synonym_collapse() -> None:
     registry = build_health_concept_registry_v1()
     restoration = registry.get("health:concept:restoration")
 
@@ -43,7 +43,10 @@ def test_health_terminology_routes_restoration_to_restoration_topic() -> None:
     assert restoration.concept_type == "BENEFIT"
     assert restoration.downstream_topic == "restoration"
     assert "restoration benefit" in restoration.aliases
-    assert "recharge benefit" in restoration.aliases
+    assert "recharge benefit" not in restoration.aliases
+    assert "recharge benefit" in restoration.not_synonyms
+    assert restoration.is_false_synonym("recharge benefit") is True
+    assert registry.candidates_for_phrase("recharge benefit", domain="health") == ()
 
 
 def test_restoration_benefit_concept_is_product_neutral_and_governed() -> None:
