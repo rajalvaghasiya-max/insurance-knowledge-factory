@@ -5,6 +5,10 @@ already represented by a governed source-registration artifact. It validates the
 registered archive path and content SHA-256 before producing the same generic
 parsed-PDF shape consumed by Health extraction primitives.
 
+A source URL is optional metadata. Reviewer-supplied governed sources may have
+no URL; their provenance remains anchored by the registered archive locator and
+verified content SHA-256.
+
 It does not resolve identity/currentness, adjudicate review, create facts, or
 publish knowledge.
 """
@@ -24,7 +28,7 @@ class GovernedRegisteredPdfParserError(ValueError):
 
 
 class GovernedRegisteredPdfParser:
-    VERSION = "1.0"
+    VERSION = "1.1"
 
     def __init__(self, *, repository_root: Path) -> None:
         self.root = repository_root.resolve()
@@ -33,7 +37,7 @@ class GovernedRegisteredPdfParser:
         self,
         *,
         registration_path: str,
-        source_url: str,
+        source_url: str | None = None,
         entity_id: str,
         insurer_id: str,
         output_path: str | None = None,
@@ -48,8 +52,7 @@ class GovernedRegisteredPdfParser:
         storage_locator = self._require_nonempty(document.get("storage_locator"), "document.storage_locator")
         document_type = self._require_nonempty(document.get("document_type"), "document.document_type")
         document_id = self._require_nonempty(document.get("document_id"), "document.document_id")
-        if not isinstance(source_url, str) or not source_url.strip():
-            raise GovernedRegisteredPdfParserError("source_url must be non-empty")
+        normalized_source_url = source_url.strip() if isinstance(source_url, str) and source_url.strip() else None
         if not isinstance(entity_id, str) or ":" not in entity_id:
             raise GovernedRegisteredPdfParserError("entity_id must be a governed insurer:product identifier")
         if not isinstance(insurer_id, str) or not insurer_id.strip():
@@ -86,7 +89,7 @@ class GovernedRegisteredPdfParser:
             "source_document_id": f"sha256:{sha256}",
             "registered_document_id": document_id,
             "sha256": sha256,
-            "source_url": source_url.strip(),
+            "source_url": normalized_source_url,
             "source_page_url": None,
             "relative_archive_path": storage_locator,
             "provenance_status": "governed_source_registration_sha256_verified",
@@ -95,6 +98,8 @@ class GovernedRegisteredPdfParser:
             "pages": pages,
             "guardrails": [
                 "parsed evidence only",
+                "registered archive locator and content SHA-256 verified",
+                "source URL may be absent for reviewer-supplied governed sources",
                 "no identity or currentness decision",
                 "no fact selection or publication",
             ],
