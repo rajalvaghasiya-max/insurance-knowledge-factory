@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from factory_core.rules.conditional_rule_assembler import ConditionalRuleAssembler
-from factory_core.rules.conditional_rule_parity_harness import (
+from knowledge_domains.health.routing.conditional_rule_parity_harness import (
     ConditionalRuleParityReport,
     CopayAssemblyParityHarness,
 )
