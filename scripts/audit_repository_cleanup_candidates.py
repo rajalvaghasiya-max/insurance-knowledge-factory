@@ -9,7 +9,7 @@ The audit is repository-structure tooling, not insurance intelligence.
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 import json
 from pathlib import Path
 from typing import Iterable
@@ -26,28 +26,18 @@ DEFAULT_EXCLUDED_DIRS = {
     "node_modules",
 }
 
-# High-confidence filename/path signals only. We deliberately do not classify files merely for
-# being old, versioned, JSON, Markdown, or under historical packages.
-BACKUP_TOKENS = (
-    "_backup",
-    ".backup",
-    ".bak",
-    "~",
-    ".orig",
-    ".rej",
-)
-TEMP_TOKENS = (
-    ".tmp",
-    ".temp",
-    "_tmp",
-    "_temp",
-)
+# High-confidence filename/path signals only. Matching is suffix-based rather than substring-based
+# so legitimate names such as ``template.py`` / ``templates.py`` are never mistaken for temp files.
 DUPLICATE_EXTENSION_TOKENS = (
     ".py.py",
     ".json.json",
     ".md.md",
     ".txt.txt",
 )
+BACKUP_STEM_SUFFIXES = ("_backup", "-backup")
+BACKUP_NAME_SUFFIXES = (".backup", ".bak", ".orig", ".rej", "~")
+TEMP_STEM_SUFFIXES = ("_tmp", "-tmp", "_temp", "-temp")
+TEMP_NAME_SUFFIXES = (".tmp", ".temp")
 
 
 @dataclass(frozen=True)
@@ -84,13 +74,19 @@ def _iter_files(root: Path) -> tuple[Path, ...]:
 
 def _candidate_reason(relative: str) -> tuple[str, str] | None:
     lowered = relative.lower()
-    name = Path(relative).name.lower()
+    path = Path(relative)
+    name = path.name.lower()
+    stem = path.stem.lower()
 
-    if any(token in name for token in DUPLICATE_EXTENSION_TOKENS):
+    if any(name.endswith(token) for token in DUPLICATE_EXTENSION_TOKENS):
         return ("DUPLICATE_EXTENSION", "filename contains a duplicated extension")
-    if any(token in name for token in BACKUP_TOKENS):
+    if any(stem.endswith(token) for token in BACKUP_STEM_SUFFIXES) or any(
+        name.endswith(token) for token in BACKUP_NAME_SUFFIXES
+    ):
         return ("BACKUP_COPY", "filename has an explicit backup/copy suffix")
-    if any(token in name for token in TEMP_TOKENS):
+    if any(stem.endswith(token) for token in TEMP_STEM_SUFFIXES) or any(
+        name.endswith(token) for token in TEMP_NAME_SUFFIXES
+    ):
         return ("TEMPORARY_FILE", "filename has an explicit temporary-file suffix")
 
     # IDE/editor artefacts are safe to flag but still require the same reference check.
