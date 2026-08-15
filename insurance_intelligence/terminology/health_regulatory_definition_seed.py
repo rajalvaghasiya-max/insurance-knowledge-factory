@@ -1,7 +1,7 @@
 """Small primary-source Health definition seed for AFR-N1.
 
-This is intentionally not the full ontology seed.  AFR-N1 grows it only as the
-primary regulatory source for each definition is pinned.  Product wording and
+This is intentionally not the full ontology seed. AFR-N1 grows it only as the
+primary regulatory source for each definition is pinned. Product wording and
 marketing/glossary text must not be promoted into this registry merely because
 it contains familiar standardized wording.
 """
@@ -69,10 +69,33 @@ _PED_2024 = GovernedStandardDefinition(
 )
 
 
+_ROOM_RENT_2020 = GovernedStandardDefinition(
+    definition_id="irdai.health.room_rent.2020.v1",
+    canonical_concept_id="health.definition.room_rent",
+    category=InsuranceCategory.HEALTH,
+    version="1.0",
+    standard_definition=(
+        "Room Rent means the amount charged by a Hospital towards Room and Boarding "
+        "expenses and shall include the associated medical expenses."
+    ),
+    source=DefinitionSourceReference(
+        source_id="IRDAI/HLT/REG/CIR/193/07/2020",
+        authority="IRDAI",
+        locator="Chapter I — Standard Definitions and Standard Nomenclature, Room Rent",
+        source_title="Master Circular on Standardization of Health Insurance Products",
+    ),
+    evidence_class=DefinitionEvidenceClass.PRIMARY_REGULATORY_SOURCE,
+    effective_from=date(2020, 10, 1),
+    effective_to=date(2024, 3, 31),
+    aliases=("room rent", "room and boarding expenses"),
+)
+
+
 def build_health_regulatory_definition_registry() -> StandardDefinitionRegistry:
     registry = StandardDefinitionRegistry()
     registry.register(_PED_2020)
     registry.register(_PED_2024)
+    registry.register(_ROOM_RENT_2020)
     return registry
 
 
