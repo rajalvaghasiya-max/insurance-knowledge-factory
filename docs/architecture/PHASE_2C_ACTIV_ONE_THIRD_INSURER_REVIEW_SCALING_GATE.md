@@ -1,6 +1,6 @@
 # Phase-2C — Activ One Third-Insurer Review-Scaling Gate
 
-Status: **ACTIVE — REPLICATION COMPLETE; REGRESSION CLOSURE PENDING**
+Status: **CERTIFIED — THIRD-INSURER REPLICATION COMPLETE AND FROZEN**
 Date: 2026-08-15
 
 ## Purpose
@@ -116,16 +116,27 @@ Comparable real currency-review workloads now show:
 
 The same generic governed pipeline therefore operates across three insurers/products while preserving materially different review-cost distributions. Activ One demonstrates that cross-product replication does not imply uniform or automatically reduced human-review effort.
 
-## Architecture interpretation
+## Regression closure
 
-Phase-2C currently demonstrates:
+Final relevant regressions:
+
+- Health subsystem: **120 passed**
+- `factory_core`: **128 passed**
+- Regressions observed: **0**
+
+These closure runs confirm that the URL-less governed-source support, shared extraction-contract correction, and Activ One pressure work introduced no broader regression in the relevant subsystems.
+
+## Certified architecture conclusions
+
+Phase-2C certifies the following narrow claims:
 
 1. third-insurer pipeline repeatability with zero product-identity-bearing production code;
 2. support for a second legitimate governed provenance shape — reviewer-supplied, hash-verified registered PDFs without a source URL;
 3. honest fail-closed behavior under dense tables and option/band structures;
-4. no incentive to weaken MO-029 or invent product-specific scope logic merely to improve metrics.
+4. no need to weaken MO-029 or invent product-specific scope logic merely to improve metrics;
+5. review-cost distributions are product-structure dependent and must be measured rather than normalized away.
 
-The remaining Activ One High groups should remain High unless future independent product pressure proves a reusable structural table/section recovery capability is warranted.
+The remaining Activ One High groups remain legitimate unresolved review work. No structural table resolver is introduced by this gate. Such a capability should only be considered if future independent product pressure demonstrates a reusable need.
 
 ## Guardrails
 
@@ -137,6 +148,8 @@ The remaining Activ One High groups should remain High unless future independent
 - No MO-029 threshold weakening to improve workload metrics.
 - No frontend, Motor, Life, database migration or recommendation-productization scope.
 
-## Exit condition
+## Closure decision
 
-The current Activ One wording has completed the generic reviewer-workload path and reusable defects found by this pressure case have been handled generically. Phase-2C closes after relevant Health and factory-core regressions confirm no broader regression.
+**Phase-2C is CERTIFIED and frozen.**
+
+Do not continue optimizing Activ One under this gate. Reopen only for a demonstrated regression or if future independent product pressure proves a reusable generic capability is required.
