@@ -1,6 +1,6 @@
 # Phase 2 — Governed Coverage & Readiness Alignment Gate
 
-**Status:** ACTIVE — REPORTING + CONTRACT PROVEN; FIRST REAL PRODUCT ASSESSMENT MATERIALIZED  
+**Status:** ACTIVE — REAL PRODUCT DERIVATION PROVEN; BROADER REGRESSION CLOSURE PENDING  
 **Date:** 2026-08-15
 
 ## Purpose
@@ -53,7 +53,7 @@ Initial focused reporting regressions:
 11 passed
 ```
 
-The regenerated current reports produced:
+The regenerated current reports initially produced:
 
 ### Star Comprehensive
 
@@ -119,7 +119,7 @@ The product auditor now routes materialized `governed_readiness.json` through th
 
 ## Focused contract/integration regression closure
 
-The complete governed-readiness focused set now passes:
+The complete governed-readiness focused set passes:
 
 ```text
 25 passed
@@ -168,13 +168,51 @@ product_level_semantic_review_not_complete
 product_level_applicability_not_fully_resolved
 ```
 
-The generic contract should therefore derive:
+The generic contract derives:
 
 ```text
 REVIEW_REQUIRED
 ```
 
 This is intentionally more conservative than legacy `coverage_status = READY` and demonstrates the purpose of the new separation.
+
+## Real Star + portfolio derivation result
+
+After materializing the Star assessment, the real product report produced:
+
+```text
+Star Comprehensive
+Legacy coverage        : 100.0%
+Legacy coverage status : READY
+Governed readiness     : REVIEW_REQUIRED
+Quality                 : PASS / 100
+```
+
+The Health portfolio then produced:
+
+```text
+Products                          : 2
+Average legacy coverage           : 91.53%
+Legacy READY                      : 1
+Legacy USABLE_WITH_REVIEW         : 1
+Governed readiness REVIEW_REQUIRED: 1
+Governed readiness NOT_ASSESSED   : 1
+```
+
+Both products remain in the attention list:
+
+- `star_health:star_comprehensive` because governed readiness is `REVIEW_REQUIRED` despite 100% legacy field coverage;
+- `aditya_birla_health:activ_one` because governed readiness is still `NOT_ASSESSED`.
+
+This is the intended observable distinction:
+
+```text
+Star legacy coverage READY
+!=
+Star governed readiness REVIEW_REQUIRED
+```
+
+The reporting system therefore no longer allows historical extraction completeness to masquerade as current governed or publication readiness.
 
 ## Portfolio rule
 
@@ -205,8 +243,9 @@ Portfolio reporting must aggregate legacy coverage and governed readiness separa
 7. Governed-readiness summary status is derived from evidence-backed independent dimensions.
 8. Invalid/inconsistent assessments fail closed.
 9. At least one real product assessment is materialized conservatively from repository evidence.
-10. Relevant regressions remain green.
+10. Real product/portfolio regeneration proves legacy coverage and governed readiness can diverge safely.
+11. Relevant regressions remain green.
 
 ## Exit condition
 
-Reporting separation, the generic assessment contract, and the first real Star assessment are now implemented. The remaining closure step is to regenerate Star and portfolio reports through the materialized assessment, verify that Star derives `REVIEW_REQUIRED` while Activ One remains `NOT_ASSESSED`, then run broader relevant regressions before certifying and freezing this gate.
+Reporting separation, the generic assessment contract, the first real Star assessment, and real Star/portfolio derivation are proven. The remaining closure step is broader regression validation across the changed governance/reporting surfaces. If those regressions are green, certify and freeze this gate. Activ One remains `NOT_ASSESSED`; materializing its assessment is not required to close this gate and must not be done merely to improve portfolio metrics.
