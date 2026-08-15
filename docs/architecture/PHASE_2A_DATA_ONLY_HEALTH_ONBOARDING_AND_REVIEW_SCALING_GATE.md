@@ -1,7 +1,8 @@
 # PHASE-2A — Data-Only Health Onboarding & Review-Scaling Gate
 
-**Status:** ACTIVE  
+**Status:** CERTIFIED  
 **Date:** 2026-08-15
+**Closure:** `docs/architecture/PHASE_2A_DATA_ONLY_HEALTH_ONBOARDING_AND_REVIEW_SCALING_GATE_CLOSURE.md`
 
 ## Purpose
 
@@ -101,8 +102,14 @@ onboarding workflow mapped
 + relevant subsystem regressions = 0
 ```
 
-## Immediate next action
+## Certification result
 
-Do not create another plan-specific implementation.
+All exit criteria are satisfied as documented in the closure record.
 
-First audit the current onboarding path and MO-029 assets already present in the repository. Identify what is reusable as-is, what still requires repetitive manual work, and the smallest generic changes needed before selecting the Phase-2A batch.
+The critical review-scaling evidence is a real Star Comprehensive reviewer workload in which generic, evidence-bounded scope improvements reduced senior-review demand from 12/12 groups to 6/12 groups while preserving MO-029 thresholds and fail-closed behavior. This establishes a credible scaling path without claiming that cross-product sub-linear scaling has already been empirically proven.
+
+## Next-phase boundary
+
+Do not reopen Phase-2A to pursue further Star-specific optimization merely to improve the metric. Remaining high-risk Star groups are explicit structural residue involving table/column binding, unresolved monetary role, or missing section context.
+
+Continue Phase 2 under the roadmap with normal Health expansion as governed data only. Any future real-product pressure that exposes a generic representational gap may justify a reusable product-neutral capability; otherwise the standing acceptance criterion remains zero product-identity-bearing production code.
