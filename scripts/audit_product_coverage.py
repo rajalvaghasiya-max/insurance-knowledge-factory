@@ -8,7 +8,8 @@ from typing import Any
 from config.settings import BASE_DIR
 
 
-COVERAGE_VERSION = "0.1"
+COVERAGE_VERSION = "0.2"
+GOVERNED_READINESS_VERSION = "0.1"
 
 
 EXPECTED_FIELDS = {
@@ -177,6 +178,77 @@ def load_validation_report(entity_id: str) -> dict[str, Any] | None:
     return None
 
 
+def load_governed_readiness(entity_id: str) -> dict[str, Any]:
+    """Load a separately materialized governed-readiness assessment.
+
+    Legacy product-intelligence presence MUST NOT be used to synthesize governed
+    readiness. Absence therefore fails closed as NOT_ASSESSED.
+    """
+    insurer_slug, product_slug = entity_id.split(":")
+    path = (
+        BASE_DIR
+        / "knowledge"
+        / "health"
+        / insurer_slug
+        / product_slug
+        / "governance"
+        / "governed_readiness.json"
+    )
+
+    if not path.exists():
+        return {
+            "readiness_version": GOVERNED_READINESS_VERSION,
+            "status": "NOT_ASSESSED",
+            "assessment_file": None,
+            "source_governance": "NOT_ASSESSED",
+            "semantic_review": "NOT_ASSESSED",
+            "applicability": "NOT_ASSESSED",
+            "publication_eligibility": "NOT_ASSESSED",
+            "publication_state": "NOT_ASSESSED",
+            "unresolved_residue": [],
+            "note": (
+                "No governed-readiness assessment is materialized. Legacy intelligence "
+                "coverage must not be interpreted as governed or publication readiness."
+            ),
+        }
+
+    assessment = load_json(path)
+    if not isinstance(assessment, dict):
+        raise ValueError("governed_readiness.json must contain a JSON object")
+
+    required = {
+        "status",
+        "source_governance",
+        "semantic_review",
+        "applicability",
+        "publication_eligibility",
+        "publication_state",
+        "unresolved_residue",
+    }
+    missing = sorted(required - set(assessment))
+    if missing:
+        raise ValueError(
+            "governed_readiness.json missing required field(s): " + ", ".join(missing)
+        )
+    if not isinstance(assessment["unresolved_residue"], list):
+        raise ValueError("governed_readiness.unresolved_residue must be a list")
+
+    return {
+        "readiness_version": assessment.get(
+            "readiness_version", GOVERNED_READINESS_VERSION
+        ),
+        "status": assessment["status"],
+        "assessment_file": str(path.relative_to(BASE_DIR)).replace("\\", "/"),
+        "source_governance": assessment["source_governance"],
+        "semantic_review": assessment["semantic_review"],
+        "applicability": assessment["applicability"],
+        "publication_eligibility": assessment["publication_eligibility"],
+        "publication_state": assessment["publication_state"],
+        "unresolved_residue": assessment["unresolved_residue"],
+        "note": assessment.get("note"),
+    }
+
+
 def audit(entity_id: str) -> dict[str, Any]:
     insurer_slug, product_slug = entity_id.split(":")
 
@@ -221,12 +293,27 @@ def audit(entity_id: str) -> dict[str, Any]:
         quality_errors = validation_report.get("error_count", 0)
         quality_warnings = validation_report.get("warning_count", 0)
 
+    governed_readiness = load_governed_readiness(entity_id)
+
     report = {
         "entity_id": entity_id,
         "coverage_version": COVERAGE_VERSION,
+        "coverage_semantics": "LEGACY_INTELLIGENCE_FIELD_PRESENCE",
+        "coverage_readiness_warning": (
+            "overall_coverage and coverage_status measure legacy product-intelligence "
+            "field presence only; they do not establish governed currentness, "
+            "applicability, publication eligibility, or publication state."
+        ),
         "input_file": str(intelligence_path.relative_to(BASE_DIR)).replace("\\", "/"),
         "overall_coverage": overall_score,
         "coverage_status": status,
+        "legacy_intelligence_coverage": {
+            "overall_coverage": overall_score,
+            "coverage_status": status,
+            "sections": sections,
+            "missing_fields": all_missing,
+        },
+        "governed_readiness": governed_readiness,
         "sections": sections,
         "missing_fields": all_missing,
         "quality": {
@@ -241,6 +328,7 @@ def audit(entity_id: str) -> dict[str, Any]:
             quality_status,
             quality_errors,
             quality_warnings,
+            governed_readiness["status"],
         ),
     }
 
@@ -261,23 +349,30 @@ def build_recommendations(
     quality_status: str | None,
     quality_errors: int,
     quality_warnings: int,
+    governed_readiness_status: str = "NOT_ASSESSED",
 ) -> list[str]:
     recommendations = []
 
     if quality_errors > 0:
-        recommendations.append("Fix validator errors before marking product as ready.")
+        recommendations.append("Fix validator errors before treating legacy intelligence coverage as complete.")
 
     if quality_warnings > 0:
-        recommendations.append("Review warning-level quality issues for critical facts.")
+        recommendations.append("Review warning-level quality issues in legacy intelligence artifacts.")
 
     if missing_fields:
-        recommendations.append("Improve extraction coverage for missing fields.")
+        recommendations.append("Improve legacy intelligence extraction coverage for missing fields.")
 
     if overall_score < 75:
-        recommendations.append("Product is not ready for recommendation or comparison workflows.")
+        recommendations.append("Legacy intelligence coverage is incomplete; do not rely on it for comparison workflows.")
 
-    if overall_score >= 90 and quality_errors == 0:
-        recommendations.append("Product coverage is strong enough for advisor-facing intelligence after review.")
+    if governed_readiness_status == "NOT_ASSESSED":
+        recommendations.append(
+            "Governed readiness is not assessed; do not infer current, applicable, publication-eligible, or published status from coverage percentage."
+        )
+    elif governed_readiness_status not in {"READY", "PUBLISHED"}:
+        recommendations.append(
+            "Governed readiness requires attention before customer/advisor-facing use of governed product facts."
+        )
 
     return recommendations
 
@@ -289,7 +384,8 @@ def print_report(report: dict[str, Any]):
     print(f"Entity          : {report['entity_id']}")
     print(f"Version         : {report['coverage_version']}")
     print(f"Coverage        : {report['overall_coverage']}%")
-    print(f"Coverage Status : {report['coverage_status']}")
+    print(f"Coverage Status : {report['coverage_status']} (legacy intelligence)")
+    print(f"Governed Ready  : {report['governed_readiness']['status']}")
     print(f"Quality Status  : {report['quality']['validator_status']}")
     print(f"Quality Score   : {report['quality']['validator_score']}")
     print(f"Output          : {report['output_file']}")
