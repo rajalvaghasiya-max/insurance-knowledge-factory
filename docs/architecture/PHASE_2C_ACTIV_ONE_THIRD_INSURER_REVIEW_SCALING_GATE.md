@@ -1,6 +1,6 @@
 # Phase-2C — Activ One Third-Insurer Review-Scaling Gate
 
-Status: **ACTIVE — THIRD-INSURER REPLICATION STARTED**
+Status: **ACTIVE — REPLICATION COMPLETE; REGRESSION CLOSURE PENDING**
 Date: 2026-08-15
 
 ## Purpose
@@ -24,31 +24,108 @@ normal new Health product pressure
 0 product-identity-bearing production code
 ```
 
-The same generic path used for Star Comprehensive and Bajaj My Health Care is the starting point:
+The same generic path used for Star Comprehensive and Bajaj My Health Care was executed:
 
 `governed current source -> canonical PDF parse -> currency candidates -> reviewer-ready groups -> MO-029 risk routing`
 
-No Activ One-specific reasoning module, product branch, source-hash branch or threshold change is allowed.
+No Activ One-specific reasoning module, product branch, source-hash branch or threshold change was introduced.
 
-## Why Activ One is the next pressure case
+## Generic source-contract pressure
 
-Phase-2A demonstrated the review-scaling mechanism on Star Comprehensive. Phase-2B replicated it on Bajaj My Health Care and exposed a reusable role-hint precision defect that was fixed generically without weakening genuine risk.
+Activ One exposed a governed-source shape not previously exercised by this parser bridge: a reviewer-supplied registered PDF whose provenance is anchored by the registration's archive locator and immutable SHA-256, with no source URL by design.
 
-Activ One now provides a third insurer and a different document/product structure while reusing a source whose current version and authority have already been governed. This makes it a clean test of cross-insurer pipeline repeatability rather than another currentness exercise.
+Two generic contract corrections were required:
 
-## Measurements
+1. governed registered PDF parsing now permits `source_url = null` while still requiring the registered archive path to remain under `archive/` and the bytes to match the registered SHA-256;
+2. the shared Health extraction-candidate contract permits a null source URL only when `provenance_status = governed_source_registration_sha256_verified`.
 
-Record at minimum:
+Ordinary/non-governed candidate sources still require a non-empty URL. These changes do not infer identity/currentness or create facts/publication state.
 
-- parsed pages and text-bearing pages;
-- currency candidates;
-- reviewer-ready groups;
-- grouping compression;
-- MO-029 Critical / High / Medium / Low counts;
-- flags driving Critical/High routes;
-- unsupported or unresolved semantic residue;
-- product-identity-bearing production-code changes;
-- adjudication/publication side effects, which must remain none.
+Focused regression for the URL-less governed path: **8 passed**.
+
+## Measured Activ One workload
+
+- Parsed pages: **56**
+- Pages with text: **56**
+- Currency candidates: **11**
+- Reviewer-ready groups: **11**
+- Grouping compression: **0%**
+- MO-029 Critical: **0**
+- MO-029 High: **11**
+- MO-029 Medium: **0**
+- MO-029 Low: **0**
+- Critical/High groups: **11 / 11 (100%)**
+- Adjudication created: **none**
+- Publication created: **none**
+- Product-identity-bearing production code added: **0**
+
+## High-risk diagnostic
+
+The eleven High groups are not one repeated defect.
+
+Observed evidence includes:
+
+- dense Product Benefit Table values on page 47 where flattened text does not safely preserve column/row binding;
+- monetary role ambiguity for option values such as INR 15,000 / INR 25,000 and Critical Illness / Personal Accident SI options;
+- explicit sum-insured ranges on page 31 whose surrounding medical-test table requires structural binding;
+- Advanced Health Check-up and other sub-limits that remain subject to schedule/SI binding;
+- a page-40 INR 50,000 travel-fare clause whose human-readable benefit heading sits outside the bounded candidate window.
+
+The dominant flags are legitimate combinations of `benefit_scope_unresolved`, `schedule_or_band_binding_unverified`, `sum_insured_band_scope_unresolved`, and for some groups `unresolved_role_hint`.
+
+## Bounded scope-cue experiment
+
+Real Activ One pressure justified adding two reusable review-only scope labels:
+
+- `compassionate_visit`
+- `advanced_health_checkup`
+
+Focused scope/routing regressions after these additions: **18 passed**.
+
+However, rerunning the real Activ One workload produced the same distribution: **0 Critical / 11 High / 0 Medium / 0 Low**. The labels were therefore valid but did not reduce this workload. In particular, the Compassionate Visit heading is outside the bounded evidence window for the page-40 amount.
+
+This no-effect result is retained honestly. The implementation is not extended to infer Compassionate Visit from body wording such as two-way travel fare merely to reduce review counts, because that would cross from explicit bounded scope cues toward semantic reconstruction.
+
+## Cross-product comparison
+
+Comparable real currency-review workloads now show:
+
+### Star Comprehensive
+
+- Reviewer-ready groups: **12**
+- Critical: **0**
+- High: **6**
+- Medium: **6**
+- Critical/High: **6 / 12 (50%)**
+
+### Bajaj My Health Care
+
+- Reviewer-ready groups: **10**
+- Critical: **0**
+- High: **7**
+- Medium: **3**
+- Critical/High: **7 / 10 (70%)**
+
+### Aditya Birla Activ One
+
+- Reviewer-ready groups: **11**
+- Critical: **0**
+- High: **11**
+- Medium: **0**
+- Critical/High: **11 / 11 (100%)**
+
+The same generic governed pipeline therefore operates across three insurers/products while preserving materially different review-cost distributions. Activ One demonstrates that cross-product replication does not imply uniform or automatically reduced human-review effort.
+
+## Architecture interpretation
+
+Phase-2C currently demonstrates:
+
+1. third-insurer pipeline repeatability with zero product-identity-bearing production code;
+2. support for a second legitimate governed provenance shape — reviewer-supplied, hash-verified registered PDFs without a source URL;
+3. honest fail-closed behavior under dense tables and option/band structures;
+4. no incentive to weaken MO-029 or invent product-specific scope logic merely to improve metrics.
+
+The remaining Activ One High groups should remain High unless future independent product pressure proves a reusable structural table/section recovery capability is warranted.
 
 ## Guardrails
 
@@ -62,4 +139,4 @@ Record at minimum:
 
 ## Exit condition
 
-Phase-2C closes only when the current Activ One wording has run through the same generic reviewer-workload path, any demonstrated reusable defect is handled generically, relevant regressions are green, and normal-product pressure remains at zero product-identity-bearing production code.
+The current Activ One wording has completed the generic reviewer-workload path and reusable defects found by this pressure case have been handled generically. Phase-2C closes after relevant Health and factory-core regressions confirm no broader regression.
