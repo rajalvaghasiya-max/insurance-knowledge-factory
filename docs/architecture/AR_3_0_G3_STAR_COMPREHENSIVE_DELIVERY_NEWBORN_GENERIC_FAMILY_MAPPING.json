@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "record_type": "ar_3_0_g3_generic_family_mapping_v1",
+  "milestone": "AR-3.0.G3",
+  "status": "GENERIC_MAPPING_PROPOSED_NOT_BOUND",
+  "product_reference": "star_health:star_comprehensive",
+  "source_g2_path": "docs/architecture/AR_3_0_G2_STAR_COMPREHENSIVE_DELIVERY_NEWBORN_ATOMIC_MAPPING.json",
+  "architecture_contracts": {
+    "generic_contract_path": "insurance_intelligence/generic_knowledge/contracts.py",
+    "waiting_period_policy_path": "insurance_intelligence/concepts/waiting_periods/policy.py",
+    "waiting_period_policy_version": "waiting_period_policy_v2"
+  },
+  "generic_mappings": [
+    {
+      "unit_id": "G2-DNB-01",
+      "generic_family": "benefit_scope",
+      "normative_kind": "APPLICABILITY",
+      "semantic_type": "benefit_scope",
+      "representation": "SEMANTIC_FACT",
+      "accounting_state": "MAPPED"
+    },
+    {
+      "unit_id": "G2-DNB-02",
+      "generic_family": "benefit_limits",
+      "normative_kind": "CONDITION",
+      "semantic_type": "per_event_limit_table",
+      "representation": "SEMANTIC_FACT_PLUS_RELATIONSHIP",
+      "relationship_type": "LIMITED_BY",
+      "accounting_state": "DEFERRED_WITH_REASON",
+      "deferred_reason": "Exact limit-table values remain material G2 residue. Family and relationship are representable, value publication is not."
+    },
+    {
+      "unit_id": "G2-DNB-03",
+      "generic_family": "benefit_limits",
+      "normative_kind": "CONDITION",
+      "semantic_type": "benefit_liability_limit_table",
+      "representation": "SEMANTIC_FACT_PLUS_RELATIONSHIP",
+      "relationship_type": "LIMITED_BY",
+      "accounting_state": "DEFERRED_WITH_REASON",
+      "deferred_reason": "Exact newborn liability table values remain material G2 residue. Family and relationship are representable, value publication is not."
+    },
+    {
+      "unit_id": "G2-DNB-04",
+      "generic_family": "waiting_periods",
+      "normative_kind": "CONDITION",
+      "semantic_type": "waiting_period_duration",
+      "waiting_period_effect": "DURATION",
+      "representation": "SEMANTIC_FACT",
+      "accounting_state": "MAPPED"
+    },
+    {
+      "unit_id": "G2-DNB-05",
+      "generic_family": "waiting_periods",
+      "normative_kind": "CONDITION",
+      "semantic_type": "waiting_period_start_basis",
+      "waiting_period_effect": "START_BASIS",
+      "representation": "SEMANTIC_FACT",
+      "accounting_state": "MAPPED"
+    },
+    {
+      "unit_id": "G2-DNB-06",
+      "generic_family": "waiting_periods",
+      "normative_kind": "CONDITION",
+      "semantic_type": "continuity_condition",
+      "waiting_period_effect": "CONTINUITY",
+      "representation": "SEMANTIC_FACT_PLUS_RELATIONSHIP",
+      "relationship_type": "DEPENDS_ON",
+      "accounting_state": "MAPPED_AS_RELATIONSHIP"
+    },
+    {
+      "unit_id": "G2-DNB-07",
+      "generic_family": "waiting_periods",
+      "normative_kind": "RELATIONSHIP",
+      "semantic_type": "waiting_period_reset_trigger",
+      "waiting_period_effect": "OTHER_NORMATIVE_EFFECT",
+      "representation": "RELATIONSHIP_FACT",
+      "relationship_type": "APPLIES_WHEN",
+      "accounting_state": "MAPPED_AS_RELATIONSHIP"
+    },
+    {
+      "unit_id": "G2-DNB-08",
+      "generic_family": "waiting_periods",
+      "normative_kind": "MODIFICATION",
+      "semantic_type": "waiting_period_restart_effect",
+      "waiting_period_effect": "OTHER_NORMATIVE_EFFECT",
+      "representation": "SEMANTIC_FACT_PLUS_RELATIONSHIP",
+      "relationship_type": "MODIFIES",
+      "accounting_state": "MAPPED_AS_RELATIONSHIP"
+    },
+    {
+      "unit_id": "G2-DNB-09",
+      "generic_family": "expense_coverage",
+      "normative_kind": "EXCLUSION",
+      "semantic_type": "benefit_scoped_expense_exclusion",
+      "representation": "SEMANTIC_FACT",
+      "accounting_state": "MAPPED"
+    },
+    {
+      "unit_id": "G2-DNB-10",
+      "generic_family": "expense_coverage",
+      "normative_kind": "EXCLUSION",
+      "semantic_type": "benefit_scoped_expense_exclusion",
+      "representation": "SEMANTIC_FACT",
+      "accounting_state": "MAPPED"
+    },
+    {
+      "unit_id": "G2-DNB-11",
+      "generic_family": "benefit_interactions",
+      "normative_kind": "RELATIONSHIP",
+      "semantic_type": "benefit_scoped_non_applicability",
+      "representation": "RELATIONSHIP_FACT",
+      "relationship_type": "INTERACTS_WITH",
+      "accounting_state": "MAPPED_AS_RELATIONSHIP"
+    }
+  ],
+  "inherited_material_residue": [
+    {
+      "residue_id": "G2-DNB-X01",
+      "accounting_state": "DEFERRED_WITH_REASON",
+      "material": true,
+      "blocks": ["LIMIT_VALUE_PUBLICATION", "COMPARISON_READINESS"]
+    },
+    {
+      "residue_id": "G2-DNB-X02",
+      "accounting_state": "DEFERRED_WITH_REASON",
+      "material": true,
+      "blocks": ["LIMIT_VALUE_PUBLICATION", "COMPARISON_READINESS"]
+    },
+    {
+      "residue_id": "G2-DNB-X03",
+      "accounting_state": "DEFERRED_WITH_REASON",
+      "material": true,
+      "blocks": ["SECTION_COMPLETENESS", "COMPARISON_READINESS"]
+    }
+  ],
+  "architecture_pressure_result": {
+    "all_atomic_units_family_accounted": true,
+    "new_generic_contract_required": false,
+    "new_waiting_period_effect_required": false,
+    "star_specific_runtime_logic_required": false,
+    "comparison_ready": false,
+    "publication_ready": false,
+    "finding": "Existing generic semantic facts, relationship facts, waiting-period effects, residue accounting, and publication blockers are sufficient for this G3 mapping. The post-claim waiting-period reset is represented as a generic trigger/effect pair using APPLIES_WHEN plus MODIFIES rather than a Star-specific reset rule."
+  },
+  "guardrails": [
+    "Generic-family mapping does not convert a candidate atomic unit into a governed product fact.",
+    "MAPPED means representable, not published, current-applicable, complete, or comparison-ready.",
+    "Material G2 residue must remain material in G3 and continue to block comparison readiness.",
+    "The reset trigger and reset effect must remain separate units and relationships.",
+    "No insurer or product identifier may appear in generic runtime branching logic.",
+    "A new abstraction may be added only if a real pressure unit cannot be represented safely by existing generic contracts."
+  ]
+}
