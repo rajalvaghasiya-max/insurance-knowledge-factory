@@ -5,6 +5,7 @@
     {
       "entity_id": "star_health:star_comprehensive",
       "display_name": "Star Health Star Comprehensive",
+      "review_routing_applicability": "not_applicable_no_review_input",
       "artifacts": {
         "registration": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
         "classification": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_classification.json",
@@ -15,6 +16,7 @@
     {
       "entity_id": "bajaj_allianz_general:my_health_care",
       "display_name": "Bajaj General Insurance My Health Care Plan",
+      "review_routing_applicability": "not_applicable_no_review_input",
       "artifacts": {
         "registration": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration_05dc29132434.json",
         "classification": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/bajaj_my_health_care_document_classification_05dc29132434.json",
@@ -26,6 +28,7 @@
     {
       "entity_id": "aditya_birla_health:activ_one",
       "display_name": "Aditya Birla Health Activ One NXT",
+      "review_routing_applicability": "not_applicable_no_review_input",
       "artifacts": {
         "registration": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/generic_source_registration/policy_wording_registration_38bb879030d9.json",
         "classification": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/governance/aditya_birla_health_activ_one_document_classification_38bb879030d9.json",
