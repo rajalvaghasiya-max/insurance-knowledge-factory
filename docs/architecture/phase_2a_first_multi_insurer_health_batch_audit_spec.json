@@ -5,7 +5,7 @@
     {
       "entity_id": "star_health:star_comprehensive",
       "display_name": "Star Health Star Comprehensive",
-      "review_routing_applicability": "required",
+      "review_routing_applicability": "required_when_review_input_exists",
       "artifacts": {
         "registration": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
         "classification": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_classification.json",
