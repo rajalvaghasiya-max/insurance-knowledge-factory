@@ -1,6 +1,6 @@
 # Phase 2 — Bajaj Benefit-Limit Cross-Insurer Manufacturing Gate
 
-**Status:** ACTIVE — DATA-ONLY CERTIFICATION CASE MATERIALIZED; EXECUTION/REGRESSION PROOF REQUIRED  
+**Status:** CERTIFIED AND FROZEN  
 **Date:** 2026-08-16
 
 ## Purpose
@@ -21,7 +21,7 @@ The current generic topic catalogue already provides the insurer-independent `co
 - `applicability_scope`
 - optional `excess_consequence`
 
-Therefore the correct pressure is manufacturing against a real second-insurer rule, not more ontology design.
+Therefore the correct pressure was manufacturing against a real second-insurer rule, not more ontology design.
 
 ## Current governed source
 
@@ -42,7 +42,7 @@ Page 52 establishes:
 
 ```text
 Family Visit
-SI up to INR 10 lakh   -> up to INR 25,000
+SI up to INR 10 lakh     -> up to INR 25,000
 SI more than INR 10 lakh -> up to INR 50,000
 ```
 
@@ -69,7 +69,7 @@ For SI up to 10 Lac -> 20% of SI, maximum INR 1 Lac per eye
 For SI above 10 Lac -> Actual
 ```
 
-To avoid semantic leakage, the first certification case is deliberately atomic and covers only:
+To avoid semantic leakage, the certified/publication case is deliberately atomic and covers only:
 
 ```text
 subject       = cataract surgery
@@ -116,7 +116,7 @@ The case uses the unchanged generic `coverage_limit` topic and requires:
 
 Optional `excess_consequence` is not asserted because the bounded source proposition does not independently establish one.
 
-Expected certification result:
+Certification result:
 
 ```text
 outcome      = PASS
@@ -124,20 +124,34 @@ completeness = COMPLETE
 explanation  = permitted
 ```
 
-This expectation still requires execution proof before gate certification.
+## Publication decision and authoritative publication
+
+A bounded data-only publication case was materialized at:
+
+```text
+knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_rule_certification/cataract_si_up_to_10_lakh_coverage_limit_publication_case.json
+```
+
+The same certified governed-data case was passed through the existing generic publication-decision evaluator and generic authoritative-publication gate.
+
+No Bajaj-specific production publication module was added.
+
+The bounded cataract rule successfully reached authoritative publication while preserving certification limitations and evidence traces.
+
+This publication applies only to the SI <= INR 10 lakh cataract branch described above. It does not resolve or publish the separate `Actual` branch or schedule-selected waiting-period duration.
 
 ## Existing architecture reused
 
-The gate uses only existing generic contracts:
+The gate used only existing generic contracts:
 
 1. current governed source identity/currentness;
 2. generic evidence representation;
 3. `coverage_limit` topic completeness;
 4. generic rule-certification case loader and runner;
-5. generic publication-decision evaluation, only after certification proof;
-6. generic authoritative-publication gate, only if publication governance permits it.
+5. generic publication-decision evaluation;
+6. generic authoritative-publication gate.
 
-No Bajaj-specific production reasoning has been added.
+No Bajaj-specific production reasoning was added.
 
 ## Explicit residue
 
@@ -150,7 +164,24 @@ This gate does not resolve or publish:
 - whole-product benefit-limit completeness;
 - whole-product governed readiness.
 
-## Acceptance criteria
+## Regression evidence
+
+Focused certification + publication suite:
+
+```text
+5 passed
+```
+
+Broader regressions:
+
+```text
+insurance_intelligence : 2914 passed
+factory_core            : 148 passed
+health                  : 124 passed
+failures                : 0
+```
+
+## Acceptance criteria closure
 
 - current immutable source SHA `05dc...` is the only current factual authority — PASS;
 - historical mappings are not promoted as current truth — PASS;
@@ -161,14 +192,37 @@ This gate does not resolve or publish:
 - no table-order guessing or schedule/band inference — PASS;
 - no scalar flattening across the >INR 10 lakh branch — PASS;
 - waiting-period schedule value remains unresolved — PASS;
-- zero Bajaj-specific production reasoning code — PASS so far;
-- no new semantic abstraction — PASS so far;
+- zero Bajaj-specific production reasoning code — PASS;
+- no new semantic abstraction — PASS;
 - generic `coverage_limit` contract reused — PASS;
-- generic certification execution — PENDING;
-- generic publication decision — PENDING certification proof;
-- authoritative publication — PENDING certification/publication proof;
-- regressions — PENDING.
+- generic certification execution — PASS;
+- generic publication decision — PASS;
+- generic authoritative publication — PASS;
+- unrelated benefit-limit residue remains unresolved — PASS;
+- no whole-product governed-readiness inference — PASS;
+- regressions green — PASS.
 
-## Current conclusion
+## What this gate proves
 
-The current source has produced a safe bounded second-insurer benefit-limit proposition without requiring new architecture. The generic certification case is now materialized. The next gate action is deterministic execution of that case and regression testing; publication must not proceed unless those checks pass.
+This gate establishes a second-insurer, second-semantic-family manufacturing proof:
+
+```text
+current governed source
+-> fail-closed candidate qualification
+-> governed coverage-limit evidence
+-> generic rule certification
+-> generic publication decision
+-> generic authoritative publication
+```
+
+The pipeline handled a bounded Bajaj benefit limit without a new ontology abstraction and without Bajaj-specific production reasoning.
+
+It also demonstrated that an apparently easy candidate can be rejected safely when a required semantic component is missing. Passing the cataract case therefore reflects disciplined manufacturing rather than metric-driven completion.
+
+## Final conclusion
+
+**CERTIFIED AND FROZEN.**
+
+The Bajaj cataract SI-up-to-INR-10-lakh pressure case demonstrates cross-insurer reuse beyond the waiting-period semantic family through the existing generic Health certification/publication architecture.
+
+No further tuning of this gate is justified. Future work should continue applying the manufacturing pattern to additional consequential Health knowledge pressure, and architecture should change only when real source pressure proves a generic gap.
