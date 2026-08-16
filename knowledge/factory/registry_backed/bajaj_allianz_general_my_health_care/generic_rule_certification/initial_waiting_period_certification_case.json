@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "case_id": "bajaj_my_health_care_initial_waiting_period",
+  "description": "Current-source-confirmed Bajaj My Health Care bounded initial waiting-period certification case.",
+  "domain": "health",
+  "expected_outcome": "PASS",
+  "expectation": {
+    "contract_version": "1.0",
+    "certification_id": "bajaj_my_health_care_initial_waiting_period",
+    "governed_subject_reference": "registered_document:bajaj_my_health_care_policy_wording_v1:page_21:code_excl03",
+    "topic_id": "waiting_period",
+    "topic_version": "1.0",
+    "expected_completeness_statuses": ["COMPLETE"],
+    "expected_explanation_permitted": true,
+    "component_expectations": [
+      {"component_id": "waiting_period_duration", "acceptable_statuses": ["SATISFIED"]},
+      {"component_id": "waiting_period_subject", "acceptable_statuses": ["SATISFIED"]},
+      {"component_id": "start_basis", "acceptable_statuses": ["SATISFIED"]},
+      {"component_id": "applicability_scope", "acceptable_statuses": ["SATISFIED"]},
+      {"component_id": "continuity_or_credit_rule", "acceptable_statuses": ["SATISFIED"]},
+      {"component_id": "exception_condition", "acceptable_statuses": ["SATISFIED"]}
+    ]
+  },
+  "evidence_output": {
+    "contract_version": "1.0",
+    "request_id": "request:bajaj_mhc_initial_waiting_period",
+    "resolution_id": "resolution:bajaj_mhc_initial_waiting_period",
+    "evidence_packages": [
+      {
+        "evidence_id": "evidence:bajaj-mhc-initial-wait:waiting_period_duration",
+        "requirement_id": "requirement:bajaj-mhc-initial-wait:waiting_period_duration",
+        "subject_reference": "product:bajaj_allianz_general:my_health_care",
+        "governed_entity_reference": "registered_document:bajaj_my_health_care_policy_wording_v1",
+        "field_or_topic": "WAITING_PERIOD_DURATION",
+        "claim": "The initial waiting period is 30 days.",
+        "evidence_role": "DEFINING",
+        "source_type": "POLICY_WORDING",
+        "document_reference": "bajaj_my_health_care_policy_wording_v1",
+        "document_version": "docver_bajaj_my_health_care_policy_wording_v1_05dc291324340d52",
+        "effective_from": null,
+        "effective_to": null,
+        "page": 21,
+        "section": "30-day Waiting Period (Code-Excl03)",
+        "source_excerpt": "Expenses related to the treatment of any Illness within 30 days as per the option specified in the Policy Schedule from the first Policy commencement date shall be excluded except claims arising due to an Accident, provided the same are covered. This exclusion shall not, however apply if the Insured Beneficiary has continuous coverage for more than 12 months.",
+        "normalized_fact_reference": "bajaj_mhc_initial_base_wait:waiting_period_duration",
+        "authority_rank": 1,
+        "authority_requirement": "AUTHORITATIVE",
+        "version_status": "CURRENT_APPLICABLE",
+        "applicability_status": "APPLICABLE",
+        "lineage": {"source_artifact_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.pdf", "source_artifact_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158", "governed_record_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/initial_waiting_period_source_reverification.json", "governed_record_sha256": "ea8635c3e1f0b07e252022e3e81a7043466240e15cda8cb968b0a03979ff4235", "binding_reference": "registered_document:bajaj_my_health_care_policy_wording_v1:page_21:code_excl03", "projection_reference": "waiting_period:waiting_period_duration", "lineage_status": "VERIFIED"},
+        "retrieval_basis": ["registered_primary_legal_source", "current_source_reverification_confirmed", "page_21_code_excl03"],
+        "confidence": 1.0
+      },
+      {
+        "evidence_id": "evidence:bajaj-mhc-initial-wait:waiting_period_subject",
+        "requirement_id": "requirement:bajaj-mhc-initial-wait:waiting_period_subject",
+        "subject_reference": "product:bajaj_allianz_general:my_health_care",
+        "governed_entity_reference": "registered_document:bajaj_my_health_care_policy_wording_v1",
+        "field_or_topic": "WAITING_PERIOD_SUBJECT",
+        "claim": "The waiting period applies to expenses related to treatment of any Illness.",
+        "evidence_role": "DEFINING", "source_type": "POLICY_WORDING", "document_reference": "bajaj_my_health_care_policy_wording_v1", "document_version": "docver_bajaj_my_health_care_policy_wording_v1_05dc291324340d52", "effective_from": null, "effective_to": null, "page": 21, "section": "30-day Waiting Period (Code-Excl03)",
+        "source_excerpt": "Expenses related to the treatment of any Illness within 30 days as per the option specified in the Policy Schedule from the first Policy commencement date shall be excluded except claims arising due to an Accident, provided the same are covered.",
+        "normalized_fact_reference": "bajaj_mhc_initial_base_wait:waiting_period_subject", "authority_rank": 1, "authority_requirement": "AUTHORITATIVE", "version_status": "CURRENT_APPLICABLE", "applicability_status": "APPLICABLE",
+        "lineage": {"source_artifact_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.pdf", "source_artifact_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158", "governed_record_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/initial_waiting_period_source_reverification.json", "governed_record_sha256": "ea8635c3e1f0b07e252022e3e81a7043466240e15cda8cb968b0a03979ff4235", "binding_reference": "registered_document:bajaj_my_health_care_policy_wording_v1:page_21:code_excl03", "projection_reference": "waiting_period:waiting_period_subject", "lineage_status": "VERIFIED"},
+        "retrieval_basis": ["registered_primary_legal_source", "current_source_reverification_confirmed", "page_21_code_excl03"], "confidence": 1.0
+      },
+      {
+        "evidence_id": "evidence:bajaj-mhc-initial-wait:start_basis",
+        "requirement_id": "requirement:bajaj-mhc-initial-wait:start_basis",
+        "subject_reference": "product:bajaj_allianz_general:my_health_care", "governed_entity_reference": "registered_document:bajaj_my_health_care_policy_wording_v1", "field_or_topic": "WAITING_PERIOD_START_BASIS", "claim": "The waiting period is measured from the first Policy commencement date.", "evidence_role": "DEFINING", "source_type": "POLICY_WORDING", "document_reference": "bajaj_my_health_care_policy_wording_v1", "document_version": "docver_bajaj_my_health_care_policy_wording_v1_05dc291324340d52", "effective_from": null, "effective_to": null, "page": 21, "section": "30-day Waiting Period (Code-Excl03)", "source_excerpt": "Expenses related to the treatment of any Illness within 30 days as per the option specified in the Policy Schedule from the first Policy commencement date shall be excluded.", "normalized_fact_reference": "bajaj_mhc_initial_base_wait:start_basis", "authority_rank": 1, "authority_requirement": "AUTHORITATIVE", "version_status": "CURRENT_APPLICABLE", "applicability_status": "APPLICABLE",
+        "lineage": {"source_artifact_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.pdf", "source_artifact_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158", "governed_record_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/initial_waiting_period_source_reverification.json", "governed_record_sha256": "ea8635c3e1f0b07e252022e3e81a7043466240e15cda8cb968b0a03979ff4235", "binding_reference": "registered_document:bajaj_my_health_care_policy_wording_v1:page_21:code_excl03", "projection_reference": "waiting_period:start_basis", "lineage_status": "VERIFIED"},
+        "retrieval_basis": ["registered_primary_legal_source", "current_source_reverification_confirmed", "page_21_code_excl03"], "confidence": 1.0
+      },
+      {
+        "evidence_id": "evidence:bajaj-mhc-initial-wait:applicability_scope",
+        "requirement_id": "requirement:bajaj-mhc-initial-wait:applicability_scope",
+        "subject_reference": "product:bajaj_allianz_general:my_health_care", "governed_entity_reference": "registered_document:bajaj_my_health_care_policy_wording_v1", "field_or_topic": "APPLICABILITY_SCOPE", "claim": "The rule is the bounded initial illness waiting-period exclusion and is subject to its stated accident and continuity exceptions.", "evidence_role": "DEFINING", "source_type": "POLICY_WORDING", "document_reference": "bajaj_my_health_care_policy_wording_v1", "document_version": "docver_bajaj_my_health_care_policy_wording_v1_05dc291324340d52", "effective_from": null, "effective_to": null, "page": 21, "section": "30-day Waiting Period (Code-Excl03)", "source_excerpt": "Expenses related to the treatment of any Illness within 30 days as per the option specified in the Policy Schedule from the first Policy commencement date shall be excluded except claims arising due to an Accident, provided the same are covered. This exclusion shall not, however apply if the Insured Beneficiary has continuous coverage for more than 12 months.", "normalized_fact_reference": "bajaj_mhc_initial_base_wait:applicability_scope", "authority_rank": 1, "authority_requirement": "AUTHORITATIVE", "version_status": "CURRENT_APPLICABLE", "applicability_status": "APPLICABLE",
+        "lineage": {"source_artifact_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.pdf", "source_artifact_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158", "governed_record_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/initial_waiting_period_source_reverification.json", "governed_record_sha256": "ea8635c3e1f0b07e252022e3e81a7043466240e15cda8cb968b0a03979ff4235", "binding_reference": "registered_document:bajaj_my_health_care_policy_wording_v1:page_21:code_excl03", "projection_reference": "waiting_period:applicability_scope", "lineage_status": "VERIFIED"},
+        "retrieval_basis": ["registered_primary_legal_source", "current_source_reverification_confirmed", "page_21_code_excl03"], "confidence": 1.0
+      },
+      {
+        "evidence_id": "evidence:bajaj-mhc-initial-wait:continuity_or_credit_rule",
+        "requirement_id": "requirement:bajaj-mhc-initial-wait:continuity_or_credit_rule",
+        "subject_reference": "product:bajaj_allianz_general:my_health_care", "governed_entity_reference": "registered_document:bajaj_my_health_care_policy_wording_v1", "field_or_topic": "CONTINUITY_OR_CREDIT_RULE", "claim": "The exclusion does not apply if the Insured Beneficiary has continuous coverage for more than 12 months.", "evidence_role": "QUALIFYING", "source_type": "POLICY_WORDING", "document_reference": "bajaj_my_health_care_policy_wording_v1", "document_version": "docver_bajaj_my_health_care_policy_wording_v1_05dc291324340d52", "effective_from": null, "effective_to": null, "page": 21, "section": "30-day Waiting Period (Code-Excl03)", "source_excerpt": "This exclusion shall not, however apply if the Insured Beneficiary has continuous coverage for more than 12 months.", "normalized_fact_reference": "bajaj_mhc_initial_base_wait:continuity_or_credit_rule", "authority_rank": 1, "authority_requirement": "AUTHORITATIVE", "version_status": "CURRENT_APPLICABLE", "applicability_status": "APPLICABLE",
+        "lineage": {"source_artifact_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.pdf", "source_artifact_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158", "governed_record_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/initial_waiting_period_source_reverification.json", "governed_record_sha256": "ea8635c3e1f0b07e252022e3e81a7043466240e15cda8cb968b0a03979ff4235", "binding_reference": "registered_document:bajaj_my_health_care_policy_wording_v1:page_21:code_excl03", "projection_reference": "waiting_period:continuity_or_credit_rule", "lineage_status": "VERIFIED"},
+        "retrieval_basis": ["registered_primary_legal_source", "current_source_reverification_confirmed", "page_21_code_excl03"], "confidence": 1.0
+      },
+      {
+        "evidence_id": "evidence:bajaj-mhc-initial-wait:exception_condition",
+        "requirement_id": "requirement:bajaj-mhc-initial-wait:exception_condition",
+        "subject_reference": "product:bajaj_allianz_general:my_health_care", "governed_entity_reference": "registered_document:bajaj_my_health_care_policy_wording_v1", "field_or_topic": "EXCEPTION_CONDITION", "claim": "Claims arising due to an Accident are excepted, provided the claims are otherwise covered.", "evidence_role": "QUALIFYING", "source_type": "POLICY_WORDING", "document_reference": "bajaj_my_health_care_policy_wording_v1", "document_version": "docver_bajaj_my_health_care_policy_wording_v1_05dc291324340d52", "effective_from": null, "effective_to": null, "page": 21, "section": "30-day Waiting Period (Code-Excl03)", "source_excerpt": "Expenses related to the treatment of any Illness within 30 days as per the option specified in the Policy Schedule from the first Policy commencement date shall be excluded except claims arising due to an Accident, provided the same are covered.", "normalized_fact_reference": "bajaj_mhc_initial_base_wait:exception_condition", "authority_rank": 1, "authority_requirement": "AUTHORITATIVE", "version_status": "CURRENT_APPLICABLE", "applicability_status": "APPLICABLE",
+        "lineage": {"source_artifact_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.pdf", "source_artifact_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158", "governed_record_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/initial_waiting_period_source_reverification.json", "governed_record_sha256": "ea8635c3e1f0b07e252022e3e81a7043466240e15cda8cb968b0a03979ff4235", "binding_reference": "registered_document:bajaj_my_health_care_policy_wording_v1:page_21:code_excl03", "projection_reference": "waiting_period:exception_condition", "lineage_status": "VERIFIED"},
+        "retrieval_basis": ["registered_primary_legal_source", "current_source_reverification_confirmed", "page_21_code_excl03"], "confidence": 1.0
+      }
+    ],
+    "requirement_results": [
+      {"requirement_id": "requirement:bajaj-mhc-initial-wait:waiting_period_duration", "status": "SATISFIED", "matched_evidence_ids": ["evidence:bajaj-mhc-initial-wait:waiting_period_duration"], "rejected_candidate_ids": [], "missing_reason": null, "authority_satisfied": true, "version_satisfied": true, "lineage_satisfied": true, "conflict_status": "NONE", "confidence": 1.0},
+      {"requirement_id": "requirement:bajaj-mhc-initial-wait:waiting_period_subject", "status": "SATISFIED", "matched_evidence_ids": ["evidence:bajaj-mhc-initial-wait:waiting_period_subject"], "rejected_candidate_ids": [], "missing_reason": null, "authority_satisfied": true, "version_satisfied": true, "lineage_satisfied": true, "conflict_status": "NONE", "confidence": 1.0},
+      {"requirement_id": "requirement:bajaj-mhc-initial-wait:start_basis", "status": "SATISFIED", "matched_evidence_ids": ["evidence:bajaj-mhc-initial-wait:start_basis"], "rejected_candidate_ids": [], "missing_reason": null, "authority_satisfied": true, "version_satisfied": true, "lineage_satisfied": true, "conflict_status": "NONE", "confidence": 1.0},
+      {"requirement_id": "requirement:bajaj-mhc-initial-wait:applicability_scope", "status": "SATISFIED", "matched_evidence_ids": ["evidence:bajaj-mhc-initial-wait:applicability_scope"], "rejected_candidate_ids": [], "missing_reason": null, "authority_satisfied": true, "version_satisfied": true, "lineage_satisfied": true, "conflict_status": "NONE", "confidence": 1.0},
+      {"requirement_id": "requirement:bajaj-mhc-initial-wait:continuity_or_credit_rule", "status": "SATISFIED", "matched_evidence_ids": ["evidence:bajaj-mhc-initial-wait:continuity_or_credit_rule"], "rejected_candidate_ids": [], "missing_reason": null, "authority_satisfied": true, "version_satisfied": true, "lineage_satisfied": true, "conflict_status": "NONE", "confidence": 1.0},
+      {"requirement_id": "requirement:bajaj-mhc-initial-wait:exception_condition", "status": "SATISFIED", "matched_evidence_ids": ["evidence:bajaj-mhc-initial-wait:exception_condition"], "rejected_candidate_ids": [], "missing_reason": null, "authority_satisfied": true, "version_satisfied": true, "lineage_satisfied": true, "conflict_status": "NONE", "confidence": 1.0}
+    ],
+    "missing_evidence": [],
+    "sufficiency": "SUFFICIENT",
+    "limitations": ["Certification is scoped only to the initial waiting-period rule; unrelated Bajaj waiting-period residue remains unresolved."],
+    "resolution_status": "RESOLVED",
+    "confidence": 1.0
+  }
+}
