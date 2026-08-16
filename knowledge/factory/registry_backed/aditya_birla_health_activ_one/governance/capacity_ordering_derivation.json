@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "record_type": "capacity_ordering_derivation_v1",
+  "derivation_id": "activ_one_capacity_ordering_next_capacity",
+  "entity_id": "aditya_birla_health:activ_one",
+  "source": {
+    "source_sha256": "38bb879030d905bd6f90915915f1c2e22e27ebe5bc980bba766c69c7ecd90a16",
+    "uin": "ADIHLIP24097V012324",
+    "currentness_state": "current_observed_reviewed",
+    "pages": [
+      31,
+      39
+    ]
+  },
+  "asserted_inputs": {
+    "ordered_capacity_sequence": [
+      "BASE_SUM_INSURED",
+      "SUPER_CREDIT",
+      "SUPER_RELOAD",
+      "CANCER_BOOSTER"
+    ],
+    "conditional_nodes": {
+      "SUPER_CREDIT": "if inbuilt / opted and applicable",
+      "CANCER_BOOSTER": "if opted and applicable"
+    }
+  },
+  "evaluator": {
+    "module": "insurance_intelligence.benefits.capacity_ordering",
+    "operation": "select_next_capacity",
+    "scope": "bounded ordered-capacity traversal only"
+  },
+  "derived_outputs": {
+    "prior_applicable_capacity_must_be_exhausted_before_later_capacity": {
+      "status": "DERIVED_RESOLVED",
+      "value": true
+    },
+    "unknown_optional_node_applicability_blocks_traversal": {
+      "status": "DERIVED_RESOLVED",
+      "value": true,
+      "reason": "Skipping an unresolved earlier node would invent absence/applicability."
+    }
+  },
+  "limitations": [
+    "This derivation does not calculate claim payment.",
+    "This derivation does not establish claim admissibility.",
+    "This derivation does not determine applicability of optional capacities without claim/policy state.",
+    "This derivation does not evaluate copayment, deductible, waiting-period, or arbitrary benefit stacking."
+  ]
+}
