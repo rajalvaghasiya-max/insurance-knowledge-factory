@@ -9,6 +9,7 @@ from insurance_intelligence.contracts.publication_decision import PublicationDec
 
 SUPPORTED_CONTRACT_VERSION = "1.0"
 PUBLICATION_STATUS = "AUTHORITATIVE"
+SEMANTIC_BASES = frozenset({"ASSERTED", "DERIVED"})
 
 
 class AuthoritativePublicationContractError(ValueError):
@@ -33,18 +34,41 @@ class GovernedSemanticComponent:
     component_id: str
     status: str
     evidence_references: tuple[str, ...]
+    semantic_basis: str = "ASSERTED"
+    derivation_references: tuple[str, ...] = ()
 
 
 def build_governed_semantic_component(
-    *, component_id: str, status: str, evidence_references: Sequence[str]
+    *,
+    component_id: str,
+    status: str,
+    evidence_references: Sequence[str],
+    semantic_basis: str = "ASSERTED",
+    derivation_references: Sequence[str] = (),
 ) -> GovernedSemanticComponent:
     evidence = _unique(evidence_references, "evidence_references")
     if not evidence:
         raise AuthoritativePublicationContractError("evidence_references must not be empty")
+    basis = _text(semantic_basis, "semantic_basis")
+    if basis not in SEMANTIC_BASES:
+        raise AuthoritativePublicationContractError(
+            f"semantic_basis must be one of {sorted(SEMANTIC_BASES)}"
+        )
+    derivations = _unique(derivation_references, "derivation_references")
+    if basis == "DERIVED" and not derivations:
+        raise AuthoritativePublicationContractError(
+            "DERIVED semantic components require derivation_references"
+        )
+    if basis == "ASSERTED" and derivations:
+        raise AuthoritativePublicationContractError(
+            "ASSERTED semantic components must not carry derivation_references"
+        )
     return GovernedSemanticComponent(
         component_id=_text(component_id, "component_id"),
         status=_text(status, "status"),
         evidence_references=evidence,
+        semantic_basis=basis,
+        derivation_references=derivations,
     )
 
 
