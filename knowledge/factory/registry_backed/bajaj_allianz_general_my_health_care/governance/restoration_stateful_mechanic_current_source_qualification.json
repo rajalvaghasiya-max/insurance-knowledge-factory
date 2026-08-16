@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "record_type": "restoration_stateful_mechanic_current_source_qualification_v1",
+  "entity_id": "bajaj_allianz_general:my_health_care",
+  "source": {
+    "document_reference": "bajaj_my_health_care_policy_wording_v1",
+    "document_version": "docver_bajaj_my_health_care_policy_wording_v1_05dc291324340d52",
+    "source_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+    "uin": "BAJHLIP26074V022526",
+    "currentness_state": "current_observed_reviewed"
+  },
+  "operative_wording": {
+    "page": 17,
+    "section": "15. Sum Insured Reinstatement",
+    "source_excerpt": "The In-patient Hospitalisation Treatment Sum Insured would be reinstated up to number of times as specified in the Policy Schedule for the particular Policy Year subject to the below conditions. The reinstated Sum Insured will be available for utilization for subsequent claim made by the Insured Beneficiary provided that the subsequent hospitalization is after a gap of at least 15 days from the date of discharge. This 15-day period is not applicable if the subsequent claim is for the other Insured Beneficiary. The reinstated Sum Insured can be used for claims made by the Insured in respect of the benefits stated in Inpatient Hospitalization Treatment. For any claim under this benefit, the maximum liability per claim shall not exceed the In-patient Hospitalization Sum Insured. This benefit is applicable during each Policy year and will not be carried forward to the subsequent policy year/ renewals. Sum Insured Reinstatement for floater policy will be at policy level. For individual Sum Insured policy, Sum Insured Reinstatement would be available on Insured Beneficiary level."
+  },
+  "schedule_table_wording": {
+    "page": 52,
+    "source_excerpt": "Sum Insured Reinstatement (Available for same illness) For SI less than 5 lacs- Once. For SI 5 lacs and above- Unlimited.",
+    "scope_status": "PARTIALLY_RESOLVED",
+    "note": "The SI-band recurrence values are explicit. The parenthetical same-illness scope remains separately governed and must not be silently merged beyond what the operative wording supports."
+  },
+  "asserted_semantics": {
+    "subsequent_claim_use": {
+      "status": "RESOLVED",
+      "value": true,
+      "basis": "operative wording explicitly states reinstated SI is available for utilization for a subsequent claim"
+    },
+    "subsequent_hospitalization_gap": {
+      "status": "RESOLVED",
+      "value": 15,
+      "unit": "DAYS",
+      "exception": "gap does not apply if the subsequent claim is for another Insured Beneficiary"
+    },
+    "covered_section_scope": {
+      "status": "RESOLVED",
+      "value": "INPATIENT_HOSPITALIZATION_TREATMENT"
+    },
+    "maximum_liability_per_claim": {
+      "status": "RESOLVED",
+      "value": "INPATIENT_HOSPITALIZATION_SUM_INSURED"
+    },
+    "carry_over_between_policy_years": {
+      "status": "RESOLVED",
+      "value": false
+    },
+    "floater_operation": {
+      "status": "RESOLVED",
+      "value": "POLICY_LEVEL"
+    },
+    "individual_operation": {
+      "status": "RESOLVED",
+      "value": "INSURED_BENEFICIARY_LEVEL"
+    },
+    "restoration_count_band": {
+      "status": "RESOLVED",
+      "bands": [
+        {"sum_insured_condition": "LT_5_LAKH", "count": 1},
+        {"sum_insured_condition": "GTE_5_LAKH", "count": "UNLIMITED"}
+      ],
+      "basis": "page 52 Table of Benefits"
+    },
+    "same_illness_use": {
+      "status": "UNRESOLVED_SCOPE",
+      "candidate_value": true,
+      "basis": "page 52 parenthetical 'Available for same illness'",
+      "reason": "The parenthetical is load-bearing and its exact scope must not be silently merged into broader claim-sequence semantics without explicit reconciliation."
+    },
+    "restored_amount": {
+      "status": "UNRESOLVED",
+      "reason": "The reviewed operative wording says the In-patient Hospitalisation Treatment Sum Insured would be reinstated but does not independently establish in this gate whether the amount is exactly 100%, remaining shortfall, or another schedule-selected value."
+    },
+    "activation_trigger": {
+      "status": "UNRESOLVED",
+      "reason": "The reviewed clause does not explicitly state the exhaustion/insufficiency condition that causes reinstatement to become available."
+    },
+    "activation_effective_point": {
+      "status": "PARTIALLY_RESOLVED",
+      "value": "SUBSEQUENT_CLAIM_ONLY",
+      "basis": "operative wording states utilization is for subsequent claim after discharge",
+      "limitation": "The exact event that creates the reinstated capacity remains unresolved because the activation trigger itself is not explicitly stated."
+    }
+  },
+  "derived_semantics": {
+    "triggering_claim_can_consume_reinstatement": {
+      "status": "DERIVED_RESOLVED",
+      "value": false,
+      "derivation": "Because current wording restricts utilization to a subsequent claim and normally requires a gap measured from discharge, the hospitalization/claim that precedes that discharge cannot consume the reinstated SI.",
+      "provenance_type": "DERIVED_FROM_GOVERNED_ASSERTED_SEMANTICS"
+    },
+    "headline_overflow_case": {
+      "status": "DERIVED_RESOLVED",
+      "scenario": "single hospitalization claim exceeds currently available base Sum Insured",
+      "result": "REINSTATEMENT_NOT_USABLE_FOR_TRIGGERING_CLAIM_OVERFLOW",
+      "limitation": "This does not determine total claim admissibility or other available benefits."
+    }
+  },
+  "explicit_exclusions_and_scope": [
+    "Organ donor expenses explicitly exclude Sum Insured Reinstatement/Recharge applicability.",
+    "International Cover - Emergency Care only explicitly excludes use of Reinstatement/Recharge for payment of claims.",
+    "The gate does not resolve restoration amount, exact activation trigger, bonus interaction, or arbitrary claim adjudication.",
+    "Historical Star/Activ One restoration implementations are representation references only and are not current Bajaj factual authority."
+  ],
+  "gate_conclusion": "The current source resolves the claim-sequence consequence strongly enough to derive same-claim overflow ineligibility without inventing a product Boolean. It does not yet resolve every activation parameter required for a complete generic state-evaluator rule."
+}
