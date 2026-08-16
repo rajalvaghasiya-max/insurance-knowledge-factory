@@ -1,0 +1,175 @@
+{
+  "milestone": "HARM-1A",
+  "title": "Coverage, waiting-period, exclusion, condition, schedule, and unresolved semantic falsification",
+  "status": "CLOSED_PENDING_MERGE",
+  "question": "Can the existing generic semantic composition preserve covered now, not covered yet, excluded by current wording, covered only if explicit conditions are satisfied, policy-schedule dependent, and not yet determinable outcomes without flattening them into one generic NOT_COVERED state?",
+  "pre_registered_user_outcomes": [
+    "COVERED_NOW",
+    "NOT_COVERED_YET",
+    "EXCLUDED_BY_CURRENT_WORDING",
+    "COVERED_ONLY_IF",
+    "INSTANCE_OR_SCHEDULE_DEPENDENT",
+    "CANNOT_DETERMINE_YET"
+  ],
+  "acceptance_classifications": [
+    "FOUND_AND_REPRESENTABLE",
+    "FOUND_BUT_AMBIGUOUS_SCOPE",
+    "FOUND_AND_NOT_REPRESENTABLE",
+    "CURRENT_SOURCE_MANUFACTURING_GAP",
+    "INSTANCE_OR_SCHEDULE_CONTEXT_REQUIRED"
+  ],
+  "architecture_falsification_rule": {
+    "trigger": "Waiting-period restriction, current-wording exclusion, and conditional coverage reduce to the same effective semantic state without preserving why the outcome differs.",
+    "found_and_not_representable_count": 0,
+    "result": "NOT_TRIGGERED",
+    "decision": "No new enum, classifier, evaluator, factory, validator, or runtime architecture gate is authorized by HARM-1A."
+  },
+  "scenarios": [
+    {
+      "scenario_id": "harm1a_covered_now",
+      "user_outcome": "COVERED_NOW",
+      "source": {
+        "path": "knowledge/health/aditya_birla_health/activ_one/intelligence/product_intelligence.json",
+        "record_kind": "core_benefit",
+        "record_key": "in_patient_treatment",
+        "required_fragments": [
+          "In-Patient Treatment",
+          "might not be applicable",
+          "Policy Schedule"
+        ]
+      },
+      "classification": "FOUND_BUT_AMBIGUOUS_SCOPE",
+      "existing_semantic_composition": [
+        "COVERAGE_EFFECT",
+        "SUPPORTED_WITH_LIMITATIONS",
+        "POLICY_SPECIFIC_OVERRIDE",
+        "ANSWER_WITH_LIMITATIONS"
+      ],
+      "safe_answer": "In-patient treatment is documented as a policy benefit, but this record alone does not confirm that a specific disease, treatment, or claim is covered now. The applicable Policy Schedule, waiting periods, exclusions, and claim facts still matter.",
+      "reason": "The benefit is present and validated, while the same source states that benefit applicability can depend on the Policy Schedule. A claim-specific yes would overstate the evidence."
+    },
+    {
+      "scenario_id": "harm1a_not_covered_yet",
+      "user_outcome": "NOT_COVERED_YET",
+      "source": {
+        "path": "knowledge/health/aditya_birla_health/activ_one/intelligence/policy_intelligence.json",
+        "record_kind": "exclusion",
+        "record_key": "D.1.2",
+        "required_fragments": [
+          "excluded until the expiry of 24 months",
+          "continuous coverage",
+          "shall not be applicable for claims arising due to an accident"
+        ]
+      },
+      "classification": "FOUND_AND_REPRESENTABLE",
+      "existing_semantic_composition": [
+        "COVERAGE_CONDITION",
+        "SUPPORTED_WITH_LIMITATIONS",
+        "waiting_period_timeline.NOT_ACTIVE",
+        "condition",
+        "exception",
+        "ANSWER_WITH_LIMITATIONS"
+      ],
+      "safe_answer": "The specified-disease waiting restriction is temporary: it applies until the evidenced waiting period is complete, subject to the documented accident exception, continuity, and other policy terms. This is not a permanent exclusion.",
+      "reason": "The source preserves a time-bound restriction, an exception, and continuity scope; the existing timeline model separately represents NOT_ACTIVE and ACTIVE."
+    },
+    {
+      "scenario_id": "harm1a_excluded_by_current_wording",
+      "user_outcome": "EXCLUDED_BY_CURRENT_WORDING",
+      "source": {
+        "path": "knowledge/health/aditya_birla_health/activ_one/intelligence/policy_intelligence.json",
+        "record_kind": "exclusion",
+        "record_key": "D.1.4",
+        "required_fragments": [
+          "admission primarily for diagnostics and evaluation purposes only are excluded",
+          "not related or not incidental to the current diagnosis and treatment are excluded"
+        ]
+      },
+      "classification": "FOUND_AND_REPRESENTABLE",
+      "existing_semantic_composition": [
+        "EXCLUSION_EFFECT",
+        "SUPPORTED",
+        "scope",
+        "ANSWER_WITH_LIMITATIONS"
+      ],
+      "safe_answer": "The current policy wording excludes an admission primarily for diagnostics or evaluation and diagnostic expenses unrelated to the current diagnosis or treatment. The conclusion is limited to that documented scope and is not a general claim guarantee.",
+      "reason": "The current-wording exclusion can be represented as an exclusion effect rather than a waiting-period state."
+    },
+    {
+      "scenario_id": "harm1a_covered_only_if",
+      "user_outcome": "COVERED_ONLY_IF",
+      "source": {
+        "path": "knowledge/health/aditya_birla_health/activ_one/intelligence/policy_intelligence.json",
+        "record_kind": "exclusion",
+        "record_key": "D.1.6",
+        "required_fragments": [
+          "does not fulfil all the below conditions",
+          "upon the advice of the Doctor",
+          "supported by clinical protocols"
+        ]
+      },
+      "classification": "FOUND_AND_REPRESENTABLE",
+      "existing_semantic_composition": [
+        "COVERAGE_CONDITION",
+        "CONDITIONAL",
+        "CONDITIONAL_DERIVATION",
+        "condition",
+        "applicability_scope",
+        "ANSWER_WITH_LIMITATIONS"
+      ],
+      "safe_answer": "The obesity-surgery exclusion is conditional: the current wording requires all documented conditions to be satisfied. Coverage cannot be concluded until those conditions and any applicable waiting period are established.",
+      "reason": "Existing finding and conditional-rule contracts preserve the effect, trigger or condition, scope, and conditional status separately."
+    },
+    {
+      "scenario_id": "harm1a_schedule_dependent",
+      "user_outcome": "INSTANCE_OR_SCHEDULE_DEPENDENT",
+      "source": {
+        "path": "knowledge/health/aditya_birla_health/activ_one/intelligence/policy_intelligence.json",
+        "record_kind": "exclusion",
+        "record_key": "D.2.8",
+        "required_fragments": [
+          "Treatment taken outside India",
+          "unless specified to be covered in the Policy Schedule"
+        ]
+      },
+      "classification": "INSTANCE_OR_SCHEDULE_CONTEXT_REQUIRED",
+      "existing_semantic_composition": [
+        "POLICY_SPECIFIC_OVERRIDE",
+        "REQUIRES_POLICY_SCHEDULE",
+        "BLOCKED_BY_CONTEXT",
+        "UNRESOLVED_IMPLICATION",
+        "CLARIFICATION_REQUIRED"
+      ],
+      "safe_answer": "The general wording excludes treatment outside India unless the Policy Schedule says otherwise. The Policy Schedule is required before a policy-specific conclusion can be given.",
+      "reason": "Existing applicability, conflict-resolution, reasoning, and response contracts preserve schedule dependency and fail closed when the schedule is absent."
+    },
+    {
+      "scenario_id": "harm1a_cannot_determine_yet",
+      "user_outcome": "CANNOT_DETERMINE_YET",
+      "source": {
+        "path": "knowledge/factory/golden_concepts/waiting_period/waiting_period_timeline_evidence_profile.json",
+        "record_kind": "unresolved_item",
+        "record_key": "base_initial_waiting_period",
+        "required_fragments": [
+          "DO_NOT_AUTOMATE_YET",
+          "exact base D.1.3 clause",
+          "date-boundary wording"
+        ]
+      },
+      "classification": "CURRENT_SOURCE_MANUFACTURING_GAP",
+      "existing_semantic_composition": [
+        "BLOCKED_BY_EVIDENCE",
+        "UNSUPPORTED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "safe_answer": "We cannot determine the exact base initial-waiting-period activation date from the currently approved timeline evidence. The exact clause and date-boundary wording must be governed before automation.",
+      "reason": "The repository explicitly withholds base initial-wait automation. The inability to answer is a current-source manufacturing gap, not a representation failure."
+    }
+  ],
+  "bounded_conclusion": {
+    "representation_pressure": "NOT_PROVEN",
+    "runtime_architecture_change": "NOT_AUTHORIZED",
+    "manufacturing_pressure": "CONFIRMED",
+    "next_step": "Inspect the current Star Comprehensive restoration source shape before manufacturing any restoration rule."
+  }
+}
