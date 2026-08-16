@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "record_type": "restoration_cross_insurer_current_source_qualification_v1",
+  "entity_id": "aditya_birla_health:activ_one",
+  "source": {
+    "document_reference": "aditya_birla_health_activ_one_policy_wording_current",
+    "source_sha256": "38bb879030d905bd6f90915915f1c2e22e27ebe5bc980bba766c69c7ecd90a16",
+    "uin": "ADIHLIP24097V012324",
+    "currentness_state": "current_observed_reviewed"
+  },
+  "operative_wording": {
+    "page": 31,
+    "section": "C.10 Super Reload",
+    "source_excerpt_summary": "If Base Sum Insured plus accumulated Super Credit is completely exhausted or insufficient for covering a claim, Super Reload equal to Base Sum Insured is provided unlimited times during the Policy Year, subject to listed conditions. The clause states first-claim availability is controlled by the Policy Schedule/Product Benefit Table, caps single-claim Super Reload liability at Base Sum Insured, excludes Super Reload from Super Credit calculation, and specifies the utilization sequence Base SI -> Super Credit -> Super Reload -> Cancer Booster."
+  },
+  "product_benefit_table": {
+    "page": 46,
+    "source_excerpt_summary": "Super Reload (Unlimited Refill): From 2nd claim of Policy Life - Unlimited times.",
+    "status": "CORROBORATING_CURRENT_SOURCE"
+  },
+  "asserted_semantics": {
+    "activation_trigger": {
+      "status": "RESOLVED",
+      "value": "BASE_SI_PLUS_SUPER_CREDIT_EXHAUSTED_OR_INSUFFICIENT_FOR_CLAIM"
+    },
+    "restored_amount": {
+      "status": "RESOLVED",
+      "value": 100,
+      "unit": "PERCENT_OF_BASE_SUM_INSURED"
+    },
+    "frequency": {
+      "status": "RESOLVED",
+      "value": "UNLIMITED_DURING_POLICY_YEAR"
+    },
+    "first_claim_rule": {
+      "status": "RESOLVED_WITH_SCHEDULE_BINDING",
+      "value": "NOT_PAYABLE_TO_FIRST_CLAIM_IN_POLICY_LIFE_AS_SPECIFIED_BY_POLICY_SCHEDULE_OR_PRODUCT_BENEFIT_TABLE",
+      "corroboration": "Product Benefit Table states From 2nd claim of Policy Life - Unlimited times."
+    },
+    "same_triggering_claim_use": {
+      "status": "RESOLVED",
+      "value": true,
+      "basis": "The trigger includes insufficiency for covering a claim and the utilization sequence places Super Reload inside the same claim capacity stack after Base SI and Super Credit."
+    },
+    "subsequent_claim_use": {
+      "status": "RESOLVED",
+      "value": true
+    },
+    "maximum_liability_per_claim": {
+      "status": "RESOLVED",
+      "value": "BASE_SUM_INSURED"
+    },
+    "covered_sections": {
+      "status": "RESOLVED",
+      "value": [
+        "C.1_HOSPITALIZATION_TREATMENT",
+        "C.5_DOMICILIARY_HOSPITALIZATION",
+        "C.6_HOME_HEALTH_CARE",
+        "C.7_AYUSH_TREATMENT",
+        "C.8_ORGAN_DONOR_EXPENSES"
+      ]
+    },
+    "utilization_sequence": {
+      "status": "RESOLVED",
+      "value": [
+        "BASE_SUM_INSURED",
+        "SUPER_CREDIT_IF_APPLICABLE",
+        "SUPER_RELOAD",
+        "CANCER_BOOSTER_IF_APPLICABLE"
+      ]
+    },
+    "super_credit_interaction": {
+      "status": "RESOLVED",
+      "value": "SUPER_RELOAD_NOT_INCLUDED_IN_SUPER_CREDIT_CALCULATION"
+    }
+  },
+  "historical_anchor_control": {
+    "historical_policy_wording_sha256": "d7726811cfdf2c3c31c3750eb0bd4a55203b20cf79d44fc6849dbc77ba556451",
+    "status": "STALE_UNVERIFIED_AGAINST_CURRENT_AND_NOT_USED_AS_AUTHORITY",
+    "note": "Historical Activ One NXT implementation was used only as a locator for what to inspect. Every semantic in this record is independently re-derived from current 38bb source wording."
+  },
+  "cross_insurer_pressure": {
+    "comparison_target": "bajaj_allianz_general:my_health_care",
+    "material_shape_difference": [
+      "Bajaj current rule restricts reinstatement consumption to a subsequent claim; Activ One current rule permits same-triggering-claim participation when available capacity is insufficient.",
+      "Bajaj current rule has SI-banded recurrence; Activ One current rule is unlimited during policy year without those SI recurrence bands.",
+      "Activ One current rule explicitly composes Base SI, Super Credit, Super Reload and Cancer Booster in an ordered utilization sequence."
+    ],
+    "conclusion": "Current-source evidence is sufficient to test real cross-insurer restoration evaluator portability. The utilization sequence creates a separate composition/ordering pressure that must remain bounded and not be silently generalized."
+  },
+  "explicit_scope_boundaries": [
+    "This record does not decide claim payment or admissibility outside the listed governed conditions.",
+    "This record does not prove arbitrary stateful mechanic composition.",
+    "Cancer Booster ordering and Super Credit interaction are current-source facts, but a general composition engine is outside this qualification artifact."
+  ]
+}
