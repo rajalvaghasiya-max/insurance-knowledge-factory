@@ -1,6 +1,6 @@
 # Phase 2 — Bajaj Initial Waiting-Period Cross-Insurer Publication Gate
 
-**Status:** ACTIVE — CURRENT-SOURCE REVERIFICATION REQUIRED  
+**Status:** ACTIVE — STALE-ANCHOR SAFEGUARD IMPLEMENTED; CURRENT-SOURCE REVERIFICATION PENDING  
 **Date:** 2026-08-16
 
 ## Purpose
@@ -55,22 +55,76 @@ state   = current_observed_reviewed
 
 Therefore the historical reviewed 30-day rule MUST NOT be promoted as current governed truth until the same proposition is independently reverified against the current `05dc...` bytes.
 
+## Generic stale-anchor safeguard
+
+Independent review identified a manufacturing-scale weakness: the correct historical/current SHA mismatch was noticed manually, but repeated manufacturing needs the mismatch to fail closed mechanically.
+
+Implemented generic contract:
+
+```text
+factory_core/governance/source_reverification.py
+```
+
+The contract contains no insurer/product-specific decision logic. It compares a reviewed semantic artifact's immutable source SHA with the current governed source SHA.
+
+```text
+same SHA
+  -> CURRENT_ANCHOR_MATCH
+  -> CONTINUE
+
+different SHA
+  -> REVERIFICATION_REQUIRED
+  -> WITHHELD
+  -> reason = source_reverification_required
+```
+
+A stale reviewed proposition can be rechecked against the current source with exactly four outcomes:
+
+```text
+CONFIRMED
+DIFFERS
+NOT_PRESENT
+AMBIGUOUS
+```
+
+Only `CONFIRMED` permits the prior semantic proposition to continue unchanged. The other outcomes remain positively withheld:
+
+```text
+DIFFERS     -> current_source_differs_semantic_review_required
+NOT_PRESENT -> current_source_proposition_not_present
+AMBIGUOUS   -> current_source_reverification_ambiguous
+```
+
+This keeps reverification from becoming a confirmation ritual. A changed current rule is new semantic-review work, not a successful confirmation of historical truth.
+
+The real Bajaj SHA transition is used only as a test pressure case:
+
+```text
+9479... -> 05dc... -> REVERIFICATION_REQUIRED / WITHHELD
+```
+
+Production logic remains insurer-independent.
+
 ## Gate sequence
 
 1. Locate/parse the current `05dc...` policy wording through the existing governed source path.
-2. Reverify the initial-wait duration, subject, start basis, scope, and accident exception from current-source evidence.
-3. If current evidence matches, materialize one governed rule-certification case as data using the existing insurer-independent case loader and `waiting_period` topic definition.
-4. Run the existing generic RuleCertificationRunner.
-5. Pressure the existing publication-decision and authoritative-publication gates.
-6. Keep any unrelated Bajaj waiting-period residue unresolved; publishing one bounded rule must not imply product-wide waiting-period completeness.
-7. Run focused and broader regressions.
+2. Apply the generic source-anchor contract to the historical reviewed mapping.
+3. Reverify the initial-wait duration, subject, start basis, scope, and accident exception from current-source evidence.
+4. Record one of `CONFIRMED / DIFFERS / NOT_PRESENT / AMBIGUOUS` with a concrete current evidence reference.
+5. Only if current evidence confirms the bounded proposition, materialize one governed rule-certification case as data using the existing insurer-independent case loader and `waiting_period` topic definition.
+6. Run the existing generic RuleCertificationRunner.
+7. Pressure the existing publication-decision and authoritative-publication gates.
+8. Keep any unrelated Bajaj waiting-period residue unresolved; publishing one bounded rule must not imply product-wide waiting-period completeness.
+9. Run focused and broader regressions.
 
 ## Acceptance criteria
 
 - current immutable source SHA `05dc...` is the authoritative evidence source;
 - historical `9479...` artifacts are used only as prior/historical locators, never current proof;
-- the bounded initial-wait rule is fully represented with no semantic loss;
-- accident exception is preserved explicitly;
+- stale source anchors are mechanically classified `REVERIFICATION_REQUIRED` and positively withheld;
+- reverification has explicit fail-closed outcomes and a concrete evidence reference;
+- the bounded initial-wait rule is fully represented with no semantic loss if current evidence confirms it;
+- accident exception is preserved explicitly if present in current evidence;
 - no Bajaj-specific production reasoning code is added;
 - no new ontology abstraction unless current-source pressure proves a real generic gap;
 - certification/publication is scoped to this rule only;
@@ -80,4 +134,4 @@ Therefore the historical reviewed 30-day rule MUST NOT be promoted as current go
 
 ## Current conclusion
 
-The candidate is architecturally suitable, but publication work is blocked pending current-source reverification. That blocker is intentional and demonstrates the governance system is preventing historical evidence from silently becoming current truth.
+The candidate remains architecturally suitable. The stale-anchor safeguard is now implemented generically; publication work remains blocked until the current `05dc...` source itself establishes the rule outcome. That blocker is explicit, auditable, and resumable rather than an implicit absence.
