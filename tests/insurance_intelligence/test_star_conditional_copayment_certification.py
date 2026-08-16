@@ -7,8 +7,10 @@ import pytest
 import insurance_intelligence.rule_certification.star_health as star_health
 from insurance_intelligence.rule_certification.star_health import (
     STAR_COMPREHENSIVE_COPAYMENT_ASSERTION_ID,
+    STAR_COMPREHENSIVE_COPAYMENT_BINDING_SHA256,
     STAR_COMPREHENSIVE_COPAYMENT_BINDING_PATH,
     STAR_COMPREHENSIVE_COPAYMENT_EVIDENCE_HASH,
+    STAR_COMPREHENSIVE_POLICY_WORDING_SHA256,
     STAR_COMPREHENSIVE_COPAYMENT_REVIEWED_STATEMENT,
     build_star_comprehensive_conditional_copayment_case,
     extract_star_comprehensive_conditional_copayment_finding,
@@ -47,7 +49,8 @@ def test_case_is_bound_to_the_governed_star_artifact_and_primary_legal_evidence(
         assert package.authority_requirement == "AUTHORITATIVE"
         assert package.source_excerpt == STAR_COMPREHENSIVE_COPAYMENT_REVIEWED_STATEMENT
         assert package.lineage.governed_record_path == STAR_COMPREHENSIVE_COPAYMENT_BINDING_PATH
-        assert package.lineage.source_artifact_sha256 == STAR_COMPREHENSIVE_COPAYMENT_EVIDENCE_HASH
+        assert package.lineage.source_artifact_sha256 == STAR_COMPREHENSIVE_POLICY_WORDING_SHA256
+        assert package.lineage.governed_record_sha256 == STAR_COMPREHENSIVE_COPAYMENT_BINDING_SHA256
         assert package.lineage.binding_reference == (
             "assertion:" + STAR_COMPREHENSIVE_COPAYMENT_ASSERTION_ID
         )

@@ -24,6 +24,9 @@ STAR_COMPREHENSIVE_ROOM_RENT_CANDIDATE_ID = "candidate_page_9"
 STAR_COMPREHENSIVE_ROOM_RENT_EVIDENCE_HASH = (
     "b17c1a2223d026d7c8be5c147230d0698aa4d6634ff02f13121206761ef30e1c"
 )
+STAR_COMPREHENSIVE_SOURCE_REGISTRATION_SHA256 = (
+    "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7"
+)
 STAR_COMPREHENSIVE_ROOM_RENT_SOURCE_EXCERPT = (
     "Room (Private Single A/C room), Boarding and Nursing Expenses as provided by the Hospital / "
     "Nursing Home. Any hospitalization expenses arising under this Policy, which vary based on "
@@ -40,7 +43,7 @@ def _lineage(component_id: str) -> Lineage:
             "knowledge/factory/registry_backed/star_health_star_comprehensive/"
             "generic_source_registration/policy_wording_registration.json"
         ),
-        governed_record_sha256=STAR_COMPREHENSIVE_ROOM_RENT_EVIDENCE_HASH,
+        governed_record_sha256=STAR_COMPREHENSIVE_SOURCE_REGISTRATION_SHA256,
         binding_reference=(
             "registered_document:star_health_star_comprehensive_policy_wording_v1:"
             + STAR_COMPREHENSIVE_ROOM_RENT_CANDIDATE_ID

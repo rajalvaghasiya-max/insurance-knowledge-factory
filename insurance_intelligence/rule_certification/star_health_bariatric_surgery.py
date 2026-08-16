@@ -24,6 +24,9 @@ STAR_COMPREHENSIVE_BARIATRIC_CANDIDATE_ID = "candidate_page_15"
 STAR_COMPREHENSIVE_BARIATRIC_EVIDENCE_HASH = (
     "efe143eab857a4813b51c68d510d9ce7b9aafc2525c7eb6e685dcc9bd318f32c"
 )
+STAR_COMPREHENSIVE_SOURCE_REGISTRATION_SHA256 = (
+    "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7"
+)
 STAR_COMPREHENSIVE_BARIATRIC_SOURCE_EXCERPT = (
     "Bariatric surgery expenses are payable subject to the policy limits and special conditions. "
     "The insured must be above 18 years, the indication must be found appropriate by two qualified "
@@ -42,7 +45,7 @@ def _lineage(component_id: str) -> Lineage:
             "knowledge/factory/registry_backed/star_health_star_comprehensive/"
             "generic_source_registration/policy_wording_registration.json"
         ),
-        governed_record_sha256=STAR_COMPREHENSIVE_BARIATRIC_EVIDENCE_HASH,
+        governed_record_sha256=STAR_COMPREHENSIVE_SOURCE_REGISTRATION_SHA256,
         binding_reference=(
             "registered_document:star_health_star_comprehensive_policy_wording_v1:"
             + STAR_COMPREHENSIVE_BARIATRIC_CANDIDATE_ID

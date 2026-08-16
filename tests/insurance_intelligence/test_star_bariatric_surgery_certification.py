@@ -10,6 +10,7 @@ from insurance_intelligence.rule_certification.star_health_bariatric_surgery imp
     STAR_COMPREHENSIVE_BARIATRIC_EVIDENCE_HASH,
     STAR_COMPREHENSIVE_BARIATRIC_SOURCE_EXCERPT,
     STAR_COMPREHENSIVE_POLICY_WORDING_SHA256,
+    STAR_COMPREHENSIVE_SOURCE_REGISTRATION_SHA256,
     build_star_comprehensive_bariatric_surgery_case,
 )
 
@@ -62,7 +63,7 @@ def test_bariatric_case_is_bound_to_authoritative_page_15_evidence():
         assert package.authority_requirement == "AUTHORITATIVE"
         assert package.source_excerpt == STAR_COMPREHENSIVE_BARIATRIC_SOURCE_EXCERPT
         assert package.lineage.source_artifact_sha256 == STAR_COMPREHENSIVE_POLICY_WORDING_SHA256
-        assert package.lineage.governed_record_sha256 == STAR_COMPREHENSIVE_BARIATRIC_EVIDENCE_HASH
+        assert package.lineage.governed_record_sha256 == STAR_COMPREHENSIVE_SOURCE_REGISTRATION_SHA256
         assert package.lineage.binding_reference.endswith(STAR_COMPREHENSIVE_BARIATRIC_CANDIDATE_ID)
 
 
