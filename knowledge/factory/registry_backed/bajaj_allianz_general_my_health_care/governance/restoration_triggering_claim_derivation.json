@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "record_type": "restoration_claim_sequence_derivation_v1",
+  "entity_id": "bajaj_allianz_general:my_health_care",
+  "source_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+  "source_locator": {
+    "page": 17,
+    "section": "15. Sum Insured Reinstatement"
+  },
+  "asserted_inputs": {
+    "activation_effective_point": "SUBSEQUENT_CLAIM_ONLY",
+    "subsequent_claim_min_gap_days": 15,
+    "other_beneficiary_gap_exempt": true,
+    "covered_section": "INPATIENT_HOSPITALIZATION_TREATMENT"
+  },
+  "derived_output": {
+    "derivation_id": "derivation:bajaj-mhc-restoration:triggering-claim-overflow",
+    "scenario": "triggering hospitalization/claim",
+    "status": "NOT_ELIGIBLE",
+    "condition": "TRIGGERING_CLAIM_CANNOT_CONSUME_RESTORATION",
+    "basis": "generic restoration state evaluator derives non-eligibility from activation_effective_point=SUBSEQUENT_CLAIM_ONLY",
+    "semantic_basis": "DERIVED"
+  },
+  "unresolved_residue": [
+    "activation trigger",
+    "restored amount",
+    "same-illness parenthetical scope",
+    "different-illness relationship rule",
+    "bonus interaction"
+  ],
+  "claim_boundary": "This derivation does not determine claim admissibility, claim payment, restored amount, or later-claim restoration availability when the activation trigger remains unresolved."
+}
