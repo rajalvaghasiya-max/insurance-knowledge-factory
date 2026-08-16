@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "case_id": "bajaj_my_health_care_cataract_si_up_to_10_lakh_coverage_limit_publication",
+  "description": "Bounded publication case for the current-source-certified Bajaj My Health Care cataract coverage limit for Sum Insured up to INR 10 lakh.",
+  "certification_case_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_rule_certification/cataract_si_up_to_10_lakh_coverage_limit_certification_case.json",
+  "publication_decision": {
+    "decision_id": "publication-decision:bajaj-my-health-care:cataract-si-up-to-10-lakh-coverage-limit",
+    "requested_status": "PUBLISH",
+    "decision_reasons": [
+      "The bounded governed rule certification passes with all required coverage-limit semantic components satisfied.",
+      "All published evidence is anchored to the reviewed current Bajaj My Health Care policy wording SHA-256 05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158.",
+      "The publication is limited to cataract surgery for Sum Insured up to INR 10 lakh and preserves the unresolved schedule-selected waiting-period duration and separate SI above INR 10 lakh branch as limitations."
+    ],
+    "evidence_trace_references": [
+      "evidence:bajaj-mhc-cataract-limit:covered_subject",
+      "evidence:bajaj-mhc-cataract-limit:limit_value",
+      "evidence:bajaj-mhc-cataract-limit:limit_basis",
+      "evidence:bajaj-mhc-cataract-limit:applicability_scope"
+    ],
+    "decision_authority": "Phase 2 governed bounded-rule publication authority"
+  },
+  "governed_projection": {
+    "projection_id": "publication-projection:bajaj-my-health-care:cataract-si-up-to-10-lakh-coverage-limit",
+    "semantic_components": [
+      {"component_id": "covered_subject", "evidence_references": ["evidence:bajaj-mhc-cataract-limit:covered_subject"]},
+      {"component_id": "limit_value", "evidence_references": ["evidence:bajaj-mhc-cataract-limit:limit_value"]},
+      {"component_id": "limit_basis", "evidence_references": ["evidence:bajaj-mhc-cataract-limit:limit_basis"]},
+      {"component_id": "applicability_scope", "evidence_references": ["evidence:bajaj-mhc-cataract-limit:applicability_scope"]}
+    ]
+  },
+  "authoritative_publication": {
+    "publication_id": "authoritative-publication:bajaj-my-health-care:cataract-si-up-to-10-lakh-coverage-limit",
+    "publication_authority": "Phase 2 governed authoritative bounded-rule publication authority"
+  },
+  "guardrails": [
+    "This case publishes only the bounded cataract coverage-limit rule for Sum Insured up to INR 10 lakh from the current 05dc29132434 source.",
+    "It preserves 20% of Sum Insured, maximum INR 1 lakh, per eye as one composed limit and does not flatten the rule to a single scalar amount.",
+    "It does not resolve or publish the waiting-period duration referenced through the Policy Schedule.",
+    "It does not resolve, reinterpret, or publish the separate SI above INR 10 lakh 'Actual' branch.",
+    "It does not publish Family Visit or any other Bajaj benefit limit.",
+    "It does not establish product-wide governed readiness or advisor/comparison readiness.",
+    "It does not guarantee claim admissibility or payment; all applicable policy terms remain controlling.",
+    "No product-specific production reasoning code is authorized by this case."
+  ]
+}
