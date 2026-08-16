@@ -34,6 +34,12 @@ STAR_COMPREHENSIVE_COPAYMENT_ASSERTION_ID = (
 STAR_COMPREHENSIVE_COPAYMENT_EVIDENCE_HASH = (
     "ea3aa9a64bd799fbdcc52bdebb48a5b6917c90673451cf84230005506bb09594"
 )
+STAR_COMPREHENSIVE_POLICY_WORDING_SHA256 = (
+    "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+)
+STAR_COMPREHENSIVE_COPAYMENT_BINDING_SHA256 = (
+    "caaff2add0217b93a77b77afc862f26872ed9146c4f14054d4c85eaaff8bb984"
+)
 STAR_COMPREHENSIVE_COPAYMENT_REVIEWED_STATEMENT = (
     "Star Comprehensive applies a 10% co-payment to each and every claim for fresh as well as "
     "renewal policies where the insured person's age at entry is 61 years or above. The "
@@ -49,9 +55,9 @@ def _lineage(component_id: str) -> Lineage:
         source_artifact_path=(
             "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf"
         ),
-        source_artifact_sha256=STAR_COMPREHENSIVE_COPAYMENT_EVIDENCE_HASH,
+        source_artifact_sha256=STAR_COMPREHENSIVE_POLICY_WORDING_SHA256,
         governed_record_path=STAR_COMPREHENSIVE_COPAYMENT_BINDING_PATH,
-        governed_record_sha256=STAR_COMPREHENSIVE_COPAYMENT_EVIDENCE_HASH,
+        governed_record_sha256=STAR_COMPREHENSIVE_COPAYMENT_BINDING_SHA256,
         binding_reference=f"assertion:{STAR_COMPREHENSIVE_COPAYMENT_ASSERTION_ID}",
         projection_reference=f"conditional_obligation:{component_id}",
         lineage_status="VERIFIED",

@@ -24,6 +24,12 @@ ACTIV_ONE_SPECIFIED_WAITING_PERIOD_REFERENCE = "exclusion:D.1.2:specified-diseas
 ACTIV_ONE_SPECIFIED_WAITING_PERIOD_TEXT_HASH = (
     "3f37bee53387b02d831eab255e58e620a9ce7083a645dce0b48d6b4aa961df67"
 )
+ACTIV_ONE_POLICY_WORDING_SHA256 = (
+    "d7726811cfdf2c3c31c3750eb0bd4a55203b20cf79d44fc6849dbc77ba556451"
+)
+ACTIV_ONE_POLICY_INTELLIGENCE_SHA256 = (
+    "5bfb8781b45abfdb9fbf56b054fe7f63212a3b16bc5badace2a1de4fadb69206"
+)
 ACTIV_ONE_SPECIFIED_WAITING_PERIOD_STATEMENT = (
     "Expenses related to listed conditions, surgeries, or treatments are excluded until the "
     "expiry of 24 months of continuous coverage after inception of the first policy with the "
@@ -37,9 +43,9 @@ ACTIV_ONE_SPECIFIED_WAITING_PERIOD_STATEMENT = (
 def _lineage(component_id: str) -> Lineage:
     return Lineage(
         source_artifact_path=ACTIV_ONE_POLICY_WORDING_PATH,
-        source_artifact_sha256=ACTIV_ONE_SPECIFIED_WAITING_PERIOD_TEXT_HASH,
+        source_artifact_sha256=ACTIV_ONE_POLICY_WORDING_SHA256,
         governed_record_path=ACTIV_ONE_POLICY_INTELLIGENCE_PATH,
-        governed_record_sha256=ACTIV_ONE_SPECIFIED_WAITING_PERIOD_TEXT_HASH,
+        governed_record_sha256=ACTIV_ONE_POLICY_INTELLIGENCE_SHA256,
         binding_reference=ACTIV_ONE_SPECIFIED_WAITING_PERIOD_REFERENCE,
         projection_reference=f"waiting_period:{component_id}",
         lineage_status="VERIFIED",

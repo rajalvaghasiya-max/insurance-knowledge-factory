@@ -5,6 +5,7 @@ import pytest
 from insurance_intelligence.rule_certification.runner import run_rule_certification
 from insurance_intelligence.rule_certification.star_health_room_rent import (
     STAR_COMPREHENSIVE_POLICY_WORDING_SHA256,
+    STAR_COMPREHENSIVE_SOURCE_REGISTRATION_SHA256,
     STAR_COMPREHENSIVE_ROOM_RENT_CANDIDATE_ID,
     STAR_COMPREHENSIVE_ROOM_RENT_EVIDENCE_HASH,
     STAR_COMPREHENSIVE_ROOM_RENT_SOURCE_EXCERPT,
@@ -55,7 +56,7 @@ def test_star_room_rent_case_preserves_exact_primary_source_trace() -> None:
         assert evidence.section == "II.1 In-patient Treatment"
         assert STAR_COMPREHENSIVE_ROOM_RENT_CANDIDATE_ID in evidence.retrieval_basis
         assert evidence.lineage.source_artifact_sha256 == STAR_COMPREHENSIVE_POLICY_WORDING_SHA256
-        assert evidence.lineage.governed_record_sha256 == STAR_COMPREHENSIVE_ROOM_RENT_EVIDENCE_HASH
+        assert evidence.lineage.governed_record_sha256 == STAR_COMPREHENSIVE_SOURCE_REGISTRATION_SHA256
         assert evidence.source_excerpt == STAR_COMPREHENSIVE_ROOM_RENT_SOURCE_EXCERPT
 
 
