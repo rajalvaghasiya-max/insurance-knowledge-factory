@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_reverification_record_v1",
+  "entity_id": "bajaj_allianz_general:my_health_care",
+  "rule_id": "bajaj_mhc_initial_base_wait",
+  "reviewed_source_sha256": "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade",
+  "current_source_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+  "anchor_status": "REVERIFICATION_REQUIRED",
+  "initial_flow_state": "WITHHELD",
+  "initial_withhold_reason": "source_reverification_required",
+  "reverification_outcome": "CONFIRMED",
+  "final_flow_state": "CONTINUE",
+  "prior_semantic_fact_reusable": true,
+  "evidence_reference": "current policy wording SHA 05dc29132434, page 21 clause 3 and page 53 Table of Benefits",
+  "current_source_findings": {
+    "duration": {
+      "value": 30,
+      "unit": "DAYS"
+    },
+    "subject": "treatment of any Illness",
+    "start_basis": "first Policy commencement date",
+    "accident_exception": "claims arising due to an Accident, provided the same are covered",
+    "continuity_exception": "exclusion does not apply if the Insured Beneficiary has continuous coverage for more than 12 months",
+    "supporting_plan_value": "Initial Waiting period: 30 days"
+  },
+  "scope_guardrails": [
+    "This record reanchors only the bounded initial waiting-period rule.",
+    "Benefit-scoped 30-day waits for teleconsultation, consultation, and investigations remain separate.",
+    "No PED, specified-disease, migration, or other waiting-period residue is resolved by this record.",
+    "Reverification does not itself certify or publish the rule."
+  ]
+}
