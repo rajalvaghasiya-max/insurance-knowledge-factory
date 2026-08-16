@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "case_id": "activ_one_capacity_ordering_publication",
+  "description": "Bounded authoritative publication case for current Activ One capacity ordering semantics.",
+  "certification_case_path": "knowledge/factory/registry_backed/aditya_birla_health_activ_one/generic_rule_certification/capacity_ordering_eligibility_certification_case.json",
+  "publication_decision": {
+    "decision_id": "publication-decision:activ-one:capacity-ordering",
+    "requested_status": "PUBLISH",
+    "decision_reasons": [
+      "The current policy wording directly establishes the Base Sum Insured -> Super Credit -> Super Reload -> Cancer Booster utilization sequence.",
+      "The generic ordered-capacity evaluator derives bounded next-capacity and fail-closed traversal consequences without product-specific branching.",
+      "The certification explicitly excludes claim-payment, admissibility, and unrelated cost-sharing or benefit-stacking mechanics."
+    ],
+    "evidence_trace_references": [
+      "evidence:activ-one-capacity-ordering:eligibility-criteria",
+      "evidence:activ-one-capacity-ordering:applicability-scope",
+      "evidence:activ-one-capacity-ordering:eligible-consequence",
+      "evidence:activ-one-capacity-ordering:ineligible-consequence"
+    ],
+    "decision_authority": "Phase 2 governed bounded-capacity-ordering publication authority"
+  },
+  "governed_projection": {
+    "projection_id": "publication-projection:activ-one:capacity-ordering",
+    "semantic_components": [
+      {"component_id": "eligibility_criteria", "semantic_basis": "DERIVED", "evidence_references": ["evidence:activ-one-capacity-ordering:eligibility-criteria"], "derivation_references": ["derivation:activ-one-capacity-ordering:prior-capacity-exhaustion"]},
+      {"component_id": "applicability_scope", "semantic_basis": "ASSERTED", "evidence_references": ["evidence:activ-one-capacity-ordering:applicability-scope"], "derivation_references": []},
+      {"component_id": "eligible_consequence", "semantic_basis": "DERIVED", "evidence_references": ["evidence:activ-one-capacity-ordering:eligible-consequence"], "derivation_references": ["derivation:activ-one-capacity-ordering:next-capacity"]},
+      {"component_id": "ineligible_consequence", "semantic_basis": "DERIVED", "evidence_references": ["evidence:activ-one-capacity-ordering:ineligible-consequence"], "derivation_references": ["derivation:activ-one-capacity-ordering:fail-closed-traversal"]}
+    ]
+  },
+  "authoritative_publication": {
+    "publication_id": "authoritative-publication:activ-one:capacity-ordering",
+    "publication_authority": "Phase 2 governed authoritative bounded-capacity-ordering publication authority"
+  },
+  "guardrails": [
+    "This publication is limited to ordered capacity traversal for the current Activ One source.",
+    "It does not calculate claim payment, payable amount, or overall claim admissibility.",
+    "It does not assert optional Super Credit or Cancer Booster applicability when unresolved.",
+    "It does not establish copay, deductible, waiting-period, or arbitrary benefit-stacking order.",
+    "A selected next capacity is not a guarantee of payment or entitlement."
+  ]
+}
