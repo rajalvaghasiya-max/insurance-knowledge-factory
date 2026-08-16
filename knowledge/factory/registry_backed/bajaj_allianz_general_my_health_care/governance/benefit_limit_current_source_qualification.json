@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "record_type": "phase_2_bajaj_benefit_limit_current_source_qualification_v1",
+  "entity_id": "bajaj_allianz_general:my_health_care",
+  "uin": "BAJHLIP26074V022526",
+  "current_source": {
+    "source_artifact_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc29132434.pdf",
+    "sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+    "currentness_state": "current_observed_reviewed"
+  },
+  "candidate_reviews": [
+    {
+      "candidate_id": "bajaj_mhc_family_visit_limit",
+      "page": 52,
+      "status": "REJECTED_FOR_BOUNDED_CERTIFICATION",
+      "explicit_semantics": {
+        "covered_subject": "Family Visit",
+        "limit_value": [
+          "For Sum Insured up to INR 10 lakh: up to INR 25,000",
+          "For Sum Insured more than INR 10 lakh: up to INR 50,000"
+        ],
+        "applicability_scope": "Sum Insured band"
+      },
+      "unresolved_required_semantics": [
+        "limit_basis"
+      ],
+      "reason": "The reviewed current-source excerpt establishes the benefit and Sum Insured-band ceilings but does not establish whether the monetary ceiling applies per visit, per policy year, aggregate, or another basis. The generic coverage_limit contract requires limit_basis, so the candidate fails closed."
+    },
+    {
+      "candidate_id": "bajaj_mhc_cataract_surgery_limit",
+      "page": 38,
+      "status": "QUALIFIED_FOR_BOUNDED_CERTIFICATION",
+      "explicit_semantics": {
+        "covered_subject": "Surgeries for cataracts after expiry of the waiting period specified in the Policy Schedule",
+        "limit_value": [
+          "For Sum Insured up to INR 10 lakh: 20% of Sum Insured, maximum INR 1 lakh",
+          "For Sum Insured above INR 10 lakh: Actual"
+        ],
+        "limit_basis": "per eye",
+        "applicability_scope": "Sum Insured band; cataract surgery; after expiry of the waiting period specified in the Policy Schedule"
+      },
+      "source_excerpt": "Our obligation to make payment in respect of surgeries for cataracts (after the expiry of the waiting period as specified in the Policy Schedule) shall be as specified in the Policy Schedule. For SI up to 10 Lac- 20% of SI max 1 Lac per eye. For SI above 10 Lac– Actual.",
+      "qualification_notes": [
+        "The limit basis is explicit as per eye for the capped band.",
+        "The two Sum Insured applicability bands are explicit.",
+        "The waiting-period dependency is preserved as applicability context and is not resolved or published by this record.",
+        "Actual for Sum Insured above INR 10 lakh is preserved verbatim and is not normalized to NO_LIMIT."
+      ]
+    }
+  ],
+  "decision": {
+    "selected_candidate_id": "bajaj_mhc_cataract_surgery_limit",
+    "generic_topic_id": "coverage_limit",
+    "new_semantic_abstraction_required": false,
+    "product_specific_production_reasoning_required": false,
+    "publication_scope": "bounded selected coverage-limit rule only"
+  },
+  "unresolved_residue": [
+    "Family Visit limit basis",
+    "cataract waiting-period schedule value",
+    "other Bajaj benefit limits on page 52 and elsewhere",
+    "whole-product governed readiness"
+  ]
+}
