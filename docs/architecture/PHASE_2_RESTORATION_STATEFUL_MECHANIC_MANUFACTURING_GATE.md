@@ -1,13 +1,13 @@
 # Phase 2 — Restoration Stateful-Mechanic Manufacturing Pressure Gate
 
-**Status:** ACTIVE — CURRENT-SOURCE QUALIFICATION COMPLETE; GENERIC EVALUATOR EXECUTION PROOF REQUIRED  
+**Status:** CERTIFIED AND FROZEN — BOUNDED STATE DERIVATION AND RULE-SHAPE PORTABILITY PROVEN  
 **Date:** 2026-08-16
 
 ## Purpose
 
-Test whether PolicyScna can manufacture a current-source restoration/reinstatement rule as governed declarative parameters, execute it through an insurer-independent state evaluator, derive claim-sequence consequences from governed timing semantics, and publish only the resolved bounded mechanics.
+Test whether PolicyScna can manufacture a current-source restoration/reinstatement rule as governed declarative parameters, execute it through an insurer-independent state evaluator, derive claim-sequence consequences from governed source semantics, and publish only the resolved bounded mechanics.
 
-This is not a Bajaj restoration subsystem. It is the first deliberate pressure case where the governed rule describes a state function rather than a static assertion.
+This gate is not a Bajaj restoration subsystem and is not a claims-adjudication engine. It is the first deliberate pressure case where the governed rule describes a state function rather than only a static assertion.
 
 ## Primary pressure case
 
@@ -18,186 +18,228 @@ current governed source SHA-256:
 05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158
 ```
 
-Every Bajaj restoration proposition in this gate is re-derived from current `05dc...`. Historical Star/Activ One restoration implementations may be reused only as representation pressure/context, never as current Bajaj truth.
+All Bajaj restoration propositions in this gate were re-derived from current `05dc...`. Historical Star/Activ One restoration implementations were used only as representation pressure/context, never as current Bajaj truth.
 
 ## Current-source qualification
 
-Operative wording is on page 17 under `15. Sum Insured Reinstatement`.
-
-Resolved asserted semantics:
+Operative wording on page 17 under `15. Sum Insured Reinstatement` establishes:
 
 ```text
-reinstated SI use              = subsequent claim
-minimum subsequent gap         = 15 days from discharge
-other-beneficiary gap exception= yes
-covered section                = Inpatient Hospitalization Treatment
-maximum liability per claim    = Inpatient Hospitalization Sum Insured
-carry forward                  = no
-floater operation              = policy level
-individual operation           = insured-beneficiary level
+reinstated SI use               = subsequent claim
+minimum subsequent gap          = 15 days from discharge
+other-beneficiary gap exception = yes
+covered section                 = Inpatient Hospitalization Treatment
+maximum liability per claim     = Inpatient Hospitalization Sum Insured
+carry forward                   = no
+floater operation               = policy level
+individual operation            = insured-beneficiary level
 ```
 
-Page 52 independently establishes the recurrence bands:
+Page 52 establishes recurrence bands:
 
 ```text
 SI < INR 5 lakh  -> once
 SI >= INR 5 lakh -> unlimited
 ```
 
-The page-52 parenthetical `(Available for same illness)` remains scope-sensitive and is not silently promoted to a clean same-illness Boolean.
+The page-52 parenthetical `(Available for same illness)` remains scope-sensitive and was not silently promoted into a broad same-illness rule.
 
-Current unresolved semantics include:
-
-- exact activation trigger;
-- restored amount/percentage;
-- exact scope of same-illness use;
-- different-illness rule if not independently established;
-- bonus participation;
-- any mechanics not explicitly supported by the current source.
-
-Qualification is materialized at:
+Qualification record:
 
 ```text
 knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/restoration_stateful_mechanic_current_source_qualification.json
 ```
 
-## Asserted versus derived state result
+## Asserted versus derived semantics
 
-The current source explicitly says reinstated SI is available for a **subsequent claim** and normally requires a gap measured from discharge.
+The source explicitly states that reinstated SI is available for a **subsequent claim** and normally only after a gap measured from discharge.
 
-Therefore the headline triggering-claim result is derived rather than invented:
+The generic evaluator therefore derives:
 
 ```text
 triggering_claim_can_consume_reinstatement = false
-provenance = DERIVED_FROM_GOVERNED_ASSERTED_SEMANTICS
+semantic_basis = DERIVED
 ```
 
-This derivation does not require the unresolved activation trigger to be guessed. A negative triggering-claim usability result follows from the resolved effective-point/claim-sequence constraint.
-
-## Non-optional headline acceptance scenario
+For the headline acceptance scenario:
 
 ```text
-Base Sum Insured: INR 10 lakh
-Single first hospitalization claim: INR 15 lakh
-Prior restorations: 0
-Question: can restored SI fund the INR 5 lakh overflow on the triggering claim?
+Base SI                    = INR 10 lakh
+single first hospitalization claim = INR 15 lakh
+prior restorations         = 0
 ```
 
-Expected bounded state result from current wording:
+the bounded result is:
 
 ```text
 REINSTATEMENT_NOT_USABLE_FOR_TRIGGERING_CLAIM_OVERFLOW
 ```
 
-This does not decide overall claim payment or other benefits.
+This conclusion does not decide total claim admissibility, payment, or other benefits.
 
-## Existing architecture pressure result
+Governed derivation record:
 
-The existing governed restoration concept already distinguishes descriptive dimensions such as trigger requirement/timing, same-hospitalization use, subsequent-hospitalization use, recurrence and other mechanics.
+```text
+knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/restoration_triggering_claim_derivation.json
+```
 
-However, no insurer-independent executable restoration state evaluator was found. Existing product implementations describe mechanics but do not execute claim-state transitions.
+## Outcome-C architecture gap found and closed
 
-Current-source pressure therefore justified the smallest generic runtime addition:
+The repository already contained a governed restoration concept and descriptive mechanic dimensions, but no insurer-independent executable restoration state evaluator.
+
+Current-source pressure therefore justified the smallest generic addition:
 
 ```text
 insurance_intelligence/benefits/restoration_state.py
 ```
 
-The evaluator is intentionally bounded to closed declarative semantics for claim sequence, trigger-resolution state, recurrence bands, hospitalization-gap rules, illness-relationship rules and covered-section scope. It does not calculate claim payment or restored amount.
+The evaluator is bounded to closed declarative semantics for:
 
-## Data/logic boundary — mechanical falsifier
+- claim sequence;
+- activation-trigger resolution/satisfaction state;
+- activation effective point;
+- recurrence bands;
+- subsequent-hospitalization gap;
+- illness-relationship rule state;
+- covered-section scope.
 
-The evaluator contains no insurer/product identity branch and accepts only a closed vocabulary.
+It does **not** calculate claim payment, restored amount, arbitrary expressions, or product-specific algorithms.
 
-A second materially different non-product conformance rule must execute through the same evaluator unchanged. The current contrast fixture uses:
+## Data/logic boundary — mechanically falsified
+
+The evaluator contains no insurer/product identity branch and does not interpret free-form logic.
+
+A materially different non-product conformance rule executes through the same evaluator unchanged. That contrast shape includes:
 
 ```text
-activation trigger state    = resolved
 activation effective point  = within triggering claim
 frequency                   = once
 same-illness subsequent use = not allowed
 different-illness use       = allowed
-SI bands                    = none / one universal band
+one universal SI band
 ```
 
-This is intentionally different from the current Bajaj shape.
+The focused suite also rejects arbitrary embedded activation expressions and overlapping SI bands.
 
-Free-form embedded algorithms such as:
+This proves **rule-shape portability**, not real cross-insurer restoration generalization.
 
-```text
-if base_si_exhausted and previous_restorations < ...
-```
-
-are rejected by the contract rather than interpreted.
-
-A synthetic contrast pass proves rule-shape portability only. It is not real cross-insurer restoration proof.
-
-## Counterfactual execution currently covered
-
-The focused evaluator test suite requires:
-
-- Bajaj triggering claim -> NOT_ELIGIBLE for reinstatement consumption, derived from `SUBSEQUENT_CLAIM_ONLY`;
-- Bajaj subsequent same-illness claim -> remains UNRESOLVED while trigger and parenthetical illness scope are unresolved;
-- Bajaj SI below INR 5 lakh after one prior restoration -> NOT_ELIGIBLE because recurrence is exhausted;
-- contrast rule triggering claim -> ELIGIBLE when its resolved trigger is satisfied and effective point allows within-claim use;
-- contrast rule same-illness subsequent claim -> NOT_ELIGIBLE from its data-only illness rule;
-- arbitrary activation expression -> contract rejection;
-- overlapping SI bands -> contract rejection.
-
-## Safety property for positive results
+## Positive-result safety
 
 A positive eligibility result requires both:
 
 1. a resolved activation-trigger rule; and
 2. claim-state evidence that the trigger is satisfied.
 
-If either is unknown, positive eligibility remains unresolved.
+If either is unresolved, positive eligibility remains unresolved.
 
-A negative triggering-claim result may still be derived when claim-sequence semantics independently rule out use on the triggering claim.
+A negative triggering-claim result may still be derived when governed claim-sequence semantics independently rule out use on the triggering claim.
 
-## Explicit exclusions / residue
+## Publication provenance hardening
 
-The gate also preserves current-source exclusions:
+Stateful publication exposed a second generic governance gap: authoritative publication previously could not distinguish direct source assertions from derived evaluator conclusions.
 
-- Organ donor expenses: reinstatement/recharge does not apply;
-- International Cover — Emergency Care only: reinstatement/recharge cannot be used for payment.
+The authoritative publication semantic-component contract was extended backward-compatibly so that:
 
-The gate does not resolve or publish:
+```text
+semantic_basis = ASSERTED | DERIVED
+```
 
-- restoration amount;
+Existing static publication components default to `ASSERTED`.
+
+A `DERIVED` semantic component must carry explicit derivation trace references. This prevents evaluator conclusions from masquerading as literal source wording.
+
+## Generic certification/publication path
+
+The bounded restoration claim-sequence mechanic was certified through the existing generic:
+
+```text
+eligibility_and_consequence
+```
+
+topic, then passed through the existing generic publication-decision and authoritative-publication gates.
+
+Only bounded claim-sequence semantics were published. The authoritative projection preserves the derived basis of the triggering-claim consequence.
+
+## Explicit unresolved residue
+
+This gate does not resolve or publish:
+
 - exact activation trigger;
-- same-illness scope while parenthetical scope remains unresolved;
-- arbitrary restoration/bonus coupling;
+- restored amount/percentage;
+- exact scope of the same-illness parenthetical;
+- different-illness relationship where not independently established;
+- bonus participation;
+- arbitrary restoration/copay/deductible ordering;
 - claim adjudication.
 
-## Gate falsifiers
+Current-source exclusions also remain explicit:
 
-- any Bajaj fact inherited from a non-current source;
-- trigger/activation/availability/consumption collapsed;
-- same-claim result marked unknown despite sufficient governed sequence evidence;
-- same-claim result inferred without sufficient sequence evidence;
-- contrast conformance rule requires evaluator code modification;
-- evaluator contains insurer/product identity-bearing branches;
-- product data embeds arbitrary executable logic;
-- positive eligibility despite unresolved/unsatisfied activation trigger;
-- any counterfactual state vector produces an incorrect result;
-- unresolved mechanics leak into publication;
-- a bounded pass is promoted to arbitrary restoration or claims-adjudication capability.
+- Organ donor expenses exclude reinstatement/recharge applicability;
+- International Cover — Emergency Care only excludes reinstatement/recharge use for payment.
+
+## Counterfactual and focused execution evidence
+
+Focused state evaluator suite:
+
+```text
+7 passed
+```
+
+Focused evaluator + asserted/derived publication + bounded Bajaj certification/publication suite:
+
+```text
+18 passed
+```
+
+Key counterfactuals include:
+
+- Bajaj triggering claim -> NOT_ELIGIBLE for reinstatement consumption;
+- Bajaj later claim -> unresolved while activation trigger/scope remain unresolved;
+- SI below INR 5 lakh after one restoration -> NOT_ELIGIBLE because recurrence is exhausted;
+- contrast rule triggering claim -> ELIGIBLE when its resolved trigger is satisfied and within-claim use is allowed;
+- contrast same-illness later claim -> NOT_ELIGIBLE from data-only relationship rule.
+
+## Regression closure
+
+Final local regression evidence reported on 2026-08-16:
+
+```text
+insurance_intelligence : 2927 passed
+factory_core           : 148 passed
+health                 : 124 passed
+failures               : 0
+```
 
 ## Pass conditions
 
-1. Current-source integrity — PASS so far.
-2. Semantic preservation across trigger, activation and consumption sequence — PASS so far.
-3. Data/logic boundary mechanically tested by second-shape conformance rule — IMPLEMENTED; execution proof pending.
-4. Counterfactual execution through one generic evaluator — IMPLEMENTED; execution proof pending.
-5. Bounded publication of resolved semantics only — PENDING.
+1. Current-source integrity — **PASS**.
+2. Semantic preservation across trigger, activation and claim-sequence consumption — **PASS**.
+3. Data/logic boundary mechanically tested by second-shape conformance rule — **PASS**.
+4. Counterfactual execution through one generic evaluator — **PASS**.
+5. Bounded publication of resolved semantics only, with asserted/derived provenance preserved — **PASS**.
 
-## Claim boundary at closure
+## Final certification
 
-A clean Bajaj + contrast-fixture pass may prove that PolicyScna can execute materially different restoration rule shapes without product-specific evaluator code.
+**CERTIFIED AND FROZEN.**
 
-It must **not** be described as proof of cross-insurer restoration generalization, arbitrary stateful interactions, copay/restoration ordering, bonus/restoration coupling, or claims adjudication.
+This gate proves that PolicyScna can:
 
-## Immediate next action
+- represent a bounded state-dependent insurance mechanic as governed declarative parameters;
+- execute materially different restoration rule shapes through one insurer-independent evaluator without product-specific branching;
+- derive claim-sequence consequences from governed source semantics;
+- preserve `ASSERTED` versus `DERIVED` provenance through authoritative publication;
+- fail closed on unresolved activation mechanics;
+- publish only the bounded resolved result.
 
-Run the focused generic restoration-state evaluator tests. If green, inspect whether the resolved/derived bounded mechanics can enter the existing generic certification/publication path without publishing the unresolved activation trigger, restored amount or illness-scope residue.
+This gate does **not** prove:
+
+- real cross-insurer restoration generalization;
+- arbitrary stateful insurance interactions;
+- copay/restoration ordering;
+- bonus/restoration coupling;
+- deductible/restoration ordering;
+- general claims adjudication.
+
+A second current-governed insurer restoration rule is required before claiming real cross-insurer restoration generalization.
+
+No further tuning is authorized under this frozen gate.
