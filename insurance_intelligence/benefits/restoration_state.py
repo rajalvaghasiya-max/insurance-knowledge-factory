@@ -8,7 +8,6 @@ product identity.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Literal
 
 
 EFFECTIVE_POINTS = frozenset({"SUBSEQUENT_CLAIM_ONLY", "WITHIN_TRIGGERING_CLAIM"})
@@ -168,6 +167,7 @@ class RestorationClaimState:
     claim_sequence: str
     claim_section: str
     prior_restorations_used: int
+    activation_trigger_satisfied: bool | None = None
     days_since_prior_discharge: int | None = None
     other_insured_beneficiary: bool = False
     illness_relationship: str = "UNKNOWN"
@@ -192,6 +192,12 @@ class RestorationClaimState:
         ) or self.prior_restorations_used < 0:
             raise RestorationStateContractError(
                 "prior_restorations_used must be a non-negative integer"
+            )
+        if self.activation_trigger_satisfied is not None and not isinstance(
+            self.activation_trigger_satisfied, bool
+        ):
+            raise RestorationStateContractError(
+                "activation_trigger_satisfied must be boolean or None"
             )
         if self.days_since_prior_discharge is not None:
             if isinstance(self.days_since_prior_discharge, bool) or not isinstance(
@@ -267,6 +273,13 @@ def evaluate_restoration_state(
     if state.claim_section != rule.covered_section:
         failed.append("CLAIM_SECTION_NOT_COVERED")
 
+    if rule.activation_trigger_state == "UNRESOLVED":
+        unresolved.append("ACTIVATION_TRIGGER_UNRESOLVED")
+    elif state.activation_trigger_satisfied is None:
+        unresolved.append("ACTIVATION_TRIGGER_SATISFACTION_UNRESOLVED")
+    elif state.activation_trigger_satisfied is False:
+        failed.append("ACTIVATION_TRIGGER_NOT_SATISFIED")
+
     if state.claim_sequence == "TRIGGERING":
         if rule.activation_effective_point == "SUBSEQUENT_CLAIM_ONLY":
             failed.append("TRIGGERING_CLAIM_CANNOT_CONSUME_RESTORATION")
@@ -274,9 +287,6 @@ def evaluate_restoration_state(
                 "Derived from activation_effective_point=SUBSEQUENT_CLAIM_ONLY."
             )
     else:
-        if rule.activation_trigger_state == "UNRESOLVED":
-            unresolved.append("ACTIVATION_TRIGGER_UNRESOLVED")
-
         if rule.subsequent_claim_min_gap_days is not None and not (
             rule.other_beneficiary_gap_exempt and state.other_insured_beneficiary
         ):
