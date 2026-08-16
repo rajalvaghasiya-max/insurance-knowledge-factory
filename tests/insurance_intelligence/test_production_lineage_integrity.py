@@ -18,6 +18,9 @@ from insurance_intelligence.rule_certification.star_health import (
 from insurance_intelligence.rule_certification.star_health_bariatric_surgery import (
     build_star_comprehensive_bariatric_surgery_case,
 )
+from insurance_intelligence.rule_certification.star_health_initial_waiting_period import (
+    build_star_comprehensive_initial_waiting_period_case,
+)
 from insurance_intelligence.rule_certification.star_health_room_rent import (
     build_star_comprehensive_room_rent_case,
 )
@@ -55,6 +58,7 @@ def test_star_registration_backed_cases_use_document_and_registration_hashes() -
     for case in (
         build_star_comprehensive_room_rent_case(),
         build_star_comprehensive_bariatric_surgery_case(),
+        build_star_comprehensive_initial_waiting_period_case(),
     ):
         _assert_case_lineage(case, STAR_COMPREHENSIVE_POLICY_WORDING_SHA256)
 

@@ -1,0 +1,75 @@
+{
+  "milestone": "P2_STAR_INITIAL_WAITING_PERIOD_MANUFACTURING",
+  "status": "CLOSED_PENDING_MERGE",
+  "product": {
+    "entity_id": "star_health:star_comprehensive",
+    "product_name": "Star Comprehensive Insurance Policy",
+    "uin": "SHAHLIP26044V092526"
+  },
+  "authoritative_source": {
+    "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+    "registration_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+    "document_id": "star_health_star_comprehensive_policy_wording_v1",
+    "document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+    "content_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+    "candidate_id": "candidate_page_32",
+    "source_page": 32,
+    "printed_page": "31 / 47",
+    "text_sha256": "214466445fab2fd7fec30d951696479d4999bfc74aea13af40a1b80eddef77eb",
+    "section": "III.3 30-day waiting period - Code Excl 03"
+  },
+  "source_proven_components": [
+    {
+      "component_id": "waiting_period_duration",
+      "requirement_type": "WAITING_PERIOD_DURATION",
+      "required_fragments": ["30-day waiting period", "within 30 days"]
+    },
+    {
+      "component_id": "waiting_period_subject",
+      "requirement_type": "WAITING_PERIOD_SUBJECT",
+      "required_fragments": ["Expenses related to the treatment of any illness"]
+    },
+    {
+      "component_id": "start_basis",
+      "requirement_type": "WAITING_PERIOD_START_BASIS",
+      "required_fragments": ["first policy commencement date"]
+    },
+    {
+      "component_id": "applicability_scope",
+      "requirement_type": "APPLICABILITY_SCOPE",
+      "required_fragments": ["applicable to the enhanced Sum Insured", "granting higher Sum Insured subsequently"]
+    },
+    {
+      "component_id": "continuity_or_credit_rule",
+      "requirement_type": "CONTINUITY_OR_CREDIT_RULE",
+      "required_fragments": ["Continuous Coverage for more than twelve months"]
+    },
+    {
+      "component_id": "exception_condition",
+      "requirement_type": "EXCEPTION_CONDITION",
+      "required_fragments": ["except claims arising due to an accident", "provided the same are covered"]
+    }
+  ],
+  "withheld_inferences": [
+    {
+      "inference": "exact_first_active_calendar_date",
+      "classification": "FOUND_BUT_BOUNDARY_CONVENTION_NOT_PROVEN",
+      "reason": "The current wording states 'within 30 days from' but does not define an executable inclusive or exclusive calendar-boundary convention.",
+      "action": "DO_NOT_AUTOMATE_TIMELINE"
+    },
+    {
+      "inference": "accident_claim_is_covered",
+      "classification": "CONDITIONAL_ONLY",
+      "reason": "The source qualifies the accident exception with 'provided the same are covered'.",
+      "action": "DO_NOT_ASSERT_COVERAGE_OR_PAYMENT"
+    }
+  ],
+  "decision": {
+    "existing_generic_waiting_period_fit": "CONFIRMED",
+    "new_runtime_architecture": "NOT_AUTHORIZED",
+    "new_timeline_convention": "NOT_AUTHORIZED",
+    "manufactured_artifact": "GOVERNED_RULE_CERTIFICATION_CASE",
+    "customer_facing_publication": "NOT_AUTHORIZED_BY_THIS_MILESTONE",
+    "next_milestone": "Bajaj explicit scoped copayment manufacturing"
+  }
+}
