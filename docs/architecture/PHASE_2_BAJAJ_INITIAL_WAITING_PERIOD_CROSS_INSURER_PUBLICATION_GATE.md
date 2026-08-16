@@ -1,6 +1,6 @@
 # Phase 2 — Bajaj Initial Waiting-Period Cross-Insurer Publication Gate
 
-**Status:** ACTIVE — STALE-ANCHOR SAFEGUARD IMPLEMENTED; CURRENT-SOURCE REVERIFICATION PENDING  
+**Status:** CERTIFIED AND FROZEN  
 **Date:** 2026-08-16
 
 ## Purpose
@@ -17,7 +17,7 @@ Candidate atomic rule:
 bajaj_mhc_initial_base_wait
 ```
 
-Historical reviewed mapping describes:
+Historical reviewed mapping described:
 
 ```text
 waiting_period_type = INITIAL
@@ -27,19 +27,20 @@ subject             = illness treatment
 exception           = accident claims
 ```
 
-The existing generic topic catalogue already represents this through `waiting_period` components:
+The existing generic topic catalogue represents this through `waiting_period` components:
 
 - `waiting_period_duration`
 - `waiting_period_subject`
 - `start_basis`
 - `applicability_scope`
-- optional `exception_condition`
+- `continuity_or_credit_rule`
+- `exception_condition`
 
-No new semantic abstraction is justified by this candidate.
+No new semantic abstraction was required.
 
 ## Critical provenance boundary
 
-The detailed MO-028B Bajaj waiting-period atomic inventory and reviewed mapping are bound to historical source SHA:
+The detailed historical Bajaj waiting-period mapping was anchored to:
 
 ```text
 9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade
@@ -53,11 +54,11 @@ UIN     = BAJHLIP26074V022526
 state   = current_observed_reviewed
 ```
 
-Therefore the historical reviewed 30-day rule MUST NOT be promoted as current governed truth until the same proposition is independently reverified against the current `05dc...` bytes.
+The historical reviewed proposition was therefore not promoted as current truth until independently reverified against the current `05dc...` source.
 
 ## Generic stale-anchor safeguard
 
-Independent review identified a manufacturing-scale weakness: the correct historical/current SHA mismatch was noticed manually, but repeated manufacturing needs the mismatch to fail closed mechanically.
+Independent review identified a manufacturing-scale weakness: the correct historical/current SHA mismatch had been noticed manually, but repeated manufacturing required the mismatch to fail closed mechanically.
 
 Implemented generic contract:
 
@@ -65,7 +66,7 @@ Implemented generic contract:
 factory_core/governance/source_reverification.py
 ```
 
-The contract contains no insurer/product-specific decision logic. It compares a reviewed semantic artifact's immutable source SHA with the current governed source SHA.
+The contract contains no insurer/product-specific decision logic.
 
 ```text
 same SHA
@@ -87,17 +88,9 @@ NOT_PRESENT
 AMBIGUOUS
 ```
 
-Only `CONFIRMED` permits the prior semantic proposition to continue unchanged. The other outcomes remain positively withheld:
+Only `CONFIRMED` permits the prior semantic proposition to continue unchanged. The other outcomes remain positively withheld.
 
-```text
-DIFFERS     -> current_source_differs_semantic_review_required
-NOT_PRESENT -> current_source_proposition_not_present
-AMBIGUOUS   -> current_source_reverification_ambiguous
-```
-
-This keeps reverification from becoming a confirmation ritual. A changed current rule is new semantic-review work, not a successful confirmation of historical truth.
-
-The real Bajaj SHA transition is used only as a test pressure case:
+The real Bajaj transition is covered as the pressure case:
 
 ```text
 9479... -> 05dc... -> REVERIFICATION_REQUIRED / WITHHELD
@@ -105,33 +98,131 @@ The real Bajaj SHA transition is used only as a test pressure case:
 
 Production logic remains insurer-independent.
 
-## Gate sequence
+## Current-source reverification result
 
-1. Locate/parse the current `05dc...` policy wording through the existing governed source path.
-2. Apply the generic source-anchor contract to the historical reviewed mapping.
-3. Reverify the initial-wait duration, subject, start basis, scope, and accident exception from current-source evidence.
-4. Record one of `CONFIRMED / DIFFERS / NOT_PRESENT / AMBIGUOUS` with a concrete current evidence reference.
-5. Only if current evidence confirms the bounded proposition, materialize one governed rule-certification case as data using the existing insurer-independent case loader and `waiting_period` topic definition.
-6. Run the existing generic RuleCertificationRunner.
-7. Pressure the existing publication-decision and authoritative-publication gates.
-8. Keep any unrelated Bajaj waiting-period residue unresolved; publishing one bounded rule must not imply product-wide waiting-period completeness.
-9. Run focused and broader regressions.
+The current `05dc...` policy wording independently confirms the bounded initial-wait rule on page 21, with the plan value also corroborated on page 53.
 
-## Acceptance criteria
+Governed outcome:
 
-- current immutable source SHA `05dc...` is the authoritative evidence source;
-- historical `9479...` artifacts are used only as prior/historical locators, never current proof;
-- stale source anchors are mechanically classified `REVERIFICATION_REQUIRED` and positively withheld;
-- reverification has explicit fail-closed outcomes and a concrete evidence reference;
-- the bounded initial-wait rule is fully represented with no semantic loss if current evidence confirms it;
-- accident exception is preserved explicitly if present in current evidence;
-- no Bajaj-specific production reasoning code is added;
-- no new ontology abstraction unless current-source pressure proves a real generic gap;
-- certification/publication is scoped to this rule only;
-- unresolved PED/specific-disease/schedule-bound residue remains unresolved;
-- no whole-product readiness or publication claim is inferred;
-- relevant regressions remain green.
+```text
+reverification_outcome = CONFIRMED
+```
 
-## Current conclusion
+The bounded current semantics are:
 
-The candidate remains architecturally suitable. The stale-anchor safeguard is now implemented generically; publication work remains blocked until the current `05dc...` source itself establishes the rule outcome. That blocker is explicit, auditable, and resumable rather than an implicit absence.
+```text
+Initial wait       : 30 days
+Subject            : expenses related to treatment of any Illness
+Start              : first Policy commencement date
+Accident exception : accident claims, if otherwise covered
+Continuity rule    : exclusion does not apply after >12 months continuous coverage
+```
+
+The current-source re-verification is materialized at:
+
+```text
+knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/governance/initial_waiting_period_source_reverification.json
+```
+
+Historical `9479...` evidence remains historical only and is not used as current proof.
+
+## Generic rule certification
+
+A data-only certification case was materialized at:
+
+```text
+knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_rule_certification/initial_waiting_period_certification_case.json
+```
+
+The unchanged generic rule-certification loader and runner were used.
+
+Result:
+
+```text
+outcome      = PASS
+completeness = COMPLETE
+explanation  = permitted
+```
+
+All six bounded semantic components are satisfied and anchored only to current source SHA `05dc...`.
+
+The certification deliberately preserves the limitation that unrelated Bajaj waiting-period residue remains unresolved.
+
+## Publication decision and authoritative publication
+
+The same certified governed-data case was passed through the existing generic P2.3 publication-decision evaluator and P2.4 authoritative-publication gate.
+
+No Bajaj-specific production publication module was added.
+
+The bounded rule successfully reached authoritative publication while preserving the certification limitations and evidence traces.
+
+This publication applies only to the certified initial waiting-period rule. It does not publish or resolve:
+
+- PED waiting periods;
+- specified disease/procedure waiting periods;
+- teleconsultation waiting periods;
+- investigation-benefit waiting periods;
+- schedule-bound waiting-period values;
+- whole-product waiting-period completeness;
+- whole-product governed readiness.
+
+## What this gate proves
+
+This gate establishes a meaningful second-insurer manufacturing proof:
+
+```text
+current governed source
+-> stale-anchor detection/reverification
+-> governed semantic evidence
+-> generic rule certification
+-> generic publication decision
+-> generic authoritative publication
+```
+
+The pipeline handled Bajaj without a new ontology abstraction and without Bajaj-specific production reasoning.
+
+This proves cross-insurer reuse for this semantic shape and governance path. It does not claim that every future insurance semantic pattern is already solved.
+
+## Regression evidence
+
+Focused source-reverification + Bajaj certification/publication suite:
+
+```text
+15 passed
+```
+
+Broader regressions:
+
+```text
+factory_core             : 148 passed
+health                   : 124 passed
+insurance_intelligence   : 2909 passed
+failures                 : 0
+```
+
+## Acceptance criteria closure
+
+- current immutable source SHA `05dc...` used as authoritative evidence source — PASS;
+- historical `9479...` retained only as historical locator — PASS;
+- stale source anchors mechanically fail closed — PASS;
+- explicit reverification outcomes available — PASS;
+- current proposition independently reverified — PASS (`CONFIRMED`);
+- bounded rule represented without semantic loss — PASS;
+- accident exception preserved — PASS;
+- >12-month continuous-coverage exception preserved — PASS;
+- zero Bajaj-specific production reasoning code — PASS;
+- no new ontology abstraction — PASS;
+- generic certification reused — PASS;
+- generic publication decision reused — PASS;
+- generic authoritative-publication gate reused — PASS;
+- unrelated waiting-period residue remains unresolved — PASS;
+- no whole-product readiness/publication inference — PASS;
+- regressions green — PASS.
+
+## Final conclusion
+
+**CERTIFIED AND FROZEN.**
+
+The Bajaj initial waiting-period pressure case has demonstrated that PolicyScna can manufacture one bounded, current, governed insurance rule for a second insurer through the existing generic certification and publication architecture without introducing product-specific production reasoning.
+
+No further tuning of this gate is justified. Future work should apply the manufacturing pattern to additional real Health knowledge pressure rather than optimize this completed proof.
