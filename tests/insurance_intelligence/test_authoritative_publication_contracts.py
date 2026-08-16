@@ -65,8 +65,48 @@ def test_component_requires_evidence_and_is_frozen():
             component_id="limit_value", status="SATISFIED", evidence_references=()
         )
     item = component()
+    assert item.semantic_basis == "ASSERTED"
+    assert item.derivation_references == ()
     with pytest.raises(FrozenInstanceError):
         item.status = "CHANGED"  # type: ignore[misc]
+
+
+def test_derived_component_requires_derivation_trace():
+    with pytest.raises(AuthoritativePublicationContractError, match="require derivation_references"):
+        build_governed_semantic_component(
+            component_id="ineligible_consequence",
+            status="SATISFIED",
+            evidence_references=("evidence:claim-sequence",),
+            semantic_basis="DERIVED",
+        )
+
+    item = build_governed_semantic_component(
+        component_id="ineligible_consequence",
+        status="SATISFIED",
+        evidence_references=("evidence:claim-sequence",),
+        semantic_basis="DERIVED",
+        derivation_references=("derivation:restoration:triggering-claim",),
+    )
+    assert item.semantic_basis == "DERIVED"
+    assert item.derivation_references == ("derivation:restoration:triggering-claim",)
+
+
+def test_asserted_component_rejects_derivation_trace_and_unknown_basis():
+    with pytest.raises(AuthoritativePublicationContractError, match="must not carry derivation_references"):
+        build_governed_semantic_component(
+            component_id="eligibility_criteria",
+            status="SATISFIED",
+            evidence_references=("evidence:eligibility",),
+            semantic_basis="ASSERTED",
+            derivation_references=("derivation:unexpected",),
+        )
+    with pytest.raises(AuthoritativePublicationContractError, match="semantic_basis"):
+        build_governed_semantic_component(
+            component_id="eligibility_criteria",
+            status="SATISFIED",
+            evidence_references=("evidence:eligibility",),
+            semantic_basis="COMPUTED",
+        )
 
 
 def test_projection_requires_components_and_unique_component_ids():
