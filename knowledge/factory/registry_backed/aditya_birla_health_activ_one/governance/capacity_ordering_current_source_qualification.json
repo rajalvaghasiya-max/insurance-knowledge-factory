@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "record_type": "capacity_ordering_current_source_qualification_v1",
+  "entity_id": "aditya_birla_health:activ_one",
+  "source": {
+    "document_reference": "aditya_birla_health_activ_one_policy_wording_adihlip24097v012324",
+    "source_sha256": "38bb879030d905bd6f90915915f1c2e22e27ebe5bc980bba766c69c7ecd90a16",
+    "uin": "ADIHLIP24097V012324",
+    "currentness_state": "current_observed_reviewed"
+  },
+  "asserted_ordering": {
+    "status": "RESOLVED",
+    "sequence": [
+      "BASE_SUM_INSURED",
+      "SUPER_CREDIT",
+      "SUPER_RELOAD",
+      "CANCER_BOOSTER"
+    ],
+    "basis": [
+      "Current wording Section C.10 states the utilization sequence as Base Sum Insured, followed by Super Credit if applicable, followed by Super Reload, followed by Cancer Booster if applicable.",
+      "Current wording Section C.13.10 repeats the same sequence for Cancer Booster."
+    ],
+    "source_pages": [31, 39]
+  },
+  "node_semantics": {
+    "BASE_SUM_INSURED": {
+      "applicability": "INHERENT_TO_POLICY",
+      "ordering_status": "RESOLVED"
+    },
+    "SUPER_CREDIT": {
+      "applicability": "CONDITIONAL_IF_INBUILT_OR_OPTED_AND_APPLICABLE",
+      "ordering_status": "RESOLVED"
+    },
+    "SUPER_RELOAD": {
+      "applicability": "CONDITIONAL_ON_RELOAD_RULES",
+      "ordering_status": "RESOLVED",
+      "interaction_note": "Current wording states Super Reload follows Base Sum Insured and Super Credit in the utilization sequence."
+    },
+    "CANCER_BOOSTER": {
+      "applicability": "CONDITIONAL_IF_OPTED_AND_APPLICABLE",
+      "ordering_status": "RESOLVED"
+    }
+  },
+  "derived_bounded_semantics": {
+    "super_credit_precedes_super_reload": {
+      "status": "DERIVED_RESOLVED",
+      "value": true,
+      "basis": "Direct consequence of the asserted utilization sequence."
+    },
+    "super_reload_precedes_cancer_booster": {
+      "status": "DERIVED_RESOLVED",
+      "value": true,
+      "basis": "Direct consequence of the asserted utilization sequence."
+    }
+  },
+  "explicit_boundaries": [
+    "The ordering rule does not determine claim admissibility.",
+    "The ordering rule does not calculate payable claim amount.",
+    "The ordering rule does not establish that Super Credit or Cancer Booster is applicable in every policy.",
+    "The ordering rule does not resolve copayment, deductible, waiting-period, or other claim-cost ordering.",
+    "Unknown node applicability must remain unresolved and must not be treated as absent."
+  ],
+  "gate_conclusion": "The current source resolves a four-stage capacity utilization order strongly enough to support bounded generic next-capacity selection without a general claims-adjudication engine."
+}
