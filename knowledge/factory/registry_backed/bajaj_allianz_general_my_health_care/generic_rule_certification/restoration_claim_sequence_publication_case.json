@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "case_id": "bajaj_my_health_care_restoration_claim_sequence_publication",
+  "description": "Bounded publication case for current-source-certified Bajaj reinstatement claim-sequence usability.",
+  "certification_case_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_rule_certification/restoration_claim_sequence_eligibility_certification_case.json",
+  "publication_decision": {
+    "decision_id": "publication-decision:bajaj-my-health-care:restoration-claim-sequence",
+    "requested_status": "PUBLISH",
+    "decision_reasons": [
+      "The bounded claim-sequence certification passes through the generic eligibility-and-consequence topic.",
+      "Direct source assertions are anchored to current Bajaj policy wording SHA 05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158.",
+      "The triggering-claim ineligibility consequence is a governed derivation from subsequent-claim-only utilization semantics and is not represented as literal policy wording.",
+      "Unresolved restoration activation, amount, illness-scope, and bonus mechanics remain explicit limitations."
+    ],
+    "evidence_trace_references": [
+      "evidence:bajaj-mhc-restoration:eligibility-criteria",
+      "evidence:bajaj-mhc-restoration:applicability-scope",
+      "evidence:bajaj-mhc-restoration:eligible-consequence",
+      "evidence:bajaj-mhc-restoration:ineligible-consequence-derived"
+    ],
+    "decision_authority": "Phase 2 governed bounded-state-mechanic publication authority"
+  },
+  "governed_projection": {
+    "projection_id": "publication-projection:bajaj-my-health-care:restoration-claim-sequence",
+    "semantic_components": [
+      {"component_id": "eligibility_criteria", "semantic_basis": "ASSERTED", "evidence_references": ["evidence:bajaj-mhc-restoration:eligibility-criteria"], "derivation_references": []},
+      {"component_id": "applicability_scope", "semantic_basis": "ASSERTED", "evidence_references": ["evidence:bajaj-mhc-restoration:applicability-scope"], "derivation_references": []},
+      {"component_id": "eligible_consequence", "semantic_basis": "ASSERTED", "evidence_references": ["evidence:bajaj-mhc-restoration:eligible-consequence"], "derivation_references": []},
+      {"component_id": "ineligible_consequence", "semantic_basis": "DERIVED", "evidence_references": ["evidence:bajaj-mhc-restoration:ineligible-consequence-derived"], "derivation_references": ["derivation:bajaj-mhc-restoration:triggering-claim-overflow"]}
+    ]
+  },
+  "authoritative_publication": {
+    "publication_id": "authoritative-publication:bajaj-my-health-care:restoration-claim-sequence",
+    "publication_authority": "Phase 2 governed authoritative bounded-state-mechanic publication authority"
+  },
+  "guardrails": [
+    "This publication is limited to claim-sequence usability of reinstated Sum Insured.",
+    "It does not publish the exact activation trigger, restored amount, same-illness scope, different-illness rule, or bonus interaction.",
+    "It does not infer positive later-claim entitlement while the activation trigger remains unresolved.",
+    "It does not establish claim admissibility, claim payment, arbitrary restoration evaluation, or cross-insurer restoration generalization.",
+    "The triggering-claim consequence must remain marked DERIVED with its evaluator derivation reference."
+  ]
+}
