@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "case_id": "bajaj_my_health_care_initial_waiting_period_publication",
+  "description": "Bounded publication case for the current-source-certified Bajaj My Health Care 30-day initial illness waiting-period rule.",
+  "certification_case_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_rule_certification/initial_waiting_period_certification_case.json",
+  "publication_decision": {
+    "decision_id": "publication-decision:bajaj-my-health-care:initial-waiting-period",
+    "requested_status": "PUBLISH",
+    "decision_reasons": [
+      "The bounded governed rule certification passes with all six required waiting-period semantic components satisfied.",
+      "All published evidence is anchored to the reviewed current Bajaj My Health Care policy wording SHA-256 05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158.",
+      "The publication is limited to the initial illness waiting-period rule and preserves unresolved unrelated Bajaj waiting-period residue as a limitation."
+    ],
+    "evidence_trace_references": [
+      "evidence:bajaj-mhc-initial-wait:waiting_period_duration",
+      "evidence:bajaj-mhc-initial-wait:waiting_period_subject",
+      "evidence:bajaj-mhc-initial-wait:start_basis",
+      "evidence:bajaj-mhc-initial-wait:applicability_scope",
+      "evidence:bajaj-mhc-initial-wait:continuity_or_credit_rule",
+      "evidence:bajaj-mhc-initial-wait:exception_condition"
+    ],
+    "decision_authority": "Phase 2 governed bounded-rule publication authority"
+  },
+  "governed_projection": {
+    "projection_id": "publication-projection:bajaj-my-health-care:initial-waiting-period",
+    "semantic_components": [
+      {"component_id": "waiting_period_duration", "evidence_references": ["evidence:bajaj-mhc-initial-wait:waiting_period_duration"]},
+      {"component_id": "waiting_period_subject", "evidence_references": ["evidence:bajaj-mhc-initial-wait:waiting_period_subject"]},
+      {"component_id": "start_basis", "evidence_references": ["evidence:bajaj-mhc-initial-wait:start_basis"]},
+      {"component_id": "applicability_scope", "evidence_references": ["evidence:bajaj-mhc-initial-wait:applicability_scope"]},
+      {"component_id": "continuity_or_credit_rule", "evidence_references": ["evidence:bajaj-mhc-initial-wait:continuity_or_credit_rule"]},
+      {"component_id": "exception_condition", "evidence_references": ["evidence:bajaj-mhc-initial-wait:exception_condition"]}
+    ]
+  },
+  "authoritative_publication": {
+    "publication_id": "authoritative-publication:bajaj-my-health-care:initial-waiting-period",
+    "publication_authority": "Phase 2 governed authoritative bounded-rule publication authority"
+  },
+  "guardrails": [
+    "This case publishes only the bounded 30-day initial illness waiting-period rule confirmed against the current 05dc29132434 source.",
+    "It does not publish PED, specified-disease/procedure, teleconsultation, investigation, or other Bajaj waiting-period rules.",
+    "It does not establish product-wide governed readiness or advisor/comparison readiness.",
+    "It does not guarantee claim admissibility or payment; all policy terms and the stated accident and continuity exceptions remain applicable.",
+    "No product-specific production reasoning code is authorized by this case."
+  ]
+}
