@@ -26,16 +26,14 @@ def test_star_implementation_is_governed_and_matches_variant():
     implementation.validate_against(RESTORATION_BENEFIT_CONCEPT)
 
 
-def test_policy_and_prospectus_hashes_are_exact():
+def test_restoration_uses_only_the_registered_policy_wording():
     evidence = {
         item.authority_type: item
         for item in STAR_COMPREHENSIVE_RESTORATION_IMPLEMENTATION.evidence_references
     }
+    assert set(evidence) == {"policy_wording"}
     assert evidence["policy_wording"].source_sha256 == (
         "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
-    )
-    assert evidence["prospectus"].source_sha256 == (
-        "0404693147bd5202e28e39bfdb8fcc87f78e7ee6aa6a6f1032f63cbec63698e1"
     )
 
 
@@ -73,6 +71,13 @@ def test_multi_year_and_floater_boundaries_are_preserved():
     assert mechanics["policy_year_reset"].value is True
     assert mechanics["carry_over_between_policy_years"].value is False
     assert mechanics["floater_operation"].value == "floats_among_insured_persons"
+
+
+def test_policy_instance_applicability_remains_schedule_and_endorsement_bound():
+    assert any(
+        "Policy Schedule and any Endorsement" in limitation
+        for limitation in STAR_COMPREHENSIVE_RESTORATION_IMPLEMENTATION.limitations
+    )
 
 
 def test_every_mechanic_has_known_evidence():

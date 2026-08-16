@@ -1,0 +1,187 @@
+{
+  "milestone": "P1_STAR_RESTORATION_SHAPE_INSPECTION",
+  "status": "CLOSED_PENDING_MERGE",
+  "product": {
+    "entity_id": "star_health:star_comprehensive",
+    "product_name": "Star Comprehensive Insurance Policy",
+    "uin": "SHAHLIP26044V092526"
+  },
+  "authoritative_source": {
+    "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+    "document_id": "star_health_star_comprehensive_policy_wording_v1",
+    "document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+    "content_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+    "version_marker": "POL / COMP / V.24 / 2025",
+    "evidence_pages": [
+      {
+        "source_page": 13,
+        "printed_page": "12 / 47",
+        "text_sha256": "794cc65df9071f51a07a22ffc0d9d63a51b6351fce49114298041e8512e830fb",
+        "purpose": "Section II.13 restoration mechanics and Any One Illness boundary"
+      },
+      {
+        "source_page": 45,
+        "printed_page": "44 / 47",
+        "text_sha256": "a930ec45df210072d29e3ad041d7df70edb3594772604baf2fbfb092a6489427",
+        "purpose": "Important Note 28 policy-year, carry-over, floater, Schedule, and Endorsement boundaries"
+      }
+    ]
+  },
+  "secondary_source_disposition": {
+    "source_type": "prospectus",
+    "classification": "UNVERIFIED_SECONDARY_EVIDENCE_FAIL_CLOSED",
+    "reason": "The approved Star identity record and registered source bundle do not contain a registered, byte-verifiable prospectus document version. The policy wording alone supports every retained restoration mechanic.",
+    "implementation_action": "REMOVE_FROM_GOVERNED_RESTORATION_EVIDENCE"
+  },
+  "shape_classifications": [
+    "CURRENT_SOURCE_EXPLICIT",
+    "CURRENT_SOURCE_COMPOSITE",
+    "FOUND_BUT_AMBIGUOUS_SCOPE",
+    "NOT_STATED_FAIL_CLOSED"
+  ],
+  "mechanics": [
+    {
+      "dimension_id": "restoration_percentage",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 13,
+      "required_fragments": ["restoration of the Basic Sum Insured by 100%"],
+      "expected_value": 100,
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "restoration_count_per_policy_period",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 13,
+      "required_fragments": ["once during the Policy Period"],
+      "expected_value": 1,
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "trigger_requirement",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 13,
+      "required_fragments": ["upon exhaustion of the Basic Sum Insured and accrued Cumulative Bonus if any"],
+      "expected_value": "exhaustion_of_basic_sum_insured_and_accrued_cumulative_bonus_if_any",
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "trigger_timing",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 13,
+      "required_fragments": ["immediately upon exhaustion"],
+      "expected_value": "immediately_upon_exhaustion",
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "same_hospitalization_use",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 13,
+      "required_fragments": ["can be utilized for the subsequent hospitalization"],
+      "expected_value": false,
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "subsequent_hospitalization_use",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 13,
+      "required_fragments": ["can be utilized for the subsequent hospitalization"],
+      "expected_value": true,
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "first_claim_use",
+      "classification": "CURRENT_SOURCE_COMPOSITE",
+      "source_page": 13,
+      "required_fragments": ["subsequent hospitalization"],
+      "expected_value": false,
+      "implementation_disposition": "PRESERVED_BY_SAME_AND_SUBSEQUENT_HOSPITALIZATION_COMPOSITION"
+    },
+    {
+      "dimension_id": "same_illness_use",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 13,
+      "required_fragments": ["even for the illness /disease for which claim/s was / were already made"],
+      "expected_value": true,
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "relapse_window_days",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 13,
+      "required_fragments": ["relapse within 45 days", "considered as same hospitalization"],
+      "expected_value": 45,
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "covered_section_scope",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 13,
+      "required_fragments": ["Sections II.1, II.3, II.5, II.6, II.7, II.8 and II.11"],
+      "expected_value": "II.1, II.3, II.5, II.6, II.7, II.8 and II.11",
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "policy_year_reset",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 45,
+      "required_fragments": ["automatic restoration benefit", "is for each of the year"],
+      "expected_value": true,
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "carry_over_between_policy_years",
+      "classification": "CURRENT_SOURCE_EXPLICIT",
+      "source_page": 45,
+      "required_fragments": ["without any carry over benefit thereof"],
+      "expected_value": false,
+      "implementation_disposition": "MATCHES"
+    },
+    {
+      "dimension_id": "floater_operation",
+      "classification": "CURRENT_SOURCE_COMPOSITE",
+      "source_page": 45,
+      "required_fragments": ["other related benefits floats amongst the Insured Persons"],
+      "expected_value": "floats_among_insured_persons",
+      "implementation_disposition": "MATCHES_WITH_IMPORTANT_NOTE_CONTEXT"
+    },
+    {
+      "dimension_id": "partial_restoration_use",
+      "classification": "NOT_STATED_FAIL_CLOSED",
+      "source_page": 13,
+      "required_fragments": [],
+      "expected_value": null,
+      "implementation_disposition": "DO_NOT_MANUFACTURE"
+    },
+    {
+      "dimension_id": "maximum_liability_per_claim_percentage",
+      "classification": "NOT_STATED_FAIL_CLOSED",
+      "source_page": 13,
+      "required_fragments": [],
+      "expected_value": null,
+      "implementation_disposition": "DO_NOT_MANUFACTURE"
+    },
+    {
+      "dimension_id": "utilization_sequence",
+      "classification": "FOUND_BUT_AMBIGUOUS_SCOPE",
+      "source_page": 13,
+      "required_fragments": ["upon exhaustion"],
+      "expected_value": null,
+      "implementation_disposition": "DO_NOT_MANUFACTURE"
+    }
+  ],
+  "policy_instance_boundary": {
+    "source_page": 45,
+    "required_fragments": [
+      "The Policy Schedule and any Endorsement are to be read together",
+      "terms, conditions and exceptions"
+    ],
+    "implementation_action": "PRESERVE_AS_LIMITATION"
+  },
+  "decision": {
+    "existing_generic_concept_fit": "CONFIRMED",
+    "new_runtime_architecture": "NOT_AUTHORIZED",
+    "new_restoration_implementation": "NOT_REQUIRED",
+    "existing_implementation": "REUSE_WITH_BOUNDED_GOVERNANCE_CORRECTION",
+    "next_milestone": "Star Comprehensive initial waiting-period current-source manufacturing"
+  }
+}

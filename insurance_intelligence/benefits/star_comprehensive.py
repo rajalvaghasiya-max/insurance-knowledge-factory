@@ -21,7 +21,6 @@ from insurance_intelligence.benefits.contracts import (
 STAR_COMPREHENSIVE_PRODUCT_VARIANT_ID = "pv_star_health_star_comprehensive_shahlip26044v092526"
 
 _POLICY_EVIDENCE_ID = "ev_star_comprehensive_restoration_policy_wording"
-_PROSPECTUS_EVIDENCE_ID = "ev_star_comprehensive_restoration_prospectus"
 
 STAR_COMPREHENSIVE_RESTORATION_EVIDENCE = (
     BenefitEvidenceReference(
@@ -32,17 +31,9 @@ STAR_COMPREHENSIVE_RESTORATION_EVIDENCE = (
         evidence_locator="Section II.13, policy wording page 12 of 47; Important Note 28(i)-(ii), page 44 of 47",
         bounded_evidence_identity="bounded:star_comprehensive:restoration:policy_wording:v24_2025",
     ),
-    BenefitEvidenceReference(
-        evidence_reference_id=_PROSPECTUS_EVIDENCE_ID,
-        source_document_id="star_health_star_comprehensive_prospectus_shahlip26044v092526",
-        source_sha256="0404693147bd5202e28e39bfdb8fcc87f78e7ee6aa6a6f1032f63cbec63698e1",
-        authority_type="prospectus",
-        evidence_locator="Section 13, prospectus pages 7-8 of 52",
-        bounded_evidence_identity="bounded:star_comprehensive:restoration:prospectus:v15_2025",
-    ),
 )
 
-_ALL_EVIDENCE_IDS = (_POLICY_EVIDENCE_ID, _PROSPECTUS_EVIDENCE_ID)
+_GOVERNED_EVIDENCE_IDS = (_POLICY_EVIDENCE_ID,)
 
 STAR_COMPREHENSIVE_RESTORATION_IMPLEMENTATION = ProductBenefitImplementation(
     implementation_id="benefit_impl:star_health:star_comprehensive:automatic_restoration:v1",
@@ -59,56 +50,56 @@ STAR_COMPREHENSIVE_RESTORATION_IMPLEMENTATION = ProductBenefitImplementation(
             value_type=MechanicValueType.PERCENTAGE,
             value=100,
             unit="percent_of_basic_sum_insured",
-            evidence_reference_ids=_ALL_EVIDENCE_IDS,
+            evidence_reference_ids=_GOVERNED_EVIDENCE_IDS,
         ),
         BenefitMechanic(
             dimension_id="restoration_count_per_policy_period",
             value_type=MechanicValueType.INTEGER,
             value=1,
-            evidence_reference_ids=_ALL_EVIDENCE_IDS,
+            evidence_reference_ids=_GOVERNED_EVIDENCE_IDS,
         ),
         BenefitMechanic(
             dimension_id="trigger_requirement",
             value_type=MechanicValueType.ENUM,
             value="exhaustion_of_basic_sum_insured_and_accrued_cumulative_bonus_if_any",
-            evidence_reference_ids=_ALL_EVIDENCE_IDS,
+            evidence_reference_ids=_GOVERNED_EVIDENCE_IDS,
         ),
         BenefitMechanic(
             dimension_id="trigger_timing",
             value_type=MechanicValueType.ENUM,
             value="immediately_upon_exhaustion",
-            evidence_reference_ids=_ALL_EVIDENCE_IDS,
+            evidence_reference_ids=_GOVERNED_EVIDENCE_IDS,
         ),
         BenefitMechanic(
             dimension_id="same_hospitalization_use",
             value_type=MechanicValueType.BOOLEAN,
             value=False,
-            evidence_reference_ids=_ALL_EVIDENCE_IDS,
+            evidence_reference_ids=_GOVERNED_EVIDENCE_IDS,
         ),
         BenefitMechanic(
             dimension_id="subsequent_hospitalization_use",
             value_type=MechanicValueType.BOOLEAN,
             value=True,
-            evidence_reference_ids=_ALL_EVIDENCE_IDS,
+            evidence_reference_ids=_GOVERNED_EVIDENCE_IDS,
         ),
         BenefitMechanic(
             dimension_id="same_illness_use",
             value_type=MechanicValueType.BOOLEAN,
             value=True,
-            evidence_reference_ids=_ALL_EVIDENCE_IDS,
+            evidence_reference_ids=_GOVERNED_EVIDENCE_IDS,
         ),
         BenefitMechanic(
             dimension_id="covered_section_scope",
             value_type=MechanicValueType.TEXT,
             value="II.1, II.3, II.5, II.6, II.7, II.8 and II.11",
-            evidence_reference_ids=_ALL_EVIDENCE_IDS,
+            evidence_reference_ids=_GOVERNED_EVIDENCE_IDS,
         ),
         BenefitMechanic(
             dimension_id="relapse_window_days",
             value_type=MechanicValueType.INTEGER,
             value=45,
             applicability={"meaning": "relapse within this period is treated as the same hospitalization"},
-            evidence_reference_ids=_ALL_EVIDENCE_IDS,
+            evidence_reference_ids=_GOVERNED_EVIDENCE_IDS,
         ),
         BenefitMechanic(
             dimension_id="policy_year_reset",
@@ -142,6 +133,7 @@ STAR_COMPREHENSIVE_RESTORATION_IMPLEMENTATION = ProductBenefitImplementation(
         "A relapse within 45 days from the last hospital consultation is treated as the same hospitalization.",
         "Benefits for later years of a multi-year policy cannot be brought forward into an earlier year.",
         "The restoration benefit does not carry over between policy years.",
+        "Policy-specific applicability remains subject to the Policy Schedule and any Endorsement.",
     ),
     exclusions=(
         "Use within the same hospitalization is not supported by the governing clause.",
