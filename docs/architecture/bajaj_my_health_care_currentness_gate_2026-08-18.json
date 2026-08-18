@@ -1,0 +1,14 @@
+{
+  "status": "COMPATIBLE",
+  "evidence": {
+    "official_document_index": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-documents.html",
+    "official_policy_wording": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+    "observed_at": "2026-08-18",
+    "product_name": "My Health Care Plan (Plan 1)",
+    "uin": "BAJHLIP26074V022526",
+    "document_type": "policy_wording",
+    "currentness_observation": "The insurer's current Health Insurance Documents page lists My Health Care Plan 1, and the live policy-wording URL resolves to My Health Care Plan (Plan 1) carrying UIN BAJHLIP26074V022526. The live URL is the same source URL recorded in the existing document-identity overlay."
+  },
+  "blocker": "Currentness is compatible, but the immutable live artifact has not been byte-compared with the historical source_document_id, and the registry-backed policy_wording_registration.json referenced by the existing specifications is not present on main. Therefore this gate does not authorize copayment manufacturing or claim-level reasoning. A governed artifact capture/registration refresh remains required.",
+  "resume_condition": "Capture the current policy-wording artifact from the official source, compute and register its immutable SHA-256, reconcile it against the existing identity record, and only then resume Bajaj copayment source-shape/manufacturing work. If the captured artifact materially conflicts with the reviewed identity or product scope, reopen this gate and classify the source as superseded or not-current rather than manufacturing from it."
+}
