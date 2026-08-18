@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "record_type": "bajaj_document_version_reconciliation_v1",
+  "review_status": "MATERIAL_REVISION_CONFIRMED",
+  "reviewed_at": "2026-08-18",
+  "product_identity": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "canonical_product_name": "My Health Care Plan",
+    "plan_variant": "Plan 1",
+    "uin": "BAJHLIP26074V022526",
+    "identity_result": "same_product_identity"
+  },
+  "historical_version": {
+    "document_id": "bajaj_my_health_care_policy_wording_v1",
+    "sha256": "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade",
+    "path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__9479fe6f6ce7.pdf"
+  },
+  "observed_current_version": {
+    "document_id": "bajaj_my_health_care_policy_wording_v2",
+    "sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+    "path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158.pdf",
+    "source_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+    "observed_at": "2026-08-18",
+    "pages": 53
+  },
+  "comparison": {
+    "pdf_byte_match": false,
+    "historical_text_sha256": "982835df26523421477b8f3e54f04307f4c96a867162419f7a1127fd6597ee1f",
+    "current_text_sha256": "3510ca03b4671dcc668fb59181833cb68433da0a3c5b63599575a34bad3d2f1a",
+    "normalized_text_match": false,
+    "differing_pages": 39,
+    "differing_page_numbers": [1,2,3,4,5,6,7,8,9,10,11,12,16,18,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,37,38,47,52,53]
+  },
+  "material_findings": [
+    {
+      "area": "deductible_scope",
+      "historical_wording": "The deductible is applicable per claim towards hospitalisation expenses incurred during the Policy Period.",
+      "current_wording": "The deductible is applicable in aggregate towards Hospitalisation expenses incurred during the Policy Period.",
+      "materiality": "MATERIAL",
+      "reason": "Changes the accumulation/application basis of the deductible across the policy period and can change claim-level financial outcomes."
+    },
+    {
+      "area": "exclusion",
+      "finding": "Current wording includes a vaccination or inoculation exclusion in the compared exclusion section that is absent from the historical wording.",
+      "materiality": "MATERIAL",
+      "reason": "Changes the set of expenses that may be excluded from coverage."
+    }
+  ],
+  "corroborating_official_source": {
+    "document_index_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-documents.html",
+    "product_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
+    "observation": "The insurer currently lists My Health Care Plan 1 and provides policy wording for the product. The product page describes the deductible as aggregate."
+  },
+  "governance_decision": {
+    "historical_artifact": "retain_immutable_historical_version",
+    "current_artifact": "register_as_separate_document_version",
+    "historical_version_currentness": "do_not_treat_as_current_for_new_rule_manufacturing",
+    "current_version_publication_status": "not_yet_promoted_pending_governed_currentness_reconciliation",
+    "copayment_manufacturing": "BLOCKED",
+    "architecture_change": "NONE"
+  },
+  "next_gate": "Register the observed current artifact as v2 using the existing generic source-registration and identity-resolution machinery, then bind a structured official-source observation/currentness evidence record before promoting v2 to current_observed_reviewed. Re-certify affected rules only after that gate closes.",
+  "principles_applied": [
+    "Fail closed, not accuse closed",
+    "Historical artifacts remain immutable",
+    "Same product identity does not imply same document version",
+    "Do not manufacture from an ungoverned current artifact",
+    "Reuse existing governed machinery; do not add architecture for this case"
+  ]
+}

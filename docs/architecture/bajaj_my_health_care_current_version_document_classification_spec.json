@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "classification_type": "document_classification_reuse_policy_v1",
+  "reviewed_by_human": true,
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+      "classification": "reusable_generic",
+      "reuse_action": "reusable_evidence_candidate",
+      "review_rationale": "The observed current artifact is a public policy wording served from Bajaj General's official download domain and matches the reviewed My Health Care Plan product identity. The artifact is registered as a separate immutable document version because semantic comparison against the historical artifact found material operative changes. This classification does not itself promote the document to current publication status."
+    }
+  ]
+}
