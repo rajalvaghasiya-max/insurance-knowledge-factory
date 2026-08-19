@@ -10,6 +10,11 @@ MANIFEST = REPOSITORY_ROOT / "docs" / "architecture" / "bajaj_my_health_care_cur
 
 HISTORICAL_SHA = "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade"
 CURRENT_SHA = "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158"
+EXPECTED_DIFFERING_PAGES = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18,
+    20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+    35, 36, 37, 38, 47, 52, 53,
+]
 
 
 def _load(path: Path) -> dict:
@@ -24,6 +29,10 @@ def test_bajaj_version_reconciliation_preserves_history_and_blocks_copayment() -
     assert record["observed_current_version"]["sha256"] == CURRENT_SHA
     assert record["comparison"]["pdf_byte_match"] is False
     assert record["comparison"]["normalized_text_match"] is False
+    comparison = record["comparison"]
+    assert comparison["differing_pages"] == len(comparison["differing_page_numbers"])
+    assert comparison["differing_pages"] == 39
+    assert comparison["differing_page_numbers"] == EXPECTED_DIFFERING_PAGES
     assert record["governance_decision"]["historical_artifact"] == "retain_immutable_historical_version"
     assert record["governance_decision"]["current_artifact"] == "register_as_separate_document_version"
     assert record["governance_decision"]["copayment_manufacturing"] == "BLOCKED"
