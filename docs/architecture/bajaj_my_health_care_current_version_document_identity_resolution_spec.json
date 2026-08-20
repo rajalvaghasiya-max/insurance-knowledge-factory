@@ -9,7 +9,7 @@
     {
       "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
       "resolution_status": "resolved",
-      "temporal_status": "compatibility_unverified",
+      "temporal_status": "current_observed_reviewed",
       "identity_signals": [
         {
           "signal_type": "uin_exact_match",
@@ -28,12 +28,20 @@
         }
       ],
       "classification_manifest_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/governance/bajaj_my_health_care_v2_document_classification.json",
+      "source_observation_review": {
+        "observation_record_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/governance/bajaj_my_health_care_v2_source_observation_20260820.json",
+        "reviewed_by_human": true,
+        "reviewed_at": "2026-08-20T22:14:00+05:30",
+        "reviewed_temporal_status": "current_observed_reviewed",
+        "review_rationale": "Reviewed the retained official-source observation for the exact registered v2 artifact. The official Bajaj policy-wording URL returned bytes hashing to 05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158, identical to the v2 registration, and the observation is bound to the same v2 registration path and product identity."
+      },
+      "currentness_evidence_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/governance/bajaj_my_health_care_v2_currentness_evidence_20260820.json",
       "capture_provenance": {
         "source_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
-        "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/my-health-care-plan.html",
-        "capture_reference": "manual_live_pdf_capture_20260818_05dc2913"
+        "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-documents.html",
+        "capture_reference": "manual_official_download_2026-08-20_sha256_05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158"
       },
-      "review_rationale": "Product identity is resolved to Bajaj General My Health Care Plan (Plan 1) through exact UIN BAJHLIP26074V022526, canonical title, and manual document review. The observed artifact is intentionally left temporal_status compatibility_unverified because the official current-source evidence has not yet been converted into the structured source-observation/currentness-evidence contract for this new immutable version. The historical version is retained separately and is not overwritten."
+      "review_rationale": "Product/document identity remains resolved for the immutable v2 05dc2913 artifact. A retained byte-identical observation from the official Bajaj policy-wording URL plus retained official source-page evidence supports current_observed_reviewed. This transition makes governed facts eligible for publication review only; it does not auto-publish facts, manufacture copayment, or determine customer entitlement. The historical v1 remains immutable and separate."
     }
   ]
 }
