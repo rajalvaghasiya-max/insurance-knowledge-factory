@@ -32,6 +32,7 @@ def test_supports_material_waiting_period_types():
         "PRE_EXISTING_DISEASE",
         "MATERNITY",
         "BABY_CARE",
+        "BENEFIT_SPECIFIC",
     )
 
 
