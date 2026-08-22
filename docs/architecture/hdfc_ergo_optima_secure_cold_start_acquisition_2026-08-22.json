@@ -19,10 +19,20 @@
     "policy_period_applicability_label": "for policies with period of Insurance starting 02-April-2026 onwards",
     "observed_uin": "HDFHLIP26058V082526",
     "observed_page_count": 69,
-    "acquisition_status": "IDENTIFIED_NOT_YET_ACQUIRED",
-    "source_document_id_sha256": null,
-    "local_document_path": null,
-    "local_extracted_text_path": null
+    "acquisition_status": "ACQUIRED_AND_TEXT_VALIDATED",
+    "source_document_id_sha256": "694c0540cb341ec9254c08a41668174b60d4a7ebc4833d78505052367c0b6ab3",
+    "local_document_path": "archive/raw_pdf/hdfc_ergo/policy_wording/my-Optima-Secure__694c0540cb341ec9254c08a41668174b60d4a7ebc4833d78505052367c0b6ab3.pdf",
+    "local_extracted_text_path": "archive/text/hdfc_ergo/policy_wording/my-Optima-Secure__694c0540cb341ec9254c08a41668174b60d4a7ebc4833d78505052367c0b6ab3.txt",
+    "observed_pdf_bytes": 928993,
+    "observed_text_bytes": 175340,
+    "text_validation": {
+      "uin_present": true,
+      "product_present": true,
+      "pre_existing_diseases_marker_present": true,
+      "specified_disease_marker_present": true,
+      "waiting_period_marker_present": true,
+      "co_payment_marker_present": true
+    }
   },
   "observed_architecture_pressure": {
     "waiting_period": {
@@ -50,8 +60,8 @@
   },
   "cold_start_governance": {
     "new_runtime_python_budget": 0,
-    "registration_authorized": false,
-    "reason_registration_blocked": "Immutable local PDF SHA256 and extracted text are not yet available.",
+    "registration_authorized": true,
+    "reason_registration_blocked": null,
     "source_document_id_must_not_be_guessed": true,
     "historical_product_material_may_not_be_used_as_authority": true,
     "publication_authorized": false,
@@ -60,13 +70,12 @@
     "decision_support_ready_authorized": false
   },
   "next_gate": {
-    "gate_id": "ACQUIRE_IMMUTABLE_PRIMARY_LEGAL_ARTIFACT",
+    "gate_id": "EXECUTE_GENERIC_SOURCE_REGISTRATION",
     "required_outputs": [
-      "local official PDF",
-      "SHA256 of exact PDF bytes",
-      "deterministically extracted text",
-      "generic source registration spec bound to the exact SHA",
-      "generic source registration bundle with evidence candidates"
+      "generic source registration spec bound to exact SHA",
+      "generic source registration bundle with evidence candidates",
+      "candidate review for copayment and waiting-period evidence",
+      "measurement of runtime Python changes"
     ],
     "success_condition": "The existing generic source-registration runtime registers the new HDFC ERGO product without insurer-specific Python changes."
   }

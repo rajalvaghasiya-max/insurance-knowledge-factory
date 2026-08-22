@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "registration_type": "generic_source_registration_bundle_v1",
+  "product_context": {
+    "insurer_id": "hdfc_ergo",
+    "product_id": "optima_secure",
+    "product_display_name": "my: Optima Secure",
+    "source_scope": "reusable_generic",
+    "reviewed_generic_source_confirmation": true
+  },
+  "documents": [
+    {
+      "document_id": "hdfc_ergo_optima_secure_policy_wording_v8",
+      "source_document_id": "694c0540cb341ec9254c08a41668174b60d4a7ebc4833d78505052367c0b6ab3",
+      "canonical_title": "my: Optima Secure - Policy Wording",
+      "document_type": "policy_wording",
+      "authority_role": "primary_legal",
+      "audience_scope": "generic_public",
+      "document_path": "archive/raw_pdf/hdfc_ergo/policy_wording/my-Optima-Secure__694c0540cb341ec9254c08a41668174b60d4a7ebc4833d78505052367c0b6ab3.pdf",
+      "extracted_text_output_path": "archive/text/hdfc_ergo/policy_wording/my-Optima-Secure__694c0540cb341ec9254c08a41668174b60d4a7ebc4833d78505052367c0b6ab3.txt",
+      "evidence_markers": [
+        "Optima Secure",
+        "HDFHLIP26058V082526",
+        "Waiting Period",
+        "Co-payment"
+      ],
+      "source_issued_label": "for policies with period of Insurance starting 02-April-2026 onwards",
+      "registration_output_path": "knowledge/factory/registry_backed/hdfc_ergo_optima_secure/v8/generic_source_registration/policy_wording_registration.json"
+    }
+  ]
+}
