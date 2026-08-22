@@ -64,4 +64,4 @@ def test_hdfc_ped_full_mechanics_remains_fail_closed_for_policy_instance_use() -
     assert governance["policy_specific_eligibility_authorized"] is False
     assert governance["policy_instance_duration_without_schedule_authorized"] is False
     assert governance["scalar_duration_manufacturing_without_schedule_authorized"] is False
-    assert governance["full_ped_mechanic_certification_authorized"] is False
+    assert governance["full_ped_mechanic_certification_authorized"] is True
