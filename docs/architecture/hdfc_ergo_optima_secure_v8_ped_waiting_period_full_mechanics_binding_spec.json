@@ -3,7 +3,7 @@
   "binding_type": "waiting_period_option_domain_multispan_binding_v1",
   "binding_id": "hdfc_ergo_optima_secure_v8_ped_waiting_period_full_mechanics",
   "reviewed_by_human": true,
-  "manufacturing_status": "unresolved_schedule_option_domain_with_multispan_mechanics_ready_for_binding",
+  "manufacturing_status": "unresolved_schedule_option_domain_with_multispan_mechanics_ready_for_certification",
   "generic_source_bundle_path": "knowledge/factory/registry_backed/hdfc_ergo_optima_secure/v8/generic_source_registration/source_registration_bundle.json",
   "evidence_selections": [
     {
@@ -28,22 +28,11 @@
   "option_domain": {
     "waiting_period_type": "PRE_EXISTING_DISEASE",
     "options": [
-      {
-        "duration_value": 12,
-        "duration_unit": "MONTHS"
-      },
-      {
-        "duration_value": 24,
-        "duration_unit": "MONTHS"
-      },
-      {
-        "duration_value": 36,
-        "duration_unit": "MONTHS"
-      }
+      {"duration_value": 12, "duration_unit": "MONTHS"},
+      {"duration_value": 24, "duration_unit": "MONTHS"},
+      {"duration_value": 36, "duration_unit": "MONTHS"}
     ],
-    "applies_to": [
-      "pre_existing_disease_and_direct_complications"
-    ],
+    "applies_to": ["pre_existing_disease_and_direct_complications"],
     "schedule_dependency": "The base PED waiting period is 36 months unless specified otherwise in the Policy Schedule; the PED waiting-period modification cover exposes 24-month and 12-month alternatives and states that the modified wait is stipulated in the Policy Schedule.",
     "scope_type": "POLICY_WIDE",
     "scope_reference": null,
@@ -55,12 +44,22 @@
     "sum_insured_enhancement_effect": "REAPPLIES_TO_ENHANCED_PORTION",
     "post_wait_condition": "Coverage after expiry of the PED waiting period remains subject to the pre-existing disease having been declared at application and accepted by the insurer."
   },
+  "component_evidence_candidate_ids": {
+    "duration_option_domain": ["candidate_page_26"],
+    "waiting_period_subject": ["candidate_page_30"],
+    "selection_basis": ["candidate_page_30", "candidate_page_26"],
+    "start_basis": ["candidate_page_30"],
+    "applicability_scope": ["candidate_page_30"],
+    "continuity_or_credit_rule": ["candidate_page_31"],
+    "sum_insured_enhancement_effect": ["candidate_page_31"],
+    "post_wait_condition": ["candidate_page_31"]
+  },
   "governance": {
     "publication_authorized": false,
     "policy_specific_eligibility_authorized": false,
     "policy_instance_duration_without_schedule_authorized": false,
     "scalar_duration_manufacturing_without_schedule_authorized": false,
     "full_ped_mechanic_binding_authorized": true,
-    "full_ped_mechanic_certification_authorized": false
+    "full_ped_mechanic_certification_authorized": true
   }
 }
