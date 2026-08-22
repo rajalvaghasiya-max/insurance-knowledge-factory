@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "generic_legal_condition_binding_v1",
+  "reviewed_by_human": true,
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/bajaj_my_health_care_v2_generic_source_bundle.json",
+  "assertions": [
+    {
+      "assertion_id": "ga_bajaj_my_health_care_lab_radiology_unapproved_reimbursement_copay_v1",
+      "assertion_type": "conditional_copayment_rule",
+      "semantic_key": "copayment.lab_radiology.unapproved_reimbursement.twenty_percent",
+      "reviewed_statement": "For Doctor Prescribed Investigations - Pathology & Radiology, where reimbursement is used and the reimbursement claim was not pre-approved, a 20% co-payment applies. This assertion is limited to that investigations cover and does not establish a general product-level co-payment.",
+      "evidence_selections": [
+        {
+          "document_id": "bajaj_my_health_care_policy_wording_v2",
+          "candidate_id": "candidate_page_15",
+          "candidate_text_sha256": "e847a43f632bf01e2ce1d5e6c32d696a402153a5001d2c7970acb8bd79d3c7e6"
+        }
+      ]
+    },
+    {
+      "assertion_id": "ga_bajaj_my_health_care_international_emergency_mandatory_copay_v1",
+      "assertion_type": "conditional_copayment_rule",
+      "semantic_key": "copayment.international_emergency.mandatory_ten_percent_stacking",
+      "reviewed_statement": "For International Cover - Emergency Care only, a mandatory 10% co-payment applies and is additional to any other co-payment or deductible applicable under the policy. This assertion is limited to the optional international emergency cover and preserves the stated stacking rule.",
+      "evidence_selections": [
+        {
+          "document_id": "bajaj_my_health_care_policy_wording_v2",
+          "candidate_id": "candidate_page_20",
+          "candidate_text_sha256": "5261b13c20af365078c7ec1a4b43e742fd1890257a57fa5858d6314eff87aef2"
+        }
+      ]
+    },
+    {
+      "assertion_id": "ga_bajaj_my_health_care_voluntary_inpatient_copay_v1",
+      "assertion_type": "conditional_copayment_rule",
+      "semantic_key": "copayment.voluntary_inpatient.selected_option_five_to_twenty_percent",
+      "reviewed_statement": "If the Voluntary Co-payment option is selected and an In-patient Hospitalization Treatment claim is admitted, the insured bears 5%, 10%, 15%, or 20% of the eligible claim amount in proportion to the discount availed. The applicable rate therefore depends on the selected voluntary co-payment option and must not be inferred without that policy-specific selection context.",
+      "evidence_selections": [
+        {
+          "document_id": "bajaj_my_health_care_policy_wording_v2",
+          "candidate_id": "candidate_page_33",
+          "candidate_text_sha256": "47fabdbf4992a88c89bc8147bffd4c4241a52304fc9d683c52f0854c1097fcce"
+        }
+      ]
+    }
+  ]
+}
