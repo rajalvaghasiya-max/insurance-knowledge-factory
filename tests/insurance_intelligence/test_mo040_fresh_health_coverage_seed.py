@@ -53,7 +53,12 @@ def test_every_seed_evidence_reference_exists_in_current_repository() -> None:
 def test_report_exposes_certification_without_claiming_comparison_or_decision_readiness() -> None:
     report = build_coverage_review_report(HEALTH_COVERAGE_REGISTRY)
     assert len(report.product_summaries) == 2
-    assert all(item.certified_concept_count == 1 for item in report.product_summaries)
+    by_product = {
+        item.product_reference: item
+        for item in report.product_summaries
+    }
+    assert by_product[STAR_COMPREHENSIVE_COVERAGE.product_reference].certified_concept_count == 1
+    assert by_product[BAJAJ_MY_HEALTH_CARE_V2_COVERAGE.product_reference].certified_concept_count == 2
     assert all(item.comparison_ready_concept_count == 0 for item in report.product_summaries)
     assert all(item.decision_support_ready_concept_count == 0 for item in report.product_summaries)
     assert sum(1 for gap in report.gaps if gap.gap_type == "LIFECYCLE_STATUS_UNKNOWN") == 2
