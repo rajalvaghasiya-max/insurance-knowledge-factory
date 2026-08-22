@@ -7,6 +7,7 @@ from insurance_intelligence.benefits.waiting_period_contracts import (
     WaitingPeriodModification,
     WaitingPeriodModificationType,
     WaitingPeriodStartBasis,
+    WaitingPeriodSumInsuredEnhancementEffect,
     WaitingPeriodType,
 )
 
@@ -65,6 +66,22 @@ def test_waiting_period_preserves_exceptions_separately_from_scope():
     )
     assert mechanic.applies_to == ("pre_existing_disease",)
     assert mechanic.exclusions_or_exceptions == ("accident_related_hospitalization",)
+
+
+def test_sum_insured_enhancement_reapplication_is_typed_separately():
+    mechanic = _base_mechanic(
+        sum_insured_enhancement_effect=(
+            WaitingPeriodSumInsuredEnhancementEffect.REAPPLIES_TO_ENHANCED_PORTION
+        ),
+    )
+    assert mechanic.sum_insured_enhancement_effect is (
+        WaitingPeriodSumInsuredEnhancementEffect.REAPPLIES_TO_ENHANCED_PORTION
+    )
+
+
+def test_sum_insured_enhancement_effect_rejects_untyped_text():
+    with pytest.raises(WaitingPeriodContractError, match="sum_insured_enhancement_effect"):
+        _base_mechanic(sum_insured_enhancement_effect="REAPPLIES_TO_ENHANCED_PORTION")
 
 
 def test_waiver_can_remove_waiting_period_without_fake_duration():
