@@ -71,7 +71,9 @@ def _write_fixture(tmp_path: Path, *, include_modification: bool = True) -> str:
                 "condition": "premium_for_long_term_policy_is_paid_upfront",
                 "resulting_duration_value": 24,
                 "resulting_duration_unit": "MONTHS",
-                "evidence_reference_ids": [],
+                "evidence_reference_ids": [
+                    "example_document:candidate_page_53:" + "c" * 64
+                ],
             }
         ]
 
