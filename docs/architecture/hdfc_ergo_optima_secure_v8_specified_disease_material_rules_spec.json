@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_material_rules_binding_v1",
+  "binding_id": "hdfc_ergo_optima_secure_v8_specified_disease_material_rules",
+  "reviewed_by_human": true,
+  "base_binding_spec_path": "docs/architecture/hdfc_ergo_optima_secure_v8_specified_disease_waiting_period_binding_spec.json",
+  "material_rules": [
+    {
+      "rule_id": "longer_of_ped_and_specified_disease_wait",
+      "rule_type": "RELATIONSHIP_LONGER_OF",
+      "statement": "If a specified disease or procedure also falls under the Pre-Existing Disease waiting period, the longer of the two waiting periods applies.",
+      "related_waiting_period_type": "PRE_EXISTING_DISEASE",
+      "evidence_candidate_ids": ["candidate_page_31"]
+    },
+    {
+      "rule_id": "listed_condition_wait_applies_after_inception_or_acceptance",
+      "rule_type": "APPLICABILITY_CONDITION",
+      "statement": "The waiting period for listed conditions applies even if the condition is contracted after the Policy or declared and accepted without a specific exclusion.",
+      "related_waiting_period_type": null,
+      "evidence_candidate_ids": ["candidate_page_31"]
+    }
+  ],
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "relationship_certification_authorized": true,
+    "customer_specific_claim_determination_authorized": false
+  }
+}
