@@ -53,7 +53,7 @@ def _load(root: Path, relative: str, label: str) -> tuple[Mapping[str, Any], str
 
 
 def _registry(required_components: tuple[str, ...]) -> TopicCompletenessRegistry:
-    allowed = {"relationship_rule", "applicability_condition", "post_wait_condition"}
+    allowed = {"relationship_rule", "applicability_condition", "post_wait_condition", "reset_after_event"}
     if not required_components or not set(required_components).issubset(allowed):
         raise WaitingPeriodMaterialRulesCertificationError("required material-rule components are invalid")
     definition = build_topic_definition(
@@ -64,6 +64,7 @@ def _registry(required_components: tuple[str, ...]) -> TopicCompletenessRegistry
             build_component_definition(component_id="relationship_rule", requirement_type="WAITING_PERIOD_RELATIONSHIP_RULE", required="relationship_rule" in required_components, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve interaction with another waiting-period family."),
             build_component_definition(component_id="applicability_condition", requirement_type="WAITING_PERIOD_APPLICABILITY_CONDITION", required="applicability_condition" in required_components, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve additional applicability conditions that are not exceptions."),
             build_component_definition(component_id="post_wait_condition", requirement_type="POST_WAIT_CONDITION", required="post_wait_condition" in required_components, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve conditions that remain applicable after expiry of the waiting-period duration."),
+            build_component_definition(component_id="reset_after_event", requirement_type="WAITING_PERIOD_RESET_AFTER_EVENT", required="reset_after_event" in required_components, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve an authoritative event that starts the waiting-period clock afresh."),
         ),
     )
     registry = TopicCompletenessRegistry()
@@ -111,11 +112,13 @@ def build_waiting_period_material_rules_certification_case(*, binding_spec_path:
         "relationship_rule": [],
         "applicability_condition": [],
         "post_wait_condition": [],
+        "reset_after_event": [],
     }
     type_to_component = {
         "RELATIONSHIP_LONGER_OF": "relationship_rule",
         "APPLICABILITY_CONDITION": "applicability_condition",
         "POST_WAIT_CONDITION": "post_wait_condition",
+        "RESET_AFTER_EVENT": "reset_after_event",
     }
     for raw in _items(manifest.get("material_rules"), "binding_manifest.material_rules"):
         rule = _mapping(raw, "material_rule")
@@ -136,6 +139,7 @@ def build_waiting_period_material_rules_certification_case(*, binding_spec_path:
         "relationship_rule": "WAITING_PERIOD_RELATIONSHIP_RULE",
         "applicability_condition": "WAITING_PERIOD_APPLICABILITY_CONDITION",
         "post_wait_condition": "POST_WAIT_CONDITION",
+        "reset_after_event": "WAITING_PERIOD_RESET_AFTER_EVENT",
     }
     for component_id, rules in groups.items():
         requirement_id = f"requirement:{case_id}:{component_id}"
@@ -143,6 +147,8 @@ def build_waiting_period_material_rules_certification_case(*, binding_spec_path:
         for rule_index, rule in enumerate(rules):
             statement = _text(rule.get("statement"), "material_rule.statement")
             for candidate_id in (_text(v, "evidence_candidate_ids[]") for v in _items(rule.get("evidence_candidate_ids"), "evidence_candidate_ids")):
+                if candidate_id not in candidate_context:
+                    raise WaitingPeriodMaterialRulesCertificationError(f"material rule references unresolved candidate {candidate_id!r}")
                 document, candidate = candidate_context[candidate_id]
                 evidence_id = f"evidence:{case_id}:{component_id}:{rule_index}:{candidate_id}"
                 evidence_ids.append(evidence_id)
