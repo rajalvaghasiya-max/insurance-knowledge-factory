@@ -73,6 +73,7 @@
   "cold_start_governance": {
     "new_runtime_python_budget": 0,
     "registration_authorized": true,
+    "reason_registration_blocked": null,
     "registration_executed": true,
     "registration_passed_without_runtime_python_changes": true,
     "source_document_id_must_not_be_guessed": true,
