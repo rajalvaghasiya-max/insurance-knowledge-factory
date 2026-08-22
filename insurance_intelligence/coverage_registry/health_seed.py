@@ -60,6 +60,22 @@ BAJAJ_MY_HEALTH_CARE_V2_COVERAGE = ProductCoverageRecord(
             comparison_ready=False,
             decision_support_ready=False,
         ),
+        ConceptCoverageRecord(
+            concept_id="waiting_period",
+            status=ConceptCoverageStatus.PARTIAL,
+            evidence_reference_ids=(
+                "docs/architecture/bajaj_my_health_care_v2_waiting_period_pressure_inventory_2026-08-22.json",
+                "docs/architecture/bajaj_my_health_care_v2_initial_waiting_period_binding_spec.json",
+                "docs/architecture/bajaj_my_health_care_v2_initial_waiting_period_qualification_2026-08-22.json",
+            ),
+            comparison_ready=False,
+            decision_support_ready=False,
+            limitations=(
+                "The Plan 1 initial waiting period is resolved to 30 days from exact current-v2 mechanism and Schedule-table evidence, but waiting-period certification remains incomplete.",
+                "Enhanced-Sum-Insured reapplication is evidenced but does not yet have a typed runtime representation in WaitingPeriodMechanic.",
+                "PED, specified-disease/procedure, maternity, and baby-care waiting periods remain unresolved Schedule-dependent families for this coverage milestone.",
+            ),
+        ),
     ),
 )
 
