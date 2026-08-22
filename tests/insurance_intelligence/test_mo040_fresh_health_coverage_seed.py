@@ -1,0 +1,63 @@
+from pathlib import Path
+
+from insurance_intelligence.coverage_registry.contracts import (
+    ConceptCoverageStatus,
+    ProductLifecycleStatus,
+)
+from insurance_intelligence.coverage_registry.health_seed import (
+    BAJAJ_MY_HEALTH_CARE_V2_COVERAGE,
+    HEALTH_COVERAGE_REGISTRY,
+    STAR_COMPREHENSIVE_COVERAGE,
+)
+from insurance_intelligence.coverage_registry.reporting import build_coverage_review_report
+
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+def _copayment(product):
+    return next(item for item in product.concepts if item.concept_id == "copayment")
+
+
+def test_seed_contains_only_current_deep_pilot_products() -> None:
+    assert {item.product_reference for item in HEALTH_COVERAGE_REGISTRY.products} == {
+        "star_health:star_comprehensive:SHAHLIP26044V092526",
+        "bajaj_allianz_general:my_health_care:BAJHLIP26074V022526",
+    }
+
+
+def test_star_and_bajaj_copayment_are_certified_but_not_promoted_to_downstream_readiness() -> None:
+    for product in (STAR_COMPREHENSIVE_COVERAGE, BAJAJ_MY_HEALTH_CARE_V2_COVERAGE):
+        copayment = _copayment(product)
+        assert copayment.status is ConceptCoverageStatus.CERTIFIED
+        assert copayment.comparison_ready is False
+        assert copayment.decision_support_ready is False
+        assert product.comparison_ready_concept_ids == ()
+        assert product.decision_support_ready_concept_ids == ()
+
+
+def test_seed_does_not_infer_product_lifecycle_from_current_document_evidence() -> None:
+    for product in HEALTH_COVERAGE_REGISTRY.products:
+        assert product.lifecycle_status is ProductLifecycleStatus.STATUS_UNKNOWN
+        assert product.status_evidence_reference_ids == ()
+        assert product.status_last_verified_at is None
+
+
+def test_every_seed_evidence_reference_exists_in_current_repository() -> None:
+    for product in HEALTH_COVERAGE_REGISTRY.products:
+        for concept in product.concepts:
+            for reference in concept.evidence_reference_ids:
+                assert (ROOT / reference).is_file(), reference
+
+
+def test_report_exposes_certification_without_claiming_comparison_or_decision_readiness() -> None:
+    report = build_coverage_review_report(HEALTH_COVERAGE_REGISTRY)
+    assert len(report.product_summaries) == 2
+    assert all(item.certified_concept_count == 1 for item in report.product_summaries)
+    assert all(item.comparison_ready_concept_count == 0 for item in report.product_summaries)
+    assert all(item.decision_support_ready_concept_count == 0 for item in report.product_summaries)
+    assert sum(1 for gap in report.gaps if gap.gap_type == "LIFECYCLE_STATUS_UNKNOWN") == 2
+
+
+def test_historical_activ_one_snapshot_is_not_reintroduced_as_current_seed_truth() -> None:
+    assert "aditya_birla_health" not in HEALTH_COVERAGE_REGISTRY.insurer_ids
