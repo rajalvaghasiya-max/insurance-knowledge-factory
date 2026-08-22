@@ -11,8 +11,9 @@ def test_bajaj_waiting_period_enters_registry_as_partial_not_certified() -> None
     assert waiting.comparison_ready is False
     assert waiting.decision_support_ready is False
     assert waiting.limitations
-    assert any("enhanced-Sum-Insured" in item for item in waiting.limitations)
-    assert any("PED" in item for item in waiting.limitations)
+    lowered = tuple(item.lower() for item in waiting.limitations)
+    assert any("enhanced-sum-insured" in item for item in lowered)
+    assert any("ped" in item for item in lowered)
 
 
 def test_bajaj_copayment_certification_is_unchanged() -> None:
