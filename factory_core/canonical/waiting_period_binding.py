@@ -1,9 +1,10 @@
 """Governed binding of typed waiting-period mechanics to registered evidence.
 
 This binder is intentionally narrow: it validates one resolved scalar waiting-period
-mechanic against an approved generic source registration and the reusable
-``WaitingPeriodMechanic`` contract. It does not resolve Schedule-selected option
-sets, publish facts, or infer policy-instance values.
+mechanic against approved generic source registrations and the reusable
+``WaitingPeriodMechanic`` contract. Schedule-selected values are permitted only
+when separate authoritative evidence resolves the scalar value. The binder does
+not publish facts or infer customer-specific values.
 """
 from __future__ import annotations
 
@@ -33,6 +34,9 @@ class WaitingPeriodBindingError(ValueError):
 @dataclass(frozen=True)
 class WaitingPeriodBindingResult:
     manifest: Mapping[str, Any]
+
+
+_ALLOWED_EVIDENCE_ROLES = frozenset({"mechanism", "schedule_value_resolution"})
 
 
 def _mapping(value: object, label: str) -> Mapping[str, Any]:
@@ -105,34 +109,69 @@ def _modification(raw: object, index: int) -> WaitingPeriodModification:
         ),
         evidence_reference_ids=tuple(
             _text(value, f"mechanic.modifications[{index}].evidence_reference_ids[]")
-            for value in _items(item.get("evidence_reference_ids", []), f"mechanic.modifications[{index}].evidence_reference_ids")
+            for value in _items(
+                item.get("evidence_reference_ids", []),
+                f"mechanic.modifications[{index}].evidence_reference_ids",
+            )
         ),
     )
 
 
-def _mechanic(raw: object, evidence_reference_id: str) -> WaitingPeriodMechanic:
+def _mechanic(raw: object, evidence_reference_ids: tuple[str, ...]) -> WaitingPeriodMechanic:
     item = _mapping(raw, "binding_spec.mechanic")
     return WaitingPeriodMechanic(
-        waiting_period_type=_enum(WaitingPeriodType, item.get("waiting_period_type"), "mechanic.waiting_period_type"),
+        waiting_period_type=_enum(
+            WaitingPeriodType,
+            item.get("waiting_period_type"),
+            "mechanic.waiting_period_type",
+        ),
         duration_value=item.get("duration_value"),
-        duration_unit=_enum(WaitingPeriodDurationUnit, item.get("duration_unit"), "mechanic.duration_unit"),
-        start_basis=_enum(WaitingPeriodStartBasis, item.get("start_basis"), "mechanic.start_basis"),
-        applies_to=tuple(_text(value, "mechanic.applies_to[]") for value in _items(item.get("applies_to"), "mechanic.applies_to")),
-        evidence_reference_ids=(evidence_reference_id,),
+        duration_unit=_enum(
+            WaitingPeriodDurationUnit,
+            item.get("duration_unit"),
+            "mechanic.duration_unit",
+        ),
+        start_basis=_enum(
+            WaitingPeriodStartBasis,
+            item.get("start_basis"),
+            "mechanic.start_basis",
+        ),
+        applies_to=tuple(
+            _text(value, "mechanic.applies_to[]")
+            for value in _items(item.get("applies_to"), "mechanic.applies_to")
+        ),
+        evidence_reference_ids=evidence_reference_ids,
         exclusions_or_exceptions=tuple(
             _text(value, "mechanic.exclusions_or_exceptions[]")
-            for value in _items(item.get("exclusions_or_exceptions", []), "mechanic.exclusions_or_exceptions")
+            for value in _items(
+                item.get("exclusions_or_exceptions", []),
+                "mechanic.exclusions_or_exceptions",
+            )
         ),
         modifications=tuple(
             _modification(raw_modification, index)
-            for index, raw_modification in enumerate(_items(item.get("modifications", []), "mechanic.modifications"))
+            for index, raw_modification in enumerate(
+                _items(item.get("modifications", []), "mechanic.modifications")
+            )
         ),
         schedule_dependency=item.get("schedule_dependency"),
         continuity_dependency=item.get("continuity_dependency"),
-        scope_type=_enum(WaitingPeriodScopeType, item.get("scope_type", "POLICY_WIDE"), "mechanic.scope_type"),
+        scope_type=_enum(
+            WaitingPeriodScopeType,
+            item.get("scope_type", "POLICY_WIDE"),
+            "mechanic.scope_type",
+        ),
         scope_reference=item.get("scope_reference"),
-        value_source=_enum(WaitingPeriodValueSource, item.get("value_source", "PRODUCT_FIXED"), "mechanic.value_source"),
-        member_waiting_basis=_optional_enum(WaitingPeriodMemberBasis, item.get("member_waiting_basis"), "mechanic.member_waiting_basis"),
+        value_source=_enum(
+            WaitingPeriodValueSource,
+            item.get("value_source", "PRODUCT_FIXED"),
+            "mechanic.value_source",
+        ),
+        member_waiting_basis=_optional_enum(
+            WaitingPeriodMemberBasis,
+            item.get("member_waiting_basis"),
+            "mechanic.member_waiting_basis",
+        ),
     )
 
 
@@ -165,7 +204,11 @@ class WaitingPeriodBinding:
             spec = json.loads(path.read_text(encoding="utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
             raise WaitingPeriodBindingError("binding specification is not valid JSON") from exc
-        return self.bind(spec=_mapping(spec, "binding_spec"), repository_root=repository_root, bound_at=bound_at)
+        return self.bind(
+            spec=_mapping(spec, "binding_spec"),
+            repository_root=repository_root,
+            bound_at=bound_at,
+        )
 
     def bind(
         self,
@@ -182,63 +225,149 @@ class WaitingPeriodBinding:
         if spec.get("reviewed_by_human") is not True:
             raise WaitingPeriodBindingError("reviewed_by_human must be true")
 
-        bundle_path = _safe_relative_path(spec.get("generic_source_bundle_path"), "generic_source_bundle_path")
+        bundle_path = _safe_relative_path(
+            spec.get("generic_source_bundle_path"),
+            "generic_source_bundle_path",
+        )
         bundle = _load_json(root, bundle_path, "generic_source_bundle")
         if bundle.get("registration_type") != "generic_source_registration_bundle_v1":
             raise WaitingPeriodBindingError("generic source bundle is not review-ready")
-        context = _mapping(bundle.get("product_context"), "generic_source_bundle.product_context")
-        if context.get("source_scope") != "reusable_generic":
-            raise WaitingPeriodBindingError("generic source bundle must use reusable_generic scope")
-
-        selection = _mapping(spec.get("evidence_selection"), "binding_spec.evidence_selection")
-        document_id = _text(selection.get("document_id"), "evidence_selection.document_id")
-        candidate_id = _text(selection.get("candidate_id"), "evidence_selection.candidate_id")
-        expected_hash = _text(selection.get("candidate_text_sha256"), "evidence_selection.candidate_text_sha256")
-
-        source = next(
-            (
-                _mapping(item, "generic_source_bundle.sources[]")
-                for item in _items(bundle.get("sources"), "generic_source_bundle.sources")
-                if _mapping(item, "generic_source_bundle.sources[]").get("document_id") == document_id
-            ),
-            None,
+        context = _mapping(
+            bundle.get("product_context"),
+            "generic_source_bundle.product_context",
         )
-        if source is None:
-            raise WaitingPeriodBindingError(f"unregistered source {document_id!r}")
-        if source.get("authority_role") != "primary_legal":
-            raise WaitingPeriodBindingError("waiting-period mechanic requires primary_legal evidence")
+        if context.get("source_scope") != "reusable_generic":
+            raise WaitingPeriodBindingError(
+                "generic source bundle must use reusable_generic scope"
+            )
 
-        registration_path = _safe_relative_path(source.get("registration_output_path"), "source.registration_output_path")
-        registration = _load_json(root, registration_path, f"registration[{document_id}]")
-        candidates = {
-            _text(candidate.get("candidate_id"), "candidate.candidate_id"): candidate
-            for candidate in (
-                _mapping(raw, "registration.evidence_review.candidates[]")
-                for raw in _items(
-                    _mapping(registration.get("evidence_review"), "registration.evidence_review").get("candidates"),
-                    "registration.evidence_review.candidates",
-                )
+        sources = {
+            _text(source.get("document_id"), "source.document_id"): source
+            for source in (
+                _mapping(raw, "generic_source_bundle.sources[]")
+                for raw in _items(bundle.get("sources"), "generic_source_bundle.sources")
             )
         }
-        candidate = candidates.get(candidate_id)
-        if candidate is None:
-            raise WaitingPeriodBindingError(f"candidate {candidate_id!r} not found")
-        actual_hash = _text(candidate.get("text_sha256"), "candidate.text_sha256")
-        if actual_hash != expected_hash:
-            raise WaitingPeriodBindingError("candidate text hash mismatch")
+        registrations: dict[str, Mapping[str, Any]] = {}
+        candidate_indexes: dict[str, dict[str, Mapping[str, Any]]] = {}
 
-        evidence_reference_id = f"{document_id}:{candidate_id}:{actual_hash}"
-        mechanic = _mechanic(spec.get("mechanic"), evidence_reference_id)
-        if mechanic.value_source is WaitingPeriodValueSource.POLICY_SCHEDULE_SELECTED:
-            raise WaitingPeriodBindingError(
-                "unresolved POLICY_SCHEDULE_SELECTED option domains cannot be bound as scalar mechanics"
+        raw_selections = _items(
+            spec.get("evidence_selections"),
+            "binding_spec.evidence_selections",
+        )
+        if not raw_selections:
+            raise WaitingPeriodBindingError("evidence_selections must not be empty")
+
+        evidence: list[dict[str, Any]] = []
+        evidence_reference_ids: list[str] = []
+        role_counts = {role: 0 for role in _ALLOWED_EVIDENCE_ROLES}
+
+        for index, raw_selection in enumerate(raw_selections):
+            selection = _mapping(raw_selection, f"evidence_selections[{index}]")
+            role = _text(selection.get("role"), f"evidence_selections[{index}].role")
+            if role not in _ALLOWED_EVIDENCE_ROLES:
+                raise WaitingPeriodBindingError(f"unsupported evidence role {role!r}")
+            role_counts[role] += 1
+
+            document_id = _text(
+                selection.get("document_id"),
+                f"evidence_selections[{index}].document_id",
             )
+            candidate_id = _text(
+                selection.get("candidate_id"),
+                f"evidence_selections[{index}].candidate_id",
+            )
+            expected_hash = _text(
+                selection.get("candidate_text_sha256"),
+                f"evidence_selections[{index}].candidate_text_sha256",
+            )
+
+            source = sources.get(document_id)
+            if source is None:
+                raise WaitingPeriodBindingError(f"unregistered source {document_id!r}")
+            if source.get("authority_role") != "primary_legal":
+                raise WaitingPeriodBindingError(
+                    "waiting-period mechanic requires primary_legal evidence"
+                )
+
+            if document_id not in registrations:
+                registration_path = _safe_relative_path(
+                    source.get("registration_output_path"),
+                    "source.registration_output_path",
+                )
+                registration = _load_json(
+                    root,
+                    registration_path,
+                    f"registration[{document_id}]",
+                )
+                registrations[document_id] = registration
+                candidate_indexes[document_id] = {
+                    _text(candidate.get("candidate_id"), "candidate.candidate_id"): candidate
+                    for candidate in (
+                        _mapping(raw, "registration.evidence_review.candidates[]")
+                        for raw in _items(
+                            _mapping(
+                                registration.get("evidence_review"),
+                                "registration.evidence_review",
+                            ).get("candidates"),
+                            "registration.evidence_review.candidates",
+                        )
+                    )
+                }
+
+            candidate = candidate_indexes[document_id].get(candidate_id)
+            if candidate is None:
+                raise WaitingPeriodBindingError(
+                    f"candidate {candidate_id!r} not found for {document_id}"
+                )
+            actual_hash = _text(candidate.get("text_sha256"), "candidate.text_sha256")
+            if actual_hash != expected_hash:
+                raise WaitingPeriodBindingError(
+                    f"candidate text hash mismatch for {document_id}:{candidate_id}"
+                )
+
+            evidence_reference_id = f"{document_id}:{candidate_id}:{actual_hash}"
+            evidence_reference_ids.append(evidence_reference_id)
+            evidence.append(
+                {
+                    "role": role,
+                    "document_id": document_id,
+                    "candidate_id": candidate_id,
+                    "candidate_text_sha256": actual_hash,
+                    "source_page": candidate.get("source_page"),
+                    "source_char_range": candidate.get("source_char_range"),
+                }
+            )
+
+        if role_counts["mechanism"] != 1:
+            raise WaitingPeriodBindingError(
+                "waiting-period binding requires exactly one mechanism evidence selection"
+            )
+        if role_counts["schedule_value_resolution"] > 1:
+            raise WaitingPeriodBindingError(
+                "waiting-period binding permits at most one schedule_value_resolution selection"
+            )
+
+        mechanic = _mechanic(spec.get("mechanic"), tuple(evidence_reference_ids))
+        if mechanic.value_source is WaitingPeriodValueSource.POLICY_SCHEDULE_SELECTED:
+            if role_counts["schedule_value_resolution"] != 1:
+                raise WaitingPeriodBindingError(
+                    "POLICY_SCHEDULE_SELECTED scalar requires exactly one schedule_value_resolution evidence selection"
+                )
+            resolution_status = "resolved_from_authoritative_schedule_evidence"
+        else:
+            if role_counts["schedule_value_resolution"]:
+                raise WaitingPeriodBindingError(
+                    "PRODUCT_FIXED mechanic must not bind schedule_value_resolution evidence"
+                )
+            resolution_status = "resolved_from_mechanism_evidence"
 
         mechanic_payload = _serialize(asdict(mechanic))
         manifest = {
             "schema_version": "1.0",
             "binding_type": "waiting_period_binding_v1",
             "binding_status": "reviewed_waiting_period_bound_not_published",
+            "resolution_status": resolution_status,
             "product_context": {
                 "insurer_id": context.get("insurer_id"),
                 "product_id": context.get("product_id"),
@@ -247,19 +376,14 @@ class WaitingPeriodBinding:
             "generic_source_bundle_path": bundle_path,
             "binding_id": _text(spec.get("binding_id"), "binding_id"),
             "mechanic": mechanic_payload,
-            "evidence": {
-                "document_id": document_id,
-                "candidate_id": candidate_id,
-                "candidate_text_sha256": actual_hash,
-                "source_page": candidate.get("source_page"),
-                "source_char_range": candidate.get("source_char_range"),
-            },
+            "evidence": evidence,
             "publication_status": "bound_not_published",
             "bound_at": bound_at or datetime.now(timezone.utc).isoformat(),
             "reviewed_by_human": True,
             "guardrails": [
-                "Only resolved scalar waiting-period mechanics may be bound.",
-                "Schedule-selected option domains require a separate option-domain representation and remain unresolved here.",
+                "A resolved scalar waiting-period mechanic requires exact registered primary-legal evidence.",
+                "Schedule-selected scalar values require separate authoritative schedule-value-resolution evidence.",
+                "Unresolved Schedule-selected option domains cannot be manufactured by this binder.",
                 "The binding does not publish or infer customer-specific eligibility.",
             ],
         }
@@ -275,8 +399,17 @@ class WaitingPeriodBinding:
         root = Path(repository_root).resolve()
         relative = _safe_relative_path(str(output_path), "output_path")
         target = (root / relative).resolve()
+        try:
+            target.relative_to(root)
+        except ValueError as exc:
+            raise WaitingPeriodBindingError(
+                "output_path must remain under repository_root"
+            ) from exc
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(json.dumps(result.manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        target.write_text(
+            json.dumps(result.manifest, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
         return target
 
 
