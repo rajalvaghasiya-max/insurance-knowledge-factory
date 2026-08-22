@@ -61,10 +61,10 @@ class WaitingPeriodDurationOptionDomain:
             raise WaitingPeriodContractError("unresolved option domain requires at least two duration options")
         if len(self.options) != len(set(self.options)):
             raise WaitingPeriodContractError("options must not contain duplicates")
-        if tuple(sorted(self.options)) != self.options:
-            raise WaitingPeriodContractError("options must be in deterministic ascending duration order")
         if len({item.duration_unit for item in self.options}) != 1:
             raise WaitingPeriodContractError("duration option domain must use one common duration unit")
+        if tuple(sorted(self.options)) != self.options:
+            raise WaitingPeriodContractError("options must be in deterministic ascending duration order")
 
         object.__setattr__(self, "applies_to", _text_tuple(self.applies_to, "applies_to"))
         if not self.applies_to:
