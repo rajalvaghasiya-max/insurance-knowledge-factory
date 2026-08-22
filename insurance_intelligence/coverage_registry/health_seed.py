@@ -71,8 +71,8 @@ BAJAJ_MY_HEALTH_CARE_V2_COVERAGE = ProductCoverageRecord(
             comparison_ready=False,
             decision_support_ready=False,
             limitations=(
-                "The Plan 1 initial waiting period is resolved to 30 days from exact current-v2 mechanism and Schedule-table evidence; its enhanced-Sum-Insured reapplication is now represented by the typed REAPPLIES_TO_ENHANCED_PORTION effect, but current binding re-execution and rule certification remain outstanding.",
-                "PED, specified-disease/procedure, maternity, and baby-care waiting periods remain unresolved Schedule-dependent families for this coverage milestone.",
+                "The Plan 1 initial waiting-period mechanic is certified complete: 30 days, Policy-Schedule-selected origin, accident and continuity exceptions, and enhanced-Sum-Insured reapplication are preserved.",
+                "PED, specified-disease/procedure, maternity, and baby-care waiting periods remain unresolved Schedule-dependent families, so the overall waiting_period concept remains PARTIAL.",
             ),
         ),
     ),

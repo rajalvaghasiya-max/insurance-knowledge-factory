@@ -43,16 +43,26 @@ def test_committed_binding_spec_preserves_exact_dual_evidence_resolution() -> No
     }
 
 
-def test_qualification_is_ready_for_binding_reexecution_and_rule_certification() -> None:
+def test_qualification_records_complete_initial_wait_certification() -> None:
     qualification = _qualification()
     state = qualification["qualification"]
     assert state["scalar_binding"] == "QUALIFIED"
     assert state["typed_material_effect_completeness"] == "QUALIFIED"
-    assert state["rule_certification"] == "READY_AFTER_CURRENT_BINDING_REEXECUTION"
+    assert state["rule_certification"] == "CERTIFIED"
+    assert state["certification_outcome"] == "PASS"
+    assert state["certification_completeness"] == "COMPLETE"
+    assert state["explanation_permitted"] is True
     assert state["coverage_registry_status"] == "PARTIAL"
     assert state["comparison_ready"] is False
     assert state["decision_support_ready"] is False
-    assert qualification["qualified_mechanic"]["sum_insured_enhancement_effect"] == "REAPPLIES_TO_ENHANCED_PORTION"
+    assert set(qualification["certified_components"]) == {
+        "waiting_period_duration",
+        "waiting_period_subject",
+        "start_basis",
+        "applicability_scope",
+        "continuity_or_credit_rule",
+        "exception_condition",
+    }
 
 
 def test_unresolved_waiting_period_families_keep_overall_concept_partial() -> None:

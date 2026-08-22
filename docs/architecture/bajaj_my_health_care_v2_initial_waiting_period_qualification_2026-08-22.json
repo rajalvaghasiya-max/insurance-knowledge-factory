@@ -23,11 +23,23 @@
   "qualification": {
     "scalar_binding": "QUALIFIED",
     "typed_material_effect_completeness": "QUALIFIED",
-    "rule_certification": "READY_AFTER_CURRENT_BINDING_REEXECUTION",
+    "rule_certification": "CERTIFIED",
+    "certification_id": "waiting_period:bajaj_my_health_care_v2_initial_wait_30_days",
+    "certification_outcome": "PASS",
+    "certification_completeness": "COMPLETE",
+    "explanation_permitted": true,
     "coverage_registry_status": "PARTIAL",
     "comparison_ready": false,
     "decision_support_ready": false
   },
+  "certified_components": [
+    "waiting_period_duration",
+    "waiting_period_subject",
+    "start_basis",
+    "applicability_scope",
+    "continuity_or_credit_rule",
+    "exception_condition"
+  ],
   "unresolved_waiting_period_families": [
     "PRE_EXISTING_DISEASE",
     "SPECIFIC_DISEASE_PROCEDURE",
@@ -35,9 +47,10 @@
     "BABY_CARE"
   ],
   "guardrails": [
-    "Do not infer a customer-specific waiting-period outcome from this qualification alone.",
+    "Certification applies only to the resolved Plan 1 initial waiting-period mechanic.",
+    "Do not infer a customer-specific waiting-period outcome from this certification alone.",
     "Do not promote the overall waiting_period concept to CERTIFIED while other material Schedule-dependent families remain unresolved.",
-    "Do not mark comparison_ready or decision_support_ready from this qualification.",
+    "Do not mark comparison_ready or decision_support_ready from this certification.",
     "Do not import the historical MO-028B generic_knowledge subsystem wholesale."
   ]
 }
