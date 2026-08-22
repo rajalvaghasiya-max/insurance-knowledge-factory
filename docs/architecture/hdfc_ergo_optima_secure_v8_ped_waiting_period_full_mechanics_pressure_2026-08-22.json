@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "record_type": "waiting_period_multi_candidate_mechanic_pressure_v1",
+  "product": {
+    "insurer_id": "hdfc_ergo",
+    "product_id": "optima_secure",
+    "product_display_name": "my: Optima Secure",
+    "uin": "HDFHLIP26058V082526"
+  },
+  "concept": "waiting_period",
+  "waiting_period_type": "PRE_EXISTING_DISEASE",
+  "current_duration_domain_certification": {
+    "certification_id": "waiting_period_option_domain:hdfc_ergo_optima_secure_v8_ped_waiting_period_options",
+    "outcome": "PASS",
+    "completeness": "COMPLETE",
+    "explanation_permitted": true,
+    "scope": "duration option domain, subject, Schedule selection basis, start basis, and policy-wide applicability only"
+  },
+  "earned_runtime_pressure": {
+    "problem": "The complete authoritative PED mechanic spans multiple registered evidence candidates. candidate_page_30 establishes the base 36-month Schedule-dependent PED exclusion and candidate_page_31 continues the same clause with Sum Insured enhancement reapplication, continuity credit, and the post-wait declaration/acceptance condition.",
+    "current_limitation": "waiting_period_option_domain_binding_v1 requires exactly one mechanism evidence selection and the option-domain certifier indexes binding evidence by role, so multiple mechanism candidates cannot be preserved safely.",
+    "required_generic_change": "Permit one or more mechanism evidence selections plus exactly one option_domain selection, preserve every exact candidate in the binding manifest, and allow certification components to draw from all mechanism candidates without duplicate evidence identifiers.",
+    "insurer_specific_runtime_code_permitted": false
+  },
+  "authoritative_evidence": [
+    {
+      "role": "mechanism",
+      "candidate_id": "candidate_page_30",
+      "source_page": 30,
+      "candidate_text_sha256": "fceba7174d309103ee95afd6ba031c8109a45d0d97ac0373381a737bb766963e",
+      "supports": [
+        "base_36_month_ped_wait",
+        "policy_schedule_override",
+        "insured_person_first_coverage_start_basis"
+      ]
+    },
+    {
+      "role": "mechanism",
+      "candidate_id": "candidate_page_31",
+      "source_page": 31,
+      "candidate_text_sha256": "577c2d3bcadad71005876d367b9fe60eac8f064b83d20e872e787a7f74935327",
+      "supports": [
+        "sum_insured_enhancement_reapplication",
+        "portability_or_migration_continuity_credit",
+        "post_wait_declaration_and_insurer_acceptance_condition"
+      ]
+    },
+    {
+      "role": "option_domain",
+      "candidate_id": "candidate_page_26",
+      "source_page": 26,
+      "candidate_text_sha256": "05864e66649d506387902d20f252bb8df552372b77a2b10e09d5e10ea1557dd2",
+      "supports": [
+        "36_to_24_month_modification",
+        "36_to_12_month_modification",
+        "policy_schedule_selected_modified_wait"
+      ]
+    }
+  ],
+  "governance": {
+    "publication_authorized": false,
+    "coverage_registry_promotion_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "policy_instance_duration_without_schedule_authorized": false,
+    "architecture_change_earned_by_real_product_pressure": true
+  }
+}
