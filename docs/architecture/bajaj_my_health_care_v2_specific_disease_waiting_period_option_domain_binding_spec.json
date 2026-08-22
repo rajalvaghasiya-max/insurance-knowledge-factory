@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_option_domain_binding_v1",
+  "binding_id": "bajaj_my_health_care_v2_specific_disease_waiting_period_options",
+  "reviewed_by_human": true,
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/bajaj_my_health_care_v2_generic_source_bundle.json",
+  "evidence_selections": [
+    {
+      "role": "mechanism",
+      "document_id": "bajaj_my_health_care_policy_wording_v2",
+      "candidate_id": "candidate_page_20",
+      "candidate_text_sha256": "5261b13c20af365078c7ec1a4b43e742fd1890257a57fa5858d6314eff87aef2"
+    },
+    {
+      "role": "option_domain",
+      "document_id": "bajaj_my_health_care_policy_wording_v2",
+      "candidate_id": "candidate_page_53",
+      "candidate_text_sha256": "b362111414b124bbcc62cd3b33d0eafe7d01b5f9305fa079cdd156ee92b8cc40"
+    }
+  ],
+  "option_domain": {
+    "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+    "options": [
+      {"duration_value": 1, "duration_unit": "YEARS"},
+      {"duration_value": 2, "duration_unit": "YEARS"},
+      {"duration_value": 3, "duration_unit": "YEARS"}
+    ],
+    "applies_to": ["listed_conditions_surgeries_and_treatments"],
+    "schedule_dependency": "The specified-disease/procedure waiting period is selected in the Policy Schedule; current product wording exposes 1-year, 2-year, and 3-year options.",
+    "scope_type": "POLICY_WIDE",
+    "scope_reference": null,
+    "value_source": "POLICY_SCHEDULE_SELECTED"
+  },
+  "material_mechanic_semantics": {
+    "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+    "accident_exception": true,
+    "longer_of_relationship": "if_a_listed_condition_also_falls_under_PED_waiting_period_the_longer_waiting_period_applies",
+    "continuity_credit": "reduced_to_extent_of_prior_coverage_under_applicable_portability_norms",
+    "sum_insured_enhancement_effect": "REAPPLIES_TO_ENHANCED_PORTION"
+  },
+  "governance": {
+    "publication_authorized": false,
+    "policy_instance_resolution_authorized_without_schedule": false,
+    "scalar_manufacturing_authorized_without_schedule": false
+  }
+}
