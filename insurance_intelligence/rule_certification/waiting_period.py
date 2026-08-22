@@ -340,7 +340,6 @@ def run_waiting_period_certification_case(
         expectation=case.expectation,
         evidence_output=case.evidence_output,
         domain=case.domain,
-        limitations=case.evidence_output.limitations,
     )
 
 
