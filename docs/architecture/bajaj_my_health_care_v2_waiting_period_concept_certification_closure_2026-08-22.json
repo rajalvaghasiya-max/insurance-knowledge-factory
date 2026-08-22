@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "closure_type": "waiting_period_concept_certification_closure_v1",
+  "product_reference": "bajaj_allianz_general:my_health_care:BAJHLIP26074V022526",
+  "product_id": "my_health_care",
+  "uin": "BAJHLIP26074V022526",
+  "closed_on": "2026-08-22",
+  "concept_id": "waiting_period",
+  "concept_status": "CERTIFIED",
+  "comparison_ready": false,
+  "decision_support_ready": false,
+  "publication_authorized": false,
+  "certified_families": [
+    {
+      "waiting_period_type": "INITIAL",
+      "resolution_level": "RESOLVED_SCALAR",
+      "certification_id": "waiting_period:bajaj_my_health_care_v2_initial_wait_30_days",
+      "certification_outcome": "PASS",
+      "completeness": "COMPLETE",
+      "explanation_permitted": true,
+      "material_semantics": [
+        "30 DAYS",
+        "POLICY_SCHEDULE_SELECTED origin",
+        "POLICY_INCEPTION start basis",
+        "accident exception",
+        "continuous coverage for more than 12 months removes the exclusion",
+        "REAPPLIES_TO_ENHANCED_PORTION"
+      ]
+    },
+    {
+      "waiting_period_type": "PRE_EXISTING_DISEASE",
+      "resolution_level": "CERTIFIED_UNRESOLVED_SCHEDULE_OPTION_DOMAIN",
+      "certification_id": "waiting_period_option_domain:bajaj_my_health_care_v2_ped_waiting_period_options",
+      "certification_outcome": "PASS",
+      "completeness": "COMPLETE",
+      "explanation_permitted": true,
+      "authoritative_options": ["1 YEAR", "2 YEARS", "3 YEARS"],
+      "policy_instance_selected_duration": "UNRESOLVED_WITHOUT_POLICY_SCHEDULE",
+      "material_semantics": [
+        "INSURED_PERSON_FIRST_COVERAGE start basis",
+        "portability continuity credit",
+        "REAPPLIES_TO_ENHANCED_PORTION",
+        "post-wait declaration and insurer acceptance condition"
+      ]
+    },
+    {
+      "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+      "resolution_level": "CERTIFIED_UNRESOLVED_SCHEDULE_OPTION_DOMAIN",
+      "certification_id": "waiting_period_option_domain:bajaj_my_health_care_v2_specific_disease_waiting_period_options",
+      "certification_outcome": "PASS",
+      "completeness": "COMPLETE",
+      "explanation_permitted": true,
+      "authoritative_options": ["1 YEAR", "2 YEARS", "3 YEARS"],
+      "policy_instance_selected_duration": "UNRESOLVED_WITHOUT_POLICY_SCHEDULE",
+      "material_semantics": [
+        "INSURED_PERSON_FIRST_COVERAGE start basis",
+        "accident exception",
+        "longer-of-PED relationship",
+        "portability continuity credit",
+        "REAPPLIES_TO_ENHANCED_PORTION"
+      ]
+    },
+    {
+      "waiting_period_type": "MATERNITY",
+      "resolution_level": "RESOLVED_SCALAR_WITH_CERTIFIED_MODIFICATION",
+      "certification_id": "waiting_period:bajaj_my_health_care_v2_maternity_wait_36_months",
+      "certification_outcome": "PASS",
+      "completeness": "COMPLETE",
+      "explanation_permitted": true,
+      "material_semantics": [
+        "36 MONTHS",
+        "BENEFIT_SCOPED:maternity_package_expenses",
+        "REDUCTION to 24 MONTHS when premium_for_long_term_policy_is_paid_upfront",
+        "ectopic pregnancy exception"
+      ]
+    },
+    {
+      "waiting_period_type": "BABY_CARE",
+      "resolution_level": "RESOLVED_SCALAR_WITH_CERTIFIED_MODIFICATION",
+      "certification_id": "waiting_period:bajaj_my_health_care_v2_baby_care_wait_36_months",
+      "certification_outcome": "PASS",
+      "completeness": "COMPLETE",
+      "explanation_permitted": true,
+      "material_semantics": [
+        "36 MONTHS",
+        "BENEFIT_SCOPED:baby_care",
+        "REDUCTION to 24 MONTHS when premium_for_long_term_policy_is_paid_upfront"
+      ]
+    }
+  ],
+  "governance_boundary": {
+    "concept_certified": true,
+    "customer_specific_schedule_resolution_is_not_implied": true,
+    "ped_and_specific_disease_selected_duration_requires_policy_schedule": true,
+    "comparison_ready": false,
+    "decision_support_ready": false,
+    "publication_authorized": false,
+    "claim_payment_prediction_authorized": false
+  }
+}
