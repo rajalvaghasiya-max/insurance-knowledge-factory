@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "record_type": "bajaj_v2_copayment_evidence_inventory_v1",
+  "reviewed_by_human": true,
+  "reviewed_at": "2026-08-22",
+  "product_identity": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "product_name": "My Health Care Plan",
+    "plan_variant": "Plan 1",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "source": {
+    "document_id": "bajaj_my_health_care_policy_wording_v2",
+    "content_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+    "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+    "source_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+    "temporal_status_required": "current_observed_reviewed"
+  },
+  "copayment_mechanisms": [
+    {
+      "mechanism_id": "bajaj_v2_copay_lab_radiology_unapproved_reimbursement",
+      "mechanism_type": "conditional_copayment_rule",
+      "rate": {
+        "kind": "fixed_percentage",
+        "value": 20
+      },
+      "trigger": "A reimbursement claim under Doctor Prescribed Investigations Cover - Pathology & Radiology is not pre-approved.",
+      "scope": "Doctor Prescribed Investigations Cover - Pathology & Radiology reimbursement claims",
+      "exception_or_non_trigger": "The clause does not establish this 20% copayment for pre-approved reimbursement claims or cashless investigation claims; any other independently applicable copayment remains a separate rule.",
+      "stacking": "not_stated_by_this_clause",
+      "policy_schedule_dependency": false,
+      "source_page": 15,
+      "source_locator": "Section C, III.A/B Doctor Prescribed Investigations Cover - Pathology & Radiology; note following reimbursement wording",
+      "reviewed_source_text": "A Co-payment of 20% will be applicable on all reimbursement claims which are not pre-approved.",
+      "manufacturing_status": "evidence_located_binding_candidate_required"
+    },
+    {
+      "mechanism_id": "bajaj_v2_copay_international_emergency_mandatory",
+      "mechanism_type": "conditional_copayment_rule",
+      "rate": {
+        "kind": "fixed_percentage",
+        "value": 10
+      },
+      "trigger": "A claim is payable under the optional International Cover - Emergency Care only, subject to the cover-specific conditions.",
+      "scope": "International Cover - Emergency Care only",
+      "exception_or_non_trigger": "The rule is scoped to this optional international emergency cover and must not be generalized to domestic inpatient claims.",
+      "stacking": "in_addition_to_any_other_applicable_copayment_or_deductible",
+      "policy_schedule_dependency": true,
+      "schedule_dependency_reason": "The optional cover and applicable Sum Insured are specified through the Policy Schedule; claim-specific applicability cannot be inferred from generic wording alone.",
+      "source_page": 20,
+      "source_locator": "Optional Covers, International Cover - Emergency Care only, Specific Conditions item c",
+      "reviewed_source_text": "A mandatory Co-payment of 10% is applicable which will be in addition to any other Co-payment/deductible if any applicable in the policy.",
+      "manufacturing_status": "evidence_located_binding_candidate_required"
+    },
+    {
+      "mechanism_id": "bajaj_v2_copay_voluntary_inpatient_option",
+      "mechanism_type": "conditional_copayment_rule",
+      "rate": {
+        "kind": "selected_percentage_option",
+        "allowed_values": [5, 10, 15, 20]
+      },
+      "trigger": "The Voluntary Co-payment option is selected and a claim is admitted under In-patient Hospitalization Treatment.",
+      "scope": "Admitted In-patient Hospitalization Treatment claims where the voluntary copayment option applies",
+      "exception_or_non_trigger": "No single copayment percentage can be asserted without the selected voluntary copayment option; the generic wording only establishes the permitted 5%, 10%, 15%, or 20% options and their relationship to the discount availed.",
+      "stacking": "not_stated_by_this_clause",
+      "policy_schedule_dependency": true,
+      "schedule_dependency_reason": "The applicable percentage depends on the voluntary copayment option/discount selected for the policy instance.",
+      "source_page": 33,
+      "source_locator": "General Conditions / Discounts, item x Voluntary Co-payment Discount",
+      "reviewed_source_text": "If a claim has been admitted under In-patient Hospitalization Treatment then, the Insured shall bear a 5% or 10% or 15% or 20% (proportion to extent to discount availed) of the eligible claim amount payable under this Policy.",
+      "manufacturing_status": "evidence_located_binding_candidate_required"
+    }
+  ],
+  "governance_decision": {
+    "single_product_level_copayment_fact": "PROHIBITED",
+    "reason": "The current wording contains multiple copayment mechanisms with different triggers, scopes, rates, stacking behavior, and policy-instance dependencies.",
+    "next_gate": "Bind each mechanism separately to deterministic evidence candidates from the registered v2 primary legal source before canonical projection or publication review.",
+    "architecture_change": "NONE"
+  }
+}
