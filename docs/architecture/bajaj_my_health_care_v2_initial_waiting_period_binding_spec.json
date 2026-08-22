@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_binding_v1",
+  "binding_id": "bajaj_my_health_care_v2_initial_wait_30_days",
+  "reviewed_by_human": true,
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/bajaj_my_health_care_v2_generic_source_bundle.json",
+  "evidence_selection": {
+    "document_id": "bajaj_my_health_care_policy_wording_v2",
+    "candidate_id": "candidate_page_21",
+    "candidate_text_sha256": "340937bc3ce71aa957c9dad8cfb306d34f343f054100a640720c885680972123"
+  },
+  "mechanic": {
+    "waiting_period_type": "INITIAL",
+    "duration_value": 30,
+    "duration_unit": "DAYS",
+    "start_basis": "POLICY_INCEPTION",
+    "applies_to": [
+      "illness_treatment_within_initial_wait"
+    ],
+    "exclusions_or_exceptions": [
+      "accident_claims_where_other_policy_terms_cover_the_claim",
+      "insured_beneficiary_with_continuous_coverage_for_more_than_12_months"
+    ],
+    "modifications": [],
+    "schedule_dependency": null,
+    "continuity_dependency": "continuous coverage for more than 12 months removes this exclusion",
+    "scope_type": "POLICY_WIDE",
+    "scope_reference": null,
+    "value_source": "PRODUCT_FIXED",
+    "member_waiting_basis": "POLICY_INCEPTION"
+  },
+  "additional_material_effects_not_collapsed_into_scalar_duration": [
+    "The waiting period reapplies to the extent of enhanced Sum Insured when a higher Sum Insured is subsequently granted."
+  ],
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "schedule_selected_ped_or_specific_wait_authorized": false
+  }
+}
