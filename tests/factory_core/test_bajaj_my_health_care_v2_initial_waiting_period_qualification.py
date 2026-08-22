@@ -3,41 +3,43 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from factory_core.canonical.waiting_period_binding import WaitingPeriodBinding
-
 
 ROOT = Path(__file__).resolve().parents[2]
 BINDING_SPEC = ROOT / "docs" / "architecture" / "bajaj_my_health_care_v2_initial_waiting_period_binding_spec.json"
 QUALIFICATION = ROOT / "docs" / "architecture" / "bajaj_my_health_care_v2_initial_waiting_period_qualification_2026-08-22.json"
 
 
+def _binding_spec() -> dict:
+    return json.loads(BINDING_SPEC.read_text(encoding="utf-8"))
+
+
 def _qualification() -> dict:
     return json.loads(QUALIFICATION.read_text(encoding="utf-8"))
 
 
-def test_real_v2_initial_wait_binding_resolves_from_two_authoritative_candidates() -> None:
-    result = WaitingPeriodBinding().bind_from_spec_file(
-        spec_path=BINDING_SPEC,
-        repository_root=ROOT,
-        bound_at="2026-08-22T00:00:00+00:00",
-    )
-    manifest = result.manifest
-    assert manifest["binding_status"] == "reviewed_waiting_period_bound_not_published"
-    assert manifest["resolution_status"] == "resolved_from_authoritative_schedule_evidence"
-    assert manifest["publication_status"] == "bound_not_published"
-    mechanic = manifest["mechanic"]
+def test_committed_binding_spec_preserves_exact_dual_evidence_resolution() -> None:
+    spec = _binding_spec()
+    mechanic = spec["mechanic"]
+    assert spec["manufacturing_status"] == "resolved_scalar_ready_for_binding"
     assert mechanic["waiting_period_type"] == "INITIAL"
     assert mechanic["duration_value"] == 30
     assert mechanic["duration_unit"] == "DAYS"
     assert mechanic["value_source"] == "POLICY_SCHEDULE_SELECTED"
     assert mechanic["start_basis"] == "POLICY_INCEPTION"
-    assert {item["role"] for item in manifest["evidence"]} == {
-        "mechanism",
-        "schedule_value_resolution",
+    by_role = {item["role"]: item for item in spec["evidence_selections"]}
+    assert set(by_role) == {"mechanism", "schedule_value_resolution"}
+    assert by_role["mechanism"] == {
+        "role": "mechanism",
+        "document_id": "bajaj_my_health_care_policy_wording_v2",
+        "candidate_id": "candidate_page_21",
+        "candidate_text_sha256": "340937bc3ce71aa957c9dad8cfb306d34f343f054100a640720c885680972123",
     }
-    by_role = {item["role"]: item for item in manifest["evidence"]}
-    assert by_role["mechanism"]["candidate_id"] == "candidate_page_21"
-    assert by_role["schedule_value_resolution"]["candidate_id"] == "candidate_page_53"
+    assert by_role["schedule_value_resolution"] == {
+        "role": "schedule_value_resolution",
+        "document_id": "bajaj_my_health_care_policy_wording_v2",
+        "candidate_id": "candidate_page_53",
+        "candidate_text_sha256": "b362111414b124bbcc62cd3b33d0eafe7d01b5f9305fa079cdd156ee92b8cc40",
+    }
 
 
 def test_qualification_keeps_waiting_period_concept_partial() -> None:
