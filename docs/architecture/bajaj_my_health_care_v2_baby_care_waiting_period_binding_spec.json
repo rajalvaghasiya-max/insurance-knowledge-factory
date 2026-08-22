@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_binding_v1",
+  "binding_id": "bajaj_my_health_care_v2_baby_care_wait_36_months",
+  "reviewed_by_human": true,
+  "manufacturing_status": "resolved_scalar_ready_for_binding",
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/bajaj_my_health_care_v2_generic_source_bundle.json",
+  "evidence_selections": [
+    {
+      "role": "mechanism",
+      "document_id": "bajaj_my_health_care_policy_wording_v2",
+      "candidate_id": "candidate_page_21",
+      "candidate_text_sha256": "340937bc3ce71aa957c9dad8cfb306d34f343f054100a640720c885680972123"
+    },
+    {
+      "role": "schedule_value_resolution",
+      "document_id": "bajaj_my_health_care_policy_wording_v2",
+      "candidate_id": "candidate_page_53",
+      "candidate_text_sha256": "b362111414b124bbcc62cd3b33d0eafe7d01b5f9305fa079cdd156ee92b8cc40"
+    }
+  ],
+  "mechanic": {
+    "waiting_period_type": "BABY_CARE",
+    "duration_value": 36,
+    "duration_unit": "MONTHS",
+    "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+    "applies_to": [
+      "baby_care"
+    ],
+    "exclusions_or_exceptions": [],
+    "modifications": [
+      {
+        "modification_type": "REDUCTION",
+        "condition": "premium_for_long_term_policy_is_paid_upfront",
+        "resulting_duration_value": 24,
+        "resulting_duration_unit": "MONTHS",
+        "evidence_reference_ids": [
+          "bajaj_my_health_care_policy_wording_v2:candidate_page_53:b362111414b124bbcc62cd3b33d0eafe7d01b5f9305fa079cdd156ee92b8cc40"
+        ]
+      }
+    ],
+    "schedule_dependency": "The legal baby-care clause delegates the waiting period to the Policy Schedule; the Plan 1 table resolves it to 36 months and states a one-year reduction when long-term premium is paid upfront.",
+    "continuity_dependency": null,
+    "scope_type": "BENEFIT_SCOPED",
+    "scope_reference": "baby_care",
+    "value_source": "POLICY_SCHEDULE_SELECTED",
+    "member_waiting_basis": null,
+    "sum_insured_enhancement_effect": null
+  },
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "scalar_binding_authorized": true,
+    "schedule_resolution_basis": "candidate_page_53 Plan 1 waiting-period table",
+    "conditional_reduction_basis": "36 months reduced by one year to 24 months when long-term premium is paid upfront"
+  }
+}
