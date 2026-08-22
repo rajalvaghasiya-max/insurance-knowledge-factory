@@ -32,7 +32,7 @@
     "scope_type": "POLICY_WIDE",
     "scope_reference": null,
     "value_source": "PRODUCT_FIXED",
-    "member_waiting_basis": "INSURED_PERSON_FIRST_COVERAGE",
+    "member_waiting_basis": null,
     "sum_insured_enhancement_effect": "REAPPLIES_TO_ENHANCED_PORTION"
   },
   "component_evidence_candidate_ids": {
