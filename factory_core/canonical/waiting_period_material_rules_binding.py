@@ -78,6 +78,12 @@ class WaitingPeriodMaterialRulesBinding:
         }
         rules = []
         seen_ids: set[str] = set()
+        allowed_rule_types = {
+            "RELATIONSHIP_LONGER_OF",
+            "APPLICABILITY_CONDITION",
+            "POST_WAIT_CONDITION",
+            "RESET_AFTER_EVENT",
+        }
         for index, raw in enumerate(_items(spec.get("material_rules"), "material_rules")):
             item = _mapping(raw, f"material_rules[{index}]")
             rule_id = _text(item.get("rule_id"), f"material_rules[{index}].rule_id")
@@ -85,7 +91,7 @@ class WaitingPeriodMaterialRulesBinding:
                 raise WaitingPeriodMaterialRulesBindingError("material rule IDs must be unique")
             seen_ids.add(rule_id)
             rule_type = _text(item.get("rule_type"), f"material_rules[{index}].rule_type")
-            if rule_type not in {"RELATIONSHIP_LONGER_OF", "APPLICABILITY_CONDITION", "POST_WAIT_CONDITION"}:
+            if rule_type not in allowed_rule_types:
                 raise WaitingPeriodMaterialRulesBindingError(f"unsupported rule_type {rule_type!r}")
             candidate_ids = tuple(_text(v, "evidence_candidate_ids[]") for v in _items(item.get("evidence_candidate_ids"), "evidence_candidate_ids"))
             if not candidate_ids or len(candidate_ids) != len(set(candidate_ids)):
@@ -96,14 +102,29 @@ class WaitingPeriodMaterialRulesBinding:
             related = item.get("related_waiting_period_type")
             if rule_type == "RELATIONSHIP_LONGER_OF" and not isinstance(related, str):
                 raise WaitingPeriodMaterialRulesBindingError("RELATIONSHIP_LONGER_OF requires related_waiting_period_type")
-            if rule_type in {"APPLICABILITY_CONDITION", "POST_WAIT_CONDITION"} and related is not None:
+            if rule_type in {"APPLICABILITY_CONDITION", "POST_WAIT_CONDITION", "RESET_AFTER_EVENT"} and related is not None:
                 raise WaitingPeriodMaterialRulesBindingError(f"{rule_type} must not define related_waiting_period_type")
-            rules.append({"rule_id": rule_id, "rule_type": rule_type, "statement": _text(item.get("statement"), f"material_rules[{index}].statement"), "related_waiting_period_type": related, "evidence_candidate_ids": list(candidate_ids)})
+            rules.append({
+                "rule_id": rule_id,
+                "rule_type": rule_type,
+                "statement": _text(item.get("statement"), f"material_rules[{index}].statement"),
+                "related_waiting_period_type": related,
+                "evidence_candidate_ids": list(candidate_ids),
+            })
         if not rules:
             raise WaitingPeriodMaterialRulesBindingError("material_rules must not be empty")
         manifest = dict(base_manifest)
-        manifest.update({"binding_type": "waiting_period_material_rules_binding_v1", "binding_id": _text(spec.get("binding_id"), "binding_id"), "base_binding_spec_path": base_path, "material_rules": rules, "material_rules_status": "reviewed_material_rules_bound_not_published"})
-        manifest["guardrails"] = list(manifest.get("guardrails", [])) + ["Material rules are certified separately and do not alter the resolved scalar duration.", "Material rules do not publish or determine customer-specific claim outcomes."]
+        manifest.update({
+            "binding_type": "waiting_period_material_rules_binding_v1",
+            "binding_id": _text(spec.get("binding_id"), "binding_id"),
+            "base_binding_spec_path": base_path,
+            "material_rules": rules,
+            "material_rules_status": "reviewed_material_rules_bound_not_published",
+        })
+        manifest["guardrails"] = list(manifest.get("guardrails", [])) + [
+            "Material rules are certified separately and do not alter the resolved scalar duration.",
+            "Material rules do not publish or determine customer-specific claim outcomes.",
+        ]
         return WaitingPeriodMaterialRulesBindingResult(manifest=manifest)
 
     def write_output(self, result: WaitingPeriodMaterialRulesBindingResult, *, repository_root: str | Path, output_path: str | Path) -> Path:
