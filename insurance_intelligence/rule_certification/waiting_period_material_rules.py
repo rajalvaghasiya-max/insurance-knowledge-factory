@@ -52,14 +52,17 @@ def _load(root: Path, relative: str, label: str) -> tuple[Mapping[str, Any], str
     return _mapping(json.loads(raw.decode("utf-8")), label), sha256(raw).hexdigest()
 
 
-def _registry() -> TopicCompletenessRegistry:
+def _registry(required_components: tuple[str, ...]) -> TopicCompletenessRegistry:
+    allowed = {"relationship_rule", "applicability_condition"}
+    if not required_components or not set(required_components).issubset(allowed):
+        raise WaitingPeriodMaterialRulesCertificationError("required material-rule components are invalid")
     definition = build_topic_definition(
         topic_id="waiting_period_material_rules",
         topic_version="1.0",
         domain="health",
         components=(
-            build_component_definition(component_id="relationship_rule", requirement_type="WAITING_PERIOD_RELATIONSHIP_RULE", required=False, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve interaction with another waiting-period family."),
-            build_component_definition(component_id="applicability_condition", requirement_type="WAITING_PERIOD_APPLICABILITY_CONDITION", required=False, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve additional applicability conditions that are not exceptions."),
+            build_component_definition(component_id="relationship_rule", requirement_type="WAITING_PERIOD_RELATIONSHIP_RULE", required="relationship_rule" in required_components, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve interaction with another waiting-period family."),
+            build_component_definition(component_id="applicability_condition", requirement_type="WAITING_PERIOD_APPLICABILITY_CONDITION", required="applicability_condition" in required_components, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve additional applicability conditions that are not exceptions."),
         ),
     )
     registry = TopicCompletenessRegistry()
@@ -170,7 +173,8 @@ def build_waiting_period_material_rules_certification_case(*, binding_spec_path:
 
 
 def run_waiting_period_material_rules_certification_case(case: RuleCertificationCaseFixture) -> RuleCertificationResult:
-    return run_rule_certification(expectation=case.expectation, evidence_output=case.evidence_output, domain=case.domain, registry=_registry())
+    required_components = tuple(item.component_id for item in case.expectation.component_expectations)
+    return run_rule_certification(expectation=case.expectation, evidence_output=case.evidence_output, domain=case.domain, registry=_registry(required_components))
 
 
 __all__ = ["WaitingPeriodMaterialRulesCertificationError", "build_waiting_period_material_rules_certification_case", "run_waiting_period_material_rules_certification_case"]
