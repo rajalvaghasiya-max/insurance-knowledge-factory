@@ -37,11 +37,9 @@
     "scope_type": "POLICY_WIDE",
     "scope_reference": null,
     "value_source": "POLICY_SCHEDULE_SELECTED",
-    "member_waiting_basis": "POLICY_INCEPTION"
+    "member_waiting_basis": "POLICY_INCEPTION",
+    "sum_insured_enhancement_effect": "REAPPLIES_TO_ENHANCED_PORTION"
   },
-  "additional_material_effects_not_collapsed_into_scalar_duration": [
-    "The waiting period reapplies to the extent of enhanced Sum Insured when a higher Sum Insured is subsequently granted."
-  ],
   "governance": {
     "publication_authorized": false,
     "policy_specific_eligibility_authorized": false,
