@@ -3,13 +3,22 @@
   "binding_type": "waiting_period_binding_v1",
   "binding_id": "bajaj_my_health_care_v2_initial_wait_30_days",
   "reviewed_by_human": true,
-  "manufacturing_status": "blocked_pending_plan1_schedule_table_candidate",
+  "manufacturing_status": "resolved_scalar_ready_for_binding",
   "generic_source_bundle_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/bajaj_my_health_care_v2_generic_source_bundle.json",
-  "evidence_selection": {
-    "document_id": "bajaj_my_health_care_policy_wording_v2",
-    "candidate_id": "candidate_page_21",
-    "candidate_text_sha256": "340937bc3ce71aa957c9dad8cfb306d34f343f054100a640720c885680972123"
-  },
+  "evidence_selections": [
+    {
+      "role": "mechanism",
+      "document_id": "bajaj_my_health_care_policy_wording_v2",
+      "candidate_id": "candidate_page_21",
+      "candidate_text_sha256": "340937bc3ce71aa957c9dad8cfb306d34f343f054100a640720c885680972123"
+    },
+    {
+      "role": "schedule_value_resolution",
+      "document_id": "bajaj_my_health_care_policy_wording_v2",
+      "candidate_id": "candidate_page_53",
+      "candidate_text_sha256": "b362111414b124bbcc62cd3b33d0eafe7d01b5f9305fa079cdd156ee92b8cc40"
+    }
+  ],
   "mechanic": {
     "waiting_period_type": "INITIAL",
     "duration_value": 30,
@@ -23,7 +32,7 @@
       "insured_beneficiary_with_continuous_coverage_for_more_than_12_months"
     ],
     "modifications": [],
-    "schedule_dependency": "The clause states that the initial waiting-period option is specified in the Policy Schedule; Plan 1 table evidence must be bound before resolving the scalar value.",
+    "schedule_dependency": "The legal clause delegates the initial waiting-period option to the Policy Schedule; the Plan 1 table resolves that selected value to 30 days.",
     "continuity_dependency": "continuous coverage for more than 12 months removes this exclusion",
     "scope_type": "POLICY_WIDE",
     "scope_reference": null,
@@ -36,7 +45,7 @@
   "governance": {
     "publication_authorized": false,
     "policy_specific_eligibility_authorized": false,
-    "scalar_binding_authorized": false,
-    "next_required_evidence": "Exact current-v2 registered candidate for the Plan 1 waiting-period table showing the initial waiting-period value."
+    "scalar_binding_authorized": true,
+    "schedule_resolution_basis": "candidate_page_53 Plan 1 waiting-period table"
   }
 }
