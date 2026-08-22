@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "record_type": "bajaj_v2_currentness_capture_record_v1",
+  "observed_at": "2026-08-20T22:14:00+05:30",
+  "reviewed_by_human": true,
+  "product_identity": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "canonical_product_name": "My Health Care Plan",
+    "plan_variant": "Plan 1",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "official_sources": {
+    "document_index_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-documents.html",
+    "policy_wording_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf"
+  },
+  "retained_capture": {
+    "observed_pdf_staging_name": "bajaj_v2_live_verification.pdf",
+    "observed_pdf_archive_path": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158.pdf",
+    "observed_pdf_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+    "source_page_staging_name": "bajaj_v2_source_page_verification.html",
+    "source_page_archive_path": "archive/web/bajaj_allianz_general/my_health_care/health_insurance_documents_20260820__948c0daa4941ce1414d2efd3a644d36a59f4dd9aec651cbd5dc3de89d970681b.html",
+    "source_page_sha256": "948c0daa4941ce1414d2efd3a644d36a59f4dd9aec651cbd5dc3de89d970681b"
+  },
+  "registration_binding": {
+    "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+    "registration_spec_path": "docs/architecture/bajaj_my_health_care_current_version_generic_sources_registration_spec.json",
+    "expected_registered_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158"
+  },
+  "governance_boundary": {
+    "temporal_transition_target": "current_observed_reviewed",
+    "current_entitlement_publication_eligibility_target": "eligible",
+    "fact_effect": "eligible_for_publication_review_only",
+    "auto_publication": "PROHIBITED",
+    "copayment_manufacturing": "BLOCKED",
+    "architecture_change": "NONE"
+  },
+  "review_rationale": "On 2026-08-20 the official Bajaj policy-wording URL was downloaded independently and hashed to the exact v2 registered SHA-256 05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158. The official Health Insurance Documents page was retained separately and hashed to 948c0daa4941ce1414d2efd3a644d36a59f4dd9aec651cbd5dc3de89d970681b. This record captures the observed evidence and expected governed paths; the existing source-observation/currentness-evidence contracts must still re-hash the retained artifacts before temporal promotion."
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "record_type": "document_currentness_evidence_record_v1",
+  "reviewed_by_human": true,
+  "registered_document": {
+    "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json"
+  },
+  "source_observation": {
+    "observation_record_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/governance/bajaj_my_health_care_v2_source_observation_20260820.json"
+  },
+  "evidence_items": [
+    {
+      "evidence_type": "official_product_page_document_link",
+      "evidence_status": "supports_currentness_review",
+      "verification": "retained_official_html_manual_review",
+      "observed_text": "The official Bajaj Health Insurance Documents page lists My Health Care Plan 1 and exposes the policy-wording download used for the retained observation.",
+      "evidence_reference": "archive/web/bajaj_allianz_general/my_health_care/health_insurance_documents_20260820__948c0daa4941ce1414d2efd3a644d36a59f4dd9aec651cbd5dc3de89d970681b.html",
+      "linked_document_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+      "link_label": "Policy Wordings"
+    },
+    {
+      "evidence_type": "official_uin_reference",
+      "evidence_status": "supports_currentness_review",
+      "verification": "document_embedded_text_manual_review",
+      "observed_text": "The retained official policy wording identifies My Health Care Plan (Plan 1) with UIN BAJHLIP26074V022526.",
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json"
+    }
+  ],
+  "reviewed_at": "2026-08-20T22:14:00+05:30",
+  "review_rationale": "The current official Bajaj Health Insurance Documents page exposes the retained policy-wording link, the freshly retained official PDF is byte-identical to the registered v2 05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158 document version, and the embedded UIN BAJHLIP26074V022526 matches the reviewed product identity. This evidence supports temporal currentness review only; it does not publish facts, manufacture copayment, or establish customer entitlement."
+}
