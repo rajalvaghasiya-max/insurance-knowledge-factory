@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_binding_v1",
+  "binding_id": "star_health_star_comprehensive_bariatric_wait_36_months",
+  "reviewed_by_human": true,
+  "manufacturing_status": "resolved_scalar_ready_for_binding",
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/star_health_star_comprehensive_generic_source_bundle.json",
+  "evidence_selections": [
+    {
+      "role": "mechanism",
+      "document_id": "star_health_star_comprehensive_policy_wording_v1",
+      "candidate_id": "candidate_page_15",
+      "candidate_text_sha256": "efe143eab857a4813b51c68d510d9ce7b9aafc2525c7eb6e685dcc9bd318f32c"
+    }
+  ],
+  "mechanic": {
+    "waiting_period_type": "BENEFIT_SPECIFIC",
+    "duration_value": 36,
+    "duration_unit": "MONTHS",
+    "start_basis": "POLICY_INCEPTION",
+    "applies_to": ["section_ii_15_bariatric_surgery"],
+    "exclusions_or_exceptions": [],
+    "modifications": [],
+    "schedule_dependency": null,
+    "continuity_dependency": "The Bariatric Surgery benefit requires continuous renewal with the Company during the 36-month period from first commencement of the policy.",
+    "scope_type": "BENEFIT_SCOPED",
+    "scope_reference": "section_ii_15_bariatric_surgery",
+    "value_source": "PRODUCT_FIXED",
+    "member_waiting_basis": null,
+    "sum_insured_enhancement_effect": null
+  },
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "benefit_medical_eligibility_inferred_from_waiting_period": false,
+    "claim_payment_prediction_authorized": false,
+    "scalar_binding_authorized": true
+  }
+}
