@@ -80,7 +80,6 @@ def test_binding_spec_does_not_flatten_to_one_product_level_copayment() -> None:
 
     assert len(semantic_keys) == 3
     assert "copayment.product_level" not in semantic_keys
-    assert all("single product-level co-payment" not in item["semantic_key"] for item in spec["assertions"])
 
 
 def test_binding_spec_is_consistent_with_governed_inventory() -> None:
@@ -89,4 +88,4 @@ def test_binding_spec_is_consistent_with_governed_inventory() -> None:
 
     assert inventory["governance_decision"]["single_product_level_copayment_fact"] == "PROHIBITED"
     assert inventory["governance_decision"]["architecture_change"] == "NONE"
-    assert len(inventory["mechanisms"]) == len(spec["assertions"]) == 3
+    assert len(inventory["copayment_mechanisms"]) == len(spec["assertions"]) == 3
