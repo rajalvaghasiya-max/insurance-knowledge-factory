@@ -17,20 +17,16 @@
     "mechanism_candidate_id": "candidate_page_21",
     "schedule_resolution_candidate_id": "candidate_page_53",
     "accident_exception_preserved": true,
-    "continuous_coverage_exception_preserved": true
+    "continuous_coverage_exception_preserved": true,
+    "sum_insured_enhancement_effect": "REAPPLIES_TO_ENHANCED_PORTION"
   },
   "qualification": {
     "scalar_binding": "QUALIFIED",
-    "rule_certification": "DEFERRED_PENDING_TYPED_MATERIAL_EFFECT_COMPLETENESS",
+    "typed_material_effect_completeness": "QUALIFIED",
+    "rule_certification": "READY_AFTER_CURRENT_BINDING_REEXECUTION",
     "coverage_registry_status": "PARTIAL",
     "comparison_ready": false,
     "decision_support_ready": false
-  },
-  "remaining_material_effect": {
-    "effect": "The initial waiting period reapplies to the extent of enhanced Sum Insured when a higher Sum Insured is subsequently granted.",
-    "evidence_candidate_id": "candidate_page_21",
-    "typed_runtime_representation": "MISSING",
-    "required_action": "Add the smallest generic typed representation for waiting-period reapplication to an increased Sum Insured before declaring the waiting-period concept certified."
   },
   "unresolved_waiting_period_families": [
     "PRE_EXISTING_DISEASE",
@@ -40,7 +36,7 @@
   ],
   "guardrails": [
     "Do not infer a customer-specific waiting-period outcome from this qualification alone.",
-    "Do not promote waiting_period to CERTIFIED while material effects or Schedule-selected domains remain unrepresented.",
+    "Do not promote the overall waiting_period concept to CERTIFIED while other material Schedule-dependent families remain unresolved.",
     "Do not mark comparison_ready or decision_support_ready from this qualification.",
     "Do not import the historical MO-028B generic_knowledge subsystem wholesale."
   ]
