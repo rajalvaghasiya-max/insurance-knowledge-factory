@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "record_type": "third_product_generic_registration_execution_v1",
+  "record_id": "hdfc_ergo_optima_secure_generic_registration_execution_2026_08_22",
+  "product_reference": "hdfc_ergo:optima_secure:HDFHLIP26058V082526",
+  "source_document_id_sha256": "694c0540cb341ec9254c08a41668174b60d4a7ebc4833d78505052367c0b6ab3",
+  "registration_status": "generic_sources_registered_evidence_review_required",
+  "registered_at": "2026-08-22T13:15:11.520758+00:00",
+  "source_count": 1,
+  "sources": [
+    {
+      "document_id": "hdfc_ergo_optima_secure_policy_wording_v8",
+      "document_version_id": "docver_hdfc_ergo_optima_secure_policy_wording_v8_694c0540cb341ec9",
+      "authority_role": "primary_legal",
+      "audience_scope": "generic_public",
+      "evidence_candidate_count": 69,
+      "registration_status": "source_registered_evidence_review_required",
+      "registration_output_path": "knowledge/factory/registry_backed/hdfc_ergo_optima_secure/v8/generic_source_registration/policy_wording_registration.json"
+    }
+  ],
+  "cold_start_measurement": {
+    "new_runtime_python_files": 0,
+    "runtime_python_changes": 0,
+    "insurer_specific_runtime_code_required": false,
+    "generic_source_registration_reused_unchanged": true,
+    "result": "PASS"
+  },
+  "governance": {
+    "evidence_candidates_require_human_review": true,
+    "binding_authorized_before_review": false,
+    "publication_authorized": false,
+    "benefit_inference_from_registration_alone": false,
+    "coverage_registry_promotion_authorized": false
+  },
+  "next_gate": "REVIEW_CANDIDATES_AND_ATTEMPT_GENERIC_SEMANTIC_BINDING"
+}

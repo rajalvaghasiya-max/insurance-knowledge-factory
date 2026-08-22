@@ -34,6 +34,18 @@
       "co_payment_marker_present": true
     }
   },
+  "generic_registration_execution": {
+    "status": "generic_sources_registered_evidence_review_required",
+    "registered_at": "2026-08-22T13:15:11.520758+00:00",
+    "source_count": 1,
+    "document_id": "hdfc_ergo_optima_secure_policy_wording_v8",
+    "document_version_id": "docver_hdfc_ergo_optima_secure_policy_wording_v8_694c0540cb341ec9",
+    "authority_role": "primary_legal",
+    "evidence_candidate_count": 69,
+    "registration_output_path": "knowledge/factory/registry_backed/hdfc_ergo_optima_secure/v8/generic_source_registration/policy_wording_registration.json",
+    "runtime_python_changes": 0,
+    "execution_result": "PASS"
+  },
   "observed_architecture_pressure": {
     "waiting_period": {
       "ped": {
@@ -62,7 +74,10 @@
     "new_runtime_python_budget": 0,
     "registration_authorized": true,
     "reason_registration_blocked": null,
+    "registration_executed": true,
+    "registration_passed_without_runtime_python_changes": true,
     "source_document_id_must_not_be_guessed": true,
+    "human_evidence_review_required_before_binding": true,
     "historical_product_material_may_not_be_used_as_authority": true,
     "publication_authorized": false,
     "coverage_registry_promotion_authorized": false,
@@ -70,13 +85,13 @@
     "decision_support_ready_authorized": false
   },
   "next_gate": {
-    "gate_id": "EXECUTE_GENERIC_SOURCE_REGISTRATION",
+    "gate_id": "REVIEW_CANDIDATES_AND_ATTEMPT_GENERIC_SEMANTIC_BINDING",
     "required_outputs": [
-      "generic source registration spec bound to exact SHA",
-      "generic source registration bundle with evidence candidates",
-      "candidate review for copayment and waiting-period evidence",
-      "measurement of runtime Python changes"
+      "reviewed copayment evidence candidates",
+      "reviewed waiting-period evidence candidates",
+      "first HDFC binding attempt using existing generic contracts",
+      "measurement of any representational pressure before runtime changes"
     ],
-    "success_condition": "The existing generic source-registration runtime registers the new HDFC ERGO product without insurer-specific Python changes."
+    "success_condition": "At least one HDFC concept reaches governed binding using existing generic runtime code; any new architecture is added only if exact reviewed evidence proves a representational gap."
   }
 }

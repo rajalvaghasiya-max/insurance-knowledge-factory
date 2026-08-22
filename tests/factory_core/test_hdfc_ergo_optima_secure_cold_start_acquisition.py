@@ -56,25 +56,27 @@ def test_cold_start_still_has_zero_new_runtime_python_budget() -> None:
     reuse = set(checkpoint["observed_architecture_pressure"]["expected_generic_reuse"])
 
     assert governance["new_runtime_python_budget"] == 0
+    assert governance["registration_passed_without_runtime_python_changes"] is True
     assert "WaitingPeriodMechanic" in reuse
     assert "WaitingPeriodBinding" in reuse
     assert "generic source registration" in reuse
 
 
-def test_no_downstream_promotion_is_authorized_by_acquisition() -> None:
+def test_no_downstream_promotion_is_authorized_by_registration() -> None:
     governance = _checkpoint()["cold_start_governance"]
 
     assert governance["publication_authorized"] is False
     assert governance["coverage_registry_promotion_authorized"] is False
     assert governance["comparison_ready_authorized"] is False
     assert governance["decision_support_ready_authorized"] is False
+    assert governance["human_evidence_review_required_before_binding"] is True
 
 
-def test_next_gate_is_existing_generic_source_registration() -> None:
+def test_next_gate_is_candidate_review_and_generic_binding_attempt() -> None:
     gate = _checkpoint()["next_gate"]
 
-    assert gate["gate_id"] == "EXECUTE_GENERIC_SOURCE_REGISTRATION"
-    assert "generic source registration spec bound to exact SHA" in gate["required_outputs"]
-    assert "generic source registration bundle with evidence candidates" in gate["required_outputs"]
-    assert "measurement of runtime Python changes" in gate["required_outputs"]
-    assert "without insurer-specific Python changes" in gate["success_condition"]
+    assert gate["gate_id"] == "REVIEW_CANDIDATES_AND_ATTEMPT_GENERIC_SEMANTIC_BINDING"
+    assert "reviewed copayment evidence candidates" in gate["required_outputs"]
+    assert "reviewed waiting-period evidence candidates" in gate["required_outputs"]
+    assert "first HDFC binding attempt using existing generic contracts" in gate["required_outputs"]
+    assert "representational gap" in gate["success_condition"]
