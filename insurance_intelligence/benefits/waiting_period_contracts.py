@@ -42,6 +42,7 @@ class WaitingPeriodType(str, Enum):
     PRE_EXISTING_DISEASE = "PRE_EXISTING_DISEASE"
     MATERNITY = "MATERNITY"
     BABY_CARE = "BABY_CARE"
+    BENEFIT_SPECIFIC = "BENEFIT_SPECIFIC"
 
 
 class WaitingPeriodDurationUnit(str, Enum):
@@ -248,6 +249,12 @@ class WaitingPeriodMechanic:
             raise WaitingPeriodContractError(
                 "POLICY_WIDE must not define scope_reference"
             )
+
+        if self.waiting_period_type is WaitingPeriodType.BENEFIT_SPECIFIC:
+            if self.scope_type is not WaitingPeriodScopeType.BENEFIT_SCOPED:
+                raise WaitingPeriodContractError(
+                    "BENEFIT_SPECIFIC requires BENEFIT_SCOPED scope"
+                )
 
         if self.start_basis is WaitingPeriodStartBasis.POLICY_SCHEDULE_DEFINED:
             if self.schedule_dependency is None:
