@@ -123,12 +123,29 @@ def direct_documented_fact(data: RuleInput) -> tuple[Finding, ...]:
 _PERCENTAGE = re.compile(r"(?<!\d)(\d{1,3}(?:\.\d+)?)\s*%")
 
 
-def _percentage(evidence: EvidencePackage) -> str:
+def _percentages(evidence: EvidencePackage) -> tuple[str, ...]:
+    """Return documented co-payment percentages without collapsing option sets."""
     for text in (evidence.claim, evidence.source_excerpt or ""):
-        match = _PERCENTAGE.search(text)
-        if match:
-            return f"{match.group(1)}%"
+        matches = _PERCENTAGE.findall(text)
+        if matches:
+            ordered: list[str] = []
+            for value in matches:
+                percentage = f"{value}%"
+                if percentage not in ordered:
+                    ordered.append(percentage)
+            return tuple(ordered)
     raise ReasoningRuleError("conditional co-payment evidence must contain a documented percentage")
+
+
+def _copayment_effect(evidence: EvidencePackage) -> str:
+    percentages = _percentages(evidence)
+    if len(percentages) == 1:
+        return f"{percentages[0]} of the admissible claim amount"
+    joined = ", ".join(percentages[:-1]) + f", or {percentages[-1]}"
+    return (
+        f"one of {joined} of the admissible claim amount, "
+        "depending on the documented selected co-payment option"
+    )
 
 
 _TRIGGER_BOUNDARY = r"(?=\s+(?:unless|except)\b|[.;]|$)"
@@ -242,9 +259,8 @@ def _copay_evidence(data: RuleInput) -> EvidencePackage:
 def conditional_copayment_obligation(data: RuleInput) -> tuple[Finding, ...]:
     rule_id = "conditional_copayment_obligation_v1"
     evidence = _copay_evidence(data)
-    percentage = _percentage(evidence)
     trigger, exception, applicability_scope = _conditional_semantics(evidence)
-    effect = f"{percentage} of the admissible claim amount"
+    effect = _copayment_effect(evidence)
     finding = build_finding(
         finding_id=_finding_id(rule_id, data, (evidence.evidence_id,), effect),
         requirement_id=data.requirement_id,
