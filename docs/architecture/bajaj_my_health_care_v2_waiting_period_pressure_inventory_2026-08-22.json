@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "record_type": "bajaj_v2_waiting_period_pressure_inventory_v1",
+  "reviewed_at": "2026-08-22",
+  "product_identity": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "product_name": "My Health Care Plan",
+    "plan_variant": "Plan 1",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "source": {
+    "document_id": "bajaj_my_health_care_policy_wording_v2",
+    "content_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+    "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+    "source_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+    "temporal_status_required": "current_observed_reviewed"
+  },
+  "pressure_cases": [
+    {
+      "case_id": "bajaj_v2_ped_schedule_selected_wait",
+      "waiting_period_type": "PRE_EXISTING_DISEASE",
+      "source_pages": [20, 53],
+      "base_plan_value": {"value": 36, "unit": "MONTHS"},
+      "selection_domain": [
+        {"value": 1, "unit": "YEARS"},
+        {"value": 2, "unit": "YEARS"},
+        {"value": 3, "unit": "YEARS"}
+      ],
+      "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+      "scope_type": "POLICY_WIDE",
+      "schedule_dependency": true,
+      "continuity_credit": true,
+      "sum_insured_enhancement_reapplication": true,
+      "post_wait_declaration_acceptance_condition": true,
+      "resolved_mechanic_representable": false,
+      "representation_reason": "The recovered WaitingPeriodMechanic is intentionally scalar. Generic product wording establishes a Schedule-selected option domain, so a resolved mechanic must not be created until policy-instance Schedule context selects a concrete duration."
+    },
+    {
+      "case_id": "bajaj_v2_specific_disease_schedule_selected_wait",
+      "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+      "source_pages": [20, 53],
+      "base_plan_value": {"value": 24, "unit": "MONTHS"},
+      "selection_domain": [
+        {"value": 1, "unit": "YEARS"},
+        {"value": 2, "unit": "YEARS"},
+        {"value": 3, "unit": "YEARS"}
+      ],
+      "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+      "scope_type": "POLICY_WIDE",
+      "schedule_dependency": true,
+      "accident_exception": true,
+      "longer_of_ped_relationship": true,
+      "continuity_credit": true,
+      "sum_insured_enhancement_reapplication": true,
+      "resolved_mechanic_representable": false,
+      "representation_reason": "The duration is Schedule-selected and therefore cannot be manufactured as a scalar product-level WaitingPeriodMechanic without policy-instance selection context."
+    },
+    {
+      "case_id": "bajaj_v2_initial_wait",
+      "waiting_period_type": "INITIAL",
+      "source_pages": [21, 53],
+      "base_plan_value": {"value": 30, "unit": "DAYS"},
+      "start_basis": "POLICY_INCEPTION",
+      "scope_type": "POLICY_WIDE",
+      "schedule_dependency": false,
+      "accident_exception": true,
+      "continuous_coverage_waiver_after_months": 12,
+      "sum_insured_enhancement_reapplication": true,
+      "resolved_mechanic_representable": true,
+      "representation_reason": "The base duration is fixed for Plan 1 and the recovered contract can preserve the accident exception and evidence-backed modifications separately."
+    },
+    {
+      "case_id": "bajaj_v2_maternity_schedule_selected_wait",
+      "waiting_period_type": "MATERNITY",
+      "source_pages": [21, 53],
+      "base_plan_value": {"value": 36, "unit": "MONTHS"},
+      "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+      "scope_type": "BENEFIT_SCOPED",
+      "scope_reference": "maternity_package_expenses",
+      "schedule_dependency": true,
+      "long_term_upfront_premium_reduction": {"value": 1, "unit": "YEARS"},
+      "ectopic_pregnancy_exception": true,
+      "resolved_mechanic_representable": false,
+      "representation_reason": "Generic wording delegates the selected duration to the Policy Schedule; the reduction and exception are representable, but the unresolved base duration is not scalar."
+    },
+    {
+      "case_id": "bajaj_v2_baby_care_schedule_selected_wait",
+      "waiting_period_type": "BABY_CARE",
+      "source_pages": [21, 53],
+      "base_plan_value": {"value": 36, "unit": "MONTHS"},
+      "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+      "scope_type": "BENEFIT_SCOPED",
+      "scope_reference": "baby_care",
+      "schedule_dependency": true,
+      "long_term_upfront_premium_reduction": {"value": 1, "unit": "YEARS"},
+      "resolved_mechanic_representable": false,
+      "representation_reason": "Generic wording delegates the selected duration to the Policy Schedule; a product-level scalar duration must not be inferred from the default Plan 1 table alone."
+    }
+  ],
+  "governance_decision": {
+    "historical_v1_inventory_authoritative": false,
+    "historical_v1_sha": "9479fe6f6ce729f95f75c43e9ef00c76f4aa8917650783fe8f5d7cb37844cade",
+    "current_v2_required": true,
+    "scalar_contract_fit": "PARTIAL",
+    "safe_immediate_manufacturing_target": "bajaj_v2_initial_wait",
+    "schedule_selected_option_domain_requires_separate_representation": true,
+    "recover_full_generic_knowledge_stack": "PROHIBITED_WITHOUT_ADDITIONAL_PRESSURE",
+    "next_gate": "Resolve exact v2 registered evidence candidates for the initial waiting-period clause and Plan 1 table, then manufacture only the fixed 30-day initial wait through the recovered typed contract. Keep PED, specified-disease, maternity, and baby-care waits unresolved until a bounded option-domain representation is justified.",
+    "architecture_change": "TARGETED_REPRESENTATIONAL_PRESSURE_ONLY"
+  }
+}
