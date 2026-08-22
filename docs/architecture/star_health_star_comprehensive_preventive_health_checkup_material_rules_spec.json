@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_material_rules_binding_v1",
+  "binding_id": "star_health_star_comprehensive_preventive_health_checkup_material_rules",
+  "reviewed_by_human": true,
+  "base_binding_spec_path": "docs/architecture/star_health_star_comprehensive_preventive_health_checkup_waiting_period_binding_spec.json",
+  "material_rules": [
+    {
+      "rule_id": "initial_wait_not_on_subsequent_renewals",
+      "rule_type": "APPLICABILITY_CONDITION",
+      "statement": "The 30-day Preventive Health Check-up waiting period applies from the first inception of the policy and does not apply during subsequent renewals.",
+      "related_waiting_period_type": null,
+      "evidence_candidate_ids": ["candidate_page_16"]
+    }
+  ]
+}
