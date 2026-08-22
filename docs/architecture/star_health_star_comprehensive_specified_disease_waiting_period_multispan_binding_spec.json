@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_multispan_binding_v1",
+  "binding_id": "star_health_star_comprehensive_specified_disease_wait_24_months",
+  "reviewed_by_human": true,
+  "manufacturing_status": "resolved_scalar_multispan_ready_for_certification",
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/star_health_star_comprehensive_generic_source_bundle.json",
+  "evidence_selections": [
+    {
+      "role": "mechanism",
+      "document_id": "star_health_star_comprehensive_policy_wording_v1",
+      "candidate_id": "candidate_page_31",
+      "candidate_text_sha256": "b9f28db495943d84bbf6a900df47b18717c6300bf510f88786914ae28be11e77"
+    },
+    {
+      "role": "mechanism",
+      "document_id": "star_health_star_comprehensive_policy_wording_v1",
+      "candidate_id": "candidate_page_32",
+      "candidate_text_sha256": "214466445fab2fd7fec30d951696479d4999bfc74aea13af40a1b80eddef77eb"
+    }
+  ],
+  "mechanic": {
+    "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+    "duration_value": 24,
+    "duration_unit": "MONTHS",
+    "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+    "applies_to": ["listed_conditions_surgeries_and_treatments"],
+    "exclusions_or_exceptions": ["claims_arising_due_to_an_accident"],
+    "modifications": [],
+    "schedule_dependency": null,
+    "continuity_dependency": "If the Insured Person is continuously covered without any break under applicable portability norms, the specified-disease/procedure waiting period is reduced to the extent of prior coverage.",
+    "scope_type": "POLICY_WIDE",
+    "scope_reference": null,
+    "value_source": "PRODUCT_FIXED",
+    "member_waiting_basis": null,
+    "sum_insured_enhancement_effect": "REAPPLIES_TO_ENHANCED_PORTION"
+  },
+  "component_evidence_candidate_ids": {
+    "waiting_period_duration": ["candidate_page_31"],
+    "waiting_period_subject": ["candidate_page_31"],
+    "start_basis": ["candidate_page_31"],
+    "applicability_scope": ["candidate_page_31"],
+    "continuity_or_credit_rule": ["candidate_page_32"],
+    "exception_condition": ["candidate_page_31"]
+  },
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "claim_payment_prediction_authorized": false,
+    "multispan_scalar_binding_authorized": true,
+    "multispan_scalar_certification_authorized": true
+  }
+}
