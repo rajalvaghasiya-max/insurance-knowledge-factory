@@ -87,9 +87,45 @@ BAJAJ_MY_HEALTH_CARE_V2_COVERAGE = ProductCoverageRecord(
 )
 
 
+HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE = ProductCoverageRecord(
+    product_reference="hdfc_ergo:optima_secure:HDFHLIP26058V082526",
+    insurer_id="hdfc_ergo",
+    product_id="optima_secure",
+    canonical_product_name="my: Optima Secure",
+    uin="HDFHLIP26058V082526",
+    lifecycle_status=ProductLifecycleStatus.STATUS_UNKNOWN,
+    evidence_status=EvidenceCoverageStatus.PARTIAL,
+    concepts=(
+        ConceptCoverageRecord(
+            concept_id="waiting_period",
+            status=ConceptCoverageStatus.CERTIFIED,
+            evidence_reference_ids=(
+                "docs/architecture/hdfc_ergo_optima_secure_v8_initial_waiting_period_binding_spec.json",
+                "docs/architecture/hdfc_ergo_optima_secure_v8_initial_waiting_period_certification_closure_2026-08-22.json",
+                "docs/architecture/hdfc_ergo_optima_secure_v8_ped_waiting_period_full_mechanics_binding_spec.json",
+                "docs/architecture/hdfc_ergo_optima_secure_v8_ped_full_mechanics_certification_closure_2026-08-22.json",
+                "docs/architecture/hdfc_ergo_optima_secure_v8_specified_disease_waiting_period_binding_spec.json",
+                "docs/architecture/hdfc_ergo_optima_secure_v8_specified_disease_material_rules_spec.json",
+                "docs/architecture/hdfc_ergo_optima_secure_v8_waiting_period_concept_certification_closure_2026-08-22.json",
+            ),
+            comparison_ready=False,
+            decision_support_ready=False,
+            limitations=(
+                "The base-policy initial waiting period is certified complete at 30 days with accident and continuity exceptions and enhanced-Sum-Insured reapplication.",
+                "PED authoritative 12/24/36-month Schedule options and multispan material mechanics are certified complete; the customer-specific selected PED duration remains unresolved until Policy Schedule evidence is available.",
+                "Specified-disease/procedure waiting period is certified complete at a product-fixed 24 months with accident exception, portability credit, enhanced-Sum-Insured reapplication, longer-of-PED relationship, and the additional listed-condition applicability rule.",
+                "This concept certification covers the governed base-policy waiting-period families only; separate add-on waiting periods such as Parenthood are not certified or inferred here.",
+                "Concept certification does not authorize publication, comparison readiness, decision-support readiness, claim-payment prediction, or underwriting-specific waiting-period inference.",
+            ),
+        ),
+    ),
+)
+
+
 HEALTH_COVERAGE_REGISTRY = InsuranceIntelligenceCoverageRegistry(
     (
         BAJAJ_MY_HEALTH_CARE_V2_COVERAGE,
+        HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE,
         STAR_COMPREHENSIVE_COVERAGE,
     )
 )
@@ -97,6 +133,7 @@ HEALTH_COVERAGE_REGISTRY = InsuranceIntelligenceCoverageRegistry(
 
 __all__ = [
     "BAJAJ_MY_HEALTH_CARE_V2_COVERAGE",
+    "HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE",
     "HEALTH_COVERAGE_REGISTRY",
     "STAR_COMPREHENSIVE_COVERAGE",
 ]
