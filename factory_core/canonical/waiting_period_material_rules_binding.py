@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from factory_core.canonical.waiting_period_binding import WaitingPeriodBinding
+from factory_core.canonical.waiting_period_multispan_binding import WaitingPeriodMultispanBinding
 
 
 class WaitingPeriodMaterialRulesBindingError(ValueError):
@@ -44,6 +45,18 @@ def _safe_relative(value: object, label: str) -> str:
     return path.as_posix()
 
 
+def _bind_base(path: Path, root: Path, bound_at: str | None) -> Mapping[str, Any]:
+    if not path.is_file():
+        raise FileNotFoundError(f"Base binding specification was not found: {path}")
+    spec = _mapping(json.loads(path.read_text(encoding="utf-8")), "base_binding_spec")
+    binding_type = spec.get("binding_type")
+    if binding_type == "waiting_period_binding_v1":
+        return WaitingPeriodBinding().bind(spec=spec, repository_root=root, bound_at=bound_at).manifest
+    if binding_type == "waiting_period_multispan_binding_v1":
+        return WaitingPeriodMultispanBinding().bind(spec=spec, repository_root=root, bound_at=bound_at).manifest
+    raise WaitingPeriodMaterialRulesBindingError(f"unsupported base waiting-period binding type {binding_type!r}")
+
+
 class WaitingPeriodMaterialRulesBinding:
     def bind_from_spec_file(self, *, spec_path: str | Path, repository_root: str | Path, bound_at: str | None = None) -> WaitingPeriodMaterialRulesBindingResult:
         path = Path(spec_path)
@@ -58,9 +71,7 @@ class WaitingPeriodMaterialRulesBinding:
         if spec.get("reviewed_by_human") is not True:
             raise WaitingPeriodMaterialRulesBindingError("reviewed_by_human must be true")
         base_path = _safe_relative(spec.get("base_binding_spec_path"), "base_binding_spec_path")
-        base_full = (root / base_path).resolve()
-        base_result = WaitingPeriodBinding().bind_from_spec_file(spec_path=base_full, repository_root=root, bound_at=bound_at)
-        base_manifest = dict(base_result.manifest)
+        base_manifest = dict(_bind_base((root / base_path).resolve(), root, bound_at))
         evidence_by_candidate = {
             _text(item.get("candidate_id"), "binding_evidence.candidate_id"): item
             for item in (_mapping(raw, "binding_evidence") for raw in _items(base_manifest.get("evidence"), "binding_manifest.evidence"))
@@ -87,27 +98,12 @@ class WaitingPeriodMaterialRulesBinding:
                 raise WaitingPeriodMaterialRulesBindingError("RELATIONSHIP_LONGER_OF requires related_waiting_period_type")
             if rule_type in {"APPLICABILITY_CONDITION", "POST_WAIT_CONDITION"} and related is not None:
                 raise WaitingPeriodMaterialRulesBindingError(f"{rule_type} must not define related_waiting_period_type")
-            rules.append({
-                "rule_id": rule_id,
-                "rule_type": rule_type,
-                "statement": _text(item.get("statement"), f"material_rules[{index}].statement"),
-                "related_waiting_period_type": related,
-                "evidence_candidate_ids": list(candidate_ids),
-            })
+            rules.append({"rule_id": rule_id, "rule_type": rule_type, "statement": _text(item.get("statement"), f"material_rules[{index}].statement"), "related_waiting_period_type": related, "evidence_candidate_ids": list(candidate_ids)})
         if not rules:
             raise WaitingPeriodMaterialRulesBindingError("material_rules must not be empty")
         manifest = dict(base_manifest)
-        manifest.update({
-            "binding_type": "waiting_period_material_rules_binding_v1",
-            "binding_id": _text(spec.get("binding_id"), "binding_id"),
-            "base_binding_spec_path": base_path,
-            "material_rules": rules,
-            "material_rules_status": "reviewed_material_rules_bound_not_published",
-        })
-        manifest["guardrails"] = list(manifest.get("guardrails", [])) + [
-            "Material rules are certified separately and do not alter the resolved scalar duration.",
-            "Material rules do not publish or determine customer-specific claim outcomes.",
-        ]
+        manifest.update({"binding_type": "waiting_period_material_rules_binding_v1", "binding_id": _text(spec.get("binding_id"), "binding_id"), "base_binding_spec_path": base_path, "material_rules": rules, "material_rules_status": "reviewed_material_rules_bound_not_published"})
+        manifest["guardrails"] = list(manifest.get("guardrails", [])) + ["Material rules are certified separately and do not alter the resolved scalar duration.", "Material rules do not publish or determine customer-specific claim outcomes."]
         return WaitingPeriodMaterialRulesBindingResult(manifest=manifest)
 
     def write_output(self, result: WaitingPeriodMaterialRulesBindingResult, *, repository_root: str | Path, output_path: str | Path) -> Path:
