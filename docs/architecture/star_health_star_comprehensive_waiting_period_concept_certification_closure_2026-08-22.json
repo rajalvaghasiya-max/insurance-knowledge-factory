@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "closure_type": "waiting_period_concept_certification_closure_v1",
+  "product_reference": "star_health:star_comprehensive:SHAHLIP26044V092526",
+  "product_id": "star_comprehensive",
+  "uin": "SHAHLIP26044V092526",
+  "closed_on": "2026-08-22",
+  "concept_id": "waiting_period",
+  "concept_status": "CERTIFIED",
+  "certified_scope": "BASE_POLICY_EXPLICIT_WAITING_PERIODS",
+  "pressure_inventory_path": "docs/architecture/star_health_star_comprehensive_waiting_period_concept_pressure_inventory_2026-08-22.json",
+  "certified_mechanics": [
+    {
+      "mechanic": "INITIAL",
+      "duration": "30 DAYS",
+      "status": "CERTIFIED",
+      "evidence": ["candidate_page_32"]
+    },
+    {
+      "mechanic": "PRE_EXISTING_DISEASE_STANDARD",
+      "duration": "36 MONTHS",
+      "status": "CERTIFIED",
+      "evidence": ["candidate_page_31"]
+    },
+    {
+      "mechanic": "PRE_EXISTING_DISEASE_OPTIONAL_BUYBACK",
+      "base_duration": "36 MONTHS",
+      "conditional_duration": "12 MONTHS",
+      "status": "CERTIFIED_CONDITIONAL_MODIFICATION",
+      "evidence": ["candidate_page_31", "candidate_page_30"],
+      "customer_selection_requires_policy_evidence": true
+    },
+    {
+      "mechanic": "SPECIFIC_DISEASE_PROCEDURE",
+      "duration": "24 MONTHS",
+      "status": "CERTIFIED",
+      "evidence": ["candidate_page_31", "candidate_page_32"]
+    },
+    {
+      "mechanic": "BENEFIT_SPECIFIC",
+      "scope_reference": "section_ii_14_delivery_and_new_born",
+      "duration": "24 MONTHS",
+      "status": "CERTIFIED_WITH_MATERIAL_RULES",
+      "material_rules": ["RESET_AFTER_EVENT", "APPLICABILITY_CONDITION"],
+      "evidence": ["candidate_page_14"]
+    },
+    {
+      "mechanic": "BENEFIT_SPECIFIC",
+      "scope_reference": "section_ii_15_bariatric_surgery",
+      "duration": "36 MONTHS",
+      "status": "CERTIFIED",
+      "evidence": ["candidate_page_15"]
+    },
+    {
+      "mechanic": "BENEFIT_SPECIFIC",
+      "scope_reference": "section_ii_18_preventive_health_checkup",
+      "duration": "30 DAYS",
+      "status": "CERTIFIED_WITH_MATERIAL_RULES",
+      "material_rules": ["APPLICABILITY_CONDITION"],
+      "evidence": ["candidate_page_16"]
+    }
+  ],
+  "scope_classification": {
+    "all_current_base_policy_clauses_explicitly_expressed_as_waiting_periods_are_governed": true,
+    "section_ii_17_dental_ophthalmic_three_year_cycle_in_waiting_period": false,
+    "section_ii_17_classification": "TIME_GATED_BENEFIT_ELIGIBILITY_NOT_EXPLICIT_WAITING_PERIOD",
+    "benefit_medical_eligibility_conditions_are_not_inferred_from_waiting_period_certification": true
+  },
+  "governance_boundary": {
+    "concept_certified": true,
+    "publication_authorized": false,
+    "comparison_ready": false,
+    "decision_support_ready": false,
+    "customer_specific_eligibility_authorized": false,
+    "claim_payment_prediction_authorized": false,
+    "optional_ped_buyback_selection_inferred_without_policy_evidence": false,
+    "exact_first_active_calendar_date_for_initial_wait_authorized": false
+  }
+}
