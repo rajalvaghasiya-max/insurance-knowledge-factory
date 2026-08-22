@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "proof_type": "third_product_semantic_cold_start_proof_v1",
+  "proof_id": "hdfc_ergo_optima_secure_v8_initial_waiting_period_2026_08_22",
+  "product": {
+    "insurer_id": "hdfc_ergo",
+    "product_id": "optima_secure",
+    "uin": "HDFHLIP26058V082526"
+  },
+  "binding": {
+    "binding_spec_path": "docs/architecture/hdfc_ergo_optima_secure_v8_initial_waiting_period_binding_spec.json",
+    "binding_id": "hdfc_ergo_optima_secure_v8_initial_wait_30_days",
+    "live_execution_status": "PASS",
+    "binding_status": "reviewed_waiting_period_bound_not_published",
+    "resolution_status": "resolved_from_mechanism_evidence",
+    "publication_status": "bound_not_published",
+    "waiting_period_type": "INITIAL",
+    "duration_value": 30,
+    "duration_unit": "DAYS",
+    "value_source": "PRODUCT_FIXED",
+    "source_page": 32,
+    "candidate_id": "candidate_page_32",
+    "candidate_text_sha256": "c3a9935698e24f4411d12a47bdcc1e3b22573ccca1b84adb6faa4cf647737c42",
+    "sum_insured_enhancement_effect": "REAPPLIES_TO_ENHANCED_PORTION",
+    "exceptions": [
+      "accident_claims_where_other_policy_terms_cover_the_claim",
+      "insured_person_with_continuous_coverage_for_more_than_12_months"
+    ]
+  },
+  "generalization_measurement": {
+    "new_runtime_python_changes_for_registration": 0,
+    "new_runtime_python_changes_for_binding": 0,
+    "insurer_specific_runtime_code": false,
+    "generic_runtime_reused": [
+      "generic source registration",
+      "WaitingPeriodBinding",
+      "WaitingPeriodMechanic"
+    ],
+    "result": "SEMANTIC_COLD_START_PASS"
+  },
+  "certification_gate": {
+    "existing_generic_certifier": "insurance_intelligence.rule_certification.waiting_period",
+    "new_runtime_python_authorized": false,
+    "expected_components": [
+      "waiting_period_duration",
+      "waiting_period_subject",
+      "start_basis",
+      "applicability_scope",
+      "continuity_or_credit_rule",
+      "exception_condition"
+    ],
+    "expected_outcome": "PASS",
+    "expected_completeness": "COMPLETE",
+    "expected_explanation_permitted": true
+  },
+  "governance": {
+    "publication_authorized": false,
+    "coverage_registry_promotion_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "customer_specific_eligibility_authorized": false
+  },
+  "next_pressure": {
+    "concept": "PRE_EXISTING_DISEASE",
+    "reason": "HDFC PED combines the base 36-month rule with a Policy-Schedule-modified 24-month or 12-month option on page 26, providing the next cross-insurer test of the existing option-domain architecture."
+  }
+}
