@@ -121,6 +121,16 @@ def direct_documented_fact(data: RuleInput) -> tuple[Finding, ...]:
 
 
 _PERCENTAGE = re.compile(r"(?<!\d)(\d{1,3}(?:\.\d+)?)\s*%")
+_STACKING_PATTERNS = (
+    re.compile(
+        r"(?:in addition|additional) to any other co-payment(?:\s*/\s*| or )deductible[^.;]*",
+        re.I,
+    ),
+    re.compile(
+        r"(?:in addition|additional) to any other (?:applicable )?co-payment or deductible[^.;]*",
+        re.I,
+    ),
+)
 
 
 def _percentages(evidence: EvidencePackage) -> tuple[str, ...]:
@@ -137,19 +147,38 @@ def _percentages(evidence: EvidencePackage) -> tuple[str, ...]:
     raise ReasoningRuleError("conditional co-payment evidence must contain a documented percentage")
 
 
+def _clean_clause(value: str) -> str:
+    return " ".join(value.strip().rstrip(" .;").split())
+
+
+def _first_clause(text: str, patterns: Sequence[re.Pattern[str]]) -> str | None:
+    for pattern in patterns:
+        match = pattern.search(text)
+        if match:
+            return _clean_clause(match.group(0))
+    return None
+
+
 def _copayment_effect(evidence: EvidencePackage) -> str:
     percentages = _percentages(evidence)
     if len(percentages) == 1:
-        return f"{percentages[0]} of the admissible claim amount"
-    joined = ", ".join(percentages[:-1]) + f", or {percentages[-1]}"
-    return (
-        f"one of {joined} of the admissible claim amount, "
-        "depending on the documented selected co-payment option"
-    )
+        effect = f"{percentages[0]} of the admissible claim amount"
+    else:
+        joined = ", ".join(percentages[:-1]) + f", or {percentages[-1]}"
+        effect = (
+            f"one of {joined} of the admissible claim amount, "
+            "depending on the documented selected co-payment option"
+        )
+    text = " ".join((evidence.claim or evidence.source_excerpt or "").split())
+    stacking = _first_clause(text, _STACKING_PATTERNS)
+    if stacking:
+        effect = f"{effect}; {stacking}"
+    return effect
 
 
 _TRIGGER_BOUNDARY = r"(?=\s+(?:unless|except)\b|[.;]|$)"
 _TRIGGER_PATTERNS = (
+    re.compile(r"(?:when|if|where|in case|provided that|subject to)\s+[^,.;]+(?=,)", re.I),
     re.compile(
         rf"(?:for\s+)?insured persons? whose age at the time of entry is .+?{_TRIGGER_BOUNDARY}",
         re.I,
@@ -158,6 +187,7 @@ _TRIGGER_PATTERNS = (
         rf"(?:when|if|where|in case|provided that|subject to)\s+.+?{_TRIGGER_BOUNDARY}",
         re.I,
     ),
+    re.compile(r"^for\s+[^,]+", re.I),
 )
 _EXCEPTION_PATTERNS = (
     re.compile(
@@ -184,6 +214,8 @@ _SCOPE_PATTERNS = (
         re.I,
     ),
     re.compile(r"(?:applicable\s+only\s+to|only\s+for)\s+.+?(?=\.\s+[A-Z]|;|$)", re.I),
+    re.compile(r"^for\s+[^,]+", re.I),
+    re.compile(r"(?:an|a|the)\s+in-?patient[^,.;]*claim\s+is\s+admitted", re.I),
 )
 _EXCEPTION_SIGNAL_PATTERNS = (
     re.compile(
@@ -200,18 +232,6 @@ _SCOPE_SIGNAL_PATTERNS = (
         re.I,
     ),
 )
-
-
-def _clean_clause(value: str) -> str:
-    return " ".join(value.strip().rstrip(" .;").split())
-
-
-def _first_clause(text: str, patterns: Sequence[re.Pattern[str]]) -> str | None:
-    for pattern in patterns:
-        match = pattern.search(text)
-        if match:
-            return _clean_clause(match.group(0))
-    return None
 
 
 def _conditional_semantics(evidence: EvidencePackage) -> tuple[str, str | None, str | None]:
