@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "record_type": "waiting_period_option_domain_certification_closure_v1",
+  "reviewed_by_human": true,
+  "product": {
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "uin": "BAJHLIP26074V022526",
+    "plan_variant": "Plan 1"
+  },
+  "certified_option_domains": [
+    {
+      "waiting_period_type": "PRE_EXISTING_DISEASE",
+      "binding_spec_path": "docs/architecture/bajaj_my_health_care_v2_ped_waiting_period_option_domain_binding_spec.json",
+      "certification_id": "waiting_period_option_domain:bajaj_my_health_care_v2_ped_waiting_period_options",
+      "outcome": "PASS",
+      "completeness": "COMPLETE",
+      "explanation_permitted": true,
+      "options": ["1 YEARS", "2 YEARS", "3 YEARS"],
+      "selected_duration_resolved": false,
+      "material_mechanics_certified": [
+        "INSURED_PERSON_FIRST_COVERAGE start basis",
+        "portability continuity credit",
+        "REAPPLIES_TO_ENHANCED_PORTION",
+        "post-wait declaration-and-acceptance condition"
+      ]
+    },
+    {
+      "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+      "binding_spec_path": "docs/architecture/bajaj_my_health_care_v2_specific_disease_waiting_period_option_domain_binding_spec.json",
+      "certification_id": "waiting_period_option_domain:bajaj_my_health_care_v2_specific_disease_waiting_period_options",
+      "outcome": "PASS",
+      "completeness": "COMPLETE",
+      "explanation_permitted": true,
+      "options": ["1 YEARS", "2 YEARS", "3 YEARS"],
+      "selected_duration_resolved": false,
+      "material_mechanics_certified": [
+        "INSURED_PERSON_FIRST_COVERAGE start basis",
+        "portability continuity credit",
+        "REAPPLIES_TO_ENHANCED_PORTION",
+        "accident exception",
+        "longer-of-PED waiting-period relationship"
+      ]
+    }
+  ],
+  "evidence_identity": {
+    "mechanism": {
+      "candidate_id": "candidate_page_20",
+      "source_page": 20,
+      "candidate_text_sha256": "5261b13c20af365078c7ec1a4b43e742fd1890257a57fa5858d6314eff87aef2"
+    },
+    "option_domain": {
+      "candidate_id": "candidate_page_53",
+      "source_page": 53,
+      "candidate_text_sha256": "b362111414b124bbcc62cd3b33d0eafe7d01b5f9305fa079cdd156ee92b8cc40"
+    }
+  },
+  "coverage_registry": {
+    "waiting_period_concept_status": "PARTIAL",
+    "comparison_ready": false,
+    "decision_support_ready": false,
+    "reason": "Initial wait is certified as a resolved scalar and PED/specified-disease option domains are certified complete, but maternity and baby-care remain unresolved and no customer-specific Schedule option may be inferred."
+  },
+  "remaining_waiting_period_families": [
+    "MATERNITY",
+    "BABY_CARE"
+  ],
+  "guardrails": [
+    "PASS/COMPLETE certifies the authoritative unresolved option domain and its material mechanics; it does not select a duration.",
+    "Do not infer a customer-specific PED or specified-disease waiting period without Policy Schedule evidence.",
+    "Do not promote the overall waiting_period concept to CERTIFIED while maternity and baby-care remain unresolved.",
+    "Do not mark comparison_ready or decision_support_ready from this closure.",
+    "Publication remains unauthorized."
+  ]
+}
