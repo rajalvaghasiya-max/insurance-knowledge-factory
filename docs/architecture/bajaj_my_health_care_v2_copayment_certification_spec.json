@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "certification_type": "conditional_copayment_certification_request_v1",
+  "domain": "health",
+  "product_identity": {
+    "insurer_id": "bajaj_allianz_general",
+    "product_id": "my_health_care",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "source_identity": {
+    "document_id": "bajaj_my_health_care_policy_wording_v2",
+    "content_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+    "required_temporal_status": "current_observed_reviewed"
+  },
+  "binding_manifest_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_legal_condition_binding/bajaj_my_health_care_v2_copayment_binding.json",
+  "assertion_ids": [
+    "ga_bajaj_my_health_care_lab_radiology_unapproved_reimbursement_copay_v1",
+    "ga_bajaj_my_health_care_international_emergency_mandatory_copay_v1",
+    "ga_bajaj_my_health_care_voluntary_inpatient_copay_v1"
+  ],
+  "expected_certification": {
+    "case_count": 3,
+    "outcome_per_case": "PASS",
+    "completeness_status_per_case": "COMPLETE",
+    "explanation_permitted_per_case": true
+  },
+  "governance": {
+    "single_product_level_copayment_fact": "PROHIBITED",
+    "publication_authorized": false,
+    "policy_specific_rate_selection_authorized": false,
+    "architecture_change": "NONE"
+  }
+}
