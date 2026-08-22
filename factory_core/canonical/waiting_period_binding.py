@@ -22,6 +22,7 @@ from insurance_intelligence.benefits.waiting_period_contracts import (
     WaitingPeriodModificationType,
     WaitingPeriodScopeType,
     WaitingPeriodStartBasis,
+    WaitingPeriodSumInsuredEnhancementEffect,
     WaitingPeriodType,
     WaitingPeriodValueSource,
 )
@@ -171,6 +172,11 @@ def _mechanic(raw: object, evidence_reference_ids: tuple[str, ...]) -> WaitingPe
             WaitingPeriodMemberBasis,
             item.get("member_waiting_basis"),
             "mechanic.member_waiting_basis",
+        ),
+        sum_insured_enhancement_effect=_optional_enum(
+            WaitingPeriodSumInsuredEnhancementEffect,
+            item.get("sum_insured_enhancement_effect"),
+            "mechanic.sum_insured_enhancement_effect",
         ),
     )
 

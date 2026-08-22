@@ -74,6 +74,12 @@ class WaitingPeriodMemberBasis(str, Enum):
     PORTED_CONTINUITY = "PORTED_CONTINUITY"
 
 
+class WaitingPeriodSumInsuredEnhancementEffect(str, Enum):
+    """How a waiting period responds when Sum Insured is increased later."""
+
+    REAPPLIES_TO_ENHANCED_PORTION = "REAPPLIES_TO_ENHANCED_PORTION"
+
+
 class WaitingPeriodModificationType(str, Enum):
     WAIVER = "WAIVER"
     REDUCTION = "REDUCTION"
@@ -157,6 +163,7 @@ class WaitingPeriodMechanic:
     scope_reference: str | None = None
     value_source: WaitingPeriodValueSource = WaitingPeriodValueSource.PRODUCT_FIXED
     member_waiting_basis: WaitingPeriodMemberBasis | None = None
+    sum_insured_enhancement_effect: WaitingPeriodSumInsuredEnhancementEffect | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.waiting_period_type, WaitingPeriodType):
@@ -184,6 +191,13 @@ class WaitingPeriodMechanic:
         ):
             raise WaitingPeriodContractError(
                 "member_waiting_basis must be a WaitingPeriodMemberBasis"
+            )
+        if self.sum_insured_enhancement_effect is not None and not isinstance(
+            self.sum_insured_enhancement_effect,
+            WaitingPeriodSumInsuredEnhancementEffect,
+        ):
+            raise WaitingPeriodContractError(
+                "sum_insured_enhancement_effect must be a WaitingPeriodSumInsuredEnhancementEffect"
             )
 
         object.__setattr__(self, "applies_to", _text_tuple(self.applies_to, "applies_to"))
@@ -266,6 +280,7 @@ __all__ = [
     "WaitingPeriodModificationType",
     "WaitingPeriodScopeType",
     "WaitingPeriodStartBasis",
+    "WaitingPeriodSumInsuredEnhancementEffect",
     "WaitingPeriodType",
     "WaitingPeriodValueSource",
 ]

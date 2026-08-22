@@ -73,6 +73,7 @@ def _write_fixture(root: Path) -> dict:
             "scope_type": "POLICY_WIDE",
             "value_source": "PRODUCT_FIXED",
             "member_waiting_basis": "POLICY_INCEPTION",
+            "sum_insured_enhancement_effect": "REAPPLIES_TO_ENHANCED_PORTION",
         },
     }
 
@@ -101,6 +102,7 @@ def test_binds_product_fixed_scalar_wait_to_exact_primary_legal_candidate(tmp_pa
     assert result.manifest["resolution_status"] == "resolved_from_mechanism_evidence"
     assert result.manifest["mechanic"]["duration_value"] == 30
     assert result.manifest["mechanic"]["duration_unit"] == "DAYS"
+    assert result.manifest["mechanic"]["sum_insured_enhancement_effect"] == "REAPPLIES_TO_ENHANCED_PORTION"
     assert result.manifest["evidence"][0]["candidate_id"] == "candidate_page_21"
     assert result.manifest["publication_status"] == "bound_not_published"
 

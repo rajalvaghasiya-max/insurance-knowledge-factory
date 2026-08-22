@@ -48,7 +48,11 @@ def test_initial_wait_preserves_clause_effects_and_schedule_selected_origin() ->
         "accident_claims_where_other_policy_terms_cover_the_claim",
         "insured_beneficiary_with_continuous_coverage_for_more_than_12_months",
     }
-    assert spec["additional_material_effects_not_collapsed_into_scalar_duration"]
+    assert (
+        mechanic["sum_insured_enhancement_effect"]
+        == "REAPPLIES_TO_ENHANCED_PORTION"
+    )
+    assert "additional_material_effects_not_collapsed_into_scalar_duration" not in spec
 
 
 def test_scalar_manufacturing_is_resolved_but_publication_remains_blocked() -> None:

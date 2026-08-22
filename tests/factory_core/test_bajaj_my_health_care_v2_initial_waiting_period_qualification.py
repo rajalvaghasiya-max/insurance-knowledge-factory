@@ -26,6 +26,7 @@ def test_committed_binding_spec_preserves_exact_dual_evidence_resolution() -> No
     assert mechanic["duration_unit"] == "DAYS"
     assert mechanic["value_source"] == "POLICY_SCHEDULE_SELECTED"
     assert mechanic["start_basis"] == "POLICY_INCEPTION"
+    assert mechanic["sum_insured_enhancement_effect"] == "REAPPLIES_TO_ENHANCED_PORTION"
     by_role = {item["role"]: item for item in spec["evidence_selections"]}
     assert set(by_role) == {"mechanism", "schedule_value_resolution"}
     assert by_role["mechanism"] == {
@@ -42,25 +43,19 @@ def test_committed_binding_spec_preserves_exact_dual_evidence_resolution() -> No
     }
 
 
-def test_qualification_keeps_waiting_period_concept_partial() -> None:
+def test_qualification_is_ready_for_binding_reexecution_and_rule_certification() -> None:
     qualification = _qualification()
     state = qualification["qualification"]
     assert state["scalar_binding"] == "QUALIFIED"
-    assert state["rule_certification"] == "DEFERRED_PENDING_TYPED_MATERIAL_EFFECT_COMPLETENESS"
+    assert state["typed_material_effect_completeness"] == "QUALIFIED"
+    assert state["rule_certification"] == "READY_AFTER_CURRENT_BINDING_REEXECUTION"
     assert state["coverage_registry_status"] == "PARTIAL"
     assert state["comparison_ready"] is False
     assert state["decision_support_ready"] is False
+    assert qualification["qualified_mechanic"]["sum_insured_enhancement_effect"] == "REAPPLIES_TO_ENHANCED_PORTION"
 
 
-def test_enhanced_sum_insured_reapplication_is_not_silently_lost() -> None:
-    qualification = _qualification()
-    remaining = qualification["remaining_material_effect"]
-    assert "enhanced Sum Insured" in remaining["effect"]
-    assert remaining["evidence_candidate_id"] == "candidate_page_21"
-    assert remaining["typed_runtime_representation"] == "MISSING"
-
-
-def test_unresolved_waiting_period_families_remain_explicitly_blocked_from_certification() -> None:
+def test_unresolved_waiting_period_families_keep_overall_concept_partial() -> None:
     qualification = _qualification()
     assert set(qualification["unresolved_waiting_period_families"]) == {
         "PRE_EXISTING_DISEASE",
