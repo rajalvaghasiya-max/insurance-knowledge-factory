@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "proof_type": "third_product_waiting_period_option_domain_binding_proof_v1",
+  "proof_id": "hdfc_ergo_optima_secure_v8_ped_option_domain_binding_2026_08_22",
+  "product": {
+    "insurer_id": "hdfc_ergo",
+    "product_id": "optima_secure",
+    "product_display_name": "my: Optima Secure",
+    "uin": "HDFHLIP26058V082526"
+  },
+  "binding": {
+    "binding_id": "hdfc_ergo_optima_secure_v8_ped_waiting_period_options",
+    "binding_status": "reviewed_waiting_period_option_domain_bound_not_published",
+    "resolution_status": "unresolved_schedule_option_domain",
+    "publication_status": "bound_not_published",
+    "policy_instance_resolution_status": "not_resolved_without_schedule_selection",
+    "waiting_period_type": "PRE_EXISTING_DISEASE",
+    "options": [
+      {"duration_value": 12, "duration_unit": "MONTHS"},
+      {"duration_value": 24, "duration_unit": "MONTHS"},
+      {"duration_value": 36, "duration_unit": "MONTHS"}
+    ],
+    "value_source": "POLICY_SCHEDULE_SELECTED",
+    "scope_type": "POLICY_WIDE",
+    "selected_duration_present": false
+  },
+  "evidence": [
+    {
+      "role": "mechanism",
+      "candidate_id": "candidate_page_30",
+      "source_page": 30,
+      "candidate_text_sha256": "fceba7174d309103ee95afd6ba031c8109a45d0d97ac0373381a737bb766963e"
+    },
+    {
+      "role": "option_domain",
+      "candidate_id": "candidate_page_26",
+      "source_page": 26,
+      "candidate_text_sha256": "05864e66649d506387902d20f252bb8df552372b77a2b10e09d5e10ea1557dd2"
+    }
+  ],
+  "generalization_result": {
+    "generic_option_domain_runtime_reused": true,
+    "runtime_python_changes": 0,
+    "insurer_specific_runtime_code": false,
+    "result": "PASS"
+  },
+  "governance": {
+    "policy_schedule_required_for_selected_duration": true,
+    "publication_authorized": false,
+    "coverage_registry_promotion_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "full_ped_mechanics_certified": false
+  },
+  "deferred_full_ped_mechanics": {
+    "source_page": 31,
+    "reason": "The current option-domain slice intentionally proves only the authoritative Schedule-selectable duration domain and its selection boundary. Page 31 carries additional PED semantics that should not be silently attributed to the page-30 mechanism candidate.",
+    "pending_semantics": [
+      "continuity_or_portability_credit",
+      "sum_insured_enhancement_reapplication_completion",
+      "post_wait_declaration_and_insurer_acceptance_condition"
+    ]
+  },
+  "next_gate": {
+    "gate_id": "CERTIFY_HDFC_PED_DURATION_OPTION_DOMAIN",
+    "success_condition": "The existing generic waiting-period option-domain certifier returns PASS / COMPLETE / explanation permitted for the 12/24/36-month unresolved Schedule domain without selecting a policy-instance duration."
+  }
+}
