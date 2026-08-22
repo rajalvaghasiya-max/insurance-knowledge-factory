@@ -178,7 +178,7 @@ def _copayment_effect(evidence: EvidencePackage) -> str:
 
 _TRIGGER_BOUNDARY = r"(?=\s+(?:unless|except)\b|[.;]|$)"
 _TRIGGER_PATTERNS = (
-    re.compile(r"(?:when|if|where|in case|provided that|subject to)\s+[^,]+(?=,)", re.I),
+    re.compile(r"(?:when|if|where|in case|provided that|subject to)\s+[^,.;]+(?=,)", re.I),
     re.compile(
         rf"(?:for\s+)?insured persons? whose age at the time of entry is .+?{_TRIGGER_BOUNDARY}",
         re.I,
@@ -215,7 +215,7 @@ _SCOPE_PATTERNS = (
     ),
     re.compile(r"(?:applicable\s+only\s+to|only\s+for)\s+.+?(?=\.\s+[A-Z]|;|$)", re.I),
     re.compile(r"^for\s+[^,]+", re.I),
-    re.compile(r"(?:an|a|the)\s+[^,.;]*in-?patient[^,.;]*claim\s+is\s+admitted", re.I),
+    re.compile(r"(?:an|a|the)\s+in-?patient[^,.;]*claim\s+is\s+admitted", re.I),
 )
 _EXCEPTION_SIGNAL_PATTERNS = (
     re.compile(
