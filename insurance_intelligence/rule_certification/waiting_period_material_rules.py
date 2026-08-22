@@ -53,7 +53,7 @@ def _load(root: Path, relative: str, label: str) -> tuple[Mapping[str, Any], str
 
 
 def _registry(required_components: tuple[str, ...]) -> TopicCompletenessRegistry:
-    allowed = {"relationship_rule", "applicability_condition"}
+    allowed = {"relationship_rule", "applicability_condition", "post_wait_condition"}
     if not required_components or not set(required_components).issubset(allowed):
         raise WaitingPeriodMaterialRulesCertificationError("required material-rule components are invalid")
     definition = build_topic_definition(
@@ -63,6 +63,7 @@ def _registry(required_components: tuple[str, ...]) -> TopicCompletenessRegistry
         components=(
             build_component_definition(component_id="relationship_rule", requirement_type="WAITING_PERIOD_RELATIONSHIP_RULE", required="relationship_rule" in required_components, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve interaction with another waiting-period family."),
             build_component_definition(component_id="applicability_condition", requirement_type="WAITING_PERIOD_APPLICABILITY_CONDITION", required="applicability_condition" in required_components, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve additional applicability conditions that are not exceptions."),
+            build_component_definition(component_id="post_wait_condition", requirement_type="POST_WAIT_CONDITION", required="post_wait_condition" in required_components, acceptable_requirement_statuses=("SATISFIED",), acceptable_evidence_roles=("DEFINING",), minimum_authority="AUTHORITATIVE", dependency_component_ids=(), reason="Preserve conditions that remain applicable after expiry of the waiting-period duration."),
         ),
     )
     registry = TopicCompletenessRegistry()
@@ -106,10 +107,22 @@ def build_waiting_period_material_rules_certification_case(*, binding_spec_path:
             raise WaitingPeriodMaterialRulesCertificationError(f"candidate lineage mismatch: {candidate_id}")
         candidate_context[candidate_id] = (_mapping(registration.get("document"), "registration.document"), candidate)
 
-    groups: dict[str, list[Mapping[str, Any]]] = {"relationship_rule": [], "applicability_condition": []}
+    groups: dict[str, list[Mapping[str, Any]]] = {
+        "relationship_rule": [],
+        "applicability_condition": [],
+        "post_wait_condition": [],
+    }
+    type_to_component = {
+        "RELATIONSHIP_LONGER_OF": "relationship_rule",
+        "APPLICABILITY_CONDITION": "applicability_condition",
+        "POST_WAIT_CONDITION": "post_wait_condition",
+    }
     for raw in _items(manifest.get("material_rules"), "binding_manifest.material_rules"):
         rule = _mapping(raw, "material_rule")
-        component_id = "relationship_rule" if rule.get("rule_type") == "RELATIONSHIP_LONGER_OF" else "applicability_condition"
+        rule_type = _text(rule.get("rule_type"), "material_rule.rule_type")
+        component_id = type_to_component.get(rule_type)
+        if component_id is None:
+            raise WaitingPeriodMaterialRulesCertificationError(f"unsupported material rule type {rule_type!r}")
         groups[component_id].append(rule)
     groups = {key: value for key, value in groups.items() if value}
     if not groups:
@@ -122,6 +135,7 @@ def build_waiting_period_material_rules_certification_case(*, binding_spec_path:
     component_defs = {
         "relationship_rule": "WAITING_PERIOD_RELATIONSHIP_RULE",
         "applicability_condition": "WAITING_PERIOD_APPLICABILITY_CONDITION",
+        "post_wait_condition": "POST_WAIT_CONDITION",
     }
     for component_id, rules in groups.items():
         requirement_id = f"requirement:{case_id}:{component_id}"
