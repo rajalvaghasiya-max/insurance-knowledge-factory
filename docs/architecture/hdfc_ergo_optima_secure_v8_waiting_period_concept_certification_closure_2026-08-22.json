@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "closure_type": "waiting_period_concept_certification_closure_v1",
+  "product_reference": "hdfc_ergo:optima_secure:HDFHLIP26058V082526",
+  "product_id": "optima_secure",
+  "uin": "HDFHLIP26058V082526",
+  "closed_on": "2026-08-22",
+  "concept_id": "waiting_period",
+  "concept_status": "CERTIFIED",
+  "certified_scope": "BASE_POLICY_WORDING",
+  "comparison_ready": false,
+  "decision_support_ready": false,
+  "publication_authorized": false,
+  "certified_families": [
+    {
+      "waiting_period_type": "INITIAL",
+      "resolution_level": "RESOLVED_SCALAR",
+      "certification_id": "waiting_period:hdfc_ergo_optima_secure_v8_initial_wait_30_days",
+      "certification_outcome": "PASS",
+      "completeness": "COMPLETE",
+      "explanation_permitted": true,
+      "material_semantics": [
+        "30 DAYS",
+        "PRODUCT_FIXED",
+        "POLICY_INCEPTION start basis",
+        "accident exception",
+        "continuous coverage for more than 12 months removes the exclusion",
+        "REAPPLIES_TO_ENHANCED_PORTION"
+      ]
+    },
+    {
+      "waiting_period_type": "PRE_EXISTING_DISEASE",
+      "resolution_level": "CERTIFIED_UNRESOLVED_SCHEDULE_OPTION_DOMAIN_WITH_MULTISPAN_MECHANICS",
+      "certification_id": "waiting_period_option_domain_multispan:hdfc_ergo_optima_secure_v8_ped_waiting_period_full_mechanics",
+      "certification_outcome": "PASS",
+      "completeness": "COMPLETE",
+      "explanation_permitted": true,
+      "authoritative_options": ["12 MONTHS", "24 MONTHS", "36 MONTHS"],
+      "policy_instance_selected_duration": "UNRESOLVED_WITHOUT_POLICY_SCHEDULE",
+      "material_semantics": [
+        "INSURED_PERSON_FIRST_COVERAGE start basis",
+        "portability or migration continuity credit",
+        "REAPPLIES_TO_ENHANCED_PORTION",
+        "post-wait declaration and insurer acceptance condition"
+      ]
+    },
+    {
+      "waiting_period_type": "SPECIFIC_DISEASE_PROCEDURE",
+      "resolution_level": "RESOLVED_SCALAR_WITH_CERTIFIED_MATERIAL_RULES",
+      "certification_id": "waiting_period:hdfc_ergo_optima_secure_v8_specified_disease_wait_24_months",
+      "material_rules_certification_id": "waiting_period_material_rules:hdfc_ergo_optima_secure_v8_specified_disease_material_rules",
+      "certification_outcome": "PASS",
+      "material_rules_certification_outcome": "PASS",
+      "completeness": "COMPLETE",
+      "material_rules_completeness": "COMPLETE",
+      "explanation_permitted": true,
+      "material_semantics": [
+        "24 MONTHS",
+        "PRODUCT_FIXED",
+        "INSURED_PERSON_FIRST_COVERAGE start basis",
+        "accident exception",
+        "portability continuity credit",
+        "REAPPLIES_TO_ENHANCED_PORTION",
+        "longer-of-PED relationship",
+        "listed-condition applicability after inception or acceptance without specific exclusion"
+      ]
+    }
+  ],
+  "scope_boundary": {
+    "base_policy_waiting_period_families_certified": true,
+    "separate_add_on_waiting_periods_included": false,
+    "parenthood_add_on_waiting_period_not_certified_by_this_closure": true,
+    "underwriting_specific_waiting_periods_not_resolved_as_product_level_defaults": true
+  },
+  "governance_boundary": {
+    "concept_certified": true,
+    "customer_specific_schedule_resolution_is_not_implied": true,
+    "ped_selected_duration_requires_policy_schedule": true,
+    "comparison_ready": false,
+    "decision_support_ready": false,
+    "publication_authorized": false,
+    "claim_payment_prediction_authorized": false,
+    "add_on_waiting_period_inference_authorized": false
+  }
+}
