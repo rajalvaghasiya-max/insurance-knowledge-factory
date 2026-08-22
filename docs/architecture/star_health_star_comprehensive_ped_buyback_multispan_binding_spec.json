@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_multispan_binding_v1",
+  "binding_id": "star_health_star_comprehensive_ped_with_optional_buyback",
+  "reviewed_by_human": true,
+  "manufacturing_status": "resolved_base_scalar_with_conditional_modification_ready_for_certification",
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/star_health_star_comprehensive_generic_source_bundle.json",
+  "evidence_selections": [
+    {
+      "role": "mechanism",
+      "document_id": "star_health_star_comprehensive_policy_wording_v1",
+      "candidate_id": "candidate_page_31",
+      "candidate_text_sha256": "b9f28db495943d84bbf6a900df47b18717c6300bf510f88786914ae28be11e77"
+    },
+    {
+      "role": "mechanism",
+      "document_id": "star_health_star_comprehensive_policy_wording_v1",
+      "candidate_id": "candidate_page_30",
+      "candidate_text_sha256": "19ec8a370e3269acb742a9a6e3e47a06d60d04cf20a8b743b65bca09b7735f9a"
+    }
+  ],
+  "mechanic": {
+    "waiting_period_type": "PRE_EXISTING_DISEASE",
+    "duration_value": 36,
+    "duration_unit": "MONTHS",
+    "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+    "applies_to": ["pre_existing_disease_and_direct_complications"],
+    "exclusions_or_exceptions": [],
+    "modifications": [
+      {
+        "modification_type": "REDUCTION",
+        "condition": "optional PED waiting-period buy-back is selected on payment of additional premium at the first purchase of Star Comprehensive, only up to the Sum Insured chosen at that first purchase; the option is not available at renewal or for policies ported from another insurer and remains subject to the insurer's stated pre-acceptance requirements",
+        "resulting_duration_value": 12,
+        "resulting_duration_unit": "MONTHS",
+        "evidence_reference_ids": [
+          "star_health_star_comprehensive_policy_wording_v1:candidate_page_30:19ec8a370e3269acb742a9a6e3e47a06d60d04cf20a8b743b65bca09b7735f9a"
+        ]
+      }
+    ],
+    "schedule_dependency": null,
+    "continuity_dependency": "If the Insured Person is continuously covered without any break under applicable portability norms, the PED waiting period is reduced to the extent of prior coverage.",
+    "scope_type": "POLICY_WIDE",
+    "scope_reference": null,
+    "value_source": "PRODUCT_FIXED",
+    "member_waiting_basis": null,
+    "sum_insured_enhancement_effect": "REAPPLIES_TO_ENHANCED_PORTION"
+  },
+  "component_evidence_candidate_ids": {
+    "waiting_period_duration": ["candidate_page_31", "candidate_page_30"],
+    "waiting_period_subject": ["candidate_page_31", "candidate_page_30"],
+    "start_basis": ["candidate_page_31", "candidate_page_30"],
+    "applicability_scope": ["candidate_page_31", "candidate_page_30"],
+    "continuity_or_credit_rule": ["candidate_page_31"]
+  },
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "optional_cover_selection_inferred_without_policy_evidence": false,
+    "customer_specific_12_month_wait_authorized_without_optional_cover_evidence": false,
+    "base_36_month_ped_authorized": true,
+    "conditional_12_month_modification_certification_authorized": true
+  }
+}
