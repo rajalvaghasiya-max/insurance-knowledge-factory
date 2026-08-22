@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_material_rules_binding_v1",
+  "binding_id": "star_health_star_comprehensive_delivery_newborn_material_rules",
+  "reviewed_by_human": true,
+  "base_binding_spec_path": "docs/architecture/star_health_star_comprehensive_delivery_newborn_waiting_period_binding_spec.json",
+  "material_rules": [
+    {
+      "rule_id": "delivery_claim_restarts_wait",
+      "rule_type": "RESET_AFTER_EVENT",
+      "statement": "A waiting period of 24 months applies afresh following a claim under Section II.14.A.",
+      "related_waiting_period_type": null,
+      "evidence_candidate_ids": ["candidate_page_14"]
+    },
+    {
+      "rule_id": "self_spouse_continuity_and_policy_in_force",
+      "rule_type": "APPLICABILITY_CONDITION",
+      "statement": "The Delivery and New Born cover is available only when both Self and Spouse are covered under Star Comprehensive and have been covered continuously for 24 months, and the policy covering them is in force when the benefit becomes payable.",
+      "related_waiting_period_type": null,
+      "evidence_candidate_ids": ["candidate_page_14"]
+    }
+  ]
+}
