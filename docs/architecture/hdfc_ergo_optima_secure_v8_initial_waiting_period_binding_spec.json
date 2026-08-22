@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_binding_v1",
+  "binding_id": "hdfc_ergo_optima_secure_v8_initial_wait_30_days",
+  "reviewed_by_human": true,
+  "manufacturing_status": "resolved_scalar_ready_for_binding",
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/hdfc_ergo_optima_secure/v8/generic_source_registration/source_registration_bundle.json",
+  "evidence_selections": [
+    {
+      "role": "mechanism",
+      "document_id": "hdfc_ergo_optima_secure_policy_wording_v8",
+      "candidate_id": "candidate_page_32",
+      "candidate_text_sha256": "c3a9935698e24f4411d12a47bdcc1e3b22573ccca1b84adb6faa4cf647737c42"
+    }
+  ],
+  "mechanic": {
+    "waiting_period_type": "INITIAL",
+    "duration_value": 30,
+    "duration_unit": "DAYS",
+    "start_basis": "POLICY_INCEPTION",
+    "applies_to": [
+      "illness_treatment_within_initial_wait"
+    ],
+    "exclusions_or_exceptions": [
+      "accident_claims_where_other_policy_terms_cover_the_claim",
+      "insured_person_with_continuous_coverage_for_more_than_12_months"
+    ],
+    "modifications": [],
+    "schedule_dependency": null,
+    "continuity_dependency": "continuous coverage for more than 12 months removes this exclusion",
+    "scope_type": "POLICY_WIDE",
+    "scope_reference": null,
+    "value_source": "PRODUCT_FIXED",
+    "member_waiting_basis": "POLICY_INCEPTION",
+    "sum_insured_enhancement_effect": "REAPPLIES_TO_ENHANCED_PORTION"
+  },
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "scalar_binding_authorized": true,
+    "schedule_resolution_basis": null,
+    "cold_start_runtime_python_changes": 0
+  }
+}
