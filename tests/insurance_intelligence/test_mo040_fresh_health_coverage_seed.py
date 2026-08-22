@@ -6,6 +6,7 @@ from insurance_intelligence.coverage_registry.contracts import (
 )
 from insurance_intelligence.coverage_registry.health_seed import (
     BAJAJ_MY_HEALTH_CARE_V2_COVERAGE,
+    HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE,
     HEALTH_COVERAGE_REGISTRY,
     STAR_COMPREHENSIVE_COVERAGE,
 )
@@ -19,10 +20,11 @@ def _copayment(product):
     return next(item for item in product.concepts if item.concept_id == "copayment")
 
 
-def test_seed_contains_only_current_deep_pilot_products() -> None:
+def test_seed_contains_current_governed_health_pilot_products() -> None:
     assert {item.product_reference for item in HEALTH_COVERAGE_REGISTRY.products} == {
         "star_health:star_comprehensive:SHAHLIP26044V092526",
         "bajaj_allianz_general:my_health_care:BAJHLIP26074V022526",
+        "hdfc_ergo:optima_secure:HDFHLIP26058V082526",
     }
 
 
@@ -34,6 +36,18 @@ def test_star_and_bajaj_copayment_are_certified_but_not_promoted_to_downstream_r
         assert copayment.decision_support_ready is False
         assert product.comparison_ready_concept_ids == ()
         assert product.decision_support_ready_concept_ids == ()
+
+
+def test_hdfc_waiting_period_is_certified_without_downstream_readiness() -> None:
+    waiting = next(
+        item for item in HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE.concepts
+        if item.concept_id == "waiting_period"
+    )
+    assert waiting.status is ConceptCoverageStatus.CERTIFIED
+    assert waiting.comparison_ready is False
+    assert waiting.decision_support_ready is False
+    assert HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE.comparison_ready_concept_ids == ()
+    assert HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE.decision_support_ready_concept_ids == ()
 
 
 def test_seed_does_not_infer_product_lifecycle_from_current_document_evidence() -> None:
@@ -52,16 +66,17 @@ def test_every_seed_evidence_reference_exists_in_current_repository() -> None:
 
 def test_report_exposes_certification_without_claiming_comparison_or_decision_readiness() -> None:
     report = build_coverage_review_report(HEALTH_COVERAGE_REGISTRY)
-    assert len(report.product_summaries) == 2
+    assert len(report.product_summaries) == 3
     by_product = {
         item.product_reference: item
         for item in report.product_summaries
     }
     assert by_product[STAR_COMPREHENSIVE_COVERAGE.product_reference].certified_concept_count == 1
     assert by_product[BAJAJ_MY_HEALTH_CARE_V2_COVERAGE.product_reference].certified_concept_count == 2
+    assert by_product[HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE.product_reference].certified_concept_count == 1
     assert all(item.comparison_ready_concept_count == 0 for item in report.product_summaries)
     assert all(item.decision_support_ready_concept_count == 0 for item in report.product_summaries)
-    assert sum(1 for gap in report.gaps if gap.gap_type == "LIFECYCLE_STATUS_UNKNOWN") == 2
+    assert sum(1 for gap in report.gaps if gap.gap_type == "LIFECYCLE_STATUS_UNKNOWN") == 3
 
 
 def test_historical_activ_one_snapshot_is_not_reintroduced_as_current_seed_truth() -> None:
