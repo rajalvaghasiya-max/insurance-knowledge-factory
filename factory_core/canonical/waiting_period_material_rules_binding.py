@@ -74,7 +74,7 @@ class WaitingPeriodMaterialRulesBinding:
                 raise WaitingPeriodMaterialRulesBindingError("material rule IDs must be unique")
             seen_ids.add(rule_id)
             rule_type = _text(item.get("rule_type"), f"material_rules[{index}].rule_type")
-            if rule_type not in {"RELATIONSHIP_LONGER_OF", "APPLICABILITY_CONDITION"}:
+            if rule_type not in {"RELATIONSHIP_LONGER_OF", "APPLICABILITY_CONDITION", "POST_WAIT_CONDITION"}:
                 raise WaitingPeriodMaterialRulesBindingError(f"unsupported rule_type {rule_type!r}")
             candidate_ids = tuple(_text(v, "evidence_candidate_ids[]") for v in _items(item.get("evidence_candidate_ids"), "evidence_candidate_ids"))
             if not candidate_ids or len(candidate_ids) != len(set(candidate_ids)):
@@ -85,8 +85,8 @@ class WaitingPeriodMaterialRulesBinding:
             related = item.get("related_waiting_period_type")
             if rule_type == "RELATIONSHIP_LONGER_OF" and not isinstance(related, str):
                 raise WaitingPeriodMaterialRulesBindingError("RELATIONSHIP_LONGER_OF requires related_waiting_period_type")
-            if rule_type == "APPLICABILITY_CONDITION" and related is not None:
-                raise WaitingPeriodMaterialRulesBindingError("APPLICABILITY_CONDITION must not define related_waiting_period_type")
+            if rule_type in {"APPLICABILITY_CONDITION", "POST_WAIT_CONDITION"} and related is not None:
+                raise WaitingPeriodMaterialRulesBindingError(f"{rule_type} must not define related_waiting_period_type")
             rules.append({
                 "rule_id": rule_id,
                 "rule_type": rule_type,

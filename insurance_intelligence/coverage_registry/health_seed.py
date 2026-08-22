@@ -36,6 +36,25 @@ STAR_COMPREHENSIVE_COVERAGE = ProductCoverageRecord(
             comparison_ready=False,
             decision_support_ready=False,
         ),
+        ConceptCoverageRecord(
+            concept_id="waiting_period",
+            status=ConceptCoverageStatus.PARTIAL,
+            evidence_reference_ids=(
+                "docs/architecture/STAR_COMPREHENSIVE_INITIAL_WAITING_PERIOD_MANUFACTURING_CLOSURE.md",
+                "insurance_intelligence/rule_certification/star_health_initial_waiting_period.py",
+                "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json",
+                "docs/architecture/star_health_star_comprehensive_ped_material_rules_spec.json",
+                "tests/insurance_intelligence/test_star_comprehensive_ped_waiting_period.py",
+            ),
+            comparison_ready=False,
+            decision_support_ready=False,
+            limitations=(
+                "The standard 30-day initial waiting-period mechanic is certified complete from current primary-legal evidence; exact first-active calendar arithmetic remains withheld.",
+                "The standard PED mechanic is certified at 36 months with portability credit, enhanced-Sum-Insured reapplication, and the post-wait declaration-and-insurer-acceptance condition preserved.",
+                "The optional PED waiting-period buy-back from 36 months to 12 months is not certified by this slice and requires separate governed treatment.",
+                "The specified-disease/procedure waiting-period family remains outstanding, so the overall waiting_period concept remains PARTIAL.",
+            ),
+        ),
     ),
 )
 
