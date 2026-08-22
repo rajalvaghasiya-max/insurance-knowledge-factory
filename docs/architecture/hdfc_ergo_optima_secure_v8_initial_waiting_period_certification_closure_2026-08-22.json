@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "closure_type": "third_product_semantic_certification_closure_v1",
+  "closure_id": "hdfc_ergo_optima_secure_v8_initial_waiting_period_certification_2026_08_22",
+  "product": {
+    "insurer_id": "hdfc_ergo",
+    "product_id": "optima_secure",
+    "product_display_name": "my: Optima Secure",
+    "uin": "HDFHLIP26058V082526"
+  },
+  "certification": {
+    "certification_id": "waiting_period:hdfc_ergo_optima_secure_v8_initial_wait_30_days",
+    "outcome": "PASS",
+    "completeness": "COMPLETE",
+    "explanation_permitted": true,
+    "failures": [],
+    "components": {
+      "waiting_period_duration": "SATISFIED",
+      "waiting_period_subject": "SATISFIED",
+      "start_basis": "SATISFIED",
+      "applicability_scope": "SATISFIED",
+      "continuity_or_credit_rule": "SATISFIED",
+      "exception_condition": "SATISFIED"
+    }
+  },
+  "evidence": {
+    "document_id": "hdfc_ergo_optima_secure_policy_wording_v8",
+    "candidate_id": "candidate_page_32",
+    "source_page": 32,
+    "candidate_text_sha256": "c3a9935698e24f4411d12a47bdcc1e3b22573ccca1b84adb6faa4cf647737c42"
+  },
+  "cold_start_generalization": {
+    "generic_registration": "PASS",
+    "generic_binding": "PASS",
+    "generic_certification": "PASS",
+    "runtime_python_changes": 0,
+    "insurer_specific_runtime_code": false
+  },
+  "governance": {
+    "certifies_only_this_initial_waiting_period_mechanic": true,
+    "whole_waiting_period_concept_certified": false,
+    "publication_authorized": false,
+    "coverage_registry_promotion_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "customer_specific_claim_eligibility_authorized": false
+  },
+  "next_gate": "HDFC_PED_DURATION_OPTION_DOMAIN"
+}
