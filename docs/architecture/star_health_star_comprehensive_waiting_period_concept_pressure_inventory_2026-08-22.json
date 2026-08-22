@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "inventory_type": "waiting_period_concept_pressure_inventory_v1",
+  "product_reference": "star_health:star_comprehensive:SHAHLIP26044V092526",
+  "product_id": "star_comprehensive",
+  "uin": "SHAHLIP26044V092526",
+  "reviewed_on": "2026-08-22",
+  "source": {
+    "document_id": "star_health_star_comprehensive_policy_wording_v1",
+    "document_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+    "authority_role": "primary_legal",
+    "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+  },
+  "already_governed": [
+    {
+      "mechanic": "INITIAL",
+      "status": "CERTIFIED",
+      "duration": "30 DAYS",
+      "evidence": ["candidate_page_32"]
+    },
+    {
+      "mechanic": "PRE_EXISTING_DISEASE_STANDARD",
+      "status": "CERTIFIED",
+      "duration": "36 MONTHS",
+      "evidence": ["candidate_page_31"]
+    },
+    {
+      "mechanic": "PRE_EXISTING_DISEASE_OPTIONAL_BUYBACK",
+      "status": "CERTIFIED_CONDITIONAL_MODIFICATION",
+      "base_duration": "36 MONTHS",
+      "conditional_duration": "12 MONTHS",
+      "evidence": ["candidate_page_31", "candidate_page_30"],
+      "customer_selection_must_not_be_inferred": true
+    },
+    {
+      "mechanic": "SPECIFIC_DISEASE_PROCEDURE",
+      "status": "CERTIFIED",
+      "duration": "24 MONTHS",
+      "evidence": ["candidate_page_31", "candidate_page_32"]
+    }
+  ],
+  "outstanding_explicit_waiting_periods": [
+    {
+      "benefit_reference": "section_ii_14_delivery_and_new_born",
+      "classification": "EXPLICIT_BENEFIT_SCOPED_WAITING_PERIOD",
+      "duration": "24 MONTHS",
+      "start_basis": "first commencement of Star Comprehensive Insurance Policy with continuous renewal",
+      "additional_semantics": [
+        "24-month waiting period applies afresh following a claim under Section II.14.A",
+        "both Self and Spouse must be covered continuously for 24 months under Star Comprehensive",
+        "policy covering Self and Spouse must be in force when the benefit becomes payable"
+      ],
+      "evidence": {
+        "candidate_id": "candidate_page_14",
+        "source_page": 14,
+        "candidate_text_sha256": "b7af2e8c4f0669dd0b087e9c2593085d79ae40bb0e54dd22debeba70fed6d4a1"
+      },
+      "runtime_pressure": [
+        "generic benefit-scoped waiting-period family",
+        "reset-after-event material rule"
+      ]
+    },
+    {
+      "benefit_reference": "section_ii_15_bariatric_surgery",
+      "classification": "EXPLICIT_BENEFIT_SCOPED_WAITING_PERIOD",
+      "duration": "36 MONTHS",
+      "start_basis": "first commencement of this policy with continuous renewal",
+      "additional_semantics": [
+        "benefit-specific medical and age eligibility conditions remain separate from the duration mechanic"
+      ],
+      "evidence": {
+        "candidate_id": "candidate_page_15",
+        "source_page": 15,
+        "candidate_text_sha256": "efe143eab857a4813b51c68d510d9ce7b9aafc2525c7eb6e685dcc9bd318f32c"
+      },
+      "runtime_pressure": [
+        "generic benefit-scoped waiting-period family"
+      ]
+    },
+    {
+      "benefit_reference": "section_ii_18_preventive_health_checkup",
+      "classification": "EXPLICIT_BENEFIT_SCOPED_WAITING_PERIOD",
+      "duration": "30 DAYS",
+      "start_basis": "first inception of Policy",
+      "additional_semantics": [
+        "waiting period does not apply during subsequent renewals"
+      ],
+      "evidence": {
+        "candidate_id": "candidate_page_16",
+        "source_page": 16,
+        "candidate_text_sha256": "f23f72d57934786f73466f2ad82c1f40876bf10e3227f9018eb46e3688f2a6ed"
+      },
+      "runtime_pressure": [
+        "generic benefit-scoped waiting-period family"
+      ]
+    }
+  ],
+  "classified_outside_waiting_period_concept": [
+    {
+      "benefit_reference": "section_ii_17_outpatient_dental_and_ophthalmic_treatment",
+      "classification": "TIME_GATED_BENEFIT_ELIGIBILITY_NOT_EXPLICIT_WAITING_PERIOD",
+      "evidence": {
+        "candidate_id": "candidate_page_16",
+        "source_page": 16,
+        "candidate_text_sha256": "f23f72d57934786f73466f2ad82c1f40876bf10e3227f9018eb46e3688f2a6ed"
+      },
+      "reason": "The wording makes the benefit eligible after every block of three years of continuous coverage but does not express this as a waiting period. It must not be silently coerced into waiting_period solely because it is time-gated.",
+      "future_pressure": "generic time-gated benefit eligibility semantics"
+    }
+  ],
+  "non_mechanic_waiting_period_mentions": [
+    "grace-period continuity definitions",
+    "renewal and portability credit language",
+    "Specific Waiting Period definition",
+    "cross-references to already enumerated standard waiting-period families"
+  ],
+  "architecture_assessment": {
+    "existing_scope_type_supports_benefit_scope": true,
+    "existing_waiting_period_type_enum_supports_arbitrary_benefit_waits": false,
+    "enum_expansion_per_named_benefit_authorized": false,
+    "preferred_generic_extension": "BENEFIT_SPECIFIC waiting-period type with BENEFIT_SCOPED scope_reference",
+    "delivery_new_born_requires_reset_rule": true,
+    "dental_ophthalmic_three_year_cycle_should_not_be_forced_into_waiting_period": true
+  },
+  "concept_gate": {
+    "current_status": "PARTIAL",
+    "promotion_to_certified_authorized": false,
+    "remaining_explicit_waiting_period_families": [
+      "section_ii_14_delivery_and_new_born",
+      "section_ii_15_bariatric_surgery",
+      "section_ii_18_preventive_health_checkup"
+    ]
+  },
+  "governance": {
+    "publication_authorized": false,
+    "comparison_ready": false,
+    "decision_support_ready": false,
+    "customer_specific_eligibility_authorized": false,
+    "claim_payment_prediction_authorized": false
+  }
+}
