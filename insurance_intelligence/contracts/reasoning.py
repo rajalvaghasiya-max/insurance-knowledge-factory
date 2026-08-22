@@ -249,6 +249,12 @@ def build_finding(
     applicability_scope: str | None = None,
     confidence: float = 1.0,
 ) -> Finding:
+    validated_finding_status = _require_member(
+        finding_status, FINDING_STATUSES, "finding.finding_status"
+    )
+    validated_derivation_type = _require_member(
+        derivation_type, DERIVATION_TYPES, "finding.derivation_type"
+    )
     if condition is not None:
         _require_nonempty_str(condition, "finding.condition")
     if trigger is not None:
@@ -258,8 +264,15 @@ def build_finding(
     if applicability_scope is not None:
         _require_nonempty_str(applicability_scope, "finding.applicability_scope")
     resolved_trigger = trigger if trigger is not None else condition
+    if (
+        validated_finding_status == "CONDITIONAL"
+        or validated_derivation_type == "CONDITIONAL_DERIVATION"
+    ) and resolved_trigger is None:
+        raise ReasoningContractError(
+            "conditional findings and conditional derivations must carry a non-empty condition or trigger"
+        )
     validated_evidence = _require_unique(evidence_ids, "finding.evidence_ids")
-    if finding_status in {"SUPPORTED", "SUPPORTED_WITH_LIMITATIONS", "CONDITIONAL", "PARTIALLY_SUPPORTED"} and not validated_evidence:
+    if validated_finding_status in {"SUPPORTED", "SUPPORTED_WITH_LIMITATIONS", "CONDITIONAL", "PARTIALLY_SUPPORTED"} and not validated_evidence:
         raise ReasoningContractError("supported findings must reference at least one evidence_id")
     return Finding(
         finding_id=_require_nonempty_str(finding_id, "finding_id"),
@@ -273,8 +286,8 @@ def build_finding(
         exception=exception,
         applicability_scope=applicability_scope,
         scope=_require_nonempty_str(scope, "finding.scope"),
-        finding_status=_require_member(finding_status, FINDING_STATUSES, "finding.finding_status"),
-        derivation_type=_require_member(derivation_type, DERIVATION_TYPES, "finding.derivation_type"),
+        finding_status=validated_finding_status,
+        derivation_type=validated_derivation_type,
         rule_id=_require_nonempty_str(rule_id, "finding.rule_id"),
         rule_version=_require_nonempty_str(rule_version, "finding.rule_version"),
         evidence_ids=validated_evidence,
