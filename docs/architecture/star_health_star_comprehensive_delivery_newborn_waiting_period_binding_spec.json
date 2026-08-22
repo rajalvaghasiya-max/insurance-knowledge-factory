@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_binding_v1",
+  "binding_id": "star_health_star_comprehensive_delivery_newborn_wait_24_months",
+  "reviewed_by_human": true,
+  "manufacturing_status": "resolved_scalar_ready_for_binding",
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/star_health_star_comprehensive_generic_source_bundle.json",
+  "evidence_selections": [
+    {
+      "role": "mechanism",
+      "document_id": "star_health_star_comprehensive_policy_wording_v1",
+      "candidate_id": "candidate_page_14",
+      "candidate_text_sha256": "b7af2e8c4f0669dd0b087e9c2593085d79ae40bb0e54dd22debeba70fed6d4a1"
+    }
+  ],
+  "mechanic": {
+    "waiting_period_type": "BENEFIT_SPECIFIC",
+    "duration_value": 24,
+    "duration_unit": "MONTHS",
+    "start_basis": "POLICY_INCEPTION",
+    "applies_to": ["section_ii_14_delivery_and_new_born"],
+    "exclusions_or_exceptions": [],
+    "modifications": [],
+    "schedule_dependency": null,
+    "continuity_dependency": "The 24-month waiting period is measured from first commencement of Star Comprehensive and requires continuous renewal with the Company.",
+    "scope_type": "BENEFIT_SCOPED",
+    "scope_reference": "section_ii_14_delivery_and_new_born",
+    "value_source": "PRODUCT_FIXED",
+    "member_waiting_basis": null,
+    "sum_insured_enhancement_effect": null
+  },
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "claim_payment_prediction_authorized": false,
+    "scalar_binding_authorized": true
+  }
+}
