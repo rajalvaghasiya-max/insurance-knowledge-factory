@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "projection_type": "generic_legal_condition_canonical_projection_v1",
+  "reviewed_by_human": true,
+  "binding_manifest_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_legal_condition_binding/bajaj_my_health_care_v2_copayment_binding.json",
+  "classification_manifest_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/governance/bajaj_my_health_care_v2_document_classification.json",
+  "product_context": {
+    "insurer_id": "bajaj_allianz_general",
+    "insurer_legal_name": "Bajaj General Insurance Limited",
+    "insurer_type": "general_insurer",
+    "product_id": "my_health_care",
+    "product_name": "My Health Care Plan",
+    "product_family_name": "My Health Care Plan",
+    "domain": "health",
+    "product_version_id": "pv_bajaj_allianz_general_my_health_care_bajhlip26074v022526",
+    "product_version_label": "UIN BAJHLIP26074V022526",
+    "product_uin": "BAJHLIP26074V022526"
+  }
+}
