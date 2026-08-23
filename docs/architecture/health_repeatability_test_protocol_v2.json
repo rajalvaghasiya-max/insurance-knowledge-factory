@@ -1,0 +1,84 @@
+{
+  "schema_version": "2.0",
+  "protocol_type": "health_repeatability_test_preregistration_v2",
+  "protocol_status": "LOCKED_BEFORE_NEXT_PRODUCT_SELECTION",
+  "supersedes_for_future_experiments_only": "docs/architecture/health_product4_repeatability_test_protocol_v1.json",
+  "retroactive_rescoring_authorized": false,
+  "next_experiment": {
+    "domain": "health",
+    "product_number": 5,
+    "product_selected": false,
+    "target_concepts": ["copayment", "waiting_period"],
+    "central_question": "Can the frozen Health Foundation runtime manufacture governed knowledge for another previously unseen Health product without new runtime logic or a new declarative semantic shape?"
+  },
+  "freeze": {
+    "runtime_change_allowed_during_initial_attempt": false,
+    "frozen_surfaces": [
+      "insurance_intelligence/contracts/",
+      "insurance_intelligence/reasoning/",
+      "insurance_intelligence/benefits/",
+      "insurance_intelligence/rule_certification/",
+      "factory_core/canonical/"
+    ],
+    "decision_logic_in_config_is_failure": true
+  },
+  "classification_rubric": {
+    "REUSE": {
+      "rule": "Existing generic contract, binder, certifier, semantic type, and governed spec schema already used before product selection handle the concept unchanged. New product-specific source/evidence records and new instances of those pre-existing schemas are allowed and expected. No new semantic/spec schema or declarative structural shape is introduced.",
+      "allowed_new_content": [
+        "authoritative source registrations",
+        "candidate identifiers and hashes",
+        "product-specific values, triggers, exceptions, scopes, relationships, and evidence attribution expressed through a pre-existing schema",
+        "tests that instantiate and exercise pre-existing generic contracts"
+      ],
+      "strong_signal": true
+    },
+    "CONFIG_SPEC": {
+      "rule": "Frozen generic runtime remains unchanged, but the product requires a new governed declarative semantic/spec structural shape not present before product selection. The new structure contains facts only and is interpreted by existing runtime without product-specific computation, branching, precedence execution, or executable decision logic.",
+      "strong_signal": false,
+      "costed_as_manual_manufacturing_work": true
+    },
+    "REPRESENTATION_GAP": {
+      "rule": "Authoritative evidence is sufficient, but existing runtime and pre-existing declarative structures cannot represent the semantic shape faithfully. Certification must block during the frozen attempt and the gap must be recorded before any extension is designed.",
+      "repeatability_effect": "NOT_PROVEN_FOR_CONCEPT"
+    },
+    "KNOWLEDGE_GAP": {
+      "rule": "Reviewed authoritative/corroborating evidence is insufficient to determine the concept. Code and config must not compensate; the concept remains blocked.",
+      "repeatability_effect": "INCONCLUSIVE_FOR_CONCEPT"
+    }
+  },
+  "anti_gaming_rules": [
+    "New product-specific instances of an existing schema are not CONFIG_SPEC merely because a new file exists.",
+    "A newly invented declarative structural shape is CONFIG_SPEC even if it is encoded in JSON/YAML and requires no Python change.",
+    "Product-specific computation, branching, precedence execution, or executable decision tables in config are runtime-in-exile and fail the experiment.",
+    "A newly named generic-looking runtime abstraction created after product selection fails the initial frozen-runtime attempt.",
+    "Classification is based on repository state existing before product selection, not author intent.",
+    "No product may be selected because its target-concept wording appears easy, familiar, or likely to produce a favorable score.",
+    "No KNOWLEDGE_GAP may be converted to an absence, zero value, or non-application claim without affirmative evidence."
+  ],
+  "primary_metrics": {
+    "new_runtime_files": 0,
+    "runtime_loc_delta": 0,
+    "product_specific_branches_in_generic_runtime": 0,
+    "decision_logic_added_in_config_or_fixtures": 0,
+    "certified_claims_without_exact_candidate_version_hash_lineage": 0,
+    "silent_semantic_coercions": 0
+  },
+  "success_bar": {
+    "STRONG_REPEATABILITY_PROVEN": "Both target concepts are REUSE and all primary metrics remain zero.",
+    "MINIMUM_REPEATABILITY_PROVEN": "Both target concepts are scoreable as REUSE or CONFIG_SPEC, at least one is REUSE, no REPRESENTATION_GAP occurs, and all primary metrics remain zero.",
+    "REPEATABILITY_NOT_PROVEN": "Any primary metric is non-zero, any target concept is REPRESENTATION_GAP, or both scoreable concepts are CONFIG_SPEC with zero REUSE.",
+    "REPEATABILITY_INCONCLUSIVE": "At least one target concept is KNOWLEDGE_GAP and no architecture/repeatability failure otherwise occurs."
+  },
+  "operational_metrics": [
+    "source_acquisition_steps",
+    "manual_evidence_review_steps",
+    "new_product_specific_instances_of_existing_schemas",
+    "new_declarative_schema_shapes",
+    "time_to_first_certified_concept",
+    "time_to_second_certified_concept",
+    "representation_gap_count",
+    "knowledge_gap_count",
+    "user_intervention_count"
+  ]
+}
