@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "health_product4_waiting_period_frozen_runtime_attempt_v1",
+  "product": {
+    "insurer_id": "tata_aig_general",
+    "product_id": "medicare_premier",
+    "uin": "TATHLIP26052V052526"
+  },
+  "source_document_sha256": "392feaeeb26cb9ec7f6addc3ed764291d9c9f16bf6c70f466d9f92f85db78960",
+  "reviewed_waiting_period_mechanics": [
+    "INITIAL_30_DAYS",
+    "SPECIFIC_DISEASE_PROCEDURE_24_MONTHS",
+    "PRE_EXISTING_DISEASE_24_MONTHS",
+    "BENEFIT_SPECIFIC_VACCINATION_24_MONTHS_FOR_SELECTED_VACCINES",
+    "BENEFIT_SPECIFIC_MATERNITY_36_MONTHS",
+    "BENEFIT_SPECIFIC_OPD_24_MONTHS",
+    "BENEFIT_SPECIFIC_OPD_DENTAL_24_MONTHS"
+  ],
+  "existing_generic_semantics_reused": [
+    "waiting_period_binding_v1",
+    "WaitingPeriodType.INITIAL",
+    "WaitingPeriodType.SPECIFIC_DISEASE_PROCEDURE",
+    "WaitingPeriodType.PRE_EXISTING_DISEASE",
+    "WaitingPeriodType.BENEFIT_SPECIFIC",
+    "WaitingPeriodSumInsuredEnhancementEffect.REAPPLIES_TO_ENHANCED_PORTION",
+    "RELATIONSHIP_LONGER_OF",
+    "APPLICABILITY_CONDITION",
+    "POST_WAIT_CONDITION"
+  ],
+  "frozen_runtime_measurement": {
+    "new_runtime_files": 0,
+    "runtime_loc_delta": 0,
+    "product_specific_branches_in_generic_runtime": 0,
+    "decision_logic_added_in_config_or_fixtures": 0,
+    "silent_semantic_coercions": 0
+  },
+  "classification": {
+    "status": "PENDING_LIVE_BINDING_PROOF",
+    "conservative_expected_bin": "CONFIG_SPEC",
+    "reason": "The existing runtime and semantic schemas appear sufficient, but new product-specific governed declarative binding instances are required. The preregistered REUSE and CONFIG_SPEC wording overlaps around configuration instances; this experiment will conservatively use CONFIG_SPEC rather than reinterpret the rubric in the favorable direction.",
+    "protocol_rubric_ambiguity_recorded": true,
+    "protocol_must_not_be_changed_during_product4": true
+  },
+  "copayment_boundary": {
+    "candidate_page_44_role": "generic_moratorium_caveat_only",
+    "candidate_page_44_supports_product_copayment_obligation": false,
+    "absence_of_operative_policy_wording_copayment_must_not_be_interpreted_as_zero_or_no_copay": true,
+    "copayment_classification": "NOT_YET_SCORED"
+  },
+  "next_gate": "RUN_EXISTING_BINDERS_AND_CERTIFIERS_AGAINST_LOCAL_REGISTERED_CANDIDATES_WITHOUT_RUNTIME_CHANGE"
+}
