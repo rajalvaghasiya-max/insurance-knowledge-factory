@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "closure_type": "copayment_concept_certification_closure_v1",
+  "product_reference": "hdfc_ergo:optima_secure:HDFHLIP26058V082526",
+  "product_id": "optima_secure",
+  "uin": "HDFHLIP26058V082526",
+  "source_document": {
+    "document_id": "hdfc_ergo_optima_secure_policy_wording_v8",
+    "source_document_id": "694c0540cb341ec9254c08a41668174b60d4a7ebc4833d78505052367c0b6ab3",
+    "authority_role": "primary_legal"
+  },
+  "reviewed_occurrences": [
+    {
+      "candidate_id": "candidate_page_3",
+      "source_page": 3,
+      "candidate_text_sha256": "f8aeeccd32b501fc93b2bc699fcd04d43f239a1e40aacc8475c7152ea3f1d0e1",
+      "classification": "DEFINITION_ONLY",
+      "product_obligation_authorized": false
+    },
+    {
+      "candidate_id": "candidate_page_44",
+      "source_page": 44,
+      "candidate_text_sha256": "66157d6b8ae478e7e46d0d40f19d00a87db7f949e14197b56bf08a5cf8cce743",
+      "classification": "EXPLICIT_COPAYMENT_NONAPPLICATION_RULE",
+      "binding_spec": "docs/architecture/hdfc_ergo_optima_secure_v8_copayment_nonapplication_binding_spec.json",
+      "live_binding_status": "reviewed_copayment_nonapplication_bound_not_published",
+      "live_certification_outcome": "PASS",
+      "live_certification_completeness": "COMPLETE",
+      "live_explanation_permitted": true
+    }
+  ],
+  "concept_assessment": {
+    "current_base_wording_copayment_occurrences_reviewed": true,
+    "positive_percentage_copayment_obligation_found": false,
+    "definition_only_occurrence_excluded_from_product_truth": true,
+    "operative_nonapplication_rule_certified": true,
+    "zero_percent_obligation_manufactured": false,
+    "concept_status": "CERTIFIED"
+  },
+  "limitations": [
+    "CERTIFIED means the current governed base-policy wording has been reviewed for the copayment concept; it does not mean a positive copayment percentage applies.",
+    "The page-3 Co-Payment definition is definition-only and must not be used as evidence of a product-level cost-sharing obligation.",
+    "The page-44 Premium Tier rule is represented as DOES_NOT_APPLY under its documented cross-tier condition, never as a fabricated 0% positive copayment.",
+    "Concept certification does not authorize publication, comparison readiness, decision-support readiness, customer-specific cost-share inference, or claim-payment prediction."
+  ],
+  "governance": {
+    "coverage_registry_promotion_authorized": true,
+    "publication_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "customer_specific_cost_share_inference_authorized": false,
+    "claim_payment_inference_authorized": false
+  }
+}
