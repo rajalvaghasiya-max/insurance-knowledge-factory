@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "inventory_type": "copayment_semantic_pressure_inventory_v1",
+  "product_reference": "hdfc_ergo:optima_secure:HDFHLIP26058V082526",
+  "product_id": "optima_secure",
+  "uin": "HDFHLIP26058V082526",
+  "source_document": {
+    "document_id": "hdfc_ergo_optima_secure_policy_wording_v8",
+    "source_document_id": "694c0540cb341ec9254c08a41668174b60d4a7ebc4833d78505052367c0b6ab3",
+    "authority_role": "primary_legal"
+  },
+  "reviewed_occurrences": [
+    {
+      "source_page": 3,
+      "expected_candidate_id": "candidate_page_3",
+      "occurrence_type": "DEFINITION_ONLY",
+      "reviewed_meaning": "The policy defines Co-Payment as a cost-sharing requirement where the policyholder or insured bears a specified percentage of the admissible claim amount. This definition does not itself establish that my: Optima Secure applies a co-payment.",
+      "binding_authorized": false,
+      "reason": "A generic definition cannot be promoted into a product-level cost-sharing obligation."
+    },
+    {
+      "source_page": 44,
+      "expected_candidate_id": "candidate_page_44",
+      "occurrence_type": "EXPLICIT_NO_COPAYMENT_RULE",
+      "section": "1.24 Premium Tier",
+      "reviewed_meaning": "No co-payment shall apply when an Insured Person from a lower premium tier avails treatment in a higher tier; the wording gives the example of a Tier 4 policyholder taking treatment in Tier 1 without any co-payment.",
+      "binding_authorized": false,
+      "reason": "The current conditional-copayment certification path models positive percentage-bearing obligations. This clause is an explicit non-application rule and must not be manufactured into a positive 0% obligation without a governed semantic decision."
+    }
+  ],
+  "pressure_assessment": {
+    "positive_percentage_copayment_found_in_reviewed_current_wording": false,
+    "definition_may_not_be_used_as_product_obligation": true,
+    "explicit_no_copayment_rule_found": true,
+    "existing_positive_conditional_copayment_path_is_sufficient": false,
+    "architecture_pressure": "REPRESENT_EXPLICIT_NO_COPAYMENT_WITHOUT_FABRICATING_POSITIVE_PERCENTAGE",
+    "preferred_next_question": "Should governed copayment semantics add an insurer-independent explicit NON_APPLICABLE/NO_COPAYMENT rule representation, or should concept certification support evidence-backed absence/non-application directly?"
+  },
+  "candidate_binding_gate": {
+    "exact_registered_candidate_hashes_required_before_binding": true,
+    "candidate_page_3_hash_verified": false,
+    "candidate_page_44_hash_verified": false,
+    "local_generic_registration_review_required": true
+  },
+  "governance": {
+    "copayment_concept_certified": false,
+    "publication_authorized": false,
+    "coverage_registry_promotion_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "customer_specific_claim_cost_share_inference_authorized": false
+  }
+}
