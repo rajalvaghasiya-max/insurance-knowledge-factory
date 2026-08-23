@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "fourth_product_generic_registration_execution_v1",
+  "checkpoint_id": "tata_aig_medicare_premier_generic_registration_2026_08_23",
+  "product": {
+    "insurer_id": "tata_aig_general",
+    "product_id": "medicare_premier",
+    "canonical_product_name": "TATA AIG MediCare Premier",
+    "uin": "TATHLIP26052V052526"
+  },
+  "source_identity": {
+    "document_id": "tata_aig_medicare_premier_policy_wording_v5",
+    "source_document_id_sha256": "392feaeeb26cb9ec7f6addc3ed764291d9c9f16bf6c70f466d9f92f85db78960",
+    "observed_pdf_bytes": 554394,
+    "authority_role": "primary_legal"
+  },
+  "execution": {
+    "command": "python -m scripts.run_generic_source_registration --repository-root . --spec-path docs/architecture/tata_aig_medicare_premier_current_version_generic_sources_registration_spec.json --bundle-output-path knowledge/factory/registry_backed/tata_aig_medicare_premier/v5/generic_source_registration/source_registration_bundle.json",
+    "registration_status": "generic_sources_registered_evidence_review_required",
+    "source_count": 1,
+    "evidence_candidate_count": 60,
+    "bundle_output_path": "knowledge/factory/registry_backed/tata_aig_medicare_premier/v5/generic_source_registration/source_registration_bundle.json",
+    "result": "PASS"
+  },
+  "repeatability_measurement": {
+    "generic_runtime_changed_for_registration": false,
+    "new_runtime_files": 0,
+    "runtime_loc_delta": 0,
+    "decision_logic_added_in_config_or_fixtures": 0,
+    "classification": "REUSE",
+    "classification_scope": "source acquisition and generic source registration only",
+    "target_concept_classification_authorized": false
+  },
+  "governance": {
+    "human_evidence_review_required_before_semantic_binding": true,
+    "publication_authorized": false,
+    "coverage_registry_promotion_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "generic_runtime_freeze_remains_active": true
+  },
+  "next_gate": "REVIEW_COPAYMENT_AND_WAITING_PERIOD_CANDIDATES_WITHOUT_RUNTIME_CHANGE"
+}
