@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "selection_type": "health_product5_cold_start_selection_v2",
+  "selected_after_protocol_preregistration": true,
+  "repeatability_protocol_path": "docs/architecture/health_repeatability_test_protocol_v2.json",
+  "repeatability_baseline_commit": "ee82220ef8ccca586f5e5760bf937c51644c712b",
+  "selected_product": {
+    "insurer_id": "niva_bupa",
+    "product_id": "reassure_3_0",
+    "canonical_product_name": "Niva Bupa ReAssure 3.0",
+    "uin": "NBHHLIP26047V012526",
+    "product_reference": "niva_bupa:reassure_3_0:NBHHLIP26047V012526"
+  },
+  "neutral_selection_criteria": [
+    "Retail Health product from an insurer outside the existing Star/Bajaj/HDFC/Tata cold-start set.",
+    "No repository hit for the exact selected UIN before selection.",
+    "Official insurer download center currently exposes ReAssure 3.0 policy wording.",
+    "Official policy wording identifies Product UIN NBHHLIP26047V012526.",
+    "Selection is locked before reviewing copayment or waiting-period mechanics for representational fit."
+  ],
+  "prior_repository_exposure": {
+    "exact_uin_found": false,
+    "governed_product_evidence_found": false,
+    "runtime_or_specification_found": false,
+    "name_only_selection_history": "A prior product4 selection record mentioned ReAssure 3.0 only as a currentness reference while rejecting ReAssure 2.0. No ReAssure 3.0 evidence, semantics, runtime, or governed spec was ingested."
+  },
+  "authoritative_source_checkpoint": {
+    "official_download_center": "https://transaction.nivabupa.com/pages/downloads.aspx",
+    "policy_wording_url": "https://transactions.nivabupa.com/pages/doc/policy_wording/ReAssure30_Policy_Wordings.pdf",
+    "uin_observed_in_policy_wording": "NBHHLIP26047V012526",
+    "source_acquisition_not_yet_registered": true
+  },
+  "experiment_boundaries": {
+    "target_concepts": ["copayment", "waiting_period"],
+    "generic_runtime_remains_frozen": true,
+    "semantic_fit_assessment_after_selection_only": true,
+    "runtime_extension_before_initial_scoring_authorized": false,
+    "decision_logic_in_config_authorized": false,
+    "classification_rubric_version": "v2"
+  },
+  "next_step": "Acquire and hash-lock the exact official ReAssure 3.0 policy wording, register it through the existing generic source registrar, then inspect the two target concepts under the frozen runtime."
+}
