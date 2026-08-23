@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "fourth_product_frozen_runtime_concept_result_v1",
+  "product": {
+    "insurer_id": "tata_aig_general",
+    "product_id": "medicare_premier",
+    "uin": "TATHLIP26052V052526"
+  },
+  "concept": "copayment",
+  "reviewed_sources": [
+    {
+      "document_id": "tata_aig_medicare_premier_policy_wording_v5",
+      "authority_role": "primary_legal",
+      "source_sha256": "392feaeeb26cb9ec7f6addc3ed764291d9c9f16bf6c70f466d9f92f85db78960",
+      "finding": "No operative product-level copayment percentage, trigger, or non-application rule was identified. Page 44 contains only a generic moratorium caveat that policies remain subject to limits, sub-limits, co-payments and deductibles as per the policy contract."
+    },
+    {
+      "document_id": "tata_aig_medicare_premier_customer_information_sheet_v1",
+      "authority_role": "corroborating_product",
+      "source_sha256": "673c37dbe7d93d2269019cb92b761b5deacd903c3fb7249251584876eb92768b",
+      "candidate_findings": [
+        {
+          "candidate_id": "candidate_page_4",
+          "source_page": 4,
+          "candidate_text_sha256": "e03186077706214d8c08e6c63d0752018125e35baf7301d65adc428deff536f3",
+          "finding": "The Co-Payment row provides only the generic definition and no populated Tata-specific amount, percentage, trigger, or clause. Nearby rupee values belong to deductible/other-limit content and are not attributable to copayment."
+        },
+        {
+          "candidate_id": "candidate_page_7",
+          "source_page": 7,
+          "candidate_text_sha256": "98126031088ce4bedc96f56ea93a0c4f6288e85f21205c86da1eb8758691859c",
+          "finding": "The moratorium section generically states that policies remain subject to co-payments and deductibles as per the policy contract; it does not establish an operative product-level copayment rule."
+        }
+      ]
+    }
+  ],
+  "repeatability_classification": {
+    "classification": "KNOWLEDGE_GAP",
+    "reason": "The reviewed primary-legal wording and corroborating CIS are insufficient to determine an affirmative product-level copayment fact. Existing runtime is not the blocker; authoritative evidence is insufficient to support a percentage-bearing obligation, explicit non-application rule, or authoritative absence claim.",
+    "runtime_reuse_observed": null,
+    "representation_gap_observed": false,
+    "architecture_failure_observed": false
+  },
+  "forbidden_inferences": [
+    "copayment_is_0_percent",
+    "copayment_does_not_apply",
+    "product_has_no_copayment",
+    "nearby_deductible_or_limit_values_are_copayment_values"
+  ],
+  "governance": {
+    "certification_authorized": false,
+    "publication_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "claim_prediction_authorized": false,
+    "runtime_change_authorized_during_initial_attempt": false
+  }
+}
