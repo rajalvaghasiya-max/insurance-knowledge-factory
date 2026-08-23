@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "selection_type": "health_product4_cold_start_selection_v1",
+  "selected_after_protocol_preregistration": true,
+  "repeatability_protocol_path": "docs/architecture/health_product4_repeatability_test_protocol_v1.json",
+  "repeatability_baseline_commit": "bda5eb8721e04f8a78118ca4c4e054a09520a6d4",
+  "selected_product": {
+    "insurer_id": "tata_aig_general",
+    "product_id": "medicare_premier",
+    "canonical_product_name": "TATA AIG MediCare Premier",
+    "uin": "TATHLIP26052V052526",
+    "product_reference": "tata_aig_general:medicare_premier:TATHLIP26052V052526"
+  },
+  "neutral_selection_criteria": [
+    "Retail Health product from an insurer outside the existing Star/Bajaj/HDFC 3x2 matrix.",
+    "No repository search hit for the selected product name before selection.",
+    "Official insurer download center exposes the product and exact current UIN.",
+    "Official primary-legal policy wording is directly available and repeats the same UIN inside the document.",
+    "Selection made before inspecting copayment or waiting-period mechanics for representational fit."
+  ],
+  "candidate_review": [
+    {
+      "product": "Care Supreme",
+      "decision": "NOT_SELECTED",
+      "reason": "Historical raw PDF/download registry exposure exists in the repository, weakening the previously-unseen-product criterion."
+    },
+    {
+      "product": "Niva Bupa ReAssure 2.0",
+      "decision": "NOT_SELECTED",
+      "reason": "No repository exposure found, but the insurer download surface currently also lists ReAssure 3.0, creating avoidable currentness ambiguity for this controlled experiment."
+    },
+    {
+      "product": "TATA AIG MediCare Premier",
+      "decision": "SELECTED",
+      "reason": "No repository exposure found; official download center and current 60-page policy wording both identify UIN TATHLIP26052V052526."
+    }
+  ],
+  "authoritative_source_checkpoint": {
+    "official_download_center": "https://www.tataaig.com/downloads",
+    "policy_wording_url": "https://www.tataaig.com/s3/tata_aig_medicare_premier_policy_wordings_781aa2fd94.pdf",
+    "policy_wording_page_count_observed": 60,
+    "uin_observed_in_policy_wording": "TATHLIP26052V052526",
+    "source_acquisition_not_yet_registered": true
+  },
+  "experiment_boundaries": {
+    "target_concepts": ["copayment", "waiting_period"],
+    "generic_runtime_remains_frozen": true,
+    "semantic_fit_not_assessed_before_selection": true,
+    "runtime_extension_before_initial_scoring_authorized": false,
+    "decision_logic_in_config_authorized": false
+  },
+  "next_step": "Acquire and register the exact official policy wording, then perform evidence inventory using existing generic runtime only."
+}
