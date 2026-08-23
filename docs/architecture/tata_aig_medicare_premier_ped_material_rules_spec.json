@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_material_rules_binding_v1",
+  "binding_id": "tata_aig_medicare_premier_ped_material_rules",
+  "reviewed_by_human": true,
+  "base_binding_spec_path": "docs/architecture/tata_aig_medicare_premier_ped_waiting_period_binding_spec.json",
+  "material_rules": [
+    {
+      "rule_id": "ped_declared_and_accepted_after_wait",
+      "rule_type": "POST_WAIT_CONDITION",
+      "statement": "Coverage after expiry of the 24-month PED waiting period remains subject to the pre-existing disease having been declared at application and accepted by the insurer.",
+      "related_waiting_period_type": null,
+      "evidence_candidate_ids": ["candidate_page_36"]
+    }
+  ],
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "post_wait_condition_certification_authorized": true,
+    "customer_specific_claim_determination_authorized": false,
+    "cold_start_runtime_python_changes": 0
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_binding_v1",
+  "binding_id": "tata_aig_medicare_premier_opd_dental_wait_24_months",
+  "reviewed_by_human": true,
+  "manufacturing_status": "resolved_scalar_ready_for_binding",
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/tata_aig_medicare_premier/v5/generic_source_registration/source_registration_bundle.json",
+  "evidence_selections": [
+    {
+      "role": "mechanism",
+      "document_id": "tata_aig_medicare_premier_policy_wording_v5",
+      "candidate_id": "candidate_page_22",
+      "candidate_text_sha256": "4068afe22f02078f0376a02ac798679731788d1c24b2b74c1eb4916e1d1fbcf1"
+    }
+  ],
+  "mechanic": {
+    "waiting_period_type": "BENEFIT_SPECIFIC",
+    "duration_value": 24,
+    "duration_unit": "MONTHS",
+    "start_basis": "POLICY_INCEPTION",
+    "applies_to": ["section_b27_opd_treatment_dental"],
+    "exclusions_or_exceptions": [],
+    "modifications": [],
+    "schedule_dependency": null,
+    "continuity_dependency": "OPD Treatment - Dental becomes available once the insured has completed two years of continuous coverage with the insurer.",
+    "scope_type": "BENEFIT_SCOPED",
+    "scope_reference": "section_b27_opd_treatment_dental",
+    "value_source": "PRODUCT_FIXED",
+    "member_waiting_basis": null,
+    "sum_insured_enhancement_effect": null
+  },
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "benefit_medical_eligibility_inferred_from_waiting_period": false,
+    "claim_payment_prediction_authorized": false,
+    "scalar_binding_authorized": true,
+    "cold_start_runtime_python_changes": 0
+  }
+}
