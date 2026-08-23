@@ -126,6 +126,23 @@ HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE = ProductCoverageRecord(
     evidence_status=EvidenceCoverageStatus.PARTIAL,
     concepts=(
         ConceptCoverageRecord(
+            concept_id="copayment",
+            status=ConceptCoverageStatus.CERTIFIED,
+            evidence_reference_ids=(
+                "docs/architecture/hdfc_ergo_optima_secure_v8_copayment_pressure_inventory_2026-08-23.json",
+                "docs/architecture/hdfc_ergo_optima_secure_v8_copayment_nonapplication_binding_spec.json",
+                "docs/architecture/hdfc_ergo_optima_secure_v8_copayment_concept_certification_closure_2026-08-23.json",
+            ),
+            comparison_ready=False,
+            decision_support_ready=False,
+            limitations=(
+                "The current governed base-policy wording does not establish a positive percentage-bearing copayment obligation in the reviewed copayment occurrences.",
+                "The page-3 Co-Payment text is definition-only and must not be promoted into a product-level cost-sharing obligation.",
+                "The page-44 Premium Tier clause is certified as DOES_NOT_APPLY when an Insured Person from a lower Premium Tier avails treatment in a higher Premium Tier; this is not a fabricated 0% positive copayment.",
+                "Concept certification does not authorize publication, comparison readiness, decision-support readiness, customer-specific cost-share inference, or claim-payment prediction.",
+            ),
+        ),
+        ConceptCoverageRecord(
             concept_id="waiting_period",
             status=ConceptCoverageStatus.CERTIFIED,
             evidence_reference_ids=(
