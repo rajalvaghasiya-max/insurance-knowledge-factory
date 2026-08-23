@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "fourth_product_repeatability_cold_start_acquisition_v1",
+  "checkpoint_id": "tata_aig_medicare_premier_cold_start_2026_08_23",
+  "repeatability_protocol": "docs/architecture/health_product4_repeatability_test_protocol_v1.json",
+  "baseline_commit_sha": "bda5eb8721e04f8a78118ca4c4e054a09520a6d4",
+  "product": {
+    "insurer_id": "tata_aig_general",
+    "product_id": "medicare_premier",
+    "canonical_product_name": "TATA AIG MediCare Premier",
+    "uin": "TATHLIP26052V052526",
+    "cold_start_status": "TRUE_COLD_START_SELECTED_AFTER_PREREGISTRATION"
+  },
+  "official_source": {
+    "document_type": "policy_wording",
+    "authority_role": "primary_legal",
+    "canonical_title": "TATA AIG MediCare Premier - Policy Wording",
+    "official_download_surface": "TATA AIG official download center",
+    "observed_uin": "TATHLIP26052V052526",
+    "source_document_id_sha256": "392feaeeb26cb9ec7f6addc3ed764291d9c9f16bf6c70f466d9f92f85db78960",
+    "observed_pdf_bytes": 554394,
+    "local_document_path": "archive/raw_pdf/tata_aig/policy_wording/TATA-AIG-MediCare-Premier__392feaeeb26cb9ec7f6addc3ed764291d9c9f16bf6c70f466d9f92f85db78960.pdf",
+    "acquisition_status": "LOCAL_BYTES_ACQUIRED_HASH_LOCKED_REGISTRATION_PENDING"
+  },
+  "experiment_integrity": {
+    "target_concept_evidence_review_started_before_selection": false,
+    "generic_runtime_changed": false,
+    "decision_logic_added_in_config": false,
+    "registration_uses_existing_generic_runtime": true,
+    "semantic_binding_authorized_before_registration": false,
+    "publication_authorized": false,
+    "coverage_registry_promotion_authorized": false
+  },
+  "next_gate": {
+    "gate_id": "EXECUTE_EXISTING_GENERIC_SOURCE_REGISTRATION",
+    "required_outputs": [
+      "immutable policy-wording registration",
+      "extracted page text",
+      "page-level evidence candidates",
+      "generic source registration bundle"
+    ],
+    "success_condition": "Registration completes using existing generic source-registration runtime with zero frozen-runtime changes."
+  }
+}
