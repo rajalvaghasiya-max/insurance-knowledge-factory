@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "waiting_period_binding_v1",
+  "binding_id": "tata_aig_medicare_premier_opd_wait_24_months",
+  "reviewed_by_human": true,
+  "manufacturing_status": "resolved_scalar_ready_for_binding",
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/tata_aig_medicare_premier/v5/generic_source_registration/source_registration_bundle.json",
+  "evidence_selections": [
+    {
+      "role": "mechanism",
+      "document_id": "tata_aig_medicare_premier_policy_wording_v5",
+      "candidate_id": "candidate_page_21",
+      "candidate_text_sha256": "902a3c4eab1e14922b0f94ce7c0b8dfd848a0cf54024e0e13d9562388ccadbd6"
+    }
+  ],
+  "mechanic": {
+    "waiting_period_type": "BENEFIT_SPECIFIC",
+    "duration_value": 24,
+    "duration_unit": "MONTHS",
+    "start_basis": "POLICY_INCEPTION",
+    "applies_to": ["section_b26_opd_treatment"],
+    "exclusions_or_exceptions": [],
+    "modifications": [],
+    "schedule_dependency": null,
+    "continuity_dependency": "OPD Treatment becomes available once the insured has completed two years of continuous coverage with the insurer.",
+    "scope_type": "BENEFIT_SCOPED",
+    "scope_reference": "section_b26_opd_treatment",
+    "value_source": "PRODUCT_FIXED",
+    "member_waiting_basis": null,
+    "sum_insured_enhancement_effect": null
+  },
+  "governance": {
+    "publication_authorized": false,
+    "policy_specific_eligibility_authorized": false,
+    "benefit_medical_eligibility_inferred_from_waiting_period": false,
+    "claim_payment_prediction_authorized": false,
+    "scalar_binding_authorized": true,
+    "cold_start_runtime_python_changes": 0
+  }
+}
