@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "fourth_product_frozen_runtime_concept_result_v1",
+  "product": {
+    "insurer_id": "tata_aig_general",
+    "product_id": "medicare_premier",
+    "uin": "TATHLIP26052V052526"
+  },
+  "concept": "waiting_period",
+  "initial_frozen_runtime_attempt": {
+    "runtime_files_added": 0,
+    "runtime_loc_delta": 0,
+    "product_specific_runtime_logic_added": 0,
+    "decision_logic_added_in_config_or_fixtures": 0,
+    "silent_semantic_coercions": 0
+  },
+  "certified_mechanics": [
+    "INITIAL_30_DAYS",
+    "SPECIFIC_DISEASE_PROCEDURE_24_MONTHS",
+    "PRE_EXISTING_DISEASE_24_MONTHS",
+    "BENEFIT_SPECIFIC_VACCINATION_24_MONTHS_FOR_SELECTED_VACCINES",
+    "BENEFIT_SPECIFIC_MATERNITY_36_MONTHS",
+    "BENEFIT_SPECIFIC_OPD_24_MONTHS",
+    "BENEFIT_SPECIFIC_OPD_DENTAL_24_MONTHS"
+  ],
+  "material_rules_certified": [
+    "RELATIONSHIP_LONGER_OF",
+    "APPLICABILITY_CONDITION",
+    "POST_WAIT_CONDITION"
+  ],
+  "live_result": {
+    "waiting_period_certification_cases": 7,
+    "waiting_period_cases_passed": 7,
+    "material_rule_certification_cases": 2,
+    "material_rule_cases_passed": 2,
+    "all_complete": true,
+    "all_explanation_permitted": true
+  },
+  "repeatability_classification": {
+    "classification": "CONFIG_SPEC",
+    "reason": "Existing generic runtime, binders, certifiers and semantic types handled all reviewed Tata waiting-period shapes unchanged. New product-specific governed declarative binding/spec instances were required. Because the preregistered REUSE and CONFIG_SPEC wording overlaps around product-specific spec instances, the conservative classification is used and the rubric is not edited mid-experiment.",
+    "runtime_reuse_observed": true,
+    "new_semantic_schema_required": false,
+    "new_runtime_architecture_required": false
+  },
+  "governance": {
+    "publication_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "claim_prediction_authorized": false,
+    "rubric_changed_after_observing_product": false
+  }
+}
