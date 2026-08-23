@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "copayment_nonapplication_binding_v1",
+  "reviewed_by_human": true,
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/hdfc_ergo_optima_secure/v8/generic_source_registration/source_registration_bundle.json",
+  "rules": [
+    {
+      "rule_id": "hdfc_ergo_optima_secure_v8_premium_tier_higher_tier_no_copayment",
+      "semantic_key": "copayment.premium_tier.lower_tier_treatment_in_higher_tier.nonapplication",
+      "reviewed_statement": "No co-payment shall apply if an Insured Person from a lower tier avails treatment in a higher tier.",
+      "trigger_condition": "Insured Person from a lower Premium Tier avails treatment in a higher Premium Tier.",
+      "applicability_scope": "Premium Tier cross-tier treatment where the insured person's policy tier is lower than the treatment tier.",
+      "evidence_selections": [
+        {
+          "document_id": "hdfc_ergo_optima_secure_policy_wording_v8",
+          "candidate_id": "candidate_page_44",
+          "candidate_text_sha256": "66157d6b8ae478e7e46d0d40f19d00a87db7f949e14197b56bf08a5cf8cce743"
+        }
+      ]
+    }
+  ],
+  "governance": {
+    "definition_only_candidate_page_3_selected": false,
+    "definition_only_candidate_page_3_sha256": "f8aeeccd32b501fc93b2bc699fcd04d43f239a1e40aacc8475c7152ea3f1d0e1",
+    "zero_percent_obligation_manufacturing_authorized": false,
+    "publication_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "claim_payment_inference_authorized": false
+  }
+}
