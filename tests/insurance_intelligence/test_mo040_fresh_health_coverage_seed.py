@@ -32,8 +32,12 @@ def test_seed_contains_current_governed_health_pilot_products() -> None:
     }
 
 
-def test_star_and_bajaj_copayment_are_certified_but_not_promoted_to_downstream_readiness() -> None:
-    for product in (STAR_COMPREHENSIVE_COVERAGE, BAJAJ_MY_HEALTH_CARE_V2_COVERAGE):
+def test_all_three_foundation_copayment_concepts_are_certified_without_downstream_readiness() -> None:
+    for product in (
+        STAR_COMPREHENSIVE_COVERAGE,
+        BAJAJ_MY_HEALTH_CARE_V2_COVERAGE,
+        HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE,
+    ):
         copayment = _copayment(product)
         assert copayment.status is ConceptCoverageStatus.CERTIFIED
         assert copayment.comparison_ready is False
@@ -74,13 +78,13 @@ def test_every_seed_evidence_reference_exists_in_current_repository() -> None:
                 assert (ROOT / reference).is_file(), reference
 
 
-def test_report_exposes_certification_without_claiming_comparison_or_decision_readiness() -> None:
+def test_report_exposes_complete_three_by_two_foundation_matrix_without_downstream_readiness() -> None:
     report = build_coverage_review_report(HEALTH_COVERAGE_REGISTRY)
     assert len(report.product_summaries) == 3
     by_product = {item.product_reference: item for item in report.product_summaries}
     assert by_product[STAR_COMPREHENSIVE_COVERAGE.product_reference].certified_concept_count == 2
     assert by_product[BAJAJ_MY_HEALTH_CARE_V2_COVERAGE.product_reference].certified_concept_count == 2
-    assert by_product[HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE.product_reference].certified_concept_count == 1
+    assert by_product[HDFC_ERGO_OPTIMA_SECURE_V8_COVERAGE.product_reference].certified_concept_count == 2
     assert all(item.comparison_ready_concept_count == 0 for item in report.product_summaries)
     assert all(item.decision_support_ready_concept_count == 0 for item in report.product_summaries)
     assert sum(1 for gap in report.gaps if gap.gap_type == "LIFECYCLE_STATUS_UNKNOWN") == 3
