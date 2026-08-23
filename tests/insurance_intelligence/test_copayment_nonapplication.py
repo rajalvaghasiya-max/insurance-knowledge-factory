@@ -109,11 +109,14 @@ def test_binding_preserves_nonapplication_without_manufacturing_zero_percent(tmp
     assert result.manifest["binding_status"] == "reviewed_copayment_nonapplication_bound_not_published"
     rule = result.manifest["rules"][0]
     assert rule["rule_type"] == "conditional_copayment_nonapplication_rule"
-    assert rule["semantic"]["affected_cost_share"] == "COPAYMENT"
-    assert rule["semantic"]["effect"] == "DOES_NOT_APPLY"
-    serialized = json.dumps(result.manifest)
-    assert "0%" not in serialized
-    assert '"percentage"' not in serialized
+    assert rule["semantic"] == {
+        "affected_cost_share": "COPAYMENT",
+        "effect": "DOES_NOT_APPLY",
+        "trigger_condition": "Insured Person from a lower tier avails treatment in a higher tier.",
+        "applicability_scope": "Cross-tier treatment from a lower policy tier to a higher treatment tier.",
+    }
+    assert "0%" not in rule["reviewed_statement"]
+    assert "percentage" not in rule["semantic"]
     assert rule["evidence"][0]["candidate_id"] == "candidate_page_44"
 
 
