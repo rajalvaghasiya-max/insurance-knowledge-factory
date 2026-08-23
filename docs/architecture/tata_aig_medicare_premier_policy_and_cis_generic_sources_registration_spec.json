@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "registration_type": "generic_source_registration_bundle_v1",
+  "product_context": {
+    "insurer_id": "tata_aig_general",
+    "product_id": "medicare_premier",
+    "product_display_name": "TATA AIG MediCare Premier",
+    "source_scope": "reusable_generic",
+    "reviewed_generic_source_confirmation": true
+  },
+  "documents": [
+    {
+      "document_id": "tata_aig_medicare_premier_policy_wording_v5",
+      "source_document_id": "392feaeeb26cb9ec7f6addc3ed764291d9c9f16bf6c70f466d9f92f85db78960",
+      "canonical_title": "TATA AIG MediCare Premier - Policy Wording",
+      "document_type": "policy_wording",
+      "authority_role": "primary_legal",
+      "audience_scope": "generic_public",
+      "document_path": "archive/raw_pdf/tata_aig/policy_wording/TATA-AIG-MediCare-Premier__392feaeeb26cb9ec7f6addc3ed764291d9c9f16bf6c70f466d9f92f85db78960.pdf",
+      "extracted_text_output_path": "archive/text/tata_aig/policy_wording/TATA-AIG-MediCare-Premier__392feaeeb26cb9ec7f6addc3ed764291d9c9f16bf6c70f466d9f92f85db78960.txt",
+      "evidence_markers": ["MediCare Premier", "TATHLIP26052V052526", "Waiting Period", "Co-payment"],
+      "source_issued_label": "current policy wording locked before target-concept review",
+      "registration_output_path": "knowledge/factory/registry_backed/tata_aig_medicare_premier/v5/generic_source_registration/policy_wording_registration.json"
+    },
+    {
+      "document_id": "tata_aig_medicare_premier_customer_information_sheet_v5",
+      "source_document_id": "673c37dbe7d93d2269019cb92b761b5deacd903c3fb7249251584876eb92768b",
+      "canonical_title": "TATA AIG MediCare Premier - Customer Information Sheet",
+      "document_type": "customer_information_sheet",
+      "authority_role": "corroborating_product",
+      "audience_scope": "generic_public",
+      "document_path": "archive/raw_pdf/tata_aig/customer_information_sheet/TATA-AIG-MediCare-Premier-CIS__673c37dbe7d93d2269019cb92b761b5deacd903c3fb7249251584876eb92768b.pdf",
+      "extracted_text_output_path": "archive/text/tata_aig/customer_information_sheet/TATA-AIG-MediCare-Premier-CIS__673c37dbe7d93d2269019cb92b761b5deacd903c3fb7249251584876eb92768b.txt",
+      "evidence_markers": ["MediCare Premier", "TATHLIP26052V052526", "Co-Payment", "Deductible"],
+      "source_issued_label": "official customer information sheet acquired after policy-wording copayment review remained non-operative",
+      "registration_output_path": "knowledge/factory/registry_backed/tata_aig_medicare_premier/v5/generic_source_registration/customer_information_sheet_registration.json"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "fourth_product_corroborating_source_acquisition_v1",
+  "product": {
+    "insurer_id": "tata_aig_general",
+    "product_id": "medicare_premier",
+    "uin": "TATHLIP26052V052526"
+  },
+  "source": {
+    "document_type": "customer_information_sheet",
+    "authority_role": "corroborating_product",
+    "audience_scope": "generic_public",
+    "source_url": "https://www.tataaig.com/s3/TATA_AIG_Medicare_Premier_Customer_information_Sheet_2e2c10e8d0.pdf",
+    "content_sha256": "673c37dbe7d93d2269019cb92b761b5deacd903c3fb7249251584876eb92768b",
+    "byte_size": 384745,
+    "local_archive_path": "archive/raw_pdf/tata_aig/customer_information_sheet/TATA-AIG-MediCare-Premier-CIS__673c37dbe7d93d2269019cb92b761b5deacd903c3fb7249251584876eb92768b.pdf"
+  },
+  "purpose": "Corroborate the copayment cold-start concept without inferring a product-level rule from policy-wording silence or from visual layout alone.",
+  "governance": {
+    "copayment_certification_authorized": false,
+    "absence_inference_authorized": false,
+    "zero_percent_inference_authorized": false,
+    "does_not_apply_inference_authorized": false,
+    "frozen_runtime_changes": 0
+  }
+}
