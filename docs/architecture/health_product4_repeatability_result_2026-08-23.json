@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "result_type": "health_product_repeatability_test_result_v1",
+  "protocol_path": "docs/architecture/health_product4_repeatability_test_protocol_v1.json",
+  "protocol_baseline_commit": "bda5eb8721e04f8a78118ca4c4e054a09520a6d4",
+  "product": {
+    "insurer_id": "tata_aig_general",
+    "product_id": "medicare_premier",
+    "uin": "TATHLIP26052V052526"
+  },
+  "target_concepts": {
+    "waiting_period": {
+      "classification": "CONFIG_SPEC",
+      "runtime_files_added": 0,
+      "runtime_loc_delta": 0,
+      "certification_cases_passed": "7/7",
+      "material_rule_cases_passed": "2/2",
+      "new_semantic_schema_required": false,
+      "new_runtime_architecture_required": false
+    },
+    "copayment": {
+      "classification": "KNOWLEDGE_GAP",
+      "runtime_files_added": 0,
+      "runtime_loc_delta": 0,
+      "representation_gap_observed": false,
+      "architecture_failure_observed": false,
+      "reason": "Primary policy wording plus corroborating CIS do not provide sufficient operative product-level copayment evidence."
+    }
+  },
+  "primary_metrics": {
+    "new_runtime_files": 0,
+    "runtime_loc_delta": 0,
+    "product_specific_branches_in_generic_runtime": 0,
+    "decision_logic_added_in_config_or_fixtures": 0,
+    "certified_claims_without_exact_candidate_version_hash_lineage": 0,
+    "silent_coercions_of_unsupported_semantics": 0,
+    "all_targets_pass": true
+  },
+  "protocol_outcome": {
+    "classification": "REPEATABILITY_INCONCLUSIVE",
+    "reason": "The preregistered protocol requires an inconclusive result when authoritative evidence is insufficient to score one or more target concepts and no architecture failure has otherwise occurred. Tata waiting_period demonstrated frozen-runtime CONFIG_SPEC reuse, while copayment remained a governed KNOWLEDGE_GAP.",
+    "repeatability_proven": false,
+    "repeatability_failed": false,
+    "architecture_rework_triggered": false
+  },
+  "observations": [
+    "The experiment demonstrated generic-runtime reuse for a broad waiting-period concept without runtime modification.",
+    "The fail-closed knowledge boundary worked: missing copayment evidence did not become 0%, DOES_NOT_APPLY, or an authoritative absence claim.",
+    "The preregistered REUSE versus CONFIG_SPEC wording overlaps around product-specific spec instances; the conservative CONFIG_SPEC score was retained and the protocol was not edited mid-experiment.",
+    "A future repeatability experiment should clarify that classification boundary before product selection."
+  ],
+  "governance": {
+    "protocol_changed_after_product_observation": false,
+    "publication_implied": false,
+    "comparison_readiness_implied": false,
+    "decision_support_readiness_implied": false,
+    "customer_specific_inference_implied": false
+  }
+}
