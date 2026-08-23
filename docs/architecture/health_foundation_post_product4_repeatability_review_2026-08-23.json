@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "review_type": "health_foundation_post_product4_repeatability_review_v1",
+  "review_date": "2026-08-23",
+  "baseline_commit": "bda5eb8721e04f8a78118ca4c4e054a09520a6d4",
+  "product4_result_commit": "a141f168ad1c6d5e39fe070e620aa4daf845bf3c",
+  "product4": {
+    "insurer_id": "tata_aig_general",
+    "product_id": "medicare_premier",
+    "uin": "TATHLIP26052V052526",
+    "waiting_period_classification": "CONFIG_SPEC",
+    "copayment_classification": "KNOWLEDGE_GAP",
+    "protocol_outcome": "REPEATABILITY_INCONCLUSIVE"
+  },
+  "verified_git_diff_observation": {
+    "frozen_runtime_files_changed": 0,
+    "frozen_runtime_loc_delta": 0,
+    "meaning": "Across the complete baseline-to-product4 result diff, all changes were architecture records, declarative product specifications, source-registration records, and tests; no frozen runtime surface changed."
+  },
+  "architecture_assessment": {
+    "governance_architecture": "STRONG",
+    "semantic_architecture": "STRONG",
+    "evidence_provenance": "STRONG",
+    "fail_closed_behavior": "STRONG",
+    "cross_insurer_generalization": "PROVEN",
+    "generic_runtime_reuse": "OBSERVED_ON_PRODUCT4_WAITING_PERIOD",
+    "manufacturing_repeatability": "NOT_FORMALLY_PROVEN",
+    "operational_efficiency": "PARTIALLY_MEASURED"
+  },
+  "findings": [
+    {
+      "id": "P4_REVIEW_01",
+      "classification": "NO_ACTION",
+      "finding": "Product4 required zero changes to frozen generic runtime surfaces.",
+      "implication": "The existing runtime is reusable across a previously unseen insurer for a broad waiting-period concept."
+    },
+    {
+      "id": "P4_REVIEW_02",
+      "classification": "ACCEPTABLE_COMPLEXITY",
+      "finding": "Existing multispan, material-rule, benefit-specific waiting-period, and evidence-attribution machinery was reused without refactoring.",
+      "implication": "These abstractions have now demonstrated reuse and should not be collapsed merely to reduce wrapper count."
+    },
+    {
+      "id": "P4_REVIEW_03",
+      "classification": "GOVERNANCE_STRENGTH",
+      "finding": "Insufficient copayment evidence remained a KNOWLEDGE_GAP instead of becoming 0%, DOES_NOT_APPLY, or an absence claim.",
+      "implication": "The knowledge boundary operated correctly under cold-start pressure."
+    },
+    {
+      "id": "P4_REVIEW_04",
+      "classification": "PROTOCOL_DEFECT",
+      "finding": "The preregistered REUSE and CONFIG_SPEC definitions overlap around product-specific declarative spec instances.",
+      "implication": "Future experiments require a clarified rubric fixed before product selection."
+    }
+  ],
+  "freeze_decision": {
+    "health_architecture_status": "FREEZE_FOUNDATION_ARCHITECTURE_V1",
+    "meaning": "No architecture rework or speculative genericization is authorized from the product4 result.",
+    "repeatability_claim_status": "DO_NOT_CLAIM_FORMALLY_PROVEN",
+    "motor_readiness_status": "NOT_YET_AUTHORIZED_BY_THIS_REVIEW"
+  },
+  "next_course_of_action": {
+    "step_1": "Clarify the repeatability classification rubric before any additional cold-start product is selected.",
+    "step_2": "If formal repeatability proof is required before Motor, run one additional neutral Health cold-start with the clarified rubric and the same frozen-runtime discipline.",
+    "step_3": "Do not select the next product based on whether copayment or waiting-period evidence looks easy or likely to score well.",
+    "step_4": "Do not modify generic runtime during the initial cold-start attempt; record genuine representation gaps before considering extensions."
+  },
+  "explicit_non_actions": [
+    "no runtime refactor for cosmetic LOC reduction",
+    "no new database or graph architecture",
+    "no new agent framework",
+    "no frontend work",
+    "no Motor implementation from this checkpoint",
+    "no attempt to force Tata copayment out of a knowledge gap"
+  ]
+}
