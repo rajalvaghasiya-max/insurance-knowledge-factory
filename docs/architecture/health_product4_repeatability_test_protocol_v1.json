@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "protocol_type": "health_product_repeatability_test_preregistration_v1",
+  "protocol_status": "PREREGISTERED_BEFORE_PRODUCT_SELECTION",
+  "baseline": {
+    "commit_sha": "bda5eb8721e04f8a78118ca4c4e054a09520a6d4",
+    "meaning": "Health Foundation 3-product x 2-concept matrix complete before fourth-product selection"
+  },
+  "experiment": {
+    "domain": "health",
+    "product_number": 4,
+    "product_selected_at_preregistration": false,
+    "target_concepts": [
+      "copayment",
+      "waiting_period"
+    ],
+    "central_question": "Can the existing generic runtime manufacture governed knowledge for a previously unseen Health product without new decision logic?"
+  },
+  "initial_cold_start_freeze": {
+    "runtime_change_allowed": false,
+    "frozen_surfaces": [
+      "insurance_intelligence/contracts/",
+      "insurance_intelligence/reasoning/",
+      "insurance_intelligence/benefits/",
+      "insurance_intelligence/rule_certification/",
+      "factory_core/canonical/"
+    ],
+    "allowed_surfaces": [
+      "authoritative source acquisition and registration records",
+      "evidence review records",
+      "governed declarative product specifications",
+      "product-specific fixtures that contain data but no decision logic",
+      "coverage-registry records",
+      "tests that exercise existing generic contracts"
+    ],
+    "decision_logic_in_config_is_failure": true,
+    "decision_logic_definition": [
+      "product-specific computation",
+      "product-specific branching",
+      "product-specific precedence resolution",
+      "product-specific rule execution logic",
+      "an executable decision table that substitutes for generic runtime behavior"
+    ],
+    "declarative_config_examples": [
+      "candidate identifiers and hashes",
+      "documented percentage or duration values",
+      "documented trigger, exception, scope, relationship, or option-domain facts",
+      "component-to-candidate attribution",
+      "governance flags and publication boundaries"
+    ]
+  },
+  "classification_rubric": {
+    "REUSE": {
+      "rule": "Existing generic contract, binder, certifier, and semantic type handle the concept unchanged; no new governed semantic/spec schema is introduced beyond product evidence/configuration instances.",
+      "strong_signal": true
+    },
+    "CONFIG_SPEC": {
+      "rule": "Existing generic runtime handles the concept unchanged, but a new governed declarative product spec or configuration instance is required. The added config contains facts only and no computation, branching, precedence logic, or executable product-specific decision logic.",
+      "strong_signal": false,
+      "costed_as_manual_manufacturing_work": true
+    },
+    "REPRESENTATION_GAP": {
+      "rule": "Authoritative evidence is available, but existing contracts cannot represent the semantic shape faithfully. Certification must block during the frozen-runtime attempt; no coercion or runtime change is permitted until the gap is recorded and the cold-start result is scored.",
+      "repeatability_effect": "NOT_PROVEN_FOR_CONCEPT"
+    },
+    "KNOWLEDGE_GAP": {
+      "rule": "Authoritative evidence required to determine the concept is unavailable or insufficient. Code must not compensate. The concept remains blocked and is excluded from architecture-repeatability scoring until evidence exists.",
+      "repeatability_effect": "INCONCLUSIVE_FOR_CONCEPT"
+    }
+  },
+  "anti_gaming_rules": [
+    "Classification is determined by this rubric after diff inspection, not by author intent.",
+    "Moving decision logic from frozen runtime into config/spec/fixtures is a failure, not CONFIG_SPEC.",
+    "A newly named generic-looking abstraction created only to fit product #4 is still a runtime delta and fails the initial frozen-runtime attempt.",
+    "A genuine representation gap must be recorded before any generic extension is designed.",
+    "No unsupported concept is required or desired; if one appears, success is blocking rather than coercion."
+  ],
+  "primary_metrics": {
+    "new_runtime_files": {
+      "target": 0
+    },
+    "runtime_loc_delta": {
+      "target": 0
+    },
+    "product_specific_branches_in_generic_runtime": {
+      "target": 0
+    },
+    "decision_logic_added_in_config_or_fixtures": {
+      "target": 0
+    },
+    "certified_claims_without_exact_candidate_version_hash_lineage": {
+      "target": 0
+    },
+    "silent_coercions_of_unsupported_semantics": {
+      "target": 0
+    }
+  },
+  "operational_metrics": [
+    "source_acquisition_steps",
+    "manual_evidence_review_steps",
+    "new_governed_spec_instances",
+    "time_to_first_certified_concept",
+    "time_to_second_certified_concept",
+    "representation_gap_count",
+    "knowledge_gap_count",
+    "user_intervention_count"
+  ],
+  "precommitted_success_bar": {
+    "STRONG_REPEATABILITY_PROVEN": {
+      "requirements": [
+        "all primary metric targets pass",
+        "copayment classification is REUSE",
+        "waiting_period classification is REUSE"
+      ]
+    },
+    "MINIMUM_REPEATABILITY_PROVEN": {
+      "requirements": [
+        "all primary metric targets pass",
+        "both target concepts are classified only as REUSE or CONFIG_SPEC",
+        "at least one of the two target concepts is classified REUSE",
+        "no target concept is REPRESENTATION_GAP"
+      ]
+    },
+    "REPEATABILITY_NOT_PROVEN": {
+      "trigger": "any primary metric fails, any target concept requires new decision logic/runtime during the initial attempt, or both target concepts are CONFIG_SPEC with zero REUSE"
+    },
+    "REPEATABILITY_INCONCLUSIVE": {
+      "trigger": "authoritative evidence is insufficient to score one or more target concepts and no architecture failure has otherwise occurred"
+    }
+  },
+  "post_test_governance": {
+    "runtime_extension_after_gap_recording_allowed": true,
+    "runtime_extension_counts_as_initial_repeatability_success": false,
+    "publication_implied_by_certification": false,
+    "comparison_readiness_implied_by_certification": false,
+    "decision_support_readiness_implied_by_certification": false,
+    "customer_specific_inference_implied_by_product_level_certification": false
+  }
+}
