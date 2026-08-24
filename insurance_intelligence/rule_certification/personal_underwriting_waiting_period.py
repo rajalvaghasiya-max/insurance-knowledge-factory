@@ -109,11 +109,28 @@ def build_personal_underwriting_waiting_period_certification_case(
 
     binding_id = _text(manifest.get("binding_id"), "binding_id")
     case_id = f"personal_underwriting_waiting_period:{binding_id}"
+    instance_dependency = _text(mechanic.get("instance_resolution_dependency"), "instance_resolution_dependency")
     claims = (
-        ("maximum_duration", "WAITING_PERIOD_MAXIMUM_DURATION", f"The product wording permits a personal waiting period of up to {mechanic['maximum_duration_value']} {mechanic['maximum_duration_unit']}.") ,
-        ("subject_scope", "WAITING_PERIOD_SUBJECT", "The waiting period applies only to underwriting-specified conditions for an individual insured person."),
-        ("start_basis", "WAITING_PERIOD_START_BASIS", f"The maximum-bound waiting period uses start basis {mechanic['start_basis']}."),
-        ("instance_resolution_dependency", "POLICY_INSTANCE_DEPENDENCY", _text(mechanic.get("instance_resolution_dependency"), "instance_resolution_dependency")),
+        (
+            "waiting_period_duration",
+            "WAITING_PERIOD_DURATION",
+            f"The product wording permits a personal waiting period of up to {mechanic['maximum_duration_value']} {mechanic['maximum_duration_unit']}; this is a maximum bound, not a resolved customer duration.",
+        ),
+        (
+            "waiting_period_subject",
+            "WAITING_PERIOD_SUBJECT",
+            "The waiting period applies to underwriting-specified conditions for an individual insured person.",
+        ),
+        (
+            "start_basis",
+            "WAITING_PERIOD_START_BASIS",
+            f"The maximum-bound waiting period uses start basis {mechanic['start_basis']}.",
+        ),
+        (
+            "applicability_scope",
+            "APPLICABILITY_SCOPE",
+            f"scope_type={mechanic['scope_type']}; semantic_variant={mechanic['semantic_variant']}; {instance_dependency}",
+        ),
     )
 
     packages = []
