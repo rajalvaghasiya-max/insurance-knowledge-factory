@@ -164,9 +164,9 @@ def test_certification_says_up_to_and_preserves_instance_dependency(tmp_path: Pa
     assert "The waiting period duration is 48" not in claims["WAITING_PERIOD_MAXIMUM_DURATION"]
     assert "policy-instance" in claims["POLICY_INSTANCE_DEPENDENCY"]
     result = run_personal_underwriting_waiting_period_certification_case(case)
-    assert result.certification_status == "PASS"
-    assert result.completeness_status == "COMPLETE"
-    assert result.explanation_permitted is True
+    assert result.outcome == "PASS"
+    assert result.actual_completeness_status == "COMPLETE"
+    assert result.actual_explanation_permitted is True
 
 
 def test_real_reassure_spec_encodes_only_the_governed_maximum_bound() -> None:
