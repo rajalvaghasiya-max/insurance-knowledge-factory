@@ -1,7 +1,7 @@
 """Generic evidence-backed co-payment composition semantics.
 
 The contract preserves whether a documented co-payment is an ordinary cost share or
-an additional/cumulative cost share.  It intentionally does not calculate a combined
+an additional/cumulative cost share. It intentionally does not calculate a combined
 customer liability and does not infer what other cost shares apply.
 """
 from __future__ import annotations
@@ -56,12 +56,13 @@ _EXPLICIT_OTHER_COST_SHARE = (
         re.I,
     ),
 )
+_PERCENTAGE_TOKEN = r"(?:\d{1,3}(?:\.\d+)?\s*%\s+)?"
 _ADDITIVE_MODIFIER = re.compile(
-    r"\badditional(?:\s+cumulative)?\s+(?:co-payment|copayment|co-pay)\b",
+    rf"\badditional\s+{_PERCENTAGE_TOKEN}(?:co-payment|copayment|co-pay)\b",
     re.I,
 )
 _CUMULATIVE_MODIFIER = re.compile(
-    r"\b(?:additional\s+)?cumulative\s+(?:co-payment|copayment|co-pay)\b",
+    rf"\badditional\s+cumulative\s+{_PERCENTAGE_TOKEN}(?:co-payment|copayment|co-pay)\b",
     re.I,
 )
 
@@ -81,9 +82,9 @@ def _first_phrase(text: str, patterns: tuple[re.Pattern[str], ...]) -> str | Non
 def resolve_copayment_composition(text: str) -> CopaymentComposition:
     """Resolve only composition semantics explicitly stated by governed evidence.
 
-    ``additional`` and ``cumulative`` are treated as stacking modifiers.  The
-    function does not identify the other cost share, calculate arithmetic, or infer
-    policy-instance applicability.
+    ``additional`` and ``additional cumulative`` are treated as stacking modifiers.
+    The function does not identify the other cost share, calculate arithmetic, or
+    infer policy-instance applicability.
     """
     if not isinstance(text, str) or not text.strip():
         raise CopaymentCompositionError("text must be non-empty")
