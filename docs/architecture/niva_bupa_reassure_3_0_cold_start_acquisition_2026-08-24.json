@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "fifth_product_primary_source_acquisition_v1",
+  "product": {
+    "insurer_id": "niva_bupa",
+    "product_id": "reassure_3_0",
+    "canonical_product_name": "Niva Bupa ReAssure 3.0",
+    "uin": "NBHHLIP26047V012526"
+  },
+  "source": {
+    "document_type": "policy_wording",
+    "authority_role": "primary_legal",
+    "audience_scope": "generic_public",
+    "source_url": "https://transactions.nivabupa.com/pages/doc/policy_wording/ReAssure30_Policy_Wordings.pdf?v=1.2",
+    "content_sha256": "04c06f045979be509e124e1d802fed47097f0995132ff94cfd67aafbaf2fa12f",
+    "byte_size": 295089,
+    "file_signature_verified": "%PDF-1.7",
+    "local_archive_path": "archive/raw_pdf/niva_bupa/policy_wording/Niva-Bupa-ReAssure-3.0__04c06f045979be509e124e1d802fed47097f0995132ff94cfd67aafbaf2fa12f.pdf"
+  },
+  "acquisition_notes": [
+    "The first unversioned download attempt returned a 1040-byte non-PDF response and was rejected before registration.",
+    "The accepted acquisition was retrieved from the official Niva Bupa policy-wording endpoint with the version query parameter and verified as PDF 1.7 before hashing."
+  ],
+  "governance": {
+    "target_concept_semantic_review_started": false,
+    "copayment_fact_encoded": false,
+    "waiting_period_fact_encoded": false,
+    "frozen_runtime_changes": 0,
+    "runtime_extension_authorized": false
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "registration_type": "generic_source_registration_bundle_v1",
+  "product_context": {
+    "insurer_id": "niva_bupa",
+    "product_id": "reassure_3_0",
+    "product_display_name": "Niva Bupa ReAssure 3.0",
+    "source_scope": "reusable_generic",
+    "reviewed_generic_source_confirmation": true
+  },
+  "documents": [
+    {
+      "document_id": "niva_bupa_reassure_3_0_policy_wording_v1",
+      "source_document_id": "04c06f045979be509e124e1d802fed47097f0995132ff94cfd67aafbaf2fa12f",
+      "canonical_title": "Niva Bupa ReAssure 3.0 - Policy Wording",
+      "document_type": "policy_wording",
+      "authority_role": "primary_legal",
+      "audience_scope": "generic_public",
+      "document_path": "archive/raw_pdf/niva_bupa/policy_wording/Niva-Bupa-ReAssure-3.0__04c06f045979be509e124e1d802fed47097f0995132ff94cfd67aafbaf2fa12f.pdf",
+      "extracted_text_output_path": "archive/text/niva_bupa/policy_wording/Niva-Bupa-ReAssure-3.0__04c06f045979be509e124e1d802fed47097f0995132ff94cfd67aafbaf2fa12f.txt",
+      "evidence_markers": [
+        "ReAssure 3.0",
+        "NBHHLIP26047V012526",
+        "Waiting Period",
+        "Co-payment"
+      ],
+      "source_issued_label": "current official policy wording acquired and hash-locked after product5 selection and before target-concept semantic review",
+      "registration_output_path": "knowledge/factory/registry_backed/niva_bupa_reassure_3_0/v1/generic_source_registration/policy_wording_registration.json"
+    }
+  ]
+}
