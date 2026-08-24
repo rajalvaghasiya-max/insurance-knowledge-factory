@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "personal_underwriting_waiting_period_binding_v1",
+  "reviewed_by_human": true,
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/niva_bupa_reassure_3_0/v1/generic_source_registration/source_registration_bundle.json",
+  "binding_id": "niva_bupa_reassure_3_0_personal_underwriting_waiting_period_v1",
+  "evidence_selection": {
+    "document_id": "niva_bupa_reassure_3_0_policy_wording_v1",
+    "candidate_id": "candidate_page_33",
+    "candidate_text_sha256": "74408d4896f75d5127ed7ef4109bd7229a184c9c2589a6ac5dfe30f653579015"
+  },
+  "mechanic": {
+    "maximum_duration_value": 48,
+    "maximum_duration_unit": "MONTHS",
+    "start_basis": "INSURED_PERSON_FIRST_COVERAGE",
+    "applies_to": [
+      "conditions specified for an individual insured person through underwriting"
+    ],
+    "instance_resolution_dependency": "Actual affected conditions and the actual personal waiting-period duration for a customer require policy-instance underwriting, schedule, endorsement, or equivalent authoritative instance evidence."
+  },
+  "governance": {
+    "maximum_bound_must_not_be_rendered_as_exact_customer_duration": true,
+    "customer_specific_conditions_resolved": false,
+    "customer_specific_duration_resolved": false,
+    "publication_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "claim_payment_inference_authorized": false
+  }
+}
