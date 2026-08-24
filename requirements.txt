@@ -5,3 +5,4 @@ python-dotenv==1.2.2
 tqdm==4.68.2
 playwright==1.60.0
 pytest==9.1.0
+PyMuPDF==1.28.2
