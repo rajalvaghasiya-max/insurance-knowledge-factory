@@ -1,0 +1,92 @@
+{
+  "schema_version": "2.0",
+  "result_type": "health_product_repeatability_test_result_v2",
+  "protocol_path": "docs/architecture/health_repeatability_test_protocol_v2.json",
+  "pre_selection_runtime_baseline_commit": "ee82220ef8ccca586f5e5760bf937c51644c712b",
+  "product": {
+    "insurer_id": "niva_bupa",
+    "product_id": "reassure_3_0",
+    "uin": "NBHHLIP26047V012526"
+  },
+  "target_concepts": {
+    "waiting_period": {
+      "classification": "REPRESENTATION_GAP",
+      "result_record": "docs/architecture/niva_bupa_reassure_3_0_waiting_period_representation_gap_2026-08-24.json",
+      "reused_submechanics": [
+        "36_month_pre_existing_disease_wait",
+        "24_month_specified_disease_procedure_wait",
+        "30_day_initial_wait"
+      ],
+      "blocking_mechanic": "insured-person and condition-specific Personal Waiting Period of up to 48 months",
+      "runtime_changed_during_initial_attempt": false
+    },
+    "copayment": {
+      "classification": "REPRESENTATION_GAP",
+      "result_record": "docs/architecture/niva_bupa_reassure_3_0_copayment_representation_gap_2026-08-24.json",
+      "reused_submechanics": [
+        "fixed conditional percentages",
+        "selected percentage option domains",
+        "explicit source-stated zero percent matrix cells",
+        "explicit non-application scopes",
+        "multiple scoped copayment assertions"
+      ],
+      "blocking_mechanics": [
+        "additive/cumulative copayment composition that frozen reasoning would flatten",
+        "multispan room-category matrix plus entire-claim calculation-basis linkage that frozen certification cannot attribute across two evidence candidates"
+      ],
+      "runtime_changed_during_initial_attempt": false
+    }
+  },
+  "primary_metrics": {
+    "new_runtime_files": 0,
+    "runtime_loc_delta": 0,
+    "product_specific_branches_in_generic_runtime": 0,
+    "decision_logic_added_in_config_or_fixtures": 0,
+    "certified_claims_without_exact_candidate_version_hash_lineage": 0,
+    "silent_semantic_coercions": 0,
+    "all_primary_metrics_zero": true
+  },
+  "operational_observations": {
+    "source_count": 1,
+    "registered_page_candidate_count": 62,
+    "representation_gap_count": 2,
+    "knowledge_gap_count": 0,
+    "runtime_extension_count_during_initial_attempt": 0
+  },
+  "protocol_outcome": {
+    "classification": "REPEATABILITY_NOT_PROVEN",
+    "reason": "The preregistered v2 protocol defines any target-concept REPRESENTATION_GAP as repeatability not proven. ReAssure 3.0 exposed one waiting-period gap and two related copayment representation/certification gaps while all primary anti-gaming metrics remained zero.",
+    "repeatability_proven": false,
+    "repeatability_failed": true,
+    "architecture_rework_triggered": false,
+    "targeted_generic_extensions_earned": true
+  },
+  "architecture_interpretation": {
+    "broad_foundation_rewrite_required": false,
+    "existing_governance_boundary_worked": true,
+    "existing_runtime_reuse_observed": true,
+    "finding": "The Health foundation is not invalidated. Product5 identified bounded semantic/certification extensions that could not have been justified safely before real evidence exposed them."
+  },
+  "post_test_extension_sequence": [
+    "Add a generic underwriting/personal condition-specific waiting-period representation that preserves insured-person scope, affected-condition dependency, up-to duration semantics, and policy/Schedule/underwriting resolution without manufacturing a product-wide scalar.",
+    "Add generic copayment composition semantics that preserve additional/cumulative behavior as a first-class mechanic rather than flattening it into an ordinary percentage.",
+    "Extend generic conditional-copayment certification to support multispan/component-level evidence attribution so a rate matrix and its separate calculation-basis/trigger clause can be certified together.",
+    "Re-run ReAssure 3.0 after those extensions as post-gap validation; do not retroactively change the product5 initial result.",
+    "If formal manufacturing repeatability is still required before Motor, run a new neutral Health cold-start after the earned extensions are merged and frozen."
+  ],
+  "explicit_non_actions": [
+    "do not relabel Personal Waiting Period as BENEFIT_SPECIFIC",
+    "do not flatten additional/cumulative copayment into a simple standalone percentage",
+    "do not certify the room-category matrix from page 62 while dropping the page 6 entire-claim linkage",
+    "do not infer the optional base copayment percentage without a source that resolves the selected option",
+    "do not retroactively rescore product4 or product5"
+  ],
+  "governance": {
+    "protocol_changed_after_product_selection": false,
+    "runtime_changed_before_initial_scoring": false,
+    "publication_implied": false,
+    "comparison_readiness_implied": false,
+    "decision_support_readiness_implied": false,
+    "customer_specific_inference_implied": false
+  }
+}
