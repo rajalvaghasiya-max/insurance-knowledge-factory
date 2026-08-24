@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product6_preselection_protocol_abort_v1",
+  "protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v3.json",
+  "protocol_amendment_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v3_1_amendment.json",
+  "frozen_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+  "protocol_merge_commit": "bfd41d522c6364d86dda099f6f4db6e169e10996",
+  "amendment_merge_commit": "c5d96539df898123328dca51332a753f09d58336",
+  "experiment": {
+    "product_number": 6,
+    "target_concepts": ["copayment", "waiting_period"],
+    "product_selected": false,
+    "selection_record_committed": false,
+    "semantic_scoring_started": false,
+    "repeatability_outcome_assigned": false
+  },
+  "abort_reason": {
+    "classification": "PRESELECTION_PROTOCOL_CONTAMINATION",
+    "failed_primary_metric": "preselection_target_clause_reads",
+    "metric_value": 2,
+    "what_happened": "During metadata-only candidate verification for ACKO, opening official prospectus sources to confirm UIN/current eligibility returned target-clause content before a Product #6 selection record was committed. The Arogya Sanjeevani prospectus response exposed waiting-period clauses. The ACKO Surrogacy & Oocyte Cover prospectus response also exposed a waiting-period clause while its UIN was being resolved.",
+    "intentional_semantic_selection": false,
+    "semantic_content_used_to_choose_product": false,
+    "why_abort_is_required": "The v3 protocol makes preselection_target_clause_reads a zero-tolerance primary metric. Once non-zero, Product #6 cannot serve as a clean neutral repeatability proof even though the semantic content was not used for selection."
+  },
+  "metadata_progress_before_abort": {
+    "first_screened_insurer": "ACKO General Insurance Limited",
+    "basis": "current insurer-universe ordering and v3.1 insurer-first deterministic stopping rule",
+    "candidate_identity_observations": [
+      {"product_name": "Arogya Sanjeevani Policy - ACKO", "uin": "ACKHLIP20183V011920", "repository_exact_uin_hit": false},
+      {"product_name": "Corona Kavach Policy", "uin": "ACKHLIP21105V012021", "repository_exact_uin_hit": false},
+      {"product_name": "Acko Personal Health Policy", "uin": "ACKHLIP23114V012223", "repository_exact_uin_hit": false},
+      {"product_name": "Acko Specially Abled Health Cover", "uin": "ACKHLIP23202V012223", "repository_exact_uin_hit": false},
+      {"product_name": "Acko Surrogacy & Oocyte Cover", "uin": "ACKHLIP25037V012425", "repository_exact_uin_hit": false},
+      {"product_name": "Acko Health II", "uin": "ACKHLIP26036V012526", "repository_exact_uin_hit": false},
+      {"product_name": "Acko Health III", "uin": "ACKHLIP27040V012627", "repository_exact_uin_hit": false}
+    ],
+    "archived_lower_uin_observation": {
+      "product_name": "ACKO Retail Health Policy / Acko Health Insurance Policy",
+      "uin": "ACKHLIP20039V012021",
+      "current_status_for_selection": "ARCHIVE_SECTION_ONLY",
+      "selection_effect": "not eligible as a current candidate"
+    }
+  },
+  "governance_decision": {
+    "product6_must_not_be_selected_or_scored": true,
+    "product6_must_not_be_relabelled_selection_inconclusive": true,
+    "product6_is_not_a_repeatability_result": true,
+    "historical_product5_result_unchanged": true,
+    "post_hc1_baseline_unchanged": true,
+    "runtime_or_semantic_extension_authorized": false,
+    "motor_readiness_authorized": false
+  },
+  "next_neutral_attempt_requirements": {
+    "new_product_number_required": true,
+    "next_product_number": 7,
+    "ACKO_must_be_excluded_from_next_selection": true,
+    "reason_for_ACKO_exclusion": "Multiple ACKO candidate sources exposed target-concept material during the aborted Product #6 preselection screen; excluding the insurer prevents contaminated knowledge from influencing the replacement neutral attempt.",
+    "metadata_source_restriction": "Before selection, use only non-policy metadata surfaces such as regulator insurer lists, insurer product/disclaimer lists, product catalogue pages, and UIN tables. Do not open policy wordings, prospectuses, CIS documents, proposal forms, or search results whose returned content contains policy clauses.",
+    "selection_record_must_merge_before_any_selected_product_document_is_opened": true
+  }
+}
