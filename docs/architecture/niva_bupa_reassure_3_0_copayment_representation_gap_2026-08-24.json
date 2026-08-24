@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "health_product5_frozen_runtime_concept_result_v2",
+  "protocol_path": "docs/architecture/health_repeatability_test_protocol_v2.json",
+  "product": {
+    "insurer_id": "niva_bupa",
+    "product_id": "reassure_3_0",
+    "canonical_product_name": "Niva Bupa ReAssure 3.0",
+    "uin": "NBHHLIP26047V012526"
+  },
+  "source_identity": {
+    "document_id": "niva_bupa_reassure_3_0_policy_wording_v1",
+    "authority_role": "primary_legal",
+    "source_sha256": "04c06f045979be509e124e1d802fed47097f0995132ff94cfd67aafbaf2fa12f"
+  },
+  "concept": "copayment",
+  "reviewed_candidate_inventory": [
+    {"candidate_id": "candidate_page_2", "source_page": 2, "candidate_text_sha256": "1a2c772eedf58bb71f61a553b334d798b6b69323c6e562c2c88eb659e1bfd8ff", "finding": "Definition only; not an operative product rule."},
+    {"candidate_id": "candidate_page_6", "source_page": 6, "candidate_text_sha256": "8618196b8e6301231ea75f8f9166afa91ae2e158ec3fd5aa24b12c010adce973", "finding": "If a room outside the plan category is chosen, the Annexure V copayment applies on the entire claim."},
+    {"candidate_id": "candidate_page_18", "source_page": 18, "candidate_text_sha256": "1cd1fad690332d3c6486e559cd9a56bfac536e742da38e307fd37b28ec215a9b", "finding": "Optional base co-payment mechanism, explicit named non-application scopes, and mutual exclusion with annual aggregate deductible; no selected rate is resolved in this wording passage."},
+    {"candidate_id": "candidate_page_19", "source_page": 19, "candidate_text_sha256": "a528611d3b62a87c3786bdb4303ce94bd5ae6830822dfe3a7c75525ec8c8898c", "finding": "HeadsUp and Tiered Network contain fixed 20% conditional copayment mechanics with explicit triggers and scopes."},
+    {"candidate_id": "candidate_page_20", "source_page": 20, "candidate_text_sha256": "df817252da1b0e5a9a125e3e2ad8d2f77b250b86c6e43734479f0412951acb2d", "finding": "Borderless and Borderless for Specific Illness expose selected copayment option domains of 0%, 20%, 30%, 40%, and 50%."},
+    {"candidate_id": "candidate_page_21", "source_page": 21, "candidate_text_sha256": "4a465d2407bd7b67a1e15405b391bf3ed27c089018b546339fcaa30410099900", "finding": "Wellconsult+ reimbursement carries a flat 20% copayment."},
+    {"candidate_id": "candidate_page_27", "source_page": 27, "candidate_text_sha256": "736241eaca78765e759ae9554ef2de9e94883e71e4d8a07f6c8266b06729798c", "finding": "Travel OPD reimbursement and loss of checked-in baggage each carry a 20% copayment."},
+    {"candidate_id": "candidate_page_38", "source_page": 38, "candidate_text_sha256": "ba7e37986d6d298fb0742118aea1ed79242eb490edcb26a77bd0498b19828507", "finding": "Generic moratorium caveat only; not an operative copayment rule."},
+    {"candidate_id": "candidate_page_44", "source_page": 44, "candidate_text_sha256": "37c05717baaf50fd15af0789332fc8dad9eadda19018b86755330041f0acc52d", "finding": "Failure to intimate prolonged hospitalization triggers an additional cumulative 10% copayment, with a relaxed notification duration for road traffic accidents."},
+    {"candidate_id": "candidate_page_45", "source_page": 45, "candidate_text_sha256": "ffea1ca232b2297bafeca6c9856968b1136b7e8cf217a25aa01dc202e48a2f46", "finding": "Specified non-network organ-transplant process failures trigger an additional 20% copayment."},
+    {"candidate_id": "candidate_page_62", "source_page": 62, "candidate_text_sha256": "42f0ddcced22cc7ce18f757c01e8de8a679d8b0772ded9ce1854094eba94b4dc", "finding": "Annexure V contains a variant by claimed-room-category matrix with explicit 0%, 20%, 40%, and 50% cells."}
+  ],
+  "pre_existing_shapes_that_reuse_cleanly": [
+    "fixed percentage conditional copayment with trigger and applicability scope",
+    "policy-selected copayment option domain containing multiple percentages",
+    "explicit source-stated 0% percentage under a documented condition",
+    "explicit copayment non-application for named scopes",
+    "multiple independent copayment assertions within one product"
+  ],
+  "knowledge_dependency_not_representation_gap": {
+    "mechanic": "optional base copayment in clause 4.19",
+    "finding": "The wording passage establishes the optional copayment mechanism and its non-application scopes but does not resolve one selected percentage for a policy instance.",
+    "required_for_customer_specific_rate": "policy Schedule or other authoritative source that resolves the selected option",
+    "forbidden_inference": "Do not manufacture a product-wide scalar percentage from the existence of the optional mechanism."
+  },
+  "representation_gaps": [
+    {
+      "gap_id": "REASSURE3_COPAY_GAP_01_ADDITIVE_CUMULATIVE_COMPOSITION",
+      "evidence_candidates": ["candidate_page_44", "candidate_page_45"],
+      "problem": "The source expressly qualifies these percentages as additional cumulative/additional copayments. The frozen conditional-copayment reasoner preserves stacking only for its pre-existing explicit 'in addition/additional to any other co-payment or deductible' pattern. These clauses do not use that supported form, so frozen reasoning would reduce them to an ordinary percentage and lose the additive/cumulative modifier.",
+      "why_not_coerce": "Certification that drops whether a cost share is additional/cumulative changes the financial mechanic and is therefore not semantically faithful.",
+      "required_extension_shape": "Generic evidence-backed copayment composition semantics that preserve additive/cumulative behavior without insurer-specific branches."
+    },
+    {
+      "gap_id": "REASSURE3_COPAY_GAP_02_ROOM_MATRIX_MULTISPAN_CALCULATION_BASIS",
+      "evidence_candidates": ["candidate_page_6", "candidate_page_62"],
+      "problem": "The operative room-selection rule is split across pages: page 6 establishes that the Annexure V copayment applies on the entire claim when the chosen room is outside plan category, while page 62 supplies the variant/room percentage matrix. The generic legal-condition binder can bind multiple selections, but the frozen conditional-copayment certifier requires exactly one bound evidence selection per assertion.",
+      "why_not_coerce": "Using only page 62 would preserve rates but lose the material entire-claim linkage; using only page 6 would preserve basis but lacks the applicable percentage matrix.",
+      "required_extension_shape": "Generic multispan copayment certification with component-level evidence attribution for trigger, rate/matrix cell, scope, and calculation basis."
+    }
+  ],
+  "repeatability_classification": {
+    "classification": "REPRESENTATION_GAP",
+    "reason": "Most ReAssure 3.0 copayment mechanics reuse pre-existing schemas, but additive/cumulative composition and the material multispan room-matrix linkage cannot be certified faithfully by the frozen pre-selection runtime.",
+    "runtime_reuse_observed_for_supported_submechanics": true,
+    "knowledge_gap_observed": false,
+    "architecture_failure_scope": "TARGETED_GENERIC_EXTENSION_REQUIRED"
+  },
+  "governance": {
+    "runtime_changed_during_initial_attempt": false,
+    "new_declarative_schema_shape_added_during_initial_attempt": false,
+    "decision_logic_added_in_config": false,
+    "silent_semantic_coercion_performed": false,
+    "certification_authorized_for_gap_mechanics": false,
+    "publication_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "claim_payment_inference_authorized": false
+  }
+}
