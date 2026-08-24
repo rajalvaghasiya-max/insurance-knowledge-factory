@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "health_product5_post_gap_validation_v1",
+  "validation_status": "OBSERVED_REPRESENTATION_GAPS_VALIDATED_CLOSED",
+  "validated_from_main_commit": "0e1d4816f418c8000224fd627a17a2ef3e1731d9",
+  "product": {
+    "insurer_id": "niva_bupa",
+    "product_id": "reassure_3_0",
+    "canonical_product_name": "Niva Bupa ReAssure 3.0",
+    "uin": "NBHHLIP26047V012526"
+  },
+  "historical_experiment": {
+    "result_path": "docs/architecture/health_product5_repeatability_result_2026-08-24.json",
+    "expected_git_blob_sha1": "e3fe3159bf56d0a4c13d5fbdfa634d07de823910",
+    "protocol_path": "docs/architecture/health_repeatability_test_protocol_v2.json",
+    "historical_outcome": "REPEATABILITY_NOT_PROVEN",
+    "historical_target_concept_classifications": {
+      "waiting_period": "REPRESENTATION_GAP",
+      "copayment": "REPRESENTATION_GAP"
+    },
+    "retroactive_rescoring_authorized": false,
+    "historical_result_remains_valid": true
+  },
+  "gap_records": {
+    "waiting_period": {
+      "path": "docs/architecture/niva_bupa_reassure_3_0_waiting_period_representation_gap_2026-08-24.json",
+      "expected_git_blob_sha1": "a75899b561989b35bebb39a2a26077dfcf4a78b9"
+    },
+    "copayment": {
+      "path": "docs/architecture/niva_bupa_reassure_3_0_copayment_representation_gap_2026-08-24.json",
+      "expected_git_blob_sha1": "ab15d1a3b8e40c4d46191b5710f7d6f832b18aff"
+    }
+  },
+  "earned_extensions": [
+    {
+      "milestone": "HC-1.1",
+      "merge_commit": "d129a4fdbcdcfe4246917af2fa3ca2df5732bf96",
+      "observed_gap": "personal / underwriting-specific waiting-period representation",
+      "post_gap_validation": "VALIDATED_FOR_OBSERVED_SHAPE",
+      "proof": {
+        "binding_spec": "docs/architecture/niva_bupa_reassure_3_0_personal_underwriting_waiting_period_binding_spec.json",
+        "candidate_id": "candidate_page_33",
+        "candidate_text_sha256": "74408d4896f75d5127ed7ef4109bd7229a184c9c2589a6ac5dfe30f653579015",
+        "preserved_semantics": [
+          "insured-person-specific",
+          "condition-specific",
+          "underwriting-specific",
+          "maximum bound up to 48 months rather than an exact customer scalar",
+          "policy-instance underwriting/schedule evidence required for actual conditions and duration"
+        ]
+      }
+    },
+    {
+      "milestone": "HC-1.2",
+      "merge_commit": "161b3a066c4c64c4dcc5861f968973aafbfedcbc",
+      "observed_gap": "additional / cumulative copayment composition",
+      "post_gap_validation": "VALIDATED_FOR_OBSERVED_SHAPE",
+      "proof": {
+        "binding_spec": "docs/architecture/niva_bupa_reassure_3_0_additive_cumulative_copayment_binding_spec.json",
+        "evidence": [
+          {
+            "candidate_id": "candidate_page_44",
+            "candidate_text_sha256": "37c05717baaf50fd15af0789332fc8dad9eadda19018b86755330041f0acc52d",
+            "composition": "CUMULATIVE",
+            "percentage": 10
+          },
+          {
+            "candidate_id": "candidate_page_45",
+            "candidate_text_sha256": "ffea1ca232b2297bafeca6c9856968b1136b7e8cf217a25aa01dc202e48a2f46",
+            "composition": "ADDITIVE",
+            "percentage": 20
+          }
+        ],
+        "preserved_semantics": [
+          "additional/cumulative modifier is not flattened into a standalone percentage",
+          "composition remains evidence-backed",
+          "no combined customer liability is calculated without applicable cost-sharing context"
+        ]
+      }
+    },
+    {
+      "milestone": "HC-1.3",
+      "merge_commit": "0e1d4816f418c8000224fd627a17a2ef3e1731d9",
+      "observed_gap": "multispan room-category copayment rate matrix plus entire-claim calculation basis",
+      "post_gap_validation": "VALIDATED_FOR_OBSERVED_SHAPE",
+      "proof": {
+        "binding_spec": "docs/architecture/niva_bupa_reassure_3_0_room_category_copayment_multispan_binding_spec.json",
+        "component_evidence": {
+          "obligation_value": ["candidate_page_62"],
+          "trigger_condition": ["candidate_page_6"],
+          "applicability_scope": ["candidate_page_6"],
+          "calculation_basis": ["candidate_page_6"]
+        },
+        "candidate_hashes": {
+          "candidate_page_6": "8618196b8e6301231ea75f8f9166afa91ae2e158ec3fd5aa24b12c010adce973",
+          "candidate_page_62": "42f0ddcced22cc7ce18f757c01e8de8a679d8b0772ded9ce1854094eba94b4dc"
+        },
+        "preserved_semantics": [
+          "Annexure V rate matrix remains separate from page-6 trigger and entire-claim calculation basis",
+          "source-stated zero-percent cells are preserved",
+          "unlisted plan-variant / room-category combinations remain unresolved",
+          "one customer-specific percentage requires authoritative instance selectors"
+        ]
+      }
+    }
+  ],
+  "post_gap_outcome": {
+    "reassure_observed_representation_gaps_remaining": 0,
+    "reassure_observed_knowledge_gaps_remaining": 0,
+    "observed_gap_shapes_representable": true,
+    "observed_gap_shapes_bindable_or_certifiable": true,
+    "historical_repeatability_outcome_changed": false,
+    "repeatability_proven_by_this_checkpoint": false,
+    "neutral_cold_start_still_required_for_repeatability_proof": true,
+    "reason": "HC-1.4 validates that the three evidence-earned extensions now faithfully handle the exact ReAssure 3.0 semantic shapes that blocked Product #5. This is corrective post-gap validation, not a new neutral cold-start experiment and therefore does not convert the historical Product #5 outcome into repeatability success."
+  },
+  "governance": {
+    "historical_artifacts_must_remain_bitwise_unchanged": true,
+    "publication_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "customer_specific_inference_authorized": false,
+    "unknown_variant_space_open": true,
+    "known_gap_set_claimed_exhaustive": false
+  }
+}
