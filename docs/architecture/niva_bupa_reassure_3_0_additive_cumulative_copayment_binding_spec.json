@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "binding_type": "generic_legal_condition_binding_v1",
+  "reviewed_by_human": true,
+  "generic_source_bundle_path": "knowledge/factory/registry_backed/niva_bupa_reassure_3_0/v1/generic_source_registration/source_registration_bundle.json",
+  "assertions": [
+    {
+      "assertion_id": "niva_bupa_reassure_3_0_prolonged_hospitalization_additional_cumulative_copay_v1",
+      "assertion_type": "conditional_copayment_rule",
+      "semantic_key": "copayment.prolonged_hospitalization.notification_failure.additional_cumulative_ten_percent",
+      "reviewed_statement": "If prolonged hospitalization is not intimated within the documented notification period, an additional cumulative 10% co-payment applies. This co-payment is applicable only to the prolonged-hospitalization notification failure described by the policy wording.",
+      "evidence_selections": [
+        {
+          "document_id": "niva_bupa_reassure_3_0_policy_wording_v1",
+          "candidate_id": "candidate_page_44",
+          "candidate_text_sha256": "37c05717baaf50fd15af0789332fc8dad9eadda19018b86755330041f0acc52d"
+        }
+      ]
+    },
+    {
+      "assertion_id": "niva_bupa_reassure_3_0_non_network_transplant_additional_copay_v1",
+      "assertion_type": "conditional_copayment_rule",
+      "semantic_key": "copayment.non_network_organ_transplant.process_failure.additional_twenty_percent",
+      "reviewed_statement": "If the specified non-network organ-transplant process requirements are not followed, an additional 20% co-payment applies. This co-payment is applicable only to the documented non-network organ-transplant process failure.",
+      "evidence_selections": [
+        {
+          "document_id": "niva_bupa_reassure_3_0_policy_wording_v1",
+          "candidate_id": "candidate_page_45",
+          "candidate_text_sha256": "ffea1ca232b2297bafeca6c9856968b1136b7e8cf217a25aa01dc202e48a2f46"
+        }
+      ]
+    }
+  ],
+  "governance": {
+    "publication_authorized": false,
+    "customer_specific_trigger_resolution_authorized": false,
+    "combined_customer_liability_calculation_authorized": false,
+    "claim_payment_inference_authorized": false
+  }
+}
