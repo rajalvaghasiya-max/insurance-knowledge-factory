@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0",
+  "selection_type": "health_product7_contamination_safe_cold_start_selection_v4",
+  "protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v4_product7.json",
+  "frozen_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+  "selection_parent_commit": "b8b09e71a85fc087d4c9ba373f9d503dea648b8a",
+  "selected_after_protocol_merge": true,
+  "selected_product": {
+    "insurer_id": "icici_lombard",
+    "insurer_display_name": "ICICI Lombard General Insurance Company Limited",
+    "product_id": "arogya_sanjeevani_policy",
+    "canonical_product_name": "Arogya Sanjeevani Policy, ICICI Lombard",
+    "uin": "ICIHLIP20178V011920",
+    "product_reference": "icici_lombard:arogya_sanjeevani_policy:ICIHLIP20178V011920"
+  },
+  "selection_basis": {
+    "target_concepts": ["copayment", "waiting_period"],
+    "semantic_fit_reviewed_before_selection": false,
+    "selected_product_policy_wording_opened_before_selection_record": false,
+    "selected_product_prospectus_opened_before_selection_record": false,
+    "selected_product_cis_opened_before_selection_record": false,
+    "selected_product_target_clause_read_before_selection_record": false,
+    "selected_path_preselection_target_clause_reads": 0,
+    "selection_override_used": false,
+    "deterministic_rule": "first eligible uncontaminated insurer in normalized insurer order, then lowest metadata-verifiable eligible current product UIN for that insurer"
+  },
+  "insurer_screening_ledger": [
+    {
+      "insurer": "ACKO General Insurance Limited",
+      "status": "EXCLUDED_PROTOCOL_CONTAMINATION",
+      "reason": "Excluded by Product #7 preregistration because ACKO candidate product sources exposed target-concept material during the aborted Product #6 preselection screen."
+    },
+    {
+      "insurer": "Aditya Birla Health Insurance Co. Ltd.",
+      "status": "EXCLUDED_QUARANTINED_TARGET_SNIPPET",
+      "reason": "An official metadata/disclaimer search result returned an underwriting waiting-period statement before selection; v4 contamination rule requires insurer quarantine."
+    },
+    {
+      "insurer": "Agriculture Insurance Company of India Limited",
+      "status": "EXCLUDED_NO_METADATA_VERIFIABLE_RETAIL_HEALTH_CANDIDATE",
+      "reason": "Allowed regulator/official metadata surfaces did not establish a qualifying current retail Health indemnity product without leaving the metadata firewall."
+    },
+    {
+      "insurer": "Bajaj General Insurance Limited / Bajaj Allianz General Insurance Company Limited",
+      "status": "EXCLUDED_PRIOR_COLD_START",
+      "reason": "Prior PolicyScna Health cold-start insurer."
+    },
+    {
+      "insurer": "Care Health Insurance Limited",
+      "status": "EXCLUDED_QUARANTINED_TARGET_SNIPPET",
+      "reason": "Official Care search results returned waiting-period and copayment mechanics before selection; v4 contamination rule requires insurer quarantine."
+    },
+    {
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "status": "EXCLUDED_METADATA_INSUFFICIENT",
+      "reason": "Allowed search path returned proposal/policy artifacts rather than a clean metadata-only current retail Health product/UIN catalogue; prohibited documents were not opened."
+    },
+    {
+      "insurer": "ECGC Limited",
+      "status": "EXCLUDED_NO_QUALIFYING_RETAIL_HEALTH_PRODUCT",
+      "reason": "Regulator metadata identifies the insurer's relevant line as credit insurance rather than a qualifying retail Health indemnity candidate."
+    },
+    {
+      "insurer": "Generali Central Insurance Company Limited",
+      "status": "EXCLUDED_QUARANTINED_TARGET_SNIPPET",
+      "reason": "Search results returned waiting-period and copayment mechanics for Health products before selection; v4 contamination rule requires insurer quarantine."
+    },
+    {
+      "insurer": "Go Digit General Insurance Limited",
+      "status": "EXCLUDED_QUARANTINED_TARGET_SNIPPET",
+      "reason": "After a clean official UIN/download-index screen, later returned search surfaces exposed waiting-period and copayment mechanics before selection; v4 contamination rule requires insurer quarantine."
+    },
+    {
+      "insurer": "HDFC ERGO General Insurance Company Limited",
+      "status": "EXCLUDED_PRIOR_COLD_START",
+      "reason": "Prior PolicyScna Health cold-start insurer."
+    },
+    {
+      "insurer": "ICICI Lombard General Insurance Company Limited",
+      "status": "FIRST_ELIGIBLE_UNCONTAMINATED_INSURER",
+      "reason": "Current insurer and IRDAI Health-product metadata exposed product identities/UINs without returning copayment or waiting-period mechanics on the selected path."
+    }
+  ],
+  "selected_insurer_metadata_ledger": {
+    "official_consumer_product_table_source": "https://www.icicilombard.com/health-insurance/renew-online",
+    "regulator_health_product_index_source": "https://irdai.gov.in/health-insurance-products",
+    "observed_current_or_non_archived_candidates": [
+      {
+        "product_name": "Arogya Sanjeevani Policy, ICICI Lombard",
+        "uin": "ICIHLIP20178V011920",
+        "metadata_status": "CURRENT_INSURER_RENEWAL_TABLE_AND_IRDAI_NON_ARCHIVED",
+        "selection_status": "SELECTED"
+      },
+      {
+        "product_name": "Health Booster",
+        "uin": "ICIHLIP22100V032122",
+        "metadata_status": "CURRENT_INSURER_RENEWAL_TABLE",
+        "selection_status": "NOT_SELECTED_HIGHER_UIN"
+      },
+      {
+        "product_name": "ICICI Lombard Complete Health Insurance",
+        "uin": "ICIHLIP23144V072223",
+        "metadata_status": "CURRENT_INSURER_RENEWAL_TABLE",
+        "selection_status": "NOT_SELECTED_HIGHER_UIN"
+      },
+      {
+        "product_name": "Health AdvantEdge",
+        "uin": "ICIHLIP23075V032223",
+        "metadata_status": "CURRENT_ICICI_PRODUCT_UIN_TABLE",
+        "selection_status": "NOT_SELECTED_HIGHER_UIN"
+      },
+      {
+        "product_name": "Golden Shield",
+        "uin": "ICIHLIP22012V012223",
+        "metadata_status": "ICICI_PRODUCT_UIN_TABLE_AND_IRDAI_NON_ARCHIVED_INDIVIDUAL",
+        "selection_status": "NOT_SELECTED_HIGHER_UIN"
+      }
+    ],
+    "metadata_exclusions_relevant_to_lower_uin_check": [
+      {
+        "product_name": "Family Shield",
+        "uin": "ICIHLIP20127V011920",
+        "reason": "IRDAI index shows Non-Archived/Individual, but current ICICI consumer renewal/product tables used by the selection path did not expose it as a current candidate; current-offering status is not metadata-verified under the v4 firewall."
+      },
+      {
+        "product_name": "Hospifund Insurance",
+        "uin": "ICIHLIP19050V011819",
+        "reason": "IRDAI index shows a non-archived Retail entry, but allowed current ICICI product surfaces used by the selection path do not establish current retail indemnity eligibility; no product document was opened to resolve it."
+      },
+      {
+        "product_name": "BeFit Rider",
+        "uin": "ICIHLIP21569V012021",
+        "reason": "Rider/add-on rather than the base retail Health indemnity product selected by this experiment."
+      }
+    ]
+  },
+  "repository_exposure_checkpoint": {
+    "baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+    "exact_uin_query": "ICIHLIP20178V011920",
+    "exact_uin_hit": false,
+    "product_identity_query": "Arogya Sanjeevani ICICI Lombard",
+    "product_identity_hit": false,
+    "governed_product_evidence_found": false,
+    "semantic_binding_found": false,
+    "certification_fixture_found": false,
+    "prior_cold_start_result_found": false
+  },
+  "quarantined_preselection_exposures": {
+    "selected_path_exposures": 0,
+    "candidate_insurer_quarantines": ["Aditya Birla Health Insurance Co. Ltd.", "Care Health Insurance Limited", "Generali Central Insurance Company Limited", "Go Digit General Insurance Limited"],
+    "accounting_basis": "Under protocol v4, a candidate insurer whose returned preselection surface exposes target mechanics is immediately excluded and its information is quarantined. None of those mechanics may be used to choose or score the selected ICICI product. The selected path itself carries zero target-clause reads before selection merge."
+  },
+  "governance": {
+    "selection_record_must_merge_before_selected_product_document_opening": true,
+    "runtime_extension_before_initial_scoring_authorized": false,
+    "semantic_or_spec_extension_before_initial_scoring_authorized": false,
+    "decision_logic_in_config_authorized": false,
+    "publication_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false,
+    "motor_readiness_authorized": false
+  },
+  "next_step": "Merge this selection record first. Then acquire and hash-lock the selected ICICI Lombard Arogya Sanjeevani policy wording through the existing source-registration path and inspect copayment and waiting-period semantics under the frozen HC-1.5 baseline."
+}
