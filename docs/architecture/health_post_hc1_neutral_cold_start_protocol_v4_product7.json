@@ -1,0 +1,111 @@
+{
+  "schema_version": "4.0",
+  "protocol_type": "health_post_hc1_contamination_safe_cold_start_preregistration_v4",
+  "protocol_status": "LOCKED_BEFORE_PRODUCT7_SELECTION",
+  "frozen_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+  "predecessor_protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v3.json",
+  "predecessor_amendment_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v3_1_amendment.json",
+  "product6_abort_record_path": "docs/architecture/health_product6_selection_abort_2026-08-24.json",
+  "retroactive_rescoring_authorized": false,
+  "experiment": {
+    "domain": "health",
+    "product_number": 7,
+    "product_selected": false,
+    "target_concepts": ["copayment", "waiting_period"],
+    "central_question": "Can the frozen post-HC-1 Health Foundation manufacture and certify copayment and waiting-period knowledge for a contamination-free neutral unseen Health product without new runtime logic or a new semantic/spec structural shape?"
+  },
+  "contamination_exclusions": {
+    "insurers_excluded_due_to_prior_cold_start_use": [
+      "Star Health & Allied Insurance Co. Ltd.",
+      "Bajaj General Insurance Limited / Bajaj Allianz General Insurance Company Limited",
+      "HDFC ERGO General Insurance Company Limited",
+      "Tata AIG General Insurance Company Limited",
+      "Niva Bupa Health Insurance Co. Ltd."
+    ],
+    "insurers_excluded_due_to_product6_preselection_exposure": ["ACKO General Insurance Limited"],
+    "exclusion_is_permanent_for_product7": true
+  },
+  "preselection_metadata_firewall": {
+    "allowed_source_classes": [
+      "current regulator insurer list or insurer registry page",
+      "official insurer non-policy HTML product catalogue/download index",
+      "official insurer disclaimer or product-list page that contains product identity/UIN only",
+      "official regulator or insurer product/UIN table explicitly limited to product metadata",
+      "frozen-baseline repository exact-name/UIN search"
+    ],
+    "prohibited_source_classes_before_selection_record_merge": [
+      "policy wording",
+      "prospectus",
+      "customer information sheet (CIS)",
+      "proposal form",
+      "brochure containing benefit mechanics",
+      "FAQ or marketing page containing target-concept mechanics",
+      "search-result or AI-generated snippet containing copayment or waiting-period mechanics for a candidate insurer/product"
+    ],
+    "product_document_opening_before_selection_record_merge": false,
+    "target_clause_read_tolerance": 0,
+    "contamination_rule": "If any prohibited source returns target-concept mechanics for an insurer before Product #7 selection is committed, immediately stop screening that insurer, record the exposure, exclude that insurer from Product #7, and continue to the next insurer. Do not use the exposed content for selection.",
+    "metadata_insufficiency_rule": "If current product identity, UIN, current-offering status, retail Health indemnity classification, and individual/family-floater availability cannot be established from allowed metadata-only sources, the candidate is not metadata-verifiable and is excluded without opening a prohibited document."
+  },
+  "selection_protocol": {
+    "insurer_universe": "current IRDAI insurer list",
+    "insurer_sort": "normalized insurer legal/display name lower-case ASCII ascending",
+    "screening_rule": "Screen non-excluded insurers in order using only allowed metadata sources until the first insurer has at least one metadata-verifiable eligible product with no governed exact-UIN exposure at the frozen baseline.",
+    "stopping_rule": "Stop at the first eligible uncontaminated insurer.",
+    "selected_insurer_ledger_rule": "Enumerate all metadata-verifiable current retail Health indemnity products for individual and/or family-floater purchase from that insurer using only allowed metadata sources. Record eligible and excluded products with metadata reasons.",
+    "product_tie_break": "Sort eligible products by normalized UIN/product identifier ascending and select the first.",
+    "selection_override_authorized": false,
+    "semantic_fit_may_affect_selection": false
+  },
+  "freeze": {
+    "runtime_change_allowed_during_initial_attempt": false,
+    "new_semantic_or_spec_shape_allowed_during_initial_attempt": false,
+    "frozen_surfaces": [
+      "insurance_intelligence/contracts/",
+      "insurance_intelligence/reasoning/",
+      "insurance_intelligence/benefits/",
+      "insurance_intelligence/rule_certification/",
+      "factory_core/canonical/",
+      "knowledge_domains/health/"
+    ],
+    "decision_logic_in_config_is_failure": true,
+    "baseline_commit_must_remain_the_scoring_reference": true
+  },
+  "classification_rubric": {
+    "REUSE": "Baseline generic contracts, binders, certifiers, semantic types, governed spec schemas and evidence-attribution shapes handle the concept unchanged.",
+    "CONFIG_SPEC": "Frozen runtime remains unchanged but a new governed declarative structural shape is required; no executable decision logic may be hidden in it.",
+    "REPRESENTATION_GAP": "Authoritative evidence is sufficient but the frozen baseline cannot faithfully represent or certify the semantic shape.",
+    "KNOWLEDGE_GAP": "Reviewed authoritative/corroborating evidence is insufficient; code, config or DomainKnowledge cannot compensate."
+  },
+  "primary_metrics": {
+    "new_runtime_files": 0,
+    "runtime_loc_delta": 0,
+    "new_semantic_runtime_shapes": 0,
+    "new_declarative_schema_shapes": 0,
+    "product_specific_branches_in_generic_runtime": 0,
+    "decision_logic_added_in_config_or_fixtures": 0,
+    "certified_claims_without_exact_candidate_version_hash_lineage": 0,
+    "silent_semantic_coercions": 0,
+    "selection_rule_overrides": 0,
+    "preselection_target_clause_reads": 0
+  },
+  "success_bar": {
+    "STRONG_REPEATABILITY_PROVEN": "Both target concepts are REUSE and every primary metric remains zero.",
+    "MINIMUM_REPEATABILITY_PROVEN": "Both target concepts are REUSE or CONFIG_SPEC, at least one is REUSE, no REPRESENTATION_GAP occurs, and every primary metric remains zero.",
+    "REPEATABILITY_NOT_PROVEN": "Any primary metric is non-zero, any target concept is REPRESENTATION_GAP, or both scoreable concepts are CONFIG_SPEC with zero REUSE.",
+    "REPEATABILITY_INCONCLUSIVE": "At least one target concept is KNOWLEDGE_GAP and no architecture/repeatability failure otherwise occurs."
+  },
+  "required_artifacts_before_semantic_review": [
+    "merged Product #7 selection record",
+    "complete metadata-only ledger for the selected insurer",
+    "selected product UIN/product identifier",
+    "frozen-baseline exact-UIN exposure check",
+    "attestation that preselection_target_clause_reads equals zero",
+    "attestation that no prohibited product document was opened for the selected insurer before selection merge"
+  ],
+  "motor_readiness_gate": {
+    "authorized_outcomes": ["STRONG_REPEATABILITY_PROVEN", "MINIMUM_REPEATABILITY_PROVEN"],
+    "product6_abort_cannot_satisfy_gate": true,
+    "post_gap_corrective_validation_cannot_satisfy_gate": true
+  }
+}
