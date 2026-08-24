@@ -160,9 +160,9 @@ def test_certification_says_up_to_and_preserves_instance_dependency(tmp_path: Pa
         repository_root=tmp_path,
     )
     claims = {package.field_or_topic: package.claim for package in case.evidence_output.evidence_packages}
-    assert "up to 48 MONTHS" in claims["WAITING_PERIOD_MAXIMUM_DURATION"]
-    assert "The waiting period duration is 48" not in claims["WAITING_PERIOD_MAXIMUM_DURATION"]
-    assert "policy-instance" in claims["POLICY_INSTANCE_DEPENDENCY"]
+    assert "up to 48 MONTHS" in claims["WAITING_PERIOD_DURATION"]
+    assert "maximum bound" in claims["WAITING_PERIOD_DURATION"]
+    assert "policy-instance" in claims["APPLICABILITY_SCOPE"]
     result = run_personal_underwriting_waiting_period_certification_case(case)
     assert result.outcome == "PASS"
     assert result.actual_completeness_status == "COMPLETE"
