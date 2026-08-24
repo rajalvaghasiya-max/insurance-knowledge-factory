@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "health_product5_frozen_runtime_representation_gap_v1",
+  "protocol_path": "docs/architecture/health_repeatability_test_protocol_v2.json",
+  "product": {
+    "insurer_id": "niva_bupa",
+    "product_id": "reassure_3_0",
+    "uin": "NBHHLIP26047V012526"
+  },
+  "concept": "waiting_period",
+  "source_identity": {
+    "document_id": "niva_bupa_reassure_3_0_policy_wording_v1",
+    "source_sha256": "04c06f045979be509e124e1d802fed47097f0995132ff94cfd67aafbaf2fa12f",
+    "authority_role": "primary_legal"
+  },
+  "reusable_mechanics_observed": [
+    {
+      "mechanic": "PRE_EXISTING_DISEASE",
+      "candidate_id": "candidate_page_30",
+      "candidate_text_sha256": "4f6562e744e0bc22f7c0c9f0fd88c5256178e43d954742ce87def12fddf867ac",
+      "duration": "36 MONTHS",
+      "existing_shape": true
+    },
+    {
+      "mechanic": "SPECIFIC_DISEASE_PROCEDURE",
+      "candidate_ids": ["candidate_page_30", "candidate_page_31"],
+      "candidate_text_sha256s": [
+        "4f6562e744e0bc22f7c0c9f0fd88c5256178e43d954742ce87def12fddf867ac",
+        "4f9aab1d7b60bdfd14247654cca1f854a26ce6c624e2a45bc29d66f03d2ff706"
+      ],
+      "duration": "24 MONTHS",
+      "existing_shape": true
+    },
+    {
+      "mechanic": "INITIAL",
+      "candidate_id": "candidate_page_31",
+      "candidate_text_sha256": "4f9aab1d7b60bdfd14247654cca1f854a26ce6c624e2a45bc29d66f03d2ff706",
+      "duration": "30 DAYS",
+      "existing_shape": true
+    }
+  ],
+  "blocking_mechanic": {
+    "source_label": "Personal Waiting Period",
+    "candidate_id": "candidate_page_33",
+    "source_page": 33,
+    "candidate_text_sha256": "74408d4896f75d5127ed7ef4109bd7229a184c9c2589a6ac5dfe30f653579015",
+    "source_meaning": "Conditions specified for an individual insured person may be subject to a waiting period of up to 48 months from inception of the First Policy with the insurer.",
+    "semantic_characteristics": [
+      "insured-person-specific",
+      "condition-specific",
+      "underwriting-specific",
+      "duration is expressed as up to 48 months rather than a single product-wide fixed scalar",
+      "not a benefit-scoped waiting period"
+    ]
+  },
+  "pre_existing_contract_boundary": {
+    "waiting_period_types_available_before_product_selection": [
+      "INITIAL",
+      "SPECIFIC_DISEASE_PROCEDURE",
+      "PRE_EXISTING_DISEASE",
+      "MATERNITY",
+      "BABY_CARE",
+      "BENEFIT_SPECIFIC"
+    ],
+    "scope_types_available_before_product_selection": ["POLICY_WIDE", "BENEFIT_SCOPED"],
+    "why_not_benefit_specific": "The Personal Waiting Period applies to underwriting-specified conditions for an insured person, not to a named policy benefit. Encoding it as BENEFIT_SPECIFIC would silently change the source meaning.",
+    "why_not_product_fixed": "The wording states up to 48 months and depends on the insured person's specified conditions; it does not establish one product-wide scalar duration.",
+    "why_not_schedule_selected_scalar": "The current resolved WaitingPeriodMechanic permits POLICY_SCHEDULE_SELECTED only after an actual schedule resolves a concrete duration; the generic product wording does not resolve the customer-specific duration or affected conditions."
+  },
+  "repeatability_classification": {
+    "classification": "REPRESENTATION_GAP",
+    "reason": "Authoritative evidence is sufficient, but the frozen pre-existing waiting-period semantic types cannot faithfully represent an underwriting-specific personal waiting period without coercing it into an incorrect benefit-specific or product-wide shape.",
+    "runtime_change_during_initial_attempt": false,
+    "coercion_attempted": false,
+    "certification_blocked": true
+  },
+  "protocol_effect": {
+    "concept_repeatability": "NOT_PROVEN_FOR_CONCEPT",
+    "overall_product5_strong_repeatability_possible": false,
+    "overall_product5_minimum_repeatability_possible": false,
+    "overall_product5_outcome_if_no_other_failure": "REPEATABILITY_NOT_PROVEN"
+  },
+  "governance": {
+    "runtime_extension_authorized_before_gap_recording": false,
+    "runtime_extension_may_be_designed_after_this_checkpoint": true,
+    "extension_counts_as_initial_repeatability_success": false,
+    "publication_authorized": false,
+    "comparison_ready_authorized": false,
+    "decision_support_ready_authorized": false
+  }
+}
