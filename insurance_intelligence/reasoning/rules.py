@@ -12,6 +12,10 @@ import json
 import re
 from typing import Mapping, Sequence
 
+from insurance_intelligence.benefits.copayment_composition import (
+    CopaymentCompositionType,
+    resolve_copayment_composition,
+)
 from insurance_intelligence.contracts.evidence import EvidencePackage
 from insurance_intelligence.contracts.reasoning import Finding, build_finding
 from insurance_intelligence.reasoning.registry import (
@@ -121,16 +125,6 @@ def direct_documented_fact(data: RuleInput) -> tuple[Finding, ...]:
 
 
 _PERCENTAGE = re.compile(r"(?<!\d)(\d{1,3}(?:\.\d+)?)\s*%")
-_STACKING_PATTERNS = (
-    re.compile(
-        r"(?:in addition|additional) to any other co-payment(?:\s*/\s*| or )deductible[^.;]*",
-        re.I,
-    ),
-    re.compile(
-        r"(?:in addition|additional) to any other (?:applicable )?co-payment or deductible[^.;]*",
-        re.I,
-    ),
-)
 
 
 def _percentages(evidence: EvidencePackage) -> tuple[str, ...]:
@@ -170,9 +164,9 @@ def _copayment_effect(evidence: EvidencePackage) -> str:
             "depending on the documented selected co-payment option"
         )
     text = " ".join((evidence.claim or evidence.source_excerpt or "").split())
-    stacking = _first_clause(text, _STACKING_PATTERNS)
-    if stacking:
-        effect = f"{effect}; {stacking}"
+    composition = resolve_copayment_composition(text)
+    if composition.composition_type is not CopaymentCompositionType.STANDALONE:
+        effect = f"{effect}; {composition.source_phrase}"
     return effect
 
 
