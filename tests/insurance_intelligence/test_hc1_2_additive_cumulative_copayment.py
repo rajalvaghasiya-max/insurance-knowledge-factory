@@ -81,11 +81,11 @@ def test_composition_contract_distinguishes_cumulative_additive_and_standalone()
     )
 
     assert cumulative.composition_type is CopaymentCompositionType.CUMULATIVE
-    assert cumulative.source_phrase == "additional cumulative 10% co-payment".replace("10% ", "")
+    assert cumulative.source_phrase == "additional cumulative 10% co-payment"
     assert cumulative.stacks_with_other_cost_sharing is True
 
     assert additive.composition_type is CopaymentCompositionType.ADDITIVE
-    assert additive.source_phrase == "additional 20% co-payment".replace("20% ", "")
+    assert additive.source_phrase == "additional 20% co-payment"
     assert additive.stacks_with_other_cost_sharing is True
 
     assert standalone.composition_type is CopaymentCompositionType.STANDALONE
@@ -97,7 +97,7 @@ def test_page_44_cumulative_modifier_is_preserved_in_production_reasoning() -> N
     finding = _finding(PAGE_44_REVIEWED, candidate="candidate_page_44", page=44)
 
     assert finding.object_or_effect == (
-        "10% of the admissible claim amount; additional cumulative co-payment"
+        "10% of the admissible claim amount; additional cumulative 10% co-payment"
     )
     assert finding.trigger == (
         "If prolonged hospitalization is not intimated within the documented notification period"
@@ -110,7 +110,9 @@ def test_page_44_cumulative_modifier_is_preserved_in_production_reasoning() -> N
 def test_page_45_additional_modifier_is_preserved_in_production_reasoning() -> None:
     finding = _finding(PAGE_45_REVIEWED, candidate="candidate_page_45", page=45)
 
-    assert finding.object_or_effect == "20% of the admissible claim amount; additional co-payment"
+    assert finding.object_or_effect == (
+        "20% of the admissible claim amount; additional 20% co-payment"
+    )
     assert finding.trigger == (
         "If the specified non-network organ-transplant process requirements are not followed"
     )
