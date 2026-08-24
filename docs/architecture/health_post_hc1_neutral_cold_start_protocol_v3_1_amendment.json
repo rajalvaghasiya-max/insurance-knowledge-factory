@@ -1,0 +1,42 @@
+{
+  "schema_version": "3.1",
+  "amendment_type": "health_post_hc1_neutral_cold_start_selection_protocol_amendment_v3_1",
+  "amends_protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v3.json",
+  "amends_protocol_merge_commit": "bfd41d522c6364d86dda099f6f4db6e169e10996",
+  "amendment_status": "LOCKED_BEFORE_PRODUCT6_SELECTION",
+  "product6_selected_before_amendment": false,
+  "target_clause_review_before_amendment": false,
+  "semantic_fit_used_to_design_amendment": false,
+  "reason": "The v3 global candidate-enumeration rule requires reviewing every later insurer and product even after the deterministic insurer-first ordering has identified the earliest eligible insurer. Later candidates cannot alter the selected outcome. This amendment replaces that non-selection-affecting exhaustive work with an outcome-equivalent deterministic stopping rule.",
+  "selection_rule_replacement": {
+    "insurer_universe": "Use the current IRDAI insurer list as the authoritative insurer universe.",
+    "insurer_order": "Normalize insurer legal/display names to lower-case ASCII and screen them in ascending order.",
+    "prior_cold_start_exclusions": [
+      "Star Health & Allied Insurance Co. Ltd.",
+      "Bajaj General Insurance Limited / Bajaj Allianz General Insurance Company Limited",
+      "HDFC ERGO General Insurance Company Limited",
+      "Tata AIG General Insurance Company Limited",
+      "Niva Bupa Health Insurance Co. Ltd."
+    ],
+    "insurer_screening_rule": "For each insurer in order, use metadata only to determine whether at least one currently offered Indian retail Health indemnity product for individual and/or family-floater purchase has an official current policy wording, stable UIN/product identifier, and no governed product exposure at the frozen baseline.",
+    "stopping_rule": "Stop insurer screening at the first insurer for which at least one product satisfies the insurer_screening_rule. Later insurers are not enumerated because they cannot change the deterministic selection outcome.",
+    "selected_insurer_product_enumeration": "Enumerate every product from the first eligible insurer that can be verified to satisfy the v3 eligible-product rules using metadata only. Record eligible and excluded products for that insurer with reasons.",
+    "product_tie_break": "Sort eligible products for the selected insurer by normalized UIN/product identifier ascending and select the first one.",
+    "selection_override_authorized": false
+  },
+  "unchanged_v3_rules": [
+    "selection must occur after protocol and amendment merge",
+    "target-clause content must not be reviewed before the Product #6 selection record is committed",
+    "runtime and semantic/spec surfaces remain frozen during the initial attempt",
+    "target concepts remain copayment and waiting_period",
+    "all primary anti-gaming metrics remain applicable",
+    "historical Product #5 scoring remains immutable",
+    "Motor readiness remains gated on a new neutral repeatability proof"
+  ],
+  "governance": {
+    "amendment_changes_candidate_outcome_ordering": false,
+    "amendment_uses_product_semantics": false,
+    "retroactive_product_selection_authorized": false,
+    "publication_authorized": false
+  }
+}
