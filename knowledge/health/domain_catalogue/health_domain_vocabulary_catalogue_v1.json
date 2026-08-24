@@ -1,0 +1,708 @@
+{
+  "schema_version": "1.0",
+  "catalogue_type": "health_domain_vocabulary_catalogue_v1",
+  "catalogue_status": "OPEN_WORLD_SEED",
+  "domain": "health",
+  "as_of_date": "2026-08-24",
+  "purpose": "Catalogue broad Health-insurance vocabulary, authoritative general definitions, concept boundaries, claim-aspect placement, and important questions without manufacturing product-semantic contracts or implying domain completeness.",
+  "invariants": {
+    "unknown_variant_space_open": true,
+    "known_gap_set_claimed_exhaustive": false,
+    "completion_percentage_authorized": false,
+    "domain_knowledge_may_answer_instance_specific_query": false,
+    "typed_product_semantics_may_be_authored_without_evidence_pressure": false
+  },
+  "authoritative_sources": {
+    "irdai_health_dept_faq_2024_framework": {
+      "publisher": "Insurance Regulatory and Development Authority of India",
+      "authority_role": "regulatory_authority_explainer",
+      "source_type": "official_regulator_faq",
+      "title": "HEALTH DEPT - FAQs",
+      "url": "https://irdai.gov.in/health-dept",
+      "currentness_checked_on": "2026-08-24",
+      "framework_note": "The page states that its FAQs provide simple explanations/clarifications under the Insurance Regulatory and Development Authority of India (Insurance Products) Regulations, 2024 and the Master Circular on Health Insurance dated 29-05-2024."
+    },
+    "irdai_master_circular_health_2024_listing": {
+      "publisher": "Insurance Regulatory and Development Authority of India",
+      "authority_role": "regulatory_primary",
+      "source_type": "official_regulator_circular_listing",
+      "title": "Master Circular on Health Insurance Business 29052024",
+      "reference_number": "IRDAI/HLT/CIR/PRO/84/5/2024",
+      "date": "2024-05-29",
+      "url": "https://irdai.gov.in/circulars?filterDepartment=HLT&filtersApplied=true",
+      "currentness_checked_on": "2026-08-24",
+      "status_observed": "Non-Archived"
+    },
+    "policyscna_copay_governed_meaning_asset_v1": {
+      "publisher": "PolicyScna Knowledge Factory",
+      "authority_role": "governed_internal_meaning_asset",
+      "source_type": "repository_governed_asset",
+      "path": "knowledge/factory/meaning_assets/copay_governed_meaning_asset.json",
+      "use_boundary": "May support generic copay explanation only; insurer/product/customer mechanics require applicable governed evidence."
+    }
+  },
+  "concepts": [
+    {
+      "concept_id": "health:health_insurance",
+      "canonical_label": "Health Insurance",
+      "synonyms": ["health insurance policy", "medical insurance"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "A health-insurance contract provides financial protection or stated benefits for covered sickness, medical, surgical, hospital or other health-related events, subject to the policy terms.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q1"],
+      "boundary_notes": [
+        "A general definition does not determine whether one customer's treatment is covered.",
+        "The applicable product wording, schedule and claim facts govern product- and instance-specific conclusions."
+      ],
+      "important_questions": [
+        "Is the policy indemnity-based, benefit-based, or a combination permitted by the product?",
+        "Which product/version and customer schedule govern the requested conclusion?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "health_insurance.regulatory_definition",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "general_definition",
+          "authority_context": "current applicable insurance law and IRDAI health-insurance framework"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:indemnity_health_insurance",
+      "canonical_label": "Indemnity-based Health Insurance",
+      "synonyms": ["indemnity policy", "medical expense reimbursement policy"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "An indemnity-based health policy pays covered medical expenses actually incurred, up to applicable coverage limits and subject to policy terms.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q2"],
+      "boundary_notes": [
+        "Indemnity does not mean every billed expense is admissible.",
+        "Deductibles, copayments, sub-limits, exclusions and other policy conditions may affect the payable amount."
+      ],
+      "important_questions": [
+        "What is the admissible claim amount under the applicable policy terms?",
+        "Which cost-sharing and limits apply before any payment conclusion?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "indemnity_health_insurance.policy_type",
+          "plane": "ProductMechanic",
+          "claim_type": "policy_benefit_basis",
+          "authority_context": "applicable product wording and customer policy schedule"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:benefit_based_health_insurance",
+      "canonical_label": "Benefit-based Health Insurance",
+      "synonyms": ["benefit policy", "fixed benefit policy"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "A benefit-based health policy pays a defined benefit when its insured event and conditions are satisfied rather than reimbursing actual medical expense item by item.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q2"],
+      "boundary_notes": [
+        "The fixed-benefit amount and trigger are product-specific.",
+        "Benefit-based payment logic must not be inferred from indemnity-policy concepts."
+      ],
+      "important_questions": [
+        "What insured event triggers the benefit?",
+        "Does payment terminate or reduce any future benefit under the specific product?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "benefit_based_health_insurance.policy_type",
+          "plane": "ProductMechanic",
+          "claim_type": "policy_benefit_basis",
+          "authority_context": "applicable product wording and customer policy schedule"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:customer_information_sheet",
+      "canonical_label": "Customer Information Sheet",
+      "synonyms": ["CIS", "customer information sheet (CIS)"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "The Customer Information Sheet is the insurer-provided document that consolidates key policy information in simpler language at one place for the policyholder or covered group member.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q5", "irdai_health_dept_faq_2024_framework#q6"],
+      "boundary_notes": [
+        "The CIS is an important policy information source but does not automatically supersede the legal wording for every claim-aspect.",
+        "Authority must be evaluated claim-by-claim against the wording, schedule, endorsements and regulatory requirements."
+      ],
+      "important_questions": [
+        "Which policy/version does this CIS belong to?",
+        "Does the requested claim require a detail present only in the policy wording or schedule?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "customer_information_sheet.regulatory_requirement",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "required_policy_information_document",
+          "authority_context": "current IRDAI health-insurance framework"
+        },
+        {
+          "aspect_id": "customer_information_sheet.product_summary",
+          "plane": "ProductMechanic",
+          "claim_type": "product_information_summary",
+          "authority_context": "applicable CIS reconciled with product wording and policy-instance evidence"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:family_floater",
+      "canonical_label": "Family Floater",
+      "synonyms": ["family floater policy", "floater sum insured"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "A family floater policy provides a shared sum-insured pool that may be used by one or more covered family members, subject to the policy terms.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q8"],
+      "boundary_notes": [
+        "A shared pool does not establish how a specific benefit, sub-limit or restoration operates for each member.",
+        "Member eligibility and the applicable sum insured must be resolved from the policy instance."
+      ],
+      "important_questions": [
+        "Who are the insured members under the current policy period?",
+        "Which benefit limits are shared and which are member-specific?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "family_floater.shared_limit_structure",
+          "plane": "ProductMechanic",
+          "claim_type": "coverage_limit_structure",
+          "authority_context": "applicable product wording and policy schedule"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:waiting_period",
+      "canonical_label": "Waiting Period",
+      "synonyms": ["waiting period", "coverage waiting period"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "A waiting period is a policy-specified time during which identified conditions, treatments, services or situations are not yet covered.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q9", "irdai_health_dept_faq_2024_framework#q40"],
+      "boundary_notes": [
+        "Different semantic variants can have different start bases, scopes, durations and continuity rules.",
+        "A regulatory maximum does not establish the duration in a particular product or policy instance.",
+        "Personal underwriting-specific waiting periods require their own product semantic and customer-instance evidence."
+      ],
+      "important_questions": [
+        "Which waiting-period variant applies to the condition or benefit?",
+        "What event starts the period and what continuity credit applies?",
+        "Is the requested duration a regulatory maximum, product rule, or customer-specific underwriting value?"
+      ],
+      "current_regulatory_facts": [
+        {
+          "fact": "maximum_general_waiting_period",
+          "value": 36,
+          "unit": "MONTHS",
+          "authority_ref": "irdai_health_dept_faq_2024_framework#q9",
+          "as_of_date": "2026-08-24"
+        }
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "waiting_period.regulatory_limit",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "regulatory_waiting_period_limit",
+          "authority_context": "current IRDAI health-insurance framework"
+        },
+        {
+          "aspect_id": "waiting_period.product_implementation",
+          "plane": "ProductMechanic",
+          "claim_type": "product_waiting_period_mechanic",
+          "authority_context": "current applicable product wording plus policy-instance continuity/underwriting evidence where required"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:specific_waiting_period",
+      "canonical_label": "Specific Waiting Period",
+      "synonyms": ["specified disease waiting period", "specific disease/procedure waiting period"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "A specific waiting period delays coverage for identified diseases or treatments for a stated period, typically subject to continuous renewal and policy exceptions such as accident-related treatment where applicable.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q9", "irdai_health_dept_faq_2024_framework#q40"],
+      "boundary_notes": [
+        "The actual disease/procedure list is product-version specific.",
+        "It is distinct from a PED waiting period and from an underwriting-assigned personal waiting period."
+      ],
+      "important_questions": [
+        "Is the claimed condition on the applicable product's specified list?",
+        "Has continuity reduced or completed the applicable wait?"
+      ],
+      "current_regulatory_facts": [
+        {
+          "fact": "maximum_specific_waiting_period",
+          "value": 36,
+          "unit": "MONTHS",
+          "authority_ref": "irdai_health_dept_faq_2024_framework#q40",
+          "as_of_date": "2026-08-24"
+        }
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "specific_waiting_period.regulatory_limit",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "specific_waiting_period_limit",
+          "authority_context": "current IRDAI health-insurance framework"
+        },
+        {
+          "aspect_id": "specific_waiting_period.product_list",
+          "plane": "ProductMechanic",
+          "claim_type": "covered_condition_waiting_rule",
+          "authority_context": "applicable product wording and continuity context"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:pre_existing_disease",
+      "canonical_label": "Pre-existing Disease",
+      "synonyms": ["PED", "pre-existing condition"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "A pre-existing disease is a condition, ailment, injury or disease that falls within the regulator-defined look-back criteria before policy commencement, including qualifying prior diagnosis, advice or treatment.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q10"],
+      "boundary_notes": [
+        "The regulatory PED definition is distinct from the product's PED waiting-period implementation.",
+        "Whether a particular customer's condition is PED is an instance-specific determination requiring medical/policy evidence."
+      ],
+      "important_questions": [
+        "What is the applicable regulatory PED definition for the policy date?",
+        "What diagnosis, advice or treatment evidence exists within the applicable look-back window?",
+        "What product waiting-period or underwriting rule then applies?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "pre_existing_disease.regulatory_definition",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "ped_definition",
+          "authority_context": "regulatory definition applicable to the policy date"
+        },
+        {
+          "aspect_id": "pre_existing_disease.product_treatment",
+          "plane": "ProductMechanic",
+          "claim_type": "ped_product_implementation",
+          "authority_context": "applicable product wording, schedule, underwriting and continuity evidence"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:exclusion",
+      "canonical_label": "Exclusion",
+      "synonyms": ["policy exclusion", "not covered condition"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "An exclusion identifies conditions, treatments, services or situations that the policy does not cover, subject to the exact policy and regulatory framework.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q11"],
+      "boundary_notes": [
+        "An exclusion is not the same as a waiting period, deductible, copayment or sub-limit.",
+        "Specific exclusions and any exceptions must be established from the applicable product wording and policy instance."
+      ],
+      "important_questions": [
+        "Is the exclusion permanent, time-bound, conditional, or subject to an exception?",
+        "Which exact clause and product version governs it?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "exclusion.product_scope",
+          "plane": "ProductMechanic",
+          "claim_type": "coverage_exclusion",
+          "authority_context": "applicable product wording and regulatory restrictions on exclusions"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:copayment",
+      "canonical_label": "Co-payment",
+      "synonyms": ["copay", "co-pay", "co-payment"],
+      "domain_knowledge_maturity": "DK3_EXPLANATION_READY",
+      "definition_summary": "A co-payment is a cost-sharing rule under which the insured bears a specified amount or percentage of the admissible claim basis when the applicable policy rule is triggered.",
+      "authoritative_definition_refs": [
+        "irdai_health_dept_faq_2024_framework#q12",
+        "policyscna_copay_governed_meaning_asset_v1"
+      ],
+      "boundary_notes": [
+        "A generic copayment definition does not identify the applicable percentage, trigger, scope, calculation base, stacking or waiver for a product.",
+        "A copayment is distinct from a deductible and does not itself establish final insurer liability.",
+        "Customer-selected or customer-applicable copayment values require policy-instance evidence."
+      ],
+      "important_questions": [
+        "What triggers this copayment and to which benefit/claim scope does it apply?",
+        "What percentage or amount applies and on what calculation base?",
+        "Is it standalone, additional/cumulative, waived, or combined with another cost share?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "copayment.regulatory_definition",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "cost_sharing_definition",
+          "authority_context": "current IRDAI health-insurance framework"
+        },
+        {
+          "aspect_id": "copayment.product_mechanic",
+          "plane": "ProductMechanic",
+          "claim_type": "copayment_percentage_trigger_scope_and_composition",
+          "authority_context": "applicable product wording plus policy-instance selection where required"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:deductible",
+      "canonical_label": "Deductible",
+      "synonyms": ["policy deductible", "claim deductible"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "A deductible is a cost-sharing threshold specified by the policy that must be met before insurer benefits become payable under the applicable terms.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q13"],
+      "boundary_notes": [
+        "A deductible is not a copayment percentage.",
+        "The deductible amount, aggregation period, interaction with other covers, and benefit scope are product-specific mechanics."
+      ],
+      "important_questions": [
+        "Is the deductible per claim, aggregate, or otherwise defined by the product?",
+        "Which claim amount or benefit is tested against it?",
+        "How does it interact with copayment, top-up or other cost-sharing rules?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "deductible.regulatory_definition",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "cost_sharing_definition",
+          "authority_context": "current IRDAI health-insurance framework"
+        },
+        {
+          "aspect_id": "deductible.product_mechanic",
+          "plane": "ProductMechanic",
+          "claim_type": "deductible_amount_scope_and_aggregation",
+          "authority_context": "applicable product wording and policy schedule"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:sub_limit",
+      "canonical_label": "Sub-limit",
+      "synonyms": ["sublimit", "benefit sub-limit", "expense sub-limit"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "A sub-limit is a pre-defined cap within the policy for a specified condition, treatment, service or situation.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q14"],
+      "boundary_notes": [
+        "A sub-limit is narrower than the overall sum insured and must be tied to its stated scope.",
+        "It must not be treated as a universal cap for unrelated benefits."
+      ],
+      "important_questions": [
+        "What benefit, treatment or expense does the sub-limit govern?",
+        "Is it an amount, percentage, frequency, duration or another type of cap?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "sub_limit.product_mechanic",
+          "plane": "ProductMechanic",
+          "claim_type": "benefit_or_expense_limit",
+          "authority_context": "applicable product wording and policy schedule"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:free_look_period",
+      "canonical_label": "Free Look Period",
+      "synonyms": ["free-look period", "free look"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "The free-look period gives an eligible policyholder a limited period after receiving the policy document to review the terms and cancel when the regulatory and policy conditions for free-look cancellation are met.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q19", "irdai_health_dept_faq_2024_framework#q20"],
+      "boundary_notes": [
+        "Free-look eligibility, refund deductions and claim-related conditions are governed by the applicable regulatory framework and policy context.",
+        "It is distinct from cancellation later during the policy term."
+      ],
+      "important_questions": [
+        "When was the policy document received?",
+        "Was any claim made during the relevant period?",
+        "What deductions are permitted for the refund?"
+      ],
+      "current_regulatory_facts": [
+        {
+          "fact": "free_look_period",
+          "value": 30,
+          "unit": "DAYS",
+          "authority_ref": "irdai_health_dept_faq_2024_framework#q19",
+          "as_of_date": "2026-08-24"
+        }
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "free_look_period.regulatory_right",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "policy_review_and_cancellation_right",
+          "authority_context": "regulatory rules applicable to policy issue/receipt date"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:cashless_facility",
+      "canonical_label": "Cashless Facility",
+      "synonyms": ["cashless claim", "cashless treatment", "cashless authorization"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "Cashless is a claim-servicing arrangement where the insurer or its TPA directly pays an empanelled hospital or healthcare provider to the extent authorized under the policy terms.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q23", "irdai_health_dept_faq_2024_framework#q24"],
+      "boundary_notes": [
+        "Cashless authorization is not a guarantee that every billed item is covered or that final claim liability is fixed.",
+        "Cashless is primarily an operational claim-servicing concept, while coverage/admissibility remains governed by product and claim evidence."
+      ],
+      "important_questions": [
+        "Is the provider eligible for cashless servicing under the applicable arrangement?",
+        "What amount and conditions were actually authorized?",
+        "Which remaining items still require final claim assessment?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "cashless_facility.operational_process",
+          "plane": "ClaimsOperational",
+          "claim_type": "cashless_authorization_and_direct_payment_process",
+          "authority_context": "current claims servicing rules, insurer/TPA process and case-specific authorization"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:grace_period",
+      "canonical_label": "Grace Period",
+      "synonyms": ["renewal grace period", "premium grace period"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "The grace period is the limited time after a premium due date during which payment may be made to renew or continue the policy without losing specified continuity benefits, subject to the applicable coverage rules.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q26", "irdai_health_dept_faq_2024_framework#q27", "irdai_health_dept_faq_2024_framework#q28"],
+      "boundary_notes": [
+        "Continuity preservation and coverage during the grace period are separate questions.",
+        "Coverage treatment can differ depending on premium mode and applicable policy terms."
+      ],
+      "important_questions": [
+        "What premium mode applies?",
+        "Was renewal premium paid within the applicable grace period?",
+        "Is the question about continuity credit or coverage for an event during the unpaid period?"
+      ],
+      "current_regulatory_facts": [
+        {
+          "fact": "grace_period_monthly_installment",
+          "value": 15,
+          "unit": "DAYS",
+          "authority_ref": "irdai_health_dept_faq_2024_framework#q26",
+          "as_of_date": "2026-08-24"
+        },
+        {
+          "fact": "grace_period_quarterly_half_yearly_annual",
+          "value": 30,
+          "unit": "DAYS",
+          "authority_ref": "irdai_health_dept_faq_2024_framework#q26",
+          "as_of_date": "2026-08-24"
+        }
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "grace_period.regulatory_continuity",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "renewal_continuity_rule",
+          "authority_context": "current regulatory grace-period framework"
+        },
+        {
+          "aspect_id": "grace_period.product_coverage_during_gap",
+          "plane": "ProductMechanic",
+          "claim_type": "coverage_during_grace_period",
+          "authority_context": "premium mode and applicable product/policy terms"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:no_claim_bonus",
+      "canonical_label": "No Claim Bonus",
+      "synonyms": ["NCB", "cumulative bonus", "renewal premium discount"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "No Claim Bonus is a renewal reward that may be provided, with the policyholder's applicable choice/consent, as an increase in sum insured through cumulative bonus and/or a renewal-premium discount.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q30"],
+      "boundary_notes": [
+        "The exact accrual, reduction, cap and eligibility mechanics are product-specific.",
+        "Cumulative bonus and premium discount are different forms of NCB and must not be collapsed into one numeric mechanic."
+      ],
+      "important_questions": [
+        "Which form of NCB does the product offer and what did the policyholder choose?",
+        "What claim history and renewal conditions affect the current accrued value?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "no_claim_bonus.product_mechanic",
+          "plane": "ProductMechanic",
+          "claim_type": "renewal_reward_mechanic",
+          "authority_context": "applicable product wording, renewal terms and policy-instance history"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:break_in_policy",
+      "canonical_label": "Break in Policy",
+      "synonyms": ["policy break", "break in continuity"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "A break in policy is the continuity gap that can arise when required renewal or installment premium is not paid by the due date or within the applicable grace period.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q33"],
+      "boundary_notes": [
+        "A break can affect accrued continuity benefits but the exact consequence must be determined under the current regulatory and policy rules.",
+        "It is distinct from a permitted grace period during which continuity may still be preserved."
+      ],
+      "important_questions": [
+        "Was payment made within the applicable grace period?",
+        "Which continuity credits are affected by the break?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "break_in_policy.continuity_status",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "coverage_continuity_status",
+          "authority_context": "renewal chronology and current regulatory continuity rules"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:migration",
+      "canonical_label": "Migration",
+      "synonyms": ["policy migration", "health policy migration"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "Migration is the facility to transfer eligible credits from a previous health policy to another policy with the same insurer, subject to applicable rules.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q35", "irdai_health_dept_faq_2024_framework#q38"],
+      "boundary_notes": [
+        "Migration is within the same insurer and is distinct from portability to another insurer.",
+        "The exact credits transferred and their application in the new product require policy and regulatory evidence."
+      ],
+      "important_questions": [
+        "Are the old and new policies with the same insurer?",
+        "Which credits are eligible for transfer and to what extent?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "migration.regulatory_right_and_credit_transfer",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "same_insurer_continuity_transfer",
+          "authority_context": "current migration rules and policy chronology"
+        },
+        {
+          "aspect_id": "migration.destination_product_treatment",
+          "plane": "ProductMechanic",
+          "claim_type": "migrated_credit_application",
+          "authority_context": "destination product wording and resolved migrated policy instance"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:portability",
+      "canonical_label": "Portability",
+      "synonyms": ["policy portability", "health insurance porting", "porting"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "Portability is the facility to move a health policy to another insurer while carrying eligible continuity credits such as those relating to PED and specific waiting periods, subject to applicable rules.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q36", "irdai_health_dept_faq_2024_framework#q37", "irdai_health_dept_faq_2024_framework#q38"],
+      "boundary_notes": [
+        "Portability moves between insurers and is distinct from migration within the same insurer.",
+        "Transferred credit does not make all terms of the old and new products equivalent."
+      ],
+      "important_questions": [
+        "Is the request being made in the applicable renewal window?",
+        "What continuous-coverage and waiting-period credits exist?",
+        "How does the acquiring product apply those credits?"
+      ],
+      "current_regulatory_facts": [
+        {
+          "fact": "standard_portability_application_window_before_renewal",
+          "earliest": 60,
+          "latest": 30,
+          "unit": "DAYS_BEFORE_RENEWAL_DUE_DATE",
+          "authority_ref": "irdai_health_dept_faq_2024_framework#q37",
+          "as_of_date": "2026-08-24",
+          "qualification": "The current FAQ also notes insurer discretion to consider proposals closer to renewal subject to no break in policy."
+        }
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "portability.regulatory_right_and_timeline",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "cross_insurer_continuity_transfer",
+          "authority_context": "current portability rules and renewal chronology"
+        },
+        {
+          "aspect_id": "portability.destination_product_treatment",
+          "plane": "ProductMechanic",
+          "claim_type": "ported_credit_application",
+          "authority_context": "acquiring product wording and resolved policy-instance continuity record"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:moratorium_period",
+      "canonical_label": "Moratorium Period",
+      "synonyms": ["moratorium", "health insurance moratorium"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "The moratorium period is the required continuous coverage period after which the insurer generally cannot contest the policy or claim for non-disclosure or misrepresentation, subject to the fraud exception and rules for later sum-insured enhancement.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q39", "irdai_health_dept_faq_2024_framework#q40"],
+      "boundary_notes": [
+        "Moratorium is a regulatory contestability rule, not a waiting period for a benefit.",
+        "Fraud remains an exception, and enhanced sum-insured portions may have their own moratorium timeline."
+      ],
+      "important_questions": [
+        "How many continuous months of qualifying coverage have accrued including permitted continuity transfers?",
+        "Was the sum insured enhanced and, if so, when?",
+        "Is the issue non-disclosure/misrepresentation or alleged fraud?"
+      ],
+      "current_regulatory_facts": [
+        {
+          "fact": "moratorium_period",
+          "value": 60,
+          "unit": "CONTINUOUS_MONTHS",
+          "authority_ref": "irdai_health_dept_faq_2024_framework#q39",
+          "as_of_date": "2026-08-24"
+        }
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "moratorium_period.regulatory_contestability_rule",
+          "plane": "RegulatoryLifecycle",
+          "claim_type": "contestability_limit",
+          "authority_context": "current regulatory rules plus policy continuity and sum-insured chronology"
+        }
+      ]
+    },
+    {
+      "concept_id": "health:third_party_administrator",
+      "canonical_label": "Third Party Administrator",
+      "synonyms": ["TPA", "health TPA"],
+      "domain_knowledge_maturity": "DK2_CONCEPT_BOUNDARY_DEFINED",
+      "definition_summary": "A Third Party Administrator is an Authority-registered company engaged by an insurer to provide specified health-insurance servicing functions such as cashless/claims administration and customer service.",
+      "authoritative_definition_refs": ["irdai_health_dept_faq_2024_framework#q41"],
+      "boundary_notes": [
+        "A TPA is not the insurer and does not replace the insurer's contractual/legal responsibility.",
+        "The TPA's role is operational and depends on the insurer engagement and applicable servicing arrangement."
+      ],
+      "important_questions": [
+        "Which TPA, if any, services the applicable policy/claim?",
+        "Which action is performed by the TPA and which decision remains with the insurer?"
+      ],
+      "claim_aspects": [
+        {
+          "aspect_id": "third_party_administrator.claims_servicing_role",
+          "plane": "ClaimsOperational",
+          "claim_type": "claims_administration_and_customer_service_role",
+          "authority_context": "current TPA regulatory framework and insurer-specific servicing arrangement"
+        }
+      ]
+    }
+  ],
+  "observed_terms_pending_authoritative_definition_or_boundary_review": [
+    "sum_insured",
+    "room_rent_limit",
+    "icu_charge_limit",
+    "network_hospital",
+    "healthcare_provider",
+    "reimbursement_claim",
+    "pre_authorization",
+    "domiciliary_hospitalization",
+    "homecare_treatment",
+    "outpatient_treatment",
+    "day_care_treatment",
+    "ayush_treatment",
+    "restoration_of_sum_insured",
+    "maternity_cover",
+    "newborn_cover",
+    "ambulance_cover",
+    "non_medical_expenses",
+    "permanent_exclusion",
+    "underwriting_loading",
+    "personal_waiting_period"
+  ],
+  "catalogue_notes": [
+    "Pending terms are vocabulary observations, not missing percentages in a finite completion model.",
+    "No pending term authorizes a product-specific or customer-specific answer until its applicable knowledge state and evidence are resolved.",
+    "The catalogue intentionally keeps unknown semantic variant space open even for DK3 concepts."
+  ]
+}
