@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_type": "health_product7_pre_certification_frozen_fit_review",
+  "checkpoint_status": "FROZEN_FIT_REVIEW_COMPLETE_SOURCE_LINEAGE_PENDING",
+  "product": {
+    "product_number": 7,
+    "insurer": "ICICI Lombard General Insurance Company Limited",
+    "product_name": "Arogya Sanjeevani Policy, ICICI Lombard",
+    "uin": "ICIHLIP20178V011920"
+  },
+  "governance": {
+    "frozen_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+    "selection_protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v4_product7.json",
+    "pre_certification_scoring_amendment_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v4_1_product7_scoring_amendment.json",
+    "selection_record_path": "docs/architecture/health_product7_selection_icici_lombard_arogya_sanjeevani_2026-08-24.json",
+    "final_repeatability_verdict_assigned": false,
+    "motor_readiness_authorized": false,
+    "runtime_or_semantic_change_authorized_by_this_checkpoint": false
+  },
+  "source_review": {
+    "official_policy_wording_url": "https://www.icicilombard.com/docs/default-source/policy-wordings-product-brochure/arogya-sanjeevani-policy-policy-wordings.pdf",
+    "source_authority_role": "primary_legal_candidate",
+    "authoritative_semantic_text_reviewed": true,
+    "exact_source_binary_acquired_into_governed_repository": false,
+    "source_content_sha256": null,
+    "candidate_text_sha256_values": null,
+    "canonical_source_registration_complete": false,
+    "certification_authorized": false,
+    "lineage_blocker_class": "OPERATIONAL_SOURCE_ACQUISITION_EXECUTION_BOUNDARY",
+    "lineage_blocker_reason": "The repository already contains a generic PDFDownloadAgent that downloads exact response bytes, validates PDF-like content, persists the raw asset, and computes SHA-256. The connected GitHub execution surface can inspect but cannot execute that network retrieval against the insurer URL, while introducing a Product-7-specific CI/download workflow would contaminate the frozen repeatability experiment. No substitute text hash or fabricated source hash is permitted."
+  },
+  "frozen_fit_review": {
+    "copayment": {
+      "observed_shape": {
+        "rate_percentage": 5,
+        "calculation_basis_wording": "claim amount admissible and payable",
+        "applicability_scope_wording": "each and every claim under the Policy",
+        "policy_wide": true,
+        "documented_trigger_condition": null
+      },
+      "baseline_fit_status": "REPRESENTATION_GAP_INDICATED",
+      "not_final_classification": true,
+      "baseline_findings": [
+        "generic_legal_condition_binding_v1 permits conditional_copayment_rule but no standalone fixed policy-wide copayment assertion type",
+        "conditional_copayment_obligation_v1 requires a documented trigger condition and fails closed when one cannot be extracted",
+        "each and every claim is applicability scope, not a trigger condition",
+        "ROOM_CATEGORY_RATE_MATRIX requires selector-driven room-category mechanics and is not the observed semantic shape",
+        "coercing policy-wide applicability into a trigger is prohibited by the v4.1 semantic-correctness and silent-coercion rules"
+      ]
+    },
+    "waiting_period_variants": [
+      {
+        "variant_id": "PED_FIXED_48_MONTHS",
+        "baseline_fit_status": "REUSE_INDICATED",
+        "not_final_classification": true,
+        "existing_shape_mapping": [
+          "WaitingPeriodType.PRE_EXISTING_DISEASE",
+          "scalar duration + unit",
+          "continuity_dependency for portability credit",
+          "sum_insured_enhancement_effect=REAPPLIES_TO_ENHANCED_PORTION"
+        ]
+      },
+      {
+        "variant_id": "INITIAL_FIXED_30_DAYS",
+        "baseline_fit_status": "REUSE_INDICATED",
+        "not_final_classification": true,
+        "existing_shape_mapping": [
+          "WaitingPeriodType.INITIAL",
+          "scalar duration + unit",
+          "accident exception",
+          "continuous-coverage exception/dependency",
+          "sum_insured_enhancement_effect=REAPPLIES_TO_ENHANCED_PORTION"
+        ]
+      },
+      {
+        "variant_id": "SPECIFIC_DISEASE_24_MONTHS",
+        "baseline_fit_status": "REUSE_INDICATED",
+        "not_final_classification": true,
+        "existing_shape_mapping": [
+          "WaitingPeriodType.SPECIFIC_DISEASE_PROCEDURE",
+          "scalar duration + listed-condition applies_to",
+          "accident exception",
+          "continuity_dependency for portability credit",
+          "sum_insured_enhancement_effect=REAPPLIES_TO_ENHANCED_PORTION"
+        ]
+      },
+      {
+        "variant_id": "SPECIFIC_DISEASE_48_MONTHS",
+        "baseline_fit_status": "REUSE_INDICATED",
+        "not_final_classification": true,
+        "existing_shape_mapping": [
+          "WaitingPeriodType.SPECIFIC_DISEASE_PROCEDURE",
+          "scalar duration + listed-condition applies_to",
+          "accident exception",
+          "continuity_dependency for portability credit",
+          "sum_insured_enhancement_effect=REAPPLIES_TO_ENHANCED_PORTION"
+        ]
+      },
+      {
+        "variant_id": "PED_VS_SPECIFIC_LONGER_WAIT_PRECEDENCE",
+        "baseline_fit_status": "REPRESENTATION_GAP_INDICATED",
+        "not_final_classification": true,
+        "observed_relationship": "If a listed disease/procedure also qualifies as a pre-existing disease, the longer of the applicable waiting periods applies.",
+        "baseline_findings": [
+          "the frozen scalar waiting-period contract represents each waiting mechanic independently",
+          "no frozen certifiable cross-mechanic longer-of/precedence relationship implementation was found",
+          "existing frozen TATA/HDFC specified-disease binding specs explicitly defer relationship rules to separate certification"
+        ]
+      }
+    ]
+  },
+  "pre_certification_result_boundary": {
+    "claims_certified": 0,
+    "semantic_correctness_census_executed": false,
+    "primary_repeatability_metrics_scored": false,
+    "repeatability_verdict": "PENDING_EXACT_SOURCE_LINEAGE",
+    "conditional_projection": "If the indicated representation gaps remain after exact source registration and semantic spot-checking, the frozen v4 success bar yields REPEATABILITY_NOT_PROVEN.",
+    "motor_gate": "CLOSED"
+  },
+  "checkpoint_change_budget": {
+    "new_runtime_files": 0,
+    "runtime_loc_delta": 0,
+    "new_semantic_runtime_shapes": 0,
+    "new_declarative_schema_shapes_for_product_semantics": 0,
+    "product_specific_branches_in_generic_runtime": 0,
+    "decision_logic_added_in_config_or_fixtures": 0,
+    "silent_semantic_coercions": 0
+  }
+}
