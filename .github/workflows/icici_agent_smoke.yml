@@ -55,32 +55,67 @@ jobs:
         run: python -m scripts.run_queue_capture
 
       - name: Run existing HTML sectioning
+        if: always()
         run: python -m scripts.run_html_sectioning
 
       - name: Run existing product signal extraction
+        if: always()
+        continue-on-error: true
         run: python -m scripts.run_product_signal_extraction
 
-      - name: Run existing PDF discovery
+      - name: Run existing PDF discovery from captured HTML
+        if: always()
+        continue-on-error: true
         run: python -m scripts.run_pdf_discovery
 
-      - name: Run existing PDF download and binary hashing
-        run: python -m scripts.run_pdf_download
-
-      - name: Build smoke inventory
+      - name: Seed selected authoritative wording for downloader-only smoke
+        if: always()
         shell: bash
         run: |
+          mkdir -p discovery/pdf_queue
+          cat > discovery/pdf_queue/icici_lombard_direct_smoke_pdf_urls.json <<'JSON'
+          {
+            "insurer_id": "icici_lombard_direct_smoke",
+            "items": [
+              {
+                "insurer_id": "icici_lombard_direct_smoke",
+                "document_type": "policy_wording",
+                "url": "https://www.icicilombard.com/docs/default-source/default-document-library/arogya-sanjeevani-icici-lombard.pdf",
+                "source_page_url": "https://www.icicilombard.com/health-insurance/arogya-sanjeevani-policy",
+                "confidence_score": 1.0
+              }
+            ]
+          }
+          JSON
+
+      - name: Run existing PDF download and binary hashing
+        if: always()
+        continue-on-error: true
+        run: python -m scripts.run_pdf_download
+
+      - name: Build smoke inventory and print capture metadata
+        if: always()
+        shell: bash
+        run: |
+          echo '=== queue ==='
+          cat discovery/url_queue/icici_lombard_arogya_discovered_urls.json || true
+          echo '=== capture metadata ==='
+          find archive/metadata/icici_lombard -type f -name '*.json' -print -exec cat {} \; 2>/dev/null || true
           echo '=== archive files ==='
-          find archive -type f -maxdepth 5 -print 2>/dev/null | sort || true
+          find archive -type f -maxdepth 6 -print 2>/dev/null | sort || true
           echo '=== parsed files ==='
-          find parsed -type f -maxdepth 5 -print 2>/dev/null | sort || true
+          find parsed -type f -maxdepth 6 -print 2>/dev/null | sort || true
           echo '=== signals files ==='
-          find signals -type f -maxdepth 5 -print 2>/dev/null | sort || true
+          find signals -type f -maxdepth 6 -print 2>/dev/null | sort || true
           echo '=== pdf queue ==='
-          find discovery/pdf_queue -type f -maxdepth 3 -print 2>/dev/null | sort || true
+          find discovery/pdf_queue -type f -maxdepth 3 -print -exec cat {} \; 2>/dev/null || true
           echo '=== raw pdf hashes ==='
           find archive/raw_pdf -type f -name '*.pdf' -print0 2>/dev/null | xargs -0 -r sha256sum || true
+          echo '=== pdf registry ==='
+          cat registry/pdf_registry.json 2>/dev/null || true
 
       - name: Upload generated acquisition artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: icici-arogya-agent-smoke
@@ -94,6 +129,7 @@ jobs:
             archive/screenshots/icici_lombard/**
             archive/metadata/icici_lombard/**
             archive/raw_pdf/icici_lombard/**
+            archive/raw_pdf/icici_lombard_direct_smoke/**
             parsed/html_sections/icici_lombard/**
             signals/product_signals/icici_lombard/**
             registry/pdf_registry.json
