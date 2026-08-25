@@ -11,8 +11,19 @@
     "semantic_certification_does_not_by_itself_authorize_current_product_scoring": true,
     "historical_reasoning_use_cases_remain_supported": true
   },
+  "legacy_version_status_boundary": {
+    "field": "EvidencePackage.version_status",
+    "known_legacy_certifier_value": "CURRENT_APPLICABLE",
+    "authority": "NON_AUTHORITATIVE_FOR_TEMPORAL_CURRENTNESS",
+    "current_product_scoring_may_consume_this_field": false,
+    "currentness_must_come_from": "document_identity_resolution_overlay_v1",
+    "rationale": "Legacy certification builders populate version_status without consulting temporal governance. The field may describe the certification case's intended version applicability but cannot establish current product evidence eligibility.",
+    "migration_decision": "DEFER_CONTRACT_RENAME_UNTIL_VERSIONED_EVIDENCE_CONTRACT_MIGRATION",
+    "reason_for_deferral": "Renaming the legacy field across certification builders is metadata cleanup, not a safety prerequisite after the governed current-product evidence-eligibility gate. Avoid broad churn in proven certification code before the next cold-start experiment."
+  },
   "current_product_scoring_gate": {
     "implementation": "factory_core.governance.repeatability_evidence_eligibility.CurrentProductRepeatabilityEvidenceEligibility",
+    "authoritative_input": "document_identity_resolution_overlay_v1",
     "all_conditions_required": [
       "product identity matches the experiment target entity exactly",
       "document version id matches exactly",
@@ -24,7 +35,8 @@
       "current_entitlement_publication_eligibility is eligible"
     ],
     "fail_closed_on_missing_or_ambiguous_exact_binding": true,
-    "semantic_pass_cannot_override_gate_failure": true
+    "semantic_pass_cannot_override_gate_failure": true,
+    "legacy_evidence_package_version_status_cannot_override_gate_failure": true
   },
   "protocol_consequence": {
     "future_current_product_repeatability_experiments_must_use_gate": true,
@@ -35,6 +47,7 @@
   "non_goals": [
     "do not make historical documents semantically uncertifiable",
     "do not move temporal decision authority into rule certification",
+    "do not change planner CURRENT_APPLICABLE request semantics",
     "do not change the frozen Product #7 v4.1 preregistration",
     "do not authorize Product #8 or Motor"
   ]
