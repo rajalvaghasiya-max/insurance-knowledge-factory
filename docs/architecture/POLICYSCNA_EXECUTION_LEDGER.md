@@ -1,19 +1,19 @@
 # PolicyScna Execution Ledger
 
-Status: C5.1 selection-method hardening
-Verified against: `20d2d678bc029f2394344e7638e0721dbab5d676`
+Status: C5.2 Product #9 preregistration
+Verified against: `d7dc909696670f77d0db565fc8855820775e53f2`
 
 This ledger defines the current authorized execution path. It exists to prevent scope drift, accidental rebuilding of existing capability, and architecture work that is not justified by observed evidence.
 
 ## Current phase
 
-**Health repeatability — selection-method hardening after Product #8 preselection abort.**
+**Health repeatability — Product #9 blind direct-source preregistration.**
 
 Motor, Life and frontend work remain outside the current authorized phase.
 
 ## Immediate objective
 
-Replace contamination-prone search-result screening with a frozen direct-source, blind metadata-selection boundary before any Product #9 screening. Preserve Product #7 and Product #8 as immutable unscored experiment history.
+Freeze Product #9 before screening using the C5.1 blind metadata firewall, exact regulator roots and conservative prior-exposure rules. No Product #9 candidate may be screened until the v6 preregistration is merged and CI is green.
 
 ## Authorized work sequence
 
@@ -31,8 +31,8 @@ Authoritative artifacts:
 Status: **CLOSED**
 
 Closed outcomes:
-- governed source-asset classification restored to tracked repository state;
-- `ProductSignalExtractor` clean-checkout execution restored;
+- governed source-asset classification restored;
+- existing acquisition and `ProductSignalExtractor` clean-checkout execution restored;
 - PDF validation / SHA / immutable-storage boundary covered;
 - browser-assisted protected-PDF transport remains behind the same validation boundary;
 - document-role classification hardened;
@@ -70,70 +70,76 @@ Closure:
 - `docs/architecture/health_product8_selection_abort_2026-08-25.json`
 
 Observed result:
-- the full current insurer universe was reconciled: 27 General + 6 standalone Health insurers;
-- no Product #8 was selected;
+- full current insurer universe reconciled: 27 General + 6 standalone Health insurers;
+- no Product #8 selected;
 - no selected-product acquisition, target semantic review or scoring began;
-- every insurer was prior-excluded, non-qualifying, currentness-insufficient, or quarantined by the locked v5 preselection firewall;
 - Product #8 closed `SELECTION_UNIVERSE_EXHAUSTED_NO_ELIGIBLE_UNCONTAMINATED_CURRENTNESS_CORROBORATED_PRODUCT / UNSCORED`;
 - Product #8 does not prove or falsify semantic repeatability and does not authorize Motor.
 
 Methodology finding:
 
-**`SEARCH_ENGINE_DISCOVERY_IS_TOO_CONTAMINATION_PRONE_FOR_V5_PRESELECTION`.** Broad and exact-UIN search queries frequently exposed prohibited product-document links or target-mechanic snippets even when the intended query was metadata-only. This finding may shape a future protocol but cannot repair Product #8 retroactively.
+**`SEARCH_ENGINE_DISCOVERY_IS_TOO_CONTAMINATION_PRONE_FOR_V5_PRESELECTION`.** Broad/exact-UIN search queries frequently exposed prohibited product-document links or target-mechanic snippets. This finding cannot repair Product #8 retroactively.
 
 ### C5.1 — Blind direct-source preselection method
 
+Status: **CLOSED**
+
+Merge baseline:
+- `d7dc909696670f77d0db565fc8855820775e53f2`
+
+Closed outcomes:
+- work classified `WIRE + small EXTEND`, not a new agent family;
+- existing acquisition / `ProductSignalExtractor` reused;
+- existing `UinCandidateExtractor` reused;
+- `ProductIdentityResolver` remains a post-selection identity capability because verified identity deliberately requires approved product-document evidence;
+- `BlindPreselectionMetadataProjector` now exposes only identity/UIN/source metadata to the selector;
+- raw sections, evidence windows, target semantic buckets and semantic-presence counts are structurally absent from selector input;
+- regression proves semantic-content changes with unchanged identity metadata do not change the blind projection;
+- broad search-result discovery is prohibited for future locked selection runs;
+- direct-source method frozen in `docs/architecture/health_neutral_preselection_method_v5_1.json`.
+
+### C5.2 — Product #9 blind direct-source preregistration
+
 Status: **IN PROGRESS — ONLY AUTHORIZED NEXT WORK**
 
-Work classification: **WIRE + small EXTEND**.
+Protocol candidate:
+- `docs/architecture/health_post_hc1_neutral_cold_start_protocol_v6_product9.json`
 
-Repository census result:
-- existing acquisition / `ProductSignalExtractor`: REUSE;
-- existing `UinCandidateExtractor`: REUSE;
-- existing `ProductIdentityResolver`: REUSE after selection only because verified identity deliberately requires approved product-document evidence;
-- safe identity-only preselection projection: absent before C5.1;
-- new crawler or agent family: not authorized.
+Frozen design:
+- HC-1.5 `f05ca07283f53f2882ed5da3ca27875ba7253318` remains the semantic scoring baseline;
+- C5.1 merge `d7dc909696670f77d0db565fc8855820775e53f2` is the selection-method baseline;
+- exact direct roots are limited to:
+  - `https://irdai.gov.in/non-life-insurers1`
+  - `https://irdai.gov.in/health-insurers1`
+  - `https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount`
+- general web search and search-result snippets are forbidden during the locked screening run;
+- insurer origins may be obtained only from regulator-linked official websites;
+- selector consumes only `blind_preselection_product_metadata_v1`;
+- only Product #8 insurers whose immutable status was `EXCLUDED_METADATA_CURRENTNESS_INSUFFICIENT` may be retried;
+- Product #8 contamination quarantines remain conservatively ineligible because exact-product exposure lineage was not retained well enough to safely downgrade them;
+- selection remains deterministic; semantic fit and manual override are forbidden;
+- after selection, exact bytes + reviewed currentness + v4.2 evidence eligibility must pass before any target clause is read;
+- no product/version substitution after selection.
 
-Authorized deliverables:
-1. `BlindPreselectionMetadataProjector` as an information firewall over existing product-signal output;
-2. selector receives only identity/UIN/source metadata, never raw sections, evidence windows, semantic buckets, or semantic-presence counts;
-3. direct regulator/insurer metadata roots replace broad search-result discovery after a future experiment lock;
-4. semantic content detected internally by existing machine extraction cannot influence selection because it is structurally absent from the selector contract;
-5. raw acquisition/full extraction remains separately retained for audit;
-6. exact blind projection used for selection must be hash-lockable and auditable.
-
-Frozen method artifact:
-- `docs/architecture/health_neutral_preselection_method_v5_1.json`
-
-### C5.2 — Product #9 preregistration
-
-Status: **NOT YET AUTHORIZED UNTIL C5.1 MERGES GREEN**
-
-Before any Product #9 screening, a new preregistration must:
-- name the exact allow-listed direct-source roots used for the run;
-- define deterministic cross-category insurer ordering;
-- attest that selection consumes only `blind_preselection_product_metadata_v1` projections;
-- preserve prior experiment exclusions/history without retroactively changing Product #8;
-- retain HC-1.5 `f05ca07` as the semantic scoring baseline unless a separately approved architecture decision changes the experiment design;
-- retain v4.2 present-tense evidence eligibility before semantic scoring.
-
-**No Product #9 candidate screening is authorized before that preregistration merges.**
+**No Product #9 candidate screening is authorized until this preregistration merges with CI green.**
 
 Motor gate remains **CLOSED**.
 
 ## Known defects / risks currently tracked
 
-1. Live insurer/regulator endpoints can change behavior or defeat automated retrieval; live runs remain operational smoke checks.
-2. Direct-source metadata roots may themselves change layout or link structure; the future selection protocol must fail closed rather than fall back to broad search.
+1. Live regulator/insurer endpoints can change behavior or defeat automated retrieval; locked runs must fail closed rather than fall back to broad search.
+2. Direct-source metadata roots or insurer-linked paths may change layout; no search-engine fallback is authorized during Product #9.
 3. Legacy certifiers emit `EvidencePackage.version_status="CURRENT_APPLICABLE"`; this remains non-authoritative metadata pending a versioned evidence-contract migration.
 4. Generic copay shadow migration is non-authoritative; authority switch is not authorized.
 5. Governed LLM answer pipeline exists as a limited pilot; broader concept coverage is not yet proven.
 6. Product #7 and Product #8 are immutable unscored experiment closures and must not be repaired retroactively.
+7. Product #8 contamination events lack exact-product exposure lineage sufficient to make them Product #9-eligible; the v6 protocol therefore excludes those insurers conservatively.
 
 ## Explicitly not authorized now
 
-- Product #9 screening before C5.1 and a new preregistration are merged
-- broad search-engine candidate screening in the next neutral experiment
+- Product #9 screening before v6 preregistration merge + green CI
+- broad search-engine candidate screening or fallback during Product #9
+- downgrading/reversing Product #8 contamination quarantines for Product #9
 - retroactive Product #7 or Product #8 repair/rescoring/reselection
 - Motor implementation or expansion
 - Life implementation or investment-comparison logic
@@ -147,7 +153,7 @@ Motor gate remains **CLOSED**.
 - generic copay shadow authority switch
 - architecture redesign without an observed falsification
 - vocabulary expansion merely to increase concept count
-- broad certification-contract cleanup during C5.1
+- broad certification-contract cleanup during C5.2
 
 ## Pre-build decision rule
 
