@@ -1,92 +1,108 @@
 # PolicyScna Execution Ledger
 
-Status: C1 v1
-Verified against: `593a5d2afb0ee4c9cdc564941ef9ff4e1a6478e7`
+Status: C4 closure candidate
+Verified against: `9c495b0acf3cf96d2f383faff1a8b84ec927e0cb`
 
 This ledger defines the current authorized execution path. It exists to prevent scope drift, accidental rebuilding of existing capability, and architecture work that is not justified by observed evidence.
 
 ## Current phase
 
-**Health foundation / repeatability and operational fitness.**
+**Health repeatability — preparing the next neutral cold-start experiment.**
 
 Motor, Life and frontend work remain outside the current authorized phase.
 
 ## Immediate objective
 
-Restore a reproducible acquisition-to-governance path and make current-product repeatability scoring depend on the right/current evidence identity, without rebuilding capabilities that already exist.
+Freeze the C4 evidence-eligibility correction, then run a fresh Health cold-start experiment under the repaired acquisition/currentness path and the v4.2 current-product scoring gate.
 
 ## Authorized work sequence
 
 ### C1 — Capability registry / architecture map / execution ledger
 
-Status: IN PROGRESS
+Status: **CLOSED**
 
-Deliverables:
+Authoritative artifacts:
 - `docs/architecture/POLICYSCNA_CAPABILITY_REGISTRY.md`
 - `docs/architecture/POLICYSCNA_ARCHITECTURE_MAP.md`
 - `docs/architecture/POLICYSCNA_EXECUTION_LEDGER.md`
 
-Exit condition: merged, CI green, and used as the pre-build lookup for subsequent work.
-
 ### C2 — Restore acquisition foundation
 
-Authorized actions:
-1. Recover the genuine governed `source_asset_classification_rules.json` (or prove its tracked successor) rather than synthesizing product-specific logic.
-2. Restore `ProductSignalExtractor` clean-checkout execution.
-3. Formalize browser/Xvfb runtime requirements for preservation.
-4. Add representative acquisition fitness tests so CI covers capture → text → screenshot → PDF discovery/classification → PDF download/hash where feasible.
-5. Harden protected-document retrieval generically. Browser-assisted retrieval may be used only if bytes pass the same signature/content validation, immutable raw storage and SHA-256 registration boundary as the existing downloader.
-6. Improve document-role classification based on generic evidence, not insurer-specific branches.
+Status: **CLOSED**
 
-Non-goal: no new crawler architecture unless existing mechanisms are proven incapable.
+Closed outcomes:
+- genuine governed `registry/source_asset_classification_rules.json` restored to tracked repository state;
+- `SourceAssetClassifier` and `ProductSignalExtractor` clean-checkout execution restored;
+- PDF validation / SHA / immutable-storage boundary covered;
+- generic browser-assisted protected-PDF transport added behind the same validation boundary;
+- document-role classification hardened against the observed GRO-mapping false positive;
+- deterministic offline acquisition fitness covers preservation → sections → product signals/UIN → PDF discovery.
 
-### C3 — Reconnect acquisition to revalidation/currentness
+Live insurer/browser availability remains an operational smoke concern, not a normal CI dependency.
 
-Authorized actions:
-1. Wire download/change events into existing `document_change_impact` machinery.
-2. Wire candidate changes into the durable revalidation work queue.
-3. Preserve the existing separation between advisory change detection, reviewed currentness evidence, document identity resolution and publication eligibility.
-4. Add tests proving the connection without making revalidation candidates automatically authoritative.
+### C3 — Reconnect acquisition to currentness governance
 
-Non-goal: do not rebuild product identity, currentness evidence, document identity resolution or publication eligibility.
+Status: **CLOSED / REVIEWED / FROZEN**
+
+Closed outcomes:
+- acquisition observations bridge into the existing `SourceObservationRecord` contract;
+- persisted download runs can be bound by exact `observation_id` to an explicit registered document version;
+- exact bytes and retained source-page artifacts are hash-checked before governance handoff;
+- byte-identical, changed-bytes and failed observations remain distinct;
+- changed bytes cannot become positive `DocumentCurrentnessEvidenceRecord` evidence;
+- temporal/currentness authority remains in `DocumentIdentityResolutionOverlay`.
+
+Independent review at merge `90fe884165442a7423c561033a576105e6c1e1a2`: APPROVE FREEZE; no blocker or important finding.
 
 ### C4 — Current-product repeatability evidence-eligibility closure
 
-Authorized actions:
-1. Record Product #7 as `CURRENTNESS_SELECTION_INVALIDATED`, unscored and immutable.
-2. Amend future current-product repeatability scoring so semantic reuse only counts when:
-   - product identity is resolved;
-   - document identity is resolved;
-   - document role is correct;
-   - currentness is resolved for the experiment's present-tense scope;
-   - exact source/candidate/version/hash lineage is valid;
-   - semantic correctness census passes.
-3. Track the known certification-contract defect where certifiers assert `CURRENT_APPLICABLE` without deriving it from temporal governance. Decide whether to remove, derive or temporal-neutralize that field only after the evidence-eligibility contract is explicit.
+Status: **CLOSED PENDING THIS LEDGER MERGE**
 
-Non-goal: historical semantic certification must remain possible; historical documents are not globally invalid evidence.
+Closed outcomes:
+1. Product #7 is immutably recorded as `CURRENTNESS_SELECTION_INVALIDATED / UNSCORED`; the original V01 selection remains historical experiment evidence and V02 substitution is prohibited.
+2. `CurrentProductRepeatabilityEvidenceEligibility` now requires exact:
+   - target entity;
+   - document version id;
+   - source SHA-256;
+   - document role;
+   - resolved document identity;
+   - evidence-review eligibility;
+   - `current_observed_reviewed` temporal status;
+   - current entitlement eligibility.
+3. Semantic certification may still PASS for historical/replaced documents. It is not itself proof of current-product evidence eligibility.
+4. Legacy `EvidencePackage.version_status="CURRENT_APPLICABLE"` emitted by certification builders is explicitly classified as **non-authoritative for temporal currentness**. Current-product scoring is forbidden from consuming that field as currentness proof.
+5. The legacy field rename is deferred to a deliberate versioned evidence-contract migration because broad edits to proven certifiers are metadata cleanup, not a C4 safety prerequisite.
+6. v4.2 is locked before the next cold-start experiment.
 
 ### C5 — Next neutral Health cold-start experiment
 
-Preconditions:
+Status: **NEXT AUTHORIZED MILESTONE**
+
+Preconditions now satisfied:
 - C2 acquisition fitness green;
-- C3 revalidation wiring green;
+- C3 currentness handoff green and frozen;
 - C4 current-product evidence-eligibility rules frozen before selection;
-- clean checkout and declared dependencies reproduce the test baseline.
+- clean checkout / declared dependencies reproduce the canonical suite.
 
-Then select a fresh neutral Health product/version and repeat the preregistered experiment.
+Required sequence:
+1. preregister the next neutral Health cold-start protocol before product selection;
+2. preserve contamination firewall and immutable selection history;
+3. acquire and register exact source bytes through the repaired C2/C3 path;
+4. establish governed product/document identity and currentness before any current-product score may count;
+5. perform semantic correctness census against the frozen HC-1.5 baseline;
+6. score only evidence that passes the v4.2 eligibility gate.
 
-Motor gate remains CLOSED unless the repeatability protocol explicitly authorizes crossing it.
+Motor gate remains **CLOSED** unless the repeatability protocol explicitly authorizes crossing it after a successful neutral Health result.
 
 ## Known defects / risks currently tracked
 
-1. Missing `registry/source_asset_classification_rules.json` breaks `SourceAssetClassifier` and ProductSignalExtractor on clean `main`.
-2. Protected insurer/regulator PDF endpoints can defeat the requests-based downloader.
-3. PDF document-role classification produced a false policy-wording candidate during ICICI smoke.
-4. Acquisition → document-change → revalidation wiring is incomplete/disconnected.
-5. Semantic certifiers hardcode `version_status="CURRENT_APPLICABLE"` without governed currentness derivation.
-6. Product #7 currentness selection was invalidated by discovery of newer ICICI Arogya Sanjeevani UIN/version.
-7. Generic copay shadow migration is non-authoritative and has zero executable coverage; authority switch is not authorized.
-8. Governed LLM answer pipeline exists as a deductible pilot; broader concept coverage is not yet proven.
+1. Live insurer/regulator endpoints can still change behavior or defeat automated retrieval; keep live runs as operational smoke checks.
+2. Legacy certification builders emit `EvidencePackage.version_status="CURRENT_APPLICABLE"`; this is non-authoritative metadata and must be migrated only through a versioned evidence-contract change.
+3. Generic copay shadow migration is non-authoritative and has zero executable coverage; authority switch is not authorized.
+4. Governed LLM answer pipeline exists as a deductible pilot; broader concept coverage is not yet proven.
+5. Product #7 remains an immutable unscored experiment closure; it must never be retroactively repaired by substituting another version.
+
+Resolved C1-era defects are removed from this list once their repair is merged and covered by CI.
 
 ## Explicitly not authorized now
 
@@ -102,6 +118,8 @@ Motor gate remains CLOSED unless the repeatability protocol explicitly authorize
 - Generic copay shadow authority switch
 - Architecture redesign without an observed falsification
 - Vocabulary expansion merely to increase concept count
+- Retroactive Product #7 rescoring or V02 substitution
+- Broad certification-contract cleanup before C5
 
 ## Pre-build decision rule
 
@@ -125,4 +143,4 @@ If a PR cannot map to an authorized ledger item, stop and review before implemen
 
 **GitHub is the authoritative project memory.** Chat threads, external AI reviews and local-only files are supporting evidence, not the source of truth for current architecture or capability status.
 
-External reviews (including Claude) may challenge this ledger, but changes must be reconciled against tracked code/tests/artifacts before the ledger is updated.
+External reviews may challenge this ledger, but changes must be reconciled against tracked code/tests/artifacts before the ledger is updated.

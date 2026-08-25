@@ -23,9 +23,20 @@ def test_v4_2_separates_semantic_certification_from_current_product_scoring() ->
     assert boundary["historical_reasoning_use_cases_remain_supported"] is True
 
 
+def test_legacy_certifier_version_status_is_explicitly_non_authoritative() -> None:
+    boundary = _load(AMENDMENT)["legacy_version_status_boundary"]
+    assert boundary["field"] == "EvidencePackage.version_status"
+    assert boundary["known_legacy_certifier_value"] == "CURRENT_APPLICABLE"
+    assert boundary["authority"] == "NON_AUTHORITATIVE_FOR_TEMPORAL_CURRENTNESS"
+    assert boundary["current_product_scoring_may_consume_this_field"] is False
+    assert boundary["currentness_must_come_from"] == "document_identity_resolution_overlay_v1"
+    assert boundary["migration_decision"] == "DEFER_CONTRACT_RENAME_UNTIL_VERSIONED_EVIDENCE_CONTRACT_MIGRATION"
+
+
 def test_current_product_scoring_requires_governed_exact_version_eligibility() -> None:
     gate = _load(AMENDMENT)["current_product_scoring_gate"]
     requirements = set(gate["all_conditions_required"])
+    assert gate["authoritative_input"] == "document_identity_resolution_overlay_v1"
     assert "document version id matches exactly" in requirements
     assert "document content SHA-256 matches exactly" in requirements
     assert "document role matches exactly" in requirements
@@ -33,6 +44,7 @@ def test_current_product_scoring_requires_governed_exact_version_eligibility() -
     assert "temporal_status is current_observed_reviewed" in requirements
     assert gate["fail_closed_on_missing_or_ambiguous_exact_binding"] is True
     assert gate["semantic_pass_cannot_override_gate_failure"] is True
+    assert gate["legacy_evidence_package_version_status_cannot_override_gate_failure"] is True
 
 
 def test_product7_selection_is_preserved_but_experiment_is_unscored() -> None:
@@ -59,4 +71,5 @@ def test_product7_invalidation_is_currentness_not_semantic_falsification() -> No
     assert observation["governed_currentness_overlay_for_selected_uin_present"] is False
     assert observation["selected_uin_current_observed_reviewed"] is False
     assert consequence["semantic_certification_is_not_invalidated_by_this_record"] is True
+    assert consequence["historical_version_reasoning_remains_valid_when_separately_governed"] is True
     assert consequence["future_current_product_repeatability_scoring_requires_v4_2_evidence_eligibility_gate"] is True

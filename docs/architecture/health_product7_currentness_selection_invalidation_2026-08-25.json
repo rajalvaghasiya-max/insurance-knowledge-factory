@@ -41,7 +41,7 @@
   },
   "architecture_consequence": {
     "semantic_certification_is_not_invalidated_by_this_record": true,
-    "historical_version_reasoning_remains_valid_when separately governed": true,
+    "historical_version_reasoning_remains_valid_when_separately_governed": true,
     "future_current_product_repeatability_scoring_requires_v4_2_evidence_eligibility_gate": true,
     "v4_2_amendment_path": "docs/architecture/health_post_hc1_repeatability_evidence_eligibility_v4_2.json"
   }
