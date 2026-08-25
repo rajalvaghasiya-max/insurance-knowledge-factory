@@ -68,7 +68,7 @@ jobs:
         continue-on-error: true
         run: python -m scripts.run_pdf_discovery
 
-      - name: Seed selected authoritative wording for downloader-only smoke
+      - name: Seed authoritative Product 7 PDFs for downloader-only smoke
         if: always()
         shell: bash
         run: |
@@ -80,8 +80,15 @@ jobs:
               {
                 "insurer_id": "icici_lombard_direct_smoke",
                 "document_type": "policy_wording",
-                "url": "https://www.icicilombard.com/docs/default-source/default-document-library/arogya-sanjeevani-icici-lombard.pdf",
+                "url": "https://www.icicilombard.com/docs/default-source/default-document-library/arogya-sanjeevani-policy-icici-lombard_pw.pdf",
                 "source_page_url": "https://www.icicilombard.com/health-insurance/arogya-sanjeevani-policy",
+                "confidence_score": 1.0
+              },
+              {
+                "insurer_id": "icici_lombard_direct_smoke",
+                "document_type": "regulatory_filing",
+                "url": "https://irdai.gov.in/documents/37343/931203/ICIHLIP20178V011920_2019-2020.pdf/0e87719f-3d9a-0d9c-5cfa-b91dcf71855e?download=true&t=1668513666697&version=1.1",
+                "source_page_url": "https://irdai.gov.in/health-products",
                 "confidence_score": 1.0
               }
             ]
