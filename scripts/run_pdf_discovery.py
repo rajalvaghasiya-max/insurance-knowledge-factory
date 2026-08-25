@@ -1,8 +1,10 @@
-from agents.pdf_intelligence.pdf_discovery_agent import PDFDiscoveryAgent
+from agents.pdf_intelligence.evidence_aware_pdf_discovery_agent import (
+    EvidenceAwarePDFDiscoveryAgent,
+)
 
 
 def run_pdf_discovery():
-    agent = PDFDiscoveryAgent()
+    agent = EvidenceAwarePDFDiscoveryAgent()
     result = agent.run()
 
     print()
