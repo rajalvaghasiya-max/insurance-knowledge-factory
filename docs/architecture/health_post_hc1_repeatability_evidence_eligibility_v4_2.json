@@ -1,0 +1,41 @@
+{
+  "schema_version": "4.2",
+  "amendment_type": "health_post_hc1_current_product_repeatability_evidence_eligibility",
+  "amendment_status": "LOCKED_BEFORE_NEXT_COLD_START_EXPERIMENT",
+  "parent_scoring_amendment_path": "docs/architecture/health_post_hc1_repeatability_scoring_amendment_v4_1_product7.json",
+  "frozen_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+  "purpose": "Separate semantic certification from current-product evidence eligibility so historical or replaced evidence may remain semantically certifiable without being allowed to prove current-product repeatability.",
+  "semantic_certification_boundary": {
+    "semantic_certification_may_pass_for_historical_versions": true,
+    "semantic_certification_does_not_establish_currentness": true,
+    "semantic_certification_does_not_by_itself_authorize_current_product_scoring": true,
+    "historical_reasoning_use_cases_remain_supported": true
+  },
+  "current_product_scoring_gate": {
+    "implementation": "factory_core.governance.repeatability_evidence_eligibility.CurrentProductRepeatabilityEvidenceEligibility",
+    "all_conditions_required": [
+      "product identity matches the experiment target entity exactly",
+      "document version id matches exactly",
+      "document content SHA-256 matches exactly",
+      "document role matches exactly",
+      "document identity resolution status is resolved",
+      "document is eligible_for_evidence_review",
+      "temporal_status is current_observed_reviewed",
+      "current_entitlement_publication_eligibility is eligible"
+    ],
+    "fail_closed_on_missing_or_ambiguous_exact_binding": true,
+    "semantic_pass_cannot_override_gate_failure": true
+  },
+  "protocol_consequence": {
+    "future_current_product_repeatability_experiments_must_use_gate": true,
+    "reuse_or_config_spec_requires_semantic_correctness_and_current_product_evidence_eligibility": true,
+    "currentness_unresolved_means_experiment_claim_is_unscorable_not_semantically_false": true,
+    "motor_gate_remains_closed_until_success_bar_is_met": true
+  },
+  "non_goals": [
+    "do not make historical documents semantically uncertifiable",
+    "do not move temporal decision authority into rule certification",
+    "do not change the frozen Product #7 v4.1 preregistration",
+    "do not authorize Product #8 or Motor"
+  ]
+}
