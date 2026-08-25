@@ -1,19 +1,19 @@
 # PolicyScna Execution Ledger
 
-Status: C4 closure candidate
-Verified against: `9c495b0acf3cf96d2f383faff1a8b84ec927e0cb`
+Status: C5.1 selection-method hardening
+Verified against: `20d2d678bc029f2394344e7638e0721dbab5d676`
 
 This ledger defines the current authorized execution path. It exists to prevent scope drift, accidental rebuilding of existing capability, and architecture work that is not justified by observed evidence.
 
 ## Current phase
 
-**Health repeatability — preparing the next neutral cold-start experiment.**
+**Health repeatability — selection-method hardening after Product #8 preselection abort.**
 
 Motor, Life and frontend work remain outside the current authorized phase.
 
 ## Immediate objective
 
-Freeze the C4 evidence-eligibility correction, then run a fresh Health cold-start experiment under the repaired acquisition/currentness path and the v4.2 current-product scoring gate.
+Replace contamination-prone search-result screening with a frozen direct-source, blind metadata-selection boundary before any Product #9 screening. Preserve Product #7 and Product #8 as immutable unscored experiment history.
 
 ## Authorized work sequence
 
@@ -31,95 +31,123 @@ Authoritative artifacts:
 Status: **CLOSED**
 
 Closed outcomes:
-- genuine governed `registry/source_asset_classification_rules.json` restored to tracked repository state;
-- `SourceAssetClassifier` and `ProductSignalExtractor` clean-checkout execution restored;
+- governed source-asset classification restored to tracked repository state;
+- `ProductSignalExtractor` clean-checkout execution restored;
 - PDF validation / SHA / immutable-storage boundary covered;
-- generic browser-assisted protected-PDF transport added behind the same validation boundary;
-- document-role classification hardened against the observed GRO-mapping false positive;
+- browser-assisted protected-PDF transport remains behind the same validation boundary;
+- document-role classification hardened;
 - deterministic offline acquisition fitness covers preservation → sections → product signals/UIN → PDF discovery.
-
-Live insurer/browser availability remains an operational smoke concern, not a normal CI dependency.
 
 ### C3 — Reconnect acquisition to currentness governance
 
 Status: **CLOSED / REVIEWED / FROZEN**
 
 Closed outcomes:
-- acquisition observations bridge into the existing `SourceObservationRecord` contract;
-- persisted download runs can be bound by exact `observation_id` to an explicit registered document version;
-- exact bytes and retained source-page artifacts are hash-checked before governance handoff;
-- byte-identical, changed-bytes and failed observations remain distinct;
-- changed bytes cannot become positive `DocumentCurrentnessEvidenceRecord` evidence;
+- acquisition observations bridge into `SourceObservationRecord`;
+- exact bytes and source-page artifacts are hash-bound before governance handoff;
+- changed bytes cannot become positive currentness evidence;
 - temporal/currentness authority remains in `DocumentIdentityResolutionOverlay`.
 
-Independent review at merge `90fe884165442a7423c561033a576105e6c1e1a2`: APPROVE FREEZE; no blocker or important finding.
+### C4 — Current-product repeatability evidence eligibility
 
-### C4 — Current-product repeatability evidence-eligibility closure
-
-Status: **CLOSED PENDING THIS LEDGER MERGE**
+Status: **CLOSED**
 
 Closed outcomes:
-1. Product #7 is immutably recorded as `CURRENTNESS_SELECTION_INVALIDATED / UNSCORED`; the original V01 selection remains historical experiment evidence and V02 substitution is prohibited.
-2. `CurrentProductRepeatabilityEvidenceEligibility` now requires exact:
-   - target entity;
-   - document version id;
-   - source SHA-256;
-   - document role;
-   - resolved document identity;
-   - evidence-review eligibility;
-   - `current_observed_reviewed` temporal status;
-   - current entitlement eligibility.
-3. Semantic certification may still PASS for historical/replaced documents. It is not itself proof of current-product evidence eligibility.
-4. Legacy `EvidencePackage.version_status="CURRENT_APPLICABLE"` emitted by certification builders is explicitly classified as **non-authoritative for temporal currentness**. Current-product scoring is forbidden from consuming that field as currentness proof.
-5. The legacy field rename is deferred to a deliberate versioned evidence-contract migration because broad edits to proven certifiers are metadata cleanup, not a C4 safety prerequisite.
-6. v4.2 is locked before the next cold-start experiment.
+- Product #7 remains immutable `CURRENTNESS_SELECTION_INVALIDATED / UNSCORED`;
+- `CurrentProductRepeatabilityEvidenceEligibility` requires exact entity, document version, SHA-256, document role, resolved identity, evidence-review eligibility, `current_observed_reviewed`, and current-entitlement eligibility;
+- semantic certification can remain valid for historical/replaced documents without proving present-tense applicability;
+- legacy certifier `EvidencePackage.version_status="CURRENT_APPLICABLE"` is non-authoritative for temporal currentness;
+- v4.2 is frozen.
 
-### C5 — Next neutral Health cold-start experiment
+### C5 — Product #8 neutral cold-start
 
-Status: **NEXT AUTHORIZED MILESTONE**
+Status: **CLOSED / UNSCORED BEFORE SELECTION**
 
-Preconditions now satisfied:
-- C2 acquisition fitness green;
-- C3 currentness handoff green and frozen;
-- C4 current-product evidence-eligibility rules frozen before selection;
-- clean checkout / declared dependencies reproduce the canonical suite.
+Protocol:
+- `docs/architecture/health_post_hc1_neutral_cold_start_protocol_v5_product8.json`
 
-Required sequence:
-1. preregister the next neutral Health cold-start protocol before product selection;
-2. preserve contamination firewall and immutable selection history;
-3. acquire and register exact source bytes through the repaired C2/C3 path;
-4. establish governed product/document identity and currentness before any current-product score may count;
-5. perform semantic correctness census against the frozen HC-1.5 baseline;
-6. score only evidence that passes the v4.2 eligibility gate.
+Closure:
+- `docs/architecture/health_product8_selection_abort_2026-08-25.json`
 
-Motor gate remains **CLOSED** unless the repeatability protocol explicitly authorizes crossing it after a successful neutral Health result.
+Observed result:
+- the full current insurer universe was reconciled: 27 General + 6 standalone Health insurers;
+- no Product #8 was selected;
+- no selected-product acquisition, target semantic review or scoring began;
+- every insurer was prior-excluded, non-qualifying, currentness-insufficient, or quarantined by the locked v5 preselection firewall;
+- Product #8 closed `SELECTION_UNIVERSE_EXHAUSTED_NO_ELIGIBLE_UNCONTAMINATED_CURRENTNESS_CORROBORATED_PRODUCT / UNSCORED`;
+- Product #8 does not prove or falsify semantic repeatability and does not authorize Motor.
+
+Methodology finding:
+
+**`SEARCH_ENGINE_DISCOVERY_IS_TOO_CONTAMINATION_PRONE_FOR_V5_PRESELECTION`.** Broad and exact-UIN search queries frequently exposed prohibited product-document links or target-mechanic snippets even when the intended query was metadata-only. This finding may shape a future protocol but cannot repair Product #8 retroactively.
+
+### C5.1 — Blind direct-source preselection method
+
+Status: **IN PROGRESS — ONLY AUTHORIZED NEXT WORK**
+
+Work classification: **WIRE + small EXTEND**.
+
+Repository census result:
+- existing acquisition / `ProductSignalExtractor`: REUSE;
+- existing `UinCandidateExtractor`: REUSE;
+- existing `ProductIdentityResolver`: REUSE after selection only because verified identity deliberately requires approved product-document evidence;
+- safe identity-only preselection projection: absent before C5.1;
+- new crawler or agent family: not authorized.
+
+Authorized deliverables:
+1. `BlindPreselectionMetadataProjector` as an information firewall over existing product-signal output;
+2. selector receives only identity/UIN/source metadata, never raw sections, evidence windows, semantic buckets, or semantic-presence counts;
+3. direct regulator/insurer metadata roots replace broad search-result discovery after a future experiment lock;
+4. semantic content detected internally by existing machine extraction cannot influence selection because it is structurally absent from the selector contract;
+5. raw acquisition/full extraction remains separately retained for audit;
+6. exact blind projection used for selection must be hash-lockable and auditable.
+
+Frozen method artifact:
+- `docs/architecture/health_neutral_preselection_method_v5_1.json`
+
+### C5.2 — Product #9 preregistration
+
+Status: **NOT YET AUTHORIZED UNTIL C5.1 MERGES GREEN**
+
+Before any Product #9 screening, a new preregistration must:
+- name the exact allow-listed direct-source roots used for the run;
+- define deterministic cross-category insurer ordering;
+- attest that selection consumes only `blind_preselection_product_metadata_v1` projections;
+- preserve prior experiment exclusions/history without retroactively changing Product #8;
+- retain HC-1.5 `f05ca07` as the semantic scoring baseline unless a separately approved architecture decision changes the experiment design;
+- retain v4.2 present-tense evidence eligibility before semantic scoring.
+
+**No Product #9 candidate screening is authorized before that preregistration merges.**
+
+Motor gate remains **CLOSED**.
 
 ## Known defects / risks currently tracked
 
-1. Live insurer/regulator endpoints can still change behavior or defeat automated retrieval; keep live runs as operational smoke checks.
-2. Legacy certification builders emit `EvidencePackage.version_status="CURRENT_APPLICABLE"`; this is non-authoritative metadata and must be migrated only through a versioned evidence-contract change.
-3. Generic copay shadow migration is non-authoritative and has zero executable coverage; authority switch is not authorized.
-4. Governed LLM answer pipeline exists as a deductible pilot; broader concept coverage is not yet proven.
-5. Product #7 remains an immutable unscored experiment closure; it must never be retroactively repaired by substituting another version.
-
-Resolved C1-era defects are removed from this list once their repair is merged and covered by CI.
+1. Live insurer/regulator endpoints can change behavior or defeat automated retrieval; live runs remain operational smoke checks.
+2. Direct-source metadata roots may themselves change layout or link structure; the future selection protocol must fail closed rather than fall back to broad search.
+3. Legacy certifiers emit `EvidencePackage.version_status="CURRENT_APPLICABLE"`; this remains non-authoritative metadata pending a versioned evidence-contract migration.
+4. Generic copay shadow migration is non-authoritative; authority switch is not authorized.
+5. Governed LLM answer pipeline exists as a limited pilot; broader concept coverage is not yet proven.
+6. Product #7 and Product #8 are immutable unscored experiment closures and must not be repaired retroactively.
 
 ## Explicitly not authorized now
 
+- Product #9 screening before C5.1 and a new preregistration are merged
+- broad search-engine candidate screening in the next neutral experiment
+- retroactive Product #7 or Product #8 repair/rescoring/reselection
 - Motor implementation or expansion
-- Life implementation or investment comparison logic
-- Frontend / consumer app / advisor UI
-- Recommendation-engine expansion
-- Claims application
-- Quote-comparison UX
-- Database migration for scale
-- Broad ingestion scale-up
-- New agent families
-- Generic copay shadow authority switch
-- Architecture redesign without an observed falsification
-- Vocabulary expansion merely to increase concept count
-- Retroactive Product #7 rescoring or V02 substitution
-- Broad certification-contract cleanup before C5
+- Life implementation or investment-comparison logic
+- frontend / consumer app / advisor UI
+- recommendation-engine expansion
+- claims application
+- quote-comparison UX
+- database migration for scale
+- broad ingestion scale-up
+- new agent families
+- generic copay shadow authority switch
+- architecture redesign without an observed falsification
+- vocabulary expansion merely to increase concept count
+- broad certification-contract cleanup during C5.1
 
 ## Pre-build decision rule
 
