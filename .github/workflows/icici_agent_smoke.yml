@@ -51,8 +51,8 @@ jobs:
           ]
           JSON
 
-      - name: Run existing webpage preservation pipeline
-        run: python -m scripts.run_queue_capture
+      - name: Run existing webpage preservation pipeline with display available
+        run: xvfb-run -a python -m scripts.run_queue_capture
 
       - name: Run existing HTML sectioning
         if: always()
