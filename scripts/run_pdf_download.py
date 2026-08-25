@@ -1,8 +1,10 @@
-from agents.pdf_intelligence.pdf_download_agent import PDFDownloadAgent
+from agents.pdf_intelligence.browser_assisted_pdf_download_agent import (
+    BrowserAssistedPDFDownloadAgent,
+)
 
 
 def run_pdf_download():
-    agent = PDFDownloadAgent()
+    agent = BrowserAssistedPDFDownloadAgent()
     result = agent.run()
 
     print()
