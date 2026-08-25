@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "product9_operator_path_blindness_guardrail",
+  "status": "LOCKED_BEFORE_FIRST_INSURER_ORIGIN_RENDER",
+  "parent_protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v6_product9.json",
+  "parent_protocol_commit": "71cf561a078aa75dbdc637c79ab7b709f7ad5e1e",
+  "changes_parent_selection_rules": false,
+  "changes_candidate_pool": false,
+  "changes_direct_source_roots": false,
+  "changes_projection_contract": false,
+  "purpose": "Narrow live execution so operator-visible traversal cannot bypass the C5.1 machine-data firewall. This guardrail may only make traversal more fail-closed; it cannot make an otherwise ineligible candidate eligible.",
+  "operator_visibility_boundary": {
+    "raw_page_or_document_body_may_be_rendered_before_metadata_classification": false,
+    "target_concept_text_may_be_rendered_before_product_selection_merge": false,
+    "pre_render_classification_inputs": [
+      "source origin already established from a preregistered regulator root",
+      "link URL/path",
+      "link relation and MIME/type metadata when available",
+      "anchor/link label only when supplied by the already-approved regulator/index surface",
+      "HTTP headers and redirect target",
+      "document filename/extension"
+    ],
+    "pre_render_classification_must_not_consume": [
+      "destination page body",
+      "destination PDF text",
+      "search-result snippet",
+      "target-concept excerpt",
+      "benefit or policy-mechanic text"
+    ],
+    "allowed_destination_classes_before_render": [
+      "insurer_home_or_directory_landing",
+      "product_catalogue_index",
+      "product_list_index",
+      "uin_disclosure_index",
+      "download_index_metadata_only"
+    ],
+    "prohibited_destination_classes_before_selection_merge": [
+      "product_detail_or_marketing_page",
+      "policy_wording",
+      "customer_information_sheet",
+      "prospectus",
+      "proposal_form",
+      "brochure",
+      "faq",
+      "rate_chart_or_premium_chart",
+      "claim_document",
+      "unknown_or_unclassifiable_destination"
+    ],
+    "unknown_destination_rule": "DO_NOT_RENDER_AND_FAIL_CLOSED_FOR_THAT_PATH",
+    "redirect_rule": "Re-run pre-render classification on every redirect target before rendering body content.",
+    "operator_exposure_rule": "If target-concept mechanics become operator-visible before the selected product record is merged, stop screening that insurer for Product #9 and record an operator-path contamination event. Do not use the exposed content for selection."
+  },
+  "root_availability_observations_before_first_insurer_render": [
+    {
+      "root": "https://irdai.gov.in/non-life-insurers1",
+      "result": "PREREGISTERED_ROOT_UNAVAILABLE_403",
+      "fallback_search_used": false
+    },
+    {
+      "root": "https://irdai.gov.in/health-insurers1",
+      "result": "PREREGISTERED_ROOT_UNAVAILABLE_403",
+      "fallback_search_used": false
+    },
+    {
+      "root": "https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount",
+      "result": "PREREGISTERED_ROOT_AVAILABLE",
+      "fallback_search_used": false
+    }
+  ],
+  "root_failure_interpretation": "A preregistered root returning 403 is an experiment observation, not permission to add a root or use search. Continue only through another root already frozen in v6.",
+  "candidate_order_provenance": {
+    "source": "Product #9 v6 preregistered retry pool intersected with insurer presence on an available preregistered regulator directory",
+    "semantic_content_used_to_establish_order": false,
+    "order": [
+      "Cholamandalam MS General Insurance Company Limited",
+      "Magma General Insurance Limited",
+      "Navi General Insurance Limited",
+      "Shriram General Insurance Company Limited"
+    ],
+    "order_change_authorized_during_run": false
+  },
+  "current_run_state": {
+    "product9_selected": false,
+    "first_insurer_origin_rendered": false,
+    "product_document_opened": false,
+    "target_clause_read_count": 0,
+    "search_fallback_count": 0
+  }
+}
