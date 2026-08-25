@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product7_currentness_selection_invalidation",
+  "record_status": "IMMUTABLE_EXPERIMENT_CLOSURE",
+  "product_number": 7,
+  "selection_record_path": "docs/architecture/health_product7_selection_icici_lombard_arogya_sanjeevani_2026-08-24.json",
+  "pre_certification_checkpoint_path": "docs/architecture/health_product7_pre_certification_frozen_fit_2026-08-25.json",
+  "selected_product": {
+    "insurer_id": "icici_lombard",
+    "product_id": "arogya_sanjeevani_policy",
+    "canonical_product_name": "Arogya Sanjeevani Policy, ICICI Lombard",
+    "selected_uin": "ICIHLIP20178V011920"
+  },
+  "post_selection_currentness_observation": {
+    "observed_at": "2026-08-25",
+    "official_sources_are_not_consistent_enough_to_certify_selected_version_as_current": true,
+    "observations": [
+      {
+        "source": "https://www.icicilombard.com/health-insurance/renew-online",
+        "observed_uin": "ICIHLIP20178V011920",
+        "role": "official consumer renewal metadata"
+      },
+      {
+        "source": "https://www.icicilombard.com/docs/default-source/default-document-library/arogya-sanjeevani---rate-chart8c0003ff45fd68ff8a0df0055f15d2b3.pdf?sfvrsn=39fd6bad_0",
+        "observed_uin": "ICIHLIP25041V022425",
+        "role": "official ICICI Lombard Arogya Sanjeevani rate-chart artifact"
+      }
+    ],
+    "governed_currentness_overlay_for_selected_uin_present": false,
+    "selected_uin_current_observed_reviewed": false
+  },
+  "experiment_decision": {
+    "status": "CURRENTNESS_SELECTION_INVALIDATED",
+    "scoring_status": "UNSCORED",
+    "reason": "Product #7 is a current-product repeatability experiment. The selected V01/UIN does not have governed current_observed_reviewed evidence, and post-selection official-source observations expose conflicting V01/V02 identity signals. Semantic certification of V01, even if correct, therefore cannot prove current-product repeatability.",
+    "selection_record_remains_immutable": true,
+    "pre_certification_checkpoint_remains_immutable": true,
+    "substitute_v02_into_product7_authorized": false,
+    "retroactive_rescoring_authorized": false,
+    "motor_gate_authorized": false
+  },
+  "architecture_consequence": {
+    "semantic_certification_is_not_invalidated_by_this_record": true,
+    "historical_version_reasoning_remains_valid_when separately governed": true,
+    "future_current_product_repeatability_scoring_requires_v4_2_evidence_eligibility_gate": true,
+    "v4_2_amendment_path": "docs/architecture/health_post_hc1_repeatability_evidence_eligibility_v4_2.json"
+  }
+}
