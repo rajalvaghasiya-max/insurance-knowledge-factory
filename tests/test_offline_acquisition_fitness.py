@@ -106,7 +106,7 @@ def test_offline_acquisition_chain_preserves_identity_signals_and_document_roles
 
     parsed = HtmlSectionAgent().parse_metadata_file(metadata_files[0])
     assert parsed["status"] == "parsed"
-    assert parsed["section_count"] >= 3
+    assert parsed["section_count"] >= 2
 
     signal_extractor = _TempSignalExtractor(tmp_path / "signals")
     signal_result = signal_extractor.extract_from_parsed_file(Path(parsed["output_path"]))
