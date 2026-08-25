@@ -1,0 +1,179 @@
+{
+  "schema_version": "5.0",
+  "protocol_type": "health_post_hc1_currentness_first_contamination_safe_cold_start_preregistration_v5",
+  "protocol_status": "LOCKED_BEFORE_PRODUCT8_SELECTION",
+  "semantic_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+  "experiment_governance_baseline_commit": "05852964d762c3d3fc4048892e457459a4a3b264",
+  "predecessor_protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v4_product7.json",
+  "current_product_evidence_eligibility_amendment_path": "docs/architecture/health_post_hc1_repeatability_evidence_eligibility_v4_2.json",
+  "product7_invalidation_path": "docs/architecture/health_product7_currentness_selection_invalidation_2026-08-25.json",
+  "retroactive_rescoring_authorized": false,
+  "experiment": {
+    "domain": "health",
+    "product_number": 8,
+    "product_selected": false,
+    "target_concepts": ["copayment", "waiting_period"],
+    "central_question": "Can the frozen HC-1.5 Health semantic foundation, using the repaired acquisition/currentness governance path frozen before Product #8 selection, manufacture and certify copayment and waiting-period knowledge for a neutral unseen current Health product without new semantic runtime logic or structural shape?"
+  },
+  "baseline_separation": {
+    "semantic_scoring_baseline_purpose": "Classify semantic handling as REUSE, CONFIG_SPEC, REPRESENTATION_GAP or KNOWLEDGE_GAP against the frozen HC-1.5 foundation.",
+    "experiment_governance_baseline_purpose": "Freeze the already-built acquisition, source-observation, currentness and v4.2 evidence-eligibility controls before Product #8 selection.",
+    "post_selection_change_to_either_baseline_authorized": false,
+    "governance_repairs_merged_before_this_protocol_do_not_count_as_product8_runtime_delta": true
+  },
+  "contamination_exclusions": {
+    "insurers_excluded_due_to_prior_cold_start_use": [
+      "Star Health & Allied Insurance Co. Ltd.",
+      "Bajaj General Insurance Limited / Bajaj Allianz General Insurance Company Limited",
+      "HDFC ERGO General Insurance Company Limited",
+      "Tata AIG General Insurance Company Limited",
+      "Niva Bupa Health Insurance Co. Ltd.",
+      "ICICI Lombard General Insurance Company Limited"
+    ],
+    "insurers_excluded_due_to_prior_target_concept_preselection_exposure": [
+      "ACKO General Insurance Limited",
+      "Aditya Birla Health Insurance Co. Ltd.",
+      "Care Health Insurance Limited",
+      "Generali Central Insurance Company Limited",
+      "Go Digit General Insurance Limited"
+    ],
+    "exclusions_are_permanent_for_product8": true
+  },
+  "preselection_metadata_firewall": {
+    "allowed_source_classes": [
+      "current regulator insurer list or insurer registry page",
+      "official insurer non-policy HTML product catalogue/download index containing identity metadata only",
+      "official insurer disclaimer or product-list page containing product identity/UIN metadata only",
+      "official regulator product/UIN table explicitly limited to product metadata",
+      "frozen-baseline repository exact-name/UIN search"
+    ],
+    "prohibited_source_classes_before_selection_record_merge": [
+      "policy wording",
+      "prospectus",
+      "customer information sheet (CIS)",
+      "proposal form",
+      "rate chart or premium chart PDF",
+      "brochure containing benefit mechanics",
+      "FAQ or marketing page containing target-concept mechanics",
+      "search-result or AI-generated snippet containing copayment or waiting-period mechanics for a candidate insurer/product"
+    ],
+    "product_document_opening_before_selection_record_merge": false,
+    "target_clause_read_tolerance": 0,
+    "contamination_rule": "If any prohibited surface exposes copayment or waiting-period mechanics for an insurer before Product #8 selection is committed, immediately stop screening that insurer, record the exposure, exclude that insurer from Product #8, and do not use the exposed content for selection or scoring.",
+    "metadata_insufficiency_rule": "If product identity, retail Health indemnity eligibility, individual/family-floater availability, exact UIN/version identity, or current-offering status cannot be established from allowed metadata-only surfaces, exclude the candidate without opening a prohibited document."
+  },
+  "preselection_currentness_firewall": {
+    "purpose": "Prevent a repeat of Product #7 selecting a superseded version while keeping target mechanics unseen.",
+    "minimum_metadata_currentness_evidence": "The same exact product identity and UIN/version must be corroborated by at least two allowed official metadata surfaces, including at least one current insurer-controlled metadata surface and one regulator metadata surface when such regulator product metadata is available; otherwise use a second independent insurer-controlled metadata surface. A single metadata surface is insufficient.",
+    "exact_uin_agreement_required": true,
+    "conflicting_uin_or_version_signals": "EXCLUDE_CANDIDATE_CURRENTNESS_UNRESOLVED",
+    "currentness_inference_from_product_name_only": false,
+    "currentness_inference_from_lowest_or_highest_uin": false,
+    "currentness_inference_from_non_archived_label_alone": false,
+    "opening_product_documents_to_resolve_preselection_currentness": false
+  },
+  "selection_protocol": {
+    "insurer_universe": "current IRDAI insurer list",
+    "insurer_sort": "normalized insurer legal/display name lower-case ASCII ascending",
+    "screening_rule": "Screen non-excluded insurers in order using only allowed metadata surfaces until the first insurer has at least one contamination-free, metadata-verifiable, currentness-corroborated retail Health indemnity product with no governed exact-UIN exposure at the semantic scoring baseline.",
+    "stopping_rule": "Stop at the first eligible uncontaminated insurer.",
+    "selected_insurer_ledger_rule": "Record every metadata-verifiable candidate reviewed for the selected insurer, its exact UIN/version signals, currentness corroboration sources, and eligibility/exclusion reason without reading target mechanics.",
+    "product_tie_break": "Sort eligible currentness-corroborated products by normalized UIN/product identifier ascending and select the first.",
+    "selection_override_authorized": false,
+    "semantic_fit_may_affect_selection": false,
+    "product8_selection_record_must_merge_before_product_document_acquisition": true
+  },
+  "post_selection_currentness_gate_before_semantic_review": {
+    "required_sequence": [
+      "acquire exact selected product source bytes through the frozen C2 acquisition path",
+      "register immutable source bytes and SHA-256",
+      "create or reuse governed product identity reference for the selected exact UIN/version",
+      "create source observation bound to the exact registered document version",
+      "establish reviewed document identity/currentness through document_identity_resolution_overlay_v1",
+      "require CurrentProductRepeatabilityEvidenceEligibility to return eligible for the exact document version and SHA-256",
+      "only then permit reading copayment or waiting-period target clauses"
+    ],
+    "semantic_target_clause_reads_before_currentness_resolution": 0,
+    "if_exact_currentness_cannot_be_established": "CLOSE_PRODUCT8_UNSCORED_CURRENTNESS_OR_ACQUISITION_INVALIDATED",
+    "substitute_another_version_into_product8_after_selection": false,
+    "substitute_another_product_into_product8_after_selection": false,
+    "semantic_certification_pass_may_override_currentness_failure": false
+  },
+  "freeze": {
+    "runtime_change_allowed_during_initial_attempt": false,
+    "new_semantic_or_spec_shape_allowed_during_initial_attempt": false,
+    "post_selection_acquisition_or_currentness_runtime_repair_allowed": false,
+    "frozen_semantic_surfaces": [
+      "insurance_intelligence/contracts/",
+      "insurance_intelligence/reasoning/",
+      "insurance_intelligence/benefits/",
+      "insurance_intelligence/rule_certification/",
+      "factory_core/canonical/",
+      "knowledge_domains/health/"
+    ],
+    "frozen_governance_surfaces": [
+      "agents/",
+      "factory_core/governance/",
+      "knowledge_domains/product/identity/",
+      "registry/source_asset_classification_rules.json"
+    ],
+    "decision_logic_in_config_is_failure": true,
+    "semantic_scoring_baseline_must_remain_f05ca07": true,
+    "experiment_governance_baseline_must_remain_05852964": true
+  },
+  "classification_rubric": {
+    "REUSE": "The HC-1.5 baseline generic contracts, binders, certifiers, semantic types, governed spec schemas and evidence-attribution shapes handle the concept unchanged, and the exact evidence also passes the v4.2 current-product eligibility gate.",
+    "CONFIG_SPEC": "Frozen semantic runtime remains unchanged but a new governed declarative structural shape is required; no executable decision logic may be hidden in it, and the exact evidence passes the v4.2 current-product eligibility gate.",
+    "REPRESENTATION_GAP": "Authoritative current evidence is sufficient but the frozen HC-1.5 baseline cannot faithfully represent or certify the semantic shape.",
+    "KNOWLEDGE_GAP": "Reviewed authoritative/corroborating current evidence is insufficient; code, config or DomainKnowledge cannot compensate.",
+    "UNSCORABLE_CURRENTNESS_OR_ACQUISITION": "The selected product cannot reach exact governed currentness/evidence eligibility before semantic inspection. This is an operational experiment failure/closure, not a semantic classification."
+  },
+  "primary_metrics": {
+    "new_runtime_files": 0,
+    "runtime_loc_delta": 0,
+    "new_semantic_runtime_shapes": 0,
+    "new_declarative_schema_shapes": 0,
+    "product_specific_branches_in_generic_runtime": 0,
+    "decision_logic_added_in_config_or_fixtures": 0,
+    "certified_claims_without_exact_candidate_version_hash_lineage": 0,
+    "current_product_claims_scored_without_v4_2_evidence_eligibility": 0,
+    "semantic_target_clause_reads_before_currentness_resolution": 0,
+    "post_selection_product_or_version_substitutions": 0,
+    "currentness_metadata_conflicts_ignored": 0,
+    "silent_semantic_coercions": 0,
+    "selection_rule_overrides": 0,
+    "preselection_target_clause_reads": 0
+  },
+  "semantic_correctness_census": {
+    "required_for_every_certified_target_claim": true,
+    "compare_against_exact_source_wording": true,
+    "exact_candidate_version_hash_lineage_required": true,
+    "positive_semantic_correctness_required_for_reuse_or_config_spec": true
+  },
+  "success_bar": {
+    "STRONG_REPEATABILITY_PROVEN": "Both target concepts are REUSE, every primary metric remains zero, and every scored claim passes semantic correctness plus v4.2 current-product evidence eligibility.",
+    "MINIMUM_REPEATABILITY_PROVEN": "Both target concepts are REUSE or CONFIG_SPEC, at least one is REUSE, no REPRESENTATION_GAP occurs, every primary metric remains zero, and every scored claim passes semantic correctness plus v4.2 current-product evidence eligibility.",
+    "REPEATABILITY_NOT_PROVEN": "Any primary metric is non-zero, any target concept is REPRESENTATION_GAP, or both scoreable concepts are CONFIG_SPEC with zero REUSE.",
+    "REPEATABILITY_INCONCLUSIVE": "At least one target concept is KNOWLEDGE_GAP and no architecture/repeatability failure otherwise occurs.",
+    "EXPERIMENT_UNSCORED": "Selection is immutable but exact acquisition/currentness/evidence eligibility fails before semantic review; do not replace the product/version or infer a semantic outcome."
+  },
+  "required_artifacts_before_semantic_review": [
+    "merged Product #8 selection record",
+    "complete metadata-only ledger for the selected insurer",
+    "selected product exact UIN/version identifier",
+    "preselection currentness corroboration ledger with no unresolved conflicting UIN/version signals",
+    "semantic-baseline exact-UIN exposure check",
+    "attestation that preselection_target_clause_reads equals zero",
+    "attestation that no prohibited product document was opened before selection merge",
+    "exact registered source artifact and SHA-256",
+    "reviewed document_identity_resolution_overlay_v1 for the exact selected version",
+    "positive CurrentProductRepeatabilityEvidenceEligibility result for the exact selected document version and SHA-256"
+  ],
+  "motor_readiness_gate": {
+    "authorized_outcomes": ["STRONG_REPEATABILITY_PROVEN", "MINIMUM_REPEATABILITY_PROVEN"],
+    "product6_abort_cannot_satisfy_gate": true,
+    "product7_unscored_invalidation_cannot_satisfy_gate": true,
+    "product8_unscored_currentness_or_acquisition_closure_cannot_satisfy_gate": true,
+    "post_gap_corrective_validation_cannot_satisfy_gate": true
+  }
+}
