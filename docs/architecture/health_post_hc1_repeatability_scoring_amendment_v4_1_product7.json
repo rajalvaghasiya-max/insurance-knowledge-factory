@@ -1,0 +1,117 @@
+{
+  "schema_version": "4.1",
+  "amendment_type": "health_post_hc1_product7_repeatability_scoring_preregistration",
+  "amendment_status": "LOCKED_BEFORE_PRODUCT7_CERTIFICATION",
+  "parent_protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v4_product7.json",
+  "frozen_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+  "product_number": 7,
+  "purpose": "Close scoring seams before Product #7 certification by requiring variant-grain classification, positive semantic-correctness verification, and a deterministic instance-versus-structural-shape discriminator.",
+  "retroactive_product_selection_change_authorized": false,
+  "runtime_or_semantic_surface_change_authorized": false,
+  "scoring_may_not_be_relaxed_after_certification_begins": true,
+  "variant_grain_rule": {
+    "principle": "ProductSemantic maturity and repeatability scoring are evaluated at concept plus semantic-variant plus product plus version grain. A green result for one variant cannot be projected onto another variant.",
+    "required_product7_variant_units": [
+      {
+        "variant_id": "copayment.policy_wide_fixed_rate",
+        "concept": "copayment",
+        "semantic_dimensions": ["rate", "calculation_basis", "scope"]
+      },
+      {
+        "variant_id": "waiting_period.pre_existing_disease",
+        "concept": "waiting_period",
+        "semantic_dimensions": ["duration", "continuity", "portability_credit", "sum_insured_enhancement_effect"]
+      },
+      {
+        "variant_id": "waiting_period.initial",
+        "concept": "waiting_period",
+        "semantic_dimensions": ["duration", "accident_exception", "continuity", "sum_insured_enhancement_effect"]
+      },
+      {
+        "variant_id": "waiting_period.specific_condition_24_month",
+        "concept": "waiting_period",
+        "semantic_dimensions": ["duration", "condition_scope", "accident_exception", "continuity", "portability_credit", "sum_insured_enhancement_effect"]
+      },
+      {
+        "variant_id": "waiting_period.specific_condition_48_month",
+        "concept": "waiting_period",
+        "semantic_dimensions": ["duration", "condition_scope", "accident_exception", "continuity", "portability_credit", "sum_insured_enhancement_effect"]
+      }
+    ],
+    "no_variant_green_by_inheritance": true,
+    "mixed_variant_results_are_valid_experiment_results": true,
+    "mixed_variant_result_does_not_automatically_authorize_motor_gate": true
+  },
+  "instance_vs_structural_shape_discriminator": {
+    "classification_time": "before Product #7 certification outcome is known",
+    "baseline": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+    "INSTANCE": {
+      "all_conditions_required": [
+        "Every asserted semantic field maps one-to-one to a field or relation already present in a governed baseline schema or typed contract.",
+        "Values are literals, registered enumerations, identifiers, evidence references, or repeated instances of an already-supported record shape.",
+        "No new conditional evaluation, precedence, selection, aggregation, transformation, fallback, derivation, or composition rule is required to interpret the record.",
+        "The frozen baseline binder and certifier validate the intended semantic meaning, not merely accept the serialized fields."
+      ],
+      "examples": [
+        "Changing a fixed copayment rate from an existing value to 5 percent while using the same rate, basis, and scope fields is an instance.",
+        "Creating separate waiting-period records for 24-month and 48-month condition groups using an already-supported scalar waiting-period shape is an instance."
+      ]
+    },
+    "STRUCTURAL_SHAPE": {
+      "any_condition_sufficient": [
+        "A new field, relation, cardinality, semantic composition, or governed declarative schema shape is required.",
+        "Configuration contains selectors, conditionals, precedence, ordering, derived values, fallback logic, or other decision logic needed to choose or compute the semantic outcome.",
+        "The baseline schema can store the values but the baseline binder or certifier cannot validate the intended semantic meaning without new interpretation logic.",
+        "A previously unsupported interaction among existing fields changes their meaning or applicability rather than merely supplying new values."
+      ],
+      "classification_consequence": "A required structural shape is CONFIG_SPEC only when it is purely declarative and contains no executable or hidden decision logic; otherwise it is a REPRESENTATION_GAP or a protocol metric failure as applicable."
+    },
+    "tie_break_rule": "If reasonable reviewers disagree whether a change is INSTANCE or STRUCTURAL_SHAPE, classify it as STRUCTURAL_SHAPE for repeatability scoring until the ambiguity is resolved against the frozen baseline."
+  },
+  "positive_semantic_correctness_gate": {
+    "required": true,
+    "scope": "every certified Product #7 claim, not a sample",
+    "requirement": "Each certified claim must be manually or deterministically spot-checked against the exact authoritative source span and recorded as semantically faithful across every material asserted dimension.",
+    "dimensions": [
+      "value_or_duration",
+      "calculation_basis_or_start_basis",
+      "scope_or_condition_group",
+      "exceptions",
+      "continuity_or_portability_effect",
+      "sum_insured_enhancement_effect",
+      "composition_or_interaction_semantics",
+      "source_product_and_version"
+    ],
+    "lineage_is_not_semantic_correctness": true,
+    "required_positive_metrics": {
+      "certified_claims_total": "N",
+      "certified_claims_semantically_checked": "N",
+      "semantic_check_coverage_ratio": 1.0,
+      "certified_claims_semantically_correct": "N",
+      "semantic_mismatches_unresolved": 0
+    },
+    "failure_rule": "Any unresolved semantic mismatch blocks REUSE/CONFIG_SPEC for that claim or variant even when exact hash lineage is present and all absence metrics remain zero."
+  },
+  "concept_aggregation_rule": {
+    "REUSE": "A target concept is REUSE only if every required observed Product #7 variant for that concept is REUSE and passes the positive semantic-correctness gate.",
+    "CONFIG_SPEC": "A target concept is CONFIG_SPEC when every required observed variant is REUSE or CONFIG_SPEC, at least one is CONFIG_SPEC, none is REPRESENTATION_GAP or KNOWLEDGE_GAP, and every certified claim passes the positive semantic-correctness gate.",
+    "REPRESENTATION_GAP": "A target concept is REPRESENTATION_GAP when any required observed variant has authoritative evidence but cannot be faithfully represented and certified by the frozen baseline under the discriminator.",
+    "KNOWLEDGE_GAP": "A target concept is KNOWLEDGE_GAP when any required observed variant lacks sufficient authoritative/corroborating evidence and no stronger failure applies.",
+    "mixed_variant_reporting_required": true
+  },
+  "repeatability_verdict_guard": {
+    "parent_success_bar_remains_authoritative_for_motor_gate": true,
+    "strong_requires_positive_gate": true,
+    "minimum_requires_positive_gate": true,
+    "all_parent_primary_metrics_must_still_be_zero": true,
+    "mixed_variant_result_is_not_a_governance_failure": true,
+    "representation_gap_keeps_motor_gate_closed_under_parent_protocol": true,
+    "note": "A mixed variant result can be a valid and valuable experiment outcome without constituting STRONG_REPEATABILITY_PROVEN or MINIMUM_REPEATABILITY_PROVEN."
+  },
+  "test_count_governance": {
+    "number_of_record_at_parent_main_commit": 2933,
+    "number_of_record_commit": "84140c5bf111a72ac0979f395d6924138c1d109f",
+    "rule": "No repeatability or milestone result may cite a test count that cannot be reproduced from the referenced Git-controlled commit and declared dependency environment.",
+    "local_untracked_test_count_is_not_a_repository_baseline": true
+  }
+}
