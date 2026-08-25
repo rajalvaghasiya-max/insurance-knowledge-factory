@@ -1,0 +1,99 @@
+{
+  "schema_version": "5.1",
+  "record_type": "health_neutral_cold_start_preselection_method",
+  "record_status": "LOCKED_BEFORE_ANY_PRODUCT9_SCREENING",
+  "parent_product8_protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v5_product8.json",
+  "product8_abort_path": "docs/architecture/health_product8_selection_abort_2026-08-25.json",
+  "observed_gap": "SEARCH_ENGINE_DISCOVERY_IS_TOO_CONTAMINATION_PRONE_FOR_V5_PRESELECTION",
+  "capability_census": {
+    "existing_acquisition_and_product_signal_extraction": "REUSE",
+    "existing_uin_candidate_extraction": "REUSE",
+    "existing_product_identity_resolution": "REUSE_LATER_POST_SELECTION_ONLY",
+    "safe_preselection_identity_only_projection": "ABSENT_BEFORE_V5_1",
+    "work_classification": "WIRE_PLUS_SMALL_EXTEND",
+    "new_agent_family_authorized": false
+  },
+  "method_boundary": {
+    "broad_search_engine_candidate_discovery_after_experiment_lock": false,
+    "search_result_snippets_as_selection_evidence": false,
+    "direct_source_roots_only": true,
+    "allowed_root_classes": [
+      "regulator insurer registry/index",
+      "regulator product/UIN metadata index",
+      "official insurer product catalogue/index",
+      "official insurer download/document index when link labels themselves are metadata-only",
+      "official insurer UIN/product disclosure table"
+    ],
+    "direct_link_traversal_rule": "Start from an allow-listed regulator or insurer metadata root already preregistered for the screening run. Follow only same-authority links whose classification is metadata/index/catalogue/disclosure. Do not discover candidate URLs through general web search after the run is locked.",
+    "raw_page_text_may_be_processed_by_existing_acquisition": true,
+    "raw_page_text_may_enter_selector_context": false,
+    "raw_product_signal_output_may_enter_selector_context": false,
+    "selector_input_contract": "blind_preselection_product_metadata_v1"
+  },
+  "information_firewall": {
+    "implementation": "factory_core.governance.preselection_metadata_projection.BlindPreselectionMetadataProjector",
+    "permitted_selector_fields": [
+      "insurer_id",
+      "source_url",
+      "source_content_hash",
+      "page_intent",
+      "asset_scope",
+      "classification_rules_version",
+      "product_names",
+      "uins",
+      "uin_candidates.uin",
+      "uin_candidates.candidate_status",
+      "uin_candidates.extraction_method",
+      "uin_candidates.source"
+    ],
+    "forbidden_selector_information": [
+      "raw sections or page body text",
+      "page snippets",
+      "benefit signals",
+      "exclusion signals",
+      "waiting-period signals",
+      "copayment mechanics",
+      "financial-value evidence",
+      "room-rent signals",
+      "claim-process signals",
+      "suitability signals",
+      "UIN raw_text",
+      "UIN evidence_text",
+      "product-name evidence text"
+    ],
+    "semantic_bucket_presence_or_counts_may_influence_selection": false,
+    "semantic_content_changes_with_identical_identity_metadata_must_not_change_projection": true
+  },
+  "currentness_preselection_rule": {
+    "identity_only_projection_does_not_establish_governed_currentness": true,
+    "minimum_exact_uin_corroboration": 2,
+    "corroboration_requires_distinct_official_metadata_sources": true,
+    "at_least_one_insurer_controlled_source_required": true,
+    "regulator_source_preferred_when_available": true,
+    "conflicting_exact_uin_or_version_metadata": "EXCLUDE_CURRENTNESS_UNRESOLVED",
+    "product_name_only_match_is_insufficient": true,
+    "non_archived_label_alone_is_insufficient": true,
+    "governed_currentness_still_required_post_selection_before_semantic_review": true
+  },
+  "contamination_semantics": {
+    "human_or_selector_receives_target_mechanics_before_selection": "CONTAMINATED",
+    "existing_machine_extractor_detects_semantic_content_but_firewall_does_not_emit_it": "NOT_SELECTOR_CONTAMINATION",
+    "reason": "Blindness is enforced at the information boundary consumed by selection. Machine-side parsing cannot affect product choice when semantic fields and their presence/counts are structurally absent from the selector contract.",
+    "audit_requirement": "Persist raw acquisition and full extraction separately for audit, but hash-lock the exact blind projection used for selection."
+  },
+  "product8_immutability": {
+    "product8_quarantines_are_reversed": false,
+    "product8_may_be_rescored_or_reselected": false,
+    "v5_1_is_a_future_method_change_not_a_product8_repair": true
+  },
+  "next_experiment_gate": {
+    "product9_screening_authorized_by_this_record_alone": false,
+    "required_before_product9_screening": [
+      "v5.1 method merged with CI green",
+      "new Product #9 preregistration naming the exact allow-listed direct-source roots",
+      "deterministic cross-category insurer ordering",
+      "attestation that selector consumes only blind_preselection_product_metadata_v1 projections"
+    ],
+    "motor_authorized": false
+  }
+}
