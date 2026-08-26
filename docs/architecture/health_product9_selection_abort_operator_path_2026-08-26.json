@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "health_product9_preselection_abort",
+  "recorded_date": "2026-08-26",
+  "protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v6_product9.json",
+  "operator_guardrail_path": "docs/architecture/health_product9_operator_path_guardrail_2026-08-25.json",
+  "experiment_product_number": 9,
+  "selection_state": "UNSELECTED",
+  "outcome": "EXPERIMENT_UNSCORED",
+  "closure_reason": "PRE_RENDER_METADATA_PATH_UNAVAILABLE_FOR_ALL_PREREGISTERED_RETRY_INSURERS",
+  "preregistered_retry_order": [
+    "Cholamandalam MS General Insurance Company Limited",
+    "Magma General Insurance Limited",
+    "Navi General Insurance Limited",
+    "Shriram General Insurance Company Limited"
+  ],
+  "regulator_directory_source": "https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount",
+  "root_observations": [
+    {
+      "root": "https://irdai.gov.in/non-life-insurers1",
+      "status": "PREREGISTERED_ROOT_UNAVAILABLE_403",
+      "search_fallback_used": false
+    },
+    {
+      "root": "https://irdai.gov.in/health-insurers1",
+      "status": "PREREGISTERED_ROOT_UNAVAILABLE_403",
+      "search_fallback_used": false
+    },
+    {
+      "root": "https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount",
+      "status": "AVAILABLE_PREREGISTERED_ROOT",
+      "search_fallback_used": false
+    }
+  ],
+  "candidate_pre_render_results": [
+    {
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "regulator_directory_target": "https://www.cholainsurance.com/",
+      "pre_render_classification": "UNCLASSIFIABLE_AS_METADATA_FROM_ALLOWED_PRE_RENDER_SIGNALS",
+      "rendered": false,
+      "result": "FAIL_CLOSED_OPERATOR_PATH"
+    },
+    {
+      "insurer": "Magma General Insurance Limited",
+      "regulator_directory_target": "https://www.magmainsurance.com/",
+      "pre_render_classification": "UNCLASSIFIABLE_AS_METADATA_FROM_ALLOWED_PRE_RENDER_SIGNALS",
+      "rendered": false,
+      "result": "FAIL_CLOSED_OPERATOR_PATH"
+    },
+    {
+      "insurer": "Navi General Insurance Limited",
+      "regulator_directory_target": "https://navi.com/",
+      "pre_render_classification": "UNCLASSIFIABLE_AS_METADATA_FROM_ALLOWED_PRE_RENDER_SIGNALS",
+      "rendered": false,
+      "result": "FAIL_CLOSED_OPERATOR_PATH"
+    },
+    {
+      "insurer": "Shriram General Insurance Company Limited",
+      "regulator_directory_target": "https://serviceapi.shriramgi.net/",
+      "pre_render_classification": "UNCLASSIFIABLE_AS_METADATA_FROM_ALLOWED_PRE_RENDER_SIGNALS",
+      "rendered": false,
+      "result": "FAIL_CLOSED_OPERATOR_PATH"
+    }
+  ],
+  "blindness_metrics": {
+    "insurer_origins_rendered": 0,
+    "product_documents_opened": 0,
+    "preselection_target_clause_reads": 0,
+    "search_engine_fallbacks": 0,
+    "selection_overrides": 0,
+    "product_or_version_substitutions": 0
+  },
+  "ordering_provenance": "Preregistered Product #9 retry order intersected with regulator-directory presence; no semantic content used to determine order.",
+  "interpretation": {
+    "semantic_repeatability_inference_authorized": false,
+    "currentness_inference_authorized": false,
+    "motor_gate_satisfied": false,
+    "retroactive_protocol_relaxation_authorized": false,
+    "retroactive_candidate_substitution_authorized": false
+  },
+  "future_methodology_finding": "A regulator directory that exposes only bare insurer origins is insufficient for an operator-blind metadata traversal when destination body rendering is prohibited before metadata classification. Any future attempt must preregister a machine-side discovery mechanism that can derive metadata-class paths without exposing semantic body content to the selector/operator; Product #9 itself remains immutable and unscored."
+}
