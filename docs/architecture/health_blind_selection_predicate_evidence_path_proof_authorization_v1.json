@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_blind_selection_predicate_evidence_path_proof_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_C5_22_REVIEW_MERGES_GREEN",
+  "authorized_next_action": "HEALTH_BLIND_SELECTION_PREDICATE_EVIDENCE_PATH_PROOF_ONLY",
+  "scope": {
+    "unresolved_predicates": [
+      "benefit_basis",
+      "insurance_object_type",
+      "coverage_arrangement"
+    ],
+    "allowed_work": [
+      "identify authoritative regulator or insurer metadata sources that explicitly state unresolved predicate values",
+      "determine whether those sources can be consumed without prohibited target-semantic inspection",
+      "map evidence to existing v2/currentness contracts or a prospective minimal selector-safe projection delta",
+      "classify each unresolved predicate as metadata-establishable, not-yet-demonstrated, or requiring semantic content",
+      "reuse-audit existing registry, product-master, classifier and governance contracts before proposing any new runtime"
+    ]
+  },
+  "forbidden": {
+    "runtime_change": true,
+    "selector_projection_change": true,
+    "product14_preregistration": true,
+    "product14_execution": true,
+    "retry_product11": true,
+    "retry_product12": true,
+    "retry_product13": true,
+    "target_clause_reads": true,
+    "semantic_fit_selection": true,
+    "motor": true
+  },
+  "required_outcome": [
+    "BLIND_SELECTION_PREDICATE_CLOSED_AND_ESTABLISHABLE",
+    "BLIND_SELECTION_EVIDENCE_PATH_INCOMPLETE",
+    "BLIND_SELECTION_STRUCTURAL_CEILING_PROVEN"
+  ],
+  "decision_rule": "No implementation or Product #14 preregistration may begin until every necessary regulatory/stipulated predicate has an establishability verdict and the anti-contamination layer remains an adversarial assurance problem rather than an exhaustively enumerated predicate list."
+}
