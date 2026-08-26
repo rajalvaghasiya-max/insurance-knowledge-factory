@@ -53,6 +53,7 @@ class BlindDiscoveryLinkProjector:
     AUTHORIZED_METADATA_PAGE_TYPES = frozenset(
         {
             "download_page",
+            "insurer_directory",
             "public_disclosure",
             "regulatory",
             "uin_related",
