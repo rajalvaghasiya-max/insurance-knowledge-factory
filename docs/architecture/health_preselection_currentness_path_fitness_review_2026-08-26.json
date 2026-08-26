@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_preselection_currentness_path_fitness_review_v1",
+  "record_status": "FROZEN_FITNESS_REVIEW_PENDING_MERGE",
+  "review_parent_commit": "9625422043b40848ac59909970f27b6c3f4f8fdf",
+  "scope": {
+    "domain": "health",
+    "products_reviewed": [11, 12],
+    "product11_may_be_changed_or_retried": false,
+    "product12_may_be_changed_or_retried": false,
+    "product13_preregistration_authorized": false,
+    "semantic_review_authorized": false,
+    "target_clause_reads_authorized": false,
+    "motor_authorized": false
+  },
+  "immutable_evidence": {
+    "product11": {
+      "record_path": "docs/architecture/health_product11_gate_c_preselection_contract_abort_2026-08-26.json",
+      "outcome": "EXPERIMENT_UNSCORED",
+      "failure_layer": "selector_boundary_contract",
+      "finding": "The frozen v1 projection required and emitted raw source locations while the locked Product #11 selector boundary forbade them. Gate C never started.",
+      "prospective_resolution_already_completed": "blind_preselection_product_metadata_v2"
+    },
+    "product12": {
+      "record_path": "docs/architecture/health_product12_gate_c_no_eligible_blind_selection_2026-08-26.json",
+      "outcome": "EXPERIMENT_UNSCORED",
+      "failure_layer": "product_identity_currentness_evidence_acquisition",
+      "finding": "The repaired v2 selector boundary operated with zero raw-location or semantic leakage. Shriram yielded seven authorized blind metadata destinations and seven valid v2 projections, but those projections contained zero exact UIN identities; the other three candidate insurer paths produced no v2 product metadata projections. No product was selected."
+    }
+  },
+  "runtime_boundary_findings": {
+    "v2_projection_boundary_fitness": "FIT",
+    "v2_projection_boundary_reason": "Product #12 demonstrated that raw source locations can remain machine-side while the selector receives deterministic source_ref identity plus product/UIN metadata only.",
+    "uin_extractor_scope": "LABEL_LED_TEXT_ONLY",
+    "uin_extractor_reason": "UinCandidateExtractor promotes only labelled UIN occurrences present in supplied source text and deliberately does not establish verified product ownership.",
+    "discovery_capability": "CAN_DISCOVER_LINKED_PDF_AND_METADATA_DESTINATIONS",
+    "gate_c_consumption_gap": "Gate C consumed first-hop authorized metadata pages and projected ProductSignalExtractor output, but did not provide a governed generic stage that recursively acquires second-hop metadata artifacts or regulator product-index evidence before exact-UIN/currentness selection.",
+    "downstream_currentness_gate_fitness": "FIT_BUT_POST_IDENTITY",
+    "downstream_currentness_gate_reason": "CurrentProductRepeatabilityEvidenceEligibility correctly evaluates an already-bound exact document version/currentness overlay; it cannot compensate for missing preselection product identity/currentness evidence."
+  },
+  "diagnosis": {
+    "classification": "SYSTEMATIC_PRESELECTION_IDENTITY_CURRENTNESS_ACQUISITION_GAP",
+    "site_specific_evidence_scarcity_also_present": true,
+    "site_specific_evidence_scarcity_detail": "Three of four Product #12 insurer origins did not yield accepted metadata paths in the live run, so site transport/discovery limitations remain real. However, the Shriram path proves that even when authorized metadata destinations are available, the current Gate C path can terminate before reaching exact identity/currentness evidence carried by deeper metadata artifacts.",
+    "not_a_semantic_gap": true,
+    "not_a_v2_blindness_gap": true,
+    "not_a_current_product_eligibility_gate_gap": true,
+    "not_proof_that_shriram_has_no_qualifying_product": true,
+    "not_proof_that_any_candidate_insurer_has_no_qualifying_product": true
+  },
+  "required_prospective_capability": {
+    "working_name": "governed_product_identity_currentness_evidence_acquisition",
+    "position_in_pipeline": "after authorized blind metadata-path discovery and before neutral product selection",
+    "purpose": "Machine-side traversal and normalization of product-identity/currentness evidence without exposing raw locations or semantic-bearing target content to the selector.",
+    "minimum_responsibilities": [
+      "consume only authorized blind metadata destinations resolved machine-side",
+      "support bounded traversal from metadata landing pages to metadata artifacts such as PDF/download/table resources when the artifact class is authorized",
+      "preserve source provenance and immutable content hashes for every acquired metadata artifact",
+      "extract exact product names, UINs, version/currentness signals and source identity without target-clause semantic inspection",
+      "support insurer-controlled and regulator-controlled metadata evidence when available",
+      "deduplicate by exact source identity while preserving distinct-source corroboration",
+      "emit only blind_preselection_product_metadata_v2-compatible selector projections or a separately frozen successor contract that remains raw-location-free",
+      "fail closed when artifact type, product ownership, UIN binding, version or currentness is ambiguous",
+      "enforce bounded depth and deterministic traversal order",
+      "keep policy wording/prospectus/CIS target-clause inspection unauthorized before selection and positive currentness eligibility"
+    ]
+  },
+  "non_goals": [
+    "Do not weaken the v2 raw-location firewall.",
+    "Do not broaden semantic extraction before selection.",
+    "Do not reinterpret or retry Products #11 or #12.",
+    "Do not preregister Product #13 until the prospective repair is implemented, tested and independently frozen.",
+    "Do not authorize Motor."
+  ],
+  "decision": {
+    "fitness_review_outcome": "PROSPECTIVE_REPAIR_REQUIRED_BEFORE_NEXT_HEALTH_EXPERIMENT",
+    "authorized_next_action_after_this_review_merges": "DESIGN_IMPLEMENT_TEST_AND_FREEZE_GOVERNED_PRODUCT_IDENTITY_CURRENTNESS_EVIDENCE_ACQUISITION_ONLY",
+    "product13_preregistration_authorized_after_review_merge": false,
+    "motor_authorized_after_review_merge": false
+  }
+}
