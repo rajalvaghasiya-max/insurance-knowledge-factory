@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_c5_35_object_type_evidence_path_result",
+  "record_status": "FROZEN_PENDING_GREEN_MERGE",
+  "milestone": "C5.35",
+  "experiment_scope": "HEALTH_NEUTRAL_COLD_START_REPEATABILITY_PRODUCT14",
+  "authorized_by": "docs/architecture/health_c5_34_object_type_evidence_acquisition_contract_2026-08-26.json",
+  "source_evidence": {
+    "disposable_branch": "c5-35-health-object-type-evidence-capture-live",
+    "source_commit_sha": "bdd25edf9bda548d305a223d57850f711c63dd5b",
+    "source_blob_sha1": "f592e9570c288d0f984a7257fec0c16049d35bff",
+    "preserved_path": "evidence/c5_35_object_type_capture.txt",
+    "preservation_method": "EXACT_GIT_BLOB_IDENTITY_COPY"
+  },
+  "capture_scope": {
+    "predicate": "insurance_object_type",
+    "required_value_for_eligibility": "MAIN_PRODUCT",
+    "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+    "join_key": "exact UIN",
+    "pending_candidate_count": 131,
+    "all_131_processed": true
+  },
+  "capture_result": {
+    "pages_scanned": 87,
+    "terminal_page": 87,
+    "terminal_page_row_count": 31,
+    "query_status_counts": {
+      "NO_MATCH": 131
+    },
+    "exact_match_type_counts": {},
+    "exact_uin_match_count": 0,
+    "candidate_status_changes": 0,
+    "adjudication_started": false,
+    "selection_started": false,
+    "semantic_review_started": false,
+    "target_clause_reads": 0
+  },
+  "route_verdict": "FAIL_CLOSED_PREDICATE_EVIDENCE_PATH",
+  "route_verdict_scope": "The frozen IRDAI Non-Life Insurance Products structured-register route provides zero exact-UIN coverage for the 131 C5.33 pending Health candidates. This record makes no universal claim about whether insurance_object_type can ever be established from non-content metadata.",
+  "forbidden_interpretations": [
+    "absence of a Non-Life register match proves MAIN_PRODUCT",
+    "absence of Add-on text proves MAIN_PRODUCT",
+    "product name or UIN syntax may substitute for exact regulator metadata",
+    "the 0/131 result proves object type can only ever be established from semantic content"
+  ],
+  "product14_selection_authorized": false,
+  "target_clause_reads_authorized": false,
+  "runtime_change_authorized": false,
+  "next_step": "C5_36_STRICT_BLIND_NEUTRAL_SELECTION_FITNESS_AND_CYCLE_CLOSURE_DECISION"
+}
