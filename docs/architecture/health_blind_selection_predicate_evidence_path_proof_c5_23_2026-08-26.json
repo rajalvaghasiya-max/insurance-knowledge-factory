@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_blind_selection_predicate_evidence_path_proof_c5_23",
+  "record_status": "PROOF_RECORDED_PENDING_GREEN_MERGE",
+  "baseline_commit": "6f156f55ae7e48df5d26c647b2d6f9dc02be8074",
+  "authorization": "HEALTH_BLIND_SELECTION_PREDICATE_EVIDENCE_PATH_PROOF_ONLY",
+  "runtime_changes": 0,
+  "selector_projection_changes": 0,
+  "product14_preregistered": false,
+  "target_clause_reads": 0,
+  "motor_authorized": false,
+  "authoritative_sources": [
+    {
+      "source_id": "irdai_health_insurance_products_register",
+      "url": "https://irdai.gov.in/health-insurance-products",
+      "source_class": "regulator_product_register",
+      "observed_capabilities": ["product_name", "uin", "archive_or_non_archive", "approval_date", "type_of_product_when_populated"],
+      "observed_type_examples": ["Retail", "Group", "Add On", "New", "Revision"],
+      "limitation": "The Type Of Product column is historically heterogeneous and therefore is not by itself a universal closed evidence path for insurance object type or coverage arrangement."
+    },
+    {
+      "source_id": "irdai_non_life_insurance_products_register",
+      "url": "https://irdai.gov.in/non-life-insurance-products",
+      "source_class": "regulator_product_register",
+      "observed_capabilities": ["Main Product", "Add-on", "uin", "archive_or_non_archive"],
+      "limitation": "Useful regulator metadata evidence for object type where populated, but Health-candidate universal coverage is not demonstrated by this proof."
+    },
+    {
+      "source_id": "irdai_filed_health_product_documents",
+      "source_class": "regulator_hosted_filed_product_document",
+      "observed_capabilities": ["explicit Product Type such as Individual/Floater", "explicit Category of Cover such as Indemnity/Benefit"],
+      "examples": ["UIIHLIP21085V012021", "UNIHLIP21102V012021", "TATHLIP21095V012021"],
+      "limitation": "The classification can be explicit without reading copayment or waiting-period clauses, but the evidence is inside the filed product document. The current frozen preselection boundary does not yet establish that this source class may be consumed preselection without violating the no-policy-wording/content boundary."
+    }
+  ],
+  "predicate_results": [
+    {
+      "predicate_id": "benefit_basis",
+      "required_value": "indemnity",
+      "closure_type": "REGULATORY_DERIVED",
+      "establishability_under_blindness": "NOT_YET_DEMONSTRATED",
+      "evidence_findings": [
+        "UIN family or Individual classification is not sufficient to prove indemnity.",
+        "Regulator-hosted filed product documents can explicitly state Category of Cover as Indemnity/Benefit.",
+        "A universal regulator metadata-only field for benefit basis was not demonstrated."
+      ],
+      "structural_ceiling_proven": false,
+      "projection_delta_authorized": false
+    },
+    {
+      "predicate_id": "insurance_object_type",
+      "required_value": "product",
+      "closure_type": "REGULATORY_DERIVED",
+      "establishability_under_blindness": "REGULATOR_METADATA_ESTABLISHABLE_WHERE_EXPLICIT",
+      "evidence_findings": [
+        "IRDAI product registers can explicitly distinguish Main Product/Add-on or Add On in some records.",
+        "The Health register Type Of Product field is historically heterogeneous and may instead contain New/Revision/Retail/Group.",
+        "Universal object-type coverage for every candidate is not demonstrated."
+      ],
+      "structural_ceiling_proven": false,
+      "projection_delta_authorized": false
+    },
+    {
+      "predicate_id": "coverage_arrangement",
+      "required_value": "individual_and_or_family_floater",
+      "closure_type": "EXPERIMENT_STIPULATED",
+      "establishability_under_blindness": "NOT_YET_DEMONSTRATED",
+      "evidence_findings": [
+        "IRDAI register metadata can identify Individual or Group for some records.",
+        "Regulator-hosted filed product documents can explicitly state Individual/Floater.",
+        "A universal register-level family-floater field was not demonstrated."
+      ],
+      "structural_ceiling_proven": false,
+      "projection_delta_authorized": false
+    }
+  ],
+  "reuse_audit": {
+    "blind_preselection_product_metadata_v2": "REUSE",
+    "blind_product_identity_currentness_evidence_v1": "REUSE",
+    "governed_product_identity_currentness_evidence_acquisition": "REUSE",
+    "historical_protocol_population_predicate": "REUSE_AS_STIPULATED_DEFINITION",
+    "existing_closed_taxonomy_projection_for_all_three_predicates": "NOT_FOUND",
+    "runtime_build_authorized": false
+  },
+  "anti_contamination": {
+    "closure_model": "ADVERSARIAL_INVARIANT",
+    "exhaustive_completeness_claim": false,
+    "status": "UNCHANGED_BY_THIS_PROOF"
+  },
+  "verdict": "BLIND_SELECTION_EVIDENCE_PATH_INCOMPLETE",
+  "why_not_closed_and_establishable": "At least benefit_basis and coverage_arrangement still lack a demonstrated universal selector-safe metadata evidence path, and insurance_object_type is only regulator-metadata-establishable where the relevant field is explicit.",
+  "why_not_structural_ceiling": "Explicit regulator-hosted classification evidence exists for all three concepts in at least some official artifacts, so this proof does not establish that semantic target-clause inspection is inherently necessary. The remaining question is whether a permitted, generic preselection source class can expose those explicit classification fields without weakening blindness.",
+  "next_action": "HEALTH_PRESELECTION_CLASSIFICATION_SOURCE_BOUNDARY_DECISION_ONLY",
+  "next_action_scope": [
+    "decide whether regulator-hosted filed product classification tables may be treated as non-target classification metadata for preselection",
+    "define the exact allowed source class and bounded fields if yes",
+    "reject policy-clause/body semantic inspection and target concept reads",
+    "do not implement projection/runtime changes until that source-boundary decision is frozen"
+  ],
+  "still_forbidden": ["runtime change", "selector projection change", "Product #14 preregistration", "Product #14 execution", "target-clause reads", "semantic-fit selection", "retry Product #11/#12/#13", "Motor"]
+}
