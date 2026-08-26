@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_bounded_metadata_source_survey_c5_26",
+  "record_status": "FROZEN_PENDING_GREEN_MERGE",
+  "base_merge_sha": "fc32f4bafbba0fcbb210d6208a67f75a40c1f76e",
+  "scope": ["benefit_basis", "coverage_arrangement"],
+  "verdict": "BLIND_SELECTION_EVIDENCE_PATH_INCOMPLETE",
+  "findings": {
+    "coverage_arrangement": {
+      "status": "METADATA_ESTABLISHABLE_IN_PRINCIPLE",
+      "evidence": [
+        "structured insurer quote/configuration surfaces can expose cover type as Individual/Floater before policy semantic inspection",
+        "IRDAI product register and historical metadata/product naming can corroborate individual/family-floater scope in some records"
+      ],
+      "caveat": "a universal regulator register field is not demonstrated; implementation would require a bounded insurer/regulator metadata adapter rather than semantic page parsing"
+    },
+    "benefit_basis": {
+      "status": "NOT_YET_DEMONSTRATED",
+      "evidence": [
+        "IRDAI Health product register does not universally expose indemnity-vs-benefit",
+        "UIN family or Individual classification is insufficient because benefit products can also be individual Health products",
+        "some CIS or filed product materials explicitly state Indemnity/Benefit, but those source classes remain forbidden for blind preselection under C5.24"
+      ],
+      "blocker": "no universally bounded structured regulator/insurer metadata surface was demonstrated that explicitly establishes indemnity-vs-benefit without relaxing the source firewall"
+    }
+  },
+  "source_boundary": {
+    "allowed": [
+      "structured regulator product registers",
+      "structured insurer metadata endpoints",
+      "quote/configuration controls whose fields are bounded before selector exposure",
+      "filing metadata records structurally separated from semantic product documents"
+    ],
+    "forbidden": [
+      "policy_wording",
+      "prospectus",
+      "customer_information_sheet",
+      "cis",
+      "semantic-bearing filed product document filtered after parsing",
+      "product marketing copy used as semantic inference"
+    ]
+  },
+  "architecture_conclusion": "coverage arrangement no longer appears to be the principal blocker; benefit basis remains the unresolved blind-safe evidence-path requirement. No structural ceiling is proven because benefit basis has not been shown to require semantic content in principle, only to lack a demonstrated bounded metadata path.",
+  "authorization_after_green_merge": "HEALTH_BENEFIT_BASIS_BLIND_SAFE_EVIDENCE_PATH_DECISION_ONLY",
+  "forbidden_after_merge": {
+    "runtime_change": true,
+    "selector_projection_change": true,
+    "product14_preregistration": true,
+    "product14_execution": true,
+    "target_clause_reads": true,
+    "semantic_fit_selection": true,
+    "motor": true
+  }
+}
