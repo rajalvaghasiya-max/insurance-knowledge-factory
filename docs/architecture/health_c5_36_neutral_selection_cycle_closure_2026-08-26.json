@@ -22,7 +22,7 @@
     "selector_semantic_content_access_is_not_a_permissible_relaxation": true,
     "external_certification_may_not_establish_eligibility_from_target_semantic_content": true,
     "target_adjacent_coverage_description_may_not_be_used_to_classify_object_type": true,
-    "moving_semantic_content review outside the selector does_not_remove_contamination": true
+    "moving_semantic_content_review_outside_selector_does_not_remove_contamination": true
   },
   "route_disposition": {
     "route_a_regulator_owned_structural_classification": "INSUFFICIENT_FOR_UNIVERSAL_POSITIVE_MAIN_PRODUCT_CERTIFICATION_OF_THE_FROZEN_131",
