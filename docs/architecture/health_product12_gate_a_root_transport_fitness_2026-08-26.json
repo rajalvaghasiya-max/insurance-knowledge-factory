@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product12_gate_a_root_transport_fitness_v1",
+  "record_status": "FROZEN_GATE_A_PASS",
+  "experiment": {
+    "domain": "health",
+    "product_number": 12,
+    "gate": "A",
+    "gate_a_status": "PASS",
+    "gate_b_started": false,
+    "gate_c_started": false,
+    "product_screening_started": false,
+    "target_clause_reads": 0
+  },
+  "preregistration": {
+    "protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v9_product12.json",
+    "preregistration_merge_commit": "b8f4773749cd5ed1b6e80decd80b1e126c524904"
+  },
+  "execution_evidence": {
+    "disposable_branch": "product12-gate-a-live-smoke",
+    "disposable_commit": "1c258e3115d4f8d2d628b5cd248b89d6b067badb",
+    "workflow_run_id": 32948196961,
+    "workflow_job_id": 98113453104,
+    "workflow_conclusion": "success",
+    "full_suite_result": "3109 passed in 9.13s",
+    "disposable_branch_may_merge": false
+  },
+  "frozen_transport_sequence": [
+    "static_http",
+    "playwright_headless",
+    "playwright_visible"
+  ],
+  "root_results": [
+    {
+      "root": "https://irdai.gov.in/non-life-insurers1",
+      "outcome": "DIRECT_HTTP_AVAILABLE",
+      "accepted": true,
+      "capture_strategy": "static_http",
+      "capture_strategy_attempted": ["static_http"],
+      "status": "captured",
+      "error_type": null
+    },
+    {
+      "root": "https://irdai.gov.in/health-insurers1",
+      "outcome": "DIRECT_HTTP_AVAILABLE",
+      "accepted": true,
+      "capture_strategy": "static_http",
+      "capture_strategy_attempted": ["static_http"],
+      "status": "captured",
+      "error_type": null
+    },
+    {
+      "root": "https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount",
+      "outcome": "ALL_ALLOWED_TRANSPORTS_FAILED",
+      "accepted": false,
+      "capture_strategy": "playwright_visible",
+      "capture_strategy_attempted": ["static_http", "playwright_headless", "playwright_visible"],
+      "status": "captured",
+      "error_type": null
+    }
+  ],
+  "gate_decision": {
+    "minimum_pass_condition": "At least one exact preregistered regulator root yields DIRECT_HTTP_AVAILABLE or BROWSER_CAPTURE_AVAILABLE.",
+    "passing_roots": 2,
+    "failing_roots": 1,
+    "decision": "PASS",
+    "gate_b_may_be_authorized_only_after_this_freeze_merges_green": true
+  },
+  "method_metrics": {
+    "search_engine_queries": 0,
+    "ad_hoc_transport_attempts": 0,
+    "semantic_inspection": 0,
+    "product_screening_started": false,
+    "target_clause_reads": 0
+  },
+  "historical_integrity": {
+    "product11_gate_a_result_reused_as_current_proof": false,
+    "product11_reopened_or_retried": false,
+    "motor_authorized": false
+  }
+}
