@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_c5_34_object_type_evidence_acquisition_contract",
+  "record_status": "FROZEN_PENDING_GREEN_MERGE",
+  "milestone": "C5.34",
+  "base_merge_anchor": "c6896474bdbcde0fc178a75d5d6c18335528a05c",
+  "experiment_scope": "HEALTH_NEUTRAL_COLD_START_REPEATABILITY_PRODUCT14",
+  "authorized_by": "docs/architecture/health_eligible_universe_construction_authorization_v1.json",
+  "source_predecessor": "docs/architecture/health_c5_33_registry_domain_eligibility_pass2.json",
+  "predecessor_expected_state": {
+    "candidate_count": 150,
+    "ineligible_fail_closed": 19,
+    "pending_evidence": 131,
+    "target_clause_reads": 0,
+    "product14_selection_authorized": false
+  },
+  "decision": "ACQUIRE_STRUCTURED_REGULATOR_OBJECT_TYPE_EVIDENCE_BEFORE_ANY_OBJECT_TYPE_ADJUDICATION",
+  "predicate_scope": "insurance_object_type",
+  "required_value_for_eligibility": "MAIN_PRODUCT",
+  "authoritative_source_class": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+  "evidence_basis": {
+    "prior_proof": "docs/architecture/health_structured_classification_evidence_path_proof_2026-08-26.json",
+    "establishability": "REGULATOR_METADATA_ESTABLISHABLE",
+    "structured_field": "Type Of Product",
+    "accepted_positive_values": ["Main Product", "Main product"],
+    "accepted_negative_values": ["Add-on", "Add on"],
+    "join_key": "exact UIN",
+    "uin_shape_is_not_evidence": true
+  },
+  "acquisition_scope": {
+    "candidate_population": "all 131 C5.33 PENDING_EVIDENCE candidates",
+    "must_query_every_pending_candidate": true,
+    "stop_at_first_match_for_universe": false,
+    "candidate_order_may_not_change_membership": true,
+    "exact_uin_match_required": true,
+    "product_name_only_match_forbidden": true,
+    "insurer_name_only_match_forbidden": true
+  },
+  "capture_contract": {
+    "one_record_per_pending_candidate": true,
+    "required_fields": [
+      "candidate_identity_ref",
+      "uin",
+      "query_status",
+      "match_count",
+      "matched_uin",
+      "structured_type_of_product",
+      "authority_scope",
+      "source_ref",
+      "source_content_hash_or_snapshot_hash",
+      "ambiguity_conflict_status"
+    ],
+    "allowed_query_status": [
+      "EXACT_MATCH",
+      "NO_MATCH",
+      "MULTIPLE_EXACT_MATCHES",
+      "SOURCE_UNAVAILABLE"
+    ],
+    "raw_semantic_document_content_allowed": false,
+    "target_semantic_fields_allowed": false,
+    "copayment_fields_allowed": false,
+    "waiting_period_fields_allowed": false
+  },
+  "adjudication_not_authorized_in_c5_34": {
+    "candidate_status_changes": false,
+    "main_product_pass_decisions": false,
+    "add_on_fail_decisions": false,
+    "unknown_fail_closed_decisions": false,
+    "reason": "C5.34 freezes and validates evidence acquisition only. Object-type adjudication must consume the frozen capture in a later bounded pass."
+  },
+  "fail_closed_acquisition_rules": [
+    "NO_MATCH remains unresolved; do not infer MAIN_PRODUCT",
+    "MULTIPLE_EXACT_MATCHES remains unresolved and records conflict",
+    "SOURCE_UNAVAILABLE remains unresolved",
+    "unrecognized structured Type Of Product remains unresolved",
+    "do not infer object type from product name, UIN syntax, approval date, document title or absence of Add-on wording"
+  ],
+  "anti_contamination": {
+    "target_concepts": ["copayment", "waiting_period"],
+    "target_clause_reads": 0,
+    "semantic_review_started": false,
+    "selector_input_changed": false,
+    "runtime_changed": false,
+    "projection_changed": false,
+    "c5_24_runtime_source_firewall_unchanged": true
+  },
+  "next_authorized_action_after_green_merge": "CAPTURE_AND_FREEZE_C5_34_EXACT_UIN_OBJECT_TYPE_EVIDENCE_FOR_ALL_131_PENDING_CANDIDATES_ONLY",
+  "not_authorized": [
+    "select Product #14",
+    "read target clauses",
+    "change eligibility predicates",
+    "change four-insurer pool",
+    "change candidate pool derivation rule",
+    "infer benefit basis",
+    "infer current offering",
+    "modify semantic runtime",
+    "modify blind selector projections",
+    "retry Product #11, #12 or #13",
+    "open Motor"
+  ],
+  "product14_selection_authorized": false,
+  "target_clause_reads_authorized": false,
+  "runtime_change_authorized": false,
+  "motor_authorized": false
+}
