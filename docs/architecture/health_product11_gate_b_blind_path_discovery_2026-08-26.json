@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product11_gate_b_blind_path_discovery_v1",
+  "record_status": "FROZEN_GATE_B_PASS_GATE_C_AUTHORIZED",
+  "experiment": {
+    "domain": "health",
+    "product_number": 11,
+    "product_selected": false,
+    "gate_a_status": "PASS",
+    "gate_b_status": "PASS",
+    "gate_c_authorized": true,
+    "gate_c_started": false,
+    "product_screening_started": false,
+    "target_clause_reads": 0
+  },
+  "protocol": {
+    "path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v8_product11.json",
+    "preregistration_merge_commit": "389fc99d0b4556d15e7bc7dcdb5c55af10ac8556",
+    "gate_a_result_merge_commit": "4cac746cbb0c117cebe9572c5fdb65e4ccf0880c",
+    "semantic_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+    "experiment_harness_baseline_commit": "784602b79d976873216f297ab296836e91cfa1ec"
+  },
+  "execution_lineage": {
+    "execution_mode": "disposable_non_merged_github_actions_smoke",
+    "authoritative_smoke_branch": "product11-gate-b-live-smoke",
+    "authoritative_smoke_commit": "7fc01d07903a087269653fb69e4430d6e90b76f0",
+    "workflow_run_id": 32944571862,
+    "workflow_job_id": 98102450816,
+    "workflow_conclusion": "success",
+    "factory_tests_after_smoke": 3077,
+    "factory_tests_seconds": 9.24,
+    "smoke_branch_may_merge": false
+  },
+  "diagnostic_lineage": {
+    "first_smoke_commit": "2394e9d2a3998984c63513299e856538d562e2b7",
+    "first_smoke_result_authoritative": false,
+    "first_smoke_defect": "OVERBROAD_CONTAINER_MATCHING_ASSUMED_DIRECT_EXTERNAL_LINK_REPRESENTATION",
+    "origin_signal_diagnostic_branch": "product11-gate-b-origin-signal-diagnostic",
+    "origin_signal_diagnostic_commit": "db2e9c87b78e1dbd5363b6ee4cd8f1fe8a4fa31d",
+    "origin_signal_workflow_run_id": 32944361041,
+    "origin_signal_workflow_job_id": 98101804301,
+    "diagnostic_result": "ALL_FOUR_CANDIDATES_HAVE_UNIQUE_MINIMAL_REGULATOR_SCOPED_DOMAIN_SIGNAL",
+    "protocol_or_runtime_contract_changed": false
+  },
+  "gate_b_result": {
+    "passing_root_capture_count": 2,
+    "insurer_directory_projection_count": 10,
+    "insurer_directory_capture_count": 10,
+    "classification_authority": "scripts.run_source_discovery.SourceDiscoveryRunner",
+    "directory_page_type": "insurer_directory",
+    "resolved_candidate_count": 4,
+    "resolved_candidate_ids": ["chola", "magma", "navi", "shriram"],
+    "capturable_candidate_ids": ["magma", "shriram"],
+    "passing_candidate_count": 1,
+    "passing_candidate_ids": ["shriram"],
+    "passing_candidate_authorized_blind_projection_count": 7,
+    "passing_candidate_projection_page_type": "download_page"
+  },
+  "gate_decision": {
+    "minimum_pass_condition": "At least one preregistered insurer identity must be reached through a passing regulator root and source-specific insurer_directory path that crosses through the authorized blind projection; the regulator-derived insurer origin must then yield at least one authorized blind metadata destination projection on the insurer site.",
+    "condition_satisfied": true,
+    "decision": "PASS",
+    "gate_c_authorized": true,
+    "product_screening_authorized": false,
+    "semantic_inspection_authorized": false
+  },
+  "blindness_and_method_metrics": {
+    "raw_regulator_destination_urls_crossing_boundary": 0,
+    "raw_insurer_origins_crossing_boundary": 0,
+    "raw_insurer_destination_urls_crossing_boundary": 0,
+    "anchor_text_crossing_boundary": 0,
+    "body_text_crossing_boundary": 0,
+    "page_titles_crossing_boundary": 0,
+    "screenshots_crossing_boundary": 0,
+    "search_engine_queries": 0,
+    "search_engine_fallbacks": 0,
+    "product_screening_started": false,
+    "product_selected": false,
+    "preselection_target_clause_reads": 0,
+    "gate_c_started": false
+  },
+  "historical_integrity": {
+    "product9_modified": false,
+    "product10_modified": false,
+    "product11_gate_b_may_be_reinterpreted_by_first_smoke": false,
+    "motor_authorized": false
+  }
+}
