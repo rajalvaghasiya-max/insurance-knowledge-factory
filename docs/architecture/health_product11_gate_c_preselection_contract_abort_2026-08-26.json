@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product11_gate_c_preselection_contract_abort_v1",
+  "record_status": "FROZEN_EXPERIMENT_UNSCORED_PRE_GATE_C_CONTRACT_MISMATCH",
+  "experiment": {
+    "domain": "health",
+    "product_number": 11,
+    "product_selected": false,
+    "gate_a_status": "PASS",
+    "gate_b_status": "PASS",
+    "gate_c_status": "NOT_STARTED",
+    "product_screening_started": false,
+    "target_clause_reads": 0,
+    "final_experiment_status": "EXPERIMENT_UNSCORED"
+  },
+  "protocol": {
+    "path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v8_product11.json",
+    "gate_b_freeze_merge_commit": "d33e7150eaac9ec4d84f5dc9102459e893fa3391",
+    "semantic_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+    "experiment_harness_baseline_commit": "784602b79d976873216f297ab296836e91cfa1ec"
+  },
+  "frozen_gate_c_requirements": {
+    "selector_discovery_input_contract": "blind_discovery_link_metadata_v1",
+    "selector_product_metadata_input_contract": "blind_preselection_product_metadata_v1",
+    "selector_may_receive_raw_url_or_anchor_text": false,
+    "selector_may_receive_raw_page_or_product_signal_output": false,
+    "selector_may_receive_semantic_bucket_presence_or_counts": false,
+    "preselection_projection_change_allowed_after_gate_c_starts": false,
+    "runtime_change_allowed_during_initial_attempt": false,
+    "selection_override_authorized": false
+  },
+  "existing_implementation_evidence": {
+    "implementation_path": "factory_core/governance/preselection_metadata_projection.py",
+    "projection_type": "blind_preselection_product_metadata_v1",
+    "top_level_source_url_required": true,
+    "top_level_source_url_emitted": true,
+    "candidate_source_url_may_be_emitted": true,
+    "candidate_safe_source_keys_include_url": true,
+    "projection_test_path": "tests/factory_core/test_preselection_metadata_projection.py",
+    "projection_test_asserts_raw_top_level_source_url": true,
+    "projection_test_asserts_raw_candidate_source_url": true
+  },
+  "contract_mismatch": {
+    "classification": "FROZEN_GATE_C_SELECTOR_CONTRACT_INCOMPATIBLE_WITH_FROZEN_PRESELECTION_PROJECTION",
+    "description": "Product #11 v8 requires the selector to consume blind_preselection_product_metadata_v1 while also forbidding raw URLs from reaching the selector. The frozen implementation and its tests require and emit raw source_url at the top level and may emit source.url inside UIN candidate provenance. Both frozen requirements cannot be satisfied simultaneously without changing either the runtime projection or the locked Product #11 protocol.",
+    "discovered_before_gate_c_started": true,
+    "live_candidate_screening_required_to_prove_mismatch": false,
+    "semantic_content_required_to_prove_mismatch": false,
+    "mid_experiment_runtime_repair_authorized": false,
+    "mid_experiment_protocol_relaxation_authorized": false
+  },
+  "gate_decision": {
+    "gate_c_started": false,
+    "gate_c_completed": false,
+    "product_screening_started": false,
+    "product_selected": false,
+    "decision": "ABORT_BEFORE_GATE_C",
+    "failure_reason": "FROZEN_GATE_C_SELECTOR_CONTRACT_INCOMPATIBLE_WITH_FROZEN_PRESELECTION_PROJECTION",
+    "final_experiment_status": "EXPERIMENT_UNSCORED",
+    "semantic_repeatability_scored": false,
+    "gate_b_pass_reversed": false,
+    "product11_may_be_reopened_or_retried": false
+  },
+  "blindness_and_method_metrics": {
+    "gate_c_selector_raw_url_reads": 0,
+    "gate_c_selector_raw_anchor_reads": 0,
+    "selector_raw_page_or_product_signal_reads": 0,
+    "selector_semantic_bucket_reads": 0,
+    "preselection_target_clause_reads": 0,
+    "target_clause_reads_before_positive_currentness_eligibility": 0,
+    "selection_rule_overrides": 0,
+    "post_selection_product_or_version_substitutions": 0,
+    "product_screening_started": false
+  },
+  "methodology_interpretation": {
+    "gate_a_transport_proven": true,
+    "gate_b_blind_path_proven_for_shriram": true,
+    "gate_b_proven_for_entire_eligible_set": false,
+    "gate_c_selection_method_proven": false,
+    "semantic_repeatability_was_tested": false,
+    "semantic_repeatability_is_proven_or_disproven": false,
+    "failure_scope": "pre-Gate-C incompatibility between the locked selector blindness requirement and the frozen blind preselection projection contract",
+    "prospective_work_classification": "REPAIR_BEFORE_NEXT_EXPERIMENT",
+    "note": "The mismatch was discovered after Gate B was correctly frozen and before Gate C screening began. Repairing the projection or relaxing Product #11 v8 now would alter the locked experiment after execution began. Product #11 therefore closes unscored rather than being rescued mid-experiment. Any repair must be prospective and independently merged before a future neutral Health experiment is preregistered."
+  },
+  "historical_integrity": {
+    "product9_modified": false,
+    "product10_modified": false,
+    "product11_gate_a_modified": false,
+    "product11_gate_b_modified": false,
+    "product11_gate_b_pass_preserved": true,
+    "product11_gate_c_never_started": true,
+    "motor_authorized": false
+  }
+}
