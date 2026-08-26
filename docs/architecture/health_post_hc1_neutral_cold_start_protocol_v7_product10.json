@@ -1,0 +1,187 @@
+{
+  "schema_version": "7.0",
+  "protocol_type": "health_post_hc1_three_gate_blind_machine_discovery_cold_start_preregistration_v7",
+  "protocol_status": "LOCKED_BEFORE_PRODUCT10_GATE_A_EXECUTION",
+  "semantic_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+  "experiment_harness_baseline_commit": "edf344b34196258b04041f2fda2caa07d06d1f72",
+  "governance_freeze_commit": "6051d6b3c8c9c4d203f2f1a532db63e6081897dc",
+  "root_transport_fitness_contract_path": "docs/architecture/health_root_transport_fitness_gate_v1.json",
+  "blind_discovery_projection_implementation": "factory_core.governance.blind_discovery_link_projection.BlindDiscoveryLinkProjector",
+  "blind_preselection_projection_implementation": "factory_core.governance.preselection_metadata_projection.BlindPreselectionMetadataProjector",
+  "current_product_evidence_eligibility_path": "docs/architecture/health_post_hc1_repeatability_evidence_eligibility_v4_2.json",
+  "experiment": {
+    "domain": "health",
+    "product_number": 10,
+    "product_selected": false,
+    "gate_a_started": false,
+    "gate_b_started": false,
+    "gate_c_started": false,
+    "target_concepts": ["copayment", "waiting_period"],
+    "central_question": "Can the frozen HC-1.5 Health semantic foundation handle copayment and waiting-period knowledge for a neutral current Health product when root transport, blind metadata-path discovery and product selection are independently gated before semantic inspection?"
+  },
+  "exact_preregistered_roots": [
+    "https://irdai.gov.in/non-life-insurers1",
+    "https://irdai.gov.in/health-insurers1",
+    "https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount"
+  ],
+  "gate_a_root_transport_fitness": {
+    "must_complete_before_gate_b": true,
+    "allowed_transport_sequence": [
+      "static_http",
+      "playwright_headless",
+      "playwright_visible"
+    ],
+    "authoritative_implementation": "collectors.capture_engine.CaptureEngine",
+    "allowed_outcomes": [
+      "DIRECT_HTTP_AVAILABLE",
+      "BROWSER_CAPTURE_AVAILABLE",
+      "ALL_ALLOWED_TRANSPORTS_FAILED"
+    ],
+    "browser_transport_is_explicitly_preregistered": true,
+    "search_engine_fallback_allowed": false,
+    "ad_hoc_transport_allowed": false,
+    "minimum_pass_condition": "At least one exact preregistered regulator root must yield DIRECT_HTTP_AVAILABLE or BROWSER_CAPTURE_AVAILABLE.",
+    "failure_outcome": "CLOSE_PRODUCT10_UNSCORED_ROOT_TRANSPORT_FAILURE",
+    "product9_history_is_modified": false,
+    "comparability_note": "BROWSER_CAPTURE_AVAILABLE is a broader preregistered transport capability than the direct-root observation that closed Product #9. It may govern Product #10 but cannot reopen or reinterpret Product #9."
+  },
+  "gate_b_blind_metadata_path_discovery": {
+    "must_complete_before_gate_c": true,
+    "machine_may_capture_raw_regulator_or_insurer_page_content": true,
+    "machine_may_parse_raw_html_anchor_text_and_destination_urls": true,
+    "operator_may_view_raw_machine_capture": false,
+    "selector_may_view_raw_machine_capture": false,
+    "operator_or_selector_allowed_contract": "blind_discovery_link_metadata_v1",
+    "raw_destination_url_may_cross_boundary": false,
+    "raw_url_path_may_cross_boundary": false,
+    "anchor_text_may_cross_boundary": false,
+    "page_title_may_cross_boundary": false,
+    "body_text_may_cross_boundary": false,
+    "screenshot_may_cross_boundary": false,
+    "semantic_evidence_may_cross_boundary": false,
+    "authorized_metadata_page_types": [
+      "download_page",
+      "public_disclosure",
+      "regulatory",
+      "uin_related",
+      "withdrawn_products"
+    ],
+    "disallowed_destinations_fail_closed": true,
+    "minimum_pass_condition": "For at least one preregistered eligible insurer origin obtained through a passing regulator root, existing machine-side capture/discovery must produce at least one authorized blind metadata destination projection without exposing raw semantic-bearing content to the operator or selector.",
+    "failure_outcome": "CLOSE_PRODUCT10_UNSCORED_BLIND_PATH_DISCOVERY_FAILURE"
+  },
+  "prior_experiment_eligibility": {
+    "product8_source": "docs/architecture/health_product8_selection_abort_2026-08-25.json",
+    "product9_source": "docs/architecture/health_product9_preselection_abort_2026-08-26.json",
+    "eligible_insurers": [
+      "Cholamandalam MS General Insurance Company Limited",
+      "Magma General Insurance Limited",
+      "Navi General Insurance Limited",
+      "Shriram General Insurance Company Limited"
+    ],
+    "eligibility_reason": "These were the Product #9 retry-pool insurers derived from Product #8 EXCLUDED_METADATA_CURRENTNESS_INSUFFICIENT status. Product #9 rendered no insurer origin, selected no product and read no target clause, so Product #9 created no new semantic exposure for this pool.",
+    "product8_contamination_quarantines_reopened": false,
+    "product8_contaminated_insurers_eligible": false,
+    "product9_is_reopened_or_retried": false,
+    "future_exact_product_prior_exposure_audit_required_after_selection": true
+  },
+  "gate_c_neutral_selection": {
+    "begins_only_after_gate_a_and_gate_b_pass": true,
+    "candidate_insurers": [
+      "Cholamandalam MS General Insurance Company Limited",
+      "Magma General Insurance Limited",
+      "Navi General Insurance Limited",
+      "Shriram General Insurance Company Limited"
+    ],
+    "insurer_sort": "normalized insurer legal/display name lower-case ASCII ascending",
+    "selector_discovery_input_contract": "blind_discovery_link_metadata_v1",
+    "selector_product_metadata_input_contract": "blind_preselection_product_metadata_v1",
+    "selector_may_receive_raw_url_or_anchor_text": false,
+    "selector_may_receive_raw_page_or_product_signal_output": false,
+    "selector_may_receive_semantic_bucket_presence_or_counts": false,
+    "screening_rule": "Process preregistered eligible insurers deterministically. Traverse only destinations authorized through the blind discovery projection, produce blind product metadata projections, require exact-UIN currentness corroboration, and stop at the first insurer with at least one eligible product.",
+    "product_eligibility": "Retail Health indemnity base product available for individual and/or family-floater purchase, with exact product name/UIN identity present in governed blind metadata projections.",
+    "currentness_corroboration": "The exact same UIN/version must appear in at least two distinct official metadata projections, including at least one insurer-controlled projection and, when available, one regulator-controlled projection. Product-name-only or non-archived-only evidence is insufficient.",
+    "conflicting_exact_uin_or_version_signals": "EXCLUDE_CANDIDATE_CURRENTNESS_UNRESOLVED",
+    "product_tie_break": "Sort eligible exact UIN/product identifiers ascending and select the first.",
+    "semantic_fit_may_affect_selection": false,
+    "selection_override_authorized": false,
+    "selection_record_must_merge_before_product_document_acquisition": true,
+    "no_eligible_product_outcome": "CLOSE_PRODUCT10_UNSCORED_NO_ELIGIBLE_BLIND_SELECTION"
+  },
+  "post_selection_sequence": {
+    "required": [
+      "run exact-product prior-exposure audit against immutable experiment history",
+      "acquire exact selected product source bytes through frozen acquisition path",
+      "register immutable bytes and SHA-256",
+      "establish exact product identity and document identity",
+      "establish reviewed current_observed_reviewed currentness",
+      "require positive CurrentProductRepeatabilityEvidenceEligibility for exact version and SHA-256",
+      "only then read copayment or waiting-period target clauses",
+      "perform exact-source semantic correctness census",
+      "classify against frozen HC-1.5 semantic baseline"
+    ],
+    "target_clause_reads_before_positive_currentness_eligibility": 0,
+    "post_selection_product_or_version_substitution_authorized": false,
+    "if_exact_product_prior_exposure_audit_fails": "CLOSE_PRODUCT10_UNSCORED_PRIOR_EXPOSURE",
+    "if_acquisition_or_currentness_fails": "CLOSE_PRODUCT10_UNSCORED",
+    "semantic_pass_may_override_currentness_failure": false
+  },
+  "freeze": {
+    "runtime_change_allowed_during_initial_attempt": false,
+    "new_semantic_or_spec_shape_allowed_during_initial_attempt": false,
+    "root_list_change_allowed_after_gate_a_starts": false,
+    "transport_sequence_change_allowed_after_gate_a_starts": false,
+    "blind_discovery_projection_change_allowed_after_gate_b_starts": false,
+    "preselection_projection_change_allowed_after_gate_c_starts": false,
+    "candidate_insurer_pool_change_allowed_after_gate_c_starts": false,
+    "decision_logic_in_config_is_failure": true,
+    "semantic_scoring_baseline_must_remain_f05ca07": true,
+    "experiment_harness_baseline_must_remain_edf344b3": true
+  },
+  "classification_rubric": {
+    "REUSE": "Frozen HC-1.5 semantic contracts handle the exact current evidence unchanged and every scored claim passes v4.2 evidence eligibility plus semantic correctness.",
+    "CONFIG_SPEC": "Frozen semantic runtime remains unchanged but a new governed declarative structural shape is required, with no executable decision logic hidden in it; exact evidence still passes v4.2 eligibility.",
+    "REPRESENTATION_GAP": "Authoritative current evidence is sufficient but the frozen HC-1.5 semantic foundation cannot faithfully represent or certify the semantic shape.",
+    "KNOWLEDGE_GAP": "Reviewed authoritative/corroborating current evidence is insufficient; code, config or DomainKnowledge cannot compensate.",
+    "EXPERIMENT_UNSCORED": "Gate A, Gate B, Gate C or post-selection acquisition/currentness fails before semantic review; do not infer a semantic outcome or substitute another product/version."
+  },
+  "primary_metrics": {
+    "new_runtime_files_after_protocol_lock": 0,
+    "runtime_loc_delta_after_protocol_lock": 0,
+    "new_semantic_runtime_shapes": 0,
+    "new_declarative_schema_shapes": 0,
+    "product_specific_branches_in_generic_runtime": 0,
+    "decision_logic_added_in_config_or_fixtures": 0,
+    "search_engine_queries_during_locked_run": 0,
+    "ad_hoc_transport_attempts": 0,
+    "gate_b_operator_raw_capture_reads": 0,
+    "gate_b_selector_raw_capture_reads": 0,
+    "raw_discovered_urls_crossing_blind_boundary": 0,
+    "semantic_anchor_or_body_text_crossing_blind_boundary": 0,
+    "selector_raw_page_or_product_signal_reads": 0,
+    "selector_semantic_bucket_reads": 0,
+    "preselection_target_clause_reads": 0,
+    "target_clause_reads_before_positive_currentness_eligibility": 0,
+    "post_selection_product_or_version_substitutions": 0,
+    "certified_claims_without_exact_candidate_version_hash_lineage": 0,
+    "current_product_claims_scored_without_v4_2_evidence_eligibility": 0,
+    "silent_semantic_coercions": 0,
+    "selection_rule_overrides": 0
+  },
+  "success_bar": {
+    "STRONG_REPEATABILITY_PROVEN": "Both target concepts are REUSE and every primary metric remains zero.",
+    "MINIMUM_REPEATABILITY_PROVEN": "Both target concepts are REUSE or CONFIG_SPEC, at least one is REUSE, no REPRESENTATION_GAP occurs, and every primary metric remains zero.",
+    "REPEATABILITY_NOT_PROVEN": "Any primary metric is non-zero, any target concept is REPRESENTATION_GAP, or both scoreable concepts are CONFIG_SPEC with zero REUSE.",
+    "REPEATABILITY_INCONCLUSIVE": "At least one target concept is KNOWLEDGE_GAP and no architecture/repeatability failure otherwise occurs.",
+    "EXPERIMENT_UNSCORED": "No eligible three-gate blind selection or exact post-selection acquisition/currentness gate is achieved before semantic review."
+  },
+  "motor_readiness_gate": {
+    "authorized_outcomes": ["STRONG_REPEATABILITY_PROVEN", "MINIMUM_REPEATABILITY_PROVEN"],
+    "product6_abort_cannot_satisfy_gate": true,
+    "product7_unscored_cannot_satisfy_gate": true,
+    "product8_unscored_cannot_satisfy_gate": true,
+    "product9_unscored_cannot_satisfy_gate": true,
+    "product10_unscored_cannot_satisfy_gate": true
+  }
+}
