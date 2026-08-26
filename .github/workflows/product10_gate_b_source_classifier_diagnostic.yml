@@ -1,0 +1,96 @@
+name: Product10 Gate B Source Classifier Diagnostic
+
+on:
+  push:
+    branches:
+      - product10-gate-b-source-classifier-diagnostic
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - run: python -m venv .ci-venv
+      - run: .ci-venv/bin/python -m pip install --requirement requirements.txt
+      - name: Product 10 Gate B source-specific classifier diagnostic
+        shell: bash
+        run: |
+          .ci-venv/bin/python - <<'PY'
+          import hashlib
+          import json
+          from urllib.parse import urljoin, urlparse
+          import requests
+          from bs4 import BeautifulSoup
+          from scripts.run_source_discovery import SourceDiscoveryRunner
+
+          roots = [
+              "https://irdai.gov.in/non-life-insurers1",
+              "https://irdai.gov.in/health-insurers1",
+          ]
+          runner = SourceDiscoveryRunner()
+          headers = {"User-Agent": "Mozilla/5.0"}
+
+          def opaque(value):
+              return "sha256:" + hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+          summaries = []
+          total_directory = 0
+          total_external = 0
+          for root in roots:
+              response = requests.get(root, headers=headers, timeout=30)
+              response.raise_for_status()
+              soup = BeautifulSoup(response.text, "lxml")
+              counts = {}
+              directory_count = 0
+              external_count = 0
+              for link in soup.find_all("a"):
+                  href = link.get("href")
+                  if not href:
+                      continue
+                  absolute = urljoin(root, href)
+                  parsed = urlparse(absolute)
+                  if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+                      continue
+                  anchor = link.get_text(" ", strip=True)
+                  noise = runner.source_noise_skip_reason(absolute, anchor)
+                  if noise:
+                      continue
+                  page_type = runner.classify_source_url(absolute, anchor, "regulator")
+                  counts[page_type] = counts.get(page_type, 0) + 1
+                  if page_type == "insurer_directory":
+                      directory_count += 1
+                  if not parsed.netloc.lower().endswith("irdai.gov.in"):
+                      external_count += 1
+              total_directory += directory_count
+              total_external += external_count
+              summaries.append({
+                  "root_id": opaque(root),
+                  "insurer_directory_count": directory_count,
+                  "external_link_count": external_count,
+                  "page_type_counts": counts,
+                  "raw_urls_emitted": 0,
+                  "anchor_text_emitted": 0,
+              })
+          print("PRODUCT10_GATE_B_SOURCE_CLASSIFIER_DIAGNOSTIC=" + json.dumps({
+              "roots": summaries,
+              "total_insurer_directory_count": total_directory,
+              "total_external_link_count": total_external,
+              "blind_projector_authorizes_insurer_directory": False,
+              "raw_urls_emitted": 0,
+              "anchor_text_emitted": 0,
+              "body_text_emitted": 0,
+              "product_screening_started": False,
+              "product_selected": False,
+              "target_clause_reads": 0,
+          }, sort_keys=True))
+          PY
