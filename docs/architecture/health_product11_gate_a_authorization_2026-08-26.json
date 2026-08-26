@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product11_gate_a_authorization_v1",
+  "record_status": "GATE_A_AUTHORIZED_NOT_STARTED",
+  "experiment": {
+    "domain": "health",
+    "product_number": 11,
+    "product_selected": false,
+    "gate_a_authorized": true,
+    "gate_a_started": false,
+    "gate_b_authorized": false,
+    "gate_b_started": false,
+    "gate_c_authorized": false,
+    "gate_c_started": false,
+    "product_screening_started": false,
+    "target_clause_reads": 0
+  },
+  "preregistration": {
+    "protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v8_product11.json",
+    "pr_number": 160,
+    "merge_commit": "389fc99d0b4556d15e7bc7dcdb5c55af10ac8556",
+    "canonical_ci_passed": 3068,
+    "canonical_ci_seconds": 8.70,
+    "semantic_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+    "experiment_harness_baseline_commit": "784602b79d976873216f297ab296836e91cfa1ec"
+  },
+  "gate_a_authorization": {
+    "scope": "root_transport_fitness_only",
+    "exact_roots_must_come_from_preregistered_protocol": true,
+    "allowed_transport_sequence_must_come_from_preregistered_protocol": true,
+    "historical_root_observations_are_current_proof": false,
+    "search_engine_fallback_authorized": false,
+    "ad_hoc_transport_authorized": false,
+    "gate_b_may_start_before_gate_a_result_is_frozen": false,
+    "gate_c_may_start_before_gate_a_and_gate_b_results_are_frozen": false,
+    "insurer_or_product_screening_authorized": false,
+    "semantic_inspection_authorized": false
+  },
+  "historical_integrity": {
+    "product9_reopened_or_retried": false,
+    "product10_reopened_or_retried": false,
+    "motor_authorized": false
+  }
+}
