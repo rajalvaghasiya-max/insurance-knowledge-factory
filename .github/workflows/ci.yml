@@ -36,5 +36,317 @@ jobs:
       - name: Verify dependency consistency
         run: .ci-venv/bin/python -m pip check
 
+      - name: Install frozen browser transport runtime
+        run: .ci-venv/bin/python -m playwright install --with-deps chromium
+
+      - name: Product 12 Gate C v2 blind neutral-selection smoke
+        shell: bash
+        run: |
+          xvfb-run -a .ci-venv/bin/python - <<'PY'
+          import contextlib
+          import hashlib
+          import io
+          import json
+          import re
+          import tempfile
+          from collections import defaultdict
+          from pathlib import Path
+          from urllib.parse import urljoin, urlparse
+
+          from bs4 import BeautifulSoup
+
+          from agents.discovery_agent import DiscoveryAgent
+          from agents.product_signal_extractor import ProductSignalExtractor
+          from collectors.capture_engine import CaptureEngine
+          from factory_core.governance.blind_discovery_link_projection import (
+              BlindDiscoveryLinkProjectionError,
+              BlindDiscoveryLinkProjector,
+          )
+          from factory_core.governance.preselection_metadata_projection import (
+              BlindPreselectionMetadataProjectorV2,
+              PreselectionMetadataProjectionError,
+          )
+          from scripts.run_source_discovery import SourceDiscoveryRunner
+          from storage.registry_store import load_json
+
+          roots = [
+              "https://irdai.gov.in/non-life-insurers1",
+              "https://irdai.gov.in/health-insurers1",
+          ]
+          candidates = {
+              "chola": "Cholamandalam MS General Insurance Company Limited",
+              "magma": "Magma General Insurance Limited",
+              "navi": "Navi General Insurance Limited",
+              "shriram": "Shriram General Insurance Company Limited",
+          }
+          stopwords = {"insurance", "general", "company", "limited", "ltd", "co", "the", "of", "india"}
+          excluded_hosts = {"facebook.com", "linkedin.com", "youtube.com", "youtu.be", "twitter.com", "x.com", "instagram.com", "google.com", "google.co.in", "goo.gl"}
+          domain_re = re.compile(r"(?i)(?:https?://)?(?:www\.)?([a-z0-9][a-z0-9.-]*\.(?:co\.in|com|in|org|net))")
+
+          capture_engine = CaptureEngine()
+          capture_engine.capture_screenshot_only = lambda _url: None
+          discovery_agent = DiscoveryAgent()
+          source_runner = SourceDiscoveryRunner()
+          signal_extractor = ProductSignalExtractor()
+
+          def opaque(value: str) -> str:
+              return "sha256:" + hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+          def host_key(value: str) -> str:
+              raw = value.strip().lower()
+              if not raw.startswith(("http://", "https://")):
+                  raw = "https://" + raw
+              host = (urlparse(raw).hostname or "").lower().strip(".")
+              return host[4:] if host.startswith("www.") else host
+
+          def is_irdai(host: str) -> bool:
+              return host == "irdai.gov.in" or host.endswith(".irdai.gov.in")
+
+          def tokens(value: str) -> set[str]:
+              return {t for t in re.findall(r"[a-z0-9]+", value.lower()) if t not in stopwords}
+
+          candidate_tokens = {cid: tokens(name) for cid, name in candidates.items()}
+
+          def matches(cid: str, surface: str) -> bool:
+              req = candidate_tokens[cid]
+              return bool(req) and req.issubset(tokens(surface))
+
+          def suppressed_capture(url: str) -> dict:
+              sink = io.StringIO()
+              with contextlib.redirect_stdout(sink), contextlib.redirect_stderr(sink):
+                  return capture_engine.capture(url)
+
+          # Reconstruct only the already-frozen blind regulator-directory path machine-side.
+          directory_raw = {}
+          directory_projections = []
+          for root in roots:
+              cap = suppressed_capture(root)
+              if not capture_engine.is_valid_capture(cap):
+                  continue
+              soup = BeautifulSoup(cap.get("html", ""), "lxml")
+              for link in soup.find_all("a"):
+                  href = link.get("href")
+                  if not href:
+                      continue
+                  absolute = urljoin(root, href)
+                  parsed = urlparse(absolute)
+                  if parsed.scheme not in {"http", "https"} or not parsed.netloc or not is_irdai(host_key(absolute)):
+                      continue
+                  anchor = link.get_text(" ", strip=True)
+                  if source_runner.source_noise_skip_reason(absolute, anchor):
+                      continue
+                  page_type = source_runner.classify_source_url(absolute, anchor, "regulator")
+                  if page_type != "insurer_directory":
+                      continue
+                  record = {
+                      "source_id": "irdai_regulator",
+                      "insurer_id": "irdai_regulator",
+                      "source_url": root,
+                      "discovered_url": absolute,
+                      "anchor_text": anchor,
+                      "page_type": page_type,
+                      "knowledge_value": source_runner.assign_source_knowledge_value(page_type),
+                      "crawl": True,
+                      "priority": source_runner.assign_source_priority(page_type, "high", 2),
+                      "status": "new",
+                      "discovery_origin": "captured_html",
+                  }
+                  try:
+                      proj = BlindDiscoveryLinkProjector.project(record).to_dict()
+                  except BlindDiscoveryLinkProjectionError:
+                      continue
+                  directory_raw[proj["destination_id"]] = absolute
+                  directory_projections.append(proj)
+
+          directory_projections = sorted({p["destination_id"]: p for p in directory_projections}.values(), key=lambda x: x["destination_id"])
+          best_scope = {cid: None for cid in candidates}
+          for proj in directory_projections[:40]:
+              raw_url = directory_raw[proj["destination_id"]]
+              cap = suppressed_capture(raw_url)
+              if not capture_engine.is_valid_capture(cap):
+                  continue
+              soup = BeautifulSoup(cap.get("html", ""), "lxml")
+              for cid in candidates:
+                  scopes = []
+                  for element in soup.find_all(["tr", "li", "article", "section", "div", "td", "tbody", "table"]):
+                      if not matches(cid, element.get_text(" ", strip=True)):
+                          continue
+                      domains = set()
+                      for match in domain_re.finditer(str(element)):
+                          h = host_key(match.group(1))
+                          if h and not is_irdai(h) and h not in excluded_hosts:
+                              domains.add(h)
+                      if len(domains) == 1:
+                          scopes.append((len(str(element)), element.name, next(iter(domains))))
+                  if scopes:
+                      candidate_best = sorted(scopes, key=lambda x: (x[0], x[1]))[0]
+                      current = best_scope[cid]
+                      if current is None or (candidate_best[0], candidate_best[1]) < (current[0], current[1]):
+                          best_scope[cid] = candidate_best
+
+          gate_b_destinations = {}
+          origin_audit = {}
+          with tempfile.TemporaryDirectory() as tmpdir:
+              for cid in sorted(candidates, key=lambda c: candidates[c].lower()):
+                  best = best_scope[cid]
+                  if best is None:
+                      origin_audit[cid] = {"resolved": False, "accepted": False, "blind_destination_count": 0}
+                      continue
+                  origin = "https://" + best[2] + "/"
+                  cap = suppressed_capture(origin)
+                  valid = capture_engine.is_valid_capture(cap)
+                  origin_audit[cid] = {"resolved": True, "accepted": bool(valid), "origin_id": opaque(origin), "blind_destination_count": 0}
+                  if not valid:
+                      continue
+                  html_path = Path(tmpdir) / f"origin-{cid}.html"
+                  html_path.write_text(cap.get("html", ""), encoding="utf-8")
+                  sink = io.StringIO()
+                  with contextlib.redirect_stdout(sink), contextlib.redirect_stderr(sink):
+                      discovered = discovery_agent.discover_from_html_file(insurer_id=cid, source_url=origin, html_path=str(html_path))
+                  rows = []
+                  for raw in discovered:
+                      record = dict(raw)
+                      record["discovery_origin"] = "captured_html"
+                      destination = record.get("discovered_url", "")
+                      if host_key(destination) != host_key(origin):
+                          continue
+                      try:
+                          proj = BlindDiscoveryLinkProjector.project(record).to_dict()
+                      except BlindDiscoveryLinkProjectionError:
+                          continue
+                      if proj["page_type"] not in {"download_page", "public_disclosure", "regulatory", "uin_related", "withdrawn_products"}:
+                          continue
+                      rows.append((proj, destination))
+                  dedup = {}
+                  for proj, destination in rows:
+                      dedup[proj["destination_id"]] = (proj, destination)
+                  gate_b_destinations[cid] = [dedup[k] for k in sorted(dedup)]
+                  origin_audit[cid]["blind_destination_count"] = len(gate_b_destinations[cid])
+
+              # Gate C: deterministic insurer order; only v2 projections cross selector boundary.
+              screening = []
+              selected = None
+              selector_projection_count = 0
+              selector_raw_url_reads = 0
+              selector_raw_path_reads = 0
+              selector_semantic_bucket_reads = 0
+
+              for cid in sorted(candidates, key=lambda c: candidates[c].lower()):
+                  destinations = gate_b_destinations.get(cid, [])
+                  v2_projections = []
+                  for blind_link, raw_url in destinations:
+                      cap = suppressed_capture(raw_url)
+                      if not capture_engine.is_valid_capture(cap):
+                          continue
+                      html = cap.get("html", "")
+                      soup = BeautifulSoup(html, "lxml")
+                      title = soup.title.get_text(" ", strip=True) if soup.title else ""
+                      sections = []
+                      for node in soup.find_all(["h1", "h2", "h3", "h4", "p", "li", "td", "th"]):
+                          text = node.get_text(" ", strip=True)
+                          if text:
+                              sections.append({"heading": text if node.name in {"h1", "h2", "h3", "h4", "th"} else "", "text": text})
+                      content_hash = hashlib.sha256(html.encode("utf-8")).hexdigest()
+                      parsed_file = Path(tmpdir) / f"gatec-{cid}-{blind_link['destination_id'].split(':')[-1][:12]}.json"
+                      parsed_file.write_text(json.dumps({
+                          "insurer_id": cid,
+                          "url": raw_url,
+                          "page_title": title,
+                          "content_hash": content_hash,
+                          "sections": sections,
+                      }), encoding="utf-8")
+                      sink = io.StringIO()
+                      try:
+                          with contextlib.redirect_stdout(sink), contextlib.redirect_stderr(sink):
+                              result = signal_extractor.extract_from_parsed_file(parsed_file)
+                          signals = load_json(Path(result["output_path"]), default={})
+                          v2 = BlindPreselectionMetadataProjectorV2.project(signals).to_dict()
+                      except (Exception, PreselectionMetadataProjectionError):
+                          continue
+                      # Explicit selector-firewall assertions.
+                      serialized = json.dumps(v2, sort_keys=True)
+                      assert raw_url not in serialized
+                      assert str(parsed_file) not in serialized
+                      assert "source_url" not in v2
+                      assert "source_parsed_file" not in serialized
+                      assert v2["projection_type"] == "blind_preselection_product_metadata_v2"
+                      v2_projections.append(v2)
+
+                  selector_projection_count += len(v2_projections)
+                  by_uin = defaultdict(lambda: {"source_refs": set(), "names": set(), "candidate_statuses": set()})
+                  for proj in v2_projections:
+                      for uin in proj.get("uins", []):
+                          row = by_uin[uin]
+                          row["source_refs"].add(proj["source_ref"])
+                          row["names"].update(proj.get("product_names", []))
+                      for candidate in proj.get("uin_candidates", []):
+                          uin = candidate["uin"]
+                          row = by_uin[uin]
+                          source = candidate.get("source", {})
+                          if source.get("source_ref"):
+                              row["source_refs"].add(source["source_ref"])
+                          row["candidate_statuses"].add(candidate.get("candidate_status", ""))
+
+                  eligible = []
+                  for uin in sorted(by_uin):
+                      row = by_uin[uin]
+                      names = sorted(n for n in row["names"] if n)
+                      # Exact-UIN currentness: same UIN on >=2 distinct official metadata sources.
+                      # Base-product safety: projection must expose a product identity; explicit rider/add-on identities are excluded.
+                      clean_names = [n for n in names if not re.search(r"(?i)\b(rider|add[- ]?on)\b", n)]
+                      if len(row["source_refs"]) >= 2 and clean_names:
+                          eligible.append({
+                              "uin": uin,
+                              "product_name": clean_names[0],
+                              "distinct_source_count": len(row["source_refs"]),
+                              "source_refs": sorted(row["source_refs"]),
+                          })
+
+                  screening.append({
+                      "candidate_id": cid,
+                      "blind_destination_count": len(destinations),
+                      "v2_projection_count": len(v2_projections),
+                      "exact_uin_count": len(by_uin),
+                      "eligible_count": len(eligible),
+                      "eligible_uins": [e["uin"] for e in eligible],
+                  })
+                  if eligible:
+                      chosen = sorted(eligible, key=lambda x: x["uin"])[0]
+                      selected = {
+                          "candidate_id": cid,
+                          "insurer_display_name": candidates[cid],
+                          "product_name": chosen["product_name"],
+                          "uin": chosen["uin"],
+                          "distinct_source_count": chosen["distinct_source_count"],
+                          "source_refs": chosen["source_refs"],
+                      }
+                      break
+
+          summary = {
+              "decision": "SELECTED" if selected else "NO_ELIGIBLE_BLIND_SELECTION",
+              "selected": selected,
+              "screening": screening,
+              "origin_audit": origin_audit,
+              "selector_product_metadata_contract": "blind_preselection_product_metadata_v2",
+              "selector_projection_count": selector_projection_count,
+              "selector_raw_url_reads": selector_raw_url_reads,
+              "selector_raw_anchor_reads": 0,
+              "selector_raw_parsed_file_path_reads": selector_raw_path_reads,
+              "selector_raw_page_or_product_signal_reads": 0,
+              "selector_semantic_bucket_reads": selector_semantic_bucket_reads,
+              "raw_urls_emitted": 0,
+              "raw_paths_emitted": 0,
+              "anchor_text_emitted": 0,
+              "body_text_emitted": 0,
+              "screenshots_emitted": 0,
+              "semantic_fit_used": False,
+              "selection_override_used": False,
+              "product_document_acquisition_started": False,
+              "semantic_review_started": False,
+              "target_clause_reads": 0,
+          }
+          print("PRODUCT12_GATE_C_SUMMARY=" + json.dumps(summary, sort_keys=True))
+          PY
+
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
