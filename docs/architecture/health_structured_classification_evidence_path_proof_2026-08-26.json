@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_structured_classification_evidence_path_proof_v1",
+  "record_status": "FROZEN_PENDING_MERGE",
+  "milestone": "C5.25",
+  "base_merge_anchor": "ad278ab1d2c3094f52e88102803f044c0f9a268e",
+  "scope": "Health neutral-selection structured classification evidence paths only",
+  "runtime_changed": false,
+  "product14_authorized": false,
+  "target_clause_reads_authorized": false,
+  "motor_authorized": false,
+  "verdict": "BLIND_SELECTION_EVIDENCE_PATH_INCOMPLETE",
+  "source_boundary": {
+    "admissible": [
+      "regulator_structured_product_register",
+      "insurer_structured_product_metadata",
+      "filing_metadata_record",
+      "structurally_isolated_filing_cover_sheet_with_bounded_fields"
+    ],
+    "forbidden": [
+      "policy_wording",
+      "prospectus",
+      "customer_information_sheet",
+      "semantic_bearing_filed_product_document_filtered_after_parse"
+    ],
+    "principle": "A source is blind-safe because its admissible fields are bounded by construction before selector exposure, not because a parser discards forbidden semantic content afterward."
+  },
+  "predicate_findings": {
+    "insurance_object_type": {
+      "required_values": ["product", "add_on", "rider", "unknown"],
+      "establishability": "REGULATOR_METADATA_ESTABLISHABLE",
+      "evidence": [
+        "IRDAI Non-Life Insurance Products structured register exposes Type Of Product values including Main Product and Add-on",
+        "historical IRDAI product lists expose Main product / Add-on alongside UIN"
+      ],
+      "uin_shape_sufficient": false,
+      "fail_closed_on_missing_or_conflict": true
+    },
+    "benefit_basis": {
+      "required_values": ["indemnity", "benefit", "unknown"],
+      "establishability": "NOT_YET_DEMONSTRATED",
+      "evidence": [
+        "Individual/Health UIN classification does not by itself prove indemnity",
+        "explicit Indemnity/Benefit classification has been observed in regulator-hosted filed product documents but those documents are excluded by the C5.24 source boundary unless the classification is available through a structurally bounded metadata artifact"
+      ],
+      "uin_shape_sufficient": false,
+      "fail_closed_on_missing_or_conflict": true
+    },
+    "coverage_arrangement": {
+      "required_values": ["individual", "family_floater", "both", "unknown"],
+      "establishability": "NOT_YET_DEMONSTRATED",
+      "evidence": [
+        "IRDAI structured product registers may expose Individual/Group or Retail/Group style product typing but do not universally expose family-floater availability as a dedicated bounded field",
+        "family-floater status is explicitly observable in product documents but those semantic-bearing documents remain outside preselection"
+      ],
+      "fail_closed_on_missing_or_conflict": true
+    }
+  },
+  "established_reusable_paths": {
+    "exact_product_identity_uin": true,
+    "current_archive_status": true,
+    "insurance_object_type_for_records_with_explicit_register_type": true,
+    "benefit_basis": false,
+    "coverage_arrangement": false
+  },
+  "structural_ceiling": {
+    "proven": false,
+    "reason": "No necessary predicate has yet been proven to require semantic content in principle; only a universal structurally bounded metadata path has not been demonstrated for benefit_basis and coverage_arrangement."
+  },
+  "implementation_authorized": false,
+  "decision_rule": "Do not implement a selector projection or preregister Product #14 until every necessary regulatory/stipulated predicate is either demonstrably establishable through the frozen structured source boundary or the architecture explicitly concludes that a structural ceiling exists.",
+  "next_authorized_action": "HEALTH_BOUNDED_METADATA_SOURCE_SURVEY_FOR_BENEFIT_BASIS_AND_COVERAGE_ARRANGEMENT_ONLY"
+}
