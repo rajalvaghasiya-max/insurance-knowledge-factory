@@ -1,0 +1,96 @@
+{
+  "schema_version": "2.0",
+  "record_type": "health_preselection_blindness_boundary_repair",
+  "record_status": "PROSPECTIVE_METHOD_REPAIR_BEFORE_NEXT_HEALTH_EXPERIMENT",
+  "trigger": {
+    "product11_abort_path": "docs/architecture/health_product11_gate_c_preselection_contract_abort_2026-08-26.json",
+    "product11_closure_merge_commit": "e375067db5d8ff90231c9486227737a069ed0c5c",
+    "observed_mismatch": "blind_preselection_product_metadata_v1 emitted raw source_url while Product #11 Gate C forbade raw URLs from reaching the selector"
+  },
+  "immutability": {
+    "product9_modified": false,
+    "product10_modified": false,
+    "product11_modified": false,
+    "product11_may_be_reopened_or_retried": false,
+    "v1_projection_retained_for_historical_replay": true,
+    "repair_applies_only_to_future_experiments": true
+  },
+  "repaired_contract": {
+    "projection_type": "blind_preselection_product_metadata_v2",
+    "implementation": "factory_core.governance.preselection_metadata_projection.BlindPreselectionMetadataProjectorV2",
+    "raw_url_may_enter_selector_context": false,
+    "raw_anchor_text_may_enter_selector_context": false,
+    "raw_parsed_file_path_may_enter_selector_context": false,
+    "raw_page_or_product_signal_output_may_enter_selector_context": false,
+    "semantic_bucket_presence_or_counts_may_enter_selector_context": false,
+    "source_distinctness_preserved_without_raw_location": true
+  },
+  "permitted_selector_fields": [
+    "insurer_id",
+    "source_ref",
+    "source_content_hash",
+    "page_intent",
+    "asset_scope",
+    "classification_rules_version",
+    "product_names",
+    "uins",
+    "uin_candidates.uin",
+    "uin_candidates.candidate_status",
+    "uin_candidates.extraction_method",
+    "uin_candidates.source.insurer_id",
+    "uin_candidates.source.source_ref",
+    "uin_candidates.source.content_hash"
+  ],
+  "source_reference": {
+    "format": "src_sha256:<hex>",
+    "derivation_inputs": [
+      "insurer_id",
+      "raw source URL",
+      "source content hash"
+    ],
+    "derivation_location": "inside the projection firewall before selector output",
+    "raw_derivation_inputs_emitted_to_selector": false,
+    "purpose": [
+      "deterministic source identity",
+      "distinct-official-source corroboration",
+      "audit linkage without selector-visible raw location"
+    ],
+    "security_semantics": "source_ref is an opaque identifier for selection purposes; it is not authority for source semantics or currentness by itself"
+  },
+  "forbidden_selector_information": [
+    "raw URL or origin",
+    "raw anchor text",
+    "source parsed-file path",
+    "raw sections or page body text",
+    "page snippets",
+    "benefit signals",
+    "exclusion signals",
+    "waiting-period signals",
+    "copayment mechanics",
+    "financial-value evidence",
+    "room-rent signals",
+    "claim-process signals",
+    "suitability signals",
+    "UIN raw_text",
+    "UIN evidence_text",
+    "product-name evidence text"
+  ],
+  "required_regression_proofs": [
+    "v2 output contains no raw source_url/url/source_parsed_file values",
+    "source_ref is deterministic for identical source identity",
+    "source_ref differs for distinct source locations with otherwise identical metadata",
+    "semantic content changes with identical identity metadata do not change projection",
+    "candidate provenance contains identity-only fields",
+    "v1 behavior remains unchanged for historical replay"
+  ],
+  "future_experiment_gate": {
+    "next_health_experiment_preregistration_authorized_by_this_record_alone": false,
+    "required_before_next_health_experiment": [
+      "this prospective repair merged with CI green",
+      "future protocol explicitly names blind_preselection_product_metadata_v2",
+      "selector boundary tests assert raw URL and raw anchor rejection",
+      "future experiment receives a new product number and immutable preregistration"
+    ],
+    "motor_authorized": false
+  }
+}
