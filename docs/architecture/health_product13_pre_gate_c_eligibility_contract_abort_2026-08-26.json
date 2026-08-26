@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product13_pre_gate_c_eligibility_contract_abort_v1",
+  "record_status": "PRODUCT13_CLOSED_EXPERIMENT_UNSCORED",
+  "experiment": {
+    "domain": "health",
+    "product_number": 13,
+    "gate_a_status": "PASS",
+    "gate_b_status": "PASS",
+    "gate_c_started": false,
+    "product_screening_started": false,
+    "product_selected": false,
+    "semantic_review_started": false,
+    "target_clause_reads": 0,
+    "outcome": "EXPERIMENT_UNSCORED"
+  },
+  "anchors": {
+    "product13_preregistration_merge_commit": "9bcf97ce9e382825c80e8a7755a2f0be02f2444f",
+    "gate_a_freeze_merge_commit": "249abf4a8750c4818f1e83d61c5d0262b3cf289c",
+    "gate_b_freeze_merge_commit": "d7fa83dd6fe3af82d2710da879b696d21daf2de0",
+    "protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v10_product13.json"
+  },
+  "abort_reason": {
+    "type": "PREREGISTERED_SELECTOR_ELIGIBILITY_CONTRACT_INSUFFICIENT",
+    "frozen_product_eligibility_predicate": "Retail Health indemnity base product available for individual and/or family-floater purchase, with exact product name/UIN identity and non-ambiguous currentness evidence in governed blind projections.",
+    "selector_product_metadata_contract": "blind_preselection_product_metadata_v2",
+    "selector_currentness_contract": "blind_product_identity_currentness_evidence_v1",
+    "missing_governed_selector_evidence": [
+      "product_class_or_health_indemnity_classification",
+      "base_product_vs_rider_or_addon_classification",
+      "retail_availability_or_individual_family_floater_eligibility"
+    ],
+    "why_execution_would_be_invalid": "The frozen selector contracts can prove source-distinct product identity, exact UIN and explicit currentness, but they do not carry governed evidence sufficient to prove the preregistered retail Health indemnity base-product eligibility predicate. Inferring those attributes from raw page text, semantic inspection, or product-name heuristics would violate the frozen blindness and semantic-fit constraints.",
+    "gate_c_not_started_because_conflict_detected_pre_start": true
+  },
+  "integrity": {
+    "runtime_changed_after_gate_c_authorization": false,
+    "preselection_projection_changed": false,
+    "currentness_projection_changed": false,
+    "candidate_pool_changed": false,
+    "selection_override_used": false,
+    "product_or_version_substitution_used": false,
+    "product_document_acquisition_started": false,
+    "semantic_fit_used": false,
+    "target_clause_reads": 0
+  },
+  "interpretation": {
+    "semantic_repeatability_proven": false,
+    "semantic_repeatability_disproven": false,
+    "knowledge_gap_inferred": false,
+    "specific_insurer_product_absence_inferred": false,
+    "product13_may_be_retried": false,
+    "product13_protocol_may_be_mutated": false
+  },
+  "historical_integrity": {
+    "product11_reopened_or_retried": false,
+    "product12_reopened_or_retried": false,
+    "motor_authorized": false
+  }
+}
