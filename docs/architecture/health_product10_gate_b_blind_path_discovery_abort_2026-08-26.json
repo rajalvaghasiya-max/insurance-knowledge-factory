@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0",
-  "record_type": "health_product10_gate_b_blind_path_discovery_abort_v1",
-  "record_status": "FROZEN_EXPERIMENT_UNSCORED_GATE_B_FAILURE",
+  "schema_version": "1.1",
+  "record_type": "health_product10_gate_b_blind_path_discovery_abort_v1_1",
+  "record_status": "FROZEN_EXPERIMENT_UNSCORED_GATE_B_CONTRACT_MISMATCH",
   "experiment": {
     "domain": "health",
     "product_number": 10,
@@ -22,66 +22,87 @@
     "semantic_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318"
   },
   "execution_lineage": {
-    "execution_mode": "disposable_non_merged_github_actions_smoke",
-    "smoke_branch": "product10-gate-b-live-smoke",
-    "smoke_commit": "d3814624f757e727c13ec50da643b7d1bddae050",
-    "workflow_run_id": 32938825521,
-    "workflow_job_id": 98085376730,
-    "workflow_conclusion": "success",
-    "factory_tests_after_smoke": 3054,
-    "factory_tests_conclusion": "passed",
-    "smoke_branch_may_merge": false
+    "first_smoke": {
+      "branch": "product10-gate-b-live-smoke",
+      "commit": "d3814624f757e727c13ec50da643b7d1bddae050",
+      "workflow_run_id": 32938825521,
+      "workflow_job_id": 98085376730,
+      "interpretation": "NON_AUTHORITATIVE_FIRST_RUNNER_ASSUMPTION_TOO_NARROW"
+    },
+    "corrected_smoke": {
+      "branch": "product10-gate-b-live-smoke",
+      "commit": "89bbc88e48f1839742a372f3c97141acbc2ffa42",
+      "workflow_run_id": 32939927843,
+      "workflow_job_id": 98088633929,
+      "workflow_conclusion": "success",
+      "factory_tests_after_smoke": 3054,
+      "factory_tests_conclusion": "passed",
+      "regulator_pages_captured_count": 30,
+      "regulator_blind_projection_count": 7620,
+      "resolved_candidate_count": 0
+    },
+    "source_classifier_diagnostic": {
+      "branch": "product10-gate-b-source-classifier-diagnostic",
+      "commit": "89941b776d5d0f1b6e46b67467b50969a4e1a362",
+      "workflow_run_id": 32940356432,
+      "workflow_job_id": 98089899312,
+      "workflow_conclusion": "success",
+      "total_insurer_directory_count": 36,
+      "per_passing_root_insurer_directory_count": 18,
+      "blind_projector_authorizes_insurer_directory": false
+    },
+    "disposable_branches_may_merge": false
   },
   "passing_gate_a_roots_used": [
     {
       "root_id": "sha256:602b6c282f74d0988c5f04a0394eda1efbaf330c71af73e3ec4b70e3c187457e",
       "accepted": true,
-      "capture_strategy": "static_http",
-      "capture_strategy_attempted": ["static_http"]
+      "capture_strategy": "static_http"
     },
     {
       "root_id": "sha256:f1d11408a4b17d67fa4f75b5be0ca0b286c3ff74e09ff69fa5a38c14968ea5a0",
       "accepted": true,
-      "capture_strategy": "static_http",
-      "capture_strategy_attempted": ["static_http"]
+      "capture_strategy": "static_http"
     }
   ],
-  "preregistered_candidate_ids": [
-    "chola",
-    "magma",
-    "navi",
-    "shriram"
-  ],
-  "blind_resolution_result": {
+  "preregistered_candidate_ids": ["chola", "magma", "navi", "shriram"],
+  "corrected_blind_execution_result": {
+    "regulator_pages_captured_count": 30,
+    "regulator_blind_projection_count": 7620,
     "resolved_candidate_count": 0,
     "resolved_candidate_ids": [],
-    "unresolved_candidate_ids": [
-      "chola",
-      "magma",
-      "navi",
-      "shriram"
-    ],
-    "raw_origin_urls_emitted": 0
-  },
-  "blind_projection_result": {
+    "unresolved_candidate_ids": ["chola", "magma", "navi", "shriram"],
     "captured_insurer_origin_count": 0,
-    "authorized_blind_projection_count": 0,
-    "passing_candidate_count": 0,
-    "passing_candidate_ids": [],
+    "authorized_insurer_metadata_projection_count": 0,
+    "raw_regulator_urls_emitted": 0,
+    "raw_origin_urls_emitted": 0,
     "raw_discovered_urls_emitted": 0,
     "anchor_text_emitted": 0,
     "body_text_emitted": 0,
     "page_titles_emitted": 0,
     "screenshots_emitted": 0
   },
+  "existing_capability_diagnostic": {
+    "source_specific_capability": "SourceDiscoveryRunner.classify_source_url",
+    "existing_precise_page_type": "insurer_directory",
+    "insurer_directory_links_classified_on_passing_roots": 36,
+    "insurer_directory_links_per_passing_root": 18,
+    "generic_discovery_observed_regulatory_projection_count": 7620,
+    "observed_generic_classification_issue": "GENERIC_IRDAI_REGULATORY_CLASSIFICATION_TOO_BROAD_FOR_BOUNDED_GATE_B_ROUTING",
+    "frozen_blind_projector_allowed_page_types_include_insurer_directory": false,
+    "observed_contract_mismatch": "EXISTING_SOURCE_SPECIFIC_INSURER_DIRECTORY_CLASS_NOT_AUTHORIZED_BY_FROZEN_BLIND_DISCOVERY_PROJECTION",
+    "runtime_or_projection_contract_change_inside_product10_authorized": false
+  },
   "gate_decision": {
     "minimum_pass_condition": "For at least one preregistered eligible insurer origin obtained through a passing regulator root, existing machine-side capture/discovery must produce at least one authorized blind metadata destination projection without exposing raw semantic-bearing content to the operator or selector.",
     "condition_satisfied": false,
     "decision": "FAIL",
+    "failure_reason": "FROZEN_BLIND_PROJECTION_CONTRACT_EXCLUDES_EXISTING_INSURER_DIRECTORY_CLASS",
     "protocol_failure_outcome": "CLOSE_PRODUCT10_UNSCORED_BLIND_PATH_DISCOVERY_FAILURE",
     "final_experiment_status": "EXPERIMENT_UNSCORED",
     "gate_c_authorized": false,
     "insurer_or_product_screening_authorized": false,
+    "mid_experiment_projector_extension_authorized": false,
     "alternate_post_result_resolution_method_authorized": false
   },
   "blindness_and_method_metrics": {
@@ -102,9 +123,12 @@
   "methodology_interpretation": {
     "semantic_repeatability_was_tested": false,
     "semantic_repeatability_is_proven_or_disproven": false,
-    "failure_scope": "blind regulator-root to eligible-insurer-origin/path discovery under the locked v7 method",
+    "root_transport_failed": false,
+    "regulator_directory_paths_absent": false,
+    "failure_scope": "frozen Gate B contract mismatch between existing source-specific insurer-directory classification and the blind projection allowlist",
     "post_failure_method_repair_inside_product10_authorized": false,
-    "note": "Both passing IRDAI roots were machine-captured successfully, but the locked Gate B execution obtained zero of the four preregistered insurer origins and therefore generated no authorized blind metadata destination projection. No alternate parser, forced-browser traversal, search fallback, hostname guess, product substitution or semantic inspection is permitted after this observed result."
+    "prospective_next_classification": "REUSE_SOURCE_DISCOVERY_RUNNER_PLUS_SMALL_EXTEND_BLIND_PROJECTION_CONTRACT",
+    "note": "The corrected smoke proved broad generic regulator traversal did not resolve the four preregistered insurer origins. A subsequent machine-only nonsemantic diagnostic proved the passing roots do expose links classified by the existing SourceDiscoveryRunner as insurer_directory (36 total), while the frozen C5.3B BlindDiscoveryLinkProjector does not authorize insurer_directory. Adding that class now would change the frozen harness after Product #10 began, so Product #10 closes unscored rather than being rescued mid-experiment."
   },
   "historical_integrity": {
     "product7_modified": false,
