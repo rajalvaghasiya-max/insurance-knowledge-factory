@@ -6,6 +6,7 @@ from factory_core.governance.blind_discovery_link_projection import (
     BlindDiscoveryLinkProjectionError,
     BlindDiscoveryLinkProjector,
 )
+from scripts.run_source_discovery import SourceDiscoveryRunner
 
 
 def _record() -> dict:
@@ -77,6 +78,59 @@ def test_semantic_url_slug_never_crosses_projection() -> None:
     assert projection["destination_id"] != _record()["discovered_url"]
     assert "copay" not in _all_text(projection).lower()
     assert "waiver" not in _all_text(projection).lower()
+
+
+def test_source_specific_insurer_directory_can_cross_only_as_opaque_metadata() -> None:
+    runner = SourceDiscoveryRunner()
+    raw_url = "https://irdai.example/insurers/list-of-companies/senior-care-20-percent-copay"
+    anchor = "Insurers directory - waiting period and 20% co-pay"
+    page_type = runner.classify_source_url(raw_url, anchor, "regulator")
+    assert page_type == "insurer_directory"
+
+    record = {
+        "source_id": "irdai",
+        "source_url": "https://irdai.example/non-life-insurers1",
+        "discovered_url": raw_url,
+        "anchor_text": anchor,
+        "page_type": page_type,
+        "knowledge_value": runner.assign_source_knowledge_value(page_type),
+        "crawl": True,
+        "priority": runner.assign_source_priority(page_type, "high", 2),
+        "discovery_origin": "captured_html",
+        "raw_body_excerpt": "Policy has a waiting period and copayment.",
+    }
+
+    projection = BlindDiscoveryLinkProjector.project(record).to_dict()
+    text = _all_text(projection).lower()
+    assert projection["page_type"] == "insurer_directory"
+    assert projection["destination_id"].startswith("sha256:")
+    assert "http" not in text
+    assert "senior-care" not in text
+    assert "copay" not in text
+    assert "waiting period" not in text
+    assert "anchor_text" not in projection
+    assert "discovered_url" not in projection
+    assert "raw_body_excerpt" not in projection
+
+
+def test_regulator_host_product_detail_does_not_gain_directory_authority() -> None:
+    runner = SourceDiscoveryRunner()
+    raw_url = "https://irdai.example/products/senior-care-20-percent-copay"
+    page_type = runner.classify_source_url(raw_url, "Senior Care product details", "regulator")
+    assert page_type == "regulatory_source_page"
+
+    record = {
+        "source_id": "irdai",
+        "discovered_url": raw_url,
+        "anchor_text": "Senior Care product details",
+        "page_type": page_type,
+        "knowledge_value": runner.assign_source_knowledge_value(page_type),
+        "crawl": True,
+        "priority": 2,
+        "discovery_origin": "captured_html",
+    }
+    with pytest.raises(BlindDiscoveryLinkProjectionError, match="not authorized"):
+        BlindDiscoveryLinkProjector.project(record)
 
 
 def test_non_metadata_product_detail_is_rejected() -> None:
