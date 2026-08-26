@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_neutral_selection_predicate_derivation_c5_22",
+  "record_status": "ARCHITECTURE_REVIEW_PENDING_GREEN_MERGE",
+  "domain": "health",
+  "baseline_commit": "e2fdb700057bcb17bdc635c543f8af73bbc1c44e",
+  "purpose": "Derive the neutral Health selection predicate top-down, distinguish regulatory closure from experiment stipulation and anti-contamination assurance, and determine whether every necessary selection predicate is establishable without prohibited semantic inspection before any Product #14 preregistration or selector runtime change.",
+  "historical_signal": {
+    "product11": "Gate C not started because the v1 selector contract exposed forbidden raw locations.",
+    "product12": "Gate C completed without selection because exact identity/currentness evidence could not be established through the frozen blind path.",
+    "product13": "Gate C not started because the frozen selector-safe contracts could not prove the full eligibility predicate.",
+    "interpretation": "Three consecutive experiments exposed a newly implicit selector requirement after the previous requirement was repaired. This is evidence against continued bottom-up enumeration as a convergence strategy."
+  },
+  "closure_models": {
+    "regulatory_taxonomy": {
+      "closure_type": "REGULATORY_DERIVED",
+      "completeness_claim_allowed": true,
+      "meaning": "Necessary and sufficient only relative to the authoritative regulatory taxonomy and definitions."
+    },
+    "experiment_population": {
+      "closure_type": "EXPERIMENT_STIPULATED",
+      "completeness_claim_allowed": true,
+      "meaning": "Necessary and sufficient only relative to the population PolicyScna deliberately defines for this experiment; no regulatory force is implied."
+    },
+    "cold_start_integrity": {
+      "closure_type": "ADVERSARIAL_INVARIANT",
+      "completeness_claim_allowed": false,
+      "meaning": "Anti-contamination properties are not exhaustively derivable. Assurance is earned by a frozen threat model, structural non-disclosure checks and adversarial falsification attempts."
+    }
+  },
+  "authoritative_regulatory_findings": [
+    {
+      "predicate_id": "health_business_scope",
+      "layer": "regulatory_taxonomy",
+      "definition": "The object is within Health Insurance Business rather than an unrelated non-life class.",
+      "authority_basis": "Insurance Act health insurance business definition and IRDAI Health Department guidance.",
+      "allowed_values": ["health", "not_health", "unknown"],
+      "required_value_for_population": "health",
+      "establishability_under_blindness": "REGULATOR_METADATA_ESTABLISHABLE",
+      "repo_reuse": "PARTIAL_WIRE"
+    },
+    {
+      "predicate_id": "issuer_authority_for_indemnity_health",
+      "layer": "regulatory_taxonomy",
+      "definition": "Issuer category is permitted to offer indemnity Health products.",
+      "authority_basis": "IRDAI states General and Health insurers may offer indemnity and/or benefit Health products; Life insurers may offer Health products only on benefit basis.",
+      "allowed_values": ["general_insurer", "health_insurer", "life_insurer", "unknown"],
+      "required_value_for_population": ["general_insurer", "health_insurer"],
+      "establishability_under_blindness": "REGULATOR_METADATA_ESTABLISHABLE",
+      "repo_reuse": "REUSE_DIRECTORY_IDENTITY"
+    },
+    {
+      "predicate_id": "benefit_basis",
+      "layer": "regulatory_taxonomy",
+      "definition": "Whether the Health product is indemnity based or benefit based.",
+      "authority_basis": "IRDAI defines Health policies as indemnity based or benefit based.",
+      "allowed_values": ["indemnity", "benefit", "mixed_or_ambiguous", "unknown"],
+      "required_value_for_population": "indemnity",
+      "establishability_under_blindness": "NOT_YET_DEMONSTRATED",
+      "critical_finding": "The public Health Insurance Products register and HLIP UIN classification do not by themselves prove indemnity. Benefit products can also be individual Health products. A separate explicit non-semantic metadata evidence path must be demonstrated before Product #14.",
+      "repo_reuse": "PARTIAL_CONCEPT_ONLY"
+    },
+    {
+      "predicate_id": "distribution_scope",
+      "layer": "regulatory_taxonomy",
+      "definition": "Whether the product is individual or group Health insurance.",
+      "authority_basis": "IRDAI expressly distinguishes individual and group Health products; its public Health Insurance Products register exposes Type Of Product values including Individual and Group.",
+      "allowed_values": ["individual", "group", "unknown"],
+      "required_value_for_population": "individual",
+      "establishability_under_blindness": "REGULATOR_METADATA_ESTABLISHABLE",
+      "repo_reuse": "WIRE_REGULATOR_PRODUCT_INDEX"
+    },
+    {
+      "predicate_id": "insurance_object_type",
+      "layer": "regulatory_taxonomy",
+      "definition": "Whether the insurance object is a product, add-on or rider.",
+      "authority_basis": "Current IRDAI Health framework treats products, add-ons and riders as distinct objects; the public product register contains explicit Add On examples and separate UIN patterns in some periods.",
+      "allowed_values": ["product", "add_on", "rider", "unknown"],
+      "required_value_for_population": "product",
+      "establishability_under_blindness": "NOT_YET_DEMONSTRATED",
+      "critical_finding": "Regulator metadata can explicitly identify some add-ons, but the public Type Of Product column is historically inconsistent and may contain New, Revision or Retail instead of object type. A generic evidence rule that proves product/add-on/rider for every selectable candidate is not yet demonstrated.",
+      "repo_reuse": "PARTIAL_WIRE"
+    },
+    {
+      "predicate_id": "coverage_arrangement",
+      "layer": "regulatory_taxonomy",
+      "definition": "Whether an individual Health product is offered on individual-sum-insured basis, family-floater basis, or both.",
+      "authority_basis": "IRDAI recognizes individual sum-insured and family-floater arrangements and defines family floater as a shared sum insured across family members.",
+      "allowed_values": ["individual_only", "family_floater_only", "individual_or_family_floater", "unknown"],
+      "required_value_for_population": ["individual_only", "family_floater_only", "individual_or_family_floater"],
+      "establishability_under_blindness": "NOT_YET_DEMONSTRATED",
+      "repo_reuse": "PARTIAL_CONCEPT_ONLY"
+    }
+  ],
+  "experiment_population_stipulations": [
+    {
+      "predicate_id": "currently_offered",
+      "closure_type": "EXPERIMENT_STIPULATED",
+      "required": true,
+      "evidence_rule": "Candidate must be non-archived/current according to authorized official metadata and must not rely on product-name-only inference.",
+      "establishability_under_blindness": "REGULATOR_METADATA_ESTABLISHABLE"
+    },
+    {
+      "predicate_id": "exact_product_identity_resolved",
+      "closure_type": "EXPERIMENT_STIPULATED",
+      "required": true,
+      "evidence_rule": "Exact product name and UIN/version must be resolved under the frozen identity/currentness contracts.",
+      "establishability_under_blindness": "GOVERNED_NON_SEMANTIC_METADATA_ESTABLISHABLE"
+    },
+    {
+      "predicate_id": "authoritative_current_document_available",
+      "closure_type": "EXPERIMENT_STIPULATED",
+      "required": true,
+      "evidence_rule": "Official metadata must identify an authoritative current product document before semantic review; preselection may not inspect target clauses.",
+      "establishability_under_blindness": "GOVERNED_NON_SEMANTIC_METADATA_ESTABLISHABLE"
+    },
+    {
+      "predicate_id": "unseen_product_for_scoring",
+      "closure_type": "EXPERIMENT_STIPULATED",
+      "required": true,
+      "evidence_rule": "Exact product/UIN must have no prior governed semantic evidence, binding, certification fixture or prior cold-start scoring result at the frozen baseline.",
+      "establishability_under_blindness": "GOVERNED_NON_SEMANTIC_METADATA_ESTABLISHABLE"
+    }
+  ],
+  "cold_start_integrity_invariants": {
+    "completeness_claim": false,
+    "required_invariants": [
+      "selector receives no raw URL/path/anchor/body/screenshot fields",
+      "selector receives no target-concept presence, count, complexity or semantic-fit signals",
+      "no target clause is read before a valid selection record is frozen",
+      "no candidate is preferred or excluded because of semantic resemblance, complexity or expected runtime outcome",
+      "no selection override or manual convenience substitution is allowed",
+      "prior exposure is used only as a disqualifying cold-start integrity check, never as semantic-fit evidence"
+    ],
+    "assurance_claim_allowed": "ADVERSARIAL_ASSURANCE_PASSED_FOR_FROZEN_THREAT_MODEL",
+    "assurance_claim_forbidden": "ALL_CONTAMINATION_PATHS_EXHAUSTIVELY_PROVEN_IMPOSSIBLE"
+  },
+  "establishability_scale": [
+    "REGULATOR_METADATA_ESTABLISHABLE",
+    "INSURER_METADATA_ESTABLISHABLE",
+    "GOVERNED_NON_SEMANTIC_METADATA_ESTABLISHABLE",
+    "REQUIRES_SEMANTIC_CONTENT",
+    "NOT_YET_DEMONSTRATED"
+  ],
+  "reuse_audit": {
+    "prior_protocol_v3_already_contains_broad_population_prose": true,
+    "indemnity_concept_exists_in_health_knowledge": true,
+    "existing_blind_v2_identity_projection_reusable": true,
+    "existing_identity_currentness_companion_projection_reusable": true,
+    "existing_governed_identity_currentness_acquisition_reusable": true,
+    "closed_regulatory_taxonomy_to_selector_evidence_bridge_already_exists": false,
+    "finding": "The bridge is partial rather than absent. Existing concepts and identity/currentness contracts should be wired where authoritative evidence supports them; no new generic subsystem is authorized by this review."
+  },
+  "closure_outcomes": {
+    "REGULATORY_TAXONOMY_COMPLETENESS_FALSIFIED": "A necessary regulatory classification appears outside the frozen authoritative taxonomy. Re-derive the regulatory layer; do not extend the selector ad hoc.",
+    "EXPERIMENT_POPULATION_DEFINITION_INCONSISTENT": "The stipulated experiment population is internally inconsistent or its membership rule cannot be applied as written. Revisit the PolicyScna experiment definition; no regulatory error is implied.",
+    "ANTI_CONTAMINATION_BOUNDARY_FALSIFIED": "An adversarial or structural test shows prohibited information can influence selection. Harden the boundary and its threat-model tests; do not add a selector predicate.",
+    "FAIL_CLOSED_PREDICATE_EVIDENCE_PATH": "A legitimate closed predicate exists but the permitted evidence path cannot establish it for a candidate. Stop rather than infer.",
+    "BLIND_SELECTION_STRUCTURAL_CEILING_PROVEN": "At least one necessary predicate is proven to require prohibited semantic content; strict blind neutral selection is incompatible with the population definition and Product #14 must not run."
+  },
+  "c5_22_verdict": "BLIND_SELECTION_EVIDENCE_PATH_INCOMPLETE",
+  "verdict_reason": "Regulatory taxonomy and experiment-population structure can be bounded, but blindness-compatible evidence paths are not yet demonstrated for at least benefit_basis, insurance_object_type and coverage_arrangement. No predicate is yet proven to require semantic content, so a structural ceiling is not yet established. Product #14 would therefore still be ambiguous if run now.",
+  "next_authorized_action": "HEALTH_BLIND_SELECTION_PREDICATE_EVIDENCE_PATH_PROOF_ONLY",
+  "permissions": {
+    "may_change_runtime": false,
+    "may_change_selector_projection": false,
+    "may_preregister_product14": false,
+    "may_run_product14": false,
+    "may_retry_products11_12_13": false,
+    "may_read_target_clauses": false,
+    "may_start_semantic_review": false,
+    "may_start_motor": false,
+    "may_identify_authoritative_metadata_sources_for_unresolved_predicates": true,
+    "may_prove_or_disprove_establishability_under_blindness": true,
+    "may_reuse_existing_repo_contracts_and_taxonomy_values": true
+  }
+}
