@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_neutral_selection_measurement_apparatus_decision_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_C5_27_MERGES_GREEN",
+  "authorized_next_action": "HEALTH_NEUTRAL_SELECTION_MEASUREMENT_APPARATUS_ARCHITECTURE_DECISION_ONLY",
+  "decision_question": "Must the repeatability experiment autonomously discover and prove every eligibility predicate at runtime, or can neutrality be preserved by a separately governed and preregistered eligible-product universe whose derivation is independent of target semantics?",
+  "required_considerations": [
+    "Products 11, 12 and 13 each exposed a new upstream selector requirement after the previous repair.",
+    "Neutral product selection is a measurement instrument, not the PolicyScna product.",
+    "The regulatory taxonomy is closed, the experiment population is stipulated, and anti-contamination remains adversarially assured rather than completeness-derived.",
+    "benefit_basis is regulatory metadata-establishable in principle, but no public bounded runtime acquisition path has been demonstrated.",
+    "Any alternative measurement design must preserve prior-exposure exclusion, zero target-concept reads before selection, deterministic ordering, immutable evidence and no semantic-fit selection."
+  ],
+  "allowed_work": [
+    "compare fully autonomous blind runtime selection with a separately governed preregistered eligible-universe design",
+    "define independence and contamination controls for any preregistered universe",
+    "decide whether Product #14 can be a fair repeatability test without further selector expansion",
+    "freeze a stop rule for the current neutral-selection hardening cycle"
+  ],
+  "forbidden": {
+    "runtime_change": true,
+    "selector_projection_change": true,
+    "product14_preregistration": true,
+    "product14_execution": true,
+    "target_clause_reads": true,
+    "semantic_fit_selection": true,
+    "retry_product11": true,
+    "retry_product12": true,
+    "retry_product13": true,
+    "motor": true
+  }
+}
