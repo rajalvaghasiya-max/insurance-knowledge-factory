@@ -81,6 +81,9 @@ jobs:
               "twitter.com", "x.com", "instagram.com", "google.com",
               "google.co.in", "goo.gl",
           }
+          domain_re = re.compile(
+              r"(?i)(?:https?://)?(?:www\.)?([a-z0-9][a-z0-9.-]*\.(?:co\.in|com|in|org|net))"
+          )
 
           capture_engine = CaptureEngine()
           capture_engine.capture_screenshot_only = lambda _url: None
@@ -90,12 +93,14 @@ jobs:
           def opaque(value: str) -> str:
               return "sha256:" + hashlib.sha256(value.encode("utf-8")).hexdigest()
 
-          def host_key(url: str) -> str:
-              host = (urlparse(url).hostname or "").lower().strip(".")
+          def host_key(value: str) -> str:
+              raw = value.strip().lower()
+              if not raw.startswith(("http://", "https://")):
+                  raw = "https://" + raw
+              host = (urlparse(raw).hostname or "").lower().strip(".")
               return host[4:] if host.startswith("www.") else host
 
-          def is_irdai(url: str) -> bool:
-              host = host_key(url)
+          def is_irdai_host(host: str) -> bool:
               return host == "irdai.gov.in" or host.endswith(".irdai.gov.in")
 
           def identity_tokens(value: str) -> set[str]:
@@ -116,52 +121,27 @@ jobs:
               with contextlib.redirect_stdout(sink), contextlib.redirect_stderr(sink):
                   return capture_engine.capture(url)
 
-          def candidate_external_hosts(soup: BeautifulSoup, page_url: str) -> dict[str, set[str]]:
-              found = {candidate_id: set() for candidate_id in candidates}
-              containers = soup.find_all(["tr", "li", "article", "section", "div"])
-              for container in containers:
-                  text = container.get_text(" ", strip=True)
-                  matching = [
-                      candidate_id
-                      for candidate_id in candidates
-                      if matches_candidate(candidate_id, text)
-                  ]
-                  if len(matching) != 1:
+          def candidate_scoped_domains(soup: BeautifulSoup, candidate_id: str):
+              scopes = []
+              for element in soup.find_all(
+                  ["tr", "li", "article", "section", "div", "td", "tbody", "table"]
+              ):
+                  if not matches_candidate(
+                      candidate_id, element.get_text(" ", strip=True)
+                  ):
                       continue
-                  candidate_id = matching[0]
-                  for link in container.find_all("a"):
-                      href = link.get("href")
-                      if not href:
-                          continue
-                      absolute = urljoin(page_url, href)
-                      parsed = urlparse(absolute)
-                      if parsed.scheme not in {"http", "https"} or not parsed.netloc:
-                          continue
-                      host = host_key(absolute)
-                      if is_irdai(absolute) or host in excluded_external_hosts:
-                          continue
-                      found[candidate_id].add(host)
-              return found
-
-          def candidate_internal_pages(soup: BeautifulSoup, page_url: str) -> dict[str, set[str]]:
-              found = {candidate_id: set() for candidate_id in candidates}
-              for link in soup.find_all("a"):
-                  href = link.get("href")
-                  if not href:
-                      continue
-                  absolute = urljoin(page_url, href)
-                  parsed = urlparse(absolute)
-                  if parsed.scheme not in {"http", "https"} or not parsed.netloc or not is_irdai(absolute):
-                      continue
-                  surface = f"{link.get_text(' ', strip=True)} {parsed.path}"
-                  matching = [
-                      candidate_id
-                      for candidate_id in candidates
-                      if matches_candidate(candidate_id, surface)
-                  ]
-                  if len(matching) == 1:
-                      found[matching[0]].add(absolute)
-              return found
+                  domains = set()
+                  for match in domain_re.finditer(str(element)):
+                      host = host_key(match.group(1))
+                      if (
+                          host
+                          and not is_irdai_host(host)
+                          and host not in excluded_external_hosts
+                      ):
+                          domains.add(host)
+                  if len(domains) == 1:
+                      scopes.append((len(str(element)), element.name, next(iter(domains))))
+              return scopes
 
           root_audit = []
           directory_projection_records = []
@@ -185,12 +165,18 @@ jobs:
                       continue
                   absolute = urljoin(root, href)
                   parsed = urlparse(absolute)
-                  if parsed.scheme not in {"http", "https"} or not parsed.netloc or not is_irdai(absolute):
+                  if (
+                      parsed.scheme not in {"http", "https"}
+                      or not parsed.netloc
+                      or not is_irdai_host(host_key(absolute))
+                  ):
                       continue
                   anchor = link.get_text(" ", strip=True)
                   if source_runner.source_noise_skip_reason(absolute, anchor):
                       continue
-                  page_type = source_runner.classify_source_url(absolute, anchor, "regulator")
+                  page_type = source_runner.classify_source_url(
+                      absolute, anchor, "regulator"
+                  )
                   if page_type != "insurer_directory":
                       continue
                   record = {
@@ -200,9 +186,13 @@ jobs:
                       "discovered_url": absolute,
                       "anchor_text": anchor,
                       "page_type": page_type,
-                      "knowledge_value": source_runner.assign_source_knowledge_value(page_type),
+                      "knowledge_value": source_runner.assign_source_knowledge_value(
+                          page_type
+                      ),
                       "crawl": True,
-                      "priority": source_runner.assign_source_priority(page_type, "high", 2),
+                      "priority": source_runner.assign_source_priority(
+                          page_type, "high", 2
+                      ),
                       "status": "new",
                       "discovery_origin": "captured_html",
                   }
@@ -210,18 +200,18 @@ jobs:
                       projection = BlindDiscoveryLinkProjector.project(record).to_dict()
                   except BlindDiscoveryLinkProjectionError:
                       continue
-                  destination_id = projection["destination_id"]
-                  raw_directory_destinations[destination_id] = absolute
+                  raw_directory_destinations[projection["destination_id"]] = absolute
                   directory_projection_records.append(projection)
 
-          # Deduplicate selector-facing directory projections without exposing destinations.
           directory_projection_records = sorted(
-              {item["destination_id"]: item for item in directory_projection_records}.values(),
+              {
+                  item["destination_id"]: item
+                  for item in directory_projection_records
+              }.values(),
               key=lambda item: item["destination_id"],
           )
 
-          external_hosts = {candidate_id: set() for candidate_id in candidates}
-          internal_pages = {candidate_id: set() for candidate_id in candidates}
+          best_scope_by_candidate = {candidate_id: None for candidate_id in candidates}
           directory_capture_count = 0
           for projection in directory_projection_records[:40]:
               raw_url = raw_directory_destinations[projection["destination_id"]]
@@ -230,41 +220,37 @@ jobs:
                   continue
               directory_capture_count += 1
               soup = BeautifulSoup(capture.get("html", ""), "lxml")
-              direct = candidate_external_hosts(soup, raw_url)
-              internal = candidate_internal_pages(soup, raw_url)
               for candidate_id in candidates:
-                  external_hosts[candidate_id].update(direct[candidate_id])
-                  internal_pages[candidate_id].update(internal[candidate_id])
-
-          # Follow at most two regulator-internal candidate-specific pages per candidate.
-          # This is still regulator-derived machine-side identity routing, not product screening.
-          for candidate_id in sorted(candidates):
-              for raw_url in sorted(internal_pages[candidate_id])[:2]:
-                  capture = suppressed_capture(raw_url)
-                  if not capture_engine.is_valid_capture(capture):
+                  scopes = candidate_scoped_domains(soup, candidate_id)
+                  if not scopes:
                       continue
-                  soup = BeautifulSoup(capture.get("html", ""), "lxml")
-                  direct = candidate_external_hosts(soup, raw_url)
-                  external_hosts[candidate_id].update(direct[candidate_id])
+                  candidate_best = sorted(scopes, key=lambda item: (item[0], item[1]))[0]
+                  current = best_scope_by_candidate[candidate_id]
+                  if current is None or (candidate_best[0], candidate_best[1]) < (
+                      current[0], current[1]
+                  ):
+                      best_scope_by_candidate[candidate_id] = candidate_best
 
           resolved_origins = {}
           resolution_audit = {}
           for candidate_id in sorted(candidates):
-              hosts = sorted(external_hosts[candidate_id])
-              if len(hosts) == 1:
-                  origin = "https://" + hosts[0] + "/"
-                  resolved_origins[candidate_id] = origin
-                  resolution_audit[candidate_id] = {
-                      "resolved": True,
-                      "origin_id": opaque(origin),
-                      "candidate_external_host_count": 1,
-                  }
-              else:
+              best = best_scope_by_candidate[candidate_id]
+              if best is None:
                   resolution_audit[candidate_id] = {
                       "resolved": False,
                       "origin_id": None,
-                      "candidate_external_host_count": len(hosts),
+                      "minimal_scope_domain_count": 0,
                   }
+                  continue
+              _, tag, host = best
+              origin = "https://" + host + "/"
+              resolved_origins[candidate_id] = origin
+              resolution_audit[candidate_id] = {
+                  "resolved": True,
+                  "origin_id": opaque(origin),
+                  "minimal_scope_domain_count": 1,
+                  "minimal_scope_tag": tag,
+              }
 
           insurer_capture_audit = {}
           projections_by_candidate = {}
@@ -277,14 +263,18 @@ jobs:
                       "accepted": bool(valid),
                       "origin_id": opaque(origin),
                       "capture_strategy": capture.get("capture_strategy"),
-                      "capture_strategy_attempted": capture.get("capture_strategy_attempted", []),
+                      "capture_strategy_attempted": capture.get(
+                          "capture_strategy_attempted", []
+                      ),
                   }
                   if not valid:
                       projections_by_candidate[candidate_id] = []
                       continue
 
                   html_path = Path(tmpdir) / f"insurer-{candidate_id}.html"
-                  html_path.write_text(capture.get("html", ""), encoding="utf-8")
+                  html_path.write_text(
+                      capture.get("html", ""), encoding="utf-8"
+                  )
                   sink = io.StringIO()
                   with contextlib.redirect_stdout(sink), contextlib.redirect_stderr(sink):
                       discovered = discovery_agent.discover_from_html_file(
@@ -301,12 +291,16 @@ jobs:
                       if host_key(destination) != host_key(origin):
                           continue
                       try:
-                          projection = BlindDiscoveryLinkProjector.project(record).to_dict()
+                          projection = BlindDiscoveryLinkProjector.project(
+                              record
+                          ).to_dict()
                       except BlindDiscoveryLinkProjectionError:
                           continue
                       projected.append(projection)
                   projections_by_candidate[candidate_id] = sorted(
-                      {item["destination_id"]: item for item in projected}.values(),
+                      {
+                          item["destination_id"]: item for item in projected
+                      }.values(),
                       key=lambda item: (item["priority"], item["destination_id"]),
                   )
 
