@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_benefit_basis_blind_safe_evidence_path_decision_c5_27",
+  "record_status": "FROZEN_REVIEW",
+  "decision": "BENEFIT_BASIS_IS_REGULATORY_METADATA_DEFINED_BUT_PUBLIC_BOUNDED_ACQUISITION_PATH_NOT_DEMONSTRATED",
+  "experiment_scope": "HEALTH_NEUTRAL_COLD_START_SELECTION",
+  "predicate": {
+    "predicate_id": "benefit_basis",
+    "layer": "REGULATORY_TAXONOMY",
+    "closure_type": "REGULATORY_DERIVED",
+    "allowed_values": ["INDEMNITY", "BENEFIT", "UNKNOWN"],
+    "required_for_current_experiment_population": true
+  },
+  "authoritative_findings": [
+    "IRDAI defines indemnity-based and benefit-based Health insurance as distinct regulatory product categories.",
+    "IRDAI product-filing/performance reporting formats require product name, UIN and Line of Business with values including Health-Indemnity and Health-Benefit Based.",
+    "Therefore benefit_basis is not inherently a semantic-only fact and strict blind selection has not reached a structural ceiling on this predicate.",
+    "The public Health Insurance Products register does not expose benefit_basis as a consistently available structured field.",
+    "No publicly acquirable regulator or insurer metadata surface was demonstrated in this review that exposes benefit_basis for arbitrary candidate products while remaining structurally bounded before selector exposure."
+  ],
+  "source_boundary": {
+    "allowed": [
+      "regulator structured product register",
+      "regulator filing metadata record",
+      "regulator return/report metadata keyed by product and UIN",
+      "insurer structured product metadata record whose fields are bounded before selector exposure",
+      "structurally isolated filing cover sheet containing only approved classification metadata"
+    ],
+    "forbidden": [
+      "policy wording",
+      "prospectus",
+      "customer information sheet",
+      "semantic-bearing filed product document filtered after parsing",
+      "product marketing copy or FAQ used as semantic inference",
+      "UIN-shape inference",
+      "target-clause inspection"
+    ]
+  },
+  "establishability_under_blindness": "METADATA_ESTABLISHABLE_IN_PRINCIPLE_PUBLIC_PATH_NOT_DEMONSTRATED",
+  "architecture_verdict": "BLIND_SELECTION_EVIDENCE_PATH_INCOMPLETE",
+  "structural_ceiling_proven": false,
+  "reason_structural_ceiling_not_proven": "The regulator itself requires benefit-basis classification as structured product/UIN-linked reporting metadata, proving that the fact can exist outside semantic policy interpretation even though a public bounded acquisition path has not yet been demonstrated.",
+  "product14_authorized": false,
+  "runtime_change_authorized": false,
+  "projection_change_authorized": false,
+  "target_clause_reads_authorized": false,
+  "motor_authorized": false
+}
