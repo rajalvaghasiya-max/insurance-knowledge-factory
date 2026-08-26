@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product12_gate_a_execution_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_PREREGISTRATION_MERGE",
+  "product_number": 12,
+  "authorized_gate": "A",
+  "gate_b_authorized": false,
+  "gate_c_authorized": false,
+  "product_screening_authorized": false,
+  "target_clause_reads_authorized": false,
+  "preconditions": [
+    "Product #12 v9 preregistration merged with full suite green",
+    "working tree based on merged preregistration commit",
+    "exact preregistered roots unchanged",
+    "frozen transport sequence unchanged"
+  ],
+  "gate_a_scope": {
+    "purpose": "fresh Product #12 root transport fitness only",
+    "historical_product11_gate_a_result_may_substitute": false,
+    "search_engine_fallback_allowed": false,
+    "ad_hoc_transport_allowed": false,
+    "semantic_inspection_allowed": false
+  },
+  "next_step": "Freeze Gate A outcome in a separate immutable record before any Gate B execution."
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product12_preregistration_freeze_v1",
+  "record_status": "LOCKED_BEFORE_PRODUCT12_GATE_A_EXECUTION",
+  "protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v9_product12.json",
+  "product_number": 12,
+  "baseline": {
+    "preselection_v2_freeze_merge_commit": "97a12446c389d3f872bbbc02a1e25024d870980a",
+    "semantic_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+    "experiment_harness_baseline_commit": "784602b79d976873216f297ab296836e91cfa1ec"
+  },
+  "preregistration_assertions": {
+    "gate_a_started": false,
+    "gate_b_started": false,
+    "gate_c_started": false,
+    "product_screening_started": false,
+    "product_selected": false,
+    "target_clause_reads": 0,
+    "selector_product_metadata_contract": "blind_preselection_product_metadata_v2",
+    "raw_url_or_anchor_selector_reads_allowed": false,
+    "raw_parsed_file_path_selector_reads_allowed": false,
+    "semantic_bucket_selector_reads_allowed": false,
+    "source_ref_authority_or_currentness_use_allowed": false,
+    "product11_reopen_or_retry_allowed": false,
+    "motor_authorized": false
+  },
+  "execution_sequence": [
+    "merge preregistration with full suite green",
+    "execute Gate A only",
+    "freeze Gate A result before Gate B",
+    "execute Gate B only if Gate A passes",
+    "freeze Gate B result before Gate C",
+    "execute Gate C only if Gate B passes",
+    "merge selection record before exact-product acquisition",
+    "complete exact-product prior-exposure, acquisition, identity, currentness and v4.2 eligibility gates",
+    "only then inspect copayment or waiting-period target clauses"
+  ],
+  "immutability": {
+    "root_list_change_after_gate_a_starts": false,
+    "transport_change_after_gate_a_starts": false,
+    "blind_discovery_change_after_gate_b_starts": false,
+    "v2_preselection_projection_change_after_gate_c_starts": false,
+    "candidate_pool_change_after_gate_c_starts": false,
+    "runtime_repair_during_initial_attempt": false,
+    "selection_override": false,
+    "product_or_version_substitution": false
+  }
+}
