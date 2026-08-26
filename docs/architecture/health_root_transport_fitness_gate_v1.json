@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "gate_type": "health_root_transport_fitness_gate_v1",
+  "status": "FROZEN_BEFORE_NEXT_NEUTRAL_HEALTH_EXPERIMENT",
+  "purpose": "Separate regulator/root transport fitness from insurer/product screening so transport failures are attributable and cannot silently widen selection behavior mid-run.",
+  "allowed_transport_sequence": [
+    "static_http",
+    "playwright_headless",
+    "playwright_visible"
+  ],
+  "authoritative_implementation": "collectors.capture_engine.CaptureEngine",
+  "rules": {
+    "transport_order_must_match_implementation": true,
+    "browser_transport_is_explicitly_preregistered": true,
+    "browser_success_after_static_failure_is_a_distinct_outcome": true,
+    "search_engine_fallback_allowed": false,
+    "ad_hoc_transport_allowed": false,
+    "root_fitness_must_complete_before_insurer_screening": true,
+    "root_fitness_failure_must_not_be_attributed_to_an_insurer": true,
+    "historical_product9_result_is_not_reopened": true
+  },
+  "outcomes": {
+    "DIRECT_HTTP_AVAILABLE": "CaptureEngine accepts the root using static_http.",
+    "BROWSER_CAPTURE_AVAILABLE": "Static HTTP is not accepted, but CaptureEngine accepts the root using playwright_headless or playwright_visible.",
+    "ALL_ALLOWED_TRANSPORTS_FAILED": "None of the preregistered transport strategies yields an accepted capture.",
+    "ROOT_GATE_NOT_RUN": "No insurer screening may begin."
+  },
+  "comparability_note": "A future experiment that passes via BROWSER_CAPTURE_AVAILABLE operates under a broader preregistered transport capability than Product #9's direct-root observation. This may inform the future experiment but cannot modify or reopen Product #9.",
+  "next_gate": "Blind metadata-path discovery fitness may run only after root transport fitness passes."
+}
