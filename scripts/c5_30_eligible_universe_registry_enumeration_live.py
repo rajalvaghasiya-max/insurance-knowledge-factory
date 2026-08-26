@@ -10,6 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE = "https://irdai.gov.in/health-insurance-products"
+DELTA = 60
 TARGETS = {
     "cholamandalam": ["cholamandalam ms general insurance"],
     "magma": ["magma hdi general insurance", "magma general insurance"],
@@ -30,7 +31,7 @@ def target_key(insurer: str) -> str | None:
     return None
 
 
-def fetch_page(cur: int, delta: int = 60) -> tuple[list[dict], str]:
+def fetch_page(cur: int, delta: int = DELTA) -> tuple[list[dict], str]:
     params = {
         "p_p_id": "com_irdai_document_media_IRDAIDocumentMediaPortlet",
         "p_p_lifecycle": "0",
@@ -40,7 +41,7 @@ def fetch_page(cur: int, delta: int = 60) -> tuple[list[dict], str]:
         "_com_irdai_document_media_IRDAIDocumentMediaPortlet_delta": str(delta),
         "_com_irdai_document_media_IRDAIDocumentMediaPortlet_resetCur": "false",
     }
-    r = requests.get(BASE, params=params, timeout=30, headers={"User-Agent": "PolicyScna-C5.30/1.0"})
+    r = requests.get(BASE, params=params, timeout=30, headers={"User-Agent": "PolicyScna-C5.30/1.1"})
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
     rows = []
@@ -48,7 +49,6 @@ def fetch_page(cur: int, delta: int = 60) -> tuple[list[dict], str]:
         cells = [" ".join(td.stripped_strings) for td in tr.find_all(["td", "th"])]
         if len(cells) < 8:
             continue
-        # Expected body columns: selector, archive-status, FY, insurer, UIN, product, approval, docs, spacer, type
         joined = " | ".join(cells)
         if "Name of the Insurer" in joined or "Financial Year" in joined:
             continue
@@ -85,20 +85,43 @@ def main() -> int:
     all_rows: list[dict] = []
     page_fingerprints: set[str] = set()
     page_audit: list[dict] = []
-    empty_or_repeat = 0
+    terminal_reason: str | None = None
 
     for cur in range(1, 101):
         rows, url = fetch_page(cur)
         fp = hashlib.sha256(json.dumps(rows, sort_keys=True).encode()).hexdigest()
-        page_audit.append({"cur": cur, "row_count": len(rows), "sha256": fp})
-        if not rows or fp in page_fingerprints:
-            empty_or_repeat += 1
-        else:
-            empty_or_repeat = 0
-            page_fingerprints.add(fp)
-            all_rows.extend(rows)
-        if empty_or_repeat >= 2:
+
+        if fp in page_fingerprints:
+            page_audit.append({
+                "cur": cur,
+                "row_count": len(rows),
+                "sha256": fp,
+                "terminal": False,
+                "pagination_anomaly": "REPEATED_PAGE_FINGERPRINT",
+            })
+            print("C5_30_ENUMERATION_PAGINATION_ANOMALY_REPEATED_PAGE", file=sys.stderr)
+            return 3
+
+        page_fingerprints.add(fp)
+        is_terminal = len(rows) < DELTA
+        page_audit.append({
+            "cur": cur,
+            "row_count": len(rows),
+            "sha256": fp,
+            "terminal": is_terminal,
+        })
+        all_rows.extend(rows)
+
+        if is_terminal:
+            terminal_reason = "ROW_COUNT_BELOW_REQUESTED_DELTA"
             break
+    else:
+        print("C5_30_ENUMERATION_INCOMPLETE_NO_TERMINAL_PAGE", file=sys.stderr)
+        return 4
+
+    if terminal_reason is None:
+        print("C5_30_ENUMERATION_INCOMPLETE_NO_TERMINAL_REASON", file=sys.stderr)
+        return 5
 
     seen: set[tuple[str, str, str]] = set()
     selected: list[dict] = []
@@ -122,7 +145,11 @@ def main() -> int:
     payload = {
         "record_type": "c5_30_disposable_irdai_health_registry_enumeration",
         "source": BASE,
+        "requested_page_delta": DELTA,
         "pages_scanned": len(page_audit),
+        "terminal_reason": terminal_reason,
+        "terminal_page": page_audit[-1]["cur"],
+        "terminal_page_row_count": page_audit[-1]["row_count"],
         "page_audit": page_audit,
         "target_counts": counts,
         "candidate_count": len(selected),
@@ -136,7 +163,6 @@ def main() -> int:
     print(json.dumps(payload, indent=2, sort_keys=True))
     print("C5_30_ENUMERATION_END")
 
-    # Fail if any frozen insurer has no registry candidate; this makes incomplete enumeration visible.
     if any(v == 0 for v in counts.values()):
         print("C5_30_ENUMERATION_INCOMPLETE_ZERO_TARGET_INSURER", file=sys.stderr)
         return 2
