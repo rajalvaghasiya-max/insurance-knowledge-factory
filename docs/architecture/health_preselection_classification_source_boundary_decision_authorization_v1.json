@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_preselection_classification_source_boundary_decision_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_C5_23_PROOF_MERGES_GREEN",
+  "authorized_next_action": "HEALTH_PRESELECTION_CLASSIFICATION_SOURCE_BOUNDARY_DECISION_ONLY",
+  "allowed_work": [
+    "decide whether regulator-hosted filed product classification tables may be treated as non-target classification metadata before selection",
+    "define an exact source-class boundary and field-level allowlist if permitted",
+    "distinguish classification metadata from policy clause/body semantic content",
+    "preserve the prohibition on copayment, waiting-period and semantic-fit reads",
+    "determine whether the source-boundary decision resolves benefit_basis, insurance_object_type and coverage_arrangement establishability without selector/runtime implementation"
+  ],
+  "forbidden": {
+    "runtime_change": true,
+    "selector_projection_change": true,
+    "product14_preregistration": true,
+    "product14_execution": true,
+    "retry_product11": true,
+    "retry_product12": true,
+    "retry_product13": true,
+    "target_clause_reads": true,
+    "semantic_fit_selection": true,
+    "motor": true
+  },
+  "required_decision_outputs": [
+    "CLASSIFICATION_SOURCE_BOUNDARY_ALLOWED_WITH_FIELD_ALLOWLIST",
+    "CLASSIFICATION_SOURCE_BOUNDARY_REJECTED_AS_SEMANTIC_CONTENT",
+    "CLASSIFICATION_SOURCE_BOUNDARY_INCONCLUSIVE"
+  ],
+  "decision_guard": "No runtime or selector projection change may begin until the source-boundary decision itself is frozen and merged green."
+}
