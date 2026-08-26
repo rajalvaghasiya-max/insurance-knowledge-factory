@@ -13,32 +13,27 @@ Motor, Life and frontend work remain outside the current authorized phase.
 
 ## Immediate objective
 
-Perform a bounded **REUSE/WIRE archaeology of regulator-root → insurer-origin identity routing** before considering another neutral Health preregistration. Product #10 must not be reopened, retried or repaired. The review may inspect existing repository capabilities and historical experiment evidence, but it may not run a new product selection experiment or alter Product #10's result.
+Perform a bounded C5.5 repair of the observed Gate B harness mismatch **prospectively only**. Existing `SourceDiscoveryRunner` already provides the precise `insurer_directory` classification needed at the regulator layer, while the frozen C5.3B `BlindDiscoveryLinkProjector` does not authorize that class. Product #10 must not be reopened, retried or repaired.
 
 Frozen baselines remain:
 - semantic scoring baseline: `f05ca07283f53f2882ed5da3ca27875ba7253318`
-- experiment-harness baseline: `edf344b34196258b04041f2fda2caa07d06d1f72`
+- Product #10 experiment-harness baseline: `edf344b34196258b04041f2fda2caa07d06d1f72`
 
 ## Authorized work sequence
 
 ### C1 — Capability registry / architecture map / execution ledger
-
 Status: **CLOSED**
 
 ### C2 — Restore acquisition foundation
-
 Status: **CLOSED**
 
 ### C3 — Reconnect acquisition to currentness governance
-
 Status: **CLOSED / REVIEWED / FROZEN**
 
 ### C4 — Current-product repeatability evidence eligibility
-
 Status: **CLOSED**
 
 ### C5 — Product #8 neutral cold-start
-
 Status: **CLOSED / UNSCORED BEFORE SELECTION**
 
 Protocol:
@@ -53,18 +48,16 @@ Finding:
 - Product #8 does not authorize Motor.
 
 ### C5.1 — Blind direct-source preselection method
-
 Status: **CLOSED**
 
 Merge baseline:
 - `d7dc909696670f77d0db565fc8855820775e53f2`
 
-Closed outcomes:
+Closed outcome:
 - `BlindPreselectionMetadataProjector` exposes identity/UIN/source metadata only;
 - semantic content cannot reach or influence the selector through this boundary.
 
 ### C5.2 — Product #9 blind direct-source cold-start
-
 Status: **CLOSED / UNSCORED BEFORE SELECTION**
 
 Protocol:
@@ -84,28 +77,24 @@ Observed result:
 Later Product #10 transport observations do not reopen, repair or reinterpret Product #9.
 
 ### C5.3A — Discovery classifier blindness-boundary proof
-
 Status: **CLOSED**
 
 Merge baseline:
 - `2d3dd02ab92abcc8f3df9e3111cf90730874ffc1`
 
 ### C5.3B — Blind discovery-link projection
-
 Status: **CLOSED**
 
 Merge baseline:
 - `addca46a88c104394a37bc6513c22e2556e3acf4`
 
 ### C5.3C — Root transport fitness gate
-
 Status: **CLOSED / HARNESS BASELINE FROZEN**
 
 Merge baseline:
 - `edf344b34196258b04041f2fda2caa07d06d1f72`
 
 ### C5.4 — Product #10 three-gate blind cold-start
-
 Status: **CLOSED / EXPERIMENT_UNSCORED AT GATE B**
 
 Protocol:
@@ -123,67 +112,68 @@ Gate A result:
 - Bima Bharosa root → `ALL_ALLOWED_TRANSPORTS_FAILED`;
 - search fallbacks and ad-hoc transports remained zero.
 
-Gate B closure:
-- `docs/architecture/health_product10_gate_b_blind_path_discovery_abort_2026-08-26.json`
-- passing IRDAI roots were machine-captured successfully;
-- preregistered candidate insurer identities: Chola, Magma, Navi, Shriram;
-- eligible insurer origins resolved from those passing root captures: **0 / 4**;
-- insurer-origin machine captures: **0**;
-- authorized `blind_discovery_link_metadata_v1` projections: **0**;
-- raw origin/discovered URLs crossing blindness boundary: **0**;
-- anchor/body/title/screenshot exposure: **0**;
-- product screening: not started;
-- Product #10 selected: false;
-- target-clause reads: 0;
-- Gate B decision: **FAIL**;
-- protocol outcome: `CLOSE_PRODUCT10_UNSCORED_BLIND_PATH_DISCOVERY_FAILURE`;
-- Gate C never became authorized.
+Gate B corrected evidence:
+- first disposable smoke `d3814624...` is retained as historical lineage but is not authoritative because its runner assumed candidate insurer origins had to be direct external links on the root page;
+- corrected disposable smoke commit `89bbc88e48f1839742a372f3c97141acbc2ffa42`, workflow run `32939927843`, job `98088633929`;
+- corrected run captured 30 regulator pages and produced 7,620 generic blind `regulatory` projections, but resolved 0 / 4 preregistered insurer origins;
+- full repository suite after corrected smoke: **3054 passed**;
+- all raw URL/text/title/screenshot exposure counters remained zero;
+- product screening did not start; Product #10 remained unselected; target-clause reads remained zero.
 
-Execution lineage:
-- disposable non-merged branch: `product10-gate-b-live-smoke`;
-- smoke commit: `d3814624f757e727c13ec50da643b7d1bddae050`;
-- workflow run: `32938825521`;
-- workflow job: `98085376730`;
-- smoke suite: `3054 passed`;
-- smoke branch is not merge-authorized.
+Attribution diagnostic:
+- disposable machine-only diagnostic commit `89941b776d5d0f1b6e46b67467b50969a4e1a362`, workflow run `32940356432`, job `98089899312`;
+- existing `SourceDiscoveryRunner.classify_source_url()` identified **36 `insurer_directory` links** across the two passing IRDAI roots, 18 per root;
+- therefore regulator-directory paths are **not absent**;
+- generic `DiscoveryAgent` regulator classification is too broad for this bounded routing use case because IRDAI-host links collapse into the generic `regulatory` class;
+- frozen C5.3B `BlindDiscoveryLinkProjector` does **not** authorize the existing `insurer_directory` class.
+
+Gate B decision:
+- **FAIL**;
+- exact reason: `FROZEN_BLIND_PROJECTION_CONTRACT_EXCLUDES_EXISTING_INSURER_DIRECTORY_CLASS`;
+- protocol outcome remains `CLOSE_PRODUCT10_UNSCORED_BLIND_PATH_DISCOVERY_FAILURE`;
+- Gate C never became authorized.
 
 Interpretation:
 
-**Product #10 did not test semantic repeatability.** It falsified the locked v7 assumption that the passing regulator-root captures could yield at least one preregistered eligible insurer origin and then an authorized blind metadata destination through the frozen discovery method. This is a path/identity-routing method failure, not a semantic `REPRESENTATION_GAP` or `KNOWLEDGE_GAP`.
+**Product #10 did not test semantic repeatability.** Root transport passed and precise regulator-directory classification already exists in the repository. The falsified assumption is narrower: the frozen Gate B harness could not carry the existing `insurer_directory` classification across the blind projection boundary. This is a harness contract mismatch, not a semantic `REPRESENTATION_GAP`, `KNOWLEDGE_GAP`, or proof that directory paths are absent.
 
-**Product #10 is immutable. No alternate parser, forced-browser retry, search fallback, hostname guess, product substitution, Gate C execution or semantic inspection may be used to repair it.**
+**Product #10 is immutable. Adding `insurer_directory` to the blind projector now would change the frozen harness after the experiment began and is therefore prohibited as a Product #10 repair.**
 
 ## Next authorized work
 
-### C5.5 — Regulator-root to insurer-origin routing archaeology
+### C5.5 — Prospective regulator-directory blind projection repair
 
-Status: **REUSE/WIRE REVIEW ONLY — NO NEW PRODUCT EXPERIMENT**
+Status: **REUSE + SMALL EXTEND ONLY — NO NEW PRODUCT EXPERIMENT**
 
-Objective:
-- determine whether an existing repository capability can deterministically derive regulator-listed insurer identity/origin records from captured regulator pages without exposing semantic-bearing raw content to selector/operator;
-- distinguish an existing disconnected capability from a genuine missing capability;
-- inspect discovery, preservation, source registry, insurer registry, identity-resolution, sitemap/link and structured-page parsing code before authorizing any extension.
+Evidence-earned classification:
+- **REUSE:** `SourceDiscoveryRunner`, including `classify_source_url`, IRDAI pagination/noise filtering, domain boundaries and `insurer_directory` classification;
+- **REUSE:** existing `BlindDiscoveryLinkProjector` information-firewall pattern;
+- **SMALL EXTEND:** prospectively authorize an opaque blind representation of the already-existing `insurer_directory` page type, with adversarial leakage tests;
+- **WIRE:** regulator source-specific classification → blind discovery projection.
 
-Allowed:
-- repository archaeology;
-- deterministic offline fixtures/tests against already-known synthetic or retained non-target examples;
-- capability classification as `REUSE`, `WIRE`, `REPAIR`, or evidence-earned small `EXTEND`;
-- documentation of the exact observed Product #10 gap.
+Required before any future Product #11 preregistration:
+- direct contract tests that `insurer_directory` can cross only as opaque/nonsemantic metadata;
+- raw URL, anchor text, title/body text and screenshots remain prohibited across the selector/operator boundary;
+- product-detail/policy-wording types remain rejected;
+- source-specific `insurer_directory` classification, not generic IRDAI-host `regulatory`, is the authority for regulator-directory traversal;
+- deterministic offline integration proof of SourceDiscoveryRunner classification → blind projection;
+- full CI green and ledger freeze.
 
 Not allowed:
-- Product #11 preregistration or screening;
+- Product #10 Gate B retry or Gate C;
+- Product #11 preregistration or screening before C5.5 closes;
 - live candidate/product exploration;
-- retroactive Product #10 retry;
 - broad search-engine fallback;
-- new crawler/agent family before archaeology proves existing capabilities insufficient.
+- new crawler/agent family;
+- broad rewrite of discovery architecture.
 
 Motor gate remains **CLOSED**.
 
 ## Known defects / risks currently tracked
 
-1. Passing regulator root transport does not by itself prove the captured representation exposes insurer-origin identity links consumable by the current routing method.
-2. Root transport capability can change over time; historical observations remain experiment-specific.
-3. Discovery classification is proven for C5.3 boundary cases, but regulator-directory identity extraction/routing is not yet proven.
+1. Generic `DiscoveryAgent` regulator classification is too broad for IRDAI-internal routing because host text can dominate the `regulatory` classification.
+2. `BlindDiscoveryLinkProjector` currently omits the existing source-specific `insurer_directory` page type; this is the exact C5.5 evidence-earned extension.
+3. Root transport capability can change over time; historical observations remain experiment-specific.
 4. Legacy certifiers emit `EvidencePackage.version_status="CURRENT_APPLICABLE"`; this remains non-authoritative metadata pending a versioned evidence-contract migration.
 5. Generic copay shadow migration remains non-authoritative.
 6. Product #7, Product #8, Product #9 and Product #10 are immutable unscored experiment closures and must not be repaired retroactively.
@@ -193,9 +183,10 @@ Motor gate remains **CLOSED**.
 - Product #10 Gate B retry or Gate C
 - Product #10 insurer/product screening or selection
 - Product #11 preregistration or screening
+- extending the projector and then re-running Product #10
 - alternate post-result parsing/traversal to rescue Product #10
 - search-engine candidate screening or fallback
-- merging disposable `product10-gate-a-live-smoke` or `product10-gate-b-live-smoke` branches
+- merging disposable Product #10 smoke/diagnostic branches
 - reopening, retrying, repairing, rescoring or reselecting Product #7, Product #8, Product #9 or Product #10
 - Motor implementation or expansion
 - Life implementation or investment-comparison logic
