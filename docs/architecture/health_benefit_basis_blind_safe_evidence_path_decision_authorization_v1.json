@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_benefit_basis_blind_safe_evidence_path_decision_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_C5_26_SURVEY_MERGES_GREEN",
+  "authorized_next_action": "HEALTH_BENEFIT_BASIS_BLIND_SAFE_EVIDENCE_PATH_DECISION_ONLY",
+  "scope": {
+    "predicate": "benefit_basis",
+    "allowed_work": [
+      "decide whether benefit_basis can be established from a structurally bounded regulator or insurer metadata source without semantic product-document inspection",
+      "distinguish NOT_YET_DEMONSTRATED from REQUIRES_SEMANTIC_CONTENT",
+      "reuse-audit existing metadata adapters and product-master records before proposing runtime changes"
+    ]
+  },
+  "forbidden": {
+    "runtime_change": true,
+    "selector_projection_change": true,
+    "product14_preregistration": true,
+    "product14_execution": true,
+    "policy_wording_preselection": true,
+    "prospectus_preselection": true,
+    "cis_preselection": true,
+    "target_clause_reads": true,
+    "semantic_fit_selection": true,
+    "motor": true
+  },
+  "required_outcomes": [
+    "BENEFIT_BASIS_METADATA_PATH_DEMONSTRATED",
+    "BENEFIT_BASIS_METADATA_PATH_NOT_YET_DEMONSTRATED",
+    "BENEFIT_BASIS_REQUIRES_SEMANTIC_CONTENT"
+  ]
+}
