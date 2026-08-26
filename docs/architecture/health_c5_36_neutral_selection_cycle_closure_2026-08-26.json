@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_c5_36_neutral_selection_cycle_closure",
+  "record_status": "FROZEN_PENDING_GREEN_MERGE",
+  "milestone": "C5.36",
+  "experiment_scope": "HEALTH_NEUTRAL_COLD_START_REPEATABILITY_PRODUCT14",
+  "decision": "STRICT_BLIND_SELECTION_PREDICATE_EVIDENCE_CEILING_REACHED",
+  "decision_scope": "For the frozen Product #14 candidate universe and the regulator-owned, non-content evidence surfaces demonstrated under the experiment's admissible evidence contract, insurance_object_type=MAIN_PRODUCT cannot be positively established for the remaining pending population. This is an experiment-relative evidence ceiling, not a universal impossibility claim.",
+  "evidence_basis": [
+    "docs/architecture/health_c5_35_object_type_evidence_path_result_2026-08-26.json",
+    "docs/architecture/health_structured_classification_evidence_path_proof_2026-08-26.json",
+    "docs/architecture/health_governed_eligible_universe_preregistration_c5_29_2026-08-26.json"
+  ],
+  "frozen_population_state": {
+    "candidate_count": 150,
+    "ineligible_fail_closed": 19,
+    "pending_evidence": 131,
+    "eligible_declared": 0,
+    "target_clause_reads": 0
+  },
+  "contamination_boundaries": {
+    "selector_semantic_content_access_is_not_a_permissible_relaxation": true,
+    "external_certification_may_not_establish_eligibility_from_target_semantic_content": true,
+    "target_adjacent_coverage_description_may_not_be_used_to_classify_object_type": true,
+    "moving_semantic_content review outside the selector does_not_remove_contamination": true
+  },
+  "route_disposition": {
+    "route_a_regulator_owned_structural_classification": "INSUFFICIENT_FOR_UNIVERSAL_POSITIVE_MAIN_PRODUCT_CERTIFICATION_OF_THE_FROZEN_131",
+    "route_b_governed_external_preclassification": "BLOCKED_UNLESS_NON_CONTENT_REGULATOR_OR_REGISTRATION_METADATA_POSITIVELY_ESTABLISHES_MAIN_PRODUCT; NO_SUCH_UNIVERSAL_PATH_DEMONSTRATED_FOR_THE_FROZEN_131",
+    "route_c_selector_reads_semantic_content": "FORBIDDEN_CONTAMINATING_RELAXATION"
+  },
+  "product14": {
+    "status": "NOT_STARTED_NOT_SCORED",
+    "reason": "The preregistered eligible universe cannot be constructed under the frozen strict-blindness and fail-closed evidence contract without an unproven or contaminating relaxation.",
+    "selection_started": false,
+    "semantic_review_started": false,
+    "target_clause_reads": 0
+  },
+  "neutral_selection_program_conclusion": "The neutral-selection measurement apparatus produced a valid architecture finding: strict autonomous eligible-universe reconstruction reaches a practical evidence boundary for this frozen Health experiment at insurance_object_type. The apparatus must not be expanded indefinitely to obtain one additional semantic-repeatability datapoint.",
+  "semantic_runtime_context": "Core Health semantic generalization remains supported by prior multi-product and multi-rule evidence, including HG-6 closure; C5.36 does not downgrade that result.",
+  "product15_automatic_authorization": false,
+  "new_selector_field_repair_automatic_authorization": false,
+  "additional_object_type_source_hunt_authorized": false,
+  "semantic_runtime_change_authorized": false,
+  "blind_selector_change_authorized": false,
+  "target_clause_reads_authorized": false,
+  "motor_authorized": false,
+  "neutral_selection_hardening_cycle_closed": true,
+  "next_program_boundary": "RETURN_TO_INSURANCE_INTELLIGENCE_ROADMAP_ASSERTION_ADVISORY_BOUNDARY",
+  "domain_knowledge_architecture_note": "When the DK plane is resumed, Domain, Regulatory and Product are claim-governance planes over shared concept identities rather than mutually exclusive concept buckets. Stable domain concepts cross-reference effective-dated regulatory claims; regulator-set parameters must not be absorbed into timeless domain concept claims."
+}
