@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product13_preregistration_v10_freeze",
+  "record_status": "FROZEN_PREREGISTRATION_PENDING_MERGE",
+  "product_number": 13,
+  "protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v10_product13.json",
+  "preregistration_parent_commit": "74b5400fe9bb133870bc3f649b5749fe32200948",
+  "frozen_baselines": {
+    "semantic_scoring": "f05ca07283f53f2882ed5da3ca27875ba7253318",
+    "experiment_harness": "784602b79d976873216f297ab296836e91cfa1ec",
+    "preselection_v2": "97a12446c389d3f872bbbc02a1e25024d870980a",
+    "identity_currentness_acquisition": "74b5400fe9bb133870bc3f649b5749fe32200948"
+  },
+  "exact_roots": [
+    "https://irdai.gov.in/non-life-insurers1",
+    "https://irdai.gov.in/health-insurers1",
+    "https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount"
+  ],
+  "eligible_insurer_pool": [
+    "Cholamandalam MS General Insurance Company Limited",
+    "Magma General Insurance Limited",
+    "Navi General Insurance Limited",
+    "Shriram General Insurance Company Limited"
+  ],
+  "target_concepts": ["copayment", "waiting_period"],
+  "gate_status": {
+    "gate_a_started": false,
+    "gate_b_started": false,
+    "gate_c_started": false,
+    "product_screening_started": false,
+    "product_selected": false,
+    "semantic_review_started": false,
+    "target_clause_reads": 0
+  },
+  "historical_integrity": {
+    "product11_reopened_or_retried": false,
+    "product12_reopened_or_retried": false,
+    "product12_gate_results_may_substitute_for_product13": false,
+    "product12_no_selection_may_be_reinterpreted": false,
+    "motor_authorized": false
+  },
+  "selector_boundaries": {
+    "discovery_contract": "blind_discovery_link_metadata_v1",
+    "product_metadata_contract": "blind_preselection_product_metadata_v2",
+    "currentness_companion_contract": "blind_product_identity_currentness_evidence_v1",
+    "raw_url_allowed": false,
+    "raw_anchor_allowed": false,
+    "raw_parsed_path_allowed": false,
+    "raw_page_body_allowed": false,
+    "screenshots_allowed": false,
+    "semantic_buckets_allowed": false,
+    "source_ref_is_authority_or_currentness_evidence": false
+  },
+  "identity_currentness_acquisition": {
+    "required_before_selection": true,
+    "machine_side_only": true,
+    "bounded_deterministic_traversal": true,
+    "authorized_metadata_artifacts_only": true,
+    "immutable_sha256_and_provenance_required": true,
+    "ambiguous_product_uin_version_or_currentness_fails_closed": true,
+    "target_clause_semantics_authorized": false
+  },
+  "freeze_rule": "Once any Product #13 gate starts, no runtime, projection, traversal, root, transport, candidate-pool or selection-rule repair may be introduced during the initial attempt. Any discovered defect closes Product #13 unscored and requires a prospective repair before a future experiment."
+}
