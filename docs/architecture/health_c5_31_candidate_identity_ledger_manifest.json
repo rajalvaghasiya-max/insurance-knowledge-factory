@@ -1,0 +1,19 @@
+{
+  "candidate_count": 150,
+  "canonicalization": "json_sort_keys_compact_utf8_single_trailing_newline",
+  "eligibility_certification_authorized_after_green_merge": true,
+  "ledger_path": "docs/architecture/health_c5_31_candidate_identity_ledger.json",
+  "ledger_sha256": "cec7620abde012982844beb212892db13cdf509177fc4d5fae9145d752f8a0a2",
+  "product14_selection_authorized": false,
+  "record_status": "FROZEN_LEDGER_HASH_PENDING_GREEN_MERGE",
+  "record_type": "health_c5_31_candidate_identity_ledger_manifest",
+  "schema_version": "1.0",
+  "source_evidence_blob_sha1": "3c75e3e7197176094ab57e01b90ddb5c3684b741",
+  "target_clause_reads_authorized": false,
+  "target_counts": {
+    "cholamandalam": 77,
+    "magma": 16,
+    "navi": 35,
+    "shriram": 22
+  }
+}
