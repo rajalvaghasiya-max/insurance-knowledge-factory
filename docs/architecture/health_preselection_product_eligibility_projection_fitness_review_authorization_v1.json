@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_preselection_product_eligibility_projection_fitness_review_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_PRODUCT13_CLOSURE_MERGE",
+  "authorized_next_action": "HEALTH_PRESELECTION_PRODUCT_ELIGIBILITY_PROJECTION_FITNESS_REVIEW_ONLY",
+  "product14_preregistration_authorized": false,
+  "motor_authorized": false,
+  "semantic_review_authorized": false,
+  "target_clause_reads_authorized": false,
+  "review_scope": {
+    "may_compare_product11_product12_product13_preselection_failures": true,
+    "may_retry_product13": false,
+    "may_mutate_product13_protocol_v10": false,
+    "may_change_frozen_product13_results": false,
+    "may_assess_missing_selector_safe_product_eligibility_evidence": true,
+    "may_design_prospective_generic_projection_repair": true,
+    "may_add_product_specific_selection_heuristics": false,
+    "may_use_semantic_target_concepts_for_selection": false
+  },
+  "required_review_question": "Can the existing governed acquisition layer produce selector-safe, source-grounded evidence for Health indemnity product class, base-product status and retail individual/family-floater availability without exposing raw semantic-bearing content or weakening the blindness boundary?",
+  "next_step_after_review": "Freeze the fitness verdict before any runtime/projection repair or Product #14 preregistration."
+}
