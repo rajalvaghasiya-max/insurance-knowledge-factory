@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_identity_currentness_acquisition_repair_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_FITNESS_REVIEW_MERGE",
+  "domain": "health",
+  "authorized_next_action": "PROSPECTIVE_IDENTITY_CURRENTNESS_ACQUISITION_REPAIR_ONLY",
+  "product13_preregistration_authorized": false,
+  "motor_authorized": false,
+  "semantic_review_authorized": false,
+  "target_clause_reads_authorized": false,
+  "repair_scope": {
+    "may_design_generic_machine_side_metadata_artifact_traversal": true,
+    "may_add_bounded_deterministic_authorized_metadata_artifact_acquisition": true,
+    "may_add_exact_product_name_uin_version_currentness_normalization": true,
+    "may_preserve_and_extend_raw_location_free_selector_projection_contract": true,
+    "may_add_regulator_controlled_metadata_evidence_path_when_available": true,
+    "may_change_v2_to_allow_raw_url_anchor_or_parsed_path": false,
+    "may_use_target_clause_semantics_for_selection": false,
+    "may_open_product_specific_policy_wording_before_selection": false,
+    "may_retry_product11": false,
+    "may_retry_product12": false,
+    "may_preregister_product13_before_repair_freeze": false
+  },
+  "required_repair_properties": [
+    "generic rather than insurer-specific decision logic",
+    "bounded traversal depth and deterministic traversal order",
+    "authorized metadata artifact classes only",
+    "immutable content hashing and provenance preservation",
+    "exact UIN/product ownership ambiguity fails closed",
+    "source_ref remains source-distinctness evidence only and not authority/currentness by itself",
+    "selector receives no raw URL, anchor text, parsed path, page body, screenshot or semantic bucket information",
+    "no target-clause reads before later positive currentness eligibility"
+  ],
+  "completion_condition": "Repair implementation, tests and governance freeze must merge green before any new neutral Health experiment may be preregistered."
+}
