@@ -36,5 +36,49 @@ jobs:
       - name: Verify dependency consistency
         run: .ci-venv/bin/python -m pip check
 
+      - name: Install frozen browser transport runtime
+        run: .ci-venv/bin/python -m playwright install --with-deps chromium
+
+      - name: Product 13 Gate A root transport fitness smoke
+        shell: bash
+        run: |
+          xvfb-run -a .ci-venv/bin/python - <<'PY'
+          import json
+          from collectors.capture_engine import CaptureEngine
+
+          roots = [
+              "https://irdai.gov.in/non-life-insurers1",
+              "https://irdai.gov.in/health-insurers1",
+              "https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount",
+          ]
+
+          engine = CaptureEngine()
+          records = []
+          for root in roots:
+              result = engine.capture(root)
+              valid = engine.is_valid_capture(result)
+              strategy = result.get("capture_strategy")
+              attempted = result.get("capture_strategy_attempted", [])
+              if valid and strategy == "static_http":
+                  outcome = "DIRECT_HTTP_AVAILABLE"
+              elif valid and strategy in {"playwright_headless", "playwright_visible"}:
+                  outcome = "BROWSER_CAPTURE_AVAILABLE"
+              else:
+                  outcome = "ALL_ALLOWED_TRANSPORTS_FAILED"
+              record = {
+                  "root": root,
+                  "outcome": outcome,
+                  "accepted": bool(valid),
+                  "capture_strategy": strategy,
+                  "capture_strategy_attempted": attempted,
+                  "status": result.get("status"),
+                  "error_type": type(result.get("error")).__name__ if result.get("error") is not None else None,
+              }
+              records.append(record)
+              print("PRODUCT13_GATE_A_RESULT=" + json.dumps(record, sort_keys=True))
+
+          print("PRODUCT13_GATE_A_SUMMARY=" + json.dumps(records, sort_keys=True))
+          PY
+
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
