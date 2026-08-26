@@ -46,14 +46,16 @@ def test_corrected_gate_b_execution_remained_blind_and_did_not_resolve_insurer_o
     assert metrics["preselection_target_clause_reads"] == 0
 
 
-def test_existing_source_specific_classifier_proves_directory_paths_exist() -> None:
+def test_existing_source_specific_classifier_proves_directory_class_paths_exist() -> None:
     diagnostic = _load()["existing_capability_diagnostic"]
     assert diagnostic["source_specific_capability"] == "SourceDiscoveryRunner.classify_source_url"
     assert diagnostic["existing_precise_page_type"] == "insurer_directory"
     assert diagnostic["insurer_directory_links_classified_on_passing_roots"] == 36
     assert diagnostic["insurer_directory_links_per_passing_root"] == 18
-    assert diagnostic["regulator_directory_paths_absent"] if "regulator_directory_paths_absent" in diagnostic else True
     assert diagnostic["frozen_blind_projector_allowed_page_types_include_insurer_directory"] is False
+    assert diagnostic["observed_contract_mismatch"] == (
+        "EXISTING_SOURCE_SPECIFIC_INSURER_DIRECTORY_CLASS_NOT_AUTHORIZED_BY_FROZEN_BLIND_DISCOVERY_PROJECTION"
+    )
 
 
 def test_gate_b_failure_is_projection_contract_mismatch_not_transport_or_semantic_failure() -> None:
