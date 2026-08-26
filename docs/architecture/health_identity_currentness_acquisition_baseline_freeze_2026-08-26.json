@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_identity_currentness_acquisition_baseline_freeze_v1",
+  "record_status": "FROZEN_PROSPECTIVE_HEALTH_IDENTITY_CURRENTNESS_ACQUISITION_BASELINE_PENDING_MERGE",
+  "domain": "health",
+  "repair_merge_commit": "5b71fc9e835e86055d1df31bbacf6c23375430bb",
+  "repair_pr": 172,
+  "repair_branch_head": "c178043933af2ab78333e76a690f90cc651c9d76",
+  "repair_branch_ci": {
+    "workflow_run_id": 32951178454,
+    "workflow_job_id": 98122664562,
+    "result": "3139 passed in 8.19s"
+  },
+  "baseline_components": {
+    "implementation_path": "factory_core/governance/product_identity_currentness_evidence_acquisition.py",
+    "runtime_test_path": "tests/factory_core/test_product_identity_currentness_evidence_acquisition.py",
+    "repair_governance_freeze_path": "docs/architecture/health_identity_currentness_acquisition_repair_v1_freeze.json",
+    "repair_governance_test_path": "tests/insurance_intelligence/test_health_identity_currentness_acquisition_repair_freeze.py",
+    "selector_projection_contract": "blind_preselection_product_metadata_v2",
+    "currentness_companion_projection_contract": "blind_product_identity_currentness_evidence_v1"
+  },
+  "frozen_properties": {
+    "generic_not_insurer_specific": true,
+    "machine_side_only_before_selector_projection": true,
+    "bounded_deterministic_traversal": true,
+    "authorized_metadata_artifact_classes_only": true,
+    "immutable_sha256_and_provenance_preserved": true,
+    "exact_product_uin_binding_ambiguity_fails_closed": true,
+    "source_ref_is_distinctness_only_not_authority_or_currentness": true,
+    "selector_raw_url_anchor_path_body_screenshot_semantic_fields_forbidden": true,
+    "target_clause_reads_before_positive_currentness_eligibility": 0,
+    "policy_wording_prospectus_cis_semantic_inspection_before_selection_authorized": false
+  },
+  "historical_integrity": {
+    "product11_immutable": true,
+    "product12_immutable": true,
+    "product11_retry_authorized": false,
+    "product12_retry_authorized": false,
+    "motor_authorized": false
+  },
+  "next_authorization": {
+    "effective_only_after_this_baseline_freeze_merges_green": true,
+    "product13_preregistration_may_be_designed_after_merge": true,
+    "product13_execution_authorized_by_this_record": false,
+    "semantic_review_authorized_by_this_record": false,
+    "target_clause_reads_authorized_by_this_record": false,
+    "motor_authorized_by_this_record": false,
+    "required_product13_baseline_anchor": "merge commit of this baseline-freeze PR"
+  },
+  "interpretation": "The systematic preselection identity/currentness acquisition gap identified after Products #11 and #12 is prospectively repaired and frozen for future Health experiments. This freeze does not alter or retry either historical experiment and does not itself begin Product #13."
+}
