@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product13_gate_c_execution_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_GATE_B_FREEZE_MERGE",
+  "product_number": 13,
+  "authorized_gate": "C",
+  "semantic_review_authorized": false,
+  "target_clause_reads_authorized": false,
+  "preconditions": [
+    "Product #13 Gate B freeze merged with full suite green",
+    "working tree based on merged Gate B freeze commit",
+    "candidate insurer pool and deterministic order unchanged",
+    "blind discovery contract unchanged",
+    "blind preselection contract fixed to blind_preselection_product_metadata_v2",
+    "identity/currentness acquisition baseline fixed to 74b5400fe9bb133870bc3f649b5749fe32200948"
+  ],
+  "gate_c_scope": {
+    "purpose": "neutral insurer/product selection only using governed identity/currentness evidence acquisition",
+    "selector_discovery_input_contract": "blind_discovery_link_metadata_v1",
+    "selector_product_metadata_input_contract": "blind_preselection_product_metadata_v2",
+    "selector_currentness_input_contract": "blind_product_identity_currentness_evidence_v1",
+    "identity_currentness_acquirer": "GovernedProductIdentityCurrentnessEvidenceAcquirer",
+    "bounded_machine_side_metadata_traversal_required": true,
+    "authorized_metadata_artifact_classes_only": true,
+    "exact_product_uin_ambiguity_fails_closed": true,
+    "selector_may_receive_raw_url_or_anchor_text": false,
+    "selector_may_receive_raw_parsed_file_path": false,
+    "selector_may_receive_raw_page_or_product_signal_output": false,
+    "selector_may_receive_semantic_bucket_presence_or_counts": false,
+    "source_ref_may_establish_source_distinctness_only": true,
+    "source_ref_may_establish_authority_or_currentness_by_itself": false,
+    "semantic_fit_may_affect_selection": false,
+    "selection_override_authorized": false,
+    "post_selection_product_or_version_substitution_authorized": false
+  },
+  "post_selection_guard": {
+    "product_document_acquisition_before_selection_freeze": false,
+    "target_clause_reads_before_positive_currentness_eligibility": 0,
+    "semantic_review_before_positive_currentness_eligibility": false
+  },
+  "next_step": "Execute Gate C only, freeze selection or no-selection outcome, then separately authorize post-selection acquisition/currentness."
+}

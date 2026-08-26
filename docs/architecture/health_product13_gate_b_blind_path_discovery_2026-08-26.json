@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product13_gate_b_blind_path_discovery_v1",
+  "record_status": "FROZEN_GATE_B_PASS_PENDING_MERGE",
+  "experiment": {
+    "domain": "health",
+    "product_number": 13,
+    "gate": "B",
+    "gate_a_status": "PASS",
+    "gate_b_status": "PASS",
+    "gate_c_started": false,
+    "product_screening_started": false,
+    "product_selected": false,
+    "semantic_review_started": false,
+    "target_clause_reads": 0
+  },
+  "execution_evidence": {
+    "gate_a_freeze_merge_commit": "249abf4a8750c4818f1e83d61c5d0262b3cf289c",
+    "disposable_branch": "product13-gate-b-live-smoke",
+    "disposable_commit": "ed4396e1153ee13b7c983579824884bd3d51f6a9",
+    "workflow_run_id": 32956218362,
+    "workflow_job_id": 98138351773,
+    "workflow_conclusion": "success",
+    "full_suite_result": "3159 passed in 8.07s",
+    "harness_reuse": "byte-identical proven Gate B executable harness reused on Product #13 merged Gate A base",
+    "legacy_log_prefix_note": "PRODUCT11_GATE_B_* strings are inert diagnostic labels inherited from the byte-identical harness; execution base and frozen evidence are Product #13",
+    "disposable_branch_may_merge": false
+  },
+  "blind_directory_result": {
+    "classification_authority": "SourceDiscoveryRunner",
+    "page_type": "insurer_directory",
+    "directory_projection_count": 10,
+    "directory_capture_count": 10,
+    "resolved_candidate_count": 4,
+    "resolved_candidate_ids": ["chola", "magma", "navi", "shriram"],
+    "passing_candidate_count": 1,
+    "passing_candidate_ids": ["shriram"],
+    "shriram_blind_projection_count": 7,
+    "decision": "PASS"
+  },
+  "insurer_capture_result": {
+    "chola": {
+      "accepted": false,
+      "capture_strategy": "playwright_visible",
+      "capture_strategy_attempted": ["static_http", "playwright_headless", "playwright_visible"]
+    },
+    "magma": {
+      "accepted": false,
+      "capture_strategy": "playwright_visible",
+      "capture_strategy_attempted": ["static_http", "playwright_headless", "playwright_visible"]
+    },
+    "navi": {
+      "accepted": false,
+      "capture_strategy": "playwright_visible",
+      "capture_strategy_attempted": ["static_http", "playwright_headless", "playwright_visible"]
+    },
+    "shriram": {
+      "accepted": true,
+      "capture_strategy": "static_http",
+      "capture_strategy_attempted": ["static_http"]
+    }
+  },
+  "blindness_metrics": {
+    "raw_regulator_destination_urls_emitted": 0,
+    "raw_insurer_origins_emitted": 0,
+    "raw_insurer_destination_urls_emitted": 0,
+    "anchor_text_emitted": 0,
+    "body_text_emitted": 0,
+    "page_titles_emitted": 0,
+    "screenshots_emitted": 0,
+    "product_screening_started": false,
+    "product_selected": false,
+    "semantic_review_started": false,
+    "target_clause_reads": 0,
+    "gate_c_started": false
+  },
+  "gate_decision": {
+    "minimum_pass_condition": "At least one preregistered eligible insurer identity is resolved through source-specific regulator-directory classification and yields at least one authorized blind metadata destination projection without raw semantic-bearing content crossing the boundary.",
+    "decision": "PASS",
+    "gate_c_may_be_authorized_only_after_this_freeze_merges_green": true
+  },
+  "historical_integrity": {
+    "product12_gate_b_result_reused_as_current_proof": false,
+    "product12_reopened_or_retried": false,
+    "product11_reopened_or_retried": false,
+    "motor_authorized": false
+  }
+}
