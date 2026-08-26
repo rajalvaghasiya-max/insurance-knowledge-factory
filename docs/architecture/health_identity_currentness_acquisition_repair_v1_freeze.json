@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_identity_currentness_acquisition_repair_v1_freeze",
+  "record_status": "PROSPECTIVE_REPAIR_IMPLEMENTED_PENDING_GREEN_MERGE",
+  "domain": "health",
+  "fitness_review_merge_commit": "022261bf8ed34dca8c6f5394300247cb44da0751",
+  "authorization_path": "docs/architecture/health_identity_currentness_acquisition_repair_authorization_v1.json",
+  "implementation": {
+    "path": "factory_core/governance/product_identity_currentness_evidence_acquisition.py",
+    "class": "GovernedProductIdentityCurrentnessEvidenceAcquirer",
+    "version": "1.0",
+    "position_in_pipeline": "after authorized blind metadata-path discovery and before neutral product selection",
+    "selector_product_contract": "blind_preselection_product_metadata_v2",
+    "selector_currentness_companion_contract": "blind_product_identity_currentness_evidence_v1"
+  },
+  "bounded_traversal": {
+    "default_max_depth": 2,
+    "absolute_max_depth": 4,
+    "default_max_artifacts": 24,
+    "absolute_max_artifacts": 100,
+    "deterministic_order": "normalized URL lexical ascending within breadth-first depth",
+    "deduplicate_exact_machine_side_location": true
+  },
+  "authorized_artifact_classes": [
+    "metadata_page",
+    "metadata_table",
+    "metadata_pdf",
+    "insurer_product_index",
+    "regulator_product_index",
+    "uin_register",
+    "withdrawn_product_index"
+  ],
+  "forbidden_preselection_artifact_classes": [
+    "policy_wording",
+    "prospectus",
+    "customer_information_sheet",
+    "cis",
+    "claim_form",
+    "proposal_form",
+    "semantic_extract"
+  ],
+  "identity_and_currentness_rules": {
+    "uin_extraction": "label-led UinCandidateExtractor v1-compatible extraction from authorized metadata artifact text",
+    "product_name_extraction": "explicit Product Name, Plan Name or Policy Name labels only",
+    "version_extraction": "explicit Version or Product Version labels only",
+    "currentness_extraction": "explicit Status, Currentness or Product Status labels only",
+    "missing_currentness": "not_observed",
+    "conflicting_currentness": "ambiguous",
+    "exact_binding": "exactly one product name and exactly one UIN in one artifact",
+    "multiple_or_cross_product_binding": "ambiguous_identity_binding",
+    "missing_product_or_uin": "insufficient_identity_evidence",
+    "ambiguous_identity_or_currentness_may_be_selected": false
+  },
+  "provenance_and_blindness": {
+    "content_sha256_computed_from_acquired_bytes_or_text_bytes": true,
+    "distinct_source_ref_derived_by_existing_v2_projector": true,
+    "source_ref_is_authority_evidence_by_itself": false,
+    "source_ref_is_currentness_evidence_by_itself": false,
+    "authority_scope_must_be_explicitly_supplied_by_authorized_machine_side_acquisition_context": true,
+    "currentness_status_must_be_explicitly_observed_in_artifact_text": true,
+    "selector_raw_url_fields": 0,
+    "selector_raw_anchor_fields": 0,
+    "selector_raw_parsed_path_fields": 0,
+    "selector_page_body_fields": 0,
+    "selector_screenshot_fields": 0,
+    "selector_semantic_bucket_fields": 0,
+    "target_clause_reads": 0
+  },
+  "historical_integrity": {
+    "product11_changed_or_retried": false,
+    "product12_changed_or_retried": false,
+    "product13_preregistration_authorized_before_this_repair_merges_green": false,
+    "motor_authorized": false
+  },
+  "completion_condition": "Merge only after the full repository suite is green. After merge, freeze the merge commit as the prospective Health identity/currentness acquisition baseline before preregistering any new neutral Health experiment."
+}
