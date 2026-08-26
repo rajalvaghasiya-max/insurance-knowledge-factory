@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product12_gate_c_no_eligible_blind_selection_v1",
+  "record_status": "FROZEN_GATE_C_NO_ELIGIBLE_BLIND_SELECTION",
+  "experiment": {
+    "domain": "health",
+    "product_number": 12,
+    "gate": "C",
+    "gate_c_status": "NO_ELIGIBLE_BLIND_SELECTION",
+    "product_selected": false,
+    "semantic_review_started": false,
+    "target_clause_reads": 0
+  },
+  "preregistration": {
+    "protocol_path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v9_product12.json",
+    "gate_b_freeze_merge_commit": "f5969c8f201d309d9b655ae8b155c61f7f8be51a",
+    "selector_product_metadata_contract": "blind_preselection_product_metadata_v2",
+    "preselection_v2_freeze_commit": "97a12446c389d3f872bbbc02a1e25024d870980a"
+  },
+  "execution_evidence": {
+    "disposable_branch": "product12-gate-c-live-smoke",
+    "disposable_commit": "aa2223d60b59bfaabb079e89ff5dffd3a45c3096",
+    "workflow_run_id": 32949586622,
+    "workflow_job_id": 98117757398,
+    "workflow_conclusion": "success",
+    "full_suite_result": "3117 passed in 8.81s",
+    "disposable_branch_may_merge": false
+  },
+  "screening_ledger": [
+    {
+      "candidate_id": "chola",
+      "blind_destination_count": 0,
+      "v2_projection_count": 0,
+      "exact_uin_count": 0,
+      "eligible_count": 0
+    },
+    {
+      "candidate_id": "magma",
+      "blind_destination_count": 0,
+      "v2_projection_count": 0,
+      "exact_uin_count": 0,
+      "eligible_count": 0
+    },
+    {
+      "candidate_id": "navi",
+      "blind_destination_count": 0,
+      "v2_projection_count": 0,
+      "exact_uin_count": 0,
+      "eligible_count": 0
+    },
+    {
+      "candidate_id": "shriram",
+      "blind_destination_count": 7,
+      "v2_projection_count": 7,
+      "exact_uin_count": 0,
+      "eligible_count": 0
+    }
+  ],
+  "selection_decision": {
+    "decision": "NO_ELIGIBLE_BLIND_SELECTION",
+    "selected_product": null,
+    "reason": "No candidate satisfied the preregistered exact-UIN currentness and product-identity eligibility rule using only blind_preselection_product_metadata_v2 projections. Shriram produced seven valid v2 projections but zero exact UIN identities; the other candidate paths produced no v2 product metadata projections in this run.",
+    "does_not_mean_no_product_exists": true,
+    "does_not_mean_semantic_failure": true,
+    "selection_override_used": false,
+    "retry_under_same_protocol_authorized": false
+  },
+  "blindness_metrics": {
+    "selector_raw_url_reads": 0,
+    "selector_raw_anchor_reads": 0,
+    "selector_raw_parsed_file_path_reads": 0,
+    "selector_raw_page_or_product_signal_reads": 0,
+    "selector_semantic_bucket_reads": 0,
+    "raw_urls_emitted": 0,
+    "raw_paths_emitted": 0,
+    "anchor_text_emitted": 0,
+    "body_text_emitted": 0,
+    "screenshots_emitted": 0,
+    "semantic_fit_used": false
+  },
+  "post_selection_guard": {
+    "product_document_acquisition_started": false,
+    "semantic_review_started": false,
+    "target_clause_reads": 0,
+    "currentness_eligibility_started": false
+  },
+  "outcome": {
+    "classification": "EXPERIMENT_UNSCORED",
+    "closure_reason": "CLOSE_PRODUCT12_UNSCORED_NO_ELIGIBLE_BLIND_SELECTION",
+    "copayment_classification": null,
+    "waiting_period_classification": null,
+    "repeatability_verdict": "NOT_EVALUATED",
+    "motor_readiness_satisfied": false
+  },
+  "historical_integrity": {
+    "product11_reopened_or_retried": false,
+    "product12_may_be_retried_under_protocol_v9": false,
+    "product12_semantic_result_may_be_inferred": false,
+    "motor_authorized": false
+  },
+  "next_step": "Close Product #12 immutable. Review the repeated preselection/currentness-path evidence from Products #11 and #12 before preregistering any new Health repeatability experiment; do not mutate or retry Product #12."
+}

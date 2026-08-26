@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.1",
+  "record_type": "health_product12_closure_and_next_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_PRODUCT12_CLOSURE_MERGE",
+  "product_number": 12,
+  "final_outcome": "EXPERIMENT_UNSCORED",
+  "closure_reason": "CLOSE_PRODUCT12_UNSCORED_NO_ELIGIBLE_BLIND_SELECTION",
+  "product13_preregistration_authorized": false,
+  "motor_authorized": false,
+  "semantic_review_authorized": false,
+  "target_clause_reads_authorized": false,
+  "authorized_next_action": "HEALTH_PRESELECTION_CURRENTNESS_PATH_FITNESS_REVIEW_ONLY",
+  "review_scope": {
+    "scope_version": "1.1",
+    "may_compare_product11_and_product12_preselection_failures": true,
+    "may_inspect_frozen_governance_contracts_and_runtime_boundaries": true,
+    "may_inspect_whether_blind_metadata_paths_can_carry_exact_product_identity_and_currentness": true,
+    "may_change_or_reinterpret_product11_result": false,
+    "may_change_or_reinterpret_product12_result": false,
+    "may_retry_product12": false,
+    "may_mutate_product12_protocol_v9": false,
+    "may_open_product_specific_policy_wording": false,
+    "may_read_target_clauses": false,
+    "may_loosen_v2_raw_location_firewall": false,
+    "may_authorize_motor": false
+  },
+  "decision_rule": "Do not preregister Product #13 until the review distinguishes site-specific evidence scarcity from a systematic preselection/currentness-path capability gap and freezes any prospective repair independently of Products #11 and #12.",
+  "historical_context": {
+    "product11_outcome": "EXPERIMENT_UNSCORED_GATE_C_PRESELECTION_CONTRACT_MISMATCH",
+    "product12_outcome": "EXPERIMENT_UNSCORED_NO_ELIGIBLE_BLIND_SELECTION",
+    "product11_and_product12_are_immutable": true
+  }
+}
