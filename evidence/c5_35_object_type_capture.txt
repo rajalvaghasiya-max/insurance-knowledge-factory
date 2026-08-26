@@ -1,0 +1,2123 @@
+C5_35_OBJECT_TYPE_CAPTURE_BEGIN
+{
+  "adjudication_started": false,
+  "all_131_processed": true,
+  "candidate_count": 131,
+  "candidate_status_changes": 0,
+  "capture_records": [
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:009eaaf79b213fdfe8b8376bd7d2df657745d031a2e6ec97dcdc9ced050d1db3",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "0fa63b503b6f45860e96336b6daacf4ae20350107aba2e4adcbb66ac0baa73fa",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21425V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:069635a251014f0e1e8fd222a9db45e2702441ed965106742ebcdbb51892a4d5",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "b22be961e6eb98a07c37d722908a36e1d904bf29fe556445efc8870e205a3fd9",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVTGBP22066V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:0a23d98470076b9f0298b3017f5f796376f787477dc12055f3caabfc231ee9c5",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "6c0e6e3f6bcb4d5be9c706d6cb82ae37980dfe0bf32a931f1f39b7cef770913a",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "MAGHLIP21103V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:0bfe88c8e2cba9c0b1b0e2445294edc3fe17878f71d59c86eeea7cf61d38d3ab",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "d6aa7994ada921d40d99413952da7a5d5d5cf07e3593bd79a8684b5e30ab12e5",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVPAGP21364V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:0dc31e64d3c042d33a3898ae3a7b932b6a7696408dc5f15c1fdf4349831687a5",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "585827b3f00d064cb7339aca12a3bd0161eb50d4572064354e72779334aca1bc",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-T/V.I/284/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:0f2ed3fcf0d1d5b6e62a7acb3ad609a245f2aa0c09cc6fe84477b7a34044ba77",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "7f928172ab97a3a4b9c0a521595df639a6a21948065058b08206c7deadcc89a3",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP22060V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:0ff09f30c0baa9f5f101dcf38268c950c75b9c3d8fee14bfa542f98e3a4180f7",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "d7c52bcdc265b35eb1963a257afe29c5476196544403ce7d7848b7f610abc7f4",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21303V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:12164822d58f3ea1802fdfcdeb544131f9e11a5ab21fd896148158a3e7dadca2",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "787fba271ad8256d62667e8f2dab9fdd7abe93a112a8a48edf7e57dc151f592e",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLGP21368V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:12a7a0daa05515757f9ffff6b24ac250a4a77ce6b4cf55a838b225781132c200",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "8c7bb571660f02381bb31348a5b8106e8bfd466f26cf4c992bd267b9d2c9d652",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP20029V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:13a0694ca57d34dbc39d350b75030efaa341c9f48e03e565969785c5824b0e0f",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "29529f85d9bc53d895c08f3f5bb5e595e60cb8f1ec72a19673c47751bdd70faa",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/282/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:14b87fc55687463639975d7fd42d4f3d6762a04eec4f5ce85760440b351b31af",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "7ea11caf64060b9e7b58800682bdccc10fc8fee33abbabb1b317c8d7dafd398d",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21300V032021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:14bd283392a029edada0e8f5d365721ed76969dfbcdcc9766c2e5df78fbcd8d6",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "2298c4d8e694fce33662a479c102b56765cefc43a7823a904b965bce44b2872d",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOPAIP21612V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:18d87cc5e688eb46b04184a1eb0aedb07ee6cea07166b0803adee8617bc3e0bb",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "33f64101971fa302df111b0118a973df78c5b851600e8633294ede6394cb0ef4",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21304V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:19639c0e001f2d8b6f0f2142f04689fc5c112747744ac198bfa9f5ebac0e7d06",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "37e2e88fee8bad4c34f7bd1b8983d0091c1c350feb4d69301384dc9efea7eb09",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21305V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:1ae451361898112928fce4ad0f8d4b641c8c55b8c05c9975a883d1afb50430c5",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "4545c624fea1fa89cd257ec0beb334f0c330e7b950767dfafb941f1485f8b4cb",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP22059V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:1f31e52470d823785719ec24032b407ecfd9daa6c704fb3be72c08a9be6ccba9",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "7b8a68dbef297365f778d04309d5fbd8b7c5805425a27b049f6ee60067372a3b",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP19038V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:20bb2dc894eed192abc59bf681e94c9819754a3ad9c59c7d96e2361b891c2115",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "432bbb028b1f169754d04eede71df32a1d3b3483d6b269b67a4859f3e8e8f3b1",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLHLIP22230V012122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:2147f202bef6511d82c61f873a5ae289c54a6802d70e629509c7f08bae1d8a41",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "b6c4da87bb909a506afc9e69b0f4630e3ef2317f43edbe1dc65f07fc5c588908",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVPAIP21631V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:23b597ad12e43b101a896dbd0405e05ebb668ac3eb962e92045a1641fa5781f1",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "e25da7517bd52d924bfa6ac69f6a1402ed7d7bc6c40bdcb6a983b5f688c2508c",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "MAGHLIP20172V011920"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:244c287942872136b41a1fbbb9f0230ab323e9598411ff131d9da7e902a99fc0",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "a7741078487659e8db9594d38cc7fb7cd00cd7881b30cc25a3d9fd1f4b810e01",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLGP22068V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:273b5fc5b6184ac3a33499326a7b9ef304b70c063e4d0673efb16029b72055b7",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "7a55b7b6d7fe591cc435386f4e1b6a8148a0eb26a27b54a95fb6fa1de7e23472",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/225/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:27cd272a28be642384e38facf52e286f95f25eb2a62f6edc57a8f65afaa8747e",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "d8aa74a89ad35cc300f047f0e1c70deb09c87146097fbfa0e6e2ca64f3417bcc",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/411/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:2975e358de9fef15d49d71268d3e2c856e055a4dcb399bf7c8b3a0468e1c3420",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "9a2b7aa32d8ca1d3d048fd0d890c69b9eb25da68628d4ee341ac7d93998db084",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21007V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:2bba82e17967b1c168d1aeeb685441f932d530274a72bc29c69646cdfe2953c2",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "22629b1a73c7ac6c1da05164552aed5179dd666d964176ccc16f6c0c0fa5bc9c",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP21360V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:2c994068463ccc79ab33eb3b425df6d01a7833fd737d203ab538a1e16094b70d",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "071c33499d3986abe262cbf56e1c32c82accb83750371481d333eb81a464a1dd",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "MAGHLIP222V032021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:2d3ceedeb6216748725d278141159f81875be04ebace42d356ffebac9c9964d7",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "f611fb3b878a6bfbe281606a3fccfc6d2ad87a7d1a6273089d19681042e4c972",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21561V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:2ec9cdaa479a15026659d35923208dbe5e917b57a87364e27a37803df20da523",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "d68635321a9d725b7710c378b972b26c92ebaf89ac2ff4a968b0b0e310a7540a",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21310V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:318f54fdb7bc4e2a01d34d1172e4c10fff4b2da7f5013d5ef406f25cc8208b4a",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "95e468f873a9808b547021a3792061993c88c5bd651b703188bac6d7da50183f",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/155/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:323cdab81e95bf0e997366848cecabf6c0512d12912e1a7f716fe2e3f8ab9cf0",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "740e731ed371bb68542afe6672a544452f57a89b4d91189b3e88fe414a5f2064",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOTGOP20028V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:331ffd0a55dbbd53c68f940dda38068bac7c9dbf1e8e082f2060f8b7e0e32476",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "8cab9d79fe37a6d48eec879b36a344600bdb791e872581fcb08918ae32fc9292",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/156/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:3784b3747a502f9a2c0c1b57165004a380856e08a6563a1859fc3c3bb4290dca",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "730663e2ac063e971c67f9880ae21562c32a5a30fee697956f211275368d05f1",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLGP21367V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:3998738aa75b5362cb55916e5b74c999943b61bbbc791a4a9ea1adcaf54a9367",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "a492767493b379bafbf16ea71b445cce77189bd05ed8d7ecec537a1b03b3ef5f",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLGP22067V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:39a46a6abcf9a08a7460e23de8cf377b8919b924a4df24c0865b9c8c3ce89a51",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "7332c9b65a8a9a8ff36265cea53ec27bf43c0aefd33642678881adb0d7be5ae2",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP20162V011920"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:3b3f031982a238e1c2a230306befabb01780a6dcefbedbb33ff6c66d356d4567",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "cd3f855d3bdee44774dc11b571f723c6fca5dd41179c4d866131d95283758ac6",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "MAGHLIP18037V011718"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:3b9b9c8bd744150ff61ffa156d033ba53e0d17d2cd43d4f37c2cbc04d01c6d46",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "547a38b1318d14325a662efb6d42f5ff110291d7c76a1198dfe8612aaeed5f18",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP20037V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:3c1ec849df38a84744cafe4aaaf32e43ecbc79398853e2afc3a33022d8694332",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "6a7db659728fd9744c0179a35e3144dfbf83eb4a329c184b19dd264c4cb47741",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21012V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:3ca2c66339be124e2d982adec03f8e523ca286c844d1b22243c000b4b959e504",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "c1824efc27cde6994a48cea2891a66467adac8ae27b8e37d82f9cb310be899a5",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP21361V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:4013e223d7dc7ab45a452d2a31ac28b64e6afd83b4cc81ec30e077ff8e7e7572",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "17d4370b8d65366372eb479df9d14930da5363edc3e8cce03bc297c672a8b245",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLPMIP18113V011718"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:40a26e3cf59f475002717c875063699decefe46e144f97360be854daab2af493",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "6a79b7653dff47ae36a232a3573531cca1f881a8af26bdb263c0b27800b27ad7",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP22061V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:43c439b9be2b6e4d174da86dec9398979fad31156412b7aee745922d0b4de948",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "ccb6dbe2fa9a624e37dc6e8f5f08a2b8ee147cdf0394c848aabbc68ddc9ad9e6",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/MHDIGI/P-P/V.I/275/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:442766bb29d8d17a6b20390eaf4bae597a4351da6dbdff52a963bdda2ab07c33",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "3df114b0aaebcf7b84463a27c3eb4b59b4cf798fe35a3047dfdbddeb33a329ad",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-T/V.I/50/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:4664edca92b8c37623a2f2036bad99cd2bb3f5617f332e4c0770f22792d1a548",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "baa4fe6b9fdee69c8f0564722301b298f791a7c39db9f6b9dcbed8a625f1c500",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21550V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:4753e76ec9f5f0d434c92598d7a758392723422c4bf8dc2d3353a81c6f9a2716",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "2eb81efa001ea1dfa5aea8277d7b6e82164175c243b0581e2b52509c37ee0382",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/226/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:481a1a6cd80bef23c3ed62d021e01588b8d814ad44dc844aed3be5befeb45bd9",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "9f70c9848060f4c8a99ddd8da47108a5809015e4cf10a37c3707836ed578dbb5",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/SHGI/P-P/V.I/401/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:490831cd11fae2052bf93ee1e7c5cdcd0739f64dc0e112799c77303101266ab8",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "488694d6fbd09492b19ee11ce28535b66b40f4a2e1fceb2a0ff3693f75158394",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21309V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:491d7c4d2fd4bd73c80b01e7d64890290664fdeb686b5df33c674954de8262f9",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "7d7e68c37230a230a9308db2d12e1f5f775ea9816b35e77bd5cec8e2c6f377d5",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLHLGP21482V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:4a16f628d688a8a629ef449af01d336598f6b5ba2162bd23e91ef62160b1e85a",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "e4e7ea368ea84e2f18749fc778a922b08a6395f28584add9e065adea1f1bfaf0",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP22133V012122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:5184048f300efd87ab98df76f3403509d4253871ba397ac6c96445a244694af7",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "5414609312206d837e70fd4eb990ca0abb814d09710cfbdaf4f5157a2d67a9c3",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLHLIP18034V011819"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:51db9ab3c314d86e2510e5fb49507ac4b600965cf4f795932d224cd00cefe526",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "8ef7756bdade88c3ce1e4c64d14ba27a77130612eb313f7cbcaec04fbc26867b",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/286/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:55c5e35164faa462731518eeb24e04466d68b9db4e3219161bc7e8d151e65f1d",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "1f7ae903a60cf156eb80a51d93e9093aa65a81508d15b72f74a3ceb3e038d261",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/MHDIGI/P-P/V.I/274/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:56a0aebd36e9e30321d90febbfd87f232d063f7ab163ac870f27483401966f51",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "0ff7f5901a97de6e906618052a0a36f52b560228e4f5f5b29bdf0bd5a2c38284",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21301V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:581cccebb65dccefd48c6a8fda47c2690f4e01b40613c20f6b7ad1097218536e",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "22ae585561845a62709877bc319042aef405e6d592e35ac11102926e1acf00e3",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLGP21366V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:5b93228c37339101cbc222ef4c8016e97f0117491f480606678baf4dc99d38d6",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "48d9d0d48cd962bf0d78ed8927b2a6fe4780e382cd336162dc838d8504819c93",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP21359V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:5d74be8225268b2970ef8d7df656f1e2ec92ee3db0182784230b7138a09f1513",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "1818604349dae0a390f71a1e43f267326759a557bd8acf7126a18fee00f207c8",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21312V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:5e0b3317186a2d50344002ab3d6de5d3ef567e91a9c684f9e54c75e2d19a97fe",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "f7b125dda75a9091f722f3730d26c481e8352b3cfcaee0f895b9575f19eed109",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21426V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:5eee3c8de11f2124c081fe0a0e41798edfe201977445a5996ba5c21c51205b6a",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "8af3a4e29bc11ab196ae21de08c54ed42a729a5bbcb73bb5aae4c06573d0f90c",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21302V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:669a122e022ab62533257e7afd8a6d9b700cd07db031ec728586ad49ceda6031",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "3acb3061f5a68665b3d8fa05a608096e0ae8eca0e38df1cf8ca7373cf441c987",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP22062V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:66ab55ccb30fcb33efff0ad7f7a790284e3c2248a1e6a220717995840942fed0",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "12e6e0e4a469ae76ef2efb655d1595015b88981c94505a400721150c41e79c76",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21299V032021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:69b132d37283eb8dcc36e59a2fdd893b526fa7d9e82cce6c15e476a43d90a818",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "54f5acab2a939bc2f5364612f645fece7473cc480cd00ff3cf7b2d5f46e36a38",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDAI/HLT/CHSGI/P-P/V.I/33/15-16"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:6c4bafe1b9534bc2392545c272246bce3d78a7fa32f5fa17782fc2662bff6c08",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "20dafa0f2a39e7ad95719f014a62a264d3abc140307d22e1a27f848d63793a5d",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-T/V.I/414/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:6ca680b741fe8a28fcac22ac4864e66ff4e92ebd6a93c6f41cfa637a019a22fb",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "3b4bc35b406e27336a73928962b209ffccb8972603fd3703f280a0755b12e07d",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLGP22064V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:6e036f53ae5172d513c87202216f3942634b9c77587cdd74d7a7c71979b2889e",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "133cd5efb5bfb0b1738af59ab88a34eb531946798dccfa1968319c2bbbf76740",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVPAGP22065V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:6fe697b0ad0deb29ac4014e8faeef64fbf641ceaee41704cc6a550f33da738b2",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "2880486193b160153c49e8068ee812e16bccbcc2974f208c0a730c9058ae1dab",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/48/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:72af0b26e32f4a4c4ca2306cdd33778c99228e0c6caeba052c185ad34eda48a3",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "308f0cf75d3ccc544e9458bfd33533d805859a7ebf013673d07a3255945b6001",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21428V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:74a9b0e8b77563f7081f9fa44613f09bf8fbc4e021d9e81a4cb080b972725028",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "2e2642db6bf66d83694c62dc4fdcecd3d44d22037c03f75ce8a81c44869ff2a5",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLHLIP23019V012223"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:7ce0888edd3c724ba50d2c20c8789501753baa56bb03807d9e5a13ff40ee0e95",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "3570d1586b8eeaa9fd70d3804e5f1029e6d5480b4205ccc220c221e1ac23e968",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/MHDIGI/P-H/V.I/472/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:7d392e40e91ef4736bb621850f9778d3114b5b7cc44915867e96a4640384f6e3",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "a8f9da8048b43b4ecb45a90e0f1e52046ce7773b883a85f6ca7f5f0011179732",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP21358V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:81b7e8a79097a85191c59012d78eea96505e9459b1d02b146f2d2ade7260ea49",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "c9e0eee76c14c8739dc8c94e0c812939547d766bca3239c46db14b573caed069",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/153/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:859fe003bbd8c89089d067a16a926419e9fcef4695f82411ca6ff23571f7a632",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "2d499069f4d37d39d30d06bc7dc824235952479d62adedb3859c5277287267fd",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21046V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:891500b9fa147e8747f0d660c0b9ba3f87edbc3298c1e18d6bd3b4a105dd713b",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "dab2bf2753879b6f01a17a1cefb94ae79f0d6ae705e07870cbfd9cbc30d4d37c",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLPMGP18114V011718"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:8a250c4efd1b0bdf00ad95ef14b48c84506fe4e46dde46cd8ccfa2a26463038b",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "5a65903e5f0e8bcc93655cb572fbeab979e0caac345f505f1112cfd4cce82d17",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLPAIP18047V011718"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:8fc2dd74cab9103a56d07084204edf6f7cca96b02eeb560f84c5f019f679654f",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "012ca31cf4849fbf33582b82fc27a92bab480480034f863bc80e0d55602fa157",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP21105V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:90ea66dbc5f40288b8e9caba76de14516fe6ce9d7aad30e7eda1f2cf19431f81",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "f42306fc971fdce4fddf4f1153dc87a2aa3dfbb2986be0a66a50d9baac618c4a",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-T/V.I/283/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:9166eed6c46eae5d7062d9bcca864e6746f7ac7702696d56c6b9d3e0a955088d",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "6ccb41f93254aa31241447558b4a5345923cb13e5c9f6f754a28a29ead10d396",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-P/V.I/49/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:9278096e274b05d33688acfe1c8349531736b025ff8362658030103a5b20238f",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "3524a12fd2ed03f792e86e2c1414baaa59c9f5a34677da39a2b39cd281a9e6db",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21423V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:9627042c1dca3301897281b888f2cf1629b12bfc79461e390a08ea013ff7a7fa",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "a92ecd633fae911a7b1b1a3a254b2c04261e38066dc66256b91d23f10987b3bf",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21017V012122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:96825a9ab2230d45563a5bfcae25c016f4b84288f8a6678902b0cd90aa72378f",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "d3025ee13cea8cae424743b8eca7e27eabbdba20978ab3d0f735f0d7a82c0670",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21571V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:98ddcb5c5840405468925171aaa1073b27ed7adf6643bf91746a40f261a8d3d9",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "bff1bdc617e41930b969292a3c7b192a827d0670a75eb2085cf1dae4412ac2b3",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOPAIP21419V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:9931485c560a64d63d4d03b4785d0d2c8d8e025887f83c2420cf9264dd355d09",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "6318f6cea1a0798df28891290d3b440a4e9a98cf3765580cdff5a3e87fe8e0e7",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVPAIP22058V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:99f861140a10e305a429099b20b1b7be0fba12592b4613478a35cdb5b9890736",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "b4c7904286dbcf68e02338288d693af04f1b609e50587fcbb9723f41d1f2118f",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21298V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:9d914b4afe292bf74b66b0e84ea933f5ab1a61b157f1c5c04469f3b900727a51",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "47e99eab43ea887da59643b56081859ffb9408bd86d8bd5a8c9f577ddb813dc6",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLHLIP18032V011718"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:9e7bf3947b8240a47ce89e58824b91f36c85b7fabeee7b23113bd7f598fc76ee",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "b7c1c75f1bc2bc6df614a16b7658c3c49754edf87cede5deb9591d234f5a418c",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVTGBP21365V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:9f2a74a1b7502a1c100a5ef78e3963e2d68ebb98a3129eef8555295f89168199",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "bfae5fc1ab2ac045a338eccefb74eca4028dd97cd6af84983a4277838f0fdc0c",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21306V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:a099f5dbefcf62f7cc6ea9657e72ab7b703ee33e2d444e3f568a35be196b9a20",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "eb5c9297f324e596e11e2b4d4e039be256a5cd0d8f2f8bc3baafc0c12213f4ef",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLGP22069V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:a2e30cf8c830a4ac6a0c20a6839ba0708aeb5596887b0a7ef16b92bd91bb953a",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "ab5881fad9b2201e9e2f92f58a7e266d7a38cde5e106c4a42b9c61da1a422b0b",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21416V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:a458ccfd444d52223a2cccebc4cdca168447064e44ca23ace97e892ec25a23ec",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "96beb1cd24ba97c9efb38989fd10c264b06722c38dbd98a8c11f5fec98f4aa5f",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDAI/HLT/CHSGI/P-H/V.I/24/15-16"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:a5de6746e26e863b1b0b5e3264015617e49392cb712885ca9aa8c9da1a5b7613",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "76a32dd3e0bfd802be94adc409b819a7c8a09e8d72baa7257104d9a0c93c6804",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLGP21362V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:a8c24bd6dcea3da468264d1fa9a25573160d1d9d658f10b931cd091a5e198890",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "564d51a113fe994e152bb77356842d7a4af9f4303d76afc52bc8db071b457ec4",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-P/V.I/405/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:a8df0d80cfdd73d1847a29e5f8b0ef5317819027b76ce0b1fc21dc4f91167287",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "936deda936fcc9bb5930ae4e2ac6cb89b0644d83b784de3d8cdefd293f08908a",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21429V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:ac58d9659e9a35acf14e64e4be40110eab31abb37d8324cc3e3fb89790813667",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "a8e616168a93973c22eeb0eeea39a6db45ed9b238803c9bf2ddc089d52036faf",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-P/V.I/412/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:b23bec2879f05a92cb6a16cea70be1bf41659ad0d11e8878e8483bb56c69be16",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "02652e1099f7d77e408ce730715ac6a290defc0977e7a48442ccffc41a45f8dd",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP21077V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:b2a03dcb9b8196638f9b559bc21bc87b26827cf836d5ba8056a01d01ffe08871",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "56c87f8f60baf924bc6535f83fde9353b0d0aebe685510ab036b6fe56947b1f4",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP23003V012223"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:b7032d027f4d20c253f03f3cbf3320199a879fc8f08f9ead02aa8347cce9d26d",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "11d21d963f7c965669d32ad4fe9cd0532800099e89147c2888ff799153a01a01",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOPAIP21418V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:b98115b1ff2c850b24b9d9740692bc718f5ab37cd8fd78296ef5bd7057e27e0b",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "a90db165673db48f3f184abefc071538e4f6a2eba34a88b281000f415a6f32a1",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/SHGI/P-T/V.I/403/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:bab389d7013229ba7463b7a3c2f1d3d716194f20a0a3090c3aa2e91c00e093f3",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "e28056e77524d9212506dcc9139549de893c80185e3f83e5dcca43462734a88b",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/154/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:bb5ee82f9cff713e6d6f1f42d7a8975827530729f19945073b187a1b4f755eb2",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "e9f5be55e364b6722a40476d7452849a037b39aca1ef320c12c094d57173fff0",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/396/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:bf86e34491bc9b006df2a5bc65163dec5a244701e0bd4c876219d5ce4ccb53cc",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "a779006781ab9b774b7e75f506c6c7e7ad58aa02b41204a928a0664649b6de20",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/51/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:c0449c7cb5d01719b5f3a2ac1ec37dd00d3b42f6fe3a753d1ac9f8046150d588",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "b70ee35df3b8e0099ef56ff857a574b9eb570d59520be1a56c4f483dc72ef292",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLHLIP21481V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:c1b85b63ca815f650d5a24f086400443e3583569bcece95cc6b77b2f9baec9de",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "03980d68666c2ae72390b35ed364ede0f0bda874b3f0562ca70b006f878ae5b8",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOTIDP21417V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:c5e86c2bb84953aa2a14d20417d33eb6b16a3707d92b6706558bf4bb75e8b943",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "38513a9c2441ee09e576ca7bf4de1a6817a6fc8aa6881a01d81cbffef4618689",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/410/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:cacebe48c46c345f1aaf6bbb6e741385c1134f299c8b642bdd5f48c12a60c1cc",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "4edf10c10e9d8bd52ec232f5ede19ccb47c0e56111aeed5752e7c33e28a9258b",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLGP21363V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:cfe43c6990c3e0e2b02fe8e13290909c52bedfbb42d07229ccda9f422d3c272f",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "e5abcdac25a52b953fdf420660756101105fcb9e8cdddbe9a9650d81bec82e6e",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/SHGI/P-P/V.I/402/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:d13f09c4a1c6902d04b2578757f06264a5ca45cd81532976d91e38f3b3c6e748",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "ca80e64f46a4bf50054086d4736db8ac37bcab2932959a6b39f3d6a867d109fa",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21068V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:d14516cb79066bc5cbc1f2ee380df7e9e6ec7ef9eed36ccfffbfd68496664e60",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "79d57ff7c07d450145261fa9a4efff2dc6e8c6283afba526e9ba0dca0b9815d9",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-T/V.I/285/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:d50ff76dde5fb8b22afa01ba20b42c7a224e4ae8da1fbb9d42371d23198de228",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "0f5f349f1c01809462a20a115752e4c52411512823bcb2c25f29830a704a339f",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLPMGP21480V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:d567299251fe022497ad074d32986cd9d3fcc9813ff7b38484ad5df2b12ddfe3",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "ba6be7812bcad75733a276ee08615ef42148be4430bed090cf4cf580e2b42d58",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21427V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:d5707fcaffd959d2e03e27d6bd4f2ce3066e2758ecf2c197f2eeb7652a74b9ae",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "af1ab15f4d5dcb5df236741742e68dba3dcc02a17b9ac60508c7b37f8e23430e",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "MAGHLGP2123V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:d6443c917b23837df0011a3405d78fc3d364c08427a617a0e7f8d38d96971540",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "2d70f276bcf6a1ce5d1bba02619f7c738d6a2e725973bde1471aa34f5694f64a",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLGP22063V032122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:d7f07d7eb2c1c37c2873dfbc7e30f8a25075b314c6a313d7977f6bb05a2afc5c",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "d8855a322da6bb305b833b14057b84c5cd1f1de721c167b2ffab83bee8c3bb61",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21430V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:d8426b51ce1bfde2e01017a540b8a34fa680c01685da4a541d98033251851c2d",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "ec29a2cfa2d5cad82f9f8343c5fc590fd22f0063fbebb693d45731c45ee1f63f",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGA22186V012122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:d8b00dd7181e8ede53348afedbbf458a1842bdfa771174223c1fa6f5a350ac17",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "83220589118ce726d05bad2910e4f9d9c283f6416c1c4cc1c3a2316d2d307286",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOPAIP21422V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:d9c3cca3cde9da9adcee83440193aa607e36eb9cfa81ccdf53ab15024f9730a7",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "9903c22b96c6b54ad6f33412d42cc4d99516c9144484679c81bbf729bc3f2351",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOPAGP21420V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:dc44eea41f0fd9d371929972cfc0c410f1bb9367a61437c2436745d9004b6df3",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "0ae88594092aa3e4a110457e120737eccb9dd7366abbda6b1b884494dfac93b2",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP22183V012122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:decb958ec0c23cb07cbe8ffcae8930a135d279303beb7abb1b37718f1d18d116",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "e682b901ab077155a8af4fdf441bd2d07d08e151f36e00bc5c77799ef9e4bb4f",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOPAGP21421V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:e1e6add89fcc62c492f98803de7b93bc3cb84d92058f8ceaac0242894dc720da",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "9120d601d2559c5fa885236a7496cd014ee42d6dfb789ead5d3c01938a20ff47",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP22006V042122"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:e38e83c042b71a7d0971f2911c49c8d4c5cc0a95494d42ff6643755fe5ca3e17",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "f3917b1f3003bc9fb3aeae49ede1acec6b8c7e2e09d63efcbf25cb35efe521d1",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVPAIP21357V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:e7a1c97a57174080334b012a2d2abb3f54f87718d9a988e3b549dfd38f1e06d8",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "e8ce2c1c418afeea616c4f8bf5e5c5892f8fe011d1764519316997f7eec1de7f",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLPAIP21477V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:ecbddf819bce9d94c4babde3675eef03885bc2af84b91f4153a6175a8f6409fb",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "c7a30dc42e5e4925cac46be990ee42ba5abd3a3dcff4e3f2df0711c82cf3451b",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21308V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:ee2ffbd1fa66da6930f535df592c676ac3097a6c9deb287f3d0da3e94d82c2ad",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "2437d080b28f4c19fabdc15cb59a2a555e8d886809cbd6f31d0226d6cccc88a1",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLPMIP21479V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:ef33dfaa182687c134d9924958eb8256c36ccecee5b872efb43c3b223b567253",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "f886941e019a8a9f5b6817e123181011e4c02b1d9707f1f8ef06c070516a3803",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-P/V.I/404/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:f1868b2fefd22a8d69ec99251ce3de27d3f5a64b35a5ff93e85c840fd9fc5c1f",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "0b8874af7e202c0927c92fb095f9aab625728d0875394928e9c1eaec77a2fef6",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLIP21297V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:f520ae9931490ff60b41d56d3f5d7e5f8538c9c6a080270b897a8f43444557e5",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "61c0c640c64fddfed0768feccc3361b839192747249b19bfaef7cd5395eb0748",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLHLIP21483V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:f5e5d529ea8e28259b3ee9bbbed066c7d5f4aab21fb9d3a8438a8b1d36c821ef",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "05585810877bdb90e4f7a50b7c6020fb211ae8af2fbc6315540727afbc217a1a",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOPAGP21424V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:f81404e10b298cf591e8ddeffebfcabd73b53a4bf379becfbf51fae05b55cbc2",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "6b23d0ddb97748cb43d92fca11fab24f8d8a2f4ccbec80c5d3588937846df2a5",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "SGLPAGP21478V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:f8421416ce11e9608941d218cc5a127d1bcadfef68838209938510e802ec4590",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "e9c278be2abaa4c25246e78854bd235ab9722e0973ba6e3737052ec41c47b5e2",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/152/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:f93fef4d192cef8d77e4812e2e2a42ecdc5d584440da211571a538505edaf501",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "f0dca0b0bdde0e565696ac1e8ae0cfdb898a2a10cd1dfa6edee4fac514e2b8d9",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21307V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:f9c3c5fddf3ace152c85bf1480bb8e3f4a59cd5b529ac9c899c1cff5e37744e8",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "bfeb70aceb6f50ef61eee2be81b159e442a11054306fa5a6893d696a95dc69c8",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "MAGPAIP21642V012021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:fa33e56f7d12d31a41888bcf01ddb0a50057ab6b24b7e23c938010355669efa4",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "f1acb9c37d37b574c4ba64d1e5ad2af8dc03c82f83f5cd50391e5a6426f084ee",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/MHDIGI/P-H/V.I/469/13-14"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:fa79faedebb5d4b61dcf884afea897144e8776a1dd75371b5dd362ca098349c0",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "ddcf02e6e044f0c37f4dc255bd5a6062147f299cbd0d59406f1b031b62955186",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "NAVHLIP21369V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:fb5f5fdec381bfa63ae07285825287e77ea2bb853808d6a4a6a381c6e066abb8",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "131d8bf6082dabb26a0806ea167eaadf8fa38d9b9f00f5c57cce0db70245972b",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "CHOHLGP21311V022021"
+    },
+    {
+      "ambiguity_conflict_status": "UNRESOLVED",
+      "authority_scope": "IRDAI_NON_LIFE_INSURANCE_PRODUCTS_STRUCTURED_REGISTER",
+      "candidate_identity_ref": "candidate_sha256:fd358e5107dd601786435540d70b6d494a92d0c8b336a7df1ebab66efd114566",
+      "match_count": 0,
+      "matched_uin": null,
+      "query_status": "NO_MATCH",
+      "source_content_hash_or_snapshot_hash": "2943fa23caea7aef83ac0f1f9d417c8dc4585a53f6ed1705d0eb5ca29d0e6f54",
+      "source_ref": "https://irdai.gov.in/non-life-insurance-products",
+      "structured_type_of_product": null,
+      "uin": "IRDA/NL-HLT/MHDIGI/P-H/V.I/475/13-14"
+    }
+  ],
+  "exact_match_type_counts": {},
+  "page_audit": [
+    {
+      "cur": 1,
+      "row_count": 60,
+      "sha256": "6edb347951865ccb751b6e395b6e6af60459f60d8a1c1a17ddfb4ae9e18c8204",
+      "terminal": false
+    },
+    {
+      "cur": 2,
+      "row_count": 60,
+      "sha256": "b6fe4270ecd7fb497416d027be6426032854cceb02d232ce5e28116da1fa3b4f",
+      "terminal": false
+    },
+    {
+      "cur": 3,
+      "row_count": 60,
+      "sha256": "725fa5b2c42e65897c4a812c70991154d6384669dc2450d1ef288efde870c591",
+      "terminal": false
+    },
+    {
+      "cur": 4,
+      "row_count": 60,
+      "sha256": "13c627462ebb86eaab594f207a66ba599bc290373daa055607d24fce716424e4",
+      "terminal": false
+    },
+    {
+      "cur": 5,
+      "row_count": 60,
+      "sha256": "ace52b9a1b7f5f0111f75ebe837eea545bba0ff7234b2335bd82daae0a379186",
+      "terminal": false
+    },
+    {
+      "cur": 6,
+      "row_count": 60,
+      "sha256": "e63b36fe649b60e725e289c7a9d9e40b0cf44285116bfdf8a82a5e10df2b1700",
+      "terminal": false
+    },
+    {
+      "cur": 7,
+      "row_count": 60,
+      "sha256": "03515cff7a79799224ae7738dcb335a759bb5572e545b43e7d3c04fedd42598f",
+      "terminal": false
+    },
+    {
+      "cur": 8,
+      "row_count": 60,
+      "sha256": "fefbd733d5d19074643d4203c8267bf23b1b52041f313a7dd7dd3caac000f6ea",
+      "terminal": false
+    },
+    {
+      "cur": 9,
+      "row_count": 60,
+      "sha256": "3e519d8c6f7e15b008450921934e552d2e141be233571a3c486fb04cac8d27bf",
+      "terminal": false
+    },
+    {
+      "cur": 10,
+      "row_count": 60,
+      "sha256": "da8ccd791c4686862e0c5f640328339a72575bff12808ec570eaead1d1da8d8b",
+      "terminal": false
+    },
+    {
+      "cur": 11,
+      "row_count": 60,
+      "sha256": "f53e7ac2a6803e72a5a07cd42688529eeaea77110f8af6348ec5f3da1e2c54ac",
+      "terminal": false
+    },
+    {
+      "cur": 12,
+      "row_count": 60,
+      "sha256": "fd1cee4d1fecd79572eac4e3365443448d8b3cfc4bde49dba5e7b3c036442424",
+      "terminal": false
+    },
+    {
+      "cur": 13,
+      "row_count": 60,
+      "sha256": "4a5c977a97c6c8c889b7bbc339559093557bc256d57d265e5b0658a0fda2ff2c",
+      "terminal": false
+    },
+    {
+      "cur": 14,
+      "row_count": 60,
+      "sha256": "7c2ef874834c03cca1aa09391511d6b01949ba1054635e5a05b8ad5f58ddf2d8",
+      "terminal": false
+    },
+    {
+      "cur": 15,
+      "row_count": 60,
+      "sha256": "a0a247aed8d3fb2672a33c67684c141c6177455cfe6ad611f4d7c591731445fe",
+      "terminal": false
+    },
+    {
+      "cur": 16,
+      "row_count": 60,
+      "sha256": "2749ffde24ef6445d37efff1e38d1ed1f0dc242a0e7417a145c0bbfcb698ceba",
+      "terminal": false
+    },
+    {
+      "cur": 17,
+      "row_count": 60,
+      "sha256": "dc6614494471900f966cd6f67bee4fe7ac33b5a336eb3321e6790b8100386c4c",
+      "terminal": false
+    },
+    {
+      "cur": 18,
+      "row_count": 60,
+      "sha256": "7b223698860a50e988516e58192c6e84f71e1a629db55546691300d1634e6acb",
+      "terminal": false
+    },
+    {
+      "cur": 19,
+      "row_count": 60,
+      "sha256": "8e871919b95eded59d47578545ebc278cb1563de23e623f94f2fe1e1f67c02af",
+      "terminal": false
+    },
+    {
+      "cur": 20,
+      "row_count": 60,
+      "sha256": "d2eb8d789705dc845b3ca6fd9845b710484f3eb766a08c2f4424c27b6ea2777e",
+      "terminal": false
+    },
+    {
+      "cur": 21,
+      "row_count": 60,
+      "sha256": "5984852d6b1cfb2fbd17045e35ebaf29396b5e07e9b3b93bf66ffe929f00ad55",
+      "terminal": false
+    },
+    {
+      "cur": 22,
+      "row_count": 60,
+      "sha256": "6071dda3d12d8d07c557c4b2887cfec7af7c6c7aa1a0c033d8fcef649cd2e2d2",
+      "terminal": false
+    },
+    {
+      "cur": 23,
+      "row_count": 60,
+      "sha256": "67a8a09e88a9b45071cf079b67ef71ca3952c997be6ed89a7a008d6dcb03e6c9",
+      "terminal": false
+    },
+    {
+      "cur": 24,
+      "row_count": 60,
+      "sha256": "cff430a0aa105d637e39aacddbbd3066113f2d51dfb44b39eb5c391e85b749f3",
+      "terminal": false
+    },
+    {
+      "cur": 25,
+      "row_count": 60,
+      "sha256": "61fb89f1681aa95ee02b8b71a0166128139f875b1724efa682eb5ce7e3565b8b",
+      "terminal": false
+    },
+    {
+      "cur": 26,
+      "row_count": 60,
+      "sha256": "8c622df43fc2d3c602b87364012155b02ef3fb3e63b6ada2f416af8ecb41a9f1",
+      "terminal": false
+    },
+    {
+      "cur": 27,
+      "row_count": 60,
+      "sha256": "9f4f649f27f778587f00c1c36329b86d0faace2ccc61b26b9b2d1bffe237a7b1",
+      "terminal": false
+    },
+    {
+      "cur": 28,
+      "row_count": 60,
+      "sha256": "0c65c46288b7de2c5fc2aef7b82bc5eee5621578b5cc4beebe69b9492665332c",
+      "terminal": false
+    },
+    {
+      "cur": 29,
+      "row_count": 60,
+      "sha256": "9c54085b5a457325155450c89e329c6322eae5d829e07fea9bf1953b00d8239a",
+      "terminal": false
+    },
+    {
+      "cur": 30,
+      "row_count": 60,
+      "sha256": "6c961f2729611c05540f59e0035d01d8c880f788a06edc238ae517b7890af140",
+      "terminal": false
+    },
+    {
+      "cur": 31,
+      "row_count": 60,
+      "sha256": "fa2d00c6afea3044ccb391e1bd7f8a161fb69eaa6e8d7df6c1497b8bd55ace34",
+      "terminal": false
+    },
+    {
+      "cur": 32,
+      "row_count": 60,
+      "sha256": "d730bcda2a7bd32a0f4ace82ff1b3ca05909588c64d6890b538c32a6874b38ef",
+      "terminal": false
+    },
+    {
+      "cur": 33,
+      "row_count": 60,
+      "sha256": "53e3d45755b19cad3933c417f1666336bf92bdc5fb1d73ac6b2522bf7da11410",
+      "terminal": false
+    },
+    {
+      "cur": 34,
+      "row_count": 60,
+      "sha256": "6aa11b9f74e1a58e98d85932a7b5df7d8cd7a1de9dd57ad290f87f8848b66abb",
+      "terminal": false
+    },
+    {
+      "cur": 35,
+      "row_count": 60,
+      "sha256": "de014686f76d781b3e4912dc9e06304c92727dff75a36f2a2a889d9d79c19a53",
+      "terminal": false
+    },
+    {
+      "cur": 36,
+      "row_count": 60,
+      "sha256": "d0a0a721c22329f787497e58e07cd8709fd49b07a4e5085b7187fa6abc13865f",
+      "terminal": false
+    },
+    {
+      "cur": 37,
+      "row_count": 60,
+      "sha256": "3d63cebd4f285011e2767430090f045114f0b09ab0872552ad3ce7592a9e54ce",
+      "terminal": false
+    },
+    {
+      "cur": 38,
+      "row_count": 60,
+      "sha256": "96e8dc4ec4a75548170df3904871412a1fdd06258c359d2e8a0c70fe6abe61a8",
+      "terminal": false
+    },
+    {
+      "cur": 39,
+      "row_count": 60,
+      "sha256": "089c1af2d2fe2bb9a47de5357b3eda0e11f82d2aacf4a470938632c155b10ed8",
+      "terminal": false
+    },
+    {
+      "cur": 40,
+      "row_count": 60,
+      "sha256": "609c370bcf3b2d3d9d87c12ae52485ecb30fdf7c3f238911061cda513e5720b3",
+      "terminal": false
+    },
+    {
+      "cur": 41,
+      "row_count": 60,
+      "sha256": "f0812f17c2985713fb87a66a9becca2ac0ed52277e9eb0d1dad1ee25b5b102b3",
+      "terminal": false
+    },
+    {
+      "cur": 42,
+      "row_count": 60,
+      "sha256": "12ed80283f0e8a65beacef55b2699c77c7489508ddefd7d89a6e0bcd5e2348a4",
+      "terminal": false
+    },
+    {
+      "cur": 43,
+      "row_count": 60,
+      "sha256": "4e61eba423d07cf4176a7327b2c172ae62471c12b7e95d47705a0801e0da7b86",
+      "terminal": false
+    },
+    {
+      "cur": 44,
+      "row_count": 60,
+      "sha256": "7f7a34cf953724edcef2f96a48ff553563e1f2187d59af5aa9ad3fd160f4970e",
+      "terminal": false
+    },
+    {
+      "cur": 45,
+      "row_count": 60,
+      "sha256": "7fd03c4b335eb0cb223edde1f4bb5245c09a68d13d4de2c5307d3cdb0d45ee31",
+      "terminal": false
+    },
+    {
+      "cur": 46,
+      "row_count": 60,
+      "sha256": "8bdcb5237b5eae77b53c16f3a9a2dac9142f3818dbdfc4247c2ae7bc6e9bcd9e",
+      "terminal": false
+    },
+    {
+      "cur": 47,
+      "row_count": 60,
+      "sha256": "7d966cd40718938aea7a5cd00ed32090142ab66ef65a39cf4e944e0ed278cbec",
+      "terminal": false
+    },
+    {
+      "cur": 48,
+      "row_count": 60,
+      "sha256": "e5b253b08970b70f4cf56b4d9c37b900f794892657fcf896951b69a2b45a64ac",
+      "terminal": false
+    },
+    {
+      "cur": 49,
+      "row_count": 60,
+      "sha256": "7804630a4840cdd18176bf3dd499385c28fef8e49583d8283caa6afd3936c3ee",
+      "terminal": false
+    },
+    {
+      "cur": 50,
+      "row_count": 60,
+      "sha256": "88599dc7e5f3a00424c35fc01de12555c465f50c8d59c7ac66aaca321635f334",
+      "terminal": false
+    },
+    {
+      "cur": 51,
+      "row_count": 60,
+      "sha256": "5e0c3099a3cad831778da2b82a47685c60093b0bc43265de16e29f91224c6e4e",
+      "terminal": false
+    },
+    {
+      "cur": 52,
+      "row_count": 60,
+      "sha256": "effad502ff7c0e47aecf231392cae8983d3068695eb462b4abad57898dd9263a",
+      "terminal": false
+    },
+    {
+      "cur": 53,
+      "row_count": 60,
+      "sha256": "f20fe45234a2d7745d9817f196586b368bcc5e1f8622d6d06aeb5105c7891213",
+      "terminal": false
+    },
+    {
+      "cur": 54,
+      "row_count": 60,
+      "sha256": "568e3fe52282c90cebaed4476a93341899ac68a15f6827f1a0990d7e663eeea1",
+      "terminal": false
+    },
+    {
+      "cur": 55,
+      "row_count": 60,
+      "sha256": "a897d42fd77a6c698868b479d3ba733d7a5786f34ff89906e285c9d8e0dac1d1",
+      "terminal": false
+    },
+    {
+      "cur": 56,
+      "row_count": 60,
+      "sha256": "08fb9a08846b75b0d00dc3574f6ab163523579cfba0c503da9425d17281757e6",
+      "terminal": false
+    },
+    {
+      "cur": 57,
+      "row_count": 60,
+      "sha256": "8444637f62331fd9f08f30fe0684cb9efc6190a75f5d24d5891dd2d27787bdae",
+      "terminal": false
+    },
+    {
+      "cur": 58,
+      "row_count": 60,
+      "sha256": "aba03f86c25051bf6ac42a0882f4cd08ecee88079c34773abae053911b367a81",
+      "terminal": false
+    },
+    {
+      "cur": 59,
+      "row_count": 60,
+      "sha256": "f711d926bc535fcff2674ae6e8de89d05bcc75bf55f6efc9fdc87f7235f06af9",
+      "terminal": false
+    },
+    {
+      "cur": 60,
+      "row_count": 60,
+      "sha256": "2fcb5370eb654f297699c35f73f8221a903f02baf45f58245f192b381823c23c",
+      "terminal": false
+    },
+    {
+      "cur": 61,
+      "row_count": 60,
+      "sha256": "85ed8e941a5aee0b2a3327e37552f2c58c1b9e705a3406c53db12924e44c588f",
+      "terminal": false
+    },
+    {
+      "cur": 62,
+      "row_count": 60,
+      "sha256": "de0838f3acb834b41a200fba58c743dab36fa02979f9e43223995f86804e9dce",
+      "terminal": false
+    },
+    {
+      "cur": 63,
+      "row_count": 60,
+      "sha256": "8be417c82962b84a0e8cec099ebfe3b6f661817541de2207770e47f9904eae08",
+      "terminal": false
+    },
+    {
+      "cur": 64,
+      "row_count": 60,
+      "sha256": "d94f400b36536dfef2d6e31891a873e23289a1b588fbacaf6b3400f0c41e8db4",
+      "terminal": false
+    },
+    {
+      "cur": 65,
+      "row_count": 60,
+      "sha256": "f924844e7eeaf7de608fabd19394e6d7e4a7bebb9f819dad316a69ff340e04de",
+      "terminal": false
+    },
+    {
+      "cur": 66,
+      "row_count": 60,
+      "sha256": "c963f7a1787194f06a08a56696dc20e23d602fcb604b93cd11db33bacaf2066f",
+      "terminal": false
+    },
+    {
+      "cur": 67,
+      "row_count": 60,
+      "sha256": "ee5620fdc6eb39478303412f0d7ec85163a96ea765d14f2e6a103236b5011955",
+      "terminal": false
+    },
+    {
+      "cur": 68,
+      "row_count": 60,
+      "sha256": "dacbc843c04fe03b6d2c07118a9e7413765c22cffb580cf18f53728692c14ef1",
+      "terminal": false
+    },
+    {
+      "cur": 69,
+      "row_count": 60,
+      "sha256": "df9129c7dc7115f27c1d22ea51a282a8c9e948f1213413a690c2901ef672eef5",
+      "terminal": false
+    },
+    {
+      "cur": 70,
+      "row_count": 60,
+      "sha256": "f22dc63226ef8d2c75c96a4787a599b99ee79ebfd54b18f1b8e3054567fa3c8b",
+      "terminal": false
+    },
+    {
+      "cur": 71,
+      "row_count": 60,
+      "sha256": "7d84dd2d817741d5600b1bfe5e187f4b2ae8919d030bb180030350c1e7598807",
+      "terminal": false
+    },
+    {
+      "cur": 72,
+      "row_count": 60,
+      "sha256": "ac2a5883e64dc69b435f8848dc85371a1ea137e1f23b339eb1300f0b81a92685",
+      "terminal": false
+    },
+    {
+      "cur": 73,
+      "row_count": 60,
+      "sha256": "5a5ea36f6b5f801a29a44840fc01ec1fa6b3f5baf8d672e68571d1bd744476a0",
+      "terminal": false
+    },
+    {
+      "cur": 74,
+      "row_count": 60,
+      "sha256": "e475c3f419603ed25395e62d675b55468c33014ed7b7ad71e2c733dd6a125c6e",
+      "terminal": false
+    },
+    {
+      "cur": 75,
+      "row_count": 60,
+      "sha256": "c9c5bddd4e99cb02e78ccd3e95804ab7e19beb6a1805cfed625e9069a269c1a3",
+      "terminal": false
+    },
+    {
+      "cur": 76,
+      "row_count": 60,
+      "sha256": "a928237d80f5511fffa043bff6d3361d5ff6ecbf07d071f34b6f349ed08544a0",
+      "terminal": false
+    },
+    {
+      "cur": 77,
+      "row_count": 60,
+      "sha256": "f85c6368b4beedb891f528c7639b4c1dfa4854fbc1e5cecd07c80921e5872e16",
+      "terminal": false
+    },
+    {
+      "cur": 78,
+      "row_count": 60,
+      "sha256": "3838a8b8b7492b6d928a3b72ee34cfd1bc578d22f25281c9bf35602dcc0f8056",
+      "terminal": false
+    },
+    {
+      "cur": 79,
+      "row_count": 60,
+      "sha256": "1696968aebe8e77a5830cdd0de2999051d44af294fa579be50be961f8d045ed2",
+      "terminal": false
+    },
+    {
+      "cur": 80,
+      "row_count": 60,
+      "sha256": "7c938bc5b9253c755442e3fa72ebd13a8c9e277c88070c5ad1305ea117ac3f98",
+      "terminal": false
+    },
+    {
+      "cur": 81,
+      "row_count": 60,
+      "sha256": "5fe61b4892433d23a3a12855c3f6b95ba9db2f06e60eba2b69930e1d584dddd7",
+      "terminal": false
+    },
+    {
+      "cur": 82,
+      "row_count": 60,
+      "sha256": "bfb5b2c7f915bd52242cc730ceed4f2a12b1dfd6a3c01c7d47667a520a78d7af",
+      "terminal": false
+    },
+    {
+      "cur": 83,
+      "row_count": 60,
+      "sha256": "f36fa5c7e78c50939d47c5023c10bb7daa69aaf7854727cff9dfb31ef45c1652",
+      "terminal": false
+    },
+    {
+      "cur": 84,
+      "row_count": 60,
+      "sha256": "5ccf483de11661cfa248c08d0a56d5499e0a8d30af53e67e6990732082c6f5ad",
+      "terminal": false
+    },
+    {
+      "cur": 85,
+      "row_count": 60,
+      "sha256": "b90411b56c59801ead0f61be237c3362bc83fe34d965d4fb0d58ba8e2375722c",
+      "terminal": false
+    },
+    {
+      "cur": 86,
+      "row_count": 60,
+      "sha256": "526431aa56150edb71a6f50e3a71535f332f38370c8bff6cb60d9c83036f5968",
+      "terminal": false
+    },
+    {
+      "cur": 87,
+      "row_count": 31,
+      "sha256": "c0244912dfbc895e08b7055724fee77225d26e0d6e263ecfd8055f664816dfd1",
+      "terminal": true
+    }
+  ],
+  "pages_scanned": 87,
+  "product14_selection_authorized": false,
+  "query_status_counts": {
+    "NO_MATCH": 131
+  },
+  "record_type": "health_c5_35_disposable_object_type_evidence_capture",
+  "requested_page_delta": 60,
+  "schema_version": "1.0",
+  "selection_started": false,
+  "semantic_review_started": false,
+  "source": "https://irdai.gov.in/non-life-insurance-products",
+  "source_predecessor_git_blob_sha1": "8e5616f6e5ec53d0a0ee0757040e16dfee369ca3",
+  "target_clause_reads": 0,
+  "terminal_page": 87,
+  "terminal_page_row_count": 31,
+  "terminal_reason": "ROW_COUNT_BELOW_REQUESTED_DELTA"
+}
+C5_35_OBJECT_TYPE_CAPTURE_END
