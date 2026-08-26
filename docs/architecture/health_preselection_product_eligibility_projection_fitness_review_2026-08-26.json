@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_preselection_product_eligibility_projection_fitness_review_v1",
+  "record_status": "FROZEN_FITNESS_VERDICT_PENDING_MERGE",
+  "domain": "health",
+  "product13_closure_merge_commit": "a311a9ddc441c520daa4c7e4baeb4ab6f103fa6d",
+  "review_authorization_path": "docs/architecture/health_preselection_product_eligibility_projection_fitness_review_authorization_v1.json",
+  "review_question": "Can the existing governed acquisition layer produce selector-safe, source-grounded evidence for Health indemnity product class, base-product status and retail individual/family-floater availability without exposing raw semantic-bearing content or weakening the blindness boundary?",
+  "verdict": "GENERIC_SELECTOR_CONTRACT_GAP",
+  "verdict_summary": "The existing governed identity/currentness acquisition layer cannot prove the complete frozen Health product-eligibility predicate using only current selector-safe contracts. A prospective generic product-eligibility evidence projection is required before another neutral Health experiment.",
+  "evidence": {
+    "current_selector_product_contract": "blind_preselection_product_metadata_v2",
+    "current_selector_currentness_contract": "blind_product_identity_currentness_evidence_v1",
+    "current_contracts_can_prove": [
+      "exact insurer-scoped product identity when explicit product name evidence is present",
+      "exact UIN identity when explicit UIN evidence is present",
+      "source distinctness through source_ref",
+      "explicit currentness status and product/UIN binding when present in authorized metadata artifacts"
+    ],
+    "current_contracts_cannot_prove": [
+      "Health indemnity product class",
+      "base product versus rider or add-on status",
+      "retail availability",
+      "individual purchase availability",
+      "family-floater purchase availability"
+    ],
+    "source_asset_classifier_fitness": "INSUFFICIENT_FOR_SELECTOR_ELIGIBILITY",
+    "source_asset_classifier_reason": "SourceAssetClassifier page_intent and asset_scope are URL/title routing classifications and do not constitute source-grounded proof of Health indemnity class, base-product status or retail purchase mode.",
+    "product_signal_extractor_fitness": "NOT_SELECTOR_SAFE_FOR_THIS_PURPOSE",
+    "product_signal_extractor_reason": "ProductSignalExtractor contains semantic-bearing sections such as riders_or_addons and derives product naming from URL/title/section heuristics. Those raw signals are not authorized to cross the blind selector boundary and therefore cannot fill the missing eligibility fields in Product #13.",
+    "identity_currentness_acquirer_fitness": "SOUND_BUT_INCOMPLETE",
+    "identity_currentness_acquirer_reason": "The acquisition layer correctly performs bounded machine-side traversal and emits raw-location-free identity/currentness projections, but its output schema has no governed product-class, base/rider or retail purchase-mode evidence fields."
+  },
+  "prospective_repair_shape": {
+    "required": true,
+    "repair_type": "GENERIC_PRODUCT_ELIGIBILITY_EVIDENCE_PROJECTION",
+    "position_in_pipeline": "inside governed metadata acquisition after authorized artifact capture and before neutral selector eligibility evaluation",
+    "must_be_source_grounded": true,
+    "must_use_explicit_metadata_evidence_only": true,
+    "must_fail_closed_on_missing_or_conflicting_evidence": true,
+    "must_not_infer_from_product_name_alone": true,
+    "must_not_infer_from_raw_url_or_path_alone": true,
+    "must_not_use_target_concept_semantics": true,
+    "must_not_expose_raw_page_text": true,
+    "must_not_expose_raw_url_or_parsed_path": true,
+    "minimum_selector_safe_fields": [
+      "insurer_id",
+      "source_ref",
+      "source_content_hash",
+      "authority_scope",
+      "artifact_class",
+      "product_names",
+      "uins",
+      "health_product_class",
+      "base_product_status",
+      "retail_availability",
+      "purchase_modes",
+      "eligibility_binding_status"
+    ],
+    "health_product_class_allowed_values": ["health_indemnity", "not_health_indemnity", "not_observed", "ambiguous"],
+    "base_product_status_allowed_values": ["base_product", "rider_or_addon", "not_observed", "ambiguous"],
+    "retail_availability_allowed_values": ["retail_available", "not_retail", "not_observed", "ambiguous"],
+    "purchase_modes_allowed_values": ["individual", "family_floater"],
+    "selection_requires": "health_indemnity + base_product + retail_available + at least one of individual/family_floater, bound to the same exact product/UIN evidence without ambiguity"
+  },
+  "historical_integrity": {
+    "product11_reopened_or_retried": false,
+    "product12_reopened_or_retried": false,
+    "product13_reopened_or_retried": false,
+    "product13_gate_c_started": false,
+    "product14_preregistration_authorized": false,
+    "motor_authorized": false,
+    "semantic_review_authorized": false,
+    "target_clause_reads_authorized": false
+  },
+  "next_step": "After this fitness verdict merges green, implement and test the prospective generic product-eligibility evidence projection, then freeze that repair before any Product #14 preregistration."
+}
