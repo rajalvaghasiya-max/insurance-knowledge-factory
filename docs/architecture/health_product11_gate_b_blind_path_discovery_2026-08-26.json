@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "record_type": "health_product11_gate_b_blind_path_discovery_v1",
   "record_status": "FROZEN_GATE_B_PASS_GATE_C_AUTHORIZED",
   "experiment": {
@@ -23,12 +23,13 @@
   "execution_lineage": {
     "execution_mode": "disposable_non_merged_github_actions_smoke",
     "authoritative_smoke_branch": "product11-gate-b-live-smoke",
-    "authoritative_smoke_commit": "7fc01d07903a087269653fb69e4430d6e90b76f0",
-    "workflow_run_id": 32944571862,
-    "workflow_job_id": 98102450816,
+    "authoritative_smoke_commit": "b6bb8d66748402bf7794a0fd0662123d0570f091",
+    "workflow_name": "Product11 Gate B Hardened Proof",
+    "workflow_run_id": 32945623789,
+    "workflow_job_id": 98105598422,
     "workflow_conclusion": "success",
     "factory_tests_after_smoke": 3077,
-    "factory_tests_seconds": 9.24,
+    "factory_tests_seconds": 9.04,
     "smoke_branch_may_merge": false
   },
   "diagnostic_lineage": {
@@ -40,7 +41,20 @@
     "origin_signal_workflow_run_id": 32944361041,
     "origin_signal_workflow_job_id": 98101804301,
     "diagnostic_result": "ALL_FOUR_CANDIDATES_HAVE_UNIQUE_MINIMAL_REGULATOR_SCOPED_DOMAIN_SIGNAL",
+    "intermediate_corrected_smoke_commit": "7fc01d07903a087269653fb69e4430d6e90b76f0",
+    "intermediate_corrected_smoke_authoritative_for_final_freeze": false,
+    "intermediate_corrected_smoke_reason_not_final": "BLINDNESS_COUNTERS_WERE_PASSIVE_LITERAL_ZERO_FIELDS_NOT_ACTIVE_BOUNDARY_INSTRUMENTATION",
     "protocol_or_runtime_contract_changed": false
+  },
+  "correction_falsification_proof": {
+    "support_commit": "3563c2dddaa93e705f120f26597b887958640aa8",
+    "hardened_workflow_commit": "b6bb8d66748402bf7794a0fd0662123d0570f091",
+    "unique_signal_resolves": true,
+    "absent_signal_returns_not_found": true,
+    "ambiguous_signal_returns_not_found": true,
+    "boundary_violation_blocks": true,
+    "boundary_counter_incremented": true,
+    "interpretation": "The corrected resolver is fail-closed for absent and non-unique origin signals; it is not a pass-generating threshold. The blindness guard is live because an injected prohibited raw URL plus anchor increments the relevant counters and raises before emission."
   },
   "gate_b_result": {
     "passing_root_capture_count": 2,
@@ -50,11 +64,18 @@
     "directory_page_type": "insurer_directory",
     "resolved_candidate_count": 4,
     "resolved_candidate_ids": ["chola", "magma", "navi", "shriram"],
-    "capturable_candidate_ids": ["magma", "shriram"],
+    "capturable_candidate_ids_in_authoritative_run": ["shriram"],
+    "noncapturable_candidate_ids_in_authoritative_run": ["chola", "magma", "navi"],
+    "noncapturable_transport_sequence": ["static_http", "playwright_headless", "playwright_visible"],
     "passing_candidate_count": 1,
     "passing_candidate_ids": ["shriram"],
     "passing_candidate_authorized_blind_projection_count": 7,
     "passing_candidate_projection_page_type": "download_page"
+  },
+  "scope_of_proof": {
+    "proven": "The regulator-root -> source-specific insurer_directory -> regulator-derived insurer origin -> insurer capture -> authorized blind metadata projection path works for Shriram in the authoritative Gate B run.",
+    "not_proven": "The path is viable for all four preregistered insurers or for the eligible set as a whole.",
+    "gate_c_implication": "Gate C must retain deterministic candidate order and must not treat successful origin resolution as evidence that an insurer origin is capturable. Chola, Magma and Navi were not capturable in the authoritative Gate B run."
   },
   "gate_decision": {
     "minimum_pass_condition": "At least one preregistered insurer identity must be reached through a passing regulator root and source-specific insurer_directory path that crosses through the authorized blind projection; the regulator-derived insurer origin must then yield at least one authorized blind metadata destination projection on the insurer site.",
@@ -65,6 +86,7 @@
     "semantic_inspection_authorized": false
   },
   "blindness_and_method_metrics": {
+    "boundary_instrumentation_active": true,
     "raw_regulator_destination_urls_crossing_boundary": 0,
     "raw_insurer_origins_crossing_boundary": 0,
     "raw_insurer_destination_urls_crossing_boundary": 0,
@@ -82,6 +104,8 @@
   "historical_integrity": {
     "product9_modified": false,
     "product10_modified": false,
+    "first_smoke_preserved_as_non_authoritative": true,
+    "intermediate_corrected_smoke_preserved_as_non_final": true,
     "product11_gate_b_may_be_reinterpreted_by_first_smoke": false,
     "motor_authorized": false
   }
