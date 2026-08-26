@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_preselection_blindness_boundary_v2_baseline_freeze",
+  "record_status": "FROZEN_PROSPECTIVE_BASELINE",
+  "repair_merge": {
+    "pr_number": 165,
+    "merge_commit": "ad5183e8e2b3a871b10df9d052c127feb806c3c5",
+    "projection_type": "blind_preselection_product_metadata_v2",
+    "implementation": "factory_core.governance.preselection_metadata_projection.BlindPreselectionMetadataProjectorV2"
+  },
+  "verification": {
+    "local_full_suite_result": "3091 passed",
+    "github_required_status_checks_present": false,
+    "verification_basis": "user-executed full local pytest suite on the exact PR #165 repair branch before merge",
+    "mergeability_was_not_treated_as_test_evidence": true
+  },
+  "frozen_boundary": {
+    "raw_url_may_enter_selector_context": false,
+    "raw_anchor_text_may_enter_selector_context": false,
+    "raw_parsed_file_path_may_enter_selector_context": false,
+    "raw_page_or_product_signal_output_may_enter_selector_context": false,
+    "semantic_bucket_presence_or_counts_may_enter_selector_context": false,
+    "source_ref_format": "src_sha256:<hex>",
+    "source_ref_is_selector_authority_or_currentness_evidence": false,
+    "source_distinctness_preserved_without_raw_location": true,
+    "v1_retained_unchanged_for_historical_replay": true
+  },
+  "immutability": {
+    "product9_modified": false,
+    "product10_modified": false,
+    "product11_modified": false,
+    "product11_may_be_reopened_or_retried": false,
+    "repair_applies_only_to_future_experiments": true
+  },
+  "future_experiment_gate": {
+    "next_health_experiment_authorized_by_this_freeze_alone": false,
+    "required_before_next_health_experiment": [
+      "new immutable preregistration with a new Health product number",
+      "protocol explicitly names blind_preselection_product_metadata_v2",
+      "selector boundary tests explicitly reject raw URL and raw anchor inputs",
+      "deterministic screening order and allowed roots are preregistered",
+      "no target-clause reads before positive currentness eligibility"
+    ],
+    "motor_authorized": false
+  }
+}
