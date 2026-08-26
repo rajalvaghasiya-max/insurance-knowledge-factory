@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_neutral_selection_measurement_apparatus_decision_c5_28",
+  "record_status": "FROZEN_REVIEW",
+  "decision": "GOVERNED_PREREGISTERED_ELIGIBLE_UNIVERSE_IS_SUFFICIENT_FOR_NEUTRAL_REPEATABILITY_SELECTION",
+  "supersedes_assumption": "RUNTIME_AUTONOMOUS_PROOF_OF_EVERY_ELIGIBILITY_PREDICATE_IS_REQUIRED_FOR_A_FAIR_NEUTRAL_SELECTION_EXPERIMENT",
+  "does_not_supersede": [
+    "health_preselection_blindness_boundary_v2",
+    "C5.24 semantic-bearing filed product documents are not runtime preselection metadata by post-parse field filtering",
+    "C5.27 benefit_basis public bounded acquisition-path finding",
+    "historical Product #11, #12 and #13 closures"
+  ],
+  "rationale": [
+    "The experimental validity requirement is neutrality of product selection with respect to the target semantics, not autonomous runtime discovery of every population-membership fact.",
+    "Products #11, #12 and #13 each exposed a newly implicit selector requirement after the previous one was repaired, showing that bottom-up hardening of the selector apparatus was not demonstrating convergence.",
+    "C5.22-C5.27 separated regulatory taxonomy, experiment-population stipulation and anti-contamination assurance, and showed that the remaining benefit_basis problem is public bounded metadata availability rather than semantic impossibility.",
+    "A separately governed eligible-universe certification stage can establish population membership before selection, while deterministic selection consumes only opaque frozen eligible identifiers and therefore cannot cherry-pick based on copayment, waiting-period or semantic fit.",
+    "Requiring runtime autonomous proof adds engineering burden to the measurement apparatus without adding experimental validity when the same neutrality property is enforced structurally by preregistration, exhaustive certification, immutability and selector blindness."
+  ],
+  "three_stage_apparatus": {
+    "stage_1_population_rule_freeze": {
+      "purpose": "Freeze the necessary regulatory taxonomy and PolicyScna-stipulated experiment population before any candidate eligibility certification begins.",
+      "requirements": [
+        "predicate set and allowed values frozen before candidate review",
+        "candidate-pool derivation rule frozen before certification",
+        "target concepts cannot be used as eligibility predicates",
+        "no semantic-fit or expected-repeatability criterion allowed"
+      ]
+    },
+    "stage_2_eligible_universe_certification": {
+      "purpose": "Apply the frozen population rule exhaustively to the entire preregistered candidate pool and produce a governed eligible-universe artifact.",
+      "requirements": [
+        "every candidate in the preregistered pool is adjudicated; no stop-at-first behavior",
+        "membership may depend only on frozen eligibility predicates",
+        "eligibility evidence and adjudication are fully auditable",
+        "unknown or conflicting required predicates fail closed",
+        "target-clause presence, target-clause content, semantic complexity and semantic-fit information cannot affect membership",
+        "certification output crossing into selection contains only opaque candidate identifier, eligibility status, predicate attestations, evidence references/hashes and certification provenance",
+        "raw semantic-bearing content does not cross into the selector"
+      ],
+      "important_boundary": "This governance certification stage is separate from runtime preselection. C5.24 remains unchanged: semantic-bearing documents do not become selector-safe metadata merely through field filtering."
+    },
+    "stage_3_deterministic_blind_selection": {
+      "purpose": "Choose Product #14 from the already frozen eligible universe without access to eligibility evidence content or target semantics.",
+      "requirements": [
+        "eligible-universe artifact hash frozen before selection",
+        "selector sees only opaque eligible identifiers plus the minimum preregistered deterministic ordering/selection inputs",
+        "selection algorithm and seed/order rule frozen before execution",
+        "no product substitution or selection override after selection",
+        "zero target-clause reads before selection and downstream authorization"
+      ]
+    }
+  },
+  "neutrality_claim": {
+    "claim": "Selection is neutral with respect to target semantics when universe membership is determined solely by a frozen non-target eligibility rule applied exhaustively before selection and the selector cannot observe target-semantic or semantic-fit information.",
+    "claim_type": "STRUCTURAL_EXPERIMENT_DESIGN_CLAIM",
+    "not_claimed": [
+      "the eligible universe contains every retail Health indemnity product in India",
+      "all possible anti-contamination paths are exhaustively enumerated",
+      "eligibility certification is autonomous",
+      "runtime selector can independently reconstruct regulatory eligibility"
+    ]
+  },
+  "anti_bias_controls": [
+    "candidate pool frozen before eligibility certification",
+    "eligibility predicate frozen before candidate review",
+    "all candidates adjudicated, not only convenient candidates",
+    "fail-closed ambiguity",
+    "target concepts excluded from eligibility schema and certification output",
+    "eligible-universe hash frozen before Product #14 selection",
+    "deterministic blind selection from opaque IDs",
+    "no post-selection substitution",
+    "prior semantic exposure audit remains independently required before target review"
+  ],
+  "stop_rule": {
+    "statement": "Product #14 is the final experiment in the current neutral-selection hardening cycle.",
+    "justification": "Three consecutive experiments exposed a newly implicit selector requirement after the previous requirement was repaired. The governed-universe design replaces that unbounded runtime enumeration with a closed preregistered population-membership process. A Product #14 failure may not automatically authorize Product #15 or another selector-field repair.",
+    "failure_routing": {
+      "REGULATORY_TAXONOMY_COMPLETENESS_FALSIFIED": "return to regulatory taxonomy derivation",
+      "EXPERIMENT_POPULATION_DEFINITION_INCONSISTENT": "return to PolicyScna population stipulation",
+      "ELIGIBLE_UNIVERSE_CERTIFICATION_INTEGRITY_FALSIFIED": "repair certification governance; do not extend runtime selector",
+      "ANTI_CONTAMINATION_BOUNDARY_FALSIFIED": "harden adversarial boundary; do not add eligibility fields",
+      "SEMANTIC_REPEATABILITY_FAILURE_AFTER_VALID_SELECTION": "score as semantic architecture evidence under the frozen semantic experiment protocol"
+    }
+  },
+  "architecture_verdict": "AUTONOMOUS_RUNTIME_ELIGIBILITY_PROOF_NOT_REQUIRED_FOR_NEUTRAL_REPEATABILITY_TEST",
+  "product14_authorized": false,
+  "eligible_universe_construction_authorized": false,
+  "runtime_change_authorized": false,
+  "projection_change_authorized": false,
+  "target_clause_reads_authorized": false,
+  "motor_authorized": false
+}
