@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product13_gate_a_execution_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_PRODUCT13_PREREGISTRATION_MERGE",
+  "product_number": 13,
+  "authorized_gate": "A",
+  "gate_a_authorized": true,
+  "gate_b_authorized": false,
+  "gate_c_authorized": false,
+  "product_screening_authorized": false,
+  "semantic_review_authorized": false,
+  "target_clause_reads_authorized": false,
+  "exact_roots": [
+    "https://irdai.gov.in/non-life-insurers1",
+    "https://irdai.gov.in/health-insurers1",
+    "https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount"
+  ],
+  "allowed_transport_sequence": ["static_http", "playwright_headless", "playwright_visible"],
+  "search_engine_fallback_allowed": false,
+  "ad_hoc_transport_allowed": false,
+  "historical_product12_gate_a_result_may_substitute": false,
+  "required_next_step_after_gate_a": "Freeze Product #13 Gate A result separately before authorizing Gate B."
+}
