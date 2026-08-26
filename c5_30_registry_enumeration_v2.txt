@@ -1,0 +1,1862 @@
+C5_30_ENUMERATION_BEGIN
+{
+  "candidate_count": 150,
+  "candidates": [
+    {
+      "approval_date": "30-11-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Home+Care+Treatment.pdf/4aa44fe5-b9bf-4668-4302-7afa1ad3ac27?version=1.1&t=1668923300238&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Home Care Treatment",
+      "status": "Non-Archived",
+      "type_of_product": "Health",
+      "uin": "CHOHLGA22186V012122"
+    },
+    {
+      "approval_date": "04-10-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21004V012021_2020-2021.pdf/fb0e8e40-e85c-2a3e-2b34-b0600a60815c?version=1.1&t=1668584004130&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola MS COVID-19 Cover-Group",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "CHOHLGP21004V012021"
+    },
+    {
+      "approval_date": "30-07-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21132V012021_2020-2021.pdf/5ca8fb73-a476-04f4-1fab-0bc515f66daf?version=1.1&t=1668584299397&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Flexi Plus",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "CHOHLGP21132V012021"
+    },
+    {
+      "approval_date": "08-05-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21138V012021_2020-2021.pdf/bbf75be0-46bc-486b-9f28-e21ccb336b73?version=1.1&t=1668584336631&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Corona Kavach Policy (Group), Chola",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "CHOHLGP21138V012021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21289V012021_2020-2021.pdf/2981e4b9-4b71-1b9d-f455-52e0f9ef8d1c?version=1.1&t=1668584380026&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "CHOLA CRITICARE",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "CHOHLGP21289V012021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21307V022021_2020-2021.pdf/0bf3006a-65bb-b329-713f-075d3a37bb36?version=1.1&t=1668584415458&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Group Health Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21307V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21310V022021_2020-2021.pdf/0bea2ed5-4995-7b51-45be-38437fa4ff2a?version=1.1&t=1668584448734&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Baroda Swasthya Parivar",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21310V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21311V022021_2020-2021.pdf/e25d62f6-c23d-861c-0ca5-8ea1f30f4476?version=1.1&t=1668584481488&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Flexi Health",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21311V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21312V022021_2020-2021.pdf/e7e3c88b-ff4e-0ea0-2056-be25a5fc95d7?version=1.1&t=1668584510329&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Group Super Topup Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21312V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21416V022021_2020-2021.pdf/95a0d90f-d7f8-f051-2eb8-f2b92406dd96?version=1.1&t=1668584548621&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Income Shield Insurance (Group)",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21416V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21423V022021_2020-2021.pdf/7b08b504-9fea-5442-03f6-d21187b8d9e7?version=1.1&t=1668584576964&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Group Credit Linked Critical Illness Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21423V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21425V022021_2020-2021.pdf/19a4ee6a-b622-cdbf-1702-17b513b40663?version=1.1&t=1668584618393&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Group Credit Linked Cancer Care Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21425V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21426V022021_2020-2021.pdf/507766f1-47e9-a145-f2ab-2c4ca2038def?version=1.1&t=1668584651042&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Credit Linked Premium Critical Illness Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21426V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21427V022021_2020-2021.pdf/dd13da1e-2a55-01f4-e4fd-8d85337cb2ea?version=1.1&t=1668584680996&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Group Hospital Cash Health Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21427V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21428V022021_2020-2021.pdf/87452490-8288-3346-ba05-4e3e9cb081bb?version=1.1&t=1668584711294&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Group Critical Illness Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21428V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21429V022021_2020-2021.pdf/4a2ca92a-d2a5-6789-82a8-cdb206aa8cb3?version=1.1&t=1668584743522&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Group Cancer Care Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21429V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21430V022021_2020-2021.pdf/bf75839d-27fd-02ab-85df-67b1df96d939?version=1.1&t=1668584779647&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Credit Link Group Hospital Cash Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLGP21430V022021"
+    },
+    {
+      "approval_date": "11-06-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP21550V012021_2020-2021.pdf/c8d7fa44-4dc8-d6b1-9ee5-898d82b21d68?version=1.1&t=1668584040834&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Corora Rakshak (Group), Chola",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "CHOHLGP21550V012021"
+    },
+    {
+      "approval_date": "28-05-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLGP22025V012122_HEALTH2005.pdf/9cf74078-9eac-a622-0378-4d95e649aa21?version=1.1&t=1668844482447&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Mashak (Mosquito) Rakshak-Group",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "CHOHLGP22025V012122"
+    },
+    {
+      "approval_date": "22-11-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Group+EMI+Protect.pdf/26071074-5458-1afa-b622-a7fe40f4d5e3?version=1.1&t=1668753707689&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Group EMI Protect",
+      "status": "Non-Archived",
+      "type_of_product": "Health",
+      "uin": "CHOHLGP22183V012122"
+    },
+    {
+      "approval_date": "15-04-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21007V022021_2020-2021.pdf/3b7ea794-5bc0-6169-d969-b10c2f6de1e4?version=1.1&t=1668575918953&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam\u00a0\u00a0MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "FLEXI HEALTH",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "CHOHLIP21007V022021"
+    },
+    {
+      "approval_date": "25-04-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21012V012021_2020-2021.pdf/c35532fa-eb22-166e-d765-d3976c1c7431?version=1.1&t=1668575963534&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam\u00a0\u00a0MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola MS COVID-19 Cover",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "CHOHLIP21012V012021"
+    },
+    {
+      "approval_date": "13-05-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21017V012122_HEALTH2006.pdf/667395b6-8bf5-65bc-f45b-bf59fe960317?version=1.1&t=1668844552790&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd",
+      "insurer_key": "cholamandalam",
+      "product_name": "Flexi Max Protect",
+      "status": "Non-Archived",
+      "type_of_product": "Individual",
+      "uin": "CHOHLIP21017V012122"
+    },
+    {
+      "approval_date": "06-11-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21046V012021_2020-2021.pdf/2973993f-2408-0767-475e-7e2a037cc3ad?version=1.1&t=1668576009756&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam\u00a0\u00a0MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Vector Borne Diseases Insurance (Retail)",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "CHOHLIP21046V012021"
+    },
+    {
+      "approval_date": "07-06-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21068V012021_2020-2021.pdf/7a5f6670-cc10-f73e-173b-d6bbda3eaa67?version=1.1&t=1668584806849&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Corona Rakshak Policy, Chola",
+      "status": "Non-Archived",
+      "type_of_product": "Individual",
+      "uin": "CHOHLIP21068V012021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21297V022021_2020-2021.pdf/1af36ad3-3acf-9505-e516-f31e941f24ef?version=1.1&t=1668584836601&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Arogya Bima Health Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21297V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21298V022021_2020-2021.pdf/967c5a4a-4ef9-15f4-7b0d-853fed43eaae?version=1.1&t=1668584926554&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Classic Health\u00a0\u00a0Family Floater",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21298V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21299V032021_2020-2021.pdf/01625849-444c-5771-dfc7-cbaebbe8d37d?version=1.1&t=1668584964850&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Classic Health\u00a0\u00a0Individual",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21299V032021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21300V032021_2020-2021.pdf/eeb5813f-fe84-5550-ba72-1c9722697947?version=1.1&t=1668584998573&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Healthline",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21300V032021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21301V022021_2020-2021.pdf/aedaa744-847d-39e4-8d56-96cf0f96ae64?version=1.1&t=1668585033224&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Hospital Cash Healthline (Revision)",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21301V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21302V022021_2020-2021.pdf/9b280344-6ebc-546f-612e-38f4b25b21b4?version=1.1&t=1668585070630&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola MS Critical Healthline Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21302V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21303V022021_2020-2021.pdf/5788de95-acef-cac7-656e-5be53bd1de89?version=1.1&t=1668585104666&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola MS Family Healthline Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21303V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21304V022021_2020-2021.pdf/868c95a8-0192-c430-7425-b7beb285bfaa?version=1.1&t=1668585150339&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Swasth Parivar Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21304V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21305V022021_2020-2021.pdf/e656179e-3b64-5d1c-1153-8bb63a961cda?version=1.1&t=1668574581755&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Tax plus Healthline",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21305V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21306V022021_2020-2021.pdf/61678793-6532-d19d-6d33-51b15cb7f9d8?version=1.1&t=1668574985972&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Top up Healthline",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21306V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21308V022021_2020-2021.pdf/f346a53f-bb7c-2293-bf92-8ed68d0e5258?version=1.1&t=1668575054607&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Individual Healthline Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21308V022021"
+    },
+    {
+      "approval_date": "18-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21309V022021_2020-2021.pdf/fcf6073e-ef61-c1ff-8152-585e3d1a29b1?version=1.1&t=1668575125687&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Super Topup Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOHLIP21309V022021"
+    },
+    {
+      "approval_date": "15-12-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21561V012021_2020-2021.pdf/cace22d1-c5c7-fc4c-3f58-6d80a024512d?version=1.1&t=1668584072276&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Flexi Super TopUp Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "CHOHLIP21561V012021"
+    },
+    {
+      "approval_date": "01-04-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLIP21571V012021_2020-2021.pdf/0eaa0346-7b6e-d6f1-be6e-fc9833c1c1b5?version=1.1&t=1668584130520&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Sarva Shakti Policy",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "CHOHLIP21571V012021"
+    },
+    {
+      "approval_date": "19-05-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOHLTGP21033V012021_2020-2021.pdf/ad669506-a465-d659-6fa3-fd33e670d65f?version=1.1&t=1668584166119&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Vector Borne Diseases Insurance (Group)",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "CHOHLTGP21033V012021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOPAGP21356V012021_2020-2021.pdf/6fb708d3-f1fe-bcb6-43ed-7ee7d6e2e093?version=1.1&t=1668575262820&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Janata Personal Accident Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "CHOPAGP21356V012021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOPAGP21420V022021_2020-2021.pdf/62cdda88-da32-f5ac-2ac0-57ba6c7ee9b0?version=1.1&t=1668575384621&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Group Personal Accident Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOPAGP21420V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOPAGP21421V022021_2020-2021.pdf/edeccbfb-ad84-e4a6-5956-3c8aeadcf799?version=1.1&t=1668575438094&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Janata Personal Accident Policy (For Group)",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOPAGP21421V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOPAGP21424V022021_2020-2021.pdf/dcf7c3a7-7ad5-2c63-9a59-abd635585aef?version=1.1&t=1668575492523&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Comprehensive Group Personal Accident Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOPAGP21424V022021"
+    },
+    {
+      "approval_date": "02-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOPAGP22042V012122_HEALTH2007.pdf/fd15a35e-4a57-9bd1-8730-51c93e66abf5?version=1.1&t=1668844612658&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Saral Suraksha Bima-Group, chola",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "CHOPAGP22042V012122"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOPAIP21418V022021_2020-2021.pdf/321e8516-3980-095e-dda1-6c766b8fd655?version=1.1&t=1668575540151&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Accident Protection",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOPAIP21418V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOPAIP21419V022021_2020-2021.pdf/33a950d3-f179-e0a5-699e-138e3069f506?version=1.1&t=1668575625119&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Individual Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOPAIP21419V022021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOPAIP21422V022021_2020-2021.pdf/f9426df7-54c6-864f-8f85-ff75269e107e?version=1.1&t=1668575721425&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Micro Insurance Personal Accident",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOPAIP21422V022021"
+    },
+    {
+      "approval_date": "26-03-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOPAIP21612V012021_2020-2021.pdf/06dcf0d1-3a97-26c1-fbe6-c7fcf8c48699?version=1.1&t=1668584202788&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Saral Suraksha Bima, Chola",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "CHOPAIP21612V012021"
+    },
+    {
+      "approval_date": "04-04-2022",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOTGDP23004V012223.pdf/cd07a08b-d094-be87-8234-4ce24c12ae4e?version=1.0&t=1667711509343&download=true",
+      "financial_year": "2022-2023",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Group Domestic Travel Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "CHOTGDP23004V012223"
+    },
+    {
+      "approval_date": "14-05-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOTGOP20028V012021_2020-2021.pdf/72d83841-6675-c498-9e37-c7750f1ee509?version=1.1&t=1668584264433&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Group Overseas Travel Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "CHOTGOP20028V012021"
+    },
+    {
+      "approval_date": "24-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/CHOTIDP21417V022021_2020-2021.pdf/f01f318b-3bdf-037d-8dc4-b60117021bd8?version=1.1&t=1668575849441&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Cholamandalam MS General Insurance Co. Ltd.",
+      "insurer_key": "cholamandalam",
+      "product_name": "Domestic Travel Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "CHOTIDP21417V022021"
+    },
+    {
+      "approval_date": "13-08-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Individual+Healthline+Insurance_2013-2014.pdf/a1c65ab7-2035-2a9c-2a17-7426d137b6a3?version=1.1&t=1668158648866&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Individual Healthline Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/152/13-14"
+    },
+    {
+      "approval_date": "13-08-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+MS+Family+Healthline+Insurance_2013-2014.pdf/5eda601d-d3d2-e480-7808-6d601b319349?version=1.1&t=1668158691783&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola MS Family Healthline Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/153/13-14"
+    },
+    {
+      "approval_date": "13-08-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+MS+Critical+Healthline+Insurance_2013-2014.pdf/29067c46-1a60-0b7d-5c9d-777296f9461c?version=1.1&t=1668158965647&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola MS Critical Healthline Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/154/13-14"
+    },
+    {
+      "approval_date": "13-08-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Arogya+Bima+Health+Insurance_2013-2014.pdf/1a19f27e-6660-be89-1cc7-a7712e80e74c?version=1.1&t=1668159019287&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Arogya Bima Health Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/155/13-14"
+    },
+    {
+      "approval_date": "13-08-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Swasth+Parivar+Insurance_2013-2014.pdf/45ba331e-d09e-1e4b-1184-2117fe934f56?version=1.1&t=1668159072662&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Swasth Parivar\u00a0Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/156/13-14"
+    },
+    {
+      "approval_date": "04-11-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Top+up+Healthline_2013-2014.pdf/4949fbe6-1c83-6cef-3e9e-4c217b704811?version=1.1&t=1668159116015&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Top up Healthline",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/225/13-14"
+    },
+    {
+      "approval_date": "04-11-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Tax+Plus+Healthline_2013-2014.pdf/db30bfef-a3c4-efb7-c001-5e09d08df1ac?version=1.1&t=1668159209054&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Tax plus Healthline",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/226/13-14"
+    },
+    {
+      "approval_date": "30-09-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+MS+RSBY+Family+Floater+Health+Insurance+Policy_2013-2014.pdf/a168d3da-a08f-ae0c-ac00-edf7a084eec0?version=1.2&t=1668228573135&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola MS RSBY Family Floater Health Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/282/13-14"
+    },
+    {
+      "approval_date": "30-09-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Pravasi+Bharatiya+Bima+Yojana_2013-09-30.pdf/b3336755-1008-076d-21e9-1fa0bf3bcb95?version=1.1&t=1668228830378&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Pravasi Bharatiya Bima Yojana",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/286/13-14"
+    },
+    {
+      "approval_date": "28-03-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Hospital+Cash+Healthline_2013-2014.pdf/0e061446-deab-f3c4-05ab-8f2024363baf?version=1.1&t=1668159422725&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Hospital Cash Healthline",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/396/13-14"
+    },
+    {
+      "approval_date": "21-03-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Classic+Health+-+Individual_2013-2014.pdf/92f8963f-bcc3-b18c-7c4f-3091b6c97cb0?version=1.1&t=1668228885449&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Classic Health\u00a0- Individual",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/410/13-14"
+    },
+    {
+      "approval_date": "21-03-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Classic+Health+-+Family+Floater_2013-2014.pdf/000baa23-07d6-c2e3-024a-b600ee6d0a36?version=1.1&t=1668230635256&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Classic Health - Family Floater",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/411/13-14"
+    },
+    {
+      "approval_date": "13-08-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Group+Health+Insurance_2013-2014.pdf/15cf70b5-b139-f721-4dae-723b27d032f0?version=1.1&t=1668158395874&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Group Health Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/48/13-14"
+    },
+    {
+      "approval_date": "13-03-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Healthline_2013-2014.pdf/357f44de-da18-8171-fb13-972ce825c59d?version=1.1&t=1668158575994&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Healthline",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-H/V.I/51/13-14"
+    },
+    {
+      "approval_date": "04-11-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Individual+Personal+Accident+Insurance_2013-2014.pdf/8a0d25ed-250d-712e-f6dc-441b5b3d8fa1?version=1.1&t=1668160253088&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Individual Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-P/V.I/404/13-14"
+    },
+    {
+      "approval_date": "04-11-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Accident+Protection_2013-2014.pdf/b2aaea6c-2cad-03d0-e121-a216e2bedb38?version=1.1&t=1668168801765&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Accident Protection",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-P/V.I/405/13-14"
+    },
+    {
+      "approval_date": "28-03-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Micro+Insurance+Personal+Accident_2013-2014.pdf/0535c0fc-c930-14e0-b4f1-1b0b1f9a8b10?version=1.1&t=1668230682424&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Micro Insurance Personal Accident",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-P/V.I/412/13-14"
+    },
+    {
+      "approval_date": "08-08-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Group+Personal+Accident+Insurance+Policy_2013-2014.pdf/9a831493-05a0-bb66-27e7-746ccc887ab4?version=1.1&t=1668158473983&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Group Personal Accident Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-P/V.I/49/13-14"
+    },
+    {
+      "approval_date": "30-09-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Domestic+Travel+Insurance+Policy_2013-2014.pdf/badc2827-7e01-213e-0f6b-65762307fb85?version=1.1&t=1668228658761&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Domestic Travel Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-T/V.I/283/13-14"
+    },
+    {
+      "approval_date": "30-09-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Overseas+Travel+Protection+Policy_2013-2014.pdf/ed0aba93-3878-36db-9f8a-ab0f39cab86a?version=1.1&t=1668228699764&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Overseas Travel Protection Policy",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-T/V.I/284/13-14"
+    },
+    {
+      "approval_date": "30-09-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Student+Travel+Protection+Plan_2013-2014.pdf/3e1c8b4e-ece1-147c-67c5-35c9ab9e6138?version=1.1&t=1668228759084&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Student Travel Protection Plan",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-T/V.I/285/13-14"
+    },
+    {
+      "approval_date": "26-02-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+Shubh+Yatra+Insurance+Policy_2013-2014.pdf/02ee0f9c-b43a-b444-cd1c-513d87fa24f7?version=1.1&t=1668230737545&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Subh Yatra Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-T/V.I/414/13-14"
+    },
+    {
+      "approval_date": "08-08-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+MS+Corporate+Travel+Insurance_2013-2014.pdf/fee2aa8a-be2d-60a4-6d9b-b301bf6bc962?version=1.1&t=1668158522988&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Cholamandalam MS General Insurance Company Limited",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola MS Corporate Travel Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/CHSGI/P-T/V.I/50/13-14"
+    },
+    {
+      "approval_date": "29-02-2016",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola+_Chola+Income+Shield+Insurance+%28Group%29_2015-2016.pdf/3d4a123d-8fb0-1400-028f-261ae59576f3?version=1.1&t=1668408534701&download=true",
+      "financial_year": "2015-2016",
+      "insurer": "Cholamandalam MS General Insurance Company Ltd",
+      "insurer_key": "cholamandalam",
+      "product_name": "Chola Income Shield Insurance Group",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDAI/HLT/CHSGI/P-H/V.I/24/15-16"
+    },
+    {
+      "approval_date": "31-03-2016",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Chola_Janata+Personal+Accident+Policy+%28+Group%29_2015-2016.pdf/0b91bc32-e6bc-77cc-aa19-88e0d07c3f64?version=1.1&t=1668408498420&download=true",
+      "financial_year": "2015-2016",
+      "insurer": "Cholamandalam MS General Insurance Company Ltd",
+      "insurer_key": "cholamandalam",
+      "product_name": "Janatha Personal Accident policy (group)",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDAI/HLT/CHSGI/P-P/V.I/33/15-16"
+    },
+    {
+      "approval_date": "28-03-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Magma+Health+Care+Insurance+Policy_2013-2014.pdf/e190fef5-a73e-1278-68dc-7fc811e52991?version=1.1&t=1668237015340&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Magma HDI General Insurance Company\u00a0Limited",
+      "insurer_key": "magma",
+      "product_name": "Magma Health Care Insurnace Policy",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/MHDIGI/P-H/V.I/469/13-14"
+    },
+    {
+      "approval_date": "28-03-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MHDI+Group+Loan+Protect+Policy_2013-2014.pdf/4af5eb57-588d-8f90-e8ca-c11af843397a?version=1.1&t=1668237056591&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Magma HDI General Insurance Company\u00a0Limited",
+      "insurer_key": "magma",
+      "product_name": "MHDI Group Loan Protect Policy",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/MHDIGI/P-H/V.I/472/13-14"
+    },
+    {
+      "approval_date": "28-03-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MHDI+Individual+Loan+Protect+Policy_2013-2014.pdf/fe26df18-42da-b805-e068-fd7e4873a94e?version=1.1&t=1668237114963&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Magma HDI General Insurance Company\u00a0Limited",
+      "insurer_key": "magma",
+      "product_name": "MHDI Individual\u00a0Loan Protect Policy",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/MHDIGI/P-H/V.I/475/13-14"
+    },
+    {
+      "approval_date": "12-02-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Individual+Personal+Accident+Policy_2014-02-12.pdf/193cd2ab-0a29-2056-9d64-82824ab0c60e?version=1.1&t=1668236921679&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Magma HDI General Insurance Company\u00a0Limited",
+      "insurer_key": "magma",
+      "product_name": "Individual Personal Accident Policy",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/MHDIGI/P-P/V.I/274/13-14"
+    },
+    {
+      "approval_date": "26-03-2014",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Group+Personal+Accident+Policy_2014-03-26.pdf/d526ce49-be6c-2afa-0f9e-8e901ca5f99e?version=1.1&t=1668236978666&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Magma HDI General Insurance Company\u00a0Limited",
+      "insurer_key": "magma",
+      "product_name": "Group Personal Accident Policy",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/MHDIGI/P-P/V.I/275/13-14"
+    },
+    {
+      "approval_date": "03-11-2017",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MAGHLGP18061V011718_2018-2019.pdf/67e6a029-f6f8-d0d9-4b69-c1b33dcb7a1d?version=1.1&t=1668507638420&download=true",
+      "financial_year": "2018-2019",
+      "insurer": "Magma HDI General Insurance Company Ltd.",
+      "insurer_key": "magma",
+      "product_name": "Loan Guard",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "MAGHLGP18061V011718"
+    },
+    {
+      "approval_date": "27-08-2018",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MAGHLGP19046V011819_2018-2019.pdf/30d25efc-2831-610b-6627-0ae443cc16b9?version=1.1&t=1668507591576&download=true",
+      "financial_year": "2018-2019",
+      "insurer": "Magma HDI General Insurance Company Ltd.",
+      "insurer_key": "magma",
+      "product_name": "Group Health Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "MAGHLGP19046V011819"
+    },
+    {
+      "approval_date": "14-11-2019",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MAGHLGP20078V021920_2019-2020.pdf/61d1e4b3-51f0-a26e-cd09-b3f40b70afcc?version=1.1&t=1668575066803&download=true",
+      "financial_year": "2019-2020",
+      "insurer": "Magma HDI General Insurance Company Ltd",
+      "insurer_key": "magma",
+      "product_name": "Loan Guard",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "MAGHLGP20078V021920"
+    },
+    {
+      "approval_date": "09-10-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MAGHLGP2123V022021.pdf/9c47de27-2627-19a4-57d3-6a37e82c04ae?version=1.1&t=1668593457299&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Magma HDI General Insurance Co. Ltd.",
+      "insurer_key": "magma",
+      "product_name": "Group Health Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "MAGHLGP2123V022021"
+    },
+    {
+      "approval_date": "15-09-2017",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MHDI_OneHealth_2017-2018.pdf/5563b150-244c-f972-9968-f76f8a7f7214?version=1.1&t=1668425827201&download=true",
+      "financial_year": "2017-2018",
+      "insurer": "MAGMA HDI General Insurance Co Ltd",
+      "insurer_key": "magma",
+      "product_name": "One Health",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "MAGHLIP18037V011718"
+    },
+    {
+      "approval_date": "31-03-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MAGHLIP20172V011920_2019-2020.pdf/f94c2b7a-d918-99e2-3337-0c30dd97109e?version=1.1&t=1668575027400&download=true",
+      "financial_year": "2019-2020",
+      "insurer": "Magma HDI General Insurance Co. Ltd",
+      "insurer_key": "magma",
+      "product_name": "Arogya Sanjeevani Policy, Magma HDI",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "MAGHLIP20172V011920"
+    },
+    {
+      "approval_date": "07-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MAGHLIP21103V012021_2020-2021.pdf/ccae59a5-8e48-0081-d81d-c4f2a53a467f?version=1.1&t=1668153298864&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Magma HDI General Insurance Co. Ltd",
+      "insurer_key": "magma",
+      "product_name": "Corona Kavach Policy, Magma HDI",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "MAGHLIP21103V012021"
+    },
+    {
+      "approval_date": "09-04-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MAGHLIP222V032021_2020-2021.pdf/973a44a4-b16f-dae6-868b-376c9780589a?version=1.1&t=1668593510123&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Magma HDI General Insurance Co. Ltd.",
+      "insurer_key": "magma",
+      "product_name": "OneHealth",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "MAGHLIP222V032021"
+    },
+    {
+      "approval_date": "11-06-2018",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MAGPAGP19026V011819_2018-2019.pdf/844fb106-0a2b-54c0-f741-8f25166c80f7?version=1.1&t=1668507513744&download=true",
+      "financial_year": "2018-2019",
+      "insurer": "Magma HDI General Insurance Company Ltd.",
+      "insurer_key": "magma",
+      "product_name": "Group Accident Suraksha",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "MAGPAGP19026V011819"
+    },
+    {
+      "approval_date": "30-03-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MAGPAGP21565V012021_2020-2021.pdf/51407f83-b842-9abb-9f8c-ae371e3f7e8d?version=1.1&t=1668593317388&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Magma HDI General Insurance Co. Ltd",
+      "insurer_key": "magma",
+      "product_name": "Janata Personal Accident",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "MAGPAGP21565V012021"
+    },
+    {
+      "approval_date": "23-12-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/MAGPAIP21642V012021_2020-2021.pdf/36fae4d6-55d4-e86f-4db6-2cf748a35472?version=1.1&t=1668593375802&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Magma HDI General Insurance Co. Ltd",
+      "insurer_key": "magma",
+      "product_name": "Saral Suraksha Bima, Magma HDI",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "MAGPAIP21642V012021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLGP21362V022021_2020-2021.pdf/1d6cc99d-59be-3ab6-7bce-86d903dd9677?version=1.1&t=1668746710080&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "Group Health Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLGP21362V022021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLGP21363V022021_2020-2021.pdf/0963950c-e754-adaf-d3c3-c9260db6b32b?version=1.1&t=1668746759585&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "Group Critical Illness Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLGP21363V022021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLGP21366V022021_2020-2021.pdf/8648784f-db6d-c070-d5c7-0901021a1760?version=1.1&t=1668746969658&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "Group Hospicash Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLGP21366V022021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLGP21367V022021_2020-2021.pdf/af1fe16a-606a-c2b9-98e1-6079feaf625b?version=1.1&t=1668747056671&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "Group Seasonal Byte",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLGP21367V022021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLGP21368V022021_2020-2021.pdf/8adc93a3-005f-f3fd-465e-8c633711d97d?version=1.1&t=1668747234669&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "COCO Group Criti - Surgical Protect",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLGP21368V022021"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLGP22063V032122_HEALTH2029.pdf/2f006ce1-7f59-684d-ef79-5fb8d933c2c2?version=1.1&t=1668849669350&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health Group Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLGP22063V032122"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLGP22064V032122_HEALTH2030.pdf/090deb95-fc5c-e211-bce5-a8ece418570f?version=1.1&t=1668849724288&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health Group Critical Illness Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLGP22064V032122"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLGP22067V032122_HEALTH2031.pdf/25fbeffe-f3c5-8080-226f-64e37857a6f6?version=1.1&t=1668849781008&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health Group HospiCash",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLGP22067V032122"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLGP22068V032122_HEALTH2032.pdf/3b003177-e8f6-28f4-14f4-91bc4ef188ef?version=1.1&t=1668849838328&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health Group Seasonal Byte",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLGP22068V032122"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLGP22069V032122_HEALTH2033.pdf/267ee599-8a8f-64f9-1838-ea6da7fa380f?version=1.1&t=1668849893649&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health Group Critical Surgery",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLGP22069V032122"
+    },
+    {
+      "approval_date": "20-05-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP19038V012021_2020-2021.pdf/4d50bea8-dcd2-0bdf-6268-0b97ee9c4df8?version=1.1&t=1668746419407&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Co. Ltd.",
+      "insurer_key": "navi",
+      "product_name": "COCO HospiCash",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "NAVHLIP19038V012021"
+    },
+    {
+      "approval_date": "15-05-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP20029V012021_2020-2021.pdf/27709966-79a7-0114-69aa-8d41da42867c?version=1.1&t=1668746076643&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Co. Ltd.",
+      "insurer_key": "navi",
+      "product_name": "COCOCure Super Top up",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "NAVHLIP20029V012021"
+    },
+    {
+      "approval_date": "20-05-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP20037V012021_2020-2021.pdf/fd1be29a-88b3-2d88-0f9c-7ab55c6366ae?version=1.1&t=1668746174006&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Co. Ltd.",
+      "insurer_key": "navi",
+      "product_name": "COCO CritiCare",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "NAVHLIP20037V012021"
+    },
+    {
+      "approval_date": "27-03-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP20162V011920_2019-2020.pdf/6605b273-9ea6-5797-5285-755166ea77c3?version=1.1&t=1668575693226&download=true",
+      "financial_year": "2019-2020",
+      "insurer": "Navi General Insurance Co. Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Arogya Sanjeevani Policy, Navi General Insurance Limited",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "NAVHLIP20162V011920"
+    },
+    {
+      "approval_date": "07-10-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP21077V012021_2020-2021.pdf/8a9727bc-1d28-ffbd-faa9-15f5e305f967?version=1.1&t=1668153037739&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Co. Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Corona Kavach Policy, Navi General Insurance Limited",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "NAVHLIP21077V012021"
+    },
+    {
+      "approval_date": "07-10-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP21105V012021_2020-2021.pdf/601c176f-4524-7534-07a0-78f3de0e403f?version=1.1&t=1668922775698&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited,",
+      "insurer_key": "navi",
+      "product_name": "Corona Rakshak Policy, Navi General Insurance Limited,",
+      "status": "Non-Archived",
+      "type_of_product": "Individual",
+      "uin": "NAVHLIP21105V012021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP21358V022021_2020-2021.pdf/f970140a-a572-0235-c696-302276c72ca7?version=1.1&t=1668747330809&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "COCO Seasonal Byte",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLIP21358V022021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP21359V022021_2020-2021.pdf/e6c53e3b-d9e7-4a66-f7c1-3239136968a7?version=1.1&t=1668747616101&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "COCO Hospicash - Navi General Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLIP21359V022021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP21360V022021_2020-2021.pdf/99ce347a-2be6-dae7-4873-01b77b99481c?version=1.1&t=1668747694972&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "COCOCure Super Top Up - NaviGeneral Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLIP21360V022021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP21361V022021_2020-2021.pdf/5548f63e-1ff9-4c1a-5d70-ea08a3bf1c03?version=1.1&t=1668747763872&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "COCO CritiCare - Navi General Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLIP21361V022021"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP21369V022021_2020-2021.pdf/6df67bab-8dc5-0064-b81f-62d5d564ad8d?version=1.1&t=1668747843612&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "COCOCure",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLIP21369V022021"
+    },
+    {
+      "approval_date": "08-04-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP22006V042122_HEALTH2034.pdf/1eacd551-eb0a-202f-b06b-d4bdb7491b6b?version=1.1&t=1668849951580&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Cure",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLIP22006V042122"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP22059V032122_HEALTH2035.pdf/db59fe2a-487e-a53d-2c9c-c8fbcf01289b?version=1.1&t=1668767515143&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health Seasonal Byte",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLIP22059V032122"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP22060V032122_HEALTH2036.pdf/0a7d0a33-1777-5a60-9e16-4dbc43940e25?version=1.1&t=1668767474378&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health HospiCash",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLIP22060V032122"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP22061V032122_HEALTH2037.pdf/841e6f34-451f-51e1-3675-4a710f78510c?version=1.1&t=1668768186850&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health Super Top Up",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLIP22061V032122"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP22062V032122_HEALTH2038.pdf/694826b5-464e-24a4-73a7-663887c67c22?version=1.1&t=1668768219536&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health CritiCare",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVHLIP22062V032122"
+    },
+    {
+      "approval_date": "28-07-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP22133V012122_HEALTH2130.pdf/159064ee-8a78-190f-c16f-b1475dda7c8b?version=1.1&t=1668766291039&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health",
+      "status": "Non-Archived",
+      "type_of_product": "Retail",
+      "uin": "NAVHLIP22133V012122"
+    },
+    {
+      "approval_date": "01-04-2022",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVHLIP23003V012223.pdf/9577514a-6bf3-b51e-5a54-5e7f050e2550?version=1.0&t=1669349979791&download=true",
+      "financial_year": "2022-2023",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Smart Health",
+      "status": "Non-Archived",
+      "type_of_product": "Individual",
+      "uin": "NAVHLIP23003V012223"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVPAGP21364V022021_2020-2021.pdf/5ea29218-c39f-c122-b12d-6bf883b3d6da?version=1.1&t=1668747943671&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "Group Personal Accident Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVPAGP21364V022021"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVPAGP22065V032122_HEALTH2039.pdf/51831da5-4682-8962-a06d-9f2b2a118b83?version=1.1&t=1668768256842&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health Group Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVPAGP22065V032122"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVPAIP21357V022021_2020-2021.pdf/79196eda-5b90-2f6c-e1e5-4e2ca2538444?version=1.1&t=1668748069955&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "COCOProtect",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVPAIP21357V022021"
+    },
+    {
+      "approval_date": "31-03-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVPAIP21631V012021_2020-2021.pdf/dd68be3d-4ae4-25e6-ff55-4db4cea84651?version=1.1&t=1668748429606&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Saral Suraksha Bima, Navi General Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "New",
+      "uin": "NAVPAIP21631V012021"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVPAIP22058V032122_HEALTH2040.pdf/d844c8de-1607-c11b-b9f9-edb8889f7aeb?version=1.1&t=1668768297213&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health Accident",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVPAIP22058V032122"
+    },
+    {
+      "approval_date": "21-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVTGBP21365V022021_2020-2021.pdf/d0131f0b-cdd1-ca3b-44a0-3c5da89024fd?version=1.1&t=1668748138475&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Navi General Insurance Limited",
+      "insurer_key": "navi",
+      "product_name": "Group Travel Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVTGBP21365V022021"
+    },
+    {
+      "approval_date": "18-06-2021",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/NAVTGBP22066V032122_HEALTH2041.pdf/ed38d91c-8284-78c9-da9f-7447015ab752?version=1.1&t=1668768368925&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Navi General Insurance Ltd.",
+      "insurer_key": "navi",
+      "product_name": "Navi Health Group Travel Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "NAVTGBP22066V032122"
+    },
+    {
+      "approval_date": "01-11-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Personal+Accident+Insurance_2013-11-01.pdf/d3be62f4-c35b-405a-0def-d16bed466f0a?version=1.1&t=1668329635574&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Shriram General Insurance Company Limited",
+      "insurer_key": "shriram",
+      "product_name": "Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/SHGI/P-P/V.I/401/13-14"
+    },
+    {
+      "approval_date": "01-11-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Janta+Personal+Accident+Insurance+%28Group%29_2013-2014.pdf/48a43e63-4994-2dde-1228-0bebaf3512a0?version=1.1&t=1668329689114&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Shriram General Insurance Company Limited",
+      "insurer_key": "shriram",
+      "product_name": "Janta Personal Accident Insurance (Group)",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/SHGI/P-P/V.I/402/13-14"
+    },
+    {
+      "approval_date": "01-11-2013",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/Overseas+Travel+Insurance_2013-2014.pdf/155bd625-e6bf-f6fa-ccc4-6988584f2bf4?version=1.1&t=1668329725990&download=true",
+      "financial_year": "2013-2014",
+      "insurer": "Shriram General Insurance Company Limited",
+      "insurer_key": "shriram",
+      "product_name": "Overseas Travel Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "IRDA/NL-HLT/SHGI/P-T/V.I/403/13-14"
+    },
+    {
+      "approval_date": "30-09-2016",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGI_OptionalTravelInsuranceforE-TicketpassengersofIRCTC_2016-2017.pdf/16e6c09b-4be3-d287-2f28-282821dc1658?version=1.1&t=1668419834553&download=true",
+      "financial_year": "2016-2017",
+      "insurer": "Shriram General Insurance Co ltd",
+      "insurer_key": "shriram",
+      "product_name": "Optional Travel Insurance for E-Ticket Passgers of IRCTC",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "IRDAI/HLT/SGI/IRCTC GOVT SCHEME/V.I/17/16-17"
+    },
+    {
+      "approval_date": "04-01-2017",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGI_ShriGroupPersonalAccidentInsurance_2016-2017.pdf/866a012a-7b2e-b943-5585-35d9849e0e5d?version=1.1&t=1668419884281&download=true",
+      "financial_year": "2016-2017",
+      "insurer": "Shriram General Insurance Co ltd",
+      "insurer_key": "shriram",
+      "product_name": "Shri Group Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "IRDAI/HLT/SGI/P-P(G)/V.I/43/2016-17"
+    },
+    {
+      "approval_date": "16-11-2017",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLHLGP18080V011718_2018-2019.pdf/12a27374-0ad3-cd00-117e-db57e0c22bfd?version=1.1&t=1668509494955&download=true",
+      "financial_year": "2018-2019",
+      "insurer": "Shriram General insurance Co. Ltd.",
+      "insurer_key": "shriram",
+      "product_name": "Shri Loan Protect Insurance (Group)",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "SGLHLGP18080V011718"
+    },
+    {
+      "approval_date": "28-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLHLGP21482V022021_2020-2021.pdf/ee68a803-b616-e781-7052-1ae34491d1fc?version=1.1&t=1668755226887&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Shriram General Insurance Co. Ltd.",
+      "insurer_key": "shriram",
+      "product_name": "Shri Loan Protect insurance (Group)",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "SGLHLGP21482V022021"
+    },
+    {
+      "approval_date": "13-04-2022",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLHLGP23014V012223.pdf/8f393658-d0ee-3f88-5979-a3b6e7f094b8?version=1.0&t=1669351448776&download=true",
+      "financial_year": "2022-2023",
+      "insurer": "Shriram General Insurance Co. Ltd",
+      "insurer_key": "shriram",
+      "product_name": "Shri Group Hospital Daily Cash Benefit Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "SGLHLGP23014V012223"
+    },
+    {
+      "approval_date": "24-05-2022",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLHLGP23026V012223.pdf/00b3f5a1-6d89-9975-18dc-9b3ee5abe61a?version=1.0&t=1669351866287&download=true",
+      "financial_year": "2022-2023",
+      "insurer": "Shriram General Insurance Co. Ltd",
+      "insurer_key": "shriram",
+      "product_name": "Shri Vector Care Group Insurance Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Group",
+      "uin": "SGLHLGP23026V012223"
+    },
+    {
+      "approval_date": "31-08-2017",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGI_ShreeLoanProtect_2017-2018.pdf/7892ef0a-fc6e-c39f-494e-3c052b95bc10?version=1.1&t=1668426943777&download=true",
+      "financial_year": "2017-2018",
+      "insurer": "Shriram General Insurance Co ltd",
+      "insurer_key": "shriram",
+      "product_name": "Shri Loan Protect Insurance (Individual)",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "SGLHLIP18032V011718"
+    },
+    {
+      "approval_date": "20-07-2018",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLHLIP18034V011819_2018-2019.pdf/a1826996-56b0-449f-7a44-0ecdc86f8b5a?version=1.1&t=1668509455137&download=true",
+      "financial_year": "2018-2019",
+      "insurer": "Shriram General Insurance Co",
+      "insurer_key": "shriram",
+      "product_name": "ShriCriticare",
+      "status": "Non-Archived",
+      "type_of_product": "Retail",
+      "uin": "SGLHLIP18034V011819"
+    },
+    {
+      "approval_date": "28-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLHLIP21481V022021_2020-2021.pdf/3a7cea29-ab1e-1a7f-a71b-4e62d0af89d2?version=1.1&t=1668755281768&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Shriram General Insurance Co. Ltd.",
+      "insurer_key": "shriram",
+      "product_name": "Shri Loan Protect insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "SGLHLIP21481V022021"
+    },
+    {
+      "approval_date": "28-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLHLIP21483V022021_2020-2021.pdf/8821580e-967e-0052-9f46-3fb3aa2eb5b0?version=1.1&t=1668755334773&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Shriram General Insurance Co. Ltd.",
+      "insurer_key": "shriram",
+      "product_name": "Shri Criticare Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "SGLHLIP21483V022021"
+    },
+    {
+      "approval_date": "28-03-2022",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLHLIP22230V012122.pdf/e81cde2a-e3b4-9d93-2407-f259affd01a3?version=1.1&t=1668853465799&download=true",
+      "financial_year": "2021-2022",
+      "insurer": "Shriram General Insurance Co. Ltd",
+      "insurer_key": "shriram",
+      "product_name": "Shri Hospital Daily Cash Benefit Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Individual",
+      "uin": "SGLHLIP22230V012122"
+    },
+    {
+      "approval_date": "26-04-2022",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLHLIP23019V012223.pdf/513a488f-883e-f853-8faa-df485b623e3a?version=1.0&t=1669351648133&download=true",
+      "financial_year": "2022-2023",
+      "insurer": "Shriram General Insurance Co. Ltd",
+      "insurer_key": "shriram",
+      "product_name": "Shri Sarv -Care Health Benefit Package Policy",
+      "status": "Non-Archived",
+      "type_of_product": "Individual",
+      "uin": "SGLHLIP23019V012223"
+    },
+    {
+      "approval_date": "28-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLPAGP21478V022021_2020-2021.pdf/1a8a7716-4c94-8141-c8aa-7cd3dca3187b?version=1.1&t=1668755380931&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Shriram General Insurance Co. Ltd.",
+      "insurer_key": "shriram",
+      "product_name": "Shri Group Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "SGLPAGP21478V022021"
+    },
+    {
+      "approval_date": "17-10-2017",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGI_ShriIndividualPersonalAccidentInsurance_2017-2018.pdf/8ad76a38-2ef5-29b9-e1bb-fc04ca805ff6?version=1.1&t=1668426975130&download=true",
+      "financial_year": "2017-2018",
+      "insurer": "Shriram General Insurance Co ltd",
+      "insurer_key": "shriram",
+      "product_name": "Shri Individual Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "SGLPAIP18047V011718"
+    },
+    {
+      "approval_date": "28-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLPAIP21477V022021_2020-2021.pdf/6d0a4ce8-287c-c5cf-9b99-d0861b18b0eb?version=1.1&t=1668755425055&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Shriram General Insurance Co. Ltd.",
+      "insurer_key": "shriram",
+      "product_name": "Shri Individual Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "SGLPAIP21477V022021"
+    },
+    {
+      "approval_date": "31-01-2018",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGL_ShriMicroGroupPersonalAccidentInsurance_2017-2018.pdf/9bf23f52-e3d8-8e5e-cd16-32b19147a053?version=1.1&t=1668427054914&download=true",
+      "financial_year": "2017-2018",
+      "insurer": "Shriram General Insurance Co ltd",
+      "insurer_key": "shriram",
+      "product_name": "Shri Micro Group Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "SGLPMGP18114V011718"
+    },
+    {
+      "approval_date": "28-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLPMGP21480V022021_2020-2021.pdf/7d7b16df-f1c9-98a2-d2b1-d923fcc24ef5?version=1.1&t=1668755468569&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Shriram General Insurance Co. Ltd.",
+      "insurer_key": "shriram",
+      "product_name": "Shri Micro Group Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "SGLPMGP21480V022021"
+    },
+    {
+      "approval_date": "31-01-2018",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGL_ShriMicroIndividualPersonalAccidentInsurance_2017-2018.pdf/3edf549a-8527-d45d-9301-22533d84bc5b?version=1.1&t=1668427090517&download=true",
+      "financial_year": "2017-2018",
+      "insurer": "Shriram General Insurance Co ltd",
+      "insurer_key": "shriram",
+      "product_name": "Shri Micro Individual Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "",
+      "uin": "SGLPMIP18113V011718"
+    },
+    {
+      "approval_date": "28-09-2020",
+      "document_url": "https://irdai.gov.in/documents/37343/931203/SGLPMIP21479V022021_2020-2021.pdf/9accbd45-62b9-1196-567e-7455b1af4031?version=1.1&t=1668755514363&download=true",
+      "financial_year": "2020-2021",
+      "insurer": "Shriram General Insurance Co. Ltd.",
+      "insurer_key": "shriram",
+      "product_name": "Shri Micro Individual Personal Accident Insurance",
+      "status": "Non-Archived",
+      "type_of_product": "Revision",
+      "uin": "SGLPMIP21479V022021"
+    }
+  ],
+  "eligibility_adjudication_started": false,
+  "page_audit": [
+    {
+      "cur": 1,
+      "row_count": 60,
+      "sha256": "a19eb442ab287ed87b422cf10812640347eaecbffc1f08bb8814aae4ed7c857d",
+      "terminal": false
+    },
+    {
+      "cur": 2,
+      "row_count": 60,
+      "sha256": "b4822582ec34f756442da22fead254d9f490a0d37a64dcfc34fd19db5d02d458",
+      "terminal": false
+    },
+    {
+      "cur": 3,
+      "row_count": 60,
+      "sha256": "d42c45345252d51d345597f780190a6fa4e533d095fea73b8c711916239a4668",
+      "terminal": false
+    },
+    {
+      "cur": 4,
+      "row_count": 60,
+      "sha256": "94e57d40261e02696526081b83f95cbf54386ced2b6400deb664a086476821fc",
+      "terminal": false
+    },
+    {
+      "cur": 5,
+      "row_count": 60,
+      "sha256": "b20f263079c0c785fac6d1ad75fc4518822ac31b87b5e8489c2ad796cc9bf04b",
+      "terminal": false
+    },
+    {
+      "cur": 6,
+      "row_count": 60,
+      "sha256": "ed08f3eddd132601cdca3adc90f69acd6135d79c29f43dc573f5c02e019855c8",
+      "terminal": false
+    },
+    {
+      "cur": 7,
+      "row_count": 60,
+      "sha256": "a7f2324e6b8ca3c8611c327c2d394156200665d517b80c735edfb7a3d3ca321f",
+      "terminal": false
+    },
+    {
+      "cur": 8,
+      "row_count": 60,
+      "sha256": "09e9e79609fba2845b430066c182fcce765a11a653c50477f423a8f50b8ce807",
+      "terminal": false
+    },
+    {
+      "cur": 9,
+      "row_count": 60,
+      "sha256": "f3e0b4c61f2fb8981fff39a5996ccfa0c2f187eb062cf452885df88e18e694d3",
+      "terminal": false
+    },
+    {
+      "cur": 10,
+      "row_count": 60,
+      "sha256": "0c1fc2aed7ec4f69e9a6413a1dbac925aede126c5a8e0314e32f4eaa0bf83d32",
+      "terminal": false
+    },
+    {
+      "cur": 11,
+      "row_count": 60,
+      "sha256": "3e2784eaa21733cf5f189e10c3e8577b77f9fdc2baeb226c9917c2777e87daab",
+      "terminal": false
+    },
+    {
+      "cur": 12,
+      "row_count": 60,
+      "sha256": "706c9506fb908bd0c5c970ff4b0568034f2ac43824e4c697440932abd22c6fa9",
+      "terminal": false
+    },
+    {
+      "cur": 13,
+      "row_count": 60,
+      "sha256": "dba1b52a19ac33d41ca0351a1a271ffa743dcbb6ecb57d9716c64c5f241eae75",
+      "terminal": false
+    },
+    {
+      "cur": 14,
+      "row_count": 60,
+      "sha256": "50866ef6816f13f8876c36292c20482c4319dddbec572caa5574a48b60f677cb",
+      "terminal": false
+    },
+    {
+      "cur": 15,
+      "row_count": 60,
+      "sha256": "93d31a4136bd2516615556dae8ca6dc35a28f49b64c7a036107744cde9f1a64f",
+      "terminal": false
+    },
+    {
+      "cur": 16,
+      "row_count": 60,
+      "sha256": "e9acceaf6e249c8b2446ce72a4d02631ee0fd78fdf8d6db2f8f852850de2338d",
+      "terminal": false
+    },
+    {
+      "cur": 17,
+      "row_count": 60,
+      "sha256": "69c21d1af665105fa61f14bbf6864365d0b8fa62583511c77cf2ed87aae2f958",
+      "terminal": false
+    },
+    {
+      "cur": 18,
+      "row_count": 60,
+      "sha256": "d2b40f7d152f8ba2254cc7663bf461fd28e0ba99341e801a191ad49b5f398f05",
+      "terminal": false
+    },
+    {
+      "cur": 19,
+      "row_count": 60,
+      "sha256": "45e1225996319683575e5ac9ea3d1fcb37b60b0c61c07f0a6f597f70b277daea",
+      "terminal": false
+    },
+    {
+      "cur": 20,
+      "row_count": 60,
+      "sha256": "a92e9ebe9c624a95254e5e1ded04e0e3b12b24b3494ba66dd6da99eec390aab5",
+      "terminal": false
+    },
+    {
+      "cur": 21,
+      "row_count": 60,
+      "sha256": "d06c494078b70276bf6bcb099e0f978188999a8458d4574ae189814cf062edc0",
+      "terminal": false
+    },
+    {
+      "cur": 22,
+      "row_count": 60,
+      "sha256": "1370700d3387fe4fd9b365015c69360e59f5bdffb5659101ff0282b9be054995",
+      "terminal": false
+    },
+    {
+      "cur": 23,
+      "row_count": 60,
+      "sha256": "66d00540002581a9ef816365b750aa892bbc84d62d6bf18d428d5962bbdfe04e",
+      "terminal": false
+    },
+    {
+      "cur": 24,
+      "row_count": 60,
+      "sha256": "bfd596c33dcedb7be290f0647a63a5dcefa72931171d3af71e62b76b2561856a",
+      "terminal": false
+    },
+    {
+      "cur": 25,
+      "row_count": 60,
+      "sha256": "bc6e713ad40faf8daa64872f05fb0fc9495ed6c2998c5f59e2d3b6d11153b0e1",
+      "terminal": false
+    },
+    {
+      "cur": 26,
+      "row_count": 60,
+      "sha256": "a92d7bce56dea4c546c44c474b673a9bdb27f4df1698e8dd6e9e3c064044e013",
+      "terminal": false
+    },
+    {
+      "cur": 27,
+      "row_count": 60,
+      "sha256": "d4baf59d6fea886984bbc5fe1d3e37a13fd44ba1dd48ad01adc197cc0cfb3bf4",
+      "terminal": false
+    },
+    {
+      "cur": 28,
+      "row_count": 60,
+      "sha256": "acd115250f09378122e22e1d6287df22b992e2ffa791420b3bfa8df28e5490ed",
+      "terminal": false
+    },
+    {
+      "cur": 29,
+      "row_count": 60,
+      "sha256": "19769c44a5cde3cda017eb175489547f75375e4a2fc1b6e82851f18147cc19fe",
+      "terminal": false
+    },
+    {
+      "cur": 30,
+      "row_count": 60,
+      "sha256": "fb3ccdfab39c65c12f43d59ebcc33e27b6bcd8dc08875f09eba07e6957535b7c",
+      "terminal": false
+    },
+    {
+      "cur": 31,
+      "row_count": 20,
+      "sha256": "2dadd08c6e1d11eb6c6c32856890735f64610111330796cac78be283a8f1f059",
+      "terminal": true
+    }
+  ],
+  "pages_scanned": 31,
+  "record_type": "c5_30_disposable_irdai_health_registry_enumeration",
+  "requested_page_delta": 60,
+  "selection_started": false,
+  "semantic_review_started": false,
+  "source": "https://irdai.gov.in/health-insurance-products",
+  "target_clause_reads": 0,
+  "target_counts": {
+    "cholamandalam": 77,
+    "magma": 16,
+    "navi": 35,
+    "shriram": 22
+  },
+  "terminal_page": 31,
+  "terminal_page_row_count": 20,
+  "terminal_reason": "ROW_COUNT_BELOW_REQUESTED_DELTA"
+}
+C5_30_ENUMERATION_END
