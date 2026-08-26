@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product10_gate_a_root_transport_fitness_result_v1",
+  "record_status": "FROZEN_GATE_A_PASS_BEFORE_GATE_B",
+  "experiment": {
+    "domain": "health",
+    "product_number": 10,
+    "product_selected": false,
+    "gate_a_status": "PASS",
+    "gate_b_started": false,
+    "gate_c_started": false,
+    "target_clause_reads": 0
+  },
+  "protocol": {
+    "path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v7_product10.json",
+    "preregistration_merge_commit": "8d6f0c763333f75ecd5edab2181db23a41783a99",
+    "gate_a_authorization_merge_commit": "b173dafe76ea95f1028ababb5b1f4aeb008d7493",
+    "experiment_harness_baseline_commit": "edf344b34196258b04041f2fda2caa07d06d1f72",
+    "semantic_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318"
+  },
+  "execution_lineage": {
+    "execution_mode": "disposable_non_merged_github_actions_smoke",
+    "smoke_branch": "product10-gate-a-live-smoke",
+    "smoke_commit": "4267e324791961f0cb3433fe1f04a1b1a5bbe4cb",
+    "workflow_run_id": 32938095594,
+    "workflow_job_id": 98083250521,
+    "workflow_conclusion": "success",
+    "factory_tests_after_smoke": 3048,
+    "factory_tests_conclusion": "passed",
+    "smoke_branch_may_merge": false
+  },
+  "allowed_transport_sequence": [
+    "static_http",
+    "playwright_headless",
+    "playwright_visible"
+  ],
+  "root_results": [
+    {
+      "root": "https://irdai.gov.in/non-life-insurers1",
+      "outcome": "DIRECT_HTTP_AVAILABLE",
+      "accepted": true,
+      "capture_strategy": "static_http",
+      "capture_strategy_attempted": ["static_http"],
+      "status": "captured"
+    },
+    {
+      "root": "https://irdai.gov.in/health-insurers1",
+      "outcome": "DIRECT_HTTP_AVAILABLE",
+      "accepted": true,
+      "capture_strategy": "static_http",
+      "capture_strategy_attempted": ["static_http"],
+      "status": "captured"
+    },
+    {
+      "root": "https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount",
+      "outcome": "ALL_ALLOWED_TRANSPORTS_FAILED",
+      "accepted": false,
+      "capture_strategy": "playwright_visible",
+      "capture_strategy_attempted": [
+        "static_http",
+        "playwright_headless",
+        "playwright_visible"
+      ],
+      "status": "captured"
+    }
+  ],
+  "gate_decision": {
+    "minimum_pass_condition": "At least one exact preregistered regulator root yields DIRECT_HTTP_AVAILABLE or BROWSER_CAPTURE_AVAILABLE.",
+    "passing_roots": 2,
+    "failing_roots": 1,
+    "decision": "PASS",
+    "next_gate": "GATE_B_BLIND_METADATA_PATH_DISCOVERY_FITNESS",
+    "gate_c_authorized": false,
+    "insurer_or_product_screening_authorized_by_this_record": false
+  },
+  "blindness_and_method_metrics": {
+    "search_engine_fallbacks": 0,
+    "ad_hoc_transport_attempts": 0,
+    "gate_b_operator_raw_capture_reads": 0,
+    "gate_b_selector_raw_capture_reads": 0,
+    "insurer_screening_started": false,
+    "product_screening_started": false,
+    "product_selected": false,
+    "target_clause_reads": 0
+  },
+  "historical_comparability": {
+    "product9_direct_root_403_observation_remains_immutable": true,
+    "product9_is_reopened_repaired_or_reinterpreted": false,
+    "product10_observation_date": "2026-08-26",
+    "note": "Product #10 observed both IRDAI roots as directly capturable through the preregistered CaptureEngine at this later execution time. This later observation governs Product #10 only and does not modify Product #9's closed historical result."
+  }
+}

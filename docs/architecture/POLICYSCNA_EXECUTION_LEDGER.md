@@ -1,27 +1,31 @@
 # PolicyScna Execution Ledger
 
-Status: C5.4 Product #10 three-gate cold start — Gate A authorized
-Verified against: `8d6f0c763333f75ecd5edab2181db23a41783a99`
+Status: C5.4 Product #10 three-gate cold start — Gate A CLOSED / PASS; Gate B authorized
+Verified against: `b173dafe76ea95f1028ababb5b1f4aeb008d7493` plus frozen Gate A result `docs/architecture/health_product10_gate_a_root_transport_fitness_2026-08-26.json`
 
 This ledger defines the current authorized execution path. It exists to prevent scope drift, accidental rebuilding of existing capability, and architecture work that is not justified by observed evidence.
 
 ## Current phase
 
-**Health repeatability — Product #10 v7 preregistration is frozen; Gate A root transport fitness is the only authorized live experiment step.**
+**Health repeatability — Product #10 Gate A is closed PASS; Gate B blind metadata-path discovery fitness is the only authorized live experiment step.**
 
 Motor, Life and frontend work remain outside the current authorized phase.
 
 ## Immediate objective
 
-Execute Product #10 **Gate A only** against the exact preregistered roots using the frozen C5.3C transport sequence. Record each root outcome before any Gate B blind metadata-path discovery or Gate C insurer/product screening begins.
+Execute Product #10 **Gate B only** using the passing preregistered regulator roots and the frozen C5.3 machine-only capture/discovery path. Selector/operator exposure remains limited to `blind_discovery_link_metadata_v1`. Do not begin Gate C insurer/product screening until Gate B passes and its outcome is frozen.
 
 Authoritative Product #10 protocol:
 - `docs/architecture/health_post_hc1_neutral_cold_start_protocol_v7_product10.json`
+
+Frozen Gate A result:
+- `docs/architecture/health_product10_gate_a_root_transport_fitness_2026-08-26.json`
 
 Frozen baselines:
 - semantic scoring baseline: `f05ca07283f53f2882ed5da3ca27875ba7253318`
 - experiment-harness baseline: `edf344b34196258b04041f2fda2caa07d06d1f72`
 - Product #10 preregistration merge: `8d6f0c763333f75ecd5edab2181db23a41783a99`
+- Gate A authorization merge: `b173dafe76ea95f1028ababb5b1f4aeb008d7493`
 
 ## Authorized work sequence
 
@@ -78,15 +82,10 @@ Closure:
 - `docs/architecture/health_product8_selection_abort_2026-08-25.json`
 
 Observed result:
-- full current insurer universe reconciled: 27 General + 6 standalone Health insurers;
 - no Product #8 selected;
-- no selected-product acquisition, target semantic review or scoring began;
 - Product #8 closed `SELECTION_UNIVERSE_EXHAUSTED_NO_ELIGIBLE_UNCONTAMINATED_CURRENTNESS_CORROBORATED_PRODUCT / UNSCORED`;
+- broad/exact-UIN search screening was found too contamination-prone;
 - Product #8 does not prove or falsify semantic repeatability and does not authorize Motor.
-
-Methodology finding:
-
-**`SEARCH_ENGINE_DISCOVERY_IS_TOO_CONTAMINATION_PRONE_FOR_V5_PRESELECTION`.** Broad/exact-UIN search queries frequently exposed prohibited product-document links or target-mechanic snippets. This finding cannot repair Product #8 retroactively.
 
 ### C5.1 — Blind direct-source preselection method
 
@@ -96,12 +95,10 @@ Merge baseline:
 - `d7dc909696670f77d0db565fc8855820775e53f2`
 
 Closed outcomes:
-- work classified `WIRE + small EXTEND`, not a new agent family;
-- existing acquisition / `ProductSignalExtractor` and `UinCandidateExtractor` reused;
-- `BlindPreselectionMetadataProjector` exposes only identity/UIN/source metadata to the selector;
-- raw sections, evidence windows, target semantic buckets and semantic-presence counts are structurally absent from selector input;
-- regression proves semantic-content changes with unchanged identity metadata do not change the blind projection;
-- broad search-result discovery is prohibited for locked selection runs unless a future preregistration safely changes that rule before execution.
+- existing acquisition / product-signal capabilities reused;
+- `BlindPreselectionMetadataProjector` exposes only identity/UIN/source metadata;
+- semantic content cannot influence the selector through the projection;
+- broad search-result screening remains prohibited for locked runs unless prospectively preregistered otherwise.
 
 ### C5.2 — Product #9 blind direct-source cold-start
 
@@ -115,19 +112,14 @@ Closure:
 
 Observed result:
 - Product #9 remained unselected and unscored;
-- IRDAI non-life and Health preregistered roots returned 403 and did not trigger search fallback;
-- Bima Bharosa was the reachable preregistered fallback root;
-- regulator directory entries for the four preregistered retry insurers exposed only bare/ambiguous insurer origins;
-- the then-active pre-render operator guardrail refused to render those origins because they could not be classified as metadata before body rendering;
-- zero insurer origins rendered, zero product documents opened, zero target-clause reads occurred, zero search fallbacks occurred, zero selection overrides/substitutions occurred;
-- Product #9 closed `EXPERIMENT_UNSCORED / PRE_RENDER_METADATA_PATH_UNAVAILABLE_FOR_ALL_PREREGISTERED_RETRY_INSURERS`;
-- Product #9 does not prove or falsify semantic repeatability and does not authorize Motor.
+- the then-observed IRDAI root access returned 403 and no search fallback was used;
+- Bima Bharosa exposed only bare insurer origins under the then-active pre-render operator guardrail;
+- zero insurer origins rendered, zero product documents opened, zero target-clause reads and zero search fallbacks occurred;
+- Product #9 closed `EXPERIMENT_UNSCORED / PRE_RENDER_METADATA_PATH_UNAVAILABLE_FOR_ALL_PREREGISTERED_RETRY_INSURERS`.
 
 **No Product #9 candidate screening is authorized now or in any future run. Product #9 is an immutable closed experiment.**
 
-Methodology finding:
-
-The C5.2A operator guardrail was stricter than the actual blindness requirement. The true requirement is that semantic body content must not reach the selector/operator before selection; machine-only capture may occur if only a governed sanitized projection crosses the boundary. This finding cannot reopen or repair Product #9 retroactively.
+Later Product #10 transport observations do not reopen, repair or reinterpret Product #9.
 
 ### C5.3A — Discovery classifier blindness-boundary proof
 
@@ -138,10 +130,8 @@ Merge baseline:
 
 Closed outcomes:
 - existing `DiscoveryAgent` reused unchanged;
-- direct contract coverage proves positive metadata/index classifications and negative product-detail classifications;
-- semantic anchor text and semantic URL slugs do not promote product-detail destinations into the metadata-class set;
-- policy-wording destinations remain outside the metadata-class set;
-- no runtime classifier repair was required.
+- positive metadata/index and negative product-detail cases are directly regression-covered;
+- semantic anchor text and semantic URL slugs do not promote product-detail destinations into the metadata-class set.
 
 ### C5.3B — Blind discovery-link projection
 
@@ -151,12 +141,9 @@ Merge baseline:
 - `addca46a88c104394a37bc6513c22e2556e3acf4`
 
 Closed outcomes:
-- existing machine-side discovery records remain internal;
-- raw discovered URL/path, anchor text, titles, body excerpts and semantic fields do not cross to selector/operator;
-- selector-facing discovery output uses opaque SHA-256 destination identity plus derived classification/provenance;
-- adversarial regression proves semantic-bearing URL slugs cannot leak through the projection;
-- only explicitly authorized metadata-class destinations may project;
-- product-detail and policy-wording destinations fail closed.
+- raw discovered URL/path, anchor text, titles, body excerpts and semantic fields remain machine-side;
+- selector/operator receive only opaque destination identity plus governed classification/provenance;
+- only explicitly authorized metadata-class destinations may project.
 
 ### C5.3C — Root transport fitness gate
 
@@ -166,90 +153,80 @@ Merge baseline:
 - `edf344b34196258b04041f2fda2caa07d06d1f72`
 
 Closed outcomes:
-- root transport fitness is separated from insurer/product screening;
-- allowed transport sequence is explicitly frozen to the existing `CaptureEngine` order:
-  1. `static_http`
-  2. `playwright_headless`
-  3. `playwright_visible`
-- accepted static capture stops before browser fallback;
-- browser fallback after static HTTP failure/403 is explicit and ordered;
-- all allowed transport failures remain a failure;
-- `BROWSER_CAPTURE_AVAILABLE` is a broader preregistered transport capability than the direct-root observation that closed Product #9;
+- root transport fitness separated from insurer/product screening;
+- exact allowed sequence frozen: `static_http → playwright_headless → playwright_visible`;
+- browser fallback is explicit and ordered;
 - no new crawler or transport implementation was added.
 
-### C5.4 — Product #10 three-gate blind cold-start preregistration
+### C5.4 — Product #10 three-gate blind cold-start
 
-Status: **PREREGISTRATION CLOSED / GATE A AUTHORIZED**
+Status: **GATE A CLOSED / PASS; GATE B AUTHORIZED**
 
 Protocol:
 - `docs/architecture/health_post_hc1_neutral_cold_start_protocol_v7_product10.json`
 
-Merge baseline:
+Preregistration merge:
 - `8d6f0c763333f75ecd5edab2181db23a41783a99`
 
-Frozen design:
-- exact roots remain:
-  - `https://irdai.gov.in/non-life-insurers1`
-  - `https://irdai.gov.in/health-insurers1`
-  - `https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount`
-- Gate A uses only the frozen `static_http → playwright_headless → playwright_visible` sequence;
-- Gate B allows machine-only raw capture/discovery but selector/operator may consume only `blind_discovery_link_metadata_v1`;
-- raw destination URL/path, anchor text, titles, body text, screenshots and semantic evidence may not cross the Gate B blindness boundary;
-- Gate C begins only after Gate A and Gate B pass and consumes only governed blind projections;
-- candidate insurer pool remains the four Product #9 retry-pool insurers derived from Product #8 `EXCLUDED_METADATA_CURRENTNESS_INSUFFICIENT` status;
-- Product #8 contamination quarantines remain closed;
-- Product #9 is not reopened or retried;
-- exact-product prior-exposure audit is required after selection and before semantic review;
-- exact bytes/SHA, reviewed currentness and v4.2 evidence eligibility remain mandatory before target-clause reads;
-- no product/version substitution is authorized after selection.
+Gate A frozen result:
+- `docs/architecture/health_product10_gate_a_root_transport_fitness_2026-08-26.json`
+
+Gate A observed results:
+- `https://irdai.gov.in/non-life-insurers1` → `DIRECT_HTTP_AVAILABLE` using `static_http` only;
+- `https://irdai.gov.in/health-insurers1` → `DIRECT_HTTP_AVAILABLE` using `static_http` only;
+- `https://bimabharosa.irdai.gov.in/Home/UnclaimedAmount` → `ALL_ALLOWED_TRANSPORTS_FAILED` after `static_http`, `playwright_headless`, `playwright_visible`;
+- Gate A decision: **PASS** because two exact preregistered regulator roots satisfy the frozen minimum pass condition;
+- search-engine fallbacks: 0;
+- ad-hoc transport attempts: 0;
+- Gate B raw operator/selector reads: 0;
+- insurer/product screening: not started;
+- Product #10 selected: false;
+- target-clause reads: 0.
+
+Execution lineage is frozen to disposable non-merged smoke branch `product10-gate-a-live-smoke`, commit `4267e324791961f0cb3433fe1f04a1b1a5bbe4cb`, workflow run `32938095594`, job `98083250521`. The smoke branch is not merge-authorized.
 
 ## Next authorized work
 
-### Product #10 Gate A — Root transport fitness
+### Product #10 Gate B — Blind metadata-path discovery fitness
 
 Status: **ONLY AUTHORIZED LIVE EXPERIMENT STEP**
 
 Rules:
-- run only against the three exact v7 preregistered roots;
-- use only `collectors.capture_engine.CaptureEngine` with the frozen sequence;
-- record one governed outcome per root: `DIRECT_HTTP_AVAILABLE`, `BROWSER_CAPTURE_AVAILABLE`, or `ALL_ALLOWED_TRANSPORTS_FAILED`;
-- browser success after static HTTP failure is allowed because it was preregistered before Product #10 execution;
-- no search-engine fallback and no ad-hoc transport are authorized;
-- do not begin Gate B until Gate A has a passing root and its outcome record is frozen;
-- do not begin Gate C or any insurer/product screening during Gate A.
-
-### Product #10 Gate B — Blind metadata-path discovery fitness
-
-Status: **BLOCKED UNTIL GATE A PASS + RECORDED OUTCOME**
-
-Machine-only raw capture/discovery is permitted only after Gate A passes. Selector/operator exposure remains limited to `blind_discovery_link_metadata_v1`.
+- use only passing Gate A regulator roots and regulator-derived insurer origins permitted by v7;
+- machine-side `CaptureEngine` / preservation / discovery may inspect raw page material;
+- selector/operator may consume only `blind_discovery_link_metadata_v1`;
+- raw destination URL/path, anchor text, page title, body text, screenshot and semantic evidence must not cross the blindness boundary;
+- only C5.3B-authorized metadata page types may project;
+- unknown/disallowed destinations fail closed;
+- record Gate B outcome before Gate C begins;
+- no insurer/product eligibility screening during Gate B.
 
 ### Product #10 Gate C — Neutral insurer/product selection
 
-Status: **BLOCKED UNTIL GATE A AND GATE B PASS**
+Status: **BLOCKED UNTIL GATE B PASS + RECORDED OUTCOME**
 
-No candidate insurer or product screening is authorized before both upstream gates pass under the locked v7 protocol.
+No candidate insurer or product screening is authorized until Gate B passes and its outcome is frozen under v7.
 
 Motor gate remains **CLOSED**.
 
 ## Known defects / risks currently tracked
 
-1. Live regulator/insurer endpoints can change behavior or defeat automated retrieval; locked runs must fail closed rather than fall back to broad search.
-2. Root transport capability can differ by mechanism; direct HTTP failure and browser capture success are distinct governed outcomes.
-3. Discovery classification is regression-covered for the C5.3 boundary cases, but live site structures may expose new ambiguous patterns; unknown classifications must fail closed.
+1. Live regulator/insurer endpoints can change behavior; historical transport observations remain experiment-specific.
+2. Root transport capability can differ by mechanism and time; direct HTTP and browser outcomes must remain explicitly governed.
+3. Discovery classification is regression-covered for the C5.3 boundary cases, but new ambiguous live patterns must fail closed.
 4. Legacy certifiers emit `EvidencePackage.version_status="CURRENT_APPLICABLE"`; this remains non-authoritative metadata pending a versioned evidence-contract migration.
 5. Generic copay shadow migration is non-authoritative; authority switch is not authorized.
 6. Governed LLM answer pipeline exists as a limited pilot; broader concept coverage is not yet proven.
 7. Product #7, Product #8 and Product #9 are immutable unscored experiment closures and must not be repaired retroactively.
-8. Product #8 contamination events lack exact-product exposure lineage sufficient to make them automatically eligible for Product #10; v7 therefore remains conservative.
+8. Product #8 contamination events lack exact-product exposure lineage sufficient to make them automatically eligible for Product #10; v7 remains conservative.
 
 ## Explicitly not authorized now
 
-- Product #10 Gate B before a passing Gate A outcome is recorded
-- Product #10 Gate C or insurer/product screening before Gate A and Gate B pass
+- Product #10 Gate C or insurer/product screening before Gate B passes and is frozen
 - search-engine candidate screening or fallback during the locked v7 run
 - ad-hoc transport outside the frozen Gate A sequence
 - exposing raw discovered URLs, anchor text, body text, titles, screenshots or semantic fields to selector/operator during Gate B
+- merging the disposable `product10-gate-a-live-smoke` branch
 - reopening, retrying, repairing, rescoring or reselecting Product #7, Product #8 or Product #9
 - Motor implementation or expansion
 - Life implementation or investment-comparison logic
