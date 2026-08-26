@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product_eligibility_projection_repair_authorization_v1",
+  "record_status": "EFFECTIVE_ONLY_AFTER_FITNESS_REVIEW_MERGE",
+  "authorized_next_action": "IMPLEMENT_GENERIC_HEALTH_PRODUCT_ELIGIBILITY_EVIDENCE_PROJECTION_ONLY",
+  "product14_preregistration_authorized": false,
+  "motor_authorized": false,
+  "semantic_review_authorized": false,
+  "target_clause_reads_authorized": false,
+  "repair_scope": {
+    "may_extend_governed_identity_currentness_acquisition_with_selector_safe_eligibility_evidence": true,
+    "may_add_generic_product_eligibility_projection_contract": true,
+    "may_add_explicit_label_led_metadata_extraction_for_eligibility_fields": true,
+    "may_use_authorized_metadata_artifacts_only": true,
+    "may_use_product_specific_heuristics": false,
+    "may_infer_eligibility_from_product_name_alone": false,
+    "may_infer_eligibility_from_raw_url_or_path_alone": false,
+    "may_expose_raw_page_text_to_selector": false,
+    "may_expose_raw_url_or_parsed_path_to_selector": false,
+    "may_use_target_concept_semantics": false,
+    "must_fail_closed_on_missing_or_conflicting_eligibility_evidence": true,
+    "must_preserve_existing_v2_and_currentness_contracts": true,
+    "must_not_modify_product11_product12_or_product13_results": true
+  },
+  "required_selector_safe_evidence": [
+    "health_product_class",
+    "base_product_status",
+    "retail_availability",
+    "purchase_modes",
+    "eligibility_binding_status"
+  ],
+  "next_step": "Implement the generic repair, add runtime and governance tests, freeze the repair merge as a prospective Health baseline, then separately decide whether Product #14 may be preregistered."
+}
