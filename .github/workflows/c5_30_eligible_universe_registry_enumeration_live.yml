@@ -1,0 +1,31 @@
+name: C5.30 Eligible Universe Registry Enumeration Live
+
+on:
+  push:
+    branches:
+      - c5-30-eligible-universe-registry-enumeration-live
+
+permissions:
+  contents: read
+
+jobs:
+  enumerate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Install minimum dependencies
+        run: |
+          python -m pip install requests==2.34.2 beautifulsoup4==4.15.0
+      - name: Enumerate official IRDAI Health registry
+        run: python scripts/c5_30_eligible_universe_registry_enumeration_live.py
+      - name: Run frozen repository test suite
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pytest -q
