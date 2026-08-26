@@ -36,5 +36,150 @@ jobs:
       - name: Verify dependency consistency
         run: .ci-venv/bin/python -m pip check
 
+      - name: Install frozen browser transport runtime
+        run: .ci-venv/bin/python -m playwright install --with-deps chromium
+
+      - name: Product 10 Gate B blind metadata-path discovery smoke
+        shell: bash
+        run: |
+          xvfb-run -a .ci-venv/bin/python - <<'PY'
+          import hashlib
+          import json
+          import tempfile
+          from pathlib import Path
+          from urllib.parse import urljoin, urlparse
+
+          from bs4 import BeautifulSoup
+
+          from agents.discovery_agent import DiscoveryAgent
+          from collectors.capture_engine import CaptureEngine
+          from factory_core.governance.blind_discovery_link_projection import (
+              BlindDiscoveryLinkProjectionError,
+              BlindDiscoveryLinkProjector,
+          )
+
+          roots = [
+              "https://irdai.gov.in/non-life-insurers1",
+              "https://irdai.gov.in/health-insurers1",
+          ]
+          candidates = {
+              "chola": ("cholamandalam", "chola"),
+              "magma": ("magma",),
+              "navi": ("navi",),
+              "shriram": ("shriram",),
+          }
+
+          capture_engine = CaptureEngine()
+          discovery_agent = DiscoveryAgent()
+
+          def opaque(value: str) -> str:
+              return "sha256:" + hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+          resolved = {}
+          root_audit = []
+          for root in roots:
+              capture = capture_engine.capture(root)
+              valid = capture_engine.is_valid_capture(capture)
+              root_audit.append({
+                  "root_id": opaque(root),
+                  "accepted": bool(valid),
+                  "capture_strategy": capture.get("capture_strategy"),
+                  "capture_strategy_attempted": capture.get("capture_strategy_attempted", []),
+              })
+              if not valid:
+                  continue
+              soup = BeautifulSoup(capture.get("html", ""), "lxml")
+              for link in soup.find_all("a"):
+                  href = link.get("href")
+                  if not href:
+                      continue
+                  absolute = urljoin(root, href)
+                  parsed = urlparse(absolute)
+                  if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+                      continue
+                  if parsed.netloc.lower().endswith("irdai.gov.in"):
+                      continue
+                  anchor = link.get_text(" ", strip=True).lower()
+                  identity_surface = f"{anchor} {parsed.netloc.lower()} {parsed.path.lower()}"
+                  for candidate_id, aliases in candidates.items():
+                      if candidate_id in resolved:
+                          continue
+                      if any(alias in identity_surface for alias in aliases):
+                          resolved[candidate_id] = absolute
+
+          print("PRODUCT10_GATE_B_ROOT_AUDIT=" + json.dumps(root_audit, sort_keys=True))
+          print("PRODUCT10_GATE_B_RESOLUTION=" + json.dumps({
+              "resolved_candidate_count": len(resolved),
+              "resolved_candidate_ids": sorted(resolved),
+              "unresolved_candidate_ids": sorted(set(candidates) - set(resolved)),
+              "raw_origin_urls_emitted": 0,
+          }, sort_keys=True))
+
+          projections_by_candidate = {}
+          capture_audit = {}
+          with tempfile.TemporaryDirectory() as tmpdir:
+              for candidate_id in sorted(resolved):
+                  origin = resolved[candidate_id]
+                  capture = capture_engine.capture(origin)
+                  valid = capture_engine.is_valid_capture(capture)
+                  capture_audit[candidate_id] = {
+                      "accepted": bool(valid),
+                      "origin_id": opaque(origin),
+                      "capture_strategy": capture.get("capture_strategy"),
+                      "capture_strategy_attempted": capture.get("capture_strategy_attempted", []),
+                  }
+                  if not valid:
+                      projections_by_candidate[candidate_id] = []
+                      continue
+
+                  html_path = Path(tmpdir) / f"{candidate_id}.html"
+                  html_path.write_text(capture.get("html", ""), encoding="utf-8")
+                  discovered = discovery_agent.discover_from_html_file(
+                      insurer_id=candidate_id,
+                      source_url=origin,
+                      html_path=str(html_path),
+                  )
+                  projected = []
+                  for record in discovered:
+                      record = dict(record)
+                      record["discovery_origin"] = "captured_html"
+                      try:
+                          projection = BlindDiscoveryLinkProjector.project(record).to_dict()
+                      except BlindDiscoveryLinkProjectionError:
+                          continue
+                      projected.append(projection)
+                  projections_by_candidate[candidate_id] = projected
+
+          print("PRODUCT10_GATE_B_CAPTURE_AUDIT=" + json.dumps(capture_audit, sort_keys=True))
+          for candidate_id in sorted(projections_by_candidate):
+              print("PRODUCT10_GATE_B_BLIND_PROJECTIONS=" + json.dumps({
+                  "candidate_id": candidate_id,
+                  "projection_count": len(projections_by_candidate[candidate_id]),
+                  "projections": projections_by_candidate[candidate_id],
+              }, sort_keys=True))
+
+          passing = sorted(
+              candidate_id
+              for candidate_id, items in projections_by_candidate.items()
+              if items
+          )
+          summary = {
+              "decision": "PASS" if passing else "FAIL",
+              "passing_candidate_ids": passing,
+              "passing_candidate_count": len(passing),
+              "resolved_candidate_count": len(resolved),
+              "raw_origin_urls_emitted": 0,
+              "raw_discovered_urls_emitted": 0,
+              "anchor_text_emitted": 0,
+              "body_text_emitted": 0,
+              "page_titles_emitted": 0,
+              "screenshots_emitted": 0,
+              "product_screening_started": False,
+              "product_selected": False,
+              "target_clause_reads": 0,
+          }
+          print("PRODUCT10_GATE_B_SUMMARY=" + json.dumps(summary, sort_keys=True))
+          PY
+
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
