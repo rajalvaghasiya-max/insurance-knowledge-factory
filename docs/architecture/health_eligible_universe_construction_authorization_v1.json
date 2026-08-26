@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_eligible_universe_construction_authorization_v1",
+  "record_status": "PENDING_C5_29_GREEN_MERGE",
+  "becomes_effective_after_merge_of": "health_governed_eligible_universe_preregistration_c5_29_2026-08-26.json",
+  "authorized_next_action": "HEALTH_GOVERNED_ELIGIBLE_UNIVERSE_CONSTRUCTION_AND_CERTIFICATION_ONLY",
+  "authorized_scope": [
+    "enumerate the full candidate product pool under the frozen C5.29 derivation rule",
+    "adjudicate every candidate against the frozen C5.29 eligibility predicate",
+    "record included and excluded candidate attestations with governed evidence/provenance",
+    "fail closed on missing, conflicting or ambiguous required predicates",
+    "create and freeze the governed eligible-universe artifact and SHA-256 only after full-pool adjudication"
+  ],
+  "not_authorized": [
+    "change the four-insurer candidate pool",
+    "change candidate product pool derivation rule",
+    "change eligibility predicates or allowed values",
+    "change certification evidence contract",
+    "use copayment or waiting-period information for membership",
+    "use semantic fit or expected repeatability outcome for membership",
+    "select Product #14",
+    "read target clauses",
+    "modify semantic runtime",
+    "modify blind_preselection_product_metadata_v2",
+    "modify blind_product_identity_currentness_evidence_v1",
+    "weaken C5.24 runtime source firewall",
+    "retry Product #11, #12 or #13",
+    "open Motor"
+  ],
+  "required_integrity": [
+    "all candidates adjudicated before universe freeze",
+    "no stop-at-first behavior",
+    "ineligible candidates retained in certification ledger",
+    "selector-visible artifact contains no target-semantic or semantic-fit signal",
+    "eligible-universe hash frozen before any Product #14 selection authorization",
+    "Product #14 remains final experiment of current neutral-selection hardening cycle"
+  ],
+  "product14_selection_authorized": false,
+  "target_clause_reads_authorized": false,
+  "runtime_change_authorized": false,
+  "motor_authorized": false
+}
