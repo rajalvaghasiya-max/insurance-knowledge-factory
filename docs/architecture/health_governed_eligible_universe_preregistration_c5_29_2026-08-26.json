@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_governed_eligible_universe_preregistration_c5_29",
+  "record_status": "LOCKED_BEFORE_ELIGIBLE_UNIVERSE_CONSTRUCTION",
+  "authorized_by": "docs/architecture/health_eligible_universe_preregistration_authorization_v1.json",
+  "measurement_apparatus_decision": "GOVERNED_PREREGISTERED_ELIGIBLE_UNIVERSE_IS_SUFFICIENT_FOR_NEUTRAL_REPEATABILITY_SELECTION",
+  "experiment_scope": "HEALTH_NEUTRAL_COLD_START_REPEATABILITY_PRODUCT14",
+  "product14_is_final_experiment_in_current_neutral_selection_hardening_cycle": true,
+  "target_concepts": ["copayment", "waiting_period"],
+  "candidate_insurer_pool": {
+    "source": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v10_product13.json",
+    "insurers": [
+      "Cholamandalam MS General Insurance Company Limited",
+      "Magma General Insurance Limited",
+      "Navi General Insurance Limited",
+      "Shriram General Insurance Company Limited"
+    ],
+    "reason_for_reuse": "Product #12 selected no product and Product #13 closed before Gate C; neither experiment acquired a selected product document, performed semantic review or read target clauses. The conservative neutral insurer pool therefore remains eligible for a new experiment apparatus without reopening either experiment.",
+    "pool_change_after_this_preregistration_merges": false
+  },
+  "candidate_product_pool_derivation_rule": {
+    "rule": "For each preregistered insurer, enumerate every distinct Health product identity candidate surfaced through official regulator and/or insurer product-index, filing-index, public-disclosure or equivalent governed identity sources that can be bound to an exact UIN or exact regulator product identifier during the frozen construction window. Do not stop after the first candidate or first eligible candidate.",
+    "required": [
+      "full enumeration across all four preregistered insurers",
+      "deduplicate only by exact governed product identity/UIN binding",
+      "preserve every included and excluded candidate in the adjudication ledger",
+      "candidate discovery order may not affect membership",
+      "target-concept presence, target-clause content, semantic complexity and semantic fit may not affect candidate inclusion in the adjudication pool"
+    ],
+    "forbidden": [
+      "manual convenience filtering",
+      "stop-at-first product behavior",
+      "searching for copayment or waiting-period terms",
+      "excluding a product because target clauses appear absent or difficult",
+      "including a product because it appears likely to exercise existing semantics"
+    ]
+  },
+  "eligibility_predicate": {
+    "closure_model": {
+      "regulatory_taxonomy": "REGULATORY_DERIVED",
+      "experiment_population": "EXPERIMENT_STIPULATED",
+      "anti_contamination": "ADVERSARIAL_INVARIANT_NOT_COMPLETENESS_DERIVED"
+    },
+    "required_predicates": [
+      {
+        "predicate_id": "domain",
+        "layer": "REGULATORY_TAXONOMY",
+        "required_value": "HEALTH"
+      },
+      {
+        "predicate_id": "benefit_basis",
+        "layer": "REGULATORY_TAXONOMY",
+        "required_value": "INDEMNITY"
+      },
+      {
+        "predicate_id": "insurance_object_type",
+        "layer": "REGULATORY_TAXONOMY",
+        "required_value": "MAIN_PRODUCT"
+      },
+      {
+        "predicate_id": "issuer_authority",
+        "layer": "REGULATORY_TAXONOMY",
+        "required_value": "AUTHORIZED_GENERAL_OR_HEALTH_INSURER"
+      },
+      {
+        "predicate_id": "coverage_arrangement",
+        "layer": "EXPERIMENT_POPULATION",
+        "allowed_values": ["INDIVIDUAL", "FAMILY_FLOATER", "BOTH"]
+      },
+      {
+        "predicate_id": "current_offering",
+        "layer": "EXPERIMENT_POPULATION",
+        "required_value": "CURRENTLY_OFFERED"
+      },
+      {
+        "predicate_id": "exact_identity",
+        "layer": "EXPERIMENT_POPULATION",
+        "required_value": "EXACT_PRODUCT_NAME_AND_UIN_OR_EQUIVALENT_REGULATOR_IDENTITY_RESOLVED"
+      }
+    ],
+    "membership_rule": "A candidate is ELIGIBLE only if every required predicate is positively established under the frozen evidence contract. Missing, conflicting or ambiguous required predicates yield INELIGIBLE_FAIL_CLOSED.",
+    "target_concepts_are_not_predicates": true,
+    "semantic_fit_is_not_a_predicate": true
+  },
+  "certification_evidence_contract": {
+    "purpose": "Establish non-target population membership independently of downstream semantic scoring.",
+    "allowed_authority_classes": [
+      "IRDAI structured product register",
+      "IRDAI filing/index/return metadata keyed to product and UIN",
+      "insurer official product index or public-disclosure metadata",
+      "official insurer product page or configuration metadata for non-target purchase-scope facts",
+      "official filing cover sheet or product document when used only inside the separate certification stage to establish a frozen non-target predicate"
+    ],
+    "certifier_may_not_use": [
+      "copayment presence",
+      "copayment terms",
+      "waiting-period presence",
+      "waiting-period terms",
+      "semantic complexity",
+      "expected REUSE/CONFIG_SPEC/REPRESENTATION_GAP outcome",
+      "downstream semantic-fit judgment"
+    ],
+    "every_attestation_requires": [
+      "predicate_id",
+      "normalized value",
+      "authority_scope",
+      "source_ref",
+      "source_content_hash or immutable evidence hash where available",
+      "certification decision",
+      "ambiguity/conflict status"
+    ],
+    "source_ref_proves_only": "source identity/distinctness, never authority or truth by itself",
+    "unknown_or_conflicting_required_predicate": "INELIGIBLE_FAIL_CLOSED",
+    "certification_stage_is_not_runtime_selector": true,
+    "c5_24_runtime_source_firewall_remains_unchanged": true
+  },
+  "exhaustive_adjudication": {
+    "all_candidates_must_receive_one_status": ["ELIGIBLE", "INELIGIBLE_FAIL_CLOSED"],
+    "no_unadjudicated_candidate_permitted_at_freeze": true,
+    "no_stop_at_first_behavior": true,
+    "adjudication_ledger_must_include_ineligible_candidates": true,
+    "membership_override_after_universe_freeze": false
+  },
+  "eligible_universe_artifact_contract": {
+    "artifact_must_be_created_only_after_full_pool_adjudication": true,
+    "artifact_contents_allowed": [
+      "opaque_candidate_id",
+      "eligibility_status",
+      "predicate_attestations",
+      "evidence_refs_and_hashes",
+      "certification_provenance",
+      "artifact_version",
+      "artifact_sha256"
+    ],
+    "artifact_contents_forbidden": [
+      "raw URL",
+      "raw page body",
+      "raw semantic-bearing document content",
+      "copayment indicators",
+      "waiting-period indicators",
+      "semantic bucket presence/counts",
+      "semantic-fit score",
+      "expected repeatability outcome"
+    ],
+    "eligible_selector_view": "Only opaque_candidate_id values for candidates with ELIGIBLE status plus preregistered deterministic ordering inputs may be exposed to the selection step.",
+    "artifact_hash_must_freeze_before_selection": true
+  },
+  "opaque_identifier_rule": {
+    "format": "eligible_sha256:<64-lowercase-hex>",
+    "derivation": "SHA-256 over a canonical governed internal product-identity key with a fixed experiment namespace; raw product name, insurer name, UIN and URL must not be recoverable from the selector-visible string itself.",
+    "collision_behavior": "ABORT_UNIVERSE_CERTIFICATION",
+    "selector_may_reverse_map_before_selection": false
+  },
+  "future_product14_selection_rule": {
+    "authorized_now": false,
+    "future_rule": "After the eligible-universe artifact and SHA-256 are frozen and separately authorized, sort selector-visible opaque eligible IDs ascending bytewise and select the first. No random seed, human choice, product substitution or selection override is permitted.",
+    "selector_input": ["opaque eligible IDs", "frozen bytewise ascending ordering rule"],
+    "selector_forbidden_inputs": ["product name", "insurer name", "UIN", "URL", "eligibility evidence content", "target semantics", "semantic fit"],
+    "no_eligible_candidate_outcome": "CLOSE_PRODUCT14_UNSCORED_NO_ELIGIBLE_GOVERNED_UNIVERSE_MEMBER"
+  },
+  "anti_bias_and_anti_contamination_controls": [
+    "candidate insurer pool frozen before certification",
+    "candidate product pool derivation rule frozen before certification",
+    "eligibility predicate frozen before candidate review",
+    "every candidate adjudicated",
+    "target concepts excluded from membership rule and selector output",
+    "unknown/conflicting required predicates fail closed",
+    "eligible universe immutable before selection",
+    "selector sees opaque IDs only",
+    "no post-selection substitution",
+    "exact-product prior-exposure audit remains mandatory after selection and before target review",
+    "target-clause reads remain zero until downstream authorization"
+  ],
+  "failure_routing": {
+    "REGULATORY_TAXONOMY_COMPLETENESS_FALSIFIED": "STOP_AND_RETURN_TO_REGULATORY_TAXONOMY_DERIVATION",
+    "EXPERIMENT_POPULATION_DEFINITION_INCONSISTENT": "STOP_AND_RETURN_TO_POPULATION_STIPULATION",
+    "ELIGIBLE_UNIVERSE_CERTIFICATION_INTEGRITY_FALSIFIED": "STOP_AND_REPAIR_CERTIFICATION_GOVERNANCE_NOT_RUNTIME_SELECTOR",
+    "ANTI_CONTAMINATION_BOUNDARY_FALSIFIED": "STOP_AND_HARDEN_BOUNDARY_NOT_ELIGIBILITY_FIELD_LIST",
+    "NO_ELIGIBLE_MEMBER_AFTER_VALID_FULL_POOL_ADJUDICATION": "CLOSE_PRODUCT14_UNSCORED_NO_ELIGIBLE_GOVERNED_UNIVERSE_MEMBER",
+    "SEMANTIC_REPEATABILITY_FAILURE_AFTER_VALID_SELECTION": "SCORE_UNDER_FROZEN_SEMANTIC_REPEATABILITY_PROTOCOL"
+  },
+  "stop_rule": {
+    "statement": "Product #14 is the final experiment in the current neutral-selection hardening cycle.",
+    "product15_automatic_authorization": false,
+    "new_selector_field_repair_automatic_authorization": false
+  },
+  "freeze": {
+    "candidate_insurer_pool_change_allowed_after_merge": false,
+    "candidate_product_pool_rule_change_allowed_after_merge": false,
+    "eligibility_predicate_change_allowed_after_merge": false,
+    "evidence_contract_change_allowed_after_merge": false,
+    "opaque_id_rule_change_allowed_after_merge": false,
+    "future_selection_rule_change_allowed_after_merge": false,
+    "target_concepts_change_allowed_after_merge": false
+  },
+  "eligible_universe_construction_authorized": false,
+  "product14_selection_authorized": false,
+  "target_clause_reads_authorized": false,
+  "runtime_change_authorized": false,
+  "projection_change_authorized": false,
+  "motor_authorized": false
+}
