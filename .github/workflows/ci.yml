@@ -45,7 +45,9 @@ jobs:
           xvfb-run -a .ci-venv/bin/python - <<'PY'
           import hashlib
           import json
+          import re
           import tempfile
+          from collections import deque
           from pathlib import Path
           from urllib.parse import urljoin, urlparse
 
@@ -63,63 +65,144 @@ jobs:
               "https://irdai.gov.in/health-insurers1",
           ]
           candidates = {
-              "chola": ("cholamandalam", "chola"),
-              "magma": ("magma",),
-              "navi": ("navi",),
-              "shriram": ("shriram",),
+              "chola": "Cholamandalam MS General Insurance Company Limited",
+              "magma": "Magma General Insurance Limited",
+              "navi": "Navi General Insurance Limited",
+              "shriram": "Shriram General Insurance Company Limited",
           }
+          identity_stopwords = {
+              "insurance", "general", "company", "limited", "ltd", "co",
+              "the", "of", "india",
+          }
+          max_regulator_depth = 2
+          max_regulator_pages = 30
 
           capture_engine = CaptureEngine()
+          # Gate B does not need screenshots. Disable the static-success screenshot-only
+          # side effect so no failure path can print a raw destination URL to CI logs.
+          capture_engine.capture_screenshot_only = lambda _url: None
           discovery_agent = DiscoveryAgent()
 
           def opaque(value: str) -> str:
               return "sha256:" + hashlib.sha256(value.encode("utf-8")).hexdigest()
 
-          resolved = {}
+          def host_key(url: str) -> str:
+              host = (urlparse(url).hostname or "").lower()
+              return host[4:] if host.startswith("www.") else host
+
+          def identity_tokens(value: str) -> set[str]:
+              tokens = set(re.findall(r"[a-z0-9]+", value.lower()))
+              return {token for token in tokens if token not in identity_stopwords}
+
+          candidate_tokens = {
+              candidate_id: identity_tokens(name)
+              for candidate_id, name in candidates.items()
+          }
+
+          def candidate_match(surface: str):
+              surface_tokens = identity_tokens(surface)
+              matches = [
+                  candidate_id
+                  for candidate_id, required in candidate_tokens.items()
+                  if required and required.issubset(surface_tokens)
+              ]
+              return matches[0] if len(matches) == 1 else None
+
+          resolved_origins = {}
           root_audit = []
-          for root in roots:
-              capture = capture_engine.capture(root)
-              valid = capture_engine.is_valid_capture(capture)
-              root_audit.append({
-                  "root_id": opaque(root),
-                  "accepted": bool(valid),
-                  "capture_strategy": capture.get("capture_strategy"),
-                  "capture_strategy_attempted": capture.get("capture_strategy_attempted", []),
-              })
-              if not valid:
-                  continue
-              soup = BeautifulSoup(capture.get("html", ""), "lxml")
-              for link in soup.find_all("a"):
-                  href = link.get("href")
-                  if not href:
-                      continue
-                  absolute = urljoin(root, href)
-                  parsed = urlparse(absolute)
-                  if parsed.scheme not in {"http", "https"} or not parsed.netloc:
-                      continue
-                  if parsed.netloc.lower().endswith("irdai.gov.in"):
-                      continue
-                  anchor = link.get_text(" ", strip=True).lower()
-                  identity_surface = f"{anchor} {parsed.netloc.lower()} {parsed.path.lower()}"
-                  for candidate_id, aliases in candidates.items():
-                      if candidate_id in resolved:
-                          continue
-                      if any(alias in identity_surface for alias in aliases):
-                          resolved[candidate_id] = absolute
+          regulator_pages_captured = 0
+          regulator_blind_projection_count = 0
+          visited_regulator_pages = set()
 
-          print("PRODUCT10_GATE_B_ROOT_AUDIT=" + json.dumps(root_audit, sort_keys=True))
-          print("PRODUCT10_GATE_B_RESOLUTION=" + json.dumps({
-              "resolved_candidate_count": len(resolved),
-              "resolved_candidate_ids": sorted(resolved),
-              "unresolved_candidate_ids": sorted(set(candidates) - set(resolved)),
-              "raw_origin_urls_emitted": 0,
-          }, sort_keys=True))
-
-          projections_by_candidate = {}
-          capture_audit = {}
           with tempfile.TemporaryDirectory() as tmpdir:
-              for candidate_id in sorted(resolved):
-                  origin = resolved[candidate_id]
+              queue = deque((root, 0) for root in roots)
+              while queue and regulator_pages_captured < max_regulator_pages:
+                  page_url, depth = queue.popleft()
+                  page_key = opaque(page_url)
+                  if page_key in visited_regulator_pages:
+                      continue
+                  visited_regulator_pages.add(page_key)
+
+                  capture = capture_engine.capture(page_url)
+                  valid = capture_engine.is_valid_capture(capture)
+                  if depth == 0:
+                      root_audit.append({
+                          "root_id": page_key,
+                          "accepted": bool(valid),
+                          "capture_strategy": capture.get("capture_strategy"),
+                          "capture_strategy_attempted": capture.get("capture_strategy_attempted", []),
+                      })
+                  if not valid:
+                      continue
+
+                  regulator_pages_captured += 1
+                  html = capture.get("html", "")
+                  soup = BeautifulSoup(html, "lxml")
+
+                  # Identity-only machine-side resolution of preregistered insurers.
+                  # External links are collapsed to their origin; raw values never log.
+                  for link in soup.find_all("a"):
+                      href = link.get("href")
+                      if not href:
+                          continue
+                      absolute = urljoin(page_url, href)
+                      parsed = urlparse(absolute)
+                      if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+                          continue
+                      if host_key(absolute).endswith("irdai.gov.in"):
+                          continue
+                      anchor = link.get_text(" ", strip=True)
+                      surface = f"{anchor} {parsed.hostname or ''} {parsed.path}"
+                      candidate_id = candidate_match(surface)
+                      if candidate_id and candidate_id not in resolved_origins:
+                          resolved_origins[candidate_id] = f"{parsed.scheme}://{parsed.netloc}/"
+
+                  # Existing DiscoveryAgent + blind projector govern regulator-internal
+                  # metadata traversal. Only projectable regulatory metadata is queued.
+                  html_path = Path(tmpdir) / f"regulator-{regulator_pages_captured}.html"
+                  html_path.write_text(html, encoding="utf-8")
+                  discovered = discovery_agent.discover_from_html_file(
+                      insurer_id="irdai_regulator",
+                      source_url=page_url,
+                      html_path=str(html_path),
+                  )
+                  next_internal = []
+                  for raw_record in discovered:
+                      record = dict(raw_record)
+                      record["discovery_origin"] = "captured_html"
+                      destination = record.get("discovered_url", "")
+                      if not host_key(destination).endswith("irdai.gov.in"):
+                          continue
+                      try:
+                          projection = BlindDiscoveryLinkProjector.project(record).to_dict()
+                      except BlindDiscoveryLinkProjectionError:
+                          continue
+                      regulator_blind_projection_count += 1
+                      if depth < max_regulator_depth:
+                          next_internal.append((projection["destination_id"], destination))
+
+                  for _destination_id, destination in sorted(next_internal):
+                      queue.append((destination, depth + 1))
+
+              print("PRODUCT10_GATE_B_ROOT_AUDIT=" + json.dumps(root_audit, sort_keys=True))
+              print("PRODUCT10_GATE_B_REGULATOR_TRAVERSAL=" + json.dumps({
+                  "regulator_pages_captured_count": regulator_pages_captured,
+                  "regulator_blind_projection_count": regulator_blind_projection_count,
+                  "max_regulator_depth": max_regulator_depth,
+                  "max_regulator_pages": max_regulator_pages,
+                  "raw_regulator_urls_emitted": 0,
+              }, sort_keys=True))
+              print("PRODUCT10_GATE_B_RESOLUTION=" + json.dumps({
+                  "resolved_candidate_count": len(resolved_origins),
+                  "resolved_candidate_ids": sorted(resolved_origins),
+                  "unresolved_candidate_ids": sorted(set(candidates) - set(resolved_origins)),
+                  "raw_origin_urls_emitted": 0,
+              }, sort_keys=True))
+
+              projections_by_candidate = {}
+              capture_audit = {}
+              for candidate_id in sorted(resolved_origins):
+                  origin = resolved_origins[candidate_id]
                   capture = capture_engine.capture(origin)
                   valid = capture_engine.is_valid_capture(capture)
                   capture_audit[candidate_id] = {
@@ -132,7 +215,7 @@ jobs:
                       projections_by_candidate[candidate_id] = []
                       continue
 
-                  html_path = Path(tmpdir) / f"{candidate_id}.html"
+                  html_path = Path(tmpdir) / f"insurer-{candidate_id}.html"
                   html_path.write_text(capture.get("html", ""), encoding="utf-8")
                   discovered = discovery_agent.discover_from_html_file(
                       insurer_id=candidate_id,
@@ -140,15 +223,21 @@ jobs:
                       html_path=str(html_path),
                   )
                   projected = []
-                  for record in discovered:
-                      record = dict(record)
+                  for raw_record in discovered:
+                      record = dict(raw_record)
                       record["discovery_origin"] = "captured_html"
+                      destination = record.get("discovered_url", "")
+                      if host_key(destination) != host_key(origin):
+                          continue
                       try:
                           projection = BlindDiscoveryLinkProjector.project(record).to_dict()
                       except BlindDiscoveryLinkProjectionError:
                           continue
                       projected.append(projection)
-                  projections_by_candidate[candidate_id] = projected
+                  projections_by_candidate[candidate_id] = sorted(
+                      projected,
+                      key=lambda item: (item["priority"], item["destination_id"]),
+                  )
 
           print("PRODUCT10_GATE_B_CAPTURE_AUDIT=" + json.dumps(capture_audit, sort_keys=True))
           for candidate_id in sorted(projections_by_candidate):
@@ -167,7 +256,8 @@ jobs:
               "decision": "PASS" if passing else "FAIL",
               "passing_candidate_ids": passing,
               "passing_candidate_count": len(passing),
-              "resolved_candidate_count": len(resolved),
+              "resolved_candidate_count": len(resolved_origins),
+              "raw_regulator_urls_emitted": 0,
               "raw_origin_urls_emitted": 0,
               "raw_discovered_urls_emitted": 0,
               "anchor_text_emitted": 0,
