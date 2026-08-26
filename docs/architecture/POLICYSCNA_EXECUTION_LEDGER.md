@@ -118,6 +118,8 @@ Observed result:
 - Product #9 closed `EXPERIMENT_UNSCORED / PRE_RENDER_METADATA_PATH_UNAVAILABLE_FOR_ALL_PREREGISTERED_RETRY_INSURERS`;
 - Product #9 does not prove or falsify semantic repeatability and does not authorize Motor.
 
+**No Product #9 candidate screening is authorized now or in any future run. Product #9 is an immutable closed experiment.**
+
 Methodology finding:
 
 The C5.2A operator guardrail was stricter than the actual blindness requirement. The true requirement is that semantic body content must not reach the selector/operator before selection; machine-only capture may occur if only a governed sanitized projection crosses the boundary. This finding cannot reopen or repair Product #9 retroactively.
