@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_preselection_classification_source_boundary_decision_v1",
+  "record_status": "FROZEN_PENDING_MERGE",
+  "baseline_commit": "005e9707cb183c949cdbb48e123cfaa2dc0affbd",
+  "decision": "SEMANTICALLY_BEARING_FILED_PRODUCT_DOCUMENTS_ARE_NOT_PRESELECTION_METADATA_BY_FIELD_FILTERING",
+  "rationale": [
+    "A source does not become metadata merely because a desired field inside it is high-level classification data.",
+    "Regulator-hosted filed product documents may contain allowed classification fields adjacent to target or other semantic content.",
+    "Admitting a policy/prospectus/CIS-like document and filtering forbidden content after parsing would weaken the artifact-class firewall and make blindness depend on parser restraint rather than source-boundary structure.",
+    "Preselection classification evidence is admissible only when exposed through a regulator- or insurer-controlled metadata artifact, filing record, registry row, or structurally isolated filing cover sheet whose allowed field set is bounded by construction before selector exposure.",
+    "Machine acquisition of a forbidden semantic-bearing artifact for the purpose of extracting only selected classification fields remains forbidden during blind preselection unless a future architecture decision explicitly changes the artifact-class boundary."
+  ],
+  "authoritative_observations": {
+    "irdai_health_product_register": {
+      "supports": ["archive/current status", "insurer", "UIN", "product name", "some product-type labels such as Individual, Group, Retail, Add On"],
+      "limitation": "Type Of Product is historically heterogeneous and cannot be treated as a universally complete taxonomy field."
+    },
+    "regulator_hosted_filed_product_documents": {
+      "supports_examples": ["Product Type: Individual/Floater", "Category of Cover: Indemnity/Benefit"],
+      "boundary_classification": "SEMANTICALLY_BEARING_DOCUMENT",
+      "preselection_admissible": false,
+      "reason": "The same document/table may expose waiting-period, benefit, eligibility, coverage or other semantic content adjacent to classification fields."
+    }
+  },
+  "allowed_preselection_source_classes": [
+    "regulator_product_registry_row",
+    "regulator_filing_metadata_record",
+    "regulator_structured_product_index",
+    "insurer_structured_product_index",
+    "structurally_isolated_filing_cover_sheet_with_frozen_allowed_fields"
+  ],
+  "forbidden_preselection_source_classes": [
+    "policy_wording",
+    "prospectus",
+    "customer_information_sheet",
+    "cis",
+    "semantic_extract",
+    "filed_product_document_whose_classification_fields_are_obtained_only_after_parsing_semantic-bearing content"
+  ],
+  "blindness_rule": {
+    "principle": "Allowed classification evidence must be bounded by source structure before selector projection, not discovered by reading a semantic-bearing document and discarding forbidden content afterwards.",
+    "target_clause_reads_before_selection": 0,
+    "semantic_fit_selection": false,
+    "raw_location_exposure": false
+  },
+  "impact_on_c5_23": {
+    "benefit_basis": "NOT_YET_DEMONSTRATED_THROUGH_ADMISSIBLE_METADATA_SOURCE",
+    "insurance_object_type": "PARTIALLY_METADATA_ESTABLISHABLE_BUT_NOT_UNIVERSALLY_DEMONSTRATED",
+    "coverage_arrangement": "NOT_YET_DEMONSTRATED_THROUGH_ADMISSIBLE_METADATA_SOURCE",
+    "structural_ceiling_proven": false,
+    "product14_authorized": false
+  },
+  "next_question": "Do authoritative regulator/insurer metadata artifacts, filing records, structured indexes, or structurally isolated cover sheets expose the remaining necessary classification predicates without opening a semantic-bearing product document?",
+  "historical_integrity": {
+    "product11_retry": false,
+    "product12_retry": false,
+    "product13_retry": false,
+    "product14_preregistration": false,
+    "motor": false
+  }
+}
