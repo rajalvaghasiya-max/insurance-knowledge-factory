@@ -16,7 +16,7 @@ def test_uin_index_is_metadata_class() -> None:
     agent = DiscoveryAgent()
 
     result = agent.classify_url(
-        url="https://example.test/downloads/health-product-uin-list",
+        url="https://example.test/health-product-uin-list",
         anchor_text="Health product UIN list",
     )
 
