@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_eligible_universe_preregistration_authorization_v1",
+  "record_status": "PENDING_C5_28_GREEN_MERGE",
+  "becomes_effective_after_merge_of": "health_neutral_selection_measurement_apparatus_decision_c5_28_2026-08-26.json",
+  "authorized_next_action": "HEALTH_GOVERNED_ELIGIBLE_UNIVERSE_PREREGISTRATION_ONLY",
+  "authorized_scope": [
+    "freeze candidate-pool derivation rule",
+    "freeze eligibility predicate and allowed values",
+    "freeze certification evidence/provenance contract",
+    "freeze anti-bias controls and fail-closed ambiguity behavior",
+    "freeze deterministic selection rule that will later consume only opaque eligible IDs"
+  ],
+  "not_authorized": [
+    "construct or certify the eligible universe before preregistration is merged",
+    "select Product #14",
+    "read target clauses",
+    "modify semantic runtime",
+    "modify blind_preselection_product_metadata_v2",
+    "modify blind_product_identity_currentness_evidence_v1",
+    "weaken C5.24 source firewall for runtime selector",
+    "retry Product #11, #12 or #13",
+    "open Motor"
+  ],
+  "required_integrity": [
+    "candidate pool and predicate frozen before candidate certification",
+    "full-pool adjudication with no stop-at-first selection behavior",
+    "target concepts excluded from eligibility",
+    "eligible universe immutable before selection",
+    "selector consumes only opaque eligible IDs and preregistered ordering inputs",
+    "Product #14 remains final experiment of this neutral-selection hardening cycle"
+  ],
+  "product14_authorized": false,
+  "target_clause_reads_authorized": false,
+  "runtime_change_authorized": false,
+  "motor_authorized": false
+}
