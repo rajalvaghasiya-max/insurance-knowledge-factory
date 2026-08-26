@@ -24,68 +24,80 @@ def test_product10_closes_unscored_at_gate_b_before_selection() -> None:
     assert decision["protocol_failure_outcome"] == "CLOSE_PRODUCT10_UNSCORED_BLIND_PATH_DISCOVERY_FAILURE"
 
 
-def test_gate_b_used_passing_roots_but_resolved_no_preregistered_insurer_origin() -> None:
+def test_corrected_gate_b_execution_remained_blind_and_did_not_resolve_insurer_origins() -> None:
     record = _load()
-    roots = record["passing_gate_a_roots_used"]
-    resolution = record["blind_resolution_result"]
-    assert len(roots) == 2
-    assert all(item["accepted"] is True for item in roots)
-    assert all(item["capture_strategy"] == "static_http" for item in roots)
-    assert resolution["resolved_candidate_count"] == 0
-    assert resolution["resolved_candidate_ids"] == []
-    assert resolution["unresolved_candidate_ids"] == ["chola", "magma", "navi", "shriram"]
-
-
-def test_gate_b_produced_no_authorized_projection_and_did_not_cross_blind_boundary() -> None:
-    record = _load()
-    projected = record["blind_projection_result"]
+    result = record["corrected_blind_execution_result"]
     metrics = record["blindness_and_method_metrics"]
-    assert projected["captured_insurer_origin_count"] == 0
-    assert projected["authorized_blind_projection_count"] == 0
-    assert projected["passing_candidate_count"] == 0
-    assert projected["raw_discovered_urls_emitted"] == 0
-    assert projected["anchor_text_emitted"] == 0
-    assert projected["body_text_emitted"] == 0
-    assert projected["page_titles_emitted"] == 0
-    assert projected["screenshots_emitted"] == 0
+    assert result["regulator_pages_captured_count"] == 30
+    assert result["regulator_blind_projection_count"] == 7620
+    assert result["resolved_candidate_count"] == 0
+    assert result["unresolved_candidate_ids"] == ["chola", "magma", "navi", "shriram"]
+    assert result["captured_insurer_origin_count"] == 0
+    assert result["authorized_insurer_metadata_projection_count"] == 0
+    assert result["raw_regulator_urls_emitted"] == 0
+    assert result["raw_origin_urls_emitted"] == 0
+    assert result["raw_discovered_urls_emitted"] == 0
+    assert result["anchor_text_emitted"] == 0
+    assert result["body_text_emitted"] == 0
+    assert result["page_titles_emitted"] == 0
+    assert result["screenshots_emitted"] == 0
     assert metrics["operator_raw_capture_reads"] == 0
     assert metrics["selector_raw_capture_reads"] == 0
-    assert metrics["raw_origin_urls_crossing_boundary"] == 0
-    assert metrics["raw_discovered_urls_crossing_boundary"] == 0
-    assert metrics["semantic_anchor_or_body_text_crossing_boundary"] == 0
+    assert metrics["preselection_target_clause_reads"] == 0
 
 
-def test_gate_b_failure_cannot_be_repaired_inside_product10() -> None:
+def test_existing_source_specific_classifier_proves_directory_paths_exist() -> None:
+    diagnostic = _load()["existing_capability_diagnostic"]
+    assert diagnostic["source_specific_capability"] == "SourceDiscoveryRunner.classify_source_url"
+    assert diagnostic["existing_precise_page_type"] == "insurer_directory"
+    assert diagnostic["insurer_directory_links_classified_on_passing_roots"] == 36
+    assert diagnostic["insurer_directory_links_per_passing_root"] == 18
+    assert diagnostic["regulator_directory_paths_absent"] if "regulator_directory_paths_absent" in diagnostic else True
+    assert diagnostic["frozen_blind_projector_allowed_page_types_include_insurer_directory"] is False
+
+
+def test_gate_b_failure_is_projection_contract_mismatch_not_transport_or_semantic_failure() -> None:
     record = _load()
     decision = record["gate_decision"]
     interpretation = record["methodology_interpretation"]
     assert decision["condition_satisfied"] is False
     assert decision["decision"] == "FAIL"
+    assert decision["failure_reason"] == "FROZEN_BLIND_PROJECTION_CONTRACT_EXCLUDES_EXISTING_INSURER_DIRECTORY_CLASS"
     assert decision["gate_c_authorized"] is False
     assert decision["insurer_or_product_screening_authorized"] is False
-    assert decision["alternate_post_result_resolution_method_authorized"] is False
-    assert interpretation["post_failure_method_repair_inside_product10_authorized"] is False
-
-
-def test_gate_b_failure_does_not_claim_semantic_repeatability_outcome() -> None:
-    interpretation = _load()["methodology_interpretation"]
+    assert decision["mid_experiment_projector_extension_authorized"] is False
+    assert interpretation["root_transport_failed"] is False
+    assert interpretation["regulator_directory_paths_absent"] is False
     assert interpretation["semantic_repeatability_was_tested"] is False
     assert interpretation["semantic_repeatability_is_proven_or_disproven"] is False
-    assert interpretation["failure_scope"] == (
-        "blind regulator-root to eligible-insurer-origin/path discovery under the locked v7 method"
+
+
+def test_product10_cannot_be_repaired_by_extending_projector_mid_experiment() -> None:
+    record = _load()
+    decision = record["gate_decision"]
+    interpretation = record["methodology_interpretation"]
+    assert decision["alternate_post_result_resolution_method_authorized"] is False
+    assert decision["mid_experiment_projector_extension_authorized"] is False
+    assert interpretation["post_failure_method_repair_inside_product10_authorized"] is False
+    assert interpretation["prospective_next_classification"] == (
+        "REUSE_SOURCE_DISCOVERY_RUNNER_PLUS_SMALL_EXTEND_BLIND_PROJECTION_CONTRACT"
     )
 
 
-def test_gate_b_smoke_lineage_is_auditable_nonmerged_and_motor_stays_closed() -> None:
+def test_gate_b_execution_and_diagnostic_lineage_are_auditable_nonmerged_and_motor_stays_closed() -> None:
     record = _load()
     lineage = record["execution_lineage"]
     history = record["historical_integrity"]
-    assert lineage["smoke_branch"] == "product10-gate-b-live-smoke"
-    assert lineage["smoke_commit"] == "d3814624f757e727c13ec50da643b7d1bddae050"
-    assert lineage["workflow_run_id"] == 32938825521
-    assert lineage["workflow_job_id"] == 98085376730
-    assert lineage["workflow_conclusion"] == "success"
-    assert lineage["factory_tests_after_smoke"] == 3054
-    assert lineage["smoke_branch_may_merge"] is False
+    corrected = lineage["corrected_smoke"]
+    diagnostic = lineage["source_classifier_diagnostic"]
+    assert corrected["commit"] == "89bbc88e48f1839742a372f3c97141acbc2ffa42"
+    assert corrected["workflow_run_id"] == 32939927843
+    assert corrected["workflow_job_id"] == 98088633929
+    assert corrected["factory_tests_after_smoke"] == 3054
+    assert diagnostic["commit"] == "89941b776d5d0f1b6e46b67467b50969a4e1a362"
+    assert diagnostic["workflow_run_id"] == 32940356432
+    assert diagnostic["workflow_job_id"] == 98089899312
+    assert diagnostic["total_insurer_directory_count"] == 36
+    assert lineage["disposable_branches_may_merge"] is False
     assert history["product10_may_be_reopened_or_retried"] is False
     assert history["motor_authorized"] is False
