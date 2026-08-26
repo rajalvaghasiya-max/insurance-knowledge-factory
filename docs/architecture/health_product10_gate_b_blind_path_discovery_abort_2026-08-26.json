@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_product10_gate_b_blind_path_discovery_abort_v1",
+  "record_status": "FROZEN_EXPERIMENT_UNSCORED_GATE_B_FAILURE",
+  "experiment": {
+    "domain": "health",
+    "product_number": 10,
+    "product_selected": false,
+    "gate_a_status": "PASS",
+    "gate_b_status": "FAIL",
+    "gate_c_started": false,
+    "product_screening_started": false,
+    "target_clause_reads": 0,
+    "final_experiment_status": "EXPERIMENT_UNSCORED"
+  },
+  "protocol": {
+    "path": "docs/architecture/health_post_hc1_neutral_cold_start_protocol_v7_product10.json",
+    "preregistration_merge_commit": "8d6f0c763333f75ecd5edab2181db23a41783a99",
+    "gate_a_frozen_result_path": "docs/architecture/health_product10_gate_a_root_transport_fitness_2026-08-26.json",
+    "gate_a_result_merge_commit": "ba637b84704105f0de6d04dabaa2e324f3f68f01",
+    "experiment_harness_baseline_commit": "edf344b34196258b04041f2fda2caa07d06d1f72",
+    "semantic_scoring_baseline_commit": "f05ca07283f53f2882ed5da3ca27875ba7253318"
+  },
+  "execution_lineage": {
+    "execution_mode": "disposable_non_merged_github_actions_smoke",
+    "smoke_branch": "product10-gate-b-live-smoke",
+    "smoke_commit": "d3814624f757e727c13ec50da643b7d1bddae050",
+    "workflow_run_id": 32938825521,
+    "workflow_job_id": 98085376730,
+    "workflow_conclusion": "success",
+    "factory_tests_after_smoke": 3054,
+    "factory_tests_conclusion": "passed",
+    "smoke_branch_may_merge": false
+  },
+  "passing_gate_a_roots_used": [
+    {
+      "root_id": "sha256:602b6c282f74d0988c5f04a0394eda1efbaf330c71af73e3ec4b70e3c187457e",
+      "accepted": true,
+      "capture_strategy": "static_http",
+      "capture_strategy_attempted": ["static_http"]
+    },
+    {
+      "root_id": "sha256:f1d11408a4b17d67fa4f75b5be0ca0b286c3ff74e09ff69fa5a38c14968ea5a0",
+      "accepted": true,
+      "capture_strategy": "static_http",
+      "capture_strategy_attempted": ["static_http"]
+    }
+  ],
+  "preregistered_candidate_ids": [
+    "chola",
+    "magma",
+    "navi",
+    "shriram"
+  ],
+  "blind_resolution_result": {
+    "resolved_candidate_count": 0,
+    "resolved_candidate_ids": [],
+    "unresolved_candidate_ids": [
+      "chola",
+      "magma",
+      "navi",
+      "shriram"
+    ],
+    "raw_origin_urls_emitted": 0
+  },
+  "blind_projection_result": {
+    "captured_insurer_origin_count": 0,
+    "authorized_blind_projection_count": 0,
+    "passing_candidate_count": 0,
+    "passing_candidate_ids": [],
+    "raw_discovered_urls_emitted": 0,
+    "anchor_text_emitted": 0,
+    "body_text_emitted": 0,
+    "page_titles_emitted": 0,
+    "screenshots_emitted": 0
+  },
+  "gate_decision": {
+    "minimum_pass_condition": "For at least one preregistered eligible insurer origin obtained through a passing regulator root, existing machine-side capture/discovery must produce at least one authorized blind metadata destination projection without exposing raw semantic-bearing content to the operator or selector.",
+    "condition_satisfied": false,
+    "decision": "FAIL",
+    "protocol_failure_outcome": "CLOSE_PRODUCT10_UNSCORED_BLIND_PATH_DISCOVERY_FAILURE",
+    "final_experiment_status": "EXPERIMENT_UNSCORED",
+    "gate_c_authorized": false,
+    "insurer_or_product_screening_authorized": false,
+    "alternate_post_result_resolution_method_authorized": false
+  },
+  "blindness_and_method_metrics": {
+    "search_engine_queries": 0,
+    "search_engine_fallbacks": 0,
+    "ad_hoc_transport_attempts": 0,
+    "operator_raw_capture_reads": 0,
+    "selector_raw_capture_reads": 0,
+    "raw_origin_urls_crossing_boundary": 0,
+    "raw_discovered_urls_crossing_boundary": 0,
+    "semantic_anchor_or_body_text_crossing_boundary": 0,
+    "product_screening_started": false,
+    "product_selected": false,
+    "preselection_target_clause_reads": 0,
+    "selection_rule_overrides": 0,
+    "product_or_version_substitutions": 0
+  },
+  "methodology_interpretation": {
+    "semantic_repeatability_was_tested": false,
+    "semantic_repeatability_is_proven_or_disproven": false,
+    "failure_scope": "blind regulator-root to eligible-insurer-origin/path discovery under the locked v7 method",
+    "post_failure_method_repair_inside_product10_authorized": false,
+    "note": "Both passing IRDAI roots were machine-captured successfully, but the locked Gate B execution obtained zero of the four preregistered insurer origins and therefore generated no authorized blind metadata destination projection. No alternate parser, forced-browser traversal, search fallback, hostname guess, product substitution or semantic inspection is permitted after this observed result."
+  },
+  "historical_integrity": {
+    "product7_modified": false,
+    "product8_modified": false,
+    "product9_modified": false,
+    "product10_may_be_reopened_or_retried": false,
+    "motor_authorized": false
+  }
+}
