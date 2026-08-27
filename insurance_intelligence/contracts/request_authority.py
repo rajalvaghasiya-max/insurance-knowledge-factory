@@ -11,7 +11,7 @@ DOWNSTREAM_GUARDS = frozenset(
         "STANDARD_ASSERTION_GROUNDING",
         "ADVISORY_CONTEXT_AND_SAFETY_REQUIRED",
         "SPLIT_ASSERTIVE_AND_ADVISORY_WITH_ADVISORY_SAFETY_REQUIRED",
-        "CLARIFY_REQUESTED_AUTHORITY",
+        "ADVISORY_HOLD_AND_CLARIFY_AUTHORITY",
     }
 )
 
@@ -43,6 +43,8 @@ class RequestAuthorityOutput:
     classification_basis: str
     downstream_guard: str
     intent_analysis_authorized: bool
+    advisory_safety_obligation: bool
+    authority_clarification_required: bool
     recommendation_authorized: bool
 
 
@@ -69,6 +71,8 @@ def build_output(
     classification_basis: str,
     downstream_guard: str,
     intent_analysis_authorized: bool,
+    advisory_safety_obligation: bool,
+    authority_clarification_required: bool,
     recommendation_authorized: bool = False,
     contract_version: str = SUPPORTED_CONTRACT_VERSION,
 ) -> RequestAuthorityOutput:
@@ -82,6 +86,10 @@ def build_output(
         raise RequestAuthorityError("unsupported downstream_guard")
     if not isinstance(intent_analysis_authorized, bool):
         raise RequestAuthorityError("intent_analysis_authorized must be boolean")
+    if not isinstance(advisory_safety_obligation, bool):
+        raise RequestAuthorityError("advisory_safety_obligation must be boolean")
+    if not isinstance(authority_clarification_required, bool):
+        raise RequestAuthorityError("authority_clarification_required must be boolean")
     if recommendation_authorized is not False:
         raise RequestAuthorityError(
             "request-authority boundary may never authorize a recommendation"
@@ -94,18 +102,32 @@ def build_output(
         "ASSERTIVE": "STANDARD_ASSERTION_GROUNDING",
         "ADVISORY": "ADVISORY_CONTEXT_AND_SAFETY_REQUIRED",
         "MIXED": "SPLIT_ASSERTIVE_AND_ADVISORY_WITH_ADVISORY_SAFETY_REQUIRED",
-        "UNRESOLVED": "CLARIFY_REQUESTED_AUTHORITY",
+        "UNRESOLVED": "ADVISORY_HOLD_AND_CLARIFY_AUTHORITY",
     }[authority_class]
     if downstream_guard != expected_guard:
         raise RequestAuthorityError(
             f"downstream_guard must be {expected_guard} for {authority_class}"
         )
-    if authority_class == "UNRESOLVED" and intent_analysis_authorized:
-        raise RequestAuthorityError("UNRESOLVED must withhold intent analysis")
-    if authority_class != "UNRESOLVED" and not intent_analysis_authorized:
+
+    # Authority and intent are independent classifications over the same request.
+    # Authority uncertainty must never prevent intent analysis from producing a
+    # potentially useful independent signal; reconciliation happens downstream.
+    if intent_analysis_authorized is not True:
         raise RequestAuthorityError(
-            "resolved authority classes must authorize intent analysis"
+            "authority boundary must not suppress independent intent analysis"
         )
+
+    expected_advisory_obligation = authority_class in {"ADVISORY", "MIXED", "UNRESOLVED"}
+    if advisory_safety_obligation is not expected_advisory_obligation:
+        raise RequestAuthorityError(
+            "advisory_safety_obligation does not match authority class"
+        )
+    expected_clarification = authority_class == "UNRESOLVED"
+    if authority_clarification_required is not expected_clarification:
+        raise RequestAuthorityError(
+            "authority_clarification_required does not match authority class"
+        )
+
     if authority_class == "ASSERTIVE" and advisory:
         raise RequestAuthorityError("ASSERTIVE output cannot contain advisory cues")
     if authority_class == "ADVISORY" and assertive:
@@ -123,6 +145,8 @@ def build_output(
         matched_advisory_cues=advisory,
         classification_basis=basis,
         downstream_guard=downstream_guard,
-        intent_analysis_authorized=intent_analysis_authorized,
+        intent_analysis_authorized=True,
+        advisory_safety_obligation=advisory_safety_obligation,
+        authority_clarification_required=authority_clarification_required,
         recommendation_authorized=False,
     )
