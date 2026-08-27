@@ -50,22 +50,26 @@ def classify_request_authority(request: RequestAuthorityInput) -> RequestAuthori
         authority_class = "MIXED"
         guard = "SPLIT_ASSERTIVE_AND_ADVISORY_WITH_ADVISORY_SAFETY_REQUIRED"
         basis = "matched_assertive_and_advisory_cues"
-        intent_allowed = True
+        advisory_obligation = True
+        clarification_required = False
     elif advisory:
         authority_class = "ADVISORY"
         guard = "ADVISORY_CONTEXT_AND_SAFETY_REQUIRED"
         basis = "matched_advisory_cues"
-        intent_allowed = True
+        advisory_obligation = True
+        clarification_required = False
     elif assertive:
         authority_class = "ASSERTIVE"
         guard = "STANDARD_ASSERTION_GROUNDING"
         basis = "matched_assertive_cues"
-        intent_allowed = True
+        advisory_obligation = False
+        clarification_required = False
     else:
         authority_class = "UNRESOLVED"
-        guard = "CLARIFY_REQUESTED_AUTHORITY"
+        guard = "ADVISORY_HOLD_AND_CLARIFY_AUTHORITY"
         basis = "no_governed_authority_cue_matched"
-        intent_allowed = False
+        advisory_obligation = True
+        clarification_required = True
 
     return build_output(
         request_id=request.request_id,
@@ -74,7 +78,9 @@ def classify_request_authority(request: RequestAuthorityInput) -> RequestAuthori
         matched_advisory_cues=advisory,
         classification_basis=basis,
         downstream_guard=guard,
-        intent_analysis_authorized=intent_allowed,
+        intent_analysis_authorized=True,
+        advisory_safety_obligation=advisory_obligation,
+        authority_clarification_required=clarification_required,
         recommendation_authorized=False,
         contract_version=request.contract_version,
     )
