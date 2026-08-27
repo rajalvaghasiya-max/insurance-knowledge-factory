@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from types import SimpleNamespace
+
 import pytest
 
 from insurance_intelligence.authority_enforced_decision_gate import AuthorityEnforcedDecisionGate
@@ -18,7 +20,7 @@ class SpyDecisionGate:
 
     def decide(self, data):
         self.calls += 1
-        return object()
+        return SimpleNamespace(decision="APPROVED_WITH_LIMITATIONS")
 
 
 def decision_input(request_id: str = "req-1") -> DecisionGateInput:
@@ -82,6 +84,8 @@ def test_consistent_assertive_path_delegates_to_existing_decision_gate():
     assert result.decision_gate_called is True
     assert result.ordinary_assertion_path_permitted is True
     assert result.advisory_safety_obligation is False
+    assert result.decision_output is not None
+    assert result.decision_output.decision == "APPROVED_WITH_LIMITATIONS"
     assert spy.calls == 1
 
 
@@ -210,7 +214,7 @@ def test_delegation_cannot_be_forged_for_advisory_posture():
             advisory_safety_obligation=True,
             ordinary_assertion_path_permitted=False,
             decision_gate_called=True,
-            decision_output=object(),  # type: ignore[arg-type]
+            decision_output=SimpleNamespace(decision="APPROVED"),  # type: ignore[arg-type]
             clarification_required=False,
             out_of_scope=False,
             basis="test",
