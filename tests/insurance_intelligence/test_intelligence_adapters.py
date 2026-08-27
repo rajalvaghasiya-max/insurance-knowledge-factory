@@ -33,13 +33,22 @@ def request(mode: str = "INTELLIGENCE_RESPONSE", *, allow_llm: bool = True):
     )
 
 
+def _stage_index(stage: str) -> int:
+    return INTELLIGENCE_RESPONSE_STAGE_ORDER.index(stage)
+
+
 def adapters():
+    evidence_stages = {
+        "EVIDENCE_RESOLUTION_ENFORCED",
+        "DECISION_GATE_AUTHORITY_ENFORCED",
+        "EXPLANATION_AUTHORITY_ENFORCED",
+    }
     return tuple(
         build_intelligence_stage_adapter(
             stage=stage,
             capability=deterministic_fake_intelligence_capability(
                 output_type=f"{stage.lower()}_receipt",
-                evidence_ids=("evidence-1",) if stage in {"APPLICABILITY", "DECISION_GATE", "EXPLANATION"} else (),
+                evidence_ids=("evidence-1",) if stage in evidence_stages else (),
             ),
         )
         for stage in INTELLIGENCE_RESPONSE_STAGE_ORDER
@@ -186,14 +195,18 @@ def test_chain_passes_only_prior_output_forward():
 
 def test_chain_preserves_response_linkage():
     run = execute_intelligence_adapter_chain(request=request(), adapters=adapters())
-    assert run.deterministic_response_id == run.stage_results[8].outputs[0].output_id
-    assert run.released_response_id == run.stage_results[9].outputs[0].output_id
-    assert run.evaluation_report_id == run.stage_results[10].outputs[0].output_id
+    response_index = _stage_index("RESPONSE_ASSEMBLY")
+    llm_index = _stage_index("LLM_RENDERING")
+    evaluation_index = _stage_index("FINAL_EVALUATION")
+    assert run.deterministic_response_id == run.stage_results[response_index].outputs[0].output_id
+    assert run.released_response_id == run.stage_results[llm_index].outputs[0].output_id
+    assert run.evaluation_report_id == run.stage_results[evaluation_index].outputs[0].output_id
 
 
 def test_llm_disabled_uses_deterministic_response():
     run = execute_intelligence_adapter_chain(request=request(allow_llm=False), adapters=adapters())
-    assert run.stage_results[9].status == "NOT_REQUIRED"
+    llm_index = _stage_index("LLM_RENDERING")
+    assert run.stage_results[llm_index].status == "NOT_REQUIRED"
     assert run.released_response_id == run.deterministic_response_id
 
 
@@ -207,12 +220,13 @@ def test_full_cycle_uses_governed_sequence_offset():
 
 def test_failure_blocks_all_downstream_stages():
     values = list(adapters())
-    values[3] = build_intelligence_stage_adapter(
+    context_index = _stage_index("CONTEXT_BUILDING")
+    values[context_index] = build_intelligence_stage_adapter(
         stage="CONTEXT_BUILDING", capability=lambda **_: (_ for _ in ()).throw(RuntimeError("bad context"))
     )
     run = execute_intelligence_adapter_chain(request=request(), adapters=values)
-    assert run.stage_results[3].status == "FAILED"
-    assert all(item.status == "BLOCKED" for item in run.stage_results[4:])
+    assert run.stage_results[context_index].status == "FAILED"
+    assert all(item.status == "BLOCKED" for item in run.stage_results[context_index + 1:])
     assert run.blocked
 
 
@@ -230,8 +244,8 @@ def test_blocked_run_exposes_no_response_ids():
 
 def test_evidence_ids_are_preserved():
     run = execute_intelligence_adapter_chain(request=request(), adapters=adapters())
-    applicability = run.stage_results[5]
-    assert applicability.outputs[0].evidence_ids == ("evidence-1",)
+    evidence_stage = run.stage_results[_stage_index("EVIDENCE_RESOLUTION_ENFORCED")]
+    assert evidence_stage.outputs[0].evidence_ids == ("evidence-1",)
 
 
 def test_adapter_run_is_immutable():
