@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Mapping
 
 from insurance_intelligence.contracts.authority_intent_reconciliation import (
     AuthorityIntentReconciliationOutput,
@@ -13,6 +12,7 @@ SUPPORTED_CONTRACT_VERSION = "1.0"
 ENFORCEMENT_OUTCOMES = frozenset(
     {
         "DELEGATED_TO_DECISION_GATE",
+        "ADVISORY_PATH_NOT_AUTHORIZED",
         "AUTHORITY_CLARIFICATION_REQUIRED",
         "RECONCILIATION_CLARIFICATION_REQUIRED",
         "INTENT_EXIT_REQUIRED",
@@ -131,6 +131,14 @@ def build_result(
     if ordinary_assertion_path_permitted and advisory_safety_obligation:
         raise AuthorityEnforcementContractError(
             "ordinary assertion path cannot coexist with advisory obligation"
+        )
+    if enforcement_outcome == "ADVISORY_PATH_NOT_AUTHORIZED" and not advisory_safety_obligation:
+        raise AuthorityEnforcementContractError(
+            "advisory-path withholding requires advisory safety obligation"
+        )
+    if enforcement_outcome == "DELEGATED_TO_DECISION_GATE" and not ordinary_assertion_path_permitted:
+        raise AuthorityEnforcementContractError(
+            "v1 delegates only the ordinary assertive path"
         )
     if not isinstance(basis, str) or not basis.strip():
         raise AuthorityEnforcementContractError("basis must be non-empty")
