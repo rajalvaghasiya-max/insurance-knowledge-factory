@@ -82,15 +82,22 @@ KNOWLEDGE_BUILD_STAGE_ORDER = (
     "KNOWLEDGE_CERTIFICATION",
 )
 
+# Guarded canonical response order after the Insurance Intelligence safety-foundation
+# closure. Guarded stages own delegation to their legacy components; do not add a
+# second unguarded Evidence Resolver, Decision Gate, or Explanation stage after them.
 INTELLIGENCE_RESPONSE_STAGE_ORDER = (
     "REQUEST_INTAKE",
     "CERTIFIED_KNOWLEDGE_RETRIEVAL",
+    "AUTHORITY_CLASSIFICATION",
     "INTENT_ANALYSIS",
+    "AUTHORITY_INTENT_RECONCILIATION",
     "CONTEXT_BUILDING",
+    "INSTANCE_SUFFICIENCY",
     "REASONING_PLANNING",
-    "APPLICABILITY",
-    "DECISION_GATE",
-    "EXPLANATION",
+    "EVIDENCE_RESOLUTION_ENFORCED",
+    "REASONING",
+    "DECISION_GATE_AUTHORITY_ENFORCED",
+    "EXPLANATION_AUTHORITY_ENFORCED",
     "RESPONSE_ASSEMBLY",
     "LLM_RENDERING",
     "FINAL_EVALUATION",

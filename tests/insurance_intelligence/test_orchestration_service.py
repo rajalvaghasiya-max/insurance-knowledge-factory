@@ -109,7 +109,7 @@ def test_full_cycle_succeeds():
     req = request("FULL_CYCLE_CERTIFICATION", question="q", audience="customer")
     execution = run_full_cycle_certification(request=req, knowledge_adapters=k_adapters(), intelligence_adapters=i_adapters())
     assert execution.result.status == "SUCCEEDED"
-    assert len(execution.result.stage_results) == 21
+    assert len(execution.result.stage_results) == len(KNOWLEDGE_BUILD_STAGE_ORDER) + len(INTELLIGENCE_RESPONSE_STAGE_ORDER)
     assert execution.result.knowledge_snapshot_id
 
 
@@ -128,7 +128,10 @@ def test_knowledge_failure_blocks_suffix():
 
 def test_response_failure_blocks_suffix():
     req = request("INTELLIGENCE_RESPONSE", question="q", audience="customer", knowledge_snapshot_id="snap")
-    execution = run_intelligence_response(request=req, adapters=i_adapters(fail_stage="DECISION_GATE"))
+    execution = run_intelligence_response(
+        request=req,
+        adapters=i_adapters(fail_stage="DECISION_GATE_AUTHORITY_ENFORCED"),
+    )
     assert execution.result.status == "FAILED"
     assert execution.result.deterministic_response_id is None
 
@@ -190,7 +193,7 @@ def test_full_cycle_runtime_starts_from_new_snapshot():
     req = request("FULL_CYCLE_CERTIFICATION", question="q", audience="customer")
     execution = run_full_cycle_certification(request=req, knowledge_adapters=k_adapters(), intelligence_adapters=i_adapters())
     snapshot = execution.result.knowledge_snapshot_id
-    assert execution.result.stage_results[10].input_ids == (snapshot,)
+    assert execution.result.stage_results[len(KNOWLEDGE_BUILD_STAGE_ORDER)].input_ids == (snapshot,)
 
 
 def test_no_response_ids_on_knowledge_only_run():
