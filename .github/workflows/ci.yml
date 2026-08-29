@@ -36,5 +36,8 @@ jobs:
       - name: Verify dependency consistency
         run: .ci-venv/bin/python -m pip check
 
+      - name: Validate capability control plane
+        run: .ci-venv/bin/python -m scripts.check_capability_control
+
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
