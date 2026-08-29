@@ -15,12 +15,13 @@
       "reuse_policy": "REUSE",
       "ownership_paths": [
         "insurance_intelligence/evaluation/provider.py",
-        "insurance_intelligence/evaluation/harness.py"
+        "insurance_intelligence/evaluation/harness.py",
+        "insurance_intelligence/evaluation/dataset.py"
       ],
       "introduced_by": "MO-022F.4",
       "supersedes": [],
       "superseded_by": null,
-      "notes": "Provider-neutral Protocol/injected adapter boundary. Concrete local API-key configuration is intentionally outside repository authority."
+      "notes": "Provider-neutral Protocol/injected adapter boundary. The versioned dataset loader is support infrastructure for this controlled harness. Concrete local API-key configuration is intentionally outside repository authority."
     },
     {
       "capability_id": "LLM.EVALUATION.DETERMINISTIC_BASELINE",
