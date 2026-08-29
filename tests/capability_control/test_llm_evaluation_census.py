@@ -15,6 +15,7 @@ def test_llm_evaluation_capabilities_are_registered_with_governed_lifecycle():
     assert by_id["LLM.EVALUATION.RESPONSIBILITY_DECISION_REPORTING"].lifecycle_status == "ACTIVE"
     assert by_id["LLM.EVALUATION.HYBRID_RENDERING_BASELINE"].lifecycle_status == "ACTIVE"
     assert by_id["LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME"].lifecycle_status == "ACTIVE"
+    assert by_id["II.EVALUATION.TERMINOLOGY_CONTROLLED_PACK"].lifecycle_status == "ACTIVE"
 
 
 def test_old_mo021_pipeline_evaluator_is_not_misrepresented_as_current_end_to_end_fitness():
