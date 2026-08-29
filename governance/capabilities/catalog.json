@@ -1,0 +1,32 @@
+{
+  "catalog_version": "1.0",
+  "enforcement_mode": "RECONCILIATION",
+  "governed_roots": [
+    "capability_control"
+  ],
+  "capabilities": [
+    {
+      "capability_id": "PLATFORM.CAPABILITY_CONTROL_PLANE",
+      "name": "PolicyScna Capability Control Plane",
+      "responsibility": "Govern stable capability identity, semantic ownership, lifecycle and reuse policy, then reconcile those claims continuously against repository-derived structure.",
+      "plane": "PLATFORM_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Repository architecture-memory integrity control; it does not decide insurance truth or runtime answer content.",
+      "safety_invariants": [
+        "Derivable repository facts are verified from the tree rather than trusted as parallel catalog data.",
+        "NEW capability classification is never inferred merely from absence of an exact vocabulary match.",
+        "The catalog remains descriptive and must not carry roadmap or next-action authority.",
+        "Strict unregistered-capability enforcement may be enabled only after the governed census is reconciled.",
+        "The control plane is subject to its own scanner and validation rules."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "capability_control"
+      ],
+      "introduced_by": "BLOCKER-202",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Initial self-registration. Repository-wide census is intentionally incomplete while enforcement_mode remains RECONCILIATION."
+    }
+  ]
+}
