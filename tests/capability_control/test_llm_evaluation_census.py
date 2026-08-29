@@ -14,6 +14,7 @@ def test_llm_evaluation_capabilities_are_registered_with_governed_lifecycle():
     assert by_id["LLM.EVALUATION.DISAGREEMENT_ANALYSIS"].lifecycle_status == "ACTIVE"
     assert by_id["LLM.EVALUATION.RESPONSIBILITY_DECISION_REPORTING"].lifecycle_status == "ACTIVE"
     assert by_id["LLM.EVALUATION.HYBRID_RENDERING_BASELINE"].lifecycle_status == "ACTIVE"
+    assert by_id["LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME"].lifecycle_status == "ACTIVE"
 
 
 def test_old_mo021_pipeline_evaluator_is_not_misrepresented_as_current_end_to_end_fitness():
@@ -35,4 +36,16 @@ def test_preflight_surfaces_existing_llm_comparison_capability():
     ids = tuple(candidate.capability_id for candidate in result.candidates)
     assert "LLM.EVALUATION.DISAGREEMENT_ANALYSIS" in ids
     assert "LLM.EVALUATION.HYBRID_RENDERING_BASELINE" in ids
+    assert result.new_authorized is False
+
+
+def test_preflight_surfaces_existing_controlled_llm_renderer():
+    catalog = load_catalog("governance/capabilities/catalog.json")
+    result = preflight_capability(
+        catalog=catalog,
+        query="build controlled LLM renderer provider fallback fidelity",
+    )
+
+    ids = tuple(candidate.capability_id for candidate in result.candidates)
+    assert "LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME" in ids
     assert result.new_authorized is False
