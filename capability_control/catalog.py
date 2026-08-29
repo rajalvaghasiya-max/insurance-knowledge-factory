@@ -2,7 +2,7 @@
 
 The catalog intentionally stores only facts that are not safely derivable from
 the repository tree: responsibility, authority role, lifecycle, reuse policy,
-ownership boundaries and lineage.  File existence and structural coverage are
+ownership boundaries and lineage. File existence and structural coverage are
 verified by the scanner rather than copied into parallel documentation.
 """
 from __future__ import annotations
@@ -256,10 +256,46 @@ def validate_catalog(raw: object) -> CapabilityCatalog:
     )
 
 
+def _load_fragment_records(fragment_dir: Path) -> list[object]:
+    records: list[object] = []
+    if not fragment_dir.exists():
+        return records
+    if not fragment_dir.is_dir():
+        raise CapabilityCatalogError(f"catalog fragment path is not a directory: {fragment_dir}")
+    for fragment_path in sorted(fragment_dir.glob("*.json")):
+        try:
+            raw = json.loads(fragment_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise CapabilityCatalogError(
+                f"cannot load capability catalog fragment {fragment_path.name}: {exc}"
+            ) from exc
+        if not isinstance(raw, dict) or set(raw) != {"capabilities"}:
+            raise CapabilityCatalogError(
+                f"catalog fragment {fragment_path.name} must contain only a capabilities list"
+            )
+        values = raw.get("capabilities")
+        if not isinstance(values, list) or not values:
+            raise CapabilityCatalogError(
+                f"catalog fragment {fragment_path.name} capabilities must be a non-empty list"
+            )
+        records.extend(values)
+    return records
+
+
 def load_catalog(path: str | Path) -> CapabilityCatalog:
     catalog_path = Path(path)
     try:
         raw = json.loads(catalog_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise CapabilityCatalogError(f"cannot load capability catalog: {exc}") from exc
-    return validate_catalog(raw)
+    if not isinstance(raw, dict):
+        raise CapabilityCatalogError("catalog root must be an object")
+    merged = dict(raw)
+    base_capabilities = merged.get("capabilities")
+    if not isinstance(base_capabilities, list):
+        raise CapabilityCatalogError("capabilities must be a list before fragment merge")
+    merged["capabilities"] = [
+        *base_capabilities,
+        *_load_fragment_records(catalog_path.with_name("catalog.d")),
+    ]
+    return validate_catalog(merged)
