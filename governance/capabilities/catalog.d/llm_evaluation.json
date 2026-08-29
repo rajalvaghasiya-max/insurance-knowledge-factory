@@ -1,0 +1,135 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "LLM.EVALUATION.CONTROLLED_PROVIDER_HARNESS",
+      "name": "Controlled LLM Provider Evaluation Harness",
+      "responsibility": "Execute controlled evaluation cases against an injected LLM provider/model configuration, capture auditable execution traces, and attach deterministic evaluation without treating provider output as insurance truth.",
+      "plane": "LLM_CONTROLLED_EVALUATION",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Controlled evaluation execution infrastructure only; it records provider/model behaviour and cannot authorize production answer generation or override deterministic evaluation.",
+      "safety_invariants": [
+        "Provider, model, model version, prompt version, parameters, timeout and run number remain explicit in each controlled execution.",
+        "Timeouts, provider errors and unexpected exceptions are captured as governed execution statuses rather than converted into successful outputs.",
+        "Every completed controlled case is evaluated by the deterministic LLM evaluator before an EvaluationOutput is returned."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/evaluation/provider.py",
+        "insurance_intelligence/evaluation/harness.py",
+        "insurance_intelligence/evaluation/dataset.py"
+      ],
+      "introduced_by": "MO-022F.4",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Provider-neutral Protocol/injected adapter boundary. The versioned dataset loader is support infrastructure for this controlled harness. Concrete local API-key configuration is intentionally outside repository authority."
+    },
+    {
+      "capability_id": "LLM.EVALUATION.DETERMINISTIC_BASELINE",
+      "name": "Deterministic LLM Output Evaluator",
+      "responsibility": "Evaluate controlled LLM outputs reproducibly against governed semantic requirements and forbidden behaviours using deterministic lexical, numeric, scope, citation, abstention and safety checks.",
+      "plane": "LLM_CONTROLLED_EVALUATION",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Authoritative baseline evaluator within MO-022F controlled experiments; external metrics may inform review but do not replace this verdict.",
+      "safety_invariants": [
+        "Non-completed provider executions are NOT_EVALUATED rather than treated as passes.",
+        "Missing governed requirements and detected forbidden behaviours produce deterministic failure codes.",
+        "Unsupported recommendation, certainty inflation, claim-payment prediction, citation mismatch and numerical alteration are explicit failure classes."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/evaluation/deterministic.py",
+        "insurance_intelligence/contracts/llm_evaluation.py"
+      ],
+      "introduced_by": "MO-022F.3",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "A bounded experiment evaluator, not semantic proof for arbitrary production prose."
+    },
+    {
+      "capability_id": "LLM.EVALUATION.EXTERNAL_METRIC_ADVISORY",
+      "name": "External Metric Advisory Evaluation",
+      "responsibility": "Run bounded injectable external evaluation metrics such as DeepEval-compatible or HHEM-compatible experiments and return advisory metric evidence without changing deterministic verdict authority.",
+      "plane": "LLM_CONTROLLED_EVALUATION",
+      "lifecycle_status": "EXPERIMENTAL",
+      "authority_role": "Advisory experimental signal only; dependency failure, timeout, inconclusive results or metric scores cannot override deterministic evaluation.",
+      "safety_invariants": [
+        "External metric results remain advisory and never mutate deterministic findings.",
+        "Optional metric dependencies and judge models are injected rather than silently imported as production requirements.",
+        "Metric failures and unavailable dependencies fail into explicit ERROR or INCONCLUSIVE evidence."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/evaluation/deepeval.py",
+        "insurance_intelligence/evaluation/hhem.py"
+      ],
+      "introduced_by": "MO-022F.5/6",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Experimental evaluation support; not production answer authority."
+    },
+    {
+      "capability_id": "LLM.EVALUATION.DISAGREEMENT_ANALYSIS",
+      "name": "Deterministic and External Evaluation Disagreement Analysis",
+      "responsibility": "Classify agreement, conflict and inconclusive states between authoritative deterministic LLM-evaluation verdicts and advisory external metric results for review and model-comparison evidence.",
+      "plane": "LLM_CONTROLLED_EVALUATION",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Comparison and review evidence only; the deterministic verdict remains unchanged and authoritative in every disagreement category.",
+      "safety_invariants": [
+        "Case and trace identity must match across deterministic and external evidence.",
+        "Disagreement analysis never reruns evaluators or changes either source result.",
+        "Conflicting or inconclusive external evidence requires review rather than silently promoting external authority."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/evaluation/disagreement.py"
+      ],
+      "introduced_by": "MO-022F.7",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Existing disagreement/comparison capability that must be checked before proposing another LLM-output comparison framework."
+    },
+    {
+      "capability_id": "LLM.EVALUATION.RESPONSIBILITY_DECISION_REPORTING",
+      "name": "Bounded LLM Responsibility Decision Reporting",
+      "responsibility": "Aggregate controlled evaluation cases, deterministic verdicts and disagreement evidence into conservative responsibility-status reports for review.",
+      "plane": "LLM_CONTROLLED_EVALUATION",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Produces controlled-evaluation decision evidence only; it does not enable an LLM responsibility, authorize production use or mutate underlying evaluation results.",
+      "safety_invariants": [
+        "Any deterministic failure rejects the reviewed responsibility.",
+        "Review-required, not-evaluated, conflicting or inconclusive evidence cannot become unconditional approval.",
+        "APPROVED_WITH_DETERMINISTIC_VALIDATION retains deterministic validation as an explicit required control."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/evaluation/responsibility.py"
+      ],
+      "introduced_by": "MO-022F.8",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "A responsibility report is evidence about controlled use, not a runtime authorization token."
+    },
+    {
+      "capability_id": "LLM.EVALUATION.HYBRID_RENDERING_BASELINE",
+      "name": "Deterministic versus LLM Rendering Baseline Comparison",
+      "responsibility": "Compare deterministic explanation text with released or fallback hybrid-rendering text across scenarios, recording wording changes, readability signals, fidelity outcomes, provider failures and fallback rates.",
+      "plane": "LLM_CONTROLLED_EVALUATION",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Measurement and comparison only; it evaluates hybrid-rendering behaviour but does not release customer text or alter rendering safety authority.",
+      "safety_invariants": [
+        "Released section coverage must match deterministic section coverage for non-fallback cases.",
+        "Fallback cases are evaluated against deterministic source text rather than treated as missing outputs.",
+        "Readability improvement metrics do not override fidelity or deterministic safety controls."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/evaluation/llm_baseline.py",
+        "insurance_intelligence/evaluation/baseline_certification.py"
+      ],
+      "introduced_by": "MO-022F",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Existing LLM-output comparison/baseline capability intended for reuse in controlled rendering experiments."
+    }
+  ]
+}

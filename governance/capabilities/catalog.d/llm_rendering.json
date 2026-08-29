@@ -1,0 +1,27 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME",
+      "name": "Controlled Hybrid LLM Rendering Runtime",
+      "responsibility": "Build evidence-locked rendering requests, invoke an injected renderer provider once, parse structured output, apply deterministic fidelity checks, and retain the deterministic explanation as fallback on provider, structure or fidelity failure.",
+      "plane": "LLM_RENDERING",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Reusable controlled candidate-rendering runtime. In the current canonical path its candidate remains subordinate to Rendering Exit Safety and is not the final release authority.",
+      "safety_invariants": [
+        "The deterministic explanation is retained across provider failure, malformed output and fidelity failure.",
+        "Provider invocation is bounded by an explicit provider-neutral contract and controlled model policy.",
+        "Structured candidates are parsed and fidelity-validated before the legacy runtime marks them rendered.",
+        "Canonical customer release still requires the newer Rendering Exit Safety boundary when this runtime is used through the provider-integration bridge."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/llm",
+        "insurance_intelligence/contracts/llm_rendering.py"
+      ],
+      "introduced_by": "MO-022E",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Provider-neutral runtime exists in-repo; no concrete vendor-specific production adapter is claimed by this capability."
+    }
+  ]
+}

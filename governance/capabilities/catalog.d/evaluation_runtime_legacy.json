@@ -1,0 +1,30 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.EVALUATION.MO021_PIPELINE_BASELINE",
+      "name": "MO-021 Deterministic Pipeline Evaluation Baseline",
+      "responsibility": "Execute registered Intelligence evaluation scenarios through an injected stage-adapter pipeline, score transparent assertions, and aggregate deterministic baseline reports across repeated runs.",
+      "plane": "INSURANCE_INTELLIGENCE_EVALUATION",
+      "lifecycle_status": "DISCONNECTED",
+      "authority_role": "Historical deterministic evaluation infrastructure only. Its hard-coded stage order predates the current guarded canonical orchestration and therefore cannot establish current end-to-end fitness without repair.",
+      "safety_invariants": [
+        "The runner executes only explicitly supplied stage adapters and contains no insurance reasoning or assertion logic.",
+        "The assertion engine scores captured runs without modifying or re-executing the pipeline.",
+        "This capability must not be represented as current final-evaluation coverage while its stage order omits authority, reconciliation, instance-sufficiency, guarded evidence/decision/explanation, rendering and final-evaluation stages."
+      ],
+      "reuse_policy": "REPAIR",
+      "ownership_paths": [
+        "insurance_intelligence/evaluation/runner.py",
+        "insurance_intelligence/evaluation/assertions.py",
+        "insurance_intelligence/evaluation/service.py",
+        "insurance_intelligence/evaluation/scenarios.py",
+        "insurance_intelligence/evaluation/fixtures.py",
+        "insurance_intelligence/contracts/evaluation.py"
+      ],
+      "introduced_by": "MO-021",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Code remains useful and tested, but PIPELINE_STAGE_ORDER ends at the legacy RESPONSE_ASSEMBLER path and is not the current canonical guarded response order."
+    }
+  ]
+}

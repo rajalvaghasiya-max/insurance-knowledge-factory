@@ -1,0 +1,25 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.EVALUATION.TERMINOLOGY_CONTROLLED_PACK",
+      "name": "Controlled Terminology Evaluation Pack",
+      "responsibility": "Execute deterministic terminology-resolution cases through the governed terminology orchestration gate and fail when observed READY/BLOCKED outcomes, reasons or canonical bindings diverge from the controlled expectations.",
+      "plane": "INSURANCE_INTELLIGENCE_EVALUATION",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Evaluation-only authority over the controlled terminology pack; it verifies governed terminology behaviour but does not perform fuzzy matching, semantic inference, ranking, recommendation or LLM generation.",
+      "safety_invariants": [
+        "Blocked terminology outcomes may not advance.",
+        "Observed status, reason codes and canonical concept bindings must exactly match the controlled case expectations.",
+        "The pack invokes the existing governed terminology gate rather than duplicating terminology resolution logic."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/evaluation/terminology_controlled_evaluation.py"
+      ],
+      "introduced_by": "MO-024H",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Specialized deterministic evaluation capability for the governed terminology chain."
+    }
+  ]
+}
