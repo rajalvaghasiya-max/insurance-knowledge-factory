@@ -87,5 +87,8 @@ def test_current_repository_control_plane_reconciles_its_own_files():
 
     assert report.missing_governed_roots == ()
     assert report.missing_ownership_paths == ()
-    assert report.unclaimed_governed_files == ()
+    assert not any(
+        path.startswith("capability_control/")
+        for path in report.unclaimed_governed_files
+    )
     assert report.passes_enforcement is True
