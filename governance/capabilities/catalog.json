@@ -2,7 +2,8 @@
   "catalog_version": "1.0",
   "enforcement_mode": "RECONCILIATION",
   "governed_roots": [
-    "capability_control"
+    "capability_control",
+    "insurance_intelligence"
   ],
   "capabilities": [
     {
@@ -27,6 +28,266 @@
       "supersedes": [],
       "superseded_by": null,
       "notes": "Initial self-registration. Repository-wide census is intentionally incomplete while enforcement_mode remains RECONCILIATION."
+    },
+    {
+      "capability_id": "II.REQUEST.AUTHORITY_BOUNDARY",
+      "name": "Assertion and Advisory Request Authority Boundary",
+      "responsibility": "Classify the authority a request asks PolicyScna to exercise independently of intent, including ASSERTIVE, ADVISORY, MIXED and UNRESOLVED authority.",
+      "plane": "INSURANCE_INTELLIGENCE_REQUEST_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Raises advisory safety obligations and clarification holds; it may never authorize recommendations or suppress independent intent analysis.",
+      "safety_invariants": [
+        "UNRESOLVED authority retains an advisory hold rather than defaulting to ASSERTIVE.",
+        "Recommendation authorization remains false for every authority class.",
+        "Authority classification is independent of intent classification."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/request_authority.py",
+        "insurance_intelligence/contracts/request_authority.py"
+      ],
+      "introduced_by": "PR-193",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Deterministic v1 boundary over request text."
+    },
+    {
+      "capability_id": "II.AUTHORITY.INTENT_RECONCILIATION",
+      "name": "Authority and Intent Reconciliation",
+      "responsibility": "Reconcile independent request-authority and intent outputs monotonically so intent may raise the guard but never lower an authority obligation.",
+      "plane": "INSURANCE_INTELLIGENCE_REQUEST_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Computes the minimum downstream guard and ordinary-assertion eligibility while preserving clarification and out-of-scope exits.",
+      "safety_invariants": [
+        "Intent may raise the authority guard but may never lower it.",
+        "RECOMMENDATION and SUITABILITY_ASSESSMENT are advisory intent signals in v1.",
+        "Recommendation authorization remains false."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/authority_intent_reconciliation.py",
+        "insurance_intelligence/contracts/authority_intent_reconciliation.py"
+      ],
+      "introduced_by": "PR-194",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Comparison intents are not intrinsically advisory."
+    },
+    {
+      "capability_id": "II.CONTEXT.BUILDER",
+      "name": "Governed Context Builder",
+      "responsibility": "Build intent-keyed request context, provenance, missing-context state, assumptions, conflicts and answerability without asserting authoritative product, policy or document identity.",
+      "plane": "INSURANCE_INTELLIGENCE_CONTEXT",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Determines context sufficiency only; textual mentions and candidate references do not establish governed insurance identity.",
+      "safety_invariants": [
+        "Context completeness is distinct from authoritative instance identity.",
+        "A mention is not an identity.",
+        "Context requirements remain governed by intent rather than ad-hoc caller rules."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/context"
+      ],
+      "introduced_by": "MO-014",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Identity/currentness resolution is intentionally outside this capability."
+    },
+    {
+      "capability_id": "II.INSTANCE.SUFFICIENCY",
+      "name": "Instance Sufficiency Guard",
+      "responsibility": "Require governed product, policy or document identity attestations before instance-specific planning can proceed.",
+      "plane": "INSURANCE_INTELLIGENCE_IDENTITY_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Blocks planning when required instance identity is missing, ambiguous, unresolved or not bound to active context.",
+      "safety_invariants": [
+        "Resolved instance attestations require canonical identity and immutable identity record references.",
+        "Non-resolved attestations may not carry authoritative identity fields.",
+        "Planning authorization is permitted only for PASS."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/instance_sufficiency.py",
+        "insurance_intelligence/contracts/instance_sufficiency.py"
+      ],
+      "introduced_by": "PR-196",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Reuses governed identity attestations rather than duplicating Knowledge Factory identity resolution."
+    },
+    {
+      "capability_id": "II.EVIDENCE.INSTANCE_ENFORCEMENT",
+      "name": "Evidence Instance Enforcement",
+      "responsibility": "Prevent the existing evidence resolver from running until Instance Sufficiency has passed for the request.",
+      "plane": "INSURANCE_INTELLIGENCE_EVIDENCE_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Preflight wrapper around evidence resolution; it cannot manufacture evidence or identity.",
+      "safety_invariants": [
+        "Evidence resolution is not called when Instance Sufficiency is blocked.",
+        "Authorized evidence resolution requires a PASS instance-sufficiency result.",
+        "The wrapper delegates to the existing MO-016 resolver rather than replacing it."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/evidence_instance_enforcement.py",
+        "insurance_intelligence/contracts/evidence_instance_enforcement.py"
+      ],
+      "introduced_by": "PR-197",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Closes the direct-call bypass from textual/candidate instance references into evidence resolution."
+    },
+    {
+      "capability_id": "II.REASONING.ENGINE",
+      "name": "Deterministic Reasoning Engine",
+      "responsibility": "Derive registered insurance findings from governed evidence using deterministic finding types, derivation types, rules and evidence-sufficiency constraints.",
+      "plane": "INSURANCE_INTELLIGENCE_REASONING",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes.",
+      "safety_invariants": [
+        "Unregistered finding types fail closed.",
+        "Missing, unresolved, conflicting or failed-lineage evidence blocks reasoning as governed.",
+        "Recommendation and suitability are not reasoning finding types."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/reasoning"
+      ],
+      "introduced_by": "MO-017",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "PARTIAL evidence may support intentionally weaker reasoning where the governed rules allow it."
+    },
+    {
+      "capability_id": "II.DECISION.AUTHORITY_ENFORCEMENT",
+      "name": "Authority-Enforced Decision Gate",
+      "responsibility": "Enforce reconciled authority posture before delegating an eligible ordinary assertive request to the existing deterministic Decision and Safety Gate.",
+      "plane": "INSURANCE_INTELLIGENCE_DECISION_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Withholds advisory, mixed, unresolved-authority, clarification and out-of-scope paths before the legacy Decision Gate can be invoked.",
+      "safety_invariants": [
+        "Only the ordinary assertive path may delegate to the existing Decision Gate in v1.",
+        "Advisory safety obligations cannot coexist with ordinary assertion permission.",
+        "Recommendation authorization remains false."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/authority_enforced_decision_gate.py",
+        "insurance_intelligence/contracts/authority_enforcement.py"
+      ],
+      "introduced_by": "PR-195",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "A wrapper, not a rewrite of the proven Decision/Safety Gate."
+    },
+    {
+      "capability_id": "II.EXPLANATION.AUTHORITY_ENFORCEMENT",
+      "name": "Authority-Enforced Explanation Entry",
+      "responsibility": "Prevent raw Decision Gate output from entering explanation generation unless authority enforcement has explicitly cleared the ordinary assertive path.",
+      "plane": "INSURANCE_INTELLIGENCE_EXPLANATION_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Controls entry into the existing evidence-locked Explanation Generator; it does not add findings or recommendation authority.",
+      "safety_invariants": [
+        "Explanation requires a delegated AuthorityEnforcementResult with a preserved Decision Gate output.",
+        "Advisory safety obligations cannot enter the ordinary explanation path.",
+        "Recommendation authorization is prohibited."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/authority_enforced_explanation.py"
+      ],
+      "introduced_by": "PR-198",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Legacy Explanation Generator remains unchanged for historical compatibility."
+    },
+    {
+      "capability_id": "II.RESPONSE.ASSEMBLY",
+      "name": "Deterministic Response Assembler",
+      "responsibility": "Assemble validated explanation content into deterministic response sections while preserving approved finding, evidence, limitation, assumption and clarification lineage.",
+      "plane": "INSURANCE_INTELLIGENCE_RESPONSE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Creates the deterministic deliverable answer baseline; it does not authorize new facts or LLM-originated content.",
+      "safety_invariants": [
+        "Included finding-backed sections preserve evidence references.",
+        "Clarification identifiers remain bound to clarification sections.",
+        "The assembled response is the safe fallback floor for optional rendering."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/response"
+      ],
+      "introduced_by": "MO-020",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Section-level lineage is preserved; finer render-unit mapping is owned by Rendering Exit Safety."
+    },
+    {
+      "capability_id": "II.ORCHESTRATION.CANONICAL_GUARDED_ORDER",
+      "name": "Canonical Guarded Full-Cycle Orchestration Order",
+      "responsibility": "Define and enforce the canonical Intelligence response stage order so authority, instance, evidence, decision and explanation guards cannot be bypassed by orchestration assembly.",
+      "plane": "INSURANCE_INTELLIGENCE_ORCHESTRATION",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Structural ordering authority for full-cycle orchestration; guarded stages own delegation to legacy evidence, decision and explanation components.",
+      "safety_invariants": [
+        "Authority classification and intent analysis both occur before reconciliation.",
+        "Instance Sufficiency occurs before planning and evidence resolution.",
+        "Evidence, Decision Gate and Explanation use guarded top-level stages without duplicate unguarded stages after them."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/contracts/full_cycle.py"
+      ],
+      "introduced_by": "PR-199",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "This proves canonical ordering, not by itself concrete production adapter wiring for every stage."
+    },
+    {
+      "capability_id": "II.RENDERING.EXIT_SAFETY",
+      "name": "Rendering Exit Safety",
+      "responsibility": "Project deterministic response sections into canonical render units and enforce bidirectional commission and omission conformance before rendered text may be released.",
+      "plane": "INSURANCE_INTELLIGENCE_RENDERING_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Final deterministic release authority over optional rendered candidates; failed candidates fall back to the original ResponseAssemblerOutput.",
+      "safety_invariants": [
+        "Every v1 render unit is required.",
+        "Every v1 render unit uses PRESERVE_EXACT.",
+        "Unauthorized additions, required omissions, rewrites, ordering changes and identity mismatches fail closed.",
+        "The original assembler response remains available after every failure."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/rendering_exit_safety.py",
+        "insurance_intelligence/contracts/rendering_exit.py"
+      ],
+      "introduced_by": "PR-200",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Does not claim that tagged arbitrary paraphrase is semantically conformant."
+    },
+    {
+      "capability_id": "II.RENDERING.PROVIDER_INTEGRATION",
+      "name": "Rendering Provider Integration Bridge",
+      "responsibility": "Reuse the existing MO-022 provider invocation stack while preserving provider omissions, additions and rewrites for final evaluation by Rendering Exit Safety.",
+      "plane": "INSURANCE_INTELLIGENCE_RENDERING",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Candidate-production bridge only; provider success and legacy fidelity success are insufficient for release without exit-safety PASS.",
+      "safety_invariants": [
+        "No parallel provider protocol is introduced.",
+        "Unsafe provider output is not normalized away during bridge conversion.",
+        "Rendering Exit Safety remains the final release authority.",
+        "Provider failure, timeout, malformed output or conformance failure preserves the assembler fallback."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/rendering_provider_integration.py"
+      ],
+      "introduced_by": "PR-201",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Vendor-specific production model adapters are not owned by this bridge."
     }
   ]
 }
