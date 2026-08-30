@@ -1,6 +1,5 @@
 ## Capability impact
 
-- Capability IDs checked: <!-- e.g. II.REASONING.ENGINE; PLATFORM.CAPABILITY_CONTROL_PLANE -->
-- Classification: <!-- REUSE / WIRE / EXTEND / REPAIR / REPLACE / NEW -->
+- Committed impact record: `governance/capabilities/impacts/<change-id>.json`
 
-For `REPLACE` or `NEW`, explain why no existing capability can be reused or extended and identify any supersession/authority impact.
+The committed record is the authoritative change declaration. PR text may summarize it, but CI reconciles the immutable repository record against governed diff, scanner evidence, catalog lineage, and structural-fingerprint deltas.

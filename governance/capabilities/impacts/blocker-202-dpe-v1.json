@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "blocker-202-dpe-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "PLATFORM.CAPABILITY_CONTROL_PLANE"
+  ],
+  "rationale": "",
+  "supersession_impact": "NONE",
+  "authority_impact": "Extends repository architecture-memory governance only. It does not change insurance truth, answer authority, or runtime insurance behavior."
+}
