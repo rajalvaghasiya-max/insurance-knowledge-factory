@@ -47,18 +47,11 @@ jobs:
           --base-ref "${{ github.event.pull_request.base.sha }}"
           --head-ref "${{ github.event.pull_request.head.sha }}"
 
-      - name: Materialize reviewed generated-memory bootstrap
-        run: |
-          mkdir -p bootstrap
-          .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline > bootstrap/structural_fingerprints.json
-          .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > bootstrap/POLICYSCNA_CAPABILITY_MAP.md
+      - name: Validate capability implementation fingerprints
+        run: .ci-venv/bin/python -m scripts.check_capability_fingerprints
 
-      - name: Upload generated-memory bootstrap
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-memory-bootstrap
-          path: bootstrap/
-          if-no-files-found: error
+      - name: Validate generated capability map freshness
+        run: .ci-venv/bin/python -m scripts.check_generated_capability_map
 
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
