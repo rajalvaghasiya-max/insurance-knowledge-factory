@@ -7,7 +7,7 @@
 - **Catalog version:** `1.0`
 - **Enforcement mode:** `RECONCILIATION`
 - **Fingerprint schema:** `1.0`
-- **Registered capabilities:** `38`
+- **Registered capabilities:** `40`
 - **Governed roots:** `capability_control`, `insurance_intelligence`
 
 ## Interpretation rules
@@ -114,7 +114,9 @@
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
 | `II.ORCHESTRATION.CANONICAL_GUARDED_ORDER`<br>Canonical Guarded Full-Cycle Orchestration Order | `ACTIVE` | `REUSE` | Structural ordering authority for full-cycle orchestration; guarded stages own delegation to legacy evidence, decision and explanation components. | None | `insurance_intelligence/contracts/full_cycle.py` | `d9afb34903c2` |
+| `II.ORCHESTRATION.CERTIFIED_STAR_PILOT_RUNTIME`<br>Certified Star Comprehensive Pilot Runtime | `ACTIVE` | `REUSE` | Narrow certification and pilot-composition authority for Star Comprehensive conditional co-payment only. It may validate existing governed artifacts, execute already-governed intelligence components in strict mode, and harden the pilot response without changing approved meaning; it cannot crawl, reinterpret source documents, create new product facts, broaden product/topic scope, rank products, assess suitability, or recommend. | None | `insurance_intelligence/orchestration/full_cycle_certification.py`<br>`insurance_intelligence/orchestration/full_cycle_hardening.py`<br>`insurance_intelligence/orchestration/star_comprehensive_knowledge_build.py`<br>`insurance_intelligence/orchestration/star_comprehensive_pilot.py` | `08c98954a25e` |
 | `II.ORCHESTRATION.EXECUTION_RUNTIME`<br>Governed Full-Cycle Execution Runtime | `ACTIVE` | `REUSE` | Execution coordinator only; stage-order authority remains II.ORCHESTRATION.CANONICAL_GUARDED_ORDER and semantic authority remains with each guarded stage capability. | None | `insurance_intelligence/orchestration/service.py`<br>`insurance_intelligence/orchestration/execution_state.py`<br>`insurance_intelligence/orchestration/intelligence_adapters.py`<br>`insurance_intelligence/orchestration/knowledge_adapters.py` | `c905319d02c9` |
+| `II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE`<br>Terminology Admission Orchestration Gate | `ACTIVE` | `REUSE` | Pre-planning terminology admission authority only. It may expose governed canonical terminology and implementation context after deterministic contextual resolution; it cannot create facts, infer unresolved applicability, execute reasoning, generate explanations, compare, rank, assess suitability, or recommend. | None | `insurance_intelligence/orchestration/terminology_gate.py`<br>`insurance_intelligence/orchestration/star_comprehensive_terminology.py` | `1470f5d222c0` |
 
 ### INSURANCE_INTELLIGENCE_PLANNING
 
