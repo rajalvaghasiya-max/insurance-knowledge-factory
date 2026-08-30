@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0",
-  "enforcement_mode": "RECONCILIATION",
+  "enforcement_mode": "STRICT",
   "governed_roots": [
     "capability_control",
     "insurance_intelligence"
@@ -27,7 +27,7 @@
       "introduced_by": "BLOCKER-202",
       "supersedes": [],
       "superseded_by": null,
-      "notes": "Initial self-registration. Repository-wide census is intentionally incomplete while enforcement_mode remains RECONCILIATION."
+      "notes": "STRICT enforcement is enabled after reconciliation reached zero unclaimed governed insurance_intelligence files."
     },
     {
       "capability_id": "II.REQUEST.AUTHORITY_BOUNDARY",
