@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "blocker-202-entity-resolution-census-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.IDENTITY.GOVERNED_PRODUCT_ENTITY_RESOLUTION"
+  ],
+  "rationale": "Register the pre-existing ER-1 through ER-4 governed product entity-resolution runtime during Blocker #202 repository-memory reconciliation. The implementation already exists; this change binds stable semantic ownership without adding runtime feature behavior.",
+  "supersession_impact": "NONE",
+  "authority_impact": "Adds repository-memory classification only. The runtime may admit reviewed identity references, deterministically resolve governed product identity, preserve ambiguity, and publish planner identity scope only for a unique resolution. It does not verify source evidence, infer identity, retrieve product evidence, compare, rank, assess suitability, or recommend."
+}
