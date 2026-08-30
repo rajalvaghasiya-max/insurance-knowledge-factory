@@ -1,8 +1,5 @@
 from __future__ import annotations
 
-import json
-from pathlib import Path
-
 import pytest
 
 from capability_control.catalog import validate_catalog
@@ -46,14 +43,18 @@ def _fingerprints():
     }
 
 
-def test_render_capability_map_is_deterministic_and_descriptive() -> None:
+def test_render_capability_map_is_deterministic_compact_navigation_view() -> None:
     first = render_capability_map(_catalog(), _fingerprints(), fingerprint_schema_version="1.0")
     second = render_capability_map(_catalog(), _fingerprints(), fingerprint_schema_version="1.0")
     assert first == second
     assert "GENERATED — DO NOT EDIT" in first
     assert "PLATFORM.TEST" in first
-    assert "deterministic test responsibility" in first
-    assert "Never invent roadmap authority." in first
+    assert "Test-only descriptive authority." in first
+    assert "capability_control/test.py" in first
+    assert "a" * 64 in first
+    assert "deterministic test responsibility" not in first
+    assert "Never invent roadmap authority." not in first
+    assert "Detailed responsibility, safety invariants and notes remain in the catalog" in first
     assert "generated_at" not in first
     assert "commit_sha" not in first
 
