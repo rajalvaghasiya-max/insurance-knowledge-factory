@@ -39,8 +39,8 @@ jobs:
       - name: Validate capability control plane
         run: .ci-venv/bin/python -m scripts.check_capability_control
 
-      - name: Bootstrap capability fingerprint baseline
-        run: .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline
+      - name: Validate capability implementation fingerprints
+        run: .ci-venv/bin/python -m scripts.check_capability_fingerprints
 
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
