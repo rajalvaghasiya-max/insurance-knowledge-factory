@@ -1,0 +1,26 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.IDENTITY.GOVERNED_PRODUCT_ENTITY_RESOLUTION",
+      "name": "Governed Product Entity Resolution",
+      "responsibility": "Admit already-reviewed product identity references into an immutable runtime registry, resolve product references by deterministic governed precedence, preserve ambiguity and non-resolution, and publish a bounded planner execution scope only for a unique resolved entity.",
+      "plane": "INSURANCE_INTELLIGENCE_IDENTITY_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Runtime product-identity resolution and planner-scope authority only; it does not verify source documents, extract or infer UINs, retrieve product evidence, resolve terminology beyond normalized exact governed matching, assess suitability, compare, rank, or recommend.",
+      "safety_invariants": [
+        "Runtime identity admission requires a human-reviewed product_identity_reference_v1 with exact UIN evidence and explicit manual-review evidence.",
+        "Resolution uses deterministic governed precedence only and must preserve AMBIGUOUS, NOT_RESOLVED, and INVALID_INPUT outcomes instead of guessing.",
+        "Only a uniquely RESOLVED governed entity may produce a READY planner handoff; blocked or invalid outcomes cannot publish product execution scope.",
+        "Planner handoff carries identity scope only and does not grant evidence, reasoning, comparison, ranking, suitability, or recommendation authority."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/entity_resolution"
+      ],
+      "introduced_by": "ER-1..ER-4",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Census registration of the existing governed product-entity runtime. Factory-side product identity verification remains authoritative upstream; this capability consumes only identity references that satisfy its explicit admission contract."
+    }
+  ]
+}
