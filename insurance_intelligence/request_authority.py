@@ -16,6 +16,7 @@ ASSERTIVE_CUES: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("when", re.compile(r"\bwhen\b", re.I)),
     ("explain", re.compile(r"\b(?:explain|help\s+me\s+understand)\b", re.I)),
     ("covered", re.compile(r"\b(?:is|are|does)\b.{0,60}\bcover(?:ed|age)?\b", re.I)),
+    ("will_apply", re.compile(r"\bwill\b.{0,80}\bapply\b", re.I)),
     ("compare", re.compile(r"\bcompare\b", re.I)),
     ("difference", re.compile(r"\b(?:difference|different)\b", re.I)),
     ("why", re.compile(r"\bwhy\b", re.I)),
