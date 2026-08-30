@@ -7,7 +7,7 @@
 - **Catalog version:** `1.0`
 - **Enforcement mode:** `RECONCILIATION`
 - **Fingerprint schema:** `1.0`
-- **Registered capabilities:** `34`
+- **Registered capabilities:** `35`
 - **Governed roots:** `capability_control`, `insurance_intelligence`
 
 ## Interpretation rules
@@ -76,6 +76,12 @@
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
 | `II.EXPLANATION.AUTHORITY_ENFORCEMENT`<br>Authority-Enforced Explanation Entry | `ACTIVE` | `REUSE` | Controls entry into the existing evidence-locked Explanation Generator; it does not add findings or recommendation authority. | None | `insurance_intelligence/authority_enforced_explanation.py` | `38a15b653c1f` |
+
+### INSURANCE_INTELLIGENCE_GOVERNANCE
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.GOVERNANCE.BYPASS_INVENTORY`<br>Certified-Pilot Bypass Inventory | `ACTIVE` | `REUSE` | Repository/runtime safety inventory only; it may identify reachable or deferred bypass paths but cannot authorize recommendation output, alter routing, or certify an otherwise ungoverned path. | None | `insurance_intelligence/bypass_inventory/classifier.py`<br>`insurance_intelligence/contracts/bypass_inventory.py` | `5bddd080b7bb` |
 
 ### INSURANCE_INTELLIGENCE_IDENTITY_GOVERNANCE
 

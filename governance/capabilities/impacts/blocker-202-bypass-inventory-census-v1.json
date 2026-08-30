@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "blocker-202-bypass-inventory-census-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.GOVERNANCE.BYPASS_INVENTORY"
+  ],
+  "rationale": "Register the pre-existing P2.6 bypass-inventory subsystem during Blocker #202 repository-memory reconciliation. The governed implementation already exists; this change binds stable semantic ownership without adding runtime feature behavior.",
+  "supersession_impact": "NONE",
+  "authority_impact": "Adds repository-memory classification only. The inventory can classify bypass reachability/disposition for certified pilots but cannot authorize recommendations, alter routing, execute legacy paths, or convert ungoverned code into certified behavior."
+}
