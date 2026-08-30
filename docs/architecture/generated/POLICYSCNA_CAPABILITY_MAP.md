@@ -7,7 +7,7 @@
 - **Catalog version:** `1.0`
 - **Enforcement mode:** `RECONCILIATION`
 - **Fingerprint schema:** `1.0`
-- **Registered capabilities:** `37`
+- **Registered capabilities:** `38`
 - **Governed roots:** `capability_control`, `insurance_intelligence`
 
 ## Interpretation rules
@@ -70,6 +70,7 @@
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
 | `II.EVIDENCE.INSTANCE_ENFORCEMENT`<br>Evidence Instance Enforcement | `ACTIVE` | `REUSE` | Preflight wrapper around evidence resolution; it cannot manufacture evidence or identity. | None | `insurance_intelligence/evidence_instance_enforcement.py`<br>`insurance_intelligence/contracts/evidence_instance_enforcement.py` | `66543ac92888` |
+| `II.TOPIC_COMPLETENESS.GOVERNED_EVIDENCE_GATE`<br>Governed Topic Completeness Evidence Gate | `ACTIVE` | `REUSE` | Topic-completeness and explanation-permission authority only; it consumes governed evidence resolver output and registered topic/profile definitions but does not retrieve evidence, infer product facts, resolve product identity, perform claim interpretation, compare products, assess suitability, rank, or recommend. | None | `insurance_intelligence/topic_completeness`<br>`insurance_intelligence/contracts/topic_completeness.py`<br>`insurance_intelligence/contracts/topic_profile.py` | `364e96bb69ac` |
 
 ### INSURANCE_INTELLIGENCE_EXPLANATION
 

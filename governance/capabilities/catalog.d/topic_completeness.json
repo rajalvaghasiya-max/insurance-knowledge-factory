@@ -1,0 +1,28 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.TOPIC_COMPLETENESS.GOVERNED_EVIDENCE_GATE",
+      "name": "Governed Topic Completeness Evidence Gate",
+      "responsibility": "Evaluate registered insurance topic definitions against governed evidence, preserve component-level missing, conflicting, unresolved, dependency, authority, version, and lineage conditions, and decide whether explanation is permitted without generating product facts or recommendations.",
+      "plane": "INSURANCE_INTELLIGENCE_EVIDENCE_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Topic-completeness and explanation-permission authority only; it consumes governed evidence resolver output and registered topic/profile definitions but does not retrieve evidence, infer product facts, resolve product identity, perform claim interpretation, compare products, assess suitability, rank, or recommend.",
+      "safety_invariants": [
+        "Completeness evaluation must consume validated governed evidence resolver output and may not manufacture missing evidence or facts.",
+        "Required component conflicts, unresolved entity/version/lineage conditions, missing required components, and blocked dependencies must remain explicit and may block explanation according to the registered policy.",
+        "Topic profiles may strengthen required components but cannot weaken requirements already marked required by the registered generic topic definition.",
+        "Completeness and explanation-permission outcomes do not grant comparison, ranking, suitability, recommendation, or product-selection authority."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/topic_completeness",
+        "insurance_intelligence/contracts/topic_completeness.py",
+        "insurance_intelligence/contracts/topic_profile.py"
+      ],
+      "introduced_by": "MO-023I / P2.1",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Census registration of the existing generic topic-completeness subsystem. Star Comprehensive pilot profiles are governed configuration that may strengthen generic topic requirements; they do not create independent decision or recommendation authority."
+    }
+  ]
+}
