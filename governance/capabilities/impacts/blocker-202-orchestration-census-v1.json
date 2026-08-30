@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "blocker-202-orchestration-census-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.CERTIFIED_STAR_PILOT_RUNTIME",
+    "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE"
+  ],
+  "rationale": "Register two pre-existing closure-critical orchestration boundaries during Blocker #202 repository-memory reconciliation: the narrow Star Comprehensive certification/pilot runtime and the fail-closed terminology pre-planning admission gate. No runtime feature behavior is added.",
+  "supersession_impact": "NONE",
+  "authority_impact": "Adds repository-memory ownership only. The certified pilot may compose already-governed strict-mode intelligence stages within its fixed Star Comprehensive conditional-copayment scope; the terminology gate may admit or block governed terminology context before planning. Neither capability gains product-fact creation, ranking, suitability, winner-selection, or recommendation authority."
+}
