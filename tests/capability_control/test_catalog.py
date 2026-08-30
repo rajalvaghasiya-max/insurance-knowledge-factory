@@ -36,7 +36,7 @@ def _catalog(**overrides):
 def test_current_catalog_loads():
     catalog = load_catalog("governance/capabilities/catalog.json")
     assert catalog.catalog_version == "1.0"
-    assert catalog.enforcement_mode == "RECONCILIATION"
+    assert catalog.enforcement_mode == "STRICT"
     assert catalog.capabilities[0].capability_id == "PLATFORM.CAPABILITY_CONTROL_PLANE"
 
 
