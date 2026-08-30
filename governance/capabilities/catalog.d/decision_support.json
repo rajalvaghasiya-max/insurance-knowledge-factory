@@ -1,0 +1,28 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.DECISION_SUPPORT.NON_VERDICT_PERSONALIZATION",
+      "name": "Governed Non-Verdict Personalized Decision Support",
+      "responsibility": "Apply explicitly governed customer context, material-question planning, per-dimension alignment, interaction preservation, decision-sufficiency gating, and set-relative education-first projection without producing a product winner, ranking, suitability verdict, or recommendation.",
+      "plane": "INSURANCE_INTELLIGENCE_DECISION_SUPPORT",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Decision-support framing and sufficiency authority only. It may block, limit, or project governed comparison evidence relative to confirmed customer context, but it cannot aggregate dimensions into a net product direction, choose a product, rank alternatives, declare suitability, perform needs analysis, or recommend.",
+      "safety_invariants": [
+        "Product-only turns prohibit customer-specific context even when an earlier turn was personalized.",
+        "Inferred customer facts or priorities cannot drive material alignment or deterministic circumstance relevance until confirmed.",
+        "Material questions require explicit traceable decision-relevant triggers and must not become a generic questionnaire.",
+        "Per-dimension findings and governed material interactions must remain visible and must not be collapsed into a net product direction.",
+        "Decision sufficiency must block or limit presentation when customer context, product evidence, hard constraints, interaction completeness, or comparison-set adequacy is insufficient.",
+        "Final decision-support projection is set-relative and must not contain winner, recommendation, suitability, or net-lean language; the user remains the decision maker."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/decision_support"
+      ],
+      "introduced_by": "MO-027",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Census registration of the existing MO-027A through MO-027H decision-support runtime. The subsystem is deliberately education-first and non-verdict; recommendation authority remains outside this capability."
+    }
+  ]
+}

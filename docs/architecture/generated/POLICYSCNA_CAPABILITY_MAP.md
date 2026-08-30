@@ -7,7 +7,7 @@
 - **Catalog version:** `1.0`
 - **Enforcement mode:** `RECONCILIATION`
 - **Fingerprint schema:** `1.0`
-- **Registered capabilities:** `36`
+- **Registered capabilities:** `37`
 - **Governed roots:** `capability_control`, `insurance_intelligence`
 
 ## Interpretation rules
@@ -45,6 +45,12 @@
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
 | `II.DECISION.AUTHORITY_ENFORCEMENT`<br>Authority-Enforced Decision Gate | `ACTIVE` | `REUSE` | Withholds advisory, mixed, unresolved-authority, clarification and out-of-scope paths before the legacy Decision Gate can be invoked. | None | `insurance_intelligence/authority_enforced_decision_gate.py`<br>`insurance_intelligence/contracts/authority_enforcement.py` | `8cb8e6c21191` |
+
+### INSURANCE_INTELLIGENCE_DECISION_SUPPORT
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.DECISION_SUPPORT.NON_VERDICT_PERSONALIZATION`<br>Governed Non-Verdict Personalized Decision Support | `ACTIVE` | `REUSE` | Decision-support framing and sufficiency authority only. It may block, limit, or project governed comparison evidence relative to confirmed customer context, but it cannot aggregate dimensions into a net product direction, choose a product, rank alternatives, declare suitability, perform needs analysis, or recommend. | None | `insurance_intelligence/decision_support` | `1c241b2b2225` |
 
 ### INSURANCE_INTELLIGENCE_EVALUATION
 
