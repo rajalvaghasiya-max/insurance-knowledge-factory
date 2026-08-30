@@ -2,7 +2,7 @@
 
 Status: **BLOCKER #202 — PROGRAM MEMORY INTEGRITY / FEATURE WORK FROZEN**
 
-This ledger records authorized next work only. It is intentionally separate from descriptive capability truth.
+This ledger records authorized next work and irreversible execution prohibitions only. It is intentionally separate from descriptive capability truth.
 
 ## Current authorized phase
 
@@ -33,9 +33,17 @@ Current development protocol:
 5. Expand governance outward across remaining PolicyScna repository roots in controlled slices.
 6. Close Blocker #202 only after repository-memory closure criteria are satisfied.
 
+## Immutable experiment prohibitions
+
+Closed experiment results remain immutable even while their historical execution detail lives only in Git history and frozen closure artifacts.
+
+**No Product #9 candidate screening is authorized.** Product #9 remains a closed unscored experiment and may not be reopened, repaired, rescored, reselected, or reinterpreted by later observations.
+
+No closed neutral Health experiment may be retroactively repaired or converted into a pass by later infrastructure or evidence changes. A future experiment requires its own explicit governed authorization after Blocker #202 closure.
+
 ## Explicitly not authorized now
 
-- Health feature expansion
+- Health feature expansion or live neutral-product experimentation
 - Motor implementation
 - Life implementation
 - frontend / consumer / advisor UI
