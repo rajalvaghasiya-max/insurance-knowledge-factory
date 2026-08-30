@@ -50,5 +50,8 @@ jobs:
       - name: Validate capability implementation fingerprints
         run: .ci-venv/bin/python -m scripts.check_capability_fingerprints
 
+      - name: Validate generated capability map freshness
+        run: .ci-venv/bin/python -m scripts.check_generated_capability_map
+
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q

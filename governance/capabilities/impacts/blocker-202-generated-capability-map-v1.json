@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "blocker-202-generated-capability-map-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "PLATFORM.CAPABILITY_CONTROL_PLANE"
+  ],
+  "rationale": "",
+  "supersession_impact": "NONE",
+  "authority_impact": "Adds a deterministic human-readable view and freshness check over existing repository architecture memory only. It does not change insurance truth, runtime answer authority, lifecycle classification, or roadmap authorization."
+}
