@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "blocker-202-decision-support-census-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.DECISION_SUPPORT.NON_VERDICT_PERSONALIZATION"
+  ],
+  "rationale": "Register the pre-existing MO-027A through MO-027H decision-support subsystem during Blocker #202 repository-memory reconciliation. The governed implementation already exists; this change binds stable semantic ownership without adding runtime feature behavior.",
+  "supersession_impact": "NONE",
+  "authority_impact": "Adds repository-memory classification only. The capability may govern customer-context admission, material questions, local alignment, interaction preservation, sufficiency gating, and education-first projection, but it cannot rank products, declare suitability, perform needs analysis, choose a winner, or recommend."
+}
