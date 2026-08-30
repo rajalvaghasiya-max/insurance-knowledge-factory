@@ -50,17 +50,8 @@ jobs:
       - name: Validate capability implementation fingerprints
         run: .ci-venv/bin/python -m scripts.check_capability_fingerprints
 
-      - name: Materialize bypass-inventory census capability map bootstrap
-        run: |
-          mkdir -p bootstrap
-          .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > bootstrap/POLICYSCNA_CAPABILITY_MAP.md
-
-      - name: Upload bypass-inventory census capability map bootstrap
-        uses: actions/upload-artifact@v4
-        with:
-          name: bypass-inventory-census-map-bootstrap
-          path: bootstrap/POLICYSCNA_CAPABILITY_MAP.md
-          if-no-files-found: error
+      - name: Validate generated capability map freshness
+        run: .ci-venv/bin/python -m scripts.check_generated_capability_map
 
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
