@@ -7,7 +7,7 @@
 - **Catalog version:** `1.0`
 - **Enforcement mode:** `RECONCILIATION`
 - **Fingerprint schema:** `1.0`
-- **Registered capabilities:** `35`
+- **Registered capabilities:** `36`
 - **Governed roots:** `capability_control`, `insurance_intelligence`
 
 ## Interpretation rules
@@ -87,6 +87,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
+| `II.IDENTITY.GOVERNED_PRODUCT_ENTITY_RESOLUTION`<br>Governed Product Entity Resolution | `ACTIVE` | `REUSE` | Runtime product-identity resolution and planner-scope authority only; it does not verify source documents, extract or infer UINs, retrieve product evidence, resolve terminology beyond normalized exact governed matching, assess suitability, compare, rank, or recommend. | None | `insurance_intelligence/entity_resolution` | `09f64dc7c496` |
 | `II.INSTANCE.SUFFICIENCY`<br>Instance Sufficiency Guard | `ACTIVE` | `REUSE` | Blocks planning when required instance identity is missing, ambiguous, unresolved or not bound to active context. | None | `insurance_intelligence/instance_sufficiency.py`<br>`insurance_intelligence/contracts/instance_sufficiency.py` | `f04672d59151` |
 
 ### INSURANCE_INTELLIGENCE_INTENT
