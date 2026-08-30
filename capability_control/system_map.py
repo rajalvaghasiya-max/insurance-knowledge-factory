@@ -53,28 +53,29 @@ def _load_fingerprint_index(path: str | Path) -> tuple[dict[str, dict[str, objec
 def _lineage(record: CapabilityRecord) -> str:
     pieces: list[str] = []
     if record.supersedes:
-        pieces.append("supersedes " + ", ".join(f"`{item}`" for item in record.supersedes))
+        pieces.append("supersedes " + ", ".join(record.supersedes))
     if record.superseded_by is not None:
-        pieces.append(f"superseded by `{record.superseded_by}`")
+        pieces.append(f"superseded by {record.superseded_by}")
     return "; ".join(pieces) if pieces else "None"
 
 
-def _render_capability(record: CapabilityRecord, fingerprint: dict[str, object]) -> list[str]:
+def _cell(value: str) -> str:
+    return value.replace("|", "\\|").replace("\n", " ")
+
+
+def _render_row(record: CapabilityRecord, fingerprint: dict[str, object]) -> str:
     structural_fingerprint = fingerprint["structural_fingerprint"]
     assert isinstance(structural_fingerprint, str)
-    lines = [
-        f"### `{record.capability_id}` — {record.name}",
-        "",
-        f"- **Lifecycle:** `{record.lifecycle_status}`",
-        f"- **Reuse policy:** `{record.reuse_policy}`",
-        f"- **Authority role:** {record.authority_role}",
-        f"- **Lineage:** {_lineage(record)}",
-        f"- **Structural fingerprint:** `{structural_fingerprint}`",
-        "- **Ownership boundary:**",
-    ]
-    lines.extend(f"  - `{path}`" for path in record.ownership_paths)
-    lines.append("")
-    return lines
+    ownership = "<br>".join(f"`{path}`" for path in record.ownership_paths)
+    return (
+        f"| `{record.capability_id}`<br>{_cell(record.name)} "
+        f"| `{record.lifecycle_status}` "
+        f"| `{record.reuse_policy}` "
+        f"| {_cell(record.authority_role)} "
+        f"| {_cell(_lineage(record))} "
+        f"| {ownership} "
+        f"| `{structural_fingerprint[:12]}` |"
+    )
 
 
 def render_capability_map(
@@ -114,6 +115,7 @@ def render_capability_map(
         "- Executable code and passing tests remain the highest repository evidence.",
         "- Structural fingerprints bind registered implementation to capabilities; they do not infer semantic authority.",
         "- Ownership boundaries shown here are semantic catalog ownership paths; exact module-level structural evidence remains in the fingerprint manifest/inventory.",
+        "- Fingerprints below are 12-character navigation prefixes; the committed fingerprint manifest contains the full digest.",
         "- The semantic catalog remains the detailed source for responsibility, safety invariants, lifecycle, reuse policy, ownership and lineage.",
         "- Execution priorities and authorized next actions belong in the execution ledger / blocker record, not in this map.",
         "- Unregistered governed files remain reconciliation candidates while enforcement mode is `RECONCILIATION`.",
@@ -122,9 +124,17 @@ def render_capability_map(
         "",
     ]
     for plane in sorted(by_plane):
-        lines.extend([f"## {plane}", ""])
+        lines.extend(
+            [
+                f"### {plane}",
+                "",
+                "| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |",
+                "| --- | --- | --- | --- | --- | --- | --- |",
+            ]
+        )
         for record in sorted(by_plane[plane], key=lambda item: item.capability_id):
-            lines.extend(_render_capability(record, fingerprint_index[record.capability_id]))
+            lines.append(_render_row(record, fingerprint_index[record.capability_id]))
+        lines.append("")
     return "\n".join(lines).rstrip() + "\n"
 
 
