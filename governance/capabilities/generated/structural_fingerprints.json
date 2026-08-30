@@ -2,201 +2,147 @@
   "capabilities": [
     {
       "capability_id": "II.AUTHORITY.INTENT_RECONCILIATION",
-      "owned_module_paths": [
-        "insurance_intelligence/authority_intent_reconciliation.py",
-        "insurance_intelligence/contracts/authority_intent_reconciliation.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/authority_intent_reconciliation.py", "insurance_intelligence/contracts/authority_intent_reconciliation.py"],
       "structural_fingerprint": "8666706571bb5bfbdf31a7fffb0dcc4835eb539d75d8055432ad0fc54f003d02"
     },
     {
       "capability_id": "II.CONTEXT.BUILDER",
-      "owned_module_paths": [
-        "insurance_intelligence/context/__init__.py",
-        "insurance_intelligence/context/builder.py",
-        "insurance_intelligence/context/requirements.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/context/__init__.py", "insurance_intelligence/context/builder.py", "insurance_intelligence/context/requirements.py"],
       "structural_fingerprint": "62bc2359c6e0697f8ecdb5e044c394fdb3a0ee182e7e53d3bc60bba1b34f7665"
     },
     {
       "capability_id": "II.DECISION.AUTHORITY_ENFORCEMENT",
-      "owned_module_paths": [
-        "insurance_intelligence/authority_enforced_decision_gate.py",
-        "insurance_intelligence/contracts/authority_enforcement.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/authority_enforced_decision_gate.py", "insurance_intelligence/contracts/authority_enforcement.py"],
       "structural_fingerprint": "8cb8e6c211919f74458d99adea8718209f520dd619e2f74e4909027ea957d220"
     },
     {
+      "capability_id": "II.DECISION.DETERMINISTIC_SAFETY_GATE",
+      "owned_module_paths": ["insurance_intelligence/contracts/decision.py", "insurance_intelligence/decision/__init__.py", "insurance_intelligence/decision/aggregator.py", "insurance_intelligence/decision/evaluator.py", "insurance_intelligence/decision/gate.py", "insurance_intelligence/decision/registry.py"],
+      "structural_fingerprint": "ad2bd1720ca865398d8eaba4792f2c602bd8114db5e7debc68f38bbaed24f555"
+    },
+    {
       "capability_id": "II.EVALUATION.MO021_PIPELINE_BASELINE",
-      "owned_module_paths": [
-        "insurance_intelligence/contracts/evaluation.py",
-        "insurance_intelligence/evaluation/assertions.py",
-        "insurance_intelligence/evaluation/fixtures.py",
-        "insurance_intelligence/evaluation/runner.py",
-        "insurance_intelligence/evaluation/scenarios.py",
-        "insurance_intelligence/evaluation/service.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/contracts/evaluation.py", "insurance_intelligence/evaluation/assertions.py", "insurance_intelligence/evaluation/fixtures.py", "insurance_intelligence/evaluation/runner.py", "insurance_intelligence/evaluation/scenarios.py", "insurance_intelligence/evaluation/service.py"],
       "structural_fingerprint": "d1c3dcedfeea5c3b06a77495e1dd2fdf4e2d72d3621dfba3bf0e3840774cceae"
     },
     {
       "capability_id": "II.EVALUATION.TERMINOLOGY_CONTROLLED_PACK",
-      "owned_module_paths": [
-        "insurance_intelligence/evaluation/terminology_controlled_evaluation.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/evaluation/terminology_controlled_evaluation.py"],
       "structural_fingerprint": "9b7d0eba589a16c2c98ec5409e879d6537b58cc5b1bf119a3797cc2c5073968f"
     },
     {
+      "capability_id": "II.EVIDENCE.GOVERNED_RESOLVER",
+      "owned_module_paths": ["insurance_intelligence/contracts/evidence.py", "insurance_intelligence/evidence/__init__.py", "insurance_intelligence/evidence/authority.py", "insurance_intelligence/evidence/repositories.py", "insurance_intelligence/evidence/resolver.py", "insurance_intelligence/evidence/sufficiency.py", "insurance_intelligence/evidence/trace.py"],
+      "structural_fingerprint": "60123aac53f63cf9bd1656ce68206e7671c2f702ff7e4694ce4e08f0dd3f1277"
+    },
+    {
       "capability_id": "II.EVIDENCE.INSTANCE_ENFORCEMENT",
-      "owned_module_paths": [
-        "insurance_intelligence/contracts/evidence_instance_enforcement.py",
-        "insurance_intelligence/evidence_instance_enforcement.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/contracts/evidence_instance_enforcement.py", "insurance_intelligence/evidence_instance_enforcement.py"],
       "structural_fingerprint": "66543ac92888a48975e40f500d2148401a975273669669cced62fd5c3df91084"
     },
     {
       "capability_id": "II.EXPLANATION.AUTHORITY_ENFORCEMENT",
-      "owned_module_paths": [
-        "insurance_intelligence/authority_enforced_explanation.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/authority_enforced_explanation.py"],
       "structural_fingerprint": "38a15b653c1fc341d8141cc974dfe8fa097cacc7571431c360dab27b27c42242"
     },
     {
+      "capability_id": "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
+      "owned_module_paths": ["insurance_intelligence/contracts/explanation.py", "insurance_intelligence/explanation/__init__.py", "insurance_intelligence/explanation/generator.py", "insurance_intelligence/explanation/registry.py", "insurance_intelligence/explanation/templates.py", "insurance_intelligence/explanation/validator.py"],
+      "structural_fingerprint": "773f44e5d374331545c03e0f6a13761caa6b536da7151f047f58f3e2ca501baf"
+    },
+    {
       "capability_id": "II.INSTANCE.SUFFICIENCY",
-      "owned_module_paths": [
-        "insurance_intelligence/contracts/instance_sufficiency.py",
-        "insurance_intelligence/instance_sufficiency.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/contracts/instance_sufficiency.py", "insurance_intelligence/instance_sufficiency.py"],
       "structural_fingerprint": "f04672d59151d22a74742b5659f32823c75b9a26b4e75faa5544774bdcbc5717"
     },
     {
+      "capability_id": "II.INTENT.DETERMINISTIC_ANALYZER",
+      "owned_module_paths": ["insurance_intelligence/contracts/intent.py", "insurance_intelligence/intent/__init__.py", "insurance_intelligence/intent/analyzer.py", "insurance_intelligence/intent/taxonomy.py"],
+      "structural_fingerprint": "59b74941cb30dda306efc30e91e0e5ff2d321e59ef4eab3572573c952ed881d9"
+    },
+    {
       "capability_id": "II.ORCHESTRATION.CANONICAL_GUARDED_ORDER",
-      "owned_module_paths": [
-        "insurance_intelligence/contracts/full_cycle.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/contracts/full_cycle.py"],
       "structural_fingerprint": "d9afb34903c282cc6d8556e391c3ddbb135823e823f9bb9ed65f5e97e3470722"
     },
     {
+      "capability_id": "II.ORCHESTRATION.EXECUTION_RUNTIME",
+      "owned_module_paths": ["insurance_intelligence/orchestration/execution_state.py", "insurance_intelligence/orchestration/intelligence_adapters.py", "insurance_intelligence/orchestration/knowledge_adapters.py", "insurance_intelligence/orchestration/service.py"],
+      "structural_fingerprint": "c905319d02c9db5e6d211092c7050422b77e98930e63f95436e796fcc6e456c4"
+    },
+    {
+      "capability_id": "II.PLANNING.REASONING_PLANNER",
+      "owned_module_paths": ["insurance_intelligence/contracts/reasoning_plan.py", "insurance_intelligence/planning/__init__.py", "insurance_intelligence/planning/planner.py", "insurance_intelligence/planning/registry.py", "insurance_intelligence/planning/validator.py"],
+      "structural_fingerprint": "2817c821a2383912d5f602801089ae560d91aa9677f725bad447eff02d77d68f"
+    },
+    {
       "capability_id": "II.REASONING.ENGINE",
-      "owned_module_paths": [
-        "insurance_intelligence/reasoning/__init__.py",
-        "insurance_intelligence/reasoning/engine.py",
-        "insurance_intelligence/reasoning/registry.py",
-        "insurance_intelligence/reasoning/rules.py",
-        "insurance_intelligence/reasoning/sufficiency.py",
-        "insurance_intelligence/reasoning/trace.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/reasoning/__init__.py", "insurance_intelligence/reasoning/engine.py", "insurance_intelligence/reasoning/registry.py", "insurance_intelligence/reasoning/rules.py", "insurance_intelligence/reasoning/sufficiency.py", "insurance_intelligence/reasoning/trace.py"],
       "structural_fingerprint": "2038300449f065bf4052fa5905ed86bb708913cdbbb2fcd0e1379fa93137fd69"
     },
     {
       "capability_id": "II.RENDERING.EXIT_SAFETY",
-      "owned_module_paths": [
-        "insurance_intelligence/contracts/rendering_exit.py",
-        "insurance_intelligence/rendering_exit_safety.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/contracts/rendering_exit.py", "insurance_intelligence/rendering_exit_safety.py"],
       "structural_fingerprint": "333202f5c3a6a24d33494248e7ecd85d9e388054eb40615dfec931cd152a1b55"
     },
     {
       "capability_id": "II.RENDERING.PROVIDER_INTEGRATION",
-      "owned_module_paths": [
-        "insurance_intelligence/rendering_provider_integration.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/rendering_provider_integration.py"],
       "structural_fingerprint": "b190a313154338244a2bafc529b97e984db52177a263dcff61a99da569015bc3"
     },
     {
       "capability_id": "II.REQUEST.AUTHORITY_BOUNDARY",
-      "owned_module_paths": [
-        "insurance_intelligence/contracts/request_authority.py",
-        "insurance_intelligence/request_authority.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/contracts/request_authority.py", "insurance_intelligence/request_authority.py"],
       "structural_fingerprint": "255b75ff2f488cc1a91a627b4f36b340ea662e774c1729f50b847e751a878dfb"
     },
     {
       "capability_id": "II.RESPONSE.ASSEMBLY",
-      "owned_module_paths": [
-        "insurance_intelligence/response/__init__.py",
-        "insurance_intelligence/response/assembler.py",
-        "insurance_intelligence/response/registry.py",
-        "insurance_intelligence/response/service.py",
-        "insurance_intelligence/response/validator.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/response/__init__.py", "insurance_intelligence/response/assembler.py", "insurance_intelligence/response/registry.py", "insurance_intelligence/response/service.py", "insurance_intelligence/response/validator.py"],
       "structural_fingerprint": "d2a5cf42467cfdb4a55bc81ebf321600d111d2231fd76579e1c517e52b2ad913"
     },
     {
       "capability_id": "LLM.EVALUATION.CONTROLLED_PROVIDER_HARNESS",
-      "owned_module_paths": [
-        "insurance_intelligence/evaluation/dataset.py",
-        "insurance_intelligence/evaluation/harness.py",
-        "insurance_intelligence/evaluation/provider.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/evaluation/dataset.py", "insurance_intelligence/evaluation/harness.py", "insurance_intelligence/evaluation/provider.py"],
       "structural_fingerprint": "a517042ce1ef06c3a523b24784e1b09c778d7ebbcacfed6cdec346248f3cb923"
     },
     {
       "capability_id": "LLM.EVALUATION.DETERMINISTIC_BASELINE",
-      "owned_module_paths": [
-        "insurance_intelligence/contracts/llm_evaluation.py",
-        "insurance_intelligence/evaluation/deterministic.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/contracts/llm_evaluation.py", "insurance_intelligence/evaluation/deterministic.py"],
       "structural_fingerprint": "81cf4a3e6850118c2e26cd6677112cf46837c1418d499bbf7e8c27994d851119"
     },
     {
       "capability_id": "LLM.EVALUATION.DISAGREEMENT_ANALYSIS",
-      "owned_module_paths": [
-        "insurance_intelligence/evaluation/disagreement.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/evaluation/disagreement.py"],
       "structural_fingerprint": "04f8ae28b1b9dafb842582d9aa42122cbcf003b5e7e612cd92364f8de7b5eb9c"
     },
     {
       "capability_id": "LLM.EVALUATION.EXTERNAL_METRIC_ADVISORY",
-      "owned_module_paths": [
-        "insurance_intelligence/evaluation/deepeval.py",
-        "insurance_intelligence/evaluation/hhem.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/evaluation/deepeval.py", "insurance_intelligence/evaluation/hhem.py"],
       "structural_fingerprint": "4892ed5c6d916da3e0d172bab5e9101b2d27e8d3ef3a22f4eff074ffc80ee362"
     },
     {
       "capability_id": "LLM.EVALUATION.HYBRID_RENDERING_BASELINE",
-      "owned_module_paths": [
-        "insurance_intelligence/evaluation/baseline_certification.py",
-        "insurance_intelligence/evaluation/llm_baseline.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/evaluation/baseline_certification.py", "insurance_intelligence/evaluation/llm_baseline.py"],
       "structural_fingerprint": "9e694388fd548bcbc989ed504679a9226272ce5ac9ddb6c0a565b5298d919bf4"
     },
     {
       "capability_id": "LLM.EVALUATION.RESPONSIBILITY_DECISION_REPORTING",
-      "owned_module_paths": [
-        "insurance_intelligence/evaluation/responsibility.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/evaluation/responsibility.py"],
       "structural_fingerprint": "210a7a963f896bda0752eb698b57d3590dfb95f06f99f4a2e71b69bed87c8839"
     },
     {
       "capability_id": "LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME",
-      "owned_module_paths": [
-        "insurance_intelligence/contracts/llm_rendering.py",
-        "insurance_intelligence/llm/__init__.py",
-        "insurance_intelligence/llm/fidelity.py",
-        "insurance_intelligence/llm/output_parser.py",
-        "insurance_intelligence/llm/policy.py",
-        "insurance_intelligence/llm/prompt_builder.py",
-        "insurance_intelligence/llm/provider.py",
-        "insurance_intelligence/llm/service.py"
-      ],
+      "owned_module_paths": ["insurance_intelligence/contracts/llm_rendering.py", "insurance_intelligence/llm/__init__.py", "insurance_intelligence/llm/fidelity.py", "insurance_intelligence/llm/output_parser.py", "insurance_intelligence/llm/policy.py", "insurance_intelligence/llm/prompt_builder.py", "insurance_intelligence/llm/provider.py", "insurance_intelligence/llm/service.py"],
       "structural_fingerprint": "835b098fcadcf2460c0ee70d7a8baa486b0d4b0ca99bf600ecc99a1e05349c35"
     },
     {
       "capability_id": "PLATFORM.CAPABILITY_CONTROL_PLANE",
-      "owned_module_paths": [
-        "capability_control/__init__.py",
-        "capability_control/catalog.py",
-        "capability_control/inventory.py",
-        "capability_control/preflight.py",
-        "capability_control/scanner.py"
-      ],
+      "owned_module_paths": ["capability_control/__init__.py", "capability_control/catalog.py", "capability_control/inventory.py", "capability_control/preflight.py", "capability_control/scanner.py"],
       "structural_fingerprint": "998eb0b8981fc817e694d058885cdc15abe9e8f5ca29138d67ba35caee68f80d"
     },
     {
       "capability_id": "PLATFORM.REPOSITORY_INVENTORY",
-      "owned_module_paths": [
-        "capability_control/inventory.py"
-      ],
+      "owned_module_paths": ["capability_control/inventory.py"],
       "structural_fingerprint": "3099ad5dfdec323e0cc005a4fdeeada1e8d7ac1cd1c765197adc8940358d5fce"
     }
   ],
