@@ -1,0 +1,26 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.HEALTH_DOMAIN.GAP_REGISTRY",
+      "name": "Health Domain Knowledge and Semantic Gap Registry",
+      "responsibility": "Represent Health-domain knowledge maturity, product-semantic maturity, claim-aspect plane placement and unresolved semantic blocking states while permanently preserving unknown semantic-variant space as open.",
+      "plane": "INSURANCE_INTELLIGENCE_HEALTH_DOMAIN_GOVERNANCE",
+      "lifecycle_status": "DISCONNECTED",
+      "authority_role": "Disconnected descriptive gap-governance contract only; it cannot establish product facts, resolve instance evidence, certify product semantics, claim domain completeness, or authorize an answer.",
+      "safety_invariants": [
+        "Domain-knowledge maturity and product-semantic maturity remain separate axes.",
+        "Unknown semantic-variant space is permanently open and cannot be marked closed.",
+        "A product semantic record carries exactly one of a maturity state or a blocking state.",
+        "Domain knowledge may support only general explanation; when a resolved policy/customer instance is in scope, product or operational evidence must govern the answer."
+      ],
+      "reuse_policy": "REPAIR",
+      "ownership_paths": [
+        "insurance_intelligence/contracts/health_domain_registry.py"
+      ],
+      "introduced_by": "HC-1.0",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Executable HC-1.0 contract with substantive invariants but no current runtime importer. Governed as DISCONNECTED rather than falsely presented as active runtime authority."
+    }
+  ]
+}
