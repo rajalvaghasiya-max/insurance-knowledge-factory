@@ -16,6 +16,10 @@ from typing import Iterable, Mapping
 from .catalog import CapabilityCatalog, CapabilityRecord
 
 INVENTORY_SCHEMA_VERSION = "1.0"
+DEFAULT_STRUCTURAL_ROOTS = (
+    "agents", "collectors", "factory_core", "factory_sdk", "insurance_intelligence",
+    "knowledge", "knowledge_domains", "knowledge_factory", "orchestration", "scripts",
+)
 
 
 @dataclass(frozen=True)
@@ -84,11 +88,12 @@ def _path_to_module(path: str) -> str:
 
 
 def _first_party_roots(repo_root: Path) -> tuple[str, ...]:
-    roots = {
+    roots = {name for name in DEFAULT_STRUCTURAL_ROOTS if (repo_root / name).is_dir()}
+    roots.update(
         path.name
         for path in repo_root.iterdir()
         if path.is_dir() and (path / "__init__.py").is_file()
-    }
+    )
     return tuple(sorted(roots))
 
 
@@ -157,8 +162,6 @@ def _extract_imports(
                     else:
                         unresolved.add(f"(relative) {'.' * node.level}{node.module}")
                 else:
-                    # `from . import foo` names the imported aliases, not just
-                    # the package. Preserve each resolvable submodule.
                     for alias in node.names:
                         candidate = ".".join((*base, alias.name))
                         if candidate in all_modules or any(
