@@ -88,6 +88,8 @@ RULE_REGISTRY: tuple[IntentRule, ...] = (
             r"\bif i claim\b",
             r"\bmy claim\b.*\bwhat happens\b",
             r"\bwill (it|this|that) be covered\b",
+            r"\bwill (?:this |the )?co-?(?:pay|payment) apply\b",
+            r"\bco-?(?:pay|payment)\b.*\bapply\b.*\b(?:treatment|claim|hospitali[sz]ation)\b",
         ),
         priority=90,
         confidence=0.85,
@@ -227,7 +229,11 @@ RULE_REGISTRY: tuple[IntentRule, ...] = (
     IntentRule(
         rule_id="term_explanation",
         intent="TERM_EXPLANATION",
-        patterns=_p(r"\bwhat is (a |an |the )?[a-z\- ]+\??$", r"\bdefine\b"),
+        patterns=_p(
+            r"\bwhat is (a |an |the )?[a-z\- ]+\??$",
+            r"\bdefine\b",
+            r"\bexplain (?:a |an |the )?[a-z\- ]+\??$",
+        ),
         priority=55,
         confidence=0.75,
         basis="matched_term",
@@ -305,6 +311,8 @@ _AGE_PATTERN = re.compile(r"\b(\d{1,3})\s*-?\s*year-?\s*old\b", re.IGNORECASE)
 _TIME_PERIOD_PATTERN = re.compile(r"\b\d{1,3}\s*(day|days|month|months|year|years)\b", re.IGNORECASE)
 _POLICY_FEATURE_TERMS = (
     "deductible",
+    "co-payment",
+    "copayment",
     "co-pay",
     "copay",
     "premium",
