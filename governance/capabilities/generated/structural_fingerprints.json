@@ -9,13 +9,82 @@
       "structural_fingerprint": "8666706571bb5bfbdf31a7fffb0dcc4835eb539d75d8055432ad0fc54f003d02"
     },
     {
+      "capability_id": "II.BENEFITS.FACT_PUBLICATION_BRIDGE",
+      "owned_module_paths": [
+        "insurance_intelligence/benefits/activ_one_nxt_room_rent.py",
+        "insurance_intelligence/benefits/room_rent_publication.py"
+      ],
+      "structural_fingerprint": "0cf4d162d98edf04e6a9795c992ae8e57e1dd7fa2967a915423deabb0607bdbd"
+    },
+    {
+      "capability_id": "II.BENEFITS.GOVERNED_MECHANIC_SEMANTICS",
+      "owned_module_paths": [
+        "insurance_intelligence/benefits/copayment_composition.py",
+        "insurance_intelligence/benefits/copayment_nonapplication.py",
+        "insurance_intelligence/benefits/copayment_rate_matrix.py",
+        "insurance_intelligence/benefits/personal_underwriting_waiting_period.py",
+        "insurance_intelligence/benefits/room_rent_assessment.py",
+        "insurance_intelligence/benefits/waiting_period_contracts.py",
+        "insurance_intelligence/benefits/waiting_period_option_domain.py"
+      ],
+      "structural_fingerprint": "0d3ae59d9e574eb6edf9ea5a37f4ca57876eb0838f83acc2184abef3d1c34ebc"
+    },
+    {
+      "capability_id": "II.BENEFITS.INTRINSIC_ASSESSMENT",
+      "owned_module_paths": [
+        "insurance_intelligence/benefits/assessment_contracts.py",
+        "insurance_intelligence/benefits/assessment_engine.py",
+        "insurance_intelligence/benefits/assessment_policies.py",
+        "insurance_intelligence/benefits/assessment_taxonomy.py",
+        "insurance_intelligence/benefits/condition_assessment_projection.py",
+        "insurance_intelligence/benefits/copayment_assessment.py",
+        "insurance_intelligence/benefits/copayment_assessment_policy.py",
+        "insurance_intelligence/benefits/product_assessment_profile.py",
+        "insurance_intelligence/benefits/restoration_assessment_policy.py"
+      ],
+      "structural_fingerprint": "47f7ff52c0bc90dfef2f674ce0e91a5a296cd7fb182faf8d813ad07cd0d64da1"
+    },
+    {
+      "capability_id": "II.BENEFITS.KNOWLEDGE_AND_FACTUAL_COMPARISON",
+      "owned_module_paths": [
+        "insurance_intelligence/benefits/activ_one_nxt.py",
+        "insurance_intelligence/benefits/catalogue.py",
+        "insurance_intelligence/benefits/comparison.py",
+        "insurance_intelligence/benefits/contracts.py",
+        "insurance_intelligence/benefits/discovery.py",
+        "insurance_intelligence/benefits/eligibility.py",
+        "insurance_intelligence/benefits/explanation_projection.py",
+        "insurance_intelligence/benefits/normalization.py",
+        "insurance_intelligence/benefits/orchestration.py",
+        "insurance_intelligence/benefits/registry.py",
+        "insurance_intelligence/benefits/star_comprehensive.py"
+      ],
+      "structural_fingerprint": "53cbff21c49414a1762c8bcaf47444c3ecfd65693f5368c469420a397c001c61"
+    },
+    {
+      "capability_id": "II.BENEFITS.PRERANKING_HANDOFF_BOUNDARY",
+      "owned_module_paths": [
+        "insurance_intelligence/benefits/governed_handoff.py"
+      ],
+      "structural_fingerprint": "fda45418a0c63dffcdaf7af1d08b2f803bc49b49f2487b0fcaf8db52f18ae7e3"
+    },
+    {
+      "capability_id": "II.BENEFITS.TRADEOFF_PROJECTION",
+      "owned_module_paths": [
+        "insurance_intelligence/benefits/tradeoff_comparison.py",
+        "insurance_intelligence/benefits/tradeoff_explanation_projection.py"
+      ],
+      "structural_fingerprint": "3da9d35d936dd6ab5be3c84abb66149f69be2627a1aa425676f57d8b3800ffbe"
+    },
+    {
       "capability_id": "II.CONTEXT.BUILDER",
       "owned_module_paths": [
         "insurance_intelligence/context/__init__.py",
         "insurance_intelligence/context/builder.py",
-        "insurance_intelligence/context/requirements.py"
+        "insurance_intelligence/context/requirements.py",
+        "insurance_intelligence/contracts/context.py"
       ],
-      "structural_fingerprint": "62bc2359c6e0697f8ecdb5e044c394fdb3a0ee182e7e53d3bc60bba1b34f7665"
+      "structural_fingerprint": "1013f747447eae773fdcb76732f2baa716dd0e6ff7e82e61b8b3f10087489060"
     },
     {
       "capability_id": "II.COVERAGE.REGISTRY",
@@ -128,6 +197,13 @@
       "structural_fingerprint": "5bddd080b7bb3af8f2b6d467545c2cab9a6359bad83daf53d5bc512f9fdedf69"
     },
     {
+      "capability_id": "II.HEALTH_DOMAIN.GAP_REGISTRY",
+      "owned_module_paths": [
+        "insurance_intelligence/contracts/health_domain_registry.py"
+      ],
+      "structural_fingerprint": "a05c1d8d4818d56e9cd94ebd73ff927143e0d26dad92e195259d333eba12c658"
+    },
+    {
       "capability_id": "II.IDENTITY.GOVERNED_PRODUCT_ENTITY_RESOLUTION",
       "owned_module_paths": [
         "insurance_intelligence/entity_resolution/__init__.py",
@@ -224,6 +300,7 @@
     {
       "capability_id": "II.REASONING.ENGINE",
       "owned_module_paths": [
+        "insurance_intelligence/contracts/reasoning.py",
         "insurance_intelligence/reasoning/__init__.py",
         "insurance_intelligence/reasoning/engine.py",
         "insurance_intelligence/reasoning/registry.py",
@@ -231,7 +308,7 @@
         "insurance_intelligence/reasoning/sufficiency.py",
         "insurance_intelligence/reasoning/trace.py"
       ],
-      "structural_fingerprint": "2038300449f065bf4052fa5905ed86bb708913cdbbb2fcd0e1379fa93137fd69"
+      "structural_fingerprint": "3cdafa569bd5e48b582b39608236b4bd8ef545000be7f41d1ceec10aad0abe20"
     },
     {
       "capability_id": "II.RENDERING.EXIT_SAFETY",
@@ -259,13 +336,14 @@
     {
       "capability_id": "II.RESPONSE.ASSEMBLY",
       "owned_module_paths": [
+        "insurance_intelligence/contracts/response.py",
         "insurance_intelligence/response/__init__.py",
         "insurance_intelligence/response/assembler.py",
         "insurance_intelligence/response/registry.py",
         "insurance_intelligence/response/service.py",
         "insurance_intelligence/response/validator.py"
       ],
-      "structural_fingerprint": "d2a5cf42467cfdb4a55bc81ebf321600d111d2231fd76579e1c517e52b2ad913"
+      "structural_fingerprint": "dbb7dd7aeb4098ae7aa3c62c6bc1a0c9069fc50f889cc7228a962bab6884339a"
     },
     {
       "capability_id": "II.RULE_CERTIFICATION.GOVERNED_RUNNER",

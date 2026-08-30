@@ -7,7 +7,7 @@
 - **Catalog version:** `1.0`
 - **Enforcement mode:** `RECONCILIATION`
 - **Fingerprint schema:** `1.0`
-- **Registered capabilities:** `40`
+- **Registered capabilities:** `47`
 - **Governed roots:** `capability_control`, `insurance_intelligence`
 
 ## Interpretation rules
@@ -22,11 +22,42 @@
 
 ## Capabilities by plane
 
+### INSURANCE_INTELLIGENCE_BENEFITS
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.BENEFITS.KNOWLEDGE_AND_FACTUAL_COMPARISON`<br>Governed Benefit Knowledge and Factual Comparison | `ACTIVE` | `REUSE` | Benefit knowledge, factual comparison and explanation authority only; it may describe governed mechanics and factual differences but cannot aggregate them into a product score, rank alternatives, select a winner, infer suitability, decide entitlement, assess a claim, or recommend. | None | `insurance_intelligence/benefits/contracts.py`<br>`insurance_intelligence/benefits/catalogue.py`<br>`insurance_intelligence/benefits/registry.py`<br>`insurance_intelligence/benefits/star_comprehensive.py`<br>`insurance_intelligence/benefits/activ_one_nxt.py`<br>`insurance_intelligence/benefits/discovery.py`<br>`insurance_intelligence/benefits/eligibility.py`<br>`insurance_intelligence/benefits/normalization.py`<br>`insurance_intelligence/benefits/comparison.py`<br>`insurance_intelligence/benefits/orchestration.py`<br>`insurance_intelligence/benefits/explanation_projection.py` | `53cbff21c494` |
+
+### INSURANCE_INTELLIGENCE_BENEFITS_ASSESSMENT
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.BENEFITS.INTRINSIC_ASSESSMENT`<br>Governed Intrinsic Benefit Assessment | `ACTIVE` | `REUSE` | Intrinsic per-benefit qualitative assessment authority only; it may classify a governed benefit dimension under an approved policy but cannot aggregate dimensions into an overall product rating, rank products, infer customer suitability, or recommend. | None | `insurance_intelligence/benefits/assessment_contracts.py`<br>`insurance_intelligence/benefits/assessment_taxonomy.py`<br>`insurance_intelligence/benefits/assessment_policies.py`<br>`insurance_intelligence/benefits/assessment_engine.py`<br>`insurance_intelligence/benefits/product_assessment_profile.py`<br>`insurance_intelligence/benefits/restoration_assessment_policy.py`<br>`insurance_intelligence/benefits/condition_assessment_projection.py`<br>`insurance_intelligence/benefits/copayment_assessment.py`<br>`insurance_intelligence/benefits/copayment_assessment_policy.py` | `47f7ff52c0bc` |
+| `II.BENEFITS.TRADEOFF_PROJECTION`<br>Governed Non-Verdict Benefit Trade-Off Projection | `ACTIVE` | `REUSE` | Per-dimension trade-off authority only; it cannot weight or aggregate dimensions, compute a net lean, rank products, declare a winner, infer suitability, or recommend. | None | `insurance_intelligence/benefits/tradeoff_comparison.py`<br>`insurance_intelligence/benefits/tradeoff_explanation_projection.py` | `3da9d35d936d` |
+
+### INSURANCE_INTELLIGENCE_BENEFITS_GOVERNANCE
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.BENEFITS.PRERANKING_HANDOFF_BOUNDARY`<br>Governed Benefits Pre-Ranking Handoff Boundary | `ACTIVE` | `REUSE` | Negative admission authority at the Benefits advice boundary only; it can reject or admit a governed comparison projection for downstream consumption but cannot rank, score, personalize, determine suitability, select a winner, or recommend. | None | `insurance_intelligence/benefits/governed_handoff.py` | `fda45418a0c6` |
+
+### INSURANCE_INTELLIGENCE_BENEFITS_PUBLICATION_GOVERNANCE
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.BENEFITS.FACT_PUBLICATION_BRIDGE`<br>Governed Benefit Fact Publication Bridge | `ACTIVE` | `REUSE` | Benefit-fact admission/projection authority only; it can project a reviewed published fact into the corresponding assessment contract but cannot upgrade unreviewed or unpublished facts, repair lineage, infer missing facts, rank products, or recommend. | None | `insurance_intelligence/benefits/room_rent_publication.py`<br>`insurance_intelligence/benefits/activ_one_nxt_room_rent.py` | `0cf4d162d98e` |
+
+### INSURANCE_INTELLIGENCE_BENEFITS_SEMANTICS
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.BENEFITS.GOVERNED_MECHANIC_SEMANTICS`<br>Governed Benefit Mechanic Semantics | `ACTIVE` | `REUSE` | Typed benefit-mechanic semantic authority only; it may represent and compose already-governed mechanics but cannot establish product identity, admit arbitrary product facts, rank alternatives, determine suitability, or recommend. | None | `insurance_intelligence/benefits/copayment_composition.py`<br>`insurance_intelligence/benefits/copayment_nonapplication.py`<br>`insurance_intelligence/benefits/copayment_rate_matrix.py`<br>`insurance_intelligence/benefits/waiting_period_contracts.py`<br>`insurance_intelligence/benefits/waiting_period_option_domain.py`<br>`insurance_intelligence/benefits/personal_underwriting_waiting_period.py`<br>`insurance_intelligence/benefits/room_rent_assessment.py` | `0d3ae59d9e57` |
+
 ### INSURANCE_INTELLIGENCE_CONTEXT
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.CONTEXT.BUILDER`<br>Governed Context Builder | `ACTIVE` | `REUSE` | Determines context sufficiency only; textual mentions and candidate references do not establish governed insurance identity. | None | `insurance_intelligence/context` | `62bc2359c6e0` |
+| `II.CONTEXT.BUILDER`<br>Governed Context Builder | `ACTIVE` | `REUSE` | Determines context sufficiency only; textual mentions and candidate references do not establish governed insurance identity. | None | `insurance_intelligence/context`<br>`insurance_intelligence/contracts/context.py` | `1013f747447e` |
 
 ### INSURANCE_INTELLIGENCE_COVERAGE_GOVERNANCE
 
@@ -90,6 +121,12 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | `II.GOVERNANCE.BYPASS_INVENTORY`<br>Certified-Pilot Bypass Inventory | `ACTIVE` | `REUSE` | Repository/runtime safety inventory only; it may identify reachable or deferred bypass paths but cannot authorize recommendation output, alter routing, or certify an otherwise ungoverned path. | None | `insurance_intelligence/bypass_inventory/classifier.py`<br>`insurance_intelligence/contracts/bypass_inventory.py` | `5bddd080b7bb` |
 
+### INSURANCE_INTELLIGENCE_HEALTH_DOMAIN_GOVERNANCE
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.HEALTH_DOMAIN.GAP_REGISTRY`<br>Health Domain Knowledge and Semantic Gap Registry | `DISCONNECTED` | `REPAIR` | Disconnected descriptive gap-governance contract only; it cannot establish product facts, resolve instance evidence, certify product semantics, claim domain completeness, or authorize an answer. | None | `insurance_intelligence/contracts/health_domain_registry.py` | `a05c1d8d4818` |
+
 ### INSURANCE_INTELLIGENCE_IDENTITY_GOVERNANCE
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
@@ -135,7 +172,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.REASONING.ENGINE`<br>Deterministic Reasoning Engine | `ACTIVE` | `REUSE` | May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes. | None | `insurance_intelligence/reasoning` | `2038300449f0` |
+| `II.REASONING.ENGINE`<br>Deterministic Reasoning Engine | `ACTIVE` | `REUSE` | May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes. | None | `insurance_intelligence/reasoning`<br>`insurance_intelligence/contracts/reasoning.py` | `3cdafa569bd5` |
 
 ### INSURANCE_INTELLIGENCE_RENDERING
 
@@ -160,7 +197,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.RESPONSE.ASSEMBLY`<br>Deterministic Response Assembler | `ACTIVE` | `REUSE` | Creates the deterministic deliverable answer baseline; it does not authorize new facts or LLM-originated content. | None | `insurance_intelligence/response` | `d2a5cf42467c` |
+| `II.RESPONSE.ASSEMBLY`<br>Deterministic Response Assembler | `ACTIVE` | `REUSE` | Creates the deterministic deliverable answer baseline; it does not authorize new facts or LLM-originated content. | None | `insurance_intelligence/response`<br>`insurance_intelligence/contracts/response.py` | `dbb7dd7aeb40` |
 
 ### INSURANCE_INTELLIGENCE_TERMINOLOGY
 
