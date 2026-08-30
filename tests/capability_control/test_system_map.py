@@ -50,11 +50,12 @@ def test_render_capability_map_is_deterministic_compact_navigation_view() -> Non
     assert "GENERATED — DO NOT EDIT" in first
     assert "PLATFORM.TEST" in first
     assert "Test-only descriptive authority." in first
+    assert "Ownership boundary" in first
     assert "capability_control/test.py" in first
     assert "a" * 64 in first
     assert "deterministic test responsibility" not in first
     assert "Never invent roadmap authority." not in first
-    assert "Detailed responsibility, safety invariants and notes remain in the catalog" in first
+    assert "Detailed responsibility, safety invariants, notes and module-level structural evidence" in first
     assert "generated_at" not in first
     assert "commit_sha" not in first
 
