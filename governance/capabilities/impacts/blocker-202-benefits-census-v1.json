@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "change_id": "blocker-202-benefits-census-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.BENEFITS.KNOWLEDGE_AND_FACTUAL_COMPARISON",
+    "II.BENEFITS.PRERANKING_HANDOFF_BOUNDARY",
+    "II.BENEFITS.INTRINSIC_ASSESSMENT",
+    "II.BENEFITS.TRADEOFF_PROJECTION",
+    "II.BENEFITS.GOVERNED_MECHANIC_SEMANTICS",
+    "II.BENEFITS.FACT_PUBLICATION_BRIDGE",
+    "II.HEALTH_DOMAIN.GAP_REGISTRY",
+    "II.CONTEXT.BUILDER",
+    "II.REASONING.ENGINE",
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "Reconcile pre-existing Benefits runtime and HC-1.0 Health-domain gap-registry code into the governed capability catalog, and assign three pre-existing executable contracts to their already-registered semantic owners. No new governed Python implementation or feature behavior is added; the slice records existing authority boundaries and closes remaining insurance_intelligence census drift.",
+  "supersession_impact": "None. No capability is removed, replaced or superseded; the Health-domain gap registry is explicitly recorded as DISCONNECTED rather than promoted into active runtime authority.",
+  "authority_impact": "Makes existing Benefits factual-comparison, intrinsic-assessment, trade-off, mechanic-semantic, fact-publication and pre-ranking admission boundaries explicit while preserving the prohibition on aggregate ranking, winner selection, suitability and recommendation. Context, reasoning and response authority are unchanged; only their executable contract ownership is reconciled."
+}

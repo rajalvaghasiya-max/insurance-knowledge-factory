@@ -87,7 +87,8 @@
       ],
       "reuse_policy": "REUSE",
       "ownership_paths": [
-        "insurance_intelligence/context"
+        "insurance_intelligence/context",
+        "insurance_intelligence/contracts/context.py"
       ],
       "introduced_by": "MO-014",
       "supersedes": [],
@@ -152,7 +153,8 @@
       ],
       "reuse_policy": "REUSE",
       "ownership_paths": [
-        "insurance_intelligence/reasoning"
+        "insurance_intelligence/reasoning",
+        "insurance_intelligence/contracts/reasoning.py"
       ],
       "introduced_by": "MO-017",
       "supersedes": [],
@@ -216,7 +218,8 @@
       ],
       "reuse_policy": "REUSE",
       "ownership_paths": [
-        "insurance_intelligence/response"
+        "insurance_intelligence/response",
+        "insurance_intelligence/contracts/response.py"
       ],
       "introduced_by": "MO-020",
       "supersedes": [],

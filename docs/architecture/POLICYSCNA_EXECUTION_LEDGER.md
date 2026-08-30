@@ -24,14 +24,28 @@ Current development protocol:
 - `NEW` is never inferred or auto-authorized;
 - feature work remains frozen while Blocker #202 is open.
 
-## Authorized sequence
+## Authorized closure sequence
 
-1. **Generated current human-readable capability/system memory** — current slice.
-2. Resume the remaining `insurance_intelligence` census using machine-derived inventory evidence.
-3. Reach zero unclaimed `insurance_intelligence` governed files.
-4. Switch/prove STRICT enforcement with permanent adversarial tests.
-5. Expand governance outward across remaining PolicyScna repository roots in controlled slices.
-6. Close Blocker #202 only after repository-memory closure criteria are satisfied.
+1. Complete the remaining `insurance_intelligence` census using machine-derived inventory evidence, including Benefits and residual executable-contract ownership.
+2. Reach zero unclaimed `insurance_intelligence` governed files.
+3. Switch `insurance_intelligence` to STRICT enforcement and prove it with permanent positive and adversarial tests.
+4. Run one bounded Blocker #202 repository-memory fitness review proving governed runtime behavior cannot be added or changed silently.
+5. Close Blocker #202 if the STRICT and fitness evidence passes.
+6. Resume the authorized Health core roadmap immediately after closure.
+
+Repository-wide governance expansion beyond the current governed runtime roots is **not** a prerequisite for resuming Health core work. Additional roots may be brought under governance incrementally when future authorized work touches them.
+
+No new architecture phase is authorized merely because Blocker #202 closes. The capability control plane remains a development guardrail rather than becoming the product roadmap.
+
+## Blocker #202 exit condition
+
+Blocker #202 may close when repository evidence proves that a new or modified governed `insurance_intelligence` runtime path cannot enter the canonical codebase without:
+- a reconciled capability-impact declaration;
+- explicit semantic ownership and authority boundaries;
+- current structural fingerprint evidence;
+- a fresh generated capability map;
+- passing STRICT-mode and adversarial control-plane tests; and
+- the full Factory test suite remaining green.
 
 ## Immutable experiment prohibitions
 

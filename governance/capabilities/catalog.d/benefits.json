@@ -1,0 +1,162 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.BENEFITS.KNOWLEDGE_AND_FACTUAL_COMPARISON",
+      "name": "Governed Benefit Knowledge and Factual Comparison",
+      "responsibility": "Represent governed benefit concepts and product implementations, discover active approved published implementations, evaluate comparison eligibility, normalize mechanics onto a common factual basis, produce deterministic structured comparisons, orchestrate the factual comparison pipeline, and project evidence-preserving education-first explanations without ranking or recommendation.",
+      "plane": "INSURANCE_INTELLIGENCE_BENEFITS",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Benefit knowledge, factual comparison and explanation authority only; it may describe governed mechanics and factual differences but cannot aggregate them into a product score, rank alternatives, select a winner, infer suitability, decide entitlement, assess a claim, or recommend.",
+      "safety_invariants": [
+        "Only active, approved and published governed implementations are eligible for discovery and comparison orchestration.",
+        "Representation differences may be normalized only through the governed mechanic model; blocked or unresolved dimensions remain explicit.",
+        "Factual comparison must preserve source limitations and may not convert missing or one-sided evidence into superiority or inferiority.",
+        "Comparison and explanation outputs remain non-ranking, non-suitability and non-recommendation artifacts."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/benefits/contracts.py",
+        "insurance_intelligence/benefits/catalogue.py",
+        "insurance_intelligence/benefits/registry.py",
+        "insurance_intelligence/benefits/star_comprehensive.py",
+        "insurance_intelligence/benefits/activ_one_nxt.py",
+        "insurance_intelligence/benefits/discovery.py",
+        "insurance_intelligence/benefits/eligibility.py",
+        "insurance_intelligence/benefits/normalization.py",
+        "insurance_intelligence/benefits/comparison.py",
+        "insurance_intelligence/benefits/orchestration.py",
+        "insurance_intelligence/benefits/explanation_projection.py"
+      ],
+      "introduced_by": "MO-025B..MO-025J",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Census registration of the existing MO-025 governed benefit discovery/comparison pipeline. It intentionally excludes intrinsic assessment, trade-off projection, publication admission and future ranking authority."
+    },
+    {
+      "capability_id": "II.BENEFITS.PRERANKING_HANDOFF_BOUNDARY",
+      "name": "Governed Benefits Pre-Ranking Handoff Boundary",
+      "responsibility": "Validate and freeze the sole admissible Benefits comparison payload that may cross toward any future ranking or recommendation consumer, rejecting blocked projections, arbitrary mappings, legacy generated outputs and recommendation-shaped objects.",
+      "plane": "INSURANCE_INTELLIGENCE_BENEFITS_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Negative admission authority at the Benefits advice boundary only; it can reject or admit a governed comparison projection for downstream consumption but cannot rank, score, personalize, determine suitability, select a winner, or recommend.",
+      "safety_invariants": [
+        "Only the exact governed comparison explanation projection type is admissible.",
+        "Blocked comparison projections cannot cross the boundary.",
+        "Historical generated outputs, dictionaries, legacy recommendation objects and arbitrary payloads are not admissible substitutes.",
+        "Any future ranking or recommendation capability must attach through this boundary rather than bypass it."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/benefits/governed_handoff.py"
+      ],
+      "introduced_by": "P0-PRE-RANKING-HARDENING",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "This is a fail-closed chokepoint, not recommendation authority. Current code contains no Benefits ranking or winner computation."
+    },
+    {
+      "capability_id": "II.BENEFITS.INTRINSIC_ASSESSMENT",
+      "name": "Governed Intrinsic Benefit Assessment",
+      "responsibility": "Apply approved published qualitative assessment policies to governed product-benefit implementations, build per-product assessment profiles, and project condition-specific assessment results while preserving evidence, limitations and non-scorable outcomes.",
+      "plane": "INSURANCE_INTELLIGENCE_BENEFITS_ASSESSMENT",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Intrinsic per-benefit qualitative assessment authority only; it may classify a governed benefit dimension under an approved policy but cannot aggregate dimensions into an overall product rating, rank products, infer customer suitability, or recommend.",
+      "safety_invariants": [
+        "Assessment requires governed implementations and approved published assessment policies.",
+        "Missing required mechanics or unmatched governed rules produce NOT_SCORABLE rather than a forced qualitative band.",
+        "Assessment provenance preserves source mechanics, evidence references, policy identity/version and limitations.",
+        "Per-benefit assessments may not be aggregated into a net product score, winner, suitability conclusion or recommendation."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/benefits/assessment_contracts.py",
+        "insurance_intelligence/benefits/assessment_taxonomy.py",
+        "insurance_intelligence/benefits/assessment_policies.py",
+        "insurance_intelligence/benefits/assessment_engine.py",
+        "insurance_intelligence/benefits/product_assessment_profile.py",
+        "insurance_intelligence/benefits/restoration_assessment_policy.py",
+        "insurance_intelligence/benefits/condition_assessment_projection.py",
+        "insurance_intelligence/benefits/copayment_assessment.py",
+        "insurance_intelligence/benefits/copayment_assessment_policy.py"
+      ],
+      "introduced_by": "MO-026B..MO-026F",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Education-first intrinsic assessment over governed mechanics. This boundary deliberately excludes cross-product trade-off projection."
+    },
+    {
+      "capability_id": "II.BENEFITS.TRADEOFF_PROJECTION",
+      "name": "Governed Non-Verdict Benefit Trade-Off Projection",
+      "responsibility": "Compare already-governed product assessment profiles one dimension at a time and project stronger, weaker, shared, unresolved, one-sided or non-comparable trade-offs with preserved protection-floor warnings and limitations.",
+      "plane": "INSURANCE_INTELLIGENCE_BENEFITS_ASSESSMENT",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Per-dimension trade-off authority only; it cannot weight or aggregate dimensions, compute a net lean, rank products, declare a winner, infer suitability, or recommend.",
+      "safety_invariants": [
+        "Direct qualitative comparison requires matching governed assessment policy identity and version on both sides.",
+        "Unresolved or one-sided dimensions cannot be converted into stronger/weaker conclusions.",
+        "Protection-floor warnings and source limitations remain visible rather than being cancelled by strengths elsewhere.",
+        "The explanation decision boundary must explicitly preserve that there is no overall winner or recommendation."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/benefits/tradeoff_comparison.py",
+        "insurance_intelligence/benefits/tradeoff_explanation_projection.py"
+      ],
+      "introduced_by": "MO-026G..MO-026H",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Dimension-level stronger/weaker language is intentionally local and must never be collapsed into an aggregate product verdict."
+    },
+    {
+      "capability_id": "II.BENEFITS.GOVERNED_MECHANIC_SEMANTICS",
+      "name": "Governed Benefit Mechanic Semantics",
+      "responsibility": "Represent and deterministically compose governed semantics for co-payment, waiting-period, personal-underwriting, restoration and room-rent mechanics so downstream assessment and comparison consume typed domain behavior rather than ad-hoc text interpretation.",
+      "plane": "INSURANCE_INTELLIGENCE_BENEFITS_SEMANTICS",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Typed benefit-mechanic semantic authority only; it may represent and compose already-governed mechanics but cannot establish product identity, admit arbitrary product facts, rank alternatives, determine suitability, or recommend.",
+      "safety_invariants": [
+        "Mechanic composition is deterministic and must preserve conditional, cumulative, non-application and option-domain distinctions rather than flattening them.",
+        "Unknown, inapplicable or insufficient mechanic states remain explicit and cannot be guessed from prose.",
+        "Room-rent and waiting-period assessment inputs retain their governed evidence/limitation boundaries.",
+        "Typed mechanic semantics are inputs to assessment/comparison and are not product-level verdicts."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/benefits/copayment_composition.py",
+        "insurance_intelligence/benefits/copayment_nonapplication.py",
+        "insurance_intelligence/benefits/copayment_rate_matrix.py",
+        "insurance_intelligence/benefits/waiting_period_contracts.py",
+        "insurance_intelligence/benefits/waiting_period_option_domain.py",
+        "insurance_intelligence/benefits/personal_underwriting_waiting_period.py",
+        "insurance_intelligence/benefits/room_rent_assessment.py"
+      ],
+      "introduced_by": "MO-026D; MO-034..MO-075; HC-1",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "This family is kept separate from generic benefit vocabulary because these modules encode safety-relevant mechanic composition and assessment semantics."
+    },
+    {
+      "capability_id": "II.BENEFITS.FACT_PUBLICATION_BRIDGE",
+      "name": "Governed Benefit Fact Publication Bridge",
+      "responsibility": "Admit explicitly reviewed and published real-product benefit facts into typed assessment contracts, preserving product/UIN identity, evidence and document lineage, effective dates, review status, publication status and source limitations.",
+      "plane": "INSURANCE_INTELLIGENCE_BENEFITS_PUBLICATION_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Benefit-fact admission/projection authority only; it can project a reviewed published fact into the corresponding assessment contract but cannot upgrade unreviewed or unpublished facts, repair lineage, infer missing facts, rank products, or recommend.",
+      "safety_invariants": [
+        "Only approved and published fact records are governed for downstream use.",
+        "Historical extractor outputs and arbitrary mappings are not admissible substitutes for the publication contract.",
+        "Product identity, UIN, evidence reference, source document identity/hash, effective dates and limitations remain bound to the projected fact.",
+        "Publication admission of one benefit fact does not authorize an overall product judgment or recommendation."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/benefits/room_rent_publication.py",
+        "insurance_intelligence/benefits/activ_one_nxt_room_rent.py"
+      ],
+      "introduced_by": "MO-026E",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Narrow real-product fact bridge into the active Benefits assessment model; distinct from the global authoritative-publication gate."
+    }
+  ]
+}
