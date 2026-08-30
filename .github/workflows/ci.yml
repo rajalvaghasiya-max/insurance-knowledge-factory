@@ -38,15 +38,18 @@ jobs:
       - name: Validate capability control plane
         run: .ci-venv/bin/python -m scripts.check_capability_control
 
-      - name: Materialize exact decision-support fingerprint baseline
-        run: .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline > governance/capabilities/generated/structural_fingerprints.json
+      - name: Validate capability implementation fingerprints
+        run: .ci-venv/bin/python -m scripts.check_capability_fingerprints
 
-      - name: Commit exact decision-support fingerprint baseline
+      - name: Materialize exact decision-support capability map
+        run: .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > docs/architecture/generated/POLICYSCNA_CAPABILITY_MAP.md
+
+      - name: Commit exact decision-support capability map
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add governance/capabilities/generated/structural_fingerprints.json
-          git diff --cached --quiet || git commit -m "Regenerate capability fingerprints for decision support census"
+          git add docs/architecture/generated/POLICYSCNA_CAPABILITY_MAP.md
+          git diff --cached --quiet || git commit -m "Regenerate capability map for decision support census"
           git push origin HEAD:platform-decision-support-census-v1
 
       - name: Run Factory test suite
