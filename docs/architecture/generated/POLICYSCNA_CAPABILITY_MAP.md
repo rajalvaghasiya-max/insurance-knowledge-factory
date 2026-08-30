@@ -5,7 +5,7 @@
 ## Control-plane state
 
 - **Catalog version:** `1.0`
-- **Enforcement mode:** `RECONCILIATION`
+- **Enforcement mode:** `STRICT`
 - **Fingerprint schema:** `1.0`
 - **Registered capabilities:** `47`
 - **Governed roots:** `capability_control`, `insurance_intelligence`
