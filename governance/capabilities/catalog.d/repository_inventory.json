@@ -1,0 +1,26 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "PLATFORM.REPOSITORY_INVENTORY",
+      "name": "Repository Structural Inventory",
+      "responsibility": "Derive deterministic structural evidence about Python modules, symbols, imports, reverse imports, static entrypoint/test reachability, source hashes, dynamic-import flags, and per-capability implementation fingerprints for capability preflight and drift review.",
+      "plane": "PLATFORM",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Structural evidence provider only; it does not decide capability lifecycle, semantic authority, reuse policy, or whether NEW is authorized.",
+      "safety_invariants": [
+        "Repository inventory is machine-derived and must not become a hand-maintained semantic authority.",
+        "Static reachability and docstrings are evidence signals only and never prove runtime or architectural authority.",
+        "Capability fingerprints are derived from catalog ownership_paths and may signal implementation change but may not independently authorize or reject architecture changes.",
+        "Structural evidence may improve preflight recall, but preflight must continue to return new_authorized=false."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "capability_control/inventory.py"
+      ],
+      "introduced_by": null,
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Layer 1 of the Capability Control Plane. Reuses the existing scanner for path-claim enforcement and the existing preflight scorer for semantic retrieval rather than creating parallel control systems."
+    }
+  ]
+}
