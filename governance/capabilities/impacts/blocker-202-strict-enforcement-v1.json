@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "blocker-202-strict-enforcement-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "PLATFORM.CAPABILITY_CONTROL_PLANE"
+  ],
+  "rationale": "Extend the existing capability control plane from reconciliation mode to strict enforcement after the governed insurance_intelligence census reached zero unclaimed files. No insurance runtime capability or authority is added.",
+  "supersession_impact": "NONE",
+  "authority_impact": "The platform control plane now fails closed on unclaimed governed Python files and stale ownership paths. Insurance semantic authority is unchanged."
+}
