@@ -314,7 +314,7 @@
         "capability_control/scanner.py",
         "capability_control/system_map.py"
       ],
-      "structural_fingerprint": "56dfe54b1665313f3a9672c95fe441f803935576da11fe075da27216282672b9"
+      "structural_fingerprint": "763bc31e001a1eccf33f2073c2a9d3b52dceb109d8f38a6ee0b32ec03d6c1347"
     },
     {
       "capability_id": "PLATFORM.REPOSITORY_INVENTORY",
