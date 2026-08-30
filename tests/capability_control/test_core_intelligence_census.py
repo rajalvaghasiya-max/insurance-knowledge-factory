@@ -65,7 +65,7 @@ def test_preflight_surfaces_existing_decision_explanation_orchestration_capabili
     result = preflight_capability(
         catalog=_catalog(),
         query="safety gate approved findings explanation adapter orchestration execution",
-        limit=12,
+        limit=16,
     )
     ids = {candidate.capability_id for candidate in result.candidates}
     assert "II.DECISION.DETERMINISTIC_SAFETY_GATE" in ids

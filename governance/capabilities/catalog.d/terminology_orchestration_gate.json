@@ -1,0 +1,27 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",
+      "name": "Terminology Admission Orchestration Gate",
+      "responsibility": "Resolve governed product-scoped terminology before reasoning-plan construction and publish either a bounded canonical terminology context or an explicit blocked handoff.",
+      "plane": "INSURANCE_INTELLIGENCE_ORCHESTRATION",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Pre-planning terminology admission authority only. It may expose governed canonical terminology and implementation context after deterministic contextual resolution; it cannot create facts, infer unresolved applicability, execute reasoning, generate explanations, compare, rank, assess suitability, or recommend.",
+      "safety_invariants": [
+        "Unresolved terminology must produce BLOCKED and may not silently advance to reasoning or explanation.",
+        "READY handoffs must contain the required governed canonical concept and product implementation identifiers.",
+        "The gate may expose only deterministic governed terminology context and must preserve ambiguity or missing-context failures.",
+        "Star Comprehensive wiring supplies a governed resolver configuration only and does not broaden the gate's authority."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/orchestration/terminology_gate.py",
+        "insurance_intelligence/orchestration/star_comprehensive_terminology.py"
+      ],
+      "introduced_by": "MO-024G",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Census registration of the existing fail-closed terminology pre-reasoning gate and its Star Comprehensive resolver wiring."
+    }
+  ]
+}
