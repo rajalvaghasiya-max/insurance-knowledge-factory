@@ -39,6 +39,8 @@ Closed experiment results remain immutable even while their historical execution
 
 **No Product #9 candidate screening is authorized.** Product #9 remains a closed unscored experiment and may not be reopened, repaired, rescored, reselected, or reinterpreted by later observations.
 
+Motor gate remains **CLOSED**. No Motor implementation, screening, experiment, or other Motor execution is authorized by the Health work or by Blocker #202.
+
 No closed neutral Health experiment may be retroactively repaired or converted into a pass by later infrastructure or evidence changes. A future experiment requires its own explicit governed authorization after Blocker #202 closure.
 
 ## Explicitly not authorized now
