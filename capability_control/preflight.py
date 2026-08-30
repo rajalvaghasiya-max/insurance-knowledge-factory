@@ -13,6 +13,7 @@ from typing import Callable
 from .catalog import CapabilityCatalog, CapabilityRecord
 
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
+_CAMEL_BOUNDARY_RE = re.compile(r"(?<=[a-z0-9])(?=[A-Z])")
 _STOPWORDS = frozenset(
     {
         "a", "an", "and", "are", "as", "at", "be", "by", "for", "from",
@@ -41,8 +42,9 @@ class CapabilityPreflightResult:
 
 
 def _tokens(text: str) -> frozenset[str]:
+    normalized = _CAMEL_BOUNDARY_RE.sub(" ", text)
     return frozenset(
-        token for token in _TOKEN_RE.findall(text.lower())
+        token for token in _TOKEN_RE.findall(normalized.lower())
         if len(token) > 1 and token not in _STOPWORDS
     )
 
@@ -74,7 +76,6 @@ def _score(
         return None
     coverage = len(overlap) / len(query_tokens)
     precision = len(overlap) / len(record_tokens) if record_tokens else 0.0
-    # Coverage dominates because preflight is a recall-oriented retrieval aid.
     score = round((0.85 * coverage) + (0.15 * precision), 4)
     return CapabilityCandidate(
         capability_id=record.capability_id,
@@ -108,8 +109,6 @@ def preflight_capability(
     candidates.sort(key=lambda item: (-item.score, item.capability_id))
     selected = tuple(candidates[:limit])
 
-    # A lexical match is evidence to inspect existing capability. No lexical
-    # result, however, is never evidence that NEW is safe or authorized.
     classification = (
         "EXISTING_CAPABILITY_CANDIDATES_FOUND"
         if selected
