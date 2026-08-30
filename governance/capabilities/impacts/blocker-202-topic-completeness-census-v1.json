@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "blocker-202-topic-completeness-census-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.TOPIC_COMPLETENESS.GOVERNED_EVIDENCE_GATE"
+  ],
+  "rationale": "Register the pre-existing generic topic-completeness subsystem during Blocker #202 repository-memory reconciliation. The governed implementation already exists; this change binds stable semantic ownership without adding runtime feature behavior.",
+  "supersession_impact": "NONE",
+  "authority_impact": "Adds repository-memory classification only. The capability may evaluate registered topic definitions against governed evidence and determine explanation permission, but it cannot retrieve evidence, infer product facts, compare, rank, assess suitability, select, or recommend."
+}
