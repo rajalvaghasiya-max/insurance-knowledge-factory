@@ -60,8 +60,6 @@ def _lineage(record: CapabilityRecord) -> str:
 
 
 def _render_capability(record: CapabilityRecord, fingerprint: dict[str, object]) -> list[str]:
-    owned_paths = fingerprint["owned_module_paths"]
-    assert isinstance(owned_paths, list)
     structural_fingerprint = fingerprint["structural_fingerprint"]
     assert isinstance(structural_fingerprint, str)
     lines = [
@@ -72,12 +70,9 @@ def _render_capability(record: CapabilityRecord, fingerprint: dict[str, object])
         f"- **Authority role:** {record.authority_role}",
         f"- **Lineage:** {_lineage(record)}",
         f"- **Structural fingerprint:** `{structural_fingerprint}`",
-        "- **Owned implementation:**",
+        "- **Ownership boundary:**",
     ]
-    if owned_paths:
-        lines.extend(f"  - `{path}`" for path in owned_paths)
-    else:
-        lines.append("  - None")
+    lines.extend(f"  - `{path}`" for path in record.ownership_paths)
     lines.append("")
     return lines
 
@@ -104,7 +99,7 @@ def render_capability_map(
     lines = [
         "# PolicyScna Generated Capability Map",
         "",
-        "> **GENERATED — DO NOT EDIT.** Deterministic navigation view of the validated semantic capability catalog plus the committed structural fingerprint baseline. Detailed responsibility, safety invariants and notes remain in the catalog. This map does not authorize roadmap or next actions.",
+        "> **GENERATED — DO NOT EDIT.** Deterministic navigation view of the validated semantic capability catalog plus the committed structural fingerprint baseline. Detailed responsibility, safety invariants, notes and module-level structural evidence remain in their canonical machine sources. This map does not authorize roadmap or next actions.",
         "",
         "## Control-plane state",
         "",
@@ -118,6 +113,7 @@ def render_capability_map(
         "",
         "- Executable code and passing tests remain the highest repository evidence.",
         "- Structural fingerprints bind registered implementation to capabilities; they do not infer semantic authority.",
+        "- Ownership boundaries shown here are semantic catalog ownership paths; exact module-level structural evidence remains in the fingerprint manifest/inventory.",
         "- The semantic catalog remains the detailed source for responsibility, safety invariants, lifecycle, reuse policy, ownership and lineage.",
         "- Execution priorities and authorized next actions belong in the execution ledger / blocker record, not in this map.",
         "- Unregistered governed files remain reconciliation candidates while enforcement mode is `RECONCILIATION`.",
