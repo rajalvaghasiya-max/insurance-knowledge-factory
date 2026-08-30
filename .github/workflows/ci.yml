@@ -48,10 +48,14 @@ jobs:
           --head-ref "${{ github.event.pull_request.head.sha }}"
 
       - name: Emit reviewed capability fingerprint baseline
-        run: .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline
+        run: >-
+          .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline
+          > governance/capabilities/generated/structural_fingerprints.json
 
       - name: Emit generated capability map
-        run: .ci-venv/bin/python -m scripts.check_generated_capability_map --emit
+        run: >-
+          .ci-venv/bin/python -m scripts.check_generated_capability_map --emit
+          > docs/architecture/generated/POLICYSCNA_CAPABILITY_MAP.md
 
       - name: Commit generated capability artifacts
         if: github.event_name == 'push'
