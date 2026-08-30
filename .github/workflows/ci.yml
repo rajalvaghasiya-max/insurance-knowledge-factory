@@ -7,7 +7,7 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   test:
@@ -18,7 +18,7 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v7
         with:
-          persist-credentials: false
+          persist-credentials: true
           fetch-depth: 0
 
       - name: Set up Python
@@ -50,17 +50,20 @@ jobs:
       - name: Validate capability implementation fingerprints
         run: .ci-venv/bin/python -m scripts.check_capability_fingerprints
 
-      - name: Materialize entity-resolution census capability map bootstrap
-        run: |
-          mkdir -p bootstrap
-          .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > bootstrap/POLICYSCNA_CAPABILITY_MAP.md
+      - name: Materialize exact generated capability map
+        run: .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > docs/architecture/generated/POLICYSCNA_CAPABILITY_MAP.md
 
-      - name: Upload entity-resolution census capability map bootstrap
-        uses: actions/upload-artifact@v4
-        with:
-          name: entity-resolution-census-map-bootstrap
-          path: bootstrap/POLICYSCNA_CAPABILITY_MAP.md
-          if-no-files-found: error
+      - name: Commit exact generated capability map
+        if: github.event_name == 'push'
+        run: |
+          if git diff --quiet -- docs/architecture/generated/POLICYSCNA_CAPABILITY_MAP.md; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/architecture/generated/POLICYSCNA_CAPABILITY_MAP.md
+          git commit -m "Regenerate capability map for entity resolution census"
+          git push origin HEAD:${GITHUB_REF_NAME}
 
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
