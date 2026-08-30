@@ -11,6 +11,11 @@
       "structural_fingerprint": "62bc2359c6e0697f8ecdb5e044c394fdb3a0ee182e7e53d3bc60bba1b34f7665"
     },
     {
+      "capability_id": "II.COVERAGE.REGISTRY",
+      "owned_module_paths": ["insurance_intelligence/coverage_registry/contracts.py", "insurance_intelligence/coverage_registry/health_seed.py", "insurance_intelligence/coverage_registry/reporting.py"],
+      "structural_fingerprint": "67470715a6a36db0fcb148a65a72d87869cd09b001f7d6c39e806b17f4a1a673"
+    },
+    {
       "capability_id": "II.DECISION.AUTHORITY_ENFORCEMENT",
       "owned_module_paths": ["insurance_intelligence/authority_enforced_decision_gate.py", "insurance_intelligence/contracts/authority_enforcement.py"],
       "structural_fingerprint": "8cb8e6c211919f74458d99adea8718209f520dd619e2f74e4909027ea957d220"
@@ -76,6 +81,16 @@
       "structural_fingerprint": "2817c821a2383912d5f602801089ae560d91aa9677f725bad447eff02d77d68f"
     },
     {
+      "capability_id": "II.PUBLICATION.AUTHORITATIVE_GATE",
+      "owned_module_paths": ["insurance_intelligence/authoritative_publication/__init__.py", "insurance_intelligence/authoritative_publication/gate.py", "insurance_intelligence/authoritative_publication/star_health.py", "insurance_intelligence/contracts/authoritative_publication.py"],
+      "structural_fingerprint": "6f1ea7a5450a1ce0a06b57e7170f16648ecade105982279c00b39c9f9ba64b63"
+    },
+    {
+      "capability_id": "II.PUBLICATION.DECISION",
+      "owned_module_paths": ["insurance_intelligence/contracts/publication_decision.py", "insurance_intelligence/publication_decision/__init__.py", "insurance_intelligence/publication_decision/evaluator.py", "insurance_intelligence/publication_decision/star_health.py"],
+      "structural_fingerprint": "48867e699bbf517df805dde119afb3e1d281cb60c39755ee9db5609e548a6044"
+    },
+    {
       "capability_id": "II.REASONING.ENGINE",
       "owned_module_paths": ["insurance_intelligence/reasoning/__init__.py", "insurance_intelligence/reasoning/engine.py", "insurance_intelligence/reasoning/registry.py", "insurance_intelligence/reasoning/rules.py", "insurance_intelligence/reasoning/sufficiency.py", "insurance_intelligence/reasoning/trace.py"],
       "structural_fingerprint": "2038300449f065bf4052fa5905ed86bb708913cdbbb2fcd0e1379fa93137fd69"
@@ -99,6 +114,11 @@
       "capability_id": "II.RESPONSE.ASSEMBLY",
       "owned_module_paths": ["insurance_intelligence/response/__init__.py", "insurance_intelligence/response/assembler.py", "insurance_intelligence/response/registry.py", "insurance_intelligence/response/service.py", "insurance_intelligence/response/validator.py"],
       "structural_fingerprint": "d2a5cf42467cfdb4a55bc81ebf321600d111d2231fd76579e1c517e52b2ad913"
+    },
+    {
+      "capability_id": "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
+      "owned_module_paths": ["insurance_intelligence/contracts/rule_certification.py", "insurance_intelligence/rule_certification/__init__.py", "insurance_intelligence/rule_certification/aditya_birla_health.py", "insurance_intelligence/rule_certification/conditional_copayment.py", "insurance_intelligence/rule_certification/copayment_multispan.py", "insurance_intelligence/rule_certification/copayment_nonapplication.py", "insurance_intelligence/rule_certification/fixtures.py", "insurance_intelligence/rule_certification/personal_underwriting_waiting_period.py", "insurance_intelligence/rule_certification/runner.py", "insurance_intelligence/rule_certification/star_health.py", "insurance_intelligence/rule_certification/star_health_bariatric_surgery.py", "insurance_intelligence/rule_certification/star_health_initial_waiting_period.py", "insurance_intelligence/rule_certification/star_health_room_rent.py", "insurance_intelligence/rule_certification/waiting_period.py", "insurance_intelligence/rule_certification/waiting_period_material_rules.py", "insurance_intelligence/rule_certification/waiting_period_modification.py", "insurance_intelligence/rule_certification/waiting_period_multispan.py", "insurance_intelligence/rule_certification/waiting_period_option_domain.py", "insurance_intelligence/rule_certification/waiting_period_option_domain_multispan.py"],
+      "structural_fingerprint": "dc8a634658993576ab9327b9e11ffb9aa26f31d1bfb4beaa9918cfe589916f3a"
     },
     {
       "capability_id": "LLM.EVALUATION.CONTROLLED_PROVIDER_HARNESS",

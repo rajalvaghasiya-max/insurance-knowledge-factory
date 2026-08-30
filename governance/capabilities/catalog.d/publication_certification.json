@@ -1,0 +1,95 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
+      "name": "Governed Rule Certification",
+      "responsibility": "Certify whether governed evidence satisfies an explicit topic and version expectation by combining stable topic-completeness evaluation with deterministic certification outcome derivation, including bounded insurer and rule-family implementations.",
+      "plane": "INSURANCE_INTELLIGENCE_KNOWLEDGE_CERTIFICATION",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Certification authority over declared governed-rule expectations only; it does not resolve evidence, publish facts, or grant downstream recommendation authority.",
+      "safety_invariants": [
+        "Certification operates on governed EvidenceResolverOutput and does not perform evidence resolution.",
+        "The generic runner contains no insurer-specific authority; bounded insurer and rule-family modules remain implementations under the same certification responsibility.",
+        "Certification outcome is distinct from publication permission and authoritative publication.",
+        "Topic completeness requirements are evaluated through the existing topic-completeness boundary rather than duplicated inside certification."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/rule_certification",
+        "insurance_intelligence/contracts/rule_certification.py"
+      ],
+      "introduced_by": "MO-023J",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Product/topic-specific certification modules are bounded implementations of this capability, not separate architectural authorities. Topic-profile and topic-completeness ownership remain outside this record for later census."
+    },
+    {
+      "capability_id": "II.PUBLICATION.DECISION",
+      "name": "Governed Publication Decision",
+      "responsibility": "Evaluate certified governed knowledge for explicit PUBLISH, WITHHOLD, or BLOCKED eligibility while preserving certification limitations and evidence/certification trace references.",
+      "plane": "INSURANCE_INTELLIGENCE_PUBLICATION_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Determines publication permission only; it explicitly does not create an authoritative publication record.",
+      "safety_invariants": [
+        "FAIL or BLOCKED certification cannot proceed to publication.",
+        "Certification limitations and trace references must be preserved.",
+        "A PUBLISH decision sets publication permission but authoritative_publication_created remains false.",
+        "bound_not_published limitations block publication rather than being silently removed."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/publication_decision",
+        "insurance_intelligence/contracts/publication_decision.py"
+      ],
+      "introduced_by": "P2.3",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Publication eligibility is a separate governed state from both rule certification and authoritative publication."
+    },
+    {
+      "capability_id": "II.PUBLICATION.AUTHORITATIVE_GATE",
+      "name": "Authoritative Publication Gate",
+      "responsibility": "Create an immutable authoritative publication record only from an approved PUBLISH decision and an exactly matching governed projection, failing closed on identity, certification, limitation, trace, or prohibited-language inconsistency.",
+      "plane": "INSURANCE_INTELLIGENCE_PUBLICATION_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Final authority for creating the governed authoritative-publication record; it cannot upgrade a WITHHOLD/BLOCKED decision or repair mismatched lineage.",
+      "safety_invariants": [
+        "Only a PUBLISH decision with publication_permitted true and PASS certification may cross the gate.",
+        "Governed subject, certification, topic/version, limitations, and trace references must match exactly between decision and projection.",
+        "Republishing an already-created authoritative publication is prohibited.",
+        "Prohibited boundary or affirmative claim-payment guarantee language fails closed."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/authoritative_publication",
+        "insurance_intelligence/contracts/authoritative_publication.py"
+      ],
+      "introduced_by": "P2.4",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "This capability is downstream of publication decision; publication permission alone is not an authoritative record."
+    },
+    {
+      "capability_id": "II.COVERAGE.REGISTRY",
+      "name": "Insurance Intelligence Coverage Registry",
+      "responsibility": "Maintain a validated immutable inventory of insurer product/version lifecycle, evidence coverage, concept coverage, and downstream readiness states with explicit evidence references and limitations.",
+      "plane": "INSURANCE_INTELLIGENCE_COVERAGE_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Inventory/readiness authority only; it does not resolve product identity, invent insurance facts, rank products, or authorize recommendations.",
+      "safety_invariants": [
+        "Known product lifecycle status requires evidence references and a verification timestamp.",
+        "Concept readiness cannot exceed its governed coverage state.",
+        "Decision-support readiness requires comparison readiness.",
+        "Partial, source-limited, blocked, or non-automated states preserve explicit limitations."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/coverage_registry"
+      ],
+      "introduced_by": "MO-028A",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Health seed data and reporting are implementations/views of the registry. Product identity resolution and decision support remain separately governed capabilities."
+    }
+  ]
+}
