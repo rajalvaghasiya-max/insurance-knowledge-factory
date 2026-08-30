@@ -1,0 +1,26 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.GOVERNANCE.BYPASS_INVENTORY",
+      "name": "Certified-Pilot Bypass Inventory",
+      "responsibility": "Classify recommendation-capable legacy paths and artifacts by disposition and certified-pilot reachability so bypass risk remains explicit without executing, deleting, rerouting, or legitimizing those paths.",
+      "plane": "INSURANCE_INTELLIGENCE_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Repository/runtime safety inventory only; it may identify reachable or deferred bypass paths but cannot authorize recommendation output, alter routing, or certify an otherwise ungoverned path.",
+      "safety_invariants": [
+        "ACTIVE_UNGOVERNED recommendation-capable paths cannot be treated as certified.",
+        "Explicitly deferred paths must be unreachable from the certified pilot, static-artifact-only, test-only, dead, or obsolete.",
+        "Inventory construction is descriptive and does not execute, import, delete, route, or modify listed legacy paths or artifacts."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/bypass_inventory/classifier.py",
+        "insurance_intelligence/contracts/bypass_inventory.py"
+      ],
+      "introduced_by": "P2.6",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Census registration of the existing generic bypass-inventory safety control. Current default inventory is scoped to the certified Star Comprehensive pilot and preserves explicitly deferred legacy paths rather than silently treating them as safe."
+    }
+  ]
+}
