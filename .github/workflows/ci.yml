@@ -47,16 +47,19 @@ jobs:
           --base-ref "${{ github.event.pull_request.base.sha }}"
           --head-ref "${{ github.event.pull_request.head.sha }}"
 
-      - name: Materialize terminology census fingerprint bootstrap
+      - name: Validate capability implementation fingerprints
+        run: .ci-venv/bin/python -m scripts.check_capability_fingerprints
+
+      - name: Materialize terminology census capability map bootstrap
         run: |
           mkdir -p bootstrap
-          .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline > bootstrap/structural_fingerprints.json
+          .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > bootstrap/POLICYSCNA_CAPABILITY_MAP.md
 
-      - name: Upload terminology census fingerprint bootstrap
+      - name: Upload terminology census capability map bootstrap
         uses: actions/upload-artifact@v4
         with:
-          name: terminology-census-fingerprint-bootstrap
-          path: bootstrap/structural_fingerprints.json
+          name: terminology-census-map-bootstrap
+          path: bootstrap/POLICYSCNA_CAPABILITY_MAP.md
           if-no-files-found: error
 
       - name: Run Factory test suite
