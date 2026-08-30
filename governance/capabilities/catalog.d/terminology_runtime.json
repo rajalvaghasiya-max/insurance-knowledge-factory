@@ -1,0 +1,27 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.TERMINOLOGY.GOVERNED_RESOLUTION",
+      "name": "Governed Insurance Terminology Resolution",
+      "responsibility": "Represent insurer-neutral canonical insurance concepts, governed insurer/product terminology and exact aliases in immutable registry snapshots; resolve only explicit exact governed mappings; and hand a resolved canonical concept downstream as a bounded planning hint without inferring applicability or advisory meaning.",
+      "plane": "INSURANCE_INTELLIGENCE_TERMINOLOGY",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Terminology-normalization and mapping authority only. It may identify an exact governed concept/term relationship, but it does not establish product applicability, retrieve evidence, interpret policy clauses, compare products, rank options, assess suitability, or recommend.",
+      "safety_invariants": [
+        "Exact governed matches are required; fuzzy matching, token similarity, semantic inference and LLM-originated terminology resolution are excluded from this capability.",
+        "Ambiguous, inactive, unpublished, unreviewed or missing mappings remain unresolved rather than being guessed.",
+        "Canonical concepts remain insurer-neutral and are distinct from insurer marketing terms and product-specific implementations.",
+        "A READY terminology-to-planner handoff is only a planning hint and never asserts downstream capability availability, product applicability, evidence sufficiency, comparison meaning or recommendation authority."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/terminology",
+        "insurance_intelligence/contracts/terminology.py"
+      ],
+      "introduced_by": "BLOCKER-202-CENSUS",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Census registration of the pre-existing MO-024 terminology subsystem (canonical concepts, immutable registry, exact resolver, governed aliases, health/product seeds and bounded planner handoff). Registration does not claim that terminology resolution establishes policy truth or recommendation authority."
+    }
+  ]
+}
