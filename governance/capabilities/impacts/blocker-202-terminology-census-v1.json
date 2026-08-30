@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
   "change_id": "blocker-202-terminology-census-v1",
-  "classification": "NEW",
+  "classification": "EXTEND",
   "capability_ids": [
     "II.TERMINOLOGY.GOVERNED_RESOLUTION"
   ],
-  "rationale": "Register the pre-existing MO-024 terminology subsystem as one stable governed capability during Blocker #202 census reconciliation. The implementation already exists; this change adds semantic ownership and structural binding without adding runtime feature behavior.",
+  "rationale": "Register the pre-existing MO-024 terminology subsystem as one stable governed capability during Blocker #202 census reconciliation. The implementation already exists; this change extends governed repository memory with semantic ownership and structural binding without adding runtime feature behavior.",
   "supersession_impact": "NONE",
   "authority_impact": "Adds repository-memory classification only. The capability is limited to exact governed terminology normalization/resolution and bounded planner handoff; it does not add product applicability, evidence, interpretation, comparison, suitability, recommendation, or answer authority."
 }
