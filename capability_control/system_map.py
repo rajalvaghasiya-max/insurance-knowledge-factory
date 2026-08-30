@@ -1,9 +1,9 @@
 """Deterministic human-readable capability map derived from governed repository memory.
 
-This module is a view layer only. It does not create capability identity, lifecycle,
-authority, reuse policy, or roadmap decisions. Semantic truth comes from the validated
-capability catalog; structural implementation evidence comes from the committed
-fingerprint baseline.
+This module is a compact view layer only. It does not create capability identity,
+lifecycle, authority, reuse policy, safety invariants, or roadmap decisions. Detailed
+semantic truth remains in the validated capability catalog; structural implementation
+evidence comes from the committed fingerprint baseline.
 """
 from __future__ import annotations
 
@@ -69,10 +69,8 @@ def _render_capability(record: CapabilityRecord, fingerprint: dict[str, object])
         "",
         f"- **Lifecycle:** `{record.lifecycle_status}`",
         f"- **Reuse policy:** `{record.reuse_policy}`",
-        f"- **Introduced by:** {f'`{record.introduced_by}`' if record.introduced_by else 'Not recorded'}",
-        f"- **Lineage:** {_lineage(record)}",
-        f"- **Responsibility:** {record.responsibility}",
         f"- **Authority role:** {record.authority_role}",
+        f"- **Lineage:** {_lineage(record)}",
         f"- **Structural fingerprint:** `{structural_fingerprint}`",
         "- **Owned implementation:**",
     ]
@@ -80,10 +78,6 @@ def _render_capability(record: CapabilityRecord, fingerprint: dict[str, object])
         lines.extend(f"  - `{path}`" for path in owned_paths)
     else:
         lines.append("  - None")
-    lines.append("- **Safety invariants:**")
-    lines.extend(f"  - {item}" for item in record.safety_invariants)
-    if record.notes:
-        lines.append(f"- **Notes:** {record.notes}")
     lines.append("")
     return lines
 
@@ -110,7 +104,7 @@ def render_capability_map(
     lines = [
         "# PolicyScna Generated Capability Map",
         "",
-        "> **GENERATED — DO NOT EDIT.** This file is a deterministic human-readable view of the validated semantic capability catalog plus the committed structural fingerprint baseline. It contains descriptive architecture truth only; it does not authorize roadmap or next actions.",
+        "> **GENERATED — DO NOT EDIT.** Deterministic navigation view of the validated semantic capability catalog plus the committed structural fingerprint baseline. Detailed responsibility, safety invariants and notes remain in the catalog. This map does not authorize roadmap or next actions.",
         "",
         "## Control-plane state",
         "",
@@ -123,8 +117,8 @@ def render_capability_map(
         "## Interpretation rules",
         "",
         "- Executable code and passing tests remain the highest repository evidence.",
-        "- Structural fingerprints prove which registered implementation surface is currently bound to a capability; they do not infer semantic authority.",
-        "- The semantic catalog defines capability responsibility, lifecycle, authority role, reuse policy, safety invariants, ownership and lineage.",
+        "- Structural fingerprints bind registered implementation to capabilities; they do not infer semantic authority.",
+        "- The semantic catalog remains the detailed source for responsibility, safety invariants, lifecycle, reuse policy, ownership and lineage.",
         "- Execution priorities and authorized next actions belong in the execution ledger / blocker record, not in this map.",
         "- Unregistered governed files remain reconciliation candidates while enforcement mode is `RECONCILIATION`.",
         "",
