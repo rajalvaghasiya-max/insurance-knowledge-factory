@@ -1,0 +1,30 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.ORCHESTRATION.CERTIFIED_STAR_PILOT_RUNTIME",
+      "name": "Certified Star Comprehensive Pilot Runtime",
+      "responsibility": "Validate the reviewed Star Comprehensive conditional co-payment artifact chain, issue a deterministic knowledge snapshot identity, compose the governed evidence, reasoning, decision, explanation, and response stages for that exact snapshot, and certify repeatability and release-lineage invariants for the narrow pilot scope.",
+      "plane": "INSURANCE_INTELLIGENCE_ORCHESTRATION",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Narrow certification and pilot-composition authority for Star Comprehensive conditional co-payment only. It may validate existing governed artifacts, execute already-governed intelligence components in strict mode, and harden the pilot response without changing approved meaning; it cannot crawl, reinterpret source documents, create new product facts, broaden product/topic scope, rank products, assess suitability, or recommend.",
+      "safety_invariants": [
+        "The knowledge-build pilot must consume the reviewed governed artifact chain and must not recrawl or reinterpret documents.",
+        "A response cycle may proceed only from a certified snapshot whose product and topic scope exactly match the pilot scope.",
+        "Evidence resolution, reasoning, and decision execution must remain in STRICT mode and unsafe decision outcomes cannot advance to response generation.",
+        "Certification must preserve snapshot identity, publication lineage, evidence lineage, released-response identity, and deterministic repeatability.",
+        "Pilot-specific response hardening may change presentation only within the approved governed meaning and cannot add ranking, suitability, winner-selection, or recommendation authority."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/orchestration/full_cycle_certification.py",
+        "insurance_intelligence/orchestration/full_cycle_hardening.py",
+        "insurance_intelligence/orchestration/star_comprehensive_knowledge_build.py",
+        "insurance_intelligence/orchestration/star_comprehensive_pilot.py"
+      ],
+      "introduced_by": "MO-023F..MO-023I",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "Census registration of the existing narrow Star Comprehensive certification/pilot runtime. Generic orchestration execution remains owned by II.ORCHESTRATION.EXECUTION_RUNTIME."
+    }
+  ]
+}
