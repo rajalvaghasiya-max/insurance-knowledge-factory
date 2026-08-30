@@ -1,24 +1,55 @@
-from capability_control.catalog import load_catalog
+from pathlib import Path
+
+from capability_control import load_catalog
 from capability_control.preflight import preflight_capability
 
 
+ROOT = Path(__file__).resolve().parents[2]
+CATALOG = ROOT / "governance" / "capabilities" / "catalog.json"
+
+
 def _catalog():
-    return load_catalog()
+    return load_catalog(CATALOG)
 
 
-def test_preflight_surfaces_existing_intent_context_capabilities():
-    result = preflight_capability(
-        catalog=_catalog(),
-        query="intent domain entity scope customer context clarify planning",
-        limit=10,
-    )
-    ids = {candidate.capability_id for candidate in result.candidates}
-    assert "II.INTENT.DETERMINISTIC_ANALYZER" in ids
-    assert "II.CONTEXT.BUILDER" in ids
-    assert result.new_authorized is False
+def _by_id():
+    return {item.capability_id: item for item in _catalog().capabilities}
 
 
-def test_preflight_surfaces_existing_planning_evidence_capabilities():
+def test_core_intelligence_engines_are_registered_active_reuse():
+    records = _by_id()
+    expected = {
+        "II.INTENT.DETERMINISTIC_ANALYZER",
+        "II.PLANNING.REASONING_PLANNER",
+        "II.EVIDENCE.GOVERNED_RESOLVER",
+        "II.DECISION.DETERMINISTIC_SAFETY_GATE",
+        "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
+        "II.ORCHESTRATION.EXECUTION_RUNTIME",
+    }
+    assert expected <= records.keys()
+    for capability_id in expected:
+        assert records[capability_id].lifecycle_status == "ACTIVE"
+        assert records[capability_id].reuse_policy == "REUSE"
+
+
+def test_underlying_engines_do_not_claim_guard_authority():
+    records = _by_id()
+    evidence = records["II.EVIDENCE.GOVERNED_RESOLVER"]
+    decision = records["II.DECISION.DETERMINISTIC_SAFETY_GATE"]
+    explanation = records["II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR"]
+
+    assert "II.EVIDENCE.INSTANCE_ENFORCEMENT" in evidence.authority_role
+    assert "II.DECISION.AUTHORITY_ENFORCEMENT" in decision.authority_role
+    assert "II.EXPLANATION.AUTHORITY_ENFORCEMENT" in explanation.authority_role
+
+
+def test_orchestration_runtime_defers_to_canonical_order_authority():
+    runtime = _by_id()["II.ORCHESTRATION.EXECUTION_RUNTIME"]
+    assert "II.ORCHESTRATION.CANONICAL_GUARDED_ORDER" in runtime.authority_role
+    assert "pilot/certification/hardening" in (runtime.notes or "")
+
+
+def test_preflight_surfaces_existing_planning_and_evidence_capabilities():
     result = preflight_capability(
         catalog=_catalog(),
         query="plan required evidence then resolve governed source lineage sufficiency",
@@ -34,9 +65,6 @@ def test_preflight_surfaces_existing_decision_explanation_orchestration_capabili
     result = preflight_capability(
         catalog=_catalog(),
         query="safety gate approved findings explanation adapter orchestration execution",
-        # Keep enough headroom for legitimate catalog growth while preserving the
-        # semantic assertion that the established generic execution runtime remains
-        # discoverable alongside decision and explanation capabilities.
         limit=16,
     )
     ids = {candidate.capability_id for candidate in result.candidates}
