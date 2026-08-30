@@ -48,11 +48,12 @@ def test_render_capability_map_is_deterministic_compact_navigation_view() -> Non
     second = render_capability_map(_catalog(), _fingerprints(), fingerprint_schema_version="1.0")
     assert first == second
     assert "GENERATED — DO NOT EDIT" in first
+    assert "| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |" in first
     assert "PLATFORM.TEST" in first
     assert "Test-only descriptive authority." in first
-    assert "Ownership boundary" in first
     assert "capability_control/test.py" in first
-    assert "a" * 64 in first
+    assert "`aaaaaaaaaaaa`" in first
+    assert "a" * 64 not in first
     assert "deterministic test responsibility" not in first
     assert "Never invent roadmap authority." not in first
     assert "Detailed responsibility, safety invariants, notes and module-level structural evidence" in first
@@ -120,4 +121,4 @@ def test_render_capability_map_orders_planes_and_capabilities() -> None:
         "PLATFORM.A": {"capability_id": "PLATFORM.A", "owned_module_paths": ["capability_control/a.py"], "structural_fingerprint": "a" * 64},
     }
     rendered = render_capability_map(catalog, fingerprints, fingerprint_schema_version="1.0")
-    assert rendered.index("## A_PLANE") < rendered.index("## Z_PLANE")
+    assert rendered.index("### A_PLANE") < rendered.index("### Z_PLANE")
