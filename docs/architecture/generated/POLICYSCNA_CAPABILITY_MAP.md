@@ -7,7 +7,7 @@
 - **Catalog version:** `1.0`
 - **Enforcement mode:** `RECONCILIATION`
 - **Fingerprint schema:** `1.0`
-- **Registered capabilities:** `33`
+- **Registered capabilities:** `34`
 - **Governed roots:** `capability_control`, `insurance_intelligence`
 
 ## Interpretation rules
@@ -145,6 +145,12 @@
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
 | `II.RESPONSE.ASSEMBLY`<br>Deterministic Response Assembler | `ACTIVE` | `REUSE` | Creates the deterministic deliverable answer baseline; it does not authorize new facts or LLM-originated content. | None | `insurance_intelligence/response` | `d2a5cf42467c` |
+
+### INSURANCE_INTELLIGENCE_TERMINOLOGY
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.TERMINOLOGY.GOVERNED_RESOLUTION`<br>Governed Insurance Terminology Resolution | `ACTIVE` | `REUSE` | Terminology-normalization and mapping authority only. It may identify an exact governed concept/term relationship, but it does not establish product applicability, retrieve evidence, interpret policy clauses, compare products, rank options, assess suitability, or recommend. | None | `insurance_intelligence/terminology`<br>`insurance_intelligence/contracts/terminology.py` | `fc0fd561f6ee` |
 
 ### LLM_CONTROLLED_EVALUATION
 
