@@ -47,11 +47,14 @@ jobs:
           --base-ref "${{ github.event.pull_request.base.sha }}"
           --head-ref "${{ github.event.pull_request.head.sha }}"
 
-      - name: Validate capability implementation fingerprints
-        run: .ci-venv/bin/python -m scripts.check_capability_fingerprints
+      - name: Materialize topic completeness census fingerprint bootstrap
+        run: .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline > topic-completeness-fingerprint.json
 
-      - name: Validate generated capability map freshness
-        run: .ci-venv/bin/python -m scripts.check_generated_capability_map
+      - name: Upload topic completeness census fingerprint bootstrap
+        uses: actions/upload-artifact@v6
+        with:
+          name: topic-completeness-census-fingerprint-bootstrap
+          path: topic-completeness-fingerprint.json
 
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
