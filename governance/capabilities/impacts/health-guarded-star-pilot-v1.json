@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-guarded-star-pilot-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.ORCHESTRATION.CERTIFIED_STAR_PILOT_RUNTIME",
+    "II.REQUEST.AUTHORITY_BOUNDARY",
+    "II.INTENT.DETERMINISTIC_ANALYZER"
+  ],
+  "rationale": "Repair the existing certified Star Comprehensive conditional co-payment runtime by adding an explicitly named post-C5.36 guarded successor that exercises the already-built request-authority, intent, instance-sufficiency, evidence-enforcement, decision-enforcement, explanation-enforcement and rendering-exit boundaries. The same bounded repair adds only the exact request-language coverage required by the pilot's factual requests: factual 'will ... apply' authority and co-payment applicability/term-explanation intent phrases. No new recommendation, suitability, ranking, insurance-fact, product, topic, or domain authority is introduced.",
+  "supersession_impact": "Historical star_comprehensive_pilot.py, full_cycle_certification.py, and full_cycle_hardening.py remain unchanged as evidence of the pre-guard runtime they originally certified. They are not reinterpreted or overwritten. Post-C5.36 certification is re-earned separately through guarded_star_comprehensive_pilot.py, guarded_full_cycle_certification.py, and guarded_full_cycle_hardening.py under the same repaired capability boundary.",
+  "authority_impact": "Insurance semantic authority is unchanged. The guarded successor narrows executable release authority: unresolved/missing product identity, advisory or mixed request authority, failed Instance Sufficiency, blocked evidence enforcement, non-delegated Decision authority, unauthorized explanation entry, or failed Rendering Exit Safety cannot produce a guarded certified released answer. Recommendation authorization remains false."
+}

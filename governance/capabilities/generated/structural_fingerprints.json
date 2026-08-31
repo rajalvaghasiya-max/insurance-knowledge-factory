@@ -229,7 +229,7 @@
         "insurance_intelligence/intent/analyzer.py",
         "insurance_intelligence/intent/taxonomy.py"
       ],
-      "structural_fingerprint": "59b74941cb30dda306efc30e91e0e5ff2d321e59ef4eab3572573c952ed881d9"
+      "structural_fingerprint": "c436124c1b97833a480a28031de604e6b94875774c8ba34f13a5b5dc97ddb80e"
     },
     {
       "capability_id": "II.ORCHESTRATION.CANONICAL_GUARDED_ORDER",
@@ -243,10 +243,13 @@
       "owned_module_paths": [
         "insurance_intelligence/orchestration/full_cycle_certification.py",
         "insurance_intelligence/orchestration/full_cycle_hardening.py",
+        "insurance_intelligence/orchestration/guarded_full_cycle_certification.py",
+        "insurance_intelligence/orchestration/guarded_full_cycle_hardening.py",
+        "insurance_intelligence/orchestration/guarded_star_comprehensive_pilot.py",
         "insurance_intelligence/orchestration/star_comprehensive_knowledge_build.py",
         "insurance_intelligence/orchestration/star_comprehensive_pilot.py"
       ],
-      "structural_fingerprint": "08c98954a25e61a6ad7c931bf501e1b1eed7b627c845763bae8467ead601c007"
+      "structural_fingerprint": "2cbb0c4a4410d5507a8dce34488b7b1eb645becda479d06c3a0fd8f12b2e1a8f"
     },
     {
       "capability_id": "II.ORCHESTRATION.EXECUTION_RUNTIME",
@@ -331,7 +334,7 @@
         "insurance_intelligence/contracts/request_authority.py",
         "insurance_intelligence/request_authority.py"
       ],
-      "structural_fingerprint": "255b75ff2f488cc1a91a627b4f36b340ea662e774c1729f50b847e751a878dfb"
+      "structural_fingerprint": "d1cfb352700c9fd1118f971910ef37826c4baf99d3e518b2b69cb80cc3b93d7f"
     },
     {
       "capability_id": "II.RESPONSE.ASSEMBLY",
