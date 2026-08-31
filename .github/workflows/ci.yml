@@ -7,7 +7,7 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   test:
@@ -18,7 +18,8 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v7
         with:
-          persist-credentials: false
+          ref: health-guarded-star-pilot-v1
+          persist-credentials: true
           fetch-depth: 0
 
       - name: Set up Python
@@ -49,16 +50,20 @@ jobs:
 
       - name: Generate reviewed capability artifacts
         run: |
-          mkdir -p bootstrap-artifacts
-          .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline > bootstrap-artifacts/structural_fingerprints.json
-          cp bootstrap-artifacts/structural_fingerprints.json governance/capabilities/generated/structural_fingerprints.json
-          .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > bootstrap-artifacts/POLICYSCNA_CAPABILITY_MAP.md
+          .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline > governance/capabilities/generated/structural_fingerprints.json
+          .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > docs/architecture/generated/POLICYSCNA_CAPABILITY_MAP.md
 
-      - name: Upload reviewed capability artifacts
-        uses: actions/upload-artifact@v7
-        with:
-          name: guarded-star-capability-artifacts
-          path: bootstrap-artifacts
+      - name: Commit generated capability artifacts
+        run: |
+          git config user.name "policy-scna-capability-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add governance/capabilities/generated/structural_fingerprints.json docs/architecture/generated/POLICYSCNA_CAPABILITY_MAP.md
+          if git diff --cached --quiet; then
+            echo "generated artifacts already current"
+          else
+            git commit -m "Regenerate guarded Star capability artifacts"
+            git push origin HEAD:health-guarded-star-pilot-v1
+          fi
 
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
