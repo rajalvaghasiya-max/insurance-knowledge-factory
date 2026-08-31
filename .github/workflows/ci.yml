@@ -7,7 +7,7 @@ on:
   pull_request:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   test:
@@ -18,8 +18,7 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v7
         with:
-          ref: health-guarded-star-pilot-v1
-          persist-credentials: true
+          persist-credentials: false
           fetch-depth: 0
 
       - name: Set up Python
@@ -48,22 +47,11 @@ jobs:
           --base-ref "${{ github.event.pull_request.base.sha }}"
           --head-ref "${{ github.event.pull_request.head.sha }}"
 
-      - name: Generate reviewed capability artifacts
-        run: |
-          .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline > governance/capabilities/generated/structural_fingerprints.json
-          .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > docs/architecture/generated/POLICYSCNA_CAPABILITY_MAP.md
+      - name: Validate capability implementation fingerprints
+        run: .ci-venv/bin/python -m scripts.check_capability_fingerprints
 
-      - name: Commit generated capability artifacts
-        run: |
-          git config user.name "policy-scna-capability-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add governance/capabilities/generated/structural_fingerprints.json docs/architecture/generated/POLICYSCNA_CAPABILITY_MAP.md
-          if git diff --cached --quiet; then
-            echo "generated artifacts already current"
-          else
-            git commit -m "Regenerate guarded Star capability artifacts"
-            git push origin HEAD:health-guarded-star-pilot-v1
-          fi
+      - name: Validate generated capability map freshness
+        run: .ci-venv/bin/python -m scripts.check_generated_capability_map
 
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
