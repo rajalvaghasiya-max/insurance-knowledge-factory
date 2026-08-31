@@ -49,16 +49,16 @@ jobs:
 
       - name: Generate reviewed capability artifacts
         run: |
-          mkdir -p .bootstrap-artifacts
-          .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline > .bootstrap-artifacts/structural_fingerprints.json
-          cp .bootstrap-artifacts/structural_fingerprints.json governance/capabilities/generated/structural_fingerprints.json
-          .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > .bootstrap-artifacts/POLICYSCNA_CAPABILITY_MAP.md
+          mkdir -p bootstrap-artifacts
+          .ci-venv/bin/python -m scripts.check_capability_fingerprints --emit-baseline > bootstrap-artifacts/structural_fingerprints.json
+          cp bootstrap-artifacts/structural_fingerprints.json governance/capabilities/generated/structural_fingerprints.json
+          .ci-venv/bin/python -m scripts.check_generated_capability_map --emit > bootstrap-artifacts/POLICYSCNA_CAPABILITY_MAP.md
 
       - name: Upload reviewed capability artifacts
         uses: actions/upload-artifact@v7
         with:
           name: guarded-star-capability-artifacts
-          path: .bootstrap-artifacts
+          path: bootstrap-artifacts
 
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
