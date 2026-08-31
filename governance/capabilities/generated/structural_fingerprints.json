@@ -243,11 +243,13 @@
       "owned_module_paths": [
         "insurance_intelligence/orchestration/full_cycle_certification.py",
         "insurance_intelligence/orchestration/full_cycle_hardening.py",
+        "insurance_intelligence/orchestration/guarded_full_cycle_certification.py",
+        "insurance_intelligence/orchestration/guarded_full_cycle_hardening.py",
         "insurance_intelligence/orchestration/guarded_star_comprehensive_pilot.py",
         "insurance_intelligence/orchestration/star_comprehensive_knowledge_build.py",
         "insurance_intelligence/orchestration/star_comprehensive_pilot.py"
       ],
-      "structural_fingerprint": "c133037daf8280bf8ccd1930ab73a8f635bf8361b2fbb26025e0d7301611dd58"
+      "structural_fingerprint": "2cbb0c4a4410d5507a8dce34488b7b1eb645becda479d06c3a0fd8f12b2e1a8f"
     },
     {
       "capability_id": "II.ORCHESTRATION.EXECUTION_RUNTIME",
