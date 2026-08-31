@@ -3,23 +3,26 @@
     {
       "capability_id": "II.ORCHESTRATION.CERTIFIED_STAR_PILOT_RUNTIME",
       "name": "Certified Star Comprehensive Pilot Runtime",
-      "responsibility": "Validate the reviewed Star Comprehensive conditional co-payment artifact chain, issue a deterministic knowledge snapshot identity, compose the current guarded request, identity, evidence, reasoning, decision, explanation, response, and rendering-exit path for that exact snapshot, and certify repeatability and release-lineage invariants for the narrow pilot scope.",
+      "responsibility": "Validate the reviewed Star Comprehensive conditional co-payment artifact chain, preserve the historical pre-guard certification/hardening runtime as immutable evidence, and provide a separately named guarded successor that composes the current request, identity, evidence, reasoning, decision, explanation, response, and rendering-exit path for the same narrow product/topic scope.",
       "plane": "INSURANCE_INTELLIGENCE_ORCHESTRATION",
       "lifecycle_status": "ACTIVE",
       "authority_role": "Narrow certification and pilot-composition authority for Star Comprehensive conditional co-payment only. It may validate existing governed artifacts, resolve the already-reviewed product identity reference, execute already-governed intelligence components in strict mode, and harden the pilot response without changing approved meaning; it cannot crawl, reinterpret source documents, create new product facts, broaden product/topic scope, rank products, assess suitability, or recommend.",
       "safety_invariants": [
+        "The historical star_comprehensive_pilot.py, full_cycle_certification.py, and full_cycle_hardening.py remain valid only for the pre-guard runtime they originally certified and must not be reinterpreted as post-C5.36 guarded evidence.",
         "The knowledge-build pilot must consume the reviewed governed artifact chain and must not recrawl or reinterpret documents.",
-        "A response cycle may proceed only from a certified snapshot whose product and topic scope exactly match the pilot scope.",
-        "The current certification path must exercise Request Authority, Intent, Context, governed product identity, Instance Sufficiency, Evidence Instance Enforcement, Authority-Enforced Decision, Authority-Enforced Explanation, Response Assembly, and Rendering Exit Safety rather than directly invoking bypassable legacy entry points.",
+        "A guarded response cycle may proceed only from a certified snapshot whose product and topic scope exactly match the pilot scope.",
+        "The guarded successor must exercise Request Authority, Intent, Context, governed product identity, Instance Sufficiency, Evidence Instance Enforcement, Authority-Enforced Decision, Authority-Enforced Explanation, Response Assembly, and Rendering Exit Safety rather than directly invoking bypassable legacy entry points.",
         "A RESOLVED Star product attestation must be derived from the reviewed product_identity_reference_v1 admitted by the governed runtime registry and must preserve the identity-record reference and content hash.",
         "Evidence resolution, reasoning, and decision execution must remain in STRICT mode; advisory/mixed authority, missing instance identity, unsafe decision outcomes, or rendering-exit failure cannot advance to released answer content.",
-        "Certification must preserve snapshot identity, publication lineage, evidence lineage, released-response identity, guard execution evidence, identity-record identity, temporal/currentness limitation state, and deterministic repeatability.",
+        "Guarded certification must preserve snapshot identity, publication lineage, evidence lineage, released-response identity, guard execution evidence, identity-record identity, temporal/currentness limitation state, and deterministic repeatability.",
         "Pilot-specific response hardening may change presentation only within the approved governed meaning and cannot add ranking, suitability, winner-selection, or recommendation authority."
       ],
       "reuse_policy": "REUSE",
       "ownership_paths": [
         "insurance_intelligence/orchestration/full_cycle_certification.py",
         "insurance_intelligence/orchestration/full_cycle_hardening.py",
+        "insurance_intelligence/orchestration/guarded_full_cycle_certification.py",
+        "insurance_intelligence/orchestration/guarded_full_cycle_hardening.py",
         "insurance_intelligence/orchestration/guarded_star_comprehensive_pilot.py",
         "insurance_intelligence/orchestration/star_comprehensive_knowledge_build.py",
         "insurance_intelligence/orchestration/star_comprehensive_pilot.py"
@@ -27,7 +30,7 @@
       "introduced_by": "MO-023F..MO-023I",
       "supersedes": [],
       "superseded_by": null,
-      "notes": "The pre-guard star_comprehensive_pilot.py runner is retained for historical compatibility and direct regression evidence but is no longer the certification authority. full_cycle_certification.py now delegates only to guarded_star_comprehensive_pilot.py and re-earns certification on the post-C5.36 safety path. Generic orchestration execution remains owned by II.ORCHESTRATION.EXECUTION_RUNTIME."
+      "notes": "Historical pre-guard certification/hardening remains frozen under its original module names. Post-C5.36 certification is re-earned only through guarded_full_cycle_certification.py and guarded_full_cycle_hardening.py, which consume guarded_star_comprehensive_pilot.py. Generic orchestration execution remains owned by II.ORCHESTRATION.EXECUTION_RUNTIME."
     }
   ]
 }
