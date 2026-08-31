@@ -1,0 +1,54 @@
+{
+  "template_status": "CAPTURE_REQUIRED_NOT_EXECUTABLE",
+  "template_purpose": "Populate only after the Star currentness evidence record has been built from a fresh official-source observation. This template is intentionally non-executable until human review selects the temporal outcome and removes all __CAPTURE_REQUIRED__ sentinels.",
+  "schema_version": "1.0",
+  "overlay_type": "document_identity_resolution_overlay_v1",
+  "reviewed_by_human": false,
+  "product_identity_reference": {
+    "identity_record_path": "knowledge/factory/product_identity_references/star_health_star_comprehensive.product_identity_reference.json"
+  },
+  "documents": [
+    {
+      "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+      "resolution_status": "resolved",
+      "temporal_status": "__CAPTURE_REQUIRED__",
+      "identity_signals": [
+        {
+          "signal_type": "uin_exact_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+        },
+        {
+          "signal_type": "canonical_title_match",
+          "verification": "document_embedded_text",
+          "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+        },
+        {
+          "signal_type": "manual_document_review",
+          "verification": "manual_reviewed",
+          "evidence_reference": "docs/architecture/star_health_star_comprehensive_identity_review_packet.json"
+        }
+      ],
+      "classification_manifest_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_classification.json",
+      "capture_provenance": {
+        "source_url": "__CAPTURE_REQUIRED__",
+        "capture_reference": "__CAPTURE_REQUIRED__"
+      },
+      "source_observation_review": {
+        "observation_record_path": "__CAPTURE_REQUIRED__",
+        "reviewed_by_human": false,
+        "reviewed_at": "__CAPTURE_REQUIRED__",
+        "reviewed_temporal_status": "__CAPTURE_REQUIRED__",
+        "review_rationale": "__CAPTURE_REQUIRED__"
+      },
+      "currentness_evidence_path": "__INCLUDE_ONLY_IF_TEMPORAL_STATUS_IS_current_observed_reviewed__",
+      "review_rationale": "__CAPTURE_REQUIRED__",
+      "decision_rules": {
+        "current_observed_reviewed": "Requires a byte_identical_observed source observation, a built/validated document_currentness_evidence_record_v1, and human review establishing that the live official source associates this wording with the current Star Comprehensive product/UIN. Hash equality alone is not sufficient.",
+        "replaced": "Use when fresh official-source evidence shows the registered wording is superseded or a different wording is the applicable current document; do not mutate the historical registered version.",
+        "compatibility_unverified": "Use when the observation succeeds but the live source does not establish a sufficiently strong current product/UIN-to-wording association. Omit currentness_evidence_path for this outcome.",
+        "observation_failed": "Use only when the source observation record itself has byte_comparison.status=observation_failed. Omit currentness_evidence_path for this outcome."
+      }
+    }
+  ]
+}
