@@ -147,7 +147,12 @@ def _load_temporal_status(path: Path) -> str:
     documents = payload.get("documents")
     if not isinstance(documents, list) or len(documents) != 1 or not isinstance(documents[0], dict):
         raise GuardedStarComprehensivePilotError("document identity overlay must contain one reviewed document")
-    status = documents[0].get("temporal_status")
+    document = documents[0]
+    status = document.get("temporal_status")
+    if not isinstance(status, str) or not status.strip():
+        identity_resolution = document.get("identity_resolution")
+        if isinstance(identity_resolution, dict):
+            status = identity_resolution.get("temporal_status")
     if not isinstance(status, str) or not status.strip():
         raise GuardedStarComprehensivePilotError("document identity overlay temporal_status is missing")
     return status.strip()
@@ -326,7 +331,7 @@ def _apply_currentness_limitation(
     *,
     temporal_status: str,
 ) -> ResponseAssemblerOutput:
-    if temporal_status == "current":
+    if temporal_status in {"current", "current_observed_reviewed"}:
         return response
 
     limitations = tuple(dict.fromkeys((*response.limitations, CURRENTNESS_LIMITATION_TEXT)))
