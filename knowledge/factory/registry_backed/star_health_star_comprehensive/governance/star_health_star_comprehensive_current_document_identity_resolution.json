@@ -1,0 +1,87 @@
+{
+  "documents": [
+    {
+      "document_version_link": {
+        "capture_provenance": {
+          "capture_reference": "star_health_star_comprehensive_policy_wording_20260902_sha256_b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+          "source_page_url": "https://www.starhealth.in/downloads/",
+          "source_url": "https://d28c6jni2fmamz.cloudfront.net/Policy_Star_Comprehensive_Insurance_Policy_V_21_3a414ab104.pdf"
+        },
+        "classification_manifest_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_document_classification.json",
+        "content_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+        "document_id": "star_health_star_comprehensive_policy_wording_v1",
+        "document_type": "policy_wording",
+        "document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+        "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "registration_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "source_classification": "reusable_generic",
+        "source_document_id": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+        "source_issued_label": null
+      },
+      "identity_resolution": {
+        "current_entitlement_publication_eligibility": "eligible",
+        "currentness_evidence": {
+          "currentness_evidence_conclusion": "sufficient_for_current_observed_review",
+          "currentness_evidence_id": "dce_8db855fa7a611786",
+          "currentness_evidence_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_currentness_evidence_20260902.json",
+          "currentness_evidence_sha256": "bd03fb8279a183440f17b0f0e85b9a28ffd77bfe1bfdfb3b2131c40a6bf4a3d7",
+          "positive_currentness_evidence_count": 2
+        },
+        "evidence_review_eligibility": "eligible_for_evidence_review",
+        "identity_signals": [
+          {
+            "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+            "signal_type": "uin_exact_match",
+            "verification": "document_embedded_text"
+          },
+          {
+            "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+            "signal_type": "canonical_title_match",
+            "verification": "document_embedded_text"
+          },
+          {
+            "evidence_reference": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+            "signal_type": "manual_document_review",
+            "verification": "manual_reviewed"
+          }
+        ],
+        "resolution_status": "resolved",
+        "review_rationale": "Product/document identity remains resolved for the immutable registered Star Comprehensive policy wording. On 2026-09-02 the retained official Star Health Downloads page explicitly listed Star Comprehensive Insurance Policy SHAHLIP26044V092526 under Policy Clause > Health and linked to the exact registered wording URL. A fresh retrieval returned byte-identical content with SHA-256 b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f. The governed currentness evidence record concluded sufficient_for_current_observed_review. Therefore temporal_status is current_observed_reviewed. This decision concerns document currentness only; it does not auto-publish facts or determine customer entitlement.",
+        "source_observation_review": {
+          "byte_comparison_status": "byte_identical_observed",
+          "observation_id": "star_health_star_comprehensive_policy_wording_20260902",
+          "observation_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_source_observation_20260902.json",
+          "observation_record_sha256": "e4958b751b9244216b2fcf740ffb41d028f67343ba9f723185ed7a5bd229d6da",
+          "review_rationale": "Reviewed the retained official Star Health Downloads page and the fresh source observation for the exact registered policy wording. The official Downloads page lists Star Comprehensive Insurance Policy SHAHLIP26044V092526 under Policy Clause > Health and links directly to the observed PDF. The fresh 2026-09-02 retrieval returned HTTP 200 and SHA-256 b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f, byte-identical to the registered document version.",
+          "reviewed_at": "2026-09-02T21:30:00+05:30",
+          "reviewed_by_human": true,
+          "reviewed_temporal_status": "current_observed_reviewed"
+        },
+        "temporal_status": "current_observed_reviewed"
+      }
+    }
+  ],
+  "guardrails": [
+    "This overlay is non-mutating and does not replace source registration, document classification, canonical projection, or publication artifacts.",
+    "A matching UIN is a strong product-identity signal but does not establish document-version compatibility by itself.",
+    "Only resolved reusable-generic documents are eligible for evidence review.",
+    "Historical, replaced, compatibility-unverified, unknown, and observation-failed documents cannot establish current product entitlement publication.",
+    "A source-observation record is evidence only. It can affect temporal status only through an explicit human review bound to the same immutable registered document version.",
+    "current_observed_reviewed additionally requires a valid immutable currentness-evidence record with positive official currentness proof; reviewer assertion alone is insufficient.",
+    "This overlay records identity and temporal review; it does not itself publish a product fact or legal conclusion."
+  ],
+  "overlay_status": "reviewed_document_identity_resolution_recorded_not_published",
+  "overlay_type": "document_identity_resolution_overlay_v1",
+  "product_identity_reference": {
+    "canonical_product_name": "Star Comprehensive Insurance Policy",
+    "entity_id": "star_health:star_comprehensive",
+    "identity_record_path": "knowledge/factory/product_identity_references/star_health_star_comprehensive.product_identity_reference.json",
+    "identity_record_sha256": "eb42abdb5bb0c9fa4a960821a36e770a6892db982374a20e8a70e59b2e73b6e6",
+    "insurer_id": "star_health",
+    "product_id": "star_comprehensive",
+    "uin": "SHAHLIP26044V092526"
+  },
+  "resolved_at": "2026-09-02T16:21:54.671793+00:00",
+  "reviewed_by_human": true,
+  "schema_version": "1.0"
+}

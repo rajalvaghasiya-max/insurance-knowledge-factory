@@ -1,0 +1,54 @@
+{
+  "byte_comparison": {
+    "observed_document_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+    "registered_document_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+    "status": "byte_identical_observed"
+  },
+  "guardrails": [
+    "This record binds a timestamped official-source observation to an already-registered immutable document version.",
+    "A byte-identical official observation proves only that the observed URL served the same bytes at the recorded time.",
+    "This record does not itself determine document currentness, document-version compatibility, current entitlement eligibility, or insurance facts.",
+    "Source-issued labels and effective-date signals are preserved as raw review inputs and require later human temporal review.",
+    "Failed retrieval is recorded honestly and does not prove withdrawal, replacement, or historical status."
+  ],
+  "observation_id": "star_health_star_comprehensive_policy_wording_20260902",
+  "official_observation": {
+    "capture_strategy": "browser_assisted_official_download",
+    "content_type": "application/pdf",
+    "http_status": 200,
+    "observed_at": "2026-09-02T16:02:47.688609+00:00",
+    "observed_pdf": {
+      "content_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+      "storage_locator": "archive/raw_pdf/star_health/policy_wording/Policy_Star_Comprehensive_Insurance_Policy_V_21_3a414ab104__b1dbe8fb7864.pdf"
+    },
+    "retrieval_status": "succeeded",
+    "source_page_artifact": {
+      "content_sha256": "294576834d3b8ed47431834f58238bcd8faf04968f0c07037b1d3d94926b653c",
+      "storage_locator": "archive/raw_html/star_health/www.starhealth.in_downloads_.html"
+    },
+    "source_page_url": "https://www.starhealth.in/downloads/",
+    "source_url": "https://d28c6jni2fmamz.cloudfront.net/Policy_Star_Comprehensive_Insurance_Policy_V_21_3a414ab104.pdf",
+    "source_url_key": "https://d28c6jni2fmamz.cloudfront.net/policy_star_comprehensive_insurance_policy_v_21_3a414ab104.pdf"
+  },
+  "record_status": "source_observation_recorded_review_required",
+  "record_type": "source_observation_record_v1",
+  "recorded_at": "2026-09-02T16:07:02.034545+00:00",
+  "registered_document": {
+    "content_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+    "document_id": "star_health_star_comprehensive_policy_wording_v1",
+    "document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+    "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+    "registration_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7"
+  },
+  "review_state": {
+    "review_rationale": null,
+    "reviewed_by_human": false,
+    "temporal_review_required": true
+  },
+  "schema_version": "1.0",
+  "source_signals": {
+    "effective_date_signal": null,
+    "source_issued_label": "Star Comprehensive Insurance Policy SHAHLIP26044V092526 - Policy Clause",
+    "version_signal": "Policy_Star_Comprehensive_Insurance_Policy_V_21"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-star-currentness-reconciliation-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.ORCHESTRATION.CERTIFIED_STAR_PILOT_RUNTIME"
+  ],
+  "rationale": "Repair the existing guarded Star Comprehensive pilot so it consumes the governed DocumentIdentityResolutionOverlay manifest shape emitted by the existing document-identity builder and recognizes the already-governed current_observed_reviewed temporal state as reviewed-current. The repair does not introduce a new currentness engine, insurance fact, recommendation authority, product scope, topic scope, or domain capability.",
+  "supersession_impact": "Historical pre-guard certification artifacts remain unchanged. The existing guarded Star successor remains the active runtime; this repair only reconciles its currentness reader and limitation behavior with the established document-identity governance contract.",
+  "authority_impact": "Insurance semantic and recommendation authority are unchanged. compatibility_unverified and other non-current temporal states continue to carry the currentness limitation; only the existing governance-approved current/current_observed_reviewed states avoid that stale-currentness limitation."
+}

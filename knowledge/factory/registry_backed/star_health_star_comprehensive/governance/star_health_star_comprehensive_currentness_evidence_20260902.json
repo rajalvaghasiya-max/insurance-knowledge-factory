@@ -1,0 +1,60 @@
+{
+  "currentness_evidence_conclusion": "sufficient_for_current_observed_review",
+  "currentness_evidence_id": "dce_8db855fa7a611786",
+  "evidence_items": [
+    {
+      "evidence_reference": "archive/raw_html/star_health/www.starhealth.in_downloads_.html",
+      "evidence_status": "supports_currentness_review",
+      "evidence_type": "official_product_page_document_link",
+      "link_label": "Star Comprehensive Insurance Policy SHAHLIP26044V092526 - Policy Wording",
+      "linked_document_url": "https://d28c6jni2fmamz.cloudfront.net/Policy_Star_Comprehensive_Insurance_Policy_V_21_3a414ab104.pdf",
+      "observed_text": "The official Star Health Downloads page places Star Comprehensive Insurance Policy SHAHLIP26044V092526 under Policy Clause > Health and links directly to the observed policy-wording PDF.",
+      "verification": "retained_official_html_manual_review"
+    },
+    {
+      "evidence_reference": "archive/raw_html/star_health/www.starhealth.in_downloads_.html",
+      "evidence_status": "supports_currentness_review",
+      "evidence_type": "official_current_policy_wording_reference",
+      "observed_text": "The live official Downloads page identifies the linked document as the Policy Clause for Star Comprehensive Insurance Policy SHAHLIP26044V092526.",
+      "verification": "retained_official_html_manual_review"
+    },
+    {
+      "evidence_reference": "archive/raw_html/star_health/www.starhealth.in_downloads_.html",
+      "evidence_status": "supports_currentness_review",
+      "evidence_type": "official_uin_reference",
+      "observed_text": "The official Downloads page binds the policy-clause link to UIN SHAHLIP26044V092526.",
+      "verification": "retained_official_html_manual_review"
+    }
+  ],
+  "guardrails": [
+    "This record binds currentness evidence to one registered immutable document version and one byte-identical official observation.",
+    "This record is evidence only; it does not itself decide temporal status, publish facts, or determine customer entitlement.",
+    "A product identity match, a functioning URL, or a reviewer rationale alone is not sufficient positive currentness evidence.",
+    "Only the document identity resolution overlay may convert this evidence into a reviewed temporal status."
+  ],
+  "positive_currentness_evidence_count": 2,
+  "record_status": "currentness_evidence_recorded_not_decided",
+  "record_type": "document_currentness_evidence_record_v1",
+  "recorded_at": "2026-09-02T16:17:31.278660+00:00",
+  "registered_document": {
+    "content_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+    "document_id": "star_health_star_comprehensive_policy_wording_v1",
+    "document_version_id": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+    "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+    "registration_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7"
+  },
+  "review_rationale": "The current official Star Health Downloads page explicitly lists Star Comprehensive Insurance Policy SHAHLIP26044V092526 under Policy Clause > Health and links to the exact governed policy-wording URL. A fresh retrieval of that URL on 2026-09-02 returned HTTP 200 and SHA-256 b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f, byte-identical to the registered document version. This supports currentness review only and does not itself publish policy facts or determine customer entitlement.",
+  "reviewed_at": "2026-09-02T21:30:00+05:30",
+  "reviewed_by_human": true,
+  "schema_version": "1.0",
+  "source_observation": {
+    "byte_comparison_status": "byte_identical_observed",
+    "observation_id": "star_health_star_comprehensive_policy_wording_20260902",
+    "observation_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/governance/star_health_star_comprehensive_source_observation_20260902.json",
+    "observation_record_sha256": "e4958b751b9244216b2fcf740ffb41d028f67343ba9f723185ed7a5bd229d6da",
+    "observed_document_url": "https://d28c6jni2fmamz.cloudfront.net/Policy_Star_Comprehensive_Insurance_Policy_V_21_3a414ab104.pdf",
+    "source_page_artifact_path": "archive/raw_html/star_health/www.starhealth.in_downloads_.html",
+    "source_page_artifact_sha256": "294576834d3b8ed47431834f58238bcd8faf04968f0c07037b1d3d94926b653c",
+    "source_page_url": "https://www.starhealth.in/downloads/"
+  }
+}

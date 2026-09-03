@@ -1,0 +1,49 @@
+{
+  "template_status": "CAPTURE_REQUIRED_NOT_EXECUTABLE",
+  "template_purpose": "Populate only after a fresh official-source observation has been retained and manually reviewed. This template must not be treated as currentness evidence or a temporal decision while any __CAPTURE_REQUIRED__ sentinel remains.",
+  "schema_version": "1.0",
+  "record_type": "document_currentness_evidence_record_v1",
+  "reviewed_by_human": false,
+  "registered_document": {
+    "registration_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json"
+  },
+  "source_observation": {
+    "observation_record_path": "__CAPTURE_REQUIRED__"
+  },
+  "known_governed_identity": {
+    "entity_id": "star_health:star_comprehensive",
+    "uin": "SHAHLIP26044V092526",
+    "registered_policy_wording_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+    "identity_review_reference": "docs/architecture/star_health_star_comprehensive_identity_review_packet.json"
+  },
+  "capture_requirements": {
+    "official_source_page_url": "__CAPTURE_REQUIRED__",
+    "observed_policy_wording_url": "__CAPTURE_REQUIRED__",
+    "retained_source_page_artifact_path": "__CAPTURE_REQUIRED__",
+    "retained_source_page_artifact_sha256": "__CAPTURE_REQUIRED__",
+    "observed_document_sha256": "__CAPTURE_REQUIRED__",
+    "byte_comparison_status": "__CAPTURE_REQUIRED__",
+    "uin_or_product_to_wording_association_evidence": "__CAPTURE_REQUIRED__"
+  },
+  "evidence_items": [
+    {
+      "evidence_type": "official_product_page_document_link",
+      "evidence_status": "__CAPTURE_REQUIRED__",
+      "verification": "retained_official_html_manual_review",
+      "observed_text": "__CAPTURE_REQUIRED__",
+      "evidence_reference": "__CAPTURE_REQUIRED__",
+      "linked_document_url": "__CAPTURE_REQUIRED__",
+      "link_label": "Policy Wording"
+    },
+    {
+      "evidence_type": "official_uin_reference",
+      "evidence_status": "__CAPTURE_REQUIRED__",
+      "verification": "official_page_metadata_manual_review",
+      "observed_text": "__CAPTURE_REQUIRED__",
+      "evidence_reference": "__CAPTURE_REQUIRED__"
+    }
+  ],
+  "reviewed_at": "__CAPTURE_REQUIRED__",
+  "review_rationale": "__CAPTURE_REQUIRED__",
+  "review_guardrail": "A byte-identical wording observation is necessary for current_observed_reviewed but is not sufficient by itself for Star Comprehensive. The human review must also establish from the live official source that the observed wording is associated with the current Star Comprehensive product/UIN. If that association remains unverified, retain compatibility_unverified."
+}
