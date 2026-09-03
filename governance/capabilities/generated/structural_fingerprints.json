@@ -249,7 +249,7 @@
         "insurance_intelligence/orchestration/star_comprehensive_knowledge_build.py",
         "insurance_intelligence/orchestration/star_comprehensive_pilot.py"
       ],
-      "structural_fingerprint": "2cbb0c4a4410d5507a8dce34488b7b1eb645becda479d06c3a0fd8f12b2e1a8f"
+      "structural_fingerprint": "de47bfb7b4dc86e37cb7554f220caa810d04aff1fdd8657124f3cb76f29eac07"
     },
     {
       "capability_id": "II.ORCHESTRATION.EXECUTION_RUNTIME",
