@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_guarded_runtime_replication_preflight_v1",
+  "recorded_on": "2026-09-03",
+  "branch": "health-star-waiting-period-guarded-reuse-v1",
+  "base_merge_sha": "94d04f1cb70bba51a20bbd79f51dff32d048c8ac",
+  "product_reference": "star_health:star_comprehensive:SHAHLIP26044V092526",
+  "concept_id": "waiting_period",
+  "primary_probe": {
+    "case_id": "B",
+    "question": "What is the PED waiting period in Star Comprehensive?",
+    "intended_instance_kind": "PRODUCT",
+    "intended_mechanic": "PRE_EXISTING_DISEASE_STANDARD",
+    "governed_duration": "36 MONTHS"
+  },
+  "verified_positive_premises": [
+    "Star Comprehensive waiting_period concept closure is CERTIFIED for BASE_POLICY_EXPLICIT_WAITING_PERIODS.",
+    "The PRE_EXISTING_DISEASE_STANDARD mechanic is certified at 36 MONTHS.",
+    "The Reasoning Engine has a generic direct_documented_fact_v1 lane using the existing DOCUMENTED_FACT finding type.",
+    "The Reasoning Planner can declare generic factual/explanation evidence requirements without a waiting-period-specific calculation path.",
+    "The generic orchestration service and canonical stage order are concept-neutral at their execution-algorithm level."
+  ],
+  "falsification_findings": [
+    {
+      "finding_id": "F3_EVIDENCE_RESOLVER_TOPIC_BOUNDARY",
+      "classification": "F3_REPAIR_REQUIRED",
+      "capability_id": "II.EVIDENCE.GOVERNED_RESOLVER",
+      "repository_paths": [
+        "insurance_intelligence/evidence/resolver.py",
+        "insurance_intelligence/evidence/repositories.py"
+      ],
+      "evidence": [
+        "EvidenceResolver._topic recognizes co-pay tokens specially and otherwise returns the subject as topic.",
+        "EvidenceResolver explicitly returns MISSING for every topic other than copay with the message 'bounded v0.1 pilot has no governed evidence for topic ...'.",
+        "RegistryBackedRepository.load_pilot is hard-wired to Star Comprehensive conditional co-payment binding and canonical projection artifacts.",
+        "RegistryBackedRepository entity aliases are Star Comprehensive-specific."
+      ],
+      "conclusion": "The current Evidence Resolver implementation does not satisfy a concept-generic registry-backed evidence responsibility for waiting-period facts. Case B cannot reach reasoning through this path without modifying the evidence capability."
+    },
+    {
+      "finding_id": "F3_PRODUCTION_ADAPTER_WIRING_GAP",
+      "classification": "F3_REPAIR_OR_EXTEND_REVIEW_REQUIRED",
+      "capability_id": "II.ORCHESTRATION.EXECUTION_RUNTIME",
+      "repository_paths": [
+        "insurance_intelligence/orchestration/service.py",
+        "insurance_intelligence/orchestration/intelligence_adapters.py"
+      ],
+      "evidence": [
+        "run_intelligence_response and execute_intelligence_adapter_chain are generic execution algorithms.",
+        "Repository search found build_intelligence_stage_adapter usage only in the deterministic fake CLI and tests; no production real-capability adapter set is wired to run_intelligence_response.",
+        "The current guarded Star certification path still delegates to the separately hand-wired guarded Star co-payment pilot."
+      ],
+      "conclusion": "A waiting-period-only adapter would not prove generic runtime traversal because the remaining stages would still lack a production adapter composition."
+    },
+    {
+      "finding_id": "PUBLICATION_ADMISSION_BOUNDARY",
+      "classification": "GOVERNANCE_BLOCK",
+      "capability_ids": [
+        "II.PUBLICATION.DETERMINISTIC_DECISION",
+        "II.PUBLICATION.AUTHORITATIVE_GATE",
+        "II.EVIDENCE.GOVERNED_RESOLVER"
+      ],
+      "repository_paths": [
+        "insurance_intelligence/rule_certification/waiting_period.py",
+        "insurance_intelligence/publication_decision/evaluator.py",
+        "insurance_intelligence/authoritative_publication/gate.py"
+      ],
+      "evidence": [
+        "Generic waiting-period certification creates governed EvidencePackage values but explicitly states the binding remains bound_not_published and is used only for internal certification.",
+        "The waiting-period concept closure records publication_authorized=false.",
+        "Publication decision evaluation blocks PUBLISH when a bound_not_published limitation remains.",
+        "No Star standard-PED waiting-period authoritative publication record was found."
+      ],
+      "conclusion": "Internal waiting-period certification evidence must not be injected into a user-answer path merely to make Case B pass. Publication/admission must be resolved through governed publication authority first."
+    },
+    {
+      "finding_id": "EXISTING_COPAY_PUBLICATION_BYPASS_RISK",
+      "classification": "ARCHITECTURE_SAFETY_REVIEW_REQUIRED",
+      "repository_paths": [
+        "insurance_intelligence/evidence/resolver.py",
+        "insurance_intelligence/publication_decision/star_health.py",
+        "insurance_intelligence/orchestration/guarded_star_comprehensive_pilot.py"
+      ],
+      "evidence": [
+        "The Star conditional co-payment publication decision is explicitly WITHHOLD because the governed binding remains bound_not_published.",
+        "The Evidence Resolver nevertheless loads the raw conditional co-payment binding/canonical projection directly and packages it for reasoning.",
+        "The guarded Star co-payment response pilot consumes that Evidence Resolver output and can proceed to answer generation."
+      ],
+      "conclusion": "Request/decision/rendering guards do not by themselves prove knowledge-publication admission. The existing pilot demonstrates a potential publication-boundary bypass that should be closed before using it as the template for cross-concept runtime reuse."
+    }
+  ],
+  "primary_probe_status": "BLOCKED_BEFORE_IMPLEMENTATION",
+  "blocked_reason": "Case B cannot be executed honestly without modifying a copay-only evidence implementation and without resolving the unpublished waiting-period admission boundary.",
+  "prohibited_shortcuts": [
+    "Do not add a waiting_period special case to EvidenceResolver solely to obtain a passing probe.",
+    "Do not feed internal RuleCertificationCaseFixture EvidenceResolverOutput directly into a user-answer path.",
+    "Do not clone the hand-wired Star co-payment pilot into a waiting-period pilot.",
+    "Do not infer publication eligibility from concept certification.",
+    "Do not weaken or reinterpret bound_not_published limitations.",
+    "Do not modify generic reasoning, decision, explanation, response, or rendering algorithms for the blocked Case B probe."
+  ],
+  "next_bounded_action": {
+    "name": "Evidence Publication Admission Boundary Review",
+    "objective": "Reconcile authoritative publication with runtime evidence admission using existing publication and evidence capabilities before resuming waiting-period concept reuse.",
+    "required_questions": [
+      "What exact authoritative-publication record or publication receipt should make a governed fact eligible for user-answer evidence resolution?",
+      "How should EvidenceResolver reject certified-but-unpublished bindings deterministically?",
+      "Can published evidence retain the existing EvidencePackage lineage without duplicating certification builders?",
+      "Should the existing Star co-payment guarded pilot become publication-blocked until a publication decision is PUBLISH, or is there a distinct governed answer-admission authority that must be made explicit?",
+      "Can production intelligence-stage adapters be composed from existing guarded capabilities without changing orchestration/service.py or canonical stage contracts?"
+    ]
+  },
+  "verdict": "STAR_WAITING_PERIOD_GUARDED_REUSE_NOT_STARTED_PUBLICATION_AND_EVIDENCE_ADMISSION_PREFLIGHT_REQUIRED"
+}
