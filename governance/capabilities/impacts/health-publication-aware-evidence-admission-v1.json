@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-publication-aware-evidence-admission-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Repair the existing governed Evidence Resolver boundary so ordinary USER_ANSWER evidence use requires explicit authoritative-publication admission instead of treating a reviewed/certified raw binding as sufficient answer evidence. Historical internal certification remains available under an explicit INTERNAL_CERTIFICATION use mode. The change adds no insurance fact, recommendation authority, new concept, new product scope, or new reasoning architecture.",
+  "supersession_impact": "No historical certification, publication decision, authoritative publication, or guarded-pilot artifact is rewritten. The existing bounded Star conditional-copayment resolver remains available for internal certification, while publication-aware answer admission is added as a fail-closed downstream use constraint.",
+  "authority_impact": "Evidence authority is narrowed for ordinary user-answer use: certification alone no longer constitutes answer admission. Existing II.PUBLICATION.DECISION and II.PUBLICATION.AUTHORITATIVE_GATE authority remains unchanged and is consumed rather than duplicated. INTERNAL_CERTIFICATION does not gain publication or answer authority."
+}
