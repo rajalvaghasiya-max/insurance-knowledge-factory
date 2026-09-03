@@ -153,13 +153,14 @@
       "owned_module_paths": [
         "insurance_intelligence/contracts/evidence.py",
         "insurance_intelligence/evidence/__init__.py",
+        "insurance_intelligence/evidence/admission.py",
         "insurance_intelligence/evidence/authority.py",
         "insurance_intelligence/evidence/repositories.py",
         "insurance_intelligence/evidence/resolver.py",
         "insurance_intelligence/evidence/sufficiency.py",
         "insurance_intelligence/evidence/trace.py"
       ],
-      "structural_fingerprint": "60123aac53f63cf9bd1656ce68206e7671c2f702ff7e4694ce4e08f0dd3f1277"
+      "structural_fingerprint": "3567048280f42ae21019f40f7c8dda1f869ffba3a4b47e1550a3cac8f0161392"
     },
     {
       "capability_id": "II.EVIDENCE.INSTANCE_ENFORCEMENT",
