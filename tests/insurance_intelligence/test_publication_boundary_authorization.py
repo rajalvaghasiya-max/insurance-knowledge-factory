@@ -83,7 +83,7 @@ def test_bound_not_published_remains_blocked_without_explicit_authorization():
     assert decision.publication_permitted is False
     assert not decision.resolved_certification_limitations
     assert decision.authorization_id is None
-    assert "Effective certification limitations were not fully preserved." in decision.failures
+    assert "Certification limitations were not fully preserved." in decision.failures
 
 
 def test_explicit_authorization_resolves_only_publication_state_boundary():
