@@ -9,6 +9,7 @@ from insurance_intelligence.contracts.rule_certification import RuleCertificatio
 
 SUPPORTED_CONTRACT_VERSION = "1.0"
 PUBLICATION_DECISION_STATUSES = frozenset({"PUBLISH", "WITHHOLD", "BLOCKED"})
+RESOLVABLE_PUBLICATION_BOUNDARIES = frozenset({"bound_not_published"})
 
 
 class PublicationDecisionContractError(ValueError):
@@ -37,6 +38,48 @@ def _unique(values: Sequence[str], label: str) -> tuple[str, ...]:
 
 
 @dataclass(frozen=True)
+class PublicationBoundaryAuthorization:
+    authorization_id: str
+    governed_subject_reference: str
+    certification_id: str
+    resolved_boundary_tokens: tuple[str, ...]
+    authorization_authority: str
+    trace_references: tuple[str, ...]
+
+
+def build_publication_boundary_authorization(
+    *,
+    authorization_id: str,
+    governed_subject_reference: str,
+    certification_id: str,
+    resolved_boundary_tokens: Sequence[str],
+    authorization_authority: str,
+    trace_references: Sequence[str],
+) -> PublicationBoundaryAuthorization:
+    tokens = _unique(resolved_boundary_tokens, "resolved_boundary_tokens")
+    if not tokens:
+        raise PublicationDecisionContractError("resolved_boundary_tokens must not be empty")
+    unsupported = tuple(token for token in tokens if token not in RESOLVABLE_PUBLICATION_BOUNDARIES)
+    if unsupported:
+        raise PublicationDecisionContractError(
+            "unsupported publication boundary token(s): " + ", ".join(unsupported)
+        )
+    traces = _unique(trace_references, "trace_references")
+    if not traces:
+        raise PublicationDecisionContractError("trace_references must not be empty")
+    return PublicationBoundaryAuthorization(
+        authorization_id=_text(authorization_id, "authorization_id"),
+        governed_subject_reference=_text(
+            governed_subject_reference, "governed_subject_reference"
+        ),
+        certification_id=_text(certification_id, "certification_id"),
+        resolved_boundary_tokens=tokens,
+        authorization_authority=_text(authorization_authority, "authorization_authority"),
+        trace_references=traces,
+    )
+
+
+@dataclass(frozen=True)
 class PublicationDecisionInput:
     contract_version: str
     decision_id: str
@@ -47,6 +90,7 @@ class PublicationDecisionInput:
     limitations: tuple[str, ...]
     evidence_trace_references: tuple[str, ...]
     decision_authority: str
+    boundary_authorization: PublicationBoundaryAuthorization | None = None
 
 
 def build_publication_decision_input(
@@ -59,6 +103,7 @@ def build_publication_decision_input(
     limitations: Sequence[str],
     evidence_trace_references: Sequence[str],
     decision_authority: str,
+    boundary_authorization: PublicationBoundaryAuthorization | None = None,
     contract_version: str = SUPPORTED_CONTRACT_VERSION,
 ) -> PublicationDecisionInput:
     if contract_version != SUPPORTED_CONTRACT_VERSION:
@@ -74,6 +119,19 @@ def build_publication_decision_input(
         raise PublicationDecisionContractError(
             "governed_subject_reference must match certification_result"
         )
+    if boundary_authorization is not None:
+        if not isinstance(boundary_authorization, PublicationBoundaryAuthorization):
+            raise PublicationDecisionContractError(
+                "boundary_authorization must be a PublicationBoundaryAuthorization or None"
+            )
+        if boundary_authorization.governed_subject_reference != subject:
+            raise PublicationDecisionContractError(
+                "boundary_authorization governed subject must match publication input"
+            )
+        if boundary_authorization.certification_id != certification_result.certification_id:
+            raise PublicationDecisionContractError(
+                "boundary_authorization certification id must match certification result"
+            )
     reasons = _unique(decision_reasons, "decision_reasons")
     if not reasons:
         raise PublicationDecisionContractError("decision_reasons must not be empty")
@@ -94,6 +152,7 @@ def build_publication_decision_input(
             "evidence_trace_references",
         ),
         decision_authority=_text(decision_authority, "decision_authority"),
+        boundary_authorization=boundary_authorization,
     )
 
 
@@ -116,3 +175,18 @@ class PublicationDecisionResult:
     publication_permitted: bool
     authoritative_publication_created: bool
     failures: tuple[str, ...]
+    resolved_certification_limitations: tuple[str, ...] = ()
+    authorization_id: str | None = None
+    authorization_trace_references: tuple[str, ...] = ()
+
+
+__all__ = [
+    "PUBLICATION_DECISION_STATUSES",
+    "RESOLVABLE_PUBLICATION_BOUNDARIES",
+    "PublicationBoundaryAuthorization",
+    "PublicationDecisionContractError",
+    "PublicationDecisionInput",
+    "PublicationDecisionResult",
+    "build_publication_boundary_authorization",
+    "build_publication_decision_input",
+]
