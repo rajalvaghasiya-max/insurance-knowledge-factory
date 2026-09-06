@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-prefix-after-evidence-repair-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Rerun the exact frozen PR #249 real guarded response prefix on repaired main after the generic II.EVIDENCE.GOVERNED_RESOLVER semantic-subject versus instance-identity repair. The orchestration implementation and Case-B test are intentionally unchanged from PR #249 so the experiment can determine the next genuine runtime boundary without moving semantics to obtain a pass.",
+  "supersession_impact": "No capability is superseded. This is a bounded extension/reuse experiment of the existing governed orchestration runtime and canonical guarded stages.",
+  "authority_impact": "No authority is broadened. Instance Sufficiency, evidence instance enforcement, authoritative publication admission, and fail-closed stage behavior remain unchanged; the experiment stops before reasoning and answer generation."
+}
