@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-publication-boundary-authorization-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.PUBLICATION.DECISION",
+    "II.PUBLICATION.AUTHORITATIVE_GATE",
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Extend existing publication governance so an immutable certification-level publication-state boundary may be resolved only by an explicit, machine-checkable authorization tied to the exact governed subject and certification. Historical certification remains unchanged; semantic/safety limitations cannot be authorized away; authoritative publication preserves authorization lineage. Published artifact persistence is extended only to round-trip the new optional lineage fields. No new insurance fact, topic, product adapter, recommendation authority, or parallel publication system is introduced.",
+  "supersession_impact": "No capability or historical artifact is superseded. Existing publication decisions without authorization retain their current behavior. Existing frozen authoritative-publication artifacts remain loadable because the new authorization-lineage fields are optional on load. The explicit authorization supplements, rather than rewrites, historical certification state.",
+  "authority_impact": "Publication authority is not broadened to insurer or topic code. Only the generic governance-state token bound_not_published is eligible for explicit resolution, and only when exact subject/certification authorization plus trace evidence is supplied. Publication decision and authoritative gate remain fail-closed; arbitrary semantic limitations, claim-payment boundaries, and missing/mismatched authorization remain non-publishable."
+}
