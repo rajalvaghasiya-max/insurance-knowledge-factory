@@ -7,18 +7,23 @@ import pytest
 
 from insurance_intelligence.contracts.evidence import build_input
 from insurance_intelligence.contracts.reasoning_plan import build_evidence_requirement, build_plan
+from insurance_intelligence.coverage_registry.health_seed import HEALTH_COVERAGE_REGISTRY
+from insurance_intelligence.evidence.coverage_registry_source import (
+    build_coverage_registry_published_source_lookup,
+)
 from insurance_intelligence.evidence.published_materialization import (
     PublishedEvidenceMaterializationError,
     PublishedEvidenceSource,
     materialize_published_requirement,
 )
 from insurance_intelligence.evidence.published_resolver import PublishedEvidenceResolver
-from insurance_intelligence.evidence.star_health_publication_source import (
-    load_star_published_evidence_source,
-)
 
 ROOT = Path(__file__).resolve().parents[2]
 REGISTRY = ROOT / "knowledge/factory/registry_backed"
+LOOKUP = build_coverage_registry_published_source_lookup(
+    registry=HEALTH_COVERAGE_REGISTRY,
+    repository_root=ROOT,
+)
 
 
 def _plan(*, reason: str, request_id: str = "req-published"):
@@ -47,7 +52,7 @@ def _plan(*, reason: str, request_id: str = "req-published"):
 
 def _resolve(reason: str):
     plan = _plan(reason=reason)
-    resolver = PublishedEvidenceResolver(load_star_published_evidence_source)
+    resolver = PublishedEvidenceResolver(LOOKUP)
     return resolver.resolve(
         build_input(
             request_id=plan.request_id,
@@ -98,7 +103,7 @@ def test_unknown_product_fails_before_publication_materialization():
     plan = _plan(reason="Explain room rent")
     requirement = replace(plan.required_evidence[0], subject_reference="unknown:product")
     plan = replace(plan, required_evidence=(requirement,))
-    out = PublishedEvidenceResolver(load_star_published_evidence_source).resolve(
+    out = PublishedEvidenceResolver(LOOKUP).resolve(
         build_input(
             request_id=plan.request_id,
             reasoning_plan=plan,
@@ -113,7 +118,7 @@ def test_unknown_product_fails_before_publication_materialization():
 
 def test_materializer_rejects_publication_reference_missing_from_certified_evidence():
     requirement = _plan(reason="Explain room rent").required_evidence[0]
-    source = load_star_published_evidence_source("star_health:star_comprehensive", requirement)
+    source = LOOKUP("star_health:star_comprehensive", requirement)
     assert source is not None
     first_component = source.publication.semantic_components[0]
     bad_component = replace(first_component, evidence_references=("evidence:missing",))
@@ -136,7 +141,7 @@ def test_materializer_rejects_publication_reference_missing_from_certified_evide
 def test_published_resolver_refuses_internal_certification_mode():
     plan = _plan(reason="Explain room rent")
     with pytest.raises(ValueError, match="requires evidence_use=USER_ANSWER"):
-        PublishedEvidenceResolver(load_star_published_evidence_source).resolve(
+        PublishedEvidenceResolver(LOOKUP).resolve(
             build_input(
                 request_id=plan.request_id,
                 reasoning_plan=plan,
