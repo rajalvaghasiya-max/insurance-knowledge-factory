@@ -155,12 +155,15 @@
         "insurance_intelligence/evidence/__init__.py",
         "insurance_intelligence/evidence/admission.py",
         "insurance_intelligence/evidence/authority.py",
+        "insurance_intelligence/evidence/published_materialization.py",
+        "insurance_intelligence/evidence/published_resolver.py",
         "insurance_intelligence/evidence/repositories.py",
         "insurance_intelligence/evidence/resolver.py",
+        "insurance_intelligence/evidence/star_health_publication_source.py",
         "insurance_intelligence/evidence/sufficiency.py",
         "insurance_intelligence/evidence/trace.py"
       ],
-      "structural_fingerprint": "3567048280f42ae21019f40f7c8dda1f869ffba3a4b47e1550a3cac8f0161392"
+      "structural_fingerprint": "ab94ce2e4604728386c5d7c498b1ec794c8a69a0984a0b339288406d36afb4f9"
     },
     {
       "capability_id": "II.EVIDENCE.INSTANCE_ENFORCEMENT",
