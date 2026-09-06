@@ -263,10 +263,12 @@
         "insurance_intelligence/orchestration/intelligence_adapters.py",
         "insurance_intelligence/orchestration/knowledge_adapters.py",
         "insurance_intelligence/orchestration/product_instance_binding.py",
+        "insurance_intelligence/orchestration/real_response_prefix.py",
+        "insurance_intelligence/orchestration/real_response_reasoning.py",
         "insurance_intelligence/orchestration/service.py",
         "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
-      "structural_fingerprint": "9e294f10ea01c6cdfc4e40e7608d028446779a79a8020af29cfa8167625fbc90"
+      "structural_fingerprint": "1596bbe8c209033e61b7ae24f69bcde4249e19adac3106e0793f8de147255e81"
     },
     {
       "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",

@@ -129,7 +129,9 @@
         "insurance_intelligence/orchestration/intelligence_adapters.py",
         "insurance_intelligence/orchestration/knowledge_adapters.py",
         "insurance_intelligence/orchestration/user_answer_evidence_adapter.py",
-        "insurance_intelligence/orchestration/product_instance_binding.py"
+        "insurance_intelligence/orchestration/product_instance_binding.py",
+        "insurance_intelligence/orchestration/real_response_prefix.py",
+        "insurance_intelligence/orchestration/real_response_reasoning.py"
       ],
       "introduced_by": "MO-023",
       "supersedes": [],

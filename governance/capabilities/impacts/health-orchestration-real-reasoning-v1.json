@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-reasoning-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Extend the proven real response prefix by composing the existing deterministic ReasoningEngine at the canonical REASONING stage. The orchestration layer passes the existing planner output, publication-backed evidence output, and customer context through unchanged; it does not alter planner, evidence, or reasoning semantics.",
+  "supersession_impact": "No capability is superseded. This is a bounded extension of the existing governed orchestration runtime through one additional already-governed canonical stage.",
+  "authority_impact": "No semantic or advisory authority is broadened. Reasoning authority remains with the existing ReasoningEngine. The Star PED pressure case exercises only the documented-fact / EXTRACT_FACTS lane and must not be treated as proof that conditional or applicability reasoning is concept-generic. Criterion 6 remains unadjudicated until a machine-produced final answer is tested by published-semantic perturbation."
+}
