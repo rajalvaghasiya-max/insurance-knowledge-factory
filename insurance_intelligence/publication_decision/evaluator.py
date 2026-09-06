@@ -55,7 +55,7 @@ def evaluate_publication_decision(
         if item not in decision_input.limitations
     )
     if missing_limitations:
-        failures.append("Effective certification limitations were not fully preserved.")
+        failures.append("Certification limitations were not fully preserved.")
 
     if not certification.trace_references:
         failures.append("Certification trace references are required.")
