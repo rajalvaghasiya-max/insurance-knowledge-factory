@@ -261,9 +261,10 @@
         "insurance_intelligence/orchestration/execution_state.py",
         "insurance_intelligence/orchestration/intelligence_adapters.py",
         "insurance_intelligence/orchestration/knowledge_adapters.py",
-        "insurance_intelligence/orchestration/service.py"
+        "insurance_intelligence/orchestration/service.py",
+        "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
-      "structural_fingerprint": "c905319d02c9db5e6d211092c7050422b77e98930e63f95436e796fcc6e456c4"
+      "structural_fingerprint": "f453fdda4bd38653c974e8fea25f341c8c11ba9c507cd3dec4c20de8c67802ca"
     },
     {
       "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",
