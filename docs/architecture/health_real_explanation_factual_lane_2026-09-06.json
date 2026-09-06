@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "slice": "health-real-explanation-factual-lane",
+  "date": "2026-09-06",
+  "milestone": "C",
+  "issue": 242,
+  "classification": "EXTEND",
+  "capability": "II.ORCHESTRATION.EXECUTION_RUNTIME",
+  "entry_boundary": "DECISION_GATE_AUTHORITY_ENFORCED",
+  "exit_boundary": "EXPLANATION_AUTHORITY_ENFORCED",
+  "semantics": {
+    "explanation_engine": "existing AuthorityEnforcedExplanationGenerator",
+    "style_policy": "caller supplied ExplanationStyleRegistry",
+    "terminology_policy": "optional caller supplied TerminologyRegistry",
+    "product_specific_runtime_logic": false
+  },
+  "pressure_case": {
+    "question": "What is the PED waiting period in Star Comprehensive?",
+    "reasoning_lane": "documented_fact / direct_documented_fact_v1",
+    "conditional_rule_lane_tested": false
+  },
+  "interpretation": [
+    "A green result proves factual-lane authority-enforced explanation composition only.",
+    "It does not prove conditional/applicability reasoning genericity.",
+    "Criterion 4 remains open until RESPONSE_ASSEMBLY produces a machine answer.",
+    "Criterion 6 remains open until answer-level publication perturbation changes that answer."
+  ],
+  "stop_condition": "Stop after EXPLANATION_AUTHORITY_ENFORCED or at the first genuine failure."
+}
