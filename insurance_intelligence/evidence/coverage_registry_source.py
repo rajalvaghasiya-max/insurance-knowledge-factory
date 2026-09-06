@@ -1,9 +1,9 @@
 """Coverage-registry-backed lookup for published answer evidence.
 
-The coverage registry already owns product/concept/evidence inventory. Published runtime
-lookup reuses that inventory by interpreting prefixed immutable artifact references from
-ConceptCoverageRecord.evidence_reference_ids. Product/topic-specific Python branches are
-not permitted here.
+The coverage registry remains the authority for governed product/concept coverage. After
+product resolution, this lookup discovers frozen authoritative-publication artifacts from
+the product's governed publication directory and loads the matching published evidence
+source. Product/topic-specific Python branches are not permitted here.
 """
 from __future__ import annotations
 
@@ -18,12 +18,9 @@ from insurance_intelligence.evidence.published_artifact_store import (
 )
 from insurance_intelligence.evidence.published_materialization import PublishedEvidenceSource
 
-PUBLICATION_ARTIFACT_PREFIX = "authoritative_publication_artifact:"
-CERTIFIED_EVIDENCE_ARTIFACT_PREFIX = "certified_evidence_artifact:"
-
 
 class CoverageRegistryPublishedSourceError(ValueError):
-    """Raised when published-artifact registry metadata is ambiguous or invalid."""
+    """Raised when governed publication artifacts are ambiguous or invalid."""
 
 
 def _normalize(value: object) -> str:
@@ -44,15 +41,52 @@ def _entity_key(product) -> str:
     return f"{product.insurer_id}:{product.product_id}"
 
 
-def _artifact_reference(values: tuple[str, ...], prefix: str) -> str | None:
-    matches = tuple(item[len(prefix) :] for item in values if item.startswith(prefix))
-    if not matches:
-        return None
-    if len(matches) != 1 or not matches[0].strip():
+def _publication_directory(root: Path, entity_reference: str) -> Path:
+    return (
+        root
+        / "knowledge"
+        / "factory"
+        / "registry_backed"
+        / entity_reference.replace(":", "_")
+        / "publication"
+    )
+
+
+def _descriptor_from_publication_id(publication_id: str) -> str:
+    if not isinstance(publication_id, str) or not publication_id.strip():
         raise CoverageRegistryPublishedSourceError(
-            f"concept must declare exactly one non-empty {prefix.rstrip(':')} reference"
+            "authoritative publication must declare a non-empty publication_id"
         )
-    return matches[0]
+    return _normalize(publication_id.rsplit(":", 1)[-1])
+
+
+def _candidate_sources(
+    *,
+    root: Path,
+    entity_reference: str,
+) -> tuple[PublishedEvidenceSource, ...]:
+    directory = _publication_directory(root, entity_reference)
+    if not directory.is_dir():
+        return ()
+    sources: list[PublishedEvidenceSource] = []
+    for publication_path in sorted(directory.glob("*_authoritative_publication.json")):
+        evidence_path = publication_path.with_name(
+            publication_path.name.replace(
+                "_authoritative_publication.json",
+                "_certified_evidence.json",
+            )
+        )
+        if not evidence_path.is_file():
+            raise CoverageRegistryPublishedSourceError(
+                f"missing certified evidence artifact for {publication_path.as_posix()}"
+            )
+        sources.append(
+            load_published_evidence_source(
+                publication_path=publication_path,
+                certified_evidence_path=evidence_path,
+            )
+        )
+    return tuple(sources)
 
 
 def build_coverage_registry_published_source_lookup(
@@ -60,7 +94,7 @@ def build_coverage_registry_published_source_lookup(
     registry: InsuranceIntelligenceCoverageRegistry,
     repository_root: Path,
 ):
-    """Build a topic-neutral PublishedSourceLookup from the existing coverage registry."""
+    """Build a topic-neutral PublishedSourceLookup from governed product publication artifacts."""
     if not isinstance(registry, InsuranceIntelligenceCoverageRegistry):
         raise TypeError("registry must be an InsuranceIntelligenceCoverageRegistry")
     root = Path(repository_root)
@@ -71,35 +105,29 @@ def build_coverage_registry_published_source_lookup(
         )
         if len(products) != 1:
             return None
-        product = products[0]
         text = _requirement_text(requirement)
-        matched = tuple(
-            concept
-            for concept in product.concepts
-            if _normalize(concept.concept_id) and _normalize(concept.concept_id) in text
+        matches = tuple(
+            source
+            for source in _candidate_sources(root=root, entity_reference=entity_reference)
+            if (
+                descriptor := _descriptor_from_publication_id(
+                    source.publication.publication_id
+                )
+            )
+            and descriptor in text
         )
-        if len(matched) != 1:
+        if not matches:
             return None
-        concept = matched[0]
-        publication_ref = _artifact_reference(
-            concept.evidence_reference_ids, PUBLICATION_ARTIFACT_PREFIX
-        )
-        evidence_ref = _artifact_reference(
-            concept.evidence_reference_ids, CERTIFIED_EVIDENCE_ARTIFACT_PREFIX
-        )
-        if publication_ref is None or evidence_ref is None:
-            return None
-        return load_published_evidence_source(
-            publication_path=root / publication_ref,
-            certified_evidence_path=root / evidence_ref,
-        )
+        if len(matches) != 1:
+            raise CoverageRegistryPublishedSourceError(
+                "multiple authoritative publication artifacts matched one evidence requirement"
+            )
+        return matches[0]
 
     return lookup
 
 
 __all__ = [
-    "CERTIFIED_EVIDENCE_ARTIFACT_PREFIX",
     "CoverageRegistryPublishedSourceError",
-    "PUBLICATION_ARTIFACT_PREFIX",
     "build_coverage_registry_published_source_lookup",
 ]
