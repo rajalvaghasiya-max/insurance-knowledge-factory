@@ -6,6 +6,10 @@ from insurance_intelligence.contracts.publication_decision import (
     PublicationDecisionInput,
     PublicationDecisionResult,
 )
+from insurance_intelligence.publication_decision.authorization import (
+    PublicationBoundaryAuthorizationError,
+    resolve_authorized_certification_limitations,
+)
 
 
 class PublicationDecisionEvaluationError(ValueError):
@@ -22,9 +26,11 @@ def evaluate_publication_decision(
 ) -> PublicationDecisionResult:
     """Evaluate an explicit publication request against certification outputs.
 
-    The evaluator does not publish anything. It derives only an explicit
-    PUBLISH, WITHHOLD or BLOCKED decision and always records that no
-    authoritative publication has been created.
+    The evaluator does not publish anything. It derives only an explicit PUBLISH,
+    WITHHOLD or BLOCKED decision and always records that no authoritative publication
+    has been created. Historical certification limitations remain immutable; a supported
+    publication-state limitation may become non-effective only through an exact explicit
+    boundary authorization carried on the input.
     """
     if not isinstance(decision_input, PublicationDecisionInput):
         raise PublicationDecisionEvaluationError(
@@ -32,13 +38,24 @@ def evaluate_publication_decision(
         )
 
     certification = decision_input.certification_result
-    failures: list[str] = []
+    try:
+        effective_certification_limitations, resolved_certification_limitations = (
+            resolve_authorized_certification_limitations(
+                certification=certification,
+                authorization=decision_input.boundary_authorization,
+            )
+        )
+    except PublicationBoundaryAuthorizationError as exc:
+        raise PublicationDecisionEvaluationError(str(exc)) from exc
 
+    failures: list[str] = []
     missing_limitations = tuple(
-        item for item in certification.limitations if item not in decision_input.limitations
+        item
+        for item in effective_certification_limitations
+        if item not in decision_input.limitations
     )
     if missing_limitations:
-        failures.append("Certification limitations were not fully preserved.")
+        failures.append("Effective certification limitations were not fully preserved.")
 
     if not certification.trace_references:
         failures.append("Certification trace references are required.")
@@ -62,6 +79,7 @@ def evaluate_publication_decision(
     if failures and decision_status == "WITHHOLD":
         decision_status = "BLOCKED"
 
+    authorization = decision_input.boundary_authorization
     return PublicationDecisionResult(
         contract_version=decision_input.contract_version,
         decision_id=decision_input.decision_id,
@@ -80,4 +98,9 @@ def evaluate_publication_decision(
         publication_permitted=decision_status == "PUBLISH",
         authoritative_publication_created=False,
         failures=tuple(failures),
+        resolved_certification_limitations=resolved_certification_limitations,
+        authorization_id=(authorization.authorization_id if authorization is not None else None),
+        authorization_trace_references=(
+            authorization.trace_references if authorization is not None else ()
+        ),
     )
