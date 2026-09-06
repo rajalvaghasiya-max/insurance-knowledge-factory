@@ -22,12 +22,7 @@ def _contains_boundary(values: tuple[str, ...], token: str) -> bool:
 
 
 def _contains_affirmative_claim_payment_guarantee(values: tuple[str, ...]) -> bool:
-    """Detect affirmative claim-payment guarantees without blocking disclaimers.
-
-    Safety limitations such as "does not guarantee claim payment" are required
-    governance language and must remain publishable. Only affirmative guarantee
-    statements are blocked.
-    """
+    """Detect affirmative claim-payment guarantees without blocking disclaimers."""
     affirmative_patterns = (
         re.compile(r"\bguarantee(?:s|d)?\s+(?:the\s+)?claim\s+payment\b"),
         re.compile(r"\bclaim\s+payment\s+(?:is|will\s+be)\s+guaranteed\b"),
@@ -35,7 +30,6 @@ def _contains_affirmative_claim_payment_guarantee(values: tuple[str, ...]) -> bo
     negation_pattern = re.compile(
         r"\b(?:does\s+not|do\s+not|did\s+not|cannot|can\s+not|will\s+not|not)\s+$"
     )
-
     for value in values:
         normalized = " ".join(value.casefold().split())
         for pattern in affirmative_patterns:
@@ -56,8 +50,9 @@ def create_authoritative_publication(
 ) -> AuthoritativePublicationRecord:
     """Create an immutable authoritative record from an approved P2.3 decision.
 
-    This pure gate performs no file I/O and does not mutate the decision or
-    projection. WITHHOLD, BLOCKED, or inconsistent decisions fail closed.
+    This pure gate performs no file I/O and does not mutate the decision or projection.
+    WITHHOLD, BLOCKED, inconsistent decisions, or incomplete authorization lineage fail
+    closed.
     """
     if not isinstance(publication_input, AuthoritativePublicationInput):
         raise AuthoritativePublicationGateError(
@@ -95,16 +90,31 @@ def create_authoritative_publication(
     if _contains_affirmative_claim_payment_guarantee(projection.limitations):
         failures.append("Claim-payment guarantee language is not publishable.")
 
+    if decision.resolved_certification_limitations:
+        if not decision.authorization_id:
+            failures.append("Resolved certification limitations require authorization_id.")
+        if not decision.authorization_trace_references:
+            failures.append(
+                "Resolved certification limitations require authorization trace references."
+            )
+    elif decision.authorization_id or decision.authorization_trace_references:
+        failures.append(
+            "Publication authorization metadata cannot be present without resolved certification limitations."
+        )
+
     if failures:
         raise AuthoritativePublicationGateError(" ".join(failures))
 
-    receipt_id = _stable_receipt_id(
+    receipt_parts = [
         publication_input.publication_id,
         decision.decision_id,
         projection.projection_id,
         projection.governed_subject_reference,
         projection.certification_id,
-    )
+    ]
+    if decision.authorization_id:
+        receipt_parts.append(decision.authorization_id)
+    receipt_id = _stable_receipt_id(*receipt_parts)
     return AuthoritativePublicationRecord(
         contract_version=publication_input.contract_version,
         publication_id=publication_input.publication_id,
@@ -120,4 +130,7 @@ def create_authoritative_publication(
         evidence_trace_references=projection.evidence_trace_references,
         publication_authority=publication_input.publication_authority,
         publication_receipt_id=receipt_id,
+        resolved_certification_limitations=decision.resolved_certification_limitations,
+        authorization_id=decision.authorization_id,
+        authorization_trace_references=decision.authorization_trace_references,
     )
