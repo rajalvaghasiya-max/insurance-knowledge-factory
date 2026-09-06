@@ -1,0 +1,10 @@
+{
+  "change_id": "health-explanation-opaque-subject-repair-v1",
+  "classification": "REPAIR",
+  "capabilities": [
+    "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR"
+  ],
+  "rationale": "Repair generic explanation rendering so DIRECT_FACT findings with predicate `documents` render the approved claim text without exposing governed lineage identifiers as customer-facing semantics. Fidelity validation remains unchanged and continues to reject introduced facts.",
+  "authority_impact": "No authority broadening. Decision approval, explanation authority enforcement, fidelity validation, recommendation prohibition, and evidence lineage requirements are unchanged.",
+  "product_specific_runtime_code": false
+}
