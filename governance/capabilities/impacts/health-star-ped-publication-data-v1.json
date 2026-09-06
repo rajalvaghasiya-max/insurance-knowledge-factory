@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-star-ped-publication-data-v1",
+  "classification": "REUSE",
+  "capability_ids": [
+    "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
+    "II.PUBLICATION.DECISION",
+    "II.PUBLICATION.AUTHORITATIVE_GATE",
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Exercise the already-implemented generic waiting-period certification, publication authorization, authoritative materialization, frozen artifact persistence, and coverage-registry-backed published evidence lookup using Star PED governed data only. No governed runtime implementation is added or modified. The pressure test includes a semantic perturbation control that removes the continuity component from the publication projection while leaving certified evidence unchanged.",
+  "supersession_impact": "No capability, implementation, or historical artifact is superseded. The standard PED binding and certification remain immutable; this change only supplies publication-governance data and tests reuse of existing authorities.",
+  "authority_impact": "No authority is broadened. Publication remains bounded to explicitly certified semantic components and explicit boundary authorization. Customer-specific PED buy-back selection, customer eligibility, and claim-payment determination remain unauthorized."
+}
