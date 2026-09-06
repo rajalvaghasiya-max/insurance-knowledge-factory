@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-typed-stage-handoff-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Extend the existing governed execution runtime with an execution-scoped in-memory typed stage-output handoff keyed by canonical output IDs. The current adapter chain already propagates output IDs and digests, while real capability APIs require validated typed predecessor outputs. This bridge preserves those objects without changing any stage semantic algorithm, authority, stage order, or product/topic behavior.",
+  "supersession_impact": "No capability or implementation is superseded. Persisted ExecutionState and canonical stage output references remain unchanged; the typed object store is ephemeral and bounded to one live execution.",
+  "authority_impact": "No semantic or decision authority is added. The store cannot create, reinterpret, mutate, publish, or authorize stage outputs; it only fails closed when storing or resolving execution-scoped typed objects by already-governed output identifiers."
+}

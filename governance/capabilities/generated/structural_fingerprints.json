@@ -265,7 +265,7 @@
         "insurance_intelligence/orchestration/service.py",
         "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
-      "structural_fingerprint": "f453fdda4bd38653c974e8fea25f341c8c11ba9c507cd3dec4c20de8c67802ca"
+      "structural_fingerprint": "e3ded95ce1b7479de2b33165bbc723cc938887e7d3e949e2a273d2b7b8876d56"
     },
     {
       "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",
