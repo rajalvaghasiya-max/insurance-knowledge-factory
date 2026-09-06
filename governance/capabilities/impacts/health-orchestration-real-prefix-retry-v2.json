@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-prefix-retry-v2",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Retry the previously reviewed generic real-response prefix unchanged against current main after frozen Star PED authoritative publication artifacts were committed. The prefix composes existing authority, intent, reconciliation, context, product-instance binding, instance sufficiency, reasoning planning, and publication-backed USER_ANSWER evidence resolution through typed execution-scoped handoff without semantic-stage changes or insurer/topic branches.",
+  "supersession_impact": "No capability or semantic implementation is superseded. This is the same bounded orchestration prefix from closed PR #245, retried after correcting repository publication state.",
+  "authority_impact": "No insurance, publication, identity, reasoning, recommendation, or answer authority is broadened. Evidence remains gated by governed snapshot lookup, exact product identity, Instance Sufficiency, and USER_ANSWER authoritative publication admission."
+}
