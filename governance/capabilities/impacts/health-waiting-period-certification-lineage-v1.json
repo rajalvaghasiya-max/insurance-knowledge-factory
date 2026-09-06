@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-waiting-period-certification-lineage-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.RULE_CERTIFICATION.GOVERNED_RUNNER"
+  ],
+  "rationale": "Repair the existing generic waiting-period certification fixture so its EvidenceResolverOutput carries deterministic resolution trace events derived from already-verified evidence-package lineage. The generic certification runner already inherits evidence resolution trace IDs into RuleCertificationResult; no new certification, publication, insurer, or topic authority is introduced.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No authority expansion. Waiting-period certification remains internal and bound_not_published; the repair only preserves auditable lineage already present in verified evidence packages so downstream publication governance can evaluate the existing certification without synthetic trace injection."
+}
