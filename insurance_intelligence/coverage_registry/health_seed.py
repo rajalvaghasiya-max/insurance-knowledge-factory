@@ -37,30 +37,6 @@ STAR_COMPREHENSIVE_COVERAGE = ProductCoverageRecord(
             decision_support_ready=False,
         ),
         ConceptCoverageRecord(
-            concept_id="room_rent",
-            status=ConceptCoverageStatus.CERTIFIED,
-            evidence_reference_ids=(
-                "insurance_intelligence/rule_certification/star_health_room_rent.py",
-                "insurance_intelligence/authoritative_publication/star_health.py",
-                "authoritative_publication_artifact:knowledge/factory/registry_backed/star_health_star_comprehensive/publication/room_rent_authoritative_publication.json",
-                "certified_evidence_artifact:knowledge/factory/registry_backed/star_health_star_comprehensive/publication/room_rent_certified_evidence.json",
-            ),
-            comparison_ready=False,
-            decision_support_ready=False,
-        ),
-        ConceptCoverageRecord(
-            concept_id="bariatric_surgery",
-            status=ConceptCoverageStatus.CERTIFIED,
-            evidence_reference_ids=(
-                "insurance_intelligence/rule_certification/star_health_bariatric_surgery.py",
-                "insurance_intelligence/authoritative_publication/star_health.py",
-                "authoritative_publication_artifact:knowledge/factory/registry_backed/star_health_star_comprehensive/publication/bariatric_surgery_authoritative_publication.json",
-                "certified_evidence_artifact:knowledge/factory/registry_backed/star_health_star_comprehensive/publication/bariatric_surgery_certified_evidence.json",
-            ),
-            comparison_ready=False,
-            decision_support_ready=False,
-        ),
-        ConceptCoverageRecord(
             concept_id="waiting_period",
             status=ConceptCoverageStatus.CERTIFIED,
             evidence_reference_ids=(
