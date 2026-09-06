@@ -133,7 +133,7 @@ def test_response_orchestration_routes_room_rent_through_publication_backed_user
     assert execution.result.released_response_id == execution.result.deterministic_response_id
 
 
-def test_response_orchestration_fails_closed_when_waiting_period_is_not_authoritatively_published():
+def test_response_orchestration_routes_ped_waiting_period_through_authoritatively_published_user_answer_evidence():
     request = _request(
         execution_id="exec-ped-user-answer",
         question="What is the PED waiting period in Star Comprehensive?",
@@ -143,17 +143,13 @@ def test_response_orchestration_fails_closed_when_waiting_period_is_not_authorit
         adapters=_adapters("What is the PED waiting period in Star Comprehensive?"),
     )
 
-    assert execution.result.status == "FAILED"
+    assert execution.result.status == "SUCCEEDED"
     evidence_index = INTELLIGENCE_RESPONSE_STAGE_ORDER.index(EVIDENCE_STAGE)
     evidence_result = execution.result.stage_results[evidence_index]
-    assert evidence_result.status == "FAILED"
-    assert "publication-backed evidence resolution failed closed" in evidence_result.failure.message
-    assert all(
-        result.status == "BLOCKED"
-        for result in execution.result.stage_results[evidence_index + 1 :]
-    )
-    assert execution.result.deterministic_response_id is None
-    assert execution.result.released_response_id is None
+    assert evidence_result.status == "SUCCEEDED"
+    assert len(evidence_result.outputs) == 1
+    assert evidence_result.outputs[0].evidence_ids
+    assert execution.result.released_response_id == execution.result.deterministic_response_id
 
 
 def test_production_evidence_stage_rejects_internal_certification_use():
