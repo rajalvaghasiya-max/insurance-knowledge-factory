@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-evidence-semantic-instance-repair-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Repair PublishedEvidenceResolver so planner semantic subject references are not incorrectly treated as governed product identities. Exact resolved candidate substitutions remain preferred; otherwise one unique already-governed candidate identity may supply the instance boundary while the planner semantic subject and goal remain available for topic-neutral authoritative-publication lookup. Zero or multiple candidate identities remain fail-closed.",
+  "supersession_impact": "No capability or historical artifact is superseded. The repair preserves the existing PublishedEvidenceResolver contract and authoritative-publication path while correcting its semantic-subject versus instance-identity handling.",
+  "authority_impact": "No authority is broadened. USER_ANSWER still requires authoritative publication, Instance Sufficiency remains upstream, unresolved or ambiguous identity still fails closed, and the resolver cannot manufacture product identity or publication eligibility."
+}
