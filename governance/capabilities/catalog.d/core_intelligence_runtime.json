@@ -127,12 +127,13 @@
         "insurance_intelligence/orchestration/service.py",
         "insurance_intelligence/orchestration/execution_state.py",
         "insurance_intelligence/orchestration/intelligence_adapters.py",
-        "insurance_intelligence/orchestration/knowledge_adapters.py"
+        "insurance_intelligence/orchestration/knowledge_adapters.py",
+        "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
       "introduced_by": "MO-023",
       "supersedes": [],
       "superseded_by": null,
-      "notes": "This record intentionally excludes pilot/certification/hardening modules that still require separate census classification."
+      "notes": "This record intentionally excludes pilot/certification/hardening modules that still require separate census classification. Production USER_ANSWER evidence-stage composition is owned here and delegates semantic evidence authority to II.EVIDENCE.GOVERNED_RESOLVER."
     }
   ]
 }
