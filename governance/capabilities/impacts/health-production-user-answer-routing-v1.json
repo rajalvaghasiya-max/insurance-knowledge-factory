@@ -1,0 +1,12 @@
+{
+  "change_id": "health-production-user-answer-routing-v1",
+  "classification": "EXTEND",
+  "affected_capabilities": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Extend the existing governed intelligence-response execution runtime with a production adapter for the already-governed EVIDENCE_RESOLUTION_ENFORCED stage. The adapter requires explicit USER_ANSWER evidence use and delegates only to the existing publication-backed Evidence Resolver. No new orchestration authority, stage, reasoning behavior, insurance fact, or recommendation capability is introduced.",
+  "evidence": [
+    "insurance_intelligence/orchestration/user_answer_evidence_adapter.py",
+    "tests/insurance_intelligence/test_user_answer_evidence_orchestration.py"
+  ]
+}
