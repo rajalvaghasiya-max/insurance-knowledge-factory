@@ -7,6 +7,7 @@ that crossed the authoritative-publication gate.
 """
 from __future__ import annotations
 
+from dataclasses import replace
 import hashlib
 from typing import Callable
 
@@ -35,9 +36,61 @@ def _id(prefix: str, *parts: object) -> str:
     return prefix + "_" + hashlib.sha256("|".join(map(str, parts)).encode()).hexdigest()[:16]
 
 
-def _subject(requirement, context):
-    direct = context.get("resolved_candidate_references", {}) if isinstance(context, dict) else {}
-    return str(direct.get(requirement.subject_reference, requirement.subject_reference))
+def _resolved_mapping(context: object, key: str) -> dict[str, str]:
+    if not isinstance(context, dict):
+        return {}
+    raw = context.get(key, {})
+    if not isinstance(raw, dict):
+        return {}
+    return {
+        str(name): str(value)
+        for name, value in raw.items()
+        if isinstance(name, str)
+        and name.strip()
+        and isinstance(value, str)
+        and value.strip()
+    }
+
+
+def _semantic_subject(requirement, context: object) -> str:
+    resolved_context = _resolved_mapping(context, "resolved_context_values")
+    return resolved_context.get(requirement.subject_reference, requirement.subject_reference)
+
+
+def _instance_candidate(requirement, context: object, semantic_subject: str) -> str:
+    """Return the only governed instance candidate available for this requirement.
+
+    Planner subject references may name semantic slots (for example ``term_or_concept``)
+    rather than product identities.  Exact candidate substitutions remain preferred.  If
+    the subject is semantic, one unique already-resolved candidate identity may be reused;
+    zero or multiple identities deliberately do not guess.  Direct canonical subjects keep
+    the historical resolver behaviour by falling back to the semantic subject itself.
+    """
+    candidates = _resolved_mapping(context, "resolved_candidate_references")
+    exact = candidates.get(requirement.subject_reference)
+    if exact is not None:
+        return exact
+    unique = tuple(sorted(set(candidates.values())))
+    if len(unique) == 1:
+        return unique[0]
+    if not unique:
+        return semantic_subject
+    return ""
+
+
+def _lookup_requirement(requirement, *, semantic_subject: str, plan_goal: str):
+    """Project resolved request semantics into the existing topic-neutral source lookup.
+
+    The planner's evidence requirement and plan goal are both governed planner output.  A
+    symbolic subject alone (``term_or_concept``) may not contain enough text to select one
+    publication artifact, while the plan goal retains the user's bounded requested outcome.
+    This projection changes neither evidence category nor authority/version requirements.
+    """
+    return replace(
+        requirement,
+        subject_reference=semantic_subject,
+        reason=f"{requirement.reason} {plan_goal}".strip(),
+    )
 
 
 class PublishedEvidenceResolver:
@@ -77,35 +130,74 @@ class PublishedEvidenceResolver:
         limitations = []
 
         for requirement in plan.required_evidence:
-            subject = _subject(requirement, request.resolution_context)
+            semantic_subject = _semantic_subject(requirement, request.resolution_context)
+            instance_candidate = _instance_candidate(
+                requirement,
+                request.resolution_context,
+                semantic_subject,
+            )
             trace.add(
                 "REQUIREMENT_RECEIVED", "accepted", "planner evidence requirement received",
-                requirement_id=requirement.requirement_id, subject_reference=subject,
+                requirement_id=requirement.requirement_id,
+                subject_reference=semantic_subject,
             )
-            entity, alias = repo.resolve_entity(subject)
+            entity, alias = repo.resolve_entity(instance_candidate) if instance_candidate else (None, None)
             if not entity:
                 entities.append(EntityResolution(
-                    subject, None, "NOT_FOUND", "no governed alias or identity matched", None, 0.0, (), ()
+                    instance_candidate or semantic_subject,
+                    None,
+                    "NOT_FOUND",
+                    "no single governed instance identity matched",
+                    None,
+                    0.0,
+                    (),
+                    (),
                 ))
                 missing.append(requirement.requirement_id)
                 results.append(RequirementResult(
-                    requirement.requirement_id, "ENTITY_UNRESOLVED", (), (),
-                    "governed entity could not be resolved", False, False, False, "NONE", 0.0,
+                    requirement.requirement_id,
+                    "ENTITY_UNRESOLVED",
+                    (),
+                    (),
+                    "governed entity could not be resolved unambiguously",
+                    False,
+                    False,
+                    False,
+                    "NONE",
+                    0.0,
                 ))
                 trace.add(
-                    "ENTITY_REJECTED", "not found", "no governed entity match",
-                    requirement_id=requirement.requirement_id, subject_reference=subject,
+                    "ENTITY_REJECTED",
+                    "not found",
+                    "no single governed entity match",
+                    requirement_id=requirement.requirement_id,
+                    subject_reference=semantic_subject,
                 )
                 continue
 
             entities.append(EntityResolution(
-                subject, entity, "RESOLVED", "exact governed alias/identity match", alias, 1.0, (), ()
+                instance_candidate,
+                entity,
+                "RESOLVED",
+                "exact governed alias/identity match",
+                alias,
+                1.0,
+                (),
+                (),
             ))
             trace.add(
-                "ENTITY_RESOLVED", entity, "governed alias/identity match",
-                requirement_id=requirement.requirement_id, subject_reference=subject,
+                "ENTITY_RESOLVED",
+                entity,
+                "governed alias/identity match",
+                requirement_id=requirement.requirement_id,
+                subject_reference=semantic_subject,
             )
-            source = self._source_lookup(entity, requirement)
+            lookup_requirement = _lookup_requirement(
+                requirement,
+                semantic_subject=semantic_subject,
+                plan_goal=plan.goal,
+            )
+            source = self._source_lookup(entity, lookup_requirement)
             if source is None:
                 reason = "no authoritative publication-backed evidence source matched the requirement"
                 missing.append(requirement.requirement_id)
@@ -116,7 +208,8 @@ class PublishedEvidenceResolver:
                 ))
                 trace.add(
                     "DOCUMENT_REJECTED", "publication source missing", reason,
-                    requirement_id=requirement.requirement_id, subject_reference=subject,
+                    requirement_id=requirement.requirement_id,
+                    subject_reference=semantic_subject,
                 )
                 continue
 
@@ -124,7 +217,7 @@ class PublishedEvidenceResolver:
                 materialized, requirement_result = materialize_published_requirement(
                     source=source,
                     requirement_id=requirement.requirement_id,
-                    subject_reference=subject,
+                    subject_reference=semantic_subject,
                 )
             except PublishedEvidenceMaterializationError as exc:
                 reason = str(exc)
@@ -136,7 +229,8 @@ class PublishedEvidenceResolver:
                 ))
                 trace.add(
                     "DOCUMENT_REJECTED", "publication materialization failed", reason,
-                    requirement_id=requirement.requirement_id, subject_reference=subject,
+                    requirement_id=requirement.requirement_id,
+                    subject_reference=semantic_subject,
                 )
                 continue
 
@@ -163,7 +257,7 @@ class PublishedEvidenceResolver:
                     "EVIDENCE_PACKAGED", package.evidence_id,
                     "certified evidence admitted through authoritative publication",
                     requirement_id=requirement.requirement_id,
-                    subject_reference=subject,
+                    subject_reference=semantic_subject,
                     source_paths=(source.publication.publication_id, source.publication.publication_receipt_id),
                 )
 
