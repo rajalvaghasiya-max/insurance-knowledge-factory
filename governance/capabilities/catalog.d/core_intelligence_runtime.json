@@ -128,7 +128,8 @@
         "insurance_intelligence/orchestration/execution_state.py",
         "insurance_intelligence/orchestration/intelligence_adapters.py",
         "insurance_intelligence/orchestration/knowledge_adapters.py",
-        "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
+        "insurance_intelligence/orchestration/user_answer_evidence_adapter.py",
+        "insurance_intelligence/orchestration/product_instance_binding.py"
       ],
       "introduced_by": "MO-023",
       "supersedes": [],
