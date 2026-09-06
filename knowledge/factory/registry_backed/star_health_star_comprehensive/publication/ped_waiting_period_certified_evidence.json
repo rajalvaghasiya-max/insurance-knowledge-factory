@@ -1,0 +1,374 @@
+{
+  "confidence": 1.0,
+  "conflicts": [],
+  "contract_version": "1.0",
+  "document_resolutions": [],
+  "entity_resolutions": [],
+  "evidence_packages": [
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "The waiting period duration is 36 MONTHS.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "WAITING_PERIOD_DURATION",
+      "governed_entity_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "lineage": {
+        "binding_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+        "governed_record_path": "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json",
+        "governed_record_sha256": "5372dc89f3e63252e1c645b23d6afe2732bf4eeb2ea80899e114c441894aaa47",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "waiting_period:waiting_period_duration",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration",
+      "page": 31,
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration",
+      "retrieval_basis": [
+        "reviewed_waiting_period_binding",
+        "mechanism",
+        "candidate_page_31"
+      ],
+      "section": "Waiting period",
+      "source_excerpt": "===== PAGE 31 =====\n30  /   47  \nSTAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED   |   POLICY WORDINGS \nStar Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526   |   POL / COMP / V.24 / 2025\nv.  All treatments (conservative, \ninterventional, laparoscopic and \nopen) related to Hepato-pancreato-\nbiliary diseases including Gall bladder \nand Pancreatic calculi. All types \nof management for Kidney and \nGenitourinary tract calculi\nvi. All types of Hernia\nvii.  Desmoid Tumor, Umbilical Granuloma, \nUmbilical Sinus, Umbilical Fistula, \nviii.  All treatments (conservative, \ninterventional, laparoscopic and open) \nrelated to all Diseases of Cervix, Uterus, \nFallopian tubes, Ovaries, Uterine Bleeding, \nPelvic\tInflammatory\tDiseases\nix.  All Diseases of Prostate, Stricture \nUrethra, all Obstructive Uropathies,\nx.  Benign Tumours of Epididymis, \nSpermatocele, Varicocele, Hydrocele,\nxi.  Fistula, Fissure in Ano, Hemorrhoids, \nPilonidal Sinus and Fistula, Rectal \nProlapse, Stress Incontinence\nxii. Varicose veins and Varicose ulcers\nxiii.  All types of transplant and related \nsurgeries\nxiv.  Congenital Internal disease / defect \n(except to the extent provided under \nSection II.14 for New Born)\nIII - EXCLUSIONS\nSTANDARD EXCLUSIONS\nA.  The Company shall not be liable to make \nany payments under this policy in respect \nof any expenses what so ever incurred \nby the Insured Person in connection with \nor in respect of;\n1. Pre-Existing Diseases \u2013 Code Excl 01\nA.  Expenses related to the treatment \nof a pre-existing Disease (PED) \nand its direct complications shall \nbe excluded until the expiry of 36 \nmonths of continuous coverage \nafter\tthe\tdate\tof\tinception\tof\tthe\tfirst\t\npolicy with insurer.\nB.  In case of enhancement of Sum Insured \nthe exclusion shall apply afresh to the \nextent of Sum Insured increase \nC.  If the Insured Person is continuously \ncovered without any break as \ndefined\tunder\tthe\tapplicable\tnorms\t\non portability stipulated by IRDAI, \nthen waiting period for the same \nwould be reduced to the extent of \nprior coverage\nD.  Coverage under the policy after the \nexpiry of 36 months for any pre-\nexisting disease is subject to the \nsame being declared at the time of \napplication and accepted by Insurer.\n2.  Specified disease/procedure waiting \nperiod \u2013 Code Excl 02\nA.  Expenses related to the treatment \nof the listed Conditions, surgeries/\ntreatments shall be excluded until \nthe expiry of 24 months of continuous \ncoverage after the date of inception \nof\t the\t first\t policy\t with\t us.\t This\t\nexclusion shall not be applicable for \nclaims arising due to an accident. \nB.  In case of enhancement of Sum Insured \nthe exclusion shall apply afresh to the \nextent of Sum Insured increase \nC.\t \tIf\t any\t of\t the\t specified\t disease/\nprocedure falls under the waiting \nperiod\t specified\t for\t pre-Existing\t\ndiseases, then the longer of the two \nwaiting periods shall apply.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "Waiting period applies to: pre_existing_disease_and_direct_complications.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject:mechanism",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "WAITING_PERIOD_SUBJECT",
+      "governed_entity_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "lineage": {
+        "binding_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+        "governed_record_path": "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json",
+        "governed_record_sha256": "5372dc89f3e63252e1c645b23d6afe2732bf4eeb2ea80899e114c441894aaa47",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "waiting_period:waiting_period_subject",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject",
+      "page": 31,
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject",
+      "retrieval_basis": [
+        "reviewed_waiting_period_binding",
+        "mechanism",
+        "candidate_page_31"
+      ],
+      "section": "Waiting period",
+      "source_excerpt": "===== PAGE 31 =====\n30  /   47  \nSTAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED   |   POLICY WORDINGS \nStar Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526   |   POL / COMP / V.24 / 2025\nv.  All treatments (conservative, \ninterventional, laparoscopic and \nopen) related to Hepato-pancreato-\nbiliary diseases including Gall bladder \nand Pancreatic calculi. All types \nof management for Kidney and \nGenitourinary tract calculi\nvi. All types of Hernia\nvii.  Desmoid Tumor, Umbilical Granuloma, \nUmbilical Sinus, Umbilical Fistula, \nviii.  All treatments (conservative, \ninterventional, laparoscopic and open) \nrelated to all Diseases of Cervix, Uterus, \nFallopian tubes, Ovaries, Uterine Bleeding, \nPelvic\tInflammatory\tDiseases\nix.  All Diseases of Prostate, Stricture \nUrethra, all Obstructive Uropathies,\nx.  Benign Tumours of Epididymis, \nSpermatocele, Varicocele, Hydrocele,\nxi.  Fistula, Fissure in Ano, Hemorrhoids, \nPilonidal Sinus and Fistula, Rectal \nProlapse, Stress Incontinence\nxii. Varicose veins and Varicose ulcers\nxiii.  All types of transplant and related \nsurgeries\nxiv.  Congenital Internal disease / defect \n(except to the extent provided under \nSection II.14 for New Born)\nIII - EXCLUSIONS\nSTANDARD EXCLUSIONS\nA.  The Company shall not be liable to make \nany payments under this policy in respect \nof any expenses what so ever incurred \nby the Insured Person in connection with \nor in respect of;\n1. Pre-Existing Diseases \u2013 Code Excl 01\nA.  Expenses related to the treatment \nof a pre-existing Disease (PED) \nand its direct complications shall \nbe excluded until the expiry of 36 \nmonths of continuous coverage \nafter\tthe\tdate\tof\tinception\tof\tthe\tfirst\t\npolicy with insurer.\nB.  In case of enhancement of Sum Insured \nthe exclusion shall apply afresh to the \nextent of Sum Insured increase \nC.  If the Insured Person is continuously \ncovered without any break as \ndefined\tunder\tthe\tapplicable\tnorms\t\non portability stipulated by IRDAI, \nthen waiting period for the same \nwould be reduced to the extent of \nprior coverage\nD.  Coverage under the policy after the \nexpiry of 36 months for any pre-\nexisting disease is subject to the \nsame being declared at the time of \napplication and accepted by Insurer.\n2.  Specified disease/procedure waiting \nperiod \u2013 Code Excl 02\nA.  Expenses related to the treatment \nof the listed Conditions, surgeries/\ntreatments shall be excluded until \nthe expiry of 24 months of continuous \ncoverage after the date of inception \nof\t the\t first\t policy\t with\t us.\t This\t\nexclusion shall not be applicable for \nclaims arising due to an accident. \nB.  In case of enhancement of Sum Insured \nthe exclusion shall apply afresh to the \nextent of Sum Insured increase \nC.\t \tIf\t any\t of\t the\t specified\t disease/\nprocedure falls under the waiting \nperiod\t specified\t for\t pre-Existing\t\ndiseases, then the longer of the two \nwaiting periods shall apply.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "The waiting period start basis is INSURED_PERSON_FIRST_COVERAGE.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis:mechanism",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "WAITING_PERIOD_START_BASIS",
+      "governed_entity_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "lineage": {
+        "binding_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+        "governed_record_path": "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json",
+        "governed_record_sha256": "5372dc89f3e63252e1c645b23d6afe2732bf4eeb2ea80899e114c441894aaa47",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "waiting_period:start_basis",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_health_star_comprehensive_ped_wait_36_months:start_basis",
+      "page": 31,
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis",
+      "retrieval_basis": [
+        "reviewed_waiting_period_binding",
+        "mechanism",
+        "candidate_page_31"
+      ],
+      "section": "Waiting period",
+      "source_excerpt": "===== PAGE 31 =====\n30  /   47  \nSTAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED   |   POLICY WORDINGS \nStar Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526   |   POL / COMP / V.24 / 2025\nv.  All treatments (conservative, \ninterventional, laparoscopic and \nopen) related to Hepato-pancreato-\nbiliary diseases including Gall bladder \nand Pancreatic calculi. All types \nof management for Kidney and \nGenitourinary tract calculi\nvi. All types of Hernia\nvii.  Desmoid Tumor, Umbilical Granuloma, \nUmbilical Sinus, Umbilical Fistula, \nviii.  All treatments (conservative, \ninterventional, laparoscopic and open) \nrelated to all Diseases of Cervix, Uterus, \nFallopian tubes, Ovaries, Uterine Bleeding, \nPelvic\tInflammatory\tDiseases\nix.  All Diseases of Prostate, Stricture \nUrethra, all Obstructive Uropathies,\nx.  Benign Tumours of Epididymis, \nSpermatocele, Varicocele, Hydrocele,\nxi.  Fistula, Fissure in Ano, Hemorrhoids, \nPilonidal Sinus and Fistula, Rectal \nProlapse, Stress Incontinence\nxii. Varicose veins and Varicose ulcers\nxiii.  All types of transplant and related \nsurgeries\nxiv.  Congenital Internal disease / defect \n(except to the extent provided under \nSection II.14 for New Born)\nIII - EXCLUSIONS\nSTANDARD EXCLUSIONS\nA.  The Company shall not be liable to make \nany payments under this policy in respect \nof any expenses what so ever incurred \nby the Insured Person in connection with \nor in respect of;\n1. Pre-Existing Diseases \u2013 Code Excl 01\nA.  Expenses related to the treatment \nof a pre-existing Disease (PED) \nand its direct complications shall \nbe excluded until the expiry of 36 \nmonths of continuous coverage \nafter\tthe\tdate\tof\tinception\tof\tthe\tfirst\t\npolicy with insurer.\nB.  In case of enhancement of Sum Insured \nthe exclusion shall apply afresh to the \nextent of Sum Insured increase \nC.  If the Insured Person is continuously \ncovered without any break as \ndefined\tunder\tthe\tapplicable\tnorms\t\non portability stipulated by IRDAI, \nthen waiting period for the same \nwould be reduced to the extent of \nprior coverage\nD.  Coverage under the policy after the \nexpiry of 36 months for any pre-\nexisting disease is subject to the \nsame being declared at the time of \napplication and accepted by Insurer.\n2.  Specified disease/procedure waiting \nperiod \u2013 Code Excl 02\nA.  Expenses related to the treatment \nof the listed Conditions, surgeries/\ntreatments shall be excluded until \nthe expiry of 24 months of continuous \ncoverage after the date of inception \nof\t the\t first\t policy\t with\t us.\t This\t\nexclusion shall not be applicable for \nclaims arising due to an accident. \nB.  In case of enhancement of Sum Insured \nthe exclusion shall apply afresh to the \nextent of Sum Insured increase \nC.\t \tIf\t any\t of\t the\t specified\t disease/\nprocedure falls under the waiting \nperiod\t specified\t for\t pre-Existing\t\ndiseases, then the longer of the two \nwaiting periods shall apply.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "Waiting-period applicability: scope_type=POLICY_WIDE; sum_insured_enhancement_effect=REAPPLIES_TO_ENHANCED_PORTION.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope:mechanism",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "APPLICABILITY_SCOPE",
+      "governed_entity_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "lineage": {
+        "binding_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+        "governed_record_path": "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json",
+        "governed_record_sha256": "5372dc89f3e63252e1c645b23d6afe2732bf4eeb2ea80899e114c441894aaa47",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "waiting_period:applicability_scope",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_health_star_comprehensive_ped_wait_36_months:applicability_scope",
+      "page": 31,
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope",
+      "retrieval_basis": [
+        "reviewed_waiting_period_binding",
+        "mechanism",
+        "candidate_page_31"
+      ],
+      "section": "Waiting period",
+      "source_excerpt": "===== PAGE 31 =====\n30  /   47  \nSTAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED   |   POLICY WORDINGS \nStar Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526   |   POL / COMP / V.24 / 2025\nv.  All treatments (conservative, \ninterventional, laparoscopic and \nopen) related to Hepato-pancreato-\nbiliary diseases including Gall bladder \nand Pancreatic calculi. All types \nof management for Kidney and \nGenitourinary tract calculi\nvi. All types of Hernia\nvii.  Desmoid Tumor, Umbilical Granuloma, \nUmbilical Sinus, Umbilical Fistula, \nviii.  All treatments (conservative, \ninterventional, laparoscopic and open) \nrelated to all Diseases of Cervix, Uterus, \nFallopian tubes, Ovaries, Uterine Bleeding, \nPelvic\tInflammatory\tDiseases\nix.  All Diseases of Prostate, Stricture \nUrethra, all Obstructive Uropathies,\nx.  Benign Tumours of Epididymis, \nSpermatocele, Varicocele, Hydrocele,\nxi.  Fistula, Fissure in Ano, Hemorrhoids, \nPilonidal Sinus and Fistula, Rectal \nProlapse, Stress Incontinence\nxii. Varicose veins and Varicose ulcers\nxiii.  All types of transplant and related \nsurgeries\nxiv.  Congenital Internal disease / defect \n(except to the extent provided under \nSection II.14 for New Born)\nIII - EXCLUSIONS\nSTANDARD EXCLUSIONS\nA.  The Company shall not be liable to make \nany payments under this policy in respect \nof any expenses what so ever incurred \nby the Insured Person in connection with \nor in respect of;\n1. Pre-Existing Diseases \u2013 Code Excl 01\nA.  Expenses related to the treatment \nof a pre-existing Disease (PED) \nand its direct complications shall \nbe excluded until the expiry of 36 \nmonths of continuous coverage \nafter\tthe\tdate\tof\tinception\tof\tthe\tfirst\t\npolicy with insurer.\nB.  In case of enhancement of Sum Insured \nthe exclusion shall apply afresh to the \nextent of Sum Insured increase \nC.  If the Insured Person is continuously \ncovered without any break as \ndefined\tunder\tthe\tapplicable\tnorms\t\non portability stipulated by IRDAI, \nthen waiting period for the same \nwould be reduced to the extent of \nprior coverage\nD.  Coverage under the policy after the \nexpiry of 36 months for any pre-\nexisting disease is subject to the \nsame being declared at the time of \napplication and accepted by Insurer.\n2.  Specified disease/procedure waiting \nperiod \u2013 Code Excl 02\nA.  Expenses related to the treatment \nof the listed Conditions, surgeries/\ntreatments shall be excluded until \nthe expiry of 24 months of continuous \ncoverage after the date of inception \nof\t the\t first\t policy\t with\t us.\t This\t\nexclusion shall not be applicable for \nclaims arising due to an accident. \nB.  In case of enhancement of Sum Insured \nthe exclusion shall apply afresh to the \nextent of Sum Insured increase \nC.\t \tIf\t any\t of\t the\t specified\t disease/\nprocedure falls under the waiting \nperiod\t specified\t for\t pre-Existing\t\ndiseases, then the longer of the two \nwaiting periods shall apply.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "If the Insured Person is continuously covered without any break under applicable portability norms, the waiting period is reduced to the extent of prior coverage.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "CONTINUITY_OR_CREDIT_RULE",
+      "governed_entity_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "lineage": {
+        "binding_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+        "governed_record_path": "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json",
+        "governed_record_sha256": "5372dc89f3e63252e1c645b23d6afe2732bf4eeb2ea80899e114c441894aaa47",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "waiting_period:continuity_or_credit_rule",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule",
+      "page": 31,
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule",
+      "retrieval_basis": [
+        "reviewed_waiting_period_binding",
+        "mechanism",
+        "candidate_page_31"
+      ],
+      "section": "Waiting period",
+      "source_excerpt": "===== PAGE 31 =====\n30  /   47  \nSTAR HEALTH AND ALLIED INSURANCE COMPANY LIMITED   |   POLICY WORDINGS \nStar Comprehensive Insurance Policy | UIN : SHAHLIP26044V092526   |   POL / COMP / V.24 / 2025\nv.  All treatments (conservative, \ninterventional, laparoscopic and \nopen) related to Hepato-pancreato-\nbiliary diseases including Gall bladder \nand Pancreatic calculi. All types \nof management for Kidney and \nGenitourinary tract calculi\nvi. All types of Hernia\nvii.  Desmoid Tumor, Umbilical Granuloma, \nUmbilical Sinus, Umbilical Fistula, \nviii.  All treatments (conservative, \ninterventional, laparoscopic and open) \nrelated to all Diseases of Cervix, Uterus, \nFallopian tubes, Ovaries, Uterine Bleeding, \nPelvic\tInflammatory\tDiseases\nix.  All Diseases of Prostate, Stricture \nUrethra, all Obstructive Uropathies,\nx.  Benign Tumours of Epididymis, \nSpermatocele, Varicocele, Hydrocele,\nxi.  Fistula, Fissure in Ano, Hemorrhoids, \nPilonidal Sinus and Fistula, Rectal \nProlapse, Stress Incontinence\nxii. Varicose veins and Varicose ulcers\nxiii.  All types of transplant and related \nsurgeries\nxiv.  Congenital Internal disease / defect \n(except to the extent provided under \nSection II.14 for New Born)\nIII - EXCLUSIONS\nSTANDARD EXCLUSIONS\nA.  The Company shall not be liable to make \nany payments under this policy in respect \nof any expenses what so ever incurred \nby the Insured Person in connection with \nor in respect of;\n1. Pre-Existing Diseases \u2013 Code Excl 01\nA.  Expenses related to the treatment \nof a pre-existing Disease (PED) \nand its direct complications shall \nbe excluded until the expiry of 36 \nmonths of continuous coverage \nafter\tthe\tdate\tof\tinception\tof\tthe\tfirst\t\npolicy with insurer.\nB.  In case of enhancement of Sum Insured \nthe exclusion shall apply afresh to the \nextent of Sum Insured increase \nC.  If the Insured Person is continuously \ncovered without any break as \ndefined\tunder\tthe\tapplicable\tnorms\t\non portability stipulated by IRDAI, \nthen waiting period for the same \nwould be reduced to the extent of \nprior coverage\nD.  Coverage under the policy after the \nexpiry of 36 months for any pre-\nexisting disease is subject to the \nsame being declared at the time of \napplication and accepted by Insurer.\n2.  Specified disease/procedure waiting \nperiod \u2013 Code Excl 02\nA.  Expenses related to the treatment \nof the listed Conditions, surgeries/\ntreatments shall be excluded until \nthe expiry of 24 months of continuous \ncoverage after the date of inception \nof\t the\t first\t policy\t with\t us.\t This\t\nexclusion shall not be applicable for \nclaims arising due to an accident. \nB.  In case of enhancement of Sum Insured \nthe exclusion shall apply afresh to the \nextent of Sum Insured increase \nC.\t \tIf\t any\t of\t the\t specified\t disease/\nprocedure falls under the waiting \nperiod\t specified\t for\t pre-Existing\t\ndiseases, then the longer of the two \nwaiting periods shall apply.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "version_status": "CURRENT_APPLICABLE"
+    }
+  ],
+  "limitations": [
+    "The waiting-period binding remains bound_not_published and is used only for internal certification.",
+    "Certification applies only to this resolved waiting-period mechanic and does not certify other waiting-period families.",
+    "Certification does not determine customer-specific eligibility or claim payment."
+  ],
+  "missing_evidence": [],
+  "request_id": "request:waiting_period:star_health_star_comprehensive_ped_wait_36_months",
+  "requirement_results": [
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject:mechanism"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis:mechanism"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope:mechanism"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    }
+  ],
+  "resolution_id": "resolution:waiting_period:star_health_star_comprehensive_ped_wait_36_months",
+  "resolution_status": "RESOLVED",
+  "resolution_trace": [
+    {
+      "basis": "Waiting-period evidence carries VERIFIED source-artifact and governed-binding lineage.",
+      "candidate_reference": "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism",
+      "decision": "ACCEPT",
+      "event_type": "LINEAGE_VERIFIED",
+      "order_marker": "event-0001",
+      "repository": "governed_repository",
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration",
+      "sequence": 1,
+      "source_paths": [
+        "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json"
+      ],
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "trace_id": "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:lineage:evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+    },
+    {
+      "basis": "Waiting-period evidence carries VERIFIED source-artifact and governed-binding lineage.",
+      "candidate_reference": "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject:mechanism",
+      "decision": "ACCEPT",
+      "event_type": "LINEAGE_VERIFIED",
+      "order_marker": "event-0002",
+      "repository": "governed_repository",
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject",
+      "sequence": 2,
+      "source_paths": [
+        "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json"
+      ],
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "trace_id": "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:lineage:evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject:mechanism"
+    },
+    {
+      "basis": "Waiting-period evidence carries VERIFIED source-artifact and governed-binding lineage.",
+      "candidate_reference": "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis:mechanism",
+      "decision": "ACCEPT",
+      "event_type": "LINEAGE_VERIFIED",
+      "order_marker": "event-0003",
+      "repository": "governed_repository",
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis",
+      "sequence": 3,
+      "source_paths": [
+        "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json"
+      ],
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "trace_id": "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:lineage:evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis:mechanism"
+    },
+    {
+      "basis": "Waiting-period evidence carries VERIFIED source-artifact and governed-binding lineage.",
+      "candidate_reference": "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope:mechanism",
+      "decision": "ACCEPT",
+      "event_type": "LINEAGE_VERIFIED",
+      "order_marker": "event-0004",
+      "repository": "governed_repository",
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope",
+      "sequence": 4,
+      "source_paths": [
+        "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json"
+      ],
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "trace_id": "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:lineage:evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope:mechanism"
+    },
+    {
+      "basis": "Waiting-period evidence carries VERIFIED source-artifact and governed-binding lineage.",
+      "candidate_reference": "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism",
+      "decision": "ACCEPT",
+      "event_type": "LINEAGE_VERIFIED",
+      "order_marker": "event-0005",
+      "repository": "governed_repository",
+      "requirement_id": "requirement:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule",
+      "sequence": 5,
+      "source_paths": [
+        "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json"
+      ],
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "trace_id": "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:lineage:evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism"
+    },
+    {
+      "basis": "All waiting-period certification evidence packages retain VERIFIED lineage.",
+      "candidate_reference": null,
+      "decision": "RESOLVED",
+      "event_type": "RESOLUTION_COMPLETED",
+      "order_marker": "event-0006",
+      "repository": "governed_repository",
+      "requirement_id": null,
+      "sequence": 6,
+      "source_paths": [
+        "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json"
+      ],
+      "subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+      "trace_id": "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:resolution-completed"
+    }
+  ],
+  "sufficiency": "COMPLETE"
+}

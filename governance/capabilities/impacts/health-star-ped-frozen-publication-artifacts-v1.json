@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-star-ped-frozen-publication-artifacts-v1",
+  "classification": "REUSE",
+  "capability_ids": [
+    "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
+    "II.PUBLICATION.DECISION",
+    "II.PUBLICATION.AUTHORITATIVE_GATE",
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Persist the already-proven Star PED authoritative publication and certified evidence outputs as frozen governed data artifacts using the existing generic certification, publication materialization, artifact persistence, and published-source lookup machinery. No governed implementation changes are introduced.",
+  "supersession_impact": "No capability or historical certification artifact is superseded. This closes the repository-persistence prerequisite that PR #241 exercised only in a temporary repository.",
+  "authority_impact": "No authority is broadened. The frozen publication remains bounded to the already-certified standard PED waiting-period duration and continuity component, with customer-specific eligibility, claim payment, and optional 12-month buy-back selection remaining outside ordinary assertion authority."
+}
