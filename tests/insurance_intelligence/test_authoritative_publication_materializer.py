@@ -232,7 +232,7 @@ def test_generic_materializer_does_not_publish_uncertified_component():
                 decision_id="publication-decision:generic:other",
                 publication_id="authoritative-publication:generic:other",
                 projection_id="publication-projection:generic:other",
-                decision_reasons=("Attempt unc ertified component publication.",),
+                decision_reasons=("Attempt uncertified component publication.",),
                 decision_authority="governed publication decision authority",
                 publication_authority="governed authoritative publication authority",
                 limitations=(SAFETY_LIMITATION,),
@@ -255,7 +255,7 @@ def test_generic_materializer_preserves_authoritative_gate_prohibited_language()
             certified_evidence=_evidence(),
             request=_request(
                 authorization=_authorization(),
-                limitations=("This guarantee claim payment.",),
+                limitations=(SAFETY_LIMITATION, "This guarantee claim payment."),
             ),
         )
 
