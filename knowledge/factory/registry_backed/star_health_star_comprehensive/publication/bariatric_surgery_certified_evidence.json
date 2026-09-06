@@ -1,0 +1,277 @@
+{
+  "confidence": 1.0,
+  "conflicts": [],
+  "contract_version": "1.0",
+  "document_resolutions": [],
+  "entity_resolutions": [],
+  "evidence_packages": [
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "Eligibility requires age above 18, two-surgeon appropriateness, prior cashless approval, qualifying BMI, and failed traditional weight-loss methods.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:star-comprehensive-bariatric:eligibility_criteria",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "ELIGIBILITY_CRITERIA",
+      "governed_entity_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1",
+      "lineage": {
+        "binding_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_15",
+        "governed_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "governed_record_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "eligibility_and_consequence:eligibility_criteria",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_comprehensive_bariatric:eligibility_criteria",
+      "page": 15,
+      "requirement_id": "requirement:star-comprehensive-bariatric:eligibility_criteria",
+      "retrieval_basis": [
+        "registered_primary_legal_source",
+        "primary_legal_policy_wording",
+        "candidate_page_15"
+      ],
+      "section": "II.15 Bariatric Surgery",
+      "source_excerpt": "Bariatric surgery expenses are payable subject to the policy limits and special conditions. The insured must be above 18 years, the indication must be found appropriate by two qualified surgeons, prior approval for cashless treatment must be obtained, BMI must be greater than 40 or greater than 35 with co-morbidities, and traditional weight-loss methods must have failed. The benefit does not apply for the listed endocrine, substance-abuse, psychiatric, comprehension, or cosmetic-surgery circumstances.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "product:star_health:star_comprehensive",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "The rule applies to hospitalization for bariatric surgery and its complications during the policy period, subject to the stated limits and cashless process.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:star-comprehensive-bariatric:applicability_scope",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "APPLICABILITY_SCOPE",
+      "governed_entity_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1",
+      "lineage": {
+        "binding_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_15",
+        "governed_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "governed_record_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "eligibility_and_consequence:applicability_scope",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_comprehensive_bariatric:applicability_scope",
+      "page": 15,
+      "requirement_id": "requirement:star-comprehensive-bariatric:applicability_scope",
+      "retrieval_basis": [
+        "registered_primary_legal_source",
+        "primary_legal_policy_wording",
+        "candidate_page_15"
+      ],
+      "section": "II.15 Bariatric Surgery",
+      "source_excerpt": "Bariatric surgery expenses are payable subject to the policy limits and special conditions. The insured must be above 18 years, the indication must be found appropriate by two qualified surgeons, prior approval for cashless treatment must be obtained, BMI must be greater than 40 or greater than 35 with co-morbidities, and traditional weight-loss methods must have failed. The benefit does not apply for the listed endocrine, substance-abuse, psychiatric, comprehension, or cosmetic-surgery circumstances.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "product:star_health:star_comprehensive",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "When all eligibility conditions are satisfied, covered bariatric hospitalization expenses are payable up to the applicable policy limit.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:star-comprehensive-bariatric:eligible_consequence",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "ELIGIBLE_CONSEQUENCE",
+      "governed_entity_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1",
+      "lineage": {
+        "binding_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_15",
+        "governed_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "governed_record_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "eligibility_and_consequence:eligible_consequence",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_comprehensive_bariatric:eligible_consequence",
+      "page": 15,
+      "requirement_id": "requirement:star-comprehensive-bariatric:eligible_consequence",
+      "retrieval_basis": [
+        "registered_primary_legal_source",
+        "primary_legal_policy_wording",
+        "candidate_page_15"
+      ],
+      "section": "II.15 Bariatric Surgery",
+      "source_excerpt": "Bariatric surgery expenses are payable subject to the policy limits and special conditions. The insured must be above 18 years, the indication must be found appropriate by two qualified surgeons, prior approval for cashless treatment must be obtained, BMI must be greater than 40 or greater than 35 with co-morbidities, and traditional weight-loss methods must have failed. The benefit does not apply for the listed endocrine, substance-abuse, psychiatric, comprehension, or cosmetic-surgery circumstances.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "product:star_health:star_comprehensive",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "The benefit does not apply when any listed non-applicability circumstance is present or the required eligibility conditions are not satisfied.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:star-comprehensive-bariatric:ineligible_consequence",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "INELIGIBLE_CONSEQUENCE",
+      "governed_entity_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1",
+      "lineage": {
+        "binding_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_15",
+        "governed_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "governed_record_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "eligibility_and_consequence:ineligible_consequence",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_comprehensive_bariatric:ineligible_consequence",
+      "page": 15,
+      "requirement_id": "requirement:star-comprehensive-bariatric:ineligible_consequence",
+      "retrieval_basis": [
+        "registered_primary_legal_source",
+        "primary_legal_policy_wording",
+        "candidate_page_15"
+      ],
+      "section": "II.15 Bariatric Surgery",
+      "source_excerpt": "Bariatric surgery expenses are payable subject to the policy limits and special conditions. The insured must be above 18 years, the indication must be found appropriate by two qualified surgeons, prior approval for cashless treatment must be obtained, BMI must be greater than 40 or greater than 35 with co-morbidities, and traditional weight-loss methods must have failed. The benefit does not apply for the listed endocrine, substance-abuse, psychiatric, comprehension, or cosmetic-surgery circumstances.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "product:star_health:star_comprehensive",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "Non-applicability includes specified endocrine causes, current drug or alcohol abuse, uncontrolled severe psychiatric illness, lack of comprehension, and cosmetic reasons.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:star-comprehensive-bariatric:exception_condition",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "EXCEPTION_CONDITION",
+      "governed_entity_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1",
+      "lineage": {
+        "binding_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_15",
+        "governed_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "governed_record_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "eligibility_and_consequence:exception_condition",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_comprehensive_bariatric:exception_condition",
+      "page": 15,
+      "requirement_id": "requirement:star-comprehensive-bariatric:exception_condition",
+      "retrieval_basis": [
+        "registered_primary_legal_source",
+        "primary_legal_policy_wording",
+        "candidate_page_15"
+      ],
+      "section": "II.15 Bariatric Surgery",
+      "source_excerpt": "Bariatric surgery expenses are payable subject to the policy limits and special conditions. The insured must be above 18 years, the indication must be found appropriate by two qualified surgeons, prior approval for cashless treatment must be obtained, BMI must be greater than 40 or greater than 35 with co-morbidities, and traditional weight-loss methods must have failed. The benefit does not apply for the listed endocrine, substance-abuse, psychiatric, comprehension, or cosmetic-surgery circumstances.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "product:star_health:star_comprehensive",
+      "version_status": "CURRENT_APPLICABLE"
+    }
+  ],
+  "limitations": [
+    "Certification uses registered policy-wording evidence and does not itself publish a customer-facing rule.",
+    "The certification describes contractual eligibility semantics and does not decide individual medical suitability.",
+    "Satisfying the listed conditions does not guarantee claim admissibility or payment."
+  ],
+  "missing_evidence": [],
+  "request_id": "request:star_comprehensive_bariatric_surgery",
+  "requirement_results": [
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:star-comprehensive-bariatric:eligibility_criteria"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:star-comprehensive-bariatric:eligibility_criteria",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:star-comprehensive-bariatric:applicability_scope"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:star-comprehensive-bariatric:applicability_scope",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:star-comprehensive-bariatric:eligible_consequence"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:star-comprehensive-bariatric:eligible_consequence",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:star-comprehensive-bariatric:ineligible_consequence"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:star-comprehensive-bariatric:ineligible_consequence",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:star-comprehensive-bariatric:exception_condition"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:star-comprehensive-bariatric:exception_condition",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    }
+  ],
+  "resolution_id": "resolution:star_comprehensive_bariatric_surgery",
+  "resolution_status": "RESOLVED",
+  "resolution_trace": [],
+  "sufficiency": "COMPLETE"
+}

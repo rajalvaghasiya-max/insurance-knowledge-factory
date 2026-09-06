@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-generic-published-evidence-registry-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Repair the published USER_ANSWER evidence-source seam so runtime lookup uses the existing coverage registry only for governed product resolution, then discovers immutable authoritative-publication/certified-evidence artifacts from the resolved product's governed publication directory. This replaces insurer/product/topic-specific Python branches and runtime builder reconstruction. The coverage-registry contracts and seed semantics, generic publication gate, publication-backed resolver, materializer, reasoning, decision, explanation, and orchestration algorithms remain unchanged. No new registry or insurance semantic capability is introduced.",
+  "supersession_impact": "The Star-specific runtime source adapter is retired after room-rent and bariatric migration fixtures are persisted. Historical Star publication and certification builders remain available for tests/history but no longer participate in ordinary answer lookup. The existing Health coverage registry remains unchanged and continues to represent only the established copayment/waiting_period concept matrix.",
+  "authority_impact": "No authority is expanded. Authoritative publication remains the admission authority. Frozen publication artifacts are discovered only after governed product resolution, and certified topics without authoritative-publication artifacts, including Star waiting_period/PED, continue to fail closed for USER_ANSWER use."
+}

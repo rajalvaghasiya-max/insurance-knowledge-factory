@@ -12,10 +12,11 @@ from insurance_intelligence.contracts.reasoning_plan import (
     build_evidence_requirement,
     build_plan,
 )
-from insurance_intelligence.evidence.published_resolver import PublishedEvidenceResolver
-from insurance_intelligence.evidence.star_health_publication_source import (
-    load_star_published_evidence_source,
+from insurance_intelligence.coverage_registry.health_seed import HEALTH_COVERAGE_REGISTRY
+from insurance_intelligence.evidence.coverage_registry_source import (
+    build_coverage_registry_published_source_lookup,
 )
+from insurance_intelligence.evidence.published_resolver import PublishedEvidenceResolver
 from insurance_intelligence.orchestration.intelligence_adapters import (
     build_intelligence_stage_adapter,
     deterministic_fake_intelligence_capability,
@@ -28,6 +29,10 @@ from insurance_intelligence.orchestration.user_answer_evidence_adapter import (
 
 ROOT = Path(__file__).resolve().parents[2]
 REGISTRY = ROOT / "knowledge/factory/registry_backed"
+LOOKUP = build_coverage_registry_published_source_lookup(
+    registry=HEALTH_COVERAGE_REGISTRY,
+    repository_root=ROOT,
+)
 
 
 def _request(*, execution_id: str, question: str):
@@ -81,7 +86,7 @@ def _evidence_factory(reason: str, *, evidence_use: str = "USER_ANSWER"):
 
 
 def _adapters(reason: str, *, evidence_use: str = "USER_ANSWER"):
-    resolver = PublishedEvidenceResolver(load_star_published_evidence_source)
+    resolver = PublishedEvidenceResolver(LOOKUP)
     values = []
     for stage in INTELLIGENCE_RESPONSE_STAGE_ORDER:
         if stage == EVIDENCE_STAGE:
