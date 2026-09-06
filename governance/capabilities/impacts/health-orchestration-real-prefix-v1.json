@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-prefix-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Extend the existing governed execution runtime with a generic production prefix that composes already-governed authority, intent, reconciliation, context, product-instance binding, instance sufficiency, reasoning planning, and publication-backed USER_ANSWER evidence resolution through typed execution-scoped handoff. No semantic stage algorithm is modified and no insurer/topic branch is introduced.",
+  "supersession_impact": "No capability or semantic implementation is superseded. Existing standalone stage APIs, publication-backed evidence resolver, and canonical stage-order contract remain authoritative.",
+  "authority_impact": "No new insurance, publication, identity, reasoning, recommendation, or answer authority is added. Certified knowledge selection and product identity are supplied through injected governed lookups; evidence remains gated by Instance Sufficiency and USER_ANSWER authoritative publication admission."
+}
