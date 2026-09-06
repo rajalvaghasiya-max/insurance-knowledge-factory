@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-generic-published-evidence-registry-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER",
+    "II.COVERAGE.REGISTRY"
+  ],
+  "rationale": "Repair the published USER_ANSWER evidence-source seam so runtime lookup is driven by the existing coverage registry and immutable authoritative-publication/certified-evidence artifacts rather than insurer/product/topic-specific Python branches and runtime builder reconstruction. The generic publication gate, publication-backed resolver, materializer, reasoning, decision, explanation, and orchestration algorithms remain unchanged. No new registry or insurance semantic capability is introduced.",
+  "supersession_impact": "The coverage registry remains the single insurer/product/concept evidence inventory and is reused by adding frozen artifact references to existing concept evidence references. The Star-specific runtime source adapter is retired after migration fixtures are persisted. Historical Star publication and certification builders remain available for tests/history but no longer participate in ordinary answer lookup.",
+  "authority_impact": "No authority is expanded. Authoritative publication remains the admission authority; the registry only points to already-published immutable artifacts. Certified concepts without authoritative-publication artifact references, including Star waiting_period/PED, continue to fail closed for USER_ANSWER use."
+}
