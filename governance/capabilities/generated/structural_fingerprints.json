@@ -164,7 +164,7 @@
         "insurance_intelligence/evidence/sufficiency.py",
         "insurance_intelligence/evidence/trace.py"
       ],
-      "structural_fingerprint": "02acc39acbdbfea89f0cca9829fbf94098e20bb0e8eb2dcb34dceba48669894b"
+      "structural_fingerprint": "e278547685affe81a9847e7b916995f2d5588d8376583bd01f052a3da6a5a6a2"
     },
     {
       "capability_id": "II.EVIDENCE.INSTANCE_ENFORCEMENT",
@@ -294,17 +294,18 @@
         "insurance_intelligence/authoritative_publication/star_health.py",
         "insurance_intelligence/contracts/authoritative_publication.py"
       ],
-      "structural_fingerprint": "6f1ea7a5450a1ce0a06b57e7170f16648ecade105982279c00b39c9f9ba64b63"
+      "structural_fingerprint": "27c95aa594147edf0ba0c14148b30343baae3cce179cf3897c45223a5a38d351"
     },
     {
       "capability_id": "II.PUBLICATION.DECISION",
       "owned_module_paths": [
         "insurance_intelligence/contracts/publication_decision.py",
         "insurance_intelligence/publication_decision/__init__.py",
+        "insurance_intelligence/publication_decision/authorization.py",
         "insurance_intelligence/publication_decision/evaluator.py",
         "insurance_intelligence/publication_decision/star_health.py"
       ],
-      "structural_fingerprint": "48867e699bbf517df805dde119afb3e1d281cb60c39755ee9db5609e548a6044"
+      "structural_fingerprint": "2a4fc7a12e8091b9531aef2a27580fd46f148ddb41c34903eeb5daf6585f51f1"
     },
     {
       "capability_id": "II.REASONING.ENGINE",

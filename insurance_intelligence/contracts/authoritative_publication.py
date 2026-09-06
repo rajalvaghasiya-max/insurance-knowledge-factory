@@ -164,3 +164,6 @@ class AuthoritativePublicationRecord:
     evidence_trace_references: tuple[str, ...]
     publication_authority: str
     publication_receipt_id: str
+    resolved_certification_limitations: tuple[str, ...] = ()
+    authorization_id: str | None = None
+    authorization_trace_references: tuple[str, ...] = ()
