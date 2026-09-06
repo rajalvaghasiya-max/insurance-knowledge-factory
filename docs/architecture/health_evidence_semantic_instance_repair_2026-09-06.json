@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_f3_evidence_semantic_instance_repair_v1",
+  "recorded_on": "2026-09-06",
+  "issue": 250,
+  "current_milestone": "C — Same machinery across concepts/products",
+  "classification": "REPAIR",
+  "capability_id": "II.EVIDENCE.GOVERNED_RESOLVER",
+  "trigger": "PR #249 exact Star PED Case-B real prefix reached EVIDENCE_RESOLUTION_ENFORCED and failed closed with ENTITY_UNRESOLVED after Instance Sufficiency and Reasoning Planning passed.",
+  "defect": "PublishedEvidenceResolver conflated planner semantic subject_reference tokens with governed instance identity and attempted to resolve every semantic subject as an entity.",
+  "repair_boundary": [
+    "Prefer an exact resolved candidate identity for a matching planner subject reference.",
+    "When the planner subject is semantic, permit one and only one unique already-resolved candidate identity to supply the instance boundary.",
+    "Retain semantic subject/request text for topic-neutral authoritative-publication matching.",
+    "Fail closed when candidate identity is absent, unresolved, or ambiguous.",
+    "Do not alter planner, reasoning, publication authority, or product-specific runtime logic."
+  ],
+  "negative_controls": [
+    "Multiple distinct resolved candidate identities must remain ENTITY_UNRESOLVED.",
+    "Unknown direct product identity must remain ENTITY_UNRESOLVED.",
+    "INTERNAL_CERTIFICATION evidence use must remain rejected by PublishedEvidenceResolver."
+  ],
+  "next_step_if_green": "Merge the generic resolver repair, then recreate and rerun the exact frozen PR #249 real-prefix experiment unchanged against repaired main."
+}

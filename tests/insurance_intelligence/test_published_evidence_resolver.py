@@ -102,6 +102,96 @@ def test_waiting_period_is_answer_admissible_after_authoritative_publication_is_
     assert all("authoritative_publication_admission" in item.retrieval_basis for item in out.evidence_packages)
 
 
+def test_symbolic_semantic_subject_reuses_one_unambiguous_governed_instance_identity():
+    plan = _plan(reason="Required to resolve the requested governed product fact")
+    requirement = replace(plan.required_evidence[0], subject_reference="term_or_concept")
+    plan = replace(
+        plan,
+        goal="Address a TERM_EXPLANATION request: What is the PED waiting period in Star Comprehensive?",
+        required_evidence=(requirement,),
+    )
+    out = PublishedEvidenceResolver(LOOKUP).resolve(
+        build_input(
+            request_id=plan.request_id,
+            reasoning_plan=plan,
+            resolution_context={
+                "evidence_use": "USER_ANSWER",
+                "resolved_candidate_references": {
+                    "product_reference": "star_health:star_comprehensive",
+                },
+            },
+            repository_roots=(str(REGISTRY),),
+            strict_mode="STRICT",
+        )
+    )
+
+    assert out.resolution_status == "RESOLVED"
+    assert out.sufficiency == "COMPLETE"
+    assert out.entity_resolutions[0].governed_reference == "star_health:star_comprehensive"
+    fields = {item.field_or_topic for item in out.evidence_packages}
+    assert "WAITING_PERIOD_DURATION" in fields
+    assert "CONTINUITY_OR_CREDIT_RULE" in fields
+
+
+def test_resolved_semantic_context_is_preserved_separately_from_instance_identity():
+    plan = _plan(reason="Required to resolve the requested governed product fact")
+    requirement = replace(plan.required_evidence[0], subject_reference="term_or_concept")
+    plan = replace(
+        plan,
+        goal="Address a TERM_EXPLANATION request: What is the PED waiting period in Star Comprehensive?",
+        required_evidence=(requirement,),
+    )
+    out = PublishedEvidenceResolver(LOOKUP).resolve(
+        build_input(
+            request_id=plan.request_id,
+            reasoning_plan=plan,
+            resolution_context={
+                "evidence_use": "USER_ANSWER",
+                "resolved_context_values": {"term_or_concept": "waiting period"},
+                "resolved_candidate_references": {
+                    "product_reference": "star_health:star_comprehensive",
+                },
+            },
+            repository_roots=(str(REGISTRY),),
+            strict_mode="STRICT",
+        )
+    )
+
+    assert out.resolution_status == "RESOLVED"
+    assert out.evidence_packages
+    assert {item.subject_reference for item in out.evidence_packages} == {"waiting period"}
+    assert out.entity_resolutions[0].governed_reference == "star_health:star_comprehensive"
+
+
+def test_symbolic_subject_with_multiple_candidate_identities_fails_closed():
+    plan = _plan(reason="Required to resolve the requested governed product fact")
+    requirement = replace(plan.required_evidence[0], subject_reference="term_or_concept")
+    plan = replace(
+        plan,
+        goal="Address a TERM_EXPLANATION request: explain the waiting period",
+        required_evidence=(requirement,),
+    )
+    out = PublishedEvidenceResolver(LOOKUP).resolve(
+        build_input(
+            request_id=plan.request_id,
+            reasoning_plan=plan,
+            resolution_context={
+                "evidence_use": "USER_ANSWER",
+                "resolved_candidate_references": {
+                    "product_reference": "star_health:star_comprehensive",
+                    "comparison_subject_1": "other_health:other_product",
+                },
+            },
+            repository_roots=(str(REGISTRY),),
+            strict_mode="STRICT",
+        )
+    )
+
+    assert out.sufficiency == "ENTITY_UNRESOLVED"
+    assert out.resolution_status != "RESOLVED"
+    assert not out.evidence_packages
+
+
 def test_unknown_product_fails_before_publication_materialization():
     plan = _plan(reason="Explain room rent")
     requirement = replace(plan.required_evidence[0], subject_reference="unknown:product")
