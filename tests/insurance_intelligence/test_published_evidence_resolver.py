@@ -90,13 +90,16 @@ def test_bariatric_user_answer_materializes_published_evidence_without_core_topi
     }
 
 
-def test_waiting_period_remains_not_answer_admissible_without_authoritative_publication():
+def test_waiting_period_is_answer_admissible_after_authoritative_publication_is_frozen():
     out = _resolve("What is the PED waiting period in Star Comprehensive?")
 
-    assert out.resolution_status == "NOT_RESOLVED"
-    assert out.sufficiency == "MISSING"
-    assert not out.evidence_packages
-    assert "no authoritative publication-backed evidence source matched" in out.requirement_results[0].missing_reason
+    assert out.resolution_status == "RESOLVED"
+    assert out.sufficiency == "COMPLETE"
+    assert out.evidence_packages
+    fields = {item.field_or_topic for item in out.evidence_packages}
+    assert "WAITING_PERIOD_DURATION" in fields
+    assert "CONTINUITY_OR_CREDIT_RULE" in fields
+    assert all("authoritative_publication_admission" in item.retrieval_basis for item in out.evidence_packages)
 
 
 def test_unknown_product_fails_before_publication_materialization():
