@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-star-ped-publication-data-retry-v2",
+  "classification": "REUSE",
+  "capability_ids": [
+    "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
+    "II.PUBLICATION.DECISION",
+    "II.PUBLICATION.AUTHORITATIVE_GATE",
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Rerun the previously falsified Star PED data-only publication experiment after the generic waiting-period certification lineage repair. The experiment reuses the same governed publication spec shape and pressure tests generic waiting-period certification, publication authorization, authoritative materialization, frozen artifact persistence, and coverage-registry-backed published evidence lookup without governed runtime implementation changes.",
+  "supersession_impact": "No capability, implementation, or historical artifact is superseded. This is a retry of the closed PR #238 experiment against the repaired generic certification lineage on current main.",
+  "authority_impact": "No authority is broadened. Publication remains bounded to explicitly certified semantic components and explicit boundary authorization. Customer-specific PED buy-back selection, customer eligibility, and claim-payment determination remain unauthorized."
+}
