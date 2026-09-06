@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-published-fact-materialization-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Repair the existing governed evidence-resolution responsibility by adding a publication-backed USER_ANSWER materialization path that reuses certified EvidencePackage claim/lineage data only when exact evidence references are admitted by an AuthoritativePublicationRecord. The core materializer and published resolver are topic-neutral; bounded Star routing remains an adapter under the existing evidence capability. No new insurance fact, reasoning rule, publication authority, recommendation authority, or domain capability is introduced.",
+  "supersession_impact": "The historical MO-016 raw-binding pilot remains available for internal certification compatibility. Ordinary user-answer evidence gains a separate publication-backed resolver path. Existing certification, publication-decision, and authoritative-publication authorities remain unchanged and are reused rather than superseded.",
+  "authority_impact": "No authority is expanded. Authoritative publication remains the admission authority for USER_ANSWER evidence. Missing publication, missing evidence references, mismatched publication lineage, unknown products, and unpublished waiting-period facts fail closed. Internal certification remains distinct and cannot invoke the publication-backed resolver."
+}
