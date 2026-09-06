@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "health_real_reasoning_factual_lane_v1",
+  "recorded_on": "2026-09-06",
+  "issue": 242,
+  "current_milestone": "C — Same machinery across concepts/products",
+  "classification": "EXTEND",
+  "capability_id": "II.ORCHESTRATION.EXECUTION_RUNTIME",
+  "starting_checkpoint": {
+    "proven_boundary": "REQUEST_INTAKE through EVIDENCE_RESOLUTION_ENFORCED",
+    "criterion_status": "Evidence boundary only; Criteria 1–3 supported. Criteria 4–6 remain open.",
+    "criterion_6": "Unadjudicated until a final machine answer is produced and changes under publication-semantic perturbation."
+  },
+  "slice": {
+    "added_stage": "REASONING",
+    "semantic_engine": "insurance_intelligence.reasoning.engine.ReasoningEngine",
+    "semantic_changes": false,
+    "stop_after": "REASONING"
+  },
+  "factual_lane_scope": {
+    "pressure_question": "What is the PED waiting period in Star Comprehensive?",
+    "engine_topic": "documented_fact",
+    "requirement_type": "EXTRACT_FACTS",
+    "expected_rule": "direct_documented_fact_v1",
+    "excluded_claim": "A pass does not prove genericity of conditional_copayment, ASSESS_APPLICABILITY, DERIVE_IMPLICATIONS, or waiting-period applicability rules."
+  },
+  "controls": [
+    "The existing product-explanation request remains expected to stop at Instance Sufficiency with CLARIFICATION_REQUIRED.",
+    "The PED reasoning pressure test must show no conditional_copayment_* rule execution.",
+    "No Star/PED-specific runtime branch or hardcoded answer semantics may be added."
+  ],
+  "next_if_green": "Advance to the canonical authority-enforced decision stage, while retaining Criterion 6 as the final decisive answer-level perturbation gate."
+}
