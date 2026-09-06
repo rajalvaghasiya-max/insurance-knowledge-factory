@@ -379,7 +379,7 @@
         "insurance_intelligence/rule_certification/waiting_period_option_domain.py",
         "insurance_intelligence/rule_certification/waiting_period_option_domain_multispan.py"
       ],
-      "structural_fingerprint": "dc8a634658993576ab9327b9e11ffb9aa26f31d1bfb4beaa9918cfe589916f3a"
+      "structural_fingerprint": "f18b839dc69b89057af0bce027ae86b81bcbd670e43508974971d255e8a1e9ba"
     },
     {
       "capability_id": "II.TERMINOLOGY.GOVERNED_RESOLUTION",

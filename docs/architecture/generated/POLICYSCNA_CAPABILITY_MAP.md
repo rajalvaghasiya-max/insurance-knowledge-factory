@@ -144,7 +144,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.RULE_CERTIFICATION.GOVERNED_RUNNER`<br>Governed Rule Certification | `ACTIVE` | `REUSE` | Certification authority over declared governed-rule expectations only; it does not resolve evidence, publish facts, or grant downstream recommendation authority. | None | `insurance_intelligence/rule_certification`<br>`insurance_intelligence/contracts/rule_certification.py` | `dc8a63465899` |
+| `II.RULE_CERTIFICATION.GOVERNED_RUNNER`<br>Governed Rule Certification | `ACTIVE` | `REUSE` | Certification authority over declared governed-rule expectations only; it does not resolve evidence, publish facts, or grant downstream recommendation authority. | None | `insurance_intelligence/rule_certification`<br>`insurance_intelligence/contracts/rule_certification.py` | `f18b839dc69b` |
 
 ### INSURANCE_INTELLIGENCE_ORCHESTRATION
 

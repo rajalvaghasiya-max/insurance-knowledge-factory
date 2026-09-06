@@ -101,7 +101,7 @@ def _write_fixture(root: Path) -> Path:
 
 
 def test_generic_waiting_period_certification_passes_complete_resolved_mechanic(tmp_path: Path) -> None:
-    spec_path = _write_fixture(tmp_path)
+    _write_fixture(tmp_path)
 
     case = build_waiting_period_certification_case(
         binding_spec_path="spec.json",
@@ -159,3 +159,21 @@ def test_certification_keeps_binding_unpublished_and_scope_local(tmp_path: Path)
     assert case.case_id == "waiting_period:example_initial_wait"
     assert any("bound_not_published" in item for item in case.evidence_output.limitations)
     assert any("does not certify other waiting-period families" in item for item in case.evidence_output.limitations)
+
+
+def test_certification_trace_is_derived_from_verified_evidence_lineage(tmp_path: Path) -> None:
+    _write_fixture(tmp_path)
+
+    case = build_waiting_period_certification_case(
+        binding_spec_path="spec.json",
+        repository_root=tmp_path,
+    )
+    result = run_waiting_period_certification_case(case)
+
+    trace = case.evidence_output.resolution_trace
+    assert trace
+    assert len({event.trace_id for event in trace}) == len(trace)
+    assert trace[-1].event_type == "RESOLUTION_COMPLETED"
+    assert all(event.source_paths for event in trace)
+    assert all("spec.json" in event.source_paths for event in trace)
+    assert result.trace_references == tuple(event.trace_id for event in trace)
