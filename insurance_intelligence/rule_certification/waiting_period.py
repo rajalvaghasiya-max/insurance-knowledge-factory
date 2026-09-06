@@ -19,6 +19,7 @@ from insurance_intelligence.contracts.evidence import (
     EvidenceResolverOutput,
     Lineage,
     RequirementResult,
+    TraceEvent,
 )
 from insurance_intelligence.contracts.rule_certification import (
     RuleCertificationResult,
@@ -155,6 +156,62 @@ def _component_evidence(
         ),
         confidence=1.0,
     )
+
+
+def _resolution_trace(
+    *,
+    case_id: str,
+    packages: tuple[EvidencePackage, ...],
+) -> tuple[TraceEvent, ...]:
+    events: list[TraceEvent] = []
+    for package in packages:
+        sequence = len(events) + 1
+        events.append(
+            TraceEvent(
+                trace_id=f"trace:{case_id}:lineage:{package.evidence_id}",
+                sequence=sequence,
+                event_type="LINEAGE_VERIFIED",
+                requirement_id=package.requirement_id,
+                subject_reference=package.subject_reference,
+                repository="governed_repository",
+                candidate_reference=package.evidence_id,
+                decision="ACCEPT",
+                basis=(
+                    "Waiting-period evidence carries VERIFIED source-artifact and governed-binding lineage."
+                ),
+                source_paths=(
+                    package.lineage.source_artifact_path,
+                    package.lineage.governed_record_path,
+                ),
+                order_marker=f"event-{sequence:04d}",
+            )
+        )
+    sequence = len(events) + 1
+    events.append(
+        TraceEvent(
+            trace_id=f"trace:{case_id}:resolution-completed",
+            sequence=sequence,
+            event_type="RESOLUTION_COMPLETED",
+            requirement_id=None,
+            subject_reference=packages[0].subject_reference,
+            repository="governed_repository",
+            candidate_reference=None,
+            decision="RESOLVED",
+            basis="All waiting-period certification evidence packages retain VERIFIED lineage.",
+            source_paths=tuple(
+                dict.fromkeys(
+                    path
+                    for package in packages
+                    for path in (
+                        package.lineage.source_artifact_path,
+                        package.lineage.governed_record_path,
+                    )
+                )
+            ),
+            order_marker=f"event-{sequence:04d}",
+        )
+    )
+    return tuple(events)
 
 
 def build_waiting_period_certification_case(
@@ -301,11 +358,12 @@ def build_waiting_period_certification_case(
             for component_id, _, _, _ in component_claims
         ),
     )
+    packaged_evidence = tuple(packages)
     output = EvidenceResolverOutput(
         contract_version="1.0",
         request_id=f"request:{case_id}",
         resolution_id=f"resolution:{case_id}",
-        evidence_packages=tuple(packages),
+        evidence_packages=packaged_evidence,
         requirement_results=tuple(requirements),
         entity_resolutions=(),
         document_resolutions=(),
@@ -317,7 +375,7 @@ def build_waiting_period_certification_case(
             "Certification applies only to this resolved waiting-period mechanic and does not certify other waiting-period families.",
             "Certification does not determine customer-specific eligibility or claim payment.",
         ),
-        resolution_trace=(),
+        resolution_trace=_resolution_trace(case_id=case_id, packages=packaged_evidence),
         resolution_status="RESOLVED",
         confidence=1.0,
     )
