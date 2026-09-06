@@ -7,9 +7,16 @@
       "plane": "INSURANCE_INTELLIGENCE_INTENT",
       "lifecycle_status": "ACTIVE",
       "authority_role": "Request interpretation only; it does not establish authoritative insurance facts, resolve governed identity, retrieve evidence, reason about policy meaning, or authorize advisory outcomes.",
-      "safety_invariants": ["Intent classification remains independent from request-authority classification.","Candidate entity mentions are not governed identity assertions.","The governed intent taxonomy is reused rather than replaced by downstream planning or orchestration."],
+      "safety_invariants": [
+        "Intent classification remains independent from request-authority classification.",
+        "Candidate entity mentions are not governed identity assertions.",
+        "The governed intent taxonomy is reused rather than replaced by downstream planning or orchestration."
+      ],
       "reuse_policy": "REUSE",
-      "ownership_paths": ["insurance_intelligence/intent","insurance_intelligence/contracts/intent.py"],
+      "ownership_paths": [
+        "insurance_intelligence/intent",
+        "insurance_intelligence/contracts/intent.py"
+      ],
       "introduced_by": "MO-013",
       "supersedes": [],
       "superseded_by": null,
@@ -22,9 +29,16 @@
       "plane": "INSURANCE_INTELLIGENCE_PLANNING",
       "lifecycle_status": "ACTIVE",
       "authority_role": "Planning authority only; it may declare required operations but does not retrieve evidence, calculate, interpret clauses, compare products, assess suitability, recommend, or generate answers.",
-      "safety_invariants": ["Instance-specific planning in the canonical guarded path occurs only after Instance Sufficiency PASS.","Planner stop conditions preserve missing context and unresolved conflicts rather than silently assuming them away.","A declared recommendation or suitability plan does not itself authorize recommendation or suitability output."],
+      "safety_invariants": [
+        "Instance-specific planning in the canonical guarded path occurs only after Instance Sufficiency PASS.",
+        "Planner stop conditions preserve missing context and unresolved conflicts rather than silently assuming them away.",
+        "A declared recommendation or suitability plan does not itself authorize recommendation or suitability output."
+      ],
       "reuse_policy": "REUSE",
-      "ownership_paths": ["insurance_intelligence/planning","insurance_intelligence/contracts/reasoning_plan.py"],
+      "ownership_paths": [
+        "insurance_intelligence/planning",
+        "insurance_intelligence/contracts/reasoning_plan.py"
+      ],
       "introduced_by": "MO-015",
       "supersedes": [],
       "superseded_by": null,
@@ -37,9 +51,16 @@
       "plane": "INSURANCE_INTELLIGENCE_EVIDENCE",
       "lifecycle_status": "ACTIVE",
       "authority_role": "Underlying evidence-resolution engine. In the canonical current path it is callable only through II.EVIDENCE.INSTANCE_ENFORCEMENT when instance identity is required; it cannot manufacture identity or bypass that guard.",
-      "safety_invariants": ["Evidence packages preserve source lineage and authority requirements.","Unresolved entity, version, authority, or lineage conditions remain explicit in requirement results and sufficiency.","The current guarded orchestration must not call this resolver directly when Instance Sufficiency is required."],
+      "safety_invariants": [
+        "Evidence packages preserve source lineage and authority requirements.",
+        "Unresolved entity, version, authority, or lineage conditions remain explicit in requirement results and sufficiency.",
+        "The current guarded orchestration must not call this resolver directly when Instance Sufficiency is required."
+      ],
       "reuse_policy": "REUSE",
-      "ownership_paths": ["insurance_intelligence/evidence","insurance_intelligence/contracts/evidence.py"],
+      "ownership_paths": [
+        "insurance_intelligence/evidence",
+        "insurance_intelligence/contracts/evidence.py"
+      ],
       "introduced_by": "MO-016",
       "supersedes": [],
       "superseded_by": null,
@@ -52,9 +73,16 @@
       "plane": "INSURANCE_INTELLIGENCE_DECISION",
       "lifecycle_status": "ACTIVE",
       "authority_role": "Underlying deterministic safety-decision engine. In the current canonical path ordinary assertion access is mediated by II.DECISION.AUTHORITY_ENFORCEMENT; this base gate does not independently authorize advisory or recommendation paths.",
-      "safety_invariants": ["Only evidence-linked structured reasoning findings are eligible for approval.","Safety policies deterministically withhold, clarify, or escalate rather than silently weakening restrictions.","Current orchestration must not use this base gate to bypass reconciled authority enforcement."],
+      "safety_invariants": [
+        "Only evidence-linked structured reasoning findings are eligible for approval.",
+        "Safety policies deterministically withhold, clarify, or escalate rather than silently weakening restrictions.",
+        "Current orchestration must not use this base gate to bypass reconciled authority enforcement."
+      ],
       "reuse_policy": "REUSE",
-      "ownership_paths": ["insurance_intelligence/decision","insurance_intelligence/contracts/decision.py"],
+      "ownership_paths": [
+        "insurance_intelligence/decision",
+        "insurance_intelligence/contracts/decision.py"
+      ],
       "introduced_by": "MO-018E",
       "supersedes": [],
       "superseded_by": null,
@@ -67,9 +95,16 @@
       "plane": "INSURANCE_INTELLIGENCE_EXPLANATION",
       "lifecycle_status": "ACTIVE",
       "authority_role": "Underlying presentation engine only. Current ordinary-assertion entry is mediated by II.EXPLANATION.AUTHORITY_ENFORCEMENT; the generator may not retrieve evidence, reason, alter approved scope, or add recommendation authority.",
-      "safety_invariants": ["Explanation is presentation-only and cannot create new governed findings.","Fidelity failure withholds generated sections rather than releasing altered meaning.","Current orchestration must not feed raw unguarded Decision Gate output into this generator."],
+      "safety_invariants": [
+        "Explanation is presentation-only and cannot create new governed findings.",
+        "Fidelity failure withholds generated sections rather than releasing altered meaning.",
+        "Current orchestration must not feed raw unguarded Decision Gate output into this generator."
+      ],
       "reuse_policy": "REUSE",
-      "ownership_paths": ["insurance_intelligence/explanation","insurance_intelligence/contracts/explanation.py"],
+      "ownership_paths": [
+        "insurance_intelligence/explanation",
+        "insurance_intelligence/contracts/explanation.py"
+      ],
       "introduced_by": "MO-019E",
       "supersedes": [],
       "superseded_by": null,
@@ -82,7 +117,11 @@
       "plane": "INSURANCE_INTELLIGENCE_ORCHESTRATION",
       "lifecycle_status": "ACTIVE",
       "authority_role": "Execution coordinator only; stage-order authority remains II.ORCHESTRATION.CANONICAL_GUARDED_ORDER and semantic authority remains with each guarded stage capability.",
-      "safety_invariants": ["Adapters must exactly match the governed stage order declared by the full-cycle contract.","A failed stage blocks dependent later stages rather than being skipped silently.","Orchestration normalizes execution and lineage but may not reinterpret or weaken a guarded stage decision."],
+      "safety_invariants": [
+        "Adapters must exactly match the governed stage order declared by the full-cycle contract.",
+        "A failed stage blocks dependent later stages rather than being skipped silently.",
+        "Orchestration normalizes execution and lineage but may not reinterpret or weaken a guarded stage decision."
+      ],
       "reuse_policy": "REUSE",
       "ownership_paths": [
         "insurance_intelligence/orchestration/service.py",
@@ -97,7 +136,7 @@
       "introduced_by": "MO-023",
       "supersedes": [],
       "superseded_by": null,
-      "notes": "This record intentionally excludes pilot/certification/hardening modules that still require separate census classification. Production USER_ANSWER evidence-stage composition is owned here and delegates semantic evidence authority to II.EVIDENCE.GOVERNED_RESOLVER; real-response reasoning composition delegates semantic reasoning authority unchanged to the existing ReasoningEngine."
+      "notes": "This record intentionally excludes pilot/certification/hardening modules that still require separate census classification. Production USER_ANSWER evidence-stage composition is owned here and delegates semantic evidence authority to II.EVIDENCE.GOVERNED_RESOLVER."
     }
   ]
 }
