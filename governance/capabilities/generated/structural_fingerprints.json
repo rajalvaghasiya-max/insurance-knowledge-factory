@@ -291,10 +291,11 @@
       "owned_module_paths": [
         "insurance_intelligence/authoritative_publication/__init__.py",
         "insurance_intelligence/authoritative_publication/gate.py",
+        "insurance_intelligence/authoritative_publication/materializer.py",
         "insurance_intelligence/authoritative_publication/star_health.py",
         "insurance_intelligence/contracts/authoritative_publication.py"
       ],
-      "structural_fingerprint": "27c95aa594147edf0ba0c14148b30343baae3cce179cf3897c45223a5a38d351"
+      "structural_fingerprint": "19371d792b843f19f3bcfde234330c55ce3d2dfcbbc0e3e32ac5494a7d36c56a"
     },
     {
       "capability_id": "II.PUBLICATION.DECISION",
