@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-decision-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Extend the proven real response path by composing the existing AuthorityEnforcedDecisionGate at the canonical DECISION_GATE_AUTHORITY_ENFORCED stage. The orchestration layer passes the existing reconciliation, planner, publication-backed evidence, and reasoning outputs into the existing decision contracts without changing their semantic algorithms.",
+  "supersession_impact": "No capability is superseded. This is a bounded extension of the existing governed orchestration runtime through one additional already-governed canonical stage.",
+  "authority_impact": "No advisory or recommendation authority is broadened. The authority wrapper remains the gatekeeper; only the ordinary assertive path may delegate to the existing DecisionSafetyGate, and recommendation_authorized remains false. A green Star PED result proves only factual-lane decision composition. Criterion 6 remains unadjudicated until final answer perturbation testing."
+}
