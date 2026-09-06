@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "publication_spec_type": "authoritative_publication_materialization_spec_v1",
+  "product_reference": "star_health:star_comprehensive:SHAHLIP26044V092526",
+  "binding_spec_path": "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json",
+  "binding_id": "star_health_star_comprehensive_ped_wait_36_months",
+  "governed_subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+  "certification_id": "waiting_period:star_health_star_comprehensive_ped_wait_36_months",
+  "topic_id": "waiting_period",
+  "decision_id": "publication-decision:star_health_star_comprehensive_ped_wait_36_months",
+  "publication_id": "authoritative-publication:star_health:ped_waiting_period",
+  "projection_id": "publication-projection:star_health_star_comprehensive_ped_wait_36_months",
+  "decision_reasons": [
+    "Publish only the already-certified standard PED waiting-period mechanic and its certified continuity qualification."
+  ],
+  "decision_authority": "governed publication decision authority",
+  "publication_authority": "governed authoritative publication authority",
+  "boundary_authorization": {
+    "authorization_id": "publication-authorization:star_health_star_comprehensive_ped_wait_36_months",
+    "resolved_boundary_tokens": ["bound_not_published"],
+    "authorization_authority": "governed publication boundary authority",
+    "trace_references": [
+      "docs/architecture/star_health_star_comprehensive_waiting_period_concept_certification_closure_2026-08-22.json",
+      "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json"
+    ]
+  },
+  "semantic_components": [
+    {
+      "component_id": "waiting_period_duration",
+      "status": "SATISFIED",
+      "evidence_references": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+      ]
+    },
+    {
+      "component_id": "continuity_or_credit_rule",
+      "status": "SATISFIED",
+      "evidence_references": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism"
+      ]
+    }
+  ],
+  "limitations": [
+    "Certification applies only to this resolved waiting-period mechanic and does not certify other waiting-period families.",
+    "Certification does not determine customer-specific eligibility or claim payment.",
+    "The optional PED buy-back modification from 36 months to 12 months is not inferred for a customer without policy-specific selection evidence."
+  ],
+  "negative_control": {
+    "drop_component_id": "continuity_or_credit_rule",
+    "expected_effect": "The portability/continuity qualification must disappear from the downstream machine-produced answer if and only if it is sourced from published semantic evidence rather than hidden code."
+  }
+}
