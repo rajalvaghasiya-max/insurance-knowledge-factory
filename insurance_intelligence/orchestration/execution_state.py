@@ -4,7 +4,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from hashlib import sha256
 import json
-from typing import Mapping, Sequence
+from typing import Mapping, Sequence, TypeVar
 
 from insurance_intelligence.contracts.full_cycle import (
     MODE_STAGE_ORDER,
@@ -241,6 +241,58 @@ def merge_resumed_execution(
         completed_stage_results=retained + new_results,
         trace=merged_trace,
     )
+
+
+T = TypeVar("T")
+
+
+class RuntimeStageObjectStore:
+    """Execution-scoped in-memory handoff for validated typed stage outputs.
+
+    The canonical adapter chain persists only output identifiers and digests. Real
+    stage capabilities also need their validated typed predecessor objects. This
+    store bridges those two representations for one live execution without
+    becoming a second semantic authority or a persisted knowledge store.
+    """
+
+    def __init__(self, *, execution_id: str) -> None:
+        self._execution_id = _text(execution_id, "execution_id")
+        self._objects: dict[str, object] = {}
+
+    @property
+    def execution_id(self) -> str:
+        return self._execution_id
+
+    def put(self, *, output_id: str, value: object) -> str:
+        selected_id = _text(output_id, "output_id")
+        if value is None:
+            raise ExecutionStateError("runtime stage object must not be None")
+        if selected_id in self._objects:
+            raise ExecutionStateError(f"runtime stage output already registered: {selected_id}")
+        self._objects[selected_id] = value
+        return selected_id
+
+    def get(self, output_id: str, *, expected_type: type[T] | None = None) -> T | object:
+        selected_id = _text(output_id, "output_id")
+        try:
+            value = self._objects[selected_id]
+        except KeyError as exc:
+            raise ExecutionStateError(f"runtime stage output is not registered: {selected_id}") from exc
+        if expected_type is not None and not isinstance(value, expected_type):
+            raise ExecutionStateError(
+                f"runtime stage output {selected_id!r} must be {expected_type.__name__}; "
+                f"got {type(value).__name__}"
+            )
+        return value
+
+    def resolve(self, output_ids: Sequence[str]) -> tuple[object, ...]:
+        selected = tuple(_text(value, "output_ids[]") for value in output_ids)
+        if len(selected) != len(set(selected)):
+            raise ExecutionStateError("runtime stage input IDs must be unique")
+        return tuple(self.get(output_id) for output_id in selected)
+
+    def output_ids(self) -> tuple[str, ...]:
+        return tuple(self._objects)
 
 
 def can_publish(state: ExecutionState) -> bool:
