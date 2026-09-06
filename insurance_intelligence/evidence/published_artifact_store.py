@@ -84,6 +84,13 @@ def _publication_from_dict(value: dict) -> AuthoritativePublicationRecord:
             evidence_trace_references=tuple(value["evidence_trace_references"]),
             publication_authority=value["publication_authority"],
             publication_receipt_id=value["publication_receipt_id"],
+            resolved_certification_limitations=tuple(
+                value.get("resolved_certification_limitations", [])
+            ),
+            authorization_id=value.get("authorization_id"),
+            authorization_trace_references=tuple(
+                value.get("authorization_trace_references", [])
+            ),
         )
     except (KeyError, TypeError) as exc:
         raise PublishedArtifactStoreError("invalid authoritative publication artifact") from exc
