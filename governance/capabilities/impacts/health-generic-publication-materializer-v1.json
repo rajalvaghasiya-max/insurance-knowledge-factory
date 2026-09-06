@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-generic-publication-materializer-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.PUBLICATION.AUTHORITATIVE_GATE"
+  ],
+  "rationale": "Extend the existing authoritative-publication responsibility with a generic, insurer- and topic-neutral materializer that composes already-governed certification, explicit semantic components, publication decision, authoritative gate, and existing published-evidence contracts. It adds no new publication authority, fact system, product adapter, topic inference, or recommendation capability.",
+  "supersession_impact": "No capability or historical publication path is superseded. Existing bounded Star publication builders remain historical implementations; the new generic materializer provides the reusable onboarding path without changing their behavior.",
+  "authority_impact": "Authority remains entirely in the existing certification, publication-decision, and authoritative-publication contracts. The materializer cannot publish non-PASS certification, uncertified semantic components, missing evidence references, unresolved publication boundaries, or gate-prohibited limitations; it only composes and validates explicit governed inputs."
+}
