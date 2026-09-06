@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-explanation-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Extend the proven real response path by composing the existing AuthorityEnforcedExplanationGenerator at the canonical EXPLANATION_AUTHORITY_ENFORCED stage. Orchestration supplies the already-approved authority result, deterministic reasoning findings, and caller-provided style/terminology registries without changing explanation semantics.",
+  "supersession_impact": "No capability is superseded. This is a bounded orchestration extension through one additional already-governed canonical stage.",
+  "authority_impact": "No semantic, advisory, or recommendation authority is broadened. Explanation remains presentation-only behind II.EXPLANATION.AUTHORITY_ENFORCEMENT. The Star PED pressure case remains factual-lane only; conditional/applicability reasoning genericity and Criterion 6 remain unadjudicated."
+}
