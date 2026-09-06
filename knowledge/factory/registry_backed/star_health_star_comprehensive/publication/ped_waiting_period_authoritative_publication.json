@@ -1,0 +1,53 @@
+{
+  "authorization_id": "publication-authorization:star_health_star_comprehensive_ped_wait_36_months",
+  "authorization_trace_references": [
+    "docs/architecture/star_health_star_comprehensive_waiting_period_concept_certification_closure_2026-08-22.json",
+    "docs/architecture/star_health_star_comprehensive_ped_waiting_period_binding_spec.json"
+  ],
+  "certification_id": "waiting_period:star_health_star_comprehensive_ped_wait_36_months",
+  "certification_trace_references": [
+    "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:lineage:evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism",
+    "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:lineage:evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject:mechanism",
+    "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:lineage:evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis:mechanism",
+    "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:lineage:evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope:mechanism",
+    "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:lineage:evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism",
+    "trace:waiting_period:star_health_star_comprehensive_ped_wait_36_months:resolution-completed"
+  ],
+  "contract_version": "1.0",
+  "decision_id": "publication-decision:star_health_star_comprehensive_ped_wait_36_months",
+  "evidence_trace_references": [
+    "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism",
+    "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism"
+  ],
+  "governed_subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
+  "limitations": [
+    "Certification applies only to this resolved waiting-period mechanic and does not certify other waiting-period families.",
+    "Certification does not determine customer-specific eligibility or claim payment.",
+    "The optional PED buy-back modification from 36 months to 12 months is not inferred for a customer without policy-specific selection evidence."
+  ],
+  "publication_authority": "governed authoritative publication authority",
+  "publication_id": "authoritative-publication:star_health:ped_waiting_period",
+  "publication_receipt_id": "publication_receipt_56790da7cc1c03c0",
+  "publication_status": "AUTHORITATIVE",
+  "resolved_certification_limitations": [
+    "The waiting-period binding remains bound_not_published and is used only for internal certification."
+  ],
+  "semantic_components": [
+    {
+      "component_id": "waiting_period_duration",
+      "evidence_references": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "continuity_or_credit_rule",
+      "evidence_references": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism"
+      ],
+      "status": "SATISFIED"
+    }
+  ],
+  "topic_id": "waiting_period",
+  "topic_version": "1.0"
+}
