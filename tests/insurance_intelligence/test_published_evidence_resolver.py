@@ -35,10 +35,10 @@ def _plan(*, reason: str, request_id: str = "req-published"):
     return build_plan(
         request_id=request_id,
         plan_id="plan-published",
-        plan_type="PRODUCT_FACT_PLAN",
-        execution_mode="INTERPRETIVE",
+        plan_type="DIRECT_FACT_PLAN",
+        execution_mode="DIRECT_GROUNDED",
         goal="resolve published product fact",
-        expected_outcome="FACT_EXPLANATION",
+        expected_outcome="DIRECT_FACT_RESPONSE",
         plan_status="READY",
         confidence=1.0,
         required_evidence=(requirement,),
