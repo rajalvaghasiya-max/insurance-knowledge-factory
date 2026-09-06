@@ -1,0 +1,64 @@
+{
+  "certification_id": "star_comprehensive_room_rent",
+  "certification_trace_references": [
+    "certification:star_comprehensive_room_rent"
+  ],
+  "contract_version": "1.0",
+  "decision_id": "publication-decision:star-comprehensive:room-rent",
+  "evidence_trace_references": [
+    "evidence:star-comprehensive-room-rent:covered_subject",
+    "evidence:star-comprehensive-room-rent:limit_value",
+    "evidence:star-comprehensive-room-rent:limit_basis",
+    "evidence:star-comprehensive-room-rent:applicability_scope",
+    "evidence:star-comprehensive-room-rent:excess_consequence"
+  ],
+  "governed_subject_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_9",
+  "limitations": [
+    "Certification uses registered primary policy-wording evidence and does not itself publish a customer-facing rule.",
+    "The policy wording specifies a room category, not a separate monetary room-rent cap.",
+    "The proportional consideration mechanism does not guarantee admissibility or payment of any claim."
+  ],
+  "publication_authority": "P2.4 governed authoritative publication authority",
+  "publication_id": "authoritative-publication:star-comprehensive:room-rent",
+  "publication_receipt_id": "publication_receipt_c76f8e452197d8cc",
+  "publication_status": "AUTHORITATIVE",
+  "semantic_components": [
+    {
+      "component_id": "covered_subject",
+      "evidence_references": [
+        "evidence:star-comprehensive-room-rent:covered_subject"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "limit_value",
+      "evidence_references": [
+        "evidence:star-comprehensive-room-rent:limit_value"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "limit_basis",
+      "evidence_references": [
+        "evidence:star-comprehensive-room-rent:limit_basis"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "applicability_scope",
+      "evidence_references": [
+        "evidence:star-comprehensive-room-rent:applicability_scope"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "excess_consequence",
+      "evidence_references": [
+        "evidence:star-comprehensive-room-rent:excess_consequence"
+      ],
+      "status": "SATISFIED"
+    }
+  ],
+  "topic_id": "coverage_limit",
+  "topic_version": "1.0"
+}

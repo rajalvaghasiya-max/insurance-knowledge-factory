@@ -1,0 +1,64 @@
+{
+  "certification_id": "star_comprehensive_bariatric_surgery",
+  "certification_trace_references": [
+    "certification:star_comprehensive_bariatric_surgery"
+  ],
+  "contract_version": "1.0",
+  "decision_id": "publication-decision:star-comprehensive:bariatric-surgery",
+  "evidence_trace_references": [
+    "evidence:star-comprehensive-bariatric:eligibility_criteria",
+    "evidence:star-comprehensive-bariatric:applicability_scope",
+    "evidence:star-comprehensive-bariatric:eligible_consequence",
+    "evidence:star-comprehensive-bariatric:ineligible_consequence",
+    "evidence:star-comprehensive-bariatric:exception_condition"
+  ],
+  "governed_subject_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_15",
+  "limitations": [
+    "Certification uses registered policy-wording evidence and does not itself publish a customer-facing rule.",
+    "The certification describes contractual eligibility semantics and does not decide individual medical suitability.",
+    "Satisfying the listed conditions does not guarantee claim admissibility or payment."
+  ],
+  "publication_authority": "P2.4 governed authoritative publication authority",
+  "publication_id": "authoritative-publication:star-comprehensive:bariatric-surgery",
+  "publication_receipt_id": "publication_receipt_2f6a12c4d0bb9311",
+  "publication_status": "AUTHORITATIVE",
+  "semantic_components": [
+    {
+      "component_id": "eligibility_criteria",
+      "evidence_references": [
+        "evidence:star-comprehensive-bariatric:eligibility_criteria"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "applicability_scope",
+      "evidence_references": [
+        "evidence:star-comprehensive-bariatric:applicability_scope"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "eligible_consequence",
+      "evidence_references": [
+        "evidence:star-comprehensive-bariatric:eligible_consequence"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "ineligible_consequence",
+      "evidence_references": [
+        "evidence:star-comprehensive-bariatric:ineligible_consequence"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "exception_condition",
+      "evidence_references": [
+        "evidence:star-comprehensive-bariatric:exception_condition"
+      ],
+      "status": "SATISFIED"
+    }
+  ],
+  "topic_id": "eligibility_and_consequence",
+  "topic_version": "1.0"
+}

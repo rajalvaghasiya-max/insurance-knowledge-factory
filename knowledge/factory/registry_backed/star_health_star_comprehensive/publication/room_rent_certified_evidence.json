@@ -1,0 +1,277 @@
+{
+  "confidence": 1.0,
+  "conflicts": [],
+  "contract_version": "1.0",
+  "document_resolutions": [],
+  "entity_resolutions": [],
+  "evidence_packages": [
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "In-patient room, boarding, nursing, and room-linked hospitalization expenses are covered subjects.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:star-comprehensive-room-rent:covered_subject",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "COVERED_SUBJECT",
+      "governed_entity_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1",
+      "lineage": {
+        "binding_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_9",
+        "governed_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "governed_record_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "coverage_limit:covered_subject",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_comprehensive_room_rent:covered_subject",
+      "page": 9,
+      "requirement_id": "requirement:star-comprehensive-room-rent:covered_subject",
+      "retrieval_basis": [
+        "registered_primary_legal_source",
+        "primary_legal_policy_wording",
+        "candidate_page_9"
+      ],
+      "section": "II.1 In-patient Treatment",
+      "source_excerpt": "Room (Private Single A/C room), Boarding and Nursing Expenses as provided by the Hospital / Nursing Home. Any hospitalization expenses arising under this Policy, which vary based on the room rent occupied by the Insured Person will be considered in proportion to the room rent limit / room category stated in the Policy or actuals whichever is less.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "product:star_health:star_comprehensive",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "The permitted room category is a Private Single A/C room; no separate monetary room-rent cap is asserted.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:star-comprehensive-room-rent:limit_value",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "LIMIT_VALUE",
+      "governed_entity_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1",
+      "lineage": {
+        "binding_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_9",
+        "governed_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "governed_record_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "coverage_limit:limit_value",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_comprehensive_room_rent:limit_value",
+      "page": 9,
+      "requirement_id": "requirement:star-comprehensive-room-rent:limit_value",
+      "retrieval_basis": [
+        "registered_primary_legal_source",
+        "primary_legal_policy_wording",
+        "candidate_page_9"
+      ],
+      "section": "II.1 In-patient Treatment",
+      "source_excerpt": "Room (Private Single A/C room), Boarding and Nursing Expenses as provided by the Hospital / Nursing Home. Any hospitalization expenses arising under this Policy, which vary based on the room rent occupied by the Insured Person will be considered in proportion to the room rent limit / room category stated in the Policy or actuals whichever is less.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "product:star_health:star_comprehensive",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "Room-linked expenses are considered using the policy-stated room category or actuals, whichever is less.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:star-comprehensive-room-rent:limit_basis",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "LIMIT_BASIS",
+      "governed_entity_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1",
+      "lineage": {
+        "binding_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_9",
+        "governed_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "governed_record_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "coverage_limit:limit_basis",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_comprehensive_room_rent:limit_basis",
+      "page": 9,
+      "requirement_id": "requirement:star-comprehensive-room-rent:limit_basis",
+      "retrieval_basis": [
+        "registered_primary_legal_source",
+        "primary_legal_policy_wording",
+        "candidate_page_9"
+      ],
+      "section": "II.1 In-patient Treatment",
+      "source_excerpt": "Room (Private Single A/C room), Boarding and Nursing Expenses as provided by the Hospital / Nursing Home. Any hospitalization expenses arising under this Policy, which vary based on the room rent occupied by the Insured Person will be considered in proportion to the room rent limit / room category stated in the Policy or actuals whichever is less.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "product:star_health:star_comprehensive",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "The rule applies to hospitalization expenses that vary based on the room rent occupied by the insured person.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:star-comprehensive-room-rent:applicability_scope",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "APPLICABILITY_SCOPE",
+      "governed_entity_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1",
+      "lineage": {
+        "binding_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_9",
+        "governed_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "governed_record_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "coverage_limit:applicability_scope",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_comprehensive_room_rent:applicability_scope",
+      "page": 9,
+      "requirement_id": "requirement:star-comprehensive-room-rent:applicability_scope",
+      "retrieval_basis": [
+        "registered_primary_legal_source",
+        "primary_legal_policy_wording",
+        "candidate_page_9"
+      ],
+      "section": "II.1 In-patient Treatment",
+      "source_excerpt": "Room (Private Single A/C room), Boarding and Nursing Expenses as provided by the Hospital / Nursing Home. Any hospitalization expenses arising under this Policy, which vary based on the room rent occupied by the Insured Person will be considered in proportion to the room rent limit / room category stated in the Policy or actuals whichever is less.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "product:star_health:star_comprehensive",
+      "version_status": "CURRENT_APPLICABLE"
+    },
+    {
+      "applicability_status": "APPLICABLE",
+      "authority_rank": 1,
+      "authority_requirement": "AUTHORITATIVE",
+      "claim": "Expenses that vary with room rent are considered proportionately when the occupied room exceeds the permitted category.",
+      "confidence": 1.0,
+      "document_reference": "star_health_star_comprehensive_policy_wording_v1",
+      "document_version": "docver_star_health_star_comprehensive_policy_wording_v1_b1dbe8fb78646f75",
+      "effective_from": null,
+      "effective_to": null,
+      "evidence_id": "evidence:star-comprehensive-room-rent:excess_consequence",
+      "evidence_role": "DEFINING",
+      "field_or_topic": "EXCESS_CONSEQUENCE",
+      "governed_entity_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1",
+      "lineage": {
+        "binding_reference": "registered_document:star_health_star_comprehensive_policy_wording_v1:candidate_page_9",
+        "governed_record_path": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json",
+        "governed_record_sha256": "0db438406f4e93c5b978cf76019c73e7c481c4bba2bbf9f94a3fb9ddffca5aa7",
+        "lineage_status": "VERIFIED",
+        "projection_reference": "coverage_limit:excess_consequence",
+        "source_artifact_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+        "source_artifact_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f"
+      },
+      "normalized_fact_reference": "star_comprehensive_room_rent:excess_consequence",
+      "page": 9,
+      "requirement_id": "requirement:star-comprehensive-room-rent:excess_consequence",
+      "retrieval_basis": [
+        "registered_primary_legal_source",
+        "primary_legal_policy_wording",
+        "candidate_page_9"
+      ],
+      "section": "II.1 In-patient Treatment",
+      "source_excerpt": "Room (Private Single A/C room), Boarding and Nursing Expenses as provided by the Hospital / Nursing Home. Any hospitalization expenses arising under this Policy, which vary based on the room rent occupied by the Insured Person will be considered in proportion to the room rent limit / room category stated in the Policy or actuals whichever is less.",
+      "source_type": "POLICY_WORDING",
+      "subject_reference": "product:star_health:star_comprehensive",
+      "version_status": "CURRENT_APPLICABLE"
+    }
+  ],
+  "limitations": [
+    "Certification uses registered primary policy-wording evidence and does not itself publish a customer-facing rule.",
+    "The policy wording specifies a room category, not a separate monetary room-rent cap.",
+    "The proportional consideration mechanism does not guarantee admissibility or payment of any claim."
+  ],
+  "missing_evidence": [],
+  "request_id": "request:star_comprehensive_room_rent",
+  "requirement_results": [
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:star-comprehensive-room-rent:covered_subject"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:star-comprehensive-room-rent:covered_subject",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:star-comprehensive-room-rent:limit_value"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:star-comprehensive-room-rent:limit_value",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:star-comprehensive-room-rent:limit_basis"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:star-comprehensive-room-rent:limit_basis",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:star-comprehensive-room-rent:applicability_scope"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:star-comprehensive-room-rent:applicability_scope",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    },
+    {
+      "authority_satisfied": true,
+      "confidence": 1.0,
+      "conflict_status": "NONE",
+      "lineage_satisfied": true,
+      "matched_evidence_ids": [
+        "evidence:star-comprehensive-room-rent:excess_consequence"
+      ],
+      "missing_reason": null,
+      "rejected_candidate_ids": [],
+      "requirement_id": "requirement:star-comprehensive-room-rent:excess_consequence",
+      "status": "SATISFIED",
+      "version_satisfied": true
+    }
+  ],
+  "resolution_id": "resolution:star_comprehensive_room_rent",
+  "resolution_status": "RESOLVED",
+  "resolution_trace": [],
+  "sufficiency": "COMPLETE"
+}
