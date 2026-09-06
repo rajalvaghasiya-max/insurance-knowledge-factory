@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-product-instance-binding-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Extend the existing orchestration execution responsibility with a generic bridge that binds active product-compatible context references to the already-declared ProductScope only after the existing governed ProductEntityResolver independently resolves them to the exact same canonical product. The bridge reuses governed context requirements, entity resolution, and InstanceResolutionAttestation contracts; it does not change their semantic algorithms.",
+  "supersession_impact": "No capability or implementation is superseded. Instance Sufficiency remains the planning authority, ProductEntityResolver remains the identity resolver, and publication-backed evidence resolution remains the downstream evidence authority.",
+  "authority_impact": "No product or answer authority is added. Unmatched, ambiguous, other-product, policy-only, or provenance-mismatched references remain unattested and therefore fail closed at existing guards. The bridge may only project already-governed identity into existing orchestration attestation and resolved-candidate-reference contracts."
+}
