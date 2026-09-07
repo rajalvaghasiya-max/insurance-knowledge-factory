@@ -132,7 +132,8 @@
         "insurance_intelligence/orchestration/product_instance_binding.py",
         "insurance_intelligence/orchestration/real_response_prefix.py",
         "insurance_intelligence/orchestration/real_response_reasoning.py",
-        "insurance_intelligence/orchestration/real_response_decision.py"
+        "insurance_intelligence/orchestration/real_response_decision.py",
+        "insurance_intelligence/orchestration/real_response_explanation.py"
       ],
       "introduced_by": "MO-023",
       "supersedes": [],

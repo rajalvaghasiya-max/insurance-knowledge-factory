@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-explanation-rerun-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Recreate the previously frozen real-response explanation slice unchanged on top of the generic explanation repair, appending only EXPLANATION_AUTHORITY_ENFORCED to the already-proven real decision path. No explanation, reasoning, decision, publication, or safety semantics are changed by this rerun.",
+  "supersession_impact": "No capability is superseded. This is an experimental rerun of the same bounded orchestration extension that previously failed closed at explanation fidelity.",
+  "authority_impact": "No advisory or recommendation authority is broadened. AuthorityEnforcedExplanationGenerator remains mandatory, recommendation authority remains absent, and a green result would prove only factual-lane explanation composition. Criterion 6 remains unadjudicated until final answer perturbation testing."
+}
