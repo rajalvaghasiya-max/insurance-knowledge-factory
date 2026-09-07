@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-response-assembly-v1",
+  "milestone": "C",
+  "scope": "Star Comprehensive PED factual-lane real-path composition through RESPONSE_ASSEMBLY",
+  "canonical_stage_added": "RESPONSE_ASSEMBLY",
+  "reused_capabilities": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME",
+    "II.EXPLANATION.AUTHORITY_ENFORCEMENT",
+    "II.RESPONSE.DETERMINISTIC_ASSEMBLER"
+  ],
+  "runtime_constraints": [
+    "no Star/PED-specific runtime branching",
+    "no hardcoded PED answer prose",
+    "response format policy supplied as dependency",
+    "existing Response Assembler remains semantic authority",
+    "stop before LLM_RENDERING and FINAL_EVALUATION"
+  ],
+  "falsification_question": "Can the existing deterministic Response Assembler consume the real authority-enforced decision and fidelity-verified explanation to produce a structured machine answer while preserving published evidence lineage?",
+  "expected_green_interpretation": "Factual-lane real response reuse is proven through RESPONSE_ASSEMBLY only. This establishes a deterministic machine-answer artifact, not full Case B closure. Conditional/applicability rule-lane genericity and Criterion 6 provenance perturbation remain unproven.",
+  "criterion_state_if_green": {
+    "criterion_4": "candidate deterministic machine-answer artifact exists and may be adjudicated against required PED semantics",
+    "criterion_5": "factual lane only; conditional/applicability rule lane remains untested",
+    "criterion_6": "open until publication semantic projection is perturbed and corresponding answer qualification disappears or changes"
+  }
+}

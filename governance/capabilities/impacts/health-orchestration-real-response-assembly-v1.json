@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-response-assembly-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Append only canonical RESPONSE_ASSEMBLY to the already-proven real explanation path by composing the existing deterministic Response Assembler with caller-supplied response-format policy. No response, explanation, reasoning, decision, publication, or safety semantics are changed.",
+  "supersession_impact": "No capability is superseded. The existing Response Assembler remains the semantic authority for structured answer assembly; orchestration only composes it into the canonical real path.",
+  "authority_impact": "No advisory or recommendation authority is broadened. The assembly slice consumes only the already authority-enforced decision and fidelity-verified explanation, preserves approved evidence lineage, and stops before LLM_RENDERING and FINAL_EVALUATION. A green result would establish a deterministic machine-answer artifact for the factual lane, but Criterion 6 remains open until publication-semantic perturbation changes that answer."
+}
