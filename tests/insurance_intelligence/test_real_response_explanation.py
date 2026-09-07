@@ -128,7 +128,7 @@ def test_star_ped_factual_lane_reaches_authority_enforced_explanation_with_linea
     assert explanation.fidelity_status in {"VERIFIED", "VERIFIED_WITH_LIMITATIONS"}
     drafted = tuple(section for section in explanation.sections if section.status == "DRAFTED")
     assert drafted
-    assert any(section.section_type == "DIRECT_ANSWER" for section in drafted)
+    assert any(section.section_type == "MEANING" for section in drafted)
 
     decision = dependencies.store.get(
         f"{request.execution_id}:real:decision_gate_authority_enforced"
