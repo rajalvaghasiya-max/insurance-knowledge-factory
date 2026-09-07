@@ -268,10 +268,11 @@
         "insurance_intelligence/orchestration/real_response_explanation.py",
         "insurance_intelligence/orchestration/real_response_prefix.py",
         "insurance_intelligence/orchestration/real_response_reasoning.py",
+        "insurance_intelligence/orchestration/real_response_rendering.py",
         "insurance_intelligence/orchestration/service.py",
         "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
-      "structural_fingerprint": "857f12f9f440a57e9ea83e560becde996508ba9fadbef854b153acd0a011bbce"
+      "structural_fingerprint": "12a1e0105f7c4abbaa76b9e8d3ec193b4e27770bd3457b125fb3206ee61532e3"
     },
     {
       "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",

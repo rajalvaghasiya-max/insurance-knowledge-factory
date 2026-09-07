@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-rendering-bypass-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Append the canonical LLM_RENDERING stage to the proven real response path while reusing the existing orchestration runtime behavior that marks rendering NOT_REQUIRED when allow_llm_rendering is false. No rendering provider, response semantics, or safety policy is changed.",
+  "supersession_impact": "No capability is superseded. This extends only the real-stage composition surface of the governed orchestration runtime.",
+  "authority_impact": "No semantic, advisory, recommendation, or rendering authority is broadened. The supplied rendering capability is not invoked when rendering is disabled, and the deterministic assembled response remains the authoritative machine response for the next stage."
+}

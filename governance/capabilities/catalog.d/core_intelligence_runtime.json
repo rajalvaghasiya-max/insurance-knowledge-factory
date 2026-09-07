@@ -134,7 +134,8 @@
         "insurance_intelligence/orchestration/real_response_reasoning.py",
         "insurance_intelligence/orchestration/real_response_decision.py",
         "insurance_intelligence/orchestration/real_response_explanation.py",
-        "insurance_intelligence/orchestration/real_response_assembly.py"
+        "insurance_intelligence/orchestration/real_response_assembly.py",
+        "insurance_intelligence/orchestration/real_response_rendering.py"
       ],
       "introduced_by": "MO-023",
       "supersedes": [],
