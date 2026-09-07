@@ -1,0 +1,29 @@
+{
+  "issue": 257,
+  "milestone": "C",
+  "classification": "EXTEND",
+  "capability": "II.ORCHESTRATION.EXECUTION_RUNTIME",
+  "experiment": "rerun frozen real explanation slice after generic direct-fact explanation repair",
+  "base_merge": "bc6938e138df80788e7947f119365fc6db83436e",
+  "frozen_predecessor_pr": 256,
+  "repair_pr": 258,
+  "stage_added": "EXPLANATION_AUTHORITY_ENFORCED",
+  "stop_after_stage": "EXPLANATION_AUTHORITY_ENFORCED",
+  "semantic_changes_in_rerun": false,
+  "interpretation": {
+    "if_green": "Star PED factual lane reuses the existing authority-enforced explanation path after the generic repair.",
+    "not_proven": [
+      "conditional/applicability reasoning genericity",
+      "response assembly",
+      "final machine answer",
+      "Criterion 6 answer-level publication perturbation"
+    ]
+  },
+  "integrity_constraints": [
+    "Reuse the same real_response_explanation adapter behavior as frozen PR #256.",
+    "Reuse the same Star PED test pressure as frozen PR #256.",
+    "Do not weaken explanation fidelity validation.",
+    "Do not add Star Comprehensive or PED-specific runtime logic.",
+    "Stop at the first genuine failure."
+  ]
+}
