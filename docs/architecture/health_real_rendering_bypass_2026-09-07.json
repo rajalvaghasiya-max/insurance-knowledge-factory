@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-orchestration-real-rendering-bypass-v1",
+  "classification": "EXTEND",
+  "capability_id": "II.ORCHESTRATION.EXECUTION_RUNTIME",
+  "entry_stage": "RESPONSE_ASSEMBLY",
+  "exit_stage": "LLM_RENDERING",
+  "canonical_behavior": "When allow_llm_rendering is false, execute_intelligence_stage returns NOT_REQUIRED for LLM_RENDERING before invoking the supplied rendering capability.",
+  "composition": {
+    "reused_runtime": "insurance_intelligence.orchestration.intelligence_adapters.execute_intelligence_stage",
+    "adapter_module": "insurance_intelligence.orchestration.real_response_rendering",
+    "rendering_capability": "dependency-injected and intentionally not invoked for the pressure case"
+  },
+  "pressure_case": {
+    "product": "Star Comprehensive",
+    "question": "What is the PED waiting period in Star Comprehensive?",
+    "allow_llm_rendering": false,
+    "expected_stage_status": "NOT_REQUIRED",
+    "required_machine_answer_semantics": [
+      "36-month PED duration retained",
+      "continuity or portability qualification retained",
+      "optional 12-month buyback not inferred"
+    ]
+  },
+  "interpretation_constraints": [
+    "This proves only the canonical rendering-disabled path after deterministic response assembly.",
+    "It does not prove provider-backed LLM rendering.",
+    "Criterion 6 remains open until publication-semantic perturbation changes the machine answer.",
+    "Conditional/applicability rule-lane genericity remains unproven."
+  ],
+  "stop_after": "LLM_RENDERING"
+}
