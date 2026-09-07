@@ -1,0 +1,19 @@
+{
+  "record_type": "architecture_repair_note",
+  "date": "2026-09-06",
+  "milestone": "C",
+  "issue": 257,
+  "falsification_pr": 256,
+  "classification": "REPAIR",
+  "capability": "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
+  "finding": "DIRECT_FACT explanation rendering exposed governed lineage identity as customer-facing prose. When the opaque identity contained digits absent from the approved claim, the unchanged fidelity validator correctly rejected the draft as introducing a new numeric fact.",
+  "repair": "For DIRECT_FACT findings with predicate `documents`, deterministic explanation templates render the approved object_or_effect claim directly. Governed subject identity remains preserved structurally in finding/evidence/decision lineage and is not promoted into customer-facing semantic text.",
+  "unchanged_guards": [
+    "AuthorityEnforcedExplanationGenerator remains the required ordinary-assertion entry point.",
+    "Explanation fidelity validation is unchanged.",
+    "Decision-approved finding and evidence lineage remains required.",
+    "Recommendation authority remains absent.",
+    "No Star Comprehensive or PED runtime special case is introduced."
+  ],
+  "verification": "A product/topic-neutral regression uses an opaque governed subject containing `36` while the approved direct fact contains no number; both plain-language and detailed rendering must remain VERIFIED without exposing the identifier or introducing `36`."
+}

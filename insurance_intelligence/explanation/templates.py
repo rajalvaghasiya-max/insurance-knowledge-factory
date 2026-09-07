@@ -52,10 +52,19 @@ def _ensure_sentence(value: str) -> str:
     return text
 
 
+def _is_direct_documented_fact(finding: Finding) -> bool:
+    return finding.derivation_type == "DIRECT_FACT" and finding.predicate == "documents"
+
+
 def _join_subject_predicate(finding: Finding) -> str:
+    effect = _normalise_space(finding.object_or_effect)
+    if _is_direct_documented_fact(finding):
+        # `subject` is a governed lineage identity for direct documented facts, not
+        # necessarily customer-facing semantic prose. The approved claim already
+        # carries the fact to render, while lineage remains attached structurally.
+        return _ensure_sentence(effect)
     subject = _normalise_space(finding.subject)
     predicate = _normalise_space(finding.predicate).replace("_", " ")
-    effect = _normalise_space(finding.object_or_effect)
     return _ensure_sentence(f"{subject} {predicate} {effect}")
 
 
@@ -120,7 +129,9 @@ def _plain_finding_text(finding: Finding, *, audience: str) -> str:
     effect = finding.object_or_effect.strip()
     trigger, exception, applicability_scope = _semantic_clauses(finding)
     clauses: list[str] = []
-    if finding.predicate == "must_bear":
+    if _is_direct_documented_fact(finding):
+        clauses.append(_ensure_sentence(effect))
+    elif finding.predicate == "must_bear":
         clauses.append(_ensure_sentence(f"Trigger: {trigger}"))
         clauses.append(_ensure_sentence(f"Obligation: {subject} {predicate} {effect}"))
     elif finding.predicate == "is_not_triggered":
