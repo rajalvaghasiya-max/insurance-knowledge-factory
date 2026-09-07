@@ -1,0 +1,38 @@
+{
+  "record_id": "health-star-ped-criterion6-answer-provenance-2026-09-07",
+  "milestone": "C",
+  "classification": "REUSE_PROOF_ONLY",
+  "base_merge": "8acd4e8df0b4665ea8151dfeb5b67635a1ef625f",
+  "objective": "Extend the existing Star PED publication semantic-projection negative control through the already-proven real deterministic response assembly path.",
+  "positive_control": {
+    "semantic_components": [
+      "waiting_period_duration",
+      "continuity_or_credit_rule"
+    ],
+    "required_answer_semantics": [
+      "36-month waiting-period duration",
+      "specific continuity/portability qualification"
+    ]
+  },
+  "negative_control": {
+    "removed_semantic_component": "continuity_or_credit_rule",
+    "unchanged_certified_evidence": true,
+    "required_answer_semantics": [
+      "36-month waiting-period duration remains",
+      "specific continuity/portability qualification disappears"
+    ]
+  },
+  "predeclared_outcomes": {
+    "PASS": "Both executions produce assembled answers; 36-month semantics remain in both; the exact continuity/portability claim is present only in the full-publication answer.",
+    "INCONCLUSIVE": "The perturbed execution is blocked or withheld by completeness or safety gating before an assembled answer is produced.",
+    "FAIL": "The perturbed execution still contains the exact continuity/portability qualification, indicating downstream semantic reinjection independent of the published projection."
+  },
+  "scope_constraints": [
+    "Extend the existing test_star_ped_data_only_publication_pressure.py negative control rather than create a parallel harness.",
+    "Do not change runtime capabilities, publication semantics, completeness rules, explanation fidelity, or response assembly.",
+    "Do not interpret generic limitation tuple changes as provenance proof; assert the exact continuity/portability claim.",
+    "A PASS proves publication-governs-answer causality, not response-assembly-specific causality.",
+    "FINAL_EVALUATION repair remains separate under Issue #263.",
+    "Conditional/applicability reasoning genericity remains separately unproven."
+  ]
+}
