@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-final-evaluation-canonical-capture-repair-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EVALUATION.MO021_PIPELINE_BASELINE"
+  ],
+  "rationale": "Reconnect deterministic evaluation to the current guarded response path by adapting already-produced canonical StageResult objects and the released response artifact into the existing immutable evaluation capture and assertion machinery. The legacy private PipelineRunner is not used by the active FINAL_EVALUATION path.",
+  "supersession_impact": "No capability is superseded. The historical injected runner remains compatibility-only inside the same evaluation capability, while canonical capture becomes the active final-evaluation entry.",
+  "authority_impact": "Evaluation gains no insurance semantic authority. It may only score captured execution and response artifacts. It cannot re-run stages, retrieve evidence, reason, alter response content, or broaden recommendation authority; non-PASS evaluation fails closed."
+}
