@@ -6,6 +6,11 @@ from dataclasses import dataclass
 from typing import Sequence
 
 from insurance_intelligence.contracts.publication_decision import PublicationDecisionResult
+from insurance_intelligence.contracts.semantic import (
+    GovernedSemanticAttribute,
+    SemanticAttributeContractError,
+    validate_semantic_attributes,
+)
 
 SUPPORTED_CONTRACT_VERSION = "1.0"
 PUBLICATION_STATUS = "AUTHORITATIVE"
@@ -33,18 +38,34 @@ class GovernedSemanticComponent:
     component_id: str
     status: str
     evidence_references: tuple[str, ...]
+    semantic_attributes: tuple[GovernedSemanticAttribute, ...] = ()
 
 
 def build_governed_semantic_component(
-    *, component_id: str, status: str, evidence_references: Sequence[str]
+    *,
+    component_id: str,
+    status: str,
+    evidence_references: Sequence[str],
+    semantic_attributes: Sequence[GovernedSemanticAttribute] = (),
 ) -> GovernedSemanticComponent:
     evidence = _unique(evidence_references, "evidence_references")
     if not evidence:
         raise AuthoritativePublicationContractError("evidence_references must not be empty")
+    try:
+        attributes = validate_semantic_attributes(semantic_attributes)
+    except SemanticAttributeContractError as exc:
+        raise AuthoritativePublicationContractError(str(exc)) from exc
+    component_evidence = set(evidence)
+    for attribute in attributes:
+        if not set(attribute.evidence_references) <= component_evidence:
+            raise AuthoritativePublicationContractError(
+                "semantic attribute evidence_references must be included in component evidence_references"
+            )
     return GovernedSemanticComponent(
         component_id=_text(component_id, "component_id"),
         status=_text(status, "status"),
         evidence_references=evidence,
+        semantic_attributes=attributes,
     )
 
 
