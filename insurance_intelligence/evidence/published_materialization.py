@@ -1,8 +1,9 @@
 """Materialize answer-admissible evidence from authoritative publication.
 
 The authoritative publication record is the admission proof; the certified evidence
-output remains the material source for claim text and source lineage. This module does
-not infer facts, publish knowledge, or perform topic-specific routing.
+output remains the material source for claim text and source lineage. Structured
+semantic attributes are projected from publication components onto the corresponding
+EvidencePackage without parsing or reinterpreting claim text.
 """
 from __future__ import annotations
 
@@ -16,6 +17,7 @@ from insurance_intelligence.contracts.evidence import (
     EvidenceResolverOutput,
     RequirementResult,
 )
+from insurance_intelligence.contracts.semantic import GovernedSemanticAttribute
 from insurance_intelligence.evidence.admission import (
     USER_ANSWER,
     evaluate_publication_admission,
@@ -30,6 +32,24 @@ class PublishedEvidenceMaterializationError(ValueError):
 class PublishedEvidenceSource:
     publication: AuthoritativePublicationRecord
     certified_evidence: EvidenceResolverOutput
+
+
+def _attributes_for_evidence(
+    publication: AuthoritativePublicationRecord,
+    evidence_id: str,
+) -> tuple[GovernedSemanticAttribute, ...]:
+    by_key: dict[str, GovernedSemanticAttribute] = {}
+    for component in publication.semantic_components:
+        for attribute in component.semantic_attributes:
+            if evidence_id not in attribute.evidence_references:
+                continue
+            existing = by_key.get(attribute.key)
+            if existing is not None and existing != attribute:
+                raise PublishedEvidenceMaterializationError(
+                    f"conflicting published semantic attribute {attribute.key!r} for evidence {evidence_id!r}"
+                )
+            by_key[attribute.key] = attribute
+    return tuple(by_key[key] for key in sorted(by_key))
 
 
 def materialize_published_requirement(
@@ -76,6 +96,7 @@ def materialize_published_requirement(
             by_id[evidence_id],
             requirement_id=requirement_id,
             subject_reference=subject_reference,
+            semantic_attributes=_attributes_for_evidence(publication, evidence_id),
             retrieval_basis=by_id[evidence_id].retrieval_basis
             + (
                 "authoritative_publication_admission",
