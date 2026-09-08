@@ -18,13 +18,19 @@ def test_llm_evaluation_capabilities_are_registered_with_governed_lifecycle():
     assert by_id["II.EVALUATION.TERMINOLOGY_CONTROLLED_PACK"].lifecycle_status == "ACTIVE"
 
 
-def test_old_mo021_pipeline_evaluator_is_not_misrepresented_as_current_end_to_end_fitness():
+def test_repaired_mo021_evaluator_uses_canonical_capture_without_restoring_legacy_runner_authority():
     catalog = load_catalog("governance/capabilities/catalog.json")
     record = catalog.by_id["II.EVALUATION.MO021_PIPELINE_BASELINE"]
 
-    assert record.lifecycle_status == "DISCONNECTED"
-    assert record.reuse_policy == "REPAIR"
-    assert "current guarded canonical orchestration" in record.authority_role
+    assert record.lifecycle_status == "ACTIVE"
+    assert record.reuse_policy == "REUSE"
+    assert "already-produced orchestration StageResult objects" in record.authority_role
+    assert any(
+        "historical PipelineRunner" in invariant and "not authoritative" in invariant
+        for invariant in record.safety_invariants
+    )
+    assert "legacy hard-coded PIPELINE_STAGE_ORDER" in record.notes
+    assert "not used by the active canonical final-evaluation path" in record.notes
 
 
 def test_preflight_surfaces_existing_llm_comparison_capability():
