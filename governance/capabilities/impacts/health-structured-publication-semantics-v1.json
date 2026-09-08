@@ -1,0 +1,12 @@
+{
+  "change_id": "health-structured-publication-semantics-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.PUBLICATION.AUTHORITATIVE_GATE",
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Repair the authoritative-publication and published-evidence boundary so governed conditional semantic ingredients can be represented as explicit immutable key/value attributes with their own evidence references, bound into the publication receipt, persisted losslessly, and projected onto runtime EvidencePackage objects without re-parsing flat claim text. This does not authorize any product publication and does not change reasoning algorithms.",
+  "authority_impact": "NONE",
+  "safety_impact": "STRENGTHENED",
+  "new_capability_authorized": false
+}
