@@ -134,12 +134,14 @@
       "owned_module_paths": [
         "insurance_intelligence/contracts/evaluation.py",
         "insurance_intelligence/evaluation/assertions.py",
+        "insurance_intelligence/evaluation/canonical_capture.py",
+        "insurance_intelligence/evaluation/canonical_final.py",
         "insurance_intelligence/evaluation/fixtures.py",
         "insurance_intelligence/evaluation/runner.py",
         "insurance_intelligence/evaluation/scenarios.py",
         "insurance_intelligence/evaluation/service.py"
       ],
-      "structural_fingerprint": "d1c3dcedfeea5c3b06a77495e1dd2fdf4e2d72d3621dfba3bf0e3840774cceae"
+      "structural_fingerprint": "abd4248406edf24a1e9be002baa8deeb16a8046acd488291de99b4ae0f247888"
     },
     {
       "capability_id": "II.EVALUATION.TERMINOLOGY_CONTROLLED_PACK",

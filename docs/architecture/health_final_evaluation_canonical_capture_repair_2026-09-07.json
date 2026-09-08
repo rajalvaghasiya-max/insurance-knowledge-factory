@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-final-evaluation-canonical-capture-repair-v1",
+  "classification": "REPAIR",
+  "capability_id": "II.EVALUATION.MO021_PIPELINE_BASELINE",
+  "issue": 263,
+  "base_commit": "9b5d02668cb85899923ff2d79d7d21409f0c478e",
+  "problem": "The legacy deterministic evaluation runner owns a stale private eight-stage order and cannot establish fitness of the current guarded canonical response path.",
+  "repair": "Reuse the existing immutable evaluation capture and assertion engine, but feed them an adapter over already-produced canonical StageResult objects plus the released response object. FINAL_EVALUATION consumes that capture and fails closed on any non-PASS result. The legacy PipelineRunner is retained only for historical compatibility and is not invoked by the canonical final-evaluation path.",
+  "entry_artifacts": [
+    "canonical StageResult prefix through LLM_RENDERING",
+    "RuntimeStageObjectStore typed outputs",
+    "released deterministic or rendered response identity"
+  ],
+  "exit_artifact": "EvaluationResult stored and referenced by FINAL_EVALUATION",
+  "non_goals": [
+    "No product-specific evaluation semantics",
+    "No private orchestration replay inside evaluation",
+    "No provider-backed rendering proof",
+    "No conditional/applicability reasoning proof",
+    "No change to Criterion 6, already closed for deterministic factual answer provenance"
+  ],
+  "falsification": "Exact Star Comprehensive PED factual request must traverse the current canonical guarded path once, preserve LLM_RENDERING=NOT_REQUIRED, produce a deterministic answer with 36-month and continuity semantics without 12-month buyback inference, and then PASS FINAL_EVALUATION from captured artifacts only."
+}
