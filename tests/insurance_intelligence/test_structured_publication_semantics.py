@@ -136,16 +136,16 @@ def _certification() -> RuleCertificationResult:
     )
 
 
-def _source():
+def _source(*, rate: str = RATE, trigger: str = TRIGGER):
     attributes = (
         build_governed_semantic_attribute(
             key="trigger",
-            value=TRIGGER,
+            value=trigger,
             evidence_references=(EVIDENCE_ID,),
         ),
         build_governed_semantic_attribute(
             key="rate",
-            value=RATE,
+            value=rate,
             evidence_references=(EVIDENCE_ID,),
         ),
     )
@@ -218,3 +218,10 @@ def test_trigger_and_rate_survive_publication_artifact_round_trip_without_claim_
     assert all(item.evidence_references == (EVIDENCE_ID,) for item in package.semantic_attributes)
     assert RATE not in package.claim
     assert TRIGGER not in package.claim
+
+
+def test_publication_receipt_changes_when_structured_semantic_value_changes():
+    baseline = _source()
+    changed = _source(rate="25%")
+    assert baseline.publication.publication_receipt_id != changed.publication.publication_receipt_id
+    assert baseline.publication.semantic_components[0].semantic_attributes != changed.publication.semantic_components[0].semantic_attributes
