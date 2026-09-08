@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from datetime import date
 from typing import Mapping, Sequence
 from insurance_intelligence.contracts.reasoning_plan import ReasoningPlan
+from insurance_intelligence.contracts.semantic import GovernedSemanticAttribute, SemanticAttributeContractError, validate_semantic_attributes
 
 SUPPORTED_CONTRACT_VERSION = "1.0"
 STRICT_MODES=frozenset({"STRICT","PERMISSIVE"})
@@ -56,7 +57,7 @@ class DocumentResolution:
     document_reference:str; source_type:str; entity_reference:str; version:str; currentness_status:str; effective_from:str|None; effective_to:str|None; lineage_status:str; resolution_basis:str; resolution_status:str
 @dataclass(frozen=True)
 class EvidencePackage:
-    evidence_id:str; requirement_id:str; subject_reference:str; governed_entity_reference:str; field_or_topic:str; claim:str; evidence_role:str; source_type:str; document_reference:str; document_version:str; effective_from:str|None; effective_to:str|None; page:int|None; section:str|None; source_excerpt:str|None; normalized_fact_reference:str|None; authority_rank:int; authority_requirement:str; version_status:str; applicability_status:str; lineage:Lineage; retrieval_basis:tuple[str,...]; confidence:float
+    evidence_id:str; requirement_id:str; subject_reference:str; governed_entity_reference:str; field_or_topic:str; claim:str; evidence_role:str; source_type:str; document_reference:str; document_version:str; effective_from:str|None; effective_to:str|None; page:int|None; section:str|None; source_excerpt:str|None; normalized_fact_reference:str|None; authority_rank:int; authority_requirement:str; version_status:str; applicability_status:str; lineage:Lineage; retrieval_basis:tuple[str,...]; confidence:float; semantic_attributes:tuple[GovernedSemanticAttribute,...]=()
 @dataclass(frozen=True)
 class RequirementResult:
     requirement_id:str; status:str; matched_evidence_ids:tuple[str,...]; rejected_candidate_ids:tuple[str,...]; missing_reason:str|None; authority_satisfied:bool; version_satisfied:bool; lineage_satisfied:bool; conflict_status:str; confidence:float
@@ -79,6 +80,12 @@ def validate_output(o:EvidenceResolverOutput)->EvidenceResolverOutput:
     for e in o.evidence_packages:
         if e.requirement_id not in req: raise EvidenceContractError("evidence references unknown requirement")
         _m(e.evidence_role,EVIDENCE_ROLES,"evidence_role"); _m(e.lineage.lineage_status,LINEAGE_STATUSES,"lineage_status"); _m(e.applicability_status,APPLICABILITY_STATUSES,"applicability_status"); _f(e.confidence,"evidence confidence")
+        try:
+            attrs=validate_semantic_attributes(e.semantic_attributes)
+        except SemanticAttributeContractError as exc:
+            raise EvidenceContractError(str(exc)) from exc
+        if any(e.evidence_id not in item.evidence_references for item in attrs):
+            raise EvidenceContractError("evidence semantic attribute must reference its evidence package")
     for c in o.conflicts:
         if not set(c.evidence_ids)<=evid: raise EvidenceContractError("conflict references unknown evidence")
         _m(c.conflict_type,CONFLICT_TYPES,"conflict_type"); _m(c.resolution_status,CONFLICT_RESOLUTION_STATUSES,"conflict resolution_status")

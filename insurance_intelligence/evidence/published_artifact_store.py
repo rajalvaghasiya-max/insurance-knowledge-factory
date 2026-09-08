@@ -25,6 +25,7 @@ from insurance_intelligence.contracts.evidence import (
     TraceEvent,
     validate_output,
 )
+from insurance_intelligence.contracts.semantic import GovernedSemanticAttribute
 from insurance_intelligence.evidence.published_materialization import PublishedEvidenceSource
 
 
@@ -53,10 +54,12 @@ def persist_published_evidence_source(
     _write_json(certified_evidence_path, asdict(validate_output(source.certified_evidence)))
 
 
-def _tuple(value: object, label: str) -> tuple:
-    if not isinstance(value, list):
-        raise PublishedArtifactStoreError(f"{label} must be a JSON array")
-    return tuple(value)
+def _semantic_attribute(value: dict) -> GovernedSemanticAttribute:
+    return GovernedSemanticAttribute(
+        key=value["key"],
+        value=value["value"],
+        evidence_references=tuple(value["evidence_references"]),
+    )
 
 
 def _publication_from_dict(value: dict) -> AuthoritativePublicationRecord:
@@ -66,6 +69,10 @@ def _publication_from_dict(value: dict) -> AuthoritativePublicationRecord:
                 component_id=item["component_id"],
                 status=item["status"],
                 evidence_references=tuple(item["evidence_references"]),
+                semantic_attributes=tuple(
+                    _semantic_attribute(attribute)
+                    for attribute in item.get("semantic_attributes", [])
+                ),
             )
             for item in value["semantic_components"]
         )
@@ -104,6 +111,10 @@ def _evidence_package(value: dict) -> EvidencePackage:
     material = dict(value)
     material["lineage"] = _lineage(material["lineage"])
     material["retrieval_basis"] = tuple(material["retrieval_basis"])
+    material["semantic_attributes"] = tuple(
+        _semantic_attribute(attribute)
+        for attribute in material.get("semantic_attributes", [])
+    )
     return EvidencePackage(**material)
 
 

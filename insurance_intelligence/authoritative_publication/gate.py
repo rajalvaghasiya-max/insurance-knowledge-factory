@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 from hashlib import sha256
+import json
 import re
 
 from insurance_intelligence.contracts.authoritative_publication import (
     AuthoritativePublicationInput,
     AuthoritativePublicationRecord,
+    GovernedPublicationProjection,
     PUBLICATION_STATUS,
 )
 
@@ -43,6 +45,34 @@ def _contains_affirmative_claim_payment_guarantee(values: tuple[str, ...]) -> bo
 def _stable_receipt_id(*parts: str) -> str:
     digest = sha256("|".join(parts).encode("utf-8")).hexdigest()[:16]
     return f"publication_receipt_{digest}"
+
+
+def _semantic_projection_digest(projection: GovernedPublicationProjection) -> str:
+    payload = {
+        "topic_id": projection.topic_id,
+        "topic_version": projection.topic_version,
+        "components": [
+            {
+                "component_id": component.component_id,
+                "status": component.status,
+                "evidence_references": sorted(component.evidence_references),
+                "semantic_attributes": [
+                    {
+                        "key": attribute.key,
+                        "value": attribute.value,
+                        "evidence_references": sorted(attribute.evidence_references),
+                    }
+                    for attribute in sorted(component.semantic_attributes, key=lambda item: item.key)
+                ],
+            }
+            for component in sorted(projection.semantic_components, key=lambda item: item.component_id)
+        ],
+        "limitations": list(projection.limitations),
+        "evidence_trace_references": list(projection.evidence_trace_references),
+        "certification_trace_references": list(projection.certification_trace_references),
+    }
+    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+    return sha256(encoded.encode("utf-8")).hexdigest()
 
 
 def create_authoritative_publication(
@@ -111,6 +141,7 @@ def create_authoritative_publication(
         projection.projection_id,
         projection.governed_subject_reference,
         projection.certification_id,
+        _semantic_projection_digest(projection),
     ]
     if decision.authorization_id:
         receipt_parts.append(decision.authorization_id)

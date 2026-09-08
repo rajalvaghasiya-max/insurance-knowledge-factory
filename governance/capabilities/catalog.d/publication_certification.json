@@ -49,25 +49,27 @@
     {
       "capability_id": "II.PUBLICATION.AUTHORITATIVE_GATE",
       "name": "Authoritative Publication Gate",
-      "responsibility": "Create an immutable authoritative publication record only from an approved PUBLISH decision and an exactly matching governed projection, failing closed on identity, certification, limitation, trace, or prohibited-language inconsistency.",
+      "responsibility": "Create an immutable authoritative publication record only from an approved PUBLISH decision and an exactly matching governed projection, preserving explicit governed semantic attributes and failing closed on identity, certification, limitation, trace, semantic-lineage, or prohibited-language inconsistency.",
       "plane": "INSURANCE_INTELLIGENCE_PUBLICATION_GOVERNANCE",
       "lifecycle_status": "ACTIVE",
-      "authority_role": "Final authority for creating the governed authoritative-publication record; it cannot upgrade a WITHHOLD/BLOCKED decision or repair mismatched lineage.",
+      "authority_role": "Final authority for creating the governed authoritative-publication record; it cannot upgrade a WITHHOLD/BLOCKED decision, repair mismatched lineage, or infer semantic attribute values from prose.",
       "safety_invariants": [
         "Only a PUBLISH decision with publication_permitted true and PASS certification may cross the gate.",
         "Governed subject, certification, topic/version, limitations, and trace references must match exactly between decision and projection.",
+        "Structured semantic attributes must remain explicitly evidence-linked and are never inferred by the publication gate from claim text.",
         "Republishing an already-created authoritative publication is prohibited.",
         "Prohibited boundary or affirmative claim-payment guarantee language fails closed."
       ],
       "reuse_policy": "REUSE",
       "ownership_paths": [
         "insurance_intelligence/authoritative_publication",
-        "insurance_intelligence/contracts/authoritative_publication.py"
+        "insurance_intelligence/contracts/authoritative_publication.py",
+        "insurance_intelligence/contracts/semantic.py"
       ],
       "introduced_by": "P2.4",
       "supersedes": [],
       "superseded_by": null,
-      "notes": "This capability is downstream of publication decision; publication permission alone is not an authoritative record."
+      "notes": "This capability is downstream of publication decision; publication permission alone is not an authoritative record. Structured semantic attributes extend the projection contract without changing publication authority."
     },
     {
       "capability_id": "II.COVERAGE.REGISTRY",
