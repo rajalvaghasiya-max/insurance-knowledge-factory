@@ -1,0 +1,34 @@
+{
+  "change_id": "health-structured-publication-semantics-v1",
+  "issue": 266,
+  "base_merge": "69ef6cb64c77791b489be0b8ce04d4814cf1bac4",
+  "classification": "REPAIR",
+  "problem": "The authoritative publication component contract preserved semantic component identity and evidence references but not explicit conditional values such as trigger and rate. Published evidence therefore recovered conditional meaning only by restoring flat EvidencePackage claim text, after which co-payment reasoning parsed the trigger and percentage back out of prose.",
+  "repair": {
+    "shared_contract": "GovernedSemanticAttribute(key, value, evidence_references)",
+    "publication_component": "GovernedSemanticComponent.semantic_attributes",
+    "runtime_evidence": "EvidencePackage.semantic_attributes",
+    "materialization": "Published semantic attributes are copied to the evidence packages referenced by those attributes without parsing or interpreting claim text.",
+    "receipt_integrity": "Authoritative publication receipt identity now commits to topic/version, semantic component status/evidence references, structured attribute key/value/evidence references, limitations, and trace references."
+  },
+  "backward_compatibility": {
+    "existing_factual_publications": "semantic_attributes defaults to an empty tuple",
+    "existing_persisted_artifacts": "artifact loader treats absent semantic_attributes as empty",
+    "reasoning_rules": "unchanged in this repair"
+  },
+  "falsification": {
+    "claim_text": "The focused test deliberately omits the trigger and rate from certified EvidencePackage claim/source text.",
+    "expected": [
+      "trigger and rate survive authoritative publication",
+      "trigger and rate survive JSON artifact round-trip",
+      "trigger and rate reach runtime EvidencePackage.semantic_attributes",
+      "changing a structured semantic value changes publication_receipt_id"
+    ]
+  },
+  "scope_constraints": [
+    "This repair does not authorize Bajaj or any other product publication.",
+    "This repair does not change the reasoning topic classifier or co-payment rules.",
+    "A later Bajaj green can prove cross-product reuse of the co-payment conditional lane only.",
+    "A separate non-co-pay conditional pressure test remains required for concept-generic conditional reasoning."
+  ]
+}
