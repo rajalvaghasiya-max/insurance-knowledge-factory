@@ -94,7 +94,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.EVIDENCE.GOVERNED_RESOLVER`<br>Governed Evidence Resolver | `ACTIVE` | `REUSE` | Underlying evidence-resolution engine. In the canonical current path it is callable only through II.EVIDENCE.INSTANCE_ENFORCEMENT when instance identity is required; it cannot manufacture identity or bypass that guard. | None | `insurance_intelligence/evidence`<br>`insurance_intelligence/contracts/evidence.py` | `e6caf8528c1b` |
+| `II.EVIDENCE.GOVERNED_RESOLVER`<br>Governed Evidence Resolver | `ACTIVE` | `REUSE` | Underlying evidence-resolution engine. In the canonical current path it is callable only through II.EVIDENCE.INSTANCE_ENFORCEMENT when instance identity is required; it cannot manufacture identity or bypass that guard. | None | `insurance_intelligence/evidence`<br>`insurance_intelligence/contracts/evidence.py` | `7783a2285f56` |
 
 ### INSURANCE_INTELLIGENCE_EVIDENCE_GOVERNANCE
 
@@ -165,7 +165,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.PUBLICATION.AUTHORITATIVE_GATE`<br>Authoritative Publication Gate | `ACTIVE` | `REUSE` | Final authority for creating the governed authoritative-publication record; it cannot upgrade a WITHHOLD/BLOCKED decision or repair mismatched lineage. | None | `insurance_intelligence/authoritative_publication`<br>`insurance_intelligence/contracts/authoritative_publication.py` | `19371d792b84` |
+| `II.PUBLICATION.AUTHORITATIVE_GATE`<br>Authoritative Publication Gate | `ACTIVE` | `REUSE` | Final authority for creating the governed authoritative-publication record; it cannot upgrade a WITHHOLD/BLOCKED decision, repair mismatched lineage, or infer semantic attribute values from prose. | None | `insurance_intelligence/authoritative_publication`<br>`insurance_intelligence/contracts/authoritative_publication.py`<br>`insurance_intelligence/contracts/semantic.py` | `d487b339711e` |
 | `II.PUBLICATION.DECISION`<br>Governed Publication Decision | `ACTIVE` | `REUSE` | Determines publication permission only; it explicitly does not create an authoritative publication record. | None | `insurance_intelligence/publication_decision`<br>`insurance_intelligence/contracts/publication_decision.py` | `2a4fc7a12e80` |
 
 ### INSURANCE_INTELLIGENCE_REASONING

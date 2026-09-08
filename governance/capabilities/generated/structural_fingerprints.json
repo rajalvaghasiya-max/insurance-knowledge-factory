@@ -166,7 +166,7 @@
         "insurance_intelligence/evidence/sufficiency.py",
         "insurance_intelligence/evidence/trace.py"
       ],
-      "structural_fingerprint": "e6caf8528c1b02fd67c827208fc0600bddaf3ac7e17a86f70745b3b22673da42"
+      "structural_fingerprint": "7783a2285f560915fc2b911b051772fd8d2d1d4126468019550bb09ac3f6d2e7"
     },
     {
       "capability_id": "II.EVIDENCE.INSTANCE_ENFORCEMENT",
@@ -302,9 +302,10 @@
         "insurance_intelligence/authoritative_publication/gate.py",
         "insurance_intelligence/authoritative_publication/materializer.py",
         "insurance_intelligence/authoritative_publication/star_health.py",
-        "insurance_intelligence/contracts/authoritative_publication.py"
+        "insurance_intelligence/contracts/authoritative_publication.py",
+        "insurance_intelligence/contracts/semantic.py"
       ],
-      "structural_fingerprint": "19371d792b843f19f3bcfde234330c55ce3d2dfcbbc0e3e32ac5494a7d36c56a"
+      "structural_fingerprint": "d487b339711eaf17ef1cfd280bb0769964bb998b09b7b80c0b41223fb49ffc06"
     },
     {
       "capability_id": "II.PUBLICATION.DECISION",
