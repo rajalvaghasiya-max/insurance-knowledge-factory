@@ -1,0 +1,39 @@
+{
+  "notes": [
+    "Each source remains a separately hashed immutable document version.",
+    "Evidence candidates require human review before any legacy evidence binding or canonical lineage manifest.",
+    "This bundle does not publish rules, modify conditional-rule artifacts, or infer a product benefit from a brochure."
+  ],
+  "product_context": {
+    "insurer_id": "bajaj_allianz_general",
+    "product_display_name": "My Health Care Plan",
+    "product_id": "my_health_care",
+    "reviewed_generic_source_confirmation": true,
+    "source_scope": "reusable_generic"
+  },
+  "registered_at": "2026-09-09T16:08:06.121216+00:00",
+  "registration_status": "generic_sources_registered_evidence_review_required",
+  "registration_type": "generic_source_registration_bundle_v1",
+  "reuse_policy": {
+    "allowed": "reusable_generic_source_only",
+    "blocked": [
+      "policy_instance_documents",
+      "group_specific_schedules",
+      "member_certificates",
+      "quotes_tied_to_a_person_or_group"
+    ],
+    "brochure_usage": "discovery_only_not_sufficient_for_reusable_entitlement_assertion"
+  },
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "audience_scope": "generic_public",
+      "authority_role": "primary_legal",
+      "document_id": "bajaj_my_health_care_policy_wording_v2",
+      "document_version_id": "docver_bajaj_my_health_care_policy_wording_v2_05dc291324340d52",
+      "evidence_candidate_count": 53,
+      "registration_output_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+      "registration_status": "source_registered_evidence_review_required"
+    }
+  ]
+}

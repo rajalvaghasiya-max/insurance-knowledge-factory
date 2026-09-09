@@ -1,0 +1,42 @@
+{
+  "aliases": [
+    "My Health Care Plan",
+    "My Health Care Plan1"
+  ],
+  "guardrails": [
+    "This record establishes reviewed product identity only; it does not establish document-version compatibility.",
+    "A UIN is a strong identity signal, but it does not establish a current product entitlement.",
+    "This record is non-mutating and does not publish insurance facts or alter source-registration, classification, or authority artifacts."
+  ],
+  "identity_evidence": [
+    {
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json",
+      "signal_type": "uin_exact_match",
+      "verification": "document_embedded_text"
+    },
+    {
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json",
+      "signal_type": "canonical_title_match",
+      "verification": "document_embedded_text"
+    },
+    {
+      "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/generic_source_registration/policy_wording_registration.json",
+      "signal_type": "manual_product_review",
+      "verification": "manual_reviewed"
+    }
+  ],
+  "identity_resolution_status": "resolved",
+  "product_identity": {
+    "canonical_product_name": "My Health Care Plan",
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "insurer_id": "bajaj_allianz_general",
+    "product_id": "my_health_care",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "record_status": "reviewed_product_identity_recorded_not_published",
+  "record_type": "product_identity_reference_v1",
+  "review_rationale": "UIN BAJHLIP26074V022526 confirmed via text embedded in the registered Bajaj Allianz My Health Care Plan policy wording, corroborated by an exact canonical product title match and a manual product review comparing the policy wording against the insurer's official product page. This establishes reviewed product identity only; it does not establish document-version compatibility or current entitlement.",
+  "reviewed_at": "2026-09-09T16:08:06.123503+00:00",
+  "reviewed_by_human": true,
+  "schema_version": "1.0"
+}
