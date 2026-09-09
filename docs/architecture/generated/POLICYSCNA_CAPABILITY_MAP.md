@@ -165,8 +165,8 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.PUBLICATION.AUTHORITATIVE_GATE`<br>Authoritative Publication Gate | `ACTIVE` | `REUSE` | Final authority for creating the governed authoritative-publication record; it cannot upgrade a WITHHOLD/BLOCKED decision, repair mismatched lineage, or infer semantic attribute values from prose. | None | `insurance_intelligence/authoritative_publication`<br>`insurance_intelligence/contracts/authoritative_publication.py`<br>`insurance_intelligence/contracts/semantic.py` | `d487b339711e` |
-| `II.PUBLICATION.DECISION`<br>Governed Publication Decision | `ACTIVE` | `REUSE` | Determines publication permission only; it explicitly does not create an authoritative publication record. | None | `insurance_intelligence/publication_decision`<br>`insurance_intelligence/contracts/publication_decision.py` | `2a4fc7a12e80` |
+| `II.PUBLICATION.AUTHORITATIVE_GATE`<br>Authoritative Publication Gate | `ACTIVE` | `REUSE` | Final authority for creating the governed authoritative-publication record; it cannot upgrade a WITHHOLD/BLOCKED decision, repair mismatched lineage, or infer semantic attribute values from prose. | None | `insurance_intelligence/authoritative_publication`<br>`insurance_intelligence/contracts/authoritative_publication.py`<br>`insurance_intelligence/contracts/semantic.py` | `b1e8994ea597` |
+| `II.PUBLICATION.DECISION`<br>Governed Publication Decision | `ACTIVE` | `REUSE` | Determines publication permission only; it explicitly does not create an authoritative publication record. | None | `insurance_intelligence/publication_decision`<br>`insurance_intelligence/contracts/publication_decision.py` | `1cb2b8d45213` |
 
 ### INSURANCE_INTELLIGENCE_REASONING
 
