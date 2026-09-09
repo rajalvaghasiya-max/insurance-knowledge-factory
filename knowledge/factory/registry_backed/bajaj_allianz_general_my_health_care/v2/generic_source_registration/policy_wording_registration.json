@@ -779,7 +779,7 @@
     "Candidate spans are discovery aids only and are not bound to legacy evidence IDs.",
     "This record does not modify registry files, triage artifacts, publication receipts, conditional rules, or authority state."
   ],
-  "registered_at": "2026-09-09T16:08:06.120819+00:00",
+  "registered_at": "2026-08-22T07:47:45.680821+00:00",
   "registration_status": "source_registered_evidence_review_required",
   "registration_type": "pilot_source_registration_v1",
   "schema_version": "1.0"

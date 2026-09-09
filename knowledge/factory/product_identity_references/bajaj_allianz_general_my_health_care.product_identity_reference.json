@@ -36,7 +36,7 @@
   "record_status": "reviewed_product_identity_recorded_not_published",
   "record_type": "product_identity_reference_v1",
   "review_rationale": "UIN BAJHLIP26074V022526 confirmed via text embedded in the registered Bajaj Allianz My Health Care Plan policy wording, corroborated by an exact canonical product title match and a manual product review comparing the policy wording against the insurer's official product page. This establishes reviewed product identity only; it does not establish document-version compatibility or current entitlement.",
-  "reviewed_at": "2026-09-09T16:08:06.123503+00:00",
+  "reviewed_at": "2026-08-22T07:47:45.683662+00:00",
   "reviewed_by_human": true,
   "schema_version": "1.0"
 }

@@ -13,7 +13,7 @@
         "document_type": "policy_wording",
         "document_version_id": "docver_bajaj_my_health_care_policy_wording_v2_05dc291324340d52",
         "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
-        "registration_sha256": "d9cc4cd4d2e1dab1bbc81419959eb7ee71b51cac2139ce74856467de92362c07",
+        "registration_sha256": "e58637a6092367c8d122c5796e72d420bed62d33663c20f7416f8cec0c953173",
         "source_classification": "reusable_generic",
         "source_document_id": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
         "source_issued_label": null
@@ -76,12 +76,12 @@
     "canonical_product_name": "My Health Care Plan",
     "entity_id": "bajaj_allianz_general:my_health_care",
     "identity_record_path": "knowledge/factory/product_identity_references/bajaj_allianz_general_my_health_care.product_identity_reference.json",
-    "identity_record_sha256": "882e99227322557fe5215ecdc811982eb75b622c85ddc4d6e51c7bfcc8ecc12d",
+    "identity_record_sha256": "846efb8e4255cc3480b2e8999426fe953477b4daf2912b0ca43bd8aa8f54fa09",
     "insurer_id": "bajaj_allianz_general",
     "product_id": "my_health_care",
     "uin": "BAJHLIP26074V022526"
   },
-  "resolved_at": "2026-09-09T16:08:06.124886+00:00",
+  "resolved_at": "2026-08-22T07:47:45.684747+00:00",
   "reviewed_by_human": true,
   "schema_version": "1.0"
 }
