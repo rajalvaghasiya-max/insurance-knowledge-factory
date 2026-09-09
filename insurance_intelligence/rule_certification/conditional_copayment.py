@@ -406,6 +406,7 @@ def run_conditional_copayment_certification_cases(
             evidence_output=case.evidence_output,
             domain=case.domain,
             profile=_profile(case.case_id),
+            trace_references=(bundle.binding_manifest_path,),
         )
         results.append(result)
     return tuple(results)

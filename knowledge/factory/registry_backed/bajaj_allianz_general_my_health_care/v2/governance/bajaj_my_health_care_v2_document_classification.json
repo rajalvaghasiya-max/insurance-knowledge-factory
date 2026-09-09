@@ -1,0 +1,46 @@
+{
+  "classification_status": "reviewed_document_classifications_recorded_not_published",
+  "classification_type": "document_classification_reuse_policy_v1",
+  "classified_at": "2026-08-22T07:47:45.683397+00:00",
+  "documents": [
+    {
+      "classification": "reusable_generic",
+      "content_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+      "document_id": "bajaj_my_health_care_policy_wording_v2",
+      "document_type": "policy_wording",
+      "document_version_id": "docver_bajaj_my_health_care_policy_wording_v2_05dc291324340d52",
+      "private_source": false,
+      "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+      "registration_sha256": "e58637a6092367c8d122c5796e72d420bed62d33663c20f7416f8cec0c953173",
+      "reusable_knowledge_eligible": true,
+      "reuse_action": "reusable_evidence_candidate",
+      "review_rationale": "The observed current artifact is a public policy wording served from Bajaj General's official download domain and matches the reviewed My Health Care Plan product identity. The artifact is registered as a separate immutable document version because semantic comparison against the historical artifact found material operative changes. This classification does not itself promote the document to current publication status."
+    }
+  ],
+  "guardrails": [
+    "Document classification is a reviewable policy decision and is hash-bound to the registered document version.",
+    "Restricted policy-, group-, and member-specific documents are never reusable generic evidence.",
+    "Discovery-only documents cannot establish a legal entitlement or reusable legal assertion on their own.",
+    "Unknown documents remain blocked pending review.",
+    "This manifest does not alter raw documents, extraction artifacts, rules, evidence bindings, or authority state."
+  ],
+  "knowledge_gap_policy": {
+    "blocked_fields": [
+      "address",
+      "customer_name",
+      "email",
+      "excerpt",
+      "member_id",
+      "phone",
+      "policy_number",
+      "premium_amount",
+      "raw_clause_text"
+    ],
+    "private_source_may_not_supply_reusable_evidence": true,
+    "private_source_may_trigger_gap": true,
+    "publication_requires_reviewed_public_evidence": true,
+    "required_research_source_scope": "reusable_generic"
+  },
+  "reviewed_by_human": true,
+  "schema_version": "1.0"
+}

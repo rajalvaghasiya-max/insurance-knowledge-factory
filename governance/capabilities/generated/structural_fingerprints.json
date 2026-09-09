@@ -299,13 +299,14 @@
       "capability_id": "II.PUBLICATION.AUTHORITATIVE_GATE",
       "owned_module_paths": [
         "insurance_intelligence/authoritative_publication/__init__.py",
+        "insurance_intelligence/authoritative_publication/bajaj.py",
         "insurance_intelligence/authoritative_publication/gate.py",
         "insurance_intelligence/authoritative_publication/materializer.py",
         "insurance_intelligence/authoritative_publication/star_health.py",
         "insurance_intelligence/contracts/authoritative_publication.py",
         "insurance_intelligence/contracts/semantic.py"
       ],
-      "structural_fingerprint": "d487b339711eaf17ef1cfd280bb0769964bb998b09b7b80c0b41223fb49ffc06"
+      "structural_fingerprint": "b1e8994ea59728c77190187c7e724cb47197c38c821b71d99d849c7207bd6c92"
     },
     {
       "capability_id": "II.PUBLICATION.DECISION",
@@ -313,10 +314,11 @@
         "insurance_intelligence/contracts/publication_decision.py",
         "insurance_intelligence/publication_decision/__init__.py",
         "insurance_intelligence/publication_decision/authorization.py",
+        "insurance_intelligence/publication_decision/bajaj.py",
         "insurance_intelligence/publication_decision/evaluator.py",
         "insurance_intelligence/publication_decision/star_health.py"
       ],
-      "structural_fingerprint": "2a4fc7a12e8091b9531aef2a27580fd46f148ddb41c34903eeb5daf6585f51f1"
+      "structural_fingerprint": "1cb2b8d4521376f9a1c1ae574d461cc35dfa9ca1f11ff61ed12d8ce19e0bf76a"
     },
     {
       "capability_id": "II.REASONING.ENGINE",
@@ -389,7 +391,7 @@
         "insurance_intelligence/rule_certification/waiting_period_option_domain.py",
         "insurance_intelligence/rule_certification/waiting_period_option_domain_multispan.py"
       ],
-      "structural_fingerprint": "f18b839dc69b89057af0bce027ae86b81bcbd670e43508974971d255e8a1e9ba"
+      "structural_fingerprint": "76ad29fa41d0f644d3f7f1a68bb13c10d7a212328e0d266e0d06a87a25f4ec14"
     },
     {
       "capability_id": "II.TERMINOLOGY.GOVERNED_RESOLUTION",

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-bajaj-lab-copay-publication-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
+    "II.PUBLICATION.DECISION",
+    "II.PUBLICATION.AUTHORITATIVE_GATE"
+  ],
+  "rationale": "Extend the existing governed publication-decision and authoritative-publication capabilities with generic data-driven builders for governed assertion publication, while repairing the generic conditional co-payment certification runner to preserve its known governed binding-manifest path as an explicit certification trace. Bajaj My Health Care v2 is supplied only through a governed publication specification; no Bajaj-specific publication Python remains. The generic builders resolve only declared publication-state boundaries and carry certified component semantics into the structured publication contract without adding reasoning rules or product-level co-payment authority.",
+  "supersession_impact": "No capability is superseded or replaced. Existing Star publication modules remain as legacy bounded callers and can be migrated separately; new equivalent co-payment publication onboarding does not require a product-specific publication module.",
+  "authority_impact": "No new insurance, recommendation, policy-instance, option-selection, or claim-payment authority is introduced. Publication remains bounded to one certified assertion and retains the certification limitation prohibiting policy-specific option selection and claim-payment decisions. The certification repair adds lineage completeness only; the data-driven publication extension changes orchestration shape, not authority."
+}
