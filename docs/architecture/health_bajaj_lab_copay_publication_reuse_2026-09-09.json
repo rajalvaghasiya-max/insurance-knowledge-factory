@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
-  "record_type": "bounded_publication_reuse_v1",
+  "record_type": "bounded_publication_extension_v1",
   "issue": 266,
   "change_id": "health-bajaj-lab-copay-publication-v1",
-  "classification": "REUSE",
+  "classification": "EXTEND",
   "product": "bajaj_allianz_general:my_health_care",
   "source_version_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
   "assertion_id": "ga_bajaj_my_health_care_lab_radiology_unapproved_reimbursement_copay_v1",
@@ -21,6 +21,11 @@
     "policy_specific_rate_selection": "NOT_AUTHORIZED",
     "claim_payment_decision": "NOT_AUTHORIZED"
   },
+  "extension_scope": [
+    "Add a bounded Bajaj product adapter to the existing governed publication-decision capability.",
+    "Add a bounded Bajaj product adapter to the existing authoritative-publication capability.",
+    "Reuse the existing generic conditional co-payment certification runner unchanged."
+  ],
   "proof_scope": [
     "The existing governed conditional co-payment certification runner can certify the bounded recovered Bajaj assertion from its immutable August lineage.",
     "The existing publication-boundary authorization can resolve only bound_not_published while retaining all non-publication limitations.",
