@@ -1,13 +1,12 @@
 {
   "schema_version": "1.0",
   "change_id": "health-bajaj-lab-copay-publication-v1",
-  "classification": "REUSE",
+  "classification": "EXTEND",
   "capability_ids": [
-    "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
     "II.PUBLICATION.DECISION",
     "II.PUBLICATION.AUTHORITATIVE_GATE"
   ],
-  "rationale": "Reuse the existing governed conditional co-payment certification runner, explicit publication-boundary authorization, deterministic publication decision, and authoritative publication gate for one already-reviewed Bajaj My Health Care v2 lab/radiology co-payment assertion. The adapter resolves only the historical bound_not_published state and carries certified component semantics into the structured publication contract without adding reasoning rules or product-level co-payment authority.",
+  "rationale": "Extend the existing governed publication-decision and authoritative-publication capabilities with bounded Bajaj My Health Care v2 product adapters for one already-reviewed lab/radiology co-payment assertion. The adapters reuse the existing conditional co-payment certification runner, resolve only the historical bound_not_published state, and carry certified component semantics into the structured publication contract without adding reasoning rules or product-level co-payment authority.",
   "supersession_impact": "No capability is superseded or replaced.",
   "authority_impact": "No new insurance, recommendation, policy-instance, option-selection, or claim-payment authority is introduced. Publication is bounded to one certified assertion and retains the certification limitation prohibiting policy-specific option selection and claim-payment decisions."
 }
