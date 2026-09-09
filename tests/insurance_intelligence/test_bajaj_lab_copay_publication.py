@@ -5,6 +5,7 @@ from insurance_intelligence.authoritative_publication.bajaj import (
 )
 from insurance_intelligence.publication_decision.bajaj import (
     BAJAJ_LAB_ASSERTION_ID,
+    BAJAJ_V2_COPAY_BINDING_PATH,
     build_bajaj_lab_copay_publication_context,
     build_bajaj_lab_copay_publication_decision,
 )
@@ -29,6 +30,7 @@ def test_bounded_bajaj_lab_assertion_certifies_from_restored_governed_lineage() 
     assert certification.actual_completeness_status == "COMPLETE"
     assert certification.actual_explanation_permitted is True
     assert certification.governed_subject_reference == f"assertion:{BAJAJ_LAB_ASSERTION_ID}"
+    assert certification.trace_references == (BAJAJ_V2_COPAY_BINDING_PATH,)
     assert any("bound_not_published" in item for item in certification.limitations)
     assert any("policy-specific co-payment options" in item for item in certification.limitations)
 
@@ -39,6 +41,7 @@ def test_bajaj_publication_decision_resolves_only_publication_state_boundary() -
     assert decision.decision_status == "PUBLISH"
     assert decision.publication_permitted is True
     assert decision.authoritative_publication_created is False
+    assert decision.certification_trace_references == (BAJAJ_V2_COPAY_BINDING_PATH,)
     assert decision.authorization_id == (
         "publication-boundary:bajaj-my-health-care-v2:lab-radiology-copay"
     )
@@ -55,6 +58,7 @@ def test_bajaj_authoritative_publication_preserves_certified_structured_semantic
 
     assert publication.publication_status == "AUTHORITATIVE"
     assert publication.governed_subject_reference == f"assertion:{BAJAJ_LAB_ASSERTION_ID}"
+    assert publication.certification_trace_references == (BAJAJ_V2_COPAY_BINDING_PATH,)
     assert publication.authorization_id == (
         "publication-boundary:bajaj-my-health-care-v2:lab-radiology-copay"
     )
