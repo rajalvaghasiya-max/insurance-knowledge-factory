@@ -1,17 +1,26 @@
 from pathlib import Path
 
-from insurance_intelligence.authoritative_publication.bajaj import (
-    build_bajaj_lab_copay_authoritative_publication,
+from insurance_intelligence.authoritative_publication.governed import (
+    build_governed_authoritative_publication,
 )
-from insurance_intelligence.publication_decision.bajaj import (
-    BAJAJ_LAB_ASSERTION_ID,
-    BAJAJ_V2_COPAY_BINDING_PATH,
-    build_bajaj_lab_copay_publication_context,
-    build_bajaj_lab_copay_publication_decision,
+from insurance_intelligence.publication_decision.governed import (
+    build_governed_publication_context,
+    build_governed_publication_decision,
 )
 
 
 ROOT = Path(__file__).resolve().parents[2]
+PUBLICATION_SPEC_PATH = (
+    "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/"
+    "governance/bajaj_my_health_care_v2_lab_radiology_copay_publication_spec.json"
+)
+BAJAJ_V2_COPAY_BINDING_PATH = (
+    "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/"
+    "generic_legal_condition_binding/bajaj_my_health_care_v2_copayment_binding.json"
+)
+BAJAJ_LAB_ASSERTION_ID = (
+    "ga_bajaj_my_health_care_lab_radiology_unapproved_reimbursement_copay_v1"
+)
 
 
 def _attributes(publication) -> dict[str, str]:
@@ -23,7 +32,10 @@ def _attributes(publication) -> dict[str, str]:
 
 
 def test_bounded_bajaj_lab_assertion_certifies_from_restored_governed_lineage() -> None:
-    case, certification = build_bajaj_lab_copay_publication_context(repository_root=ROOT)
+    _, case, certification = build_governed_publication_context(
+        publication_spec_path=PUBLICATION_SPEC_PATH,
+        repository_root=ROOT,
+    )
 
     assert case.case_id == f"conditional_copayment:{BAJAJ_LAB_ASSERTION_ID}"
     assert certification.outcome == "PASS"
@@ -36,7 +48,10 @@ def test_bounded_bajaj_lab_assertion_certifies_from_restored_governed_lineage() 
 
 
 def test_bajaj_publication_decision_resolves_only_publication_state_boundary() -> None:
-    decision = build_bajaj_lab_copay_publication_decision(repository_root=ROOT)
+    decision = build_governed_publication_decision(
+        publication_spec_path=PUBLICATION_SPEC_PATH,
+        repository_root=ROOT,
+    )
 
     assert decision.decision_status == "PUBLISH"
     assert decision.publication_permitted is True
@@ -53,7 +68,10 @@ def test_bajaj_publication_decision_resolves_only_publication_state_boundary() -
 
 
 def test_bajaj_authoritative_publication_preserves_certified_structured_semantics() -> None:
-    publication = build_bajaj_lab_copay_authoritative_publication(repository_root=ROOT)
+    publication = build_governed_authoritative_publication(
+        publication_spec_path=PUBLICATION_SPEC_PATH,
+        repository_root=ROOT,
+    )
     attributes = _attributes(publication)
 
     assert publication.publication_status == "AUTHORITATIVE"
@@ -73,3 +91,8 @@ def test_bajaj_authoritative_publication_preserves_certified_structured_semantic
         assert component.evidence_references
         for attribute in component.semantic_attributes:
             assert set(attribute.evidence_references) <= set(component.evidence_references)
+
+
+def test_bajaj_publication_requires_no_product_specific_publication_module() -> None:
+    assert not (ROOT / "insurance_intelligence/publication_decision/bajaj.py").exists()
+    assert not (ROOT / "insurance_intelligence/authoritative_publication/bajaj.py").exists()
