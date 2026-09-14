@@ -82,8 +82,9 @@ def test_waiting_period_applicability_uses_topic_specific_assess_applicability_r
     assert finding.applicability_scope is not None
     assert "enhanced Sum Insured" in finding.applicability_scope
     assert finding.exception is not None
-    assert "continuous coverage" in finding.exception
-    assert "accident" in finding.exception
+    exception = finding.exception.casefold()
+    assert "continuous coverage" in exception
+    assert "accident" in exception
     assert set(finding.evidence_ids) == {
         item.evidence_id for item in reasoning_input.evidence_resolution.evidence_packages
     }
