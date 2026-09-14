@@ -1,0 +1,87 @@
+{
+  "documents": [
+    {
+      "document_version_link": {
+        "capture_provenance": {
+          "capture_reference": "manual_official_download_2026-08-20_sha256_05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+          "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-documents.html",
+          "source_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf"
+        },
+        "classification_manifest_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/governance/bajaj_my_health_care_v2_document_classification.json",
+        "content_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+        "document_id": "bajaj_my_health_care_policy_wording_v2",
+        "document_type": "policy_wording",
+        "document_version_id": "docver_bajaj_my_health_care_policy_wording_v2_05dc291324340d52",
+        "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+        "registration_sha256": "e58637a6092367c8d122c5796e72d420bed62d33663c20f7416f8cec0c953173",
+        "source_classification": "reusable_generic",
+        "source_document_id": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+        "source_issued_label": null
+      },
+      "identity_resolution": {
+        "current_entitlement_publication_eligibility": "eligible",
+        "currentness_evidence": {
+          "currentness_evidence_conclusion": "sufficient_for_current_observed_review",
+          "currentness_evidence_id": "dce_28b414b54686f65a",
+          "currentness_evidence_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/governance/bajaj_my_health_care_v2_currentness_evidence_20260820.json",
+          "currentness_evidence_sha256": "0e41e551bd1dac814498a769259386392d3ee73e08021a39df901a9f78d51ad7",
+          "positive_currentness_evidence_count": 1
+        },
+        "evidence_review_eligibility": "eligible_for_evidence_review",
+        "identity_signals": [
+          {
+            "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+            "signal_type": "uin_exact_match",
+            "verification": "document_embedded_text"
+          },
+          {
+            "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+            "signal_type": "canonical_title_match",
+            "verification": "document_embedded_text"
+          },
+          {
+            "evidence_reference": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+            "signal_type": "manual_document_review",
+            "verification": "manual_reviewed"
+          }
+        ],
+        "resolution_status": "resolved",
+        "review_rationale": "Product/document identity remains resolved for the immutable v2 05dc2913 artifact. A retained byte-identical observation from the official Bajaj policy-wording URL plus retained official source-page evidence supports current_observed_reviewed. This transition makes governed facts eligible for publication review only; it does not auto-publish facts, manufacture copayment, or determine customer entitlement. The historical v1 remains immutable and separate.",
+        "source_observation_review": {
+          "byte_comparison_status": "byte_identical_observed",
+          "observation_id": "bajaj_my_health_care_policy_wording_v2_20260820_current_observation",
+          "observation_record_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/governance/bajaj_my_health_care_v2_source_observation_20260820.json",
+          "observation_record_sha256": "7b30c5f886492aef6de160a2f550d069b48091a590888ad778da623c40ae0e8f",
+          "review_rationale": "Reviewed the retained official-source observation for the exact registered v2 artifact. The official Bajaj policy-wording URL returned bytes hashing to 05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158, identical to the v2 registration, and the observation is bound to the same v2 registration path and product identity.",
+          "reviewed_at": "2026-08-20T22:14:00+05:30",
+          "reviewed_by_human": true,
+          "reviewed_temporal_status": "current_observed_reviewed"
+        },
+        "temporal_status": "current_observed_reviewed"
+      }
+    }
+  ],
+  "guardrails": [
+    "This overlay is non-mutating and does not replace source registration, document classification, canonical projection, or publication artifacts.",
+    "A matching UIN is a strong product-identity signal but does not establish document-version compatibility by itself.",
+    "Only resolved reusable-generic documents are eligible for evidence review.",
+    "Historical, replaced, compatibility-unverified, unknown, and observation-failed documents cannot establish current product entitlement publication.",
+    "A source-observation record is evidence only. It can affect temporal status only through an explicit human review bound to the same immutable registered document version.",
+    "current_observed_reviewed additionally requires a valid immutable currentness-evidence record with positive official currentness proof; reviewer assertion alone is insufficient.",
+    "This overlay records identity and temporal review; it does not itself publish a product fact or legal conclusion."
+  ],
+  "overlay_status": "reviewed_document_identity_resolution_recorded_not_published",
+  "overlay_type": "document_identity_resolution_overlay_v1",
+  "product_identity_reference": {
+    "canonical_product_name": "My Health Care Plan",
+    "entity_id": "bajaj_allianz_general:my_health_care",
+    "identity_record_path": "knowledge/factory/product_identity_references/bajaj_allianz_general_my_health_care.product_identity_reference.json",
+    "identity_record_sha256": "846efb8e4255cc3480b2e8999426fe953477b4daf2912b0ca43bd8aa8f54fa09",
+    "insurer_id": "bajaj_allianz_general",
+    "product_id": "my_health_care",
+    "uin": "BAJHLIP26074V022526"
+  },
+  "resolved_at": "2026-08-22T07:47:45.684747+00:00",
+  "reviewed_by_human": true,
+  "schema_version": "1.0"
+}

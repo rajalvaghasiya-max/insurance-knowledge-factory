@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "publication_spec_type": "governed_assertion_publication_v1",
+  "product_reference": "bajaj_allianz_general:my_health_care:v2",
+  "certification": {
+    "strategy": "conditional_copayment_binding_v1",
+    "binding_manifest_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_legal_condition_binding/bajaj_my_health_care_v2_copayment_binding.json",
+    "assertion_ids": [
+      "ga_bajaj_my_health_care_lab_radiology_unapproved_reimbursement_copay_v1"
+    ]
+  },
+  "publication_decision": {
+    "decision_id": "publication-decision:bajaj-my-health-care-v2:lab-radiology-copay",
+    "requested_status": "PUBLISH",
+    "decision_authority": "governed publication decision authority",
+    "decision_reasons": [
+      "The exact bounded assertion certified PASS/COMPLETE from current reviewed primary-legal evidence.",
+      "Only the historical bound_not_published publication-state boundary is explicitly resolved.",
+      "Publication remains scoped to the lab/radiology reimbursement-not-pre-approved condition and does not establish a product-level co-payment."
+    ],
+    "boundary_authorization": {
+      "authorization_id": "publication-boundary:bajaj-my-health-care-v2:lab-radiology-copay",
+      "resolved_boundary_tokens": [
+        "bound_not_published"
+      ],
+      "authorization_authority": "reviewed publication-boundary authorization",
+      "trace_references": [
+        "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_legal_condition_binding/bajaj_my_health_care_v2_copayment_binding.json",
+        "docs/architecture/bajaj_my_health_care_v2_copayment_certification_spec.json"
+      ]
+    },
+    "resolved_limitation_tokens": [
+      "bound_not_published"
+    ]
+  },
+  "authoritative_publication": {
+    "publication_id": "authoritative-publication:bajaj-my-health-care-v2:lab-radiology-copay",
+    "projection_id": "publication-projection:bajaj-my-health-care-v2:lab-radiology-copay",
+    "publication_authority": "governed authoritative publication authority",
+    "semantic_components": [
+      {
+        "component_id": "obligation_value",
+        "attribute_key": "rate"
+      },
+      {
+        "component_id": "trigger_condition",
+        "attribute_key": "trigger_condition"
+      },
+      {
+        "component_id": "applicability_scope",
+        "attribute_key": "applicability_scope"
+      }
+    ]
+  }
+}

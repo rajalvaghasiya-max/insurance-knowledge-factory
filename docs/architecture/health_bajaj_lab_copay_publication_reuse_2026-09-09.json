@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "record_type": "generic_publication_extension_v1",
+  "issue": 266,
+  "change_id": "health-bajaj-lab-copay-publication-v1",
+  "classification": "EXTEND",
+  "product": "bajaj_allianz_general:my_health_care",
+  "source_version_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+  "assertion_id": "ga_bajaj_my_health_care_lab_radiology_unapproved_reimbursement_copay_v1",
+  "publication_spec_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/governance/bajaj_my_health_care_v2_lab_radiology_copay_publication_spec.json",
+  "bounded_semantics": {
+    "rate": "20% of the admissible claim amount",
+    "trigger": "reimbursement claim was not pre-approved",
+    "scope": "Doctor Prescribed Investigations - Pathology & Radiology"
+  },
+  "governance": {
+    "resolved_boundary": "bound_not_published",
+    "retained_limitations": [
+      "Certification does not select policy-specific co-payment options or decide claim payment."
+    ],
+    "product_level_copayment_fact": "NOT_AUTHORIZED",
+    "policy_specific_rate_selection": "NOT_AUTHORIZED",
+    "claim_payment_decision": "NOT_AUTHORIZED"
+  },
+  "extension_scope": [
+    "Add a generic governed-data publication-decision builder.",
+    "Add a generic governed-data authoritative-publication builder.",
+    "Move Bajaj publication identifiers, boundary authorization, assertion selection, and semantic component mapping into a governed publication specification.",
+    "Remove Bajaj-specific publication Python modules.",
+    "Repair the generic conditional co-payment certification runner to preserve its governed binding path as certification trace."
+  ],
+  "genericity_gate": {
+    "product_specific_publication_python_after_completion": false,
+    "bajaj_publication_runtime_module_required": false,
+    "next_equivalent_copayment_product_requires_new_python": false,
+    "legacy_star_product_modules_remain": true,
+    "legacy_star_modules_are_not_required_by_the_new_governed_data_path": true
+  },
+  "proof_scope": [
+    "The generic governed conditional co-payment certification runner can certify the bounded recovered Bajaj assertion from its immutable August lineage.",
+    "The generic publication-decision builder can resolve only the data-declared bound_not_published boundary while retaining non-publication limitations.",
+    "The generic authoritative-publication builder can map certified components to receipt-bound structured semantic attributes from governed data.",
+    "Bajaj publication requires no Bajaj-specific Python module under publication_decision or authoritative_publication."
+  ],
+  "not_proven": [
+    "Reasoning consumes structured semantic attributes.",
+    "Conditional reasoning is concept-generic beyond co-payment.",
+    "Every legacy Star publication module has been migrated to governed-data publication.",
+    "A product-level Bajaj co-payment rate exists.",
+    "Any voluntary co-payment option is selected for a customer.",
+    "Any claim will be paid."
+  ],
+  "next_falsification": "After publication is validated and merged, materialize the authoritative publication into runtime evidence and pressure the existing co-payment reasoning lane with a structure-only control and a structured-precedence perturbation while preventing success through flat-text reparsing."
+}

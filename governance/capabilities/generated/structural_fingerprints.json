@@ -300,12 +300,13 @@
       "owned_module_paths": [
         "insurance_intelligence/authoritative_publication/__init__.py",
         "insurance_intelligence/authoritative_publication/gate.py",
+        "insurance_intelligence/authoritative_publication/governed.py",
         "insurance_intelligence/authoritative_publication/materializer.py",
         "insurance_intelligence/authoritative_publication/star_health.py",
         "insurance_intelligence/contracts/authoritative_publication.py",
         "insurance_intelligence/contracts/semantic.py"
       ],
-      "structural_fingerprint": "d487b339711eaf17ef1cfd280bb0769964bb998b09b7b80c0b41223fb49ffc06"
+      "structural_fingerprint": "5a7570130c5933502098223faec9aa7903affeb42ed8290b97fc14228e8f27b3"
     },
     {
       "capability_id": "II.PUBLICATION.DECISION",
@@ -314,9 +315,10 @@
         "insurance_intelligence/publication_decision/__init__.py",
         "insurance_intelligence/publication_decision/authorization.py",
         "insurance_intelligence/publication_decision/evaluator.py",
+        "insurance_intelligence/publication_decision/governed.py",
         "insurance_intelligence/publication_decision/star_health.py"
       ],
-      "structural_fingerprint": "2a4fc7a12e8091b9531aef2a27580fd46f148ddb41c34903eeb5daf6585f51f1"
+      "structural_fingerprint": "23b403aa077e9284234af50fa08b06ed6f57b10c44d15fd9294d87149a60827a"
     },
     {
       "capability_id": "II.REASONING.ENGINE",
@@ -389,7 +391,7 @@
         "insurance_intelligence/rule_certification/waiting_period_option_domain.py",
         "insurance_intelligence/rule_certification/waiting_period_option_domain_multispan.py"
       ],
-      "structural_fingerprint": "f18b839dc69b89057af0bce027ae86b81bcbd670e43508974971d255e8a1e9ba"
+      "structural_fingerprint": "76ad29fa41d0f644d3f7f1a68bb13c10d7a212328e0d266e0d06a87a25f4ec14"
     },
     {
       "capability_id": "II.TERMINOLOGY.GOVERNED_RESOLUTION",

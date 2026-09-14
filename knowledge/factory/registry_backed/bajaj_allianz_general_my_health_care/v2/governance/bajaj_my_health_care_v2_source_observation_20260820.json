@@ -1,0 +1,54 @@
+{
+  "byte_comparison": {
+    "observed_document_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+    "registered_document_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+    "status": "byte_identical_observed"
+  },
+  "guardrails": [
+    "This record binds a timestamped official-source observation to an already-registered immutable document version.",
+    "A byte-identical official observation proves only that the observed URL served the same bytes at the recorded time.",
+    "This record does not itself determine document currentness, document-version compatibility, current entitlement eligibility, or insurance facts.",
+    "Source-issued labels and effective-date signals are preserved as raw review inputs and require later human temporal review.",
+    "Failed retrieval is recorded honestly and does not prove withdrawal, replacement, or historical status."
+  ],
+  "observation_id": "bajaj_my_health_care_policy_wording_v2_20260820_current_observation",
+  "official_observation": {
+    "capture_strategy": "manual_direct_official_download_sha256_verified",
+    "content_type": "application/pdf",
+    "http_status": 200,
+    "observed_at": "2026-08-20T22:14:00+05:30",
+    "observed_pdf": {
+      "content_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+      "storage_locator": "archive/raw_pdf/bajaj_allianz_general/policy_wording/My-Health-Care-Plan1-PW__05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158.pdf"
+    },
+    "retrieval_status": "succeeded",
+    "source_page_artifact": {
+      "content_sha256": "948c0daa4941ce1414d2efd3a644d36a59f4dd9aec651cbd5dc3de89d970681b",
+      "storage_locator": "archive/web/bajaj_allianz_general/my_health_care/health_insurance_documents_20260820__948c0daa4941ce1414d2efd3a644d36a59f4dd9aec651cbd5dc3de89d970681b.html"
+    },
+    "source_page_url": "https://www.bajajgeneralinsurance.com/health-insurance-plans/health-insurance-documents.html",
+    "source_url": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/Health-PW/My-Health-Care-Plan1-PW.pdf",
+    "source_url_key": "https://www.bajajgeneralinsurance.com/download-documents/health-insurance/health-pw/my-health-care-plan1-pw.pdf"
+  },
+  "record_status": "source_observation_recorded_review_required",
+  "record_type": "source_observation_record_v1",
+  "recorded_at": "2026-08-22T07:47:26.502904+00:00",
+  "registered_document": {
+    "content_sha256": "05dc291324340d5293f9f5f430f44b14e3da34052d6357455714af2dfa499158",
+    "document_id": "bajaj_my_health_care_policy_wording_v2",
+    "document_version_id": "docver_bajaj_my_health_care_policy_wording_v2_05dc291324340d52",
+    "registration_path": "knowledge/factory/registry_backed/bajaj_allianz_general_my_health_care/v2/generic_source_registration/policy_wording_registration.json",
+    "registration_sha256": "734c08e0cabf27fb167f14b32e5cb10be642ffaea7764f15d7fb7238179f0a18"
+  },
+  "review_state": {
+    "review_rationale": null,
+    "reviewed_by_human": false,
+    "temporal_review_required": true
+  },
+  "schema_version": "1.0",
+  "source_signals": {
+    "effective_date_signal": null,
+    "source_issued_label": null,
+    "version_signal": "BAJHLIP26074V022526"
+  }
+}
