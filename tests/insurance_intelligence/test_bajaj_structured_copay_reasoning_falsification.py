@@ -55,6 +55,17 @@ def _attribute_values(packages) -> dict[str, str]:
     return values
 
 
+def _reason(packages):
+    return conditional_copayment_obligation(
+        build_rule_input(
+            requirement_id=REQUIREMENT_ID,
+            evidence=packages,
+            approved_context={},
+            scope="bajaj_allianz_general:my_health_care",
+        )
+    )[0]
+
+
 def test_published_bajaj_structured_semantics_drive_reasoning_without_parseable_prose() -> None:
     packages = _published_packages()
     attributes = _attribute_values(packages)
@@ -73,18 +84,32 @@ def test_published_bajaj_structured_semantics_drive_reasoning_without_parseable_
         )
         for package in packages
     )
-
-    finding = conditional_copayment_obligation(
-        build_rule_input(
-            requirement_id=REQUIREMENT_ID,
-            evidence=neutralized,
-            approved_context={},
-            scope="bajaj_allianz_general:my_health_care",
-        )
-    )[0]
+    finding = _reason(neutralized)
 
     assert finding.object_or_effect == "20% of the admissible claim amount"
     assert "not pre-approved" in (finding.trigger or "")
     assert finding.applicability_scope == (
         "For Doctor Prescribed Investigations - Pathology & Radiology"
     )
+    assert set(finding.evidence_ids) == {
+        package.evidence_id for package in packages if package.semantic_attributes
+    }
+
+
+def test_structured_rate_has_precedence_over_conflicting_legacy_prose() -> None:
+    packages = _published_packages()
+    perturbed = []
+    for package in packages:
+        semantic_attributes = tuple(
+            replace(attribute, value="15% of the admissible claim amount")
+            if attribute.key == "rate"
+            else attribute
+            for attribute in package.semantic_attributes
+        )
+        perturbed.append(replace(package, semantic_attributes=semantic_attributes))
+
+    finding = _reason(tuple(perturbed))
+
+    assert finding.object_or_effect == "15% of the admissible claim amount"
+    assert "20%" not in finding.object_or_effect
+    assert "not pre-approved" in (finding.trigger or "")
