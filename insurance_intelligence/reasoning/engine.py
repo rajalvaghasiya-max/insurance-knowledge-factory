@@ -25,6 +25,7 @@ from insurance_intelligence.reasoning.rules import (
 )
 from insurance_intelligence.reasoning.sufficiency import evaluate_reasoning_sufficiency
 from insurance_intelligence.reasoning.trace import ReasoningTraceBuilder
+from insurance_intelligence.topic_completeness.catalogue import default_topic_definitions
 
 
 class ReasoningEngineError(ValueError):
@@ -36,11 +37,37 @@ def _stable_id(prefix: str, payload: Mapping[str, object]) -> str:
     return f"{prefix}_{hashlib.sha256(encoded).hexdigest()[:20]}"
 
 
+def _normalized_topic_token(value: str) -> str:
+    return value.strip().lower().replace("-", "_")
+
+
 def _topic(evidence: Sequence[EvidencePackage]) -> str:
-    values = {item.field_or_topic.strip().lower().replace("-", "_") for item in evidence}
+    values = {_normalized_topic_token(item.field_or_topic) for item in evidence}
     if values & {"copay", "co_payment", "conditional_copayment"}:
+        # Backward-compatible runtime topic used by the existing co-payment rules.
         return "conditional_copayment"
-    return "documented_fact"
+
+    ranked: list[tuple[int, str]] = []
+    for definition in default_topic_definitions():
+        component_types = {
+            _normalized_topic_token(component.requirement_type)
+            for component in definition.components
+        }
+        score = len(values & component_types)
+        if score:
+            ranked.append((score, definition.topic_id))
+
+    if not ranked:
+        return "documented_fact"
+
+    ranked.sort(key=lambda item: (-item[0], item[1]))
+    best_score, best_topic = ranked[0]
+    tied_best = [topic for score, topic in ranked if score == best_score]
+    if best_score < 2 or len(tied_best) != 1:
+        # Shared component types such as APPLICABILITY_SCOPE and EXCEPTION_CONDITION
+        # are insufficient on their own to establish a concept topic safely.
+        return "documented_fact"
+    return best_topic
 
 
 def _requirement_type(data: ReasoningEngineInput, requirement_id: str) -> str:
