@@ -417,6 +417,81 @@ def conditional_copayment_trigger_unresolved(data: RuleInput) -> tuple[Finding, 
     return (finding,)
 
 
+_WAITING_PERIOD_REQUIRED_COMPONENTS = (
+    "WAITING_PERIOD_DURATION",
+    "WAITING_PERIOD_SUBJECT",
+    "WAITING_PERIOD_START_BASIS",
+)
+_WAITING_PERIOD_OPTIONAL_COMPONENTS = (
+    "APPLICABILITY_SCOPE",
+    "CONTINUITY_OR_CREDIT_RULE",
+    "EXCEPTION_CONDITION",
+)
+
+
+def _waiting_period_components(data: RuleInput) -> dict[str, EvidencePackage]:
+    selected: dict[str, EvidencePackage] = {}
+    for evidence in _usable(data.evidence):
+        component = evidence.field_or_topic.strip().upper()
+        if component not in {*_WAITING_PERIOD_REQUIRED_COMPONENTS, *_WAITING_PERIOD_OPTIONAL_COMPONENTS}:
+            continue
+        existing = selected.get(component)
+        if existing is not None and existing.claim.strip() != evidence.claim.strip():
+            raise ReasoningRuleError(f"conflicting governed waiting-period component: {component}")
+        selected[component] = evidence
+    missing = tuple(component for component in _WAITING_PERIOD_REQUIRED_COMPONENTS if component not in selected)
+    if missing:
+        raise ReasoningRuleError(
+            "governed waiting-period semantics are incomplete: missing " + ", ".join(missing)
+        )
+    return selected
+
+
+def waiting_period_applicability_unresolved(data: RuleInput) -> tuple[Finding, ...]:
+    """Expose governed waiting-period conditions without inventing customer facts."""
+    rule_id = "waiting_period_applicability_unresolved_v1"
+    components = _waiting_period_components(data)
+    duration = components["WAITING_PERIOD_DURATION"].claim.strip()
+    subject = components["WAITING_PERIOD_SUBJECT"].claim.strip()
+    start_basis = components["WAITING_PERIOD_START_BASIS"].claim.strip()
+    scope = components.get("APPLICABILITY_SCOPE")
+    continuity = components.get("CONTINUITY_OR_CREDIT_RULE")
+    exception = components.get("EXCEPTION_CONDITION")
+    evidence = tuple(components.values())
+    evidence_ids = tuple(sorted(item.evidence_id for item in evidence))
+    confidence = min(item.confidence for item in evidence)
+    condition = " ".join((duration, start_basis))
+    qualification_bits = [subject]
+    if continuity is not None:
+        qualification_bits.append(continuity.claim.strip())
+    if exception is not None:
+        qualification_bits.append(exception.claim.strip())
+    effect = "case-specific waiting-period applicability requires additional approved context"
+    finding = build_finding(
+        finding_id=_finding_id(rule_id, data, evidence_ids, effect),
+        requirement_id=data.requirement_id,
+        finding_type="UNRESOLVED_IMPLICATION",
+        subject="waiting period clause",
+        predicate="requires_case_context",
+        object_or_effect=effect,
+        condition=condition,
+        trigger=condition,
+        exception=" ".join(qualification_bits[1:]) or None,
+        applicability_scope=scope.claim.strip() if scope is not None else subject,
+        scope=data.scope,
+        finding_status="PARTIALLY_SUPPORTED",
+        derivation_type="CONDITIONAL_DERIVATION",
+        rule_id=rule_id,
+        rule_version=RULE_VERSION,
+        evidence_ids=evidence_ids,
+        limitations=(
+            "The approved context does not establish elapsed waiting-period time, continuity credit, or exception applicability.",
+        ),
+        confidence=min(confidence, 0.8),
+    )
+    return (finding,)
+
+
 def rule_definitions() -> tuple[ReasoningRuleDefinition, ...]:
     return (
         build_rule_definition(
@@ -468,6 +543,18 @@ def rule_definitions() -> tuple[ReasoningRuleDefinition, ...]:
             output_finding_types=("UNRESOLVED_IMPLICATION",),
             execution_priority=40,
         ),
+        build_rule_definition(
+            rule_id="waiting_period_applicability_unresolved_v1",
+            rule_version=RULE_VERSION,
+            domain="health",
+            topic="waiting_period",
+            supported_requirement_types=("ASSESS_APPLICABILITY",),
+            required_evidence_topics=("waiting_period",),
+            required_evidence_roles=("SUPPORTING",),
+            required_authority="AUTHORITATIVE",
+            output_finding_types=("UNRESOLVED_IMPLICATION",),
+            execution_priority=40,
+        ),
     )
 
 
@@ -481,6 +568,7 @@ def execute_rule(rule_id: str, data: RuleInput) -> tuple[Finding, ...]:
         "conditional_copayment_obligation_v1": conditional_copayment_obligation,
         "conditional_copayment_nontriggered_v1": conditional_copayment_nontriggered,
         "conditional_copayment_trigger_unresolved_v1": conditional_copayment_trigger_unresolved,
+        "waiting_period_applicability_unresolved_v1": waiting_period_applicability_unresolved,
     }
     try:
         executor = executors[rule_id]
