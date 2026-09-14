@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-canonical-reasoning-context-handoff-repair-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.CONTEXT.BUILDER",
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Repair the canonical context handoff after frozen PR #275 proved that the real REASONING adapter bypassed CONTEXT_BUILDING and reread request.customer_context directly. The repair introduces a bounded ContextBuilderOutput-to-reasoning-context projection that admits only active trusted resolved context, restores types only for explicitly registered safe control keys, fails closed on duplicate active keys or invalid control values, and routes REASONING through the stored canonical CONTEXT_BUILDING artifact.",
+  "supersession_impact": "No context, reasoning, or orchestration capability is superseded. Existing canonical stages and ReasoningEngine contracts remain unchanged; only the handoff source for reasoning context is repaired.",
+  "authority_impact": "No new insurance, recommendation, or claim authority is introduced. The repair narrows authority by ensuring deterministic reasoning receives only provenance-governed canonical context rather than raw request context."
+}

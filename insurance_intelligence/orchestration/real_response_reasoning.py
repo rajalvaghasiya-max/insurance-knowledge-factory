@@ -9,6 +9,8 @@ from __future__ import annotations
 
 from dataclasses import asdict
 
+from insurance_intelligence.context.reasoning_projection import project_reasoning_context
+from insurance_intelligence.contracts.context import ContextBuilderOutput
 from insurance_intelligence.contracts.evidence import EvidenceResolverOutput
 from insurance_intelligence.contracts.reasoning import (
     ReasoningEngineOutput,
@@ -48,12 +50,16 @@ def build_real_response_reasoning_adapters(
             _output_id(request.execution_id, "EVIDENCE_RESOLUTION_ENFORCED"),
             expected_type=EvidenceResolverOutput,
         )
+        context = dependencies.store.get(
+            _output_id(request.execution_id, "CONTEXT_BUILDING"),
+            expected_type=ContextBuilderOutput,
+        )
         output = ReasoningEngine().reason(
             build_reasoning_input(
                 request_id=request.execution_id,
                 reasoning_plan=plan,
                 evidence_resolution=evidence,
-                reasoning_context=dict(request.customer_context),
+                reasoning_context=project_reasoning_context(context),
                 strict_mode="STRICT",
             )
         )
