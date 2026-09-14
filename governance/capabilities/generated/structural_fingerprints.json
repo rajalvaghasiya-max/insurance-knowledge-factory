@@ -331,7 +331,7 @@
         "insurance_intelligence/reasoning/sufficiency.py",
         "insurance_intelligence/reasoning/trace.py"
       ],
-      "structural_fingerprint": "3cdafa569bd5e48b582b39608236b4bd8ef545000be7f41d1ceec10aad0abe20"
+      "structural_fingerprint": "218e4caf476575929f8ff49c6c11cc84a1006ca36d6c9fae9a66925d09ef5263"
     },
     {
       "capability_id": "II.RENDERING.EXIT_SAFETY",
