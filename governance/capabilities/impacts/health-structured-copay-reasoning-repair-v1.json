@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-structured-copay-reasoning-repair-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.REASONING.ENGINE"
+  ],
+  "rationale": "Repair the existing conditional co-payment reasoning rules after frozen falsification proved that authoritative published semantic attributes were materialized but ignored. The repair assembles governed rate, trigger, exception and applicability attributes across usable evidence packages, gives structured semantics precedence, fails closed on conflicting or incomplete structured co-payment semantics, and preserves the existing prose parser only as a legacy fallback when no structured co-payment semantics are present.",
+  "supersession_impact": "No reasoning capability or rule is superseded. Existing conditional co-payment rule IDs remain unchanged.",
+  "authority_impact": "No new reasoning or recommendation authority is introduced. The repair changes the source of already-authorized co-payment semantics from prose reparsing to governed structured evidence when that evidence is available, while preserving evidence IDs and existing fail-closed behavior."
+}
