@@ -5,7 +5,7 @@
   "capability_ids": [
     "II.REASONING.ENGINE"
   ],
-  "rationale": "Repair reasoning topic derivation after frozen falsification proved that certified non-co-payment waiting-period evidence was collapsed into documented_fact. The repair derives concept topics generically from the existing topic-completeness catalogue by matching governed evidence requirement types, requires a unique sufficiently-supported topic match, preserves the existing conditional_copayment runtime alias, and falls back to documented_fact on absent or ambiguous concept evidence.",
-  "supersession_impact": "No reasoning capability or rule is superseded. Existing rule IDs and registry contracts remain unchanged.",
-  "authority_impact": "No new reasoning or recommendation authority is introduced. The repair changes only concept-topic routing for already-governed evidence and fails closed to documented_fact when catalogue evidence is ambiguous or insufficient."
+  "rationale": "Repair reasoning topic derivation after frozen falsification proved that certified non-co-payment waiting-period evidence was collapsed into documented_fact. The repair derives concept topics generically from the existing topic-completeness catalogue by matching governed evidence requirement types, requires a unique sufficiently-supported topic match, preserves the existing conditional_copayment runtime alias, falls back to documented_fact on absent or ambiguous concept evidence, and synchronizes the reasoning registry's accepted topic vocabulary with the same generic topic catalogue so routed concepts are not rejected by a stale local enum.",
+  "supersession_impact": "No reasoning capability or executable rule is superseded. Existing rule IDs remain unchanged. The registry topic vocabulary is repaired to include generic catalogue topic IDs while retaining all legacy runtime topic tokens.",
+  "authority_impact": "No new reasoning or recommendation authority is introduced. The repair changes only concept-topic routing and registry admission for already-governed evidence; rule eligibility and output authority remain governed by the existing registered rules."
 }
