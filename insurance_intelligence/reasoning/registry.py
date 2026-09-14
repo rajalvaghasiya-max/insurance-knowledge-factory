@@ -7,8 +7,9 @@ from typing import Iterable, Sequence
 from insurance_intelligence.contracts.evidence import EVIDENCE_ROLES
 from insurance_intelligence.contracts.reasoning import FINDING_TYPES
 from insurance_intelligence.contracts.reasoning_plan import AUTHORITY_REQUIREMENTS, DOMAIN_VALUES
+from insurance_intelligence.topic_completeness.catalogue import default_topic_definitions
 
-RULE_TOPICS = frozenset(
+_LEGACY_RULE_TOPICS = frozenset(
     {
         "any",
         "copay",
@@ -19,6 +20,9 @@ RULE_TOPICS = frozenset(
         "claim_condition",
         "documented_fact",
     }
+)
+RULE_TOPICS = frozenset(
+    set(_LEGACY_RULE_TOPICS) | {definition.topic_id for definition in default_topic_definitions()}
 )
 
 
