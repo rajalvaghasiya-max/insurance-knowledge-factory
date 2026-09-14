@@ -320,7 +320,7 @@ def test_runtime_rule_inventory_confirms_manufacturing_gap_without_architecture_
     topics = {item.topic for item in definitions}
     finding_types = {finding_type for item in definitions for finding_type in item.output_finding_types}
 
-    assert topics == {"any", "conditional_copayment"}
+    assert topics == {"any", "conditional_copayment", "waiting_period"}
     assert "EXCLUSION_EFFECT" not in finding_types
     assert "COVERAGE_EFFECT" not in finding_types
     assert _spec()["bounded_conclusion"] == {
