@@ -59,7 +59,7 @@ def _interpretive_waiting_period_inputs():
         request_id=request_id,
         reasoning_plan=plan,
         evidence_resolution=evidence_output,
-        reasoning_context={},
+        reasoning_context={"case_specific_applicability": True},
         strict_mode="STRICT",
     )
     return plan, evidence_output, reasoning_input
