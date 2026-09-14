@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-generic-topic-derivation-repair-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.REASONING.ENGINE"
+  ],
+  "rationale": "Repair reasoning topic derivation after frozen falsification proved that certified non-co-payment waiting-period evidence was collapsed into documented_fact. The repair derives concept topics generically from the existing topic-completeness catalogue by matching governed evidence requirement types, requires a unique sufficiently-supported topic match, preserves the existing conditional_copayment runtime alias, and falls back to documented_fact on absent or ambiguous concept evidence.",
+  "supersession_impact": "No reasoning capability or rule is superseded. Existing rule IDs and registry contracts remain unchanged.",
+  "authority_impact": "No new reasoning or recommendation authority is introduced. The repair changes only concept-topic routing for already-governed evidence and fails closed to documented_fact when catalogue evidence is ambiguous or insufficient."
+}
