@@ -164,6 +164,7 @@ def test_default_registry_orders_rules_deterministically():
         "conditional_copayment_obligation_v1",
         "conditional_copayment_nontriggered_v1",
         "conditional_copayment_trigger_unresolved_v1",
+        "waiting_period_applicability_unresolved_v1",
     ]
 
 
