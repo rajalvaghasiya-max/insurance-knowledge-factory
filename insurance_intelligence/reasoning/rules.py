@@ -270,13 +270,74 @@ def _copay_evidence(data: RuleInput) -> EvidencePackage:
     return selected
 
 
-def conditional_copayment_obligation(data: RuleInput) -> tuple[Finding, ...]:
-    rule_id = "conditional_copayment_obligation_v1"
+_STRUCTURED_COPAY_KEYS = frozenset(
+    {"rate", "trigger_condition", "exception_condition", "applicability_scope"}
+)
+
+
+def _structured_copay_semantics(
+    data: RuleInput,
+) -> tuple[str, str, str | None, str | None, tuple[str, ...], float] | None:
+    values: dict[str, str] = {}
+    evidence_ids: list[str] = []
+    confidence = 1.0
+    found = False
+    for evidence in _usable(data.evidence):
+        for attribute in evidence.semantic_attributes:
+            if attribute.key not in _STRUCTURED_COPAY_KEYS:
+                continue
+            found = True
+            value = _nonempty(attribute.value, f"semantic attribute {attribute.key}")
+            existing = values.get(attribute.key)
+            if existing is not None and existing != value:
+                raise ReasoningRuleError(
+                    f"conflicting structured co-payment semantic attribute: {attribute.key}"
+                )
+            values[attribute.key] = value
+            if evidence.evidence_id not in evidence_ids:
+                evidence_ids.append(evidence.evidence_id)
+            confidence = min(confidence, evidence.confidence)
+    if not found:
+        return None
+    missing = tuple(key for key in ("rate", "trigger_condition") if key not in values)
+    if missing:
+        raise ReasoningRuleError(
+            "structured co-payment semantics are incomplete: missing " + ", ".join(missing)
+        )
+    return (
+        values["rate"],
+        values["trigger_condition"],
+        values.get("exception_condition"),
+        values.get("applicability_scope"),
+        tuple(evidence_ids),
+        confidence,
+    )
+
+
+def _copay_semantics(
+    data: RuleInput,
+) -> tuple[str, str, str | None, str | None, tuple[str, ...], float]:
+    structured = _structured_copay_semantics(data)
+    if structured is not None:
+        return structured
     evidence = _copay_evidence(data)
     trigger, exception, applicability_scope = _conditional_semantics(evidence)
     effect = _copayment_effect(evidence)
+    return (
+        effect,
+        trigger,
+        exception,
+        applicability_scope,
+        (evidence.evidence_id,),
+        evidence.confidence,
+    )
+
+
+def conditional_copayment_obligation(data: RuleInput) -> tuple[Finding, ...]:
+    rule_id = "conditional_copayment_obligation_v1"
+    effect, trigger, exception, applicability_scope, evidence_ids, confidence = _copay_semantics(data)
     finding = build_finding(
-        finding_id=_finding_id(rule_id, data, (evidence.evidence_id,), effect),
+        finding_id=_finding_id(rule_id, data, evidence_ids, effect),
         requirement_id=data.requirement_id,
         finding_type="CLAIM_COST_SHARING",
         subject="insured",
@@ -291,22 +352,21 @@ def conditional_copayment_obligation(data: RuleInput) -> tuple[Finding, ...]:
         derivation_type="CONDITIONAL_DERIVATION",
         rule_id=rule_id,
         rule_version=RULE_VERSION,
-        evidence_ids=(evidence.evidence_id,),
-        confidence=min(evidence.confidence, 0.95),
+        evidence_ids=evidence_ids,
+        confidence=min(confidence, 0.95),
     )
     return (finding,)
 
 
 def conditional_copayment_nontriggered(data: RuleInput) -> tuple[Finding, ...]:
     rule_id = "conditional_copayment_nontriggered_v1"
-    evidence = _copay_evidence(data)
     status = data.approved_context.get("conditional_copayment_trigger_status")
     if status != "NOT_TRIGGERED":
         raise ReasoningRuleError("approved trigger status NOT_TRIGGERED is required")
-    trigger, exception, applicability_scope = _conditional_semantics(evidence)
+    _, trigger, exception, applicability_scope, evidence_ids, confidence = _copay_semantics(data)
     effect = "the documented conditional co-payment obligation is not triggered"
     finding = build_finding(
-        finding_id=_finding_id(rule_id, data, (evidence.evidence_id,), effect),
+        finding_id=_finding_id(rule_id, data, evidence_ids, effect),
         requirement_id=data.requirement_id,
         finding_type="CLAIM_CONDITION",
         subject="conditional co-payment obligation",
@@ -321,22 +381,21 @@ def conditional_copayment_nontriggered(data: RuleInput) -> tuple[Finding, ...]:
         derivation_type="DETERMINISTIC_DERIVATION",
         rule_id=rule_id,
         rule_version=RULE_VERSION,
-        evidence_ids=(evidence.evidence_id,),
-        confidence=min(evidence.confidence, 0.95),
+        evidence_ids=evidence_ids,
+        confidence=min(confidence, 0.95),
     )
     return (finding,)
 
 
 def conditional_copayment_trigger_unresolved(data: RuleInput) -> tuple[Finding, ...]:
     rule_id = "conditional_copayment_trigger_unresolved_v1"
-    evidence = _copay_evidence(data)
     status = data.approved_context.get("conditional_copayment_trigger_status", "UNRESOLVED")
     if status not in {None, "UNRESOLVED"}:
         raise ReasoningRuleError("trigger-unresolved rule requires absent or UNRESOLVED trigger status")
-    trigger, exception, applicability_scope = _conditional_semantics(evidence)
+    _, trigger, exception, applicability_scope, evidence_ids, confidence = _copay_semantics(data)
     effect = "case-specific applicability cannot be concluded from the approved context"
     finding = build_finding(
-        finding_id=_finding_id(rule_id, data, (evidence.evidence_id,), effect),
+        finding_id=_finding_id(rule_id, data, evidence_ids, effect),
         requirement_id=data.requirement_id,
         finding_type="UNRESOLVED_IMPLICATION",
         subject="conditional co-payment clause",
@@ -351,9 +410,9 @@ def conditional_copayment_trigger_unresolved(data: RuleInput) -> tuple[Finding, 
         derivation_type="CONDITIONAL_DERIVATION",
         rule_id=rule_id,
         rule_version=RULE_VERSION,
-        evidence_ids=(evidence.evidence_id,),
+        evidence_ids=evidence_ids,
         limitations=("The actual trigger state is not present in approved context.",),
-        confidence=min(evidence.confidence, 0.8),
+        confidence=min(confidence, 0.8),
     )
     return (finding,)
 
