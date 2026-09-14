@@ -81,10 +81,11 @@
       "owned_module_paths": [
         "insurance_intelligence/context/__init__.py",
         "insurance_intelligence/context/builder.py",
+        "insurance_intelligence/context/reasoning_projection.py",
         "insurance_intelligence/context/requirements.py",
         "insurance_intelligence/contracts/context.py"
       ],
-      "structural_fingerprint": "1013f747447eae773fdcb76732f2baa716dd0e6ff7e82e61b8b3f10087489060"
+      "structural_fingerprint": "a38ea0b6e8e29f59f9786d2877a0864a80cdbaab8aaf3cf7e6c883e68f9ce9a4"
     },
     {
       "capability_id": "II.COVERAGE.REGISTRY",
@@ -274,7 +275,7 @@
         "insurance_intelligence/orchestration/service.py",
         "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
-      "structural_fingerprint": "12a1e0105f7c4abbaa76b9e8d3ec193b4e27770bd3457b125fb3206ee61532e3"
+      "structural_fingerprint": "1192055d2428342a0bba1d1061dfccb70c46862002f2e1fe671245ee380ce30f"
     },
     {
       "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",
