@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-waiting-period-applicability-rule-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.REASONING.ENGINE"
+  ],
+  "rationale": "Extend the existing reasoning engine with one topic-specific waiting_period ASSESS_APPLICABILITY rule after frozen falsification proved routing already reaches NO_APPLICABLE_RULE cleanly. The rule consumes existing governed waiting-period component types, produces only an unresolved conditional implication when customer-specific elapsed-time, continuity, or exception facts are absent, and does not add product-specific runtime logic or DERIVE_IMPLICATIONS handling.",
+  "supersession_impact": "No existing rule or capability is superseded. Existing factual and conditional co-payment rules remain unchanged.",
+  "authority_impact": "No new claim-payment, eligibility, or recommendation authority is introduced. The rule explicitly withholds a case-specific applicability conclusion when approved customer facts are insufficient."
+}
