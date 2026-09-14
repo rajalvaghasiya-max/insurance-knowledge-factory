@@ -1,9 +1,11 @@
 from dataclasses import replace
 
 from insurance_intelligence.reasoning.engine import _topic
+from insurance_intelligence.reasoning.registry import RULE_TOPICS
 from insurance_intelligence.rule_certification.star_health_initial_waiting_period import (
     build_star_comprehensive_initial_waiting_period_case,
 )
+from insurance_intelligence.topic_completeness.catalogue import default_topic_definitions
 
 
 def test_certified_waiting_period_components_resolve_to_waiting_period_topic() -> None:
@@ -33,3 +35,9 @@ def test_existing_copay_runtime_topic_alias_is_preserved() -> None:
     )
 
     assert _topic((evidence,)) == "conditional_copayment"
+
+
+def test_reasoning_registry_accepts_every_catalogue_topic() -> None:
+    catalogue_topics = {definition.topic_id for definition in default_topic_definitions()}
+
+    assert catalogue_topics <= RULE_TOPICS
