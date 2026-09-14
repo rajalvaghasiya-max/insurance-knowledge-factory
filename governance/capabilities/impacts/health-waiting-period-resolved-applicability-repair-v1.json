@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-waiting-period-resolved-applicability-repair-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.REASONING.ENGINE"
+  ],
+  "rationale": "Repair the bounded waiting-period ASSESS_APPLICABILITY lane after frozen PR #277 proved that sufficient approved case context still fell through to the unresolved waiting-period rule. The repair adds a generic resolved waiting-period evaluator that consumes existing governed waiting-period components plus approved policy start date, claim date, continuity-credit status, and exception status. It resolves only dates safely before or after the calculated duration boundary, fails closed on the exact boundary when the governed wording does not establish an activation convention, and preserves the existing unresolved rule as fallback whenever material case context is absent.",
+  "supersession_impact": "No existing reasoning capability or rule is replaced. The existing waiting_period_applicability_unresolved_v1 rule remains registered and continues to handle incomplete case context. The new resolved rule has narrower required inputs and higher priority only when those inputs are present.",
+  "authority_impact": "No claim approval, payment, coverage, recommendation, or new insurance authority is introduced. The evaluator resolves only the waiting-period timeline state under governed evidence and approved case facts, and explicitly preserves final claim-decision limitations."
+}
