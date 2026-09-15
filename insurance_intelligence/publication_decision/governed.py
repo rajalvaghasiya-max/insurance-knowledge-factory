@@ -166,27 +166,30 @@ def build_governed_publication_decision(
         repository_root=repository_root,
     )
     decision = _mapping(spec.get("publication_decision"), "publication_decision")
-    boundary = _mapping(
-        decision.get("boundary_authorization"),
-        "publication_decision.boundary_authorization",
-    )
-    resolved_tokens = _strings(
-        boundary.get("resolved_boundary_tokens"),
-        "publication_decision.boundary_authorization.resolved_boundary_tokens",
-    )
-    authorization = build_publication_boundary_authorization(
-        authorization_id=_text(boundary.get("authorization_id"), "authorization_id"),
-        governed_subject_reference=certification.governed_subject_reference,
-        certification_id=certification.certification_id,
-        resolved_boundary_tokens=resolved_tokens,
-        authorization_authority=_text(
-            boundary.get("authorization_authority"), "authorization_authority"
-        ),
-        trace_references=_strings(
-            boundary.get("trace_references"),
-            "publication_decision.boundary_authorization.trace_references",
-        ),
-    )
+    boundary_value = decision.get("boundary_authorization")
+    authorization = None
+    if boundary_value is not None:
+        boundary = _mapping(
+            boundary_value,
+            "publication_decision.boundary_authorization",
+        )
+        resolved_tokens = _strings(
+            boundary.get("resolved_boundary_tokens"),
+            "publication_decision.boundary_authorization.resolved_boundary_tokens",
+        )
+        authorization = build_publication_boundary_authorization(
+            authorization_id=_text(boundary.get("authorization_id"), "authorization_id"),
+            governed_subject_reference=certification.governed_subject_reference,
+            certification_id=certification.certification_id,
+            resolved_boundary_tokens=resolved_tokens,
+            authorization_authority=_text(
+                boundary.get("authorization_authority"), "authorization_authority"
+            ),
+            trace_references=_strings(
+                boundary.get("trace_references"),
+                "publication_decision.boundary_authorization.trace_references",
+            ),
+        )
     limitation_tokens = tuple(
         token.casefold()
         for token in _strings(
