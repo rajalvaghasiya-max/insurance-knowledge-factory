@@ -364,11 +364,12 @@
         "insurance_intelligence/contracts/response.py",
         "insurance_intelligence/response/__init__.py",
         "insurance_intelligence/response/assembler.py",
+        "insurance_intelligence/response/human_answer.py",
         "insurance_intelligence/response/registry.py",
         "insurance_intelligence/response/service.py",
         "insurance_intelligence/response/validator.py"
       ],
-      "structural_fingerprint": "dbb7dd7aeb4098ae7aa3c62c6bc1a0c9069fc50f889cc7228a962bab6884339a"
+      "structural_fingerprint": "3d8b72ffe1f6df0da57ddc4f3805e462dd2201a8b3bc281349fbb3355890e129"
     },
     {
       "capability_id": "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
