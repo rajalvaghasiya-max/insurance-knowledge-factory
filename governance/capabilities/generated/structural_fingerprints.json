@@ -319,7 +319,7 @@
         "insurance_intelligence/publication_decision/governed.py",
         "insurance_intelligence/publication_decision/star_health.py"
       ],
-      "structural_fingerprint": "1b702e647b43c443a3f02d9123a0d27ceb8328c807911ce059ec9c2412e86468"
+      "structural_fingerprint": "76685787d3348e6a64fb9205fcbb41951cfb25662845a6f60b8ff3dab99dcc46"
     },
     {
       "capability_id": "II.REASONING.ENGINE",
