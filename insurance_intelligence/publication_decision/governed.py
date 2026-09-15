@@ -117,7 +117,6 @@ def _build_fixture_certification_context(certification: Mapping[str, Any]):
         expectation=case.expectation,
         evidence_output=case.evidence_output,
         domain=domain,
-        limitations=case.evidence_output.limitations,
     )
     return case, result
 
