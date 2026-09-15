@@ -3,7 +3,7 @@
   "change_id": "d0-star-initial-waiting-period-lineage-repair-v1",
   "classification": "REPAIR",
   "capability_ids": [
-    "II.RULE.CERTIFICATION"
+    "II.RULE_CERTIFICATION.GOVERNED_RUNNER"
   ],
   "rationale": "Repair the Star Comprehensive initial waiting-period certification fixture so its already-VERIFIED evidence lineage is represented in EvidenceResolverOutput.resolution_trace and therefore survives through the existing generic RuleCertificationRunner into certification trace references. This aligns the fixture with the established generic waiting-period certification lineage convention exposed by the D0 authoritative-publication falsification.",
   "supersession_impact": "None. The certified rule content, evidence packages, topic-completeness requirements, and limitations are unchanged; only the missing governed resolution trace is restored.",
