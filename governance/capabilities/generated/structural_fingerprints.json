@@ -330,9 +330,10 @@
         "insurance_intelligence/reasoning/registry.py",
         "insurance_intelligence/reasoning/rules.py",
         "insurance_intelligence/reasoning/sufficiency.py",
-        "insurance_intelligence/reasoning/trace.py"
+        "insurance_intelligence/reasoning/trace.py",
+        "insurance_intelligence/reasoning/waiting_period_applicability.py"
       ],
-      "structural_fingerprint": "78e8dbc6c5cea9c5ca8a086de6edef6ccf888f38c3d58e51b1e41dbc8b8f7b20"
+      "structural_fingerprint": "e82ac69c56f51de42655a1b408cedf597787039e085b482d81029ed6c7f4d686"
     },
     {
       "capability_id": "II.RENDERING.EXIT_SAFETY",
