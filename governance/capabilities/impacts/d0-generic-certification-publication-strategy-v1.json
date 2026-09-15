@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-generic-certification-publication-strategy-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.PUBLICATION.DECISION"
+  ],
+  "rationale": "Extend the existing governed publication-decision capability so a governed publication spec can consume an already-existing RuleCertificationCaseFixture through the generic RuleCertificationRunner, rather than being limited to the conditional co-payment binding strategy. The fixture module is restricted to the governed rule-certification namespace and the factory, fixture type, and domain are validated. No insurer-specific or waiting-period-specific publication branch is introduced.",
+  "supersession_impact": "None. Existing conditional_copayment_binding_v1 publication behavior remains available and unchanged.",
+  "authority_impact": "No new publication authority is introduced. The extension only supplies a second governed certification input strategy to the existing publication-decision evaluator; publication permission and authoritative publication remain governed by their existing gates."
+}
