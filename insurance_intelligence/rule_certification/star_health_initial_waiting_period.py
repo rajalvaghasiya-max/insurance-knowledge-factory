@@ -7,6 +7,7 @@ from insurance_intelligence.contracts.evidence import (
     EvidenceResolverOutput,
     Lineage,
     RequirementResult,
+    TraceEvent,
 )
 from insurance_intelligence.contracts.rule_certification import (
     build_component_certification_expectation,
@@ -111,6 +112,61 @@ def _requirement(component_id: str) -> RequirementResult:
     )
 
 
+def _resolution_trace(
+    *, case_id: str, packages: tuple[EvidencePackage, ...]
+) -> tuple[TraceEvent, ...]:
+    events: list[TraceEvent] = []
+    for package in packages:
+        sequence = len(events) + 1
+        events.append(
+            TraceEvent(
+                trace_id=f"trace:{case_id}:lineage:{package.evidence_id}",
+                sequence=sequence,
+                event_type="LINEAGE_VERIFIED",
+                requirement_id=package.requirement_id,
+                subject_reference=package.subject_reference,
+                repository="governed_repository",
+                candidate_reference=package.evidence_id,
+                decision="ACCEPT",
+                basis=(
+                    "Waiting-period evidence carries VERIFIED source-artifact and "
+                    "governed-record lineage."
+                ),
+                source_paths=(
+                    package.lineage.source_artifact_path,
+                    package.lineage.governed_record_path,
+                ),
+                order_marker=f"event-{sequence:04d}",
+            )
+        )
+    sequence = len(events) + 1
+    events.append(
+        TraceEvent(
+            trace_id=f"trace:{case_id}:resolution-completed",
+            sequence=sequence,
+            event_type="RESOLUTION_COMPLETED",
+            requirement_id=None,
+            subject_reference=packages[0].subject_reference,
+            repository="governed_repository",
+            candidate_reference=None,
+            decision="RESOLVED",
+            basis="All Star initial waiting-period evidence packages retain VERIFIED lineage.",
+            source_paths=tuple(
+                dict.fromkeys(
+                    path
+                    for package in packages
+                    for path in (
+                        package.lineage.source_artifact_path,
+                        package.lineage.governed_record_path,
+                    )
+                )
+            ),
+            order_marker=f"event-{sequence:04d}",
+        )
+    )
+    return tuple(events)
+
+
 def build_star_comprehensive_initial_waiting_period_case() -> RuleCertificationCaseFixture:
     """Build the exact Star Comprehensive initial waiting-period rule case."""
     case_id = "star_comprehensive_initial_waiting_period"
@@ -193,7 +249,7 @@ def build_star_comprehensive_initial_waiting_period_case() -> RuleCertificationC
             "Endorsements, continuity facts, and other policy terms.",
             "This certification does not guarantee claim approval or payment.",
         ),
-        resolution_trace=(),
+        resolution_trace=_resolution_trace(case_id=case_id, packages=evidence),
         resolution_status="RESOLVED",
         confidence=1.0,
     )
