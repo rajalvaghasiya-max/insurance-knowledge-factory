@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-generic-human-answer-projection-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "Extend the existing deterministic response capability with a separate read-only human-answer projection boundary after frozen PR #279 proved that the canonical ResponseAssemblerOutput is a machine contract with no generic human/provenance split. The projector copies approved answer, explanation and limitation text, keeps evidence and trace data in a separate provenance panel, and adds only generic workflow guidance for resolving an already-stated uncertainty. It does not alter reasoning, decision, explanation, product identity, or insurer-specific semantics.",
+  "supersession_impact": "No existing response, rendering, explanation or reasoning capability is superseded. ResponseAssemblerOutput remains the canonical deterministic machine response and safe fallback floor.",
+  "authority_impact": "No new insurance fact, recommendation, suitability, claim-approval or claim-payment authority is introduced. The human projection may only preserve already-approved response meaning and generic resolution workflow guidance; governed evidence and limitations remain authoritative upstream."
+}
