@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-optional-publication-boundary-repair-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.PUBLICATION.DECISION"
+  ],
+  "rationale": "Repair the governed publication-spec builder so it preserves the existing PublicationDecisionInput contract, where boundary_authorization is optional. Specs that have no resolvable publication boundary may omit the authorization object instead of manufacturing a bound_not_published token. Existing authorized publication specs remain unchanged and compatible.",
+  "supersession_impact": "None. No capability or publication authority is superseded.",
+  "authority_impact": "No new publication authority is introduced. The repair only aligns the governed data builder with the already-versioned publication-decision contract; publication permission and authoritative publication remain controlled by the existing evaluator and authoritative gate."
+}
