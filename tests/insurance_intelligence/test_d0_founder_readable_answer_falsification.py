@@ -1,20 +1,18 @@
-from dataclasses import fields
-
-from insurance_intelligence.contracts.response import ResponseAssemblerOutput
+from importlib import import_module, util
 
 
-def test_raw_response_contract_exposes_d0_human_projection_boundary():
+def test_d0_requires_a_separate_generic_human_projection_boundary():
     """Freeze the pre-D0 fact: machine response != human presentation contract."""
-    raw_fields = {item.name for item in fields(ResponseAssemblerOutput)}
-    required_human_projection_boundary = {
-        "human_answer",
-        "human_meaning",
-        "human_unknowns",
-        "resolution_next_step",
-        "provenance_panel",
-    }
-    assert required_human_projection_boundary <= raw_fields, (
-        "D0 falsification: canonical ResponseAssemblerOutput is still a machine contract; "
-        "it does not expose a separate generic human-answer/provenance projection with an "
-        "actionable uncertainty-resolution step. Freeze this failure before renderer work."
+    module_name = "insurance_intelligence.presentation.human_answer"
+    spec = util.find_spec(module_name)
+    assert spec is not None, (
+        "D0 falsification: there is no separate generic human-answer projection boundary. "
+        "Do not add human presentation fields to the canonical machine response; introduce "
+        "a separate projector instead."
+    )
+
+    module = import_module(module_name)
+    assert callable(getattr(module, "project_human_answer", None)), (
+        "D0 falsification: the separate presentation boundary does not expose one generic "
+        "project_human_answer path for all governed response cases."
     )
