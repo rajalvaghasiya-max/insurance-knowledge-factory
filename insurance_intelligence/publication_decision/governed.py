@@ -1,6 +1,7 @@
 """Generic governed publication-decision orchestration from data specifications."""
 from __future__ import annotations
 
+import importlib
 import json
 from pathlib import Path
 from typing import Any, Mapping
@@ -15,6 +16,8 @@ from insurance_intelligence.rule_certification.conditional_copayment import (
     build_conditional_copayment_certification_cases,
     run_conditional_copayment_certification_cases,
 )
+from insurance_intelligence.rule_certification.fixtures import RuleCertificationCaseFixture
+from insurance_intelligence.rule_certification.runner import run_rule_certification
 
 
 class GovernedPublicationSpecError(ValueError):
@@ -78,6 +81,47 @@ def load_governed_publication_spec(
     return spec
 
 
+def _build_fixture_certification_context(certification: Mapping[str, Any]):
+    module_name = _text(certification.get("fixture_module"), "certification.fixture_module")
+    if not module_name.startswith("insurance_intelligence.rule_certification."):
+        raise GovernedPublicationSpecError(
+            "certification.fixture_module must be under insurance_intelligence.rule_certification"
+        )
+    factory_name = _text(certification.get("fixture_factory"), "certification.fixture_factory")
+    if not factory_name.startswith("build_"):
+        raise GovernedPublicationSpecError(
+            "certification.fixture_factory must name a build_* fixture factory"
+        )
+    domain = _text(certification.get("domain"), "certification.domain")
+    try:
+        module = importlib.import_module(module_name)
+    except (ImportError, ValueError) as exc:
+        raise GovernedPublicationSpecError(
+            f"certification fixture module could not be loaded: {module_name}"
+        ) from exc
+    factory = getattr(module, factory_name, None)
+    if not callable(factory):
+        raise GovernedPublicationSpecError(
+            f"certification fixture factory was not found or callable: {factory_name}"
+        )
+    case = factory()
+    if not isinstance(case, RuleCertificationCaseFixture):
+        raise GovernedPublicationSpecError(
+            "certification fixture factory must return RuleCertificationCaseFixture"
+        )
+    if case.domain != domain:
+        raise GovernedPublicationSpecError(
+            "certification.domain must exactly match the fixture domain"
+        )
+    result = run_rule_certification(
+        expectation=case.expectation,
+        evidence_output=case.evidence_output,
+        domain=domain,
+        limitations=case.evidence_output.limitations,
+    )
+    return case, result
+
+
 def build_governed_publication_context(
     *, publication_spec_path: str | Path, repository_root: str | Path
 ):
@@ -87,29 +131,32 @@ def build_governed_publication_context(
     )
     certification = _mapping(spec.get("certification"), "certification")
     strategy = _text(certification.get("strategy"), "certification.strategy")
-    if strategy != "conditional_copayment_binding_v1":
-        raise GovernedPublicationSpecError(
-            f"unsupported certification strategy: {strategy}"
+    if strategy == "conditional_copayment_binding_v1":
+        binding_path = _safe_relative(
+            certification.get("binding_manifest_path"),
+            "certification.binding_manifest_path",
         )
-    binding_path = _safe_relative(
-        certification.get("binding_manifest_path"),
-        "certification.binding_manifest_path",
-    )
-    assertion_ids = _strings(certification.get("assertion_ids"), "certification.assertion_ids")
-    if len(assertion_ids) != 1:
-        raise GovernedPublicationSpecError(
-            "governed_assertion_publication_v1 currently requires exactly one assertion_id"
+        assertion_ids = _strings(certification.get("assertion_ids"), "certification.assertion_ids")
+        if len(assertion_ids) != 1:
+            raise GovernedPublicationSpecError(
+                "governed_assertion_publication_v1 currently requires exactly one assertion_id"
+            )
+        bundle = build_conditional_copayment_certification_cases(
+            binding_manifest_path=binding_path,
+            repository_root=repository_root,
+            assertion_ids=assertion_ids,
         )
-    bundle = build_conditional_copayment_certification_cases(
-        binding_manifest_path=binding_path,
-        repository_root=repository_root,
-        assertion_ids=assertion_ids,
+        if len(bundle.cases) != 1:
+            raise GovernedPublicationSpecError("publication spec must resolve exactly one certification case")
+        case = bundle.cases[0]
+        result = run_conditional_copayment_certification_cases(bundle)[0]
+        return spec, case, result
+    if strategy == "rule_certification_fixture_v1":
+        case, result = _build_fixture_certification_context(certification)
+        return spec, case, result
+    raise GovernedPublicationSpecError(
+        f"unsupported certification strategy: {strategy}"
     )
-    if len(bundle.cases) != 1:
-        raise GovernedPublicationSpecError("publication spec must resolve exactly one certification case")
-    case = bundle.cases[0]
-    result = run_conditional_copayment_certification_cases(bundle)[0]
-    return spec, case, result
 
 
 def build_governed_publication_decision(
