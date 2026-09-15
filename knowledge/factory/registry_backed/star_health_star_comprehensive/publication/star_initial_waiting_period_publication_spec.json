@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "publication_spec_type": "governed_assertion_publication_v1",
+  "product_reference": "star_health:star_comprehensive:SHAHLIP26044V092526",
+  "certification": {
+    "strategy": "rule_certification_fixture_v1",
+    "fixture_module": "insurance_intelligence.rule_certification.star_health_initial_waiting_period",
+    "fixture_factory": "build_star_comprehensive_initial_waiting_period_case",
+    "domain": "health"
+  },
+  "publication_decision": {
+    "decision_id": "publication-decision:star-health-star-comprehensive:initial-waiting-period",
+    "requested_status": "PUBLISH",
+    "decision_authority": "governed publication decision authority",
+    "decision_reasons": [
+      "The exact initial waiting-period mechanic certified PASS/COMPLETE from current registered primary policy-wording evidence.",
+      "Publication preserves the certified duration, subject, start basis, applicability scope, continuity qualification, accident exception, and all unresolved customer-specific limitations."
+    ],
+    "resolved_limitation_tokens": []
+  },
+  "authoritative_publication": {
+    "publication_id": "authoritative-publication:star-health-star-comprehensive:initial-waiting-period",
+    "projection_id": "publication-projection:star-health-star-comprehensive:initial-waiting-period",
+    "publication_authority": "governed authoritative publication authority",
+    "semantic_components": [
+      {
+        "component_id": "waiting_period_duration",
+        "attribute_key": "waiting_period_duration"
+      },
+      {
+        "component_id": "waiting_period_subject",
+        "attribute_key": "waiting_period_subject"
+      },
+      {
+        "component_id": "start_basis",
+        "attribute_key": "waiting_period_start_basis"
+      },
+      {
+        "component_id": "applicability_scope",
+        "attribute_key": "applicability_scope"
+      },
+      {
+        "component_id": "continuity_or_credit_rule",
+        "attribute_key": "continuity_or_credit_rule"
+      },
+      {
+        "component_id": "exception_condition",
+        "attribute_key": "exception_condition"
+      }
+    ]
+  }
+}
