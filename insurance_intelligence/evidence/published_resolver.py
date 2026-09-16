@@ -114,6 +114,21 @@ def _source_matches_evidence_category(source: PublishedEvidenceSource, requireme
     )
 
 
+def _optional_limited(requirement, *, has_required_requirements: bool) -> bool:
+    return has_required_requirements and not requirement.required
+
+
+def _unavailable_status(
+    requirement,
+    *,
+    has_required_requirements: bool,
+    blocking_status: str,
+) -> str:
+    if _optional_limited(requirement, has_required_requirements=has_required_requirements):
+        return "SATISFIED_WITH_LIMITATIONS"
+    return blocking_status
+
+
 def _evaluate_planned_requirements(requirements, results):
     """Aggregate required evidence strictly while preserving optional misses as limitations."""
     by_id = {result.requirement_id: result for result in results}
@@ -126,14 +141,13 @@ def _evaluate_planned_requirements(requirements, results):
         return evaluate(results)
 
     sufficiency, status = evaluate(required_results)
-    optional_missing = any(
+    optional_limited = any(
         not requirement.required
         and requirement.requirement_id in by_id
-        and by_id[requirement.requirement_id].status
-        not in {"SATISFIED", "SATISFIED_WITH_LIMITATIONS"}
+        and by_id[requirement.requirement_id].status != "SATISFIED"
         for requirement in requirements
     )
-    if optional_missing and status in {"RESOLVED", "RESOLVED_WITH_LIMITATIONS"}:
+    if optional_limited and status in {"RESOLVED", "RESOLVED_WITH_LIMITATIONS"}:
         return "SUFFICIENT", "RESOLVED_WITH_LIMITATIONS"
     return sufficiency, status
 
@@ -173,6 +187,7 @@ class PublishedEvidenceResolver:
         documents = []
         missing = []
         limitations = []
+        has_required_requirements = any(item.required for item in plan.required_evidence)
 
         for requirement in plan.required_evidence:
             semantic_subject = _semantic_subject(requirement, request.resolution_context)
@@ -198,13 +213,21 @@ class PublishedEvidenceResolver:
                     (),
                     (),
                 ))
-                missing.append(requirement.requirement_id)
+                reason = "governed entity could not be resolved unambiguously"
+                result_status = _unavailable_status(
+                    requirement,
+                    has_required_requirements=has_required_requirements,
+                    blocking_status="ENTITY_UNRESOLVED",
+                )
+                if result_status != "SATISFIED_WITH_LIMITATIONS":
+                    missing.append(requirement.requirement_id)
+                limitations.append(f"{requirement.requirement_id}: {reason}")
                 results.append(RequirementResult(
                     requirement.requirement_id,
-                    "ENTITY_UNRESOLVED",
+                    result_status,
                     (),
                     (),
-                    "governed entity could not be resolved unambiguously",
+                    reason,
                     False,
                     False,
                     False,
@@ -245,10 +268,16 @@ class PublishedEvidenceResolver:
             source = self._source_lookup(entity, lookup_requirement)
             if source is None:
                 reason = "no authoritative publication-backed evidence source matched the requirement"
-                missing.append(requirement.requirement_id)
+                result_status = _unavailable_status(
+                    requirement,
+                    has_required_requirements=has_required_requirements,
+                    blocking_status="MISSING",
+                )
+                if result_status != "SATISFIED_WITH_LIMITATIONS":
+                    missing.append(requirement.requirement_id)
                 limitations.append(f"{requirement.requirement_id}: {reason}")
                 results.append(RequirementResult(
-                    requirement.requirement_id, "MISSING", (), (), reason,
+                    requirement.requirement_id, result_status, (), (), reason,
                     False, False, False, "NONE", 0.0,
                 ))
                 trace.add(
@@ -263,10 +292,16 @@ class PublishedEvidenceResolver:
                     "authoritative publication source type does not satisfy planner evidence "
                     f"category {requirement.evidence_category}"
                 )
-                missing.append(requirement.requirement_id)
+                result_status = _unavailable_status(
+                    requirement,
+                    has_required_requirements=has_required_requirements,
+                    blocking_status="MISSING",
+                )
+                if result_status != "SATISFIED_WITH_LIMITATIONS":
+                    missing.append(requirement.requirement_id)
                 limitations.append(f"{requirement.requirement_id}: {reason}")
                 results.append(RequirementResult(
-                    requirement.requirement_id, "MISSING", (), (), reason,
+                    requirement.requirement_id, result_status, (), (), reason,
                     False, False, False, "NONE", 0.0,
                 ))
                 trace.add(
@@ -284,10 +319,16 @@ class PublishedEvidenceResolver:
                 )
             except PublishedEvidenceMaterializationError as exc:
                 reason = str(exc)
-                missing.append(requirement.requirement_id)
+                result_status = _unavailable_status(
+                    requirement,
+                    has_required_requirements=has_required_requirements,
+                    blocking_status="MISSING",
+                )
+                if result_status != "SATISFIED_WITH_LIMITATIONS":
+                    missing.append(requirement.requirement_id)
                 limitations.append(f"{requirement.requirement_id}: {reason}")
                 results.append(RequirementResult(
-                    requirement.requirement_id, "MISSING", (), (), reason,
+                    requirement.requirement_id, result_status, (), (), reason,
                     False, False, False, "NONE", 0.0,
                 ))
                 trace.add(
