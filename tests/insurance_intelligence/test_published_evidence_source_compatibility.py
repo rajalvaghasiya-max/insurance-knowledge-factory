@@ -137,6 +137,7 @@ def test_optional_schedule_miss_does_not_block_satisfied_required_wording() -> N
     assert output.sufficiency == "SUFFICIENT"
     assert {item.requirement_id: item.status for item in output.requirement_results} == {
         "required-wording": "SATISFIED",
-        "optional-schedule": "MISSING",
+        "optional-schedule": "SATISFIED_WITH_LIMITATIONS",
     }
-    assert "optional-schedule" in output.missing_evidence
+    assert "optional-schedule" not in output.missing_evidence
+    assert any("optional-schedule" in item for item in output.limitations)
