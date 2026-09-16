@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-publication-limitation-propagation-repair-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER",
+    "II.DECISION.DETERMINISTIC_SAFETY_GATE"
+  ],
+  "rationale": "Frozen failed PR #287 proved that authoritative publication limitations were lost before ResponseAssemblerOutput: the published resolver materialized governed evidence but did not retain the publication limitations, and the deterministic safety evaluator considered only finding-local limitations when choosing APPROVED versus APPROVED_WITH_LIMITATIONS. This repair preserves authoritative publication limitations on successful publication-backed evidence resolution and requires the existing decision safety boundary to retain upstream evidence/reasoning limitations when approving communication. The repair is generic and adds no insurer-, product-, topic-, or PED-specific runtime branch.",
+  "supersession_impact": "None. Existing publication admission, reasoning rules, explanation templates, response assembly, and human-answer projection remain unchanged. The repair restores safety metadata already present in authoritative publication and existing cross-stage contracts.",
+  "authority_impact": "No new authority is introduced and no gate is weakened. Published limitations remain governed by the authoritative publication record and are carried forward as mandatory communication constraints through the existing safety gate."
+}
