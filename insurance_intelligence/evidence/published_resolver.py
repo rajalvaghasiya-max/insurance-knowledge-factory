@@ -31,6 +31,11 @@ from insurance_intelligence.evidence.trace import TraceBuilder
 
 PublishedSourceLookup = Callable[[str, object], PublishedEvidenceSource | None]
 
+_EXACT_DOCUMENT_SOURCE_TYPES = {
+    "POLICY_WORDING": frozenset({"POLICY_WORDING"}),
+    "POLICY_SCHEDULE": frozenset({"POLICY_SCHEDULE"}),
+}
+
 
 def _id(prefix: str, *parts: object) -> str:
     return prefix + "_" + hashlib.sha256("|".join(map(str, parts)).encode()).hexdigest()[:16]
@@ -90,6 +95,22 @@ def _lookup_requirement(requirement, *, semantic_subject: str, plan_goal: str):
         requirement,
         subject_reference=semantic_subject,
         reason=f"{requirement.reason} {plan_goal}".strip(),
+    )
+
+
+def _source_matches_evidence_category(source: PublishedEvidenceSource, requirement) -> bool:
+    """Fail closed for planner categories that require an exact document role.
+
+    Published semantic facts may legitimately be reused for CLAUSE_TEXT or normalized-fact
+    requirements, but a primary policy wording must never masquerade as a policy schedule
+    (or vice versa) merely because topic text matches the plan goal.
+    """
+    allowed_source_types = _EXACT_DOCUMENT_SOURCE_TYPES.get(requirement.evidence_category)
+    if allowed_source_types is None:
+        return True
+    return any(
+        package.source_type in allowed_source_types
+        for package in source.certified_evidence.evidence_packages
     )
 
 
@@ -208,6 +229,24 @@ class PublishedEvidenceResolver:
                 ))
                 trace.add(
                     "DOCUMENT_REJECTED", "publication source missing", reason,
+                    requirement_id=requirement.requirement_id,
+                    subject_reference=semantic_subject,
+                )
+                continue
+
+            if not _source_matches_evidence_category(source, requirement):
+                reason = (
+                    "authoritative publication source type does not satisfy planner evidence "
+                    f"category {requirement.evidence_category}"
+                )
+                missing.append(requirement.requirement_id)
+                limitations.append(f"{requirement.requirement_id}: {reason}")
+                results.append(RequirementResult(
+                    requirement.requirement_id, "MISSING", (), (), reason,
+                    False, False, False, "NONE", 0.0,
+                ))
+                trace.add(
+                    "DOCUMENT_REJECTED", "publication source incompatible", reason,
                     requirement_id=requirement.requirement_id,
                     subject_reference=semantic_subject,
                 )
