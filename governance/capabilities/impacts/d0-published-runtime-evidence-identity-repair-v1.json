@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-published-runtime-evidence-identity-repair-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Frozen corrected D0 case-2 PR #290 proved that one authoritative publication can be selected for multiple planner evidence requirements in a single scenario resolution, but publication-backed materialization reused immutable certified evidence IDs for each requirement and violated the EvidenceResolverOutput global evidence-ID uniqueness invariant before reasoning could run. Repair requirement-scopes runtime EvidencePackage identity while retaining the immutable certified evidence ID and authoritative publication receipt in provenance.",
+  "supersession_impact": "No publication, certification, planning, reasoning, or answer capability is superseded. Existing publication admission and semantic content remain unchanged; only runtime materialized evidence identity is made requirement-safe.",
+  "authority_impact": "No new insurance fact, applicability, eligibility, claim-payment, or recommendation authority is introduced. The repair changes identity/provenance mechanics only and preserves the authoritative publication and certified evidence lineage used to justify each runtime package."
+}
