@@ -69,7 +69,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.DECISION.DETERMINISTIC_SAFETY_GATE`<br>Deterministic Decision and Safety Gate | `ACTIVE` | `REUSE` | Underlying deterministic safety-decision engine. In the current canonical path ordinary assertion access is mediated by II.DECISION.AUTHORITY_ENFORCEMENT; this base gate does not independently authorize advisory or recommendation paths. | None | `insurance_intelligence/decision`<br>`insurance_intelligence/contracts/decision.py` | `ad2bd1720ca8` |
+| `II.DECISION.DETERMINISTIC_SAFETY_GATE`<br>Deterministic Decision and Safety Gate | `ACTIVE` | `REUSE` | Underlying deterministic safety-decision engine. In the current canonical path ordinary assertion access is mediated by II.DECISION.AUTHORITY_ENFORCEMENT; this base gate does not independently authorize advisory or recommendation paths. | None | `insurance_intelligence/decision`<br>`insurance_intelligence/contracts/decision.py` | `b8cb5eed31d7` |
 
 ### INSURANCE_INTELLIGENCE_DECISION_GOVERNANCE
 
@@ -94,7 +94,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.EVIDENCE.GOVERNED_RESOLVER`<br>Governed Evidence Resolver | `ACTIVE` | `REUSE` | Underlying evidence-resolution engine. In the canonical current path it is callable only through II.EVIDENCE.INSTANCE_ENFORCEMENT when instance identity is required; it cannot manufacture identity or bypass that guard. | None | `insurance_intelligence/evidence`<br>`insurance_intelligence/contracts/evidence.py` | `7783a2285f56` |
+| `II.EVIDENCE.GOVERNED_RESOLVER`<br>Governed Evidence Resolver | `ACTIVE` | `REUSE` | Underlying evidence-resolution engine. In the canonical current path it is callable only through II.EVIDENCE.INSTANCE_ENFORCEMENT when instance identity is required; it cannot manufacture identity or bypass that guard. | None | `insurance_intelligence/evidence`<br>`insurance_intelligence/contracts/evidence.py` | `ed731a0d6cb1` |
 
 ### INSURANCE_INTELLIGENCE_EVIDENCE_GOVERNANCE
 
