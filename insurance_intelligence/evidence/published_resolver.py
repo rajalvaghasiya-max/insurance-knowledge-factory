@@ -114,6 +114,30 @@ def _source_matches_evidence_category(source: PublishedEvidenceSource, requireme
     )
 
 
+def _evaluate_planned_requirements(requirements, results):
+    """Aggregate required evidence strictly while preserving optional misses as limitations."""
+    by_id = {result.requirement_id: result for result in results}
+    required_results = tuple(
+        by_id[requirement.requirement_id]
+        for requirement in requirements
+        if requirement.required and requirement.requirement_id in by_id
+    )
+    if not required_results:
+        return evaluate(results)
+
+    sufficiency, status = evaluate(required_results)
+    optional_missing = any(
+        not requirement.required
+        and requirement.requirement_id in by_id
+        and by_id[requirement.requirement_id].status
+        not in {"SATISFIED", "SATISFIED_WITH_LIMITATIONS"}
+        for requirement in requirements
+    )
+    if optional_missing and status in {"RESOLVED", "RESOLVED_WITH_LIMITATIONS"}:
+        return "SUFFICIENT", "RESOLVED_WITH_LIMITATIONS"
+    return sufficiency, status
+
+
 class PublishedEvidenceResolver:
     """Resolve only authoritative-publication-backed evidence for USER_ANSWER."""
 
@@ -301,9 +325,9 @@ class PublishedEvidenceResolver:
                     source_paths=(source.publication.publication_id, source.publication.publication_receipt_id),
                 )
 
-        sufficiency, status = evaluate(results)
+        sufficiency, status = _evaluate_planned_requirements(plan.required_evidence, results)
         confidence = round(sum(item.confidence for item in results) / len(results), 4) if results else 1.0
-        trace.add("SUFFICIENCY_EVALUATED", sufficiency, "deterministic requirement-level aggregation")
+        trace.add("SUFFICIENCY_EVALUATED", sufficiency, "deterministic required/optional requirement aggregation")
         trace.add("RESOLUTION_COMPLETED", status, "resolution status derived from publication-backed evidence sufficiency")
         return validate_output(EvidenceResolverOutput(
             "1.0",
