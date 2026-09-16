@@ -43,7 +43,7 @@ def _request():
             insurer_id="star_health",
             product_id="star_comprehensive",
         ),
-        question="If I claim for an illness during the initial waiting period, what happens?",
+        question="If I claim for an illness on 2026-01-15, will the initial waiting period apply?",
         audience="CUSTOMER",
         knowledge_snapshot_id="star-initial-waiting-period-authoritative-v1",
         customer_context={
