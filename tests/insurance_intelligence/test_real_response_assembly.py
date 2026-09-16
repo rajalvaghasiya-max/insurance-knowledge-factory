@@ -17,6 +17,7 @@ from insurance_intelligence.orchestration.real_response_prefix import (
     CertifiedKnowledgeSelection,
     RealResponsePrefixDependencies,
 )
+from insurance_intelligence.response.human_answer import project_human_answer
 from insurance_intelligence.response.registry import (
     ResponseFormatRegistry,
     build_format_definition,
@@ -118,7 +119,7 @@ def _responses():
     ))
 
 
-def test_star_ped_factual_lane_reaches_response_assembly_with_machine_answer_and_lineage():
+def _run_real_star_ped_response():
     request = _request()
     dependencies = _dependencies(request)
     adapters = build_real_response_assembly_adapters(
@@ -146,6 +147,11 @@ def test_star_ped_factual_lane_reaches_response_assembly_with_machine_answer_and
 
     assert results[-1].stage == "RESPONSE_ASSEMBLY"
     response = dependencies.store.get(results[-1].outputs[0].output_id)
+    return request, dependencies, response
+
+
+def test_star_ped_factual_lane_reaches_response_assembly_with_machine_answer_and_lineage():
+    request, dependencies, response = _run_real_star_ped_response()
     assert response.response_status in {"ANSWER", "ANSWER_WITH_LIMITATIONS"}
     assert response.direct_answer
     included = tuple(section for section in response.sections if section.status == "INCLUDED")
@@ -170,3 +176,26 @@ def test_star_ped_factual_lane_reaches_response_assembly_with_machine_answer_and
     reasoning = dependencies.store.get(f"{request.execution_id}:real:reasoning")
     assert {item.rule_id for item in reasoning.rule_executions} == {"direct_documented_fact_v1"}
     assert not any(item.rule_id.startswith("conditional_copayment_") for item in reasoning.rule_executions)
+
+
+def test_d0_real_star_ped_machine_response_projects_to_governed_human_view():
+    _, _, response = _run_real_star_ped_response()
+    projection = project_human_answer(response)
+
+    assert projection.source_response_id == response.response_id
+    assert projection.human_view.answer == response.direct_answer
+    assert projection.human_view.unknowns == response.limitations
+    assert projection.provenance_panel.evidence_references == response.evidence_references
+    assert projection.provenance_panel.response_trace == response.response_trace
+
+    positive_text = " ".join((projection.human_view.answer, *projection.human_view.meaning)).lower()
+    assert "36" in positive_text
+    assert "continu" in positive_text or "portab" in positive_text
+    assert "12" not in positive_text
+
+    unknown_text = " ".join(projection.human_view.unknowns).lower()
+    assert "customer-specific eligibility" in unknown_text
+    assert "claim payment" in unknown_text
+    assert "12 months" in unknown_text
+    assert "policy-specific selection evidence" in unknown_text
+    assert projection.human_view.next_step is not None
