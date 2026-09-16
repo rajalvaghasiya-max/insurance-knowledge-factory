@@ -31,5 +31,5 @@ def test_star_initial_waiting_period_reaches_authoritative_publication_after_lin
         repository_root=REPOSITORY_ROOT,
     )
     assert publication.publication_status == "AUTHORITATIVE"
-    assert publication.governed_projection.topic_id == "waiting_period"
-    assert len(publication.governed_projection.semantic_components) == 6
+    assert publication.topic_id == "waiting_period"
+    assert len(publication.semantic_components) == 6
