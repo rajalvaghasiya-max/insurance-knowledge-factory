@@ -161,10 +161,39 @@ def test_d0_resolved_waiting_period_applicability_projects_to_human_answer() -> 
             input_ids=prior,
         )
         results.append(result)
-        assert result.status in {"SUCCEEDED", "SUCCEEDED_WITH_LIMITATIONS"}, (
-            result.stage,
-            result.failure.message if result.failure else result.limitations,
-        )
+        if result.status not in {"SUCCEEDED", "SUCCEEDED_WITH_LIMITATIONS"}:
+            diagnostic = None
+            if result.stage == "DECISION_GATE_AUTHORITY_ENFORCED":
+                authority = dependencies.store.get(
+                    f"{request.execution_id}:real:decision_gate_authority_enforced"
+                )
+                decision = authority.decision_output
+                diagnostic = {
+                    "decision": decision.decision if decision else None,
+                    "dispositions": tuple(
+                        (item.finding_id, item.disposition, item.basis)
+                        for item in (decision.finding_dispositions if decision else ())
+                    ),
+                    "issues": tuple(
+                        (item.issue_type, item.policy_id, item.description)
+                        for item in (decision.safety_issues if decision else ())
+                    ),
+                    "clarifications": tuple(
+                        item.reason for item in (decision.clarifications if decision else ())
+                    ),
+                    "limitations": decision.limitations if decision else (),
+                    "reasoning_status": dependencies.store.get(
+                        f"{request.execution_id}:real:reasoning"
+                    ).reasoning_status,
+                    "finding_count": len(
+                        dependencies.store.get(f"{request.execution_id}:real:reasoning").findings
+                    ),
+                }
+            assert False, (
+                result.stage,
+                result.failure.message if result.failure else result.limitations,
+                diagnostic,
+            )
         prior = tuple(item.output_id for item in result.outputs)
 
     reasoning = dependencies.store.get(f"{request.execution_id}:real:reasoning")
