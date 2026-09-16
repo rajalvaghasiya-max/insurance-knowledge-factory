@@ -8,6 +8,7 @@ EvidencePackage without parsing or reinterpreting claim text.
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
+from hashlib import sha256
 
 from insurance_intelligence.contracts.authoritative_publication import (
     AuthoritativePublicationRecord,
@@ -52,6 +53,39 @@ def _attributes_for_evidence(
     return tuple(by_key[key] for key in sorted(by_key))
 
 
+def _runtime_evidence_id(*, requirement_id: str, certified_evidence_id: str) -> str:
+    """Create a stable runtime identity for one certified item in one requirement.
+
+    Certified evidence identity remains immutable publication provenance. Runtime
+    EvidencePackage identity is requirement-scoped because the same authoritative
+    source may legitimately satisfy more than one planner requirement in one
+    resolution and EvidenceResolverOutput requires globally unique package IDs.
+    """
+    digest = sha256(
+        f"{requirement_id}\x1f{certified_evidence_id}".encode("utf-8")
+    ).hexdigest()[:20]
+    return f"published_ev_{digest}"
+
+
+def _runtime_attributes(
+    *,
+    publication: AuthoritativePublicationRecord,
+    certified_evidence_id: str,
+    runtime_ids: dict[str, str],
+) -> tuple[GovernedSemanticAttribute, ...]:
+    attributes = _attributes_for_evidence(publication, certified_evidence_id)
+    return tuple(
+        replace(
+            attribute,
+            evidence_references=tuple(
+                runtime_ids.get(reference, reference)
+                for reference in attribute.evidence_references
+            ),
+        )
+        for attribute in attributes
+    )
+
+
 def materialize_published_requirement(
     *,
     source: PublishedEvidenceSource,
@@ -91,17 +125,30 @@ def materialize_published_requirement(
     if not published_ids:
         raise PublishedEvidenceMaterializationError("authoritative publication contains no evidence references")
 
+    runtime_ids = {
+        evidence_id: _runtime_evidence_id(
+            requirement_id=requirement_id,
+            certified_evidence_id=evidence_id,
+        )
+        for evidence_id in published_ids
+    }
     packages = tuple(
         replace(
             by_id[evidence_id],
+            evidence_id=runtime_ids[evidence_id],
             requirement_id=requirement_id,
             subject_reference=subject_reference,
-            semantic_attributes=_attributes_for_evidence(publication, evidence_id),
+            semantic_attributes=_runtime_attributes(
+                publication=publication,
+                certified_evidence_id=evidence_id,
+                runtime_ids=runtime_ids,
+            ),
             retrieval_basis=by_id[evidence_id].retrieval_basis
             + (
                 "authoritative_publication_admission",
                 publication.publication_id,
                 publication.publication_receipt_id,
+                f"certified_evidence_id:{evidence_id}",
             ),
         )
         for evidence_id in published_ids
