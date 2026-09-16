@@ -61,9 +61,9 @@ def _instance_candidate(requirement, context: object, semantic_subject: str) -> 
     """Return the only governed instance candidate available for this requirement.
 
     Planner subject references may name semantic slots (for example ``term_or_concept``)
-    rather than product identities.  Exact candidate substitutions remain preferred.  If
+    rather than product identities. Exact candidate substitutions remain preferred. If
     the subject is semantic, one unique already-resolved candidate identity may be reused;
-    zero or multiple identities deliberately do not guess.  Direct canonical subjects keep
+    zero or multiple identities deliberately do not guess. Direct canonical subjects keep
     the historical resolver behaviour by falling back to the semantic subject itself.
     """
     candidates = _resolved_mapping(context, "resolved_candidate_references")
@@ -81,7 +81,7 @@ def _instance_candidate(requirement, context: object, semantic_subject: str) -> 
 def _lookup_requirement(requirement, *, semantic_subject: str, plan_goal: str):
     """Project resolved request semantics into the existing topic-neutral source lookup.
 
-    The planner's evidence requirement and plan goal are both governed planner output.  A
+    The planner's evidence requirement and plan goal are both governed planner output. A
     symbolic subject alone (``term_or_concept``) may not contain enough text to select one
     publication artifact, while the plan goal retains the user's bounded requested outcome.
     This projection changes neither evidence category nor authority/version requirements.
@@ -234,6 +234,7 @@ class PublishedEvidenceResolver:
                 )
                 continue
 
+            limitations.extend(source.publication.limitations)
             packages.extend(materialized)
             results.append(requirement_result)
             seen_documents: set[tuple[str, str]] = set()
@@ -276,7 +277,7 @@ class PublishedEvidenceResolver:
             (),
             tuple(missing),
             sufficiency,
-            tuple(limitations),
+            tuple(dict.fromkeys(limitations)),
             trace.build(),
             status,
             confidence,

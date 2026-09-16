@@ -123,11 +123,12 @@ def test_response_orchestration_routes_room_rent_through_publication_backed_user
         ),
     )
 
-    assert execution.result.status == "SUCCEEDED"
+    assert execution.result.status == "SUCCEEDED_WITH_LIMITATIONS"
     evidence_result = execution.result.stage_results[
         INTELLIGENCE_RESPONSE_STAGE_ORDER.index(EVIDENCE_STAGE)
     ]
-    assert evidence_result.status == "SUCCEEDED"
+    assert evidence_result.status == "SUCCEEDED_WITH_LIMITATIONS"
+    assert evidence_result.limitations
     assert len(evidence_result.outputs) == 1
     assert len(evidence_result.outputs[0].evidence_ids) == 5
     assert execution.result.released_response_id == execution.result.deterministic_response_id
@@ -143,10 +144,11 @@ def test_response_orchestration_routes_ped_waiting_period_through_authoritativel
         adapters=_adapters("What is the PED waiting period in Star Comprehensive?"),
     )
 
-    assert execution.result.status == "SUCCEEDED"
+    assert execution.result.status == "SUCCEEDED_WITH_LIMITATIONS"
     evidence_index = INTELLIGENCE_RESPONSE_STAGE_ORDER.index(EVIDENCE_STAGE)
     evidence_result = execution.result.stage_results[evidence_index]
-    assert evidence_result.status == "SUCCEEDED"
+    assert evidence_result.status == "SUCCEEDED_WITH_LIMITATIONS"
+    assert evidence_result.limitations
     assert len(evidence_result.outputs) == 1
     assert evidence_result.outputs[0].evidence_ids
     assert execution.result.released_response_id == execution.result.deterministic_response_id
