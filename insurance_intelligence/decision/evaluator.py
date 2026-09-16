@@ -153,7 +153,15 @@ def evaluate_finding(
     known_evidence = _evidence_by_id(evidence_resolution)
     issues: list[SafetyIssue] = []
     clarifications: list[ClarificationRequirement] = []
-    limitations: list[str] = list(finding.limitations)
+    limitations: list[str] = list(
+        dict.fromkeys(
+            (
+                *evidence_resolution.limitations,
+                *reasoning_output.limitations,
+                *finding.limitations,
+            )
+        )
+    )
 
     missing_ids = tuple(eid for eid in finding.evidence_ids if eid not in known_evidence)
     if missing_ids or not finding.evidence_ids:
@@ -297,7 +305,7 @@ def evaluate_finding(
     elif blocking:
         disposition = "BLOCKED"
         basis = "A blocking safety policy applies."
-    elif issues_out or finding.limitations or finding.finding_status in {"SUPPORTED_WITH_LIMITATIONS", "PARTIALLY_SUPPORTED", "CONDITIONAL"}:
+    elif issues_out or limitations or finding.finding_status in {"SUPPORTED_WITH_LIMITATIONS", "PARTIALLY_SUPPORTED", "CONDITIONAL"}:
         disposition = "APPROVED_WITH_LIMITATIONS"
         basis = "The finding is supported but must retain explicit limitations."
         limitations.append("Communicate only within the documented scope and conditions.")
