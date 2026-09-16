@@ -215,7 +215,8 @@ def test_trigger_and_rate_survive_publication_artifact_round_trip_without_claim_
         "rate": RATE,
         "trigger": TRIGGER,
     }
-    assert all(item.evidence_references == (EVIDENCE_ID,) for item in package.semantic_attributes)
+    assert all(item.evidence_references == (package.evidence_id,) for item in package.semantic_attributes)
+    assert f"certified_evidence_id:{EVIDENCE_ID}" in package.retrieval_basis
     assert RATE not in package.claim
     assert TRIGGER not in package.claim
 
