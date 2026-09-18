@@ -90,6 +90,8 @@ def build_real_response_decision_adapters(*, dependencies: RealResponsePrefixDep
         output_id = _output_id(request.execution_id, stage)
         dependencies.store.put(output_id=output_id, value=output)
         decision_output = output.decision_output
+        packet = decision_output.response_packet
+        evidence_ids = tuple(packet.approved_evidence_ids) if packet is not None else ()
         return build_raw_intelligence_stage_output(
             execution_id=request.execution_id,
             stage=stage,
@@ -98,7 +100,7 @@ def build_real_response_decision_adapters(*, dependencies: RealResponsePrefixDep
             output_type="authority_enforcement_result",
             payload=asdict(output),
             limitations=decision_output.limitations,
-            evidence_ids=tuple(decision_output.response_packet.approved_evidence_ids),
+            evidence_ids=evidence_ids,
         )
 
     return prior + (
