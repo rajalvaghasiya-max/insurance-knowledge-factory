@@ -110,9 +110,10 @@ def _semantic_evidence_key(evidence: Sequence[EvidencePackage]) -> tuple[tuple[s
     """Return requirement-neutral governed evidence identity for intra-run rule reuse.
 
     Publication-backed runtime evidence IDs are intentionally requirement-scoped. Reuse
-    therefore keys on immutable certified identity when present, plus semantic subject
-    and source coordinates so distinct subjects or documents never collapse merely
-    because they share a rule.
+    therefore keys on immutable certified identity when present, plus governed entity
+    and semantic/source coordinates. Planner-local subject slots are intentionally excluded:
+    the same governed policy semantics may be requested through both product and scenario
+    requirement slots without becoming distinct customer-facing conclusions.
     """
     values: list[tuple[str, ...]] = []
     for item in evidence:
@@ -127,7 +128,6 @@ def _semantic_evidence_key(evidence: Sequence[EvidencePackage]) -> tuple[tuple[s
         values.append(
             (
                 certified,
-                item.subject_reference,
                 item.governed_entity_reference,
                 item.field_or_topic,
                 item.claim,
