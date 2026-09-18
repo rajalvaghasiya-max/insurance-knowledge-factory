@@ -117,6 +117,7 @@ def test_equivalent_governed_evidence_requirements_reuse_one_finding():
             item,
             evidence_id=f"{item.evidence_id}:equivalent",
             requirement_id=second_requirement.requirement_id,
+            subject_reference="scenario-slot-reference",
         )
         for item in base_evidence.evidence_packages
     )
