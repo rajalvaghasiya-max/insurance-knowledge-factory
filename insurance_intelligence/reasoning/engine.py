@@ -106,6 +106,41 @@ def _authority_tokens(evidence: Sequence[EvidencePackage]) -> tuple[str, ...]:
     return tuple(sorted(tokens))
 
 
+def _semantic_evidence_key(evidence: Sequence[EvidencePackage]) -> tuple[tuple[str, ...], ...]:
+    """Return requirement-neutral governed evidence identity for intra-run rule reuse.
+
+    Publication-backed runtime evidence IDs are intentionally requirement-scoped. Reuse
+    therefore keys on immutable certified identity when present, plus semantic subject
+    and source coordinates so distinct subjects or documents never collapse merely
+    because they share a rule.
+    """
+    values: list[tuple[str, ...]] = []
+    for item in evidence:
+        certified = next(
+            (
+                token.split(":", 1)[1]
+                for token in item.retrieval_basis
+                if token.startswith("certified_evidence_id:")
+            ),
+            "",
+        )
+        values.append(
+            (
+                certified,
+                item.subject_reference,
+                item.governed_entity_reference,
+                item.field_or_topic,
+                item.claim,
+                item.source_type,
+                item.document_reference,
+                item.document_version,
+                item.lineage.source_artifact_sha256,
+                item.lineage.governed_record_sha256,
+            )
+        )
+    return tuple(sorted(values))
+
+
 def _evidence_block_reason(result: EvidenceRequirementResult | None, resolution_status: str) -> str | None:
     if result is None:
         return "evidence requirement result is missing"
@@ -171,9 +206,14 @@ class ReasoningEngine:
         evidence_results = {item.requirement_id: item for item in evidence_output.requirement_results}
 
         findings = []
+        finding_ids: set[str] = set()
         requirement_results = []
         executions: list[RuleExecution] = []
         unsupported: list[str] = []
+        reusable_findings: dict[
+            tuple[tuple[str, str], str, str, tuple[tuple[str, ...], ...]],
+            tuple[object, ...],
+        ] = {}
 
         for requirement in sorted(plan.required_evidence, key=lambda item: item.requirement_id):
             trace.add("REQUIREMENT_RECEIVED", "RECEIVED", "reasoning requirement derived from planner evidence requirement", requirement_id=requirement.requirement_id, input_references=(requirement.requested_by_step,))
@@ -207,6 +247,39 @@ class ReasoningEngine:
             missing_inputs: list[str] = []
             for rule in eligible:
                 trace.add("RULE_SELECTED", "SELECTED", "deterministic registry order selected rule", requirement_id=requirement.requirement_id, rule_id=rule.rule_id)
+                reuse_key = (
+                    rule.registry_key,
+                    topic,
+                    requirement_type,
+                    _semantic_evidence_key(evidence),
+                )
+                reused = reusable_findings.get(reuse_key)
+                if reused is not None:
+                    produced = reused
+                    executed_ids.append(rule.rule_id)
+                    created.extend(produced)
+                    confidence = min((item.confidence for item in produced), default=0.0)
+                    executions.append(build_rule_execution(
+                        execution_id=_execution_id(data.request_id, requirement.requirement_id, rule, "SKIPPED"),
+                        requirement_id=requirement.requirement_id,
+                        rule_id=rule.rule_id,
+                        rule_version=rule.rule_version,
+                        status="SKIPPED",
+                        evidence_ids=tuple(item.evidence_id for item in evidence),
+                        input_keys=input_keys,
+                        output_finding_ids=tuple(item.finding_id for item in produced),
+                        confidence=confidence,
+                    ))
+                    trace.add(
+                        "RULE_EXECUTED",
+                        "REUSED",
+                        "equivalent governed evidence already produced the same deterministic finding in this reasoning run",
+                        requirement_id=requirement.requirement_id,
+                        rule_id=rule.rule_id,
+                        evidence_ids=tuple(item.evidence_id for item in evidence),
+                        output_finding_ids=tuple(item.finding_id for item in produced),
+                    )
+                    continue
                 try:
                     rule_input = build_rule_input(requirement_id=requirement.requirement_id, evidence=evidence, approved_context=data.reasoning_context, scope="product")
                     produced = execute_rule(rule.rule_id, rule_input)
@@ -219,6 +292,7 @@ class ReasoningEngine:
                     executions.append(build_rule_execution(execution_id=_execution_id(data.request_id, requirement.requirement_id, rule, "REJECTED"), requirement_id=requirement.requirement_id, rule_id=rule.rule_id, rule_version=rule.rule_version, status="REJECTED", evidence_ids=tuple(item.evidence_id for item in evidence), input_keys=input_keys, rejection_reason=reason, confidence=0.0))
                     trace.add("RULE_REJECTED", "REJECTED", reason, requirement_id=requirement.requirement_id, rule_id=rule.rule_id, evidence_ids=tuple(item.evidence_id for item in evidence))
                     continue
+                reusable_findings[reuse_key] = tuple(produced)
                 executed_ids.append(rule.rule_id)
                 created.extend(produced)
                 confidence = min((item.confidence for item in produced), default=0.0)
@@ -227,7 +301,10 @@ class ReasoningEngine:
                 for finding in produced:
                     trace.add("FINDING_CREATED", finding.finding_status, "structured finding created from governed evidence", requirement_id=requirement.requirement_id, rule_id=rule.rule_id, evidence_ids=finding.evidence_ids, output_finding_ids=(finding.finding_id,))
 
-            findings.extend(created)
+            for finding in created:
+                if finding.finding_id not in finding_ids:
+                    finding_ids.add(finding.finding_id)
+                    findings.append(finding)
             if created:
                 finding_statuses = {item.finding_status for item in created}
                 if finding_statuses <= {"SUPPORTED"}:
