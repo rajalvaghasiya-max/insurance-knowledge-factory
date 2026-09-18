@@ -200,10 +200,8 @@ def test_d0_resolved_waiting_period_applicability_projects_to_human_answer() -> 
                         (item.finding_id, item.requirement_id, item.rule_id, item.predicate)
                         for item in reasoning.findings
                     ),
-                    "section_count": len(explanation.explanation_output.sections),
-                    "section_types": tuple(
-                        item.section_type for item in explanation.explanation_output.sections
-                    ),
+                    "section_count": len(explanation.sections),
+                    "section_types": tuple(item.section_type for item in explanation.sections),
                 }
             assert False, (
                 result.stage,
