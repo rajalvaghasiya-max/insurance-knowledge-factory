@@ -203,6 +203,40 @@ def test_one_generic_projector_handles_rehearsed_and_unrehearsed_answers(
     assert projection.human_view.meaning == (meaning,)
 
 
+def test_canonical_unsupported_response_projects_generic_status_unknowns_and_next_step():
+    limitation = "The exact boundary cannot be determined from the governed reasoning available."
+    trace = build_trace_event(
+        trace_id="trace-unsupported-status",
+        sequence=1,
+        event_type="RESPONSE_ASSEMBLY_COMPLETED",
+        decision="UNSUPPORTED",
+        basis="test fail-closed response assembled",
+        order_marker="0001",
+        output_references=("response-unsupported-status",),
+    )
+    response = build_output(
+        request_id="request-unsupported-status",
+        response_id="response-unsupported-status",
+        response_status="UNSUPPORTED",
+        audience="CUSTOMER",
+        response_format="STANDARD",
+        direct_answer=None,
+        sections=(),
+        evidence_references=(),
+        limitations=(limitation,),
+        confidence=0.2,
+        response_trace=(trace,),
+    )
+
+    projected = project_human_answer(response)
+
+    assert "cannot determine" in projected.human_view.answer.lower()
+    assert projected.human_view.unknowns == (limitation,)
+    assert projected.human_view.next_step is not None
+    assert projected.provenance_panel.evidence_references == ()
+    assert projected.provenance_panel.response_trace == response.response_trace
+
+
 def test_projector_source_contains_no_insurer_product_or_mechanic_branch():
     source = inspect.getsource(human_answer_module).lower()
     forbidden = (
