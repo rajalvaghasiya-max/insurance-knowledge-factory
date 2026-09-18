@@ -181,5 +181,5 @@ def test_d0_exact_boundary_fails_closed_with_human_next_step() -> None:
     assert "waiting period is complete" not in answer_text
     assert "claim approval" not in answer_text
     assert "claim payment" not in answer_text
-    assert projection.provenance_panel.evidence_references
+    assert projection.provenance_panel.evidence_references == ()
     assert projection.provenance_panel.response_trace
