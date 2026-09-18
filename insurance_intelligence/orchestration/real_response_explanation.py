@@ -13,7 +13,10 @@ from insurance_intelligence.authority_enforced_explanation import (
     AuthorityEnforcedExplanationGenerator,
 )
 from insurance_intelligence.contracts.authority_enforcement import AuthorityEnforcementResult
-from insurance_intelligence.contracts.explanation import ExplanationGeneratorOutput
+from insurance_intelligence.contracts.explanation import (
+    ExplanationGeneratorOutput,
+    build_output as build_explanation_output,
+)
 from insurance_intelligence.contracts.reasoning import ReasoningEngineOutput
 from insurance_intelligence.explanation.registry import ExplanationStyleRegistry, TerminologyRegistry
 from insurance_intelligence.orchestration.intelligence_adapters import (
@@ -59,19 +62,52 @@ def build_real_response_explanation_adapters(
             expected_type=ReasoningEngineOutput,
         )
         findings_by_id = {finding.finding_id: finding for finding in reasoning.findings}
-        output = AuthorityEnforcedExplanationGenerator().generate(
-            authority_result=authority_result,
-            findings_by_id=findings_by_id,
-            style_registry=style_registry,
-            terminology_registry=terminology_registry,
-            audience=request.audience,
-            reading_level="SIMPLE",
-            explanation_mode="PLAIN_LANGUAGE",
-            communication_context=dict(request.customer_context),
-        )
+        decision_output = authority_result.decision_output
+        if decision_output is None:
+            raise RealResponsePrefixError("authority-enforced decision omitted DecisionGateOutput")
+
+        if decision_output.decision in {"APPROVED", "APPROVED_WITH_LIMITATIONS", "CLARIFICATION_REQUIRED"}:
+            output = AuthorityEnforcedExplanationGenerator().generate(
+                authority_result=authority_result,
+                findings_by_id=findings_by_id,
+                style_registry=style_registry,
+                terminology_registry=terminology_registry,
+                audience=request.audience,
+                reading_level="SIMPLE",
+                explanation_mode="PLAIN_LANGUAGE",
+                communication_context=dict(request.customer_context),
+            )
+        else:
+            limitations = tuple(
+                dict.fromkeys(
+                    (
+                        *decision_output.limitations,
+                        *reasoning.limitations,
+                        *(issue.description for issue in decision_output.safety_issues),
+                        *decision_output.human_review_reasons,
+                        "The requested conclusion cannot be determined safely from the governed reasoning available.",
+                    )
+                )
+            )
+            output = build_explanation_output(
+                request_id=request.execution_id,
+                explanation_id=f"{request.execution_id}:withheld-explanation",
+                audience=request.audience,
+                reading_level="SIMPLE",
+                explanation_mode="LIMITATION_NOTICE",
+                sections=(),
+                terminology_substitutions=(),
+                fidelity_checks=(),
+                fidelity_status="VERIFIED_WITH_LIMITATIONS",
+                limitations=limitations,
+                explanation_status="WITHHELD",
+                confidence=decision_output.confidence,
+                explanation_trace=(),
+            )
+
         if not isinstance(output, ExplanationGeneratorOutput):
             raise RealResponsePrefixError("authority-enforced explanation did not return expected output")
-        if output.explanation_status not in {"DRAFTED", "DRAFTED_WITH_LIMITATIONS"}:
+        if output.explanation_status not in {"DRAFTED", "DRAFTED_WITH_LIMITATIONS", "CLARIFICATION_DRAFTED", "WITHHELD"}:
             raise RealResponsePrefixError(
                 f"authority-enforced explanation blocked real path: {output.explanation_status}; {output.fidelity_status}"
             )
