@@ -231,7 +231,10 @@ def test_d0_resolved_waiting_period_applicability_projects_to_human_answer() -> 
     ).casefold()
 
     assert "still active" in human_text or "not complete" in human_text
-    assert "claim approval" not in human_text
-    assert "claim payment" not in projection.human_view.answer.casefold()
+    answer_text = projection.human_view.answer.casefold()
+    unknown_text = " ".join(projection.human_view.unknowns).casefold()
+    assert "claim approval" not in answer_text
+    assert "claim payment" not in answer_text
+    assert "does not establish final claim approval or payment" in unknown_text
     assert projection.provenance_panel.evidence_references
     assert projection.provenance_panel.response_trace
