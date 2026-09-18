@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-published-runtime-evidence-identity-repair-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER",
+    "II.REASONING.ENGINE"
+  ],
+  "rationale": "Frozen corrected D0 case-2 pressure exposed three generic publication-backed resolver defects (requirement-scoped runtime identity, exact document-role compatibility, and optional-evidence requirement status) and then proved a cross-stage composition defect: multiple planner evidence requirements backed by the same governed semantic evidence caused the same deterministic reasoning rule to emit duplicate communicable findings. The repair keeps resolver requirement semantics consistent and adds bounded intra-run reasoning reuse keyed by rule, topic, requirement type, immutable certified evidence identity when available, governed entity, semantic field/claim, document coordinates, and lineage hashes. Planner-local subject slots are excluded because the same governed semantics may be requested through product and scenario requirement slots without representing distinct customer-facing conclusions.",
+  "supersession_impact": "No publication, certification, planning, decision, explanation, response, or human-projection capability is superseded. Evidence resolution retains strict blocking for required evidence and explicit limitations for unavailable optional evidence. Reasoning preserves every planner requirement and rule execution audit record while reusing an already-produced equivalent finding instead of multiplying identical conclusions.",
+  "authority_impact": "No new insurance fact, applicability, eligibility, claim-payment, or recommendation authority is introduced. The repair changes evidence identity/status mechanics and deterministic cross-requirement finding composition only. Distinct governed entities, certified evidence, semantic fields/claims, documents, lineage, topics, requirement types, or rules do not collapse."
+}

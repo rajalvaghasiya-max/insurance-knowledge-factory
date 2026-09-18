@@ -31,6 +31,11 @@ from insurance_intelligence.evidence.trace import TraceBuilder
 
 PublishedSourceLookup = Callable[[str, object], PublishedEvidenceSource | None]
 
+_EXACT_DOCUMENT_SOURCE_TYPES = {
+    "POLICY_WORDING": frozenset({"POLICY_WORDING"}),
+    "POLICY_SCHEDULE": frozenset({"POLICY_SCHEDULE"}),
+}
+
 
 def _id(prefix: str, *parts: object) -> str:
     return prefix + "_" + hashlib.sha256("|".join(map(str, parts)).encode()).hexdigest()[:16]
@@ -93,6 +98,60 @@ def _lookup_requirement(requirement, *, semantic_subject: str, plan_goal: str):
     )
 
 
+def _source_matches_evidence_category(source: PublishedEvidenceSource, requirement) -> bool:
+    """Fail closed for planner categories that require an exact document role.
+
+    Published semantic facts may legitimately be reused for CLAUSE_TEXT or normalized-fact
+    requirements, but a primary policy wording must never masquerade as a policy schedule
+    (or vice versa) merely because topic text matches the plan goal.
+    """
+    allowed_source_types = _EXACT_DOCUMENT_SOURCE_TYPES.get(requirement.evidence_category)
+    if allowed_source_types is None:
+        return True
+    return any(
+        package.source_type in allowed_source_types
+        for package in source.certified_evidence.evidence_packages
+    )
+
+
+def _optional_limited(requirement, *, has_required_requirements: bool) -> bool:
+    return has_required_requirements and not requirement.required
+
+
+def _unavailable_status(
+    requirement,
+    *,
+    has_required_requirements: bool,
+    blocking_status: str,
+) -> str:
+    if _optional_limited(requirement, has_required_requirements=has_required_requirements):
+        return "SATISFIED_WITH_LIMITATIONS"
+    return blocking_status
+
+
+def _evaluate_planned_requirements(requirements, results):
+    """Aggregate required evidence strictly while preserving optional misses as limitations."""
+    by_id = {result.requirement_id: result for result in results}
+    required_results = tuple(
+        by_id[requirement.requirement_id]
+        for requirement in requirements
+        if requirement.required and requirement.requirement_id in by_id
+    )
+    if not required_results:
+        return evaluate(results)
+
+    sufficiency, status = evaluate(required_results)
+    optional_limited = any(
+        not requirement.required
+        and requirement.requirement_id in by_id
+        and by_id[requirement.requirement_id].status != "SATISFIED"
+        for requirement in requirements
+    )
+    if optional_limited and status in {"RESOLVED", "RESOLVED_WITH_LIMITATIONS"}:
+        return "SUFFICIENT", "RESOLVED_WITH_LIMITATIONS"
+    return sufficiency, status
+
+
 class PublishedEvidenceResolver:
     """Resolve only authoritative-publication-backed evidence for USER_ANSWER."""
 
@@ -128,6 +187,7 @@ class PublishedEvidenceResolver:
         documents = []
         missing = []
         limitations = []
+        has_required_requirements = any(item.required for item in plan.required_evidence)
 
         for requirement in plan.required_evidence:
             semantic_subject = _semantic_subject(requirement, request.resolution_context)
@@ -153,13 +213,21 @@ class PublishedEvidenceResolver:
                     (),
                     (),
                 ))
-                missing.append(requirement.requirement_id)
+                reason = "governed entity could not be resolved unambiguously"
+                result_status = _unavailable_status(
+                    requirement,
+                    has_required_requirements=has_required_requirements,
+                    blocking_status="ENTITY_UNRESOLVED",
+                )
+                if result_status != "SATISFIED_WITH_LIMITATIONS":
+                    missing.append(requirement.requirement_id)
+                limitations.append(f"{requirement.requirement_id}: {reason}")
                 results.append(RequirementResult(
                     requirement.requirement_id,
-                    "ENTITY_UNRESOLVED",
+                    result_status,
                     (),
                     (),
-                    "governed entity could not be resolved unambiguously",
+                    reason,
                     False,
                     False,
                     False,
@@ -200,14 +268,44 @@ class PublishedEvidenceResolver:
             source = self._source_lookup(entity, lookup_requirement)
             if source is None:
                 reason = "no authoritative publication-backed evidence source matched the requirement"
-                missing.append(requirement.requirement_id)
+                result_status = _unavailable_status(
+                    requirement,
+                    has_required_requirements=has_required_requirements,
+                    blocking_status="MISSING",
+                )
+                if result_status != "SATISFIED_WITH_LIMITATIONS":
+                    missing.append(requirement.requirement_id)
                 limitations.append(f"{requirement.requirement_id}: {reason}")
                 results.append(RequirementResult(
-                    requirement.requirement_id, "MISSING", (), (), reason,
+                    requirement.requirement_id, result_status, (), (), reason,
                     False, False, False, "NONE", 0.0,
                 ))
                 trace.add(
                     "DOCUMENT_REJECTED", "publication source missing", reason,
+                    requirement_id=requirement.requirement_id,
+                    subject_reference=semantic_subject,
+                )
+                continue
+
+            if not _source_matches_evidence_category(source, requirement):
+                reason = (
+                    "authoritative publication source type does not satisfy planner evidence "
+                    f"category {requirement.evidence_category}"
+                )
+                result_status = _unavailable_status(
+                    requirement,
+                    has_required_requirements=has_required_requirements,
+                    blocking_status="MISSING",
+                )
+                if result_status != "SATISFIED_WITH_LIMITATIONS":
+                    missing.append(requirement.requirement_id)
+                limitations.append(f"{requirement.requirement_id}: {reason}")
+                results.append(RequirementResult(
+                    requirement.requirement_id, result_status, (), (), reason,
+                    False, False, False, "NONE", 0.0,
+                ))
+                trace.add(
+                    "DOCUMENT_REJECTED", "publication source incompatible", reason,
                     requirement_id=requirement.requirement_id,
                     subject_reference=semantic_subject,
                 )
@@ -221,10 +319,16 @@ class PublishedEvidenceResolver:
                 )
             except PublishedEvidenceMaterializationError as exc:
                 reason = str(exc)
-                missing.append(requirement.requirement_id)
+                result_status = _unavailable_status(
+                    requirement,
+                    has_required_requirements=has_required_requirements,
+                    blocking_status="MISSING",
+                )
+                if result_status != "SATISFIED_WITH_LIMITATIONS":
+                    missing.append(requirement.requirement_id)
                 limitations.append(f"{requirement.requirement_id}: {reason}")
                 results.append(RequirementResult(
-                    requirement.requirement_id, "MISSING", (), (), reason,
+                    requirement.requirement_id, result_status, (), (), reason,
                     False, False, False, "NONE", 0.0,
                 ))
                 trace.add(
@@ -262,9 +366,9 @@ class PublishedEvidenceResolver:
                     source_paths=(source.publication.publication_id, source.publication.publication_receipt_id),
                 )
 
-        sufficiency, status = evaluate(results)
+        sufficiency, status = _evaluate_planned_requirements(plan.required_evidence, results)
         confidence = round(sum(item.confidence for item in results) / len(results), 4) if results else 1.0
-        trace.add("SUFFICIENCY_EVALUATED", sufficiency, "deterministic requirement-level aggregation")
+        trace.add("SUFFICIENCY_EVALUATED", sufficiency, "deterministic required/optional requirement aggregation")
         trace.add("RESOLUTION_COMPLETED", status, "resolution status derived from publication-backed evidence sufficiency")
         return validate_output(EvidenceResolverOutput(
             "1.0",

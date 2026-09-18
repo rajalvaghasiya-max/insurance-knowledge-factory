@@ -104,6 +104,47 @@ def test_specific_nontriggered_context_produces_supported_finding():
     assert output.findings[0].finding_status == "SUPPORTED"
 
 
+
+def test_equivalent_governed_evidence_requirements_reuse_one_finding():
+    base_plan = make_plan(outcome="DIRECT_FACT_RESPONSE")
+    base_evidence = resolve(base_plan)
+    first_requirement = base_plan.required_evidence[0]
+    second_requirement = replace(first_requirement, requirement_id="req_copay_equivalent")
+    plan = replace(base_plan, required_evidence=(first_requirement, second_requirement))
+
+    copied_packages = tuple(
+        replace(
+            item,
+            evidence_id=f"{item.evidence_id}:equivalent",
+            requirement_id=second_requirement.requirement_id,
+            subject_reference="scenario-slot-reference",
+        )
+        for item in base_evidence.evidence_packages
+    )
+    first_result = base_evidence.requirement_results[0]
+    second_result = replace(
+        first_result,
+        requirement_id=second_requirement.requirement_id,
+        matched_evidence_ids=tuple(item.evidence_id for item in copied_packages),
+    )
+    evidence = replace(
+        base_evidence,
+        evidence_packages=base_evidence.evidence_packages + copied_packages,
+        requirement_results=(first_result, second_result),
+    )
+
+    output = reason(plan=plan, evidence=evidence)
+
+    assert output.reasoning_status == "REASONED"
+    assert len(output.findings) == 1
+    assert {item.status for item in output.requirement_results} == {"SATISFIED"}
+    direct_executions = tuple(
+        item for item in output.rule_executions if item.rule_id == "direct_documented_fact_v1"
+    )
+    assert [item.status for item in direct_executions] == ["EXECUTED", "SKIPPED"]
+    assert direct_executions[0].output_finding_ids == direct_executions[1].output_finding_ids
+
+
 def test_missing_evidence_blocks_reasoning():
     plan = make_plan()
     evidence = replace(resolve(plan), evidence_packages=(), resolution_status="NOT_RESOLVED", sufficiency="MISSING")

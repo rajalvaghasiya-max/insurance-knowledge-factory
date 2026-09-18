@@ -94,7 +94,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.EVIDENCE.GOVERNED_RESOLVER`<br>Governed Evidence Resolver | `ACTIVE` | `REUSE` | Underlying evidence-resolution engine. In the canonical current path it is callable only through II.EVIDENCE.INSTANCE_ENFORCEMENT when instance identity is required; it cannot manufacture identity or bypass that guard. | None | `insurance_intelligence/evidence`<br>`insurance_intelligence/contracts/evidence.py` | `ed731a0d6cb1` |
+| `II.EVIDENCE.GOVERNED_RESOLVER`<br>Governed Evidence Resolver | `ACTIVE` | `REUSE` | Underlying evidence-resolution engine. In the canonical current path it is callable only through II.EVIDENCE.INSTANCE_ENFORCEMENT when instance identity is required; it cannot manufacture identity or bypass that guard. | None | `insurance_intelligence/evidence`<br>`insurance_intelligence/contracts/evidence.py` | `d14c9222b03a` |
 
 ### INSURANCE_INTELLIGENCE_EVIDENCE_GOVERNANCE
 
@@ -172,7 +172,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.REASONING.ENGINE`<br>Deterministic Reasoning Engine | `ACTIVE` | `REUSE` | May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes. | None | `insurance_intelligence/reasoning`<br>`insurance_intelligence/contracts/reasoning.py` | `e82ac69c56f5` |
+| `II.REASONING.ENGINE`<br>Deterministic Reasoning Engine | `ACTIVE` | `REUSE` | May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes. | None | `insurance_intelligence/reasoning`<br>`insurance_intelligence/contracts/reasoning.py` | `bdfefdc62d7b` |
 
 ### INSURANCE_INTELLIGENCE_RENDERING
 
