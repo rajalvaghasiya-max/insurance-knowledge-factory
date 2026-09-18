@@ -189,6 +189,22 @@ def test_d0_resolved_waiting_period_applicability_projects_to_human_answer() -> 
                         dependencies.store.get(f"{request.execution_id}:real:reasoning").findings
                     ),
                 }
+            elif result.stage == "RESPONSE_ASSEMBLY":
+                reasoning = dependencies.store.get(f"{request.execution_id}:real:reasoning")
+                explanation = dependencies.store.get(
+                    f"{request.execution_id}:real:explanation_authority_enforced"
+                )
+                diagnostic = {
+                    "finding_count": len(reasoning.findings),
+                    "findings": tuple(
+                        (item.finding_id, item.requirement_id, item.rule_id, item.predicate)
+                        for item in reasoning.findings
+                    ),
+                    "section_count": len(explanation.explanation_output.sections),
+                    "section_types": tuple(
+                        item.section_type for item in explanation.explanation_output.sections
+                    ),
+                }
             assert False, (
                 result.stage,
                 result.failure.message if result.failure else result.limitations,
