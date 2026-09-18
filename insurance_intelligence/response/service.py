@@ -28,6 +28,13 @@ def _response_status(decision: str) -> str:
         "APPROVED": "ANSWER",
         "APPROVED_WITH_LIMITATIONS": "ANSWER_WITH_LIMITATIONS",
         "CLARIFICATION_REQUIRED": "CLARIFICATION_REQUIRED",
+        "INSUFFICIENT_EVIDENCE": "INSUFFICIENT_EVIDENCE",
+        "INSUFFICIENT_CONTEXT": "UNSUPPORTED",
+        "CONFLICTING_EVIDENCE": "CONFLICTING_EVIDENCE",
+        "UNSUPPORTED_REASONING": "UNSUPPORTED",
+        "HUMAN_REVIEW_REQUIRED": "BLOCKED",
+        "BLOCKED": "BLOCKED",
+        "OUT_OF_SCOPE": "OUT_OF_SCOPE",
     }
     try:
         return mapping[decision]
@@ -48,6 +55,70 @@ def assemble_response(
     decision = assembler_input.decision_output
     explanation = assembler_input.explanation_output
     response_status = _response_status(decision.decision)
+
+    if response_status in {
+        "INSUFFICIENT_EVIDENCE",
+        "CONFLICTING_EVIDENCE",
+        "UNSUPPORTED",
+        "BLOCKED",
+        "OUT_OF_SCOPE",
+    }:
+        limitations = tuple(dict.fromkeys((*decision.limitations, *explanation.limitations)))
+        response_id = _stable_id(
+            "response",
+            assembler_input.request_id,
+            decision.decision_id,
+            explanation.explanation_id,
+            response_status,
+        )
+        trace = (
+            build_trace_event(
+                trace_id=_stable_id("response-trace", response_id, 1, "RESPONSE_ASSEMBLY_STARTED"),
+                sequence=1,
+                event_type="RESPONSE_ASSEMBLY_STARTED",
+                decision="STARTED",
+                basis="validated fail-closed Decision Gate and withheld explanation received",
+                input_references=(decision.decision_id, explanation.explanation_id),
+                output_references=(),
+                order_marker="0001",
+            ),
+            build_trace_event(
+                trace_id=_stable_id("response-trace", response_id, 2, "DECISION_MAPPED"),
+                sequence=2,
+                event_type="DECISION_MAPPED",
+                decision=response_status,
+                basis="non-answer Decision Gate outcome mapped deterministically to canonical response status",
+                input_references=(decision.decision,),
+                output_references=(response_status,),
+                order_marker="0002",
+            ),
+            build_trace_event(
+                trace_id=_stable_id("response-trace", response_id, 3, "RESPONSE_ASSEMBLY_COMPLETED"),
+                sequence=3,
+                event_type="RESPONSE_ASSEMBLY_COMPLETED",
+                decision=response_status,
+                basis="fail-closed structured response assembled without answer content or evidence exposure",
+                input_references=(),
+                output_references=(response_id,),
+                order_marker="0003",
+            ),
+        )
+        return build_output(
+            request_id=assembler_input.request_id,
+            response_id=response_id,
+            response_status=response_status,
+            audience=explanation.audience,
+            response_format=assembler_input.response_format,
+            direct_answer=None,
+            sections=(),
+            evidence_references=(),
+            limitations=limitations,
+            assumptions=(),
+            clarification_questions=(),
+            confidence=min(decision.confidence, explanation.confidence),
+            response_trace=trace,
+        )
+
     definition = registry.select_one(
         response_format=assembler_input.response_format,
         audience=explanation.audience,
