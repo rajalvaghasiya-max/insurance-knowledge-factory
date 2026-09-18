@@ -63,6 +63,8 @@ def assemble_response(
         "BLOCKED",
         "OUT_OF_SCOPE",
     }:
+        if explanation.explanation_status != "WITHHELD":
+            raise ResponseServiceError("non-answer decision requires withheld explanation")
         limitations = tuple(dict.fromkeys((*decision.limitations, *explanation.limitations)))
         response_id = _stable_id(
             "response",
