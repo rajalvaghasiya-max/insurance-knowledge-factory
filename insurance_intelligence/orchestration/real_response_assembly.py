@@ -79,11 +79,7 @@ def build_real_response_assembly_adapters(
         output = assemble_response(assembler_input, response_registry)
         if not isinstance(output, ResponseAssemblerOutput):
             raise RealResponsePrefixError("response assembler did not return expected output")
-        if output.response_status not in {"ANSWER", "ANSWER_WITH_LIMITATIONS"}:
-            raise RealResponsePrefixError(
-                f"response assembly blocked real path: {output.response_status}"
-            )
-        if not output.direct_answer:
+        if output.response_status in {"ANSWER", "ANSWER_WITH_LIMITATIONS"} and not output.direct_answer:
             raise RealResponsePrefixError("response assembly omitted deterministic direct answer")
 
         output_id = _output_id(request.execution_id, stage)

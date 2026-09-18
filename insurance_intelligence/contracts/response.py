@@ -126,6 +126,17 @@ def build_input(
     elif decision == "CLARIFICATION_REQUIRED":
         if explanation_status != "CLARIFICATION_DRAFTED":
             raise ResponseContractError("clarification decisions require a clarification draft")
+    elif decision in {
+        "INSUFFICIENT_EVIDENCE",
+        "INSUFFICIENT_CONTEXT",
+        "CONFLICTING_EVIDENCE",
+        "UNSUPPORTED_REASONING",
+        "HUMAN_REVIEW_REQUIRED",
+        "BLOCKED",
+        "OUT_OF_SCOPE",
+    }:
+        if explanation_status != "WITHHELD":
+            raise ResponseContractError("non-answer decisions require a withheld explanation")
     else:
         raise ResponseContractError("decision_output is not eligible for response assembly")
 

@@ -133,6 +133,24 @@ def test_case_specific_missing_trigger_produces_clarification_only():
     assert output.clarification_questions == ("In which city will the treatment take place?",)
 
 
+def test_unsupported_reasoning_produces_canonical_non_answer_response():
+    limitation = "The requested conclusion cannot be determined safely from governed reasoning."
+    explanation = _explanation(status="WITHHELD", limitations=(limitation,))
+    output = assemble_response(
+        _input(
+            explanation,
+            decision_output=_decision("UNSUPPORTED_REASONING", limitations=(limitation,)),
+        ),
+        _registry(),
+    )
+    assert output.response_status == "UNSUPPORTED"
+    assert output.direct_answer is None
+    assert output.sections == ()
+    assert output.evidence_references == ()
+    assert output.limitations == (limitation,)
+    assert output.response_trace[-1].decision == "UNSUPPORTED"
+
+
 def test_response_id_is_deterministic():
     value = _input(_explanation(_section()))
     first = assemble_response(value, _registry())
@@ -220,7 +238,7 @@ def test_unapproved_decision_is_rejected():
         contract_version="1.0", request_id="req-1", decision_output=_decision("BLOCKED"),
         explanation_output=_explanation(_section()), response_format="STANDARD", assembly_context={},
     )
-    with pytest.raises(ResponseServiceError, match="unsupported decision"):
+    with pytest.raises(ResponseServiceError, match="withheld explanation"):
         assemble_response(input_value, _registry())
 
 

@@ -115,8 +115,8 @@ def test_build_input_accepts_clarification_pair():
     assert value.decision_output.decision == "CLARIFICATION_REQUIRED"
 
 
-def test_build_input_rejects_ineligible_decision():
-    with pytest.raises(rc.ResponseContractError, match="not eligible"):
+def test_build_input_rejects_nonanswer_without_withheld_explanation():
+    with pytest.raises(rc.ResponseContractError, match="withheld explanation"):
         rc.build_input(
             request_id="req-1",
             decision_output=_decision("BLOCKED"),

@@ -21,6 +21,14 @@ class HumanAnswerProjectionError(ValueError):
 
 _HUMAN_MEANING_SECTION_TYPES = frozenset({"EXPLANATION", "CONDITION", "IMPACT"})
 _ANSWER_STATUSES = frozenset({"ANSWER", "ANSWER_WITH_LIMITATIONS"})
+_NON_ANSWER_MESSAGES = {
+    "INSUFFICIENT_EVIDENCE": "I cannot determine this safely because the required evidence is incomplete.",
+    "CONFLICTING_EVIDENCE": "I cannot determine this safely because the governed evidence is conflicting.",
+    "UNSUPPORTED": "I cannot determine this safely from the governed information available.",
+    "BLOCKED": "I cannot provide a supported answer through this path.",
+    "OUT_OF_SCOPE": "This request is outside the supported answer scope.",
+}
+_SUPPORTED_STATUSES = frozenset((*_ANSWER_STATUSES, *_NON_ANSWER_MESSAGES))
 
 
 @dataclass(frozen=True)
@@ -64,11 +72,13 @@ def _unknowns(response: ResponseAssemblerOutput) -> tuple[str, ...]:
 
 
 def _resolution_next_step(response: ResponseAssemblerOutput, unknowns: tuple[str, ...]) -> str | None:
-    if response.response_status != "ANSWER_WITH_LIMITATIONS" or not unknowns:
+    if not unknowns:
+        return None
+    if response.response_status not in {"ANSWER_WITH_LIMITATIONS", *_NON_ANSWER_MESSAGES}:
         return None
     return (
-        "Before relying on this answer, resolve the uncertainty stated above by checking the "
-        "governing policy documents or confirming it with the insurer or advisor."
+        "Resolve the uncertainty stated above by checking the governing policy documents or "
+        "confirming it with the insurer or advisor before relying on a conclusion."
     )
 
 
@@ -76,22 +86,29 @@ def project_human_answer(response: ResponseAssemblerOutput) -> HumanAnswerProjec
     """Project one generic human answer and a separate provenance panel.
 
     This function never chooses wording by insurer, product, topic, or rule ID. It copies
-    approved human-facing text from the canonical response and adds only generic workflow
-    guidance for resolving an already-stated uncertainty.
+    approved human-facing text from answer responses. For canonical fail-closed statuses it
+    adds only generic status wording plus workflow guidance; it never converts a withheld
+    insurance conclusion into an answer.
     """
     if not isinstance(response, ResponseAssemblerOutput):
         raise HumanAnswerProjectionError("response must be a ResponseAssemblerOutput")
-    if response.response_status not in _ANSWER_STATUSES:
+    if response.response_status not in _SUPPORTED_STATUSES:
         raise HumanAnswerProjectionError(
-            f"D0 human projection supports answer statuses only; got {response.response_status!r}"
+            f"D0 human projection does not support response status {response.response_status!r}"
         )
-    if not response.direct_answer:
-        raise HumanAnswerProjectionError("answer response must contain a direct_answer")
+    if response.response_status in _ANSWER_STATUSES:
+        if not response.direct_answer:
+            raise HumanAnswerProjectionError("answer response must contain a direct_answer")
+        answer = response.direct_answer
+    else:
+        if response.direct_answer is not None:
+            raise HumanAnswerProjectionError("fail-closed response must not contain direct_answer")
+        answer = _NON_ANSWER_MESSAGES[response.response_status]
 
     meaning = _included_meaning(response)
     unknowns = _unknowns(response)
     human = HumanAnswerView(
-        answer=response.direct_answer,
+        answer=answer,
         meaning=meaning,
         unknowns=unknowns,
         next_step=_resolution_next_step(response, unknowns),
