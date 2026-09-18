@@ -152,7 +152,6 @@ def test_d0_exact_boundary_fails_closed_with_human_next_step() -> None:
     )
 
     prior = (request.knowledge_snapshot_id,)
-    results = []
     for sequence, adapter in enumerate(adapters, start=1):
         result = execute_intelligence_stage(
             request=request,
@@ -160,37 +159,13 @@ def test_d0_exact_boundary_fails_closed_with_human_next_step() -> None:
             sequence=sequence,
             input_ids=prior,
         )
-        results.append(result)
-        if result.status not in {"SUCCEEDED", "SUCCEEDED_WITH_LIMITATIONS"}:
-            diagnostic = None
-            if result.stage == "DECISION_GATE_AUTHORITY_ENFORCED":
-                authority = dependencies.store.get(
-                    f"{request.execution_id}:real:decision_gate_authority_enforced"
-                )
-                decision = authority.decision_output
-                diagnostic = {
-                    "decision": decision.decision if decision else None,
-                    "dispositions": tuple(
-                        (item.finding_id, item.disposition, item.basis)
-                        for item in (decision.finding_dispositions if decision else ())
-                    ),
-                    "issues": tuple(
-                        (item.issue_type, item.policy_id, item.description)
-                        for item in (decision.safety_issues if decision else ())
-                    ),
-                    "clarifications": tuple(
-                        item.reason for item in (decision.clarifications if decision else ())
-                    ),
-                    "limitations": decision.limitations if decision else (),
-                    "reasoning_status": dependencies.store.get(
-                        f"{request.execution_id}:real:reasoning"
-                    ).reasoning_status,
-                    "finding_count": len(
-                        dependencies.store.get(f"{request.execution_id}:real:reasoning").findings
-                    ),
-                }
-            elif result.stage == "RESPONSE_ASSEMBLY":
-                reasoning = dependencies.store.get(f"{request.execution_id}:real:reasoning")
+        assert result.status in {"SUCCEEDED", "SUCCEEDED_WITH_LIMITATIONS"}, (
+            result.stage,
+            result.failure.message if result.failure else result.limitations,
+        )
+        prior = tuple(item.output_id for item in result.outputs)
+
+    reasoning = dependencies.store.get(f"{request.execution_id}:real:reasoning")
     assert not reasoning.findings
     assert reasoning.reasoning_status in {"NOT_REASONED", "PARTIALLY_REASONED"}
 
@@ -208,4 +183,3 @@ def test_d0_exact_boundary_fails_closed_with_human_next_step() -> None:
     assert "claim payment" not in answer_text
     assert projection.provenance_panel.evidence_references
     assert projection.provenance_panel.response_trace
-
