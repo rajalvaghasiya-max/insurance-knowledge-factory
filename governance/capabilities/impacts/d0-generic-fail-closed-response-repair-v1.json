@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-generic-fail-closed-response-repair-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME",
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "Frozen D0 exact-boundary PR #292 proved that the deterministic decision gate correctly withholds an unsupported boundary conclusion, but the real-response orchestration dereferenced a missing approved response packet and the response/human projection path supported answer statuses only. Extend the existing orchestration and response capabilities to preserve legitimate non-answer decisions, represent them canonically as fail-closed ResponseAssemblerOutput statuses with no answer/evidence content, and project only generic status wording plus governed limitations and next-step guidance.",
+  "supersession_impact": "No reasoning, decision, authority, publication, explanation-template, or recommendation behavior is superseded. Approved-answer and clarification paths remain unchanged. Non-answer decisions now traverse the existing canonical stages instead of failing by orchestration assumption.",
+  "authority_impact": "No insurance conclusion or claim-payment authority is added. The extension explicitly preserves withheld decision outcomes, exposes no answer sections or evidence references for canonical non-answer responses, and limits human-facing additions to generic system-status wording and workflow guidance."
+}
