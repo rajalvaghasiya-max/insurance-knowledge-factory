@@ -59,13 +59,10 @@ class GovernedConceptToMeaningAssetAdapter:
         asset_id = f"meaning_{concept_id}_{cls._stable_hash(asset_identity, 16)}"
 
         related = list(record.get("related_concepts", []))
-        profile = cls._concept_profile(concept_id, related)
+        profile = cls._meaning_profile(record)
 
         simple_example = deepcopy(dict(record.get("simple_example", {})))
-        policy_examples = cls._build_examples(
-            simple_example,
-            concept_id=concept_id,
-        )
+        policy_examples = cls._build_examples(simple_example)
 
         meaning_asset: Dict[str, Any] = {
             "asset_id": asset_id,
@@ -199,166 +196,30 @@ class GovernedConceptToMeaningAssetAdapter:
     def _build_examples(
         cls,
         simple_example: Mapping[str, Any],
-        *,
-        concept_id: str,
     ) -> list[Dict[str, Any]]:
         if not simple_example:
             return []
 
         example = deepcopy(dict(simple_example))
-
-        if concept_id == "deductible":
-            eligible = example.get("eligible_expense")
-            deductible = example.get("deductible")
-            balance = example.get("balance_for_insurer_assessment")
-            if (
-                eligible is not None
-                and deductible is not None
-                and balance is not None
-            ):
-                scenario = (
-                    f"Eligible expense is {eligible}, the applicable deductible is "
-                    f"{deductible}, and policy terms permit this illustration."
-                )
-                result = (
-                    f"The balance for insurer assessment is {balance}; final payment "
-                    "remains subject to admissibility, exclusions, limits, and policy terms."
-                )
-            else:
-                scenario = "Governed illustrative deductible example."
-                result = json.dumps(example, ensure_ascii=False, sort_keys=True)
-        elif concept_id == "copay":
-            base = example.get("policy_defined_calculation_base")
-            percentage = example.get("copay_percentage")
-            insured_amount = example.get("insured_borne_copay_amount")
-            if (
-                base is not None
-                and percentage is not None
-                and insured_amount is not None
-            ):
-                scenario = (
-                    f"The policy-defined calculation base is {base} and the "
-                    f"applicable copay is {percentage}%."
-                )
-                result = (
-                    f"The illustrated insured-borne copay amount is {insured_amount}. "
-                    "This does not establish claim entitlement or guarantee that the "
-                    "insurer pays the remaining amount."
-                )
-            else:
-                scenario = "Governed illustrative copay example."
-                result = json.dumps(example, ensure_ascii=False, sort_keys=True)
-        else:
-            raise GenericConceptValidationError(
-                f"unsupported concept profile: {concept_id}"
-            )
+        scenario = cls._required_text(example, "scenario")
+        result = cls._required_text(example, "result")
+        boundary = cls._required_text(example, "boundary")
 
         return [{
             "scenario": scenario,
-            "result": result,
+            "result": f"{result} {boundary}",
             "source_example": example,
         }]
 
     @staticmethod
-    def _concept_profile(
-        concept_id: str,
-        related: list[str],
-    ) -> Dict[str, Any]:
-        profiles: Dict[str, Dict[str, Any]] = {
-            "deductible": {
-                "category": "claim_cost_sharing",
-                "trigger": (
-                    "The applicable deductible is evaluated before eligible insurer "
-                    "benefits become payable, subject to policy terms."
-                ),
-                "inputs": [
-                    "eligible_expense",
-                    "applicable_deductible",
-                    "policy_terms",
-                    "claim_admissibility",
-                ],
-                "outputs": [
-                    "insured_borne_deductible",
-                    "balance_for_insurer_assessment",
-                ],
-                "calculation_basis": (
-                    "balance_for_insurer_assessment = eligible_expense - "
-                    "applicable_deductible, subject to policy terms and claim admissibility"
-                ),
-                "dependencies": [
-                    "policy_terms",
-                    "claim_admissibility",
-                    "deductible_type",
-                    "deductible_applicability",
-                ],
-                "depends_on": [
-                    "policy_terms",
-                    "claim_admissibility",
-                    "deductible_applicability",
-                ],
-                "commonly_confused_with": [
-                    item
-                    for item in related
-                    if item in {"copay", "co_pay", "co-payment"}
-                ],
-                "exceptions": [
-                    "No generic exception is asserted. Any waiver, reduction, "
-                    "aggregation, or special treatment must be established from "
-                    "governed product and customer-document evidence."
-                ],
-            },
-            "copay": {
-                "category": "claim_cost_sharing",
-                "trigger": (
-                    "A copay is evaluated only when the applicable policy terms "
-                    "require the insured to bear a stated percentage for the "
-                    "relevant claim, benefit, or circumstance."
-                ),
-                "inputs": [
-                    "applicable_copay_percentage",
-                    "policy_defined_calculation_base",
-                    "copay_applicability",
-                    "policy_terms",
-                ],
-                "outputs": [
-                    "insured_borne_copay_amount",
-                    "remaining_amount_for_insurer_assessment",
-                ],
-                "calculation_basis": (
-                    "insured_borne_copay_amount = applicable_copay_percentage "
-                    "multiplied by the policy-defined calculation base, only when "
-                    "supported by the applicable policy terms. The remaining amount "
-                    "is not a guaranteed insurer payment."
-                ),
-                "dependencies": [
-                    "policy_terms",
-                    "copay_applicability",
-                    "policy_defined_calculation_base",
-                    "customer_selected_copay",
-                ],
-                "depends_on": [
-                    "policy_terms",
-                    "copay_applicability",
-                    "policy_defined_calculation_base",
-                ],
-                "commonly_confused_with": [
-                    item
-                    for item in related
-                    if item in {"deductible", "aggregate_deductible"}
-                ],
-                "exceptions": [
-                    "No generic waiver, stacking rule, calculation sequence, or "
-                    "claim-wide applicability is asserted. Each must be established "
-                    "from governed product and customer-document evidence."
-                ],
-            },
-        }
-        profile = profiles.get(concept_id)
-        if profile is None:
+    def _meaning_profile(record: Mapping[str, Any]) -> Dict[str, Any]:
+        profile = record.get("meaning_profile")
+        if not isinstance(profile, Mapping):
             raise GenericConceptValidationError(
-                f"unsupported concept profile: {concept_id}"
+                "meaning_profile is required for governed meaning-asset creation"
             )
-        return profile
+        GovernedGenericConceptRecordContract._validate_meaning_profile(profile)
+        return deepcopy(dict(profile))
 
     @staticmethod
     def _required_text(mapping: Mapping[str, Any], field: str) -> str:
