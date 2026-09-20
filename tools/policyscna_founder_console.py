@@ -197,27 +197,13 @@ st.caption(
     "This is not a consumer frontend."
 )
 
-ask_tab, scenarios_tab = st.tabs(["Ask PolicyScna", "Proven D0 scenarios"])
+st.warning(
+    "This founder console currently exposes only the three frozen D0 scenarios. "
+    "A general free-form Ask interface is not yet proven: equivalent paraphrases can "
+    "fall out of the governed evidence-resolution lane. See Issue #296."
+)
 
-with ask_tab:
-    st.warning(
-        "Experimental founder path only — do not use this tab for Issue #294. "
-        "Changing the frozen question can cause the upstream runtime to require "
-        "clarification before planning. Use the Proven D0 scenarios tab for the "
-        "three cold-reader artifacts."
-    )
-
-    question = st.text_area(
-        "Ask a question",
-        value="What is the PED waiting period in Star Comprehensive?",
-        height=110,
-    )
-
-    if st.button("Ask PolicyScna", type="primary", use_container_width=True):
-        if not question.strip():
-            st.warning("Enter a question first.")
-        else:
-            _execute(lambda: _run_factual_question(question))
+scenarios_tab, = st.tabs(["Proven D0 scenarios"])
 
 with scenarios_tab:
     st.markdown(
