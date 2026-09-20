@@ -15,6 +15,85 @@ from knowledge_domains.health.understanding_manufacturing.learning_primitive_man
 
 def record(concept_id: str) -> dict:
     is_copay = concept_id == "copay"
+    meaning_profile = (
+        {
+            "category": "claim_cost_sharing",
+            "trigger": (
+                "A copay is evaluated only when the applicable policy terms require "
+                "the insured to bear a stated percentage for the relevant claim, "
+                "benefit, or circumstance."
+            ),
+            "inputs": [
+                "applicable_copay_percentage",
+                "policy_defined_calculation_base",
+                "copay_applicability",
+                "policy_terms",
+            ],
+            "outputs": [
+                "insured_borne_copay_amount",
+                "remaining_amount_for_insurer_assessment",
+            ],
+            "calculation_basis": (
+                "insured_borne_copay_amount = applicable_copay_percentage multiplied "
+                "by the policy-defined calculation base, only when supported by the "
+                "applicable policy terms. The remaining amount is not a guaranteed "
+                "insurer payment."
+            ),
+            "dependencies": [
+                "policy_terms",
+                "copay_applicability",
+                "policy_defined_calculation_base",
+                "customer_selected_copay",
+            ],
+            "depends_on": [
+                "policy_terms",
+                "copay_applicability",
+                "policy_defined_calculation_base",
+            ],
+            "commonly_confused_with": ["deductible"],
+            "exceptions": [
+                "No generic waiver, stacking rule, calculation sequence, or claim-wide "
+                "applicability is asserted."
+            ],
+        }
+        if is_copay
+        else {
+            "category": "claim_cost_sharing",
+            "trigger": (
+                "The applicable deductible is evaluated before eligible insurer "
+                "benefits become payable, subject to policy terms."
+            ),
+            "inputs": [
+                "eligible_expense",
+                "applicable_deductible",
+                "policy_terms",
+                "claim_admissibility",
+            ],
+            "outputs": [
+                "insured_borne_deductible",
+                "balance_for_insurer_assessment",
+            ],
+            "calculation_basis": (
+                "balance_for_insurer_assessment = eligible_expense - "
+                "applicable_deductible, subject to policy terms and claim admissibility"
+            ),
+            "dependencies": [
+                "policy_terms",
+                "claim_admissibility",
+                "deductible_type",
+                "deductible_applicability",
+            ],
+            "depends_on": [
+                "policy_terms",
+                "claim_admissibility",
+                "deductible_applicability",
+            ],
+            "commonly_confused_with": ["copay"],
+            "exceptions": [
+                "No generic exception is asserted without governed product evidence."
+            ],
+        }
+    )
     return {
         "record_id": f"gconcept_test_{concept_id}",
         "record_type": "governed_generic_concept_record_v0_2",
@@ -40,8 +119,11 @@ def record(concept_id: str) -> dict:
             if is_copay
             else "It may increase out-of-pocket exposure."
         ),
+        "meaning_profile": meaning_profile,
         "simple_example": (
             {
+                "scenario": "The calculation base is 90000 and the copay is 20%.",
+                "result": "The illustrated insured-borne copay amount is 18000.",
                 "policy_defined_calculation_base": 90000,
                 "copay_percentage": 20,
                 "insured_borne_copay_amount": 18000,
@@ -49,6 +131,8 @@ def record(concept_id: str) -> dict:
             }
             if is_copay
             else {
+                "scenario": "Eligible expense is 300000 and deductible is 100000.",
+                "result": "The balance for insurer assessment is 200000.",
                 "eligible_expense": 300000,
                 "deductible": 100000,
                 "balance_for_insurer_assessment": 200000,
@@ -151,11 +235,10 @@ def test_copay_profile_has_no_deductible_semantic_leakage() -> None:
     assert "guaranteed insurer payment" in payload
 
 
-def test_unknown_concept_fails_closed() -> None:
+def test_missing_meaning_profile_fails_closed() -> None:
     unsupported = record("deductible")
-    unsupported["concept_id"] = "unknown_cost_share"
-    unsupported["concept_name"] = "Unknown Cost Share"
-    with pytest.raises(Exception, match="unsupported concept profile"):
+    unsupported.pop("meaning_profile")
+    with pytest.raises(Exception, match="meaning_profile is required"):
         GovernedConceptToMeaningAssetAdapter.build(unsupported)
 
 
