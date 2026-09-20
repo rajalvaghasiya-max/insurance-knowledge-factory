@@ -95,7 +95,53 @@ def build_record(
             "claim or benefit. It may be mandatory, optional, or conditional, and "
             "it does not by itself establish what the insurer will finally pay."
         ),
+        meaning_profile={
+            "category": "claim_cost_sharing",
+            "trigger": (
+                "A copay is evaluated only when the applicable policy terms require "
+                "the insured to bear a stated percentage for the relevant claim, "
+                "benefit, or circumstance."
+            ),
+            "inputs": [
+                "applicable_copay_percentage",
+                "policy_defined_calculation_base",
+                "copay_applicability",
+                "policy_terms",
+            ],
+            "outputs": [
+                "insured_borne_copay_amount",
+                "remaining_amount_for_insurer_assessment",
+            ],
+            "calculation_basis": (
+                "insured_borne_copay_amount = applicable_copay_percentage multiplied "
+                "by the policy-defined calculation base, only when supported by the "
+                "applicable policy terms. The remaining amount is not a guaranteed "
+                "insurer payment."
+            ),
+            "dependencies": [
+                "policy_terms",
+                "copay_applicability",
+                "policy_defined_calculation_base",
+                "customer_selected_copay",
+            ],
+            "depends_on": [
+                "policy_terms",
+                "copay_applicability",
+                "policy_defined_calculation_base",
+            ],
+            "commonly_confused_with": ["deductible"],
+            "exceptions": [
+                "No generic waiver, stacking rule, calculation sequence, or "
+                "claim-wide applicability is asserted. Each must be established "
+                "from governed product and customer-document evidence."
+            ],
+        },
         simple_example={
+            "scenario": (
+                "The policy-defined calculation base is 90000 and the applicable "
+                "copay is 20%."
+            ),
+            "result": "The illustrated insured-borne copay amount is 18000.",
             "policy_defined_calculation_base": 90000,
             "copay_percentage": 20,
             "insured_borne_copay_amount": 18000,
