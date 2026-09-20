@@ -133,6 +133,10 @@ def record(concept_id: str) -> dict:
             else {
                 "scenario": "Eligible expense is 300000 and deductible is 100000.",
                 "result": "The balance for insurer assessment is 200000.",
+                "boundary": (
+                    "Illustrative only. Final payment remains subject to admissibility, "
+                    "exclusions, limits, and policy terms."
+                ),
                 "eligible_expense": 300000,
                 "deductible": 100000,
                 "balance_for_insurer_assessment": 200000,
