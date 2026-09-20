@@ -94,6 +94,15 @@ def _run(module, request):
     return response, project_human_answer(response), tuple(stages)
 
 
+def _run_frozen_factual():
+    base = FACTUAL._request()
+    request = replace(
+        base,
+        execution_id=f"founder-console-{uuid4().hex}",
+    )
+    return request, *_run(FACTUAL, request)
+
+
 def _run_factual_question(question: str):
     base = FACTUAL._request()
     request = replace(
@@ -191,9 +200,11 @@ st.caption(
 ask_tab, scenarios_tab = st.tabs(["Ask PolicyScna", "Proven D0 scenarios"])
 
 with ask_tab:
-    st.info(
-        "Current free-form scope uses the proven Star Comprehensive factual/PED "
-        "runtime. Unsupported questions should fail closed rather than invent an answer."
+    st.warning(
+        "Experimental founder path only — do not use this tab for Issue #294. "
+        "Changing the frozen question can cause the upstream runtime to require "
+        "clarification before planning. Use the Proven D0 scenarios tab for the "
+        "three cold-reader artifacts."
     )
 
     question = st.text_area(
@@ -210,11 +221,25 @@ with ask_tab:
 
 with scenarios_tab:
     st.markdown(
-        "These scenarios execute the same frozen contexts used in the D0 regression "
-        "suite. Their context is intentionally not editable in this harness."
+        "These scenarios execute the same frozen requests/contexts used in the D0 "
+        "regression suite. Their question and context are intentionally not editable."
     )
 
-    st.markdown("### Resolved waiting-period scenario")
+    st.markdown("### Case A — factual PED")
+    st.code(
+        "What is the PED waiting period in Star Comprehensive?",
+        language=None,
+    )
+    if st.button(
+        "Run Case A",
+        use_container_width=True,
+        key="factual_ped",
+    ):
+        _execute(_run_frozen_factual)
+
+    st.divider()
+
+    st.markdown("### Case B — resolved waiting-period scenario")
     st.code(
         "If I claim for an illness on 2026-01-15, will the initial waiting period apply?",
         language=None,
@@ -228,7 +253,7 @@ with scenarios_tab:
 
     st.divider()
 
-    st.markdown("### Exact-boundary fail-closed scenario")
+    st.markdown("### Case C — exact-boundary fail-closed scenario")
     st.code(
         "If I claim for an illness on 2026-01-31, will the initial waiting period apply?",
         language=None,
