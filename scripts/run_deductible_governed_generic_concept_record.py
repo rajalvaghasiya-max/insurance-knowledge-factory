@@ -106,7 +106,49 @@ def main() -> None:
             "payment begins. The exact form and frequency of the deductible must be "
             "checked in the applicable product and policy documents."
         ),
+        meaning_profile={
+            "category": "claim_cost_sharing",
+            "trigger": (
+                "The applicable deductible is evaluated before eligible insurer "
+                "benefits become payable, subject to policy terms."
+            ),
+            "inputs": [
+                "eligible_expense",
+                "applicable_deductible",
+                "policy_terms",
+                "claim_admissibility",
+            ],
+            "outputs": [
+                "insured_borne_deductible",
+                "balance_for_insurer_assessment",
+            ],
+            "calculation_basis": (
+                "balance_for_insurer_assessment = eligible_expense - "
+                "applicable_deductible, subject to policy terms and claim admissibility"
+            ),
+            "dependencies": [
+                "policy_terms",
+                "claim_admissibility",
+                "deductible_type",
+                "deductible_applicability",
+            ],
+            "depends_on": [
+                "policy_terms",
+                "claim_admissibility",
+                "deductible_applicability",
+            ],
+            "commonly_confused_with": ["copay"],
+            "exceptions": [
+                "No generic exception is asserted. Any waiver, reduction, aggregation, "
+                "or special treatment must be established from governed product and "
+                "customer-document evidence."
+            ],
+        },
         simple_example={
+            "scenario": (
+                "Eligible expense is 300000 and the applicable deductible is 100000."
+            ),
+            "result": "The balance for insurer assessment is 200000.",
             "eligible_expense": 300000,
             "deductible": 100000,
             "balance_for_insurer_assessment": 200000,
