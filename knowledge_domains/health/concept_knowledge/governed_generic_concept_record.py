@@ -54,6 +54,7 @@ class GovernedGenericConceptRecordContract:
         definition: str,
         plain_language_explanation: str,
         practical_implication: str,
+        meaning_profile: Mapping[str, Any],
         simple_example: Mapping[str, Any],
         common_misunderstandings: Iterable[str],
         limitations: Iterable[str],
@@ -77,6 +78,7 @@ class GovernedGenericConceptRecordContract:
             "definition": definition,
             "plain_language_explanation": plain_language_explanation,
             "practical_implication": practical_implication,
+            "meaning_profile": deepcopy(dict(meaning_profile)),
             "simple_example": deepcopy(dict(simple_example)),
             "common_misunderstandings": list(common_misunderstandings),
             "limitations": list(limitations),
@@ -104,7 +106,7 @@ class GovernedGenericConceptRecordContract:
             for k in (
                 "record_type", "schema_version", "concept_id", "concept_scope",
                 "domain", "definition", "plain_language_explanation",
-                "practical_implication", "simple_example",
+                "practical_implication", "meaning_profile", "simple_example",
                 "common_misunderstandings", "limitations",
                 "product_specific_boundary", "customer_document_boundary",
                 "related_concepts", "source_evidence", "review_decision",
@@ -137,6 +139,10 @@ class GovernedGenericConceptRecordContract:
             if record.get(field) != expected:
                 raise GenericConceptValidationError(f"{field} must be {expected!r}")
 
+        meaning_profile = record.get("meaning_profile")
+        if meaning_profile is not None:
+            cls._validate_meaning_profile(meaning_profile)
+
         if not isinstance(record.get("simple_example"), Mapping) or not record["simple_example"]:
             raise GenericConceptValidationError("simple_example must be a non-empty object")
 
@@ -154,6 +160,32 @@ class GovernedGenericConceptRecordContract:
         cls._validate_review_decision(record.get("review_decision"))
         cls._validate_factory_signature(record.get("factory_signature"))
         cls._reject_forbidden_structured_context(record)
+
+    @classmethod
+    def _validate_meaning_profile(cls, profile: Any) -> None:
+        if not isinstance(profile, Mapping):
+            raise GenericConceptValidationError("meaning_profile must be an object")
+
+        for field in ("category", "trigger", "calculation_basis"):
+            cls._require_non_empty(profile, field, prefix="meaning_profile.")
+
+        for field in (
+            "inputs",
+            "outputs",
+            "dependencies",
+            "depends_on",
+            "commonly_confused_with",
+            "exceptions",
+        ):
+            value = profile.get(field)
+            if not isinstance(value, list):
+                raise GenericConceptValidationError(
+                    f"meaning_profile.{field} must be a list"
+                )
+            if any(not isinstance(item, str) or not item.strip() for item in value):
+                raise GenericConceptValidationError(
+                    f"meaning_profile.{field} cannot contain blank values"
+                )
 
     @classmethod
     def _validate_evidence(cls, item: Any, index: int) -> None:

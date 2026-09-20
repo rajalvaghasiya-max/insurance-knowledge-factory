@@ -30,13 +30,45 @@
     "It does not determine the policy-defined calculation base.",
     "It does not determine claim admissibility, settlement, entitlement, or recommendation."
   ],
+  "meaning_profile": {
+    "calculation_basis": "insured_borne_copay_amount = applicable_copay_percentage multiplied by the policy-defined calculation base, only when supported by the applicable policy terms. The remaining amount is not a guaranteed insurer payment.",
+    "category": "claim_cost_sharing",
+    "commonly_confused_with": [
+      "deductible"
+    ],
+    "dependencies": [
+      "policy_terms",
+      "copay_applicability",
+      "policy_defined_calculation_base",
+      "customer_selected_copay"
+    ],
+    "depends_on": [
+      "policy_terms",
+      "copay_applicability",
+      "policy_defined_calculation_base"
+    ],
+    "exceptions": [
+      "No generic waiver, stacking rule, calculation sequence, or claim-wide applicability is asserted. Each must be established from governed product and customer-document evidence."
+    ],
+    "inputs": [
+      "applicable_copay_percentage",
+      "policy_defined_calculation_base",
+      "copay_applicability",
+      "policy_terms"
+    ],
+    "outputs": [
+      "insured_borne_copay_amount",
+      "remaining_amount_for_insurer_assessment"
+    ],
+    "trigger": "A copay is evaluated only when the applicable policy terms require the insured to bear a stated percentage for the relevant claim, benefit, or circumstance."
+  },
   "non_publication_guardrail": "generic_concept_record_no_publication_customer_answer_entitlement_recommendation_or_claim_decision",
   "plain_language_explanation": "When an applicable copay condition is triggered, the customer bears the stated percentage of the policy-defined calculation base. The percentage, calculation base, and scope must be checked in the applicable policy and customer documents.",
   "practical_implication": "A copay can increase the customer's out-of-pocket share for a covered claim or benefit. It may be mandatory, optional, or conditional, and it does not by itself establish what the insurer will finally pay.",
   "product_specific_boundary": "The percentage, mandatory or voluntary status, calculation base, applicability conditions, sequencing, stacking, waiver, and affected benefits must come from governed product knowledge and applicable policy wording.",
   "publication_state": "not_published",
   "recommendation_state": "not_created",
-  "record_id": "gconcept_2ff721fa507ca015f6b8",
+  "record_id": "gconcept_6918fcf860b29d8f5644",
   "record_type": "governed_generic_concept_record_v0_2",
   "related_concepts": [
     "admissible_claim",
@@ -58,7 +90,9 @@
     "copay_percentage": 20,
     "insured_borne_copay_amount": 18000,
     "policy_defined_calculation_base": 90000,
-    "remaining_amount_for_insurer_assessment": 72000
+    "remaining_amount_for_insurer_assessment": 72000,
+    "result": "The illustrated insured-borne copay amount is 18000.",
+    "scenario": "The policy-defined calculation base is 90000 and the applicable copay is 20%."
   },
   "source_evidence": [
     {

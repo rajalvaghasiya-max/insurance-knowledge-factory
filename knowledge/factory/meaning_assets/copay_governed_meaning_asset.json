@@ -2,7 +2,7 @@
   "aliases": [
     "Copay"
   ],
-  "asset_id": "meaning_copay_23057a70fa4d6935",
+  "asset_id": "meaning_copay_7b3592140f0e5fce",
   "asset_type": "meaning_asset",
   "asset_version": "1.0",
   "business_purpose": "A copay can increase the customer's out-of-pocket share for a covered claim or benefit. It may be mandatory, optional, or conditional, and it does not by itself establish what the insurer will finally pay.",
@@ -16,7 +16,7 @@
   },
   "concept_id": "copay",
   "confidence": {
-    "canonical_confidence": 1.0,
+    "canonical_confidence": 1,
     "requires_review": false,
     "review_basis": "approved_governed_generic_concept_record"
   },
@@ -79,7 +79,7 @@
       "reviewed_at": "2026-07-12T16:06:03.4734954Z",
       "reviewer_identity": "rajal_vaghasiya"
     },
-    "source_governed_record_id": "gconcept_2ff721fa507ca015f6b8",
+    "source_governed_record_id": "gconcept_6918fcf860b29d8f5644",
     "source_knowledge_version": "1.0",
     "source_record_type": "governed_generic_concept_record_v0_2",
     "source_schema_version": "0.2"
@@ -122,14 +122,16 @@
   ],
   "policy_examples": [
     {
-      "result": "The illustrated insured-borne copay amount is 18000. This does not establish claim entitlement or guarantee that the insurer pays the remaining amount.",
+      "result": "The illustrated insured-borne copay amount is 18000. Illustrative only. This assumes the policy terms establish a 20% copay on a calculation base of 90000. It does not establish claim entitlement or guarantee payment of the remaining amount.",
       "scenario": "The policy-defined calculation base is 90000 and the applicable copay is 20%.",
       "source_example": {
         "boundary": "Illustrative only. This assumes the policy terms establish a 20% copay on a calculation base of 90000. It does not establish claim entitlement or guarantee payment of the remaining amount.",
         "copay_percentage": 20,
         "insured_borne_copay_amount": 18000,
         "policy_defined_calculation_base": 90000,
-        "remaining_amount_for_insurer_assessment": 72000
+        "remaining_amount_for_insurer_assessment": 72000,
+        "result": "The illustrated insured-borne copay amount is 18000.",
+        "scenario": "The policy-defined calculation base is 90000 and the applicable copay is 20%."
       }
     }
   ],
