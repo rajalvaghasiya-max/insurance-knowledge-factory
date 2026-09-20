@@ -151,8 +151,11 @@ def _render_answer(request, response, projection, stages):
                 "stages": stages,
                 "evidence_references": [
                     {
+                        "reference_id": item.reference_id,
+                        "reference_type": item.reference_type,
                         "source_id": item.source_id,
-                        "source_type": item.source_type,
+                        "label": item.label,
+                        "locator": item.locator,
                     }
                     for item in projection.provenance_panel.evidence_references
                 ],
