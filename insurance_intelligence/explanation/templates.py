@@ -11,6 +11,7 @@ from insurance_intelligence.contracts.explanation import (
     ExplanationGeneratorInput,
     ExplanationSection,
     TerminologySubstitution,
+    build_education_lineage_reference,
     build_section,
     build_terminology_substitution,
 )
@@ -305,6 +306,72 @@ def render_explanation_templates(
                     )
                 )
                 template_ids.append("condition_notice_v1" if clause_type == "TRIGGER" else f"{clause_type.lower()}_notice_v1")
+
+    for publication in sorted(
+        explanation_input.education_publications,
+        key=lambda item: (item.concept_id, item.publication_id),
+    ):
+        education_reference = build_education_lineage_reference(
+            publication_id=publication.publication_id,
+            publication_receipt_id=publication.publication_receipt_id,
+            concept_id=publication.concept_id,
+        )
+        meaning_text = _ensure_sentence(
+            f"{publication.canonical_name}: {publication.definition} "
+            f"{publication.plain_language_explanation}"
+        )
+        sections.append(
+            build_section(
+                section_id=_stable_id(
+                    "section",
+                    explanation_input.request_id,
+                    publication.publication_id,
+                    "education-meaning",
+                ),
+                section_type="MEANING",
+                status="DRAFTED",
+                text=meaning_text,
+                education_references=(education_reference,),
+            )
+        )
+        template_ids.append("published_education_meaning_v1")
+
+        sections.append(
+            build_section(
+                section_id=_stable_id(
+                    "section",
+                    explanation_input.request_id,
+                    publication.publication_id,
+                    "education-impact",
+                ),
+                section_type="IMPACT",
+                status="DRAFTED",
+                text=_ensure_sentence(publication.practical_implication),
+                education_references=(education_reference,),
+            )
+        )
+        template_ids.append("published_education_impact_v1")
+
+        for index, example in enumerate(publication.examples):
+            example_text = _ensure_sentence(
+                f"Example: {example.scenario} {example.result} {example.boundary}"
+            )
+            sections.append(
+                build_section(
+                    section_id=_stable_id(
+                        "section",
+                        explanation_input.request_id,
+                        publication.publication_id,
+                        "education-example",
+                        str(index),
+                    ),
+                    section_type="EXAMPLE",
+                    status="DRAFTED",
+                    text=example_text,
+                    education_references=(education_reference,),
+                )
+            )
+            template_ids.append("published_education_example_v1")
 
     if limitation_ids and style.preserve_limitations:
         sections.append(
