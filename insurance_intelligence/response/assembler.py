@@ -34,6 +34,8 @@ EXPLANATION_TO_RESPONSE_SECTION = {
     "CLARIFICATION": "CLARIFICATION",
     "ADVISOR_TALKING_POINT": "ADVISOR_TALKING_POINT",
     "INTERNAL_REVIEW_NOTE": "INTERNAL_NOTE",
+    "EDUCATION": "EDUCATION",
+    "EXAMPLE": "EXAMPLE",
 }
 
 
@@ -198,6 +200,7 @@ def assemble_sections(
             evidence_reference_ids=evidence_reference_ids,
             limitation_ids=section.limitation_ids,
             clarification_ids=section.clarification_ids,
+            education_publication_ids=section.education_publication_ids,
         )
         response_sections.append(response_section)
         limitation_ids.extend(section.limitation_ids)
