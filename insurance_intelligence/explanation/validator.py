@@ -14,6 +14,11 @@ from insurance_intelligence.contracts.explanation import (
     build_fidelity_check,
 )
 from insurance_intelligence.contracts.reasoning import Finding
+from insurance_intelligence.explanation.education import (
+    EducationExplanationError,
+    admitted_publications,
+    render_education_sections,
+)
 
 
 class ExplanationValidationError(ValueError):
@@ -168,6 +173,45 @@ def validate_explanation_fidelity(
     packet = decision.response_packet
     if packet is None:
         raise ExplanationValidationError("approved decision requires an approved response packet")
+
+    try:
+        education_publications = admitted_publications(explanation_input)
+        expected_education = render_education_sections(
+            request_id=explanation_input.request_id,
+            publications=education_publications,
+        )
+    except EducationExplanationError as exc:
+        raise ExplanationValidationError(str(exc)) from exc
+
+    actual_education = tuple(
+        section
+        for section in drafted
+        if section.section_type in {"EDUCATION", "EXAMPLE"}
+    )
+    expected_by_id = {section.section_id: section for section in expected_education}
+    actual_by_id = {section.section_id: section for section in actual_education}
+    education_ok = set(actual_by_id) == set(expected_by_id) and all(
+        actual_by_id[section_id] == expected_by_id[section_id]
+        for section_id in expected_by_id
+    )
+    checks.append(
+        _check(
+            request_id=explanation_input.request_id,
+            check_type="EDUCATION_PUBLICATION_FIDELITY",
+            status="PASSED" if education_ok else "FAILED",
+            description=(
+                "Published education sections exactly preserve admitted education content and lineage."
+                if education_ok
+                else "Education sections do not exactly match the admitted education publication."
+            ),
+            source_references=tuple(
+                publication.publication_id for publication in education_publications
+            ),
+            section_ids=tuple(section.section_id for section in actual_education),
+        )
+    )
+    if not education_ok:
+        failures.append("FAILED_UNSUPPORTED_CONTENT")
 
     approved_ids = tuple(sorted(packet.approved_finding_ids))
     unknown = tuple(item for item in approved_ids if item not in findings_by_id)
