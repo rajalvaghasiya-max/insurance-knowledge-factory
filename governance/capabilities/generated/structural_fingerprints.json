@@ -192,7 +192,7 @@
       "owned_module_paths": [
         "insurance_intelligence/authority_enforced_explanation.py"
       ],
-      "structural_fingerprint": "38a15b653c1fc341d8141cc974dfe8fa097cacc7571431c360dab27b27c42242"
+      "structural_fingerprint": "afa59808e6576d897d958945f9436532b68d14622b587c9e6df1276912df5366"
     },
     {
       "capability_id": "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
@@ -286,7 +286,7 @@
         "insurance_intelligence/orchestration/service.py",
         "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
-      "structural_fingerprint": "1ca7b00b3d9b1ddd0b02dd71fc1e43f4fbbf945e9df2182f0d163bd19ad65dfc"
+      "structural_fingerprint": "598c88151d9e896840de0ef6407b62c4d9ef80a0b6cd95c85a57da38d1f118d7"
     },
     {
       "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",

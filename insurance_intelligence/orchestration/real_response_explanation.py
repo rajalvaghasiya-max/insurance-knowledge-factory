@@ -17,6 +17,7 @@ from insurance_intelligence.contracts.explanation import (
     ExplanationGeneratorOutput,
     build_output as build_explanation_output,
 )
+from insurance_intelligence.contracts.intent import IntentAnalyzerOutput
 from insurance_intelligence.contracts.reasoning import ReasoningEngineOutput
 from insurance_intelligence.explanation.registry import ExplanationStyleRegistry, TerminologyRegistry
 from insurance_intelligence.orchestration.intelligence_adapters import (
@@ -30,10 +31,54 @@ from insurance_intelligence.orchestration.real_response_prefix import (
     RealResponsePrefixDependencies,
     RealResponsePrefixError,
 )
+from insurance_intelligence.terminology.concept_resolver import CanonicalConceptResolver
 
 
 def _output_id(execution_id: str, stage: str) -> str:
     return f"{execution_id}:real:{stage.lower()}"
+
+
+def _education_publications_for_request(
+    *,
+    request,
+    dependencies: RealResponsePrefixDependencies,
+):
+    if request.audience != "CUSTOMER":
+        return ()
+    if (
+        dependencies.concept_registry is None
+        or dependencies.education_publication_lookup is None
+    ):
+        return ()
+
+    intent = dependencies.store.get(
+        _output_id(request.execution_id, "INTENT_ANALYSIS"),
+        expected_type=IntentAnalyzerOutput,
+    )
+    resolver = CanonicalConceptResolver(dependencies.concept_registry)
+    downstream_topics: set[str] = set()
+    for candidate in intent.candidate_entities:
+        if candidate.entity_type != "POLICY_FEATURE":
+            continue
+        resolution = resolver.resolve(candidate.normalized_text, domain=intent.domain)
+        if resolution.status != "RESOLVED" or resolution.selected_concept is None:
+            continue
+        topic = resolution.selected_concept.downstream_topic
+        if topic:
+            downstream_topics.add(topic)
+
+    if len(downstream_topics) != 1:
+        return ()
+
+    topic = next(iter(downstream_topics))
+    publication = dependencies.education_publication_lookup(topic)
+    if publication is None:
+        return ()
+    if publication.concept_id != topic:
+        raise RealResponsePrefixError(
+            "education publication concept_id does not match resolved downstream topic"
+        )
+    return (publication,)
 
 
 def build_real_response_explanation_adapters(
@@ -76,6 +121,10 @@ def build_real_response_explanation_adapters(
                 reading_level="SIMPLE",
                 explanation_mode="PLAIN_LANGUAGE",
                 communication_context=dict(request.customer_context),
+                education_publications=_education_publications_for_request(
+                    request=request,
+                    dependencies=dependencies,
+                ),
             )
         else:
             limitations = tuple(

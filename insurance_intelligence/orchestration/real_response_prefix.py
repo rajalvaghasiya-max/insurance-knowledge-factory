@@ -30,6 +30,7 @@ from insurance_intelligence.contracts.evidence_instance_enforcement import (
     EvidenceInstanceEnforcementOutput,
     build_input as build_evidence_enforcement_input,
 )
+from insurance_intelligence.contracts.education_publication import EducationPublicationRecord
 from insurance_intelligence.contracts.full_cycle import OrchestrationRequest, ProductScope
 from insurance_intelligence.contracts.instance_sufficiency import (
     InstanceSufficiencyOutput,
@@ -48,6 +49,7 @@ from insurance_intelligence.contracts.request_authority import (
     build_input as build_authority_input,
 )
 from insurance_intelligence.entity_resolution.product_resolver import GovernedProductEntityRegistry
+from insurance_intelligence.terminology.concept_registry import CanonicalConceptRegistry
 from insurance_intelligence.evidence.admission import USER_ANSWER
 from insurance_intelligence.evidence.published_resolver import PublishedEvidenceResolver
 from insurance_intelligence.evidence_instance_enforcement import EvidenceInstanceEnforcer
@@ -89,6 +91,7 @@ class CertifiedKnowledgeSelection:
 
 
 KnowledgeSnapshotLookup = Callable[[str, ProductScope], CertifiedKnowledgeSelection | None]
+EducationPublicationLookup = Callable[[str], EducationPublicationRecord | None]
 
 
 @dataclass(frozen=True)
@@ -99,6 +102,8 @@ class RealResponsePrefixDependencies:
     knowledge_snapshot_lookup: KnowledgeSnapshotLookup
     published_evidence_resolver: PublishedEvidenceResolver
     repository_roots: tuple[str, ...]
+    concept_registry: CanonicalConceptRegistry | None = None
+    education_publication_lookup: EducationPublicationLookup | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.store, RuntimeStageObjectStore):
@@ -113,6 +118,23 @@ class RealResponsePrefixDependencies:
             raise RealResponsePrefixError("published_evidence_resolver must be PublishedEvidenceResolver")
         if not self.repository_roots or any(not isinstance(item, str) or not item.strip() for item in self.repository_roots):
             raise RealResponsePrefixError("repository_roots must contain non-empty paths")
+        if (self.concept_registry is None) != (self.education_publication_lookup is None):
+            raise RealResponsePrefixError(
+                "concept_registry and education_publication_lookup must be supplied together"
+            )
+        if self.concept_registry is not None and not isinstance(
+            self.concept_registry, CanonicalConceptRegistry
+        ):
+            raise RealResponsePrefixError(
+                "concept_registry must be CanonicalConceptRegistry when provided"
+            )
+        if (
+            self.education_publication_lookup is not None
+            and not callable(self.education_publication_lookup)
+        ):
+            raise RealResponsePrefixError(
+                "education_publication_lookup must be callable when provided"
+            )
 
 
 def _canonical_entity_id(scope: ProductScope) -> str:
@@ -394,6 +416,7 @@ def build_real_response_prefix_adapters(
 __all__ = [
     "CertifiedKnowledgeSelection",
     "KnowledgeSnapshotLookup",
+    "EducationPublicationLookup",
     "RealResponsePrefixDependencies",
     "RealResponsePrefixError",
     "build_real_response_prefix_adapters",
