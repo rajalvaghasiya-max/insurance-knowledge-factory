@@ -14,6 +14,9 @@ from insurance_intelligence.orchestration.intelligence_adapters import (
 from insurance_intelligence.orchestration.real_response_assembly import (
     build_real_response_assembly_adapters,
 )
+from insurance_intelligence.orchestration.real_response_explanation import (
+    EducationPublicationLookup,
+)
 from insurance_intelligence.orchestration.real_response_prefix import (
     RealResponsePrefixDependencies,
     RealResponsePrefixError,
@@ -29,6 +32,7 @@ def build_real_response_rendering_adapters(
     response_registry: ResponseFormatRegistry,
     rendering_capability: IntelligenceStageCapability,
     terminology_registry: TerminologyRegistry | None = None,
+    education_publication_lookup: EducationPublicationLookup | None = None,
     response_format: str = "STANDARD",
 ):
     """Build the proven real path plus canonical LLM_RENDERING composition."""
@@ -40,6 +44,7 @@ def build_real_response_rendering_adapters(
         style_registry=style_registry,
         response_registry=response_registry,
         terminology_registry=terminology_registry,
+        education_publication_lookup=education_publication_lookup,
         response_format=response_format,
     )
     return prior + (
