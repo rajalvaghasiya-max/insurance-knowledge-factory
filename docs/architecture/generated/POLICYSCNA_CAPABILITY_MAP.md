@@ -113,13 +113,13 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR`<br>Evidence-Locked Explanation Generator | `ACTIVE` | `REUSE` | Underlying presentation engine only. Current ordinary-assertion entry is mediated by II.EXPLANATION.AUTHORITY_ENFORCEMENT; the generator may not retrieve evidence, reason, alter approved scope, or add recommendation authority. | None | `insurance_intelligence/explanation`<br>`insurance_intelligence/contracts/explanation.py` | `4465f93f078b` |
+| `II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR`<br>Evidence-Locked Explanation Generator | `ACTIVE` | `REUSE` | Underlying presentation engine only. Current ordinary-assertion entry is mediated by II.EXPLANATION.AUTHORITY_ENFORCEMENT; the generator may not retrieve evidence, reason, alter approved scope, or add recommendation authority. | None | `insurance_intelligence/explanation`<br>`insurance_intelligence/contracts/explanation.py` | `ce70b6bd1fdf` |
 
 ### INSURANCE_INTELLIGENCE_EXPLANATION_GOVERNANCE
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.EXPLANATION.AUTHORITY_ENFORCEMENT`<br>Authority-Enforced Explanation Entry | `ACTIVE` | `REUSE` | Controls entry into the existing evidence-locked Explanation Generator; it does not add findings or recommendation authority. | None | `insurance_intelligence/authority_enforced_explanation.py` | `38a15b653c1f` |
+| `II.EXPLANATION.AUTHORITY_ENFORCEMENT`<br>Authority-Enforced Explanation Entry | `ACTIVE` | `REUSE` | Controls entry into the existing evidence-locked Explanation Generator; it does not add findings or recommendation authority. | None | `insurance_intelligence/authority_enforced_explanation.py` | `afa59808e657` |
 
 ### INSURANCE_INTELLIGENCE_GOVERNANCE
 
