@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from dataclasses import replace
+
 from insurance_intelligence.contracts.decision import (
     build_approved_response_packet,
     build_finding_disposition,
@@ -15,6 +17,7 @@ from insurance_intelligence.contracts.explanation import build_input as build_ex
 from insurance_intelligence.contracts.reasoning import build_finding
 from insurance_intelligence.contracts.response import build_input as build_response_input
 from insurance_intelligence.explanation.generator import generate_explanation
+from insurance_intelligence.explanation.validator import validate_explanation_fidelity
 from insurance_intelligence.explanation.registry import (
     ExplanationStyleRegistry,
     build_style_definition,
@@ -210,3 +213,38 @@ def test_admitted_education_enriches_explanation_without_becoming_product_eviden
     assert {ref.source_id for ref in response.evidence_references} == {
         "product-evidence-1"
     }
+
+
+def test_tampered_education_text_fails_fidelity() -> None:
+    education = _education()
+    explanation_input = build_explanation_input(
+        request_id="request-1",
+        decision_output=_decision(),
+        education_publications=(education,),
+    )
+    finding = _finding()
+    explanation = generate_explanation(
+        explanation_input=explanation_input,
+        findings_by_id={"finding-1": finding},
+        style_registry=_styles(),
+    )
+
+    tampered = tuple(
+        replace(section, text=section.text + " Invented customer meaning.")
+        if section.section_type == "EDUCATION"
+        else section
+        for section in explanation.sections
+    )
+    validation = validate_explanation_fidelity(
+        explanation_input=explanation_input,
+        sections=tampered,
+        findings_by_id={"finding-1": finding},
+        terminology_substitutions=explanation.terminology_substitutions,
+    )
+
+    assert validation.fidelity_status == "FAILED"
+    assert any(
+        check.check_type == "EDUCATION_PUBLICATION_FIDELITY"
+        and check.status == "FAILED"
+        for check in validation.checks
+    )
