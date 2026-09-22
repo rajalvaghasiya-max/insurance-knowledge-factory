@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-orchestration-education-lookup-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME",
+    "II.EXPLANATION.AUTHORITY_ENFORCEMENT"
+  ],
+  "rationale": "Extend canonical response orchestration to resolve an existing POLICY_FEATURE candidate through the governed CanonicalConceptRegistry and supply an injected customer-education publication to the existing authority-enforced explanation path. Terminology resolution and education publication/admission are reused unchanged.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new insurance authority. Education lookup occurs only after product reasoning/Decision Gate and cannot alter approved findings, product evidence, recommendation authority, or product applicability."
+}
