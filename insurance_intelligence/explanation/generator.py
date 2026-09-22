@@ -13,6 +13,10 @@ from insurance_intelligence.contracts.explanation import (
     build_trace_event,
 )
 from insurance_intelligence.contracts.reasoning import Finding
+from insurance_intelligence.contracts.education_publication import CUSTOMER_EDUCATION
+from insurance_intelligence.education_publication.admission import (
+    evaluate_education_admission,
+)
 from insurance_intelligence.explanation.registry import (
     ExplanationStyleRegistry,
     TerminologyRegistry,
@@ -119,6 +123,16 @@ def generate_explanation(
             scope=_scope(explanation_input),
         )
 
+    for publication in explanation_input.education_publications:
+        admission = evaluate_education_admission(
+            publication=publication,
+            requested_use=CUSTOMER_EDUCATION,
+        )
+        if not admission.admitted:
+            raise ExplanationGenerationError(
+                f"education publication is not admitted: {admission.basis}"
+            )
+
     trace: list[ExplanationTraceEvent] = []
     seq = 1
     trace.append(_event(
@@ -154,6 +168,24 @@ def generate_explanation(
         input_references=tuple(sorted(refs)),
     ))
     seq += 1
+
+    for publication in sorted(
+        explanation_input.education_publications,
+        key=lambda item: (item.concept_id, item.publication_id),
+    ):
+        trace.append(_event(
+            request_id=explanation_input.request_id,
+            sequence=seq,
+            event_type="EDUCATION_PUBLICATION_RECEIVED",
+            decision="ADMITTED",
+            basis="Education publication admitted for CUSTOMER_EDUCATION explanation enrichment only.",
+            input_references=(
+                publication.publication_id,
+                publication.publication_receipt_id,
+                publication.concept_id,
+            ),
+        ))
+        seq += 1
 
     rendered = render_explanation_templates(
         explanation_input=explanation_input,
@@ -250,6 +282,17 @@ def generate_explanation(
         style.style_id,
         style.style_version,
         *rendered.template_ids,
+        *(
+            value
+            for publication in sorted(
+                explanation_input.education_publications,
+                key=lambda item: (item.concept_id, item.publication_id),
+            )
+            for value in (
+                publication.publication_id,
+                publication.publication_receipt_id,
+            )
+        ),
     )
     return build_output(
         request_id=explanation_input.request_id,
