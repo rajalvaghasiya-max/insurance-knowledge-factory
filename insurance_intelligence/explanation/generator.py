@@ -13,6 +13,11 @@ from insurance_intelligence.contracts.explanation import (
     build_trace_event,
 )
 from insurance_intelligence.contracts.reasoning import Finding
+from insurance_intelligence.explanation.education import (
+    EducationExplanationError,
+    admitted_publications,
+    render_education_sections,
+)
 from insurance_intelligence.explanation.registry import (
     ExplanationStyleRegistry,
     TerminologyRegistry,
@@ -109,6 +114,11 @@ def generate_explanation(
         raise ExplanationGenerationError("no eligible explanation style is registered")
     style = eligible_styles[0]
 
+    try:
+        education_publications = admitted_publications(explanation_input)
+    except EducationExplanationError as exc:
+        raise ExplanationGenerationError(str(exc)) from exc
+
     terms = ()
     if terminology_registry is not None:
         terms = terminology_registry.eligible_terms(
@@ -155,12 +165,36 @@ def generate_explanation(
     ))
     seq += 1
 
+    for publication in education_publications:
+        trace.append(_event(
+            request_id=explanation_input.request_id,
+            sequence=seq,
+            event_type="EDUCATION_PUBLICATION_RECEIVED",
+            decision="ADMITTED",
+            basis="Governed education publication admitted for customer-education use only.",
+            input_references=(
+                publication.publication_id,
+                publication.publication_receipt_id,
+            ),
+        ))
+        seq += 1
+
     rendered = render_explanation_templates(
         explanation_input=explanation_input,
         findings_by_id=findings_by_id,
         style=style,
         terminology=terms,
     )
+    education_sections = render_education_sections(
+        request_id=explanation_input.request_id,
+        publications=education_publications,
+    )
+    if education_sections:
+        rendered = replace(
+            rendered,
+            sections=education_sections + rendered.sections,
+            template_ids=("governed_education_publication_v1",) + rendered.template_ids,
+        )
     for section in rendered.sections:
         trace.append(_event(
             request_id=explanation_input.request_id,
@@ -169,7 +203,11 @@ def generate_explanation(
             section_id=section.section_id,
             decision="DRAFTED",
             basis=f"Deterministic template rendered {section.section_type} section.",
-            input_references=section.approved_finding_ids + section.clarification_ids,
+            input_references=(
+                section.approved_finding_ids
+                + section.clarification_ids
+                + section.education_publication_ids
+            ),
             output_references=(section.section_id,),
         ))
         seq += 1
@@ -249,6 +287,10 @@ def generate_explanation(
         explanation_input.explanation_mode,
         style.style_id,
         style.style_version,
+        *(
+            f"{publication.publication_id}:{publication.publication_receipt_id}"
+            for publication in education_publications
+        ),
         *rendered.template_ids,
     )
     return build_output(

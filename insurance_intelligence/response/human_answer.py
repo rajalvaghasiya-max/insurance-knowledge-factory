@@ -19,7 +19,9 @@ class HumanAnswerProjectionError(ValueError):
     """Raised when an assembled response cannot be projected safely."""
 
 
-_HUMAN_MEANING_SECTION_TYPES = frozenset({"EXPLANATION", "CONDITION", "IMPACT"})
+_HUMAN_MEANING_SECTION_TYPES = frozenset(
+    {"EDUCATION", "EXPLANATION", "CONDITION", "EXAMPLE", "IMPACT"}
+)
 _ANSWER_STATUSES = frozenset({"ANSWER", "ANSWER_WITH_LIMITATIONS"})
 _NON_ANSWER_MESSAGES = {
     "INSUFFICIENT_EVIDENCE": "I cannot determine this safely because the required evidence is incomplete.",

@@ -34,6 +34,8 @@ SECTION_TYPES = frozenset(
         "CLARIFICATION",
         "ADVISOR_TALKING_POINT",
         "INTERNAL_NOTE",
+        "EDUCATION",
+        "EXAMPLE",
     }
 )
 SECTION_STATUSES = frozenset({"INCLUDED", "WITHHELD", "REQUIRES_REVIEW"})
@@ -162,6 +164,7 @@ class ResponseSection:
     limitation_ids: tuple[str, ...]
     assumption_ids: tuple[str, ...]
     clarification_ids: tuple[str, ...]
+    education_publication_ids: tuple[str, ...] = ()
 
 
 def build_section(
@@ -176,6 +179,7 @@ def build_section(
     limitation_ids: Sequence[str] = (),
     assumption_ids: Sequence[str] = (),
     clarification_ids: Sequence[str] = (),
+    education_publication_ids: Sequence[str] = (),
 ) -> ResponseSection:
     validated_type = _require_member(section_type, SECTION_TYPES, "section.section_type")
     validated_status = _require_member(status, SECTION_STATUSES, "section.status")
@@ -183,12 +187,28 @@ def build_section(
     findings = _require_unique(approved_finding_ids, "section.approved_finding_ids")
     evidence = _require_unique(evidence_reference_ids, "section.evidence_reference_ids")
     clarifications = _require_unique(clarification_ids, "section.clarification_ids")
+    education_ids = _require_unique(
+        education_publication_ids, "section.education_publication_ids"
+    )
     if validated_status == "INCLUDED" and findings and not evidence:
         raise ResponseContractError("included finding-backed sections must preserve evidence references")
     if validated_type == "CLARIFICATION" and not clarifications:
         raise ResponseContractError("clarification sections must reference clarification IDs")
     if validated_type != "CLARIFICATION" and clarifications:
         raise ResponseContractError("only clarification sections may reference clarification IDs")
+    if validated_type in {"EDUCATION", "EXAMPLE"}:
+        if not education_ids:
+            raise ResponseContractError(
+                "education/example sections must reference education publication IDs"
+            )
+        if findings or evidence or clarifications:
+            raise ResponseContractError(
+                "education/example sections cannot reference findings, product evidence, or clarifications"
+            )
+    elif education_ids:
+        raise ResponseContractError(
+            "only education/example sections may reference education publication IDs"
+        )
     return ResponseSection(
         section_id=_require_nonempty_str(section_id, "section.section_id"),
         section_type=validated_type,
@@ -200,6 +220,7 @@ def build_section(
         limitation_ids=_require_unique(limitation_ids, "section.limitation_ids"),
         assumption_ids=_require_unique(assumption_ids, "section.assumption_ids"),
         clarification_ids=clarifications,
+        education_publication_ids=education_ids,
     )
 
 

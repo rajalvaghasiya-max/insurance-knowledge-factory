@@ -5,6 +5,10 @@ from dataclasses import dataclass
 from typing import Mapping, Sequence
 
 from insurance_intelligence.contracts.decision import DecisionGateOutput
+from insurance_intelligence.contracts.education_publication import (
+    EducationPublicationRecord,
+    validate_education_publication_record,
+)
 
 SUPPORTED_CONTRACT_VERSION = "1.0"
 AUDIENCES = frozenset({"CUSTOMER", "ADVISOR", "INTERNAL_REVIEWER"})
@@ -30,6 +34,8 @@ SECTION_TYPES = frozenset(
         "CLARIFICATION",
         "ADVISOR_TALKING_POINT",
         "INTERNAL_REVIEW_NOTE",
+        "EDUCATION",
+        "EXAMPLE",
     }
 )
 SECTION_STATUSES = frozenset({"DRAFTED", "WITHHELD", "REQUIRES_REVIEW"})
@@ -47,6 +53,7 @@ FIDELITY_CHECK_TYPES = frozenset(
         "NO_RECOMMENDATION",
         "NO_WITHHELD_CONTENT",
         "TERMINOLOGY_ACCURACY",
+        "EDUCATION_PUBLICATION_FIDELITY",
     }
 )
 FIDELITY_CHECK_STATUSES = frozenset({"PASSED", "FAILED", "NOT_APPLICABLE", "REQUIRES_REVIEW"})
@@ -72,6 +79,7 @@ TRACE_EVENT_TYPES = frozenset(
         "FIDELITY_CHECKED",
         "SECTION_WITHHELD",
         "EXPLANATION_COMPLETED",
+        "EDUCATION_PUBLICATION_RECEIVED",
     }
 )
 
@@ -117,6 +125,7 @@ class ExplanationGeneratorInput:
     reading_level: str
     explanation_mode: str
     communication_context: Mapping[str, object]
+    education_publications: tuple[EducationPublicationRecord, ...] = ()
 
 
 def build_input(
@@ -127,6 +136,7 @@ def build_input(
     reading_level: str = "SIMPLE",
     explanation_mode: str = "PLAIN_LANGUAGE",
     communication_context: Mapping[str, object] | None = None,
+    education_publications: Sequence[EducationPublicationRecord] = (),
     contract_version: str = SUPPORTED_CONTRACT_VERSION,
 ) -> ExplanationGeneratorInput:
     if contract_version != SUPPORTED_CONTRACT_VERSION:
@@ -147,6 +157,20 @@ def build_input(
             raise ExplanationContractError("clarification decisions require clarification-request mode")
     else:
         raise ExplanationContractError("decision_output is not eligible for explanation generation")
+    publications = tuple(education_publications)
+    if any(not isinstance(item, EducationPublicationRecord) for item in publications):
+        raise ExplanationContractError(
+            "education_publications must contain EducationPublicationRecord values"
+        )
+    publication_ids = [item.publication_id for item in publications]
+    if len(publication_ids) != len(set(publication_ids)):
+        raise ExplanationContractError("education publication IDs must be unique")
+    try:
+        publications = tuple(
+            validate_education_publication_record(item) for item in publications
+        )
+    except Exception as exc:
+        raise ExplanationContractError(str(exc)) from exc
     return ExplanationGeneratorInput(
         contract_version=contract_version,
         request_id=validated_request_id,
@@ -155,6 +179,7 @@ def build_input(
         reading_level=_require_member(reading_level, READING_LEVELS, "reading_level"),
         explanation_mode=validated_mode,
         communication_context=dict(communication_context or {}),
+        education_publications=publications,
     )
 
 
@@ -168,6 +193,7 @@ class ExplanationSection:
     evidence_ids: tuple[str, ...]
     limitation_ids: tuple[str, ...]
     clarification_ids: tuple[str, ...]
+    education_publication_ids: tuple[str, ...] = ()
 
 
 def build_section(
@@ -180,24 +206,43 @@ def build_section(
     evidence_ids: Sequence[str] = (),
     limitation_ids: Sequence[str] = (),
     clarification_ids: Sequence[str] = (),
+    education_publication_ids: Sequence[str] = (),
 ) -> ExplanationSection:
     validated_status = _require_member(status, SECTION_STATUSES, "section.status")
+    validated_type = _require_member(section_type, SECTION_TYPES, "section.section_type")
     findings = _require_unique(approved_finding_ids, "section.approved_finding_ids")
     evidence = _require_unique(evidence_ids, "section.evidence_ids")
     clarifications = _require_unique(clarification_ids, "section.clarification_ids")
+    education_ids = _require_unique(
+        education_publication_ids, "section.education_publication_ids"
+    )
     if validated_status == "DRAFTED" and findings and not evidence:
         raise ExplanationContractError("drafted finding-backed sections must preserve evidence IDs")
-    if section_type == "CLARIFICATION" and not clarifications:
+    if validated_type == "CLARIFICATION" and not clarifications:
         raise ExplanationContractError("clarification sections must reference clarification IDs")
+    if validated_type in {"EDUCATION", "EXAMPLE"}:
+        if not education_ids:
+            raise ExplanationContractError(
+                "education/example sections must reference education publication IDs"
+            )
+        if findings or evidence or clarifications:
+            raise ExplanationContractError(
+                "education/example sections cannot reference findings, product evidence, or clarifications"
+            )
+    elif education_ids:
+        raise ExplanationContractError(
+            "only education/example sections may reference education publication IDs"
+        )
     return ExplanationSection(
         section_id=_require_nonempty_str(section_id, "section.section_id"),
-        section_type=_require_member(section_type, SECTION_TYPES, "section.section_type"),
+        section_type=validated_type,
         status=validated_status,
         text=_require_nonempty_str(text, "section.text"),
         approved_finding_ids=findings,
         evidence_ids=evidence,
         limitation_ids=_require_unique(limitation_ids, "section.limitation_ids"),
         clarification_ids=clarifications,
+        education_publication_ids=education_ids,
     )
 
 

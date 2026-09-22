@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-education-explanation-integration-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "PR #301 falsified the missing typed education input at the existing explanation boundary. The repair extends existing explanation and response responsibilities to carry already-published CUSTOMER_EDUCATION content with separate lineage; it does not create a new authority, reasoning fact, product-evidence path, or recommendation capability.",
+  "supersession_impact": "NONE",
+  "authority_impact": "Extends presentation lineage only. Education publication authority remains II.EDUCATION.PUBLICATION_ADMISSION; Decision Gate remains the authority for product findings and product evidence. Education sections cannot carry approved finding IDs or product evidence references."
+}
