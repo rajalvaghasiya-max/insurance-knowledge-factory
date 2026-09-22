@@ -7,6 +7,12 @@ from insurance_intelligence.authority_enforced_explanation import (
     AuthorityExplanationEnforcementError,
 )
 from insurance_intelligence.contracts.authority_enforcement import build_result
+from insurance_intelligence.contracts.education_publication import (
+    CUSTOMER_EDUCATION,
+    EDUCATION_PUBLICATION_STATUS,
+    EducationExample,
+    EducationPublicationRecord,
+)
 from insurance_intelligence.contracts.decision import (
     DecisionGateOutput,
     build_approved_response_packet,
@@ -156,3 +162,53 @@ def test_raw_decision_output_is_not_accepted_as_authority_result():
             findings_by_id={},
             style_registry=object(),  # type: ignore[arg-type]
         )
+
+
+
+def _education_publication() -> EducationPublicationRecord:
+    return EducationPublicationRecord(
+        contract_version="1.0",
+        publication_id="education-pub-ped",
+        publication_status=EDUCATION_PUBLICATION_STATUS,
+        allowed_uses=(CUSTOMER_EDUCATION,),
+        concept_id="pre_existing_disease",
+        canonical_name="Pre-existing Disease",
+        definition="A reviewed generic PED definition.",
+        plain_language_explanation="A reviewed plain-language PED explanation.",
+        practical_implication="The product rule must still be checked separately.",
+        examples=(
+            EducationExample(
+                scenario="A person has a condition before policy commencement.",
+                result="The condition may fall within the governed PED definition.",
+                boundary="Illustrative only; this does not decide claim payment.",
+            ),
+        ),
+        limitations=("Generic education only.",),
+        product_specific_boundary="Product mechanics require governed product evidence.",
+        customer_document_boundary="Customer facts require applicable documents.",
+        evidence_references=("education-evidence-ped",),
+        source_asset_id="meaning-ped",
+        source_asset_digest="a" * 64,
+        source_governed_record_id="gconcept-ped",
+        source_knowledge_version="1.0",
+        review_decision_id="review-ped",
+        publication_authority="PolicyScna education publication authority",
+        publication_receipt_id="education_receipt_1234567890abcdef1234",
+    )
+
+
+def test_delegated_explanation_forwards_published_education_without_changing_authority():
+    spy = SpyGenerator()
+    education = _education_publication()
+
+    output = AuthorityEnforcedExplanationGenerator(spy).generate(
+        authority_result=delegated_result(),
+        findings_by_id={},
+        style_registry=object(),  # type: ignore[arg-type]
+        education_publications=(education,),
+    )
+
+    assert output == "generated"
+    assert spy.calls == 1
+    assert spy.last_input.education_publications == (education,)
+    assert spy.last_input.decision_output.decision_id == "decision-1"

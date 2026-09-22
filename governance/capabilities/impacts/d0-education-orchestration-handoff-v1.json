@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-education-orchestration-handoff-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.EXPLANATION.AUTHORITY_ENFORCEMENT",
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "PR #308 falsified that published CUSTOMER_EDUCATION can reach explanation/response contracts but not the real canonical D0 orchestration path. The repair adds a generic injected education-publication lookup and forwards its typed publications through the existing authority-enforced explanation entry without changing reasoning, product evidence, Decision Gate authority, or publication admission.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new authority is introduced. II.EDUCATION.PUBLICATION_ADMISSION remains the only authority for customer-education publication; II.EXPLANATION.AUTHORITY_ENFORCEMENT continues to guard entry into explanation; II.ORCHESTRATION.EXECUTION_RUNTIME only transports already-published education to that guarded boundary."
+}
