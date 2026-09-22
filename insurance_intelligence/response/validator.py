@@ -219,6 +219,15 @@ def validate_response_draft(
             if item is not None and item.section_type in EXPLANATION_TO_RESPONSE_SECTION
         }
         exact_text = known_sources and section.text in {item.text for item in sources if item is not None}
+        source_education_ids = {
+            publication_id
+            for item in sources
+            if item is not None
+            for publication_id in item.education_publication_ids
+        }
+        education_lineage_ok = (
+            set(section.education_publication_ids) == source_education_ids
+        )
         scope_ok = (
             section.status == "INCLUDED"
             and known_sources
@@ -226,13 +235,14 @@ def validate_response_draft(
             and section.section_type in expected_types
             and section.section_type in format_definition.allowed_section_types
             and set(section.approved_finding_ids) <= approved_findings
+            and education_lineage_ok
         )
         checks.append(
             _check(
                 request_id=request_id,
                 check_type="SECTION_SCOPE",
                 status="PASSED" if scope_ok else "FAILED",
-                description="response section remains within approved explanation and finding scope",
+                description="response section remains within approved explanation, finding, and education-publication scope",
                 section_id=section.section_id,
                 source_references=source_ids,
             )
