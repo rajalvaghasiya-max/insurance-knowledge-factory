@@ -1,0 +1,29 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "II.EDUCATION.PUBLICATION_ADMISSION",
+      "name": "Governed Education Publication and Admission",
+      "responsibility": "Publish reviewed, source-backed generic insurance concept education into an immutable education-only record and admit that record only for explicitly authorized customer-education explanation use.",
+      "plane": "INSURANCE_INTELLIGENCE_EDUCATION_GOVERNANCE",
+      "lifecycle_status": "ACTIVE",
+      "authority_role": "Education-use publication and admission authority only; it cannot certify or satisfy operative product facts, determine entitlement or claim payment, infer customer-specific applicability, authorize recommendations, or substitute for AuthoritativePublicationRecord product evidence.",
+      "safety_invariants": [
+        "Only human-reviewed governed generic concept meaning assets with preserved evidence lineage may be published.",
+        "Education publication authorizes CUSTOMER_EDUCATION only and fails closed for operative product-fact use.",
+        "Education publication records remain a distinct type from authoritative product evidence and cannot cross the ordinary USER_ANSWER product-evidence admission gate.",
+        "Affirmative claim-payment or coverage-guarantee language and recommendation language are not publishable as generic education.",
+        "Product-hosted source evidence is admissible only when product context is explicitly excluded from the extracted generic concept content.",
+        "Publication creates a content-addressed receipt without mutating the source governed meaning asset."
+      ],
+      "reuse_policy": "REUSE",
+      "ownership_paths": [
+        "insurance_intelligence/education_publication",
+        "insurance_intelligence/contracts/education_publication.py"
+      ],
+      "introduced_by": "D0-295",
+      "supersedes": [],
+      "superseded_by": null,
+      "notes": "This capability is intentionally separate from rule certification and authoritative operative-product publication. Explanation wiring is a later extension and must preserve this use boundary."
+    }
+  ]
+}
