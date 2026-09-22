@@ -7,7 +7,7 @@
 - **Catalog version:** `1.0`
 - **Enforcement mode:** `STRICT`
 - **Fingerprint schema:** `1.0`
-- **Registered capabilities:** `47`
+- **Registered capabilities:** `48`
 - **Governed roots:** `capability_control`, `insurance_intelligence`
 
 ## Interpretation rules
@@ -82,6 +82,12 @@
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
 | `II.DECISION_SUPPORT.NON_VERDICT_PERSONALIZATION`<br>Governed Non-Verdict Personalized Decision Support | `ACTIVE` | `REUSE` | Decision-support framing and sufficiency authority only. It may block, limit, or project governed comparison evidence relative to confirmed customer context, but it cannot aggregate dimensions into a net product direction, choose a product, rank alternatives, declare suitability, perform needs analysis, or recommend. | None | `insurance_intelligence/decision_support` | `1c241b2b2225` |
+
+### INSURANCE_INTELLIGENCE_EDUCATION_GOVERNANCE
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.EDUCATION.PUBLICATION_ADMISSION`<br>Governed Education Publication and Admission | `ACTIVE` | `REUSE` | Education-use publication and admission authority only; it cannot certify or satisfy operative product facts, determine entitlement or claim payment, infer customer-specific applicability, authorize recommendations, or substitute for AuthoritativePublicationRecord product evidence. | None | `insurance_intelligence/education_publication`<br>`insurance_intelligence/contracts/education_publication.py` | `78610df68104` |
 
 ### INSURANCE_INTELLIGENCE_EVALUATION
 
