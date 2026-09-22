@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-explanation-education-enrichment-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
+    "II.EXPLANATION.AUTHORITY_ENFORCEMENT"
+  ],
+  "rationale": "Extend the existing evidence-locked explanation path to accept already-published CUSTOMER_EDUCATION records as typed presentation-only enrichment with explicit publication/receipt lineage. Education remains outside reasoning findings and authoritative product evidence.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new insurance authority is introduced. Decision Gate findings and product evidence remain the sole authority for operative product conclusions; admitted education may only enrich human explanation."
+}
