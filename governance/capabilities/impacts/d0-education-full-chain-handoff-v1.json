@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-education-full-chain-handoff-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "PR #310 proved the already-authorized education publication lookup was dropped by the response assembly/rendering constructor chain. This change forwards the typed dependency unchanged to the existing explanation boundary.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No authority change. Assembly and rendering only transport the already-authorized lookup; education publication authority and explanation authority remain unchanged."
+}
