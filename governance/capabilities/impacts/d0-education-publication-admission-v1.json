@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-education-publication-admission-v1",
+  "classification": "NEW",
+  "capability_ids": [
+    "II.EDUCATION.PUBLICATION_ADMISSION"
+  ],
+  "rationale": "Repository preflight and PR #299 falsification proved that reviewed generic concept education has no existing publication/admission authority. Reusing RuleCertificationResult would misclassify education as an operative insurance rule, and weakening ordinary USER_ANSWER evidence admission would violate the existing product-evidence trust boundary.",
+  "supersession_impact": "NONE",
+  "authority_impact": "Introduces a bounded education-only publication and admission authority. It authorizes reviewed generic concept education for CUSTOMER_EDUCATION use only and explicitly cannot authorize operative product facts, entitlement, claim payment, recommendations, customer-specific inference, or ordinary authoritative product evidence."
+}
