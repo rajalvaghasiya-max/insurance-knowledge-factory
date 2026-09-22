@@ -7,16 +7,19 @@ It intentionally stops at EXPLANATION_AUTHORITY_ENFORCED.
 """
 from __future__ import annotations
 
+from collections.abc import Callable, Sequence
 from dataclasses import asdict
 
 from insurance_intelligence.authority_enforced_explanation import (
     AuthorityEnforcedExplanationGenerator,
 )
 from insurance_intelligence.contracts.authority_enforcement import AuthorityEnforcementResult
+from insurance_intelligence.contracts.education_publication import EducationPublicationRecord
 from insurance_intelligence.contracts.explanation import (
     ExplanationGeneratorOutput,
     build_output as build_explanation_output,
 )
+from insurance_intelligence.contracts.intent import IntentAnalyzerOutput
 from insurance_intelligence.contracts.reasoning import ReasoningEngineOutput
 from insurance_intelligence.explanation.registry import ExplanationStyleRegistry, TerminologyRegistry
 from insurance_intelligence.orchestration.intelligence_adapters import (
@@ -36,17 +39,23 @@ def _output_id(execution_id: str, stage: str) -> str:
     return f"{execution_id}:real:{stage.lower()}"
 
 
+EducationPublicationLookup = Callable[[object, IntentAnalyzerOutput], Sequence[EducationPublicationRecord]]
+
+
 def build_real_response_explanation_adapters(
     *,
     dependencies: RealResponsePrefixDependencies,
     style_registry: ExplanationStyleRegistry,
     terminology_registry: TerminologyRegistry | None = None,
+    education_publication_lookup: EducationPublicationLookup | None = None,
 ):
     """Build the proven real path plus canonical authority-enforced explanation."""
     if not isinstance(style_registry, ExplanationStyleRegistry):
         raise RealResponsePrefixError("style_registry must be ExplanationStyleRegistry")
     if terminology_registry is not None and not isinstance(terminology_registry, TerminologyRegistry):
         raise RealResponsePrefixError("terminology_registry must be TerminologyRegistry when provided")
+    if education_publication_lookup is not None and not callable(education_publication_lookup):
+        raise RealResponsePrefixError("education_publication_lookup must be callable when provided")
 
     prior = build_real_response_decision_adapters(dependencies=dependencies)
 
@@ -62,6 +71,18 @@ def build_real_response_explanation_adapters(
             expected_type=ReasoningEngineOutput,
         )
         findings_by_id = {finding.finding_id: finding for finding in reasoning.findings}
+        intent_output = dependencies.store.get(
+            _output_id(request.execution_id, "INTENT_ANALYSIS"),
+            expected_type=IntentAnalyzerOutput,
+        )
+        education_publications = ()
+        if education_publication_lookup is not None:
+            resolved = tuple(education_publication_lookup(request, intent_output))
+            if any(not isinstance(item, EducationPublicationRecord) for item in resolved):
+                raise RealResponsePrefixError(
+                    "education_publication_lookup must return EducationPublicationRecord values"
+                )
+            education_publications = resolved
         decision_output = authority_result.decision_output
         if decision_output is None:
             raise RealResponsePrefixError("authority-enforced decision omitted DecisionGateOutput")
@@ -76,6 +97,7 @@ def build_real_response_explanation_adapters(
                 reading_level="SIMPLE",
                 explanation_mode="PLAIN_LANGUAGE",
                 communication_context=dict(request.customer_context),
+                education_publications=education_publications,
             )
         else:
             limitations = tuple(
@@ -136,4 +158,4 @@ def build_real_response_explanation_adapters(
     )
 
 
-__all__ = ["build_real_response_explanation_adapters"]
+__all__ = ["EducationPublicationLookup", "build_real_response_explanation_adapters"]
