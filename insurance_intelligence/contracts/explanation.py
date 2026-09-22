@@ -125,7 +125,7 @@ class ExplanationGeneratorInput:
     reading_level: str
     explanation_mode: str
     communication_context: Mapping[str, object]
-    education_publications: tuple[EducationPublicationRecord, ...]
+    education_publications: tuple[EducationPublicationRecord, ...] = ()
 
 
 def build_input(
