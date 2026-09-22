@@ -169,6 +169,89 @@ def validate_explanation_fidelity(
     if packet is None:
         raise ExplanationValidationError("approved decision requires an approved response packet")
 
+    publication_by_id = {
+        item.publication_id: item for item in explanation_input.education_publications
+    }
+    education_sections = tuple(
+        section for section in drafted if section.education_references
+    )
+    education_lineage_ok = True
+    education_content_ok = True
+    education_source_refs: set[str] = set()
+
+    for section in education_sections:
+        if section.approved_finding_ids or section.evidence_ids:
+            education_lineage_ok = False
+        for reference in section.education_references:
+            publication = publication_by_id.get(reference.publication_id)
+            if publication is None:
+                education_lineage_ok = False
+                continue
+            education_source_refs.add(publication.publication_id)
+            if (
+                reference.publication_receipt_id != publication.publication_receipt_id
+                or reference.concept_id != publication.concept_id
+            ):
+                education_lineage_ok = False
+
+    for publication in explanation_input.education_publications:
+        related = tuple(
+            section
+            for section in education_sections
+            if any(
+                reference.publication_id == publication.publication_id
+                for reference in section.education_references
+            )
+        )
+        if not related:
+            education_lineage_ok = False
+            education_content_ok = False
+            continue
+        related_text = _normalise(_section_text(related))
+        required_fragments = [
+            publication.definition,
+            publication.plain_language_explanation,
+            publication.practical_implication,
+        ]
+        for example in publication.examples:
+            required_fragments.extend(
+                (example.scenario, example.result, example.boundary)
+            )
+        if any(_normalise(fragment) not in related_text for fragment in required_fragments):
+            education_content_ok = False
+
+    checks.append(
+        _check(
+            request_id=explanation_input.request_id,
+            check_type="EDUCATION_PUBLICATION_LINEAGE",
+            status="PASSED" if education_lineage_ok else "FAILED",
+            description=(
+                "Education sections preserve admitted publication and receipt lineage "
+                "without entering finding/product-evidence authority."
+                if education_lineage_ok
+                else "Education section lineage is missing, mismatched, or mixed with finding/product evidence."
+            ),
+            source_references=tuple(sorted(education_source_refs)),
+            section_ids=tuple(section.section_id for section in education_sections),
+        )
+    )
+    checks.append(
+        _check(
+            request_id=explanation_input.request_id,
+            check_type="EDUCATION_CONTENT_FIDELITY",
+            status="PASSED" if education_content_ok else "FAILED",
+            description=(
+                "Education sections preserve reviewed published education content."
+                if education_content_ok
+                else "Education sections omit or alter reviewed published education content."
+            ),
+            source_references=tuple(sorted(publication_by_id)),
+            section_ids=tuple(section.section_id for section in education_sections),
+        )
+    )
+    if not education_lineage_ok or not education_content_ok:
+        failures.append("FAILED_UNSUPPORTED_CONTENT")
+
     approved_ids = tuple(sorted(packet.approved_finding_ids))
     unknown = tuple(item for item in approved_ids if item not in findings_by_id)
     if unknown:
@@ -321,7 +404,10 @@ def validate_explanation_fidelity(
         failures.append("FAILED_UNSUPPORTED_CONTENT")
 
     unsupported = any(pattern.search(all_text) for pattern in _RECOMMENDATION_PATTERNS)
-    new_currency = bool(_CURRENCY_PATTERN.search(all_text)) and not any(
+    finding_backed_text = _section_text(
+        tuple(section for section in drafted if not section.education_references)
+    )
+    new_currency = bool(_CURRENCY_PATTERN.search(finding_backed_text)) and not any(
         _CURRENCY_PATTERN.search(" ".join(filter(None, (findings_by_id[item].object_or_effect, findings_by_id[item].condition, findings_by_id[item].exception, findings_by_id[item].applicability_scope))))
         for item in approved_ids
     )
