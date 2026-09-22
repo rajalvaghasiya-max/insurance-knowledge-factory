@@ -1,8 +1,15 @@
 from __future__ import annotations
 
+from dataclasses import replace
 from hashlib import sha256
 from pathlib import Path
 
+from insurance_intelligence.contracts.education_publication import (
+    CUSTOMER_EDUCATION,
+    EDUCATION_PUBLICATION_STATUS,
+    EducationExample,
+    EducationPublicationRecord,
+)
 from insurance_intelligence.contracts.full_cycle import build_orchestration_request, build_product_scope
 from insurance_intelligence.coverage_registry.health_seed import HEALTH_COVERAGE_REGISTRY
 from insurance_intelligence.entity_resolution.registry_adapter import load_runtime_registry_from_files
@@ -19,6 +26,7 @@ from insurance_intelligence.orchestration.real_response_prefix import (
     CertifiedKnowledgeSelection,
     RealResponsePrefixDependencies,
 )
+from insurance_intelligence.terminology.health_seed import build_health_concept_registry_v1
 
 ROOT = Path(__file__).resolve().parents[2]
 REGISTRY_ROOT = ROOT / "knowledge/factory/registry_backed"
@@ -85,6 +93,49 @@ def _dependencies(request):
     )
 
 
+def _waiting_period_education_publication() -> EducationPublicationRecord:
+    return EducationPublicationRecord(
+        contract_version="1.0",
+        publication_id="education-publication-waiting-period-v1",
+        publication_status=EDUCATION_PUBLICATION_STATUS,
+        allowed_uses=(CUSTOMER_EDUCATION,),
+        concept_id="waiting_period",
+        canonical_name="Waiting Period",
+        definition="A waiting period is a policy-defined period.",
+        plain_language_explanation=(
+            "Some parts of a health policy do not become available immediately."
+        ),
+        practical_implication=(
+            "The applicable policy rule must be checked before applying this concept "
+            "to a specific customer situation."
+        ),
+        examples=(
+            EducationExample(
+                scenario="A policy contains a waiting-period clause.",
+                result="That restriction can apply during the governed period.",
+                boundary=(
+                    "Illustrative only. This does not determine claim approval or payment."
+                ),
+            ),
+        ),
+        limitations=("Generic education only.",),
+        product_specific_boundary=(
+            "Product duration, scope and exceptions require governed product evidence."
+        ),
+        customer_document_boundary=(
+            "Customer dates and selections require applicable customer documents."
+        ),
+        evidence_references=("education-evidence-1",),
+        source_asset_id="meaning-waiting-period-v1",
+        source_asset_digest="a" * 64,
+        source_governed_record_id="gconcept-waiting-period-v1",
+        source_knowledge_version="1.0",
+        review_decision_id="review-waiting-period-v1",
+        publication_authority="PolicyScna education publication gate",
+        publication_receipt_id="education-receipt-waiting-period-v1",
+    )
+
+
 def _styles():
     return ExplanationStyleRegistry((
         build_style_definition(
@@ -143,3 +194,75 @@ def test_star_ped_factual_lane_reaches_authority_enforced_explanation_with_linea
     reasoning = dependencies.store.get(f"{request.execution_id}:real:reasoning")
     assert {item.rule_id for item in reasoning.rule_executions} == {"direct_documented_fact_v1"}
     assert not any(item.rule_id.startswith("conditional_copayment_") for item in reasoning.rule_executions)
+
+
+
+def test_star_ped_factual_lane_receives_governed_waiting_period_education_by_exact_concept_handoff():
+    request = _request()
+    publication = _waiting_period_education_publication()
+    base_dependencies = _dependencies(request)
+    dependencies = replace(
+        base_dependencies,
+        concept_registry=build_health_concept_registry_v1(),
+        education_publication_lookup=(
+            lambda concept_id: publication if concept_id == "waiting_period" else None
+        ),
+    )
+
+    adapters = build_real_response_explanation_adapters(
+        dependencies=dependencies,
+        style_registry=_styles(),
+    )
+    prior = (request.knowledge_snapshot_id,)
+    results = []
+    for sequence, adapter in enumerate(adapters, start=1):
+        result = execute_intelligence_stage(
+            request=request,
+            adapter=adapter,
+            sequence=sequence,
+            input_ids=prior,
+        )
+        results.append(result)
+        assert result.status in {"SUCCEEDED", "SUCCEEDED_WITH_LIMITATIONS"}, (
+            result.stage,
+            result.failure.message if result.failure else result.limitations,
+        )
+        prior = tuple(item.output_id for item in result.outputs)
+
+    explanation = dependencies.store.get(results[-1].outputs[0].output_id)
+    education_sections = tuple(
+        section
+        for section in explanation.sections
+        if section.section_type in {"EDUCATION", "EXAMPLE"}
+    )
+    assert education_sections
+    assert {
+        publication.publication_id
+        for section in education_sections
+        for publication_id in section.education_publication_ids
+        for publication in (publication,)
+        if publication_id == publication.publication_id
+    } == {publication.publication_id}
+    assert all(not section.approved_finding_ids for section in education_sections)
+    assert all(not section.evidence_ids for section in education_sections)
+
+    intent = dependencies.store.get(f"{request.execution_id}:real:intent_analysis")
+    policy_features = {
+        item.normalized_text
+        for item in intent.candidate_entities
+        if item.entity_type == "POLICY_FEATURE"
+    }
+    assert "waiting period" in policy_features
+
+    decision = dependencies.store.get(
+        f"{request.execution_id}:real:decision_gate_authority_enforced"
+    )
+    assert decision.decision_output.response_packet is not None
+    assert publication.publication_id not in (
+        decision.decision_output.response_packet.approved_evidence_ids
+    )
+
+    reasoning = dependencies.store.get(f"{request.execution_id}:real:reasoning")
+    assert {item.rule_id for item in reasoning.rule_executions} == {
+        "direct_documented_fact_v1"
+    }
