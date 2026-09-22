@@ -199,12 +199,13 @@
       "owned_module_paths": [
         "insurance_intelligence/contracts/explanation.py",
         "insurance_intelligence/explanation/__init__.py",
+        "insurance_intelligence/explanation/education.py",
         "insurance_intelligence/explanation/generator.py",
         "insurance_intelligence/explanation/registry.py",
         "insurance_intelligence/explanation/templates.py",
         "insurance_intelligence/explanation/validator.py"
       ],
-      "structural_fingerprint": "4465f93f078b73af305747fa7f10585aec8742f15b339b72208cada26cf56c8d"
+      "structural_fingerprint": "c1747b4de9d33a9b9d54251830c208d24b98ed469184eb7e396063cd5f7c1392"
     },
     {
       "capability_id": "II.GOVERNANCE.BYPASS_INVENTORY",
@@ -379,7 +380,7 @@
         "insurance_intelligence/response/service.py",
         "insurance_intelligence/response/validator.py"
       ],
-      "structural_fingerprint": "70ee6d4359aa6b7155433fbb12b50e678c841d6eab0d8a9536a6f6a1699c3d15"
+      "structural_fingerprint": "ae7162631ab53d1beba4941f76efe2cf9bd289a914240ff1db7a794ddd251e05"
     },
     {
       "capability_id": "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
