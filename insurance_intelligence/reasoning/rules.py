@@ -122,6 +122,7 @@ def direct_documented_fact(data: RuleInput) -> tuple[Finding, ...]:
                 rule_id=rule_id,
                 rule_version=RULE_VERSION,
                 evidence_ids=(evidence.evidence_id,),
+                semantic_attributes=evidence.semantic_attributes,
                 confidence=evidence.confidence,
             )
         )
