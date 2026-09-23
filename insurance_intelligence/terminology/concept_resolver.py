@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from hashlib import sha256
+import re
 
 from insurance_intelligence.contracts.reasoning_plan import DOMAIN_VALUES
 from insurance_intelligence.terminology.concept_registry import (
@@ -127,3 +128,84 @@ class CanonicalConceptResolver:
             candidates=candidates,
             reason_codes=("EXACT_GOVERNED_CONCEPT_MATCH",),
         )
+
+
+    def resolve_mentions(
+        self,
+        text: object,
+        *,
+        domain: object = None,
+    ) -> tuple[CanonicalConceptResolution, ...]:
+        """Resolve zero or more exact governed concept mentions inside one text.
+
+        This is a bounded extension of exact phrase resolution. It scans only the
+        language keys already present in the canonical registry, applies exact
+        normalised word-boundary matching, skips ambiguous keys, and performs no
+        fuzzy or semantic inference.
+        """
+        if not isinstance(text, str) or not text.strip():
+            return ()
+        if domain is not None and (
+            not isinstance(domain, str) or domain not in DOMAIN_VALUES
+        ):
+            return ()
+
+        normalised_text = normalise_terminology_text(text)
+        matches: list[
+            tuple[int, int, str, CanonicalConceptResolution]
+        ] = []
+
+        for definition in self._registry.all_concepts():
+            if domain is not None and definition.domain != domain:
+                continue
+            for language_key in definition.language_keys():
+                pattern = re.compile(
+                    rf"(?<!\w){re.escape(language_key)}(?!\w)"
+                )
+                for match in pattern.finditer(normalised_text):
+                    resolution = self.resolve(
+                        language_key,
+                        domain=definition.domain,
+                    )
+                    if (
+                        resolution.status != "RESOLVED"
+                        or resolution.selected_concept is None
+                        or resolution.selected_concept.concept_id
+                        != definition.concept_id
+                    ):
+                        continue
+                    matches.append(
+                        (
+                            match.start(),
+                            match.end(),
+                            definition.concept_id,
+                            resolution,
+                        )
+                    )
+
+        matches.sort(
+            key=lambda item: (
+                item[0],
+                -(item[1] - item[0]),
+                item[2],
+            )
+        )
+
+        selected: list[
+            tuple[int, int, str, CanonicalConceptResolution]
+        ] = []
+        seen_concepts: set[str] = set()
+        for candidate in matches:
+            start, end, concept_id, _ = candidate
+            if concept_id in seen_concepts:
+                continue
+            if any(
+                start < selected_end and end > selected_start
+                for selected_start, selected_end, _, _ in selected
+            ):
+                continue
+            selected.append(candidate)
+            seen_concepts.add(concept_id)
+
+        selected.sort(key=lambda item: (item[0], item[2]))
+        return tuple(item[3] for item in selected)
