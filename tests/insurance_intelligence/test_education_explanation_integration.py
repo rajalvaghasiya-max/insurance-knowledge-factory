@@ -16,6 +16,7 @@ from insurance_intelligence.contracts.education_publication import (
 from insurance_intelligence.contracts.explanation import build_input as build_explanation_input
 from insurance_intelligence.contracts.reasoning import build_finding
 from insurance_intelligence.contracts.response import build_input as build_response_input
+from insurance_intelligence.explanation.education import render_education_sections
 from insurance_intelligence.explanation.generator import generate_explanation
 from insurance_intelligence.explanation.validator import validate_explanation_fidelity
 from insurance_intelligence.explanation.registry import (
@@ -248,3 +249,18 @@ def test_tampered_education_text_fails_fidelity() -> None:
         and check.status == "FAILED"
         for check in validation.checks
     )
+
+
+
+def test_customer_education_renders_reviewed_plain_language_before_formal_definition() -> None:
+    education = _education()
+
+    sections = render_education_sections(
+        request_id="request-plain-first",
+        publications=(education,),
+    )
+    meaning = next(section for section in sections if section.section_type == "EDUCATION")
+
+    assert education.plain_language_explanation in meaning.text
+    assert education.practical_implication in meaning.text
+    assert education.definition not in meaning.text
