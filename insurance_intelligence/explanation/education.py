@@ -29,10 +29,18 @@ def _sentence(value: str) -> str:
 
 
 def _education_text(publication: EducationPublicationRecord) -> str:
+    """Render reviewed customer education without leading with source-legal wording.
+
+    The formal definition remains preserved in the immutable publication for audit
+    and governance. Customer education uses the separately reviewed plain-language
+    explanation and practical implication fields only.
+    """
     return " ".join(
         (
-            _sentence(f"{publication.canonical_name}: {publication.definition}"),
-            _sentence(publication.plain_language_explanation),
+            _sentence(
+                f"{publication.canonical_name}: "
+                f"{publication.plain_language_explanation}"
+            ),
             _sentence(publication.practical_implication),
         )
     )
