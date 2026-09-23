@@ -1,0 +1,103 @@
+{
+  "common_misunderstandings": [
+    "PED does not simply mean every health problem a person has ever had.",
+    "Identifying a condition as a PED does not by itself tell us the applicable PED waiting period.",
+    "Identifying a condition as a PED does not by itself decide claim approval or payment."
+  ],
+  "concept_id": "pre_existing_disease",
+  "concept_name": "Pre-Existing Disease (PED)",
+  "concept_scope": "generic_insurance_concept",
+  "created_at": "2026-09-23T21:58:00+05:30",
+  "created_by": "PolicyScna CTO implementation after founder approval",
+  "customer_answer_state": "not_created",
+  "customer_document_boundary": "Customer-specific policy dates, prior continuous coverage, selected options, endorsements, declarations, and relevant medical history must be verified from the applicable customer documents before applying the rule to that customer.",
+  "definition": "A Pre-Existing Disease (PED) means any condition, ailment, injury or disease that was diagnosed by a physician not more than 36 months before the policy commencement date, or for which medical advice or treatment was recommended or received from a physician not more than 36 months before policy commencement.",
+  "domain": "health_insurance",
+  "entitlement_state": "not_evaluated",
+  "factory_signature": {
+    "deterministic": true,
+    "engine_version": "0.2",
+    "factory": "PolicyScna Knowledge Factory",
+    "rules_version": "governed_generic_concept_rules_v0.2",
+    "schema_version": "0.2"
+  },
+  "knowledge_version": "1.0",
+  "limitations": [
+    "This record explains the generic PED definition only.",
+    "It does not state any insurer-specific or product-specific PED waiting period.",
+    "It does not determine customer-specific PED status without the relevant dates and medical history.",
+    "It does not determine claim admissibility, approval, payment, entitlement, or recommendation."
+  ],
+  "meaning_profile": {
+    "category": "health_condition_classification",
+    "trigger": "Evaluate whether the condition fits the PED definition when diagnosis, medical-advice, or treatment history is considered relative to policy commencement.",
+    "inputs": [
+      "policy_commencement_date",
+      "diagnosis_history",
+      "medical_advice_history",
+      "treatment_history"
+    ],
+    "outputs": [
+      "ped_definition_match_state"
+    ],
+    "calculation_basis": "Apply the governed 36-month look-back in the PED definition. Do not infer a product-specific waiting period, claim approval, or claim payment.",
+    "dependencies": [
+      "policy_terms",
+      "policy_commencement_date",
+      "relevant_medical_history"
+    ],
+    "depends_on": [
+      "policy_commencement_date",
+      "relevant_medical_history"
+    ],
+    "commonly_confused_with": [
+      "pre_existing_disease_waiting_period",
+      "specific_waiting_period"
+    ],
+    "exceptions": [
+      "No generic exception is asserted. Product-specific treatment of PEDs must come from governed product and customer-document evidence."
+    ]
+  },
+  "non_publication_guardrail": "generic_concept_record_no_publication_customer_answer_entitlement_recommendation_or_claim_decision",
+  "plain_language_explanation": "A Pre-Existing Disease (PED) is a health problem or medical condition you already had before your insurance started. Under the formal definition used here, the relevant look-back is 36 months for diagnosis, medical advice or treatment.",
+  "practical_implication": "If a condition is a PED, the specific health plan may apply a PED waiting period before the PED waiting-period restriction ends. The actual waiting period, any continuity or portability credit, and any claim outcome must come from the applicable product terms and customer documents.",
+  "product_specific_boundary": "The applicable PED waiting-period duration, optional modifications, continuity or portability credit, exclusions, and other product mechanics must come from governed product knowledge.",
+  "publication_state": "not_published",
+  "recommendation_state": "not_created",
+  "record_id": "gconcept_79814bcb13e42424789e",
+  "record_type": "governed_generic_concept_record_v0_2",
+  "related_concepts": [
+    "continuity_benefit",
+    "portability",
+    "pre_existing_disease_waiting_period",
+    "waiting_period"
+  ],
+  "review_decision": {
+    "review_decision_id": "gcrev_pre_existing_disease_founder_v1",
+    "decision": "approve_for_governed_generic_concept_creation",
+    "reviewer_identity": "PolicyScna founder — explicit human approval",
+    "reviewed_at": "2026-09-23T21:58:00+05:30",
+    "rationale": "The founder approved the simple customer explanation direction and ear-condition example. This governed concept record is limited to generic PED meaning; Star product waiting-period mechanics and claim outcomes remain outside this asset."
+  },
+  "schema_version": "0.2",
+  "simple_example": {
+    "scenario": "A person already has an ear condition that was diagnosed 18 months before the health policy starts.",
+    "result": "That diagnosis falls within the 36-month look-back, so the condition fits the diagnosis-timing part of the PED definition.",
+    "boundary": "This example only explains what counts as a PED. It does not decide the product's PED waiting period, whether continuity or portability changes that period, or claim approval or payment."
+  },
+  "source_evidence": [
+    {
+      "evidence_id": "star_comprehensive_standard_ped_definition_page_6_v1",
+      "source_type": "insurer_policy_wording_standard_definition",
+      "source_title": "Star Comprehensive Insurance Policy - Policy Wording",
+      "publisher": "Star Health and Allied Insurance Company Limited",
+      "source_locator": "knowledge/factory/registry_backed/star_health_star_comprehensive/generic_source_registration/policy_wording_registration.json::evidence_review.candidates[candidate_page_6]::Pre-Existing Disease",
+      "source_document_path": "archive/raw_documents/star_health/star_comprehensive_policy_wording_2025.pdf",
+      "source_sha256": "b1dbe8fb78646f75566d47c32b7ebfa27c4071941c8f548224c461ee35a8021f",
+      "evidence_text": "A Pre-Existing Disease (PED) means any condition, ailment, injury or disease that was diagnosed by a physician not more than 36 months before the policy commencement date, or for which medical advice or treatment was recommended or received from a physician not more than 36 months before policy commencement.",
+      "hosting_document_scope": "product_specific",
+      "extracted_content_scope": "generic_insurance_concept",
+      "product_context_excluded": true
+    }
+  ]
+}
