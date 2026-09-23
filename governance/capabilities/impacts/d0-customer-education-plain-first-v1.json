@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-customer-education-plain-first-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR"
+  ],
+  "rationale": "PR #318 proved customer education was admitted correctly but the renderer led with formal source-definition wording before the separately reviewed plain-language explanation. This repair changes presentation selection only: customer education renders canonical name plus reviewed plain-language explanation and practical implication; the formal definition remains preserved in the publication for governance/audit.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No semantic authority changes. Rendered wording remains an exact deterministic projection of reviewed EducationPublicationRecord fields and continues to be checked by EDUCATION_PUBLICATION_FIDELITY."
+}
