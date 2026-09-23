@@ -424,7 +424,7 @@
         "insurance_intelligence/terminology/star_comprehensive_aliases.py",
         "insurance_intelligence/terminology/star_comprehensive_catalogue.py"
       ],
-      "structural_fingerprint": "fc0fd561f6ee09d10bc33fcb54b007c310f7b12dce9d61a2829ec6993d427da9"
+      "structural_fingerprint": "3f767a357bc697ff0cfe9a2774a911a194547fce88f06cbe65cfdea7dc57f114"
     },
     {
       "capability_id": "II.TOPIC_COMPLETENESS.GOVERNED_EVIDENCE_GATE",
