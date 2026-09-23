@@ -206,7 +206,7 @@
         "insurance_intelligence/explanation/templates.py",
         "insurance_intelligence/explanation/validator.py"
       ],
-      "structural_fingerprint": "c1747b4de9d33a9b9d54251830c208d24b98ed469184eb7e396063cd5f7c1392"
+      "structural_fingerprint": "9ca32b2919b047a3111e9d36d44cfd6b9b89c0eab6517c392f509d1ead132a0b"
     },
     {
       "capability_id": "II.GOVERNANCE.BYPASS_INVENTORY",
