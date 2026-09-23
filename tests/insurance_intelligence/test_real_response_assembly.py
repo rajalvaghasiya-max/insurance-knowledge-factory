@@ -8,6 +8,10 @@ from insurance_intelligence.coverage_registry.health_seed import HEALTH_COVERAGE
 from insurance_intelligence.entity_resolution.registry_adapter import load_runtime_registry_from_files
 from insurance_intelligence.evidence.coverage_registry_source import build_coverage_registry_published_source_lookup
 from insurance_intelligence.evidence.published_resolver import PublishedEvidenceResolver
+from insurance_intelligence.education_publication.repository import (
+    EducationPublicationRepository,
+    GovernedEducationPublicationLookup,
+)
 from insurance_intelligence.explanation.registry import ExplanationStyleRegistry, build_style_definition
 from insurance_intelligence.orchestration.execution_state import RuntimeStageObjectStore
 from insurance_intelligence.orchestration.intelligence_adapters import execute_intelligence_stage
@@ -18,6 +22,8 @@ from insurance_intelligence.orchestration.real_response_prefix import (
     RealResponsePrefixDependencies,
 )
 from insurance_intelligence.response.human_answer import project_human_answer
+from insurance_intelligence.terminology.concept_resolver import CanonicalConceptResolver
+from insurance_intelligence.terminology.health_seed import build_health_concept_registry_v1
 from insurance_intelligence.response.registry import (
     ResponseFormatRegistry,
     build_format_definition,
@@ -30,6 +36,11 @@ STAR_PED_PUBLICATION = (
     ROOT
     / "knowledge/factory/registry_backed/star_health_star_comprehensive/publication"
     / "ped_waiting_period_authoritative_publication.json"
+)
+PED_EDUCATION_PUBLICATION = (
+    ROOT
+    / "knowledge/factory/education_publications"
+    / "pre_existing_disease_education_publication.json"
 )
 
 
@@ -119,13 +130,24 @@ def _responses():
     ))
 
 
-def _run_real_star_ped_response():
+def _run_real_star_ped_response(*, with_education: bool = False):
     request = _request()
     dependencies = _dependencies(request)
+    education_lookup = None
+    if with_education:
+        education_lookup = GovernedEducationPublicationLookup(
+            repository=EducationPublicationRepository.from_json_files(
+                (PED_EDUCATION_PUBLICATION,)
+            ),
+            concept_resolver=CanonicalConceptResolver(
+                build_health_concept_registry_v1()
+            ),
+        )
     adapters = build_real_response_assembly_adapters(
         dependencies=dependencies,
         style_registry=_styles(),
         response_registry=_responses(),
+        education_publication_lookup=education_lookup,
     )
     assert tuple(adapter.stage for adapter in adapters) == request.requested_stage_order[:13]
 
@@ -199,3 +221,20 @@ def test_d0_real_star_ped_machine_response_projects_to_governed_human_view():
     assert "12 months" in unknown_text
     assert "policy-specific selection evidence" in unknown_text
     assert projection.human_view.next_step is not None
+
+
+
+def test_d0_case_a_real_path_accepts_governed_ped_education() -> None:
+    _, _, response = _run_real_star_ped_response(with_education=True)
+
+    included = tuple(section for section in response.sections if section.status == "INCLUDED")
+    section_types = tuple(section.section_type for section in included)
+    assert "EDUCATION" in section_types
+    assert "EXAMPLE" in section_types
+
+    answer_text = " ".join(
+        (response.direct_answer, *(section.text for section in included))
+    ).lower()
+    assert "health problem or medical condition" in answer_text
+    assert "ear condition" in answer_text
+    assert "36" in answer_text
