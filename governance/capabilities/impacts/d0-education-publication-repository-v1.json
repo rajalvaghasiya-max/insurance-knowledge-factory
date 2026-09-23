@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-education-publication-repository-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.EDUCATION.PUBLICATION_ADMISSION"
+  ],
+  "rationale": "PR #315 proved that persisted governed education publications had no typed repository/index or generic lookup boundary. This extension reconstructs and validates EducationPublicationRecord JSON, rejects duplicate concept publications, reuses governed concept mention resolution, and re-checks CUSTOMER_EDUCATION admission before returning education to orchestration.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new authority is introduced. The existing education publication contract and admission decision remain authoritative; the repository only loads, indexes, and selects already-authorized education records."
+}
