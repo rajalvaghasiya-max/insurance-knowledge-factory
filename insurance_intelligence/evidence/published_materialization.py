@@ -18,7 +18,12 @@ from insurance_intelligence.contracts.evidence import (
     EvidenceResolverOutput,
     RequirementResult,
 )
-from insurance_intelligence.contracts.semantic import GovernedSemanticAttribute
+from insurance_intelligence.contracts.semantic import (
+    GovernedSemanticAttribute,
+    build_governed_semantic_attribute,
+)
+from insurance_intelligence.topic_completeness.catalogue import build_default_topic_registry
+from insurance_intelligence.topic_completeness.registry import TopicCompletenessRegistryError
 from insurance_intelligence.evidence.admission import (
     USER_ANSWER,
     evaluate_publication_admission,
@@ -67,14 +72,62 @@ def _runtime_evidence_id(*, requirement_id: str, certified_evidence_id: str) -> 
     return f"published_ev_{digest}"
 
 
+def _answer_roles_by_evidence(
+    publication: AuthoritativePublicationRecord,
+) -> dict[str, str]:
+    """Derive answer roles only when published topic semantics are unambiguous.
+
+    One and only one published required component may become PRIMARY. Published
+    optional components become QUALIFYING. Unknown components or multiple required
+    components deliberately produce no inferred answer role.
+    """
+    try:
+        definition = build_default_topic_registry().get(
+            publication.topic_id,
+            publication.topic_version,
+        )
+    except TopicCompletenessRegistryError:
+        return {}
+
+    component_defs = {item.component_id: item for item in definition.components}
+    published = tuple(publication.semantic_components)
+    if any(item.component_id not in component_defs for item in published):
+        return {}
+
+    required = tuple(
+        item
+        for item in published
+        if component_defs[item.component_id].required
+    )
+    if len(required) != 1:
+        return {}
+
+    primary_component_id = required[0].component_id
+    roles: dict[str, set[str]] = {}
+    for component in published:
+        role = (
+            "PRIMARY"
+            if component.component_id == primary_component_id
+            else "QUALIFYING"
+        )
+        for evidence_id in component.evidence_references:
+            roles.setdefault(evidence_id, set()).add(role)
+
+    return {
+        evidence_id: next(iter(values))
+        for evidence_id, values in roles.items()
+        if len(values) == 1
+    }
+
+
 def _runtime_attributes(
     *,
     publication: AuthoritativePublicationRecord,
     certified_evidence_id: str,
     runtime_ids: dict[str, str],
+    answer_roles: dict[str, str],
 ) -> tuple[GovernedSemanticAttribute, ...]:
-    attributes = _attributes_for_evidence(publication, certified_evidence_id)
-    return tuple(
+    attributes = [
         replace(
             attribute,
             evidence_references=tuple(
@@ -82,8 +135,18 @@ def _runtime_attributes(
                 for reference in attribute.evidence_references
             ),
         )
-        for attribute in attributes
-    )
+        for attribute in _attributes_for_evidence(publication, certified_evidence_id)
+    ]
+    role = answer_roles.get(certified_evidence_id)
+    if role is not None and not any(item.key == "answer_role" for item in attributes):
+        attributes.append(
+            build_governed_semantic_attribute(
+                key="answer_role",
+                value=role,
+                evidence_references=(runtime_ids[certified_evidence_id],),
+            )
+        )
+    return tuple(sorted(attributes, key=lambda item: item.key))
 
 
 def materialize_published_requirement(
@@ -132,6 +195,7 @@ def materialize_published_requirement(
         )
         for evidence_id in published_ids
     }
+    answer_roles = _answer_roles_by_evidence(publication)
     packages = tuple(
         replace(
             by_id[evidence_id],
@@ -142,6 +206,7 @@ def materialize_published_requirement(
                 publication=publication,
                 certified_evidence_id=evidence_id,
                 runtime_ids=runtime_ids,
+                answer_roles=answer_roles,
             ),
             retrieval_basis=by_id[evidence_id].retrieval_basis
             + (
