@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-stable-direct-answer-fallback-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "PR #318 proved the response assembler could choose a secondary qualification as direct_answer because fallback selection occurred after response sections were sorted by generated section IDs. This repair preserves the already-governed drafted explanation order for fallback selection while retaining format-driven display sorting.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new semantic authority is introduced. The assembler still selects only already-approved explanation content; generated IDs no longer influence which approved statement is promoted as the fallback direct answer."
+}
