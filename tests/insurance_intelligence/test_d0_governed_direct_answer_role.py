@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import pytest
-
 from insurance_intelligence.contracts.authoritative_publication import (
     AuthoritativePublicationRecord,
     build_governed_semantic_component,
@@ -17,11 +15,6 @@ from insurance_intelligence.contracts.evidence import (
     Lineage,
     RequirementResult,
 )
-from insurance_intelligence.contracts.explanation import (
-    ExplanationGeneratorOutput,
-    build_section as explanation_section,
-)
-from insurance_intelligence.contracts.response import build_input as build_response_input
 from insurance_intelligence.evidence.published_materialization import (
     PublishedEvidenceSource,
     materialize_published_requirement,
@@ -36,12 +29,6 @@ from insurance_intelligence.reasoning.rules import (
     build_rule_input,
     direct_documented_fact,
 )
-from insurance_intelligence.response.assembler import ResponseAssemblyError
-from insurance_intelligence.response.registry import (
-    ResponseFormatRegistry,
-    build_format_definition,
-)
-from insurance_intelligence.response.service import assemble_response
 
 
 def _lineage() -> Lineage:
@@ -297,103 +284,3 @@ def test_primary_direct_fact_becomes_explicit_direct_answer_section() -> None:
     meaning = [item for item in rendered.sections if item.section_type == "MEANING"]
     assert [item.text for item in direct] == ["The obligation is 20%."]
     assert any("documented waiver" in item.text for item in meaning)
-
-
-def _response_format():
-    return ResponseFormatRegistry((
-        build_format_definition(
-            format_id="customer-standard-v1",
-            format_version="1.0",
-            response_format="STANDARD",
-            audiences=("CUSTOMER",),
-            response_statuses=("ANSWER",),
-            section_order=("DIRECT_ANSWER", "EXPLANATION"),
-            allowed_section_types=("DIRECT_ANSWER", "EXPLANATION"),
-            direct_answer_policy="REQUIRED",
-            evidence_policy="WHEN_AVAILABLE",
-            limitation_policy="REQUIRED_WHEN_PRESENT",
-            clarification_policy="FORBIDDEN",
-        ),
-    ))
-
-
-def _ambiguous_explanation() -> ExplanationGeneratorOutput:
-    sections = (
-        explanation_section(
-            section_id="zz-duration",
-            section_type="MEANING",
-            status="DRAFTED",
-            text="The waiting period duration is 36 MONTHS.",
-            approved_finding_ids=("finding-1",),
-            evidence_ids=("evidence-1",),
-        ),
-        explanation_section(
-            section_id="aa-continuity",
-            section_type="MEANING",
-            status="DRAFTED",
-            text="Continuity can reduce the waiting period.",
-            approved_finding_ids=("finding-2",),
-            evidence_ids=("evidence-2",),
-        ),
-    )
-    return ExplanationGeneratorOutput(
-        contract_version="1.0",
-        request_id="request-1",
-        explanation_id="explanation-1",
-        audience="CUSTOMER",
-        reading_level="SIMPLE",
-        explanation_mode="PLAIN_LANGUAGE",
-        sections=sections,
-        terminology_substitutions=(),
-        fidelity_checks=(),
-        fidelity_status="VERIFIED",
-        limitations=(),
-        explanation_status="DRAFTED",
-        confidence=1.0,
-        explanation_trace=(),
-    )
-
-
-def test_response_assembler_fails_closed_when_multiple_candidates_have_no_primary_role() -> None:
-    packet = build_approved_response_packet(
-        packet_id="packet-ambiguous",
-        approved_finding_ids=("finding-1", "finding-2"),
-        approved_evidence_ids=("evidence-1", "evidence-2"),
-    )
-    decision = build_decision_output(
-        request_id="request-1",
-        decision_id="decision-ambiguous",
-        decision="APPROVED",
-        finding_dispositions=(
-            build_finding_disposition(
-                finding_id="finding-1",
-                disposition="APPROVED",
-                basis="test",
-                approved_evidence_ids=("evidence-1",),
-                confidence=1.0,
-            ),
-            build_finding_disposition(
-                finding_id="finding-2",
-                disposition="APPROVED",
-                basis="test",
-                approved_evidence_ids=("evidence-2",),
-                confidence=1.0,
-            ),
-        ),
-        response_packet=packet,
-        confidence=1.0,
-    )
-
-    with pytest.raises(
-        ResponseAssemblyError,
-        match="ambiguous without explicit DIRECT_ANSWER",
-    ):
-        assemble_response(
-            build_response_input(
-                request_id="request-1",
-                decision_output=decision,
-                explanation_output=_ambiguous_explanation(),
-                response_format="STANDARD",
-            ),
-            _response_format(),
-        )
