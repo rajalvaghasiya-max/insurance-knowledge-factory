@@ -209,21 +209,25 @@ def assemble_sections(
         if response_type == "CLARIFICATION":
             clarification_questions.append(section.text)
 
+    fallback_direct_candidates = [
+        item.text
+        for item in response_sections
+        if item.section_type
+        in {"EXPLANATION", "IMPACT", "CONDITION", "ADVISOR_TALKING_POINT"}
+    ]
+
     response_sections.sort(key=lambda item: _section_sort_key(item, format_definition))
     if len(response_sections) > format_definition.max_sections:
         raise ResponseAssemblyError("assembled response exceeds max_sections")
 
     if format_definition.direct_answer_policy == "REQUIRED":
         if not direct_candidates:
-            # Deterministic fallback to the first approved explanatory section; no rewriting.
-            candidates = [
-                item.text
-                for item in response_sections
-                if item.section_type in {"EXPLANATION", "IMPACT", "CONDITION", "ADVISOR_TALKING_POINT"}
-            ]
-            if not candidates:
+            # Preserve the already-governed explanation order when choosing a
+            # fallback direct answer. Final section display order is format-driven,
+            # but generated response-section IDs must never decide semantic priority.
+            if not fallback_direct_candidates:
                 raise ResponseAssemblyError("required direct answer is unavailable")
-            direct_candidates = [candidates[0]]
+            direct_candidates = [fallback_direct_candidates[0]]
         direct_answer: str | None = direct_candidates[0]
         if _word_count(direct_answer) > format_definition.max_direct_answer_words:
             raise ResponseAssemblyError("direct answer exceeds max_direct_answer_words")
