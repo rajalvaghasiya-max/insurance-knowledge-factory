@@ -381,7 +381,7 @@
         "insurance_intelligence/response/service.py",
         "insurance_intelligence/response/validator.py"
       ],
-      "structural_fingerprint": "ae7162631ab53d1beba4941f76efe2cf9bd289a914240ff1db7a794ddd251e05"
+      "structural_fingerprint": "7d7e4b317fcbe0759a6a241b5f55523d58d665e2a59bb905cae3d0f0e76bf05e"
     },
     {
       "capability_id": "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
