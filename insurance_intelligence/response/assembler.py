@@ -223,10 +223,6 @@ def assemble_sections(
             ]
             if not candidates:
                 raise ResponseAssemblyError("required direct answer is unavailable")
-            if len(candidates) != 1:
-                raise ResponseAssemblyError(
-                    "required direct answer is ambiguous without explicit DIRECT_ANSWER"
-                )
             direct_candidates = [candidates[0]]
         direct_answer: str | None = direct_candidates[0]
         if _word_count(direct_answer) > format_definition.max_direct_answer_words:
