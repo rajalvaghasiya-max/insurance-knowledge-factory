@@ -209,7 +209,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.TERMINOLOGY.GOVERNED_RESOLUTION`<br>Governed Insurance Terminology Resolution | `ACTIVE` | `REUSE` | Terminology-normalization and mapping authority only. It may identify an exact governed concept/term relationship, but it does not establish product applicability, retrieve evidence, interpret policy clauses, compare products, rank options, assess suitability, or recommend. | None | `insurance_intelligence/terminology`<br>`insurance_intelligence/contracts/terminology.py` | `fc0fd561f6ee` |
+| `II.TERMINOLOGY.GOVERNED_RESOLUTION`<br>Governed Insurance Terminology Resolution | `ACTIVE` | `REUSE` | Terminology-normalization and mapping authority only. It may identify an exact governed concept/term relationship, but it does not establish product applicability, retrieve evidence, interpret policy clauses, compare products, rank options, assess suitability, or recommend. | None | `insurance_intelligence/terminology`<br>`insurance_intelligence/contracts/terminology.py` | `3f767a357bc6` |
 
 ### LLM_CONTROLLED_EVALUATION
 
