@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-concept-mention-resolution-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.TERMINOLOGY.GOVERNED_RESOLUTION"
+  ],
+  "rationale": "PR #313 proved the canonical terminology resolver cannot identify multiple governed concept mentions inside one customer question. This extension scans only CanonicalConceptRegistry governed language keys with exact normalised word-boundary matching, skips ambiguous matches, and performs no fuzzy or semantic inference.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new semantic authority is introduced. The existing governed CanonicalConceptRegistry remains the sole source of aliases and concept identity; this change only detects multiple exact mentions in one text."
+}
