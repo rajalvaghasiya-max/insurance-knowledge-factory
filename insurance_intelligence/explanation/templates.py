@@ -56,6 +56,17 @@ def _is_direct_documented_fact(finding: Finding) -> bool:
     return finding.derivation_type == "DIRECT_FACT" and finding.predicate == "documents"
 
 
+def _answer_role(finding: Finding) -> str | None:
+    values = {
+        attribute.value
+        for attribute in finding.semantic_attributes
+        if attribute.key == "answer_role"
+    }
+    if len(values) > 1:
+        raise ExplanationTemplateError("finding contains conflicting answer_role semantics")
+    return next(iter(values), None)
+
+
 def _join_subject_predicate(finding: Finding) -> str:
     effect = _normalise_space(finding.object_or_effect)
     if _is_direct_documented_fact(finding):
@@ -245,7 +256,12 @@ def render_explanation_templates(
                     text = _ensure_sentence(f"This applies when {finding.condition.strip()}. {text}")
             template_id = "detailed_finding_v1"
         else:
-            section_type = "MEANING"
+            section_type = (
+                "DIRECT_ANSWER"
+                if _is_direct_documented_fact(finding)
+                and _answer_role(finding) == "PRIMARY"
+                else "MEANING"
+            )
             text = _plain_finding_text(finding, audience=explanation_input.audience)
             template_id = "plain_finding_v1"
 
