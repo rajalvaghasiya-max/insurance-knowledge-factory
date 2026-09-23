@@ -4,6 +4,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Mapping, Sequence
 
+from insurance_intelligence.contracts.semantic import (
+    GovernedSemanticAttribute,
+    SemanticAttributeContractError,
+    validate_semantic_attributes,
+)
+
 from insurance_intelligence.contracts.evidence import EvidenceResolverOutput
 from insurance_intelligence.contracts.reasoning_plan import ReasoningPlan
 
@@ -224,6 +230,7 @@ class Finding:
     trigger: str | None = None
     exception: str | None = None
     applicability_scope: str | None = None
+    semantic_attributes: tuple[GovernedSemanticAttribute, ...] = ()
 
 
 def build_finding(
@@ -247,6 +254,7 @@ def build_finding(
     trigger: str | None = None,
     exception: str | None = None,
     applicability_scope: str | None = None,
+    semantic_attributes: Sequence[GovernedSemanticAttribute] = (),
     confidence: float = 1.0,
 ) -> Finding:
     validated_finding_status = _require_member(
@@ -272,6 +280,10 @@ def build_finding(
             "conditional findings and conditional derivations must carry a non-empty condition or trigger"
         )
     validated_evidence = _require_unique(evidence_ids, "finding.evidence_ids")
+    try:
+        validated_semantic_attributes = validate_semantic_attributes(semantic_attributes)
+    except SemanticAttributeContractError as exc:
+        raise ReasoningContractError(str(exc)) from exc
     if validated_finding_status in {"SUPPORTED", "SUPPORTED_WITH_LIMITATIONS", "CONDITIONAL", "PARTIALLY_SUPPORTED"} and not validated_evidence:
         raise ReasoningContractError("supported findings must reference at least one evidence_id")
     return Finding(
@@ -285,6 +297,7 @@ def build_finding(
         trigger=resolved_trigger,
         exception=exception,
         applicability_scope=applicability_scope,
+        semantic_attributes=validated_semantic_attributes,
         scope=_require_nonempty_str(scope, "finding.scope"),
         finding_status=validated_finding_status,
         derivation_type=validated_derivation_type,
