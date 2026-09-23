@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-governed-direct-answer-role-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER",
+    "II.REASONING.ENGINE",
+    "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "PR #321 proved that direct-answer selection can change when only section IDs change. This repair derives an answer role from existing governed topic-completeness metadata only when one published required component is unambiguous, preserves that semantic attribute through direct-fact reasoning, renders the primary fact as an explicit DIRECT_ANSWER, and makes response assembly fail closed instead of arbitrarily choosing among multiple unmarked candidates.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new product or claim authority is introduced. Answer role is deterministically derived from authoritative publication component identity plus the versioned topic-completeness definition. Ambiguous publications receive no primary role. Response assembly consumes the explicit governed role but does not infer product semantics."
+}
