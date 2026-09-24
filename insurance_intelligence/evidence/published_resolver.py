@@ -355,6 +355,9 @@ class PublishedEvidenceResolver:
                         source,
                         request.resolution_context,
                     ),
+                    question_relative_selection=bool(
+                        _requested_outcome(request.resolution_context)
+                    ),
                 )
             except PublishedEvidenceMaterializationError as exc:
                 reason = str(exc)
