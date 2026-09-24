@@ -165,7 +165,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.PLANNING.REASONING_PLANNER`<br>Deterministic Reasoning Planner | `ACTIVE` | `REUSE` | Planning authority only; it may declare required operations but does not retrieve evidence, calculate, interpret clauses, compare products, assess suitability, recommend, or generate answers. | None | `insurance_intelligence/planning`<br>`insurance_intelligence/contracts/reasoning_plan.py` | `65c130a67f03` |
+| `II.PLANNING.REASONING_PLANNER`<br>Deterministic Reasoning Planner | `ACTIVE` | `REUSE` | Planning authority only; it may declare required operations but does not retrieve evidence, calculate, interpret clauses, compare products, assess suitability, recommend, or generate answers. | None | `insurance_intelligence/planning`<br>`insurance_intelligence/contracts/reasoning_plan.py` | `0903e724833d` |
 
 ### INSURANCE_INTELLIGENCE_PUBLICATION_GOVERNANCE
 
