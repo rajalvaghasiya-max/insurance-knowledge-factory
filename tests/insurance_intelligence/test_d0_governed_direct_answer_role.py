@@ -284,3 +284,34 @@ def test_primary_direct_fact_becomes_explicit_direct_answer_section() -> None:
     meaning = [item for item in rendered.sections if item.section_type == "MEANING"]
     assert [item.text for item in direct] == ["The obligation is 20%."]
     assert any("documented waiver" in item.text for item in meaning)
+
+
+
+def test_question_relative_selection_marks_one_primary_with_multiple_required_components() -> None:
+    source = _source(component_ids=("obligation_value", "trigger_condition"))
+
+    packages, _ = materialize_published_requirement(
+        source=source,
+        requirement_id="runtime-req-question-relative",
+        subject_reference="requested_fact",
+        requested_component_id="trigger_condition",
+        question_relative_selection=True,
+    )
+
+    roles = {item.field_or_topic: _role(item) for item in packages}
+    assert roles["TRIGGER_CONDITION"] == "PRIMARY"
+    assert roles["OBLIGATION_VALUE"] is None
+
+
+def test_ambiguous_question_relative_selection_does_not_fall_back_to_required_component() -> None:
+    source = _source(component_ids=("obligation_value", "trigger_condition"))
+
+    packages, _ = materialize_published_requirement(
+        source=source,
+        requirement_id="runtime-req-question-ambiguous",
+        subject_reference="requested_fact",
+        requested_component_id=None,
+        question_relative_selection=True,
+    )
+
+    assert all(_role(item) is None for item in packages)
