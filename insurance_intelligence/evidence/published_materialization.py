@@ -74,6 +74,8 @@ def _runtime_evidence_id(*, requirement_id: str, certified_evidence_id: str) -> 
 
 def _answer_roles_by_evidence(
     publication: AuthoritativePublicationRecord,
+    *,
+    requested_component_id: str | None = None,
 ) -> dict[str, str]:
     """Derive answer roles only when published topic semantics are unambiguous.
 
@@ -94,22 +96,32 @@ def _answer_roles_by_evidence(
     if any(item.component_id not in component_defs for item in published):
         return {}
 
-    required = tuple(
-        item
-        for item in published
-        if component_defs[item.component_id].required
-    )
-    if len(required) != 1:
-        return {}
+    if requested_component_id is not None:
+        selected = tuple(
+            item for item in published
+            if item.component_id == requested_component_id
+        )
+        if len(selected) != 1:
+            return {}
+        primary_component_id = requested_component_id
+    else:
+        required = tuple(
+            item
+            for item in published
+            if component_defs[item.component_id].required
+        )
+        if len(required) != 1:
+            return {}
+        primary_component_id = required[0].component_id
 
-    primary_component_id = required[0].component_id
     roles: dict[str, set[str]] = {}
     for component in published:
-        role = (
-            "PRIMARY"
-            if component.component_id == primary_component_id
-            else "QUALIFYING"
-        )
+        if component.component_id == primary_component_id:
+            role = "PRIMARY"
+        elif not component_defs[component.component_id].required:
+            role = "QUALIFYING"
+        else:
+            continue
         for evidence_id in component.evidence_references:
             roles.setdefault(evidence_id, set()).add(role)
 
@@ -154,6 +166,7 @@ def materialize_published_requirement(
     source: PublishedEvidenceSource,
     requirement_id: str,
     subject_reference: str,
+    requested_component_id: str | None = None,
 ) -> tuple[tuple[EvidencePackage, ...], RequirementResult]:
     """Project exactly published evidence references into one runtime requirement."""
     if not isinstance(source, PublishedEvidenceSource):
@@ -195,7 +208,10 @@ def materialize_published_requirement(
         )
         for evidence_id in published_ids
     }
-    answer_roles = _answer_roles_by_evidence(publication)
+    answer_roles = _answer_roles_by_evidence(
+        publication,
+        requested_component_id=requested_component_id,
+    )
     packages = tuple(
         replace(
             by_id[evidence_id],
