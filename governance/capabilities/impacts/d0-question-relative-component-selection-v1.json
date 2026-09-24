@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-question-relative-component-selection-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.TOPIC_COMPLETENESS.GOVERNED_EVIDENCE_GATE",
+    "II.EVIDENCE.GOVERNED_RESOLVER",
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "PR #326 showed that once a complete publication exposes multiple required semantic components, a publication-global PRIMARY role is not semantically valid. This change extends the governed topic catalogue with question-selection metadata, adds one generic deterministic component selector, passes the exact governed requested outcome into evidence resolution context, and marks only the uniquely selected published component PRIMARY. Ambiguous multi-component questions receive no PRIMARY role.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No product, claim, or publication authority is added. Selection is presentation/evidence-routing metadata derived from the exact user-requested outcome plus versioned governed topic definitions. The selector cannot create evidence, change certification, change publication contents, or infer claim outcomes."
+}
