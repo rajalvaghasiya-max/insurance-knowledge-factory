@@ -26,6 +26,7 @@ from insurance_intelligence.evidence.coverage_registry_source import (
     build_coverage_registry_published_source_lookup,
 )
 from insurance_intelligence.evidence.published_artifact_store import (
+    load_published_evidence_source,
     persist_published_evidence_source,
 )
 from insurance_intelligence.evidence.published_resolver import PublishedEvidenceResolver
@@ -227,9 +228,15 @@ def _run_real_assembled_answer(*, publication_root: Path, execution_id: str):
     response = dependencies.store.get(
         f"{request.execution_id}:real:response_assembly"
     )
+    plan = dependencies.store.get(
+        f"{request.execution_id}:real:reasoning_planning"
+    )
+    evidence = dependencies.store.get(
+        f"{request.execution_id}:real:evidence_resolution_enforced"
+    )
     included = tuple(section for section in response.sections if section.status == "INCLUDED")
     text = " ".join((response.direct_answer, *(section.text for section in included)))
-    return response, text
+    return response, text, plan, evidence
 
 
 def test_star_ped_materializes_through_generic_publication_machinery_from_data_only_spec():
@@ -242,10 +249,28 @@ def test_star_ped_materializes_through_generic_publication_machinery_from_data_o
     )
     assert tuple(item.component_id for item in source.publication.semantic_components) == (
         "waiting_period_duration",
+        "waiting_period_subject",
+        "start_basis",
+        "applicability_scope",
         "continuity_or_credit_rule",
     )
     claims = {item.field_or_topic: item.claim for item in source.certified_evidence.evidence_packages}
     assert claims["WAITING_PERIOD_DURATION"] == "The waiting period duration is 36 MONTHS."
+    assert (
+        claims["WAITING_PERIOD_SUBJECT"]
+        == "Waiting period applies to: pre_existing_disease_and_direct_complications."
+    )
+    assert (
+        claims["WAITING_PERIOD_START_BASIS"]
+        == "The waiting period start basis is INSURED_PERSON_FIRST_COVERAGE."
+    )
+    assert (
+        claims["APPLICABILITY_SCOPE"]
+        == (
+            "Waiting-period applicability: scope_type=POLICY_WIDE; "
+            "sum_insured_enhancement_effect=REAPPLIES_TO_ENHANCED_PORTION."
+        )
+    )
     assert "continuously covered without any break" in claims["CONTINUITY_OR_CREDIT_RULE"]
     assert any("customer-specific eligibility or claim payment" in item for item in source.publication.limitations)
     assert any("optional PED buy-back" in item for item in source.publication.limitations)
@@ -271,14 +296,35 @@ def test_star_ped_criterion6_publication_perturbation_changes_assembled_answer(t
         source=_certified_source(drop_component_id="continuity_or_credit_rule"),
     )
 
-    full_response, full_text = _run_real_assembled_answer(
+    full_response, full_text, full_plan, full_evidence = _run_real_assembled_answer(
         publication_root=full_root,
         execution_id="star-ped-criterion6-full",
     )
-    perturbed_response, perturbed_text = _run_real_assembled_answer(
+    perturbed_response, perturbed_text, perturbed_plan, perturbed_evidence = _run_real_assembled_answer(
         publication_root=perturbed_root,
         execution_id="star-ped-criterion6-perturbed",
     )
+
+    assert {
+        item.requested_semantic_component
+        for item in full_plan.required_evidence
+    } == {"waiting_period_duration"}
+    duration_roles = [
+        attr.value
+        for package in full_evidence.evidence_packages
+        if package.field_or_topic == "WAITING_PERIOD_DURATION"
+        for attr in package.semantic_attributes
+        if attr.key == "answer_role"
+    ]
+    continuity_roles = [
+        attr.value
+        for package in full_evidence.evidence_packages
+        if package.field_or_topic == "CONTINUITY_OR_CREDIT_RULE"
+        for attr in package.semantic_attributes
+        if attr.key == "answer_role"
+    ]
+    assert duration_roles and set(duration_roles) == {"PRIMARY"}
+    assert continuity_roles and set(continuity_roles) == {"QUALIFYING"}
 
     assert full_response.response_status in {"ANSWER", "ANSWER_WITH_LIMITATIONS"}
     assert perturbed_response.response_status in {"ANSWER", "ANSWER_WITH_LIMITATIONS"}
@@ -288,6 +334,25 @@ def test_star_ped_criterion6_publication_perturbation_changes_assembled_answer(t
     assert CONTINUITY_CLAIM not in perturbed_text
     assert "12" not in full_text
     assert "12" not in perturbed_text
+
+
+def test_star_ped_committed_publication_matches_generic_materializer_exactly():
+    materialized = _certified_source()
+    committed = load_published_evidence_source(
+        publication_path=(
+            ROOT
+            / "knowledge/factory/registry_backed/star_health_star_comprehensive/publication"
+            / "ped_waiting_period_authoritative_publication.json"
+        ),
+        certified_evidence_path=(
+            ROOT
+            / "knowledge/factory/registry_backed/star_health_star_comprehensive/publication"
+            / "ped_waiting_period_certified_evidence.json"
+        ),
+    )
+
+    assert committed.publication == materialized.publication
+    assert committed.certified_evidence == materialized.certified_evidence
 
 
 def test_star_ped_frozen_artifacts_are_discoverable_by_existing_generic_lookup(tmp_path):
