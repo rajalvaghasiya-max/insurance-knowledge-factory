@@ -266,3 +266,24 @@ def test_input_order_does_not_change_output_order():
     first = assemble_response(_input(_explanation(condition, direct)), _registry())
     second = assemble_response(_input(_explanation(direct, condition)), _registry())
     assert first.sections == second.sections
+
+
+
+def test_direct_answer_fallback_preserves_governed_explanation_order_not_hashed_section_order():
+    primary = _section(
+        section_id="primary",
+        section_type="MEANING",
+        text="Primary governed fact.",
+    )
+    secondary = _section(
+        section_id="secondary",
+        section_type="MEANING",
+        text="Secondary governed qualification.",
+    )
+
+    output = assemble_response(
+        _input(_explanation(primary, secondary)),
+        _registry(),
+    )
+
+    assert output.direct_answer == "Primary governed fact."
