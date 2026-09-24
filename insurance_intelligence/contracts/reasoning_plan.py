@@ -282,6 +282,7 @@ class EvidenceRequirement:
     evidence_category: str
     subject_reference: str
     required: bool
+    requested_semantic_component: str | None
     authority_requirement: str
     version_requirement: str
     effective_date_requirement: str
@@ -300,12 +301,21 @@ def build_evidence_requirement(
     reason: str,
     requested_by_step: str,
     effective_date_requirement: str = "REQUEST_DATE_APPLICABLE",
+    requested_semantic_component: str | None = None,
 ) -> EvidenceRequirement:
     return EvidenceRequirement(
         requirement_id=_require_nonempty_str(requirement_id, "evidence_requirement.requirement_id"),
         evidence_category=_require_member(evidence_category, EVIDENCE_CATEGORIES, "evidence_requirement.evidence_category"),
         subject_reference=_require_nonempty_str(subject_reference, "evidence_requirement.subject_reference"),
         required=_require_bool(required, "evidence_requirement.required"),
+        requested_semantic_component=(
+            _require_nonempty_str(
+                requested_semantic_component,
+                "evidence_requirement.requested_semantic_component",
+            )
+            if requested_semantic_component is not None
+            else None
+        ),
         authority_requirement=_require_member(
             authority_requirement, AUTHORITY_REQUIREMENTS, "evidence_requirement.authority_requirement"
         ),
