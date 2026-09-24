@@ -35,6 +35,7 @@ from insurance_intelligence.orchestration.real_response_prefix import (
     CertifiedKnowledgeSelection,
     RealResponsePrefixDependencies,
 )
+from insurance_intelligence.response.human_answer import project_human_answer
 from insurance_intelligence.response.registry import (
     ResponseFormatRegistry,
     build_format_definition,
@@ -264,3 +265,15 @@ def test_founder_profile_is_loaded_only_as_reviewed_governed_data() -> None:
     assert profile.after_probe_value == 40
     assert profile.related_condition == "ear condition"
     assert profile.unrelated_condition == "dengue"
+
+
+
+def test_case_a_human_projection_exposes_governed_practical_illustration() -> None:
+    response, _ = _run()
+    projection = project_human_answer(response)
+
+    meaning = " ".join(projection.human_view.meaning).lower()
+    assert "ear condition" in meaning
+    assert "dengue" in meaning
+    assert "10 months" in meaning
+    assert "40 months" in meaning
