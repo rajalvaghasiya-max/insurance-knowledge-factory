@@ -64,6 +64,16 @@ def _resolve(reason: str):
     )
 
 
+def _answer_role(package):
+    values = [
+        item.value
+        for item in package.semantic_attributes
+        if item.key == "answer_role"
+    ]
+    assert len(values) <= 1
+    return values[0] if values else None
+
+
 def test_room_rent_user_answer_materializes_only_authoritatively_published_evidence():
     out = _resolve("Explain the room rent or room category limit for Star Comprehensive")
 
@@ -242,3 +252,66 @@ def test_published_resolver_refuses_internal_certification_mode():
                 repository_roots=(str(REGISTRY),),
             )
         )
+
+
+def test_waiting_period_requested_outcome_marks_duration_primary() -> None:
+    plan = _plan(reason="What is the PED waiting period in Star Comprehensive?")
+    out = PublishedEvidenceResolver(LOOKUP).resolve(
+        build_input(
+            request_id=plan.request_id,
+            reasoning_plan=plan,
+            resolution_context={
+                "evidence_use": "USER_ANSWER",
+                "requested_outcome": "What is the PED waiting period in Star Comprehensive?",
+            },
+            repository_roots=(str(REGISTRY),),
+            strict_mode="STRICT",
+        )
+    )
+
+    roles = {item.field_or_topic: _answer_role(item) for item in out.evidence_packages}
+    assert roles["WAITING_PERIOD_DURATION"] == "PRIMARY"
+    assert roles["CONTINUITY_OR_CREDIT_RULE"] == "QUALIFYING"
+
+
+def test_waiting_period_requested_outcome_can_select_optional_continuity_fact() -> None:
+    plan = _plan(reason="Does portability reduce the PED waiting period?")
+    out = PublishedEvidenceResolver(LOOKUP).resolve(
+        build_input(
+            request_id=plan.request_id,
+            reasoning_plan=plan,
+            resolution_context={
+                "evidence_use": "USER_ANSWER",
+                "requested_outcome": (
+                    "Does portability or prior coverage reduce the waiting period?"
+                ),
+            },
+            repository_roots=(str(REGISTRY),),
+            strict_mode="STRICT",
+        )
+    )
+
+    roles = {item.field_or_topic: _answer_role(item) for item in out.evidence_packages}
+    assert roles["CONTINUITY_OR_CREDIT_RULE"] == "PRIMARY"
+    assert roles["WAITING_PERIOD_DURATION"] is None
+
+
+def test_waiting_period_ambiguous_requested_outcome_does_not_invent_primary() -> None:
+    plan = _plan(reason="How long is the waiting period and does portability reduce it?")
+    out = PublishedEvidenceResolver(LOOKUP).resolve(
+        build_input(
+            request_id=plan.request_id,
+            reasoning_plan=plan,
+            resolution_context={
+                "evidence_use": "USER_ANSWER",
+                "requested_outcome": (
+                    "How long is the waiting period and does portability reduce it?"
+                ),
+            },
+            repository_roots=(str(REGISTRY),),
+            strict_mode="STRICT",
+        )
+    )
+
+    assert all(_answer_role(item) is None for item in out.evidence_packages)
+
