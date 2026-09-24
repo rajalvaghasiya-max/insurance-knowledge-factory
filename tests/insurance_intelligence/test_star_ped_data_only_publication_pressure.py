@@ -292,8 +292,9 @@ def test_star_ped_materializes_through_generic_publication_machinery_from_data_o
         "duration_unit": "MONTHS",
         "duration_value": "36",
     }
+    binding_spec = _spec()
     binding = json.loads(
-        (ROOT / spec["binding_spec_path"]).read_text(encoding="utf-8")
+        (ROOT / binding_spec["binding_spec_path"]).read_text(encoding="utf-8")
     )
     assert duration_component.semantic_attributes[0].evidence_references
     assert binding["mechanic"]["duration_value"] == 36
