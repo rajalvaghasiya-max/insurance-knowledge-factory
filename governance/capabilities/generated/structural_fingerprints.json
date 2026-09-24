@@ -178,7 +178,7 @@
         "insurance_intelligence/evidence/sufficiency.py",
         "insurance_intelligence/evidence/trace.py"
       ],
-      "structural_fingerprint": "b992152f9211bec0d3a8e81db2dc35e50bff23032f8227254a2c11d51e2126d2"
+      "structural_fingerprint": "eabde5c99d7762bee08a963ab145f8f5add6d97db1b1a631c112a54d8c8af3f2"
     },
     {
       "capability_id": "II.EVIDENCE.INSTANCE_ENFORCEMENT",
@@ -304,9 +304,10 @@
         "insurance_intelligence/planning/__init__.py",
         "insurance_intelligence/planning/planner.py",
         "insurance_intelligence/planning/registry.py",
+        "insurance_intelligence/planning/semantic_request_selector.py",
         "insurance_intelligence/planning/validator.py"
       ],
-      "structural_fingerprint": "2817c821a2383912d5f602801089ae560d91aa9677f725bad447eff02d77d68f"
+      "structural_fingerprint": "0903e724833ded7806cf705254131c524ae725a8b8197934d126a18c91e1e6b2"
     },
     {
       "capability_id": "II.PUBLICATION.AUTHORITATIVE_GATE",
@@ -439,7 +440,7 @@
         "insurance_intelligence/topic_completeness/registry.py",
         "insurance_intelligence/topic_completeness/star_pilot_profiles.py"
       ],
-      "structural_fingerprint": "364e96bb69ac6187b13952d8955aa53e99eed313fca30e7f3f46e40a55b7ce7a"
+      "structural_fingerprint": "1b342e9ed042d44051439adb159d8e479c4983cab7920bd1c72e9f723240a36e"
     },
     {
       "capability_id": "LLM.EVALUATION.CONTROLLED_PROVIDER_HARNESS",

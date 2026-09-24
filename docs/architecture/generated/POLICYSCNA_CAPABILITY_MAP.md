@@ -100,14 +100,14 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.EVIDENCE.GOVERNED_RESOLVER`<br>Governed Evidence Resolver | `ACTIVE` | `REUSE` | Underlying evidence-resolution engine. In the canonical current path it is callable only through II.EVIDENCE.INSTANCE_ENFORCEMENT when instance identity is required; it cannot manufacture identity or bypass that guard. | None | `insurance_intelligence/evidence`<br>`insurance_intelligence/contracts/evidence.py` | `b992152f9211` |
+| `II.EVIDENCE.GOVERNED_RESOLVER`<br>Governed Evidence Resolver | `ACTIVE` | `REUSE` | Underlying evidence-resolution engine. In the canonical current path it is callable only through II.EVIDENCE.INSTANCE_ENFORCEMENT when instance identity is required; it cannot manufacture identity or bypass that guard. | None | `insurance_intelligence/evidence`<br>`insurance_intelligence/contracts/evidence.py` | `eabde5c99d77` |
 
 ### INSURANCE_INTELLIGENCE_EVIDENCE_GOVERNANCE
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
 | `II.EVIDENCE.INSTANCE_ENFORCEMENT`<br>Evidence Instance Enforcement | `ACTIVE` | `REUSE` | Preflight wrapper around evidence resolution; it cannot manufacture evidence or identity. | None | `insurance_intelligence/evidence_instance_enforcement.py`<br>`insurance_intelligence/contracts/evidence_instance_enforcement.py` | `66543ac92888` |
-| `II.TOPIC_COMPLETENESS.GOVERNED_EVIDENCE_GATE`<br>Governed Topic Completeness Evidence Gate | `ACTIVE` | `REUSE` | Topic-completeness and explanation-permission authority only; it consumes governed evidence resolver output and registered topic/profile definitions but does not retrieve evidence, infer product facts, resolve product identity, perform claim interpretation, compare products, assess suitability, rank, or recommend. | None | `insurance_intelligence/topic_completeness`<br>`insurance_intelligence/contracts/topic_completeness.py`<br>`insurance_intelligence/contracts/topic_profile.py` | `364e96bb69ac` |
+| `II.TOPIC_COMPLETENESS.GOVERNED_EVIDENCE_GATE`<br>Governed Topic Completeness Evidence Gate | `ACTIVE` | `REUSE` | Topic-completeness and explanation-permission authority only; it consumes governed evidence resolver output and registered topic/profile definitions but does not retrieve evidence, infer product facts, resolve product identity, perform claim interpretation, compare products, assess suitability, rank, or recommend. | None | `insurance_intelligence/topic_completeness`<br>`insurance_intelligence/contracts/topic_completeness.py`<br>`insurance_intelligence/contracts/topic_profile.py` | `1b342e9ed042` |
 
 ### INSURANCE_INTELLIGENCE_EXPLANATION
 
@@ -165,7 +165,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.PLANNING.REASONING_PLANNER`<br>Deterministic Reasoning Planner | `ACTIVE` | `REUSE` | Planning authority only; it may declare required operations but does not retrieve evidence, calculate, interpret clauses, compare products, assess suitability, recommend, or generate answers. | None | `insurance_intelligence/planning`<br>`insurance_intelligence/contracts/reasoning_plan.py` | `2817c821a238` |
+| `II.PLANNING.REASONING_PLANNER`<br>Deterministic Reasoning Planner | `ACTIVE` | `REUSE` | Planning authority only; it may declare required operations but does not retrieve evidence, calculate, interpret clauses, compare products, assess suitability, recommend, or generate answers. | None | `insurance_intelligence/planning`<br>`insurance_intelligence/contracts/reasoning_plan.py` | `0903e724833d` |
 
 ### INSURANCE_INTELLIGENCE_PUBLICATION_GOVERNANCE
 

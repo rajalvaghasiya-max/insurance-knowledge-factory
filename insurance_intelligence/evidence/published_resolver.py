@@ -316,6 +316,7 @@ class PublishedEvidenceResolver:
                     source=source,
                     requirement_id=requirement.requirement_id,
                     subject_reference=semantic_subject,
+                    requested_semantic_component=requirement.requested_semantic_component,
                 )
             except PublishedEvidenceMaterializationError as exc:
                 reason = str(exc)

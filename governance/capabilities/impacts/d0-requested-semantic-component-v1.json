@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-requested-semantic-component-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.PLANNING.REASONING_PLANNER",
+    "II.TOPIC_COMPLETENESS.GOVERNED_EVIDENCE_GATE",
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "PR #326 proved that once an authoritative publication correctly contains multiple required semantic components, the canonical path cannot represent which component the customer directly requested. This change extends governed topic component metadata with request terms, adds a deterministic generic selector within the existing planning capability, carries the selected component on EvidenceRequirement, and uses it only to derive request-relative PRIMARY/QUALIFYING answer roles during authoritative publication materialization.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new evidence, publication, reasoning, or answer authority is introduced. Topic completeness remains the source of governed component semantics; the planner only declares the requested component; the evidence resolver only projects answer role over already-authoritative published components. Unresolved or ambiguous selection does not invent a PRIMARY role."
+}

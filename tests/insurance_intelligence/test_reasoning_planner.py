@@ -391,3 +391,46 @@ def test_no_network_llm_or_knowledge_factory_lookup():
         source = open(module.__file__, encoding="utf-8").read()
         for forbidden in ("import requests", "import urllib", "openai", "anthropic", "langchain", "factory_core.canonical", "factory_core.governance", "knowledge_domains"):
             assert forbidden not in source.lower()
+
+
+def test_direct_waiting_period_fact_plan_carries_requested_duration_component():
+    intent_out = intent_analyzer.analyze(
+        build_intent_input(
+            request_id="semantic-r1",
+            text="What is the waiting period in this policy?",
+            domain_hint="health",
+        )
+    )
+    ctx_in = build_context_input(
+        request_id="semantic-r1",
+        intent_analysis=intent_out,
+        user_context=[
+            {
+                "key": "policy_or_document_reference",
+                "value": "my policy",
+                "source_reference": "turn1",
+                "sequence": 1,
+            },
+            {
+                "key": "requested_fact",
+                "value": "waiting period",
+                "source_reference": "turn1",
+                "sequence": 1,
+            },
+        ],
+    )
+    ctx_out = context_builder.build(ctx_in)
+    plan = reasoning_planner.plan(
+        build_plan_input(
+            request_id="semantic-r1",
+            intent_analysis=intent_out,
+            context_assessment=ctx_out,
+        )
+    )
+
+    assert plan.plan_type == "DIRECT_FACT_PLAN"
+    assert plan.required_evidence
+    assert {
+        item.requested_semantic_component
+        for item in plan.required_evidence
+    } == {"waiting_period_duration"}
