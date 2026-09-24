@@ -107,7 +107,7 @@ class ReasoningPlanner:
                 intent_analysis.requested_outcome,
                 intent_analysis.domain,
             )
-            if plan_type == "DIRECT_FACT_PLAN"
+            if plan_type in {"DIRECT_FACT_PLAN", "EXPLANATION_PLAN"}
             else None
         )
         required_evidence = _build_evidence_requirements(
@@ -249,8 +249,13 @@ def _build_evidence_requirements(
         )
     elif plan_type == "EXPLANATION_PLAN":
         category = "NORMALIZED_PRODUCT_FACT" if intent == "PRODUCT_EXPLANATION" else "CLAUSE_TEXT"
-        add(category, "term_or_concept" if intent != "PRODUCT_EXPLANATION" else "product_reference", "RESOLVE_CLAUSE_EVIDENCE",
-            authority="ANY_GOVERNED" if intent != "PRODUCT_EXPLANATION" else "AUTHORITATIVE")
+        add(
+            category,
+            "term_or_concept" if intent != "PRODUCT_EXPLANATION" else "product_reference",
+            "RESOLVE_CLAUSE_EVIDENCE",
+            authority="ANY_GOVERNED" if intent != "PRODUCT_EXPLANATION" else "AUTHORITATIVE",
+            semantic_component=requested_semantic_component,
+        )
     elif plan_type == "CLAUSE_IMPACT_PLAN":
         add("CLAUSE_TEXT", "clause_or_feature", "RESOLVE_CLAUSE_EVIDENCE")
     elif plan_type == "DOCUMENT_INTERPRETATION_PLAN":
