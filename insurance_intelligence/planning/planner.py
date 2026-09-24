@@ -102,9 +102,13 @@ class ReasoningPlanner:
         steps = _build_steps(template_step_types)
         step_by_type = {s.step_type: s for s in steps}
 
-        requested_semantic_component = _select_requested_semantic_component(
-            intent_analysis.requested_outcome,
-            request.domain,
+        requested_semantic_component = (
+            _select_requested_semantic_component(
+                intent_analysis.requested_outcome,
+                intent_analysis.domain,
+            )
+            if plan_type == "DIRECT_FACT_PLAN"
+            else None
         )
         required_evidence = _build_evidence_requirements(
             plan_type,
@@ -272,7 +276,11 @@ def _build_evidence_requirements(
 
 
 def _select_requested_semantic_component(question: str, domain: str) -> str | None:
+    if domain == "unknown":
+        return None
     definitions = build_default_topic_registry().by_domain(domain)
+    if not definitions:
+        return None
     return select_requested_semantic_component(
         question=question,
         definition=definitions,
