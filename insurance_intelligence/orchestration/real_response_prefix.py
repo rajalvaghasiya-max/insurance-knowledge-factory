@@ -334,6 +334,9 @@ def build_real_response_prefix_adapters(
         plan = deps.store.get(
             _output_id(request, "REASONING_PLANNING"), expected_type=ReasoningPlan
         )
+        intent_output = deps.store.get(
+            _output_id(request, "INTENT_ANALYSIS"), expected_type=IntentAnalyzerOutput
+        )
         instance_output = deps.store.get(
             _output_id(request, "INSTANCE_SUFFICIENCY"), expected_type=InstanceSufficiencyOutput
         )
@@ -347,6 +350,7 @@ def build_real_response_prefix_adapters(
             resolution_context={
                 "knowledge_snapshot_id": knowledge_snapshot_id,
                 "evidence_use": USER_ANSWER,
+                "requested_outcome": intent_output.requested_outcome,
                 "resolved_candidate_references": binding.resolved_candidate_references,
             },
             strict_mode="STRICT",

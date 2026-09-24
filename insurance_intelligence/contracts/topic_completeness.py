@@ -98,6 +98,7 @@ class TopicComponentDefinition:
     minimum_authority: str
     dependency_component_ids: tuple[str, ...]
     reason: str
+    query_aliases: tuple[str, ...] = ()
 
 
 def build_component_definition(
@@ -110,6 +111,7 @@ def build_component_definition(
     minimum_authority: str,
     reason: str,
     dependency_component_ids: Sequence[str] = (),
+    query_aliases: Sequence[str] = (),
 ) -> TopicComponentDefinition:
     if not isinstance(required, bool):
         raise TopicCompletenessContractError("required must be a boolean")
@@ -145,6 +147,7 @@ def build_component_definition(
             dependency_component_ids, "dependency_component_ids"
         ),
         reason=_text(reason, "reason"),
+        query_aliases=_unique(query_aliases, "query_aliases"),
     )
     if component.component_id in component.dependency_component_ids:
         raise TopicCompletenessContractError("component cannot depend on itself")
@@ -161,6 +164,7 @@ class TopicDefinition:
     minimum_required_components: int
     conflict_policy: str
     unresolved_applicability_policy: str
+    default_direct_component_id: str | None = None
 
 
 def _validate_dependencies(components: Sequence[TopicComponentDefinition]) -> None:
@@ -206,6 +210,7 @@ def build_topic_definition(
     minimum_required_components: int | None = None,
     conflict_policy: str = "BLOCK_ON_ANY_REQUIRED_COMPONENT_CONFLICT",
     unresolved_applicability_policy: str = "REQUIRE_CLARIFICATION",
+    default_direct_component_id: str | None = None,
     contract_version: str = SUPPORTED_CONTRACT_VERSION,
 ) -> TopicDefinition:
     if contract_version != SUPPORTED_CONTRACT_VERSION:
@@ -223,6 +228,17 @@ def build_topic_definition(
     if len(component_ids) != len(set(component_ids)):
         raise TopicCompletenessContractError("component_id values must be unique")
     _validate_dependencies(materialized)
+
+    default_component = None
+    if default_direct_component_id is not None:
+        default_component = _text(
+            default_direct_component_id,
+            "default_direct_component_id",
+        )
+        if default_component not in component_ids:
+            raise TopicCompletenessContractError(
+                "default_direct_component_id must reference a defined component"
+            )
 
     required_count = sum(component.required for component in materialized)
     if required_count == 0:
@@ -252,6 +268,7 @@ def build_topic_definition(
             UNRESOLVED_APPLICABILITY_POLICIES,
             "unresolved_applicability_policy",
         ),
+        default_direct_component_id=default_component,
     )
 
 
