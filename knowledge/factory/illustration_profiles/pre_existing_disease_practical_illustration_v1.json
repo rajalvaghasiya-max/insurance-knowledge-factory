@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "profile_type": "practical_illustration_profile_v1",
+  "review_status": "APPROVED",
+  "review_decision_id": "founder_target_answer_approval_2026_09_23",
+  "profile": {
+    "profile_id": "ped_waiting_period_founder_v1",
+    "concept_id": "pre_existing_disease",
+    "duration_unit": "MONTHS",
+    "before_probe_value": 10,
+    "after_probe_value": 40,
+    "related_condition": "ear condition",
+    "unrelated_condition": "dengue",
+    "during_wait_template": "Example: suppose you already have an {related_condition} when buying the policy and disclose it. If you need hospitalization for the same {related_condition} after {before_probe_value} months, you are still within the {duration_value}-month PED waiting period, so the PED waiting-period restriction would ordinarily still apply to that treatment",
+    "unrelated_condition_template": "If you are hospitalized for {unrelated_condition} during this time, the PED waiting period for your {related_condition} does not by itself block the {unrelated_condition} claim; that claim is assessed under the other terms of the policy",
+    "after_wait_template": "If you need treatment for the same {related_condition} after {after_probe_value} months of continuous coverage, the {duration_value}-month PED waiting period has been completed, so that PED waiting-period restriction no longer applies on that basis; other policy terms still apply",
+    "boundary_text": "This illustration does not guarantee claim approval or payment"
+  }
+}

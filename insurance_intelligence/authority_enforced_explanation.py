@@ -6,7 +6,10 @@ from collections.abc import Callable, Mapping, Sequence
 from insurance_intelligence.contracts.authority_enforcement import AuthorityEnforcementResult
 from insurance_intelligence.contracts.education_publication import EducationPublicationRecord
 from insurance_intelligence.contracts.reasoning import Finding
-from insurance_intelligence.contracts.explanation import build_input as build_explanation_input
+from insurance_intelligence.contracts.explanation import (
+    PracticalIllustrationProfile,
+    build_input as build_explanation_input,
+)
 from insurance_intelligence.explanation.generator import generate_explanation
 from insurance_intelligence.explanation.registry import ExplanationStyleRegistry, TerminologyRegistry
 
@@ -38,6 +41,7 @@ class AuthorityEnforcedExplanationGenerator:
         explanation_mode: str = "PLAIN_LANGUAGE",
         communication_context: Mapping[str, object] | None = None,
         education_publications: Sequence[EducationPublicationRecord] = (),
+        practical_illustration_profiles: Sequence[PracticalIllustrationProfile] = (),
     ):
         if not isinstance(authority_result, AuthorityEnforcementResult):
             raise AuthorityExplanationEnforcementError(
@@ -72,6 +76,7 @@ class AuthorityEnforcedExplanationGenerator:
             explanation_mode=explanation_mode,
             communication_context=communication_context,
             education_publications=education_publications,
+            practical_illustration_profiles=practical_illustration_profiles,
         )
         return self._generator(
             explanation_input=explanation_input,

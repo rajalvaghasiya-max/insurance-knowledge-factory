@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-ped-practical-illustration-wiring-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.EDUCATION.PUBLICATION_ADMISSION",
+    "II.EXPLANATION.AUTHORITY_ENFORCEMENT",
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "The generic PRACTICAL_ILLUSTRATION composer is already proven and merged. This change loads an explicitly human-approved illustration profile by governed concept and transports it through the existing authority-enforced real-response dependency chain so Case A can compose education with approved typed product facts.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new insurance authority. The profile repository admits only explicitly APPROVED reviewed illustration data; operative duration remains Decision-Gate-approved product evidence. Illustration profiles cannot satisfy reasoning/evidence requirements and do not modify Decision Gate output."
+}

@@ -17,6 +17,7 @@ from insurance_intelligence.contracts.authority_enforcement import AuthorityEnfo
 from insurance_intelligence.contracts.education_publication import EducationPublicationRecord
 from insurance_intelligence.contracts.explanation import (
     ExplanationGeneratorOutput,
+    PracticalIllustrationProfile,
     build_output as build_explanation_output,
 )
 from insurance_intelligence.contracts.intent import IntentAnalyzerOutput
@@ -40,6 +41,7 @@ def _output_id(execution_id: str, stage: str) -> str:
 
 
 EducationPublicationLookup = Callable[[object, IntentAnalyzerOutput], Sequence[EducationPublicationRecord]]
+PracticalIllustrationProfileLookup = Callable[[object, IntentAnalyzerOutput], Sequence[PracticalIllustrationProfile]]
 
 
 def build_real_response_explanation_adapters(
@@ -48,6 +50,7 @@ def build_real_response_explanation_adapters(
     style_registry: ExplanationStyleRegistry,
     terminology_registry: TerminologyRegistry | None = None,
     education_publication_lookup: EducationPublicationLookup | None = None,
+    practical_illustration_profile_lookup: PracticalIllustrationProfileLookup | None = None,
 ):
     """Build the proven real path plus canonical authority-enforced explanation."""
     if not isinstance(style_registry, ExplanationStyleRegistry):
@@ -56,6 +59,8 @@ def build_real_response_explanation_adapters(
         raise RealResponsePrefixError("terminology_registry must be TerminologyRegistry when provided")
     if education_publication_lookup is not None and not callable(education_publication_lookup):
         raise RealResponsePrefixError("education_publication_lookup must be callable when provided")
+    if practical_illustration_profile_lookup is not None and not callable(practical_illustration_profile_lookup):
+        raise RealResponsePrefixError("practical_illustration_profile_lookup must be callable when provided")
 
     prior = build_real_response_decision_adapters(dependencies=dependencies)
 
@@ -83,6 +88,19 @@ def build_real_response_explanation_adapters(
                     "education_publication_lookup must return EducationPublicationRecord values"
                 )
             education_publications = resolved
+        practical_illustration_profiles = ()
+        if practical_illustration_profile_lookup is not None:
+            resolved_profiles = tuple(
+                practical_illustration_profile_lookup(request, intent_output)
+            )
+            if any(
+                not isinstance(item, PracticalIllustrationProfile)
+                for item in resolved_profiles
+            ):
+                raise RealResponsePrefixError(
+                    "practical_illustration_profile_lookup must return PracticalIllustrationProfile values"
+                )
+            practical_illustration_profiles = resolved_profiles
         decision_output = authority_result.decision_output
         if decision_output is None:
             raise RealResponsePrefixError("authority-enforced decision omitted DecisionGateOutput")
@@ -98,6 +116,7 @@ def build_real_response_explanation_adapters(
                 explanation_mode="PLAIN_LANGUAGE",
                 communication_context=dict(request.customer_context),
                 education_publications=education_publications,
+                practical_illustration_profiles=practical_illustration_profiles,
             )
         else:
             limitations = tuple(
@@ -158,4 +177,8 @@ def build_real_response_explanation_adapters(
     )
 
 
-__all__ = ["EducationPublicationLookup", "build_real_response_explanation_adapters"]
+__all__ = [
+    "EducationPublicationLookup",
+    "PracticalIllustrationProfileLookup",
+    "build_real_response_explanation_adapters",
+]
