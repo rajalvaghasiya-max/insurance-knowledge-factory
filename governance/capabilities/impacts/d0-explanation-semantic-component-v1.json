@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-explanation-semantic-component-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.PLANNING.REASONING_PLANNER"
+  ],
+  "rationale": "Pressure on the expanded Star PED publication proved that Case A is classified through EXPLANATION_PLAN and therefore bypasses the question-relative semantic selector introduced for DIRECT_FACT_PLAN. This change reuses the same governed selector for EXPLANATION_PLAN evidence requirements only, while leaving comparison, recommendation, suitability and advisor plans unchanged.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new evidence, publication, reasoning, or answer authority. The planner only transports an already-governed requested semantic component on explanation-plan evidence requirements. Unresolved selection remains null."
+}
