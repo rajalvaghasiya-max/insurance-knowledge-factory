@@ -76,6 +76,7 @@ def _answer_roles_by_evidence(
     publication: AuthoritativePublicationRecord,
     *,
     requested_component_id: str | None = None,
+    question_relative_selection: bool = False,
 ) -> dict[str, str]:
     """Derive answer roles only when published topic semantics are unambiguous.
 
@@ -96,7 +97,17 @@ def _answer_roles_by_evidence(
     if any(item.component_id not in component_defs for item in published):
         return {}
 
-    if requested_component_id is not None:
+    if question_relative_selection:
+        if requested_component_id is None:
+            return {}
+        selected = tuple(
+            item for item in published
+            if item.component_id == requested_component_id
+        )
+        if len(selected) != 1:
+            return {}
+        primary_component_id = requested_component_id
+    elif requested_component_id is not None:
         selected = tuple(
             item for item in published
             if item.component_id == requested_component_id
@@ -167,6 +178,7 @@ def materialize_published_requirement(
     requirement_id: str,
     subject_reference: str,
     requested_component_id: str | None = None,
+    question_relative_selection: bool = False,
 ) -> tuple[tuple[EvidencePackage, ...], RequirementResult]:
     """Project exactly published evidence references into one runtime requirement."""
     if not isinstance(source, PublishedEvidenceSource):
@@ -211,6 +223,7 @@ def materialize_published_requirement(
     answer_roles = _answer_roles_by_evidence(
         publication,
         requested_component_id=requested_component_id,
+        question_relative_selection=question_relative_selection,
     )
     packages = tuple(
         replace(
