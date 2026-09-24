@@ -17,6 +17,9 @@
   "decision_id": "publication-decision:star_health_star_comprehensive_ped_wait_36_months",
   "evidence_trace_references": [
     "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism",
+    "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject:mechanism",
+    "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis:mechanism",
+    "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope:mechanism",
     "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism"
   ],
   "governed_subject_reference": "waiting_period_binding:star_health_star_comprehensive_ped_wait_36_months",
@@ -27,7 +30,7 @@
   ],
   "publication_authority": "governed authoritative publication authority",
   "publication_id": "authoritative-publication:star_health:ped_waiting_period",
-  "publication_receipt_id": "publication_receipt_56790da7cc1c03c0",
+  "publication_receipt_id": "publication_receipt_8197887eb81028a1",
   "publication_status": "AUTHORITATIVE",
   "resolved_certification_limitations": [
     "The waiting-period binding remains bound_not_published and is used only for internal certification."
@@ -37,6 +40,27 @@
       "component_id": "waiting_period_duration",
       "evidence_references": [
         "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "waiting_period_subject",
+      "evidence_references": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject:mechanism"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "start_basis",
+      "evidence_references": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis:mechanism"
+      ],
+      "status": "SATISFIED"
+    },
+    {
+      "component_id": "applicability_scope",
+      "evidence_references": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope:mechanism"
       ],
       "status": "SATISFIED"
     },

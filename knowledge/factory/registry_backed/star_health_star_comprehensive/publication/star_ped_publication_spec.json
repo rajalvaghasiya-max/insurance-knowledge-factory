@@ -11,13 +11,15 @@
   "publication_id": "authoritative-publication:star_health:ped_waiting_period",
   "projection_id": "publication-projection:star_health_star_comprehensive_ped_wait_36_months",
   "decision_reasons": [
-    "Publish only the already-certified standard PED waiting-period mechanic and its certified continuity qualification."
+    "Publish only the already-certified standard PED waiting-period mechanic, including its certified subject, start basis, applicability scope, and continuity qualification."
   ],
   "decision_authority": "governed publication decision authority",
   "publication_authority": "governed authoritative publication authority",
   "boundary_authorization": {
     "authorization_id": "publication-authorization:star_health_star_comprehensive_ped_wait_36_months",
-    "resolved_boundary_tokens": ["bound_not_published"],
+    "resolved_boundary_tokens": [
+      "bound_not_published"
+    ],
     "authorization_authority": "governed publication boundary authority",
     "trace_references": [
       "docs/architecture/star_health_star_comprehensive_waiting_period_concept_certification_closure_2026-08-22.json",
@@ -30,6 +32,27 @@
       "status": "SATISFIED",
       "evidence_references": [
         "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+      ]
+    },
+    {
+      "component_id": "waiting_period_subject",
+      "status": "SATISFIED",
+      "evidence_references": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_subject:mechanism"
+      ]
+    },
+    {
+      "component_id": "start_basis",
+      "status": "SATISFIED",
+      "evidence_references": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:start_basis:mechanism"
+      ]
+    },
+    {
+      "component_id": "applicability_scope",
+      "status": "SATISFIED",
+      "evidence_references": [
+        "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:applicability_scope:mechanism"
       ]
     },
     {
