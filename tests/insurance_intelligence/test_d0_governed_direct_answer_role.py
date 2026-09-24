@@ -284,3 +284,20 @@ def test_primary_direct_fact_becomes_explicit_direct_answer_section() -> None:
     meaning = [item for item in rendered.sections if item.section_type == "MEANING"]
     assert [item.text for item in direct] == ["The obligation is 20%."]
     assert any("documented waiver" in item.text for item in meaning)
+
+
+def test_requested_component_drives_primary_role_when_multiple_required_are_published() -> None:
+    source = _source(component_ids=("obligation_value", "trigger_condition"))
+
+    packages, _ = materialize_published_requirement(
+        source=source,
+        requirement_id="runtime-req",
+        subject_reference="requested_fact",
+        requested_semantic_component="trigger_condition",
+    )
+
+    roles = {item.field_or_topic: _role(item) for item in packages}
+    assert roles == {
+        "OBLIGATION_VALUE": "QUALIFYING",
+        "TRIGGER_CONDITION": "PRIMARY",
+    }
