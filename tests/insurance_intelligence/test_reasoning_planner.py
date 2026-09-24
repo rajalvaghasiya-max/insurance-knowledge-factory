@@ -434,3 +434,116 @@ def test_direct_waiting_period_fact_plan_carries_requested_duration_component():
         item.requested_semantic_component
         for item in plan.required_evidence
     } == {"waiting_period_duration"}
+
+
+
+def test_case_a_explanation_plan_carries_waiting_period_duration_component():
+    intent_out = intent_analyzer.analyze(
+        build_intent_input(
+            request_id="semantic-exp-r1",
+            text="What is the PED waiting period in Star Comprehensive?",
+            domain_hint="health",
+        )
+    )
+    assert intent_out.primary_intent == "TERM_EXPLANATION"
+
+    ctx_in = build_context_input(
+        request_id="semantic-exp-r1",
+        intent_analysis=intent_out,
+        user_context=[
+            {
+                "key": "term_or_concept",
+                "value": "PED waiting period",
+                "source_reference": "turn1",
+                "sequence": 1,
+            },
+        ],
+    )
+    ctx_out = context_builder.build(ctx_in)
+    plan = reasoning_planner.plan(
+        build_plan_input(
+            request_id="semantic-exp-r1",
+            intent_analysis=intent_out,
+            context_assessment=ctx_out,
+        )
+    )
+
+    assert plan.plan_type == "EXPLANATION_PLAN"
+    assert plan.required_evidence
+    assert {
+        item.requested_semantic_component
+        for item in plan.required_evidence
+    } == {"waiting_period_duration"}
+
+
+def test_generic_term_explanation_without_component_match_stays_unselected():
+    intent_out = intent_analyzer.analyze(
+        build_intent_input(
+            request_id="semantic-exp-r2",
+            text="What is a deductible?",
+            domain_hint="health",
+        )
+    )
+    ctx_out = context_builder.build(
+        build_context_input(
+            request_id="semantic-exp-r2",
+            intent_analysis=intent_out,
+        )
+    )
+    plan = reasoning_planner.plan(
+        build_plan_input(
+            request_id="semantic-exp-r2",
+            intent_analysis=intent_out,
+            context_assessment=ctx_out,
+        )
+    )
+
+    assert plan.plan_type == "EXPLANATION_PLAN"
+    assert {
+        item.requested_semantic_component
+        for item in plan.required_evidence
+    } == {None}
+
+
+def test_comparison_plan_does_not_receive_waiting_period_component():
+    intent_out = intent_analyzer.analyze(
+        build_intent_input(
+            request_id="semantic-exp-r3",
+            text="Compare waiting period in Activ One Max and Star Comprehensive.",
+            domain_hint="health",
+        )
+    )
+    ctx_out = context_builder.build(
+        build_context_input(
+            request_id="semantic-exp-r3",
+            intent_analysis=intent_out,
+            user_context=[
+                {
+                    "key": "comparison_subject_1",
+                    "value": "Activ One Max",
+                    "source_reference": "turn1",
+                    "sequence": 1,
+                },
+                {
+                    "key": "comparison_subject_2",
+                    "value": "Star Comprehensive",
+                    "source_reference": "turn1",
+                    "sequence": 1,
+                },
+            ],
+        )
+    )
+    plan = reasoning_planner.plan(
+        build_plan_input(
+            request_id="semantic-exp-r3",
+            intent_analysis=intent_out,
+            context_assessment=ctx_out,
+        )
+    )
+
+    assert plan.plan_type == "COMPARISON_PLAN"
+    assert plan.required_evidence
+    assert all(
+        item.requested_semantic_component is None
+        for item in plan.required_evidence
+    )
