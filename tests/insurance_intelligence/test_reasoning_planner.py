@@ -398,6 +398,7 @@ def test_direct_waiting_period_fact_plan_carries_requested_duration_component():
         build_intent_input(
             request_id="semantic-r1",
             text="What is the waiting period in this policy?",
+            domain_hint="health",
         )
     )
     ctx_in = build_context_input(
