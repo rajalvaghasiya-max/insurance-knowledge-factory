@@ -41,7 +41,23 @@
       "evidence_references": [
         "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
       ],
-      "status": "SATISFIED"
+      "status": "SATISFIED",
+      "semantic_attributes": [
+        {
+          "evidence_references": [
+            "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+          ],
+          "key": "duration_unit",
+          "value": "MONTHS"
+        },
+        {
+          "evidence_references": [
+            "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+          ],
+          "key": "duration_value",
+          "value": "36"
+        }
+      ]
     },
     {
       "component_id": "waiting_period_subject",
