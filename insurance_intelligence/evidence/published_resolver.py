@@ -28,6 +28,15 @@ from insurance_intelligence.evidence.published_materialization import (
 from insurance_intelligence.evidence.repositories import RegistryBackedRepository
 from insurance_intelligence.evidence.sufficiency import evaluate
 from insurance_intelligence.evidence.trace import TraceBuilder
+from insurance_intelligence.topic_completeness.catalogue import (
+    build_default_topic_registry,
+)
+from insurance_intelligence.topic_completeness.query_selection import (
+    select_direct_component,
+)
+from insurance_intelligence.topic_completeness.registry import (
+    TopicCompletenessRegistryError,
+)
 
 PublishedSourceLookup = Callable[[str, object], PublishedEvidenceSource | None]
 
@@ -60,6 +69,32 @@ def _resolved_mapping(context: object, key: str) -> dict[str, str]:
 def _semantic_subject(requirement, context: object) -> str:
     resolved_context = _resolved_mapping(context, "resolved_context_values")
     return resolved_context.get(requirement.subject_reference, requirement.subject_reference)
+
+
+def _requested_outcome(context: object) -> str:
+    if not isinstance(context, dict):
+        return ""
+    value = context.get("requested_outcome", "")
+    if not isinstance(value, str):
+        return ""
+    return value.strip()
+
+
+def _requested_component_id(
+    source: PublishedEvidenceSource,
+    context: object,
+) -> str | None:
+    requested_outcome = _requested_outcome(context)
+    if not requested_outcome:
+        return None
+    try:
+        definition = build_default_topic_registry().get(
+            source.publication.topic_id,
+            source.publication.topic_version,
+        )
+    except TopicCompletenessRegistryError:
+        return None
+    return select_direct_component(definition, requested_outcome)
 
 
 def _instance_candidate(requirement, context: object, semantic_subject: str) -> str:
@@ -316,6 +351,10 @@ class PublishedEvidenceResolver:
                     source=source,
                     requirement_id=requirement.requirement_id,
                     subject_reference=semantic_subject,
+                    requested_component_id=_requested_component_id(
+                        source,
+                        request.resolution_context,
+                    ),
                 )
             except PublishedEvidenceMaterializationError as exc:
                 reason = str(exc)
