@@ -23,6 +23,7 @@ def _component(
     authority: str = "AUTHORITATIVE",
     roles: tuple[str, ...] = ("SUPPORTING", "DEFINING", "QUALIFYING"),
     statuses: tuple[str, ...] = ("SATISFIED", "SATISFIED_WITH_LIMITATIONS"),
+    request_terms: tuple[str, ...] = (),
     reason: str,
 ):
     return build_component_definition(
@@ -34,6 +35,7 @@ def _component(
         minimum_authority=authority,
         dependency_component_ids=dependencies,
         reason=reason,
+        request_terms=request_terms,
     )
 
 
@@ -125,11 +127,13 @@ def build_coverage_limit_definition() -> TopicDefinition:
             _component(
                 "covered_subject",
                 "COVERED_SUBJECT",
+                request_terms=("what cover", "what limited", "which benefit"),
                 reason="Resolve the benefit, service, event, or expense being limited.",
             ),
             _component(
                 "limit_value",
                 "LIMIT_VALUE",
+                request_terms=("how much limit", "what limit", "limit value"),
                 reason="Resolve the monetary, quantitative, temporal, or categorical limit.",
             ),
             _component(
@@ -163,27 +167,32 @@ def build_waiting_period_definition() -> TopicDefinition:
             _component(
                 "waiting_period_duration",
                 "WAITING_PERIOD_DURATION",
+                request_terms=("what waiting period", "how long waiting period", "waiting period duration"),
                 reason="Resolve the duration of the waiting period.",
             ),
             _component(
                 "waiting_period_subject",
                 "WAITING_PERIOD_SUBJECT",
+                request_terms=("what waiting period apply", "what subject waiting period", "which condition waiting period"),
                 reason="Resolve the condition, treatment, benefit, or event subject to waiting.",
             ),
             _component(
                 "start_basis",
                 "WAITING_PERIOD_START_BASIS",
+                request_terms=("when waiting period start", "what waiting period start", "waiting period measured from"),
                 reason="Resolve the event or date from which the waiting period is measured.",
             ),
             _component(
                 "applicability_scope",
                 "APPLICABILITY_SCOPE",
+                request_terms=("who waiting period apply", "waiting period scope", "which policy waiting period"),
                 reason="Resolve the persons, policies, or circumstances affected.",
             ),
             _component(
                 "continuity_or_credit_rule",
                 "CONTINUITY_OR_CREDIT_RULE",
                 required=False,
+                request_terms=("continuity waiting period", "portability waiting period", "prior coverage waiting period"),
                 dependencies=("waiting_period_duration", "start_basis"),
                 reason="Resolve whether prior coverage or continuity changes the waiting period.",
             ),
@@ -192,6 +201,7 @@ def build_waiting_period_definition() -> TopicDefinition:
                 "EXCEPTION_CONDITION",
                 required=False,
                 dependencies=("waiting_period_subject",),
+                request_terms=("waiting period exception", "waiting period waiver"),
                 reason="Resolve any waiver or exception to the waiting period.",
             ),
         ),
