@@ -17,6 +17,7 @@ from insurance_intelligence.explanation.education import (
     EducationExplanationError,
     admitted_publications,
     render_education_sections,
+    render_practical_illustration_sections,
 )
 from insurance_intelligence.explanation.registry import (
     ExplanationStyleRegistry,
@@ -189,11 +190,26 @@ def generate_explanation(
         request_id=explanation_input.request_id,
         publications=education_publications,
     )
-    if education_sections:
+    packet = explanation_input.decision_output.response_packet
+    practical_sections = render_practical_illustration_sections(
+        request_id=explanation_input.request_id,
+        profiles=explanation_input.practical_illustration_profiles,
+        publications=education_publications,
+        approved_finding_ids=(
+            packet.approved_finding_ids if packet is not None else ()
+        ),
+        findings_by_id=findings_by_id,
+    )
+    if education_sections or practical_sections:
+        template_ids = rendered.template_ids
+        if practical_sections:
+            template_ids = ("governed_practical_illustration_v1",) + template_ids
+        if education_sections:
+            template_ids = ("governed_education_publication_v1",) + template_ids
         rendered = replace(
             rendered,
-            sections=education_sections + rendered.sections,
-            template_ids=("governed_education_publication_v1",) + rendered.template_ids,
+            sections=education_sections + practical_sections + rendered.sections,
+            template_ids=template_ids,
         )
     for section in rendered.sections:
         trace.append(_event(
@@ -290,6 +306,10 @@ def generate_explanation(
         *(
             f"{publication.publication_id}:{publication.publication_receipt_id}"
             for publication in education_publications
+        ),
+        *(
+            profile.profile_id
+            for profile in explanation_input.practical_illustration_profiles
         ),
         *rendered.template_ids,
     )
