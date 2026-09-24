@@ -139,7 +139,7 @@
         "insurance_intelligence/education_publication/gate.py",
         "insurance_intelligence/education_publication/repository.py"
       ],
-      "structural_fingerprint": "9a5d2e4060c753bf7c831397a949ce49a0606a48cd99417a3833ee7cb7de8bcb"
+      "structural_fingerprint": "10fe965acbbaa81cf32b3eaf57ac822be215dc935569d925da4282d5ecddc698"
     },
     {
       "capability_id": "II.EVALUATION.MO021_PIPELINE_BASELINE",
@@ -193,7 +193,7 @@
       "owned_module_paths": [
         "insurance_intelligence/authority_enforced_explanation.py"
       ],
-      "structural_fingerprint": "f2cde3a5c547defc1155f01876d0797296dff96c88cf465548bcf5e62ba11ee1"
+      "structural_fingerprint": "d2251683794e3e2f99a701a1b1e8d61e6abb881c7c194aca9936b3cb087f7f17"
     },
     {
       "capability_id": "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
@@ -287,7 +287,7 @@
         "insurance_intelligence/orchestration/service.py",
         "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
-      "structural_fingerprint": "d9b40399fed6da86b9f537ee4723e0c153f488f12c97189857289669443ec486"
+      "structural_fingerprint": "8fd882da01d217fc3c91b8aafef3c6f8612f3ef1604b0b79e6b0a9613030cedb"
     },
     {
       "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",
