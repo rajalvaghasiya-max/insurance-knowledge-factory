@@ -93,6 +93,7 @@ class TopicComponentDefinition:
     component_id: str
     requirement_type: str
     required: bool
+    request_terms: tuple[str, ...]
     acceptable_requirement_statuses: tuple[str, ...]
     acceptable_evidence_roles: tuple[str, ...]
     minimum_authority: str
@@ -110,6 +111,7 @@ def build_component_definition(
     minimum_authority: str,
     reason: str,
     dependency_component_ids: Sequence[str] = (),
+    request_terms: Sequence[str] = (),
 ) -> TopicComponentDefinition:
     if not isinstance(required, bool):
         raise TopicCompletenessContractError("required must be a boolean")
@@ -136,6 +138,7 @@ def build_component_definition(
         component_id=_text(component_id, "component_id"),
         requirement_type=_text(requirement_type, "requirement_type"),
         required=required,
+        request_terms=_unique(request_terms, "request_terms"),
         acceptable_requirement_statuses=requirement_statuses,
         acceptable_evidence_roles=evidence_roles,
         minimum_authority=_member(
