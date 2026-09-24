@@ -30,7 +30,7 @@
   ],
   "publication_authority": "governed authoritative publication authority",
   "publication_id": "authoritative-publication:star_health:ped_waiting_period",
-  "publication_receipt_id": "publication_receipt_8197887eb81028a1",
+  "publication_receipt_id": "publication_receipt_eb23998c70f9aa6a",
   "publication_status": "AUTHORITATIVE",
   "resolved_certification_limitations": [
     "The waiting-period binding remains bound_not_published and is used only for internal certification."
@@ -41,7 +41,23 @@
       "evidence_references": [
         "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
       ],
-      "status": "SATISFIED"
+      "status": "SATISFIED",
+      "semantic_attributes": [
+        {
+          "evidence_references": [
+            "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+          ],
+          "key": "duration_value",
+          "value": "36"
+        },
+        {
+          "evidence_references": [
+            "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+          ],
+          "key": "duration_unit",
+          "value": "MONTHS"
+        }
+      ]
     },
     {
       "component_id": "waiting_period_subject",

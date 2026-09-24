@@ -13,6 +13,9 @@ from insurance_intelligence.authoritative_publication.materializer import (
 from insurance_intelligence.contracts.authoritative_publication import (
     build_governed_semantic_component,
 )
+from insurance_intelligence.contracts.semantic import (
+    build_governed_semantic_attribute,
+)
 from insurance_intelligence.contracts.full_cycle import (
     build_orchestration_request,
     build_product_scope,
@@ -80,6 +83,14 @@ def _certified_source(*, drop_component_id: str | None = None):
             component_id=item["component_id"],
             status=item["status"],
             evidence_references=tuple(item["evidence_references"]),
+            semantic_attributes=tuple(
+                build_governed_semantic_attribute(
+                    key=attribute["key"],
+                    value=attribute["value"],
+                    evidence_references=tuple(attribute["evidence_references"]),
+                )
+                for attribute in item.get("semantic_attributes", ())
+            ),
         )
         for item in spec["semantic_components"]
         if item["component_id"] != drop_component_id
@@ -272,6 +283,22 @@ def test_star_ped_materializes_through_generic_publication_machinery_from_data_o
         )
     )
     assert "continuously covered without any break" in claims["CONTINUITY_OR_CREDIT_RULE"]
+    duration_component = next(
+        item
+        for item in source.publication.semantic_components
+        if item.component_id == "waiting_period_duration"
+    )
+    assert {item.key: item.value for item in duration_component.semantic_attributes} == {
+        "duration_unit": "MONTHS",
+        "duration_value": "36",
+    }
+    binding_spec = _spec()
+    binding = json.loads(
+        (ROOT / binding_spec["binding_spec_path"]).read_text(encoding="utf-8")
+    )
+    assert duration_component.semantic_attributes[0].evidence_references
+    assert binding["mechanic"]["duration_value"] == 36
+    assert binding["mechanic"]["duration_unit"] == "MONTHS"
     assert any("customer-specific eligibility or claim payment" in item for item in source.publication.limitations)
     assert any("optional PED buy-back" in item for item in source.publication.limitations)
 
