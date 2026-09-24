@@ -206,7 +206,7 @@
         "insurance_intelligence/explanation/templates.py",
         "insurance_intelligence/explanation/validator.py"
       ],
-      "structural_fingerprint": "e7e59a9c12fa53e4d61eb8206ce91bd06867ebaa44e5d01f9caf81c62eed0718"
+      "structural_fingerprint": "c3787fceb6ab4c6b7ed3b5dfd5c13ff90929e68aa5a82b69ba165fba1588bc17"
     },
     {
       "capability_id": "II.GOVERNANCE.BYPASS_INVENTORY",
@@ -382,7 +382,7 @@
         "insurance_intelligence/response/service.py",
         "insurance_intelligence/response/validator.py"
       ],
-      "structural_fingerprint": "ae7162631ab53d1beba4941f76efe2cf9bd289a914240ff1db7a794ddd251e05"
+      "structural_fingerprint": "17e7abfbfca5f3f4b0e9ccc1ec1e050c5caece628f4e78b41685df0b2f269173"
     },
     {
       "capability_id": "II.RULE_CERTIFICATION.GOVERNED_RUNNER",
