@@ -36,6 +36,7 @@ SECTION_TYPES = frozenset(
         "INTERNAL_NOTE",
         "EDUCATION",
         "EXAMPLE",
+        "PRACTICAL_ILLUSTRATION",
     }
 )
 SECTION_STATUSES = frozenset({"INCLUDED", "WITHHELD", "REQUIRES_REVIEW"})
@@ -205,9 +206,18 @@ def build_section(
             raise ResponseContractError(
                 "education/example sections cannot reference findings, product evidence, or clarifications"
             )
+    elif validated_type == "PRACTICAL_ILLUSTRATION":
+        if not education_ids or not findings or not evidence:
+            raise ResponseContractError(
+                "practical illustration sections require education, finding, and evidence lineage"
+            )
+        if clarifications:
+            raise ResponseContractError(
+                "practical illustration sections cannot reference clarifications"
+            )
     elif education_ids:
         raise ResponseContractError(
-            "only education/example sections may reference education publication IDs"
+            "only education/example/practical-illustration sections may reference education publication IDs"
         )
     return ResponseSection(
         section_id=_require_nonempty_str(section_id, "section.section_id"),

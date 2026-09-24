@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from string import Formatter
 from typing import Mapping, Sequence
 
 from insurance_intelligence.contracts.decision import DecisionGateOutput
@@ -36,6 +37,7 @@ SECTION_TYPES = frozenset(
         "INTERNAL_REVIEW_NOTE",
         "EDUCATION",
         "EXAMPLE",
+        "PRACTICAL_ILLUSTRATION",
     }
 )
 SECTION_STATUSES = frozenset({"DRAFTED", "WITHHELD", "REQUIRES_REVIEW"})
@@ -54,6 +56,7 @@ FIDELITY_CHECK_TYPES = frozenset(
         "NO_WITHHELD_CONTENT",
         "TERMINOLOGY_ACCURACY",
         "EDUCATION_PUBLICATION_FIDELITY",
+        "PRACTICAL_ILLUSTRATION_FIDELITY",
     }
 )
 FIDELITY_CHECK_STATUSES = frozenset({"PASSED", "FAILED", "NOT_APPLICABLE", "REQUIRES_REVIEW"})
@@ -116,6 +119,84 @@ def _require_unique(values: Sequence[str], label: str) -> tuple[str, ...]:
     return result
 
 
+_ALLOWED_ILLUSTRATION_FIELDS = frozenset(
+    {
+        "related_condition",
+        "unrelated_condition",
+        "before_probe_value",
+        "after_probe_value",
+        "duration_value",
+        "duration_unit",
+        "duration_unit_lower",
+    }
+)
+
+
+@dataclass(frozen=True)
+class PracticalIllustrationProfile:
+    profile_id: str
+    concept_id: str
+    duration_unit: str
+    before_probe_value: int
+    after_probe_value: int
+    related_condition: str
+    unrelated_condition: str
+    during_wait_template: str
+    unrelated_condition_template: str
+    after_wait_template: str
+    boundary_text: str
+
+
+def _validated_illustration_template(value: object, label: str) -> str:
+    text = _require_nonempty_str(value, label)
+    fields = {
+        field_name
+        for _, field_name, _, _ in Formatter().parse(text)
+        if field_name is not None
+    }
+    unknown = fields - _ALLOWED_ILLUSTRATION_FIELDS
+    if unknown:
+        raise ExplanationContractError(
+            f"{label} contains unsupported placeholders: {sorted(unknown)}"
+        )
+    return text
+
+
+def build_practical_illustration_profile(
+    *,
+    profile_id: str,
+    concept_id: str,
+    duration_unit: str,
+    before_probe_value: int,
+    after_probe_value: int,
+    related_condition: str,
+    unrelated_condition: str,
+    during_wait_template: str,
+    unrelated_condition_template: str,
+    after_wait_template: str,
+    boundary_text: str,
+) -> PracticalIllustrationProfile:
+    if isinstance(before_probe_value, bool) or not isinstance(before_probe_value, int) or before_probe_value < 1:
+        raise ExplanationContractError("before_probe_value must be a positive integer")
+    if isinstance(after_probe_value, bool) or not isinstance(after_probe_value, int) or after_probe_value < 1:
+        raise ExplanationContractError("after_probe_value must be a positive integer")
+    if before_probe_value >= after_probe_value:
+        raise ExplanationContractError("before_probe_value must be less than after_probe_value")
+    return PracticalIllustrationProfile(
+        profile_id=_require_nonempty_str(profile_id, "profile_id"),
+        concept_id=_require_nonempty_str(concept_id, "concept_id"),
+        duration_unit=_require_nonempty_str(duration_unit, "duration_unit").upper(),
+        before_probe_value=before_probe_value,
+        after_probe_value=after_probe_value,
+        related_condition=_require_nonempty_str(related_condition, "related_condition"),
+        unrelated_condition=_require_nonempty_str(unrelated_condition, "unrelated_condition"),
+        during_wait_template=_validated_illustration_template(during_wait_template, "during_wait_template"),
+        unrelated_condition_template=_validated_illustration_template(unrelated_condition_template, "unrelated_condition_template"),
+        after_wait_template=_validated_illustration_template(after_wait_template, "after_wait_template"),
+        boundary_text=_validated_illustration_template(boundary_text, "boundary_text"),
+    )
+
+
 @dataclass(frozen=True)
 class ExplanationGeneratorInput:
     contract_version: str
@@ -126,6 +207,7 @@ class ExplanationGeneratorInput:
     explanation_mode: str
     communication_context: Mapping[str, object]
     education_publications: tuple[EducationPublicationRecord, ...] = ()
+    practical_illustration_profiles: tuple[PracticalIllustrationProfile, ...] = ()
 
 
 def build_input(
@@ -137,6 +219,7 @@ def build_input(
     explanation_mode: str = "PLAIN_LANGUAGE",
     communication_context: Mapping[str, object] | None = None,
     education_publications: Sequence[EducationPublicationRecord] = (),
+    practical_illustration_profiles: Sequence[PracticalIllustrationProfile] = (),
     contract_version: str = SUPPORTED_CONTRACT_VERSION,
 ) -> ExplanationGeneratorInput:
     if contract_version != SUPPORTED_CONTRACT_VERSION:
@@ -171,6 +254,14 @@ def build_input(
         )
     except Exception as exc:
         raise ExplanationContractError(str(exc)) from exc
+    profiles = tuple(practical_illustration_profiles)
+    if any(not isinstance(item, PracticalIllustrationProfile) for item in profiles):
+        raise ExplanationContractError(
+            "practical_illustration_profiles must contain PracticalIllustrationProfile values"
+        )
+    profile_ids = [item.profile_id for item in profiles]
+    if len(profile_ids) != len(set(profile_ids)):
+        raise ExplanationContractError("practical illustration profile IDs must be unique")
     return ExplanationGeneratorInput(
         contract_version=contract_version,
         request_id=validated_request_id,
@@ -180,6 +271,7 @@ def build_input(
         explanation_mode=validated_mode,
         communication_context=dict(communication_context or {}),
         education_publications=publications,
+        practical_illustration_profiles=profiles,
     )
 
 
@@ -229,9 +321,18 @@ def build_section(
             raise ExplanationContractError(
                 "education/example sections cannot reference findings, product evidence, or clarifications"
             )
+    elif validated_type == "PRACTICAL_ILLUSTRATION":
+        if not education_ids or not findings or not evidence:
+            raise ExplanationContractError(
+                "practical illustration sections require education, finding, and evidence lineage"
+            )
+        if clarifications:
+            raise ExplanationContractError(
+                "practical illustration sections cannot reference clarifications"
+            )
     elif education_ids:
         raise ExplanationContractError(
-            "only education/example sections may reference education publication IDs"
+            "only education/example/practical-illustration sections may reference education publication IDs"
         )
     return ExplanationSection(
         section_id=_require_nonempty_str(section_id, "section.section_id"),

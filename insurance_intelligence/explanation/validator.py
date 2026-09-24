@@ -18,6 +18,7 @@ from insurance_intelligence.explanation.education import (
     EducationExplanationError,
     admitted_publications,
     render_education_sections,
+    render_practical_illustration_sections,
 )
 
 
@@ -77,7 +78,12 @@ def _section_text(sections: Sequence[ExplanationSection]) -> str:
 def _finding_sections(
     sections: Sequence[ExplanationSection], finding_id: str
 ) -> tuple[ExplanationSection, ...]:
-    return tuple(section for section in sections if finding_id in section.approved_finding_ids)
+    return tuple(
+        section
+        for section in sections
+        if finding_id in section.approved_finding_ids
+        and section.section_type != "PRACTICAL_ILLUSTRATION"
+    )
 
 
 def _check(
@@ -211,6 +217,51 @@ def validate_explanation_fidelity(
         )
     )
     if not education_ok:
+        failures.append("FAILED_UNSUPPORTED_CONTENT")
+
+    expected_practical = render_practical_illustration_sections(
+        request_id=explanation_input.request_id,
+        profiles=explanation_input.practical_illustration_profiles,
+        publications=education_publications,
+        approved_finding_ids=packet.approved_finding_ids,
+        findings_by_id=findings_by_id,
+    )
+    actual_practical = tuple(
+        section
+        for section in drafted
+        if section.section_type == "PRACTICAL_ILLUSTRATION"
+    )
+    expected_practical_by_id = {
+        section.section_id: section for section in expected_practical
+    }
+    actual_practical_by_id = {
+        section.section_id: section for section in actual_practical
+    }
+    practical_ok = (
+        set(actual_practical_by_id) == set(expected_practical_by_id)
+        and all(
+            actual_practical_by_id[section_id]
+            == expected_practical_by_id[section_id]
+            for section_id in expected_practical_by_id
+        )
+    )
+    checks.append(
+        _check(
+            request_id=explanation_input.request_id,
+            check_type="PRACTICAL_ILLUSTRATION_FIDELITY",
+            status="PASSED" if practical_ok else "FAILED",
+            description=(
+                "Practical illustrations exactly preserve reviewed profile parameters and dual governed lineage."
+                if practical_ok
+                else "Practical illustrations do not match deterministic reviewed-profile composition."
+            ),
+            source_references=tuple(
+                section.section_id for section in expected_practical
+            ),
+            section_ids=tuple(section.section_id for section in actual_practical),
+        )
+    )
+    if not practical_ok:
         failures.append("FAILED_UNSUPPORTED_CONTENT")
 
     approved_ids = tuple(sorted(packet.approved_finding_ids))

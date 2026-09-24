@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-practical-illustration-generic-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "PR #324 proved the current explanation contract cannot represent one practical customer illustration with both admitted education-publication lineage and Decision-Gate-approved product finding/evidence lineage. This extension adds a distinct PRACTICAL_ILLUSTRATION section and a generic deterministic reviewed-profile composer. Existing EXAMPLE remains education-only.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No new insurance authority. Practical illustrations require admitted education plus already-approved product findings/evidence. They do not satisfy reasoning or evidence requirements, do not change Decision Gate output, and are omitted when typed facts or reviewed profile parameters are insufficient or ambiguous."
+}
