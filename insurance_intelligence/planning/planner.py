@@ -18,6 +18,10 @@ from insurance_intelligence.contracts.reasoning_plan import (
     build_plan_step,
     build_stop_condition,
 )
+from insurance_intelligence.planning.semantic_request_selector import (
+    select_requested_semantic_component,
+)
+from insurance_intelligence.topic_completeness.catalogue import build_default_topic_registry
 from insurance_intelligence.planning.registry import (
     DEFAULT_STEPS_BY_PLAN_TYPE,
     INTENT_TO_CAPABILITY,
@@ -98,7 +102,16 @@ class ReasoningPlanner:
         steps = _build_steps(template_step_types)
         step_by_type = {s.step_type: s for s in steps}
 
-        required_evidence = _build_evidence_requirements(plan_type, intent, step_by_type)
+        requested_semantic_component = _select_requested_semantic_component(
+            intent_analysis.requested_outcome,
+            request.domain,
+        )
+        required_evidence = _build_evidence_requirements(
+            plan_type,
+            intent,
+            step_by_type,
+            requested_semantic_component=requested_semantic_component,
+        )
         required_calculations = _build_calculation_requirements(plan_type, intent, context, step_by_type)
 
         required_capabilities = tuple(
@@ -170,11 +183,27 @@ def _build_steps(step_types: tuple[str, ...]):
     return tuple(steps)
 
 
-def _build_evidence_requirements(plan_type: str, intent: str, step_by_type: dict):
+def _build_evidence_requirements(
+    plan_type: str,
+    intent: str,
+    step_by_type: dict,
+    *,
+    requested_semantic_component: str | None = None,
+):
     requirements = []
     counter = 1
 
-    def add(category, subject, step_type, *, required=True, authority="AUTHORITATIVE", version="CURRENT_APPLICABLE", reason=""):
+    def add(
+        category,
+        subject,
+        step_type,
+        *,
+        required=True,
+        authority="AUTHORITATIVE",
+        version="CURRENT_APPLICABLE",
+        reason="",
+        semantic_component: str | None = None,
+    ):
         nonlocal counter
         step = step_by_type.get(step_type)
         if step is None:
@@ -189,14 +218,31 @@ def _build_evidence_requirements(plan_type: str, intent: str, step_by_type: dict
                 version_requirement=version,
                 reason=reason or f"Required to complete {step_type}.",
                 requested_by_step=step.step_id,
+                requested_semantic_component=semantic_component,
             )
         )
         counter += 1
 
     if plan_type == "DIRECT_FACT_PLAN":
-        add("POLICY_WORDING", "policy_or_product_reference", "RESOLVE_POLICY_FACTS")
-        add("POLICY_SCHEDULE", "policy_or_product_reference", "RESOLVE_POLICY_FACTS", required=False)
-        add("NORMALIZED_POLICY_FACT", "requested_fact", "RESOLVE_POLICY_FACTS")
+        add(
+            "POLICY_WORDING",
+            "policy_or_product_reference",
+            "RESOLVE_POLICY_FACTS",
+            semantic_component=requested_semantic_component,
+        )
+        add(
+            "POLICY_SCHEDULE",
+            "policy_or_product_reference",
+            "RESOLVE_POLICY_FACTS",
+            required=False,
+            semantic_component=requested_semantic_component,
+        )
+        add(
+            "NORMALIZED_POLICY_FACT",
+            "requested_fact",
+            "RESOLVE_POLICY_FACTS",
+            semantic_component=requested_semantic_component,
+        )
     elif plan_type == "EXPLANATION_PLAN":
         category = "NORMALIZED_PRODUCT_FACT" if intent == "PRODUCT_EXPLANATION" else "CLAUSE_TEXT"
         add(category, "term_or_concept" if intent != "PRODUCT_EXPLANATION" else "product_reference", "RESOLVE_CLAUSE_EVIDENCE",
@@ -223,6 +269,14 @@ def _build_evidence_requirements(plan_type: str, intent: str, step_by_type: dict
         add("NORMALIZED_PRODUCT_FACT", "subject_reference", "RESOLVE_PRODUCT_FACTS")
 
     return tuple(requirements)
+
+
+def _select_requested_semantic_component(question: str, domain: str) -> str | None:
+    definitions = build_default_topic_registry().by_domain(domain)
+    return select_requested_semantic_component(
+        question=question,
+        definition=definitions,
+    )
 
 
 def _build_calculation_requirements(plan_type: str, intent: str, context, step_by_type: dict):
