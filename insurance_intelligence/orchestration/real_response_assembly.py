@@ -21,6 +21,7 @@ from insurance_intelligence.orchestration.intelligence_adapters import (
 )
 from insurance_intelligence.orchestration.real_response_explanation import (
     EducationPublicationLookup,
+    PracticalIllustrationProfileLookup,
     build_real_response_explanation_adapters,
 )
 from insurance_intelligence.orchestration.real_response_prefix import (
@@ -43,6 +44,7 @@ def build_real_response_assembly_adapters(
     response_registry: ResponseFormatRegistry,
     terminology_registry: TerminologyRegistry | None = None,
     education_publication_lookup: EducationPublicationLookup | None = None,
+    practical_illustration_profile_lookup: PracticalIllustrationProfileLookup | None = None,
     response_format: str = "STANDARD",
 ):
     """Build the proven real path plus canonical deterministic response assembly."""
@@ -54,6 +56,7 @@ def build_real_response_assembly_adapters(
         style_registry=style_registry,
         terminology_registry=terminology_registry,
         education_publication_lookup=education_publication_lookup,
+        practical_illustration_profile_lookup=practical_illustration_profile_lookup,
     )
 
     def response_assembly(*, request, stage, input_ids, knowledge_snapshot_id):
