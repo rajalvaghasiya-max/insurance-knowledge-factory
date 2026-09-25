@@ -51,6 +51,7 @@ class ProvenancePanel:
     response_section_ids: tuple[str, ...]
     evidence_references: tuple[EvidenceReference, ...]
     response_trace: tuple[ResponseTraceEvent, ...]
+    diagnostic_limitations: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -68,12 +69,34 @@ def _included_meaning(response: ResponseAssemblerOutput) -> tuple[str, ...]:
     )
 
 
+def _included_customer_qualifications(response: ResponseAssemblerOutput) -> tuple[str, ...]:
+    return tuple(
+        section.text
+        for section in response.sections
+        if section.status == "INCLUDED" and section.section_type == "CUSTOMER_QUALIFICATION"
+    )
+
+
+def _included_next_steps(response: ResponseAssemblerOutput) -> tuple[str, ...]:
+    return tuple(
+        section.text
+        for section in response.sections
+        if section.status == "INCLUDED" and section.section_type == "NEXT_STEP"
+    )
+
+
 def _unknowns(response: ResponseAssemblerOutput) -> tuple[str, ...]:
-    # Limitations are already evidence/decision-governed upstream. Preserve exact text.
+    typed = _included_customer_qualifications(response)
+    if typed:
+        return typed
+    # Legacy fallback until a path publishes typed customer qualifications.
     return tuple(response.limitations)
 
 
 def _resolution_next_step(response: ResponseAssemblerOutput, unknowns: tuple[str, ...]) -> str | None:
+    typed = tuple(dict.fromkeys(_included_next_steps(response)))
+    if typed:
+        return " ".join(typed)
     if not unknowns:
         return None
     if response.response_status not in {"ANSWER_WITH_LIMITATIONS", *_NON_ANSWER_MESSAGES}:
@@ -120,6 +143,7 @@ def project_human_answer(response: ResponseAssemblerOutput) -> HumanAnswerProjec
         response_section_ids=tuple(section.section_id for section in response.sections),
         evidence_references=tuple(response.evidence_references),
         response_trace=tuple(response.response_trace),
+        diagnostic_limitations=tuple(response.limitations),
     )
     return HumanAnswerProjection(
         source_response_id=response.response_id,
