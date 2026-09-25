@@ -142,6 +142,8 @@ def _responses():
                 "DIRECT_ANSWER",
                 "EXAMPLE",
                 "PRACTICAL_ILLUSTRATION",
+                "CUSTOMER_QUALIFICATION",
+                "NEXT_STEP",
                 "EXPLANATION",
                 "CONDITION",
                 "LIMITATION",
@@ -152,6 +154,8 @@ def _responses():
                 "DIRECT_ANSWER",
                 "EXAMPLE",
                 "PRACTICAL_ILLUSTRATION",
+                "CUSTOMER_QUALIFICATION",
+                "NEXT_STEP",
                 "EXPLANATION",
                 "CONDITION",
                 "LIMITATION",
@@ -277,3 +281,27 @@ def test_case_a_human_projection_exposes_governed_practical_illustration() -> No
     assert "dengue" in meaning
     assert "10 months" in meaning
     assert "40 months" in meaning
+
+
+
+def test_case_a_human_projection_separates_customer_qualifications_from_diagnostics() -> None:
+    response, _ = _run()
+    projection = project_human_answer(response)
+
+    unknowns = " ".join(projection.human_view.unknowns).lower()
+    assert "continuous health insurance" in unknowns
+    assert "portability" in unknowns
+    assert "certification applies only" not in unknowns
+    assert "certification does not determine" not in unknowns
+    assert "communicate only within" not in unknowns
+    assert "bound_not_published" not in unknowns
+
+    assert projection.human_view.next_step is not None
+    next_step = projection.human_view.next_step.lower()
+    assert "continuous health insurance" in next_step
+    assert "insurer or advisor before relying" not in next_step
+
+    diagnostics = " ".join(
+        projection.provenance_panel.diagnostic_limitations
+    ).lower()
+    assert "certification" in diagnostics or "documented scope" in diagnostics
