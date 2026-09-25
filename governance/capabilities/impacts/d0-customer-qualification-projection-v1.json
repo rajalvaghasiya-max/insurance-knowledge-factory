@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-customer-qualification-projection-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "PR #339 proved customer-relevant qualifications and internal diagnostics are collapsed at the human response surface. This change reuses governed semantic attributes already carried by approved findings to emit evidence-locked CUSTOMER_QUALIFICATION and NEXT_STEP sections, while preserving raw response limitations in provenance and retaining legacy fallback behavior.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No reasoning, decision, certification, or publication authority changes. Customer communication text must originate in governed publication semantic attributes with evidence references and is fidelity-checked before response assembly."
+}
