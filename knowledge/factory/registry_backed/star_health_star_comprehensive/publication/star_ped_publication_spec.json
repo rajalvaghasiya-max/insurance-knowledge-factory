@@ -76,6 +76,22 @@
       "status": "SATISFIED",
       "evidence_references": [
         "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism"
+      ],
+      "semantic_attributes": [
+        {
+          "key": "customer_qualification",
+          "value": "If you had continuous health insurance before moving to this policy, portability or continuity credit may reduce the waiting period applicable to you.",
+          "evidence_references": [
+            "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism"
+          ]
+        },
+        {
+          "key": "customer_next_step",
+          "value": "If you want to know your actual PED waiting period, tell me whether you had continuous health insurance before this policy.",
+          "evidence_references": [
+            "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:continuity_or_credit_rule:mechanism"
+          ]
+        }
       ]
     }
   ],
