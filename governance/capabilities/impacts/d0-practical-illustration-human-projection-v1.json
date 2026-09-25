@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-practical-illustration-human-projection-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "PR #337 proved that a governed PRACTICAL_ILLUSTRATION reaches canonical ResponseAssemblerOutput but is omitted from HumanAnswerView.meaning. This repair adds that already-authorized section type to the generic human-meaning projection set.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No authority change. No new text or insurance semantics are created. The projector only exposes an already-included canonical response section in the human view."
+}
