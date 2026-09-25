@@ -166,6 +166,7 @@ def _responses():
             limitation_policy="REQUIRED_WHEN_PRESENT",
             assumption_policy="WHEN_PRESENT",
             clarification_policy="FORBIDDEN",
+            max_sections=12,
         ),
     ))
 
