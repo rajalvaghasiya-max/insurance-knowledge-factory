@@ -105,6 +105,42 @@ def _check(
     )
 
 
+
+def _customer_communication_expectations(
+    *,
+    request_id: str,
+    approved_finding_ids: Sequence[str],
+    findings_by_id: Mapping[str, Finding],
+) -> dict[str, tuple[str, str, tuple[str, ...], str]]:
+    mapping = {
+        "customer_qualification": "CUSTOMER_QUALIFICATION",
+        "customer_next_step": "NEXT_STEP",
+    }
+    expected: dict[str, tuple[str, str, tuple[str, ...], str]] = {}
+    for finding_id in approved_finding_ids:
+        finding = findings_by_id[finding_id]
+        for attribute in finding.semantic_attributes:
+            section_type = mapping.get(attribute.key)
+            if section_type is None:
+                continue
+            text = " ".join(attribute.value.strip().split())
+            if text[-1] not in ".?!":
+                text += "."
+            section_id = _stable_id(
+                "section",
+                request_id,
+                finding.finding_id,
+                attribute.key,
+            )
+            expected[section_id] = (
+                section_type,
+                text,
+                tuple(attribute.evidence_references),
+                finding.finding_id,
+            )
+    return expected
+
+
 @dataclass(frozen=True)
 class FidelityValidationResult:
     validation_status: str
@@ -268,6 +304,50 @@ def validate_explanation_fidelity(
     unknown = tuple(item for item in approved_ids if item not in findings_by_id)
     if unknown:
         raise ExplanationValidationError(f"approved findings are missing from findings_by_id: {unknown}")
+
+    expected_communication = _customer_communication_expectations(
+        request_id=explanation_input.request_id,
+        approved_finding_ids=approved_ids,
+        findings_by_id=findings_by_id,
+    )
+    actual_communication = {
+        section.section_id: section
+        for section in drafted
+        if section.section_type in {"CUSTOMER_QUALIFICATION", "NEXT_STEP"}
+    }
+    communication_ok = set(actual_communication) == set(expected_communication)
+    if communication_ok:
+        for section_id, (
+            expected_type,
+            expected_text,
+            expected_evidence,
+            expected_finding_id,
+        ) in expected_communication.items():
+            section = actual_communication[section_id]
+            if (
+                section.section_type != expected_type
+                or section.text != expected_text
+                or section.evidence_ids != expected_evidence
+                or section.approved_finding_ids != (expected_finding_id,)
+            ):
+                communication_ok = False
+                break
+    checks.append(
+        _check(
+            request_id=explanation_input.request_id,
+            check_type="CUSTOMER_COMMUNICATION_FIDELITY",
+            status="PASSED" if communication_ok else "FAILED",
+            description=(
+                "Customer qualification and next-step sections exactly preserve governed semantic attributes and evidence lineage."
+                if communication_ok
+                else "Customer communication sections do not exactly match governed semantic attributes."
+            ),
+            source_references=tuple(sorted(expected_communication)),
+            section_ids=tuple(sorted(actual_communication)),
+        )
+    )
+    if not communication_ok:
+        failures.append("FAILED_UNSUPPORTED_CONTENT")
 
     section_finding_ids = {item for section in drafted for item in section.approved_finding_ids}
     coverage_ok = set(approved_ids) <= section_finding_ids
