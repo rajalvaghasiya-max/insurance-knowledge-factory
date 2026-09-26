@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-resolved-applicability-customer-qualification-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.REASONING.ENGINE"
+  ],
+  "rationale": "Extend the existing resolved applicability finding so its already-existing claim-boundary limitation is also represented as a governed customer_qualification semantic attribute with the same approved evidence lineage. This allows the existing Explanation/Response/HumanAnswer typed customer-qualification path to expose the customer-relevant boundary while raw planner/evidence diagnostics remain available only through provenance.",
+  "supersession_impact": "No reasoning rule, timeline algorithm, decision policy, explanation contract, or human projection behavior is replaced. The existing raw finding limitation is preserved unchanged for safety and audit; this change only adds typed semantic classification for an already-governed qualification.",
+  "authority_impact": "No new insurance conclusion, claim approval/payment authority, or product-specific behavior is introduced. The repair re-expresses an existing limitation through the governed semantic-attribute channel so customer communication can distinguish it from internal diagnostics."
+}
