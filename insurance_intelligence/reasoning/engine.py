@@ -157,6 +157,17 @@ def _execution_id(request_id: str, requirement_id: str, rule: ReasoningRuleDefin
     return _stable_id("execution", {"request_id": request_id, "requirement_id": requirement_id, "rule": rule.registry_key, "status": status})
 
 
+def _aggregate_rejection_kind(kinds: Sequence[str]) -> str:
+    """Preserve one specific rejection cause when generic unsupported is the only competitor."""
+    distinct = tuple(sorted(set(kinds)))
+    specific = tuple(kind for kind in distinct if kind != "UNSUPPORTED_REASONING")
+    if len(specific) == 1:
+        return specific[0]
+    if len(specific) > 1:
+        return "UNSUPPORTED_REASONING"
+    return "UNSUPPORTED_REASONING"
+
+
 def _validate_registered_outputs(rule: ReasoningRuleDefinition, produced: Sequence[object]) -> None:
     """Fail closed when runtime findings violate the rule registry contract."""
     unexpected_types = tuple(
@@ -321,12 +332,7 @@ class ReasoningEngine:
                 requirement_results.append(build_requirement_result(requirement_id=requirement.requirement_id, status=status, executed_rule_ids=executed_ids, finding_ids=tuple(item.finding_id for item in created), rejected_rule_ids=rejected, missing_inputs=tuple(sorted(set(missing_inputs))), evidence_satisfied=True, context_satisfied=not missing_inputs, conflict_status="NONE", confidence=confidence))
             else:
                 reason = "all eligible rules were rejected"
-                distinct_rejection_kinds = tuple(sorted(set(rejection_kinds)))
-                rejection_kind = (
-                    distinct_rejection_kinds[0]
-                    if len(distinct_rejection_kinds) == 1
-                    else "UNSUPPORTED_REASONING"
-                )
+                rejection_kind = _aggregate_rejection_kind(rejection_kinds)
                 status = "BLOCKED_BY_CONTEXT" if rejection_kind == "MISSING_CUSTOMER_FACT" else "UNSUPPORTED"
                 requirement_results.append(build_requirement_result(requirement_id=requirement.requirement_id, status=status, rejected_rule_ids=rejected, missing_inputs=tuple(sorted(set(missing_inputs))), unsupported_reason=reason, rejection_kind=rejection_kind, evidence_satisfied=True, context_satisfied=rejection_kind != "MISSING_CUSTOMER_FACT", conflict_status="NONE", confidence=0.0))
                 unsupported.append(requirement.requirement_id)
