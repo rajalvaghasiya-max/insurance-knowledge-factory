@@ -173,13 +173,25 @@ def test_d0_exact_boundary_fails_closed_with_human_next_step() -> None:
     projection = project_human_answer(response)
     answer_text = projection.human_view.answer.casefold()
     unknown_text = " ".join(projection.human_view.unknowns).casefold()
+    next_step = (projection.human_view.next_step or "").casefold()
+    diagnostic_text = " ".join(projection.provenance_panel.diagnostic_limitations).casefold()
 
-    assert projection.human_view.unknowns
+    assert response.customer_reason is not None
+    assert response.customer_reason.reason_kind == "SOURCE_DOES_NOT_ESTABLISH"
+    assert projection.human_view.unknowns == (response.customer_reason.text,)
+    assert "customer facts" in unknown_text
+    assert "governed source" in unknown_text
     assert projection.human_view.next_step
-    assert "boundary" in unknown_text or "cannot" in unknown_text or "uncertain" in unknown_text
+    assert "policy" in next_step
+    assert "insurer" in next_step or "advisor" in next_step
+    assert "policy start date" not in next_step
+    assert "claim date" not in next_step
+    assert "evreq-" not in unknown_text
+    assert "evreq-" in diagnostic_text
     assert "still active" not in answer_text
     assert "waiting period is complete" not in answer_text
-    assert "claim approval" not in answer_text
-    assert "claim payment" not in answer_text
+    customer_text = " ".join((answer_text, unknown_text, next_step))
+    assert "claim approval" not in customer_text
+    assert "claim payment" not in customer_text
     assert projection.provenance_panel.evidence_references == ()
     assert projection.provenance_panel.response_trace
