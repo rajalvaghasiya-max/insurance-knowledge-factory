@@ -17,7 +17,11 @@ from insurance_intelligence.benefits.copayment_composition import (
     resolve_copayment_composition,
 )
 from insurance_intelligence.contracts.evidence import EvidencePackage
-from insurance_intelligence.contracts.reasoning import Finding, build_finding
+from insurance_intelligence.contracts.reasoning import (
+    RULE_REJECTION_KINDS,
+    Finding,
+    build_finding,
+)
 from insurance_intelligence.contracts.semantic import build_governed_semantic_attribute
 from insurance_intelligence.reasoning.registry import (
     ReasoningRuleDefinition,
@@ -35,6 +39,17 @@ TRIGGER_STATUSES = frozenset({"CONFIRMED", "NOT_TRIGGERED", "UNRESOLVED"})
 
 class ReasoningRuleError(ValueError):
     """Raised when deterministic rule inputs are invalid or unsupported."""
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        rejection_kind: str = "UNSUPPORTED_REASONING",
+    ) -> None:
+        if rejection_kind not in RULE_REJECTION_KINDS:
+            raise ValueError(f"unsupported rejection_kind: {rejection_kind!r}")
+        super().__init__(message)
+        self.rejection_kind = rejection_kind
 
 
 @dataclass(frozen=True)
@@ -494,7 +509,8 @@ def waiting_period_applicability_resolved(data: RuleInput) -> tuple[Finding, ...
         raise ReasoningRuleError(str(exc)) from exc
     if timeline.status == "BOUNDARY_UNRESOLVED":
         raise ReasoningRuleError(
-            "waiting-period activation convention is unresolved at the calculated boundary date"
+            "waiting-period activation convention is unresolved at the calculated boundary date",
+            rejection_kind="SOURCE_DOES_NOT_ESTABLISH",
         )
 
     if timeline.status == "NOT_COMPLETE":
