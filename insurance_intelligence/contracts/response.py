@@ -37,6 +37,8 @@ SECTION_TYPES = frozenset(
         "EDUCATION",
         "EXAMPLE",
         "PRACTICAL_ILLUSTRATION",
+        "CUSTOMER_QUALIFICATION",
+        "NEXT_STEP",
     }
 )
 SECTION_STATUSES = frozenset({"INCLUDED", "WITHHELD", "REQUIRES_REVIEW"})

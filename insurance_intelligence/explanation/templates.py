@@ -177,6 +177,44 @@ def _apply_term(text: str, item: TerminologyDefinition) -> tuple[str, bool]:
     return text.replace(item.source_term, rendered), True
 
 
+
+def _customer_communication_sections(
+    *,
+    request_id: str,
+    finding: Finding,
+) -> tuple[ExplanationSection, ...]:
+    section_types = {
+        "customer_qualification": "CUSTOMER_QUALIFICATION",
+        "customer_next_step": "NEXT_STEP",
+    }
+    sections: list[ExplanationSection] = []
+    for attribute in finding.semantic_attributes:
+        section_type = section_types.get(attribute.key)
+        if section_type is None:
+            continue
+        evidence_ids = tuple(attribute.evidence_references)
+        if not set(evidence_ids) <= set(finding.evidence_ids):
+            raise ExplanationTemplateError(
+                f"{attribute.key} references evidence outside the approved finding"
+            )
+        sections.append(
+            build_section(
+                section_id=_stable_id(
+                    "section",
+                    request_id,
+                    finding.finding_id,
+                    attribute.key,
+                ),
+                section_type=section_type,
+                status="DRAFTED",
+                text=_ensure_sentence(attribute.value),
+                approved_finding_ids=(finding.finding_id,),
+                evidence_ids=evidence_ids,
+            )
+        )
+    return tuple(sections)
+
+
 @dataclass(frozen=True)
 class TemplateRenderResult:
     sections: tuple[ExplanationSection, ...]
@@ -300,6 +338,14 @@ def render_explanation_templates(
             )
         )
         template_ids.append(template_id)
+
+        communication_sections = _customer_communication_sections(
+            request_id=explanation_input.request_id,
+            finding=finding,
+        )
+        sections.extend(communication_sections)
+        if communication_sections:
+            template_ids.append("governed_customer_communication_v1")
 
         if style.preserve_conditions:
             trigger, exception, applicability_scope = _semantic_clauses(finding)
