@@ -233,8 +233,23 @@ def test_d0_resolved_waiting_period_applicability_projects_to_human_answer() -> 
     assert "still active" in human_text or "not complete" in human_text
     answer_text = projection.human_view.answer.casefold()
     unknown_text = " ".join(projection.human_view.unknowns).casefold()
+
+    # #294 cold readers could not recover the simple applicability conclusion.
+    # It must be prominent in the direct answer, not merely buried elsewhere.
+    assert "still active" in answer_text or "not complete" in answer_text
+
+    # The human surface must preserve the customer-relevant claim boundary while
+    # keeping internal planner/evidence diagnostics out of customer unknowns.
     assert "claim approval" not in answer_text
     assert "claim payment" not in answer_text
     assert "does not establish final claim approval or payment" in unknown_text
+    assert "evreq-" not in unknown_text
+    assert "authoritative publication source type" not in unknown_text
+    assert "no registered rule supports" not in unknown_text
+    assert "all eligible rules were rejected" not in unknown_text
+
+    # Diagnostics remain available to developers/audit even when they are not
+    # projected into the customer answer.
+    assert projection.provenance_panel.diagnostic_limitations
     assert projection.provenance_panel.evidence_references
     assert projection.provenance_panel.response_trace
