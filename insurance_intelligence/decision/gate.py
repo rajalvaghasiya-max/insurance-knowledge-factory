@@ -71,6 +71,22 @@ def _request_rejection_kind(data: DecisionGateInput) -> str | None:
     return kinds[0] if len(kinds) == 1 else None
 
 
+def _request_missing_context_keys(data: DecisionGateInput) -> tuple[str, ...]:
+    """Preserve explicit missing customer inputs only when reasoning classified them as such."""
+    if data.reasoning_output.findings:
+        return ()
+    return tuple(
+        sorted(
+            {
+                key
+                for item in data.reasoning_output.requirement_results
+                if item.rejection_kind == "MISSING_CUSTOMER_FACT"
+                for key in item.missing_inputs
+            }
+        )
+    )
+
+
 class _TraceBuilder:
     def __init__(self, trace_id: str) -> None:
         self._trace_id = trace_id
@@ -124,6 +140,7 @@ class DecisionSafetyGate:
         context = dict(data.decision_context)
         out_of_scope = plan.plan_status == "OUT_OF_SCOPE" or reasoning.reasoning_status == "OUT_OF_SCOPE"
         request_rejection_kind = _request_rejection_kind(data)
+        request_missing_context_keys = _request_missing_context_keys(data)
 
         decision_id = _stable_id("decision", {
             "request_id": data.request_id,
@@ -190,4 +207,5 @@ class DecisionSafetyGate:
             confidence=aggregate.confidence,
             decision_trace=trace.build(),
             request_rejection_kind=request_rejection_kind,
+            request_missing_context_keys=request_missing_context_keys,
         )

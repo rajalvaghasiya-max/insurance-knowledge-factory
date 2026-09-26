@@ -20,7 +20,7 @@ class HumanAnswerProjectionError(ValueError):
 
 
 _HUMAN_MEANING_SECTION_TYPES = frozenset(
-    {"EDUCATION", "EXPLANATION", "CONDITION", "EXAMPLE", "IMPACT", "PRACTICAL_ILLUSTRATION"}
+    {"EDUCATION", "CUSTOMER_EXPLANATION", "EXAMPLE", "PRACTICAL_ILLUSTRATION"}
 )
 _ANSWER_STATUSES = frozenset({"ANSWER", "ANSWER_WITH_LIMITATIONS"})
 _NON_ANSWER_MESSAGES = {
@@ -89,14 +89,27 @@ def _unknowns(response: ResponseAssemblerOutput) -> tuple[str, ...]:
     typed = _included_customer_qualifications(response)
     if typed:
         return typed
-    # Legacy fallback until a path publishes typed customer qualifications.
-    return tuple(response.limitations)
+    if response.customer_reason is not None:
+        return (response.customer_reason.text,)
+    return ()
 
 
 def _resolution_next_step(response: ResponseAssemblerOutput, unknowns: tuple[str, ...]) -> str | None:
     typed = tuple(dict.fromkeys(_included_next_steps(response)))
     if typed:
         return " ".join(typed)
+    if response.customer_reason is not None:
+        if response.customer_reason.resolving_requirement is not None:
+            return response.customer_reason.resolving_requirement
+        if response.customer_reason.reason_kind == "SOURCE_DOES_NOT_ESTABLISH":
+            return (
+                "Check the governing policy wording or confirm the unresolved rule with the insurer "
+                "or advisor before relying on a conclusion."
+            )
+        return (
+            "Check the governing policy documents or confirm the unresolved point with the insurer "
+            "or advisor before relying on a conclusion."
+        )
     if not unknowns:
         return None
     if response.response_status not in {"ANSWER_WITH_LIMITATIONS", *_NON_ANSWER_MESSAGES}:

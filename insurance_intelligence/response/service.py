@@ -6,6 +6,7 @@ from hashlib import sha256
 from insurance_intelligence.contracts.response import (
     ResponseAssemblerInput,
     ResponseAssemblerOutput,
+    build_customer_reason,
     build_output,
     build_trace_event,
 )
@@ -21,6 +22,38 @@ class ResponseServiceError(ValueError):
 def _stable_id(prefix: str, *parts: object) -> str:
     payload = "\x1f".join(str(part) for part in parts)
     return f"{prefix}-{sha256(payload.encode('utf-8')).hexdigest()[:16]}"
+
+
+def _humanize_context_key(value: str) -> str:
+    return value.strip().replace("_", " ")
+
+
+def _customer_reason(decision):
+    kind = decision.request_rejection_kind
+    if kind is None:
+        return None
+    if kind == "MISSING_CUSTOMER_FACT":
+        keys = tuple(_humanize_context_key(item) for item in decision.request_missing_context_keys)
+        requirement = None
+        if keys:
+            requirement = "Provide the missing customer fact" + ("s" if len(keys) != 1 else "") + ": " + ", ".join(keys) + "."
+        return build_customer_reason(
+            reason_kind=kind,
+            text="A required customer fact is missing, so this case cannot be decided safely yet.",
+            resolving_requirement=requirement,
+        )
+    if kind == "SOURCE_DOES_NOT_ESTABLISH":
+        return build_customer_reason(
+            reason_kind=kind,
+            text=(
+                "The customer facts needed for this check are available, but the governed source "
+                "does not establish the rule needed to decide this case safely."
+            ),
+        )
+    return build_customer_reason(
+        reason_kind="UNSUPPORTED_REASONING",
+        text="The governed reasoning path does not support a safe conclusion for this case.",
+    )
 
 
 def _response_status(decision: str) -> str:
@@ -119,6 +152,7 @@ def assemble_response(
             clarification_questions=(),
             confidence=min(decision.confidence, explanation.confidence),
             response_trace=trace,
+            customer_reason=_customer_reason(decision),
         )
 
     definition = registry.select_one(
