@@ -18,6 +18,7 @@ from insurance_intelligence.benefits.copayment_composition import (
 )
 from insurance_intelligence.contracts.evidence import EvidencePackage
 from insurance_intelligence.contracts.reasoning import Finding, build_finding
+from insurance_intelligence.contracts.semantic import build_governed_semantic_attribute
 from insurance_intelligence.reasoning.registry import (
     ReasoningRuleDefinition,
     ReasoningRuleRegistry,
@@ -532,6 +533,16 @@ def waiting_period_applicability_resolved(data: RuleInput) -> tuple[Finding, ...
         evidence_ids=evidence_ids,
         limitations=(
             "This resolves only the governed waiting-period timeline state; it does not establish final claim approval or payment.",
+        ),
+        semantic_attributes=(
+            build_governed_semantic_attribute(
+                key="customer_qualification",
+                value=(
+                    "This resolves only the governed waiting-period timeline state; "
+                    "it does not establish final claim approval or payment."
+                ),
+                evidence_references=evidence_ids,
+            ),
         ),
         confidence=min(confidence, 0.95),
     )
