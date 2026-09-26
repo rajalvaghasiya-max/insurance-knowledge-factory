@@ -410,6 +410,7 @@ def build_rule_execution(
         input_keys=_require_unique(input_keys, "rule_execution.input_keys"),
         output_finding_ids=_require_unique(output_finding_ids, "rule_execution.output_finding_ids"),
         rejection_reason=rejection_reason,
+        rejection_kind=rejection_kind,
         confidence=_require_bounded_float(confidence, "rule_execution.confidence"),
     )
 
