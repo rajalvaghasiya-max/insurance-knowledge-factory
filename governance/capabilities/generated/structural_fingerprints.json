@@ -114,7 +114,7 @@
         "insurance_intelligence/decision/gate.py",
         "insurance_intelligence/decision/registry.py"
       ],
-      "structural_fingerprint": "b8cb5eed31d7135d6a589edbf1d116dfe7921980730cc52900ee432550eec2d7"
+      "structural_fingerprint": "63c56de0e7b23f6a7c4ee132ff093ce2076cf4c3df251f4d6678e7880d49bb70"
     },
     {
       "capability_id": "II.DECISION_SUPPORT.NON_VERDICT_PERSONALIZATION",

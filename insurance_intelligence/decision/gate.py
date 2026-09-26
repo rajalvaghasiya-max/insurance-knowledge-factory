@@ -50,6 +50,27 @@ def _topic(data: DecisionGateInput) -> str:
     return "coverage"
 
 
+def _request_rejection_kind(data: DecisionGateInput) -> str | None:
+    """Preserve one request-level typed rejection cause when no finding exists."""
+    if data.reasoning_output.findings:
+        return None
+    kinds = tuple(
+        sorted(
+            {
+                item.rejection_kind
+                for item in data.reasoning_output.requirement_results
+                if item.rejection_kind is not None
+            }
+        )
+    )
+    specific = tuple(kind for kind in kinds if kind != "UNSUPPORTED_REASONING")
+    if len(specific) == 1:
+        return specific[0]
+    if len(specific) > 1:
+        return "UNSUPPORTED_REASONING"
+    return kinds[0] if len(kinds) == 1 else None
+
+
 class _TraceBuilder:
     def __init__(self, trace_id: str) -> None:
         self._trace_id = trace_id
@@ -102,6 +123,7 @@ class DecisionSafetyGate:
         topic = _topic(data)
         context = dict(data.decision_context)
         out_of_scope = plan.plan_status == "OUT_OF_SCOPE" or reasoning.reasoning_status == "OUT_OF_SCOPE"
+        request_rejection_kind = _request_rejection_kind(data)
 
         decision_id = _stable_id("decision", {
             "request_id": data.request_id,
@@ -167,4 +189,5 @@ class DecisionSafetyGate:
             human_review_reasons=aggregate.human_review_reasons,
             confidence=aggregate.confidence,
             decision_trace=trace.build(),
+            request_rejection_kind=request_rejection_kind,
         )

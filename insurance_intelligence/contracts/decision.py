@@ -411,6 +411,7 @@ class DecisionGateOutput:
     human_review_reasons: tuple[str, ...]
     confidence: float
     decision_trace: tuple[DecisionTraceEvent, ...]
+    request_rejection_kind: str | None = None
 
 
 def build_output(
@@ -427,6 +428,7 @@ def build_output(
     human_review_reasons: Sequence[str] = (),
     confidence: float = 0.0,
     decision_trace: Sequence[DecisionTraceEvent] = (),
+    request_rejection_kind: str | None = None,
     contract_version: str = SUPPORTED_CONTRACT_VERSION,
 ) -> DecisionGateOutput:
     if contract_version != SUPPORTED_CONTRACT_VERSION:
@@ -447,6 +449,15 @@ def build_output(
         ),
         confidence=_require_bounded_float(confidence, "confidence"),
         decision_trace=tuple(decision_trace),
+        request_rejection_kind=(
+            None
+            if request_rejection_kind is None
+            else _require_member(
+                request_rejection_kind,
+                frozenset({"MISSING_CUSTOMER_FACT", "SOURCE_DOES_NOT_ESTABLISH", "UNSUPPORTED_REASONING"}),
+                "request_rejection_kind",
+            )
+        ),
     )
     return validate_output(result)
 

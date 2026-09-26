@@ -59,3 +59,12 @@ def test_case_c_preserves_source_does_not_establish_without_changing_fail_closed
         item.rejection_kind == "SOURCE_DOES_NOT_ESTABLISH"
         for item in reasoning.requirement_results
     )
+
+    decision_artifact = dependencies.store.get(
+        f"{request.execution_id}:real:decision_gate_authority_enforced"
+    )
+    assert decision_artifact.decision_output.decision == "UNSUPPORTED_REASONING"
+    assert (
+        decision_artifact.decision_output.request_rejection_kind
+        == "SOURCE_DOES_NOT_ESTABLISH"
+    )

@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-decision-request-rejection-propagation-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.DECISION.DETERMINISTIC_SAFETY_GATE"
+  ],
+  "rationale": "Complete the typed rejection-cause propagation required by D0 fail-closed customer communication. When reasoning produces no findings, the deterministic Decision and Safety Gate now preserves the already-governed request-level rejection kind from RequirementReasoningResult on DecisionGateOutput instead of dropping it during finding-only aggregation.",
+  "supersession_impact": "No decision outcome, finding disposition, safety policy, response packet, or fail-closed behavior is replaced. The request-level typed cause is additive metadata for downstream communication; existing reasoning and decision traces remain unchanged.",
+  "authority_impact": "No insurance authority is broadened. The change does not create findings, approve withheld content, or infer claim approval/payment. Exact-boundary waiting-period cases remain UNSUPPORTED_REASONING and fail closed; downstream layers may only explain the typed reason more accurately."
+}
