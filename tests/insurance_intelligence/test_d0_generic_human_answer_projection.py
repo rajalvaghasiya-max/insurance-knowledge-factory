@@ -5,6 +5,7 @@ import inspect
 import pytest
 
 from insurance_intelligence.contracts.response import (
+    build_customer_reason,
     build_evidence_reference,
     build_output,
     build_section,
@@ -39,7 +40,7 @@ def _response(
     )
     section = build_section(
         section_id=section_id,
-        section_type="EXPLANATION",
+        section_type="CUSTOMER_EXPLANATION",
         status="INCLUDED",
         text=meaning,
         approved_finding_ids=(finding_id,),
@@ -84,7 +85,8 @@ def test_human_view_is_separate_from_provenance_and_preserves_machine_text():
     assert projected.human_view.meaning == (
         "Continuity may qualify how the documented period applies.",
     )
-    assert projected.human_view.unknowns == response.limitations
+    assert projected.human_view.unknowns == ()
+    assert projected.provenance_panel.diagnostic_limitations == response.limitations
     assert projected.provenance_panel.evidence_references == response.evidence_references
     assert projected.provenance_panel.response_trace == response.response_trace
 
@@ -100,7 +102,7 @@ def test_human_view_is_separate_from_provenance_and_preserves_machine_text():
     assert "finding-factual" not in human_text
 
 
-def test_fail_closed_answer_with_limitations_has_a_resolution_next_step():
+def test_raw_limitations_stay_in_provenance_not_customer_unknowns():
     response = _response(
         answer="The exact boundary date cannot be resolved from the governed wording.",
         meaning="The activation convention is not established at the calculated boundary date.",
@@ -110,14 +112,12 @@ def test_fail_closed_answer_with_limitations_has_a_resolution_next_step():
 
     projected = project_human_answer(response)
 
-    assert projected.human_view.next_step
-    next_step = projected.human_view.next_step.lower()
-    assert "check" in next_step or "confirm" in next_step
-    assert "policy" in next_step
-    assert "insurer" in next_step or "advisor" in next_step
+    assert projected.human_view.unknowns == ()
+    assert projected.human_view.next_step is None
+    assert projected.provenance_panel.diagnostic_limitations == response.limitations
 
 
-def test_limitation_negative_control_changes_unknowns_and_next_step():
+def test_limitation_negative_control_does_not_change_customer_surface():
     limited = _response(
         answer="The timeline result is unresolved.",
         meaning="A material applicability condition is not established.",
@@ -131,13 +131,15 @@ def test_limitation_negative_control_changes_unknowns_and_next_step():
         suffix="clean",
     )
 
-    limited_view = project_human_answer(limited).human_view
-    clean_view = project_human_answer(clean).human_view
+    limited_projection = project_human_answer(limited)
+    clean_projection = project_human_answer(clean)
 
-    assert limited_view.unknowns == ("A required case fact is missing.",)
-    assert limited_view.next_step is not None
-    assert clean_view.unknowns == ()
-    assert clean_view.next_step is None
+    assert limited_projection.human_view.unknowns == ()
+    assert limited_projection.human_view.next_step is None
+    assert clean_projection.human_view.unknowns == ()
+    assert clean_projection.human_view.next_step is None
+    assert limited_projection.provenance_panel.diagnostic_limitations == limited.limitations
+    assert clean_projection.provenance_panel.diagnostic_limitations == ()
 
 
 def test_answer_negative_control_follows_changed_machine_answer():
@@ -203,8 +205,15 @@ def test_one_generic_projector_handles_rehearsed_and_unrehearsed_answers(
     assert projection.human_view.meaning == (meaning,)
 
 
-def test_canonical_unsupported_response_projects_generic_status_unknowns_and_next_step():
-    limitation = "The exact boundary cannot be determined from the governed reasoning available."
+def test_canonical_unsupported_response_projects_typed_reason_not_diagnostics():
+    limitation = "evreq-1 all eligible rules rejected"
+    customer_reason = build_customer_reason(
+        reason_kind="SOURCE_DOES_NOT_ESTABLISH",
+        text=(
+            "The customer facts needed for this check are available, but the governed source "
+            "does not establish the rule needed to decide this case safely."
+        ),
+    )
     trace = build_trace_event(
         trace_id="trace-unsupported-status",
         sequence=1,
@@ -226,13 +235,16 @@ def test_canonical_unsupported_response_projects_generic_status_unknowns_and_nex
         limitations=(limitation,),
         confidence=0.2,
         response_trace=(trace,),
+        customer_reason=customer_reason,
     )
 
     projected = project_human_answer(response)
 
     assert "cannot determine" in projected.human_view.answer.lower()
-    assert projected.human_view.unknowns == (limitation,)
+    assert projected.human_view.unknowns == (customer_reason.text,)
     assert projected.human_view.next_step is not None
+    assert "evreq-1" not in " ".join(projected.human_view.unknowns)
+    assert projected.provenance_panel.diagnostic_limitations == (limitation,)
     assert projected.provenance_panel.evidence_references == ()
     assert projected.provenance_panel.response_trace == response.response_trace
 
