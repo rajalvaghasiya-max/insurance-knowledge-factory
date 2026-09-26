@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-typed-rule-rejection-propagation-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.REASONING.ENGINE"
+  ],
+  "rationale": "Extend the existing reasoning engine contract so deterministic rule rejections preserve a typed cause across RuleExecution and RequirementReasoningResult. This is required for downstream customer communication to distinguish missing customer context from source/convention gaps without parsing free-text rejection messages.",
+  "supersession_impact": "No reasoning rule outcome, evidence selection, finding semantics, timeline algorithm, or fail-closed decision is replaced. Existing rejection_reason text remains preserved for audit/backward compatibility. The engine stops inferring missing context from rejection-message text and instead uses the typed rejection kind.",
+  "authority_impact": "No new insurance conclusion, claim approval/payment authority, or product-specific behavior is introduced. Exact-boundary waiting-period reasoning remains fail-closed; the change only preserves why a rule could not safely conclude."
+}

@@ -87,6 +87,9 @@ REASONING_STATUSES = frozenset(
 RULE_EXECUTION_STATUSES = frozenset(
     {"EXECUTED", "EXECUTED_WITH_LIMITATIONS", "REJECTED", "BLOCKED", "SKIPPED"}
 )
+RULE_REJECTION_KINDS = frozenset(
+    {"MISSING_CUSTOMER_FACT", "SOURCE_DOES_NOT_ESTABLISH", "UNSUPPORTED_REASONING"}
+)
 TRACE_EVENT_TYPES = frozenset(
     {
         "REASONING_STARTED",
@@ -320,6 +323,7 @@ class RequirementReasoningResult:
     rejected_rule_ids: tuple[str, ...]
     missing_inputs: tuple[str, ...]
     unsupported_reason: str | None
+    rejection_kind: str | None
     evidence_satisfied: bool
     context_satisfied: bool
     conflict_status: str
@@ -335,6 +339,7 @@ def build_requirement_result(
     rejected_rule_ids: Sequence[str] = (),
     missing_inputs: Sequence[str] = (),
     unsupported_reason: str | None = None,
+    rejection_kind: str | None = None,
     evidence_satisfied: bool,
     context_satisfied: bool,
     conflict_status: str,
@@ -342,6 +347,8 @@ def build_requirement_result(
 ) -> RequirementReasoningResult:
     if unsupported_reason is not None:
         _require_nonempty_str(unsupported_reason, "requirement_result.unsupported_reason")
+    if rejection_kind is not None:
+        _require_member(rejection_kind, RULE_REJECTION_KINDS, "requirement_result.rejection_kind")
     if not isinstance(evidence_satisfied, bool) or not isinstance(context_satisfied, bool):
         raise ReasoningContractError("requirement_result satisfaction flags must be boolean")
     return RequirementReasoningResult(
@@ -352,6 +359,7 @@ def build_requirement_result(
         rejected_rule_ids=_require_unique(rejected_rule_ids, "requirement_result.rejected_rule_ids"),
         missing_inputs=_require_unique(missing_inputs, "requirement_result.missing_inputs"),
         unsupported_reason=unsupported_reason,
+        rejection_kind=rejection_kind,
         evidence_satisfied=evidence_satisfied,
         context_satisfied=context_satisfied,
         conflict_status=_require_nonempty_str(conflict_status, "requirement_result.conflict_status"),
@@ -370,6 +378,7 @@ class RuleExecution:
     input_keys: tuple[str, ...]
     output_finding_ids: tuple[str, ...]
     rejection_reason: str | None
+    rejection_kind: str | None
     confidence: float
 
 
@@ -384,10 +393,13 @@ def build_rule_execution(
     input_keys: Sequence[str] = (),
     output_finding_ids: Sequence[str] = (),
     rejection_reason: str | None = None,
+    rejection_kind: str | None = None,
     confidence: float = 0.0,
 ) -> RuleExecution:
     if rejection_reason is not None:
         _require_nonempty_str(rejection_reason, "rule_execution.rejection_reason")
+    if rejection_kind is not None:
+        _require_member(rejection_kind, RULE_REJECTION_KINDS, "rule_execution.rejection_kind")
     return RuleExecution(
         execution_id=_require_nonempty_str(execution_id, "rule_execution.execution_id"),
         requirement_id=_require_nonempty_str(requirement_id, "rule_execution.requirement_id"),
@@ -398,6 +410,7 @@ def build_rule_execution(
         input_keys=_require_unique(input_keys, "rule_execution.input_keys"),
         output_finding_ids=_require_unique(output_finding_ids, "rule_execution.output_finding_ids"),
         rejection_reason=rejection_reason,
+        rejection_kind=rejection_kind,
         confidence=_require_bounded_float(confidence, "rule_execution.confidence"),
     )
 

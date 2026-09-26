@@ -157,6 +157,17 @@ def _execution_id(request_id: str, requirement_id: str, rule: ReasoningRuleDefin
     return _stable_id("execution", {"request_id": request_id, "requirement_id": requirement_id, "rule": rule.registry_key, "status": status})
 
 
+def _aggregate_rejection_kind(kinds: Sequence[str]) -> str:
+    """Preserve one specific rejection cause when generic unsupported is the only competitor."""
+    distinct = tuple(sorted(set(kinds)))
+    specific = tuple(kind for kind in distinct if kind != "UNSUPPORTED_REASONING")
+    if len(specific) == 1:
+        return specific[0]
+    if len(specific) > 1:
+        return "UNSUPPORTED_REASONING"
+    return "UNSUPPORTED_REASONING"
+
+
 def _validate_registered_outputs(rule: ReasoningRuleDefinition, produced: Sequence[object]) -> None:
     """Fail closed when runtime findings violate the rule registry contract."""
     unexpected_types = tuple(
@@ -243,6 +254,7 @@ class ReasoningEngine:
 
             created = []
             rejected = []
+            rejection_kinds: list[str] = []
             executed_ids = []
             missing_inputs: list[str] = []
             for rule in eligible:
@@ -287,9 +299,10 @@ class ReasoningEngine:
                 except ReasoningRuleError as exc:
                     rejected.append(rule.rule_id)
                     reason = str(exc)
-                    if "required" in reason or "context" in reason or "trigger status" in reason:
+                    rejection_kinds.append(exc.rejection_kind)
+                    if exc.rejection_kind == "MISSING_CUSTOMER_FACT":
                         missing_inputs.extend(rule.required_inputs)
-                    executions.append(build_rule_execution(execution_id=_execution_id(data.request_id, requirement.requirement_id, rule, "REJECTED"), requirement_id=requirement.requirement_id, rule_id=rule.rule_id, rule_version=rule.rule_version, status="REJECTED", evidence_ids=tuple(item.evidence_id for item in evidence), input_keys=input_keys, rejection_reason=reason, confidence=0.0))
+                    executions.append(build_rule_execution(execution_id=_execution_id(data.request_id, requirement.requirement_id, rule, "REJECTED"), requirement_id=requirement.requirement_id, rule_id=rule.rule_id, rule_version=rule.rule_version, status="REJECTED", evidence_ids=tuple(item.evidence_id for item in evidence), input_keys=input_keys, rejection_reason=reason, rejection_kind=exc.rejection_kind, confidence=0.0))
                     trace.add("RULE_REJECTED", "REJECTED", reason, requirement_id=requirement.requirement_id, rule_id=rule.rule_id, evidence_ids=tuple(item.evidence_id for item in evidence))
                     continue
                 reusable_findings[reuse_key] = tuple(produced)
@@ -319,8 +332,9 @@ class ReasoningEngine:
                 requirement_results.append(build_requirement_result(requirement_id=requirement.requirement_id, status=status, executed_rule_ids=executed_ids, finding_ids=tuple(item.finding_id for item in created), rejected_rule_ids=rejected, missing_inputs=tuple(sorted(set(missing_inputs))), evidence_satisfied=True, context_satisfied=not missing_inputs, conflict_status="NONE", confidence=confidence))
             else:
                 reason = "all eligible rules were rejected"
-                status = "BLOCKED_BY_CONTEXT" if missing_inputs else "UNSUPPORTED"
-                requirement_results.append(build_requirement_result(requirement_id=requirement.requirement_id, status=status, rejected_rule_ids=rejected, missing_inputs=tuple(sorted(set(missing_inputs))), unsupported_reason=reason, evidence_satisfied=True, context_satisfied=not missing_inputs, conflict_status="NONE", confidence=0.0))
+                rejection_kind = _aggregate_rejection_kind(rejection_kinds)
+                status = "BLOCKED_BY_CONTEXT" if rejection_kind == "MISSING_CUSTOMER_FACT" else "UNSUPPORTED"
+                requirement_results.append(build_requirement_result(requirement_id=requirement.requirement_id, status=status, rejected_rule_ids=rejected, missing_inputs=tuple(sorted(set(missing_inputs))), unsupported_reason=reason, rejection_kind=rejection_kind, evidence_satisfied=True, context_satisfied=rejection_kind != "MISSING_CUSTOMER_FACT", conflict_status="NONE", confidence=0.0))
                 unsupported.append(requirement.requirement_id)
                 trace.add("FINDING_BLOCKED", status, reason, requirement_id=requirement.requirement_id)
 
