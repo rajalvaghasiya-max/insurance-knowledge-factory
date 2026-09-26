@@ -412,6 +412,7 @@ class DecisionGateOutput:
     confidence: float
     decision_trace: tuple[DecisionTraceEvent, ...]
     request_rejection_kind: str | None = None
+    request_missing_context_keys: tuple[str, ...] = ()
 
 
 def build_output(
@@ -429,6 +430,7 @@ def build_output(
     confidence: float = 0.0,
     decision_trace: Sequence[DecisionTraceEvent] = (),
     request_rejection_kind: str | None = None,
+    request_missing_context_keys: Sequence[str] = (),
     contract_version: str = SUPPORTED_CONTRACT_VERSION,
 ) -> DecisionGateOutput:
     if contract_version != SUPPORTED_CONTRACT_VERSION:
@@ -457,6 +459,10 @@ def build_output(
                 frozenset({"MISSING_CUSTOMER_FACT", "SOURCE_DOES_NOT_ESTABLISH", "UNSUPPORTED_REASONING"}),
                 "request_rejection_kind",
             )
+        ),
+        request_missing_context_keys=_require_unique(
+            request_missing_context_keys,
+            "request_missing_context_keys",
         ),
     )
     return validate_output(result)
