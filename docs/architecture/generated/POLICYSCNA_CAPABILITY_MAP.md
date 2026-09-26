@@ -178,7 +178,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.REASONING.ENGINE`<br>Deterministic Reasoning Engine | `ACTIVE` | `REUSE` | May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes. | None | `insurance_intelligence/reasoning`<br>`insurance_intelligence/contracts/reasoning.py` | `834ae203e120` |
+| `II.REASONING.ENGINE`<br>Deterministic Reasoning Engine | `ACTIVE` | `REUSE` | May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes. | None | `insurance_intelligence/reasoning`<br>`insurance_intelligence/contracts/reasoning.py` | `9d0161689828` |
 
 ### INSURANCE_INTELLIGENCE_RENDERING
 
