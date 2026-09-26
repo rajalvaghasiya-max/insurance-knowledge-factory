@@ -38,10 +38,14 @@ SECTION_TYPES = frozenset(
         "EXAMPLE",
         "PRACTICAL_ILLUSTRATION",
         "CUSTOMER_QUALIFICATION",
+        "CUSTOMER_EXPLANATION",
         "NEXT_STEP",
     }
 )
 SECTION_STATUSES = frozenset({"INCLUDED", "WITHHELD", "REQUIRES_REVIEW"})
+CUSTOMER_REASON_KINDS = frozenset(
+    {"MISSING_CUSTOMER_FACT", "SOURCE_DOES_NOT_ESTABLISH", "UNSUPPORTED_REASONING"}
+)
 EVIDENCE_REFERENCE_TYPES = frozenset({"EVIDENCE", "DOCUMENT", "SOURCE", "FINDING"})
 TRACE_EVENT_TYPES = frozenset(
     {
@@ -310,6 +314,28 @@ def build_trace_event(
 
 
 @dataclass(frozen=True)
+class CustomerReason:
+    reason_kind: str
+    text: str
+    resolving_requirement: str | None = None
+
+
+def build_customer_reason(
+    *,
+    reason_kind: str,
+    text: str,
+    resolving_requirement: str | None = None,
+) -> CustomerReason:
+    if resolving_requirement is not None:
+        _require_nonempty_str(resolving_requirement, "customer_reason.resolving_requirement")
+    return CustomerReason(
+        reason_kind=_require_member(reason_kind, CUSTOMER_REASON_KINDS, "customer_reason.reason_kind"),
+        text=_require_nonempty_str(text, "customer_reason.text"),
+        resolving_requirement=resolving_requirement,
+    )
+
+
+@dataclass(frozen=True)
 class ResponseAssemblerOutput:
     contract_version: str
     request_id: str
@@ -325,6 +351,7 @@ class ResponseAssemblerOutput:
     clarification_questions: tuple[str, ...]
     confidence: float
     response_trace: tuple[ResponseTraceEvent, ...]
+    customer_reason: CustomerReason | None = None
 
 
 def build_output(
@@ -342,6 +369,7 @@ def build_output(
     clarification_questions: Sequence[str] = (),
     confidence: float = 0.0,
     response_trace: Sequence[ResponseTraceEvent] = (),
+    customer_reason: CustomerReason | None = None,
     contract_version: str = SUPPORTED_CONTRACT_VERSION,
 ) -> ResponseAssemblerOutput:
     if contract_version != SUPPORTED_CONTRACT_VERSION:
@@ -365,6 +393,7 @@ def build_output(
         ),
         confidence=_require_bounded_float(confidence, "confidence"),
         response_trace=tuple(response_trace),
+        customer_reason=customer_reason,
     )
     return validate_output(output)
 
@@ -426,5 +455,9 @@ def validate_output(output: ResponseAssemblerOutput) -> ResponseAssemblerOutput:
     }:
         if output.direct_answer is not None or included or output.evidence_references:
             raise ResponseContractError("non-answer statuses cannot expose answer content or evidence")
+    if output.customer_reason is not None and not isinstance(output.customer_reason, CustomerReason):
+        raise ResponseContractError("customer_reason must be a CustomerReason")
+    if output.response_status in {"ANSWER", "ANSWER_WITH_LIMITATIONS"} and output.customer_reason is not None:
+        raise ResponseContractError("answer statuses cannot carry a fail-closed customer_reason")
 
     return output
