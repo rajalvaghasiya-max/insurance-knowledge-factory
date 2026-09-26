@@ -97,20 +97,6 @@
       "structural_fingerprint": "67470715a6a36db0fcb148a65a72d87869cd09b001f7d6c39e806b17f4a1a673"
     },
     {
-      "capability_id": "II.DECISION_SUPPORT.NON_VERDICT_PERSONALIZATION",
-      "owned_module_paths": [
-        "insurance_intelligence/decision_support/circumstance_relevance.py",
-        "insurance_intelligence/decision_support/customer_context.py",
-        "insurance_intelligence/decision_support/decision_projection.py",
-        "insurance_intelligence/decision_support/decision_sufficiency.py",
-        "insurance_intelligence/decision_support/dimension_alignment.py",
-        "insurance_intelligence/decision_support/interaction_clusters.py",
-        "insurance_intelligence/decision_support/material_question_planner.py",
-        "insurance_intelligence/decision_support/personalization_boundary.py"
-      ],
-      "structural_fingerprint": "1c241b2b22258426c07cf4c5b764082d9c8f361b349a42e55de2d96d969bdb72"
-    },
-    {
       "capability_id": "II.DECISION.AUTHORITY_ENFORCEMENT",
       "owned_module_paths": [
         "insurance_intelligence/authority_enforced_decision_gate.py",
@@ -129,6 +115,20 @@
         "insurance_intelligence/decision/registry.py"
       ],
       "structural_fingerprint": "b8cb5eed31d7135d6a589edbf1d116dfe7921980730cc52900ee432550eec2d7"
+    },
+    {
+      "capability_id": "II.DECISION_SUPPORT.NON_VERDICT_PERSONALIZATION",
+      "owned_module_paths": [
+        "insurance_intelligence/decision_support/circumstance_relevance.py",
+        "insurance_intelligence/decision_support/customer_context.py",
+        "insurance_intelligence/decision_support/decision_projection.py",
+        "insurance_intelligence/decision_support/decision_sufficiency.py",
+        "insurance_intelligence/decision_support/dimension_alignment.py",
+        "insurance_intelligence/decision_support/interaction_clusters.py",
+        "insurance_intelligence/decision_support/material_question_planner.py",
+        "insurance_intelligence/decision_support/personalization_boundary.py"
+      ],
+      "structural_fingerprint": "1c241b2b22258426c07cf4c5b764082d9c8f361b349a42e55de2d96d969bdb72"
     },
     {
       "capability_id": "II.EDUCATION.PUBLICATION_ADMISSION",
