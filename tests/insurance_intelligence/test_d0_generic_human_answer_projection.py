@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import inspect
+from types import SimpleNamespace
 
 import pytest
 
@@ -16,6 +17,7 @@ from insurance_intelligence.response.human_answer import (
     HumanAnswerProjectionError,
     project_human_answer,
 )
+from insurance_intelligence.response.service import _customer_reason
 
 
 def _response(
@@ -247,6 +249,51 @@ def test_canonical_unsupported_response_projects_typed_reason_not_diagnostics():
     assert projected.provenance_panel.diagnostic_limitations == (limitation,)
     assert projected.provenance_panel.evidence_references == ()
     assert projected.provenance_panel.response_trace == response.response_trace
+
+
+def test_missing_customer_fact_reason_names_the_actual_missing_input():
+    decision = SimpleNamespace(
+        request_rejection_kind="MISSING_CUSTOMER_FACT",
+        request_missing_context_keys=("policy_start_date",),
+    )
+
+    reason = _customer_reason(decision)
+
+    assert reason is not None
+    assert reason.reason_kind == "MISSING_CUSTOMER_FACT"
+    assert reason.resolving_requirement is not None
+    assert "policy start date" in reason.resolving_requirement.lower()
+    customer_text = " ".join(
+        (reason.text, reason.resolving_requirement or "")
+    ).lower()
+    assert "claim approval" not in customer_text
+    assert "claim payment" not in customer_text
+    assert "will be paid" not in customer_text
+    assert "will not be paid" not in customer_text
+
+
+def test_source_gap_reason_does_not_imply_claim_payment():
+    decision = SimpleNamespace(
+        request_rejection_kind="SOURCE_DOES_NOT_ESTABLISH",
+        request_missing_context_keys=(),
+    )
+
+    reason = _customer_reason(decision)
+
+    assert reason is not None
+    assert reason.reason_kind == "SOURCE_DOES_NOT_ESTABLISH"
+    assert reason.resolving_requirement is None
+    customer_text = reason.text.lower()
+    assert "claim approval" not in customer_text
+    assert "claim payment" not in customer_text
+    assert "will be paid" not in customer_text
+    assert "will not be paid" not in customer_text
+
+
+def test_human_meaning_types_exclude_machine_explanation_and_condition():
+    assert "EXPLANATION" not in human_answer_module._HUMAN_MEANING_SECTION_TYPES
+    assert "CONDITION" not in human_answer_module._HUMAN_MEANING_SECTION_TYPES
+    assert "CUSTOMER_EXPLANATION" in human_answer_module._HUMAN_MEANING_SECTION_TYPES
 
 
 def test_projector_source_contains_no_insurer_product_or_mechanic_branch():
