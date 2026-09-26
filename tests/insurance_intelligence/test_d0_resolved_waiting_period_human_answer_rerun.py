@@ -233,8 +233,19 @@ def test_d0_resolved_waiting_period_applicability_projects_to_human_answer() -> 
     assert "still active" in human_text or "not complete" in human_text
     answer_text = projection.human_view.answer.casefold()
     unknown_text = " ".join(projection.human_view.unknowns).casefold()
+
+    assert "still active" in answer_text or "not complete" in answer_text
     assert "claim approval" not in answer_text
     assert "claim payment" not in answer_text
     assert "does not establish final claim approval or payment" in unknown_text
+    assert "evreq-" not in unknown_text
+    assert "authoritative publication source type" not in unknown_text
+    assert "no registered rule supports" not in unknown_text
+    assert "all eligible rules were rejected" not in unknown_text
+
+    diagnostics = " ".join(
+        projection.provenance_panel.diagnostic_limitations
+    ).casefold()
+    assert "evreq-" in diagnostics
     assert projection.provenance_panel.evidence_references
     assert projection.provenance_panel.response_trace
