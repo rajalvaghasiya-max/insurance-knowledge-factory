@@ -184,18 +184,23 @@ def test_d0_real_star_ped_machine_response_projects_to_governed_human_view():
 
     assert projection.source_response_id == response.response_id
     assert projection.human_view.answer == response.direct_answer
-    assert projection.human_view.unknowns == response.limitations
+    assert projection.provenance_panel.diagnostic_limitations == response.limitations
     assert projection.provenance_panel.evidence_references == response.evidence_references
     assert projection.provenance_panel.response_trace == response.response_trace
 
-    positive_text = " ".join((projection.human_view.answer, *projection.human_view.meaning)).lower()
-    assert "36" in positive_text
-    assert "continu" in positive_text or "portab" in positive_text
-    assert "12" not in positive_text
+    customer_text = " ".join(
+        (
+            projection.human_view.answer,
+            *projection.human_view.meaning,
+            *projection.human_view.unknowns,
+            projection.human_view.next_step or "",
+        )
+    ).lower()
+    assert "36" in customer_text
+    assert "continu" in customer_text or "portab" in customer_text
+    assert "12 months" not in customer_text
+    assert "policy-specific selection evidence" not in customer_text
 
-    unknown_text = " ".join(projection.human_view.unknowns).lower()
-    assert "customer-specific eligibility" in unknown_text
-    assert "claim payment" in unknown_text
-    assert "12 months" in unknown_text
-    assert "policy-specific selection evidence" in unknown_text
-    assert projection.human_view.next_step is not None
+    diagnostic_text = " ".join(projection.provenance_panel.diagnostic_limitations).lower()
+    assert "12 months" in diagnostic_text
+    assert "policy-specific selection evidence" in diagnostic_text
