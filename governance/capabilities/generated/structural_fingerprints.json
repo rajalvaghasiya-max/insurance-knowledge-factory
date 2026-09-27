@@ -114,7 +114,7 @@
         "insurance_intelligence/decision/gate.py",
         "insurance_intelligence/decision/registry.py"
       ],
-      "structural_fingerprint": "63c56de0e7b23f6a7c4ee132ff093ce2076cf4c3df251f4d6678e7880d49bb70"
+      "structural_fingerprint": "634c6f4b97477ae5c3b2d5b983ee5e4f40323bf6a570434c906f19a92c3f594e"
     },
     {
       "capability_id": "II.DECISION_SUPPORT.NON_VERDICT_PERSONALIZATION",
@@ -382,7 +382,7 @@
         "insurance_intelligence/response/service.py",
         "insurance_intelligence/response/validator.py"
       ],
-      "structural_fingerprint": "21fafae84fc33840c668e9ef70e3e615d0fe6f01b729c43ceae6b3f7bc32f8cc"
+      "structural_fingerprint": "e85bd5ae2d963b8d203951b8fbbf9bc345af626ca14d680150a2f228640910bd"
     },
     {
       "capability_id": "II.RULE_CERTIFICATION.GOVERNED_RUNNER",

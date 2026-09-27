@@ -69,7 +69,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.DECISION.DETERMINISTIC_SAFETY_GATE`<br>Deterministic Decision and Safety Gate | `ACTIVE` | `REUSE` | Underlying deterministic safety-decision engine. In the current canonical path ordinary assertion access is mediated by II.DECISION.AUTHORITY_ENFORCEMENT; this base gate does not independently authorize advisory or recommendation paths. | None | `insurance_intelligence/decision`<br>`insurance_intelligence/contracts/decision.py` | `63c56de0e7b2` |
+| `II.DECISION.DETERMINISTIC_SAFETY_GATE`<br>Deterministic Decision and Safety Gate | `ACTIVE` | `REUSE` | Underlying deterministic safety-decision engine. In the current canonical path ordinary assertion access is mediated by II.DECISION.AUTHORITY_ENFORCEMENT; this base gate does not independently authorize advisory or recommendation paths. | None | `insurance_intelligence/decision`<br>`insurance_intelligence/contracts/decision.py` | `634c6f4b9747` |
 
 ### INSURANCE_INTELLIGENCE_DECISION_GOVERNANCE
 
@@ -203,7 +203,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.RESPONSE.ASSEMBLY`<br>Deterministic Response Assembler | `ACTIVE` | `REUSE` | Creates the deterministic deliverable answer baseline; it does not authorize new facts or LLM-originated content. | None | `insurance_intelligence/response`<br>`insurance_intelligence/contracts/response.py` | `21fafae84fc3` |
+| `II.RESPONSE.ASSEMBLY`<br>Deterministic Response Assembler | `ACTIVE` | `REUSE` | Creates the deterministic deliverable answer baseline; it does not authorize new facts or LLM-originated content. | None | `insurance_intelligence/response`<br>`insurance_intelligence/contracts/response.py` | `e85bd5ae2d96` |
 
 ### INSURANCE_INTELLIGENCE_TERMINOLOGY
 
