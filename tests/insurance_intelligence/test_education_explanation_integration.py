@@ -209,7 +209,7 @@ def test_admitted_education_enriches_explanation_without_becoming_product_eviden
 
     assert response.direct_answer == "The waiting period duration is 36 MONTHS."
     assert response.sections[0].section_type == "EDUCATION"
-    assert response.sections[1].section_type == "EXPLANATION"
+    assert response.sections[1].section_type == "CUSTOMER_EXPLANATION"
     assert any(section.section_type == "EXAMPLE" for section in response.sections)
     assert {ref.source_id for ref in response.evidence_references} == {
         "product-evidence-1"
