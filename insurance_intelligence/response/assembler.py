@@ -123,7 +123,8 @@ def _label(context: Mapping[str, object], evidence_id: str) -> str:
 
 def _section_sort_key(section: ResponseSection, definition: ResponseFormatDefinition) -> tuple[int, str]:
     order = {section_type: index for index, section_type in enumerate(definition.section_order)}
-    return (order.get(section.section_type, len(order)), section.section_id)
+    effective_type = "EXPLANATION" if section.section_type == "CUSTOMER_EXPLANATION" else section.section_type
+    return (order.get(effective_type, len(order)), section.section_id)
 
 
 def _build_references(
@@ -187,7 +188,10 @@ def assemble_sections(
             response_type = EXPLANATION_TO_RESPONSE_SECTION[section.section_type]
         except KeyError as exc:
             raise ResponseAssemblyError(f"unsupported explanation section type: {section.section_type}") from exc
-        if response_type not in format_definition.allowed_section_types:
+        if explanation.audience == "CUSTOMER" and response_type == "EXPLANATION":
+            response_type = "CUSTOMER_EXPLANATION"
+        allowed_type = "EXPLANATION" if response_type == "CUSTOMER_EXPLANATION" else response_type
+        if allowed_type not in format_definition.allowed_section_types:
             continue
         if _word_count(section.text) > format_definition.max_section_words:
             raise ResponseAssemblyError(f"section exceeds max_section_words: {section.section_id}")
@@ -222,7 +226,7 @@ def assemble_sections(
             candidates = [
                 item.text
                 for item in response_sections
-                if item.section_type in {"EXPLANATION", "IMPACT", "CONDITION", "ADVISOR_TALKING_POINT"}
+                if item.section_type in {"CUSTOMER_EXPLANATION", "EXPLANATION", "IMPACT", "CONDITION", "ADVISOR_TALKING_POINT"}
             ]
             if not candidates:
                 raise ResponseAssemblyError("required direct answer is unavailable")

@@ -127,13 +127,23 @@ def _check(
     )
 
 
+def _effective_format_section_type(section_type: str) -> str:
+    return "EXPLANATION" if section_type == "CUSTOMER_EXPLANATION" else section_type
+
+
 def _expected_section_order(
     sections: Sequence[ResponseSection], definition: ResponseFormatDefinition
 ) -> tuple[str, ...]:
     order = {section_type: index for index, section_type in enumerate(definition.section_order)}
     return tuple(
         item.section_id
-        for item in sorted(sections, key=lambda item: (order.get(item.section_type, len(order)), item.section_id))
+        for item in sorted(
+            sections,
+            key=lambda item: (
+                order.get(_effective_format_section_type(item.section_type), len(order)),
+                item.section_id,
+            ),
+        )
     )
 
 
@@ -214,7 +224,12 @@ def validate_response_draft(
         sources = [drafted_sections.get(item) for item in source_ids]
         known_sources = bool(source_ids) and all(item is not None for item in sources)
         expected_types = {
-            EXPLANATION_TO_RESPONSE_SECTION[item.section_type]  # type: ignore[union-attr]
+            (
+                "CUSTOMER_EXPLANATION"
+                if explanation.audience == "CUSTOMER"
+                and EXPLANATION_TO_RESPONSE_SECTION[item.section_type] == "EXPLANATION"
+                else EXPLANATION_TO_RESPONSE_SECTION[item.section_type]
+            )  # type: ignore[union-attr]
             for item in sources
             if item is not None and item.section_type in EXPLANATION_TO_RESPONSE_SECTION
         }
@@ -233,7 +248,7 @@ def validate_response_draft(
             and known_sources
             and len(expected_types) == 1
             and section.section_type in expected_types
-            and section.section_type in format_definition.allowed_section_types
+            and _effective_format_section_type(section.section_type) in format_definition.allowed_section_types
             and set(section.approved_finding_ids) <= approved_findings
             and education_lineage_ok
         )

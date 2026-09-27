@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-customer-presentation-boundary-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.DECISION.DETERMINISTIC_SAFETY_GATE",
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "Extend the existing D0 response path so customer-facing presentation is structurally distinct from machine/audit reasoning text. The Decision Gate now preserves explicit missing-context keys alongside the already-typed request rejection cause, and the Response Assembler exposes typed CustomerReason and CUSTOMER_EXPLANATION channels. HumanAnswerView consumes only typed customer-facing meaning, qualification, reason, and next-step channels while raw limitations remain provenance diagnostics.",
+  "supersession_impact": "No reasoning rule, decision outcome, explanation finding, response format, evidence lineage, or fail-closed behavior is replaced. Existing EXPLANATION, CONDITION, and limitation content remains available in canonical upstream response/explanation artifacts for audit; the human projector no longer treats those machine-oriented channels as customer-ready by default.",
+  "authority_impact": "No insurance authority is broadened. CustomerReason is derived only from typed Decision Gate rejection semantics and explicit missing-input keys. SOURCE_DOES_NOT_ESTABLISH does not ask for already-supplied customer facts, and no customer reason may convert waiting-period applicability into claim approval or payment."
+}
