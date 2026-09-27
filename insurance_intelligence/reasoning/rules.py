@@ -20,6 +20,7 @@ from insurance_intelligence.contracts.evidence import EvidencePackage
 from insurance_intelligence.contracts.reasoning import (
     RULE_REJECTION_KINDS,
     Finding,
+    build_customer_qualification,
     build_finding,
 )
 from insurance_intelligence.contracts.semantic import build_governed_semantic_attribute
@@ -515,16 +516,61 @@ def waiting_period_applicability_resolved(data: RuleInput) -> tuple[Finding, ...
 
     if timeline.status == "NOT_COMPLETE":
         predicate = "is_still_active"
-        effect = "the waiting period is still active on the approved claim date and is not complete"
+        effect = (
+            "the waiting period is still active on "
+            f"{timeline.event_date.isoformat()} for a policy starting on "
+            f"{timeline.start_date.isoformat()} and is not complete"
+        )
     else:
         predicate = "is_complete"
-        effect = "the waiting period is complete on the approved claim date"
+        effect = (
+            "the waiting period is complete on "
+            f"{timeline.event_date.isoformat()} for a policy starting on "
+            f"{timeline.start_date.isoformat()}"
+        )
 
     qualification_bits = []
+    customer_qualifications = []
     if continuity is not None:
         qualification_bits.append(continuity.claim.strip())
+        customer_qualifications.append(
+            build_customer_qualification(
+                qualification_id=_stable_id(
+                    "qualification",
+                    {
+                        "rule_id": rule_id,
+                        "requirement_id": data.requirement_id,
+                        "kind": "continuity_or_credit",
+                        "evidence_id": continuity.evidence_id,
+                    },
+                ),
+                text=continuity.claim.strip(),
+                applicability_status=str(
+                    data.approved_context["waiting_period_continuity_credit_status"]
+                ),
+                evidence_ids=(continuity.evidence_id,),
+            )
+        )
     if exception is not None:
         qualification_bits.append(exception.claim.strip())
+        customer_qualifications.append(
+            build_customer_qualification(
+                qualification_id=_stable_id(
+                    "qualification",
+                    {
+                        "rule_id": rule_id,
+                        "requirement_id": data.requirement_id,
+                        "kind": "exception",
+                        "evidence_id": exception.evidence_id,
+                    },
+                ),
+                text=exception.claim.strip(),
+                applicability_status=str(
+                    data.approved_context["waiting_period_exception_status"]
+                ),
+                evidence_ids=(exception.evidence_id,),
+            )
+        )
     condition = (
         f"{duration} {start_basis} Approved policy start date: {timeline.start_date.isoformat()}; "
         f"approved claim date: {timeline.event_date.isoformat()}; calculated boundary date: "
@@ -560,6 +606,7 @@ def waiting_period_applicability_resolved(data: RuleInput) -> tuple[Finding, ...
                 evidence_references=evidence_ids,
             ),
         ),
+        customer_qualifications=tuple(customer_qualifications),
         confidence=min(confidence, 0.95),
     )
     return (finding,)
