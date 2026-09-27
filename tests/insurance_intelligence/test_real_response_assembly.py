@@ -156,7 +156,7 @@ def test_star_ped_factual_lane_reaches_response_assembly_with_machine_answer_and
     assert response.direct_answer == "The waiting period duration is 36 MONTHS."
     included = tuple(section for section in response.sections if section.status == "INCLUDED")
     assert included
-    assert any(section.section_type == "EXPLANATION" for section in included)
+    assert any(section.section_type == "CUSTOMER_EXPLANATION" for section in included)
 
     answer_text = " ".join(
         (response.direct_answer, *(section.text for section in included))
