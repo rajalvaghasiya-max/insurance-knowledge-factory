@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-case-relevant-qualification-repair-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.REASONING.ENGINE",
+    "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR"
+  ],
+  "rationale": "Repair D0 case relevance by extending governed findings with independent customer qualifications carrying applicability status and evidence lineage. Resolved reasoning can preserve all canonical clauses while explanation projection emits only APPLICABLE or UNRESOLVED customer qualifications and suppresses NOT_APPLICABLE clauses from the customer surface without text matching.",
+  "supersession_impact": "No canonical evidence, finding exception, applicability scope, or machine/audit clause is deleted or superseded. Existing findings without typed customer qualifications retain their prior behavior.",
+  "authority_impact": "No insurance or claim-outcome authority is broadened. The repair changes only case-relevance projection of already-governed clauses. Waiting-period status remains bounded to timeline applicability and does not establish claim approval or payment."
+}

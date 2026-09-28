@@ -90,6 +90,9 @@ RULE_EXECUTION_STATUSES = frozenset(
 RULE_REJECTION_KINDS = frozenset(
     {"MISSING_CUSTOMER_FACT", "SOURCE_DOES_NOT_ESTABLISH", "UNSUPPORTED_REASONING"}
 )
+CUSTOMER_QUALIFICATION_APPLICABILITY = frozenset(
+    {"APPLICABLE", "NOT_APPLICABLE", "UNRESOLVED"}
+)
 TRACE_EVENT_TYPES = frozenset(
     {
         "REASONING_STARTED",
@@ -212,6 +215,37 @@ def build_assumption(
 
 
 @dataclass(frozen=True)
+class CustomerQualification:
+    qualification_id: str
+    text: str
+    applicability_status: str
+    evidence_ids: tuple[str, ...]
+
+
+def build_customer_qualification(
+    *,
+    qualification_id: str,
+    text: str,
+    applicability_status: str,
+    evidence_ids: Sequence[str],
+) -> CustomerQualification:
+    return CustomerQualification(
+        qualification_id=_require_nonempty_str(
+            qualification_id, "customer_qualification.qualification_id"
+        ),
+        text=_require_nonempty_str(text, "customer_qualification.text"),
+        applicability_status=_require_member(
+            applicability_status,
+            CUSTOMER_QUALIFICATION_APPLICABILITY,
+            "customer_qualification.applicability_status",
+        ),
+        evidence_ids=_require_unique(
+            evidence_ids, "customer_qualification.evidence_ids"
+        ),
+    )
+
+
+@dataclass(frozen=True)
 class Finding:
     finding_id: str
     requirement_id: str
@@ -234,6 +268,7 @@ class Finding:
     exception: str | None = None
     applicability_scope: str | None = None
     semantic_attributes: tuple[GovernedSemanticAttribute, ...] = ()
+    customer_qualifications: tuple[CustomerQualification, ...] = ()
 
 
 def build_finding(
@@ -258,6 +293,7 @@ def build_finding(
     exception: str | None = None,
     applicability_scope: str | None = None,
     semantic_attributes: Sequence[GovernedSemanticAttribute] = (),
+    customer_qualifications: Sequence[CustomerQualification] = (),
     confidence: float = 1.0,
 ) -> Finding:
     validated_finding_status = _require_member(
@@ -287,6 +323,26 @@ def build_finding(
         validated_semantic_attributes = validate_semantic_attributes(semantic_attributes)
     except SemanticAttributeContractError as exc:
         raise ReasoningContractError(str(exc)) from exc
+    validated_customer_qualifications = tuple(customer_qualifications)
+    if not all(
+        isinstance(item, CustomerQualification)
+        for item in validated_customer_qualifications
+    ):
+        raise ReasoningContractError(
+            "customer_qualifications must contain CustomerQualification values"
+        )
+    qualification_ids = [
+        item.qualification_id for item in validated_customer_qualifications
+    ]
+    if len(qualification_ids) != len(set(qualification_ids)):
+        raise ReasoningContractError(
+            "customer qualification IDs must be unique"
+        )
+    for item in validated_customer_qualifications:
+        if not set(item.evidence_ids) <= set(validated_evidence):
+            raise ReasoningContractError(
+                "customer qualification evidence must be within finding evidence"
+            )
     if validated_finding_status in {"SUPPORTED", "SUPPORTED_WITH_LIMITATIONS", "CONDITIONAL", "PARTIALLY_SUPPORTED"} and not validated_evidence:
         raise ReasoningContractError("supported findings must reference at least one evidence_id")
     return Finding(
@@ -301,6 +357,7 @@ def build_finding(
         exception=exception,
         applicability_scope=applicability_scope,
         semantic_attributes=validated_semantic_attributes,
+        customer_qualifications=validated_customer_qualifications,
         scope=_require_nonempty_str(scope, "finding.scope"),
         finding_status=validated_finding_status,
         derivation_type=validated_derivation_type,

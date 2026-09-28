@@ -154,9 +154,12 @@ def _plain_finding_text(finding: Finding, *, audience: str) -> str:
     else:
         statement = f"{subject} {predicate} {effect}"
         clauses.append(_ensure_sentence(statement))
-    if exception:
+    typed_customer_qualifications = (
+        audience == "CUSTOMER" and bool(finding.customer_qualifications)
+    )
+    if exception and not typed_customer_qualifications:
         clauses.append(_ensure_sentence(f"Exception: {exception}"))
-    if applicability_scope:
+    if applicability_scope and not typed_customer_qualifications:
         clauses.append(_ensure_sentence(f"Scope: {applicability_scope}"))
     return " ".join(clauses)
 
@@ -210,6 +213,28 @@ def _customer_communication_sections(
                 text=_ensure_sentence(attribute.value),
                 approved_finding_ids=(finding.finding_id,),
                 evidence_ids=evidence_ids,
+            )
+        )
+    for qualification in finding.customer_qualifications:
+        if qualification.applicability_status == "NOT_APPLICABLE":
+            continue
+        if not set(qualification.evidence_ids) <= set(finding.evidence_ids):
+            raise ExplanationTemplateError(
+                "customer qualification references evidence outside the approved finding"
+            )
+        sections.append(
+            build_section(
+                section_id=_stable_id(
+                    "section",
+                    request_id,
+                    finding.finding_id,
+                    qualification.qualification_id,
+                ),
+                section_type="CUSTOMER_QUALIFICATION",
+                status="DRAFTED",
+                text=_ensure_sentence(qualification.text),
+                approved_finding_ids=(finding.finding_id,),
+                evidence_ids=qualification.evidence_ids,
             )
         )
     return tuple(sections)

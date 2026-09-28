@@ -113,7 +113,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR`<br>Evidence-Locked Explanation Generator | `ACTIVE` | `REUSE` | Underlying presentation engine only. Current ordinary-assertion entry is mediated by II.EXPLANATION.AUTHORITY_ENFORCEMENT; the generator may not retrieve evidence, reason, alter approved scope, or add recommendation authority. | None | `insurance_intelligence/explanation`<br>`insurance_intelligence/contracts/explanation.py` | `a27a44fa69ff` |
+| `II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR`<br>Evidence-Locked Explanation Generator | `ACTIVE` | `REUSE` | Underlying presentation engine only. Current ordinary-assertion entry is mediated by II.EXPLANATION.AUTHORITY_ENFORCEMENT; the generator may not retrieve evidence, reason, alter approved scope, or add recommendation authority. | None | `insurance_intelligence/explanation`<br>`insurance_intelligence/contracts/explanation.py` | `6ef52642c064` |
 
 ### INSURANCE_INTELLIGENCE_EXPLANATION_GOVERNANCE
 
@@ -178,7 +178,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.REASONING.ENGINE`<br>Deterministic Reasoning Engine | `ACTIVE` | `REUSE` | May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes. | None | `insurance_intelligence/reasoning`<br>`insurance_intelligence/contracts/reasoning.py` | `9d0161689828` |
+| `II.REASONING.ENGINE`<br>Deterministic Reasoning Engine | `ACTIVE` | `REUSE` | May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes. | None | `insurance_intelligence/reasoning`<br>`insurance_intelligence/contracts/reasoning.py` | `394d166f83fe` |
 
 ### INSURANCE_INTELLIGENCE_RENDERING
 
