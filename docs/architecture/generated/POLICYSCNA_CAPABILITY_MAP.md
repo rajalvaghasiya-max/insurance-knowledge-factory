@@ -113,7 +113,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR`<br>Evidence-Locked Explanation Generator | `ACTIVE` | `REUSE` | Underlying presentation engine only. Current ordinary-assertion entry is mediated by II.EXPLANATION.AUTHORITY_ENFORCEMENT; the generator may not retrieve evidence, reason, alter approved scope, or add recommendation authority. | None | `insurance_intelligence/explanation`<br>`insurance_intelligence/contracts/explanation.py` | `6ef52642c064` |
+| `II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR`<br>Evidence-Locked Explanation Generator | `ACTIVE` | `REUSE` | Underlying presentation engine only. Current ordinary-assertion entry is mediated by II.EXPLANATION.AUTHORITY_ENFORCEMENT; the generator may not retrieve evidence, reason, alter approved scope, or add recommendation authority. | None | `insurance_intelligence/explanation`<br>`insurance_intelligence/contracts/explanation.py` | `aacfb4138d4e` |
 
 ### INSURANCE_INTELLIGENCE_EXPLANATION_GOVERNANCE
 
