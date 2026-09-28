@@ -319,12 +319,17 @@ def render_explanation_templates(
                     text = _ensure_sentence(f"This applies when {finding.condition.strip()}. {text}")
             template_id = "detailed_finding_v1"
         else:
-            section_type = (
-                "DIRECT_ANSWER"
-                if _is_direct_documented_fact(finding)
-                and _answer_role(finding) == "PRIMARY"
-                else "MEANING"
-            )
+            role = _answer_role(finding)
+            if _is_direct_documented_fact(finding) and role == "PRIMARY":
+                section_type = "DIRECT_ANSWER"
+            elif (
+                explanation_input.audience == "CUSTOMER"
+                and _is_direct_documented_fact(finding)
+                and role == "QUALIFYING"
+            ):
+                section_type = "CONDITION"
+            else:
+                section_type = "MEANING"
             text = _plain_finding_text(finding, audience=explanation_input.audience)
             template_id = "plain_finding_v1"
 
