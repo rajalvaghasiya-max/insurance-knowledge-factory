@@ -511,22 +511,22 @@ def waiting_period_applicability_resolved(data: RuleInput) -> tuple[Finding, ...
     if timeline.status == "BOUNDARY_UNRESOLVED":
         raise ReasoningRuleError(
             "waiting-period activation convention is unresolved at the calculated boundary date",
-            rejection_kind="SOURCE_DOES_NOT_ESTABLISH",
+            rejection_kind="SOURCE_BOUNDARY_CONVENTION_UNRESOLVED",
         )
 
     if timeline.status == "NOT_COMPLETE":
         predicate = "is_still_active"
         effect = (
-            "the waiting period is still active on "
-            f"{timeline.event_date.isoformat()} for a policy starting on "
-            f"{timeline.start_date.isoformat()} and is not complete"
+            "The waiting period is still active on "
+            f"{timeline.event_date.isoformat()} for a policy that started on "
+            f"{timeline.start_date.isoformat()}."
         )
     else:
         predicate = "is_complete"
         effect = (
-            "the waiting period is complete on "
-            f"{timeline.event_date.isoformat()} for a policy starting on "
-            f"{timeline.start_date.isoformat()}"
+            "The waiting period is complete on "
+            f"{timeline.event_date.isoformat()} for a policy that started on "
+            f"{timeline.start_date.isoformat()}."
         )
 
     qualification_bits = []
