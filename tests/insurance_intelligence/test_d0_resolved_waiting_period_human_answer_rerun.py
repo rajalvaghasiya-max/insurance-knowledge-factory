@@ -248,7 +248,11 @@ def test_d0_resolved_waiting_period_applicability_projects_to_human_answer() -> 
     answer_text = projection.human_view.answer.casefold()
     unknown_text = " ".join(projection.human_view.unknowns).casefold()
 
-    assert "still active" in answer_text or "not complete" in answer_text
+    assert projection.human_view.answer == (
+        "The waiting period is still active on 2026-01-15 for a policy that started on "
+        "2026-01-01."
+    )
+    assert "still active" in answer_text
     assert "claim approval" not in answer_text
     assert "claim payment" not in answer_text
     assert "does not establish final claim approval or payment" in unknown_text
