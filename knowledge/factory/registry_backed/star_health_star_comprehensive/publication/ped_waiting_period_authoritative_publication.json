@@ -30,7 +30,7 @@
   ],
   "publication_authority": "governed authoritative publication authority",
   "publication_id": "authoritative-publication:star_health:ped_waiting_period",
-  "publication_receipt_id": "publication_receipt_6448a5f5f6044bd1",
+  "publication_receipt_id": "publication_receipt_99a4001c19d1ee82",
   "publication_status": "AUTHORITATIVE",
   "resolved_certification_limitations": [
     "The waiting-period binding remains bound_not_published and is used only for internal certification."
@@ -56,6 +56,13 @@
           ],
           "key": "duration_unit",
           "value": "MONTHS"
+        },
+        {
+          "key": "customer_direct_answer",
+          "value": "The PED waiting period is 36 months.",
+          "evidence_references": [
+            "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+          ]
         }
       ]
     },
