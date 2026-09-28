@@ -18,13 +18,13 @@ def test_typed_rule_rejection_contract_exists() -> None:
     assert "rejection_kind" in result_fields
     assert {
         "MISSING_CUSTOMER_FACT",
-        "SOURCE_BOUNDARY_CONVENTION_UNRESOLVED",
+        "SOURCE_DOES_NOT_ESTABLISH",
         "SOURCE_BOUNDARY_CONVENTION_UNRESOLVED",
         "UNSUPPORTED_REASONING",
     } <= reasoning_contract.RULE_REJECTION_KINDS
 
 
-def test_case_c_preserves_source_does_not_establish_without_changing_fail_closed() -> None:
+def test_case_c_preserves_exact_boundary_source_cause_without_changing_fail_closed() -> None:
     request = case_c._request()
     dependencies = case_c._dependencies(request)
     adapters = build_real_response_assembly_adapters(
