@@ -59,8 +59,8 @@
     ]
   },
   "non_publication_guardrail": "generic_concept_record_no_publication_customer_answer_entitlement_recommendation_or_claim_decision",
-  "plain_language_explanation": "A Pre-Existing Disease (PED) is a health problem or medical condition you already had before your insurance started. Under the formal definition used here, the relevant look-back is 36 months for diagnosis, medical advice or treatment.",
-  "practical_implication": "If a condition is a PED, the specific health plan may apply a PED waiting period before the PED waiting-period restriction ends. The actual waiting period, any continuity or portability credit, and any claim outcome must come from the applicable product terms and customer documents.",
+  "plain_language_explanation": "A Pre-Existing Disease (PED) is a health problem or medical condition you already had before your insurance started.",
+  "practical_implication": "If a condition is treated as a PED, the policy may apply a PED waiting period to treatment related to that condition. The exact waiting period and any reduction for prior continuous coverage must come from the product terms and your policy details.",
   "product_specific_boundary": "The applicable PED waiting-period duration, optional modifications, continuity or portability credit, exclusions, and other product mechanics must come from governed product knowledge.",
   "publication_state": "not_published",
   "recommendation_state": "not_created",
@@ -82,8 +82,8 @@
   "schema_version": "0.2",
   "simple_example": {
     "scenario": "A person already has an ear condition that was diagnosed 18 months before the health policy starts.",
-    "result": "That diagnosis falls within the 36-month look-back, so the condition fits the diagnosis-timing part of the PED definition.",
-    "boundary": "This example only explains what counts as a PED. It does not decide the product's PED waiting period, whether continuity or portability changes that period, or claim approval or payment."
+    "result": "Because the ear condition was diagnosed before the policy started and within the PED definition period, it may be treated as a PED.",
+    "boundary": "This example only explains what a PED is. It does not decide the product's waiting period or whether a claim will be approved or paid."
   },
   "source_evidence": [
     {
