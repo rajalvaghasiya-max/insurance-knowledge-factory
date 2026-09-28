@@ -242,7 +242,7 @@ def test_canonical_unsupported_response_projects_typed_reason_not_diagnostics():
 
     projected = project_human_answer(response)
 
-    assert "cannot determine" in projected.human_view.answer.lower()
+    assert "cannot safely determine" in projected.human_view.answer.lower()
     assert projected.human_view.unknowns == (customer_reason.text,)
     assert projected.human_view.next_step is not None
     assert "evreq-1" not in " ".join(projected.human_view.unknowns)
