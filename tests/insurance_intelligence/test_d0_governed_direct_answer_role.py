@@ -282,8 +282,10 @@ def test_primary_direct_fact_becomes_explicit_direct_answer_section() -> None:
 
     direct = [item for item in rendered.sections if item.section_type == "DIRECT_ANSWER"]
     meaning = [item for item in rendered.sections if item.section_type == "MEANING"]
+    conditions = [item for item in rendered.sections if item.section_type == "CONDITION"]
     assert [item.text for item in direct] == ["The obligation is 20%."]
-    assert any("documented waiver" in item.text for item in meaning)
+    assert not meaning
+    assert any("documented waiver" in item.text for item in conditions)
 
 
 def test_requested_component_drives_primary_role_when_multiple_required_are_published() -> None:
