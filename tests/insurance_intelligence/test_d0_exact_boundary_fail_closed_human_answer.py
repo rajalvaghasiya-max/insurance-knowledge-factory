@@ -177,12 +177,13 @@ def test_d0_exact_boundary_fails_closed_with_human_next_step() -> None:
     diagnostic_text = " ".join(projection.provenance_panel.diagnostic_limitations).casefold()
 
     assert response.customer_reason is not None
-    assert response.customer_reason.reason_kind == "SOURCE_DOES_NOT_ESTABLISH"
+    assert response.customer_reason.reason_kind == "SOURCE_BOUNDARY_CONVENTION_UNRESOLVED"
     assert projection.human_view.unknowns == (response.customer_reason.text,)
-    assert "customer facts" in unknown_text
-    assert "governed source" in unknown_text
+    assert "exact" in unknown_text
+    assert "boundary" in unknown_text
+    assert "yes-or-no" in unknown_text
     assert projection.human_view.next_step
-    assert "policy" in next_step
+    assert "exact boundary date" in next_step
     assert "insurer" in next_step or "advisor" in next_step
     assert "policy start date" not in next_step
     assert "claim date" not in next_step
