@@ -169,7 +169,7 @@ def _run_real_star_ped_response():
 def test_star_ped_factual_lane_reaches_response_assembly_with_machine_answer_and_lineage():
     request, dependencies, response = _run_real_star_ped_response()
     assert response.response_status in {"ANSWER", "ANSWER_WITH_LIMITATIONS"}
-    assert response.direct_answer == "The waiting period duration is 36 MONTHS."
+    assert response.direct_answer == "The PED waiting period is 36 months."
     included = tuple(section for section in response.sections if section.status == "INCLUDED")
     assert included
     assert any(section.section_type == "CUSTOMER_QUALIFICATION" for section in included)
