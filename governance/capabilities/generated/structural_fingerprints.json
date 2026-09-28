@@ -206,7 +206,7 @@
         "insurance_intelligence/explanation/templates.py",
         "insurance_intelligence/explanation/validator.py"
       ],
-      "structural_fingerprint": "a27a44fa69ff7c36ac25cea2e5dfa65f9dbc917cd4830f8fda29e1e6cc1ba1fd"
+      "structural_fingerprint": "6ef52642c0647c20b6a65a1ab95474af80988cdb10e11547b38d6dcd925de3bc"
     },
     {
       "capability_id": "II.GOVERNANCE.BYPASS_INVENTORY",
@@ -346,7 +346,7 @@
         "insurance_intelligence/reasoning/trace.py",
         "insurance_intelligence/reasoning/waiting_period_applicability.py"
       ],
-      "structural_fingerprint": "9d016168982808196b330e8dfca5167d64e69ec9c489ac0b931f096f5ed4d339"
+      "structural_fingerprint": "394d166f83fe495cfe5115f58070ba730d56509208416e253a58b18454817f1c"
     },
     {
       "capability_id": "II.RENDERING.EXIT_SAFETY",
