@@ -224,7 +224,7 @@ def _run():
 def test_case_a_real_path_composes_founder_approved_practical_illustration() -> None:
     response, explanation = _run()
 
-    assert response.direct_answer == "The waiting period duration is 36 MONTHS."
+    assert response.direct_answer == "The PED waiting period is 36 months."
 
     included = tuple(section for section in response.sections if section.status == "INCLUDED")
     assert any(section.section_type == "EDUCATION" for section in included)
@@ -312,7 +312,7 @@ def test_case_a_customer_answer_is_internally_acceptable_before_cold_reader() ->
     response, _ = _run()
     projection = project_human_answer(response)
 
-    assert projection.human_view.answer == "The waiting period duration is 36 MONTHS."
+    assert projection.human_view.answer == "The PED waiting period is 36 months."
 
     customer_text = " ".join(
         (
