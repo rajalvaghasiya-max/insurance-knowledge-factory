@@ -598,10 +598,15 @@ def waiting_period_applicability_resolved(data: RuleInput) -> tuple[Finding, ...
         ),
         semantic_attributes=(
             build_governed_semantic_attribute(
-                key="customer_qualification",
+                key="answer_role",
+                value="PRIMARY",
+                evidence_references=evidence_ids,
+            ),
+            build_governed_semantic_attribute(
+                key="customer_explanation",
                 value=(
-                    "This resolves only the governed waiting-period timeline state; "
-                    "it does not establish final claim approval or payment."
+                    "This tells you whether the waiting period is active on that date. "
+                    "It does not decide whether the claim will be approved or paid."
                 ),
                 evidence_references=evidence_ids,
             ),
