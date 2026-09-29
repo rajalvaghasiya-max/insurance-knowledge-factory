@@ -255,7 +255,12 @@ def test_d0_resolved_waiting_period_applicability_projects_to_human_answer() -> 
     assert "still active" in answer_text
     assert "claim approval" not in answer_text
     assert "claim payment" not in answer_text
-    assert "does not establish final claim approval or payment" in unknown_text
+    assert projection.human_view.meaning == (
+        "This tells you whether the waiting period is active on that date. "
+        "It does not decide whether the claim will be approved or paid.",
+    )
+    assert projection.human_view.unknowns == ()
+    assert projection.human_view.next_step is None
     assert "evreq-" not in unknown_text
     assert "authoritative publication source type" not in unknown_text
     assert "no registered rule supports" not in unknown_text
