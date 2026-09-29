@@ -113,7 +113,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR`<br>Evidence-Locked Explanation Generator | `ACTIVE` | `REUSE` | Underlying presentation engine only. Current ordinary-assertion entry is mediated by II.EXPLANATION.AUTHORITY_ENFORCEMENT; the generator may not retrieve evidence, reason, alter approved scope, or add recommendation authority. | None | `insurance_intelligence/explanation`<br>`insurance_intelligence/contracts/explanation.py` | `7f41044c5765` |
+| `II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR`<br>Evidence-Locked Explanation Generator | `ACTIVE` | `REUSE` | Underlying presentation engine only. Current ordinary-assertion entry is mediated by II.EXPLANATION.AUTHORITY_ENFORCEMENT; the generator may not retrieve evidence, reason, alter approved scope, or add recommendation authority. | None | `insurance_intelligence/explanation`<br>`insurance_intelligence/contracts/explanation.py` | `fedec5de7ff7` |
 
 ### INSURANCE_INTELLIGENCE_EXPLANATION_GOVERNANCE
 
@@ -178,7 +178,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.REASONING.ENGINE`<br>Deterministic Reasoning Engine | `ACTIVE` | `REUSE` | May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes. | None | `insurance_intelligence/reasoning`<br>`insurance_intelligence/contracts/reasoning.py` | `fcbad1f9d888` |
+| `II.REASONING.ENGINE`<br>Deterministic Reasoning Engine | `ACTIVE` | `REUSE` | May emit only registered finding types and derivations; it does not authorize recommendation or suitability outcomes. | None | `insurance_intelligence/reasoning`<br>`insurance_intelligence/contracts/reasoning.py` | `2a82df97523c` |
 
 ### INSURANCE_INTELLIGENCE_RENDERING
 
@@ -203,7 +203,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.RESPONSE.ASSEMBLY`<br>Deterministic Response Assembler | `ACTIVE` | `REUSE` | Creates the deterministic deliverable answer baseline; it does not authorize new facts or LLM-originated content. | None | `insurance_intelligence/response`<br>`insurance_intelligence/contracts/response.py` | `8daaa5027490` |
+| `II.RESPONSE.ASSEMBLY`<br>Deterministic Response Assembler | `ACTIVE` | `REUSE` | Creates the deterministic deliverable answer baseline; it does not authorize new facts or LLM-originated content. | None | `insurance_intelligence/response`<br>`insurance_intelligence/contracts/response.py` | `58c0ab05ed9e` |
 
 ### INSURANCE_INTELLIGENCE_TERMINOLOGY
 
