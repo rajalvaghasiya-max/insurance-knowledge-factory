@@ -33,6 +33,19 @@ _NON_ANSWER_MESSAGES = {
 _SUPPORTED_STATUSES = frozenset((*_ANSWER_STATUSES, *_NON_ANSWER_MESSAGES))
 
 
+def _non_answer_message(response: ResponseAssemblerOutput) -> str:
+    reason = response.customer_reason
+    if reason is not None:
+        if reason.reason_kind == "SOURCE_BOUNDARY_CONVENTION_UNRESOLVED":
+            return (
+                "I cannot safely say whether the waiting period applies on this exact "
+                "boundary date."
+            )
+        if reason.reason_kind == "SOURCE_DOES_NOT_ESTABLISH":
+            return "I cannot safely determine how this rule applies to your exact situation."
+    return _NON_ANSWER_MESSAGES[response.response_status]
+
+
 @dataclass(frozen=True)
 class HumanAnswerView:
     """Human-facing answer only; no evidence IDs or machine trace objects."""
@@ -101,9 +114,14 @@ def _resolution_next_step(response: ResponseAssemblerOutput, unknowns: tuple[str
     if response.customer_reason is not None:
         if response.customer_reason.resolving_requirement is not None:
             return response.customer_reason.resolving_requirement
+        if response.customer_reason.reason_kind == "SOURCE_BOUNDARY_CONVENTION_UNRESOLVED":
+            return (
+                "Check how the policy wording treats the exact boundary date, or confirm it with "
+                "the insurer or advisor before relying on a yes-or-no answer."
+            )
         if response.customer_reason.reason_kind == "SOURCE_DOES_NOT_ESTABLISH":
             return (
-                "Check the governing policy wording or confirm the unresolved rule with the insurer "
+                "Check the relevant policy wording or confirm the unresolved point with the insurer "
                 "or advisor before relying on a conclusion."
             )
         return (
@@ -141,7 +159,7 @@ def project_human_answer(response: ResponseAssemblerOutput) -> HumanAnswerProjec
     else:
         if response.direct_answer is not None:
             raise HumanAnswerProjectionError("fail-closed response must not contain direct_answer")
-        answer = _NON_ANSWER_MESSAGES[response.response_status]
+        answer = _non_answer_message(response)
 
     meaning = _included_meaning(response)
     unknowns = _unknowns(response)

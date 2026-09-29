@@ -456,7 +456,7 @@ def build_output(
             if request_rejection_kind is None
             else _require_member(
                 request_rejection_kind,
-                frozenset({"MISSING_CUSTOMER_FACT", "SOURCE_DOES_NOT_ESTABLISH", "UNSUPPORTED_REASONING"}),
+                frozenset({"MISSING_CUSTOMER_FACT", "SOURCE_DOES_NOT_ESTABLISH", "SOURCE_BOUNDARY_CONVENTION_UNRESOLVED", "UNSUPPORTED_REASONING"}),
                 "request_rejection_kind",
             )
         ),

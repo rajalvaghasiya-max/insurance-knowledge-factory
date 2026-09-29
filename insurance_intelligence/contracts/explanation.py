@@ -38,6 +38,7 @@ SECTION_TYPES = frozenset(
         "EDUCATION",
         "EXAMPLE",
         "PRACTICAL_ILLUSTRATION",
+        "CUSTOMER_EXPLANATION",
         "CUSTOMER_QUALIFICATION",
         "NEXT_STEP",
     }

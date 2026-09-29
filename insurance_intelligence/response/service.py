@@ -42,12 +42,20 @@ def _customer_reason(decision):
             text="A required customer fact is missing, so this case cannot be decided safely yet.",
             resolving_requirement=requirement,
         )
+    if kind == "SOURCE_BOUNDARY_CONVENTION_UNRESOLVED":
+        return build_customer_reason(
+            reason_kind=kind,
+            text=(
+                "The dates are clear, but the policy wording does not say how to treat the exact "
+                "waiting-period boundary date, so I cannot give a reliable yes-or-no answer."
+            ),
+        )
     if kind == "SOURCE_DOES_NOT_ESTABLISH":
         return build_customer_reason(
             reason_kind=kind,
             text=(
-                "The customer facts needed for this check are available, but the governed source "
-                "does not establish the rule needed to decide this case safely."
+                "The information you provided is enough, but the policy wording does not clearly "
+                "establish how this rule applies to your exact situation."
             ),
         )
     return build_customer_reason(

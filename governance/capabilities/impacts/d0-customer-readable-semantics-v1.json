@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "change_id": "d0-customer-readable-semantics-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.REASONING.ENGINE",
+    "II.DECISION.DETERMINISTIC_SAFETY_GATE",
+    "II.EXPLANATION.EVIDENCE_LOCKED_GENERATOR",
+    "II.RESPONSE.ASSEMBLY"
+  ],
+  "rationale": "Keep approved QUALIFYING direct documented facts out of customer MEANING; allow governed customer_direct_answer semantics for PRIMARY documented facts; preserve an exact typed source-boundary rejection cause through reasoning, decision and response; and render resolved waiting-period applicability and fail-closed boundary uncertainty in customer-readable language. The governed PED education asset remains simplified at its reviewed education-data layer without changing formal source evidence or product mechanics.",
+  "supersession_impact": "No authoritative evidence, certified claim, finding authority, publication component, condition, canonical mechanic or fail-closed decision is removed. Canonical facts remain available for audit; customer presentation uses governed semantic text and typed rejection causes.",
+  "authority_impact": "No product, eligibility, coverage, recommendation, claim-approval or payment authority is broadened. The exact-boundary path remains fail-closed; it only preserves a more specific non-answer cause. Customer headline text is admitted through governed publication semantics with the same evidence lineage as the canonical fact."
+}

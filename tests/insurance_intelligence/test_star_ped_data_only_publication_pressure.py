@@ -289,6 +289,7 @@ def test_star_ped_materializes_through_generic_publication_machinery_from_data_o
         if item.component_id == "waiting_period_duration"
     )
     assert {item.key: item.value for item in duration_component.semantic_attributes} == {
+        "customer_direct_answer": "The PED waiting period is 36 months.",
         "duration_unit": "MONTHS",
         "duration_value": "36",
     }

@@ -113,6 +113,7 @@ def _customer_communication_expectations(
     findings_by_id: Mapping[str, Finding],
 ) -> dict[str, tuple[str, str, tuple[str, ...], str]]:
     mapping = {
+        "customer_explanation": "CUSTOMER_EXPLANATION",
         "customer_qualification": "CUSTOMER_QUALIFICATION",
         "customer_next_step": "NEXT_STEP",
     }
@@ -313,7 +314,7 @@ def validate_explanation_fidelity(
     actual_communication = {
         section.section_id: section
         for section in drafted
-        if section.section_type in {"CUSTOMER_QUALIFICATION", "NEXT_STEP"}
+        if section.section_type in {"CUSTOMER_EXPLANATION", "CUSTOMER_QUALIFICATION", "NEXT_STEP"}
     }
     communication_ok = set(actual_communication) == set(expected_communication)
     if communication_ok:
@@ -338,7 +339,7 @@ def validate_explanation_fidelity(
             check_type="CUSTOMER_COMMUNICATION_FIDELITY",
             status="PASSED" if communication_ok else "FAILED",
             description=(
-                "Customer qualification and next-step sections exactly preserve governed semantic attributes and evidence lineage."
+                "Customer explanation, qualification and next-step sections exactly preserve governed semantic attributes and evidence lineage."
                 if communication_ok
                 else "Customer communication sections do not exactly match governed semantic attributes."
             ),

@@ -108,8 +108,24 @@ def _responses():
             response_format="STANDARD",
             audiences=("CUSTOMER",),
             response_statuses=("ANSWER", "ANSWER_WITH_LIMITATIONS"),
-            section_order=("DIRECT_ANSWER", "EXPLANATION", "CONDITION", "LIMITATION", "EVIDENCE"),
-            allowed_section_types=("DIRECT_ANSWER", "EXPLANATION", "CONDITION", "LIMITATION", "EVIDENCE"),
+            section_order=(
+                "DIRECT_ANSWER",
+                "CUSTOMER_QUALIFICATION",
+                "NEXT_STEP",
+                "EXPLANATION",
+                "CONDITION",
+                "LIMITATION",
+                "EVIDENCE",
+            ),
+            allowed_section_types=(
+                "DIRECT_ANSWER",
+                "CUSTOMER_QUALIFICATION",
+                "NEXT_STEP",
+                "EXPLANATION",
+                "CONDITION",
+                "LIMITATION",
+                "EVIDENCE",
+            ),
             direct_answer_policy="REQUIRED",
             evidence_policy="WHEN_AVAILABLE",
             limitation_policy="REQUIRED_WHEN_PRESENT",
@@ -153,10 +169,11 @@ def _run_real_star_ped_response():
 def test_star_ped_factual_lane_reaches_response_assembly_with_machine_answer_and_lineage():
     request, dependencies, response = _run_real_star_ped_response()
     assert response.response_status in {"ANSWER", "ANSWER_WITH_LIMITATIONS"}
-    assert response.direct_answer == "The waiting period duration is 36 MONTHS."
+    assert response.direct_answer == "The PED waiting period is 36 months."
     included = tuple(section for section in response.sections if section.status == "INCLUDED")
     assert included
-    assert any(section.section_type == "CUSTOMER_EXPLANATION" for section in included)
+    assert any(section.section_type == "CUSTOMER_QUALIFICATION" for section in included)
+    assert any(section.section_type == "CONDITION" for section in included)
 
     answer_text = " ".join(
         (response.direct_answer, *(section.text for section in included))

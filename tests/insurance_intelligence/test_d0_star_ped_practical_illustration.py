@@ -224,7 +224,7 @@ def _run():
 def test_case_a_real_path_composes_founder_approved_practical_illustration() -> None:
     response, explanation = _run()
 
-    assert response.direct_answer == "The waiting period duration is 36 MONTHS."
+    assert response.direct_answer == "The PED waiting period is 36 months."
 
     included = tuple(section for section in response.sections if section.status == "INCLUDED")
     assert any(section.section_type == "EDUCATION" for section in included)
@@ -306,3 +306,31 @@ def test_case_a_human_projection_separates_customer_qualifications_from_diagnost
         projection.provenance_panel.diagnostic_limitations
     ).lower()
     assert "certification" in diagnostics or "documented scope" in diagnostics
+
+
+def test_case_a_customer_answer_is_internally_acceptable_before_cold_reader() -> None:
+    response, _ = _run()
+    projection = project_human_answer(response)
+
+    assert projection.human_view.answer == "The PED waiting period is 36 months."
+
+    customer_text = " ".join(
+        (
+            projection.human_view.answer,
+            *projection.human_view.meaning,
+            *projection.human_view.unknowns,
+            projection.human_view.next_step or "",
+        )
+    )
+    lowered = customer_text.casefold()
+
+    assert "a pre-existing disease (ped) is a health problem or medical condition you already had before your insurance started" in lowered
+    assert "continuous health insurance" in lowered
+    assert "portability" in lowered
+    assert "claim approval or payment" in lowered
+
+    assert "under the formal definition used here" not in lowered
+    assert "pre_existing_disease_and_direct_complications" not in customer_text
+    assert "INSURED_PERSON_FIRST_COVERAGE" not in customer_text
+    assert "scope_type=POLICY_WIDE" not in customer_text
+    assert "REAPPLIES_TO_ENHANCED_PORTION" not in customer_text

@@ -47,6 +47,13 @@
           "evidence_references": [
             "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
           ]
+        },
+        {
+          "key": "customer_direct_answer",
+          "value": "The PED waiting period is 36 months.",
+          "evidence_references": [
+            "evidence:waiting_period:star_health_star_comprehensive_ped_wait_36_months:waiting_period_duration:mechanism"
+          ]
         }
       ]
     },

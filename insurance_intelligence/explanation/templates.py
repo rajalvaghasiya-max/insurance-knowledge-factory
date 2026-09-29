@@ -67,6 +67,19 @@ def _answer_role(finding: Finding) -> str | None:
     return next(iter(values), None)
 
 
+def _semantic_text(finding: Finding, key: str) -> str | None:
+    values = {
+        attribute.value
+        for attribute in finding.semantic_attributes
+        if attribute.key == key
+    }
+    if len(values) > 1:
+        raise ExplanationTemplateError(
+            f"finding contains conflicting {key} semantics"
+        )
+    return next(iter(values), None)
+
+
 def _join_subject_predicate(finding: Finding) -> str:
     effect = _normalise_space(finding.object_or_effect)
     if _is_direct_documented_fact(finding):
@@ -141,7 +154,12 @@ def _plain_finding_text(finding: Finding, *, audience: str) -> str:
     trigger, exception, applicability_scope = _semantic_clauses(finding)
     clauses: list[str] = []
     if _is_direct_documented_fact(finding):
-        clauses.append(_ensure_sentence(effect))
+        customer_direct = (
+            _semantic_text(finding, "customer_direct_answer")
+            if audience == "CUSTOMER"
+            else None
+        )
+        clauses.append(_ensure_sentence(customer_direct or effect))
     elif finding.predicate == "must_bear":
         clauses.append(_ensure_sentence(f"Trigger: {trigger}"))
         clauses.append(_ensure_sentence(f"Obligation: {subject} {predicate} {effect}"))
@@ -151,6 +169,8 @@ def _plain_finding_text(finding: Finding, *, audience: str) -> str:
     elif finding.predicate == "requires_trigger_context":
         clauses.append(_ensure_sentence(f"Trigger to confirm: {trigger}"))
         clauses.append(_ensure_sentence(f"Applicability: {effect}"))
+    elif finding.predicate in {"is_still_active", "is_complete"}:
+        clauses.append(_ensure_sentence(effect))
     else:
         statement = f"{subject} {predicate} {effect}"
         clauses.append(_ensure_sentence(statement))
@@ -187,6 +207,7 @@ def _customer_communication_sections(
     finding: Finding,
 ) -> tuple[ExplanationSection, ...]:
     section_types = {
+        "customer_explanation": "CUSTOMER_EXPLANATION",
         "customer_qualification": "CUSTOMER_QUALIFICATION",
         "customer_next_step": "NEXT_STEP",
     }
@@ -319,12 +340,17 @@ def render_explanation_templates(
                     text = _ensure_sentence(f"This applies when {finding.condition.strip()}. {text}")
             template_id = "detailed_finding_v1"
         else:
-            section_type = (
-                "DIRECT_ANSWER"
-                if _is_direct_documented_fact(finding)
-                and _answer_role(finding) == "PRIMARY"
-                else "MEANING"
-            )
+            role = _answer_role(finding)
+            if role == "PRIMARY":
+                section_type = "DIRECT_ANSWER"
+            elif (
+                explanation_input.audience == "CUSTOMER"
+                and _is_direct_documented_fact(finding)
+                and role == "QUALIFYING"
+            ):
+                section_type = "CONDITION"
+            else:
+                section_type = "MEANING"
             text = _plain_finding_text(finding, audience=explanation_input.audience)
             template_id = "plain_finding_v1"
 

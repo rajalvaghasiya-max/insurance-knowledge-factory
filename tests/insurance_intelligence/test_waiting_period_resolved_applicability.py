@@ -79,7 +79,7 @@ def test_inside_period_resolves_as_still_active() -> None:
     assert finding.finding_status == "SUPPORTED"
     assert finding.finding_type == "CLAIM_CONDITION"
     assert finding.predicate == "is_still_active"
-    assert "not complete" in finding.object_or_effect
+    assert "still active" in finding.object_or_effect
     assert set(finding.evidence_ids) == {
         item.evidence_id for item in _reasoning_input(claim_date="2026-01-15").evidence_resolution.evidence_packages
     }

@@ -511,22 +511,22 @@ def waiting_period_applicability_resolved(data: RuleInput) -> tuple[Finding, ...
     if timeline.status == "BOUNDARY_UNRESOLVED":
         raise ReasoningRuleError(
             "waiting-period activation convention is unresolved at the calculated boundary date",
-            rejection_kind="SOURCE_DOES_NOT_ESTABLISH",
+            rejection_kind="SOURCE_BOUNDARY_CONVENTION_UNRESOLVED",
         )
 
     if timeline.status == "NOT_COMPLETE":
         predicate = "is_still_active"
         effect = (
-            "the waiting period is still active on "
-            f"{timeline.event_date.isoformat()} for a policy starting on "
-            f"{timeline.start_date.isoformat()} and is not complete"
+            "The waiting period is still active on "
+            f"{timeline.event_date.isoformat()} for a policy that started on "
+            f"{timeline.start_date.isoformat()}."
         )
     else:
         predicate = "is_complete"
         effect = (
-            "the waiting period is complete on "
-            f"{timeline.event_date.isoformat()} for a policy starting on "
-            f"{timeline.start_date.isoformat()}"
+            "The waiting period is complete on "
+            f"{timeline.event_date.isoformat()} for a policy that started on "
+            f"{timeline.start_date.isoformat()}."
         )
 
     qualification_bits = []
@@ -598,10 +598,15 @@ def waiting_period_applicability_resolved(data: RuleInput) -> tuple[Finding, ...
         ),
         semantic_attributes=(
             build_governed_semantic_attribute(
-                key="customer_qualification",
+                key="answer_role",
+                value="PRIMARY",
+                evidence_references=evidence_ids,
+            ),
+            build_governed_semantic_attribute(
+                key="customer_explanation",
                 value=(
-                    "This resolves only the governed waiting-period timeline state; "
-                    "it does not establish final claim approval or payment."
+                    "This tells you whether the waiting period is active on that date. "
+                    "It does not decide whether the claim will be approved or paid."
                 ),
                 evidence_references=evidence_ids,
             ),
