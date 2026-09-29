@@ -207,6 +207,7 @@ def _customer_communication_sections(
     finding: Finding,
 ) -> tuple[ExplanationSection, ...]:
     section_types = {
+        "customer_explanation": "CUSTOMER_EXPLANATION",
         "customer_qualification": "CUSTOMER_QUALIFICATION",
         "customer_next_step": "NEXT_STEP",
     }
@@ -340,7 +341,7 @@ def render_explanation_templates(
             template_id = "detailed_finding_v1"
         else:
             role = _answer_role(finding)
-            if _is_direct_documented_fact(finding) and role == "PRIMARY":
+            if role == "PRIMARY":
                 section_type = "DIRECT_ANSWER"
             elif (
                 explanation_input.audience == "CUSTOMER"
