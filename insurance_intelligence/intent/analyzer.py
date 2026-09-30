@@ -627,7 +627,7 @@ def _with_governed_concept_mentions(
         entities.append(
             build_candidate_entity(
                 entity_type="CLAIM_CONCEPT",
-                surface_text=concept.canonical_name,
+                surface_text=concept.concept.canonical_name,
                 normalized_text=normalized,
                 source="governed_concept_registry",
                 confidence=1.0,
