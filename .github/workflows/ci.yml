@@ -53,5 +53,8 @@ jobs:
       - name: Validate generated capability map freshness
         run: .ci-venv/bin/python -m scripts.check_generated_capability_map
 
+      - name: Validate Health repeatability scorecard
+        run: .ci-venv/bin/python -m scripts.check_health_repeatability_scorecard --json
+
       - name: Run Factory test suite
         run: .ci-venv/bin/python -m pytest -q
