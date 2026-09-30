@@ -131,3 +131,22 @@ def test_full_gate_fails_without_two_consecutive_clean_runtime_onboards():
     evaluation = evaluate_scorecard(data)
     assert evaluation.status == "PLATFORM_REVIEW"
     assert evaluation.consecutive_no_shared_runtime_modification is False
+
+
+def test_in_progress_experiment_may_keep_authority_fidelity_pending():
+    data = _base()
+    item = _concept(2)
+    item["status"] = "IN_PROGRESS"
+    item["authority_fidelity"] = "PENDING"
+    data["experiments"] = [item]
+    validate_scorecard(data)
+    assert evaluate_scorecard(data).status == "PENDING"
+
+
+def test_complete_experiment_must_resolve_authority_fidelity():
+    data = _base()
+    item = _concept(2)
+    item["authority_fidelity"] = "PENDING"
+    data["experiments"] = [item]
+    with pytest.raises(RepeatabilityScorecardError, match="authority_fidelity"):
+        validate_scorecard(data)

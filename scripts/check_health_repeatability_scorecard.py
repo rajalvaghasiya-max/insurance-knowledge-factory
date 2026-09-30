@@ -98,7 +98,11 @@ def validate_scorecard(data: dict[str, Any]) -> None:
         )
 
         authority = item.get("authority_fidelity")
-        _require(authority in {"PASS", "FAIL"}, f"{label}.authority_fidelity must be PASS or FAIL")
+        allowed_authority = {"PASS", "FAIL", "PENDING"} if status == "IN_PROGRESS" else {"PASS", "FAIL"}
+        _require(
+            authority in allowed_authority,
+            f"{label}.authority_fidelity must be one of {sorted(allowed_authority)} for status {status}",
+        )
 
         if item["product_specific_runtime_count"] > 0:
             _require(
