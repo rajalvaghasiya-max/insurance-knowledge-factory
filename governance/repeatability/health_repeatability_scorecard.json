@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "gate_issue": 355,
+  "experiment_id": "health-repeatability-v1",
+  "baseline": {
+    "ordinal": 1,
+    "concept_id": "pre_existing_disease",
+    "measurement_status": "LEGACY_BASELINE_NOT_SCORED"
+  },
+  "experiments": []
+}
