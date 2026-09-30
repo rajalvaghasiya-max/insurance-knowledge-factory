@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-repeatability-concept2-governed-mention-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.INTENT.DETERMINISTIC_ANALYZER",
+    "II.TERMINOLOGY.GOVERNED_RESOLUTION",
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Concept #2 falsification proved that a COVERAGE_CHECK for an exact governed Health concept could not populate coverage_subject unless the phrase happened to exist in the intent analyzer's bounded legacy claim-concept list. Reuse CanonicalConceptResolver through dependency injection, register bariatric surgery as governed Health terminology data, and route exact governed concept mentions into generic CLAIM_CONCEPT candidates before context sufficiency. This is recorded as ARCHITECTURE_REPAIR + GENERIC_EXTENSION under #355 because existing shared runtime had to change for the new concept to flow.",
+  "supersession_impact": "No intent, context, instance-sufficiency, evidence, reasoning, publication, or response authority is replaced. Legacy IntentAnalyzer behavior remains unchanged when no concept resolver is supplied. Existing bounded entity extraction remains available; the new path adds exact governed terminology candidates only.",
+  "authority_impact": "Terminology resolution remains language routing only. A resolved concept mention does not establish that a product covers the concept, does not bypass governed product identity or Instance Sufficiency, does not retrieve or upgrade evidence, and does not authorize claim approval or payment."
+}

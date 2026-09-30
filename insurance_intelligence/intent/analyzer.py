@@ -26,6 +26,7 @@ from insurance_intelligence.contracts.intent import (
     build_follow_up,
     build_output,
 )
+from insurance_intelligence.terminology.concept_resolver import CanonicalConceptResolver
 
 # ---------------------------------------------------------------------------
 # Rule registry
@@ -336,8 +337,16 @@ _CLARIFICATION_PLACEHOLDER_INTENT = "FOLLOW_UP"
 
 
 class IntentAnalyzer:
-    """Stateless deterministic classifier. Safe to reuse across calls;
-    holds no mutable state and performs no I/O."""
+    """Stateless deterministic classifier with optional governed concept mention routing.
+
+    The optional resolver performs exact governed terminology matching only. It does
+    not establish product applicability, retrieve evidence, or grant answer authority.
+    """
+
+    def __init__(self, *, concept_resolver: CanonicalConceptResolver | None = None) -> None:
+        if concept_resolver is not None and not isinstance(concept_resolver, CanonicalConceptResolver):
+            raise TypeError("concept_resolver must be CanonicalConceptResolver or None")
+        self._concept_resolver = concept_resolver
 
     def analyze(self, request: IntentAnalyzerInput) -> IntentAnalyzerOutput:
         text = request.text.strip()
@@ -368,6 +377,13 @@ class IntentAnalyzer:
 
         follow_up = _detect_follow_up(normalized, request)
         candidate_entities = _extract_candidate_entities(text, request)
+        if self._concept_resolver is not None:
+            candidate_entities = _with_governed_concept_mentions(
+                candidate_entities,
+                text=text,
+                domain=request.domain_hint,
+                resolver=self._concept_resolver,
+            )
         ambiguities = _detect_ambiguities(normalized, follow_up, candidate_entities)
 
         matched_rules = [rule for rule in RULE_REGISTRY if rule.matches(normalized)]
@@ -583,6 +599,41 @@ def _extract_candidate_entities(text: str, request: IntentAnalyzerInput) -> tupl
             )
         )
 
+    return tuple(entities)
+
+
+def _with_governed_concept_mentions(
+    existing: tuple[CandidateEntity, ...],
+    *,
+    text: str,
+    domain: str,
+    resolver: CanonicalConceptResolver,
+) -> tuple[CandidateEntity, ...]:
+    """Add exact governed insurance-concept mentions as non-authoritative candidates."""
+
+    entities = list(existing)
+    existing_keys = {
+        (item.entity_type, item.normalized_text.casefold())
+        for item in entities
+    }
+    for resolution in resolver.resolve_mentions(text, domain=domain):
+        concept = resolution.selected_concept
+        if concept is None:
+            continue
+        normalized = concept.downstream_topic or concept.concept_id
+        key = ("CLAIM_CONCEPT", normalized.casefold())
+        if key in existing_keys:
+            continue
+        entities.append(
+            build_candidate_entity(
+                entity_type="CLAIM_CONCEPT",
+                surface_text=concept.concept.canonical_name,
+                normalized_text=normalized,
+                source="governed_concept_registry",
+                confidence=1.0,
+            )
+        )
+        existing_keys.add(key)
     return tuple(entities)
 
 
