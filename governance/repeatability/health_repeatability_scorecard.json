@@ -7,5 +7,26 @@
     "concept_id": "pre_existing_disease",
     "measurement_status": "LEGACY_BASELINE_NOT_SCORED"
   },
-  "experiments": []
+  "experiments": [
+    {
+      "ordinal": 2,
+      "concept_id": "bariatric_surgery",
+      "status": "IN_PROGRESS",
+      "front_half_autonomy_level": "A3",
+      "data_only_count": 0,
+      "generic_extension_count": 0,
+      "architecture_repair_count": 0,
+      "bug_fix_count": 0,
+      "product_specific_runtime_count": 0,
+      "repair_cycles_to_first_acceptable_answer": 0,
+      "modified_existing_shared_runtime": false,
+      "questions": {
+        "tested": 0,
+        "acceptable": 0,
+        "correct_fail_closed": 0,
+        "unacceptable": 0
+      },
+      "authority_fidelity": "PENDING"
+    }
+  ]
 }
