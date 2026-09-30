@@ -66,6 +66,7 @@ from insurance_intelligence.orchestration.product_instance_binding import (
 )
 from insurance_intelligence.planning.planner import ReasoningPlanner
 from insurance_intelligence.request_authority import classify_request_authority
+from insurance_intelligence.terminology.concept_resolver import CanonicalConceptResolver
 
 
 class RealResponsePrefixError(ValueError):
@@ -99,6 +100,7 @@ class RealResponsePrefixDependencies:
     knowledge_snapshot_lookup: KnowledgeSnapshotLookup
     published_evidence_resolver: PublishedEvidenceResolver
     repository_roots: tuple[str, ...]
+    concept_resolver: CanonicalConceptResolver | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.store, RuntimeStageObjectStore):
@@ -113,6 +115,12 @@ class RealResponsePrefixDependencies:
             raise RealResponsePrefixError("published_evidence_resolver must be PublishedEvidenceResolver")
         if not self.repository_roots or any(not isinstance(item, str) or not item.strip() for item in self.repository_roots):
             raise RealResponsePrefixError("repository_roots must contain non-empty paths")
+        if self.concept_resolver is not None and not isinstance(
+            self.concept_resolver, CanonicalConceptResolver
+        ):
+            raise RealResponsePrefixError(
+                "concept_resolver must be CanonicalConceptResolver or None"
+            )
 
 
 def _canonical_entity_id(scope: ProductScope) -> str:
@@ -224,7 +232,7 @@ def build_real_response_prefix_adapters(
         )
 
     def intent(*, request, stage, input_ids, knowledge_snapshot_id):
-        output = IntentAnalyzer().analyze(
+        output = IntentAnalyzer(concept_resolver=deps.concept_resolver).analyze(
             build_intent_input(
                 request_id=request.execution_id,
                 text=request.question or "",
