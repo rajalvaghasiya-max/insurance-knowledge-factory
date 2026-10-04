@@ -327,6 +327,11 @@ _POLICY_FEATURE_TERMS = (
 )
 _CLAIM_CONCEPT_TERMS = ("claim", "hospitalisation", "hospitalization", "admissible", "reimbursement")
 _DOCUMENT_TYPE_TERMS = ("policy wording", "prospectus", "certificate of insurance", "clause", "schedule")
+_POLICY_FACT_INTERROGATIVE_PATTERN = re.compile(
+    r"^\s*(what|which|when|where|how|can|could|is|are|does|do|will|would)\b",
+    re.IGNORECASE,
+)
+
 
 # CLARIFICATION_REQUIRED still requires a governed primary_intent value
 # per the output contract; FOLLOW_UP is the most semantically accurate
@@ -401,6 +406,18 @@ class IntentAnalyzer:
                     question="Could you clarify what you're referring to?",
                     candidate_entities=candidate_entities,
                     follow_up=follow_up,
+                )
+            if _is_governed_policy_fact_question(normalized, candidate_entities):
+                return build_output(
+                    request_id=request.request_id,
+                    primary_intent="POLICY_FACT_LOOKUP",
+                    domain=request.domain_hint,
+                    requested_outcome=text,
+                    confidence=0.78,
+                    analysis_status="CLASSIFIED",
+                    candidate_entities=candidate_entities,
+                    follow_up=follow_up,
+                    classification_basis=("question_pattern", "matched_term"),
                 )
             return _build_clarification(
                 request,
@@ -600,6 +617,19 @@ def _extract_candidate_entities(text: str, request: IntentAnalyzerInput) -> tupl
         )
 
     return tuple(entities)
+
+
+def _is_governed_policy_fact_question(
+    normalized_text: str,
+    candidate_entities: tuple[CandidateEntity, ...],
+) -> bool:
+    if not _POLICY_FACT_INTERROGATIVE_PATTERN.search(normalized_text):
+        return False
+    return any(
+        item.entity_type == "CLAIM_CONCEPT"
+        and item.source == "governed_concept_registry"
+        for item in candidate_entities
+    )
 
 
 def _with_governed_concept_mentions(
