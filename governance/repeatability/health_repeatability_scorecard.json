@@ -11,7 +11,7 @@
     {
       "ordinal": 2,
       "concept_id": "bariatric_surgery",
-      "status": "IN_PROGRESS",
+      "status": "COMPLETE",
       "front_half_autonomy_level": "A3",
       "data_only_count": 0,
       "generic_extension_count": 1,
@@ -21,12 +21,12 @@
       "repair_cycles_to_first_acceptable_answer": 1,
       "modified_existing_shared_runtime": true,
       "questions": {
-        "tested": 0,
-        "acceptable": 0,
+        "tested": 4,
+        "acceptable": 2,
         "correct_fail_closed": 0,
-        "unacceptable": 0
+        "unacceptable": 2
       },
-      "authority_fidelity": "PENDING"
+      "authority_fidelity": "PASS"
     }
   ]
 }
