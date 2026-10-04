@@ -331,6 +331,10 @@ _POLICY_FACT_INTERROGATIVE_PATTERN = re.compile(
     r"^\s*(what|which|when|where|how|can|could|is|are|does|do|will|would)\b",
     re.IGNORECASE,
 )
+_POLICY_FACT_CONDITIONAL_QUESTION_PATTERN = re.compile(
+    r"^\s*if\b.*\b(will|would|can|could|does|do|is|are)\b",
+    re.IGNORECASE,
+)
 
 
 # CLARIFICATION_REQUIRED still requires a governed primary_intent value
@@ -623,7 +627,10 @@ def _is_governed_policy_fact_question(
     normalized_text: str,
     candidate_entities: tuple[CandidateEntity, ...],
 ) -> bool:
-    if not _POLICY_FACT_INTERROGATIVE_PATTERN.search(normalized_text):
+    if not (
+        _POLICY_FACT_INTERROGATIVE_PATTERN.search(normalized_text)
+        or _POLICY_FACT_CONDITIONAL_QUESTION_PATTERN.search(normalized_text)
+    ):
         return False
     return any(
         item.entity_type == "CLAIM_CONCEPT"
