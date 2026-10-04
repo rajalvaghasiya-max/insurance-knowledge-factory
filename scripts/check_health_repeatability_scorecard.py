@@ -51,6 +51,7 @@ def _is_successful_onboarding(item: dict[str, Any]) -> bool:
         item["status"] == "COMPLETE"
         and item["authority_fidelity"] == "PASS"
         and questions["tested"] > 0
+        and questions["acceptable"] > 0
         and questions["unacceptable"] == 0
     )
 
