@@ -150,3 +150,30 @@ def test_complete_experiment_must_resolve_authority_fidelity():
     data["experiments"] = [item]
     with pytest.raises(RepeatabilityScorecardError, match="authority_fidelity"):
         validate_scorecard(data)
+
+
+def test_failed_customer_quality_does_not_count_as_clean_onboarding():
+    data = _base()
+    concept3 = _concept(3)
+    concept3["questions"] = {
+        "tested": 4,
+        "acceptable": 0,
+        "correct_fail_closed": 0,
+        "unacceptable": 4,
+    }
+    data["experiments"] = [
+        _concept(2, repairs=1, modified_runtime=True),
+        concept3,
+        _concept(4, repairs=1, modified_runtime=True),
+        _concept(5),
+    ]
+
+    evaluation = evaluate_scorecard(data)
+
+    assert evaluation.architecture_repair_average == 0.5
+    assert evaluation.consecutive_no_shared_runtime_modification is False
+    assert evaluation.status == "PLATFORM_REVIEW"
+    assert (
+        "no two consecutive concepts onboarded without modifying existing shared runtime"
+        in evaluation.reasons
+    )
