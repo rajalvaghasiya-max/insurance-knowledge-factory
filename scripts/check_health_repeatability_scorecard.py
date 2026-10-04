@@ -45,6 +45,16 @@ def _require_nonnegative_int(value: Any, label: str) -> int:
     return value
 
 
+def _is_successful_onboarding(item: dict[str, Any]) -> bool:
+    questions = item["questions"]
+    return (
+        item["status"] == "COMPLETE"
+        and item["authority_fidelity"] == "PASS"
+        and questions["tested"] > 0
+        and questions["unacceptable"] == 0
+    )
+
+
 def validate_scorecard(data: dict[str, Any]) -> None:
     _require(data.get("schema_version") == "1.0", "schema_version must be '1.0'")
     _require(data.get("gate_issue") == 355, "gate_issue must be 355")
@@ -139,7 +149,9 @@ def evaluate_scorecard(data: dict[str, Any]) -> GateEvaluation:
     consecutive = None
     if len(complete) == 4:
         consecutive = any(
-            not by_ordinal[first]["modified_existing_shared_runtime"]
+            _is_successful_onboarding(by_ordinal[first])
+            and _is_successful_onboarding(by_ordinal[second])
+            and not by_ordinal[first]["modified_existing_shared_runtime"]
             and not by_ordinal[second]["modified_existing_shared_runtime"]
             for first, second in ((2, 3), (3, 4), (4, 5))
         )
