@@ -7,7 +7,7 @@ from insurance_intelligence.terminology.health_seed import (
 
 def test_health_seed_has_unique_stable_concept_ids():
     ids = tuple(item.concept_id for item in HEALTH_CONCEPTS_V1)
-    assert len(ids) == 12
+    assert len(ids) == 13
     assert len(ids) == len(set(ids))
     assert all(item.domain == "health" for item in HEALTH_CONCEPTS_V1)
 
@@ -20,6 +20,7 @@ def test_high_value_health_concepts_are_seeded():
         "health:concept:room_rent_limit",
         "health:concept:waiting_period",
         "health:concept:pre_existing_disease",
+        "health:concept:bariatric_surgery",
         "health:concept:restoration",
         "health:concept:sum_insured",
         "health:concept:sub_limit",
@@ -32,7 +33,7 @@ def test_high_value_health_concepts_are_seeded():
 
 def test_seed_builds_without_ungoverned_phrase_collisions():
     registry = build_health_concept_registry_v1()
-    assert len(registry.all_concepts()) == 12
+    assert len(registry.all_concepts()) == 13
 
 
 def test_copay_alias_resolves_to_canonical_concept():
