@@ -249,7 +249,7 @@
         "insurance_intelligence/intent/analyzer.py",
         "insurance_intelligence/intent/taxonomy.py"
       ],
-      "structural_fingerprint": "c436124c1b97833a480a28031de604e6b94875774c8ba34f13a5b5dc97ddb80e"
+      "structural_fingerprint": "b3afd4edf43afd975ccb3532e93700b82ff6e0938268f34f1ebb2bce8b520748"
     },
     {
       "capability_id": "II.ORCHESTRATION.CANONICAL_GUARDED_ORDER",
@@ -287,7 +287,7 @@
         "insurance_intelligence/orchestration/service.py",
         "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
-      "structural_fingerprint": "8fd882da01d217fc3c91b8aafef3c6f8612f3ef1604b0b79e6b0a9613030cedb"
+      "structural_fingerprint": "78fa348135d51f5e8834065a7d308b843221aaed4a4c5d8fac0694cc15d238e4"
     },
     {
       "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",
@@ -426,7 +426,7 @@
         "insurance_intelligence/terminology/star_comprehensive_aliases.py",
         "insurance_intelligence/terminology/star_comprehensive_catalogue.py"
       ],
-      "structural_fingerprint": "3f767a357bc697ff0cfe9a2774a911a194547fce88f06cbe65cfdea7dc57f114"
+      "structural_fingerprint": "a8216990de4255f0208c87f4032383a3b4ce13710768c4a6cfc82fd3e05fe572"
     },
     {
       "capability_id": "II.TOPIC_COMPLETENESS.GOVERNED_EVIDENCE_GATE",

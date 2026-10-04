@@ -92,6 +92,15 @@ HEALTH_CONCEPTS_V1: tuple[CanonicalConceptDefinition, ...] = (
         downstream_topic="pre_existing_disease",
     ),
     _concept(
+        "health:concept:bariatric_surgery",
+        "Bariatric surgery",
+        "A health-insurance benefit concept concerning surgical treatment for obesity when the governed eligibility conditions are satisfied.",
+        concept_type="BENEFIT",
+        aliases=("weight-loss surgery", "weight loss surgery"),
+        customer_phrases=("surgery for obesity",),
+        downstream_topic="bariatric_surgery",
+    ),
+    _concept(
         "health:concept:restoration",
         "Restoration of sum insured",
         "A benefit concept under which available cover may be replenished or restored when the governed conditions are satisfied.",
