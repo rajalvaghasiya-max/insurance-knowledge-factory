@@ -36,6 +36,11 @@ _CORRECTION_MARKERS = ("sorry", "actually", "i meant", "correction", "my mistake
 # else must come from explicit user_context.
 _ENTITY_KEY_BY_INTENT: dict[str, dict[str, str]] = {
     "TERM_EXPLANATION": {"POLICY_FEATURE": "term_or_concept"},
+    "POLICY_FACT_LOOKUP": {
+        "POLICY_FEATURE": "requested_fact",
+        "CLAIM_CONCEPT": "requested_fact",
+        "PRODUCT": "policy_or_document_reference",
+    },
     "PRODUCT_EXPLANATION": {"PRODUCT": "product_reference"},
     "ADVISOR_EXPLANATION": {"PRODUCT": "subject_reference"},
     "SUITABILITY_ASSESSMENT": {"PRODUCT": "subject_reference"},
