@@ -159,7 +159,11 @@ def _scope_session_context(request: OrchestrationRequest, intent: IntentAnalyzer
     canonical = _canonical_entity_id(request.product_scope)
     items = []
     for requirement in requirements_for_intent(intent.primary_intent):
-        product_compatible = requirement.category == "PRODUCT" or requirement.context_key == "policy_or_product_reference"
+        product_compatible = (
+            requirement.category == "PRODUCT"
+            or requirement.context_key
+            in {"policy_or_product_reference", "policy_or_document_reference"}
+        )
         if not product_compatible:
             continue
         items.append(

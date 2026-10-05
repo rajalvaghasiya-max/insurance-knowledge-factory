@@ -69,8 +69,21 @@ HEALTH_CONCEPTS_V1: tuple[CanonicalConceptDefinition, ...] = (
         "Room rent limit",
         "A coverage-limit concept governing the eligible room category or room-charge amount under the policy terms.",
         concept_type="LIMIT",
-        aliases=("room rent cap", "room rent sub-limit", "room category limit"),
-        customer_phrases=("limit on hospital room", "which room can I take", "room eligibility"),
+        aliases=(
+            "room rent cap",
+            "room rent sub-limit",
+            "room category limit",
+            "room category",
+            "permitted room category",
+            "deluxe room",
+        ),
+        customer_phrases=(
+            "limit on hospital room",
+            "which room can I take",
+            "what room am I eligible for",
+            "room eligibility",
+            "room above the permitted category",
+        ),
         downstream_topic="room_rent_limit",
     ),
     _concept(

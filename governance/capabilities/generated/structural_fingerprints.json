@@ -85,7 +85,7 @@
         "insurance_intelligence/context/requirements.py",
         "insurance_intelligence/contracts/context.py"
       ],
-      "structural_fingerprint": "a38ea0b6e8e29f59f9786d2877a0864a80cdbaab8aaf3cf7e6c883e68f9ce9a4"
+      "structural_fingerprint": "2f15d31156bb319931ca07f9a37a7f564cd942d1e6affd1cb42aadb2a875285f"
     },
     {
       "capability_id": "II.COVERAGE.REGISTRY",
@@ -249,7 +249,7 @@
         "insurance_intelligence/intent/analyzer.py",
         "insurance_intelligence/intent/taxonomy.py"
       ],
-      "structural_fingerprint": "b3afd4edf43afd975ccb3532e93700b82ff6e0938268f34f1ebb2bce8b520748"
+      "structural_fingerprint": "614bdb80d48271ed3c609de39fea909c90518c33d495074a87415ae809d4fe75"
     },
     {
       "capability_id": "II.ORCHESTRATION.CANONICAL_GUARDED_ORDER",
@@ -287,7 +287,7 @@
         "insurance_intelligence/orchestration/service.py",
         "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
-      "structural_fingerprint": "78fa348135d51f5e8834065a7d308b843221aaed4a4c5d8fac0694cc15d238e4"
+      "structural_fingerprint": "2f354e734d11ebc2b8c27d752c796d90284a0c549c6080628985eb8cef022aae"
     },
     {
       "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",
@@ -426,7 +426,7 @@
         "insurance_intelligence/terminology/star_comprehensive_aliases.py",
         "insurance_intelligence/terminology/star_comprehensive_catalogue.py"
       ],
-      "structural_fingerprint": "a8216990de4255f0208c87f4032383a3b4ce13710768c4a6cfc82fd3e05fe572"
+      "structural_fingerprint": "c7e803f7a8bf84e2b883df05498d57d4722979053b0acff44a2ec19149711957"
     },
     {
       "capability_id": "II.TOPIC_COMPLETENESS.GOVERNED_EVIDENCE_GATE",

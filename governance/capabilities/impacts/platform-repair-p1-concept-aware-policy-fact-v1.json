@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "change_id": "platform-repair-p1-concept-aware-policy-fact-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.INTENT.DETERMINISTIC_ANALYZER",
+    "II.TERMINOLOGY.GOVERNED_RESOLUTION",
+    "II.CONTEXT.BUILDER",
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "Health repeatability concepts #2 and #3 proved that exact governed insurance concepts can be recognized while natural customer question shapes still fall to clarification before evidence. Reuse the existing POLICY_FACT_LOOKUP intent and DIRECT_FACT_PLAN by adding a generic fallback for interrogative/conditional questions containing an exact governed concept mention, map that candidate to requested_fact, let the canonical scope handoff supply policy_or_document_reference, and allow the existing governed product-instance binder to attest that dual-use reference only when it independently resolves to the exact scoped product. Room-rent customer language additions remain governed terminology data rather than runtime branches.",
+  "supersession_impact": "No intent label, plan type, planner template, Instance Sufficiency rule, evidence authority, reasoning rule, decision gate, or response authority is replaced. Existing stronger intent rules retain precedence because the fallback runs only when no governed rule matches. Analyzer behavior without an injected concept resolver remains unchanged. Instance Sufficiency remains fail-closed and still requires a RESOLVED governed identity attestation for the active required context key.",
+  "authority_impact": "Exact terminology resolution remains language routing only and cannot establish product applicability or coverage. The policy_or_document_reference receives a product attestation only when the existing governed ProductEntityResolver independently resolves its active value to the exact canonical orchestration product scope and matching identity-record evidence exists. Authoritative evidence resolution, publication admission, reasoning, claim/payment boundaries and final response safety remain unchanged."
+}
