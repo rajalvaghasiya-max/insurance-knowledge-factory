@@ -196,6 +196,15 @@ def _user_context(request: OrchestrationRequest):
     return tuple(items)
 
 
+def _resolved_context_values(context: ContextBuilderOutput) -> dict[str, str]:
+    """Project only active governed context values into evidence resolution."""
+    return {
+        item.key: item.value
+        for item in context.resolved_context
+        if item.status == "ACTIVE"
+    }
+
+
 def build_real_response_prefix_adapters(
     *, dependencies: RealResponsePrefixDependencies
 ) -> tuple[IntelligenceStageAdapter, ...]:
@@ -349,6 +358,9 @@ def build_real_response_prefix_adapters(
         instance_output = deps.store.get(
             _output_id(request, "INSTANCE_SUFFICIENCY"), expected_type=InstanceSufficiencyOutput
         )
+        context_output = deps.store.get(
+            _output_id(request, "CONTEXT_BUILDING"), expected_type=ContextBuilderOutput
+        )
         binding = deps.store.get(
             _support_id(request, "product-instance-binding"), expected_type=ProductInstanceBinding
         )
@@ -360,6 +372,7 @@ def build_real_response_prefix_adapters(
                 "knowledge_snapshot_id": knowledge_snapshot_id,
                 "evidence_use": USER_ANSWER,
                 "resolved_candidate_references": binding.resolved_candidate_references,
+                "resolved_context_values": _resolved_context_values(context_output),
             },
             strict_mode="STRICT",
         )
