@@ -36,6 +36,11 @@ ADVISORY_CUES: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("what_would_you", re.compile(r"\bwhat\s+would\s+you\s+(?:do|choose|pick|recommend)\b", re.I)),
 )
 
+_GENERIC_INTERROGATIVE_PATTERN = re.compile(
+    r"^\s*(what|which|when|where|how|who|can|could|is|are|does|do|will|would)\b",
+    re.I,
+)
+
 
 def _matches(text: str, registry: tuple[tuple[str, re.Pattern[str]], ...]) -> tuple[str, ...]:
     return tuple(name for name, pattern in registry if pattern.search(text))
@@ -46,6 +51,13 @@ def classify_request_authority(request: RequestAuthorityInput) -> RequestAuthori
     text = " ".join(request.text.split())
     assertive = _matches(text, ASSERTIVE_CUES)
     advisory = _matches(text, ADVISORY_CUES)
+
+    # Explicit governed cues always win. Only when neither registry matched may a
+    # clearly interrogative request fall back to ordinary assertive grounding.
+    # This keeps recommendation/choice language under the advisory guard while
+    # avoiding unnecessary authority clarification for natural factual questions.
+    if not assertive and not advisory and _GENERIC_INTERROGATIVE_PATTERN.search(text):
+        assertive = ("generic_interrogative",)
 
     if assertive and advisory:
         authority_class = "MIXED"
