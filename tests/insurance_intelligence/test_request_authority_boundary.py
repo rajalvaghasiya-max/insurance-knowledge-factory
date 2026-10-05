@@ -36,10 +36,32 @@ def test_assertive_requests_are_routed_to_standard_grounding(text: str) -> None:
 @pytest.mark.parametrize(
     "text",
     [
+        "What conditions must I meet for bariatric surgery under Star Comprehensive?",
+        "Does Star Comprehensive have a room rent limit?",
+        "What room am I eligible for in Star Comprehensive?",
+        "What happens if I choose a room above the permitted category?",
+    ],
+)
+def test_uncued_natural_interrogatives_fall_back_to_assertive_grounding(text: str) -> None:
+    result = classify_request_authority(build_input(request_id="req-natural", text=text))
+    assert result.authority_class == "ASSERTIVE"
+    assert result.downstream_guard == "STANDARD_ASSERTION_GROUNDING"
+    assert result.intent_analysis_authorized is True
+    assert result.advisory_safety_obligation is False
+    assert result.authority_clarification_required is False
+    assert result.recommendation_authorized is False
+    assert result.matched_assertive_cues == ("generic_interrogative",)
+    assert result.matched_advisory_cues == ()
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
         "Should I increase my base cover or buy a super top-up?",
         "Which plan is better for me?",
         "Can you recommend a policy?",
         "Do I need a higher sum insured?",
+        "What should I buy?",
     ],
 )
 def test_advisory_requests_raise_context_and_safety_obligation(text: str) -> None:
@@ -83,6 +105,16 @@ def test_unresolved_authority_fails_toward_stricter_guard_without_suppressing_in
     assert result.advisory_safety_obligation is True
     assert result.authority_clarification_required is True
     assert result.recommendation_authorized is False
+    assert result.matched_assertive_cues == ()
+    assert result.matched_advisory_cues == ()
+
+
+def test_plain_statement_without_governed_cue_remains_unresolved() -> None:
+    result = classify_request_authority(
+        build_input(request_id="req-statement", text="Star Comprehensive room rent limit")
+    )
+    assert result.authority_class == "UNRESOLVED"
+    assert result.authority_clarification_required is True
     assert result.matched_assertive_cues == ()
     assert result.matched_advisory_cues == ()
 
