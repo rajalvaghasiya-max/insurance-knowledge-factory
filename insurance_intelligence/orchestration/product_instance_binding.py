@@ -74,10 +74,11 @@ def _product_compatible_context_keys(primary_intent: str) -> frozenset[str]:
         for item in requirements
         if item.category == "PRODUCT"
     }
-    # This governed key is intentionally dual-use: its contract explicitly permits
-    # either a policy or a product reference, while its broad context category is POLICY.
-    if any(item.context_key == "policy_or_product_reference" for item in requirements):
-        keys.add("policy_or_product_reference")
+    # These governed keys are intentionally dual-use: their contracts permit a
+    # product reference even though their broad context category is POLICY.
+    for dual_use_key in ("policy_or_product_reference", "policy_or_document_reference"):
+        if any(item.context_key == dual_use_key for item in requirements):
+            keys.add(dual_use_key)
     return frozenset(keys)
 
 
