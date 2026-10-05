@@ -1,3 +1,4 @@
+# Falsification-only: preserve the five frozen pre-P1 failures unchanged.
 from __future__ import annotations
 
 from hashlib import sha256
