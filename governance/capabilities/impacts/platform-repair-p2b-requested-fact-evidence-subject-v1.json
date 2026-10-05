@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "platform-repair-p2b-requested-fact-evidence-subject-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.PLANNING.REASONING_PLANNER"
+  ],
+  "rationale": "P2A falsification v3 proved room-rent Q1/Q3/Q4 reach EVIDENCE_RESOLUTION_ENFORCED but fail MISSING because DIRECT_FACT_PLAN product-document requirements use policy_or_product_reference as their semantic subject. Publication discovery then depends on literal descriptor text in the user question, even though Context Builder already resolved requested_fact=room_rent_limit. Reuse the existing planner/resolver separation of semantic subject from governed instance identity by using requested_fact for POLICY_WORDING and POLICY_SCHEDULE requirements as well as NORMALIZED_POLICY_FACT.",
+  "supersession_impact": "No plan type, step type, evidence category, authority/version requirement, product identity resolver, source lookup, publication admission, reasoning, decision, explanation, or response contract is replaced. Only the semantic subject carried by DIRECT_FACT_PLAN evidence requirements changes from product-reference slot to requested-fact slot.",
+  "authority_impact": "Product identity remains independently resolved through governed candidate references. Exact POLICY_WORDING/POLICY_SCHEDULE source-role checks, authoritative publication admission, lineage, and evidence sufficiency remain unchanged. The repair cannot create or authorize evidence; it only gives topic-neutral publication discovery the already-governed fact subject instead of relying on literal customer wording."
+}
