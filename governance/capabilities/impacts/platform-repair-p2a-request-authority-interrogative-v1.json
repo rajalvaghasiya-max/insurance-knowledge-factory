@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "platform-repair-p2a-request-authority-interrogative-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.REQUEST.AUTHORITY_BOUNDARY"
+  ],
+  "rationale": "P1 falsification v2 proved natural factual questions can clear intent, context, and instance sufficiency yet still reach the decision gate with AUTHORITY_CLARIFICATION_REQUIRED because RequestAuthority recognizes only a bounded assertive cue set. Preserve all explicit advisory/assertive cue precedence and add a generic interrogative fallback only when neither registry matched, so ordinary factual questions route to standard assertion grounding without introducing insurer/product/concept branches.",
+  "supersession_impact": "No authority class, downstream guard, reconciliation contract, advisory safety obligation, recommendation authorization, decision gate, evidence authority, or response authority is replaced. Explicit advisory and assertive cues remain unchanged and retain precedence. Plain statements without governed authority cues remain UNRESOLVED.",
+  "authority_impact": "This changes only deterministic classification of otherwise-uncued natural interrogatives from UNRESOLVED to ASSERTIVE. It does not authorize recommendations or advisory output, does not weaken advisory handling, and does not alter evidence, publication, reasoning, claim/payment, or final response authority."
+}
