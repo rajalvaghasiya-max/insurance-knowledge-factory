@@ -197,7 +197,7 @@
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
 | `II.AUTHORITY.INTENT_RECONCILIATION`<br>Authority and Intent Reconciliation | `ACTIVE` | `REUSE` | Computes the minimum downstream guard and ordinary-assertion eligibility while preserving clarification and out-of-scope exits. | None | `insurance_intelligence/authority_intent_reconciliation.py`<br>`insurance_intelligence/contracts/authority_intent_reconciliation.py` | `8666706571bb` |
-| `II.REQUEST.AUTHORITY_BOUNDARY`<br>Assertion and Advisory Request Authority Boundary | `ACTIVE` | `REUSE` | Raises advisory safety obligations and clarification holds; it may never authorize recommendations or suppress independent intent analysis. | None | `insurance_intelligence/request_authority.py`<br>`insurance_intelligence/contracts/request_authority.py` | `d1cfb352700c` |
+| `II.REQUEST.AUTHORITY_BOUNDARY`<br>Assertion and Advisory Request Authority Boundary | `ACTIVE` | `REUSE` | Raises advisory safety obligations and clarification holds; it may never authorize recommendations or suppress independent intent analysis. | None | `insurance_intelligence/request_authority.py`<br>`insurance_intelligence/contracts/request_authority.py` | `7b645540f874` |
 
 ### INSURANCE_INTELLIGENCE_RESPONSE
 

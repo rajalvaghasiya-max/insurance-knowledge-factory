@@ -369,7 +369,7 @@
         "insurance_intelligence/contracts/request_authority.py",
         "insurance_intelligence/request_authority.py"
       ],
-      "structural_fingerprint": "d1cfb352700c9fd1118f971910ef37826c4baf99d3e518b2b69cb80cc3b93d7f"
+      "structural_fingerprint": "7b645540f8745701d5e401dff71f19295a992073f69acc9a83758c88db6f214e"
     },
     {
       "capability_id": "II.RESPONSE.ASSEMBLY",
