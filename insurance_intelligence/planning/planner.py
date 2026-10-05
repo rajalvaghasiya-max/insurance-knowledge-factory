@@ -92,6 +92,7 @@ class ReasoningPlanner:
             validate_plan(plan)
             return plan
 
+        # READY / READY_WITH_LIMITATIONS / PARTIAL_PLAN -- build the real plan.
         template_step_types = DEFAULT_STEPS_BY_PLAN_TYPE[plan_type]
         classification_basis.append("selected_template")
 
@@ -160,6 +161,11 @@ class ReasoningPlanner:
         )
         validate_plan(plan)
         return plan
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
 
 
 def _goal_for(intent: str, requested_outcome: str) -> str:
@@ -306,7 +312,7 @@ def _build_calculation_requirements(plan_type: str, intent: str, context, step_b
     elif plan_type == "CALCULATION_PLAN":
         calc_type = "PERCENTAGE_AMOUNT"
         inputs = ("calculation_inputs",)
-    else:
+    else:  # RECOMMENDATION_PLAN
         calc_type = "PREMIUM_DIFFERENCE"
         inputs = ("existing_coverage", "budget")
 
@@ -347,7 +353,6 @@ def _stop_conditions_from_context(context):
                     related_keys=(conflict.key,),
                 )
             )
-        )
     if context.answerability == "NOT_ANSWERABLE":
         conditions.append(
             build_stop_condition(
@@ -368,6 +373,7 @@ def _stop_conditions_from_context(context):
                 required_resolution="N/A",
             )
         )
+    # Prospective, not-yet-evaluated future checks.
     conditions.append(
         build_stop_condition(
             condition_type="REQUIRED_EVIDENCE_MISSING",
