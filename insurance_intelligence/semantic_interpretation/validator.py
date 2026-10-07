@@ -17,7 +17,11 @@ from insurance_intelligence.contracts.semantic_interpretation import (
     ValidatedGovernedSemanticInterpretation,
 )
 
-VALIDATOR_VERSION = "1.0"
+VALIDATOR_VERSION = "1.1"
+# Safety policy owned by the deterministic containment boundary. A probabilistic
+# interpreter reports confidence but cannot choose or lower this threshold.
+# Any change is therefore a governed code/fingerprint change under DPE.
+RESOLUTION_CONFIDENCE_THRESHOLD = 0.80
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
@@ -69,20 +73,15 @@ def validate_interpretation(
     if interpretation.interpretation_status not in INTERPRETATION_STATUSES:
         raise SemanticInterpretationValidationError("unsupported interpretation_status")
     confidence = _confidence(interpretation.confidence, "confidence")
-    threshold = _confidence(interpretation.resolution_threshold, "resolution_threshold")
-    if threshold <= 0.0:
-        raise SemanticInterpretationValidationError("resolution_threshold must be greater than 0")
     if interpretation.request_authority_class not in REQUEST_AUTHORITY_CLASSES:
         raise SemanticInterpretationValidationError("unsupported request_authority_class")
 
     candidates = interpretation.governed_concept_candidates
-    candidate_ids: list[str] = []
     candidate_confidences: dict[str, float] = {}
     for candidate in candidates:
         concept_id = _nonempty(candidate.concept_id, "governed_concept_candidates[].concept_id")
         if concept_id in candidate_confidences:
             raise SemanticInterpretationValidationError("governed concept candidate IDs must be unique")
-        candidate_ids.append(concept_id)
         candidate_confidences[concept_id] = _confidence(
             candidate.confidence, "governed_concept_candidates[].confidence"
         )
@@ -115,9 +114,9 @@ def validate_interpretation(
     _validate_provenance(interpretation)
 
     if interpretation.interpretation_status == "RESOLVED":
-        if confidence < threshold:
+        if confidence < RESOLUTION_CONFIDENCE_THRESHOLD:
             raise SemanticInterpretationValidationError(
-                "RESOLVED confidence cannot be below resolution_threshold"
+                "RESOLVED confidence cannot be below governed resolution threshold"
             )
         _nonempty(interpretation.primary_intent, "primary_intent")
         if interpretation.requested_outcome not in REQUESTED_OUTCOMES:
@@ -130,9 +129,9 @@ def validate_interpretation(
             raise SemanticInterpretationValidationError(
                 "selected_concept_id must reference a governed concept candidate"
             )
-        if candidate_confidences[selected] < threshold:
+        if candidate_confidences[selected] < RESOLUTION_CONFIDENCE_THRESHOLD:
             raise SemanticInterpretationValidationError(
-                "selected concept confidence cannot be below resolution_threshold"
+                "selected concept confidence cannot be below governed resolution threshold"
             )
         if interpretation.ambiguity_reasons or interpretation.competing_interpretations:
             raise SemanticInterpretationValidationError(
@@ -167,6 +166,7 @@ def validate_interpretation(
     return ValidatedGovernedSemanticInterpretation(
         interpretation=interpretation,
         validator_version=VALIDATOR_VERSION,
+        resolution_threshold_applied=RESOLUTION_CONFIDENCE_THRESHOLD,
     )
 
 
