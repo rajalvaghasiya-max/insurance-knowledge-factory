@@ -256,9 +256,10 @@
       "owned_module_paths": [
         "insurance_intelligence/contracts/semantic_interpretation.py",
         "insurance_intelligence/semantic_interpretation/__init__.py",
+        "insurance_intelligence/semantic_interpretation/provider_adapter.py",
         "insurance_intelligence/semantic_interpretation/validator.py"
       ],
-      "structural_fingerprint": "d96e15c0f9885426e63554beea4608b75f19a470736ec9579038b221b9dd8c0b"
+      "structural_fingerprint": "8e0b7ddc3669bf6d67aa3a0129e63c0f9aa3521ea861470c6d7f1a2b537a4aaa"
     },
     {
       "capability_id": "II.ORCHESTRATION.CANONICAL_GUARDED_ORDER",
@@ -510,7 +511,7 @@
         "insurance_intelligence/llm/provider.py",
         "insurance_intelligence/llm/service.py"
       ],
-      "structural_fingerprint": "835b098fcadcf2460c0ee70d7a8baa486b0d4b0ca99bf600ecc99a1e05349c35"
+      "structural_fingerprint": "938bb5cda16b3c560caf5b7d20f882874612b0d2b15bb16681f758d4c8367d80"
     },
     {
       "capability_id": "PLATFORM.CAPABILITY_CONTROL_PLANE",
