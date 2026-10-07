@@ -8,6 +8,7 @@ import pytest
 from insurance_intelligence.contracts.semantic_interpretation import (
     CompetingInterpretation,
     ConceptCandidate,
+    FailedInterpretationAuditArtifact,
     GovernedSemanticInterpretation,
     InterpreterProvenance,
     ScenarioFact,
@@ -18,6 +19,7 @@ from insurance_intelligence.semantic_interpretation.validator import (
     SemanticInterpretationValidationError,
     build_audit_artifact,
     build_clarification_route,
+    build_failed_audit_artifact,
     validate_interpretation,
 )
 
@@ -53,7 +55,7 @@ def resolved() -> GovernedSemanticInterpretation:
 def test_resolved_interpretation_requires_deterministic_validation_marker() -> None:
     validated = validate_interpretation(resolved())
     assert validated.interpretation.selected_concept_id == "room_rent_limit"
-    assert validated.validator_version == "1.1"
+    assert validated.validator_version == "1.2"
     assert validated.resolution_threshold_applied == RESOLUTION_CONFIDENCE_THRESHOLD
 
 
@@ -217,4 +219,93 @@ def test_failure_origin_is_bounded_for_benchmark_attribution() -> None:
             validated=validated,
             failure_origin="UNKNOWN_LAYER",
             created_at="2026-10-07T16:45:00Z",
+        )
+
+
+def test_provider_failure_without_proposal_is_auditable_and_non_executable() -> None:
+    artifact = build_failed_audit_artifact(
+        artifact_id="failed-artifact-1",
+        execution_id="execution-2",
+        request_id="request-2",
+        provenance=provenance(),
+        failure_code="PROVIDER_ERROR",
+        failure_detail="provider did not return a proposal",
+        created_at="2026-10-07T17:10:00Z",
+    )
+    assert isinstance(artifact, FailedInterpretationAuditArtifact)
+    assert artifact.proposed_interpretation is None
+    assert artifact.failure_attribution.origin == "INTERPRETATION"
+    assert "validated_interpretation" not in {field.name for field in fields(artifact)}
+    assert json.loads(json.dumps(audit_artifact_as_dict(artifact)))["provenance"][
+        "input_sha256"
+    ] == "a" * 64
+
+
+def test_malformed_provider_output_is_recorded_by_hash_not_raw_text() -> None:
+    artifact = build_failed_audit_artifact(
+        artifact_id="failed-artifact-2",
+        execution_id="execution-3",
+        request_id="request-3",
+        provenance=provenance(),
+        provider_output_sha256="b" * 64,
+        failure_code="MALFORMED_PROVIDER_OUTPUT",
+        failure_detail="provider output could not be parsed into the typed proposal",
+        created_at="2026-10-07T17:11:00Z",
+    )
+    serialized = audit_artifact_as_dict(artifact)
+    assert serialized["provider_output_sha256"] == "b" * 64
+    assert "raw_output" not in serialized
+
+
+def test_validator_rejection_can_preserve_untrusted_proposal_without_validating_it() -> None:
+    rejected = replace(resolved(), requested_outcome="CLAIM_PAYMENT_OUTCOME")
+    with pytest.raises(SemanticInterpretationValidationError):
+        validate_interpretation(rejected)
+    artifact = build_failed_audit_artifact(
+        artifact_id="failed-artifact-3",
+        execution_id="execution-4",
+        request_id="request-1",
+        provenance=provenance(),
+        proposed_interpretation=rejected,
+        provider_output_sha256="c" * 64,
+        failure_code="VALIDATOR_REJECTED",
+        failure_detail="requested outcome was outside the executable domain",
+        created_at="2026-10-07T17:12:00Z",
+    )
+    assert artifact.proposed_interpretation is rejected
+    assert artifact.failure_attribution.origin == "INTERPRETATION"
+    assert not hasattr(artifact, "validated_interpretation")
+
+
+def test_failed_audit_requires_independently_valid_attempt_provenance() -> None:
+    invalid = replace(provenance(), input_sha256="not-a-sha")
+    with pytest.raises(
+        SemanticInterpretationValidationError,
+        match="provenance.input_sha256",
+    ):
+        build_failed_audit_artifact(
+            artifact_id="failed-artifact-4",
+            execution_id="execution-5",
+            request_id="request-5",
+            provenance=invalid,
+            failure_code="PROVIDER_ERROR",
+            failure_detail="provider failed",
+            created_at="2026-10-07T17:13:00Z",
+        )
+
+
+def test_failed_audit_rejects_invalid_provider_output_hash() -> None:
+    with pytest.raises(
+        SemanticInterpretationValidationError,
+        match="provider_output_sha256",
+    ):
+        build_failed_audit_artifact(
+            artifact_id="failed-artifact-5",
+            execution_id="execution-6",
+            request_id="request-6",
+            provenance=provenance(),
+            provider_output_sha256="bad-hash",
+            failure_code="MALFORMED_PROVIDER_OUTPUT",
+            failure_detail="provider output malformed",
+            created_at="2026-10-07T17:14:00Z",
         )
