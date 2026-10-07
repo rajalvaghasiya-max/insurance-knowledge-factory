@@ -3,20 +3,22 @@
     {
       "capability_id": "II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY",
       "name": "Governed Semantic Interpretation Boundary",
-      "responsibility": "Represent untrusted natural-language interpretations as typed proposals, deterministically reject unsafe or unresolved executable shapes, route ambiguity to clarification, and emit execution-linked audit artifacts for both validated and fail-closed interpretation attempts with failure-origin attribution before any interpretation may influence orchestration.",
+      "responsibility": "Represent natural-language interpretation attempts as untrusted typed proposals, optionally obtain those proposals through the shared provider-neutral text transport, deterministically reject invented or unsafe vocabulary and unresolved executable shapes, route ambiguity to clarification, and emit execution-linked audit artifacts for both validated and fail-closed attempts before any interpretation may influence orchestration.",
       "plane": "SEMANTIC_INTERPRETATION",
       "lifecycle_status": "ACTIVE",
       "authority_role": "Zero insurance authority. This boundary may propose request meaning only; it cannot establish policy facts, coverage, claim admissibility, approval, rejection, payment, non-payment, recommendation truth, or publication authority.",
       "safety_invariants": [
-        "Only a deterministic validator may convert an untrusted interpretation proposal into a downstream-safe validated marker.",
+        "Provider output is always untrusted; only a deterministic validator may create the downstream-safe validated marker.",
+        "Provider output may use only caller-supplied governed concept, intent, semantic-fact and scenario-slot identifiers; invented identifiers fail closed before validation.",
+        "Provider output cannot supply provenance or a resolution threshold; trusted provenance is adapter-owned and the deterministic validator owns the pinned governed confidence threshold.",
         "AMBIGUOUS and UNRESOLVED interpretations cannot select a governed concept or request an executable semantic fact and must route to clarification.",
-        "The probabilistic interpreter cannot supply or lower the resolution threshold; the deterministic validator owns a pinned governed confidence threshold and records the applied threshold in the validated audit path.",
         "RESOLVED interpretations must meet the governed validator threshold and may not retain competing interpretations.",
         "The executable requested-outcome domain is a closed allow-list; unknown or unreviewed outcomes fail closed.",
         "Claim approval, rejection, admissibility, payment and non-payment outcomes are absent from the executable requested-outcome domain.",
         "Every interpretation attempt carries interpreter/model/config/input-hash provenance in an execution-linked serializable audit artifact, including provider failure, malformed output and validator rejection.",
         "A failed interpretation audit artifact cannot carry a validated downstream marker; malformed provider output may be represented only by a SHA-256 digest rather than trusted raw output.",
-        "The capability contains no insurer, product or governed-concept-specific runtime branches."
+        "The provider-backed adapter is disconnected from canonical orchestration until the separate live P1 genericity and quality gates pass.",
+        "The capability contains no insurer, product or governed-concept-specific runtime branches, examples, regexes, cue tables or post-processing repairs."
       ],
       "reuse_policy": "REUSE",
       "ownership_paths": [
@@ -26,7 +28,7 @@
       "introduced_by": "ISSUE-393",
       "supersedes": [],
       "superseded_by": null,
-      "notes": "P0/P0.1 deterministic containment only. No model/provider invocation or orchestration wiring is authorized by this registration. Existing LLM provider/transport infrastructure remains the designated transport reuse candidate for a later phase."
+      "notes": "P1A adds only a contained provider-backed proposal path using the existing LLM provider runtime. It does not add a vendor adapter or canonical orchestration wiring; live probabilistic genericity/held-back-concept proof remains required by issue #395."
     }
   ]
 }
