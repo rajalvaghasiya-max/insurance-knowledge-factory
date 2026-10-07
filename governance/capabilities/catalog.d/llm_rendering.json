@@ -3,15 +3,17 @@
     {
       "capability_id": "LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME",
       "name": "Controlled Hybrid LLM Rendering Runtime",
-      "responsibility": "Build evidence-locked rendering requests, invoke an injected renderer provider once, parse structured output, apply deterministic fidelity checks, and retain the deterministic explanation as fallback on provider, structure or fidelity failure.",
+      "responsibility": "Own the existing provider-neutral LLM invocation infrastructure: build and invoke controlled rendering requests as before, expose a shared use-case-neutral text transport for governed callers, parse rendering output, apply deterministic fidelity checks, and retain the deterministic explanation as fallback on rendering provider, structure or fidelity failure.",
       "plane": "LLM_RENDERING",
       "lifecycle_status": "ACTIVE",
-      "authority_role": "Reusable controlled candidate-rendering runtime. In the current canonical path its candidate remains subordinate to Rendering Exit Safety and is not the final release authority.",
+      "authority_role": "Reusable provider-neutral transport and controlled candidate-rendering runtime only. Transport success grants no insurance, interpretation, recommendation, publication or release authority; canonical rendered candidates remain subordinate to Rendering Exit Safety.",
       "safety_invariants": [
-        "The deterministic explanation is retained across provider failure, malformed output and fidelity failure.",
-        "Provider invocation is bounded by an explicit provider-neutral contract and controlled model policy.",
-        "Structured candidates are parsed and fidelity-validated before the legacy runtime marks them rendered.",
-        "Canonical customer release still requires the newer Rendering Exit Safety boundary when this runtime is used through the provider-integration bridge."
+        "Existing rendering request, response, invocation and fallback behavior remains backward-compatible.",
+        "Shared text invocation is bounded by an injected provider-neutral contract, invokes exactly once, and normalizes timeout/provider failure without granting semantic authority.",
+        "The deterministic explanation is retained across rendering provider failure, malformed output and fidelity failure.",
+        "Structured rendering candidates are parsed and fidelity-validated before the legacy runtime marks them rendered.",
+        "Canonical customer release still requires the newer Rendering Exit Safety boundary when the rendering runtime is used through the provider-integration bridge.",
+        "No concrete vendor-specific production adapter is implied by the shared transport contract."
       ],
       "reuse_policy": "REUSE",
       "ownership_paths": [
@@ -21,7 +23,7 @@
       "introduced_by": "MO-022E",
       "supersedes": [],
       "superseded_by": null,
-      "notes": "Provider-neutral runtime exists in-repo; no concrete vendor-specific production adapter is claimed by this capability."
+      "notes": "P1A extends the existing provider-neutral runtime with a shared text transport rather than creating a semantic-interpreter client stack. No concrete vendor-specific production adapter is claimed by this capability."
     }
   ]
 }
