@@ -3,7 +3,7 @@
     {
       "capability_id": "II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY",
       "name": "Governed Semantic Interpretation Boundary",
-      "responsibility": "Represent untrusted natural-language interpretations as typed proposals, deterministically reject unsafe or unresolved executable shapes, route ambiguity to clarification, and emit execution-linked audit artifacts with failure-origin attribution before any interpretation may influence orchestration.",
+      "responsibility": "Represent untrusted natural-language interpretations as typed proposals, deterministically reject unsafe or unresolved executable shapes, route ambiguity to clarification, and emit execution-linked audit artifacts for both validated and fail-closed interpretation attempts with failure-origin attribution before any interpretation may influence orchestration.",
       "plane": "SEMANTIC_INTERPRETATION",
       "lifecycle_status": "ACTIVE",
       "authority_role": "Zero insurance authority. This boundary may propose request meaning only; it cannot establish policy facts, coverage, claim admissibility, approval, rejection, payment, non-payment, recommendation truth, or publication authority.",
@@ -14,7 +14,8 @@
         "RESOLVED interpretations must meet the governed validator threshold and may not retain competing interpretations.",
         "The executable requested-outcome domain is a closed allow-list; unknown or unreviewed outcomes fail closed.",
         "Claim approval, rejection, admissibility, payment and non-payment outcomes are absent from the executable requested-outcome domain.",
-        "Every validated interpretation carries interpreter/model/config/input-hash provenance and can be attached to an orchestration execution as a serializable audit artifact.",
+        "Every interpretation attempt carries interpreter/model/config/input-hash provenance in an execution-linked serializable audit artifact, including provider failure, malformed output and validator rejection.",
+        "A failed interpretation audit artifact cannot carry a validated downstream marker; malformed provider output may be represented only by a SHA-256 digest rather than trusted raw output.",
         "The capability contains no insurer, product or governed-concept-specific runtime branches."
       ],
       "reuse_policy": "REUSE",
@@ -25,7 +26,7 @@
       "introduced_by": "ISSUE-393",
       "supersedes": [],
       "superseded_by": null,
-      "notes": "P0 deterministic containment only. No model/provider invocation or orchestration wiring is authorized by this registration. Existing LLM rendering provider/transport infrastructure remains the designated transport reuse candidate for a later phase."
+      "notes": "P0/P0.1 deterministic containment only. No model/provider invocation or orchestration wiring is authorized by this registration. Existing LLM provider/transport infrastructure remains the designated transport reuse candidate for a later phase."
     }
   ]
 }

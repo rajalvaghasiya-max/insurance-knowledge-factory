@@ -11,13 +11,15 @@ from insurance_intelligence.contracts.semantic_interpretation import (
     REQUESTED_OUTCOMES,
     SUPPORTED_CONTRACT_VERSION,
     ClarificationRoute,
+    FailedInterpretationAuditArtifact,
     FailureAttribution,
     GovernedSemanticInterpretation,
     InterpretationAuditArtifact,
+    InterpreterProvenance,
     ValidatedGovernedSemanticInterpretation,
 )
 
-VALIDATOR_VERSION = "1.1"
+VALIDATOR_VERSION = "1.2"
 # Safety policy owned by the deterministic containment boundary. A probabilistic
 # interpreter reports confidence but cannot choose or lower this threshold.
 # Any change is therefore a governed code/fingerprint change under DPE.
@@ -44,17 +46,36 @@ def _confidence(value: object, label: str) -> float:
     return number
 
 
-def _validate_provenance(interpretation: GovernedSemanticInterpretation) -> None:
-    provenance = interpretation.provenance
+def _sha256(value: object, label: str) -> str:
+    if not isinstance(value, str) or not _SHA256_RE.fullmatch(value):
+        raise SemanticInterpretationValidationError(
+            f"{label} must be a lowercase SHA-256 hex digest"
+        )
+    return value
+
+
+def _validate_provenance_value(provenance: InterpreterProvenance) -> None:
+    if not isinstance(provenance, InterpreterProvenance):
+        raise SemanticInterpretationValidationError(
+            "provenance must be an InterpreterProvenance"
+        )
     _nonempty(provenance.interpreter_version, "provenance.interpreter_version")
     _nonempty(provenance.model_name, "provenance.model_name")
     _nonempty(provenance.config_id, "provenance.config_id")
-    if not isinstance(provenance.input_sha256, str) or not _SHA256_RE.fullmatch(
-        provenance.input_sha256
-    ):
-        raise SemanticInterpretationValidationError(
-            "provenance.input_sha256 must be a lowercase SHA-256 hex digest"
-        )
+    _sha256(provenance.input_sha256, "provenance.input_sha256")
+
+
+def _validate_provenance(interpretation: GovernedSemanticInterpretation) -> None:
+    _validate_provenance_value(interpretation.provenance)
+
+
+def _timestamp(value: object) -> str:
+    timestamp = _nonempty(value, "created_at")
+    try:
+        datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise SemanticInterpretationValidationError("created_at must be ISO-8601") from exc
+    return timestamp
 
 
 def validate_interpretation(
@@ -202,11 +223,7 @@ def build_audit_artifact(
 ) -> InterpretationAuditArtifact:
     if failure_origin not in FAILURE_ORIGINS:
         raise SemanticInterpretationValidationError("unsupported failure_origin")
-    timestamp = _nonempty(created_at, "created_at")
-    try:
-        datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
-    except ValueError as exc:
-        raise SemanticInterpretationValidationError("created_at must be ISO-8601") from exc
+    timestamp = _timestamp(created_at)
     interpretation = validated.interpretation
     return InterpretationAuditArtifact(
         contract_version=SUPPORTED_CONTRACT_VERSION,
@@ -220,4 +237,49 @@ def build_audit_artifact(
             detail=_nonempty(failure_detail, "failure_detail"),
         ),
         created_at=timestamp,
+    )
+
+
+def build_failed_audit_artifact(
+    *,
+    artifact_id: str,
+    execution_id: str,
+    request_id: str,
+    provenance: InterpreterProvenance,
+    failure_code: str,
+    failure_detail: str,
+    created_at: str,
+    proposed_interpretation: GovernedSemanticInterpretation | None = None,
+    provider_output_sha256: str | None = None,
+) -> FailedInterpretationAuditArtifact:
+    """Build a non-executable audit record for an interpretation-stage failure.
+
+    The caller-supplied attempt provenance is validated independently of any
+    rejected proposal. Raw provider output is never stored here; callers may
+    record only its SHA-256 digest when output existed but could not be trusted.
+    """
+    _validate_provenance_value(provenance)
+    output_hash = None
+    if provider_output_sha256 is not None:
+        output_hash = _sha256(provider_output_sha256, "provider_output_sha256")
+    if proposed_interpretation is not None and not isinstance(
+        proposed_interpretation, GovernedSemanticInterpretation
+    ):
+        raise SemanticInterpretationValidationError(
+            "proposed_interpretation must be a GovernedSemanticInterpretation when present"
+        )
+    return FailedInterpretationAuditArtifact(
+        contract_version=SUPPORTED_CONTRACT_VERSION,
+        artifact_id=_nonempty(artifact_id, "artifact_id"),
+        execution_id=_nonempty(execution_id, "execution_id"),
+        request_id=_nonempty(request_id, "request_id"),
+        provenance=provenance,
+        proposed_interpretation=proposed_interpretation,
+        provider_output_sha256=output_hash,
+        failure_attribution=FailureAttribution(
+            origin="INTERPRETATION",
+            code=_nonempty(failure_code, "failure_code"),
+            detail=_nonempty(failure_detail, "failure_detail"),
+        ),
+        created_at=_timestamp(created_at),
     )

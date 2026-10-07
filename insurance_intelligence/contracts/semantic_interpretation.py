@@ -2,7 +2,7 @@
 
 This module deliberately contains no model/provider invocation and no insurance
 truth. It only represents a proposed interpretation and the deterministic
-artifacts that may be produced after validation.
+artifacts that may be produced after validation or fail-closed rejection.
 """
 from __future__ import annotations
 
@@ -108,6 +108,8 @@ class FailureAttribution:
 
 @dataclass(frozen=True)
 class InterpretationAuditArtifact:
+    """Audit artifact for an interpretation that passed deterministic validation."""
+
     contract_version: str
     artifact_id: str
     execution_id: str
@@ -117,7 +119,29 @@ class InterpretationAuditArtifact:
     created_at: str
 
 
-def audit_artifact_as_dict(artifact: InterpretationAuditArtifact) -> Mapping[str, object]:
+@dataclass(frozen=True)
+class FailedInterpretationAuditArtifact:
+    """Non-executable audit artifact for an interpretation attempt that failed closed.
+
+    This type deliberately has no validated-interpretion field. A failed provider
+    call, malformed output, or validator rejection therefore cannot masquerade as
+    a downstream-safe interpretation marker.
+    """
+
+    contract_version: str
+    artifact_id: str
+    execution_id: str
+    request_id: str
+    provenance: InterpreterProvenance
+    proposed_interpretation: GovernedSemanticInterpretation | None
+    provider_output_sha256: str | None
+    failure_attribution: FailureAttribution
+    created_at: str
+
+
+def audit_artifact_as_dict(
+    artifact: InterpretationAuditArtifact | FailedInterpretationAuditArtifact,
+) -> Mapping[str, object]:
     """Return a JSON-serializable audit record without losing typed provenance."""
     from dataclasses import asdict
 
