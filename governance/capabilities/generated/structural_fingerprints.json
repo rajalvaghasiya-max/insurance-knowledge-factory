@@ -85,7 +85,7 @@
         "insurance_intelligence/context/requirements.py",
         "insurance_intelligence/contracts/context.py"
       ],
-      "structural_fingerprint": "2f15d31156bb319931ca07f9a37a7f564cd942d1e6affd1cb42aadb2a875285f"
+      "structural_fingerprint": "ba8ae123af7804a00872e36c9ed8f553179425efeda9ac6744946924ffb73534"
     },
     {
       "capability_id": "II.COVERAGE.REGISTRY",
