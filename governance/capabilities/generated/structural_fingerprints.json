@@ -287,7 +287,7 @@
         "insurance_intelligence/orchestration/service.py",
         "insurance_intelligence/orchestration/user_answer_evidence_adapter.py"
       ],
-      "structural_fingerprint": "2f354e734d11ebc2b8c27d752c796d90284a0c549c6080628985eb8cef022aae"
+      "structural_fingerprint": "d10fd139dfc57efc51acc7e1ef1feb4f162e0a5bcb07d5efe4a1e6a179637419"
     },
     {
       "capability_id": "II.ORCHESTRATION.TERMINOLOGY_ADMISSION_GATE",
@@ -307,7 +307,7 @@
         "insurance_intelligence/planning/semantic_request_selector.py",
         "insurance_intelligence/planning/validator.py"
       ],
-      "structural_fingerprint": "7b29c9f0ab0e16e2fdf19aa8d7f067629c676e766369fc88a7eca0c14f46c7e9"
+      "structural_fingerprint": "068ba73b653c4fb72143e14ff9400e201810a74bc8f300eca4784f126061dc40"
     },
     {
       "capability_id": "II.PUBLICATION.AUTHORITATIVE_GATE",

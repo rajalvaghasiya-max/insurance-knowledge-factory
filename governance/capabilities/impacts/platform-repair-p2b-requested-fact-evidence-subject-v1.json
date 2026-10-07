@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "platform-repair-p2b-requested-fact-evidence-subject-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.PLANNING.REASONING_PLANNER",
+    "II.ORCHESTRATION.EXECUTION_RUNTIME"
+  ],
+  "rationale": "P2A falsification v3 proved room-rent Q1/Q3/Q4 reach EVIDENCE_RESOLUTION_ENFORCED but fail MISSING. The first P2B attempt aligned DIRECT_FACT_PLAN evidence subjects on requested_fact, but the frozen rerun still failed because the canonical real-response prefix did not project ContextBuilderOutput.resolved_context into the evidence resolver's resolved_context_values mapping. PublishedEvidenceResolver already supports resolving symbolic planner subjects through that mapping. P2B therefore reuses existing planner/resolver semantics by using requested_fact for direct-fact evidence requirements and carrying active governed context values into evidence resolution.",
+  "supersession_impact": "No plan type, step type, evidence category, authority/version requirement, product identity resolver, source lookup, publication admission, reasoning, decision, explanation, or response contract is replaced. The planner semantic subject changes from product-reference slot to requested-fact slot for DIRECT_FACT_PLAN policy-document requirements, and orchestration now projects active resolved context values into the existing evidence resolution context contract.",
+  "authority_impact": "Resolved context projection does not create evidence or authority. Product identity remains independently governed through candidate references and product-instance attestation. Exact POLICY_WORDING/POLICY_SCHEDULE source-role checks, authoritative publication admission, lineage, evidence sufficiency, reasoning authority, decision gates, and response authority remain unchanged."
+}

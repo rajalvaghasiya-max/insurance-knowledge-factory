@@ -230,13 +230,13 @@ def _build_evidence_requirements(
     if plan_type == "DIRECT_FACT_PLAN":
         add(
             "POLICY_WORDING",
-            "policy_or_product_reference",
+            "requested_fact",
             "RESOLVE_POLICY_FACTS",
             semantic_component=requested_semantic_component,
         )
         add(
             "POLICY_SCHEDULE",
-            "policy_or_product_reference",
+            "requested_fact",
             "RESOLVE_POLICY_FACTS",
             required=False,
             semantic_component=requested_semantic_component,
