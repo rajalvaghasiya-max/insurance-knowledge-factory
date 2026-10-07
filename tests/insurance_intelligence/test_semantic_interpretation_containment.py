@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from dataclasses import replace
+from dataclasses import fields, replace
 
 import pytest
 
@@ -14,6 +14,7 @@ from insurance_intelligence.contracts.semantic_interpretation import (
     audit_artifact_as_dict,
 )
 from insurance_intelligence.semantic_interpretation.validator import (
+    RESOLUTION_CONFIDENCE_THRESHOLD,
     SemanticInterpretationValidationError,
     build_audit_artifact,
     build_clarification_route,
@@ -36,7 +37,6 @@ def resolved() -> GovernedSemanticInterpretation:
         request_id="request-1",
         interpretation_status="RESOLVED",
         confidence=0.93,
-        resolution_threshold=0.8,
         primary_intent="understand_policy_term",
         requested_outcome="POLICY_FACT_EXPLANATION",
         governed_concept_candidates=(ConceptCandidate("room_rent_limit", 0.94),),
@@ -53,14 +53,21 @@ def resolved() -> GovernedSemanticInterpretation:
 def test_resolved_interpretation_requires_deterministic_validation_marker() -> None:
     validated = validate_interpretation(resolved())
     assert validated.interpretation.selected_concept_id == "room_rent_limit"
-    assert validated.validator_version == "1.0"
+    assert validated.validator_version == "1.1"
+    assert validated.resolution_threshold_applied == RESOLUTION_CONFIDENCE_THRESHOLD
+
+
+def test_interpreter_proposal_cannot_supply_or_lower_resolution_threshold() -> None:
+    field_names = {field.name for field in fields(GovernedSemanticInterpretation)}
+    assert "resolution_threshold" not in field_names
+    assert RESOLUTION_CONFIDENCE_THRESHOLD == 0.80
 
 
 def test_low_confidence_cannot_silently_become_resolved() -> None:
     proposal = replace(resolved(), confidence=0.79)
     with pytest.raises(
         SemanticInterpretationValidationError,
-        match="below resolution_threshold",
+        match="below governed resolution threshold",
     ):
         validate_interpretation(proposal)
 
@@ -151,6 +158,15 @@ def test_claim_admissibility_outcome_is_structurally_outside_executable_domain()
         validate_interpretation(proposal)
 
 
+def test_unknown_outcome_fails_closed_because_domain_is_allow_list() -> None:
+    proposal = replace(resolved(), requested_outcome="NEW_UNREVIEWED_OUTCOME")
+    with pytest.raises(
+        SemanticInterpretationValidationError,
+        match="outside the executable domain",
+    ):
+        validate_interpretation(proposal)
+
+
 def test_resolved_interpretation_cannot_retain_hidden_competing_reading() -> None:
     proposal = replace(
         resolved(),
@@ -186,6 +202,7 @@ def test_audit_artifact_is_execution_linked_and_json_serializable() -> None:
     assert serialized["execution_id"] == "execution-1"
     assert serialized["request_id"] == "request-1"
     assert serialized["failure_attribution"]["origin"] == "NONE"
+    assert serialized["validated_interpretation"]["resolution_threshold_applied"] == 0.80
     assert json.loads(json.dumps(serialized))["validated_interpretation"][
         "interpretation"
     ]["provenance"]["input_sha256"] == "a" * 64
