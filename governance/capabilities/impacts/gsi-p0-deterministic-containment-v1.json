@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "gsi-p0-deterministic-containment-v1",
+  "classification": "NEW",
+  "capability_ids": [
+    "II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY"
+  ],
+  "rationale": "Repeated paraphrase failures across candidate resolution, requested-fact/evidence resolution and request-authority classification demonstrate a class-level language-understanding blocker that deterministic phrase heuristics cannot close generically. Issue #392 authorizes one new generic Governed Semantic Interpreter capability. P0 implements only the deterministic containment boundary required by #393 before any probabilistic provider can affect orchestration: typed untrusted proposals, fail-closed validation, clarification routing, bounded executable outcomes, provenance, execution-linked audit records and failure-origin attribution.",
+  "supersession_impact": "No existing intent, terminology, context, request-authority, planning, evidence, publication, reasoning, decision, explanation, rendering or release-safety capability is replaced or modified. Existing LLM provider/transport infrastructure is intentionally not duplicated and is not invoked by P0.",
+  "authority_impact": "The new boundary has zero insurance authority. A validated interpretation expresses only proposed request meaning. AMBIGUOUS/UNRESOLVED proposals cannot become executable typed requests; claim approval/rejection/admissibility/payment/non-payment requested outcomes are outside the allowed output domain; all insurance truth and release authority remain downstream in existing governed capabilities."
+}

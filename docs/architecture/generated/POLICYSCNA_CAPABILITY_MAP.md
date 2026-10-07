@@ -7,7 +7,7 @@
 - **Catalog version:** `1.0`
 - **Enforcement mode:** `STRICT`
 - **Fingerprint schema:** `1.0`
-- **Registered capabilities:** `48`
+- **Registered capabilities:** `49`
 - **Governed roots:** `capability_control`, `insurance_intelligence`
 
 ## Interpretation rules
@@ -239,3 +239,9 @@
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
 | `PLATFORM.CAPABILITY_CONTROL_PLANE`<br>PolicyScna Capability Control Plane | `ACTIVE` | `REUSE` | Repository architecture-memory integrity control; it does not decide insurance truth or runtime answer content. | None | `capability_control` | `78fdc5878ccc` |
+
+### SEMANTIC_INTERPRETATION
+
+| Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| `II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY`<br>Governed Semantic Interpretation Boundary | `ACTIVE` | `REUSE` | Zero insurance authority. This boundary may propose request meaning only; it cannot establish policy facts, coverage, claim admissibility, approval, rejection, payment, non-payment, recommendation truth, or publication authority. | None | `insurance_intelligence/contracts/semantic_interpretation.py`<br>`insurance_intelligence/semantic_interpretation` | `cdbde88c6453` |

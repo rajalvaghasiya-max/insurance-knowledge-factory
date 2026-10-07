@@ -252,6 +252,15 @@
       "structural_fingerprint": "614bdb80d48271ed3c609de39fea909c90518c33d495074a87415ae809d4fe75"
     },
     {
+      "capability_id": "II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY",
+      "owned_module_paths": [
+        "insurance_intelligence/contracts/semantic_interpretation.py",
+        "insurance_intelligence/semantic_interpretation/__init__.py",
+        "insurance_intelligence/semantic_interpretation/validator.py"
+      ],
+      "structural_fingerprint": "cdbde88c6453ad2850209bbc93edf00d94b63fed62d877ec21fe19988b8058b9"
+    },
+    {
       "capability_id": "II.ORCHESTRATION.CANONICAL_GUARDED_ORDER",
       "owned_module_paths": [
         "insurance_intelligence/contracts/full_cycle.py"
