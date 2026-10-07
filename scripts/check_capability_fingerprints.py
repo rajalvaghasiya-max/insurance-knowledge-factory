@@ -126,11 +126,14 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     for capability_id in added:
-        print(f"CAPABILITY_FINGERPRINT_ADDED {capability_id}", file=sys.stderr)
+        print(f"CAPABILITY_FINGERPRINT_ADDED {capability_id} computed={new[capability_id][1]}", file=sys.stderr)
     for capability_id in removed:
         print(f"CAPABILITY_FINGERPRINT_REMOVED {capability_id}", file=sys.stderr)
     for capability_id in changed:
-        print(f"CAPABILITY_IMPLEMENTATION_CHANGED {capability_id}", file=sys.stderr)
+        print(
+            f"CAPABILITY_IMPLEMENTATION_CHANGED {capability_id} computed={new[capability_id][1]} paths={','.join(new[capability_id][0])}",
+            file=sys.stderr,
+        )
 
     if added or removed or changed:
         print(
