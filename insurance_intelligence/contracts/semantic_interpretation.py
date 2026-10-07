@@ -1,7 +1,7 @@
 """Typed contracts for the Governed Semantic Interpreter containment boundary.
 
 This module deliberately contains no model/provider invocation and no insurance
-truth.  It only represents a proposed interpretation and the deterministic
+truth. It only represents a proposed interpretation and the deterministic
 artifacts that may be produced after validation.
 """
 from __future__ import annotations
@@ -57,13 +57,17 @@ class InterpreterProvenance:
 
 @dataclass(frozen=True)
 class GovernedSemanticInterpretation:
-    """Untrusted interpreter proposal. Never pass this directly to orchestration."""
+    """Untrusted interpreter proposal. Never pass this directly to orchestration.
+
+    Deliberately does not contain a resolution threshold. The probabilistic
+    interpreter may report confidence, but it may never choose the safety bar
+    used to admit its own output.
+    """
 
     contract_version: str
     request_id: str
     interpretation_status: str
     confidence: float
-    resolution_threshold: float
     primary_intent: str | None
     requested_outcome: str | None
     governed_concept_candidates: tuple[ConceptCandidate, ...]
@@ -82,6 +86,7 @@ class ValidatedGovernedSemanticInterpretation:
 
     interpretation: GovernedSemanticInterpretation
     validator_version: str
+    resolution_threshold_applied: float
 
 
 @dataclass(frozen=True)
