@@ -10,7 +10,9 @@
       "safety_invariants": [
         "Only a deterministic validator may convert an untrusted interpretation proposal into a downstream-safe validated marker.",
         "AMBIGUOUS and UNRESOLVED interpretations cannot select a governed concept or request an executable semantic fact and must route to clarification.",
-        "RESOLVED interpretations must meet their declared resolution threshold and may not retain competing interpretations.",
+        "The probabilistic interpreter cannot supply or lower the resolution threshold; the deterministic validator owns a pinned governed confidence threshold and records the applied threshold in the validated audit path.",
+        "RESOLVED interpretations must meet the governed validator threshold and may not retain competing interpretations.",
+        "The executable requested-outcome domain is a closed allow-list; unknown or unreviewed outcomes fail closed.",
         "Claim approval, rejection, admissibility, payment and non-payment outcomes are absent from the executable requested-outcome domain.",
         "Every validated interpretation carries interpreter/model/config/input-hash provenance and can be attached to an orchestration execution as a serializable audit artifact.",
         "The capability contains no insurer, product or governed-concept-specific runtime branches."
