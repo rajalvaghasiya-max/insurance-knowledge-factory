@@ -235,10 +235,33 @@ class ContextBuilder:
                 already_resolved_keys.add(key)
                 basis_used.add("candidate_entity")
         else:
+            candidates_by_key: dict[str, list] = {}
             for entity in request.intent_analysis.candidate_entities:
                 key = mapping.get(entity.entity_type)
                 if key is None or key in already_resolved_keys:
                     continue
+                candidates_by_key.setdefault(key, []).append(entity)
+
+            for key, candidates in candidates_by_key.items():
+                top_confidence = max(entity.confidence for entity in candidates)
+                strongest = tuple(
+                    entity for entity in candidates if entity.confidence == top_confidence
+                )
+                strongest_values = {
+                    entity.normalized_text.casefold() for entity in strongest
+                }
+                if len(strongest_values) != 1:
+                    # Equal-strength disagreement must not be resolved by input order.
+                    # Leave the key missing so the existing answerability gate fails closed.
+                    continue
+                entity = sorted(
+                    strongest,
+                    key=lambda item: (
+                        item.normalized_text.casefold(),
+                        item.source,
+                        item.surface_text.casefold(),
+                    ),
+                )[0]
                 items.append(
                     build_resolved_context_item(
                         key=key,

@@ -57,7 +57,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.CONTEXT.BUILDER`<br>Governed Context Builder | `ACTIVE` | `REUSE` | Determines context sufficiency only; textual mentions and candidate references do not establish governed insurance identity. | None | `insurance_intelligence/context`<br>`insurance_intelligence/contracts/context.py` | `2f15d31156bb` |
+| `II.CONTEXT.BUILDER`<br>Governed Context Builder | `ACTIVE` | `REUSE` | Determines context sufficiency only; textual mentions and candidate references do not establish governed insurance identity. | None | `insurance_intelligence/context`<br>`insurance_intelligence/contracts/context.py` | `ba8ae123af78` |
 
 ### INSURANCE_INTELLIGENCE_COVERAGE_GOVERNANCE
 

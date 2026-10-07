@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "platform-repair-p2c-candidate-precedence-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.CONTEXT.BUILDER"
+  ],
+  "rationale": "After P2B, frozen room-rent Q1/Q2/Q3 and bariatric Q2 reach the customer-answer path, while Q4 still fails because POLICY_FACT_LOOKUP maps multiple CLAIM_CONCEPT candidates to the same requested_fact key. ContextBuilder previously accepted the first candidate encountered, making semantics depend on candidate ordering. Reuse existing CandidateEntity confidence metadata to select the unique strongest value for each single-value context key and fail closed when equally strong candidates disagree.",
+  "supersession_impact": "No intent label, candidate extraction rule, context requirement, product identity binding, planner, evidence resolver, publication, reasoning, decision, explanation, or response contract is replaced. Explicit user context, session context, document metadata, and multi-value comparison handling keep their existing higher-priority behavior.",
+  "authority_impact": "Candidate precedence remains provisional context assembly only and does not establish governed product identity or insurance facts. Equal-strength semantic disagreement leaves the required context key unresolved so existing clarification and Instance Sufficiency gates remain fail-closed."
+}
