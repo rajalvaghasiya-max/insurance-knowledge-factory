@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "gsi-p1a-shared-text-transport-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY",
+    "LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME"
+  ],
+  "rationale": "Issue #400 extends the already-authorized GSI boundary with a provider-backed proposal adapter while reusing the existing insurance_intelligence/llm provider runtime instead of creating a semantic-specific client stack. Because the existing provider request/response is rendering-specific, the same LLM provider module gains a small use-case-neutral text transport while all legacy rendering behavior is preserved. The GSI adapter accepts only caller-governed vocabulary, supplies trusted provenance itself, rejects provider-controlled provenance/threshold fields, validates every proposal deterministically, audits every exit, and remains disconnected from canonical orchestration.",
+  "supersession_impact": "No capability is replaced or superseded. The existing LLM rendering runtime retains its rendering contracts, fidelity checks and fallback behavior while its provider-neutral invocation layer becomes reusable for governed text callers. The existing GSI capability gains a contained provider proposal path but no downstream orchestration authority. No vendor-specific adapter, product-specific interpreter, publication/evidence/reasoning/decision/payment/recommendation/release change is introduced.",
+  "authority_impact": "No new insurance authority is introduced. Shared transport success grants no semantic authority. Provider output remains untrusted until the deterministic GSI validator creates a validated marker; invented governed IDs, malformed shapes, unsafe requested outcomes, low-confidence resolved proposals and provider failures fail closed and are audited. Claim approval/rejection/admissibility/payment/non-payment outcomes remain outside the executable interpretation domain, and canonical orchestration remains unwired."
+}
