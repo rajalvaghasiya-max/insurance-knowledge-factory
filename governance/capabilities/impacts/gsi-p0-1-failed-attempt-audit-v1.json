@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "gsi-p0-1-failed-attempt-audit-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY"
+  ],
+  "rationale": "Issue #396 closes an auditability seam in the existing GSI containment boundary. The merged P0 success audit path requires a validated interpretation, but P1 requires persistent audit evidence for provider failure, malformed output and deterministic validator rejection, where no validated marker can exist. This repair adds a separate non-executable failed-attempt artifact with independently validated attempt provenance and optional provider-output SHA-256 while preserving the existing validated-success artifact.",
+  "supersession_impact": "No capability is replaced. No provider/model invocation, prompt, orchestration wiring, product-specific logic, publication semantics, evidence semantics, reasoning, decision, payment, recommendation or release authority is changed. The repair extends only the audit representation inside the existing GSI containment boundary.",
+  "authority_impact": "No new authority is introduced. Failed interpretation attempts remain explicitly non-executable and cannot carry a validated downstream marker. Failure attribution is pinned to INTERPRETATION for the failed-attempt builder, while all insurance truth and downstream release authority remain outside the interpreter."
+}
