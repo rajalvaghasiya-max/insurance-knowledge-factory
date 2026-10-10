@@ -226,7 +226,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME`<br>Controlled Hybrid LLM Rendering Runtime | `ACTIVE` | `REUSE` | Reusable provider-neutral transport and controlled candidate-rendering runtime only. Transport success grants no insurance, interpretation, recommendation, publication or release authority; canonical rendered candidates remain subordinate to Rendering Exit Safety. | None | `insurance_intelligence/llm`<br>`insurance_intelligence/contracts/llm_rendering.py` | `938bb5cda16b` |
+| `LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME`<br>Controlled Hybrid LLM Rendering Runtime | `ACTIVE` | `REUSE` | Reusable provider-neutral transport and controlled candidate-rendering runtime only. Transport success grants no insurance, interpretation, recommendation, publication or release authority; canonical rendered candidates remain subordinate to Rendering Exit Safety. | None | `insurance_intelligence/llm`<br>`insurance_intelligence/contracts/llm_rendering.py` | `5c51d6f05bdd` |
 
 ### PLATFORM
 
@@ -244,4 +244,4 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY`<br>Governed Semantic Interpretation Boundary | `ACTIVE` | `REUSE` | Zero insurance authority. This boundary may propose request meaning only; it cannot establish policy facts, coverage, claim admissibility, approval, rejection, payment, non-payment, recommendation truth, or publication authority. | None | `insurance_intelligence/contracts/semantic_interpretation.py`<br>`insurance_intelligence/semantic_interpretation` | `8e0b7ddc3669` |
+| `II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY`<br>Governed Semantic Interpretation Boundary | `ACTIVE` | `REUSE` | Zero insurance authority. This boundary may propose request meaning only; it cannot establish policy facts, coverage, claim admissibility, approval, rejection, payment, non-payment, recommendation truth, or publication authority. | None | `insurance_intelligence/contracts/semantic_interpretation.py`<br>`insurance_intelligence/semantic_interpretation` | `5706ec83aa3f` |
