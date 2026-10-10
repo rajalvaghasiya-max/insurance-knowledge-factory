@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "gsi-p1d-provider-contract-compliance-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY"
+  ],
+  "rationale": "Issue #409 repairs a generic provider-output compliance seam exposed by the first valid credentialed GSI live run. The interpreter correctly selected the held-back restoration concept in all cases, but some proposals violated already-frozen deterministic contract invariants by retaining ambiguity on RESOLVED outputs or repeating a governed scenario-fact name. The repair strengthens only concept-neutral provider guidance so probabilistic proposals satisfy the existing containment contract before deterministic validation.",
+  "supersession_impact": "No capability is replaced and no deterministic validation rule is weakened. The 0.80 resolution threshold, frozen benchmark pack, insurance semantics, publication/evidence/reasoning boundaries and canonical orchestration remain unchanged. The provider adapter provenance version advances to v2 solely to identify the changed generic interpretation instruction.",
+  "authority_impact": "No new insurance authority is introduced. The interpreter still maps language into typed request meaning only. Missing policy truth is explicitly distinguished from ambiguity in user meaning, while policy facts, coverage, claim admissibility, payment, suitability and recommendation truth remain outside the interpreter and under deterministic governed components."
+}
