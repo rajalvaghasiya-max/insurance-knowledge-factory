@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "change_id": "gsi-p1b-openai-live-benchmark-v1",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY",
+    "LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME"
+  ],
+  "rationale": "Issue #402 adds the minimum concrete vendor path required to execute the already-governed P1A text transport against a real probabilistic provider. The shared text request gains optional caller-supplied structured-output schema data; GSI derives that schema only from deterministic governed domains; and one OpenAI Responses adapter transports the request using the existing requests dependency. A credential- and model-explicit live benchmark runner is added outside CI, including the precommitted held-back restoration cases as evaluation data only.",
+  "supersession_impact": "No capability is replaced or superseded. Existing rendering behavior remains unchanged. The shared provider runtime is extended with schema-carrying text requests and one bounded OpenAI adapter. GSI is extended with strict output-schema construction. No canonical orchestration, publication, evidence, reasoning, decision, payment, recommendation or release boundary is changed.",
+  "authority_impact": "No insurance authority is added. Structured output narrows provider syntax but does not validate truth; every provider result remains untrusted until deterministic GSI validation. The provider cannot set provenance or confidence threshold, claim/payment/admissibility outcomes remain outside the executable domain, failed provider states fail closed, and live benchmark execution requires explicit operator credentials/model without running in CI."
+}

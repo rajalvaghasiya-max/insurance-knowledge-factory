@@ -1,6 +1,6 @@
 """Provider-backed semantic interpretation behind deterministic containment.
 
-The provider is permitted to propose request meaning only.  This module owns no
+The provider is permitted to propose request meaning only. This module owns no
 insurance facts and is intentionally disconnected from canonical orchestration.
 """
 from __future__ import annotations
@@ -11,6 +11,9 @@ import json
 from typing import Mapping
 
 from insurance_intelligence.contracts.semantic_interpretation import (
+    INTERPRETATION_STATUSES,
+    REQUEST_AUTHORITY_CLASSES,
+    REQUESTED_OUTCOMES,
     ClarificationRoute,
     CompetingInterpretation,
     ConceptCandidate,
@@ -159,6 +162,68 @@ def _ensure_governed(value: str | None, allowed: tuple[str, ...], label: str) ->
         raise SemanticProviderOutputError(f"{label} is not in the caller-governed vocabulary")
 
 
+def _nullable_enum(values: tuple[str, ...]) -> dict[str, object]:
+    return {"type": ["string", "null"], "enum": [*values, None]}
+
+
+def _semantic_response_schema(vocabulary: GovernedInterpretationVocabulary) -> dict[str, object]:
+    """Build strict provider structure from deterministic governed domains only."""
+    candidate = {
+        "type": "object",
+        "properties": {
+            "concept_id": {"type": "string", "enum": list(vocabulary.concept_ids)},
+            "confidence": {"type": "number"},
+        },
+        "required": ["concept_id", "confidence"],
+        "additionalProperties": False,
+    }
+    scenario = {
+        "type": "object",
+        "properties": {
+            "name": {"type": "string", "enum": list(vocabulary.scenario_fact_names)},
+            "value": {"type": "string"},
+        },
+        "required": ["name", "value"],
+        "additionalProperties": False,
+    }
+    competing = {
+        "type": "object",
+        "properties": {
+            "primary_intent": {"type": "string", "enum": list(vocabulary.intent_ids)},
+            "requested_outcome": {"type": "string", "enum": sorted(REQUESTED_OUTCOMES)},
+            "concept_id": _nullable_enum(vocabulary.concept_ids),
+            "requested_semantic_fact": _nullable_enum(vocabulary.semantic_fact_ids),
+            "confidence": {"type": "number"},
+        },
+        "required": [
+            "primary_intent",
+            "requested_outcome",
+            "concept_id",
+            "requested_semantic_fact",
+            "confidence",
+        ],
+        "additionalProperties": False,
+    }
+    return {
+        "type": "object",
+        "properties": {
+            "interpretation_status": {"type": "string", "enum": sorted(INTERPRETATION_STATUSES)},
+            "confidence": {"type": "number"},
+            "primary_intent": _nullable_enum(vocabulary.intent_ids),
+            "requested_outcome": _nullable_enum(tuple(sorted(REQUESTED_OUTCOMES))),
+            "governed_concept_candidates": {"type": "array", "items": candidate},
+            "selected_concept_id": _nullable_enum(vocabulary.concept_ids),
+            "requested_semantic_fact": _nullable_enum(vocabulary.semantic_fact_ids),
+            "scenario_facts": {"type": "array", "items": scenario},
+            "request_authority_class": {"type": "string", "enum": sorted(REQUEST_AUTHORITY_CLASSES)},
+            "ambiguity_reasons": {"type": "array", "items": {"type": "string"}},
+            "competing_interpretations": {"type": "array", "items": competing},
+        },
+        "required": sorted(_PROVIDER_OUTPUT_KEYS),
+        "additionalProperties": False,
+    }
+
+
 def build_semantic_text_request(
     *,
     request_id: str,
@@ -201,6 +266,13 @@ def build_semantic_text_request(
         system_prompt=system_prompt,
         user_prompt=json.dumps(payload, sort_keys=True, ensure_ascii=False),
         timeout_seconds=timeout_seconds,
+        response_schema_name="governed_semantic_interpretation",
+        response_json_schema=json.dumps(
+            _semantic_response_schema(vocabulary),
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+        ),
     )
 
 
@@ -232,11 +304,7 @@ def parse_provider_interpretation(
     requested_semantic_fact = _optional_text(
         root["requested_semantic_fact"], "requested_semantic_fact"
     )
-    _ensure_governed(
-        requested_semantic_fact,
-        vocabulary.semantic_fact_ids,
-        "requested_semantic_fact",
-    )
+    _ensure_governed(requested_semantic_fact, vocabulary.semantic_fact_ids, "requested_semantic_fact")
 
     raw_candidates = root["governed_concept_candidates"]
     if not isinstance(raw_candidates, list):
@@ -248,12 +316,7 @@ def parse_provider_interpretation(
             raise SemanticProviderOutputError("concept candidate keys must be concept_id/confidence")
         concept_id = _required_text(candidate["concept_id"], "candidate.concept_id")
         _ensure_governed(concept_id, vocabulary.concept_ids, "candidate.concept_id")
-        candidates.append(
-            ConceptCandidate(
-                concept_id=concept_id,
-                confidence=_required_number(candidate["confidence"], "candidate.confidence"),
-            )
-        )
+        candidates.append(ConceptCandidate(concept_id=concept_id, confidence=_required_number(candidate["confidence"], "candidate.confidence")))
 
     raw_scenario = root["scenario_facts"]
     if not isinstance(raw_scenario, list):
@@ -265,21 +328,13 @@ def parse_provider_interpretation(
             raise SemanticProviderOutputError("scenario fact keys must be name/value")
         name = _required_text(fact["name"], "scenario_fact.name")
         _ensure_governed(name, vocabulary.scenario_fact_names, "scenario_fact.name")
-        scenario_facts.append(
-            ScenarioFact(name=name, value=_required_text(fact["value"], "scenario_fact.value"))
-        )
+        scenario_facts.append(ScenarioFact(name=name, value=_required_text(fact["value"], "scenario_fact.value")))
 
     raw_competing = root["competing_interpretations"]
     if not isinstance(raw_competing, list):
         raise SemanticProviderOutputError("competing_interpretations must be an array")
     competing: list[CompetingInterpretation] = []
-    expected_competing_keys = {
-        "primary_intent",
-        "requested_outcome",
-        "concept_id",
-        "requested_semantic_fact",
-        "confidence",
-    }
+    expected_competing_keys = {"primary_intent", "requested_outcome", "concept_id", "requested_semantic_fact", "confidence"}
     for index, item in enumerate(raw_competing):
         alternative = _require_mapping(item, f"competing_interpretations[{index}]")
         if frozenset(alternative) != expected_competing_keys:
@@ -288,34 +343,22 @@ def parse_provider_interpretation(
         _ensure_governed(alt_intent, vocabulary.intent_ids, "competing.primary_intent")
         alt_concept = _optional_text(alternative["concept_id"], "competing.concept_id")
         _ensure_governed(alt_concept, vocabulary.concept_ids, "competing.concept_id")
-        alt_fact = _optional_text(
-            alternative["requested_semantic_fact"], "competing.requested_semantic_fact"
-        )
-        _ensure_governed(
-            alt_fact,
-            vocabulary.semantic_fact_ids,
-            "competing.requested_semantic_fact",
-        )
+        alt_fact = _optional_text(alternative["requested_semantic_fact"], "competing.requested_semantic_fact")
+        _ensure_governed(alt_fact, vocabulary.semantic_fact_ids, "competing.requested_semantic_fact")
         competing.append(
             CompetingInterpretation(
                 primary_intent=alt_intent,
-                requested_outcome=_required_text(
-                    alternative["requested_outcome"], "competing.requested_outcome"
-                ),
+                requested_outcome=_required_text(alternative["requested_outcome"], "competing.requested_outcome"),
                 concept_id=alt_concept,
                 requested_semantic_fact=alt_fact,
-                confidence=_required_number(
-                    alternative["confidence"], "competing.confidence"
-                ),
+                confidence=_required_number(alternative["confidence"], "competing.confidence"),
             )
         )
 
     return GovernedSemanticInterpretation(
         contract_version="1.0",
         request_id=request_id,
-        interpretation_status=_required_text(
-            root["interpretation_status"], "interpretation_status"
-        ),
+        interpretation_status=_required_text(root["interpretation_status"], "interpretation_status"),
         confidence=_required_number(root["confidence"], "confidence"),
         primary_intent=primary_intent,
         requested_outcome=_optional_text(root["requested_outcome"], "requested_outcome"),
@@ -323,9 +366,7 @@ def parse_provider_interpretation(
         selected_concept_id=selected_concept_id,
         requested_semantic_fact=requested_semantic_fact,
         scenario_facts=tuple(scenario_facts),
-        request_authority_class=_required_text(
-            root["request_authority_class"], "request_authority_class"
-        ),
+        request_authority_class=_required_text(root["request_authority_class"], "request_authority_class"),
         ambiguity_reasons=_text_list(root["ambiguity_reasons"], "ambiguity_reasons"),
         competing_interpretations=tuple(competing),
         provenance=provenance,

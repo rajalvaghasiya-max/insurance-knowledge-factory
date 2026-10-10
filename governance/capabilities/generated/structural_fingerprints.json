@@ -259,7 +259,7 @@
         "insurance_intelligence/semantic_interpretation/provider_adapter.py",
         "insurance_intelligence/semantic_interpretation/validator.py"
       ],
-      "structural_fingerprint": "8e0b7ddc3669bf6d67aa3a0129e63c0f9aa3521ea861470c6d7f1a2b537a4aaa"
+      "structural_fingerprint": "5706ec83aa3f7f1febab64dba6bcb5052b16fb7fc458091d57501d0bd4d3aab1"
     },
     {
       "capability_id": "II.ORCHESTRATION.CANONICAL_GUARDED_ORDER",
@@ -505,13 +505,14 @@
         "insurance_intelligence/contracts/llm_rendering.py",
         "insurance_intelligence/llm/__init__.py",
         "insurance_intelligence/llm/fidelity.py",
+        "insurance_intelligence/llm/openai_responses_provider.py",
         "insurance_intelligence/llm/output_parser.py",
         "insurance_intelligence/llm/policy.py",
         "insurance_intelligence/llm/prompt_builder.py",
         "insurance_intelligence/llm/provider.py",
         "insurance_intelligence/llm/service.py"
       ],
-      "structural_fingerprint": "938bb5cda16b3c560caf5b7d20f882874612b0d2b15bb16681f758d4c8367d80"
+      "structural_fingerprint": "5c51d6f05bdd00e20781f20fbb60fd75c049510754ad2c2890f5eb75f29baa53"
     },
     {
       "capability_id": "PLATFORM.CAPABILITY_CONTROL_PLANE",

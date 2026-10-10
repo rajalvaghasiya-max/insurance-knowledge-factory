@@ -1,8 +1,9 @@
-"""Provider-neutral controlled LLM invocation boundary (MO-022B and GSI P1A)."""
+"""Provider-neutral controlled LLM invocation boundary (MO-022B and GSI P1A/P1B)."""
 from __future__ import annotations
 
 from dataclasses import dataclass
 from hashlib import sha256
+import json
 from typing import Protocol, Sequence, runtime_checkable
 
 from insurance_intelligence.contracts.llm_rendering import (
@@ -20,8 +21,6 @@ class LLMProviderError(RuntimeError):
 
 @runtime_checkable
 class LLMRendererProvider(Protocol):
-    """Legacy rendering-specific provider boundary retained unchanged."""
-
     @property
     def provider_name(self) -> str: ...
 
@@ -43,14 +42,12 @@ def _stable_id(prefix: str, *parts: object) -> str:
 
 
 def invoke_provider(provider: LLMRendererProvider, request: ProviderRenderRequest) -> ProviderInvocationResult:
-    """Invoke the legacy renderer exactly once and normalize adapter failures."""
     if not isinstance(request, ProviderRenderRequest):
         raise TypeError("request must be ProviderRenderRequest")
     if not isinstance(provider, LLMRendererProvider):
         raise TypeError("provider must implement LLMRendererProvider")
     if provider.provider_name != request.provider_name:
         raise LLMProviderError("provider identity must match request.provider_name")
-
     invocation_id = _stable_id("llm-inv", request.provider_request_id, request.provider_name, request.model_name)
     try:
         response = provider.render(request)
@@ -68,7 +65,7 @@ def invoke_provider(provider: LLMRendererProvider, request: ProviderRenderReques
             provider_metadata={"normalized_by": "invoke_provider"},
         )
         return ProviderInvocationResult(invocation_id, request, response, True, "TIMEOUT")
-    except Exception as exc:  # fail closed at the adapter boundary
+    except Exception as exc:
         response = build_provider_response(
             provider_response_id=_stable_id("llm-res", invocation_id, type(exc).__name__),
             provider_request_id=request.provider_request_id,
@@ -89,25 +86,37 @@ class TextProviderRequest:
     system_prompt: str
     user_prompt: str
     timeout_seconds: float
+    response_schema_name: str | None = None
+    response_json_schema: str | None = None
 
     def __post_init__(self) -> None:
-        for name in (
-            "provider_request_id",
-            "provider_name",
-            "model_name",
-            "system_prompt",
-            "user_prompt",
-        ):
+        for name in ("provider_request_id", "provider_name", "model_name", "system_prompt", "user_prompt"):
             value = getattr(self, name)
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(f"{name} must be non-empty text")
             object.__setattr__(self, name, value.strip())
-        if isinstance(self.timeout_seconds, bool) or not isinstance(
-            self.timeout_seconds, (int, float)
-        ):
+        if isinstance(self.timeout_seconds, bool) or not isinstance(self.timeout_seconds, (int, float)):
             raise ValueError("timeout_seconds must be numeric")
         if self.timeout_seconds <= 0:
             raise ValueError("timeout_seconds must be greater than zero")
+        if (self.response_schema_name is None) != (self.response_json_schema is None):
+            raise ValueError("response_schema_name and response_json_schema must be supplied together")
+        if self.response_schema_name is not None:
+            name = self.response_schema_name.strip()
+            if not name or len(name) > 64 or not all(ch.isalnum() or ch in "_-" for ch in name):
+                raise ValueError("response_schema_name must be 1-64 alphanumeric/_/- characters")
+            object.__setattr__(self, "response_schema_name", name)
+            try:
+                schema = json.loads(self.response_json_schema or "")
+            except json.JSONDecodeError as exc:
+                raise ValueError("response_json_schema must be valid JSON") from exc
+            if not isinstance(schema, dict) or schema.get("type") != "object":
+                raise ValueError("response_json_schema root must be an object schema")
+            object.__setattr__(
+                self,
+                "response_json_schema",
+                json.dumps(schema, sort_keys=True, separators=(",", ":"), ensure_ascii=False),
+            )
 
 
 @dataclass(frozen=True)
@@ -138,8 +147,6 @@ class TextProviderResponse:
 
 @runtime_checkable
 class LLMTextProvider(Protocol):
-    """Shared text provider transport; it carries text but grants no domain authority."""
-
     @property
     def provider_name(self) -> str: ...
 
@@ -155,24 +162,14 @@ class TextProviderInvocationResult:
     normalized_failure: str | None
 
 
-def invoke_text_provider(
-    provider: LLMTextProvider,
-    request: TextProviderRequest,
-) -> TextProviderInvocationResult:
-    """Invoke one shared text provider exactly once and fail closed on adapter errors."""
+def invoke_text_provider(provider: LLMTextProvider, request: TextProviderRequest) -> TextProviderInvocationResult:
     if not isinstance(request, TextProviderRequest):
         raise TypeError("request must be TextProviderRequest")
     if not isinstance(provider, LLMTextProvider):
         raise TypeError("provider must implement LLMTextProvider")
     if provider.provider_name != request.provider_name:
         raise LLMProviderError("provider identity must match request.provider_name")
-
-    invocation_id = _stable_id(
-        "llm-text-inv",
-        request.provider_request_id,
-        request.provider_name,
-        request.model_name,
-    )
+    invocation_id = _stable_id("llm-text-inv", request.provider_request_id, request.provider_name, request.model_name)
     try:
         response = provider.complete(request)
         if not isinstance(response, TextProviderResponse):
@@ -180,9 +177,7 @@ def invoke_text_provider(
         if response.provider_request_id != request.provider_request_id:
             raise LLMProviderError("provider response request identity mismatch")
         normalized_failure = None if response.status == "SUCCEEDED" else response.status
-        return TextProviderInvocationResult(
-            invocation_id, request, response, True, normalized_failure
-        )
+        return TextProviderInvocationResult(invocation_id, request, response, True, normalized_failure)
     except TimeoutError as exc:
         response = TextProviderResponse(
             provider_request_id=request.provider_request_id,
@@ -190,27 +185,17 @@ def invoke_text_provider(
             error_message=str(exc) or "provider timeout",
         )
         return TextProviderInvocationResult(invocation_id, request, response, True, "TIMEOUT")
-    except Exception as exc:  # fail closed at the shared provider boundary
+    except Exception as exc:
         response = TextProviderResponse(
             provider_request_id=request.provider_request_id,
             status="FAILED",
             error_message=str(exc) or type(exc).__name__,
         )
-        return TextProviderInvocationResult(
-            invocation_id, request, response, True, "PROVIDER_ERROR"
-        )
+        return TextProviderInvocationResult(invocation_id, request, response, True, "PROVIDER_ERROR")
 
 
 class DeterministicFakeProvider:
-    """Offline rendering provider for repeatable tests; it never performs I/O."""
-
-    def __init__(
-        self,
-        *,
-        provider_name: str = "deterministic_fake",
-        sections: Sequence[CandidateRenderedSection] = (),
-        failure: str | None = None,
-    ) -> None:
+    def __init__(self, *, provider_name: str = "deterministic_fake", sections: Sequence[CandidateRenderedSection] = (), failure: str | None = None) -> None:
         if not provider_name.strip():
             raise ValueError("provider_name must be non-empty")
         if failure not in {None, "TIMEOUT", "ERROR", "INVALID_RESPONSE"}:
@@ -242,26 +227,14 @@ class DeterministicFakeProvider:
             provider_request_id=request.provider_request_id,
             status="SUCCEEDED",
             candidate_sections=sections,
-            token_usage=build_token_usage(
-                input_tokens=input_tokens,
-                output_tokens=output_tokens,
-                total_tokens=input_tokens + output_tokens,
-            ),
+            token_usage=build_token_usage(input_tokens=input_tokens, output_tokens=output_tokens, total_tokens=input_tokens + output_tokens),
             finish_reason="stop",
             provider_metadata={"deterministic": True},
         )
 
 
 class DeterministicFakeTextProvider:
-    """Offline shared-text provider used to falsify transport and containment behavior."""
-
-    def __init__(
-        self,
-        *,
-        output_text: str | None = None,
-        provider_name: str = "deterministic_text_fake",
-        failure: str | None = None,
-    ) -> None:
+    def __init__(self, *, output_text: str | None = None, provider_name: str = "deterministic_text_fake", failure: str | None = None) -> None:
         if not provider_name.strip():
             raise ValueError("provider_name must be non-empty")
         if failure not in {None, "TIMEOUT", "ERROR", "INVALID_RESPONSE"}:

@@ -3,17 +3,19 @@
     {
       "capability_id": "LLM.RENDERING.CONTROLLED_HYBRID_RUNTIME",
       "name": "Controlled Hybrid LLM Rendering Runtime",
-      "responsibility": "Own the existing provider-neutral LLM invocation infrastructure: build and invoke controlled rendering requests as before, expose a shared use-case-neutral text transport for governed callers, parse rendering output, apply deterministic fidelity checks, and retain the deterministic explanation as fallback on rendering provider, structure or fidelity failure.",
+      "responsibility": "Own the provider-neutral LLM invocation infrastructure: build and invoke controlled rendering requests as before, expose shared use-case-neutral text transport for governed callers, carry optional caller-supplied structured-output schemas, and provide bounded vendor adapters without granting those adapters domain authority.",
       "plane": "LLM_RENDERING",
       "lifecycle_status": "ACTIVE",
       "authority_role": "Reusable provider-neutral transport and controlled candidate-rendering runtime only. Transport success grants no insurance, interpretation, recommendation, publication or release authority; canonical rendered candidates remain subordinate to Rendering Exit Safety.",
       "safety_invariants": [
         "Existing rendering request, response, invocation and fallback behavior remains backward-compatible.",
         "Shared text invocation is bounded by an injected provider-neutral contract, invokes exactly once, and normalizes timeout/provider failure without granting semantic authority.",
+        "Optional response schemas are caller-supplied transport data; the vendor adapter may enforce them but cannot define domain meaning or safety thresholds.",
+        "The OpenAI Responses adapter uses runtime credentials, store=false, no tools, and exposes only completed output_text through the shared response contract.",
+        "HTTP errors, timeouts, incomplete responses, refusals, empty output and malformed payloads fail closed without exposing provider error bodies as trusted content.",
         "The deterministic explanation is retained across rendering provider failure, malformed output and fidelity failure.",
         "Structured rendering candidates are parsed and fidelity-validated before the legacy runtime marks them rendered.",
-        "Canonical customer release still requires the newer Rendering Exit Safety boundary when the rendering runtime is used through the provider-integration bridge.",
-        "No concrete vendor-specific production adapter is implied by the shared transport contract."
+        "Canonical customer release still requires the newer Rendering Exit Safety boundary when the rendering runtime is used through the provider-integration bridge."
       ],
       "reuse_policy": "REUSE",
       "ownership_paths": [
@@ -23,7 +25,7 @@
       "introduced_by": "MO-022E",
       "supersedes": [],
       "superseded_by": null,
-      "notes": "P1A extends the existing provider-neutral runtime with a shared text transport rather than creating a semantic-interpreter client stack. No concrete vendor-specific production adapter is claimed by this capability."
+      "notes": "P1B adds one bounded OpenAI Responses API adapter using the existing requests dependency. Model selection and credentials remain explicit runtime/operator inputs; no paid/live call is authorized in CI."
     }
   ]
 }
