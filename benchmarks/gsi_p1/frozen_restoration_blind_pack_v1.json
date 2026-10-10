@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "concept_id": "health:concept:restoration",
+  "cases": [
+    {
+      "case_id": "blind-restoration-1",
+      "user_text": "If my mother's hospital bills use up the whole sum insured in March, does the cover get restored for the rest of the year, or are we left with nothing until renewal?"
+    },
+    {
+      "case_id": "blind-restoration-2",
+      "user_text": "My family floater is 10 lakh and my husband already claimed 7 lakh this year. If my son gets admitted next month, will we only have 3 lakh left, or does the policy bring the amount back up somehow?"
+    },
+    {
+      "case_id": "blind-restoration-3",
+      "user_text": "What happens once the money in my health policy runs out partway through the year? Is there any chance I get the full cover amount again before my renewal date, and does it work if it's the same illness again?"
+    },
+    {
+      "case_id": "blind-restoration-4",
+      "user_text": "Can someone explain in simple words how this restoration benefit works and whether it kicks in after I use only part of my sum insured or only after I use all of it?"
+    }
+  ]
+}
