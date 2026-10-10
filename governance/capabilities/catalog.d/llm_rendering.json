@@ -6,7 +6,7 @@
       "responsibility": "Own the provider-neutral LLM invocation infrastructure: build and invoke controlled rendering requests as before, expose shared use-case-neutral text transport for governed callers, carry optional caller-supplied structured-output schemas, and provide bounded vendor adapters without granting those adapters domain authority.",
       "plane": "LLM_RENDERING",
       "lifecycle_status": "ACTIVE",
-      "authority_role": "Reusable provider-neutral transport and controlled candidate-rendering runtime only. Transport or vendor success grants no insurance, interpretation, recommendation, publication or release authority; canonical rendered candidates remain subordinate to Rendering Exit Safety.",
+      "authority_role": "Reusable provider-neutral transport and controlled candidate-rendering runtime only. Transport success grants no insurance, interpretation, recommendation, publication or release authority; canonical rendered candidates remain subordinate to Rendering Exit Safety.",
       "safety_invariants": [
         "Existing rendering request, response, invocation and fallback behavior remains backward-compatible.",
         "Shared text invocation is bounded by an injected provider-neutral contract, invokes exactly once, and normalizes timeout/provider failure without granting semantic authority.",
