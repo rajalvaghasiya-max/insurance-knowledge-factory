@@ -244,4 +244,4 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY`<br>Governed Semantic Interpretation Boundary | `ACTIVE` | `REUSE` | Zero insurance authority. This boundary may propose request meaning only; it cannot establish policy facts, coverage, claim admissibility, approval, rejection, payment, non-payment, recommendation truth, or publication authority. | None | `insurance_intelligence/contracts/semantic_interpretation.py`<br>`insurance_intelligence/semantic_interpretation` | `5706ec83aa3f` |
+| `II.INTERPRETATION.GOVERNED_SEMANTIC_BOUNDARY`<br>Governed Semantic Interpretation Boundary | `ACTIVE` | `REUSE` | Zero insurance authority. This boundary may propose request meaning only; it cannot establish policy facts, coverage, claim admissibility, approval, rejection, payment, non-payment, recommendation truth, or publication authority. | None | `insurance_intelligence/contracts/semantic_interpretation.py`<br>`insurance_intelligence/semantic_interpretation` | `a55b5f8ea1e6` |

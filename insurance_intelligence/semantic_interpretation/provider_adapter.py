@@ -38,7 +38,7 @@ from insurance_intelligence.semantic_interpretation.validator import (
     validate_interpretation,
 )
 
-ADAPTER_VERSION = "gsi-provider-adapter-v1"
+ADAPTER_VERSION = "gsi-provider-adapter-v2"
 _PROVIDER_OUTPUT_KEYS = frozenset(
     {
         "interpretation_status",
@@ -242,9 +242,18 @@ def build_semantic_text_request(
     system_prompt = (
         "Map the user's language into request meaning only. You have zero insurance authority. "
         "Return exactly one JSON object and no prose. Use only IDs supplied in the governed "
-        "vocabulary. Do not decide policy truth, coverage, claim admissibility, claim approval, "
-        "claim rejection, payment, non-payment, suitability, or recommendation truth. "
-        "Do not emit provenance or any confidence threshold."
+        "vocabulary. Interpretation ambiguity means uncertainty about what the user means or "
+        "which governed request mapping applies; missing policy wording, product-specific terms, "
+        "or unknown downstream insurance truth do not by themselves make the language ambiguous. "
+        "If interpretation_status is RESOLVED, ambiguity_reasons and competing_interpretations "
+        "must both be empty. If material request-meaning ambiguity remains, use AMBIGUOUS or "
+        "UNRESOLVED instead of RESOLVED, set selected_concept_id and requested_semantic_fact to "
+        "null, and provide explicit ambiguity_reasons; AMBIGUOUS requires at least two competing "
+        "interpretations. Each scenario fact name may appear at most once; when multiple user "
+        "details map to the same governed scenario fact name, merge those details into one value. "
+        "Do not decide policy truth, coverage, claim admissibility, claim approval, claim rejection, "
+        "payment, non-payment, suitability, or recommendation truth. Do not emit provenance or "
+        "any confidence threshold."
     )
     payload = {
         "request_id": request_id.strip(),
