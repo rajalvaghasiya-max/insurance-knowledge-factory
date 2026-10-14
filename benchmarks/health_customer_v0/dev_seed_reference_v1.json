@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "benchmark_role": "DEV_ONLY",
+  "holdout_eligible": false,
+  "notes": "These six cases seed the development benchmark only. They are exposed to the implementation team and must never be reused as milestone holdout evidence. Reference criteria were written before the first product benchmark run.",
+  "cases": [
+    {
+      "case_id": "dev-ped-001",
+      "concept_area": "pre_existing_disease",
+      "user_text": "I had a thyroid problem before I bought health insurance. What does pre-existing disease mean for me?",
+      "reference": {
+        "must_include": [
+          "Explain in plain language that a pre-existing disease/condition is one that existed before the relevant health cover began, subject to the governed definition in the applicable policy/regulatory context.",
+          "Explain that having a pre-existing condition can affect how treatment related to that condition is covered during any applicable waiting period or other governed condition.",
+          "Separate the general concept from the exact treatment of this customer's thyroid condition under a specific policy."
+        ],
+        "legitimate_dependency": [
+          "The exact waiting period, exclusions, underwriting terms, continuity/portability effects, and whether a particular treatment is covered depend on the applicable governed product/policy evidence and customer history."
+        ],
+        "must_not_imply": [
+          "Do not promise that a particular thyroid claim will be paid or rejected.",
+          "Do not invent a universal waiting-period duration if it is not established by the applicable governed evidence.",
+          "Do not imply that all unrelated new illnesses or accidents are automatically covered unless the governed evidence for that assertion is available."
+        ],
+        "acceptable_clarification": [
+          "Ask for the policy/product or policy start/continuity details only if the customer wants the exact rule that applies to them."
+        ],
+        "unnecessary_deferral": [
+          "For the meaning of pre-existing disease itself, a general explanation can be given without first demanding the policy document."
+        ]
+      }
+    },
+    {
+      "case_id": "dev-waiting-001",
+      "concept_area": "waiting_period",
+      "user_text": "My policy mentions a waiting period at the start. Does that mean I have no health insurance during that time?",
+      "reference": {
+        "must_include": [
+          "Explain that a waiting period normally limits specified categories of claims/conditions/benefits rather than automatically meaning the entire policy provides no protection.",
+          "Explain that different waiting-period types can apply to different subjects, so the exact effect must be tied to the applicable policy wording.",
+          "Answer the customer's practical concern directly before discussing policy-specific detail."
+        ],
+        "legitimate_dependency": [
+          "The duration, scope, exceptions, and affected benefits depend on the applicable governed product/policy evidence."
+        ],
+        "must_not_imply": [
+          "Do not state that every illness, accident, or benefit is covered during the waiting period unless supported by the policy evidence.",
+          "Do not state that the customer has no cover at all merely because a waiting period exists."
+        ],
+        "acceptable_clarification": [
+          "Ask which waiting period or request the policy/product if the customer wants an exact coverage answer."
+        ],
+        "unnecessary_deferral": [
+          "A plain-language explanation that a waiting period is scoped rather than equivalent to 'no insurance' does not require policy-specific evidence."
+        ]
+      }
+    },
+    {
+      "case_id": "dev-restoration-001",
+      "concept_area": "restoration",
+      "user_text": "If I use part of my health cover for one hospital stay and need another admission later in the year, how can restoration help?",
+      "reference": {
+        "must_include": [
+          "Explain restoration as a feature under which available cover may become available again after some or all of the original sum insured has been used, subject to policy terms.",
+          "Explain why this can matter when there is a later hospitalization in the same policy year.",
+          "Clearly distinguish the general restoration mechanic from the trigger, amount, timing, same-illness rules, and reuse conditions of a particular product."
+        ],
+        "legitimate_dependency": [
+          "Whether restoration activates after partial or full exhaustion, how much restores, when it becomes available, and whether the same illness/person can use it depend on the applicable governed policy evidence."
+        ],
+        "must_not_imply": [
+          "Do not promise that the later hospitalization will be paid from restored cover.",
+          "Do not imply that restoration always creates a fresh full sum insured immediately.",
+          "Do not invent same-illness eligibility."
+        ],
+        "acceptable_clarification": [
+          "Ask for the product/policy when the customer wants to know exactly when or how restoration applies to their later admission."
+        ],
+        "unnecessary_deferral": [
+          "The general purpose and mechanic of restoration can be explained without first asking for the policy."
+        ]
+      }
+    },
+    {
+      "case_id": "dev-room-rent-001",
+      "concept_area": "room_rent_limit",
+      "user_text": "Why should I care about the room-rent limit if the hospital room I want costs more?",
+      "reference": {
+        "must_include": [
+          "Explain that a room-rent limit constrains the room category or amount the policy will recognize according to its terms.",
+          "Explain the practical consequence that choosing a room above the permitted limit can increase the customer's out-of-pocket cost and may affect other linked charges where the policy contains such a rule.",
+          "Separate the general risk from the exact deduction mechanism of a specific policy."
+        ],
+        "legitimate_dependency": [
+          "The exact room entitlement, monetary/category cap, and whether proportionate or linked deductions apply depend on the governed policy wording."
+        ],
+        "must_not_imply": [
+          "Do not claim that every policy applies proportionate deductions.",
+          "Do not calculate a specific customer liability without the applicable room-rent rule and bill context.",
+          "Do not promise claim admissibility."
+        ],
+        "acceptable_clarification": [
+          "Ask for the policy/product or room-rent clause if the customer wants the exact financial impact."
+        ],
+        "unnecessary_deferral": [
+          "The general reason a room-rent limit matters can be explained without the policy document."
+        ]
+      }
+    },
+    {
+      "case_id": "dev-bariatric-001",
+      "concept_area": "bariatric_surgery",
+      "user_text": "Is weight-loss surgery treated as cosmetic, or can health insurance cover it?",
+      "reference": {
+        "must_include": [
+          "Explain that bariatric/weight-loss surgery should not be classified as universally cosmetic or universally covered; treatment depends on the policy's governed benefit/coverage conditions.",
+          "Explain that medical-necessity or eligibility conditions may matter where the applicable policy contains them.",
+          "Give the general distinction first and then identify what must be checked for a specific product."
+        ],
+        "legitimate_dependency": [
+          "Coverage, eligibility criteria, waiting periods, exclusions, and medical-necessity conditions depend on the applicable governed policy evidence."
+        ],
+        "must_not_imply": [
+          "Do not say bariatric surgery is always covered.",
+          "Do not say it is always excluded as cosmetic treatment.",
+          "Do not infer that this customer's surgery qualifies or that a claim will be approved."
+        ],
+        "acceptable_clarification": [
+          "Ask for the policy/product and relevant clinical/policy facts only if the customer wants a personal coverage determination."
+        ],
+        "unnecessary_deferral": [
+          "The general distinction between bariatric treatment and a blanket 'cosmetic' classification can be explained without refusing to answer until a policy is supplied."
+        ]
+      }
+    },
+    {
+      "case_id": "dev-copay-001",
+      "concept_area": "copayment",
+      "user_text": "My policy says 20% co-pay. If the hospital bill is ₹2 lakh, does that always mean I pay ₹40,000?",
+      "reference": {
+        "must_include": [
+          "Explain that a 20% co-payment means the customer bears 20% of the amount to which the co-pay is contractually applied, while the insurer-side share is subject to the policy and claim-admissibility rules.",
+          "Explain that ₹40,000 is only the simple arithmetic result if the full ₹2 lakh is the applicable co-pay base and no other policy mechanics change that base.",
+          "Distinguish the gross hospital bill from the amount on which co-pay may actually be calculated."
+        ],
+        "legitimate_dependency": [
+          "The applicable co-pay base, conditional triggers, exclusions/non-payables, sublimits, multiple co-pays, and final admissible amount depend on governed policy and claim evidence."
+        ],
+        "must_not_imply": [
+          "Do not guarantee that the customer's final out-of-pocket amount is ₹40,000.",
+          "Do not imply that the remaining 80% will necessarily be paid.",
+          "Do not ignore conditional or cumulative co-payment rules where applicable."
+        ],
+        "acceptable_clarification": [
+          "Ask for the exact co-pay clause or product if the customer wants the actual amount they would bear."
+        ],
+        "unnecessary_deferral": [
+          "The basic co-pay concept and conditional ₹40,000 arithmetic example can be explained without requiring the full policy first."
+        ]
+      }
+    }
+  ]
+}
