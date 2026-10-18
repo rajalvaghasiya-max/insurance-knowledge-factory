@@ -16,7 +16,7 @@
     {
       "scenario": "A policy rule states that a 20% co-payment applies to an admissible claim amount of 100,000 when that rule is triggered.",
       "result": "The co-payment share in that illustration is 20,000 of the admissible claim basis.",
-      "boundary": "This arithmetic example does not establish that the insurer will pay the remaining amount; deductibles, exclusions, limits, other policy conditions, and the actual admissible claim basis may still affect final liability."
+      "boundary": "This arithmetic example does not establish the insurer's remaining liability; deductibles, exclusions, limits, other policy conditions, and the actual admissible claim basis may still affect the final amount."
     }
   ],
   "limitations": [
