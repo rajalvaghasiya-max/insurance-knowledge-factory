@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-customer-v0-concept-components-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EDUCATION.PUBLICATION_ADMISSION"
+  ],
+  "rationale": "Issue #432 repairs the existing generic customer-education publication path so one reviewed publication can expose named concept components with bounded evidence and customer boundaries. The repository loader remains backward-compatible, and the Health v0 application may select only caller-governed component IDs after validated semantic interpretation. Cross-concept component proposals fail closed. This reuses the existing education-publication authority rather than creating a new insurance capability.",
+  "supersession_impact": "NONE",
+  "authority_impact": "No insurance, product, entitlement, claim, payment, or recommendation authority is added. Education components remain CUSTOMER_EDUCATION-only content bounded by the parent EducationPublicationRecord and its admitted evidence references. GSI selects request meaning only, and Rendering Exit Safety remains the final customer-release authority."
+}
