@@ -19,6 +19,12 @@ UNIT_TYPES = frozenset(
         "CLARIFICATION",
         "ADVISOR_TALKING_POINT",
         "INTERNAL_NOTE",
+        "EDUCATION",
+        "EXAMPLE",
+        "PRACTICAL_ILLUSTRATION",
+        "CUSTOMER_QUALIFICATION",
+        "CUSTOMER_EXPLANATION",
+        "NEXT_STEP",
     }
 )
 RENDER_POLICIES = frozenset({"PRESERVE_EXACT"})

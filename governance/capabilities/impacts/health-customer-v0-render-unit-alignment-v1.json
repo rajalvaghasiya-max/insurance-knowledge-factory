@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "health-customer-v0-render-unit-alignment-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.RENDERING.EXIT_SAFETY"
+  ],
+  "rationale": "Repair the existing Rendering Exit Safety contract so it can exact-preserve customer-facing response section types already authorized by the Response Assembler contract: EDUCATION, EXAMPLE, PRACTICAL_ILLUSTRATION, CUSTOMER_QUALIFICATION, CUSTOMER_EXPLANATION, and NEXT_STEP. Product integration exposed that project_render_envelope copies response section types directly into render units while the rendering contract still contained only the older section vocabulary.",
+  "supersession_impact": "No capability is superseded and no historical response meaning is reinterpreted. Rendering Exit Safety continues to enforce exact preservation, required-unit completeness, set/order equality, and fail-closed conformance; the repair only aligns its accepted unit vocabulary with already-existing customer response section types.",
+  "authority_impact": "No insurance, claim, coverage, payment, recommendation, publication, or interpretation authority is added. The newly accepted unit types are already valid Response Assembler section types and remain subject to the same PRESERVE_EXACT rendering policy."
+}

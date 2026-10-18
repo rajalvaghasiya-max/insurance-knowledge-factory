@@ -190,7 +190,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.RENDERING.EXIT_SAFETY`<br>Rendering Exit Safety | `ACTIVE` | `REUSE` | Final deterministic release authority over optional rendered candidates; failed candidates fall back to the original ResponseAssemblerOutput. | None | `insurance_intelligence/rendering_exit_safety.py`<br>`insurance_intelligence/contracts/rendering_exit.py` | `333202f5c3a6` |
+| `II.RENDERING.EXIT_SAFETY`<br>Rendering Exit Safety | `ACTIVE` | `REUSE` | Final deterministic release authority over optional rendered candidates; failed candidates fall back to the original ResponseAssemblerOutput. | None | `insurance_intelligence/rendering_exit_safety.py`<br>`insurance_intelligence/contracts/rendering_exit.py` | `3e979a3984cd` |
 
 ### INSURANCE_INTELLIGENCE_REQUEST_GOVERNANCE
 
