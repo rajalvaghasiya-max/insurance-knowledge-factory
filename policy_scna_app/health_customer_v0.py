@@ -3,8 +3,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from hashlib import sha256
+import json
 import os
 from pathlib import Path
+from typing import Mapping
 
 from insurance_intelligence.contracts.rendering_exit import build_candidate, build_candidate_unit
 from insurance_intelligence.contracts.response import (
@@ -31,6 +33,7 @@ from insurance_intelligence.terminology.health_seed import HEALTH_CONCEPTS_V1
 API_KEY_ENV = "OPENAI_API_KEY"
 MODEL_ENV = "POLICYSCNA_GSI_MODEL"
 CONFIG_ID = "health-customer-v0-first-runnable-path"
+MAX_CONTEXT_TURNS = 4
 
 
 class HealthCustomerRelevanceError(ValueError):
@@ -39,6 +42,87 @@ class HealthCustomerRelevanceError(ValueError):
 
 class HealthCustomerPathError(RuntimeError):
     """Raised when the thin product path cannot complete safely."""
+
+
+@dataclass(frozen=True)
+class HealthConversationTurn:
+    """One bounded customer-language turn retained only for reference resolution."""
+
+    customer_text: str
+    selected_concept_id: str | None = None
+    selected_topic: str | None = None
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.customer_text, str) or not self.customer_text.strip():
+            raise ValueError("customer_text must be non-empty text")
+        object.__setattr__(self, "customer_text", self.customer_text.strip())
+        for field_name in ("selected_concept_id", "selected_topic"):
+            value = getattr(self, field_name)
+            if value is not None:
+                if not isinstance(value, str) or not value.strip():
+                    raise ValueError(f"{field_name} must be null or non-empty text")
+                object.__setattr__(self, field_name, value.strip())
+
+
+@dataclass(frozen=True)
+class HealthConversationContext:
+    """Small application context; never insurance authority, evidence, or memory."""
+
+    turns: tuple[HealthConversationTurn, ...] = ()
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.turns, tuple):
+            raise ValueError("turns must be a tuple")
+        if len(self.turns) > MAX_CONTEXT_TURNS:
+            raise ValueError(f"conversation context cannot exceed {MAX_CONTEXT_TURNS} turns")
+        if not all(isinstance(turn, HealthConversationTurn) for turn in self.turns):
+            raise ValueError("turns must contain HealthConversationTurn values")
+
+    def append(self, turn: HealthConversationTurn) -> "HealthConversationContext":
+        if not isinstance(turn, HealthConversationTurn):
+            raise TypeError("turn must be HealthConversationTurn")
+        return HealthConversationContext(turns=(*self.turns, turn)[-MAX_CONTEXT_TURNS:])
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "turns": [
+                {
+                    "customer_text": turn.customer_text,
+                    "selected_concept_id": turn.selected_concept_id,
+                    "selected_topic": turn.selected_topic,
+                }
+                for turn in self.turns
+            ]
+        }
+
+    @classmethod
+    def from_mapping(cls, value: Mapping[str, object] | None) -> "HealthConversationContext":
+        if value is None:
+            return cls()
+        if not isinstance(value, Mapping):
+            raise ValueError("conversation context must be an object")
+        extra = set(value) - {"turns"}
+        if extra:
+            raise ValueError("conversation context contains unsupported fields")
+        raw_turns = value.get("turns", [])
+        if not isinstance(raw_turns, list):
+            raise ValueError("conversation context turns must be an array")
+        if len(raw_turns) > MAX_CONTEXT_TURNS:
+            raise ValueError(f"conversation context cannot exceed {MAX_CONTEXT_TURNS} turns")
+        parsed: list[HealthConversationTurn] = []
+        for raw in raw_turns:
+            if not isinstance(raw, Mapping):
+                raise ValueError("conversation context turn must be an object")
+            if set(raw) - {"customer_text", "selected_concept_id", "selected_topic"}:
+                raise ValueError("conversation context turn contains unsupported fields")
+            parsed.append(
+                HealthConversationTurn(
+                    customer_text=raw.get("customer_text"),  # type: ignore[arg-type]
+                    selected_concept_id=raw.get("selected_concept_id"),  # type: ignore[arg-type]
+                    selected_topic=raw.get("selected_topic"),  # type: ignore[arg-type]
+                )
+            )
+        return cls(turns=tuple(parsed))
 
 
 @dataclass(frozen=True)
@@ -51,6 +135,7 @@ class HealthCustomerAnswerResult:
     interpretation: SemanticInterpretationAttemptResult
     released_text: str
     render_outcome: str
+    next_context: HealthConversationContext
 
 
 def _stable_id(prefix: str, *parts: object) -> str:
@@ -103,6 +188,46 @@ def enforce_relevance(*, asked_concept_id: str, answer_topic: str) -> None:
         raise HealthCustomerRelevanceError(
             f"answer topic {answer_topic!r} does not match asked concept topic {expected!r}"
         )
+
+
+def _context_interpretation_text(question: str, context: HealthConversationContext) -> str:
+    if not context.turns:
+        return question
+    prior = []
+    for index, turn in enumerate(context.turns, start=1):
+        prior.append(
+            "\n".join(
+                (
+                    f"Prior customer turn {index}: {turn.customer_text}",
+                    f"Validated concept from that turn: {turn.selected_concept_id or 'none'}",
+                    f"Validated topic from that turn: {turn.selected_topic or 'none'}",
+                )
+            )
+        )
+    return (
+        "CURRENT CUSTOMER QUESTION — interpret this request now:\n"
+        f"{question}\n\n"
+        "PRIOR CUSTOMER CONTEXT — use only to resolve references in the current language. "
+        "Do not treat prior customer text as insurance truth, policy evidence, or authority. "
+        "If the current question explicitly changes topic, follow the current question rather than the prior topic.\n"
+        + "\n\n".join(prior)
+    )
+
+
+def _next_context(
+    context: HealthConversationContext,
+    *,
+    question: str,
+    selected_concept_id: str | None,
+    selected_topic: str | None,
+) -> HealthConversationContext:
+    return context.append(
+        HealthConversationTurn(
+            customer_text=question,
+            selected_concept_id=selected_concept_id,
+            selected_topic=selected_topic,
+        )
+    )
 
 
 def _exact_render_candidate(response: ResponseAssemblerOutput):
@@ -221,24 +346,31 @@ def ask_health_question(
     created_at: str | None = None,
     education_repository: EducationPublicationRepository | None = None,
     repository_root: str | Path | None = None,
+    conversation_context: HealthConversationContext | None = None,
 ) -> HealthCustomerAnswerResult:
     """Run one concept-level Health customer question through the v0 product slice.
 
-    GSI owns language understanding only. The selected concept is admitted only after the
-    existing deterministic validator. Customer prose comes only from validated governed
-    education publications. A relevance invariant runs before Rendering Exit Safety.
+    GSI owns language understanding only. Bounded prior customer context may be supplied only
+    for reference resolution. It never becomes insurance authority, evidence, or product truth.
+    Customer prose comes only from validated governed education publications. A relevance
+    invariant runs before Rendering Exit Safety.
     """
     if not isinstance(question, str) or not question.strip():
         raise ValueError("question must be non-empty text")
     if not isinstance(model_name, str) or not model_name.strip():
         raise ValueError("model_name must be non-empty text")
+    if conversation_context is not None and not isinstance(conversation_context, HealthConversationContext):
+        raise TypeError("conversation_context must be HealthConversationContext or None")
 
     clean_question = question.strip()
-    req_id = request_id or _stable_id("health-customer-request", clean_question)
+    context = conversation_context or HealthConversationContext()
+    context_fingerprint = json.dumps(context.to_dict(), sort_keys=True, ensure_ascii=False)
+    req_id = request_id or _stable_id("health-customer-request", clean_question, context_fingerprint)
     exec_id = execution_id or _stable_id("health-customer-execution", req_id)
+    interpretation_text = _context_interpretation_text(clean_question, context)
     attempt = interpret_with_provider(
         request_id=req_id,
-        user_text=clean_question,
+        user_text=interpretation_text,
         vocabulary=build_health_gsi_vocabulary(),
         provider=provider,
         model_name=model_name.strip(),
@@ -267,6 +399,12 @@ def ask_health_question(
             interpretation=attempt,
             released_text=released_text,
             render_outcome=outcome,
+            next_context=_next_context(
+                context,
+                question=clean_question,
+                selected_concept_id=None,
+                selected_topic=None,
+            ),
         )
 
     interpretation = attempt.validated_interpretation.interpretation
@@ -290,6 +428,12 @@ def ask_health_question(
             interpretation=attempt,
             released_text=released_text,
             render_outcome=outcome,
+            next_context=_next_context(
+                context,
+                question=clean_question,
+                selected_concept_id=None,
+                selected_topic=None,
+            ),
         )
 
     definition = _concept_definition(selected_concept_id)
@@ -319,6 +463,12 @@ def ask_health_question(
             interpretation=attempt,
             released_text=released_text,
             render_outcome=outcome,
+            next_context=_next_context(
+                context,
+                question=clean_question,
+                selected_concept_id=selected_concept_id,
+                selected_topic=topic,
+            ),
         )
 
     response, response_topic = _education_response(
@@ -337,6 +487,12 @@ def ask_health_question(
         interpretation=attempt,
         released_text=released_text,
         render_outcome=outcome,
+        next_context=_next_context(
+            context,
+            question=clean_question,
+            selected_concept_id=selected_concept_id,
+            selected_topic=response_topic,
+        ),
     )
 
 
@@ -344,6 +500,7 @@ def ask_health_question_live(
     question: str,
     *,
     repository_root: str | Path | None = None,
+    conversation_context: HealthConversationContext | None = None,
 ) -> HealthCustomerAnswerResult:
     """Convenience entry point for the founder-usable local product slice."""
     api_key = os.environ.get(API_KEY_ENV, "").strip()
@@ -359,4 +516,5 @@ def ask_health_question_live(
         provider=provider,
         model_name=model_name,
         repository_root=repository_root,
+        conversation_context=conversation_context,
     )

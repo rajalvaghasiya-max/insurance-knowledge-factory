@@ -4,7 +4,11 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 from typing import Any
 
-from policy_scna_app.health_customer_v0 import HealthCustomerPathError, ask_health_question_live
+from policy_scna_app.health_customer_v0 import (
+    HealthConversationContext,
+    HealthCustomerPathError,
+    ask_health_question_live,
+)
 
 HOST = "127.0.0.1"
 PORT = 8765
@@ -32,15 +36,18 @@ details{margin-top:16px;color:#555}code{font-size:12px;white-space:pre-wrap}
 <details><summary>Diagnostics</summary><code id=\"diag\"></code></details>
 <script>
 const q=document.getElementById('q'), a=document.getElementById('answer'), d=document.getElementById('diag');
+let conversationContext={turns:[]};
 document.getElementById('ask').onclick=async()=>{
   const question=q.value.trim(); if(!question)return;
   a.className='answer'; a.textContent='Thinking...'; d.textContent='';
   try{
-    const r=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question})});
+    const r=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question,conversation_context:conversationContext})});
     const x=await r.json();
     if(!r.ok){a.className='answer error';a.textContent=x.error||'Request failed';return;}
     a.textContent=x.released_text;
-    d.textContent=JSON.stringify(x.diagnostics,null,2);
+    conversationContext=x.conversation_context||{turns:[]};
+    d.textContent=JSON.stringify({...x.diagnostics,conversation_context:conversationContext},null,2);
+    q.value=''; q.focus();
   }catch(e){a.className='answer error';a.textContent='Local request failed: '+e;}
 };
 </script>
@@ -75,16 +82,23 @@ class _Handler(BaseHTTPRequestHandler):
             length = int(self.headers.get("Content-Length", "0"))
             payload = json.loads(self.rfile.read(length).decode("utf-8"))
             question = payload.get("question") if isinstance(payload, dict) else None
+            raw_context = payload.get("conversation_context") if isinstance(payload, dict) else None
             if not isinstance(question, str) or not question.strip():
                 self._json(400, {"error": "question must be non-empty text"})
                 return
-            result = ask_health_question_live(question)
+            try:
+                context = HealthConversationContext.from_mapping(raw_context)
+            except ValueError as exc:
+                self._json(400, {"error": str(exc)})
+                return
+            result = ask_health_question_live(question, conversation_context=context)
             interpretation = result.interpretation.validated_interpretation
             interpreted = interpretation.interpretation if interpretation is not None else None
             self._json(
                 200,
                 {
                     "released_text": result.released_text,
+                    "conversation_context": result.next_context.to_dict(),
                     "diagnostics": {
                         "status": result.status,
                         "selected_concept_id": result.selected_concept_id,
