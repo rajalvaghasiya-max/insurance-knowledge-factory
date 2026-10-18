@@ -1,0 +1,39 @@
+{
+  "allowed_uses": [
+    "CUSTOMER_EDUCATION"
+  ],
+  "canonical_name": "Restoration of Sum Insured",
+  "concept_id": "restoration",
+  "contract_version": "1.0",
+  "customer_document_boundary": "Customer-specific sum insured, prior claims in the policy period, covered members, selected options, endorsements, and applicable policy dates must be verified before applying a restoration rule to that customer.",
+  "definition": "Restoration of sum insured is a product benefit that replenishes all or part of the available sum insured after a governed trigger, subject to product-specific conditions and limits.",
+  "evidence_references": [
+    "insurance_intelligence/benefits/catalogue.py#RESTORATION_BENEFIT_CONCEPT",
+    "insurance_intelligence/terminology/health_seed.py#health:concept:restoration"
+  ],
+  "examples": [
+    {
+      "scenario": "A policyholder has already used part of the available health cover and the policy includes a restoration benefit.",
+      "result": "If the product's stated restoration trigger and conditions are satisfied, the available cover may be replenished according to that product's restoration rule.",
+      "boundary": "This example does not establish when restoration triggers, how much is restored, whether it can be used for the same illness or hospitalization, or whether a particular claim will be paid."
+    }
+  ],
+  "limitations": [
+    "This record explains the generic restoration concept only.",
+    "Restoration is not automatically available in every health policy and is not automatically triggered after every claim.",
+    "The amount restored, number of restorations, trigger, timing, usage sequence, same-illness rules, and member or floater operation are product-specific.",
+    "It does not determine claim admissibility, approval, payment, entitlement, or recommendation."
+  ],
+  "plain_language_explanation": "Restoration is a feature that can refill all or part of your available sum insured after a policy-defined trigger. Think of it as the policy making additional cover available again, but only according to the restoration rules written into that product.",
+  "practical_implication": "The important question is not simply whether a policy has restoration, but how that restoration works. Different products can differ on when it activates, how much comes back, how many times it can happen, and when the restored amount can be used.",
+  "product_specific_boundary": "Restoration percentage, trigger requirement, timing, number of restorations, same-hospitalization or subsequent-hospitalization use, same-illness rules, covered scope, utilization sequence, policy-year reset, carry-over, and floater operation must come from governed product knowledge.",
+  "publication_authority": "PolicyScna education publication authority",
+  "publication_id": "education_restoration_v1",
+  "publication_receipt_id": "education_receipt_8be1438c455f7369ac95",
+  "publication_status": "EDUCATION_AUTHORITATIVE",
+  "review_decision_id": "gcrev_restoration_customer_v1",
+  "source_asset_digest": "f3e5c5bf334702ee9aec367f989d3d219823bc055006f39e695f0db91fea7542",
+  "source_asset_id": "health_customer_v0_education_source_restoration_v1",
+  "source_governed_record_id": "health:coverage_capacity:restoration_benefit",
+  "source_knowledge_version": "benefit-catalogue-v1"
+}

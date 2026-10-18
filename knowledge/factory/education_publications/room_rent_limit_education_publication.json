@@ -1,0 +1,39 @@
+{
+  "allowed_uses": [
+    "CUSTOMER_EDUCATION"
+  ],
+  "canonical_name": "Room Rent Limit",
+  "concept_id": "room_rent_limit",
+  "contract_version": "1.0",
+  "customer_document_boundary": "The customer's applicable product, policy schedule, selected variant, endorsements, hospital room category, and billed room charges must be verified before applying a room-rent rule to a specific hospitalization.",
+  "definition": "A room rent limit is a coverage-limit concept governing the eligible hospital room category or room-charge amount under the policy terms.",
+  "evidence_references": [
+    "insurance_intelligence/terminology/health_seed.py#health:concept:room_rent_limit",
+    "insurance_intelligence/benefits/room_rent_assessment.py"
+  ],
+  "examples": [
+    {
+      "scenario": "A policy states that only a particular hospital room category is eligible under its room-rent rule.",
+      "result": "The customer should compare the room offered by the hospital with the room category or charge limit stated in the applicable policy before choosing it.",
+      "boundary": "This example does not establish what happens to other hospital charges if the customer chooses a room above the permitted limit; that consequence is product-specific."
+    }
+  ],
+  "limitations": [
+    "This record explains the generic room-rent-limit concept only.",
+    "It does not state a room category or monetary room-rent limit for any insurer or product.",
+    "The consequence of choosing a room above the permitted category or amount can vary by product and must not be assumed.",
+    "It does not determine claim admissibility, approval, payment, entitlement, or recommendation."
+  ],
+  "plain_language_explanation": "A room rent limit tells you what hospital room category or room-charge amount your policy treats as eligible. The exact limit may be stated as a room type, an amount, or another product-specific rule.",
+  "practical_implication": "Before choosing a hospital room, it is useful to check the policy's room-rent rule. If the room you choose is outside the permitted category or amount, the financial effect depends on the specific product wording and should not be guessed from the room-rent limit alone.",
+  "product_specific_boundary": "The eligible room category or amount, ICU treatment, any linked deductions or consequences, exceptions, waivers, and variant-specific mechanics must come from governed product knowledge.",
+  "publication_authority": "PolicyScna education publication authority",
+  "publication_id": "education_room_rent_limit_v1",
+  "publication_receipt_id": "education_receipt_f9eb96127c8041b2ff53",
+  "publication_status": "EDUCATION_AUTHORITATIVE",
+  "review_decision_id": "gcrev_room_rent_limit_customer_v1",
+  "source_asset_digest": "bb0b72c8d34fdbc208a7d32ad48f45403092a101d95f31f71622693916178e45",
+  "source_asset_id": "health_customer_v0_education_source_room_rent_limit_v1",
+  "source_governed_record_id": "health:concept:room_rent_limit",
+  "source_knowledge_version": "health-terminology-v1"
+}

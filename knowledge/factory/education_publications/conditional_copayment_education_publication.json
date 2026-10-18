@@ -1,0 +1,40 @@
+{
+  "allowed_uses": [
+    "CUSTOMER_EDUCATION"
+  ],
+  "canonical_name": "Co-payment",
+  "concept_id": "conditional_copayment",
+  "contract_version": "1.0",
+  "customer_document_boundary": "The customer's applicable product, policy schedule, selected options, endorsements, claim facts, and any condition that triggers a co-payment must be verified before applying a co-payment rule to that customer.",
+  "definition": "A co-payment is a cost-sharing rule under which the insured bears a specified amount or percentage of the admissible claim basis when the applicable policy rule is triggered.",
+  "evidence_references": [
+    "knowledge/factory/meaning_assets/copay_governed_meaning_asset.json",
+    "knowledge/health/domain_catalogue/health_domain_vocabulary_catalogue_v1.json#health:copayment",
+    "insurance_intelligence/terminology/health_seed.py#health:concept:copayment"
+  ],
+  "examples": [
+    {
+      "scenario": "A policy rule states that a 20% co-payment applies to an admissible claim amount of 100,000 when that rule is triggered.",
+      "result": "The co-payment share in that illustration is 20,000 of the admissible claim basis.",
+      "boundary": "This arithmetic example does not establish the insurer's remaining liability; deductibles, exclusions, limits, other policy conditions, and the actual admissible claim basis may still affect the final amount."
+    }
+  ],
+  "limitations": [
+    "This record explains the generic co-payment concept only.",
+    "It does not state that a co-payment applies to any particular product, customer, claim, age group, zone, treatment, or hospital.",
+    "The applicable percentage or amount and the condition that triggers it are product- and policy-specific.",
+    "It does not establish final insurer liability, claim admissibility, approval, payment, entitlement, or recommendation."
+  ],
+  "plain_language_explanation": "A co-payment means you must bear a stated share of an admissible claim when the policy's co-payment rule applies. The share may be expressed as a percentage or another amount defined by the policy.",
+  "practical_implication": "A co-payment increases the part of an admissible claim that you must fund yourself when that rule is triggered. To understand the real impact, you need to know both the co-payment value and the exact circumstances in which it applies.",
+  "product_specific_boundary": "The co-payment value, trigger, scope, interaction with other co-payments or deductibles, exceptions, waivers, and non-application rules must come from governed product knowledge and the applicable customer policy.",
+  "publication_authority": "PolicyScna education publication authority",
+  "publication_id": "education_conditional_copayment_v1",
+  "publication_receipt_id": "education_receipt_825937b1df0ba288cec0",
+  "publication_status": "EDUCATION_AUTHORITATIVE",
+  "review_decision_id": "gcrev_conditional_copayment_customer_v1",
+  "source_asset_digest": "c7f8163047dcc558e5d572ccd19ac2998c060412a72105a904bd8c4fb6aa4825",
+  "source_asset_id": "health_customer_v0_education_source_conditional_copayment_v1",
+  "source_governed_record_id": "health:copayment",
+  "source_knowledge_version": "health-domain-vocabulary-v1"
+}
