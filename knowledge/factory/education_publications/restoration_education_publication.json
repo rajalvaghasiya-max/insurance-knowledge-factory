@@ -1,8 +1,57 @@
 {
-  "allowed_uses": [
-    "CUSTOMER_EDUCATION"
-  ],
+  "allowed_uses": ["CUSTOMER_EDUCATION"],
   "canonical_name": "Restoration of Sum Insured",
+  "components": [
+    {
+      "component_id": "restoration.purpose",
+      "text": "Restoration is a benefit that can replenish all or part of the available sum insured after a policy-defined trigger. Its practical purpose is to make additional cover available again according to the product's restoration rules after earlier use of cover.",
+      "boundary": "Restoration is not automatically present in every policy and does not guarantee payment of a later claim.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/catalogue.py#RESTORATION_BENEFIT_CONCEPT",
+        "insurance_intelligence/terminology/health_seed.py#health:concept:restoration"
+      ]
+    },
+    {
+      "component_id": "restoration.trigger",
+      "text": "The restoration trigger is the condition that causes restored cover to become available. Products can define that trigger differently, including how much prior cover must have been used and when restoration becomes available.",
+      "boundary": "Do not assume restoration happens after any use, only after full exhaustion, or at any other universal trigger without the applicable product rule.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/catalogue.py#RESTORATION_BENEFIT_CONCEPT"
+      ]
+    },
+    {
+      "component_id": "restoration.amount_frequency",
+      "text": "Restoration mechanics can vary in how much cover is restored and how many restorations are available in a policy period. A product may define a restoration percentage, restoration count, timing rule and utilization sequence.",
+      "boundary": "Do not assume a full fresh sum insured, unlimited restorations, or immediate reuse unless the product terms say so.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/catalogue.py#RESTORATION_BENEFIT_CONCEPT"
+      ]
+    },
+    {
+      "component_id": "restoration.reuse_conditions",
+      "text": "Whether restored cover can be used by the same insured person, for the same illness, in the same hospitalization or only in a later hospitalization can be controlled by separate restoration conditions.",
+      "boundary": "Same-person, same-illness and hospitalization reuse are product-specific; do not treat them as universally allowed or prohibited.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/catalogue.py#RESTORATION_BENEFIT_CONCEPT"
+      ]
+    },
+    {
+      "component_id": "restoration.floater_operation",
+      "text": "In a family-floater policy, restoration can interact with the shared pool of available cover. Whether restored cover becomes available to other members, the member who made the earlier claim, or both depends on the product's floater and restoration rules.",
+      "boundary": "Do not guarantee that every family member receives a fresh amount after one member uses the shared cover.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/catalogue.py#RESTORATION_BENEFIT_CONCEPT"
+      ]
+    },
+    {
+      "component_id": "restoration.comparison_dimensions",
+      "text": "When comparing restoration benefits, useful dimensions include the trigger, amount restored, number of restorations, timing, same-illness and same-person rules, covered scope, utilization sequence and floater operation.",
+      "boundary": "This checklist explains what to compare; it does not rank or recommend a policy.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/catalogue.py#RESTORATION_BENEFIT_CONCEPT"
+      ]
+    }
+  ],
   "concept_id": "restoration",
   "contract_version": "1.0",
   "customer_document_boundary": "Customer-specific sum insured, prior claims in the policy period, covered members, selected options, endorsements, and applicable policy dates must be verified before applying a restoration rule to that customer.",
