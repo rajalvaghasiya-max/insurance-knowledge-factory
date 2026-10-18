@@ -131,7 +131,6 @@ def main(argv: list[str] | None = None) -> int:
         print(f"CAPABILITY_FINGERPRINT_REMOVED {capability_id}", file=sys.stderr)
     for capability_id in changed:
         print(f"CAPABILITY_IMPLEMENTATION_CHANGED {capability_id}", file=sys.stderr)
-        print(f"CAPABILITY_FINGERPRINT_CURRENT {capability_id} {new[capability_id][1]}", file=sys.stderr)
 
     if added or removed or changed:
         print(
