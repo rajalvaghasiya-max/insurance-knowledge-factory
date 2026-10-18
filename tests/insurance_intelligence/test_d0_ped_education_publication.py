@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from insurance_intelligence.contracts.education_publication import (
+    build_education_component,
     build_education_publication_input,
 )
 from insurance_intelligence.education_publication.gate import (
@@ -40,6 +41,18 @@ def _json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _reviewed_components(publication: dict):
+    return tuple(
+        build_education_component(
+            component_id=item["component_id"],
+            text=item["text"],
+            boundary=item["boundary"],
+            evidence_references=tuple(item["evidence_references"]),
+        )
+        for item in publication.get("components", [])
+    )
+
+
 def test_founder_reviewed_ped_education_artifacts_regenerate_deterministically() -> None:
     record = _json(RECORD_PATH)
     committed_asset = _json(ASSET_PATH)
@@ -54,13 +67,14 @@ def test_founder_reviewed_ped_education_artifacts_regenerate_deterministically()
         publication_id="education_pre_existing_disease_v1",
         meaning_asset=regenerated_asset,
         publication_authority="PolicyScna education publication authority",
+        components=_reviewed_components(committed_publication),
     )
     regenerated_publication = create_education_publication(publication_input)
 
     regenerated_json = json.loads(json.dumps(asdict(regenerated_publication)))
     assert regenerated_json == committed_publication
     assert regenerated_publication.publication_receipt_id == (
-        "education_receipt_e276ce8acfc3c6655a45"
+        "education_receipt_15fa4cb93b9c65637b6f"
     )
 
 
@@ -84,6 +98,11 @@ def test_ped_education_preserves_founder_plain_language_and_safe_boundary() -> N
             example["result"],
             example["boundary"],
             *publication["limitations"],
+            *(
+                value
+                for component in publication.get("components", [])
+                for value in (component["text"], component["boundary"])
+            ),
         ]
     ).lower()
 
@@ -108,6 +127,11 @@ def test_ped_education_does_not_publish_star_product_mechanics() -> None:
             publication["plain_language_explanation"],
             publication["practical_implication"],
             publication["examples"][0]["result"],
+            *(
+                value
+                for component in publication.get("components", [])
+                for value in (component["text"], component["boundary"])
+            ),
         ]
     ).lower()
     assert "buy-back" not in education_text
