@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "status": "COMPONENT_IDS_FROZEN_BEFORE_COMPONENT_TEXT",
+  "purpose": "Caller-governed component vocabulary for concept-level Health customer education. IDs define semantic areas only and contain no benchmark wording or product-specific truth.",
+  "concepts": {
+    "pre_existing_disease": [
+      "ped.definition",
+      "ped.qualifying_history",
+      "ped.waiting_period_relationship",
+      "ped.continuity_portability"
+    ],
+    "waiting_period": [
+      "waiting.initial_general",
+      "waiting.specific_disease_procedure",
+      "waiting.ped_relationship",
+      "waiting.multiple_wait_interaction",
+      "waiting.sum_insured_enhancement",
+      "waiting.date_inputs"
+    ],
+    "room_rent_limit": [
+      "room.eligibility_basis",
+      "room.excess_consequence_boundary",
+      "room.linked_charge_consequence_boundary",
+      "room.no_limit_vs_capped"
+    ],
+    "restoration": [
+      "restoration.purpose",
+      "restoration.trigger",
+      "restoration.amount_frequency",
+      "restoration.reuse_conditions",
+      "restoration.floater_operation",
+      "restoration.comparison_dimensions"
+    ],
+    "bariatric_surgery": [
+      "bariatric.benefit_vs_cosmetic",
+      "bariatric.eligibility_categories",
+      "bariatric.waiting_period",
+      "bariatric.limits_procedures_exclusions",
+      "bariatric.claim_guarantee_boundary",
+      "bariatric.comparison_dimensions"
+    ],
+    "conditional_copayment": [
+      "copay.percentage_and_basis",
+      "copay.gross_bill_vs_admissible_amount",
+      "copay.trigger_semantics",
+      "copay.multiple_copay_interaction",
+      "copay.total_out_of_pocket_boundary"
+    ]
+  },
+  "governance": [
+    "Component text must be grounded in existing governed generic knowledge before benchmark coverage is checked.",
+    "No component ID grants insurance authority or product-specific truth.",
+    "Product-specific publication semantics require an independently resolved product context.",
+    "GSI may select only one of these caller-governed IDs after selecting the corresponding concept; cross-concept selections fail closed.",
+    "Component IDs may not be added or renamed during the #432 implementation merely to fit exposed dev36 wording without an explicit preregistration amendment."
+  ]
+}
