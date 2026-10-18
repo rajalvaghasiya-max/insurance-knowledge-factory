@@ -1,1 +1,30 @@
-__PLACEHOLDER__
+{
+  "schema_version": "1.0",
+  "benchmark_id": "health-customer-v0-dev-36-v1",
+  "benchmark_role": "DEV_ONLY",
+  "holdout_eligible": false,
+  "preregistered_before_first_run": true,
+  "case_count": 36,
+  "conversation_count": 12,
+  "multi_turn_conversation_count": 12,
+  "notes": [
+    "Development evaluation data only; never eligible for milestone holdout evidence.",
+    "Reference criteria are evaluation rules, not answer templates.",
+    "Restoration items were authored for this dev set without consulting or copying the prior held-back restoration pack.",
+    "Every degraded item must later receive exactly one primary_origin and zero or more secondary_tags."
+  ],
+  "conversation_files": [
+    "dev_benchmark_36_v1/conv-ped-a.json",
+    "dev_benchmark_36_v1/conv-ped-b.json",
+    "dev_benchmark_36_v1/conv-wait-a.json",
+    "dev_benchmark_36_v1/conv-wait-b.json",
+    "dev_benchmark_36_v1/conv-rest-a.json",
+    "dev_benchmark_36_v1/conv-rest-b.json",
+    "dev_benchmark_36_v1/conv-room-a.json",
+    "dev_benchmark_36_v1/conv-room-b.json",
+    "dev_benchmark_36_v1/conv-bar-a.json",
+    "dev_benchmark_36_v1/conv-bar-b.json",
+    "dev_benchmark_36_v1/conv-copay-a.json",
+    "dev_benchmark_36_v1/conv-copay-b.json"
+  ]
+}
