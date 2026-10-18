@@ -14,9 +14,7 @@ from insurance_intelligence.contracts.response import (
     build_output as build_response_output,
     build_section as build_response_section,
 )
-from insurance_intelligence.education_publication.repository import (
-    EducationPublicationRepository,
-)
+from insurance_intelligence.education_publication.repository import EducationPublicationRepository
 from insurance_intelligence.llm.openai_responses_provider import OpenAIResponsesTextProvider
 from insurance_intelligence.llm.provider import LLMTextProvider
 from insurance_intelligence.rendering_exit_safety import (
@@ -34,6 +32,15 @@ API_KEY_ENV = "OPENAI_API_KEY"
 MODEL_ENV = "POLICYSCNA_GSI_MODEL"
 CONFIG_ID = "health-customer-v0-first-runnable-path"
 MAX_CONTEXT_TURNS = 4
+
+_SEMANTIC_FACTS = frozenset({"definition", "applicability", "consequence", "mechanics"})
+_OUTCOME_DEFAULT_FACT = {
+    "POLICY_FACT_EXPLANATION": "definition",
+    "INSURANCE_MECHANICS_EXPLANATION": "mechanics",
+    "POLICY_FACT_COMPARISON": "mechanics",
+    "CONTEXTUAL_POLICY_EXPLANATION": "applicability",
+    "ADVISORY_DECISION_SUPPORT": "consequence",
+}
 
 
 class HealthCustomerRelevanceError(ValueError):
@@ -152,7 +159,7 @@ def build_health_gsi_vocabulary() -> GovernedInterpretationVocabulary:
     return GovernedInterpretationVocabulary(
         concept_ids=tuple(item.concept_id for item in HEALTH_CONCEPTS_V1),
         intent_ids=("understand_policy_term", "understand_policy_effect"),
-        semantic_fact_ids=("definition", "applicability", "consequence", "mechanics"),
+        semantic_fact_ids=tuple(sorted(_SEMANTIC_FACTS)),
         scenario_fact_names=("context_detail",),
     )
 
@@ -279,55 +286,135 @@ def _clarification_response(*, request_id: str, text: str, reason_id: str) -> Re
     )
 
 
-def _education_response(*, request_id: str, selected_concept_id: str, publication) -> tuple[ResponseAssemblerOutput, str]:
+def _customer_facing_boundary(text: str) -> str:
+    """Remove internal governance phrasing without changing the insurance boundary."""
+    return (
+        text.replace("governed product knowledge", "the applicable product wording")
+        .replace("governed product evidence", "the applicable product wording")
+        .replace("governed policy evidence", "the applicable policy wording")
+    )
+
+
+def _resolved_semantic_fact(*, requested_semantic_fact: str | None, requested_outcome: str | None) -> str:
+    if requested_semantic_fact is not None:
+        if requested_semantic_fact not in _SEMANTIC_FACTS:
+            raise HealthCustomerPathError(
+                f"validated semantic fact is unsupported by Health customer v0: {requested_semantic_fact}"
+            )
+        return requested_semantic_fact
+    fallback = _OUTCOME_DEFAULT_FACT.get(requested_outcome or "")
+    if fallback is None:
+        raise HealthCustomerPathError("resolved interpretation has no usable semantic answer shape")
+    return fallback
+
+
+def _education_response(
+    *,
+    request_id: str,
+    selected_concept_id: str,
+    requested_semantic_fact: str | None,
+    requested_outcome: str | None,
+    publication,
+) -> tuple[ResponseAssemblerOutput, str]:
+    """Project only the governed education components relevant to the validated request shape."""
     definition = _concept_definition(selected_concept_id)
     topic = definition.downstream_topic
     if topic is None:
         raise HealthCustomerPathError("selected concept has no downstream topic")
 
     enforce_relevance(asked_concept_id=selected_concept_id, answer_topic=publication.concept_id)
+    semantic_fact = _resolved_semantic_fact(
+        requested_semantic_fact=requested_semantic_fact,
+        requested_outcome=requested_outcome,
+    )
 
-    sections = [
-        build_response_section(
-            section_id=_stable_id("section", request_id, "direct-answer", publication.publication_id),
-            section_type="DIRECT_ANSWER",
-            status="INCLUDED",
-            text=publication.plain_language_explanation,
-        ),
-        build_response_section(
-            section_id=_stable_id("section", request_id, "education", publication.publication_id),
-            section_type="EDUCATION",
-            status="INCLUDED",
-            text=publication.practical_implication,
-            education_publication_ids=(publication.publication_id,),
-        ),
-    ]
-    for index, example in enumerate(publication.examples, start=1):
+    # The GSI chooses only the request shape. Insurance meaning still comes exclusively from
+    # the authoritative education publication. The mapping is concept-neutral.
+    components: list[tuple[str, str, str]] = []
+    if requested_outcome == "POLICY_FACT_COMPARISON":
+        components.extend(
+            (
+                ("DIRECT_ANSWER", "comparison-mechanic", publication.practical_implication),
+                (
+                    "CUSTOMER_QUALIFICATION",
+                    "comparison-boundary",
+                    _customer_facing_boundary(publication.product_specific_boundary),
+                ),
+            )
+        )
+    elif semantic_fact == "definition":
+        components.append(("DIRECT_ANSWER", "definition", publication.plain_language_explanation))
+    elif semantic_fact == "applicability":
+        components.extend(
+            (
+                ("DIRECT_ANSWER", "applicability", publication.practical_implication),
+                (
+                    "CUSTOMER_QUALIFICATION",
+                    "customer-boundary",
+                    _customer_facing_boundary(publication.customer_document_boundary),
+                ),
+            )
+        )
+    elif semantic_fact == "consequence":
+        components.extend(
+            (
+                ("DIRECT_ANSWER", "consequence", publication.practical_implication),
+                (
+                    "CUSTOMER_QUALIFICATION",
+                    "consequence-boundary",
+                    _customer_facing_boundary(publication.product_specific_boundary),
+                ),
+            )
+        )
+    elif semantic_fact == "mechanics":
+        components.append(("DIRECT_ANSWER", "mechanics", publication.practical_implication))
+        for index, example in enumerate(publication.examples, start=1):
+            components.append(
+                (
+                    "EXAMPLE",
+                    f"example-{index}",
+                    f"Example: {example.scenario} {example.result} {example.boundary}",
+                )
+            )
+        components.append(
+            (
+                "CUSTOMER_QUALIFICATION",
+                "mechanics-boundary",
+                _customer_facing_boundary(publication.product_specific_boundary),
+            )
+        )
+    else:  # pragma: no cover - exhaustive guard for future enum changes
+        raise HealthCustomerPathError(f"unsupported semantic answer shape: {semantic_fact}")
+
+    if not components:
+        raise HealthCustomerPathError("question-relative education projection produced no sections")
+
+    sections = []
+    for section_type, role, text in components:
         sections.append(
             build_response_section(
-                section_id=_stable_id("section", request_id, "example", publication.publication_id, index),
-                section_type="EXAMPLE",
+                section_id=_stable_id("section", request_id, role, publication.publication_id),
+                section_type=section_type,
                 status="INCLUDED",
-                text=f"Example: {example.scenario} {example.result} {example.boundary}",
+                text=text,
                 education_publication_ids=(publication.publication_id,),
             )
         )
-    sections.append(
-        build_response_section(
-            section_id=_stable_id("section", request_id, "qualification", publication.publication_id),
-            section_type="CUSTOMER_QUALIFICATION",
-            status="INCLUDED",
-            text=publication.product_specific_boundary,
-        )
-    )
 
+    direct_answer = sections[0].text
     response = build_response_output(
         request_id=request_id,
-        response_id=_stable_id("response", request_id, publication.publication_id),
+        response_id=_stable_id(
+            "response",
+            request_id,
+            publication.publication_id,
+            semantic_fact,
+            requested_outcome or "none",
+        ),
         response_status="ANSWER_WITH_LIMITATIONS" if publication.limitations else "ANSWER",
         audience="CUSTOMER",
         response_format="STANDARD",
-        direct_answer=publication.plain_language_explanation,
+        direct_answer=direct_answer,
         sections=tuple(sections),
         limitations=publication.limitations,
         confidence=1.0,
@@ -352,14 +439,17 @@ def ask_health_question(
 
     GSI owns language understanding only. Bounded prior customer context may be supplied only
     for reference resolution. It never becomes insurance authority, evidence, or product truth.
-    Customer prose comes only from validated governed education publications. A relevance
-    invariant runs before Rendering Exit Safety.
+    Customer insurance meaning comes only from validated education publications. Validated GSI
+    request-shape fields may select which governed education components are presented. A
+    relevance invariant runs before Rendering Exit Safety.
     """
     if not isinstance(question, str) or not question.strip():
         raise ValueError("question must be non-empty text")
     if not isinstance(model_name, str) or not model_name.strip():
         raise ValueError("model_name must be non-empty text")
-    if conversation_context is not None and not isinstance(conversation_context, HealthConversationContext):
+    if conversation_context is not None and not isinstance(
+        conversation_context, HealthConversationContext
+    ):
         raise TypeError("conversation_context must be HealthConversationContext or None")
 
     clean_question = question.strip()
@@ -474,6 +564,8 @@ def ask_health_question(
     response, response_topic = _education_response(
         request_id=req_id,
         selected_concept_id=selected_concept_id,
+        requested_semantic_fact=interpretation.requested_semantic_fact,
+        requested_outcome=interpretation.requested_outcome,
         publication=publication,
     )
     enforce_relevance(asked_concept_id=selected_concept_id, answer_topic=response_topic)
