@@ -112,7 +112,8 @@ def test_applicability_projection_uses_practical_implication_and_customer_bounda
         "DIRECT_ANSWER",
         "CUSTOMER_QUALIFICATION",
     ]
-    assert "customer" not in result.released_text.casefold() or result.released_text
+    assert result.response.sections[0].text
+    assert result.response.sections[1].text
     assert "governed product knowledge" not in result.released_text.casefold()
 
 
