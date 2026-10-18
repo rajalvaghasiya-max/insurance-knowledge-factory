@@ -391,13 +391,16 @@ def _education_response(
 
     sections = []
     for section_type, role, text in components:
+        section_kwargs = {}
+        if section_type in {"EDUCATION", "EXAMPLE"}:
+            section_kwargs["education_publication_ids"] = (publication.publication_id,)
         sections.append(
             build_response_section(
                 section_id=_stable_id("section", request_id, role, publication.publication_id),
                 section_type=section_type,
                 status="INCLUDED",
                 text=text,
-                education_publication_ids=(publication.publication_id,),
+                **section_kwargs,
             )
         )
 
