@@ -1,0 +1,39 @@
+{
+  "allowed_uses": [
+    "CUSTOMER_EDUCATION"
+  ],
+  "canonical_name": "Bariatric Surgery",
+  "concept_id": "bariatric_surgery",
+  "contract_version": "1.0",
+  "customer_document_boundary": "Customer-specific policy version, selected variant, applicable waiting periods, endorsements, medical eligibility facts, and treatment details must be verified before applying any bariatric-surgery benefit rule to that customer.",
+  "definition": "Bariatric surgery is a health-insurance benefit concept concerning surgical treatment for obesity when the governed eligibility conditions are satisfied.",
+  "evidence_references": [
+    "insurance_intelligence/terminology/health_seed.py#health:concept:bariatric_surgery",
+    "knowledge/factory/registry_backed/star_health_star_comprehensive/publication/bariatric_surgery_authoritative_publication.json"
+  ],
+  "examples": [
+    {
+      "scenario": "A customer is considering surgery for severe obesity and wants to know whether their health policy has a bariatric-surgery benefit.",
+      "result": "The relevant policy benefit and its eligibility conditions, waiting period, limits, and other requirements must be checked before any product-specific conclusion is made.",
+      "boundary": "This example does not say that a particular surgery is covered, medically eligible, admissible, approved, or payable."
+    }
+  ],
+  "limitations": [
+    "This record explains the generic bariatric-surgery insurance concept only.",
+    "It does not state medical eligibility criteria, a waiting period, monetary limit, or other product-specific condition.",
+    "A product may impose specific eligibility and benefit conditions that must be established from governed product evidence.",
+    "It does not determine medical necessity, customer-specific coverage, claim admissibility, approval, payment, entitlement, or recommendation."
+  ],
+  "plain_language_explanation": "Bariatric surgery is surgery used to treat obesity. In health insurance, it can be a separately defined benefit, but the policy may set specific conditions that must be satisfied before that benefit applies.",
+  "practical_implication": "Seeing the words 'bariatric surgery' in a policy is not enough to conclude that every weight-loss surgery is covered. The important details are the product's eligibility conditions, waiting period, limits, and other stated requirements.",
+  "product_specific_boundary": "Medical or benefit eligibility conditions, waiting period, monetary limits, covered procedures, exclusions, and any other product-specific requirements must come from governed product knowledge.",
+  "publication_authority": "PolicyScna education publication authority",
+  "publication_id": "education_bariatric_surgery_v1",
+  "publication_receipt_id": "education_receipt_4fd326cc165503630c29",
+  "publication_status": "EDUCATION_AUTHORITATIVE",
+  "review_decision_id": "gcrev_bariatric_surgery_customer_v1",
+  "source_asset_digest": "31e4c227a511b1b7b164f9cb01f0cc14f7c6f5242add7df4271f94b71999ad55",
+  "source_asset_id": "health_customer_v0_education_source_bariatric_surgery_v1",
+  "source_governed_record_id": "health:concept:bariatric_surgery",
+  "source_knowledge_version": "health-terminology-v1"
+}
