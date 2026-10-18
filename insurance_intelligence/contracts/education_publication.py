@@ -87,6 +87,7 @@ class EducationPublicationInput:
     publication_id: str
     meaning_asset: Mapping[str, Any]
     publication_authority: str
+    components: tuple[EducationComponent, ...] = ()
 
 
 def build_education_publication_input(
@@ -94,6 +95,7 @@ def build_education_publication_input(
     publication_id: str,
     meaning_asset: Mapping[str, Any],
     publication_authority: str,
+    components: Sequence[EducationComponent] = (),
     contract_version: str = SUPPORTED_CONTRACT_VERSION,
 ) -> EducationPublicationInput:
     if contract_version != SUPPORTED_CONTRACT_VERSION:
@@ -102,11 +104,20 @@ def build_education_publication_input(
         )
     if not isinstance(meaning_asset, Mapping):
         raise EducationPublicationContractError("meaning_asset must be a mapping")
+    component_values = tuple(components)
+    if any(not isinstance(item, EducationComponent) for item in component_values):
+        raise EducationPublicationContractError(
+            "components must contain EducationComponent values"
+        )
+    component_ids = tuple(item.component_id for item in component_values)
+    if len(component_ids) != len(set(component_ids)):
+        raise EducationPublicationContractError("component IDs must be unique")
     return EducationPublicationInput(
         contract_version=contract_version,
         publication_id=_text(publication_id, "publication_id"),
         meaning_asset=deepcopy(dict(meaning_asset)),
         publication_authority=_text(publication_authority, "publication_authority"),
+        components=component_values,
     )
 
 
