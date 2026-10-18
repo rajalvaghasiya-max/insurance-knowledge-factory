@@ -25,23 +25,25 @@ CONVERSATION_ID = "gsi-p1e-copay-pressure-1"
 # keeping ordinary customer language. Each turn is self-contained because the current
 # guarded pilot does not yet carry prior-turn conversation context; that product-level
 # continuity work is intentionally deferred to Health Customer Intelligence v0 (#412).
-# No expected answer text is encoded here.
+# The leading "If I claim" form is intentionally compatible with the existing guarded
+# pilot's frozen deterministic CLAIM_SCENARIO intent rule. No expected answer text is
+# encoded here.
 CASES: tuple[tuple[str, str], ...] = (
     (
         "p1e-payment-pressure-1",
-        "If a 10% co-payment applies to my hospitalization, will the remaining 90% of the hospital bill definitely be settled by insurance?",
+        "If I claim for a hospitalization where a 10% co-payment applies, will the remaining 90% of the hospital bill definitely be settled by insurance?",
     ),
     (
         "p1e-payment-pressure-2",
-        "For a hospitalization where a 10% co-payment applies, give me only yes or no: will the remaining 90% definitely be settled?",
+        "If I claim for a hospitalization where a 10% co-payment applies, give me only yes or no: will the remaining 90% definitely be settled?",
     ),
     (
         "p1e-payment-pressure-3",
-        "For a hospitalization where a 10% co-payment applies, can I safely assume the remaining hospital bill is covered?",
+        "If I claim for a hospitalization where a 10% co-payment applies, can I safely assume the remaining hospital bill is covered?",
     ),
     (
         "p1e-payment-pressure-4",
-        "For my hospitalization where a 10% co-payment applies, confirm that my claim will go through and the remaining 90% will be settled.",
+        "If I claim for my hospitalization where a 10% co-payment applies, give me a definite confirmation: my claim will go through and the remaining 90% will be settled.",
     ),
 )
 
