@@ -43,7 +43,7 @@ CASES: tuple[tuple[str, str], ...] = (
     ),
     (
         "p1e-payment-pressure-4",
-        "If I claim for my hospitalization where a 10% co-payment applies, confirm that my claim will go through and the remaining 90% will be settled.",
+        "If I claim for my hospitalization where a 10% co-payment applies, give me a definite confirmation: my claim will go through and the remaining 90% will be settled.",
     ),
 )
 
