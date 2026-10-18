@@ -9,6 +9,7 @@ import pytest
 from insurance_intelligence.contracts.rendering_exit import build_candidate
 from insurance_intelligence.orchestration import guarded_star_comprehensive_pilot as guarded
 from insurance_intelligence.orchestration.guarded_star_comprehensive_pilot import (
+    AUTHORITY_CLARIFICATION_TEXT,
     CURRENTNESS_LIMITATION_TEXT,
     GuardedStarComprehensivePilotError,
     run_guarded_star_comprehensive_copay_pilot,
@@ -160,7 +161,32 @@ def test_blank_identity_attestation_blocks_before_evidence_resolution(
         _run(tmp_path)
 
 
-def test_advisory_or_mixed_request_is_withheld_by_authority_enforced_decision(
+def test_unresolved_payment_authority_releases_safe_customer_clarification(
+    tmp_path: Path,
+) -> None:
+    result = _run(
+        tmp_path,
+        question=(
+            "If I claim for a hospitalization where a 10% co-payment applies, "
+            "will the remaining 90% of the hospital bill definitely be settled by insurance?"
+        ),
+    )
+
+    assert (
+        result.authority_enforcement.enforcement_outcome
+        == "AUTHORITY_CLARIFICATION_REQUIRED"
+    )
+    assert result.authority_enforcement.decision_gate_called is False
+    assert result.decision is None
+    assert result.explanation is None
+    assert result.response.response_status == "CLARIFICATION_REQUIRED"
+    assert result.render_conformance.outcome == "PASS"
+    assert result.released_response_id == result.response.response_id
+    assert result.guard_status == "GUARDED_CLARIFICATION"
+    assert AUTHORITY_CLARIFICATION_TEXT in result.render_conformance.rendered_text
+
+
+def test_advisory_request_remains_not_authorized(
     tmp_path: Path,
 ) -> None:
     with pytest.raises(

@@ -78,6 +78,13 @@ CURRENTNESS_LIMITATION_TEXT = (
     "for current entitlement."
 )
 
+AUTHORITY_CLARIFICATION_ID = "authority_clarification_required"
+AUTHORITY_CLARIFICATION_TEXT = (
+    "I can explain the co-payment rule, but I cannot give a definite claim outcome "
+    "or payment amount from the information available. Please provide the relevant "
+    "policy wording and claim details so I can explain what applies without guessing."
+)
+
 
 class GuardedStarComprehensivePilotError(ValueError):
     """Raised when the guarded Star pilot cannot complete safely."""
@@ -105,8 +112,8 @@ class GuardedStarComprehensivePilotResult:
     evidence: object
     reasoning: object
     authority_enforcement: object
-    decision: object
-    explanation: object
+    decision: object | None
+    explanation: object | None
     response: ResponseAssemblerOutput
     render_conformance: object
     released_response_id: str
@@ -376,6 +383,49 @@ def _apply_currentness_limitation(
     )
 
 
+
+def _build_authority_clarification_response(
+    *,
+    request_id: str,
+    audience: str,
+    temporal_status: str,
+) -> ResponseAssemblerOutput:
+    """Project an unresolved-authority hold into a safe customer clarification."""
+
+    section = build_response_section(
+        section_id=_stable_id(
+            "section",
+            request_id,
+            AUTHORITY_CLARIFICATION_ID,
+        ),
+        section_type="CLARIFICATION",
+        status="INCLUDED",
+        text=AUTHORITY_CLARIFICATION_TEXT,
+        clarification_ids=(AUTHORITY_CLARIFICATION_ID,),
+    )
+    response = build_response_output(
+        request_id=request_id,
+        response_id=_stable_id(
+            "response",
+            request_id,
+            AUTHORITY_CLARIFICATION_ID,
+        ),
+        response_status="CLARIFICATION_REQUIRED",
+        audience=audience,
+        response_format="STANDARD",
+        direct_answer=None,
+        sections=(section,),
+        clarification_questions=(AUTHORITY_CLARIFICATION_TEXT,),
+        confidence=1.0,
+        response_trace=(),
+    )
+    return _apply_currentness_limitation(
+        response,
+        temporal_status=temporal_status,
+    )
+
+
+
 def run_guarded_star_comprehensive_copay_pilot(
     *,
     request_id: str,
@@ -536,6 +586,77 @@ def run_guarded_star_comprehensive_copay_pilot(
             ),
         )
     )
+    if authority_enforcement.enforcement_outcome == "AUTHORITY_CLARIFICATION_REQUIRED":
+        response = _build_authority_clarification_response(
+            request_id=request_id,
+            audience=audience,
+            temporal_status=temporal_status,
+        )
+        render_conformance = _evaluate_release(response)
+        if (
+            render_conformance.outcome != "PASS"
+            or render_conformance.rendered_text is None
+        ):
+            raise GuardedStarComprehensivePilotError(
+                "rendering exit safety blocked authority clarification release: "
+                + ",".join(render_conformance.violations)
+            )
+
+        limitations = tuple(
+            dict.fromkeys(
+                tuple(evidence.limitations)
+                + tuple(reasoning.limitations)
+                + tuple(response.limitations)
+            )
+        )
+        pilot_id = _stable_id(
+            "guarded-star-copay-pilot",
+            request_id,
+            knowledge_snapshot_id,
+            authority.authority_class,
+            intent.primary_intent,
+            reconciliation.reconciliation_status,
+            identity_resolution.resolution_id,
+            sha256(identity_path.read_bytes()).hexdigest(),
+            temporal_status,
+            plan.plan_id,
+            evidence.resolution_id,
+            reasoning.reasoning_id,
+            authority_enforcement.enforcement_outcome,
+            response.response_id,
+            render_conformance.outcome,
+        )
+        return GuardedStarComprehensivePilotResult(
+            pilot_id=pilot_id,
+            request_id=request_id,
+            product_reference=PRODUCT_REFERENCE,
+            topic=TOPIC,
+            question=clean_question,
+            knowledge_snapshot_id=knowledge_snapshot_id,
+            authority=authority,
+            intent=intent,
+            reconciliation=reconciliation,
+            context=built_context,
+            identity_resolution=identity_resolution,
+            identity_record_ref=_identity_record_ref(identity_path),
+            identity_record_hash=sha256(identity_path.read_bytes()).hexdigest(),
+            temporal_status=temporal_status,
+            instance_sufficiency=instance_sufficiency,
+            evidence_enforcement=evidence_enforcement,
+            plan=plan,
+            evidence=evidence,
+            reasoning=reasoning,
+            authority_enforcement=authority_enforcement,
+            decision=None,
+            explanation=None,
+            response=response,
+            render_conformance=render_conformance,
+            released_response_id=response.response_id,
+            used_llm=False,
+            limitations=limitations,
+            guard_status="GUARDED_CLARIFICATION",
+        )
+
     if (
         authority_enforcement.enforcement_outcome != "DELEGATED_TO_DECISION_GATE"
         or not authority_enforcement.decision_gate_called

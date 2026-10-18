@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "gsi-p1e-authority-clarification-release-v1",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.ORCHESTRATION.CERTIFIED_STAR_PILOT_RUNTIME"
+  ],
+  "rationale": "Repair the existing guarded Star Comprehensive pilot so an AUTHORITY_CLARIFICATION_REQUIRED enforcement result remains fail-closed for the ordinary decision path but is projected into the already-supported CLARIFICATION_REQUIRED customer response shape and passed through the existing Rendering Exit Safety boundary. This closes the P1E released-text observability gap without adding new insurance semantics, recommendation authority, payment authority, claim authority, or a new safety layer.",
+  "supersession_impact": "No capability is superseded and no historical certification record is reinterpreted. The existing guarded Star pilot remains the certified runtime; only its unresolved-authority exit is repaired to release a governed clarification rather than raise before customer-visible response projection.",
+  "authority_impact": "Authority is unchanged and remains fail-closed. AUTHORITY_CLARIFICATION_REQUIRED still prevents the ordinary decision gate from executing and cannot emit a payment, coverage, admissibility, or claim outcome. ADVISORY_PATH_NOT_AUTHORIZED remains blocked. The repair only exposes deterministic clarification text through the existing response contract and Rendering Exit Safety exact-preservation path."
+}
