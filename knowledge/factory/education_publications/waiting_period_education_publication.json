@@ -1,0 +1,39 @@
+{
+  "allowed_uses": [
+    "CUSTOMER_EDUCATION"
+  ],
+  "canonical_name": "Waiting Period",
+  "concept_id": "waiting_period",
+  "contract_version": "1.0",
+  "customer_document_boundary": "Customer-specific policy start dates, continuity or portability credit, endorsements, underwriting terms, and the event date must be verified from the applicable customer documents before applying a waiting-period rule to that customer.",
+  "definition": "A waiting period is a policy-defined period during which a specified coverage restriction applies to the relevant illness, treatment, service, situation, or benefit.",
+  "evidence_references": [
+    "knowledge/health/domain_catalogue/health_domain_vocabulary_catalogue_v1.json#health:waiting_period",
+    "tests/health/test_d0_generic_education_asset_repair.py#waiting_period_record"
+  ],
+  "examples": [
+    {
+      "scenario": "A health policy contains a waiting-period rule for a specified treatment.",
+      "result": "Until the applicable waiting period is completed, that particular waiting-period restriction can still apply to the specified treatment.",
+      "boundary": "This example does not establish the duration, exact calendar boundary, any exception, claim approval, or claim payment for a particular policy."
+    }
+  ],
+  "limitations": [
+    "This record explains the generic waiting-period concept only.",
+    "It does not state an insurer-specific or product-specific waiting-period duration.",
+    "Different waiting-period variants can have different start bases, scopes, durations, continuity rules, and exceptions.",
+    "It does not determine customer-specific coverage, claim admissibility, approval, payment, entitlement, or recommendation."
+  ],
+  "plain_language_explanation": "A waiting period means that a particular part of your health insurance may not become available immediately. You may need to complete a stated period before that specific illness, treatment, service, or benefit can be considered under the policy terms.",
+  "practical_implication": "A waiting period normally applies to the specific coverage named by that rule; it does not by itself mean that every part of the policy is unavailable during the same period. To know what it affects, you must identify the exact waiting-period clause and its scope.",
+  "product_specific_boundary": "The exact duration, start basis, affected condition or benefit, exceptions, continuity or portability credit, and other mechanics must come from governed product knowledge.",
+  "publication_authority": "PolicyScna education publication authority",
+  "publication_id": "education_waiting_period_v1",
+  "publication_receipt_id": "education_receipt_244293889c7e523a5a65",
+  "publication_status": "EDUCATION_AUTHORITATIVE",
+  "review_decision_id": "gcrev_waiting_period_customer_v1",
+  "source_asset_digest": "e3b356fc89695717b0f37a2c61ac12f657c282f9983f4762c5665fcaa406f1fa",
+  "source_asset_id": "health_customer_v0_education_source_waiting_period_v1",
+  "source_governed_record_id": "health:waiting_period",
+  "source_knowledge_version": "health-domain-vocabulary-v1"
+}
