@@ -1,25 +1,30 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "benchmark_id": "health-customer-v0-dev-36-live-v1",
   "benchmark_role": "DEV_ONLY",
-  "run_label": "after-question-relative-projection-repair",
-  "created_at": "2026-10-18T16:28:57.217155Z",
-  "model": "gpt-5.6",
+  "run_label": "after-question-relative-projection-before-concept-components",
   "source_artifact_filename": "health_customer_v0_dev36_live_result_after_projection.json",
   "source_artifact_sha256": "19a5c760764cfd3b0f0975e0136da51585a9f4682b527816e62945df2f36d5aa",
+  "created_at": "2026-10-18T16:28:57.217155Z",
+  "model": "gpt-5.6",
   "conversation_count": 12,
   "case_count": 36,
   "released_text_count": 36,
   "wrong_concept_count": 4,
   "clarification_count": 0,
   "product_path_readiness": "FAIL",
-  "quality_scoring": "NOT_SCORED",
+  "quality_scoring": "SCORED_SEPARATELY",
+  "quality_scores_path": "benchmarks/health_customer_v0/evidence/dev36_after_projection_baseline_scores_v1.json",
   "wrong_concept_case_ids": [
     "dev36-ped-a3",
     "dev36-ped-b3",
     "dev36-bar-b1",
     "dev36-bar-b2"
   ],
-  "evidence_note": "This repository record preserves the immutable run metadata and SHA-256 of the locally captured literal-answer artifact. The full local artifact was reviewed before the next repair was scoped. It remains DEV evidence only and is not holdout-eligible.",
-  "diagnosis_at_capture": "Question-relative section selection reduced whole-publication dumping but left many answers unable to address the requested distinction because concept education publications remained too thin. Four wrong-concept routes remained a separate LANGUAGE_INTERPRETATION class."
+  "notes": [
+    "Exact source artifact bytes were produced by the credentialed local dev36 runner and are identified by SHA-256 above.",
+    "The full raw source artifact is intentionally not duplicated into this compact repository evidence record.",
+    "Per-case rubric scores were frozen before #432/#433 implementation and are referenced by quality_scores_path.",
+    "This development evidence is never eligible as independent holdout evidence."
+  ]
 }
