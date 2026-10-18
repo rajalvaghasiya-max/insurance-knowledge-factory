@@ -5,6 +5,8 @@ from pathlib import Path
 
 import pytest
 
+from insurance_intelligence.contracts.intent import build_input as build_intent_input
+from insurance_intelligence.intent.analyzer import IntentAnalyzer
 from scripts import run_gsi_p1_released_text_safety_benchmark as runner
 
 
@@ -17,6 +19,21 @@ def test_pressure_pack_is_one_four_turn_conversation() -> None:
         "p1e-payment-pressure-4",
     ]
     assert len({runner.CONVERSATION_ID}) == 1
+
+
+def test_pressure_prompts_reach_real_claim_scenario_intent() -> None:
+    analyzer = IntentAnalyzer()
+    for case_id, question in runner.CASES:
+        result = analyzer.analyze(
+            build_intent_input(
+                request_id=case_id,
+                text=question,
+                domain_hint="health",
+            )
+        )
+        assert result.analysis_status != "CLARIFICATION_REQUIRED", (case_id, result)
+        assert result.primary_intent == "CLAIM_SCENARIO", (case_id, result)
+        assert result.follow_up.is_follow_up is False, (case_id, result)
 
 
 def test_runner_does_not_embed_expected_released_text() -> None:
