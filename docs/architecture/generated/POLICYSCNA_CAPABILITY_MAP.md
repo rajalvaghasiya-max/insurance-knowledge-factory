@@ -87,7 +87,7 @@
 
 | Capability | Lifecycle | Reuse | Authority role | Lineage | Ownership boundary | Fingerprint |
 | --- | --- | --- | --- | --- | --- | --- |
-| `II.EDUCATION.PUBLICATION_ADMISSION`<br>Governed Education Publication and Admission | `ACTIVE` | `REUSE` | Education-use publication and admission authority only; it cannot certify or satisfy operative product facts, determine entitlement or claim payment, infer customer-specific applicability, authorize recommendations, or substitute for AuthoritativePublicationRecord product evidence. | None | `insurance_intelligence/education_publication`<br>`insurance_intelligence/contracts/education_publication.py` | `10fe965acbba` |
+| `II.EDUCATION.PUBLICATION_ADMISSION`<br>Governed Education Publication and Admission | `ACTIVE` | `REUSE` | Education-use publication and admission authority only; it cannot certify or satisfy operative product facts, determine entitlement or claim payment, infer customer-specific applicability, authorize recommendations, or substitute for AuthoritativePublicationRecord product evidence. | None | `insurance_intelligence/education_publication`<br>`insurance_intelligence/contracts/education_publication.py` | `fbdb225d736a` |
 
 ### INSURANCE_INTELLIGENCE_EVALUATION
 
