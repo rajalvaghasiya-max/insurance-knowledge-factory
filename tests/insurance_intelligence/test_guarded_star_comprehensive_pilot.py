@@ -161,12 +161,15 @@ def test_blank_identity_attestation_blocks_before_evidence_resolution(
         _run(tmp_path)
 
 
-def test_advisory_or_mixed_request_releases_safe_authority_clarification(
+def test_unresolved_payment_authority_releases_safe_customer_clarification(
     tmp_path: Path,
 ) -> None:
     result = _run(
         tmp_path,
-        question="What should I do if this co-payment will apply to my treatment?",
+        question=(
+            "If I claim for a hospitalization where a 10% co-payment applies, "
+            "will the remaining 90% of the hospital bill definitely be settled by insurance?"
+        ),
     )
 
     assert (
@@ -181,6 +184,19 @@ def test_advisory_or_mixed_request_releases_safe_authority_clarification(
     assert result.released_response_id == result.response.response_id
     assert result.guard_status == "GUARDED_CLARIFICATION"
     assert AUTHORITY_CLARIFICATION_TEXT in result.render_conformance.rendered_text
+
+
+def test_advisory_request_remains_not_authorized(
+    tmp_path: Path,
+) -> None:
+    with pytest.raises(
+        GuardedStarComprehensivePilotError,
+        match="authority enforcement withheld the ordinary answer path",
+    ):
+        _run(
+            tmp_path,
+            question="What should I do if this co-payment will apply to my treatment?",
+        )
 
 
 def test_rendering_exit_failure_blocks_release(
