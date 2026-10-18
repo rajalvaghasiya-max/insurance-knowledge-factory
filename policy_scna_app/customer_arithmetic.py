@@ -7,7 +7,11 @@ from typing import Sequence
 
 _PERCENT_RE = re.compile(r"(?<![\d.])(\d+(?:\.\d+)?)\s*%")
 _AMOUNT_RE = re.compile(
-    r"(?:₹\s*)?(\d[\d,]*(?:\.\d+)?)\s*(crores?|cr|lakhs?|lacs?|k)?\b",
+    r"(?:"
+    r"₹\s*(?P<rupee_number>\d[\d,]*(?:\.\d+)?)\s*(?P<rupee_unit>crores?|cr|lakhs?|lacs?|k)?"
+    r"|"
+    r"(?P<unit_number>\d[\d,]*(?:\.\d+)?)\s*(?P<required_unit>crores?|cr|lakhs?|lacs?|k)\b"
+    r")",
     re.IGNORECASE,
 )
 
@@ -60,14 +64,13 @@ def parse_percentages(text: str) -> tuple[ParsedPercentage, ...]:
 
 
 def parse_rupee_amounts(text: str) -> tuple[ParsedAmount, ...]:
+    """Parse only explicitly monetary values: ₹-prefixed amounts or Indian money units."""
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     values: list[ParsedAmount] = []
     for match in _AMOUNT_RE.finditer(text):
-        raw_number = match.group(1)
-        unit = match.group(2)
-        if not raw_number:
-            continue
+        raw_number = match.group("rupee_number") or match.group("unit_number")
+        unit = match.group("rupee_unit") or match.group("required_unit")
         normalized_unit = unit.lower() if unit else None
         multiplier = _UNIT_MULTIPLIER[normalized_unit]
         numeric = _decimal(raw_number) * multiplier
