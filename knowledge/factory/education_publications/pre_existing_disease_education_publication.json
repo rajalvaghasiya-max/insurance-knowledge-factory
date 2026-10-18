@@ -3,6 +3,40 @@
     "CUSTOMER_EDUCATION"
   ],
   "canonical_name": "Pre-Existing Disease (PED)",
+  "components": [
+    {
+      "component_id": "ped.definition",
+      "text": "A Pre-Existing Disease (PED) is a condition that falls within the applicable pre-existing-disease definition based on what existed before the health cover began. The governed generic definition considers a condition diagnosed by a physician, or one for which medical advice or treatment was recommended or received, within the defined look-back period before policy commencement.",
+      "boundary": "This explains the generic PED definition. It does not decide whether a particular customer's condition is a PED without the relevant dates and medical history.",
+      "evidence_references": [
+        "star_comprehensive_standard_ped_definition_page_6_v1"
+      ]
+    },
+    {
+      "component_id": "ped.qualifying_history",
+      "text": "A formal diagnosis is not the only history that can matter when PED status is assessed. Prior medical advice or treatment can also be relevant under the governed definition. A symptom by itself does not settle the answer; the relevant medical history, what advice or treatment was given, and when it happened must be checked against the applicable definition.",
+      "boundary": "Do not classify a customer's condition as PED or non-PED from a symptom alone or from one isolated fact without the required dates and medical history.",
+      "evidence_references": [
+        "star_comprehensive_standard_ped_definition_page_6_v1"
+      ]
+    },
+    {
+      "component_id": "ped.waiting_period_relationship",
+      "text": "Being treated as a PED does not by itself mean the condition is permanently excluded. A policy may apply a PED waiting period or other product terms to treatment related to that condition. The exact duration, exclusions and treatment of the condition must come from the applicable product and policy terms.",
+      "boundary": "This component does not state a universal PED waiting-period duration and does not promise that treatment will become payable after any particular period.",
+      "evidence_references": [
+        "star_comprehensive_standard_ped_definition_page_6_v1"
+      ]
+    },
+    {
+      "component_id": "ped.continuity_portability",
+      "text": "Prior continuous health-insurance history or portability can be relevant when working out how a PED waiting period applies after a policy change or insurer switch. Whether any prior waiting-period credit is recognised, how much is recognised, and which conditions it affects depend on the applicable rules, product terms and continuous-coverage history.",
+      "boundary": "Do not assume that all prior credit transfers, or that the full waiting period always restarts, without the applicable product and continuity evidence.",
+      "evidence_references": [
+        "star_comprehensive_standard_ped_definition_page_6_v1"
+      ]
+    }
+  ],
   "concept_id": "pre_existing_disease",
   "contract_version": "1.0",
   "customer_document_boundary": "Customer-specific policy dates, prior continuous coverage, selected options, endorsements, declarations, and relevant medical history must be verified from the applicable customer documents before applying the rule to that customer.",
