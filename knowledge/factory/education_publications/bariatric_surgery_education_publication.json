@@ -1,8 +1,59 @@
 {
-  "allowed_uses": [
-    "CUSTOMER_EDUCATION"
-  ],
+  "allowed_uses": ["CUSTOMER_EDUCATION"],
   "canonical_name": "Bariatric Surgery",
+  "components": [
+    {
+      "component_id": "bariatric.benefit_vs_cosmetic",
+      "text": "Bariatric surgery is not treated as one universal insurance category. A health policy can define bariatric surgery as a benefit for surgical treatment of obesity when the policy's eligibility conditions are met, so it should not be assumed to be automatically cosmetic or automatically covered.",
+      "boundary": "A doctor's recommendation alone does not establish insurance eligibility, claim admissibility or payment.",
+      "evidence_references": [
+        "insurance_intelligence/terminology/health_seed.py#health:concept:bariatric_surgery",
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/publication/bariatric_surgery_authoritative_publication.json"
+      ]
+    },
+    {
+      "component_id": "bariatric.eligibility_categories",
+      "text": "A bariatric-surgery benefit can be subject to medical or benefit eligibility criteria defined by the product. Relevant categories can include the product's eligibility criteria, who the benefit applies to, and other conditions that must be satisfied before the benefit can operate.",
+      "boundary": "Do not invent universal BMI, age or medical thresholds. Exact criteria must come from the applicable product wording.",
+      "evidence_references": [
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/publication/bariatric_surgery_authoritative_publication.json"
+      ]
+    },
+    {
+      "component_id": "bariatric.waiting_period",
+      "text": "A product can place a separate waiting period on a bariatric-surgery benefit. A benefit-specific waiting period is distinct from an initial/general waiting period, and both rules can exist in the same policy if the product defines them that way.",
+      "boundary": "The existence, duration, start basis and interaction of any bariatric waiting period are product-specific.",
+      "evidence_references": [
+        "insurance_intelligence/terminology/health_seed.py#health:concept:bariatric_surgery",
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/publication/bariatric_surgery_authoritative_publication.json"
+      ]
+    },
+    {
+      "component_id": "bariatric.limits_procedures_exclusions",
+      "text": "To understand a bariatric benefit, check the product's covered scope together with its eligibility conditions, waiting period, monetary or other limits, covered procedures, exclusions and exceptions. These details determine how broad or narrow the benefit actually is.",
+      "boundary": "No particular limit, procedure or exclusion is universal across products.",
+      "evidence_references": [
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/publication/bariatric_surgery_authoritative_publication.json"
+      ]
+    },
+    {
+      "component_id": "bariatric.claim_guarantee_boundary",
+      "text": "Meeting a bariatric benefit's medical or eligibility criteria does not by itself guarantee that a claim will be approved or paid. Other applicable policy conditions, exclusions, claim facts and admissibility rules still matter.",
+      "boundary": "Do not convert eligibility into a promise of approval, entitlement or payment.",
+      "evidence_references": [
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/publication/bariatric_surgery_authoritative_publication.json"
+      ]
+    },
+    {
+      "component_id": "bariatric.comparison_dimensions",
+      "text": "When comparing bariatric benefits across policies, useful dimensions include whether the benefit exists, the eligibility or medical-criteria structure, waiting period, limits, covered procedures, exclusions and exceptions.",
+      "boundary": "This is a comparison checklist only; it does not rank policies or recommend which plan to buy.",
+      "evidence_references": [
+        "insurance_intelligence/terminology/health_seed.py#health:concept:bariatric_surgery",
+        "knowledge/factory/registry_backed/star_health_star_comprehensive/publication/bariatric_surgery_authoritative_publication.json"
+      ]
+    }
+  ],
   "concept_id": "bariatric_surgery",
   "contract_version": "1.0",
   "customer_document_boundary": "Customer-specific policy version, selected variant, applicable waiting periods, endorsements, medical eligibility facts, and treatment details must be verified before applying any bariatric-surgery benefit rule to that customer.",
