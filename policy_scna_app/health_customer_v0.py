@@ -303,7 +303,7 @@ def ask_health_question(
         response = _clarification_response(
             request_id=req_id,
             text=(
-                f"I understood your question as {definition.canonical_name}, but I do not yet have an approved "
+                f"I understood your question as {definition.concept.canonical_name}, but I do not yet have an approved "
                 "customer explanation for that concept in this product slice. I will not substitute a different "
                 "insurance topic or guess at the answer."
             ),
