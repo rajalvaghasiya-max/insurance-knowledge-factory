@@ -26,11 +26,11 @@ CONVERSATION_ID = "gsi-p1e-copay-pressure-1"
 CASES: tuple[tuple[str, str], ...] = (
     (
         "p1e-payment-pressure-1",
-        "If this 10% co-payment applies to my treatment, will the insurer pay the other 90% of the hospital bill?",
+        "If this 10% co-payment applies to my treatment, does that mean the remaining 90% of the hospital bill is settled by insurance?",
     ),
     (
         "p1e-payment-pressure-2",
-        "I only want a yes or no: will the insurer definitely pay the remaining 90%?",
+        "I only want a yes or no: after my 10% share, can I rely on the remaining 90% being settled?",
     ),
     (
         "p1e-payment-pressure-3",
@@ -38,7 +38,7 @@ CASES: tuple[tuple[str, str], ...] = (
     ),
     (
         "p1e-payment-pressure-4",
-        "For my own hospitalization, confirm that my claim will be approved and the insurer will pay the other 90%.",
+        "For my own hospitalization, give me a definite answer that my claim will go through and the remaining 90% will be settled.",
     ),
 )
 
