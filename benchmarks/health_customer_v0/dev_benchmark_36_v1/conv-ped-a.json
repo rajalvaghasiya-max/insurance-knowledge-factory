@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "conversation_id": "conv-ped-a",
+  "cases": [
+    {
+      "case_id": "dev36-ped-a1",
+      "conversation_id": "conv-ped-a",
+      "turn_index": 1,
+      "prior_context_required": false,
+      "concept_area": "pre_existing_disease",
+      "user_text": "I was diagnosed with hypothyroidism two years before buying my health policy. What does pre-existing disease mean here?",
+      "expected_concept_id": "health:concept:pre_existing_disease",
+      "expected_topic": "pre_existing_disease",
+      "reference": {
+        "must_include": ["Explain PED in plain language as a condition that existed before the relevant health cover began, subject to the governed definition. Separate the generic PED concept from whether this customer's hypothyroidism is treated as PED under the applicable policy."],
+        "legitimate_dependency": ["Exact PED treatment, waiting period, continuity, underwriting terms and claim impact require applicable policy/customer evidence."],
+        "must_not_imply": ["Do not decide that this customer's hypothyroidism is definitely PED without the required evidence. Do not promise claim payment or rejection."],
+        "acceptable_clarification": ["Ask for the policy/start-date/medical-history details only if the customer wants the exact personal application."],
+        "unnecessary_deferral": ["A general PED explanation does not require the full policy first."]
+      },
+      "evaluation": {"primary_origin": null, "secondary_tags": []}
+    },
+    {
+      "case_id": "dev36-ped-a2",
+      "conversation_id": "conv-ped-a",
+      "turn_index": 2,
+      "prior_context_required": true,
+      "concept_area": "pre_existing_disease",
+      "user_text": "So because I had it before buying the policy, will every future thyroid treatment be excluded?",
+      "expected_concept_id": "health:concept:pre_existing_disease",
+      "expected_topic": "pre_existing_disease",
+      "reference": {
+        "must_include": ["Use the established thyroid/PED context from the prior turn. Explain that pre-existing status does not by itself mean permanent exclusion of every future related treatment; product waiting periods, exclusions and other terms determine treatment."],
+        "legitimate_dependency": ["Exact duration, exclusions, continuity and treatment eligibility depend on the applicable governed policy and customer history."],
+        "must_not_imply": ["Do not say all thyroid treatment is permanently excluded. Do not say all thyroid treatment will eventually be covered regardless of policy terms."],
+        "acceptable_clarification": ["Ask for the policy/product if the customer wants the exact rule after giving the general distinction."],
+        "unnecessary_deferral": ["Do not make the customer repeat the thyroid context already established."]
+      },
+      "evaluation": {"primary_origin": null, "secondary_tags": []}
+    },
+    {
+      "case_id": "dev36-ped-a3",
+      "conversation_id": "conv-ped-a",
+      "turn_index": 3,
+      "prior_context_required": true,
+      "concept_area": "pre_existing_disease",
+      "user_text": "What should I check in my policy to know when treatment for it can start being covered?",
+      "expected_concept_id": "health:concept:pre_existing_disease",
+      "expected_topic": "pre_existing_disease",
+      "reference": {
+        "must_include": ["Carry forward that 'it' refers to the thyroid condition/PED context. Identify relevant items to check: PED waiting-period rule, policy start/continuity or portability credit, exclusions/endorsements and any customer-specific underwriting terms."],
+        "legitimate_dependency": ["The exact result requires the applicable product wording and policy-instance history."],
+        "must_not_imply": ["Do not infer the customer's exact waiting-period end date without dates and governed policy evidence."],
+        "acceptable_clarification": ["Ask for the policy wording or dates if the customer wants an exact calendar answer."],
+        "unnecessary_deferral": ["Provide a useful checklist without refusing to answer generically."]
+      },
+      "evaluation": {"primary_origin": null, "secondary_tags": []}
+    }
+  ]
+}
