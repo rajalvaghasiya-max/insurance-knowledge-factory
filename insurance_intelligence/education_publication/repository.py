@@ -9,6 +9,7 @@ from typing import Iterable
 from insurance_intelligence.contracts.education_publication import (
     CUSTOMER_EDUCATION,
     EducationPublicationRecord,
+    build_education_component,
     build_education_example,
     validate_education_publication_record,
 )
@@ -36,7 +37,7 @@ def _publication_from_mapping(raw: object) -> EducationPublicationRecord:
 
     expected = {item.name for item in fields(EducationPublicationRecord)}
     actual = set(raw)
-    missing = sorted(expected - actual)
+    missing = sorted((expected - {"components"}) - actual)
     extra = sorted(actual - expected)
     if missing or extra:
         raise EducationPublicationRepositoryError(
@@ -62,6 +63,35 @@ def _publication_from_mapping(raw: object) -> EducationPublicationRecord:
                 scenario=item["scenario"],
                 result=item["result"],
                 boundary=item["boundary"],
+            )
+        )
+
+    raw_components = raw.get("components", [])
+    if not isinstance(raw_components, list):
+        raise EducationPublicationRepositoryError("components must be a list")
+    components = []
+    for index, item in enumerate(raw_components):
+        if not isinstance(item, dict):
+            raise EducationPublicationRepositoryError(
+                f"components[{index}] must be an object"
+            )
+        if set(item) != {"component_id", "text", "boundary", "evidence_references"}:
+            raise EducationPublicationRepositoryError(
+                f"components[{index}] fields mismatch"
+            )
+        references = item["evidence_references"]
+        if not isinstance(references, list) or any(
+            not isinstance(reference, str) for reference in references
+        ):
+            raise EducationPublicationRepositoryError(
+                f"components[{index}].evidence_references must be a list of strings"
+            )
+        components.append(
+            build_education_component(
+                component_id=item["component_id"],
+                text=item["text"],
+                boundary=item["boundary"],
+                evidence_references=tuple(references),
             )
         )
 
@@ -98,6 +128,7 @@ def _publication_from_mapping(raw: object) -> EducationPublicationRecord:
             review_decision_id=raw["review_decision_id"],
             publication_authority=raw["publication_authority"],
             publication_receipt_id=raw["publication_receipt_id"],
+            components=tuple(components),
         )
         return validate_education_publication_record(record)
     except (TypeError, ValueError) as exc:
@@ -234,6 +265,12 @@ class GovernedEducationPublicationLookup:
 
         return tuple(publications)
 
+
+# The practical-illustration repository remains unchanged below this point.
+from insurance_intelligence.contracts.explanation import (
+    PracticalIllustrationProfile,
+    build_practical_illustration_profile,
+)
 
 
 def _illustration_profile_from_mapping(raw: object) -> PracticalIllustrationProfile:
