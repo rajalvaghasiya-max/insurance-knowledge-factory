@@ -224,6 +224,7 @@ def create_education_publication(
     if len(limitations) != len(set(limitations)):
         raise EducationPublicationGateError("education limitations must be unique")
 
+    components = tuple(publication_input.components)
     customer_text = (
         definition,
         plain,
@@ -235,6 +236,11 @@ def create_education_publication(
             value
             for example in examples
             for value in (example.scenario, example.result, example.boundary)
+        ),
+        *(
+            value
+            for component in components
+            for value in (component.text, component.boundary)
         ),
     )
     _reject_prohibited_customer_language(tuple(customer_text))
@@ -254,6 +260,15 @@ def create_education_publication(
     )
     evidence_refs = tuple(str(value).strip() for value in asset["evidence_refs"])
 
+    component_payload = [
+        {
+            "component_id": item.component_id,
+            "text": item.text,
+            "boundary": item.boundary,
+            "evidence_references": item.evidence_references,
+        }
+        for item in components
+    ]
     content_digest = _canonical_digest(
         {
             "concept_id": concept_id,
@@ -273,6 +288,7 @@ def create_education_publication(
             "product_specific_boundary": product_boundary,
             "customer_document_boundary": customer_boundary,
             "evidence_references": evidence_refs,
+            "components": component_payload,
         }
     )
     receipt = _receipt_id(
@@ -307,6 +323,7 @@ def create_education_publication(
             review_decision_id=review_decision_id,
             publication_authority=publication_input.publication_authority,
             publication_receipt_id=receipt,
+            components=components,
         )
     )
 

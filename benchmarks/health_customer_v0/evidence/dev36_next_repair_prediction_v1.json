@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.1",
+  "benchmark_id": "health-customer-v0-dev-36-v1",
+  "benchmark_role": "DEV_ONLY",
+  "prediction_status": "PREREGISTERED_BEFORE_REPAIR_IMPLEMENTATION",
+  "baseline_scores_path": "benchmarks/health_customer_v0/evidence/dev36_after_projection_baseline_scores_v1.json",
+  "repair_issues": [432, 433],
+  "material_improvement_definition": "A case is materially improved only when Safety remains PASS and either Correctness or Usefulness moves from a pre-repair score below 2 to a post-repair score of 2 under the frozen rubric.",
+  "content_repair": {
+    "issue": 432,
+    "minimum_material_improvements": 18,
+    "predicted_cases": [
+      "dev36-ped-a2",
+      "dev36-ped-b1",
+      "dev36-ped-b2",
+      "dev36-wait-a2",
+      "dev36-wait-a3",
+      "dev36-wait-b1",
+      "dev36-wait-b2",
+      "dev36-rest-a1",
+      "dev36-rest-a2",
+      "dev36-rest-a3",
+      "dev36-rest-b1",
+      "dev36-rest-b2",
+      "dev36-rest-b3",
+      "dev36-room-a1",
+      "dev36-room-a2",
+      "dev36-room-a3",
+      "dev36-room-b1",
+      "dev36-bar-a1",
+      "dev36-bar-a2",
+      "dev36-bar-a3",
+      "dev36-bar-b3",
+      "dev36-copay-a3",
+      "dev36-copay-b1",
+      "dev36-copay-b2",
+      "dev36-copay-b3"
+    ],
+    "falsification_rule": "If fewer than 18 of the 25 predicted content cases materially improve on the next frozen rerun, treat the componentized-concept-content diagnosis as insufficient and stop before further content expansion."
+  },
+  "arithmetic_repair": {
+    "issue": 433,
+    "minimum_material_improvements": 4,
+    "predicted_cases": [
+      "dev36-copay-a1",
+      "dev36-copay-a2",
+      "dev36-room-b2",
+      "dev36-room-b3"
+    ],
+    "falsification_rule": "All 4 arithmetic cases must materially improve. Any miss means the deterministic arithmetic repair is incomplete or incorrectly integrated."
+  },
+  "excluded_from_content_prediction": {
+    "clarification_or_context_case": ["dev36-wait-b3"],
+    "wrong_concept_cases": [
+      "dev36-ped-a3",
+      "dev36-ped-b3",
+      "dev36-bar-b1",
+      "dev36-bar-b2"
+    ]
+  },
+  "blind_scoring_protocol": {
+    "required": true,
+    "method": "For every case, pair the frozen pre-repair and post-repair released answers, randomize their A/B order, remove run labels and commit identifiers, and have a scorer who did not author the concept components score Safety, Correctness, Usefulness, Clarity and Deferral using the frozen rubric before revealing which answer is before/after.",
+    "author_scorer_not_sufficient_for_final_repair_verdict": true
+  },
+  "guardrails": [
+    "No benchmark-specific runtime branches or templates.",
+    "Component IDs must be derived from governed concept knowledge before component text is authored.",
+    "Component text must be drafted from governed meaning assets / generic concept semantics before checking benchmark coverage.",
+    "No product-specific semantics may answer a generic question without a resolved product.",
+    "GSI may select only caller-governed concept component IDs and owns no insurance truth.",
+    "Arithmetic may use only validated customer-supplied values and must not imply final insurer liability.",
+    "The exact same frozen 36-turn dev set must be rerun before any additional repair.",
+    "Holdout questions must be independently authored and remain unseen by component authors until the milestone run."
+  ]
+}

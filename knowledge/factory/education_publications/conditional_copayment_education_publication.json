@@ -3,6 +3,51 @@
     "CUSTOMER_EDUCATION"
   ],
   "canonical_name": "Co-payment",
+  "components": [
+    {
+      "component_id": "copay.percentage_and_basis",
+      "text": "A co-payment is a cost-sharing rule under which the insured bears a stated percentage or amount of a policy-defined calculation base when the co-payment applies. The percentage alone is not enough to know the customer's share; the applicable base also matters.",
+      "boundary": "Do not assume the co-payment percentage applies to the total hospital bill unless the applicable policy terms establish that as the calculation base.",
+      "evidence_references": [
+        "knowledge/factory/meaning_assets/copay_governed_meaning_asset.json"
+      ]
+    },
+    {
+      "component_id": "copay.gross_bill_vs_admissible_amount",
+      "text": "The hospital's gross bill and the amount on which a co-payment is calculated can be different. A policy may define the co-payment against an eligible or admissible claim amount rather than the full bill, so the calculation base must be identified before applying the percentage.",
+      "boundary": "This distinction does not determine the actual admissible amount for a customer's claim; that requires the applicable policy and claim facts.",
+      "evidence_references": [
+        "knowledge/factory/meaning_assets/copay_governed_meaning_asset.json",
+        "knowledge/health/domain_catalogue/health_domain_vocabulary_catalogue_v1.json#health:copayment"
+      ]
+    },
+    {
+      "component_id": "copay.trigger_semantics",
+      "text": "A co-payment does not automatically apply to every claim. It applies only when the policy's trigger and scope are satisfied. The trigger may depend on the product's own conditions, so the exact age, option, benefit, treatment, location or other condition cannot be assumed from the generic concept alone.",
+      "boundary": "The trigger, percentage, affected benefits, exceptions and waivers must come from the applicable product and policy terms.",
+      "evidence_references": [
+        "knowledge/factory/meaning_assets/copay_governed_meaning_asset.json",
+        "insurance_intelligence/terminology/health_seed.py#health:concept:copayment"
+      ]
+    },
+    {
+      "component_id": "copay.multiple_copay_interaction",
+      "text": "A policy can contain more than one cost-sharing rule, and another co-payment or deductible may also be relevant if the policy provides for it. Whether two co-payments stack, apply alternatively, apply in sequence, or one overrides another cannot be assumed; the interaction must be stated by the governed product rules.",
+      "boundary": "Do not add percentages or invent stacking behaviour unless the applicable product terms explicitly establish the interaction.",
+      "evidence_references": [
+        "knowledge/factory/meaning_assets/copay_governed_meaning_asset.json"
+      ]
+    },
+    {
+      "component_id": "copay.total_out_of_pocket_boundary",
+      "text": "The co-payment share is only one possible part of the customer's total out-of-pocket cost. Other non-payable expenses, deductibles, limits or claim-admissibility rules may also affect what the customer ultimately bears.",
+      "boundary": "A co-payment calculation by itself does not establish final customer liability or guarantee that the insurer will pay the remaining amount.",
+      "evidence_references": [
+        "knowledge/factory/meaning_assets/copay_governed_meaning_asset.json",
+        "knowledge/health/domain_catalogue/health_domain_vocabulary_catalogue_v1.json#health:copayment"
+      ]
+    }
+  ],
   "concept_id": "conditional_copayment",
   "contract_version": "1.0",
   "customer_document_boundary": "The customer's applicable product, policy schedule, selected options, endorsements, claim facts, and any condition that triggers a co-payment must be verified before applying a co-payment rule to that customer.",

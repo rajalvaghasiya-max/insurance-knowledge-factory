@@ -1,15 +1,68 @@
 {
-  "allowed_uses": [
-    "CUSTOMER_EDUCATION"
-  ],
+  "allowed_uses": ["CUSTOMER_EDUCATION"],
   "canonical_name": "Waiting Period",
+  "components": [
+    {
+      "component_id": "waiting.initial_general",
+      "text": "An initial or general waiting period is a waiting-period type that can restrict specified coverage near the beginning of cover. A waiting period is scoped to the illness, treatment, service, situation or benefit named by that rule; it does not by itself mean the whole policy has no value during the same period.",
+      "boundary": "The exact duration, scope and exceptions of an initial waiting period are product-specific and must come from the applicable policy terms.",
+      "evidence_references": [
+        "knowledge/health/domain_catalogue/health_domain_vocabulary_catalogue_v1.json#health:waiting_period",
+        "insurance_intelligence/benefits/waiting_period_contracts.py"
+      ]
+    },
+    {
+      "component_id": "waiting.specific_disease_procedure",
+      "text": "A disease- or procedure-specific waiting period is distinct from an initial/general waiting period. It applies to the condition, treatment or procedure identified by that policy rule, and its duration and scope can differ from other waiting-period rules in the same product.",
+      "boundary": "Do not invent a disease list, procedure list or duration; those are product-specific.",
+      "evidence_references": [
+        "knowledge/health/domain_catalogue/health_domain_vocabulary_catalogue_v1.json#health:waiting_period",
+        "insurance_intelligence/benefits/waiting_period_contracts.py"
+      ]
+    },
+    {
+      "component_id": "waiting.ped_relationship",
+      "text": "A pre-existing-disease waiting period is another distinct waiting-period type. Whether a condition is first classified as PED and how the related waiting period then applies are separate questions; the PED definition and the product's PED waiting-period rule both matter.",
+      "boundary": "Do not treat every waiting period as a PED wait, and do not infer the PED duration from the generic waiting-period concept.",
+      "evidence_references": [
+        "knowledge/health/domain_catalogue/health_domain_vocabulary_catalogue_v1.json#health:waiting_period",
+        "insurance_intelligence/benefits/waiting_period_contracts.py"
+      ]
+    },
+    {
+      "component_id": "waiting.multiple_wait_interaction",
+      "text": "A product can contain different waiting-period mechanics for different scopes. When more than one rule appears relevant to the same treatment, their interaction or precedence must be established from the product terms rather than assumed from the generic concept.",
+      "boundary": "There is no universal generic rule that one waiting-period type always overrides another.",
+      "evidence_references": [
+        "knowledge/health/domain_catalogue/health_domain_vocabulary_catalogue_v1.json#health:waiting_period",
+        "insurance_intelligence/benefits/waiting_period_contracts.py"
+      ]
+    },
+    {
+      "component_id": "waiting.sum_insured_enhancement",
+      "text": "A later increase in sum insured can matter to waiting-period mechanics in products that apply a waiting period again to the enhanced portion of cover. That treatment is not universal: whether the old amount and the added amount are treated differently depends on the governed product rule and continuity history.",
+      "boundary": "Do not assume that increasing cover always restarts a waiting period or that it never does.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/waiting_period_contracts.py"
+      ]
+    },
+    {
+      "component_id": "waiting.date_inputs",
+      "text": "To work out a waiting period exactly, the relevant dates can include policy commencement, the insured person's first or continuous coverage date, a member-addition date, and any policy-schedule date that the rule uses. If increased cover has its own waiting-period treatment, the date that enhanced cover took effect can also matter.",
+      "boundary": "The exact date set and completion date must follow the product's governed start-basis and continuity rules; do not calculate a completion date from dates alone.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/waiting_period_contracts.py"
+      ]
+    }
+  ],
   "concept_id": "waiting_period",
   "contract_version": "1.0",
   "customer_document_boundary": "Customer-specific policy start dates, continuity or portability credit, endorsements, underwriting terms, and the event date must be verified from the applicable customer documents before applying a waiting-period rule to that customer.",
   "definition": "A waiting period is a policy-defined period during which a specified coverage restriction applies to the relevant illness, treatment, service, situation, or benefit.",
   "evidence_references": [
     "knowledge/health/domain_catalogue/health_domain_vocabulary_catalogue_v1.json#health:waiting_period",
-    "tests/health/test_d0_generic_education_asset_repair.py#waiting_period_record"
+    "tests/health/test_d0_generic_education_asset_repair.py#waiting_period_record",
+    "insurance_intelligence/benefits/waiting_period_contracts.py"
   ],
   "examples": [
     {

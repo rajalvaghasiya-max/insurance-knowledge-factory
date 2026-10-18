@@ -52,11 +52,42 @@ def build_education_example(*, scenario: str, result: str, boundary: str) -> Edu
 
 
 @dataclass(frozen=True)
+class EducationComponent:
+    """One reviewed generic concept component within an education publication."""
+
+    component_id: str
+    text: str
+    boundary: str
+    evidence_references: tuple[str, ...]
+
+
+def build_education_component(
+    *,
+    component_id: str,
+    text: str,
+    boundary: str,
+    evidence_references: Sequence[str],
+) -> EducationComponent:
+    references = _unique(evidence_references, "component.evidence_references")
+    if not references:
+        raise EducationPublicationContractError(
+            "component.evidence_references must not be empty"
+        )
+    return EducationComponent(
+        component_id=_text(component_id, "component.component_id"),
+        text=_text(text, "component.text"),
+        boundary=_text(boundary, "component.boundary"),
+        evidence_references=references,
+    )
+
+
+@dataclass(frozen=True)
 class EducationPublicationInput:
     contract_version: str
     publication_id: str
     meaning_asset: Mapping[str, Any]
     publication_authority: str
+    components: tuple[EducationComponent, ...] = ()
 
 
 def build_education_publication_input(
@@ -64,6 +95,7 @@ def build_education_publication_input(
     publication_id: str,
     meaning_asset: Mapping[str, Any],
     publication_authority: str,
+    components: Sequence[EducationComponent] = (),
     contract_version: str = SUPPORTED_CONTRACT_VERSION,
 ) -> EducationPublicationInput:
     if contract_version != SUPPORTED_CONTRACT_VERSION:
@@ -72,11 +104,20 @@ def build_education_publication_input(
         )
     if not isinstance(meaning_asset, Mapping):
         raise EducationPublicationContractError("meaning_asset must be a mapping")
+    component_values = tuple(components)
+    if any(not isinstance(item, EducationComponent) for item in component_values):
+        raise EducationPublicationContractError(
+            "components must contain EducationComponent values"
+        )
+    component_ids = tuple(item.component_id for item in component_values)
+    if len(component_ids) != len(set(component_ids)):
+        raise EducationPublicationContractError("component IDs must be unique")
     return EducationPublicationInput(
         contract_version=contract_version,
         publication_id=_text(publication_id, "publication_id"),
         meaning_asset=deepcopy(dict(meaning_asset)),
         publication_authority=_text(publication_authority, "publication_authority"),
+        components=component_values,
     )
 
 
@@ -103,6 +144,7 @@ class EducationPublicationRecord:
     review_decision_id: str
     publication_authority: str
     publication_receipt_id: str
+    components: tuple[EducationComponent, ...] = ()
 
 
 def validate_education_publication_record(
@@ -146,7 +188,7 @@ def validate_education_publication_record(
         raise EducationPublicationContractError(
             "education publication requires evidence references"
         )
-    _unique(record.evidence_references, "evidence_references")
+    publication_evidence = set(_unique(record.evidence_references, "evidence_references"))
     if not record.examples:
         raise EducationPublicationContractError(
             "education publication requires at least one reviewed example"
@@ -156,6 +198,27 @@ def validate_education_publication_record(
             "examples must contain EducationExample values"
         )
     _unique(record.limitations, "limitations")
+
+    component_ids: list[str] = []
+    for component in record.components:
+        if not isinstance(component, EducationComponent):
+            raise EducationPublicationContractError(
+                "components must contain EducationComponent values"
+            )
+        component_ids.append(_text(component.component_id, "component.component_id"))
+        _text(component.text, "component.text")
+        _text(component.boundary, "component.boundary")
+        references = set(_unique(component.evidence_references, "component.evidence_references"))
+        if not references:
+            raise EducationPublicationContractError(
+                "component.evidence_references must not be empty"
+            )
+        if not references <= publication_evidence:
+            raise EducationPublicationContractError(
+                "component evidence must be admitted by the parent education publication"
+            )
+    if len(component_ids) != len(set(component_ids)):
+        raise EducationPublicationContractError("component IDs must be unique")
     return record
 
 
@@ -164,10 +227,12 @@ __all__ = [
     "EDUCATION_PUBLICATION_STATUS",
     "EDUCATION_REQUEST_USES",
     "OPERATIVE_PRODUCT_FACT",
+    "EducationComponent",
     "EducationExample",
     "EducationPublicationContractError",
     "EducationPublicationInput",
     "EducationPublicationRecord",
+    "build_education_component",
     "build_education_example",
     "build_education_publication_input",
     "validate_education_publication_record",

@@ -32,6 +32,9 @@ API_KEY_ENV = "OPENAI_API_KEY"
 MODEL_ENV = "POLICYSCNA_GSI_MODEL"
 CONFIG_ID = "health-customer-v0-first-runnable-path"
 MAX_CONTEXT_TURNS = 4
+COMPONENT_CATALOG_RELATIVE_PATH = Path(
+    "knowledge/factory/education_publications/health_customer_v0_component_catalog_v1.json"
+)
 
 _SEMANTIC_FACTS = frozenset({"definition", "applicability", "consequence", "mechanics"})
 _OUTCOME_DEFAULT_FACT = {
@@ -154,12 +157,53 @@ def _utc_now() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
-def build_health_gsi_vocabulary() -> GovernedInterpretationVocabulary:
-    """Return the same generic Health vocabulary used by the live GSI benchmark."""
+def _repository_root() -> Path:
+    return Path(__file__).resolve().parents[1]
+
+
+def _load_component_catalog(repository_root: str | Path | None = None) -> dict[str, tuple[str, ...]]:
+    root = Path(repository_root) if repository_root is not None else _repository_root()
+    path = root / COMPONENT_CATALOG_RELATIVE_PATH
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise HealthCustomerPathError(f"unable to load Health component catalog: {path}") from exc
+    concepts = raw.get("concepts") if isinstance(raw, dict) else None
+    if not isinstance(concepts, dict) or not concepts:
+        raise HealthCustomerPathError("Health component catalog has no concepts")
+    result: dict[str, tuple[str, ...]] = {}
+    seen: set[str] = set()
+    for topic, values in concepts.items():
+        if not isinstance(topic, str) or not topic.strip():
+            raise HealthCustomerPathError("Health component catalog contains invalid topic")
+        if not isinstance(values, list) or not values or any(
+            not isinstance(value, str) or not value.strip() for value in values
+        ):
+            raise HealthCustomerPathError(
+                f"Health component catalog has invalid IDs for topic {topic!r}"
+            )
+        cleaned = tuple(value.strip() for value in values)
+        if len(cleaned) != len(set(cleaned)) or seen.intersection(cleaned):
+            raise HealthCustomerPathError("Health component catalog contains duplicate component IDs")
+        seen.update(cleaned)
+        result[topic.strip()] = cleaned
+    return result
+
+
+def build_health_gsi_vocabulary(
+    repository_root: str | Path | None = None,
+) -> GovernedInterpretationVocabulary:
+    """Return generic semantic shapes plus frozen concept-component IDs."""
+    catalog = _load_component_catalog(repository_root)
+    component_ids = tuple(
+        component_id
+        for topic in sorted(catalog)
+        for component_id in catalog[topic]
+    )
     return GovernedInterpretationVocabulary(
         concept_ids=tuple(item.concept_id for item in HEALTH_CONCEPTS_V1),
         intent_ids=("understand_policy_term", "understand_policy_effect"),
-        semantic_fact_ids=tuple(sorted(_SEMANTIC_FACTS)),
+        semantic_fact_ids=tuple(sorted((*_SEMANTIC_FACTS, *component_ids))),
         scenario_fact_names=("context_detail",),
     )
 
@@ -169,10 +213,6 @@ def _concept_definition(concept_id: str):
         if item.concept_id == concept_id:
             return item
     raise HealthCustomerPathError(f"validated concept is not present in Health registry: {concept_id}")
-
-
-def _repository_root() -> Path:
-    return Path(__file__).resolve().parents[1]
 
 
 def load_education_repository(repository_root: str | Path | None = None) -> EducationPublicationRepository:
@@ -316,75 +356,86 @@ def _education_response(
     requested_outcome: str | None,
     publication,
 ) -> tuple[ResponseAssemblerOutput, str]:
-    """Project only the governed education components relevant to the validated request shape."""
+    """Project only governed education material authorized for the validated request."""
     definition = _concept_definition(selected_concept_id)
     topic = definition.downstream_topic
     if topic is None:
         raise HealthCustomerPathError("selected concept has no downstream topic")
 
     enforce_relevance(asked_concept_id=selected_concept_id, answer_topic=publication.concept_id)
-    semantic_fact = _resolved_semantic_fact(
-        requested_semantic_fact=requested_semantic_fact,
-        requested_outcome=requested_outcome,
-    )
 
-    # The GSI chooses only the request shape. Insurance meaning still comes exclusively from
-    # the authoritative education publication. The mapping is concept-neutral.
-    components: list[tuple[str, str, str]] = []
-    if requested_outcome == "POLICY_FACT_COMPARISON":
-        components.extend(
-            (
-                ("DIRECT_ANSWER", "comparison-mechanic", publication.practical_implication),
-                (
-                    "CUSTOMER_QUALIFICATION",
-                    "comparison-boundary",
-                    _customer_facing_boundary(publication.product_specific_boundary),
-                ),
-            )
-        )
-    elif semantic_fact == "definition":
-        components.append(("DIRECT_ANSWER", "definition", publication.plain_language_explanation))
-    elif semantic_fact == "applicability":
-        components.extend(
-            (
-                ("DIRECT_ANSWER", "applicability", publication.practical_implication),
-                (
-                    "CUSTOMER_QUALIFICATION",
-                    "customer-boundary",
-                    _customer_facing_boundary(publication.customer_document_boundary),
-                ),
-            )
-        )
-    elif semantic_fact == "consequence":
-        components.extend(
-            (
-                ("DIRECT_ANSWER", "consequence", publication.practical_implication),
-                (
-                    "CUSTOMER_QUALIFICATION",
-                    "consequence-boundary",
-                    _customer_facing_boundary(publication.product_specific_boundary),
-                ),
-            )
-        )
-    elif semantic_fact == "mechanics":
-        components.append(("DIRECT_ANSWER", "mechanics", publication.practical_implication))
-        for index, example in enumerate(publication.examples, start=1):
-            components.append(
-                (
-                    "EXAMPLE",
-                    f"example-{index}",
-                    f"Example: {example.scenario} {example.result} {example.boundary}",
-                )
-            )
-        components.append(
+    by_component_id = {item.component_id: item for item in publication.components}
+    if requested_semantic_fact in by_component_id:
+        component = by_component_id[requested_semantic_fact]
+        components: list[tuple[str, str, str]] = [
+            ("DIRECT_ANSWER", component.component_id, component.text),
             (
                 "CUSTOMER_QUALIFICATION",
-                "mechanics-boundary",
-                _customer_facing_boundary(publication.product_specific_boundary),
-            )
+                f"{component.component_id}-boundary",
+                _customer_facing_boundary(component.boundary),
+            ),
+        ]
+        semantic_fact = component.component_id
+    else:
+        semantic_fact = _resolved_semantic_fact(
+            requested_semantic_fact=requested_semantic_fact,
+            requested_outcome=requested_outcome,
         )
-    else:  # pragma: no cover - exhaustive guard for future enum changes
-        raise HealthCustomerPathError(f"unsupported semantic answer shape: {semantic_fact}")
+        components = []
+        if requested_outcome == "POLICY_FACT_COMPARISON":
+            components.extend(
+                (
+                    ("DIRECT_ANSWER", "comparison-mechanic", publication.practical_implication),
+                    (
+                        "CUSTOMER_QUALIFICATION",
+                        "comparison-boundary",
+                        _customer_facing_boundary(publication.product_specific_boundary),
+                    ),
+                )
+            )
+        elif semantic_fact == "definition":
+            components.append(("DIRECT_ANSWER", "definition", publication.plain_language_explanation))
+        elif semantic_fact == "applicability":
+            components.extend(
+                (
+                    ("DIRECT_ANSWER", "applicability", publication.practical_implication),
+                    (
+                        "CUSTOMER_QUALIFICATION",
+                        "customer-boundary",
+                        _customer_facing_boundary(publication.customer_document_boundary),
+                    ),
+                )
+            )
+        elif semantic_fact == "consequence":
+            components.extend(
+                (
+                    ("DIRECT_ANSWER", "consequence", publication.practical_implication),
+                    (
+                        "CUSTOMER_QUALIFICATION",
+                        "consequence-boundary",
+                        _customer_facing_boundary(publication.product_specific_boundary),
+                    ),
+                )
+            )
+        elif semantic_fact == "mechanics":
+            components.append(("DIRECT_ANSWER", "mechanics", publication.practical_implication))
+            for index, example in enumerate(publication.examples, start=1):
+                components.append(
+                    (
+                        "EXAMPLE",
+                        f"example-{index}",
+                        f"Example: {example.scenario} {example.result} {example.boundary}",
+                    )
+                )
+            components.append(
+                (
+                    "CUSTOMER_QUALIFICATION",
+                    "mechanics-boundary",
+                    _customer_facing_boundary(publication.product_specific_boundary),
+                )
+            )
+        else:  # pragma: no cover
+            raise HealthCustomerPathError(f"unsupported semantic answer shape: {semantic_fact}")
 
     if not components:
         raise HealthCustomerPathError("question-relative education projection produced no sections")
@@ -438,14 +489,7 @@ def ask_health_question(
     repository_root: str | Path | None = None,
     conversation_context: HealthConversationContext | None = None,
 ) -> HealthCustomerAnswerResult:
-    """Run one concept-level Health customer question through the v0 product slice.
-
-    GSI owns language understanding only. Bounded prior customer context may be supplied only
-    for reference resolution. It never becomes insurance authority, evidence, or product truth.
-    Customer insurance meaning comes only from validated education publications. Validated GSI
-    request-shape fields may select which governed education components are presented. A
-    relevance invariant runs before Rendering Exit Safety.
-    """
+    """Run one concept-level Health customer question through the v0 product slice."""
     if not isinstance(question, str) or not question.strip():
         raise ValueError("question must be non-empty text")
     if not isinstance(model_name, str) or not model_name.strip():
@@ -461,10 +505,11 @@ def ask_health_question(
     req_id = request_id or _stable_id("health-customer-request", clean_question, context_fingerprint)
     exec_id = execution_id or _stable_id("health-customer-execution", req_id)
     interpretation_text = _context_interpretation_text(clean_question, context)
+    component_catalog = _load_component_catalog(repository_root)
     attempt = interpret_with_provider(
         request_id=req_id,
         user_text=interpretation_text,
-        vocabulary=build_health_gsi_vocabulary(),
+        vocabulary=build_health_gsi_vocabulary(repository_root),
         provider=provider,
         model_name=model_name.strip(),
         config_id=CONFIG_ID,
@@ -534,6 +579,42 @@ def ask_health_question(
     if topic is None:
         raise HealthCustomerPathError("resolved concept has no downstream topic")
 
+    requested_semantic_fact = interpretation.requested_semantic_fact
+    all_component_ids = {
+        component_id
+        for ids in component_catalog.values()
+        for component_id in ids
+    }
+    if (
+        requested_semantic_fact in all_component_ids
+        and requested_semantic_fact not in set(component_catalog.get(topic, ()))
+    ):
+        response = _clarification_response(
+            request_id=req_id,
+            text=(
+                "I understand the insurance topic, but the specific part of the question is ambiguous across "
+                "insurance concepts. Please rephrase what you want to know about this term."
+            ),
+            reason_id="cross_concept_component_rejected",
+        )
+        released_text, outcome = _release(response)
+        return HealthCustomerAnswerResult(
+            request_id=req_id,
+            status="CLARIFICATION",
+            selected_concept_id=selected_concept_id,
+            selected_topic=topic,
+            response=response,
+            interpretation=attempt,
+            released_text=released_text,
+            render_outcome=outcome,
+            next_context=_next_context(
+                context,
+                question=clean_question,
+                selected_concept_id=selected_concept_id,
+                selected_topic=topic,
+            ),
+        )
+
     repository = education_repository or load_education_repository(repository_root)
     publication = repository.get_by_concept(topic)
     if publication is None:
@@ -564,10 +645,18 @@ def ask_health_question(
             ),
         )
 
+    if (
+        requested_semantic_fact in set(component_catalog.get(topic, ()))
+        and requested_semantic_fact not in {item.component_id for item in publication.components}
+    ):
+        raise HealthCustomerPathError(
+            f"approved education publication is missing frozen component {requested_semantic_fact!r}"
+        )
+
     response, response_topic = _education_response(
         request_id=req_id,
         selected_concept_id=selected_concept_id,
-        requested_semantic_fact=interpretation.requested_semantic_fact,
+        requested_semantic_fact=requested_semantic_fact,
         requested_outcome=interpretation.requested_outcome,
         publication=publication,
     )

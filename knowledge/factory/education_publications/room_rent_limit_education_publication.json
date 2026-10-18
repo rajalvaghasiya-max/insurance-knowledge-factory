@@ -1,8 +1,42 @@
 {
-  "allowed_uses": [
-    "CUSTOMER_EDUCATION"
-  ],
+  "allowed_uses": ["CUSTOMER_EDUCATION"],
   "canonical_name": "Room Rent Limit",
+  "components": [
+    {
+      "component_id": "room.eligibility_basis",
+      "text": "A room-rent rule can define eligibility by room category, a fixed daily amount, a percentage of sum insured, or another governed product rule. The practical question is whether the room chosen by the customer fits the policy's eligible room basis.",
+      "boundary": "The actual eligible category or amount must come from the applicable policy; do not infer it from the generic concept.",
+      "evidence_references": [
+        "insurance_intelligence/terminology/health_seed.py#health:concept:room_rent_limit",
+        "insurance_intelligence/benefits/room_rent_assessment.py"
+      ]
+    },
+    {
+      "component_id": "room.excess_consequence_boundary",
+      "text": "Choosing a room above the policy's eligible category or amount can increase the customer's out-of-pocket exposure. The extra room price is one possible difference, but the full financial effect depends on the product's room-rent and deduction rules.",
+      "boundary": "Do not conclude final customer liability or claim payment from the room-price difference alone.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/room_rent_assessment.py"
+      ]
+    },
+    {
+      "component_id": "room.linked_charge_consequence_boundary",
+      "text": "Some governed room-rent mechanics can link a room-rent restriction with proportionate deductions on associated hospitalization expenses. This is why paying only the room-price difference does not necessarily settle the whole issue. Whether any linked deduction applies, and which expenses it affects, is product-specific.",
+      "boundary": "Do not present proportionate deduction as universal. It must be established from the applicable governed room-rent rule and its scope.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/room_rent_assessment.py"
+      ]
+    },
+    {
+      "component_id": "room.no_limit_vs_capped",
+      "text": "A policy with no governed room-rent cap avoids that specific room-rent-cap mechanic, while a capped policy restricts the eligible room category or amount according to its terms. That difference can matter to room choice and financial exposure, but it does not by itself make one policy better overall.",
+      "boundary": "A 'no room rent limit' statement does not prove that the policy has no other room-related conditions, exclusions or claim limits.",
+      "evidence_references": [
+        "insurance_intelligence/benefits/room_rent_assessment.py",
+        "insurance_intelligence/terminology/health_seed.py#health:concept:room_rent_limit"
+      ]
+    }
+  ],
   "concept_id": "room_rent_limit",
   "contract_version": "1.0",
   "customer_document_boundary": "The customer's applicable product, policy schedule, selected variant, endorsements, hospital room category, and billed room charges must be verified before applying a room-rent rule to a specific hospitalization.",
