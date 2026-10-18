@@ -139,7 +139,7 @@
         "insurance_intelligence/education_publication/gate.py",
         "insurance_intelligence/education_publication/repository.py"
       ],
-      "structural_fingerprint": "10fe965acbbaa81cf32b3eaf57ac822be215dc935569d925da4282d5ecddc698"
+      "structural_fingerprint": "fbdb225d736a42b78e5b4ce19f2dab3095f7d323f868fcec89ad885e1acbab82"
     },
     {
       "capability_id": "II.EVALUATION.MO021_PIPELINE_BASELINE",
