@@ -14,6 +14,7 @@ _AMOUNT_RE = re.compile(
     r")",
     re.IGNORECASE,
 )
+_CLAUSE_SPLIT_RE = re.compile(r"\b(?:but|while|whereas)\b|;|\.(?:\s|$)", re.IGNORECASE)
 
 _UNIT_MULTIPLIER = {
     None: Decimal("1"),
@@ -156,18 +157,24 @@ def _single_amount(text: str) -> ParsedAmount | None:
 def _single_amount_near_labels(
     text: str,
     labels: Sequence[str],
-    *,
-    window: int = 48,
 ) -> ParsedAmount | None:
+    """Select one labelled amount only when a single clause binds label and amount."""
     normalized_labels = tuple(label.casefold().strip() for label in labels if label.strip())
     if not normalized_labels:
         return None
-    lowered = text.casefold()
+
     candidates: list[ParsedAmount] = []
-    for amount, start, end in _parsed_amount_matches(text):
-        nearby = lowered[max(0, start - window) : min(len(lowered), end + window)]
-        if any(label in nearby for label in normalized_labels):
-            candidates.append(amount)
+    for clause in _CLAUSE_SPLIT_RE.split(text):
+        if not clause.strip():
+            continue
+        lowered_clause = clause.casefold()
+        if not any(label in lowered_clause for label in normalized_labels):
+            continue
+        amounts = parse_rupee_amounts(clause)
+        if len(amounts) > 1:
+            return None
+        if len(amounts) == 1:
+            candidates.append(amounts[0])
     return candidates[0] if len(candidates) == 1 else None
 
 
