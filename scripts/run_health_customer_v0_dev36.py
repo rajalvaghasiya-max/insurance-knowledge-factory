@@ -9,11 +9,11 @@ from typing import Iterable
 
 from insurance_intelligence.llm.openai_responses_provider import OpenAIResponsesTextProvider
 from insurance_intelligence.llm.provider import LLMTextProvider
+from policy_scna_app.health_customer_arithmetic import ask_health_question_with_arithmetic
 from policy_scna_app.health_customer_v0 import (
     API_KEY_ENV,
     MODEL_ENV,
     HealthConversationContext,
-    ask_health_question,
 )
 
 DEFAULT_MANIFEST = Path("benchmarks/health_customer_v0/dev_benchmark_36_v1.json")
@@ -54,7 +54,7 @@ def run_benchmark(
             expected_concept_id = str(case["expected_concept_id"])
             expected_topic = str(case["expected_topic"])
             context_before = len(context.turns)
-            result = ask_health_question(
+            result = ask_health_question_with_arithmetic(
                 question=str(case["user_text"]),
                 provider=provider,
                 model_name=model_name,

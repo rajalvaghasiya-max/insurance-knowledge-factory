@@ -4,10 +4,10 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 from typing import Any
 
+from policy_scna_app.health_customer_arithmetic import ask_health_question_live_with_arithmetic
 from policy_scna_app.health_customer_v0 import (
     HealthConversationContext,
     HealthCustomerPathError,
-    ask_health_question_live,
 )
 
 HOST = "127.0.0.1"
@@ -91,7 +91,10 @@ class _Handler(BaseHTTPRequestHandler):
             except ValueError as exc:
                 self._json(400, {"error": str(exc)})
                 return
-            result = ask_health_question_live(question, conversation_context=context)
+            result = ask_health_question_live_with_arithmetic(
+                question,
+                conversation_context=context,
+            )
             interpretation = result.interpretation.validated_interpretation
             interpreted = interpretation.interpretation if interpretation is not None else None
             self._json(
