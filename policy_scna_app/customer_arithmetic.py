@@ -14,7 +14,6 @@ _AMOUNT_RE = re.compile(
     r")",
     re.IGNORECASE,
 )
-_CLAUSE_SPLIT_RE = re.compile(r"\b(?:but|while|whereas)\b|;|\.(?:\s|$)", re.IGNORECASE)
 
 _UNIT_MULTIPLIER = {
     None: Decimal("1"),
@@ -64,10 +63,11 @@ def parse_percentages(text: str) -> tuple[ParsedPercentage, ...]:
     )
 
 
-def _parsed_amount_matches(text: str) -> tuple[tuple[ParsedAmount, int, int], ...]:
+def parse_rupee_amounts(text: str) -> tuple[ParsedAmount, ...]:
+    """Parse only explicitly monetary values: ₹-prefixed amounts or Indian money units."""
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    values: list[tuple[ParsedAmount, int, int]] = []
+    values: list[ParsedAmount] = []
     for match in _AMOUNT_RE.finditer(text):
         raw_number = match.group("rupee_number") or match.group("unit_number")
         unit = match.group("rupee_unit") or match.group("required_unit")
@@ -76,19 +76,8 @@ def _parsed_amount_matches(text: str) -> tuple[tuple[ParsedAmount, int, int], ..
         numeric = _decimal(raw_number) * multiplier
         if numeric <= 0:
             continue
-        values.append(
-            (
-                ParsedAmount(value=numeric, source_text=match.group(0).strip()),
-                match.start(),
-                match.end(),
-            )
-        )
+        values.append(ParsedAmount(value=numeric, source_text=match.group(0).strip()))
     return tuple(values)
-
-
-def parse_rupee_amounts(text: str) -> tuple[ParsedAmount, ...]:
-    """Parse only explicitly monetary values: ₹-prefixed amounts or Indian money units."""
-    return tuple(value for value, _, _ in _parsed_amount_matches(text))
 
 
 def _format_indian_integer(value: int) -> str:
@@ -154,55 +143,6 @@ def _single_amount(text: str) -> ParsedAmount | None:
     return values[0] if len(values) == 1 else None
 
 
-def _single_amount_near_labels(
-    text: str,
-    labels: Sequence[str],
-) -> ParsedAmount | None:
-    """Select one labelled amount only when a single clause binds label and amount."""
-    normalized_labels = tuple(label.casefold().strip() for label in labels if label.strip())
-    if not normalized_labels:
-        return None
-
-    candidates: list[ParsedAmount] = []
-    for clause in _CLAUSE_SPLIT_RE.split(text):
-        if not clause.strip():
-            continue
-        lowered_clause = clause.casefold()
-        if not any(label in lowered_clause for label in normalized_labels):
-            continue
-        amounts = parse_rupee_amounts(clause)
-        if len(amounts) > 1:
-            return None
-        if len(amounts) == 1:
-            candidates.append(amounts[0])
-    return candidates[0] if len(candidates) == 1 else None
-
-
-def _current_amount_for_difference(
-    text: str,
-    *,
-    calculated_limit: Decimal,
-    labels: Sequence[str],
-) -> ParsedAmount | None:
-    values = _parsed_amount_matches(text)
-    if len(values) == 1:
-        amount = values[0][0]
-        return amount if amount.value >= calculated_limit else None
-
-    normalized_labels = tuple(label.casefold().strip() for label in labels if label.strip())
-    lowered = text.casefold()
-    candidates: list[ParsedAmount] = []
-    for amount, start, end in values:
-        if amount.value < calculated_limit:
-            continue
-        if normalized_labels:
-            nearby = lowered[max(0, start - 48) : min(len(lowered), end + 48)]
-            if not any(label in nearby for label in normalized_labels):
-                continue
-        candidates.append(amount)
-    return candidates[0] if len(candidates) == 1 else None
-
-
 def build_percentage_illustration(
     *,
     current_text: str,
@@ -210,12 +150,9 @@ def build_percentage_illustration(
     basis_label: str,
     consequence_boundary: str,
     per_day: bool = False,
-    preferred_amount_labels: Sequence[str] = (),
 ) -> ArithmeticIllustration | None:
     percentage = _latest_percentage(current_text, prior_customer_texts)
     amount = _single_amount(current_text)
-    if amount is None and preferred_amount_labels:
-        amount = _single_amount_near_labels(current_text, preferred_amount_labels)
     if percentage is None or amount is None:
         return None
     result = percentage_of_amount(percentage=percentage.value, amount=amount.value)
@@ -232,14 +169,52 @@ def build_percentage_illustration(
     )
 
 
-def build_difference_illustration(
+def build_conditional_percentage_illustration(
     *,
     current_text: str,
     prior_customer_texts: Sequence[str],
-    prior_percentage_basis_label: str,
     consequence_boundary: str,
-    current_amount_labels: Sequence[str] = (),
 ) -> ArithmeticIllustration | None:
+    """Calculate each explicit current amount conditionally without choosing an authoritative base."""
+    percentage = _latest_percentage(current_text, prior_customer_texts)
+    amounts = parse_rupee_amounts(current_text)
+    if percentage is None or len(amounts) < 2:
+        return None
+
+    unique: list[ParsedAmount] = []
+    seen: set[Decimal] = set()
+    for amount in amounts:
+        if amount.value in seen:
+            continue
+        seen.add(amount.value)
+        unique.append(amount)
+    if len(unique) < 2 or len(unique) > 3:
+        return None
+
+    clauses: list[str] = []
+    results: list[Decimal] = []
+    for amount in unique:
+        result = percentage_of_amount(percentage=percentage.value, amount=amount.value)
+        results.append(result)
+        clauses.append(
+            f"if {format_inr(amount.value)} is the applicable calculation base, "
+            f"{percentage.source_text.strip()} is {format_inr(result)}"
+        )
+
+    text = (
+        "Using only the numbers you gave: "
+        + "; ".join(clauses)
+        + ". I am not choosing which amount is the policy's actual calculation base. "
+        + consequence_boundary
+    )
+    return ArithmeticIllustration(
+        operation="CONDITIONAL_PERCENTAGE_OF_AMOUNTS",
+        text=text,
+        result_amount=results[-1],
+    )
+
+
+def _derived_prior_limit(prior_customer_texts: Sequence[str]) -> Decimal | None:
     prior_texts = tuple(prior_customer_texts)
     for index in range(len(prior_texts) - 1, -1, -1):
         basis_amount = _single_amount(prior_texts[index])
@@ -248,37 +223,66 @@ def build_difference_illustration(
         percentage = _latest_percentage(prior_texts[index], prior_texts[:index])
         if percentage is None:
             continue
-        calculated_limit = percentage_of_amount(
+        return percentage_of_amount(
             percentage=percentage.value,
             amount=basis_amount.value,
         )
-        current_amount = _current_amount_for_difference(
-            current_text,
-            calculated_limit=calculated_limit,
-            labels=current_amount_labels,
-        )
-        if current_amount is None:
-            continue
-        result = difference(larger=current_amount.value, smaller=calculated_limit)
-        text = (
-            f"Using only the numbers you gave: {format_inr(current_amount.value)} minus "
-            f"{format_inr(calculated_limit)} is {format_inr(result)}. "
-            f"The {format_inr(calculated_limit)} figure comes from {percentage.source_text.strip()} of "
-            f"{format_inr(basis_amount.value)} using {prior_percentage_basis_label}. "
-            f"{consequence_boundary}"
-        )
-        return ArithmeticIllustration(
-            operation="DIFFERENCE",
-            text=text,
-            result_amount=result,
-        )
     return None
+
+
+def build_difference_illustration(
+    *,
+    current_text: str,
+    prior_customer_texts: Sequence[str],
+    prior_percentage_basis_label: str,
+    consequence_boundary: str,
+) -> ArithmeticIllustration | None:
+    calculated_limit = _derived_prior_limit(prior_customer_texts)
+    if calculated_limit is None:
+        return None
+
+    current_amounts = parse_rupee_amounts(current_text)
+    if not current_amounts:
+        return None
+
+    larger_candidates = [amount for amount in current_amounts if amount.value > calculated_limit]
+    if not larger_candidates:
+        return None
+
+    selected: ParsedAmount | None = None
+    if len(larger_candidates) == 1:
+        selected = larger_candidates[0]
+    else:
+        supplied_values = {amount.value for amount in current_amounts}
+        self_verifying = [
+            amount
+            for amount in larger_candidates
+            if difference(larger=amount.value, smaller=calculated_limit) in supplied_values
+        ]
+        if len(self_verifying) == 1:
+            selected = self_verifying[0]
+    if selected is None:
+        return None
+
+    result = difference(larger=selected.value, smaller=calculated_limit)
+    text = (
+        f"Using only the numbers you gave: {format_inr(selected.value)} minus "
+        f"{format_inr(calculated_limit)} is {format_inr(result)}. "
+        f"The {format_inr(calculated_limit)} figure comes from the earlier customer-supplied "
+        f"percentage and amount using {prior_percentage_basis_label}. {consequence_boundary}"
+    )
+    return ArithmeticIllustration(
+        operation="DIFFERENCE",
+        text=text,
+        result_amount=result,
+    )
 
 
 __all__ = [
     "ArithmeticIllustration",
     "ParsedAmount",
     "ParsedPercentage",
+    "build_conditional_percentage_illustration",
     "build_difference_illustration",
     "build_percentage_illustration",
     "difference",
