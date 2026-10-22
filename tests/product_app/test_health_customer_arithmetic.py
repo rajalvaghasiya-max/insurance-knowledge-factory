@@ -61,7 +61,7 @@ def test_copay_answer_adds_customer_supplied_percentage_arithmetic() -> None:
     assert "does not establish which amount" in result.released_text
 
 
-def test_copay_answer_uses_explicitly_labelled_eligible_base_from_multiple_amounts() -> None:
+def test_copay_answer_with_two_amounts_gives_conditional_arithmetic_without_choosing_base() -> None:
     provider = DeterministicFakeTextProvider(
         output_text=_resolved_output(
             "health:concept:copayment",
@@ -79,19 +79,20 @@ def test_copay_answer_uses_explicitly_labelled_eligible_base_from_multiple_amoun
     )
 
     result = ask_health_question_with_arithmetic(
-        question="The gross bill is ₹90,000 but only ₹75,000 is admissible. What then?",
+        question="The gross bill is ₹90,000 but another relevant amount is ₹75,000. What then?",
         provider=provider,
         model_name="test-model",
-        request_id="health-v0-copay-labelled-base",
-        execution_id="health-v0-copay-labelled-base-execution",
+        request_id="health-v0-copay-conditional-bases",
+        execution_id="health-v0-copay-conditional-bases-execution",
         created_at="2026-10-18T18:00:30Z",
         conversation_context=context,
     )
 
     assert result.status == "ANSWER"
     assert result.render_outcome == "PASS"
-    assert "18% of ₹75,000 is ₹13,500" in result.released_text
-    assert "final amount you would pay" in result.released_text
+    assert "if ₹90,000 is the applicable calculation base, 18% is ₹16,200" in result.released_text
+    assert "if ₹75,000 is the applicable calculation base, 18% is ₹13,500" in result.released_text
+    assert "not choosing which amount" in result.released_text
 
 
 def test_room_rent_answer_uses_prior_customer_basis_for_simple_difference() -> None:
@@ -147,7 +148,7 @@ def test_room_rent_answer_verifies_customer_proposed_difference_from_prior_basis
     )
 
     result = ask_health_question_with_arithmetic(
-        question="If the room price is ₹8,500, am I definitely paying only the extra ₹2,500?",
+        question="If the room is ₹8,500, am I definitely paying only the extra ₹2,500?",
         provider=provider,
         model_name="test-model",
         request_id="health-v0-room-proposed-difference",
