@@ -1,6 +1,7 @@
 from decimal import Decimal
 
 from policy_scna_app.customer_arithmetic import (
+    build_conditional_percentage_illustration,
     build_difference_illustration,
     build_percentage_illustration,
     difference,
@@ -41,7 +42,7 @@ def test_percentage_illustration_uses_only_explicit_customer_money() -> None:
     assert "does not establish policy liability" in illustration.text
 
 
-def test_percentage_illustration_fails_closed_on_multiple_unlabelled_amounts() -> None:
+def test_percentage_illustration_fails_closed_on_multiple_amounts() -> None:
     illustration = build_percentage_illustration(
         current_text="Compare 12% of ₹70,000 with ₹90,000.",
         prior_customer_texts=(),
@@ -52,27 +53,25 @@ def test_percentage_illustration_fails_closed_on_multiple_unlabelled_amounts() -
     assert illustration is None
 
 
-def test_percentage_illustration_selects_one_explicitly_labelled_base() -> None:
-    illustration = build_percentage_illustration(
-        current_text="The invoice is ₹90,000 but only ₹75,000 is eligible for this calculation.",
-        prior_customer_texts=("Use a 12% share for this illustration.",),
-        basis_label="the explicitly labelled eligible amount",
-        consequence_boundary="This does not establish policy liability.",
-        preferred_amount_labels=("eligible", "calculation base"),
+def test_conditional_percentage_illustration_calculates_each_explicit_base_without_choosing() -> None:
+    illustration = build_conditional_percentage_illustration(
+        current_text="The invoice is ₹90,000 but another relevant amount is ₹75,000.",
+        prior_customer_texts=("Use an 18% share for this illustration.",),
+        consequence_boundary="This does not establish which amount is authoritative.",
     )
 
     assert illustration is not None
-    assert illustration.result_amount == Decimal("9000.00")
-    assert "12% of ₹75,000 is ₹9,000" in illustration.text
+    assert illustration.operation == "CONDITIONAL_PERCENTAGE_OF_AMOUNTS"
+    assert "if ₹90,000 is the applicable calculation base, 18% is ₹16,200" in illustration.text
+    assert "if ₹75,000 is the applicable calculation base, 18% is ₹13,500" in illustration.text
+    assert "not choosing which amount" in illustration.text
 
 
-def test_percentage_illustration_still_fails_closed_when_labels_match_multiple_amounts() -> None:
-    illustration = build_percentage_illustration(
-        current_text="Eligible amount A is ₹70,000 and eligible amount B is ₹90,000.",
+def test_conditional_percentage_illustration_fails_closed_with_too_many_bases() -> None:
+    illustration = build_conditional_percentage_illustration(
+        current_text="Compare ₹70,000, ₹80,000, ₹90,000 and ₹1 lakh.",
         prior_customer_texts=("Use a 12% share for this illustration.",),
-        basis_label="the explicitly labelled eligible amount",
         consequence_boundary="This does not establish policy liability.",
-        preferred_amount_labels=("eligible",),
     )
 
     assert illustration is None
@@ -92,13 +91,12 @@ def test_difference_uses_prior_customer_percentage_basis() -> None:
     assert "not a claim-liability conclusion" in illustration.text
 
 
-def test_difference_can_verify_customer_proposed_difference_without_using_it_as_price() -> None:
+def test_difference_can_verify_customer_proposed_difference_without_treating_it_as_price() -> None:
     illustration = build_difference_illustration(
-        current_text="The room price is ₹8,500. Does that mean the difference is ₹2,500?",
+        current_text="The room is ₹8,500. Does that mean the difference is ₹2,500?",
         prior_customer_texts=("For illustration, use 2% of ₹3 lakh per day.",),
         prior_percentage_basis_label="the prior customer-supplied basis",
         consequence_boundary="This is not a claim-liability conclusion.",
-        current_amount_labels=("room", "price"),
     )
 
     assert illustration is not None
@@ -106,13 +104,12 @@ def test_difference_can_verify_customer_proposed_difference_without_using_it_as_
     assert "₹8,500 minus ₹6,000 is ₹2,500" in illustration.text
 
 
-def test_difference_fails_closed_when_multiple_candidate_prices_exceed_limit() -> None:
+def test_difference_fails_closed_when_multiple_larger_amounts_do_not_self_verify() -> None:
     illustration = build_difference_illustration(
-        current_text="Compare a room at ₹8,500 with another room at ₹9,500.",
+        current_text="Compare ₹8,500 with ₹9,500.",
         prior_customer_texts=("For illustration, use 2% of ₹3 lakh per day.",),
         prior_percentage_basis_label="the prior customer-supplied basis",
         consequence_boundary="This is not a claim-liability conclusion.",
-        current_amount_labels=("room",),
     )
 
     assert illustration is None
