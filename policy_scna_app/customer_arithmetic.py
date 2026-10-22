@@ -120,20 +120,27 @@ def difference(*, larger: Decimal, smaller: Decimal) -> Decimal:
     return (larger - smaller).quantize(Decimal("0.01"))
 
 
-def _latest_percentage(current_text: str, prior_customer_texts: Sequence[str]) -> ParsedPercentage | None:
+def _latest_percentage(
+    current_text: str,
+    prior_customer_texts: Sequence[str],
+) -> ParsedPercentage | None:
     current = parse_percentages(current_text)
-    if current:
-        return current[-1]
+    if len(current) == 1:
+        return current[0]
+    if len(current) > 1:
+        return None
     for text in reversed(tuple(prior_customer_texts)):
         values = parse_percentages(text)
-        if values:
-            return values[-1]
+        if len(values) == 1:
+            return values[0]
+        if len(values) > 1:
+            return None
     return None
 
 
-def _current_amount(current_text: str) -> ParsedAmount | None:
-    values = parse_rupee_amounts(current_text)
-    return values[-1] if values else None
+def _single_amount(text: str) -> ParsedAmount | None:
+    values = parse_rupee_amounts(text)
+    return values[0] if len(values) == 1 else None
 
 
 def build_percentage_illustration(
@@ -145,7 +152,7 @@ def build_percentage_illustration(
     per_day: bool = False,
 ) -> ArithmeticIllustration | None:
     percentage = _latest_percentage(current_text, prior_customer_texts)
-    amount = _current_amount(current_text)
+    amount = _single_amount(current_text)
     if percentage is None or amount is None:
         return None
     result = percentage_of_amount(percentage=percentage.value, amount=amount.value)
@@ -169,13 +176,13 @@ def build_difference_illustration(
     prior_percentage_basis_label: str,
     consequence_boundary: str,
 ) -> ArithmeticIllustration | None:
-    current_amount = _current_amount(current_text)
+    current_amount = _single_amount(current_text)
     if current_amount is None:
         return None
 
     prior_texts = tuple(prior_customer_texts)
     for index in range(len(prior_texts) - 1, -1, -1):
-        basis_amount = _current_amount(prior_texts[index])
+        basis_amount = _single_amount(prior_texts[index])
         if basis_amount is None:
             continue
         percentage = _latest_percentage(prior_texts[index], prior_texts[:index])
