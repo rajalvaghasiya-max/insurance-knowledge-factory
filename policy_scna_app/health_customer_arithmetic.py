@@ -59,6 +59,13 @@ def _illustration_for_resolved_topic(
                 "This arithmetic does not establish which amount the policy or claim assessment "
                 "actually uses, or the final amount you would pay."
             ),
+            preferred_amount_labels=(
+                "admissible",
+                "eligible",
+                "co-pay base",
+                "copay base",
+                "calculation base",
+            ),
         )
 
     if topic == _ROOM_RENT_TOPIC:
@@ -81,6 +88,7 @@ def _illustration_for_resolved_topic(
                 "This is only the room-price difference. It does not establish an insurer deduction "
                 "or your final out-of-pocket amount."
             ),
+            current_amount_labels=("room", "room price", "room cost", "cost", "price"),
         )
 
     return None
