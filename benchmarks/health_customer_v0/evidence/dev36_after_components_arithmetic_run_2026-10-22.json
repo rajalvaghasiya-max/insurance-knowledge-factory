@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "benchmark_id": "health-customer-v0-dev-36-live-v1",
+  "benchmark_role": "DEV_ONLY",
+  "source_sha256": "68372c0960dcb99ea6d11f8c672d88e86d4e1e809008bd760a41d5b7f50e67fc",
+  "source_file": "health_customer_v0_dev36_after_components_arithmetic.json",
+  "created_at": "2026-10-22T16:18:13.847930Z",
+  "model": "gpt-5.6",
+  "conversation_count": 12,
+  "case_count": 36,
+  "released_text_count": 36,
+  "wrong_concept_count": 0,
+  "clarification_count": 0,
+  "product_path_readiness": "PASS",
+  "note": "Exact uploaded live-run artifact SHA-256 recorded before post-repair scoring. Full literal case outputs remain in the source artifact supplied for evaluation."
+}
