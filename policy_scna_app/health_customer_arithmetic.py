@@ -10,6 +10,7 @@ from insurance_intelligence.contracts.response import (
 )
 from policy_scna_app.customer_arithmetic import (
     ArithmeticIllustration,
+    build_conditional_percentage_illustration,
     build_difference_illustration,
     build_percentage_illustration,
     parse_percentages,
@@ -51,21 +52,22 @@ def _illustration_for_resolved_topic(
     prior = _prior_customer_texts(context)
 
     if topic == _COPAY_TOPIC:
-        return build_percentage_illustration(
+        boundary = (
+            "This arithmetic does not establish which amount the policy or claim assessment "
+            "actually uses, or the final amount you would pay."
+        )
+        direct = build_percentage_illustration(
             current_text=question,
             prior_customer_texts=prior,
             basis_label="the amount you supplied as the co-pay calculation base",
-            consequence_boundary=(
-                "This arithmetic does not establish which amount the policy or claim assessment "
-                "actually uses, or the final amount you would pay."
-            ),
-            preferred_amount_labels=(
-                "admissible",
-                "eligible",
-                "co-pay base",
-                "copay base",
-                "calculation base",
-            ),
+            consequence_boundary=boundary,
+        )
+        if direct is not None:
+            return direct
+        return build_conditional_percentage_illustration(
+            current_text=question,
+            prior_customer_texts=prior,
+            consequence_boundary=boundary,
         )
 
     if topic == _ROOM_RENT_TOPIC:
@@ -88,7 +90,6 @@ def _illustration_for_resolved_topic(
                 "This is only the room-price difference. It does not establish an insurer deduction "
                 "or your final out-of-pocket amount."
             ),
-            current_amount_labels=("room", "room price", "room cost", "cost", "price"),
         )
 
     return None
