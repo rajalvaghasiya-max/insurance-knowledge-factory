@@ -63,11 +63,10 @@ def parse_percentages(text: str) -> tuple[ParsedPercentage, ...]:
     )
 
 
-def parse_rupee_amounts(text: str) -> tuple[ParsedAmount, ...]:
-    """Parse only explicitly monetary values: ₹-prefixed amounts or Indian money units."""
+def _parsed_amount_matches(text: str) -> tuple[tuple[ParsedAmount, int, int], ...]:
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    values: list[ParsedAmount] = []
+    values: list[tuple[ParsedAmount, int, int]] = []
     for match in _AMOUNT_RE.finditer(text):
         raw_number = match.group("rupee_number") or match.group("unit_number")
         unit = match.group("rupee_unit") or match.group("required_unit")
@@ -76,8 +75,19 @@ def parse_rupee_amounts(text: str) -> tuple[ParsedAmount, ...]:
         numeric = _decimal(raw_number) * multiplier
         if numeric <= 0:
             continue
-        values.append(ParsedAmount(value=numeric, source_text=match.group(0).strip()))
+        values.append(
+            (
+                ParsedAmount(value=numeric, source_text=match.group(0).strip()),
+                match.start(),
+                match.end(),
+            )
+        )
     return tuple(values)
+
+
+def parse_rupee_amounts(text: str) -> tuple[ParsedAmount, ...]:
+    """Parse only explicitly monetary values: ₹-prefixed amounts or Indian money units."""
+    return tuple(value for value, _, _ in _parsed_amount_matches(text))
 
 
 def _format_indian_integer(value: int) -> str:
@@ -143,6 +153,49 @@ def _single_amount(text: str) -> ParsedAmount | None:
     return values[0] if len(values) == 1 else None
 
 
+def _single_amount_near_labels(
+    text: str,
+    labels: Sequence[str],
+    *,
+    window: int = 48,
+) -> ParsedAmount | None:
+    normalized_labels = tuple(label.casefold().strip() for label in labels if label.strip())
+    if not normalized_labels:
+        return None
+    lowered = text.casefold()
+    candidates: list[ParsedAmount] = []
+    for amount, start, end in _parsed_amount_matches(text):
+        nearby = lowered[max(0, start - window) : min(len(lowered), end + window)]
+        if any(label in nearby for label in normalized_labels):
+            candidates.append(amount)
+    return candidates[0] if len(candidates) == 1 else None
+
+
+def _current_amount_for_difference(
+    text: str,
+    *,
+    calculated_limit: Decimal,
+    labels: Sequence[str],
+) -> ParsedAmount | None:
+    values = _parsed_amount_matches(text)
+    if len(values) == 1:
+        amount = values[0][0]
+        return amount if amount.value >= calculated_limit else None
+
+    normalized_labels = tuple(label.casefold().strip() for label in labels if label.strip())
+    lowered = text.casefold()
+    candidates: list[ParsedAmount] = []
+    for amount, start, end in values:
+        if amount.value < calculated_limit:
+            continue
+        if normalized_labels:
+            nearby = lowered[max(0, start - 48) : min(len(lowered), end + 48)]
+            if not any(label in nearby for label in normalized_labels):
+                continue
+        candidates.append(amount)
+    return candidates[0] if len(candidates) == 1 else None
+
+
 def build_percentage_illustration(
     *,
     current_text: str,
@@ -150,9 +203,12 @@ def build_percentage_illustration(
     basis_label: str,
     consequence_boundary: str,
     per_day: bool = False,
+    preferred_amount_labels: Sequence[str] = (),
 ) -> ArithmeticIllustration | None:
     percentage = _latest_percentage(current_text, prior_customer_texts)
     amount = _single_amount(current_text)
+    if amount is None and preferred_amount_labels:
+        amount = _single_amount_near_labels(current_text, preferred_amount_labels)
     if percentage is None or amount is None:
         return None
     result = percentage_of_amount(percentage=percentage.value, amount=amount.value)
@@ -175,11 +231,8 @@ def build_difference_illustration(
     prior_customer_texts: Sequence[str],
     prior_percentage_basis_label: str,
     consequence_boundary: str,
+    current_amount_labels: Sequence[str] = (),
 ) -> ArithmeticIllustration | None:
-    current_amount = _single_amount(current_text)
-    if current_amount is None:
-        return None
-
     prior_texts = tuple(prior_customer_texts)
     for index in range(len(prior_texts) - 1, -1, -1):
         basis_amount = _single_amount(prior_texts[index])
@@ -192,8 +245,13 @@ def build_difference_illustration(
             percentage=percentage.value,
             amount=basis_amount.value,
         )
-        if current_amount.value < calculated_limit:
-            return None
+        current_amount = _current_amount_for_difference(
+            current_text,
+            calculated_limit=calculated_limit,
+            labels=current_amount_labels,
+        )
+        if current_amount is None:
+            continue
         result = difference(larger=current_amount.value, smaller=calculated_limit)
         text = (
             f"Using only the numbers you gave: {format_inr(current_amount.value)} minus "
