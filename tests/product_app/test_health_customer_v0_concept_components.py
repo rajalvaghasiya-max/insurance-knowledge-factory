@@ -77,6 +77,33 @@ def test_valid_ped_component_releases_only_that_governed_component() -> None:
     assert "do not classify a customer's condition" not in lowered
 
 
+
+
+def test_room_eligibility_component_distinguishes_category_cap_and_icu_rule() -> None:
+    provider = DeterministicFakeTextProvider(
+        output_text=_resolved_output(
+            "health:concept:room_rent_limit",
+            "room.eligibility_basis",
+        )
+    )
+
+    result = ask_health_question(
+        question="Can room category, monetary caps, and ICU rules be different?",
+        provider=provider,
+        model_name="test-model",
+        request_id="component-room-eligibility",
+        execution_id="component-room-eligibility-execution",
+        created_at="2026-11-14T15:00:00Z",
+        education_repository=_repository(),
+    )
+
+    assert result.status == "ANSWER"
+    assert result.render_outcome == "PASS"
+    assert [section.section_type for section in result.response.sections] == ["DIRECT_ANSWER"]
+    lowered = result.released_text.casefold()
+    assert "room category does not by itself imply a separate monetary room-rent cap" in lowered
+    assert "icu entitlement can also be governed separately" in lowered
+
 def test_cross_concept_component_fails_closed_to_clarification() -> None:
     provider = DeterministicFakeTextProvider(
         output_text=_resolved_output(
