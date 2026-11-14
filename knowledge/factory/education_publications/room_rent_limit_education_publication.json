@@ -1,11 +1,13 @@
 {
-  "allowed_uses": ["CUSTOMER_EDUCATION"],
+  "allowed_uses": [
+    "CUSTOMER_EDUCATION"
+  ],
   "canonical_name": "Room Rent Limit",
   "components": [
     {
       "component_id": "room.eligibility_basis",
-      "text": "A room-rent rule can define eligibility by room category, a fixed daily amount, a percentage of sum insured, or another governed product rule. The practical question is whether the room chosen by the customer fits the policy's eligible room basis.",
-      "boundary": "The actual eligible category or amount must come from the applicable policy; do not infer it from the generic concept.",
+      "text": "A room-rent rule can define eligibility by room category, a fixed daily amount, a percentage of sum insured, no separate cap, or another governed product rule. These are different rule shapes: an eligible room category does not by itself imply a separate monetary room-rent cap. ICU entitlement can also be governed separately from the ordinary room rule, so the applicable policy should be checked for both.",
+      "boundary": "The actual eligible category or amount, whether any separate monetary cap exists, and any ICU-specific rule must come from the applicable policy.",
       "evidence_references": [
         "insurance_intelligence/terminology/health_seed.py#health:concept:room_rent_limit",
         "insurance_intelligence/benefits/room_rent_assessment.py"
@@ -63,7 +65,7 @@
   "product_specific_boundary": "The eligible room category or amount, ICU treatment, any linked deductions or consequences, exceptions, waivers, and variant-specific mechanics must come from governed product knowledge.",
   "publication_authority": "PolicyScna education publication authority",
   "publication_id": "education_room_rent_limit_v1",
-  "publication_receipt_id": "education_receipt_f9eb96127c8041b2ff53",
+  "publication_receipt_id": "education_receipt_22e8bdf5dae217506e4d",
   "publication_status": "EDUCATION_AUTHORITATIVE",
   "review_decision_id": "gcrev_room_rent_limit_customer_v1",
   "source_asset_digest": "bb0b72c8d34fdbc208a7d32ad48f45403092a101d95f31f71622693916178e45",
