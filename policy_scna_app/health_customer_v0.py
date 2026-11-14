@@ -367,13 +367,11 @@ def _education_response(
     by_component_id = {item.component_id: item for item in publication.components}
     if requested_semantic_fact in by_component_id:
         component = by_component_id[requested_semantic_fact]
+        # Component boundary text is governed authoring/safety metadata. The
+        # customer projection uses the component's governed explanatory text
+        # only; boundary metadata remains internal and is not rendered verbatim.
         components: list[tuple[str, str, str]] = [
             ("DIRECT_ANSWER", component.component_id, component.text),
-            (
-                "CUSTOMER_QUALIFICATION",
-                f"{component.component_id}-boundary",
-                _customer_facing_boundary(component.boundary),
-            ),
         ]
         semantic_fact = component.component_id
     else:
