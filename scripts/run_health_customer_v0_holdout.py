@@ -8,14 +8,35 @@ import os
 from pathlib import Path
 from typing import Iterable
 
+from insurance_intelligence.contracts.semantic_interpretation import audit_artifact_as_dict
 from insurance_intelligence.llm.openai_responses_provider import OpenAIResponsesTextProvider
-from insurance_intelligence.llm.provider import LLMTextProvider
+from insurance_intelligence.llm.provider import (
+    LLMTextProvider,
+    TextProviderRequest,
+    invoke_text_provider,
+)
 from policy_scna_app.health_customer_arithmetic import ask_health_question_with_arithmetic
 from policy_scna_app.health_customer_v0 import API_KEY_ENV, MODEL_ENV, HealthConversationContext
 
 
 DEFAULT_INPUT = Path("health_customer_v0_independent_holdout_v1.json")
 DEFAULT_OUTPUT = Path("health_customer_v0_independent_holdout_run_v1.json")
+
+
+class BenchmarkExecutionIntegrityError(RuntimeError):
+    """Raised when provider/runtime failure invalidates benchmark execution."""
+
+    def __init__(
+        self,
+        *,
+        case_id: str,
+        completed_case_count: int,
+        failure_attribution: dict[str, object],
+    ) -> None:
+        super().__init__(f"provider/runtime failure invalidated holdout case {case_id}")
+        self.case_id = case_id
+        self.completed_case_count = completed_case_count
+        self.failure_attribution = failure_attribution
 
 
 def _utc_now() -> str:
@@ -38,6 +59,24 @@ def _load_holdout(path: Path) -> dict[str, object]:
     if not isinstance(conversations, list) or not conversations:
         raise ValueError("holdout conversations must be a non-empty list")
     return data
+
+
+def _provider_preflight(*, provider: LLMTextProvider, model_name: str) -> None:
+    """Verify provider authentication/model execution before reading holdout cases."""
+    invocation = invoke_text_provider(
+        provider,
+        TextProviderRequest(
+            provider_request_id="health-customer-v0-holdout-preflight",
+            provider_name=provider.provider_name,
+            model_name=model_name,
+            system_prompt="Return exactly OK.",
+            user_prompt="OK",
+            timeout_seconds=30.0,
+        ),
+    )
+    if invocation.response.status != "SUCCEEDED":
+        detail = invocation.response.error_message or invocation.normalized_failure or invocation.response.status
+        raise RuntimeError(f"holdout provider preflight failed: {detail}")
 
 
 def run_holdout(
@@ -83,6 +122,16 @@ def run_holdout(
                 repository_root=repository_root,
                 conversation_context=context,
             )
+
+            audit = audit_artifact_as_dict(result.interpretation.audit_artifact)
+            failure_attribution = dict(audit.get("failure_attribution") or {})
+            if result.interpretation.status == "FAILED":
+                raise BenchmarkExecutionIntegrityError(
+                    case_id=case_id,
+                    completed_case_count=len(cases),
+                    failure_attribution=failure_attribution,
+                )
+
             context = result.next_context
 
             if result.released_text:
@@ -102,6 +151,13 @@ def run_holdout(
                     "answer_status": result.status,
                     "selected_concept_id": result.selected_concept_id,
                     "selected_topic": result.selected_topic,
+                    "interpretation_attempt_status": result.interpretation.status,
+                    "interpretation_failure_attribution": failure_attribution,
+                    "clarification_reason_codes": (
+                        list(result.interpretation.clarification_route.reason_codes)
+                        if result.interpretation.clarification_route is not None
+                        else []
+                    ),
                     "render_outcome": result.render_outcome,
                     "context_turn_count_before": context_before,
                     "context_turn_count_after": len(context.turns),
@@ -111,9 +167,10 @@ def run_holdout(
             )
 
     return {
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "benchmark_id": str(holdout["benchmark_id"]),
         "benchmark_role": "HOLDOUT_RUN",
+        "execution_integrity": "PASS",
         "source_holdout_sha256": source_sha256,
         "created_at": _utc_now(),
         "model": model_name,
@@ -138,12 +195,58 @@ def main(argv: Iterable[str] | None = None) -> int:
     if missing:
         raise SystemExit("missing runtime setting(s): " + ", ".join(missing))
 
-    report = run_holdout(
-        provider=OpenAIResponsesTextProvider(api_key=api_key),
-        model_name=model_name,
-        holdout_path=args.input,
-        repository_root=Path.cwd(),
-    )
+    provider = OpenAIResponsesTextProvider(api_key=api_key)
+    try:
+        _provider_preflight(provider=provider, model_name=model_name)
+    except RuntimeError as exc:
+        print(
+            json.dumps(
+                {
+                    "execution_integrity": "FAIL",
+                    "stage": "PROVIDER_PREFLIGHT",
+                    "model": model_name,
+                    "error": str(exc),
+                },
+                indent=2,
+            )
+        )
+        return 2
+
+    try:
+        report = run_holdout(
+            provider=provider,
+            model_name=model_name,
+            holdout_path=args.input,
+            repository_root=Path.cwd(),
+        )
+    except BenchmarkExecutionIntegrityError as exc:
+        invalid_report = {
+            "schema_version": "1.1",
+            "benchmark_role": "HOLDOUT_RUN_INVALID",
+            "execution_integrity": "FAIL",
+            "source_holdout_sha256": _sha256(args.input),
+            "created_at": _utc_now(),
+            "model": model_name,
+            "failed_case_id": exc.case_id,
+            "completed_case_count": exc.completed_case_count,
+            "failure_attribution": exc.failure_attribution,
+            "quality_scoring": "INVALID_NOT_SCORABLE",
+        }
+        args.output.write_text(
+            json.dumps(invalid_report, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        print(
+            json.dumps(
+                {
+                    **invalid_report,
+                    "output_path": str(args.output),
+                    "output_sha256": _sha256(args.output),
+                },
+                indent=2,
+            )
+        )
+        return 2
 
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     output_sha256 = _sha256(args.output)
@@ -151,6 +254,7 @@ def main(argv: Iterable[str] | None = None) -> int:
         json.dumps(
             {
                 "benchmark_id": report["benchmark_id"],
+                "execution_integrity": report["execution_integrity"],
                 "source_holdout_sha256": report["source_holdout_sha256"],
                 "output_path": str(args.output),
                 "output_sha256": output_sha256,
