@@ -70,11 +70,11 @@ def test_valid_ped_component_releases_only_that_governed_component() -> None:
     assert result.render_outcome == "PASS"
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
-        "CUSTOMER_QUALIFICATION",
     ]
     lowered = result.released_text.casefold()
     assert "formal diagnosis is not the only history" in lowered
     assert "medical advice or treatment" in lowered
+    assert "do not classify a customer's condition" not in lowered
 
 
 def test_cross_concept_component_fails_closed_to_clarification() -> None:
