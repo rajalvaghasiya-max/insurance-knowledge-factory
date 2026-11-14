@@ -105,6 +105,21 @@ def test_definition_projection_does_not_dump_unrequested_example_or_boundary() -
     assert "governed product knowledge" not in result.released_text.casefold()
 
 
+
+
+def test_component_projection_keeps_boundary_metadata_internal() -> None:
+    result = _ask_ped(semantic_fact="ped.waiting_period_relationship")
+
+    assert [section.section_type for section in result.response.sections] == [
+        "DIRECT_ANSWER",
+    ]
+    lowered = result.released_text.casefold()
+    assert "being treated as a ped does not by itself mean the condition is permanently excluded" in lowered
+    assert "exact duration" in lowered
+    assert "applicable product and policy terms" in lowered
+    assert "this component does not state" not in lowered
+    assert "does not promise that treatment will become payable" not in lowered
+
 def test_applicability_projection_uses_practical_implication_and_customer_boundary() -> None:
     result = _ask_ped(semantic_fact="applicability")
 
