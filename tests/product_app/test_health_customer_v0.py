@@ -212,6 +212,8 @@ def test_contextual_answer_acknowledges_scenario_before_governed_detail() -> Non
     assert "Pre-Existing Disease (PED)" in first
     assert "health problem or medical condition you already had" in first
     assert "permanently excluded" in result.released_text
+    assert "customer-specific policy dates" not in result.released_text.casefold()
+    assert result.released_text.casefold().count("policy may apply a ped waiting period") == 1
 
 
 def test_ped_comparison_dimensions_component_provides_buying_checklist() -> None:
@@ -224,6 +226,8 @@ def test_ped_comparison_dimensions_component_provides_buying_checklist() -> None
     assert "compare the ped waiting-period rule" in lowered
     assert "exclusions or endorsements" in lowered
     assert "continuity or portability" in lowered
+    assert "customer-specific policy dates" not in lowered
+    assert lowered.count("policy may apply a ped waiting period") == 0
     assert "not a recommendation" not in lowered
 
 
