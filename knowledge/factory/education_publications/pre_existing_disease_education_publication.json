@@ -35,6 +35,14 @@
       "evidence_references": [
         "star_comprehensive_standard_ped_definition_page_6_v1"
       ]
+    },
+    {
+      "component_id": "ped.comparison_dimensions",
+      "text": "Before buying a policy where a condition may be treated as a PED, compare the PED waiting-period rule, any option that changes that waiting period, exclusions or endorsements that may affect the condition, continuity or portability treatment if relevant, and how your medical history is recorded or assessed at application. Exact terms vary by product.",
+      "boundary": "This is a comparison checklist, not a recommendation or a conclusion that a particular condition will be covered.",
+      "evidence_references": [
+        "star_comprehensive_standard_ped_definition_page_6_v1"
+      ]
     }
   ],
   "concept_id": "pre_existing_disease",
@@ -62,7 +70,7 @@
   "product_specific_boundary": "The applicable PED waiting-period duration, optional modifications, continuity or portability credit, exclusions, and other product mechanics must come from governed product knowledge.",
   "publication_authority": "PolicyScna education publication authority",
   "publication_id": "education_pre_existing_disease_v1",
-  "publication_receipt_id": "education_receipt_15fa4cb93b9c65637b6f",
+  "publication_receipt_id": "education_receipt_46d07564e7852bfabb81",
   "publication_status": "EDUCATION_AUTHORITATIVE",
   "review_decision_id": "gcrev_pre_existing_disease_founder_v1",
   "source_asset_digest": "5c743f68a00981489ef20e811042b03937e3ed891c111047a027460efc2ca863",
