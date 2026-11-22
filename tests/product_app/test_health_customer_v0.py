@@ -137,7 +137,7 @@ def test_component_projection_keeps_boundary_metadata_internal() -> None:
     assert "this component does not state" not in lowered
     assert "does not promise that treatment will become payable" not in lowered
 
-def test_applicability_projection_uses_concept_definition_practical_implication_and_customer_boundary() -> None:
+def test_applicability_projection_uses_concept_and_practical_implication_without_generic_boilerplate() -> None:
     result = _ask_ped(
         semantic_fact="applicability",
         requested_outcome="CONTEXTUAL_POLICY_EXPLANATION",
@@ -146,12 +146,11 @@ def test_applicability_projection_uses_concept_definition_practical_implication_
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
         "EDUCATION",
-        "CUSTOMER_QUALIFICATION",
     ]
     lowered = result.released_text.casefold()
     assert "health problem or medical condition you already had" in lowered
     assert "policy may apply a ped waiting period" in lowered
-    assert "customer-specific policy dates" in lowered
+    assert "customer-specific policy dates" not in lowered
     assert "governed product knowledge" not in lowered
 
 
@@ -181,6 +180,45 @@ def test_comparison_outcome_uses_comparison_shape_without_generic_example_dump()
         "CUSTOMER_QUALIFICATION",
     ]
     assert "example:" not in result.released_text.casefold()
+
+
+def test_applicability_scenario_strips_interpreter_intent_summary_before_display() -> None:
+    provider = DeterministicFakeTextProvider(
+        output_text=_resolved_output(
+            "health:concept:pre_existing_disease",
+            semantic_fact="applicability",
+            requested_outcome="CONTEXTUAL_POLICY_EXPLANATION",
+            scenario_facts=[
+                {
+                    "name": "context_detail",
+                    "value": (
+                        "diagnosed with a condition last year and considering buying health "
+                        "insurance now; asks whether that condition would be covered"
+                    ),
+                }
+            ],
+        )
+    )
+
+    result = ask_health_question(
+        question="Will the condition be covered if I buy health insurance now?",
+        provider=provider,
+        model_name="test-model",
+        request_id="health-v0-scenario-summary-strip",
+        execution_id="health-v0-scenario-summary-strip-execution",
+        created_at="2026-11-22T13:00:00Z",
+        education_repository=_ped_only_repository(),
+    )
+
+    first = result.response.sections[0].text
+    assert first.startswith(
+        "From what you shared — diagnosed with a condition last year and considering buying "
+        "health insurance now — this is relevant to Pre-Existing Disease (PED)."
+    )
+    lowered = result.released_text.casefold()
+    assert "asks whether" not in lowered
+    assert "customer-specific policy dates" not in lowered
+    assert "policy may apply a ped waiting period" in lowered
 
 
 def test_contextual_answer_acknowledges_scenario_before_governed_detail() -> None:
