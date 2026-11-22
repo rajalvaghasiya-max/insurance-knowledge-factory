@@ -275,9 +275,12 @@ def _scenario_context_text(interpretation) -> str | None:
         # summaries such as "; asks whether ..." before rendering.
         value = value.split(";", 1)[0].strip().rstrip(".!?")
         lowered = value.casefold()
-        if lowered.startswith(("customer ", "the customer ", "user ", "the user ")):
-            return None
         if not value:
+            return None
+        # Scenario metadata is display-safe only when it is already phrased as
+        # customer-facing second-person language. Other semantic summaries stay
+        # internal and the product falls back to the original customer question.
+        if not lowered.startswith(("you ", "your ")):
             return None
         return value
     return None
