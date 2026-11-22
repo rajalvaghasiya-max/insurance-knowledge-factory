@@ -261,6 +261,19 @@ def _context_interpretation_text(question: str, context: HealthConversationConte
     )
 
 
+def _scenario_context_text(interpretation) -> str | None:
+    for fact in interpretation.scenario_facts:
+        if fact.name != "context_detail":
+            continue
+        value = fact.value.strip().rstrip(".!?")
+        if not value:
+            continue
+        lowered = value.casefold()
+        if lowered.startswith(("customer ", "the customer ", "user ", "the user ")):
+            return None
+        return value
+    return None
+
 def _next_context(
     context: HealthConversationContext,
     *,
@@ -354,7 +367,7 @@ def _education_response(
     selected_concept_id: str,
     requested_semantic_fact: str | None,
     requested_outcome: str | None,
-    has_scenario_context: bool,
+    scenario_context_text: str | None,
     publication,
 ) -> tuple[ResponseAssemblerOutput, str]:
     """Project only governed education material authorized for the validated request."""
@@ -390,9 +403,9 @@ def _education_response(
             "ADVISORY_DECISION_SUPPORT",
         }:
             bridge = (
-                f"Based on the details you gave, the relevant insurance concept is "
+                f"From what you shared — {scenario_context_text} — this is relevant to "
                 f"{publication.canonical_name}. {publication.plain_language_explanation}"
-                if has_scenario_context
+                if scenario_context_text
                 else publication.plain_language_explanation
             )
             components = [
@@ -425,9 +438,9 @@ def _education_response(
             components.append(("DIRECT_ANSWER", "definition", publication.plain_language_explanation))
         elif semantic_fact == "applicability":
             bridge = (
-                f"Based on the details you gave, the relevant insurance concept is "
-                f"{publication.canonical_name}. {publication.plain_language_explanation}"
-                if has_scenario_context
+                f"{scenario_context_text} This is relevant to {publication.canonical_name}. "
+                f"{publication.plain_language_explanation}"
+                if scenario_context_text
                 else publication.plain_language_explanation
             )
             components.extend(
@@ -693,7 +706,7 @@ def ask_health_question(
         selected_concept_id=selected_concept_id,
         requested_semantic_fact=requested_semantic_fact,
         requested_outcome=interpretation.requested_outcome,
-        has_scenario_context=bool(interpretation.scenario_facts),
+        scenario_context_text=_scenario_context_text(interpretation),
         publication=publication,
     )
     enforce_relevance(asked_concept_id=selected_concept_id, answer_topic=response_topic)
