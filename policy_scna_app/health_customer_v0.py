@@ -288,7 +288,7 @@ def _question_context_text(question: str) -> str | None:
     This is presentation-only context. It may restate customer-supplied facts,
     but it must not infer insurance meaning or coverage.
     """
-    first_sentence = re.split(r"(?<=[.!?])\\s+", question.strip(), maxsplit=1)[0].strip()
+    first_sentence = re.split(r"(?<=[.!?])\s+", question.strip(), maxsplit=1)[0].strip()
     if not first_sentence or first_sentence.endswith("?"):
         return None
 
@@ -301,14 +301,14 @@ def _question_context_text(question: str) -> str | None:
 
     text = first_sentence.rstrip(".!?")
     replacements = (
-        (r"^I am\\b", "you are"),
-        (r"^I'm\\b", "you are"),
-        (r"^I was\\b", "you were"),
-        (r"^I've\\b", "you have"),
-        (r"^I have\\b", "you have"),
-        (r"^I\\b", "you"),
-        (r"\\bmy\\b", "your"),
-        (r"\\bme\\b", "you"),
+        (r"^I am\b", "you are"),
+        (r"^I'm\b", "you are"),
+        (r"^I was\b", "you were"),
+        (r"^I've\b", "you have"),
+        (r"^I have\b", "you have"),
+        (r"^I\b", "you"),
+        (r"\bmy\b", "your"),
+        (r"\bme\b", "you"),
     )
     for pattern, replacement in replacements:
         text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
