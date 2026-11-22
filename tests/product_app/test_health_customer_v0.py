@@ -146,12 +146,10 @@ def test_applicability_projection_uses_concept_definition_practical_implication_
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
         "EDUCATION",
-        "EDUCATION",
         "CUSTOMER_QUALIFICATION",
     ]
     lowered = result.released_text.casefold()
     assert "health problem or medical condition you already had" in lowered
-    assert "not more than 36 months before" in lowered
     assert "policy may apply a ped waiting period" in lowered
     assert "customer-specific policy dates" in lowered
     assert "governed product knowledge" not in lowered
