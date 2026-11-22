@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from hashlib import sha256
 import json
 import os
+import re
 from pathlib import Path
 from typing import Mapping
 
@@ -280,6 +281,39 @@ def _scenario_context_text(interpretation) -> str | None:
             return None
         return value
     return None
+
+def _question_context_text(question: str) -> str | None:
+    """Return a conservative customer-fact fragment from the current question.
+
+    This is presentation-only context. It may restate customer-supplied facts,
+    but it must not infer insurance meaning or coverage.
+    """
+    first_sentence = re.split(r"(?<=[.!?])\s+", question.strip(), maxsplit=1)[0].strip()
+    if not first_sentence or first_sentence.endswith("?"):
+        return None
+
+    lowered = first_sentence.casefold()
+    if not (
+        lowered.startswith(("i ", "i'm ", "i’ve ", "i've ", "my "))
+        or " my " in lowered
+    ):
+        return None
+
+    text = first_sentence.rstrip(".!?")
+    replacements = (
+        (r"^I am\b", "you are"),
+        (r"^I'm\b", "you are"),
+        (r"^I was\b", "you were"),
+        (r"^I've\b", "you have"),
+        (r"^I have\b", "you have"),
+        (r"^I\b", "you"),
+        (r"\bmy\b", "your"),
+        (r"\bme\b", "you"),
+    )
+    for pattern, replacement in replacements:
+        text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+    return text.strip() or None
+
 
 def _next_context(
     context: HealthConversationContext,
@@ -708,7 +742,10 @@ def ask_health_question(
         selected_concept_id=selected_concept_id,
         requested_semantic_fact=requested_semantic_fact,
         requested_outcome=interpretation.requested_outcome,
-        scenario_context_text=_scenario_context_text(interpretation),
+        scenario_context_text=(
+            _scenario_context_text(interpretation)
+            or _question_context_text(clean_question)
+        ),
         publication=publication,
     )
     enforce_relevance(asked_concept_id=selected_concept_id, answer_topic=response_topic)
