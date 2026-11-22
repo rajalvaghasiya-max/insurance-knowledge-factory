@@ -398,12 +398,6 @@ def _education_response(
             components = [
                 ("DIRECT_ANSWER", "context-bridge", bridge),
                 ("EDUCATION", component.component_id, component.text),
-                ("EDUCATION", "practical-implication", publication.practical_implication),
-                (
-                    "CUSTOMER_QUALIFICATION",
-                    "customer-boundary",
-                    _customer_facing_boundary(publication.customer_document_boundary),
-                ),
             ]
         else:
             components = [
