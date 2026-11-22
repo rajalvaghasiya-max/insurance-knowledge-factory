@@ -339,6 +339,38 @@ def test_meta_scenario_fact_is_not_echoed_to_customer() -> None:
     assert "customer described" not in first.casefold()
 
 
+def test_non_second_person_scenario_metadata_is_not_displayed() -> None:
+    provider = DeterministicFakeTextProvider(
+        output_text=_resolved_output(
+            "health:concept:waiting_period",
+            semantic_fact="waiting.initial_general",
+            requested_outcome="CONTEXTUAL_POLICY_EXPLANATION",
+            scenario_facts=[
+                {"name": "context_detail", "value": "First-time health insurance purchase"}
+            ],
+        )
+    )
+
+    result = ask_health_question(
+        question=(
+            "I am buying health insurance for the first time. "
+            "Can a waiting period affect a planned treatment?"
+        ),
+        provider=provider,
+        model_name="test-model",
+        request_id="health-v0-display-safe-scenario-filter",
+        execution_id="health-v0-display-safe-scenario-filter-execution",
+        created_at="2026-11-22T16:00:00Z",
+        education_repository=load_education_repository(ROOT),
+    )
+
+    first = result.response.sections[0].text
+    assert first.startswith(
+        "From what you shared — you are buying health insurance for the first time — "
+    )
+    assert "First-time health insurance purchase" not in first
+
+
 def test_contextual_answer_falls_back_to_plain_language_without_scenario_fact() -> None:
     result = _ask_ped(
         semantic_fact="ped.waiting_period_relationship",
