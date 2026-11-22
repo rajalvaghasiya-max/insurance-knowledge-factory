@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "conversation_id": "beta-rest-natural",
+  "cases": [
+    {
+      "case_id": "beta01-rest-1",
+      "conversation_id": "beta-rest-natural",
+      "turn_index": 1,
+      "prior_context_required": false,
+      "concept_area": "restoration",
+      "user_text": "Suppose I use most of my health insurance cover in one hospitalisation. What does restoration of sum insured actually do after that?",
+      "expected_concept_id": "health:concept:restoration",
+      "expected_topic": "restoration"
+    },
+    {
+      "case_id": "beta01-rest-2",
+      "conversation_id": "beta-rest-natural",
+      "turn_index": 2,
+      "prior_context_required": true,
+      "concept_area": "restoration",
+      "user_text": "Can I use the restored amount again for the same illness if I am hospitalised later?",
+      "expected_concept_id": "health:concept:restoration",
+      "expected_topic": "restoration"
+    }
+  ]
+}
