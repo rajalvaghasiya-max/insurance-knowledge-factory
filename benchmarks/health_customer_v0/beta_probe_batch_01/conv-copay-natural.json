@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "conversation_id": "beta-copay-natural",
+  "cases": [
+    {
+      "case_id": "beta01-copay-1",
+      "conversation_id": "beta-copay-natural",
+      "turn_index": 1,
+      "prior_context_required": false,
+      "concept_area": "copayment",
+      "user_text": "My health policy says there is a 20% co-pay. In simple terms, what does that mean for me when I make a claim?",
+      "expected_concept_id": "health:concept:copayment",
+      "expected_topic": "conditional_copayment"
+    },
+    {
+      "case_id": "beta01-copay-2",
+      "conversation_id": "beta-copay-natural",
+      "turn_index": 2,
+      "prior_context_required": true,
+      "concept_area": "copayment",
+      "user_text": "If the hospital bill is ₹1,00,000 but only ₹80,000 is admissible, how would that 20% co-pay normally be calculated?",
+      "expected_concept_id": "health:concept:copayment",
+      "expected_topic": "conditional_copayment"
+    }
+  ]
+}
