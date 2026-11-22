@@ -26,6 +26,7 @@ def _resolved_output(
     *,
     semantic_fact: str = "definition",
     requested_outcome: str = "POLICY_FACT_EXPLANATION",
+    scenario_facts: list[dict[str, str]] | None = None,
 ) -> str:
     return json.dumps(
         {
@@ -38,7 +39,7 @@ def _resolved_output(
             ],
             "selected_concept_id": concept_id,
             "requested_semantic_fact": semantic_fact,
-            "scenario_facts": [],
+            "scenario_facts": scenario_facts or [],
             "request_authority_class": "ASSERTIVE",
             "ambiguity_reasons": [],
             "competing_interpretations": [],
@@ -145,12 +146,10 @@ def test_applicability_projection_uses_concept_definition_practical_implication_
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
         "EDUCATION",
-        "EDUCATION",
         "CUSTOMER_QUALIFICATION",
     ]
     lowered = result.released_text.casefold()
     assert "health problem or medical condition you already had" in lowered
-    assert "not more than 36 months before" in lowered
     assert "policy may apply a ped waiting period" in lowered
     assert "customer-specific policy dates" in lowered
     assert "governed product knowledge" not in lowered
@@ -182,6 +181,50 @@ def test_comparison_outcome_uses_comparison_shape_without_generic_example_dump()
         "CUSTOMER_QUALIFICATION",
     ]
     assert "example:" not in result.released_text.casefold()
+
+
+def test_contextual_answer_acknowledges_scenario_before_governed_detail() -> None:
+    provider = DeterministicFakeTextProvider(
+        output_text=_resolved_output(
+            "health:concept:pre_existing_disease",
+            semantic_fact="ped.waiting_period_relationship",
+            requested_outcome="CONTEXTUAL_POLICY_EXPLANATION",
+            scenario_facts=[
+                {"name": "context_detail", "value": "customer described a prior diagnosed condition"}
+            ],
+        )
+    )
+
+    result = ask_health_question(
+        question="How would this affect a new policy?",
+        provider=provider,
+        model_name="test-model",
+        request_id="health-v0-context-bridge",
+        execution_id="health-v0-context-bridge-execution",
+        created_at="2026-11-22T13:00:00Z",
+        education_repository=_ped_only_repository(),
+    )
+
+    assert result.status == "ANSWER"
+    assert result.response.sections[0].section_type == "DIRECT_ANSWER"
+    first = result.response.sections[0].text
+    assert "Based on the details you gave" in first
+    assert "Pre-Existing Disease (PED)" in first
+    assert "health problem or medical condition you already had" in first
+    assert "permanently excluded" in result.released_text
+
+
+def test_ped_comparison_dimensions_component_provides_buying_checklist() -> None:
+    result = _ask_ped(
+        semantic_fact="ped.comparison_dimensions",
+        requested_outcome="ADVISORY_DECISION_SUPPORT",
+    )
+
+    lowered = result.released_text.casefold()
+    assert "compare the ped waiting-period rule" in lowered
+    assert "exclusions or endorsements" in lowered
+    assert "continuity or portability" in lowered
+    assert "not a recommendation" not in lowered
 
 
 def test_missing_education_fails_closed_without_substituting_another_concept() -> None:

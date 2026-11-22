@@ -74,7 +74,7 @@ def test_founder_reviewed_ped_education_artifacts_regenerate_deterministically()
     regenerated_json = json.loads(json.dumps(asdict(regenerated_publication)))
     assert regenerated_json == committed_publication
     assert regenerated_publication.publication_receipt_id == (
-        "education_receipt_15fa4cb93b9c65637b6f"
+        "education_receipt_46d07564e7852bfabb81"
     )
 
 

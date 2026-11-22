@@ -71,6 +71,7 @@ def test_valid_ped_component_keeps_selected_detail_and_adds_context() -> None:
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
         "EDUCATION",
+        "EDUCATION",
         "CUSTOMER_QUALIFICATION",
     ]
     lowered = result.released_text.casefold()
@@ -103,6 +104,7 @@ def test_room_eligibility_component_distinguishes_category_cap_and_icu_rule() ->
     assert result.render_outcome == "PASS"
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
+        "EDUCATION",
         "EDUCATION",
         "CUSTOMER_QUALIFICATION",
     ]
