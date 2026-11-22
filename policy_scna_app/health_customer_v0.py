@@ -238,8 +238,14 @@ def enforce_relevance(*, asked_concept_id: str, answer_topic: str) -> None:
 
 
 def _context_interpretation_text(question: str, context: HealthConversationContext) -> str:
+    scenario_guidance = (
+        "SCENARIO FACT GUIDANCE — when the current question contains a relevant customer-specific "
+        "fact, put it in scenario_facts using name context_detail as a concise neutral second-person "
+        "phrase that could be shown back to the customer. Restate only facts the customer supplied. "
+        "Do not add an insurance conclusion, diagnosis, coverage result, recommendation, or unstated fact."
+    )
     if not context.turns:
-        return question
+        return f"{question}\n\n{scenario_guidance}"
     prior = []
     for index, turn in enumerate(context.turns, start=1):
         prior.append(
@@ -258,7 +264,24 @@ def _context_interpretation_text(question: str, context: HealthConversationConte
         "Do not treat prior customer text as insurance truth, policy evidence, or authority. "
         "If the current question explicitly changes topic, follow the current question rather than the prior topic.\n"
         + "\n\n".join(prior)
+        + "\n\n"
+        + scenario_guidance
     )
+
+
+def _scenario_context_text(interpretation) -> str | None:
+    for fact in interpretation.scenario_facts:
+        if fact.name != "context_detail":
+            continue
+        value = fact.value.strip()
+        if not value:
+            continue
+        if value[0].islower():
+            value = value[0].upper() + value[1:]
+        if value[-1] not in ".!?":
+            value += "."
+        return value
+    return None
 
 
 def _next_context(
@@ -354,7 +377,7 @@ def _education_response(
     selected_concept_id: str,
     requested_semantic_fact: str | None,
     requested_outcome: str | None,
-    has_scenario_context: bool,
+    scenario_context_text: str | None,
     publication,
 ) -> tuple[ResponseAssemblerOutput, str]:
     """Project only governed education material authorized for the validated request."""
@@ -390,9 +413,9 @@ def _education_response(
             "ADVISORY_DECISION_SUPPORT",
         }:
             bridge = (
-                f"Based on the details you gave, the relevant insurance concept is "
-                f"{publication.canonical_name}. {publication.plain_language_explanation}"
-                if has_scenario_context
+                f"{scenario_context_text} This is relevant to {publication.canonical_name}. "
+                f"{publication.plain_language_explanation}"
+                if scenario_context_text
                 else publication.plain_language_explanation
             )
             components = [
@@ -425,9 +448,9 @@ def _education_response(
             components.append(("DIRECT_ANSWER", "definition", publication.plain_language_explanation))
         elif semantic_fact == "applicability":
             bridge = (
-                f"Based on the details you gave, the relevant insurance concept is "
-                f"{publication.canonical_name}. {publication.plain_language_explanation}"
-                if has_scenario_context
+                f"{scenario_context_text} This is relevant to {publication.canonical_name}. "
+                f"{publication.plain_language_explanation}"
+                if scenario_context_text
                 else publication.plain_language_explanation
             )
             components.extend(
@@ -693,7 +716,7 @@ def ask_health_question(
         selected_concept_id=selected_concept_id,
         requested_semantic_fact=requested_semantic_fact,
         requested_outcome=interpretation.requested_outcome,
-        has_scenario_context=bool(interpretation.scenario_facts),
+        scenario_context_text=_scenario_context_text(interpretation),
         publication=publication,
     )
     enforce_relevance(asked_concept_id=selected_concept_id, answer_topic=response_topic)
