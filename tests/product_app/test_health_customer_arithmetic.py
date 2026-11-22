@@ -95,6 +95,44 @@ def test_copay_answer_with_two_amounts_gives_conditional_arithmetic_without_choo
     assert "not choosing which amount" in result.released_text
 
 
+def test_copay_answer_uses_explicitly_labeled_admissible_amount() -> None:
+    provider = DeterministicFakeTextProvider(
+        output_text=_resolved_output(
+            "health:concept:copayment",
+            semantic_fact="copay.gross_bill_vs_admissible_amount",
+        )
+    )
+    context = HealthConversationContext(
+        turns=(
+            HealthConversationTurn(
+                customer_text="My policy has a 20% co-pay.",
+                selected_concept_id="health:concept:copayment",
+                selected_topic="conditional_copayment",
+            ),
+        )
+    )
+
+    result = ask_health_question_with_arithmetic(
+        question=(
+            "The hospital bill is ₹1,00,000 but only ₹80,000 is admissible. "
+            "How is the 20% co-pay calculated?"
+        ),
+        provider=provider,
+        model_name="test-model",
+        request_id="health-v0-copay-labeled-admissible",
+        execution_id="health-v0-copay-labeled-admissible-execution",
+        created_at="2026-11-22T16:00:00Z",
+        conversation_context=context,
+    )
+
+    assert result.status == "ANSWER"
+    assert result.render_outcome == "PASS"
+    assert "20% of the stated admissible or eligible amount ₹80,000 is ₹16,000" in result.released_text
+    assert "₹20,000" not in result.released_text
+    assert "not choosing which amount" not in result.released_text
+    assert "final amount you would pay" in result.released_text
+
+
 def test_room_rent_answer_uses_prior_customer_basis_for_simple_difference() -> None:
     provider = DeterministicFakeTextProvider(
         output_text=_resolved_output(

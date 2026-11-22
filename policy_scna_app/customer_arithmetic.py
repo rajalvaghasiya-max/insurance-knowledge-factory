@@ -169,6 +169,64 @@ def build_percentage_illustration(
     )
 
 
+def build_labeled_percentage_illustration(
+    *,
+    current_text: str,
+    prior_customer_texts: Sequence[str],
+    consequence_boundary: str,
+    labels: tuple[str, ...] = ("admissible", "eligible"),
+) -> ArithmeticIllustration | None:
+    """Use a customer-labeled amount as the arithmetic basis when unambiguous."""
+    percentage = _latest_percentage(current_text, prior_customer_texts)
+    amount_matches = list(_AMOUNT_RE.finditer(current_text))
+    if percentage is None or len(amount_matches) < 2:
+        return None
+
+    label_matches = [
+        match
+        for label in labels
+        for match in re.finditer(rf"\b{re.escape(label)}\b", current_text, re.IGNORECASE)
+    ]
+    if not label_matches:
+        return None
+
+    candidates: list[tuple[int, re.Match[str]]] = []
+    for amount_match in amount_matches:
+        distances = []
+        for label_match in label_matches:
+            if label_match.end() <= amount_match.start():
+                distances.append(amount_match.start() - label_match.end())
+            elif label_match.start() >= amount_match.end():
+                distances.append(label_match.start() - amount_match.end())
+            else:
+                distances.append(0)
+        candidates.append((min(distances), amount_match))
+
+    candidates.sort(key=lambda item: item[0])
+    if candidates[0][0] > 32:
+        return None
+    if len(candidates) > 1 and candidates[0][0] == candidates[1][0]:
+        return None
+
+    match = candidates[0][1]
+    raw_number = match.group("rupee_number") or match.group("unit_number")
+    unit = match.group("rupee_unit") or match.group("required_unit")
+    normalized_unit = unit.lower() if unit else None
+    amount = _decimal(raw_number) * _UNIT_MULTIPLIER[normalized_unit]
+    result = percentage_of_amount(percentage=percentage.value, amount=amount)
+    text = (
+        f"Using only the numbers you gave: {percentage.source_text.strip()} of the stated "
+        f"admissible or eligible amount {format_inr(amount)} is {format_inr(result)}. "
+        "This uses the amount you identified as admissible or eligible as the calculation "
+        f"basis for this illustration. {consequence_boundary}"
+    )
+    return ArithmeticIllustration(
+        operation="LABELED_PERCENTAGE_OF_AMOUNT",
+        text=text,
+        result_amount=result,
+    )
+
+
 def build_conditional_percentage_illustration(
     *,
     current_text: str,
@@ -283,6 +341,7 @@ __all__ = [
     "ParsedAmount",
     "ParsedPercentage",
     "build_conditional_percentage_illustration",
+    "build_labeled_percentage_illustration",
     "build_difference_illustration",
     "build_percentage_illustration",
     "difference",
