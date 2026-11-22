@@ -208,12 +208,41 @@ def test_contextual_answer_acknowledges_scenario_before_governed_detail() -> Non
     assert result.status == "ANSWER"
     assert result.response.sections[0].section_type == "DIRECT_ANSWER"
     first = result.response.sections[0].text
-    assert first.startswith("You were diagnosed with a condition before buying the policy.")
-    assert "This is relevant to Pre-Existing Disease (PED)." in first
+    assert first.startswith(
+        "From what you shared — you were diagnosed with a condition before buying the policy — "
+    )
+    assert "this is relevant to Pre-Existing Disease (PED)." in first
     assert "health problem or medical condition you already had" in first
     assert "permanently excluded" in result.released_text
     assert "customer-specific policy dates" not in result.released_text.casefold()
     assert result.released_text.casefold().count("policy may apply a ped waiting period") == 1
+
+
+def test_meta_scenario_fact_is_not_echoed_to_customer() -> None:
+    provider = DeterministicFakeTextProvider(
+        output_text=_resolved_output(
+            "health:concept:pre_existing_disease",
+            semantic_fact="ped.waiting_period_relationship",
+            requested_outcome="CONTEXTUAL_POLICY_EXPLANATION",
+            scenario_facts=[
+                {"name": "context_detail", "value": "customer described a prior diagnosed condition"}
+            ],
+        )
+    )
+
+    result = ask_health_question(
+        question="How would this affect a new policy?",
+        provider=provider,
+        model_name="test-model",
+        request_id="health-v0-meta-scenario-fallback",
+        execution_id="health-v0-meta-scenario-fallback-execution",
+        created_at="2026-11-22T13:00:00Z",
+        education_repository=_ped_only_repository(),
+    )
+
+    first = result.response.sections[0].text
+    assert first.startswith("A Pre-Existing Disease (PED) is")
+    assert "customer described" not in first.casefold()
 
 
 def test_contextual_answer_falls_back_to_plain_language_without_scenario_fact() -> None:
