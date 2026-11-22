@@ -354,6 +354,7 @@ def _education_response(
     selected_concept_id: str,
     requested_semantic_fact: str | None,
     requested_outcome: str | None,
+    has_scenario_context: bool,
     publication,
 ) -> tuple[ResponseAssemblerOutput, str]:
     """Project only governed education material authorized for the validated request."""
@@ -388,8 +389,15 @@ def _education_response(
             "CONTEXTUAL_POLICY_EXPLANATION",
             "ADVISORY_DECISION_SUPPORT",
         }:
+            bridge = (
+                f"Based on the details you gave, the relevant insurance concept is "
+                f"{publication.canonical_name}. {publication.plain_language_explanation}"
+                if has_scenario_context
+                else publication.plain_language_explanation
+            )
             components = [
-                ("DIRECT_ANSWER", component.component_id, component.text),
+                ("DIRECT_ANSWER", "context-bridge", bridge),
+                ("EDUCATION", component.component_id, component.text),
                 ("EDUCATION", "practical-implication", publication.practical_implication),
                 (
                     "CUSTOMER_QUALIFICATION",
@@ -422,10 +430,15 @@ def _education_response(
         elif semantic_fact == "definition":
             components.append(("DIRECT_ANSWER", "definition", publication.plain_language_explanation))
         elif semantic_fact == "applicability":
+            bridge = (
+                f"Based on the details you gave, the relevant insurance concept is "
+                f"{publication.canonical_name}. {publication.plain_language_explanation}"
+                if has_scenario_context
+                else publication.plain_language_explanation
+            )
             components.extend(
                 (
-                    ("DIRECT_ANSWER", "applicability-plain", publication.plain_language_explanation),
-                    ("EDUCATION", "applicability-definition", publication.definition),
+                    ("DIRECT_ANSWER", "applicability-plain", bridge),
                     ("EDUCATION", "applicability-practical", publication.practical_implication),
                     (
                         "CUSTOMER_QUALIFICATION",
@@ -686,6 +699,7 @@ def ask_health_question(
         selected_concept_id=selected_concept_id,
         requested_semantic_fact=requested_semantic_fact,
         requested_outcome=interpretation.requested_outcome,
+        has_scenario_context=bool(interpretation.scenario_facts),
         publication=publication,
     )
     enforce_relevance(asked_concept_id=selected_concept_id, answer_topic=response_topic)
