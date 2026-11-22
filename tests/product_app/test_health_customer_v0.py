@@ -190,7 +190,7 @@ def test_contextual_answer_acknowledges_scenario_before_governed_detail() -> Non
             semantic_fact="ped.waiting_period_relationship",
             requested_outcome="CONTEXTUAL_POLICY_EXPLANATION",
             scenario_facts=[
-                {"name": "context_detail", "value": "customer described a prior diagnosed condition"}
+                {"name": "context_detail", "value": "you were diagnosed with a condition before buying the policy"}
             ],
         )
     )
@@ -208,12 +208,24 @@ def test_contextual_answer_acknowledges_scenario_before_governed_detail() -> Non
     assert result.status == "ANSWER"
     assert result.response.sections[0].section_type == "DIRECT_ANSWER"
     first = result.response.sections[0].text
-    assert "Based on the details you gave" in first
-    assert "Pre-Existing Disease (PED)" in first
+    assert first.startswith("You were diagnosed with a condition before buying the policy.")
+    assert "This is relevant to Pre-Existing Disease (PED)." in first
     assert "health problem or medical condition you already had" in first
     assert "permanently excluded" in result.released_text
     assert "customer-specific policy dates" not in result.released_text.casefold()
     assert result.released_text.casefold().count("policy may apply a ped waiting period") == 1
+
+
+def test_contextual_answer_falls_back_to_plain_language_without_scenario_fact() -> None:
+    result = _ask_ped(
+        semantic_fact="ped.waiting_period_relationship",
+        requested_outcome="CONTEXTUAL_POLICY_EXPLANATION",
+    )
+
+    first = result.response.sections[0].text
+    assert first.startswith("A Pre-Existing Disease (PED) is")
+    assert "Based on the details you gave" not in first
+    assert "This is relevant to" not in first
 
 
 def test_ped_comparison_dimensions_component_provides_buying_checklist() -> None:
