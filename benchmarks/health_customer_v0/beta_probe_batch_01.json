@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "health-customer-v0-founder-beta-probe-01",
+  "evidence_role": "BETA_DIAGNOSTIC_ONLY",
+  "holdout_eligible": false,
+  "case_count": 10,
+  "conversation_count": 5,
+  "notes": [
+    "Fresh founder-beta probes authored after PED conversational repair.",
+    "No dev36 or v3 wording copied into this batch.",
+    "Cases contain expected routing only; no answer templates or reference answers are embedded."
+  ],
+  "conversation_files": [
+    "beta_probe_batch_01/conv-wait-natural.json",
+    "beta_probe_batch_01/conv-rest-natural.json",
+    "beta_probe_batch_01/conv-room-natural.json",
+    "beta_probe_batch_01/conv-bar-natural.json",
+    "beta_probe_batch_01/conv-copay-natural.json"
+  ]
+}
