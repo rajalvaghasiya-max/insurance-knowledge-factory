@@ -268,8 +268,15 @@ def _scenario_context_text(interpretation) -> str | None:
         value = fact.value.strip().rstrip(".!?")
         if not value:
             continue
+
+        # Scenario facts are interpretation metadata, not customer prose. Keep
+        # only the factual scenario clause and discard model-added intent
+        # summaries such as "; asks whether ..." before rendering.
+        value = value.split(";", 1)[0].strip().rstrip(".!?")
         lowered = value.casefold()
         if lowered.startswith(("customer ", "the customer ", "user ", "the user ")):
+            return None
+        if not value:
             return None
         return value
     return None
@@ -438,8 +445,8 @@ def _education_response(
             components.append(("DIRECT_ANSWER", "definition", publication.plain_language_explanation))
         elif semantic_fact == "applicability":
             bridge = (
-                f"{scenario_context_text} This is relevant to {publication.canonical_name}. "
-                f"{publication.plain_language_explanation}"
+                f"From what you shared — {scenario_context_text} — this is relevant to "
+                f"{publication.canonical_name}. {publication.plain_language_explanation}"
                 if scenario_context_text
                 else publication.plain_language_explanation
             )
@@ -447,11 +454,6 @@ def _education_response(
                 (
                     ("DIRECT_ANSWER", "applicability-plain", bridge),
                     ("EDUCATION", "applicability-practical", publication.practical_implication),
-                    (
-                        "CUSTOMER_QUALIFICATION",
-                        "customer-boundary",
-                        _customer_facing_boundary(publication.customer_document_boundary),
-                    ),
                 )
             )
         elif semantic_fact == "consequence":
