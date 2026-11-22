@@ -377,8 +377,13 @@ def _education_response(
             components: list[tuple[str, str, str]] = [
                 ("DIRECT_ANSWER", "plain-language", publication.plain_language_explanation),
             ]
-            if component.text != publication.plain_language_explanation:
-                components.append(("EDUCATION", component.component_id, component.text))
+            precise_text = (
+                publication.definition
+                if component.component_id.endswith(".definition")
+                else component.text
+            )
+            if precise_text != publication.plain_language_explanation:
+                components.append(("EDUCATION", component.component_id, precise_text))
         elif requested_outcome in {
             "CONTEXTUAL_POLICY_EXPLANATION",
             "ADVISORY_DECISION_SUPPORT",
