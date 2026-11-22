@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "conversation_id": "beta-bar-natural",
+  "cases": [
+    {
+      "case_id": "beta01-bar-1",
+      "conversation_id": "beta-bar-natural",
+      "turn_index": 1,
+      "prior_context_required": false,
+      "concept_area": "bariatric_surgery",
+      "user_text": "Can health insurance cover weight-loss surgery, or is it always treated as cosmetic?",
+      "expected_concept_id": "health:concept:bariatric_surgery",
+      "expected_topic": "bariatric_surgery"
+    },
+    {
+      "case_id": "beta01-bar-2",
+      "conversation_id": "beta-bar-natural",
+      "turn_index": 2,
+      "prior_context_required": true,
+      "concept_area": "bariatric_surgery",
+      "user_text": "If my doctor says the surgery is medically necessary, does that mean the insurer has to pay for it?",
+      "expected_concept_id": "health:concept:bariatric_surgery",
+      "expected_topic": "bariatric_surgery"
+    }
+  ]
+}
