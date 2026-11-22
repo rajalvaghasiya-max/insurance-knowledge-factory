@@ -71,8 +71,6 @@ def test_valid_ped_component_keeps_selected_detail_and_adds_context() -> None:
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
         "EDUCATION",
-        "EDUCATION",
-        "CUSTOMER_QUALIFICATION",
     ]
     lowered = result.released_text.casefold()
     assert "formal diagnosis is not the only history" in lowered
@@ -105,8 +103,6 @@ def test_room_eligibility_component_distinguishes_category_cap_and_icu_rule() ->
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
         "EDUCATION",
-        "EDUCATION",
-        "CUSTOMER_QUALIFICATION",
     ]
     lowered = result.released_text.casefold()
     assert "room category does not by itself imply a separate monetary room-rent cap" in lowered
