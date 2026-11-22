@@ -7,7 +7,8 @@
       "ped.definition",
       "ped.qualifying_history",
       "ped.waiting_period_relationship",
-      "ped.continuity_portability"
+      "ped.continuity_portability",
+      "ped.comparison_dimensions"
     ],
     "waiting_period": [
       "waiting.initial_general",
