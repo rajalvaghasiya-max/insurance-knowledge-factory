@@ -221,6 +221,62 @@ def test_applicability_scenario_strips_interpreter_intent_summary_before_display
     assert "policy may apply a ped waiting period" in lowered
 
 
+def test_contextual_answer_uses_question_fact_when_scenario_metadata_is_missing() -> None:
+    provider = DeterministicFakeTextProvider(
+        output_text=_resolved_output(
+            "health:concept:pre_existing_disease",
+            semantic_fact="ped.waiting_period_relationship",
+            requested_outcome="CONTEXTUAL_POLICY_EXPLANATION",
+            scenario_facts=[],
+        )
+    )
+
+    result = ask_health_question(
+        question=(
+            "I was diagnosed with hypertension last year. "
+            "If I buy health insurance now, will the condition be covered?"
+        ),
+        provider=provider,
+        model_name="test-model",
+        request_id="health-v0-question-fact-fallback",
+        execution_id="health-v0-question-fact-fallback-execution",
+        created_at="2026-11-22T13:00:00Z",
+        education_repository=_ped_only_repository(),
+    )
+
+    first = result.response.sections[0].text
+    assert first.startswith(
+        "From what you shared — you were diagnosed with hypertension last year — "
+    )
+    assert "this is relevant to Pre-Existing Disease (PED)." in first
+    assert "will the condition be covered" not in first.casefold()
+
+
+def test_pure_contextual_question_does_not_invent_question_fact() -> None:
+    provider = DeterministicFakeTextProvider(
+        output_text=_resolved_output(
+            "health:concept:pre_existing_disease",
+            semantic_fact="ped.waiting_period_relationship",
+            requested_outcome="CONTEXTUAL_POLICY_EXPLANATION",
+            scenario_facts=[],
+        )
+    )
+
+    result = ask_health_question(
+        question="Will this condition be covered under a new policy?",
+        provider=provider,
+        model_name="test-model",
+        request_id="health-v0-question-no-fact-fallback",
+        execution_id="health-v0-question-no-fact-fallback-execution",
+        created_at="2026-11-22T13:00:00Z",
+        education_repository=_ped_only_repository(),
+    )
+
+    first = result.response.sections[0].text
+    assert first.startswith("A Pre-Existing Disease (PED) is")
+    assert "From what you shared" not in first
+
+
 def test_contextual_answer_acknowledges_scenario_before_governed_detail() -> None:
     provider = DeterministicFakeTextProvider(
         output_text=_resolved_output(
