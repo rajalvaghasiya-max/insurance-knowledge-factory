@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "conversation_id": "beta-room-natural",
+  "cases": [
+    {
+      "case_id": "beta01-room-1",
+      "conversation_id": "beta-room-natural",
+      "turn_index": 1,
+      "prior_context_required": false,
+      "concept_area": "room_rent_limit",
+      "user_text": "My policy says I am eligible for a single private room. What does that mean when I get admitted to a hospital?",
+      "expected_concept_id": "health:concept:room_rent_limit",
+      "expected_topic": "room_rent_limit"
+    },
+    {
+      "case_id": "beta01-room-2",
+      "conversation_id": "beta-room-natural",
+      "turn_index": 2,
+      "prior_context_required": true,
+      "concept_area": "room_rent_limit",
+      "user_text": "What if I choose a more expensive room than the category allowed by the policy?",
+      "expected_concept_id": "health:concept:room_rent_limit",
+      "expected_topic": "room_rent_limit"
+    }
+  ]
+}
