@@ -12,6 +12,7 @@ from policy_scna_app.customer_arithmetic import (
     ArithmeticIllustration,
     build_conditional_percentage_illustration,
     build_difference_illustration,
+    build_labeled_percentage_illustration,
     build_percentage_illustration,
     parse_percentages,
 )
@@ -64,6 +65,13 @@ def _illustration_for_resolved_topic(
         )
         if direct is not None:
             return direct
+        labeled = build_labeled_percentage_illustration(
+            current_text=question,
+            prior_customer_texts=prior,
+            consequence_boundary=boundary,
+        )
+        if labeled is not None:
+            return labeled
         return build_conditional_percentage_illustration(
             current_text=question,
             prior_customer_texts=prior,
