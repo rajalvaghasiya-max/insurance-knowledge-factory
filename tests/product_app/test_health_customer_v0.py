@@ -107,29 +107,53 @@ def test_definition_projection_does_not_dump_unrequested_example_or_boundary() -
 
 
 
+def test_selected_definition_component_leads_with_plain_language_before_precise_detail() -> None:
+    result = _ask_ped(semantic_fact="ped.definition")
+
+    assert [section.section_type for section in result.response.sections] == [
+        "DIRECT_ANSWER",
+        "EDUCATION",
+    ]
+    assert result.response.sections[0].text == (
+        "A Pre-Existing Disease (PED) is a health problem or medical condition "
+        "you already had before your insurance started."
+    )
+    assert "not more than 36 months" in result.response.sections[1].text
+
+
 def test_component_projection_keeps_boundary_metadata_internal() -> None:
     result = _ask_ped(semantic_fact="ped.waiting_period_relationship")
 
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
+        "EDUCATION",
     ]
     lowered = result.released_text.casefold()
+    assert "health problem or medical condition you already had" in lowered
     assert "being treated as a ped does not by itself mean the condition is permanently excluded" in lowered
     assert "exact duration" in lowered
     assert "applicable product and policy terms" in lowered
     assert "this component does not state" not in lowered
     assert "does not promise that treatment will become payable" not in lowered
 
-def test_applicability_projection_uses_practical_implication_and_customer_boundary() -> None:
-    result = _ask_ped(semantic_fact="applicability")
+def test_applicability_projection_uses_concept_definition_practical_implication_and_customer_boundary() -> None:
+    result = _ask_ped(
+        semantic_fact="applicability",
+        requested_outcome="CONTEXTUAL_POLICY_EXPLANATION",
+    )
 
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
+        "EDUCATION",
+        "EDUCATION",
         "CUSTOMER_QUALIFICATION",
     ]
-    assert result.response.sections[0].text
-    assert result.response.sections[1].text
-    assert "governed product knowledge" not in result.released_text.casefold()
+    lowered = result.released_text.casefold()
+    assert "health problem or medical condition you already had" in lowered
+    assert "not more than 36 months before" in lowered
+    assert "policy may apply a ped waiting period" in lowered
+    assert "customer-specific policy dates" in lowered
+    assert "governed product knowledge" not in lowered
 
 
 def test_mechanics_projection_keeps_governed_example_and_product_boundary() -> None:

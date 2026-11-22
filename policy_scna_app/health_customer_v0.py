@@ -367,12 +367,40 @@ def _education_response(
     by_component_id = {item.component_id: item for item in publication.components}
     if requested_semantic_fact in by_component_id:
         component = by_component_id[requested_semantic_fact]
-        # Component boundary text is governed authoring/safety metadata. The
-        # customer projection uses the component's governed explanatory text
-        # only; boundary metadata remains internal and is not rendered verbatim.
-        components: list[tuple[str, str, str]] = [
-            ("DIRECT_ANSWER", component.component_id, component.text),
-        ]
+        # Component IDs identify the most relevant governed detail, but a single
+        # component is not always a complete customer answer. Definition-style
+        # requests lead with the publication's reviewed plain-language concept
+        # explanation, then add the selected precise component. Contextual
+        # requests keep the selected component first and add the publication's
+        # practical implication and customer-document boundary.
+        if requested_outcome == "POLICY_FACT_EXPLANATION":
+            components: list[tuple[str, str, str]] = [
+                ("DIRECT_ANSWER", "plain-language", publication.plain_language_explanation),
+            ]
+            precise_text = (
+                publication.definition
+                if component.component_id.endswith(".definition")
+                else component.text
+            )
+            if precise_text != publication.plain_language_explanation:
+                components.append(("EDUCATION", component.component_id, precise_text))
+        elif requested_outcome in {
+            "CONTEXTUAL_POLICY_EXPLANATION",
+            "ADVISORY_DECISION_SUPPORT",
+        }:
+            components = [
+                ("DIRECT_ANSWER", component.component_id, component.text),
+                ("EDUCATION", "practical-implication", publication.practical_implication),
+                (
+                    "CUSTOMER_QUALIFICATION",
+                    "customer-boundary",
+                    _customer_facing_boundary(publication.customer_document_boundary),
+                ),
+            ]
+        else:
+            components = [
+                ("DIRECT_ANSWER", component.component_id, component.text),
+            ]
         semantic_fact = component.component_id
     else:
         semantic_fact = _resolved_semantic_fact(
@@ -396,7 +424,9 @@ def _education_response(
         elif semantic_fact == "applicability":
             components.extend(
                 (
-                    ("DIRECT_ANSWER", "applicability", publication.practical_implication),
+                    ("DIRECT_ANSWER", "applicability-plain", publication.plain_language_explanation),
+                    ("EDUCATION", "applicability-definition", publication.definition),
+                    ("EDUCATION", "applicability-practical", publication.practical_implication),
                     (
                         "CUSTOMER_QUALIFICATION",
                         "customer-boundary",

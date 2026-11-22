@@ -48,7 +48,7 @@ def test_six_publications_expose_exact_frozen_component_ids() -> None:
         assert [component.component_id for component in publication.components] == expected_ids
 
 
-def test_valid_ped_component_releases_only_that_governed_component() -> None:
+def test_valid_ped_component_keeps_selected_detail_and_adds_context() -> None:
     provider = DeterministicFakeTextProvider(
         output_text=_resolved_output(
             "health:concept:pre_existing_disease",
@@ -70,6 +70,8 @@ def test_valid_ped_component_releases_only_that_governed_component() -> None:
     assert result.render_outcome == "PASS"
     assert [section.section_type for section in result.response.sections] == [
         "DIRECT_ANSWER",
+        "EDUCATION",
+        "CUSTOMER_QUALIFICATION",
     ]
     lowered = result.released_text.casefold()
     assert "formal diagnosis is not the only history" in lowered
@@ -99,7 +101,11 @@ def test_room_eligibility_component_distinguishes_category_cap_and_icu_rule() ->
 
     assert result.status == "ANSWER"
     assert result.render_outcome == "PASS"
-    assert [section.section_type for section in result.response.sections] == ["DIRECT_ANSWER"]
+    assert [section.section_type for section in result.response.sections] == [
+        "DIRECT_ANSWER",
+        "EDUCATION",
+        "CUSTOMER_QUALIFICATION",
+    ]
     lowered = result.released_text.casefold()
     assert "room category does not by itself imply a separate monetary room-rent cap" in lowered
     assert "icu entitlement can also be governed separately" in lowered
