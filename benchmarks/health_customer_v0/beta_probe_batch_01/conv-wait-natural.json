@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "conversation_id": "beta-wait-natural",
+  "cases": [
+    {
+      "case_id": "beta01-wait-1",
+      "conversation_id": "beta-wait-natural",
+      "turn_index": 1,
+      "prior_context_required": false,
+      "concept_area": "waiting_period",
+      "user_text": "I am buying health insurance for the first time. If I need a planned treatment soon after buying it, can a waiting period affect the claim?",
+      "expected_concept_id": "health:concept:waiting_period",
+      "expected_topic": "waiting_period"
+    },
+    {
+      "case_id": "beta01-wait-2",
+      "conversation_id": "beta-wait-natural",
+      "turn_index": 2,
+      "prior_context_required": true,
+      "concept_area": "waiting_period",
+      "user_text": "And if there are two different waiting periods that could apply, how do I know which one matters?",
+      "expected_concept_id": "health:concept:waiting_period",
+      "expected_topic": "waiting_period"
+    }
+  ]
+}
