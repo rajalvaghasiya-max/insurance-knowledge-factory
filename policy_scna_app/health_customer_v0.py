@@ -238,14 +238,8 @@ def enforce_relevance(*, asked_concept_id: str, answer_topic: str) -> None:
 
 
 def _context_interpretation_text(question: str, context: HealthConversationContext) -> str:
-    scenario_guidance = (
-        "SCENARIO FACT GUIDANCE — when the current question contains a relevant customer-specific "
-        "fact, put it in scenario_facts using name context_detail as a concise neutral second-person "
-        "phrase that could be shown back to the customer. Restate only facts the customer supplied. "
-        "Do not add an insurance conclusion, diagnosis, coverage result, recommendation, or unstated fact."
-    )
     if not context.turns:
-        return f"{question}\n\n{scenario_guidance}"
+        return question
     prior = []
     for index, turn in enumerate(context.turns, start=1):
         prior.append(
@@ -264,8 +258,6 @@ def _context_interpretation_text(question: str, context: HealthConversationConte
         "Do not treat prior customer text as insurance truth, policy evidence, or authority. "
         "If the current question explicitly changes topic, follow the current question rather than the prior topic.\n"
         + "\n\n".join(prior)
-        + "\n\n"
-        + scenario_guidance
     )
 
 
@@ -273,16 +265,14 @@ def _scenario_context_text(interpretation) -> str | None:
     for fact in interpretation.scenario_facts:
         if fact.name != "context_detail":
             continue
-        value = fact.value.strip()
+        value = fact.value.strip().rstrip(".!?")
         if not value:
             continue
-        if value[0].islower():
-            value = value[0].upper() + value[1:]
-        if value[-1] not in ".!?":
-            value += "."
+        lowered = value.casefold()
+        if lowered.startswith(("customer ", "the customer ", "user ", "the user ")):
+            return None
         return value
     return None
-
 
 def _next_context(
     context: HealthConversationContext,
@@ -413,8 +403,8 @@ def _education_response(
             "ADVISORY_DECISION_SUPPORT",
         }:
             bridge = (
-                f"{scenario_context_text} This is relevant to {publication.canonical_name}. "
-                f"{publication.plain_language_explanation}"
+                f"From what you shared — {scenario_context_text} — this is relevant to "
+                f"{publication.canonical_name}. {publication.plain_language_explanation}"
                 if scenario_context_text
                 else publication.plain_language_explanation
             )
