@@ -1,3 +1,8 @@
+from dataclasses import replace
+from hashlib import sha256
+
+import pytest
+
 from pathlib import Path
 
 from insurance_intelligence.contracts.evidence import build_input
@@ -5,6 +10,8 @@ from insurance_intelligence.contracts.reasoning_plan import build_evidence_requi
 from insurance_intelligence.coverage_registry.health_seed import HEALTH_COVERAGE_REGISTRY
 from insurance_intelligence.evidence.coverage_registry_source import (
     build_coverage_registry_published_source_lookup,
+    CoverageRegistryPublishedSourceError,
+    verify_published_source_artifacts,
 )
 from insurance_intelligence.evidence.published_resolver import PublishedEvidenceResolver
 
@@ -141,3 +148,54 @@ def test_optional_schedule_miss_does_not_block_satisfied_required_wording() -> N
     }
     assert "optional-schedule" not in output.missing_evidence
     assert any("optional-schedule" in item for item in output.limitations)
+
+
+def test_source_integrity_checks_actual_bytes(tmp_path):
+    # Synthetic bytes test the hash boundary only; they are not policy evidence.
+    source = _room_rent_source()
+    payload = b"source integrity test bytes"
+    relative = "archive/test.pdf"
+    path = tmp_path / relative
+    path.parent.mkdir()
+    evidence = source.certified_evidence
+    packages = tuple(
+        replace(item, lineage=replace(
+            item.lineage,
+            source_artifact_path=relative,
+            source_artifact_sha256=sha256(payload).hexdigest(),
+            lineage_status="VERIFIED",
+        ))
+        for item in evidence.evidence_packages
+    )
+    source = replace(source, certified_evidence=replace(evidence, evidence_packages=packages))
+    with pytest.raises(CoverageRegistryPublishedSourceError, match="unavailable"):
+        verify_published_source_artifacts(root=tmp_path, source=source)
+    path.write_bytes(payload)
+    verify_published_source_artifacts(root=tmp_path, source=source)
+    path.write_bytes(payload + b" altered")
+    with pytest.raises(CoverageRegistryPublishedSourceError, match="hash mismatch"):
+        verify_published_source_artifacts(root=tmp_path, source=source)
+
+
+def test_strict_lookup_blocks_missing_original_artifact(tmp_path):
+    from shutil import copytree
+
+    copytree(ROOT / "knowledge/factory/registry_backed",
+             tmp_path / "knowledge/factory/registry_backed")
+    lookup = build_coverage_registry_published_source_lookup(
+        registry=HEALTH_COVERAGE_REGISTRY,
+        repository_root=tmp_path,
+        require_source_artifacts=True,
+    )
+    requirement = build_evidence_requirement(
+        requirement_id="strict-source-selection",
+        evidence_category="NORMALIZED_PRODUCT_FACT",
+        subject_reference="star_health:star_comprehensive",
+        required=True,
+        authority_requirement="AUTHORITATIVE",
+        version_requirement="CURRENT_APPLICABLE",
+        reason="Explain room rent",
+        requested_by_step="step-1",
+    )
+    with pytest.raises(CoverageRegistryPublishedSourceError, match="unavailable"):
+        lookup("star_health:star_comprehensive", requirement)
