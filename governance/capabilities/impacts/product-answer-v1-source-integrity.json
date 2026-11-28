@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "product-answer-v1-source-integrity",
+  "classification": "EXTEND",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Refs #468. Extend existing publication lookup with optional strict original source artifact verification for the forthcoming customer adapter. No new capability or product-specific logic.",
+  "supersession_impact": "No existing capability retired. Offline artifact-only tests retain their existing contract; customer integration must explicitly enable strict verification.",
+  "authority_impact": "No expansion or relaxation of authority. Strict lookup rejects missing or mismatched source bytes before existing publication admission; no change to publication or certification gates."
+}
