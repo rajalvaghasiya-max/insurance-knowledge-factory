@@ -26,6 +26,7 @@ from insurance_intelligence.evidence.published_materialization import (
     materialize_published_requirement,
 )
 from insurance_intelligence.evidence.repositories import RegistryBackedRepository
+from insurance_intelligence.entity_resolution.product_resolver import ProductEntityResolver
 from insurance_intelligence.evidence.sufficiency import evaluate
 from insurance_intelligence.evidence.trace import TraceBuilder
 
@@ -155,10 +156,12 @@ def _evaluate_planned_requirements(requirements, results):
 class PublishedEvidenceResolver:
     """Resolve only authoritative-publication-backed evidence for USER_ANSWER."""
 
-    def __init__(self, source_lookup: PublishedSourceLookup) -> None:
+    def __init__(self, source_lookup: PublishedSourceLookup, *,
+                 product_resolver: ProductEntityResolver | None = None) -> None:
         if not callable(source_lookup):
             raise TypeError("source_lookup must be callable")
         self._source_lookup = source_lookup
+        self._product_resolver = product_resolver
 
     def resolve(self, request: EvidenceResolverInput) -> EvidenceResolverOutput:
         evidence_use = evidence_use_from_context(request.resolution_context)
@@ -180,7 +183,8 @@ class PublishedEvidenceResolver:
                 "1.0", request.request_id, rid, (), (), (), (), (), (), "MISSING", (), trace.build(), "NO_REQUIREMENTS", 1.0
             ))
 
-        repo = RegistryBackedRepository(request.repository_roots[0])
+        repo = (RegistryBackedRepository(request.repository_roots[0])
+                if self._product_resolver is None else None)
         packages = []
         results = []
         entities = []
@@ -201,7 +205,15 @@ class PublishedEvidenceResolver:
                 requirement_id=requirement.requirement_id,
                 subject_reference=semantic_subject,
             )
-            entity, alias = repo.resolve_entity(instance_candidate) if instance_candidate else (None, None)
+            entity, alias = None, None
+            if instance_candidate:
+                if self._product_resolver is not None:
+                    resolution = self._product_resolver.resolve(instance_candidate)
+                    if resolution.status == "RESOLVED" and resolution.selected_entity is not None:
+                        entity = resolution.selected_entity.canonical_entity_id
+                        alias = resolution.input_value
+                elif repo is not None:
+                    entity, alias = repo.resolve_entity(instance_candidate)
             if not entity:
                 entities.append(EntityResolution(
                     instance_candidate or semantic_subject,

@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "change_id": "product-answer-v1-governed-entity-binding",
+  "classification": "REPAIR",
+  "capability_ids": [
+    "II.EVIDENCE.GOVERNED_RESOLVER"
+  ],
+  "rationale": "Reuse existing product entity resolver in published evidence retrieval to remove dependency on hardwired legacy aliases for new callers. Refs #468.",
+  "supersession_impact": "Existing offline callers retain compatibility. Customer adapter must inject governed product resolver.",
+  "authority_impact": "No authority expansion. Existing instance enforcement and publication gates remain unchanged. Unknown identities cannot retrieve evidence."
+}
