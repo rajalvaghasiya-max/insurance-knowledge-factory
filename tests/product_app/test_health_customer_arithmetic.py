@@ -33,7 +33,7 @@ def _resolved_output(
     )
 
 
-def test_copay_answer_adds_customer_supplied_percentage_arithmetic() -> None:
+def test_copay_single_amount_is_not_bound_automatically() -> None:
     provider = DeterministicFakeTextProvider(
         output_text=_resolved_output(
             "health:concept:copayment",
@@ -56,12 +56,11 @@ def test_copay_answer_adds_customer_supplied_percentage_arithmetic() -> None:
     assert result.status == "ANSWER"
     assert result.selected_topic == "conditional_copayment"
     assert result.render_outcome == "PASS"
-    assert result.response.sections[-1].section_type == "CUSTOMER_EXPLANATION"
-    assert "17.5% of ₹80,000 is ₹14,000" in result.released_text
-    assert "does not establish which amount" in result.released_text
+    assert all(section.section_type != "CUSTOMER_EXPLANATION" for section in result.response.sections)
+    assert "Using only the numbers you gave" not in result.released_text
 
 
-def test_copay_answer_with_two_amounts_gives_conditional_arithmetic_without_choosing_base() -> None:
+def test_copay_multiple_amounts_are_not_bound_automatically() -> None:
     provider = DeterministicFakeTextProvider(
         output_text=_resolved_output(
             "health:concept:copayment",
@@ -90,12 +89,11 @@ def test_copay_answer_with_two_amounts_gives_conditional_arithmetic_without_choo
 
     assert result.status == "ANSWER"
     assert result.render_outcome == "PASS"
-    assert "if ₹90,000 is the applicable calculation base, 18% is ₹16,200" in result.released_text
-    assert "if ₹75,000 is the applicable calculation base, 18% is ₹13,500" in result.released_text
-    assert "not choosing which amount" in result.released_text
+    assert all(section.section_type != "CUSTOMER_EXPLANATION" for section in result.response.sections)
+    assert "Using only the numbers you gave" not in result.released_text
 
 
-def test_copay_answer_uses_explicitly_labeled_admissible_amount() -> None:
+def test_copay_labeled_amount_is_not_bound_by_proximity() -> None:
     provider = DeterministicFakeTextProvider(
         output_text=_resolved_output(
             "health:concept:copayment",
@@ -127,13 +125,11 @@ def test_copay_answer_uses_explicitly_labeled_admissible_amount() -> None:
 
     assert result.status == "ANSWER"
     assert result.render_outcome == "PASS"
-    assert "20% of the stated admissible or eligible amount ₹80,000 is ₹16,000" in result.released_text
-    assert "₹20,000" not in result.released_text
-    assert "not choosing which amount" not in result.released_text
-    assert "final amount you would pay" in result.released_text
+    assert all(section.section_type != "CUSTOMER_EXPLANATION" for section in result.response.sections)
+    assert "Using only the numbers you gave" not in result.released_text
 
 
-def test_room_rent_answer_uses_prior_customer_basis_for_simple_difference() -> None:
+def test_room_rent_prior_amount_is_not_bound_automatically() -> None:
     provider = DeterministicFakeTextProvider(
         output_text=_resolved_output(
             "health:concept:room_rent_limit",
@@ -163,12 +159,11 @@ def test_room_rent_answer_uses_prior_customer_basis_for_simple_difference() -> N
     assert result.status == "ANSWER"
     assert result.selected_topic == "room_rent_limit"
     assert result.render_outcome == "PASS"
-    assert result.response.sections[-1].section_type == "CUSTOMER_EXPLANATION"
-    assert "₹8,500 minus ₹6,000 is ₹2,500" in result.released_text
-    assert "does not establish an insurer deduction" in result.released_text
+    assert all(section.section_type != "CUSTOMER_EXPLANATION" for section in result.response.sections)
+    assert "Using only the numbers you gave" not in result.released_text
 
 
-def test_room_rent_answer_verifies_customer_proposed_difference_from_prior_basis() -> None:
+def test_room_rent_proposed_difference_is_not_bound_automatically() -> None:
     provider = DeterministicFakeTextProvider(
         output_text=_resolved_output(
             "health:concept:room_rent_limit",
@@ -197,9 +192,8 @@ def test_room_rent_answer_verifies_customer_proposed_difference_from_prior_basis
 
     assert result.status == "ANSWER"
     assert result.render_outcome == "PASS"
-    assert "₹8,500 minus ₹6,000 is ₹2,500" in result.released_text
-    assert "only the room-price difference" in result.released_text
-    assert "final out-of-pocket amount" in result.released_text
+    assert all(section.section_type != "CUSTOMER_EXPLANATION" for section in result.response.sections)
+    assert "Using only the numbers you gave" not in result.released_text
 
 
 def test_non_arithmetic_health_topic_is_not_enriched() -> None:
@@ -221,4 +215,36 @@ def test_non_arithmetic_health_topic_is_not_enriched() -> None:
     )
 
     assert result.status == "ANSWER"
+    assert all(section.section_type != "CUSTOMER_EXPLANATION" for section in result.response.sections)
+
+
+def test_non_admissible_followup_is_not_treated_as_calculation_base() -> None:
+    provider = DeterministicFakeTextProvider(
+        output_text=_resolved_output(
+            "health:concept:copayment",
+            semantic_fact="copay.gross_bill_vs_admissible_amount",
+        )
+    )
+    context = HealthConversationContext(
+        turns=(
+            HealthConversationTurn(
+                customer_text="My policy has a 15% co-pay. The hospital bill is ₹1,50,000 and the admissible claim amount is ₹1,20,000.",
+                selected_concept_id="health:concept:copayment",
+                selected_topic="conditional_copayment",
+            ),
+        )
+    )
+    result = ask_health_question_with_arithmetic(
+        question="What if ₹30,000 of the hospital bill is not admissible?",
+        provider=provider,
+        model_name="test-model",
+        request_id="health-v0-contain-non-admissible",
+        execution_id="health-v0-contain-non-admissible-execution",
+        created_at="2026-11-28T10:00:00Z",
+        conversation_context=context,
+    )
+    assert result.status == "ANSWER"
+    assert result.render_outcome == "PASS"
+    assert "₹4,500" not in result.released_text
+    assert "Using only the numbers you gave" not in result.released_text
     assert all(section.section_type != "CUSTOMER_EXPLANATION" for section in result.response.sections)
