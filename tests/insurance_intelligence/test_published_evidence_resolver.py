@@ -242,3 +242,44 @@ def test_published_resolver_refuses_internal_certification_mode():
                 repository_roots=(str(REGISTRY),),
             )
         )
+
+
+def test_injected_governed_registry_resolves_second_product_without_legacy_aliases(tmp_path):
+    from insurance_intelligence.entity_resolution.product_resolver import (
+        GovernedProductEntity, GovernedProductEntityRegistry, ProductEntityResolver,
+    )
+
+    entity = GovernedProductEntity(
+        canonical_entity_id="test_insurer:test_product",
+        insurer_id="test_insurer",
+        product_id="test_product",
+        canonical_product_name="Test Product",
+    )
+    registry = GovernedProductEntityRegistry((entity,))
+    calls = []
+
+    def lookup(entity_reference, requirement):
+        calls.append(entity_reference)
+        return None  # Identity test only; no fabricated publication.
+
+    resolver = PublishedEvidenceResolver(
+        lookup, product_resolver=ProductEntityResolver(registry)
+    )
+    plan = _plan(reason="Explain room rent")
+    for candidate in ("Test Product", "Unknown Test Product", "Star Comprehensive"):
+        requirement = replace(plan.required_evidence[0], subject_reference=candidate)
+        request_plan = replace(plan, required_evidence=(requirement,))
+        output = resolver.resolve(build_input(
+            request_id=request_plan.request_id,
+            reasoning_plan=request_plan,
+            resolution_context={"evidence_use": "USER_ANSWER"},
+            repository_roots=(str(tmp_path),),
+            strict_mode="STRICT",
+        ))
+        assert not output.evidence_packages
+        if candidate == "Test Product":
+            assert output.entity_resolutions[0].governed_reference == entity.canonical_entity_id
+        else:
+            assert output.sufficiency == "ENTITY_UNRESOLVED"
+
+    assert calls == [entity.canonical_entity_id]
