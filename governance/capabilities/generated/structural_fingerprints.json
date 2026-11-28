@@ -178,7 +178,7 @@
         "insurance_intelligence/evidence/sufficiency.py",
         "insurance_intelligence/evidence/trace.py"
       ],
-      "structural_fingerprint": "eabde5c99d7762bee08a963ab145f8f5add6d97db1b1a631c112a54d8c8af3f2"
+      "structural_fingerprint": "69b3031c86abb0b602e32d99d67a6e00f03f10d82973c6aab47016cb9e97f70a"
     },
     {
       "capability_id": "II.EVIDENCE.INSTANCE_ENFORCEMENT",

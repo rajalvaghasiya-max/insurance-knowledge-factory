@@ -89,10 +89,56 @@ def _candidate_sources(
     return tuple(sources)
 
 
+def verify_published_source_artifacts(
+    *, root: Path, source: PublishedEvidenceSource
+) -> None:
+    """Verify the actual bytes behind every published evidence reference.
+
+    The archive is rooted in the repository, not a caller-supplied arbitrary path.
+    This supplements, and does not replace, authoritative publication admission.
+    """
+    root = root.resolve()
+    by_id = {item.evidence_id: item for item in source.certified_evidence.evidence_packages}
+    references = {
+        ref
+        for component in source.publication.semantic_components
+        for ref in component.evidence_references
+    }
+    if not references:
+        raise CoverageRegistryPublishedSourceError("publication has no evidence references")
+    verified: dict[Path, str] = {}
+    for ref in sorted(references):
+        item = by_id.get(ref)
+        if item is None:
+            raise CoverageRegistryPublishedSourceError("published evidence reference is missing")
+        lineage = item.lineage
+        if lineage.lineage_status != "VERIFIED":
+            raise CoverageRegistryPublishedSourceError("published evidence lineage is not verified")
+        locator = lineage.source_artifact_path
+        expected = lineage.source_artifact_sha256
+        if not locator or not expected:
+            raise CoverageRegistryPublishedSourceError("source artifact identity is missing")
+        relative = Path(locator)
+        path = (root / relative).resolve()
+        if relative.is_absolute() or not path.is_relative_to(root):
+            raise CoverageRegistryPublishedSourceError("source artifact locator escapes repository")
+        if path not in verified:
+            try:
+                with path.open("rb") as stream:
+                    from hashlib import file_digest
+
+                    verified[path] = file_digest(stream, "sha256").hexdigest()
+            except OSError as exc:
+                raise CoverageRegistryPublishedSourceError("source artifact unavailable") from exc
+        if verified[path] != expected:
+            raise CoverageRegistryPublishedSourceError("source artifact hash mismatch")
+
+
 def build_coverage_registry_published_source_lookup(
     *,
     registry: InsuranceIntelligenceCoverageRegistry,
     repository_root: Path,
+    require_source_artifacts: bool = False,
 ):
     """Build a topic-neutral PublishedSourceLookup from governed product publication artifacts."""
     if not isinstance(registry, InsuranceIntelligenceCoverageRegistry):
@@ -122,6 +168,8 @@ def build_coverage_registry_published_source_lookup(
             raise CoverageRegistryPublishedSourceError(
                 "multiple authoritative publication artifacts matched one evidence requirement"
             )
+        if require_source_artifacts:
+            verify_published_source_artifacts(root=root, source=matches[0])
         return matches[0]
 
     return lookup
@@ -130,4 +178,5 @@ def build_coverage_registry_published_source_lookup(
 __all__ = [
     "CoverageRegistryPublishedSourceError",
     "build_coverage_registry_published_source_lookup",
+    "verify_published_source_artifacts",
 ]
